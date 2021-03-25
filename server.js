@@ -2,6 +2,7 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import public from './public/scripts.js';
 
 const app = express();
 
@@ -11,6 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/api', apiRoutes);
+
+app.use('/public', public);
 
 async function bootServer() {
   try {

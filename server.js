@@ -27,4 +27,11 @@ async function bootServer() {
   }
 }
 
+liveReloadServer.server.once('connection', () => {
+  setTimeout(() => {
+    liveReloadServer.refresh('/');
+  }, 100);
+});
+
+
 bootServer();

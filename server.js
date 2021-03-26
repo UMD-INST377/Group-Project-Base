@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 
-// app.use('/public', public);
+app.use('/public', public);
 
 async function bootServer() {
   try {

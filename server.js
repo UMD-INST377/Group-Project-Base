@@ -1,18 +1,12 @@
-/* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 
-const app = express();
-
 const staticFolder = "public";
 
-const PORT = process.env.PORT || 3000;
+const app = express();
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

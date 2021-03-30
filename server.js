@@ -4,11 +4,13 @@ import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 
 const app = express();
-HEAD
+<<<<<<< HEAD
 
 const staticFolder = "public";
 
-
+=======
+const staticFolder = 'public';
+>>>>>>> 6bd4ef9111280878fe17d82f912e94b1309743cb
 const PORT = process.env.PORT || 3000;
 
 app.use((req, res, next) => {

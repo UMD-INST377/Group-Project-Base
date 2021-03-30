@@ -2,7 +2,7 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
-import public from './public/scripts.js';
+// import public from './public/scripts.js';
 
 const app = express();
 const staticFolder = 'public';
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 
-app.use('/public', public);
+// app.use('/public', public);
 
 async function bootServer() {
   try {

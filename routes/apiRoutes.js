@@ -7,16 +7,16 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the Airbnb Data API!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Calendar Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/calendar', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const entries = await db.calendar.findAll();
+    const reply = entries.length > 0 ? { data: entries } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,44 +24,46 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/calendar/:calendar_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const entry = await db.calendar.findAll({
       where: {
-        hall_id: req.params.hall_id
+        calendar_id: req.params.calendar_id
       }
     });
 
-    res.json(hall);
+    res.json(entry);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.post('/calendar', async (req, res) => {
+  const entries = await db.calendar.findAll();
+  const currentId = (await entries.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newEntry = await db.calendar.create({
+      calendar_id: currentId,
+      listing_id: req.body.listing_id,
+      stay_date: req.body.stay_date,
+      availability: req.body.availability,
+      price: req.body.price,
+      min_nights: req.body.min_nights,
+      max_nights: req.body.max_nights
     });
-    res.json(newDining);
+    res.json(newEntry);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/calendar/:calendar_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.calendar.destroy({
       where: {
-        hall_id: req.params.hall_id
+        calendar_id: req.params.calendar_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +73,19 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/calendar', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.calendar.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        stay_date: req.body.stay_date,
+        availability: req.body.availability,
+        price: req.body.price,
+        min_nights: req.body.min_nights,
+        max_nights: req.body.max_nights
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          calendar_id: req.body.calendar_id
         }
       }
     );
@@ -92,26 +97,26 @@ router.put('/dining', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Hosts Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/hosts', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const hosts = await db.hosts.findAll();
+    res.json(hosts);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/hosts/:host_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const hosts = await db.hosts.findAll({
       where: {
-        meal_id: req.params.meal_id
+        host_id: req.params.host_id
       }
     });
-    res.json(meals);
+    res.json(hosts);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -139,26 +144,26 @@ router.put('/meals', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Macros Endpoints/////////
+/// ////////Listings Endpoints/////////
 /// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.get('/listings', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
+    const listings = await db.listings.findAll();
+    res.send(listings);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get('/listings/:listing_id', async (req, res) => {
   try {
-    const meals = await db.Macros.findAll({
+    const listings = await db.listings.findAll({
       where: {
-        meal_id: req.params.meal_id
+        listing_id: req.params.listing_id
       }
     });
-    res.json(meals);
+    res.json(listings);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -194,26 +199,107 @@ router.put('/macros', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
+/// Neighborhoods Endpoints///
 /// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+router.get('/neighborhoods', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
+    const neighborhoods = await db.neighborhoods.findAll();
+    res.json(neighborhoods);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/restrictions/:restriction_id', async (req, res) => {
+router.get('/neighborhoods/:neighborhood_id', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    const neighborhoods = await db.neighborhoods.findAll({
       where: {
-        restriction_id: req.params.restriction_id
+        neighborhood_id: req.params.neighborhood_id
       }
     });
-    res.json(restrictions);
+    res.json(neighborhoods);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// Properties Endpoints///
+/// /////////////////////////////////
+router.get('/properties', async (req, res) => {
+  try {
+    const properties = await db.properties.findAll();
+    res.json(properties);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/properties/:property_id', async (req, res) => {
+  try {
+    const properties = await db.properties.findAll({
+      where: {
+        property_id: req.params.property_id
+      }
+    });
+    res.json(properties);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// Reviews Endpoints///
+/// /////////////////////////////////
+router.get('/reviews', async (req, res) => {
+  try {
+    const reviews = await db.reviews.findAll();
+    res.json(reviews);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/reviews/:review_id', async (req, res) => {
+  try {
+    const reviews = await db.reviews.findAll({
+      where: {
+        review_id: req.params.review_id
+      }
+    });
+    res.json(reviews);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// Scores Endpoints///
+/// /////////////////////////////////
+router.get('/scores', async (req, res) => {
+  try {
+    const scores = await db.scores.findAll();
+    res.json(scores);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/scores/:scores_id', async (req, res) => {
+  try {
+    const scores = await db.scores.findAll({
+      where: {
+        scores_id: req.params.scores_id
+      }
+    });
+    res.json(scores);
   } catch (err) {
     console.error(err);
     res.error('Server error');

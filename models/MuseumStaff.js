@@ -1,0 +1,31 @@
+export default (sequelize, DataTypes) => {
+  const MuseumStaff = sequelize.define(
+    'MuseumStaff',
+    {
+      staff_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: true,
+        primaryKey: true
+      },
+      employee_first_name: {
+        type: DataTypes.STRING
+      },
+      employee_last_name: {
+        type: DataTypes.STRING
+      },
+      musuem_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: true
+      },
+      role_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: false
+      }
+    },
+    { freezeTableName: true, timestamps: false }
+  );
+  return MuseumStaff;
+};

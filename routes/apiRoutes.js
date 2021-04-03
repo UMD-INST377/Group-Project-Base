@@ -7,16 +7,16 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to Museum App!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Museum Staff Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/museum_team7', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const staff = await db.MuseumStaff.findAll();
+    const reply = staff.length > 0 ? { data: staff } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,44 +24,44 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/museum_staff/:staff_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const staff = await db.MuseumStaff.findAll({
       where: {
-        hall_id: req.params.hall_id
+        staff_id: req.params.staff_id
       }
     });
 
-    res.json(hall);
+    res.json(staff);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.post('/museum_team7', async (req, res) => {
+  const staff = await db.MuseumStaff.findAll();
+  const currentId = (await staff.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newStaff = await db.MuseumStaff.create({
+      staff_id: currentId,
+      employee_first_name: req.body.employee_first_name,
+      employee_last_name: req.body.employee_last_name,
+      museum_id: req.body.museum_id,
+      role_id: req.body.role_id
     });
-    res.json(newDining);
+    res.json(newStaff);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/museum_staff/:staff_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.MuseumStaff.destroy({
       where: {
-        hall_id: req.params.hall_id
+        staff_id: req.params.staff_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +71,16 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/museum_team7', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.MuseumStaff.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        employee_first_name: req.body.employee_first_name,
+        employee_last_name: req.body.employee_last_name
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          staff_id: req.body.staff_id
         }
       }
     );

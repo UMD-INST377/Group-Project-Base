@@ -1,11 +1,9 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import MuseumInfo from './MuseumInfo.js';
+import MuseumStaff from './MuseumStaff.js';
+import StaffRole from './StaffRole.js';
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+  MuseumInfo,
+  MuseumStaff,
+  StaffRole
 };

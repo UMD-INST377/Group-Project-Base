@@ -18,7 +18,7 @@ export default (sequelize, DataTypes) => {
                 primaryKey: true,
             },
             member_status: {
-                type: DataTypes.TINYINT,
+                type: DataTypes.BOOLEAN,
                 allowNull: true,
             },
             fk_visitors_has_Museum_info_Museum_info1: {

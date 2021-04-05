@@ -92,6 +92,84 @@ router.put('/museum_team7', async (req, res) => {
 });
 
 /// /////////////////////////////////
+/// ////Staff Role Endpoints////////
+/// /////////////////////////////////
+router.get('/museum_team7', async (req, res) => {
+  try {
+    const role = await db.StaffRole.findAll();
+    const reply = staff.length > 0 ? { data: role } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/staff_role/:role_id', async (req, res) => {
+  try {
+    const role = await db.MuseumStaff.findAll({
+      where: {
+        role_id: req.params.role_id
+      }
+    });
+
+    res.json(role);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/museum_team7', async (req, res) => {
+  const role = await db.StaffRole.findAll();
+  const currentId = (await role.length) + 1;
+  try {
+    const newRole = await db.StaffRole.create({
+      role_id: currentId,
+      role_title: req.body.role_title,
+    });
+    res.json(newRole);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/staff_role/:role_id', async (req, res) => {
+  try {
+    await db.StaffRole.destroy({
+      where: {
+        role_id: req.params.role_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/museum_team7', async (req, res) => {
+  try {
+    await db.StaffRole.update(
+      {
+        role_id: req.body.role_id,
+        role_title: req.body.role_title
+      },
+      {
+        where: {
+          role_id: req.body.role_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////
 router.get('/meals', async (req, res) => {

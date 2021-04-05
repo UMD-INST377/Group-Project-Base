@@ -1,21 +1,21 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    'Meals',
+  const Genres = sequelize.define(
+    'Genres',
     {
-      meal_id: {
+      genre_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
         primaryKey: true
       },
-      meal_name: {
+      genre_name: {
         type: DataTypes.STRING
       },
-      meal_category: {
+      fictional: {
         type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  return Genres;
 };

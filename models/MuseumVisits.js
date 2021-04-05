@@ -23,12 +23,11 @@ export default (sequelize, DataTypes) => {
             },
             fk_visitors_has_Museum_info_Museum_info1: {
                 type: DataTypes.STRING,
-                foreignKey: true,
             },
-            fk_visitors_has_Museum_info_visitors1 {
+            fk_visitors_has_Museum_info_visitors1: {
                 type: DataTypes.STRING,
-                foreignKey: true,
-            },
+            }
+        },
         {freezeTableName: true, timestamps: false}
     );
     return VisitorVisits;

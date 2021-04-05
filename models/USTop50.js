@@ -5,6 +5,7 @@ export default (sequelize, DataTypes) => {
         us_top50_rank: {
           type: DataTypes.INTEGER,
           allowNull: false,
+          primaryKey: true
         },
         streams: {
           type: DataTypes.INTEGER,

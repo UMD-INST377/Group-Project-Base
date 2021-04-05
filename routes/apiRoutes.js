@@ -90,7 +90,7 @@ router.put('/platform', async (req, res) => {
 /// /////////////////////////////////
 /// ///Player Biostats Endpoints/////
 /// /////////////////////////////////
-router.get('/playerbiostats', async (req, res) => {
+router.get('/player_biostats', async (req, res) => {
   try {
     const biostats = await db.PlayerBiostats.findAll();
     res.json(biostats);
@@ -100,7 +100,7 @@ router.get('/playerbiostats', async (req, res) => {
   }
 });
 
-router.get('/playerbiostats/:biostats_id', async (req, res) => {
+router.get('/player_biostats/:biostats_id', async (req, res) => {
   try {
     const biostats = await db.PlayerBiostats.findAll({
       where: {
@@ -111,20 +111,6 @@ router.get('/playerbiostats/:biostats_id', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.error('Server Error at biostats_id GET');
-  }
-});
-
-router.delete('/playerbiostats/:biostats_id', async (req, res) => {
-  try {
-    await db.PlayerBiostats.destroy({
-      where: {
-        biostats_id: req.params.biostats_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at biostats_id DELETE');
   }
 });
 
@@ -151,85 +137,152 @@ router.put('/playerbiostats', async (req, res) => {
   }
 });
 
+router.delete('/player_biostats/:biostats_id', async (req, res) => {
+  try {
+    await db.PlayerBiostats.destroy({
+      where: {
+        biostats_id: req.params.biostats_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at biostats_id DELETE');
+  }
+});
+
 /// /////////////////////////////////
 /// /////Player Info Endpoints///////
 /// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.get('/player_info', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
+    const info = await db.PlayerInfo.findAll();
+    res.send(info);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at Player Info GET');
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get('/player_info/:player_id', async (req, res) => {
   try {
-    const meals = await db.Macros.findAll({
+    const info = await db.PlayerInfo.findAll({
       where: {
-        meal_id: req.params.meal_id
+        player_id: req.params.player_id
       }
     });
-    res.json(meals);
+    res.json(info);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at player_id GET');
   }
 });
 
-router.put('/macros', async (req, res) => {
+router.put('/player_info', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
+    await db.PlayerInfo.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
+        salary: req.body.meal_salary,
+        jersey_number: req.body.jersey_number,
+        position: req.body.position,
+        player_college: req.body.player_college,
+        nba_debut: req.body.nba_debut,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        team_id: req.body.team_id
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          player_id: req.body.player_id
         }
       }
     );
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at Player Info PUT');
   }
 });
 
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+router.delete('/player_info/:player_id', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    await db.PlayerInfo.destroy({
       where: {
-        restriction_id: req.params.restriction_id
+        player_id: req.params.player_id
       }
     });
-    res.json(restrictions);
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at player_id DELETE');
+  }
+});
+
+/// /////////////////////////////////
+/// Player Stats Endpoints///////////
+/// /////////////////////////////////
+router.get('/player_stats', async (req, res) => {
+  try {
+    const stats = await db.PlayerStats.findAll();
+    res.json(stats);
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at Player Stats GET');
+  }
+});
+
+router.get('/player_stats/:gamestats_id', async (req, res) => {
+  try {
+    const gamestats = await db.PlayerStats.findAll({
+      where: {
+        gamestats_id: req.params.gamestats_id
+      }
+    });
+    res.json(gamestats);
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at gamestats_id GET');
+  }
+});
+
+router.put('/player_stats', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.PlayerStats.update(
+      {
+        shooting_percentage: req.body.shooting_percentage,
+        three_pt_pct: req.body.three_pt_pct,
+        rebounds_per_game: req.body.rebounds_per_game,
+        assists_per_game: req.body.assists_per_game,
+        steals_per_game: req.body.steals_per_game,
+        blocks_per_game: req.body.blocks_per_game,
+        player_id: req.body.player_id
+      },
+      {
+        where: {
+          gamestats_id: req.body.gamestats_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at Player Stats PUT');
+  }
+});
+
+router.delete('/player_stats/:gamestats_id', async (req, res) => {
+  try {
+    await db.PlayerStats.destroy({
+      where: {
+        gamestats_id: req.params.gamestats_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at gamestats_id DELETE');
   }
 });
 

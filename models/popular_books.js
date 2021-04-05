@@ -1,15 +1,79 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    "Meals_Locations",
+  const PopularBooks = sequelize.define(
+    "Popular_Books",
     {
-      hall_id: {
+      book_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        primaryKey: true
       },
-      meal_id: {
+
+      title: {
+        type: DataTypes.STRING
+      },
+
+      amount_sold: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+
+      published_year: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+
+      },
+
+      original_language: {
+        type: DataTypes.STRING
+
+      },
+
+
+      public_domain: {
+        type: DataTypes.BOOLEAN 
+
+      },
+
+      google_user_percentage: {
+        type: DataTypes.DECIMAL,
+        allowNull: false
+
+      },
+
+      authors_author_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        unique: true
+
       },
+
+      publishers_publisher_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: true
+
+      },
+
+      artistic_movement_artistic_movement_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: true
+
+      },
+
+      book_retailers_retailer_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+
+      },
+
+      book_description_description_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+
+      }
+
+
     },
     { freezeTableName: true, timestamps: false }
   );

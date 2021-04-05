@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    const visitorVisits = sequelize.define(
+    const VisitorVisits = sequelize.define(
         'museum_visits',
         {
             visitor_id: {
@@ -31,5 +31,5 @@ export default (sequelize, DataTypes) => {
             },
         {freezeTableName: true, timestamps: false}
     );
-    return visitorInfo;
+    return VisitorVisits;
 };

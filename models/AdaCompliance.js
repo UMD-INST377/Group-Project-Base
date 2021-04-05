@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const adaCompliance = sequelize.define(
+  const AdaCompliance = sequelize.define(
     'ada_compliance',
     {
       ada_id: {
@@ -14,5 +14,5 @@ export default (sequelize, DataTypes) => {
     },
     {freezeTableName: true, timestamps: false}
   );
-  return visitorInfo;
+  return AdaCompliance;
 };

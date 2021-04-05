@@ -15,7 +15,7 @@ export default (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
               }, 
-            genre_name: {
+            genre: {
                 type: DataTypes.STRING,
                 allowNull: false
               },
@@ -28,6 +28,3 @@ export default (sequelize, DataTypes) => {
         );
         return Albums;     
     }
-
-
-

@@ -7,139 +7,152 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the NBA Info Insiders!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Platform Endpoints///////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/platform', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const platforms = await db.Platform.findAll();
+    const reply = platforms.length > 0 ? { data: platforms } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at Platform GET');
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/platform/:platform_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const platform = await db.Platform.findAll({
       where: {
-        hall_id: req.params.hall_id
+        platform_id: req.params.platform_id
       }
     });
 
-    res.json(hall);
+    res.json(platform);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at platform_id GET');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.post('/platform', async (req, res) => {
+  const platforms = await db.Platform.findAll();
+  const currentId = (await platforms.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newPlatform = await db.Platform.create({
+      platform_id: currentId,
+      platform_name: req.body.platform_name
     });
-    res.json(newDining);
+    res.json(newPlatform);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at Platform POST');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/platform/:platform_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.Platform.destroy({
       where: {
-        hall_id: req.params.hall_id
+        platform_id: req.params.platform_id
       }
     });
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at platform_id DELETE');
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/platform', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.Platfrom.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        platform_name: req.body.platform_name
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          platform_id: req.body.platform_id
         }
       }
     );
-    res.send('Successfully Updated');
+    res.send('Platform Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at platform PUT');
   }
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ///Player Biostats Endpoints/////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/playerbiostats', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const biostats = await db.PlayerBiostats.findAll();
+    res.json(biostats);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at Player Biostats GET');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/playerbiostats/:biostats_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const biostats = await db.PlayerBiostats.findAll({
       where: {
-        meal_id: req.params.meal_id
+        biostats_id: req.params.biostats_id
       }
     });
-    res.json(meals);
+    res.json(biostats);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at biostats_id GET');
   }
 });
 
-router.put('/meals', async (req, res) => {
+router.delete('/playerbiostats/:biostats_id', async (req, res) => {
   try {
-    await db.Meals.update(
+    await db.PlayerBiostats.destroy({
+      where: {
+        biostats_id: req.params.biostats_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at biostats_id DELETE');
+  }
+});
+
+router.put('/playerbiostats', async (req, res) => {
+  try {
+    await db.PlayerBiostats.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        birthdate: req.body.birthdate,
+        age: req.body.age,
+        height_inches: req.body.height_inches,
+        weight_pounds: req.body.weight_pounds,
+        player_id: req.body.player_id
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          biostats_id: req.body.biostats_id
         }
       }
     );
-    res.send('Meal Successfully Updated');
+    res.send('Biostats Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at Player Biostats PUT');
   }
 });
 
 /// /////////////////////////////////
-/// ////////Macros Endpoints/////////
+/// /////Player Info Endpoints///////
 /// /////////////////////////////////
 router.get('/macros', async (req, res) => {
   try {

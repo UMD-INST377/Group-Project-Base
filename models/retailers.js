@@ -1,40 +1,23 @@
 export default (sequelize, DataTypes) => {
-  const Macros = sequelize.define(
-    'Macros',
+  const Retailers = sequelize.define(
+    'Retailers',
     {
-      macro_id: {
+      retailer_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
         primaryKey: true
       },
-      calories: {
-        type: DataTypes.DOUBLE
+      retailer_name: {
+        type: DataTypes.STRING,
+        allowNull: true
       },
-      serving_size: {
-        type: DataTypes.DOUBLE
-      },
-      cholesterol: {
-        type: DataTypes.INTEGER
-      },
-      sodium: {
-        type: DataTypes.DOUBLE
-      },
-      carbs: {
-        type: DataTypes.DOUBLE
-      },
-      protein: {
-        type: DataTypes.DOUBLE
-      },
-      meal_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
-      fat: {
-        type: DataTypes.DOUBLE
+      in_operation: {
+        type: DataTypes.BOOLEAN,
+        allowNull: true
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Macros;
+  return Retailers;
 };

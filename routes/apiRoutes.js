@@ -286,6 +286,147 @@ router.delete('/player_stats/:gamestats_id', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// Social Media Endpoints///////////
+/// /////////////////////////////////
+router.get('socialmedia', async (req, res) => {
+  try {
+    const social = await db.SocialMedia.findAll();
+    res.json(social);
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at Social Media GET');
+  }
+});
+
+router.get('/socialmedia/:social_id', async (req, res) => {
+  try {
+    const social = await db.SocialMedia.findAll({
+      where: {
+        social_id: req.params.social_id
+      }
+    });
+    res.json(social);
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at social_id GET');
+  }
+});
+
+router.put('/socialmedia', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.SocialMedia.update(
+      {
+        team_id: req.body.team_id,
+        platform_id: req.body.platform_id,
+        social_id: req.body.social_id
+       
+      },
+      {
+        where: {
+          social_id: req.body.social_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at Social Media PUT');
+  }
+});
+
+router.delete('/socialmedia/:social_id', async (req, res) => {
+  try {
+    await db.SocialMedia.destroy({
+      where: {
+        social_id: req.params.social_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at social_id DELETE');
+  }q
+});
+
+
+
+/// /////////////////////////////////
+/// Stadium Info Endpoints///////////
+/// /////////////////////////////////
+router.get('stadium_info', async (req, res) => {
+  try {
+    const stadium = await db.StadiumInfo.findAll();
+    res.json(stadium);
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at Stadium Info GET');
+  }
+});
+
+router.get('/stadium_info/:stadium_id', async (req, res) => {
+  try {
+    const stadium= await db.StadiumInfo.findAll({
+      where: {
+        stadium_id: req.params.stadium_id
+      }
+    });
+    res.json(stadium);
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at stadium_id GET');
+  }
+});
+
+router.put('/stadium_id', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.StandiumInfo.update(
+      {
+        name: req.body.name,
+        year_built: req.body.year_built,
+        state: req.body.state,
+        city: req.body.city,
+        capacity: req.body.capacity,
+        team_id: req.body.team_id,
+       
+      },
+      {
+        where: {
+          stadium_id: req.body.stadium_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at Stadium Info PUT');
+  }
+});
+
+router.delete('/stadium_info/:stadium_id', async (req, res) => {
+  try {
+    await db.StadiumInfo.destroy({
+      where: {
+        stadium_id: req.params.stadium_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at stadium_info DELETE');
+  }q
+});
+
+
+
+
+
+
+
+
+
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////

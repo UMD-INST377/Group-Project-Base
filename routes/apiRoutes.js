@@ -202,7 +202,7 @@ router.put('/museum_team7', async (req, res) => {
     await db.AdaCompliance.update(
       {
         ada_id: req.body.ada_id,
-      ada_type: req.body.ada_type
+        ada_type: req.body.ada_type
       },
       {
         where: {
@@ -220,44 +220,83 @@ router.put('/museum_team7', async (req, res) => {
 /// /////////////////////////////////
 /// ////////Museum Visits Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/museum_team7', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const visit = await db.VisitorVisits.findAll();
+    const reply = visit.length > 0 ? { data: visit } : { message: 'no results found' };
+    res.json(reply);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/museum_visits/:visitor_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const visit = await db.VisitorVisits.findAll({
       where: {
-        meal_id: req.params.meal_id
+        visitor_id: req.params.visitor_id
       }
     });
-    res.json(meals);
+
+    res.json(visit);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
+router.post('/museum_team7', async (req, res) => {
+  const visit = await db.VisitorVisits.findAll();
+  const currentId = (await visit.length) + 1;
   try {
-    await db.Meals.update(
+    const newVisit = await db.VisitorVisits.create({
+      visitor_id: currentId,
+      museum_id: req.body.museum_id,
+      visit_date: req.body.visit_date,
+      member_status: req.body.member_status,
+      fk_visitors_has_Museum_info_Museum_info1: req.body.fk_visitors_has_Museum_info_Museum_info1,
+      fk_visitors_has_Museum_info_visitors1: req.body.fk_visitors_has_Museum_info_visitors1
+    });
+    res.json(newVisit);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/museum_visits/:visitor_id', async (req, res) => {
+  try {
+    await db.VisitorVisits.destroy({
+      where: {
+        visit_date: req.params.visit_date
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/museum_team7', async (req, res) => {
+  try {
+    await db.VisitorVisits.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        visitor_id: req.body.visitor_id,
+        museum_id: req.body.museum_id,
+        visit_date: req.body.visit_date,
+        member_status: req.body.member_status,
+        fk_visitors_has_Museum_info_Museum_info1: req.body.fk_visitors_has_Museum_info_Museum_info1,
+        fk_visitors_has_Museum_info_visitors1: req.body.fk_visitors_has_Museum_info_visitors1
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          visit_date: req.body.visit_date
         }
       }
     );
-    res.send('Meal Successfully Updated');
+    res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');

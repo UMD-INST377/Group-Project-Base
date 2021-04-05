@@ -9,6 +9,7 @@ export default (database, DataTypes) => {
             },
             book_description: {
                 type: DataTypes.varchar,
+                allownull: true,
             }
         },
     );

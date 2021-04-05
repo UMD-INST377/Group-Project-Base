@@ -1,17 +1,23 @@
 export default (sequelize, DataTypes) => {
-  const DietaryRestrictions = sequelize.define(
-    'Dietary_Restrictions',
+  const ArtisticMovement = sequelize.define(
+    'Artistic_Movement',
     {
-      restriction_id: {
+      artistic_movement_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      restriction_type: {
+      movement_name: {
         type: DataTypes.STRING
+      },
+      start_year: {
+        type: DataTypes.INTEGER
+      },
+      end_year: {
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return DietaryRestrictions;
+  return ArtisticMovement;
 };

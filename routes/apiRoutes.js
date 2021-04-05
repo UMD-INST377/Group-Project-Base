@@ -138,6 +138,136 @@ router.put('/meals', async (req, res) => {
   }
 });
 
+
+/// /////////////////////////////////
+/// ////Ada Compliance Endpoints////////
+/// /////////////////////////////////
+router.get('/museum_team7', async (req, res) => {
+  try {
+    const ada = await db.AdaCompliance.findAll();
+    const reply = ada.length > 0 ? { data: ada } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/ada_compliance/:ada_id', async (req, res) => {
+  try {
+    const ada = await db.AdaCompliance.findAll({
+      where: {
+        ada_id: req.params.ada_id
+      }
+    });
+
+    res.json(ada);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/museum_team7', async (req, res) => {
+  const ada = await db.AdaCompliance.findAll();
+  const currentId = (await ada.length) + 1;
+  try {
+    const newAda = await db.AdaCompliance.create({
+      ada_id: currentId,
+      ada_type: req.body.ada_type
+    });
+    res.json(newAda);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/ada_compliance/:ada_id', async (req, res) => {
+  try {
+    await db.AdaCompliance.destroy({
+      where: {
+        ada_id: req.params.ada_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/museum_team7', async (req, res) => {
+  try {
+    await db.AdaCompliance.update(
+      {
+        ada_id: req.body.ada_id,
+      ada_type: req.body.ada_type
+      },
+      {
+        where: {
+          ada_id: req.body.ada_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////////Museum Visits Endpoints//////////
+/// /////////////////////////////////
+router.get('/meals', async (req, res) => {
+  try {
+    const meals = await db.Meals.findAll();
+    res.json(meals);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/meals/:meal_id', async (req, res) => {
+  try {
+    const meals = await db.Meals.findAll({
+      where: {
+        meal_id: req.params.meal_id
+      }
+    });
+    res.json(meals);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/meals', async (req, res) => {
+  try {
+    await db.Meals.update(
+      {
+        meal_name: req.body.meal_name,
+        meal_category: req.body.meal_category
+      },
+      {
+        where: {
+          meal_id: req.body.meal_id
+        }
+      }
+    );
+    res.send('Meal Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+
+
+
 /// /////////////////////////////////
 /// ////////Macros Endpoints/////////
 /// /////////////////////////////////

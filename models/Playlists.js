@@ -8,7 +8,8 @@ export default (sequelize, DataTypes) => {
           primaryKey: true
         },
         playlist_name: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
+          allowNull: false
         }
       },
       { freezeTableName: true, timestamps: false }

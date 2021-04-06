@@ -1,13 +1,15 @@
 import actor from './actor.js';
 import actorHasMovies from './actor_has_movies.js';
 import earnings from './earnings';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import genre from './genre.js';
+import movies from './movies.js';
+import movieHasGenre from './movie_has_genre';
 
 export default {
   actor,
   actorHasMovies,
   earnings,
-  Macros,
-  Meals
+  genre,
+  movies,
+  movieHasGenre
 };

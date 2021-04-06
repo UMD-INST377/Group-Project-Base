@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const Meals = sequelize.define(
-    'Meals',
+    'meals',
     {
       meal_id: {
         type: DataTypes.INTEGER,

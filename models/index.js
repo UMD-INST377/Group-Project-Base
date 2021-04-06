@@ -5,7 +5,7 @@ import genreHasPopularBooks from './genre_has_popular_book.js';
 import genres from './genre.js';
 import popularBooks from './popular_books.js';
 import publishers from './publishers.js';
-import retailers from './retailers.js';
+import bookRetailers from './book_retailers.js';
 
 
 export default {
@@ -16,5 +16,5 @@ export default {
   genres,
   popularBooks,
   publishers,
-  retailers
+  bookRetailers
 };

@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Actor Has Movies Endpoints////////
 /// /////////////////////////////////
 router.get('/actorhasmovies', async (req, res) => {
   try {
@@ -88,46 +88,47 @@ router.put('/actorhasmovies', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Actor Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/actor', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const actors = await db.actor.findAll();
+    res.json(actors);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/actor/:actor_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const actors = await db.actor.findAll({
       where: {
-        meal_id: req.params.meal_id
+        actor_id: req.params.actor_id
       }
     });
-    res.json(meals);
+    res.json(actors);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
+router.put('/actor', async (req, res) => {
   try {
-    await db.Meals.update(
+    await db.actor.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        gender: req.body.gender
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          actor_id: req.body.actor_id
         }
       }
     );
-    res.send('Meal Successfully Updated');
+    res.send('Actor Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');

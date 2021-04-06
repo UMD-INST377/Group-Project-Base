@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
     const bookDescription = database.define(
-        'book_description',
+        'bookDescription',
         {
             description_id: {
                 type: DataTypes.INTEGER,
@@ -9,9 +9,10 @@ export default (database, DataTypes) => {
             },
             book_description: {
                 type: DataTypes.STRING,
-                allownull: true
+                allowNull: true
             }
         },
+        { freezeTableName: true, timestamps: false }
     );
     return bookDescription;
 };

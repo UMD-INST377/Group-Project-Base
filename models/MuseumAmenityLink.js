@@ -2,11 +2,11 @@ export default (sequelize, DataTypes) => {
     const Museum_Amenity_Link = sequelize.define(
       "museum_amenity_link",
       {
-        hall_id: {
+        amenity_id: {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
-        meal_id: {
+        museum_id: {
           type: DataTypes.INTEGER,
           allowNull: false,
         },

@@ -1,11 +1,20 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import ArtisticMovement from './ArtisticMovement.js';
+import Authors from './authors.js';
+import book_description from './book_description.js';
+import genre_has_popular_books from './genre_has_popular_book.js';
+import Genres from './genre.js';
+import PopularBooks from './popular_books.js';
+import Publishers from './publisher.js';
+import Retailers from './retailers.js';
+
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+    ArtisticMovement,
+    Authors,
+  book_description,
+  genre_has_popular_books,
+  Genres,
+  PopularBooks,
+  Publishers,
+  Retailers
 };

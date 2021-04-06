@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Retailers = sequelize.define(
+  const retailers = sequelize.define(
     'retailers',
     {
       retailer_id: {
@@ -19,5 +19,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Retailers;
+  return retailers;
 };

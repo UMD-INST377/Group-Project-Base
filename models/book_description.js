@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-    const BookDescription = database.define (
+    const bookDescription = database.define (
         'book_description',
         {
             description_id: {
@@ -8,10 +8,10 @@ export default (database, DataTypes) => {
                 primaryKey: true
             },
             book_description: {
-                type: DataTypes.varchar,
+                type: DataTypes.STRING,
                 allownull: true,
             }
         },
     );
-    return BookDescription;
+    return bookDescription;
 };

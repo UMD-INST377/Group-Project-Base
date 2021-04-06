@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const PopularBooks = sequelize.define(
+  const popularBooks = sequelize.define(
     'popular_books',
     {
       book_id: {
@@ -77,5 +77,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return PopularBooks;
+  return popularBooks;
 };

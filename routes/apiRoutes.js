@@ -425,7 +425,7 @@ router.delete('/stadium_info/:stadium_id', async (req, res) => {
 /// /////////////////////////////////
 router.get('team_info',async (req, res) => {
   try {
-    const teamI = await db.TeamInfo.findAll();
+    const teamI = await db.team_info.findAll();
     res.json(teamI);
     } catch (err) {
       console.error(err);

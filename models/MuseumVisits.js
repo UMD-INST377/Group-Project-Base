@@ -13,7 +13,7 @@ export default (sequelize, DataTypes) => {
         primaryKey: true
       },
       visit_date: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.DATE,
         allowNull: false,
         primaryKey: true
       },

@@ -14,7 +14,7 @@ export default (sequelize, DataTypes) => {
       employee_last_name: {
         type: DataTypes.STRING
       },
-      musuem_id: {
+      museum_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true

@@ -420,13 +420,18 @@ router.delete('/stadium_info/:stadium_id', async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
+/// /////////////////////////////////
+/// Team Stats Endpoints///////////
+/// /////////////////////////////////
+router.get('teaminfo',async (req, res) => {
+  try {
+    const teamI = await db.TeamInfo.findAll();
+    res.json(teamI);
+    } catch (err) {
+      console.error(err);
+      res.error('Server Error at Team Info GET');
+    }
+});
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////

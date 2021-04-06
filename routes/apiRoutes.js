@@ -547,7 +547,7 @@ router.post('/scores', async (req, res) => {
       check_in_rating: req.body.check_in_rating,
       communication_rating: req.body.communication_rating,
       location_rating: req.body.location_rating,
-      value_rating: req.body.value_rating,
+      value_rating: req.body.value_rating
     });
     res.json(newEntry);
   } catch (err) {
@@ -580,7 +580,7 @@ router.put('/scores', async (req, res) => {
         check_in_rating: req.body.check_in_rating,
         communication_rating: req.body.communication_rating,
         location_rating: req.body.location_rating,
-        value_rating: req.body.value_rating,
+        value_rating: req.body.value_rating
       },
       {
         where: {
@@ -589,6 +589,36 @@ router.put('/scores', async (req, res) => {
       }
     );
     res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// Get All Records Endpoint///
+/// /////////////////////////////////
+const allRecords = `SELECT *
+FROM
+  listings l
+JOIN calendar c 
+  ON l.listing_id = c.listing_id
+JOIN hosts h
+  ON l.host_id = h.host_id
+JOIN neighborhoods n
+  ON l.neighborhood_id = n.neighborhood_id
+JOIN properties p
+  ON l.listing_id = p.listing_id
+JOIN reviews r
+  ON l.listing_id = r.listing_id
+JOIN scores s
+  ON l.listing_id = s.listing_id;`;
+router.get('/allrecords', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(allRecords, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
   } catch (err) {
     console.error(err);
     res.error('Server error');

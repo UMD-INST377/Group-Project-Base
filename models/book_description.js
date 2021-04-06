@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-    const bookDescription = database.define (
+    const bookDescription = database.define(
         'book_description',
         {
             description_id: {
@@ -9,7 +9,7 @@ export default (database, DataTypes) => {
             },
             book_description: {
                 type: DataTypes.STRING,
-                allownull: true,
+                allownull: true
             }
         },
     );

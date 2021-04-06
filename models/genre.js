@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
-  const Genres = sequelize.define(
-    'Genres',
+  const Genre = sequelize.define(
+    'genre',
     {
       genre_id: {
         type: DataTypes.INTEGER,
@@ -17,5 +17,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Genres;
+  return Genre;
 };

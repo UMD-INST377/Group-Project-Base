@@ -595,4 +595,34 @@ router.put('/scores', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// Get All Records Endpoint///
+/// /////////////////////////////////
+const allRecords = `SELECT *
+FROM
+  listings l
+JOIN calendar c 
+  ON l.listing_id = c.listing_id
+JOIN hosts h
+  ON l.host_id = h.host_id
+JOIN neighborhoods n
+  ON l.neighborhood_id = n.neighborhood_id
+JOIN properties p
+  ON l.listing_id = p.listing_id
+JOIN reviews r
+  ON l.listing_id = r.listing_id
+JOIN scores s
+  ON l.listing_id = s.listing_id;`;
+router.get('/allrecords', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(allRecords, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
     const bookDescription = database.define(
-        'bookDescription',
+        'book_description',
         {
             description_id: {
                 type: DataTypes.INTEGER,

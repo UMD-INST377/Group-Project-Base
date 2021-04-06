@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const bookRetailers = sequelize.define(
-    'bookRetailers',
+    'book_retailers',
     {
       retailer_id: {
         type: DataTypes.INTEGER,

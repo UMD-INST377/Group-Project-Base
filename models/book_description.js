@@ -9,9 +9,10 @@ export default (database, DataTypes) => {
             },
             book_description: {
                 type: DataTypes.STRING,
-                allownull: true
+                allowNull: true
             }
         },
+        { freezeTableName: true, timestamps: false }
     );
     return bookDescription;
 };

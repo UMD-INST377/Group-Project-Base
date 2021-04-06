@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const Authors = database.define(
-    'Authors',
+    'authors',
     {
       author_id: {
         type: DataTypes.INTEGER,

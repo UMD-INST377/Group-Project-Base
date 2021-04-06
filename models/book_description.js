@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-    const book_description = database.define (
+    const BookDescription = database.define (
         'book_description',
         {
             description_id: {
@@ -13,5 +13,5 @@ export default (database, DataTypes) => {
             }
         },
     );
-    return book_description;
+    return BookDescription;
 };

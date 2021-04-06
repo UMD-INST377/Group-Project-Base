@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const visitorInfo = sequelize.define(
+  const Visitors = sequelize.define(
     'visitor_info',
     {
       visitor_id: {
@@ -23,5 +23,5 @@ export default (sequelize, DataTypes) => {
     },
     {freezeTableName: true, timestamps: false}
   );
-  return visitorInfo;
+  return Visitors;
 };

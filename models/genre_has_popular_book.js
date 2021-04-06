@@ -4,13 +4,11 @@ export default (database, DataTypes) => {
         {
             genre_genre_id: {
                 type: DataTypes.INTEGER,
-                allownull: false,
-                foreignKey: true
+                allownull: false
             },
             popular_books_book_id: {
                 type: DataTypes.INTEGER,
-                allownull: false,
-                foreignKey: true
+                allownull: false
             }
         },
     );

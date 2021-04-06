@@ -17,7 +17,7 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       },
 
-      published_year: {
+      publish_year: {
         type: DataTypes.INTEGER,
         allowNull: false
 

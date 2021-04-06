@@ -70,6 +70,8 @@ router.get('/authors/:author_id', async (req, res) => {
 /// /////////////////////////////////
 /// ////bookDescription Endpoints////////
 /// /////////////////////////////////
+
+// not working at the moment
 router.get('/bookDescription', async (req, res) => {
   try {
     const bookDescription = await db.bookDescription.findAll();
@@ -99,10 +101,17 @@ router.get('/bookDescription/:description_id', async (req, res) => {
 /// /////////////////////////////////
 /// ////genreHasPopularBooks Endpoints////////
 /// /////////////////////////////////
-router.get('/genreHasPopularBooks', async (req, res) => {
+// might not need endpoint for this table
+
+/// /////////////////////////////////
+/// ////genre Endpoints////////
+/// /////////////////////////////////
+
+// not working at the moment
+router.get('/genre', async (req, res) => {
   try {
-    const genreHasPopularBooks = await db.genreHasPopularBooks.findAll();
-    const reply = genreHasPopularBooks.length > 0 ? { data: genreHasPopularBooks } : { message: 'no results found' };
+    const genre = await db.genre.findAll();
+    const reply = genre.length > 0 ? { data: genre } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -110,6 +119,107 @@ router.get('/genreHasPopularBooks', async (req, res) => {
   }
 });
 
+router.get('/genre/:genre_id', async (req, res) => {
+  try {
+    const genre = await db.genre.findAll({
+      where: {
+        genre_id: req.params.genre_id
+      }
+    });
 
+    res.json(genre);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
+/// /////////////////////////////////
+/// ////popularBooks Endpoints////////
+/// /////////////////////////////////
+router.get('/popularBooks', async (req, res) => {
+  try {
+    const books = await db.popularBooks.findAll();
+    const reply = books.length > 0 ? { data: books } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/popularBooks/:book_id', async (req, res) => {
+  try {
+    const books = await db.popularBooks.findAll({
+      where: {
+        book_id: req.params.book_id
+      }
+    });
+
+    res.json(books);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////publisher Endpoints////////
+/// /////////////////////////////////
+router.get('/publishers', async (req, res) => {
+  try {
+    const publishers = await db.publishers.findAll();
+    const reply = publishers.length > 0 ? { data: publishers } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/publishers/:publisher_id', async (req, res) => {
+  try {
+    const publishers = await db.publishers.findAll({
+      where: {
+        publisher_id: req.params.publisher_id
+      }
+    });
+
+    res.json(publishers);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////retailters Endpoints////////
+/// /////////////////////////////////
+
+// not working at the moment
+router.get('/retailters', async (req, res) => {
+  try {
+    const retailters = await db.retailters.findAll();
+    const reply = retailters.length > 0 ? { data: retailters } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/retailters/:retailter_id', async (req, res) => {
+  try {
+    const retailters = await db.retailters.findAll({
+      where: {
+        retailter_id: req.params.retailter_id
+      }
+    });
+
+    res.json(retailters);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 export default router;

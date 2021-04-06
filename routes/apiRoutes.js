@@ -123,20 +123,56 @@ router.get('/hosts/:host_id', async (req, res) => {
   }
 });
 
-router.put('/meals', async (req, res) => {
+router.post('/hosts', async (req, res) => {
+  const hosts = await db.hosts.findAll();
+  const currentId = (await hosts.length) + 1;
   try {
-    await db.Meals.update(
+    const newEntry = await db.hosts.create({
+      host_id: currentId,
+      host_name: req.body.host_name,
+      host_start_date: req.body.host_start_date,
+      host_location: req.body.host_location,
+      host_response_time: req.body.host_response_time,
+      host_response_rate: req.body.host_response_rate
+    });
+    res.json(newEntry);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/hosts/:host_id', async (req, res) => {
+  try {
+    await db.hosts.destroy({
+      where: {
+        host_id: req.params.host_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/hosts', async (req, res) => {
+  try {
+    await db.hosts.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        host_name: req.body.host_name,
+        host_start_date: req.body.host_start_date,
+        host_location: req.body.host_location,
+        host_response_time: req.body.host_response_time,
+        host_response_rate: req.body.host_response_rate
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          host_id: req.body.host_id
         }
       }
     );
-    res.send('Meal Successfully Updated');
+    res.send('Host Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -170,24 +206,53 @@ router.get('/listings/:listing_id', async (req, res) => {
   }
 });
 
-router.put('/macros', async (req, res) => {
+router.post('/listings', async (req, res) => {
+  const listings = await db.listings.findAll();
+  const currentId = (await listings.length) + 1;
+  try {
+    const newEntry = await db.listings.create({
+      listing_id: currentId,
+      neighborhood_id: req.body.neighborhood_id,
+      host_id: req.body.host_id,
+      listing_url: req.body.listing_url,
+      listing_name: req.body.listing_name,
+      days_avail: req.body.days_avail,
+      price: req.body.price
+    });
+    res.json(newEntry);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/listings/:listing_id', async (req, res) => {
+  try {
+    await db.listings.destroy({
+      where: {
+        listing_id: req.params.listing_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/listings', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
+    await db.Listings.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
+        listing_url: req.body.listing_url,
+        listing_name: req.body.listing_name,
+        days_avail: req.body.days_avail,
+        price: req.body.price
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          listing_id: req.body.listing_id
         }
       }
     );
@@ -225,6 +290,55 @@ router.get('/neighborhoods/:neighborhood_id', async (req, res) => {
   }
 });
 
+router.post('/neighborhoods', async (req, res) => {
+  const neighborhoods = await db.neighborhoods.findAll();
+  const currentId = (await neighborhoods.length) + 1;
+  try {
+    const newEntry = await db.listings.create({
+      neighborhood_id: currentId,
+      neighborhood_name: req.body.neighborhood_name
+    });
+    res.json(newEntry);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/neighborhoods/:neighborhood_id', async (req, res) => {
+  try {
+    await db.neighborhoods.destroy({
+      where: {
+        neighborhood_id: req.params.neighborhood_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/neighborhoods', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.neighborhoods.update(
+      {
+        neighborhood_name: req.body.neighborhood_name
+      },
+      {
+        where: {
+          neighborhood_id: req.body.neighborhood_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// /////////////////////////////////
 /// Properties Endpoints///
 /// /////////////////////////////////
@@ -246,6 +360,66 @@ router.get('/properties/:property_id', async (req, res) => {
       }
     });
     res.json(properties);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/properties', async (req, res) => {
+  const properties = await db.properties.findAll();
+  const currentId = (await properties.length) + 1;
+  try {
+    const newEntry = await db.listings.create({
+      property_id: currentId,
+      listing_id: req.body.listing_id,
+      property_type: req.body.property_type,
+      room_type: req.body.room_type,
+      accommodates: req.body.accommodates,
+      bathrooms: req.body.bathrooms,
+      bedrooms: req.body.bedrooms,
+      beds: req.body.beds
+    });
+    res.json(newEntry);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/properties/:property_id', async (req, res) => {
+  try {
+    await db.properties.destroy({
+      where: {
+        property_id: req.params.property_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/properties', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.properties.update(
+      {
+        property_type: req.body.property_type,
+        room_type: req.body.room_type,
+        accommodates: req.body.accommodates,
+        bathrooms: req.body.bathrooms,
+        bedrooms: req.body.bedrooms,
+        beds: req.body.beds
+      },
+      {
+        where: {
+          property_id: req.body.property_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -279,6 +453,61 @@ router.get('/reviews/:review_id', async (req, res) => {
   }
 });
 
+router.post('/reviews', async (req, res) => {
+  const reviews = await db.properties.findAll();
+  const currentId = (await reviews.length) + 1;
+  try {
+    const newEntry = await db.listings.create({
+      review_id: currentId,
+      listing_id: req.body.listing_id,
+      host_id: req.body.host_id,
+      reviewer_name: req.body.reviewer_name,
+      review_date: req.body.review_date,
+      review_text: req.body.review_text
+    });
+    res.json(newEntry);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/reviews/:review_id', async (req, res) => {
+  try {
+    await db.reviews.destroy({
+      where: {
+        review_id: req.params.review_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/reviews', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.properties.update(
+      {
+        reviewer_name: req.body.reviewer_name,
+        review_date: req.body.review_date,
+        review_text: req.body.review_text
+      },
+      {
+        where: {
+          review_id: req.body.review_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// /////////////////////////////////
 /// Scores Endpoints///
 /// /////////////////////////////////
@@ -306,50 +535,60 @@ router.get('/scores/:scores_id', async (req, res) => {
   }
 });
 
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
+router.post('/scores', async (req, res) => {
+  const scores = await db.scores.findAll();
+  const currentId = (await scores.length) + 1;
   try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
+    const newEntry = await db.scores.create({
+      scores_id: currentId,
+      listing_id: req.body.listing_id,
+      overall_rating: req.body.overall_rating,
+      cleanliness_rating: req.body.cleanliness_rating,
+      check_in_rating: req.body.check_in_rating,
+      communication_rating: req.body.communication_rating,
+      location_rating: req.body.location_rating,
+      value_rating: req.body.value_rating,
     });
-    res.json(result);
+    res.json(newEntry);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
+router.delete('/scores/:score_id', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
+    await db.scores.destroy({
+      where: {
+        scores_id: req.params.scores_id
+      }
     });
-    res.json(result);
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
-router.get('/custom', async (req, res) => {
+
+router.put('/scores', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.properties.update(
+      {
+        overall_rating: req.body.overall_rating,
+        cleanliness_rating: req.body.cleanliness_rating,
+        check_in_rating: req.body.check_in_rating,
+        communication_rating: req.body.communication_rating,
+        location_rating: req.body.location_rating,
+        value_rating: req.body.value_rating,
+      },
+      {
+        where: {
+          scores_id: req.body.scores_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');

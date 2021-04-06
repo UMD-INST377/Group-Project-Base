@@ -197,10 +197,10 @@ router.get('/publishers/:publisher_id', async (req, res) => {
 /// /////////////////////////////////
 
 // not working at the moment
-router.get('/retailters', async (req, res) => {
+router.get('/bookRetailers', async (req, res) => {
   try {
-    const retailters = await db.retailters.findAll();
-    const reply = retailters.length > 0 ? { data: retailters } : { message: 'no results found' };
+    const retailers = await db.bookRetailers.findAll();
+    const reply = retailers.length > 0 ? { data: retailers } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -208,15 +208,15 @@ router.get('/retailters', async (req, res) => {
   }
 });
 
-router.get('/retailters/:retailter_id', async (req, res) => {
+router.get('/bookRetailers/:retailer_id', async (req, res) => {
   try {
-    const retailters = await db.retailters.findAll({
+    const retailers = await db.bookRetailers.findAll({
       where: {
-        retailter_id: req.params.retailter_id
+        retailer_id: req.params.retailer_id
       }
     });
 
-    res.json(retailters);
+    res.json(retailers);
   } catch (err) {
     console.error(err);
     res.error('Server error');

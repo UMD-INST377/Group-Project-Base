@@ -97,7 +97,7 @@ router.put('/museum_staff', async (req, res) => {
 router.get('/staff_role', async (req, res) => {
   try {
     const role = await db.StaffRole.findAll();
-    const reply = staff.length > 0 ? { data: role } : { message: 'no results found' };
+    const reply = role.length > 0 ? { data: role } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -107,7 +107,7 @@ router.get('/staff_role', async (req, res) => {
 
 router.get('/staff_role/:role_id', async (req, res) => {
   try {
-    const role = await db.MuseumStaff.findAll({
+    const role = await db.StaffRole.findAll({
       where: {
         role_id: req.params.role_id
       }

@@ -432,6 +432,78 @@ router.get('teaminfo',async (req, res) => {
       res.error('Server Error at Team Info GET');
     }
 });
+
+/// /////////////////////////////////
+/// Team Staff Endpoints///////////
+/// /////////////////////////////////
+
+router.get('/team_staff', async (req, res) => {
+  try {
+    const staff = await db.TeamStaff.findAll();
+    res.json(staff);
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at Team Staff GET');
+  }
+});
+
+router.get('/team_staff/:staff_id', async (req, res) => {
+  try {
+    const staff = await db.TeamStaff.findAll({
+      where: {
+        staff_id: req.params.staff_id
+      }
+    });
+    res.json(staff);
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at staff_id GET');
+  }
+});
+
+
+router.put('/team_staff', async (req, res) => {
+  try {
+    await db.TeamStaff.update(
+      {
+        owner: req.body.owner,
+        head_coach: req.body.head_coach,
+        head_physician: req.body.head_physician,
+        general_manager: req.body.general_manager,
+        ceo: req.body.ceo,
+        cfo: req.body.cfo
+      },
+      {
+        where: {
+          staff_id: req.body.staff_id
+        }
+      }
+    );
+    res.send('Team Staff Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at Team Staff PUT');
+  }
+});
+
+router.delete('/team_staff/:staff_id', async (req, res) => {
+  try {
+    await db.TeamStaff.destroy({
+      where: {
+        staff_id: req.params.staff_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at staff_id DELETE');
+  }
+});
+
+
+
+
+
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////

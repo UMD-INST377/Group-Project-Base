@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    const VisitorTransaction = sequelize.define(
+    const VisitorTransactions = sequelize.define(
         'visitor_transaction',
         {
             transaction_id: {
@@ -17,5 +17,5 @@ export default (sequelize, DataTypes) => {
         },
         {freezeTableName: true, timestamps: true}
     );
-    return VisitorTransaction;
+    return VisitorTransactions;
 };

@@ -10,9 +10,9 @@ router.get('/', (req, res) => {
   res.send('Welcome to the NBA Info Insiders!');
 });
 
-/// /////////////////////////////////
-/// ////Platform Endpoints///////////
-/// /////////////////////////////////
+/// //////////////////////////
+/// /// Platform Endpoints ///
+/// //////////////////////////
 router.get('/platform', async (req, res) => {
   try {
     const platforms = await db.Platform.findAll();
@@ -39,56 +39,9 @@ router.get('/platform/:platform_id', async (req, res) => {
   }
 });
 
-router.post('/platform', async (req, res) => {
-  const platforms = await db.Platform.findAll();
-  const currentId = (await platforms.length) + 1;
-  try {
-    const newPlatform = await db.Platform.create({
-      platform_id: currentId,
-      platform_name: req.body.platform_name
-    });
-    res.json(newPlatform);
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at Platform POST');
-  }
-});
-
-router.delete('/platform/:platform_id', async (req, res) => {
-  try {
-    await db.Platform.destroy({
-      where: {
-        platform_id: req.params.platform_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at platform_id DELETE');
-  }
-});
-
-router.put('/platform', async (req, res) => {
-  try {
-    await db.Platfrom.update(
-      {
-        platform_name: req.body.platform_name
-      },
-      {
-        where: {
-          platform_id: req.body.platform_id
-        }
-      }
-    );
-    res.send('Platform Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at platform PUT');
-  }
-});
 
 /// /////////////////////////////////
-/// ///Player Biostats Endpoints/////
+/// /// Player Biostats Endpoints ///
 /// /////////////////////////////////
 router.get('/player_biostats', async (req, res) => {
   try {
@@ -114,46 +67,10 @@ router.get('/player_biostats/:biostats_id', async (req, res) => {
   }
 });
 
-router.put('/playerbiostats', async (req, res) => {
-  try {
-    await db.PlayerBiostats.update(
-      {
-        birthdate: req.body.birthdate,
-        age: req.body.age,
-        height_inches: req.body.height_inches,
-        weight_pounds: req.body.weight_pounds,
-        player_id: req.body.player_id
-      },
-      {
-        where: {
-          biostats_id: req.body.biostats_id
-        }
-      }
-    );
-    res.send('Biostats Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at Player Biostats PUT');
-  }
-});
 
-router.delete('/player_biostats/:biostats_id', async (req, res) => {
-  try {
-    await db.PlayerBiostats.destroy({
-      where: {
-        biostats_id: req.params.biostats_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at biostats_id DELETE');
-  }
-});
-
-/// /////////////////////////////////
-/// /////Player Info Endpoints///////
-/// /////////////////////////////////
+/// /////////////////////////////
+/// /// Player Info Endpoints ///
+/// /////////////////////////////
 router.get('/player_info', async (req, res) => {
   try {
     const info = await db.PlayerInfo.findAll();
@@ -180,7 +97,6 @@ router.get('/player_info/:player_id', async (req, res) => {
 
 router.put('/player_info', async (req, res) => {
   try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
     await db.PlayerInfo.update(
       {
         salary: req.body.meal_salary,
@@ -198,7 +114,7 @@ router.put('/player_info', async (req, res) => {
         }
       }
     );
-    res.send('Successfully Updated');
+    res.send('Player Info Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server Error at Player Info PUT');
@@ -219,9 +135,10 @@ router.delete('/player_info/:player_id', async (req, res) => {
   }
 });
 
-/// /////////////////////////////////
-/// Player Stats Endpoints///////////
-/// /////////////////////////////////
+
+/// //////////////////////////////
+/// /// Player Stats Endpoints ///
+/// //////////////////////////////
 router.get('/player_stats', async (req, res) => {
   try {
     const stats = await db.PlayerStats.findAll();
@@ -248,7 +165,6 @@ router.get('/player_stats/:gamestats_id', async (req, res) => {
 
 router.put('/player_stats', async (req, res) => {
   try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
     await db.PlayerStats.update(
       {
         shooting_percentage: req.body.shooting_percentage,
@@ -265,7 +181,7 @@ router.put('/player_stats', async (req, res) => {
         }
       }
     );
-    res.send('Successfully Updated');
+    res.send('Player Stats Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server Error at Player Stats PUT');
@@ -286,9 +202,10 @@ router.delete('/player_stats/:gamestats_id', async (req, res) => {
   }
 });
 
-/// /////////////////////////////////
-/// Social Media Endpoints///////////
-/// /////////////////////////////////
+
+/// //////////////////////////////
+/// /// Social Media Endpoints ///
+/// //////////////////////////////
 router.get('socialmedia', async (req, res) => {
   try {
     const social = await db.SocialMedia.findAll();
@@ -313,48 +230,10 @@ router.get('/socialmedia/:social_id', async (req, res) => {
   }
 });
 
-router.put('/socialmedia', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.SocialMedia.update(
-      {
-        team_id: req.body.team_id,
-        platform_id: req.body.platform_id,
-        social_id: req.body.social_id
-       
-      },
-      {
-        where: {
-          social_id: req.body.social_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at Social Media PUT');
-  }
-});
 
-router.delete('/socialmedia/:social_id', async (req, res) => {
-  try {
-    await db.SocialMedia.destroy({
-      where: {
-        social_id: req.params.social_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at social_id DELETE');
-  }q
-});
-
-
-
-/// /////////////////////////////////
-/// Stadium Info Endpoints///////////
-/// /////////////////////////////////
+/// //////////////////////////////
+/// /// Stadium Info Endpoints ///
+/// //////////////////////////////
 router.get('stadium_info', async (req, res) => {
   try {
     const stadium = await db.StadiumInfo.findAll();
@@ -379,50 +258,10 @@ router.get('/stadium_info/:stadium_id', async (req, res) => {
   }
 });
 
-router.put('/stadium_id', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.StandiumInfo.update(
-      {
-        name: req.body.name,
-        year_built: req.body.year_built,
-        state: req.body.state,
-        city: req.body.city,
-        capacity: req.body.capacity,
-        team_id: req.body.team_id,
-       
-      },
-      {
-        where: {
-          stadium_id: req.body.stadium_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at Stadium Info PUT');
-  }
-});
 
-router.delete('/stadium_info/:stadium_id', async (req, res) => {
-  try {
-    await db.StadiumInfo.destroy({
-      where: {
-        stadium_id: req.params.stadium_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at stadium_info DELETE');
-  }q
-});
-
-
-/// /////////////////////////////////
-/// Team Stats Endpoints///////////
-/// /////////////////////////////////
+/// ////////////////////////////
+/// /// Team Stats Endpoints ///
+/// ////////////////////////////
 router.get('team_info',async (req, res) => {
   try {
     const teamI = await db.team_info.findAll();
@@ -433,10 +272,10 @@ router.get('team_info',async (req, res) => {
     }
 });
 
-/// /////////////////////////////////
-/// Team Staff Endpoints///////////
-/// /////////////////////////////////
 
+/// ////////////////////////////
+/// /// Team Staff Endpoints ///
+/// ////////////////////////////
 router.get('/team_staff', async (req, res) => {
   try {
     const staff = await db.TeamStaff.findAll();
@@ -460,7 +299,6 @@ router.get('/team_staff/:staff_id', async (req, res) => {
     res.error('Server Error at staff_id GET');
   }
 });
-
 
 router.put('/team_staff', async (req, res) => {
   try {
@@ -504,9 +342,9 @@ router.delete('/team_staff/:staff_id', async (req, res) => {
 
 
 
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
+/// ///////////////////////////
+/// /// Custom SQL Endpoint ///
+/// ///////////////////////////
 const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
 router.get('/table/data', async (req, res) => {
   try {

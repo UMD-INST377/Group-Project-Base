@@ -423,7 +423,7 @@ router.delete('/stadium_info/:stadium_id', async (req, res) => {
 /// /////////////////////////////////
 /// Team Stats Endpoints///////////
 /// /////////////////////////////////
-router.get('teaminfo',async (req, res) => {
+router.get('team_info',async (req, res) => {
   try {
     const teamI = await db.TeamInfo.findAll();
     res.json(teamI);

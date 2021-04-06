@@ -7,16 +7,16 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the Movie Museum!');
 });
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/actorhasmovies', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const  actorHasMovies = await db.actor_has_movies.findAll();
+    const reply = actorHasMovies.length > 0 ? { data: actorHasMovies } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,33 +24,30 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/actorhasmovies/:actor_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const actorHasMovies = await db.actor_has_movies.findAll({
       where: {
-        hall_id: req.params.hall_id
+        actor_id: req.params.actor_id
       }
     });
 
-    res.json(hall);
+    res.json(actorHasMovies);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.post('/actorhasmovies', async (req, res) => {
+  const actorHasMovies = await db.actor_has_movies.findAll();
+  const currentId = (await actorHasMovies.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newActorhasmovies = await db.actor_has_movies.create({
+      actor_id: currentId,
+      movie_id: req.body.movie_id,
     });
-    res.json(newDining);
+    res.json(newActorhasmovies);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -59,9 +56,9 @@ router.post('/dining', async (req, res) => {
 
 router.delete('/dining/:hall_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.actor_has_movies.destroy({
       where: {
-        hall_id: req.params.hall_id
+        actor_id: req.params.actor_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +68,15 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/actorhasmovies', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.actor_has_movies.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        movie_id: req.body.movie_id,
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          actor_id: req.body.actor_id
         }
       }
     );

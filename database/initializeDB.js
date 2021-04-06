@@ -15,7 +15,6 @@ if (config.use_env_variable) {
   sequelizeDB = new Sequelize(
     config.database,
     config.username,
-    
     config
   );
 }

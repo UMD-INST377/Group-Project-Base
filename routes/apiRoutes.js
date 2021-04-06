@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////Museum Staff Endpoints////////
 /// /////////////////////////////////
-router.get('/museum_team7', async (req, res) => {
+router.get('/museum_staff', async (req, res) => {
   try {
     const staff = await db.MuseumStaff.findAll();
     const reply = staff.length > 0 ? { data: staff } : { message: 'no results found' };
@@ -39,7 +39,7 @@ router.get('/museum_staff/:staff_id', async (req, res) => {
   }
 });
 
-router.post('/museum_team7', async (req, res) => {
+router.post('/museum_staff', async (req, res) => {
   const staff = await db.MuseumStaff.findAll();
   const currentId = (await staff.length) + 1;
   try {
@@ -47,7 +47,7 @@ router.post('/museum_team7', async (req, res) => {
       staff_id: currentId,
       employee_first_name: req.body.employee_first_name,
       employee_last_name: req.body.employee_last_name,
-      museum_id: req.body.museum_id,
+      // museum_id: req.body.museum_id,
       role_id: req.body.role_id
     });
     res.json(newStaff);
@@ -71,7 +71,7 @@ router.delete('/museum_staff/:staff_id', async (req, res) => {
   }
 });
 
-router.put('/museum_team7', async (req, res) => {
+router.put('/museum_staff', async (req, res) => {
   try {
     await db.MuseumStaff.update(
       {
@@ -94,7 +94,7 @@ router.put('/museum_team7', async (req, res) => {
 /// /////////////////////////////////
 /// ////Staff Role Endpoints////////
 /// /////////////////////////////////
-router.get('/museum_team7', async (req, res) => {
+router.get('/staff_role', async (req, res) => {
   try {
     const role = await db.StaffRole.findAll();
     const reply = staff.length > 0 ? { data: role } : { message: 'no results found' };
@@ -120,7 +120,7 @@ router.get('/staff_role/:role_id', async (req, res) => {
   }
 });
 
-router.post('/museum_team7', async (req, res) => {
+router.post('/staff_role', async (req, res) => {
   const role = await db.StaffRole.findAll();
   const currentId = (await role.length) + 1;
   try {
@@ -149,7 +149,7 @@ router.delete('/staff_role/:role_id', async (req, res) => {
   }
 });
 
-router.put('/museum_team7', async (req, res) => {
+router.put('/staff_role', async (req, res) => {
   try {
     await db.StaffRole.update(
       {

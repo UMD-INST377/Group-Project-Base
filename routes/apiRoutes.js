@@ -136,50 +136,42 @@ router.put('/actor', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Macros Endpoints/////////
+/// ////////Earnings Endpoints/////////
 /// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.get('/earnings', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
+    const earning = await db.earnings.findAll();
+    res.send(earning);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get('/earnings/:movie_id', async (req, res) => {
   try {
-    const meals = await db.Macros.findAll({
+    const movie = await db.earnings.findAll({
       where: {
-        meal_id: req.params.meal_id
+        movie_id: req.params.movie_id
       }
     });
-    res.json(meals);
+    res.json(movie);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/macros', async (req, res) => {
+router.put('/earnings', async (req, res) => {
   try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
+    await db.earnings.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
+        earnings_gross: req.body.earnings_gross,
+        budget: req.body.budget
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          movie_id: req.body.movie_id
         }
       }
     );
@@ -191,26 +183,26 @@ router.put('/macros', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
+/// Genre Endpoints///
 /// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+router.get('/genre', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
+    const genres = await db.genre.findAll();
+    res.json(rgenres);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/restrictions/:restriction_id', async (req, res) => {
+router.get('/genre/:genre_id', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    const genres = await db.genre.findAll({
       where: {
-        restriction_id: req.params.restriction_id
+        genre_id: req.params.genre_id
       }
     });
-    res.json(restrictions);
+    res.json(genres);
   } catch (err) {
     console.error(err);
     res.error('Server error');

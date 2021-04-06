@@ -47,7 +47,7 @@ router.post('/museum_staff', async (req, res) => {
       staff_id: currentId,
       employee_first_name: req.body.employee_first_name,
       employee_last_name: req.body.employee_last_name,
-      // museum_id: req.body.museum_id,
+      museum_id: req.body.museum_id,
       role_id: req.body.role_id
     });
     res.json(newStaff);

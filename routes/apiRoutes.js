@@ -20,7 +20,7 @@ router.get('/calendar', async (req, res) => {
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.status(500).send(err);
+    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
   }
 });
 

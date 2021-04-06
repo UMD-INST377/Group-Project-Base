@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-  const Authors = database.define(
+  const authors = database.define(
     'authors',
     {
       author_id: {
@@ -28,5 +28,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Authors;
+  return authors;
 };

@@ -1,20 +1,20 @@
-import ArtisticMovement from './artistic_movement.js';
-import Authors from './authors.js';
-import BookDescription from './book_description.js';
-import GenreHasPopularBooks from './genre_has_popular_book.js';
-import Genres from './genre.js';
-import PopularBooks from './popular_books.js';
-import Publishers from './publisher.js';
-import Retailers from './retailers.js';
+import artisticMovement from './artistic_movement.js';
+import authors from './authors.js';
+import bookDescription from './book_description.js';
+import genreHasPopularBooks from './genre_has_popular_book.js';
+import genres from './genre.js';
+import popularBooks from './popular_books.js';
+import publishers from './publisher.js';
+import retailers from './retailers.js';
 
 
 export default {
-  ArtisticMovement,
-  Authors,
-  BookDescription,
-  GenreHasPopularBooks,
-  Genres,
-  PopularBooks,
-  Publishers,
-  Retailers
+  artisticMovement,
+  authors,
+  bookDescription,
+  genreHasPopularBooks,
+  genres,
+  popularBooks,
+  publishers,
+  retailers
 };

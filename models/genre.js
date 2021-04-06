@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Genre = sequelize.define(
+  const genre = sequelize.define(
     'genre',
     {
       genre_id: {
@@ -17,5 +17,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Genre;
+  return genre;
 };

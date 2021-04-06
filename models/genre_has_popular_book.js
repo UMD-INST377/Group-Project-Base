@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-    const GenreHasPopularBooks = database.define (
+    const genreHasPopularBooks = database.define (
         'genre_has_popular_books',
         {
             genre_genre_id: {
@@ -13,5 +13,5 @@ export default (database, DataTypes) => {
             }
         },
     );
-    return GenreHasPopularBooks;
+    return genreHasPopularBooks;
 };

@@ -24,6 +24,15 @@ router.route('/platform')
       res.error('Server Error at Platform GET');
     }
   })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
 
 router.route('/platform/:platform_id')
   .get(async (req, res) => {
@@ -40,6 +49,15 @@ router.route('/platform/:platform_id')
       res.error('Server Error at platform_id GET');
     }
   })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
 
 
 /// /////////////////////////////////
@@ -55,6 +73,15 @@ router.route('/player_biostats')
       res.error('Server Error at Player Biostats GET');
     }
   })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
 
 router.route('/player_biostats/:biostats_id')
   .get(async (req, res) => {
@@ -70,6 +97,15 @@ router.route('/player_biostats/:biostats_id')
       res.error('Server Error at biostats_id GET');
     }
   })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
 
 
 /// /////////////////////////////
@@ -85,7 +121,9 @@ router.route('/player_info')
       res.error('Server Error at Player Info GET');
     }
   })
-
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
   .put(async (req, res) => {
     try {
       await db.PlayerInfo.update(
@@ -111,6 +149,9 @@ router.route('/player_info')
       res.error('Server Error at Player Info PUT');
     }
   })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
 
 router.route('/player_info/:player_id')
   .get(async (req, res) => {
@@ -126,7 +167,12 @@ router.route('/player_info/:player_id')
       res.error('Server Error at player_id GET');
     }
   })
-
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
   .delete(async (req, res) => {
     try {
       await db.PlayerInfo.destroy({
@@ -155,7 +201,9 @@ router.route('/player_stats')
       res.error('Server Error at Player Stats GET');
     }
   })
-
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
   .put(async (req, res) => {
     try {
       await db.PlayerStats.update(
@@ -180,6 +228,9 @@ router.route('/player_stats')
       res.error('Server Error at Player Stats PUT');
     }
   })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
 
 router.route('/player_stats/:gamestats_id')
   .get(async (req, res) => {
@@ -195,7 +246,12 @@ router.route('/player_stats/:gamestats_id')
       res.error('Server Error at gamestats_id GET');
     }
   })
-
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
   .delete(async (req, res) => {
     try {
       await db.PlayerStats.destroy({
@@ -214,134 +270,230 @@ router.route('/player_stats/:gamestats_id')
 /// //////////////////////////////
 /// /// Social Media Endpoints ///
 /// //////////////////////////////
-router.get('socialmedia', async (req, res) => {
-  try {
-    const social = await db.SocialMedia.findAll();
-    res.json(social);
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at Social Media GET');
-  }
-});
+router.route('/socialmedia')
+  .get(async (req, res) => {
+    try {
+      const social = await db.SocialMedia.findAll();
+      res.json(social);
+    } catch (err) {
+      console.error(err);
+      res.error('Server Error at Social Media GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
 
-router.get('/socialmedia/:social_id', async (req, res) => {
-  try {
-    const social = await db.SocialMedia.findAll({
-      where: {
-        social_id: req.params.social_id
-      }
-    });
-    res.json(social);
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at social_id GET');
-  }
-});
+router.route('/socialmedia/:social_id')
+  .get(async (req, res) => {
+    try {
+      const social = await db.SocialMedia.findAll({
+        where: {
+          social_id: req.params.social_id
+        }
+      });
+      res.json(social);
+    } catch (err) {
+      console.error(err);
+      res.error('Server Error at social_id GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
 
 
 /// //////////////////////////////
 /// /// Stadium Info Endpoints ///
 /// //////////////////////////////
-router.get('stadium_info', async (req, res) => {
-  try {
-    const stadium = await db.StadiumInfo.findAll();
-    res.json(stadium);
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at Stadium Info GET');
-  }
-});
-
-router.get('/stadium_info/:stadium_id', async (req, res) => {
-  try {
-    const stadium= await db.StadiumInfo.findAll({
-      where: {
-        stadium_id: req.params.stadium_id
-      }
-    });
-    res.json(stadium);
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at stadium_id GET');
-  }
-});
-
-
-/// ////////////////////////////
-/// /// Team Stats Endpoints ///
-/// ////////////////////////////
-router.get('team_info',async (req, res) => {
-  try {
-    const teamI = await db.team_info.findAll();
-    res.json(teamI);
+router.route('/stadium_info')
+  .get(async (req, res) => {
+    try {
+      const stadium = await db.StadiumInfo.findAll();
+      res.json(stadium);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Team Info GET');
+      res.error('Server Error at Stadium Info GET');
     }
-});
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
+
+router.route('/stadium_info/:stadium_id')
+  .get(async (req, res) => {
+    try {
+      const stadium= await db.StadiumInfo.findAll({
+        where: {
+          stadium_id: req.params.stadium_id
+        }
+      });
+      res.json(stadium);
+    } catch (err) {
+      console.error(err);
+      res.error('Server Error at stadium_id GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
+
+
+/// ///////////////////////////
+/// /// Team Info Endpoints ///
+/// ///////////////////////////
+router.route('/team_info')
+  .get(async (req, res) => {
+    try {
+      const teamI = await db.TeamInfo.findAll();
+      res.json(teamI);
+    } catch (err) {
+        console.error(err);
+        res.error('Server Error at Team Info GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
+
+router.route('/team_info/:team_id')
+  .get(async (req, res) => {
+    try {
+      const teamI = await db.TeamInfo.findAll({
+        where: {
+          team_id: req.params.team_id
+        }
+      });
+      res.json(teamI);
+    } catch (err) {
+      console.error(err);
+      res.error('Server Error at stadium_id GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable')
+  });
 
 
 /// ////////////////////////////
 /// /// Team Staff Endpoints ///
 /// ////////////////////////////
-router.get('/team_staff', async (req, res) => {
-  try {
-    const staff = await db.TeamStaff.findAll();
-    res.json(staff);
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at Team Staff GET');
-  }
-});
-
-router.get('/team_staff/:staff_id', async (req, res) => {
-  try {
-    const staff = await db.TeamStaff.findAll({
-      where: {
-        staff_id: req.params.staff_id
-      }
-    });
-    res.json(staff);
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at staff_id GET');
-  }
-});
-
-router.put('/team_staff', async (req, res) => {
-  try {
-    await db.TeamStaff.update(
-      {
-        owner: req.body.owner,
-        head_coach: req.body.head_coach,
-        head_physician: req.body.head_physician,
-        general_manager: req.body.general_manager,
-        ceo: req.body.ceo,
-        cfo: req.body.cfo
-      },
-      {
-        where: {
-          staff_id: req.body.staff_id
+router.route('/team_staff')
+  .get(async (req, res) => {
+    try {
+      const staff = await db.TeamStaff.findAll();
+      res.json(staff);
+    } catch (err) {
+      console.error(err);
+      res.error('Server Error at Team Staff GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    try {
+      await db.TeamStaff.update(
+        {
+          owner: req.body.owner,
+          head_coach: req.body.head_coach,
+          head_physician: req.body.head_physician,
+          general_manager: req.body.general_manager,
+          ceo: req.body.ceo,
+          cfo: req.body.cfo
+        },
+        {
+          where: {
+            staff_id: req.body.staff_id
+          }
         }
-      }
-    );
-    res.send('Team Staff Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at Team Staff PUT');
-  }
-});
+      );
+      res.send('Team Staff Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.error('Server Error at Team Staff PUT');
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      await db.TeamStaff.destroy({
+        where: {
+          staff_id: req.params.staff_id
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.error(err);
+      res.error('Server Error at staff_id DELETE');
+    }
+  });
 
-router.delete('/team_staff/:staff_id', async (req, res) => {
-  try {
-    await db.TeamStaff.destroy({
-      where: {
-        staff_id: req.params.staff_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server Error at staff_id DELETE');
-  }
-});
+router.route('/team_staff/:staff_id')
+  .get(async (req, res) => {
+    try {
+      const staff = await db.TeamStaff.findAll({
+        where: {
+          staff_id: req.params.staff_id
+        }
+      });
+      res.json(staff);
+    } catch (err) {
+      console.error(err);
+      res.error('Server Error at staff_id GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable')
+  })
+  .delete(async (req, res) => {
+    try {
+      await db.TeamStaff.destroy({
+        where: {
+          staff_id: req.params.staff_id
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.error(err);
+      res.error('Server Error at staff_id DELETE');
+    }
+  });

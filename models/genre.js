@@ -8,10 +8,12 @@ export default (sequelize, DataTypes) => {
         primaryKey: true
       },
       genre_name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true
       },
       fictional: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: true
       }
     },
     { freezeTableName: true, timestamps: false }

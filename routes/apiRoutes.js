@@ -547,7 +547,7 @@ router.post('/scores', async (req, res) => {
       check_in_rating: req.body.check_in_rating,
       communication_rating: req.body.communication_rating,
       location_rating: req.body.location_rating,
-      value_rating: req.body.value_rating,
+      value_rating: req.body.value_rating
     });
     res.json(newEntry);
   } catch (err) {
@@ -580,7 +580,7 @@ router.put('/scores', async (req, res) => {
         check_in_rating: req.body.check_in_rating,
         communication_rating: req.body.communication_rating,
         location_rating: req.body.location_rating,
-        value_rating: req.body.value_rating,
+        value_rating: req.body.value_rating
       },
       {
         where: {

@@ -40,28 +40,28 @@ router.get("/artist_info/:artist_id", async (req, res) => {
 
 
 router.post('/artist_info', async (req, res) => {
-  const artists = await db.ar.findAll();
-  const currentId = (await halls.length) + 1;
+  const artists = await db.artist_info.findAll();
+  const currentId = (await artists.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
+    const newArtist = await db.artist_info.create({
       artist_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+      monthly_listeners: req.body.monthly_listeners,
+      followers: req.body.followers,
+      world_ranking: req.body.world_ranking,
+      artist_name: req.body.artist_name
     });
-    res.json(newDining);
+    res.json(newArtist);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/artist_info/:artist_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.artist_info.destroy({
       where: {
-        hall_id: req.params.hall_id
+        artist_info: req.params.artist_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +71,19 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/artist_info', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.artist_info.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        monthly_listeners: req.body.monthly_listeners,
+        followers: req.body.followers,
+        world_ranking: req.body.world_ranking,
+        artist_name: req.body.artist_name
+
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          artist_id: req.body.artist_id
         }
       }
     );

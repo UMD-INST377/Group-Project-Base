@@ -6,6 +6,7 @@ import AnimalType from './AnimalTypes.js';
 import Animals from './Animals.js';
 import Applicants from './Applicants.js';
 import PendingAdoptions from './PendingAdoptions.js';
+import Websites from './Websites.js';
 
 
 export default {
@@ -16,5 +17,6 @@ export default {
   AnimalType,
   Animals,
   Applicants,
-  PendingAdoptions
+  PendingAdoptions,
+  Websites
 };

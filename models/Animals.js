@@ -17,7 +17,8 @@ export default (database, DataTypes) => {
           type: DataTypes.STRING
         },
         Animal_type_species_id: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
+          allowNull: false
         }
       },
       { freezeTableName: true, timestamps: false }

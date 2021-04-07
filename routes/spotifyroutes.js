@@ -3,6 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import albums from '../models/albums.js';
 
 const router = express.Router();
 
@@ -132,6 +133,62 @@ router.route('/us:us_top50_rank')
     })
     .put((req, res) => {
         res.send('Action unavailable');
+    })
+    .delete((req, res) => {
+        res.send('Action unavailable');
+    })
+
+/// /////////////////////////////////
+/// ////Albums Endpoints////////////
+/// /////////////////////////////////
+
+router.route('/albums')
+    .get(async (req, res) => {
+        try {
+            const albums = await Albums.findAll();
+            const reply = albums.length > 0 ? { data: albums } : { message: 'no results found' };
+            res.json(reply);
+        } catch (err) {
+            console.error(err);
+            res.error('Server error');
+        }
+    })
+    .post(async (req, res) => {
+        const albums = await db.Albums.findAll();
+        const currentId = (await albums.length) + 1;
+        try {
+            const newAlbum = await db.Albums.create({
+            albums_id: currentId,
+            album_name: req.body.streams,
+            number_songs: req.body.playlist_id,
+            genre: req.body.artist_id,
+            artist_id: req.body.song_id
+            });
+            res.json(newAlbum);
+        } catch (err) {
+            console.error(err);
+            res.error('Server error');
+        }
+    })
+    .put(async (req, res) => {
+        try {
+            await db.Albums.update(
+              {
+                album_name: req.body.album_name,
+                genre: req.body.genre,
+                artist_id: req.body.artist_id
+              },
+              {
+                where: {
+                  albums_id: req.body.albums_id
+                }
+              }
+            );
+            res.send('Successfully Updated');
+        } catch (err) {
+            console.error(err);
+            res.error('Server error');
+        }
     })
     .delete((req, res) => {
         res.send('Action unavailable');

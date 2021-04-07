@@ -92,46 +92,26 @@ router.put('/dining', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Playlists Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/playlists', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const playlist = await db.playlists.findAll();
+    res.json(playlist);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/playlists/:playlist_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const playlist = await db.playlists.findAll({
       where: {
-        meal_id: req.params.meal_id
+        playlist_id: req.params.playlist_id
       }
     });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/meals', async (req, res) => {
-  try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
+    res.json(playlist);
   } catch (err) {
     console.error(err);
     res.error('Server error');

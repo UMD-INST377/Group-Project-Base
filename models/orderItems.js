@@ -1,23 +1,23 @@
 export default (sequelize, DataTypes) => {
-  const deliveries = sequelize.define(
-    'deliveries',
+  const orderItems = sequelize.define(
+    'orderItems',
     {
-      delivery_id: {
+      order_item_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      customer_address: {
-        type: DataTypes.STRING
-      },
-      stores_store_id: {
+      order_id: {
         type: DataTypes.INTEGER
       },
-      customer_id: {
+      product_id: {
         type: DataTypes.INTEGER
+      },
+      item_price: {
+        type: DataTypes.FLOAT
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return deliveries;
+  return orderItems;
 };

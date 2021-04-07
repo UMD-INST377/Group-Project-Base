@@ -1,19 +1,19 @@
 import customers from './customers.js';
 import deliveries from './deliveries.js';
-import order_items from './order_items.js';
+import orderItems from './orderItems.js';
 import orders from './orders.js';
-import product_categories from './product_categories.js';
-import product_families from './product_families.js';
+import productCategories from './productCategories.js';
+import productFamilies from './productFamilies.js';
 import products from './products.js';
 import stores from './stores.js';
 
 export default {
   customers,
   deliveries,
-  order_items,
+  orderItems,
   orders,
-  product_categories,
-  product_families,
+  productCategories,
+  productFamilies,
   products,
   stores
 };

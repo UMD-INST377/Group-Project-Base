@@ -38,12 +38,13 @@ router.get("/artist_info/:artist_id", async (req, res) => {
   }
 });
 
-router.post('/dining', async (req, res) => {
+
+router.post('/artist_info', async (req, res) => {
   const halls = await db.DiningHall.findAll();
   const currentId = (await halls.length) + 1;
   try {
     const newDining = await db.DiningHall.create({
-      hall_id: currentId,
+      artist_id: currentId,
       hall_name: req.body.hall_name,
       hall_address: req.body.hall_address,
       hall_lat: req.body.hall_lat,

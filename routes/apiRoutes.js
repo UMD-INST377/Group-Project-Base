@@ -26,7 +26,7 @@ router.get("/artist_info", async (req, res) => {
 
 router.get("/artist_info/:artist_id", async (req, res) => {
   try {
-    const hall = await db.artist_info.findAll({
+    const artists = await db.artist_info.findAll({
       where: {
         artist_id: req.params.artist_id,
       },
@@ -40,7 +40,7 @@ router.get("/artist_info/:artist_id", async (req, res) => {
 
 
 router.post('/artist_info', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
+  const artists = await db.ar.findAll();
   const currentId = (await halls.length) + 1;
   try {
     const newDining = await db.DiningHall.create({

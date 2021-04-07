@@ -170,6 +170,116 @@ router.put('/staff_role', async (req, res) => {
 });
 
 /// /////////////////////////////////
+/// ////Museum Info Endpoints////////
+/// /////////////////////////////////
+router.get('/museum_info', async (req, res) => {
+  try {
+    const museum = await db.MuseumInfo.findAll();
+    const museumInfo = museum.length > 0 ? { data: museum } : { message: 'no results found' };
+    res.json(museumInfo);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/museum_info/:museum_id', async (req, res) => {
+  try {
+    const museumID = await db.MuseumInfo.findAll({
+      where: {
+        role_id: req.params.museum_id
+      }
+    });
+
+    res.json(museumID);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/museum_info', async (req, res) => {
+  const museum = await db.MuseumInfo.findAll();
+  const currentMuseum_Id = (await museum.length) + 1;
+  try {
+    const newMuseum = await db.MuseumInfo.create({
+      museum_id: currentMuseum_Id,
+      museum_name: req.body.museum_name,
+      museum_email: req.body.museum_email,
+      museum_url: req.body.museum_url,
+			museum_phone_num: req.body.museum_phone_num,
+			museum_entry_fee: req.body.museum_entry_fee,
+			museum_open_time: req.body.museum_open_time,
+			date_museum_opened: req.body.date_museum_opened,
+			museum_capacity: req.body.museum_capacity,
+			museum_size: req.body.museum_size,
+			museum_parent: req.body.museum_parent,
+			museum_close_time: req.body.museum_close_time,
+			museum_budget: req.body.museum_budget,
+			museum_address: req.body.museum_address,
+			museum_city: req.body.museum_city,
+			museum_zipcode: req.body.museum_zipcode,
+			ada_id: req.body.ada_id
+    });
+    res.json(newMuseum);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/museum_info/:museum_id', async (req, res) => {
+  try {
+    await db.MuseumInfo.destroy({
+      where: {
+        role_id: req.params.museum_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/museum_info', async (req, res) => { // Where I left off 19:18 4/6/2021
+  try {
+    await db.MuseumInfo.update(
+      {
+				museum_name: req.body.museum_name,
+        museum_email: req.body.museum_email,
+      	museum_url: req.body.museum_url,
+				museum_phone_num: req.body.museum_phone_num,
+				museum_entry_fee: req.body.museum_entry_fee,
+				museum_open_time: req.body.museum_open_time,
+				date_museum_opened: req.body.date_museum_opened,
+				museum_capacity: req.body.museum_capacity,
+				museum_size: req.body.museum_size,
+				museum_parent: req.body.museum_parent,
+				museum_close_time: req.body.museum_close_time,
+				museum_budget: req.body.museum_budget,
+				museum_address: req.body.museum_address,
+				museum_city: req.body.museum_city,
+				museum_zipcode: req.body.museum_zipcode,
+				ada_id: req.body.ada_id 
+      },
+      {
+        where: {
+          museum_id: req.body.museum_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+
+
+/// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////
 router.get('/meals', async (req, res) => {

@@ -5,6 +5,7 @@ import Meals from './Meals.js';
 import AnimalType from './AnimalTypes.js';
 import Animals from './Animals.js';
 import Applicants from './Applicants.js';
+import PendingAdoptions from './PendingAdoptions.js';
 
 
 export default {
@@ -14,5 +15,6 @@ export default {
   Meals,
   AnimalType,
   Animals,
-  Applicants
+  Applicants,
+  PendingAdoptions
 };

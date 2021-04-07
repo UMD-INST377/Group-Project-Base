@@ -7,7 +7,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the spotify playlists API');
 });
 /// /////////////////////////////////
 /// ////artist_info  Endpoints////////
@@ -95,46 +95,26 @@ router.put('/artist_info', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Playlists Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/playlists', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const playlist = await db.playlists.findAll();
+    res.json(playlist);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/playlists/:playlist_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const playlist = await db.playlists.findAll({
       where: {
-        meal_id: req.params.meal_id
+        playlist_id: req.params.playlist_id
       }
     });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/meals', async (req, res) => {
-  try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
+    res.json(playlist);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -142,50 +122,45 @@ router.put('/meals', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Macros Endpoints/////////
+/// ////////songs Endpoints/////////
 /// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.get('/songs', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
+    const songs = await db.songs.findAll();
+    res.send(songs);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get('/songs/:song_id', async (req, res) => {
   try {
-    const meals = await db.Macros.findAll({
+    const playlists = await db.songs.findAll({
       where: {
-        meal_id: req.params.meal_id
+        song_id: req.params.song_id
       }
     });
-    res.json(meals);
+    res.json(playlists);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/macros', async (req, res) => {
+router.put('/songs', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
+    await db.songs.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
+        genre: req.body.genre,
+        date_released: req.body.date_released,
+        album_name: req.body.album_name,
+        explicit: req.body.explicit,
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          song_id: req.body.song_id
         }
       }
     );

@@ -209,6 +209,135 @@ router.get('/genre/:genre_id', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// ////Movie Has Genre Endpoints////////
+/// /////////////////////////////////
+router.get('/moviehasgenre', async (req, res) => {
+  try {
+    const  movieHasGenre = await db.movie_has_genre.findAll();
+    const reply2 = movieHasGenre.length > 0 ? { data: movieHasGenre } : { message: 'no results found' };
+    res.json(reply2);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/moviehasgenre/:movie_id', async (req, res) => {
+  try {
+    const movieHasGenre = await db.movie_has_genre.findAll({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+
+    res.json(movieHasGenre);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/moviehasgenre', async (req, res) => {
+  const movieHasGenre = await db.movie_has_genre.findAll();
+  const currentId2 = (await movieHasGenre.length) + 1;
+  try {
+    const newMoviehasgenre = await db.movie_has_genre.create({
+      movie_id: currentId2,
+      genre_id: req.body.genre_id,
+    });
+    res.json(newMoviehasgenre);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/dining/:hall_id', async (req, res) => {
+  try {
+    await db.movie_has_genre.destroy({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/moviehasgenre', async (req, res) => {
+  try {
+    await db.movie_has_genre.update(
+      {
+        genre_id: req.body.genre_id,
+      },
+      {
+        where: {
+          movie_id: req.body.movie_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////////Movies Endpoints//////////
+/// /////////////////////////////////
+router.get('/movies', async (req, res) => {
+  try {
+    const movie = await db.movies.findAll();
+    res.json(movie);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/movies/:movie_id', async (req, res) => {
+  try {
+    const movie = await db.movies.findAll({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.json(movie);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/movies', async (req, res) => {
+  try {
+    await db.movies.update(
+      {
+        duration: req.body.duration,
+        title: req.body.title,
+        year: req.body.year,
+        country: req.body.country,
+        imdb_score: req.body.imdb_score,
+        earnings_gross: req.body.earnings_gross,
+        studio_id: req.body.studio_id
+      },
+      {
+        where: {
+          movie_id: req.body.movie_id
+        }
+      }
+    );
+    res.send('Movies Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////

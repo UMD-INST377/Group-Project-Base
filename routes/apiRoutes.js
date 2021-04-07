@@ -187,7 +187,7 @@ router.get('/museum_info/:museum_id', async (req, res) => {
   try {
     const museumID = await db.MuseumInfo.findAll({
       where: {
-        role_id: req.params.museum_id
+        museum_id: req.params.museum_id
       }
     });
 
@@ -200,10 +200,10 @@ router.get('/museum_info/:museum_id', async (req, res) => {
 
 router.post('/museum_info', async (req, res) => {
   const museum = await db.MuseumInfo.findAll();
-  const currentMuseum_Id = (await museum.length) + 1;
+  const currentMuseumId = (await museum.length) + 1;
   try {
     const newMuseum = await db.MuseumInfo.create({
-      museum_id: currentMuseum_Id,
+      museum_id: currentMuseumId,
       museum_name: req.body.museum_name,
       museum_email: req.body.museum_email,
       museum_url: req.body.museum_url,
@@ -232,7 +232,7 @@ router.delete('/museum_info/:museum_id', async (req, res) => {
   try {
     await db.MuseumInfo.destroy({
       where: {
-        role_id: req.params.museum_id
+        museum_id: req.params.museum_id
       }
     });
     res.send('Successfully Deleted');

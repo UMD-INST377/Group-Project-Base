@@ -19,6 +19,7 @@ router
   .route("/media")
   .get(async (req, res) => {
     try {
+      console.log("GET request on /media");
       const media = await db.all_media.findAll();
       const reply =
         media.length > 0 ? { data: media } : { message: "no results found" };
@@ -32,6 +33,7 @@ router
     const media = await db.all_media.findAll();
     const currentId = (await media.length) + 1;
     try {
+      console.log("POST request on /media");
       const newMedia = await db.all_media.create({
         media_id: currentId,
         media_title: req.body.media_title,
@@ -52,6 +54,7 @@ router
   })
   .put(async (req, res) => {
     try {
+      console.log("PUT request on /media");
       await db.all_media.update(
         {
           media_title: req.body.media_title,
@@ -77,7 +80,12 @@ router
     }
   })
   .delete((req, res) => {
-    res.send("Action unavailable");
+    try {
+      console.log("DELETE request on /media");
+    } catch (err) {
+      console.error(err);
+      res.error("Server error");
+    }
   });
 
 /// /////////////////////////////////
@@ -88,6 +96,7 @@ router
   .route("/creators")
   .get(async (req, res) => {
     try {
+      console.log("GET request on /creators");
       const creators = await db.creators.findAll();
       const reply =
         creators.length > 0
@@ -103,6 +112,7 @@ router
     const creators = await db.creators.findAll();
     const currentId = (await creators.length) + 1;
     try {
+      console.log("POST request on /creators");
       const newCreator = await db.creators.create({
         creator_id: currentId,
         creator_first_name: req.body.creator_first_name,
@@ -119,6 +129,7 @@ router
   })
   .put(async (req, res) => {
     try {
+      console.log("PUT request on /creators");
       await db.creators.update(
         {
           creator_first_name: req.body.creator_first_name,
@@ -151,6 +162,7 @@ router
   .route("/backgrounds")
   .get(async (req, res) => {
     try {
+      console.log("GET request on /backgrounds");
       const backgrounds = await db.backgrounds.findAll();
       const reply =
         backgrounds.length > 0
@@ -166,6 +178,7 @@ router
     const backgrounds = await db.backgrounds.findAll();
     const currentId = (await backgrounds.length) + 1;
     try {
+      console.log("POST request on /backgrounds");
       const newBackground = await db.backgrounds.create({
         background_id: currentId,
         background: req.body.background
@@ -178,6 +191,7 @@ router
   })
   .put(async (req, res) => {
     try {
+      console.log("PUT request on /backgrounds");
       await db.backgrounds.update(
         {
           background: req.body.background
@@ -206,6 +220,7 @@ router
   .route("/genres")
   .get(async (req, res) => {
     try {
+      console.log("GET request on /genres");
       const genres = await db.genres.findAll();
       const reply =
         genres.length > 0 ? { data: genres } : { message: "no results found" };
@@ -219,6 +234,7 @@ router
     const genres = await db.genres.findAll();
     const currentId = (await genres.length) + 1;
     try {
+      console.log("POST request on /genres");
       const newGenre = await db.genres.create({
         genre_id: currentId,
         genre: req.body.genre
@@ -231,6 +247,7 @@ router
   })
   .put(async (req, res) => {
     try {
+      console.log("PUT request on /genres");
       await db.genres.update(
         {
           genre: req.body.genre
@@ -259,6 +276,7 @@ router
   .route("/roles")
   .get(async (req, res) => {
     try {
+      console.log("GET request on /roles");
       const roles = await db.roles.findAll();
       const reply =
         roles.length > 0 ? { data: roles } : { message: "no results found" };
@@ -272,6 +290,7 @@ router
     const roles = await db.roles.findAll();
     const currentId = (await roles.length) + 1;
     try {
+      console.log("POST request on /roles");
       const newRole = await db.roles.create({
         role_id: currentId,
         role_description: req.body.role_description
@@ -284,6 +303,7 @@ router
   })
   .put(async (req, res) => {
     try {
+      console.log("PUT request on /roles");
       await db.roles.update(
         {
           role_description: req.body.role_description
@@ -312,6 +332,7 @@ router
   .route("/themes")
   .get(async (req, res) => {
     try {
+      console.log("GET request on /themes");
       const themes = await db.themes.findAll();
       const reply =
         themes.length > 0 ? { data: themes } : { message: "no results found" };
@@ -325,6 +346,7 @@ router
     const themes = await db.themes.findAll();
     const currentId = (await themes.length) + 1;
     try {
+      console.log("POST request on /themes");
       const newTheme = await db.themes.create({
         theme_id: currentId,
         theme: req.body.theme
@@ -337,6 +359,7 @@ router
   })
   .put(async (req, res) => {
     try {
+      console.log("PUT request on /themes");
       await db.themes.update(
         {
           theme: req.body.theme
@@ -363,6 +386,7 @@ router
 
 router.route("/mediaBackgroundLinks").get(async (req, res) => {
   try {
+    console.log("GET request on /mediaBackgroundLinks");
     const links = await db.all_media_backgrounds_link.findAll();
     const reply =
       links.length > 0 ? { data: links } : { message: "no results found" };
@@ -379,6 +403,7 @@ router.route("/mediaBackgroundLinks").get(async (req, res) => {
 
 router.route("/mediaCreatorLinks").get(async (req, res) => {
   try {
+    console.log("GET request on /mediaCreatorLinks");
     const links = await db.all_media_creators_link.findAll();
     const reply =
       links.length > 0 ? { data: links } : { message: "no results found" };
@@ -395,6 +420,7 @@ router.route("/mediaCreatorLinks").get(async (req, res) => {
 
 router.route("/mediaGenreLinks").get(async (req, res) => {
   try {
+    console.log("GET request on /mediaGenreLinks");
     const links = await db.all_media_genres_link.findAll();
     const reply =
       links.length > 0 ? { data: links } : { message: "no results found" };
@@ -411,6 +437,7 @@ router.route("/mediaGenreLinks").get(async (req, res) => {
 
 router.route("/mediaThemeLinks").get(async (req, res) => {
   try {
+    console.log("GET request on /mediaThemeLinks");
     const links = await db.all_media_themes_link.findAll();
     const reply =
       links.length > 0 ? { data: links } : { message: "no results found" };
@@ -427,6 +454,7 @@ router.route("/mediaThemeLinks").get(async (req, res) => {
 
 router.route("/creatorRoleLinks").get(async (req, res) => {
   try {
+    console.log("GET request on /creatorRoleLinks");
     const links = await db.creator_roles_link.findAll();
     const reply =
       links.length > 0 ? { data: links } : { message: "no results found" };

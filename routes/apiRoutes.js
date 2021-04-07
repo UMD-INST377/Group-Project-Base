@@ -54,7 +54,7 @@ router.post('/actorhasmovies', async (req, res) => {
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/actorhasmovies/:', async (req, res) => {
   try {
     await db.actor_has_movies.destroy({
       where: {
@@ -253,7 +253,7 @@ router.post('/moviehasgenre', async (req, res) => {
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/moviehasgenre/:movie_id', async (req, res) => {
   try {
     await db.movie_has_genre.destroy({
       where: {

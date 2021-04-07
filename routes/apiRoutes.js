@@ -232,7 +232,7 @@ router.delete('/museum_info/:museum_id', async (req, res) => {
   try {
     await db.MuseumInfo.destroy({
       where: {
-        role_id: req.params.museum_id
+        museum_id: req.params.museum_id
       }
     });
     res.send('Successfully Deleted');

@@ -7,216 +7,399 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the IMBD Movie Matcher!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Movie Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/movie', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const movies = await db.Movie.findAll();
+    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error at Movie GET');
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/movie/:movie_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const movie = await db.Movie.findAll({
       where: {
-        hall_id: req.params.hall_id
+        movie_id: req.params.movie_id
       }
     });
 
-    res.json(hall);
+    res.json(movie);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error at movie_id GET');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
+router.post('/movie', async (req, res) => {
+  const movies = await db.Movie.findAll();
   const currentId = (await halls.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newMovie = await db.Movie.create({
+      movie_id: currentId,
+      Title: req.body.Title,
+      Year: req.body.Year,
+      Duration: req.body.Duration,
+      company_id: req.body.company_id,
+      director_id: req.body.director_id,
+      Rating_id: req.body.Rating_id
     });
-    res.json(newDining);
+    res.json(newMovie);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error at Movie POST');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/movie/:movie_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.Movie.destroy({
       where: {
-        hall_id: req.params.hall_id
+        movie_id: req.params.movie_id
       }
     });
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error at movie_id DELETE');
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/movie', async (req, res) => {
   try {
     await db.DiningHall.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        movie_name: req.body.movie_name
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          movie_id: req.body.movie_id
         }
       }
     );
-    res.send('Successfully Updated');
+    res.send('Movie Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error at movie PUT');
   }
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Actors Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/actors', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const actors = await db.Actors.findAll();
+    res.json(actors);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error at Actors GET');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/actors/:actors_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const actors = await db.Actors.findAll({
       where: {
-        meal_id: req.params.meal_id
+        actors_id: req.params.actors_id
       }
     });
-    res.json(meals);
+    res.json(actors);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error at actors_id GET');
   }
 });
 
-router.put('/meals', async (req, res) => {
+router.put('/actors', async (req, res) => {
   try {
-    await db.Meals.update(
+    await db.Actors.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        actor_first_name: req.body.actor_first_name,
+        actor_last_name: req.body.actor_last_name,
+        actor_salary: req.body.actor_salary,
+        director_id: req.body.director_id
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          actors_id: req.body.actors_id
         }
       }
     );
-    res.send('Meal Successfully Updated');
+    res.send('Actors Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error at Actors PUT');
   }
 });
 
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.delete('/actors/:actors_id', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
+    await db.Actors.destroy({
       where: {
-        meal_id: req.params.meal_id
+        actors_id: req.params.actors_id
       }
     });
-    res.json(meals);
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at actors_id DELETE');
   }
 });
 
-router.put('/macros', async (req, res) => {
+/// /////////////////////////////////
+/// ////////Genre Endpoints/////////
+/// /////////////////////////////////
+router.get('/genres', async (req, res) => {
+  try {
+    const genres = await db.Genre.findAll();
+    res.send(genres);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at Genres GET');
+  }
+});
+
+router.get('/genres/:genre_id', async (req, res) => {
+  try {
+    const genres = await db.Genre.findAll({
+      where: {
+        genre_id: req.params.genre_id
+      }
+    });
+    res.json(genres);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at genre_id GET');
+  }
+});
+
+router.put('/genres', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
+    await db.Genres.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
+        genre_name: req.body.genre_name
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          genre_id: req.body.genre_id
         }
       }
     );
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error at Genre PUT');
   }
 });
 
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+router.delete('/genres/:genre_id', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    await db.Genres.destroy({
       where: {
-        restriction_id: req.params.restriction_id
+        genre_id: req.params.genre_id
       }
     });
-    res.json(restrictions);
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server Error at genre_id DELETE');
+  }
+});
+
+/// /////////////////////////////////
+///Director Endpoints///
+/// /////////////////////////////////
+router.get('/directors', async (req, res) => {
+  try {
+    const directors = await db.Directors.findAll();
+    res.json(directors);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at Director GET');
+  }
+});
+
+router.get('/directors/:directors_id', async (req, res) => {
+  try {
+    const directors = await db.Directors.findAll({
+      where: {
+        director_id: req.params.director_id
+      }
+    });
+    res.json(directors);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at directors_id GET');
+  }
+});
+
+router.put('/directors', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.Directors.update(
+      {
+        director_first_name: req.body.director_first_name,
+        director_last_name: req.body.director_last_name,
+        director_salary: req.body.director_salary
+      },
+      {
+        where: {
+          direcor_id: req.body.director_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at Directors PUT');
+  }
+});
+
+router.delete('/directors/:director_id', async (req, res) => {
+  try {
+    await db.Directors.destroy({
+      where: {
+        director_id: req.params.director_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at director DELETE');
+  }
+});
+
+/// /////////////////////////////////
+///Production Company Endpoints///
+/// /////////////////////////////////
+router.get('/ProductionCompany', async (req, res) => {
+  try {
+    const company = await db.ProductionCompany.findAll();
+    res.json(company);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at company GET');
+  }
+});
+
+router.get('/ProductionCompany/:company_id', async (req, res) => {
+  try {
+    const company = await db.ProductionCompany.findAll({
+      where: {
+        company_id: req.params.company_id
+      }
+    });
+    res.json(company);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at company_id GET');
+  }
+});
+
+router.put('/ProductionCompany', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.ProductionCompany.update(
+      {
+        company_id: req.body.company_id,
+        company_name: req.body.company_name
+      },
+      {
+        where: {
+          company_id: req.body.company_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at company PUT');
+  }
+});
+
+router.delete('/ProductionCompany/:company_id', async (req, res) => {
+  try {
+    await db.ProductionCompany.destroy({
+      where: {
+        company_id: req.params.company_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at company_id DELETE');
+  }
+});
+
+/// /////////////////////////////////
+///Ratings Endpoints///
+/// /////////////////////////////////
+router.get('/Rating', async (req, res) => {
+  try {
+    const rating = await db.Rating.findAll();
+    res.json(rating);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at rating GET');
+  }
+});
+
+router.get('/Rating/:rating_id', async (req, res) => {
+  try {
+    const rating = await db.Rating.findAll({
+      where: {
+        rating_id: req.params.rating_id
+      }
+    });
+    res.json(rating);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at rating_id GET');
+  }
+});
+
+router.put('/Rating', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.Rating.update(
+      {
+        rating_id: req.body.rating_id,
+        rating_number: req.body.rating_number
+      },
+      {
+        where: {
+          rating_id: req.body.rating_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error at rating PUT');
+  }
+});
+
+router.delete('/Rating/:rating_id', async (req, res) => {
+  try {
+    await db.Rating.destroy({
+      where: {
+        rating_id: req.params.rating_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server Error at rating_id DELETE');
   }
 });
 

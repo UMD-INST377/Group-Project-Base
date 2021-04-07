@@ -9,33 +9,32 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
-
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////artist_info  Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get("/artist_info", async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const artists = await db.artist_info.findAll();
+    const reply =
+      artists.length > 0 ? { data: artists } : { message: "no results found" };
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get("/artist_info/:artist_id", async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const hall = await db.artist_info.findAll({
       where: {
-        hall_id: req.params.hall_id
-      }
+        artist_id: req.params.artist_id,
+      },
     });
-
-    res.json(hall);
+    res.json(artist_id);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 

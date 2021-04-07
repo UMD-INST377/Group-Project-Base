@@ -19,3 +19,4 @@ export default (database, DataTypes) => {
   );
   return Websites;
 };
+

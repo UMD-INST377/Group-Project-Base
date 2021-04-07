@@ -497,3 +497,21 @@ router.route('/team_staff/:staff_id')
       res.error('Server Error at staff_id DELETE');
     }
   });
+
+/// /////////////////////////////////
+/// //////Custom SQL Endpoint////////
+/// /////////////////////////////////
+router.get("/custom", async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(req.body.query, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    console.log("Result: ", result);
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error("Server error");
+  }
+});
+
+export default router;

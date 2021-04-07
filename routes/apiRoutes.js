@@ -70,8 +70,6 @@ router.get('/authors/:author_id', async (req, res) => {
 /// /////////////////////////////////
 /// ////bookDescription Endpoints////////
 /// /////////////////////////////////
-
-// not working at the moment
 router.get('/bookDescription', async (req, res) => {
   try {
     const bookDescription = await db.bookDescription.findAll();
@@ -106,8 +104,6 @@ router.get('/bookDescription/:description_id', async (req, res) => {
 /// /////////////////////////////////
 /// ////genre Endpoints////////
 /// /////////////////////////////////
-
-// not working at the moment
 router.get('/genre', async (req, res) => {
   try {
     const genre = await db.genre.findAll();
@@ -163,6 +159,74 @@ router.get('/popularBooks/:book_id', async (req, res) => {
   }
 });
 
+router.post('/popularBooks', async (req, res) => {
+  const books = await db.popularBooks.findAll();
+  const currentId = (await books.length) + 1;
+  try {
+    const newBook = await db.popularBooks.create({
+      book_id: currentId,
+      title: req.body.title,
+      amount_sold: req.body.amount_sold,
+      publish_year: req.body.publish_year,
+      public_domain: req.body.public_domain,
+      google_user_percentage: req.body.google_user_percentage,
+      original_language: req.body.original_language,
+      authors_author_id: req.body.authors_author_id,
+      publishers_publisher_id: req.body.publishers_publisher_id,
+      artistic_movement_artistic_movement_id: req.body.artistic_movement_artistic_movement_id,
+      book_retailers_retailer_id: req.body.book_retailers_retailer_id,
+      book_description_description_id: req.body.book_description_description_id
+    });
+    res.json(newBook);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/popularBooks', async (req, res) => {
+  try {
+    await db.popularBooks.update(
+      {
+        title: req.body.title,
+        amount_sold: req.body.amount_sold,
+        publish_year: req.body.publish_year,
+        public_domain: req.body.public_domain,
+        google_user_percentage: req.body.google_user_percentage,
+        original_language: req.body.original_language,
+        authors_author_id: req.body.authors_author_id,
+        publishers_publisher_id: req.body.publishers_publisher_id,
+        artistic_movement_artistic_movement_id: req.body.artistic_movement_artistic_movement_id,
+        book_retailers_retailer_id: req.body.book_retailers_retailer_id,
+        book_description_description_id: req.body.book_description_description_id
+      },
+      {
+        where: {
+          book_id: req.body.book_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/popularBooks/:popularBooks_id', async (req, res) => {
+  try {
+    await db.popularBooks.destroy({
+      where: {
+        popularBooks_id: req.params.popularBooks_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// /////////////////////////////////
 /// ////publisher Endpoints////////
 /// /////////////////////////////////
@@ -195,8 +259,6 @@ router.get('/publishers/:publisher_id', async (req, res) => {
 /// /////////////////////////////////
 /// ////retailters Endpoints////////
 /// /////////////////////////////////
-
-// not working at the moment
 router.get('/bookRetailers', async (req, res) => {
   try {
     const retailers = await db.bookRetailers.findAll();
@@ -217,6 +279,55 @@ router.get('/bookRetailers/:retailer_id', async (req, res) => {
     });
 
     res.json(retailers);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////popularBooksExpanded Endpoints////////
+/// /////////////////////////////////
+router.get('/popularBooksExpanded', async (req, res) => {
+  try {
+    // This is an sql query that fetches popularBooks + author name
+    // + book description + publisher name + retailer name
+    // genre is work in progress
+    const sqlQuery = `
+    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name
+    FROM popular_books
+    LEFT JOIN authors ON authors_author_id=author_id
+    LEFT JOIN book_description ON book_description_description_id=description_id
+    LEFT JOIN publishers ON publishers_publisher_id=publisher_id
+    LEFT JOIN book_retailers ON book_retailers_retailer_id=retailer_id
+    `
+    const result = await db.sequelizeDB.query(sqlQuery, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/popularBooksExpanded/:book_id', async (req, res) => {
+  try {
+    const sqlQuery = `
+    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name
+    FROM popular_books
+    LEFT JOIN authors ON authors_author_id=author_id
+    LEFT JOIN book_description ON book_description_description_id=description_id
+    LEFT JOIN publishers ON publishers_publisher_id=publisher_id
+    LEFT JOIN book_retailers ON book_retailers_retailer_id=retailer_id
+    WHERE book_id = :book_id
+    `
+    const result = await db.sequelizeDB.query(sqlQuery, {
+      replacements: { book_id: req.params.book_id },
+      type: sequelize.QueryTypes.SELECT 
+    });
+
+    res.json(result);
   } catch (err) {
     console.error(err);
     res.error('Server error');

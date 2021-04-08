@@ -21,7 +21,7 @@ router.route('/platform')
       res.json(reply);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Platform GET');
+      res.send('Server Error at Platform GET');
     }
   })
   .post(async (req, res) => {
@@ -42,11 +42,11 @@ router.route('/platform/:platform_id')
           platform_id: req.params.platform_id
         }
       });
-  
+
       res.json(platform);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at platform_id GET');
+      res.send('Server Error at platform_id GET');
     }
   })
   .post(async (req, res) => {
@@ -59,7 +59,6 @@ router.route('/platform/:platform_id')
     res.send('Action unavailable');
   });
 
-
 /// /////////////////////////////////
 /// /// Player Biostats Endpoints ///
 /// /////////////////////////////////
@@ -70,7 +69,7 @@ router.route('/player_biostats')
       res.json(biostats);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Player Biostats GET');
+      res.send('Server Error at Player Biostats GET');
     }
   })
   .post(async (req, res) => {
@@ -94,7 +93,7 @@ router.route('/player_biostats/:biostats_id')
       res.json(biostats);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at biostats_id GET');
+      res.send('Server Error at biostats_id GET');
     }
   })
   .post(async (req, res) => {
@@ -107,7 +106,6 @@ router.route('/player_biostats/:biostats_id')
     res.send('Action unavailable');
   });
 
-
 /// /////////////////////////////
 /// /// Player Info Endpoints ///
 /// /////////////////////////////
@@ -118,7 +116,7 @@ router.route('/player_info')
       res.send(info);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Player Info GET');
+      res.send('Server Error at Player Info GET');
     }
   })
   .post(async (req, res) => {
@@ -146,7 +144,7 @@ router.route('/player_info')
       res.send('Player Info Successfully Updated');
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Player Info PUT');
+      res.send('Server Error at Player Info PUT');
     }
   })
   .delete(async (req, res) => {
@@ -164,7 +162,7 @@ router.route('/player_info/:player_id')
       res.json(info);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at player_id GET');
+      res.send('Server Error at player_id GET');
     }
   })
   .post(async (req, res) => {
@@ -183,10 +181,9 @@ router.route('/player_info/:player_id')
       res.send('Successfully Deleted');
     } catch (err) {
       console.error(err);
-      res.error('Server Error at player_id DELETE');
+      res.send('Server Error at player_id DELETE');
     }
-  })
-
+  });
 
 /// //////////////////////////////
 /// /// Player Stats Endpoints ///
@@ -198,7 +195,7 @@ router.route('/player_stats')
       res.json(stats);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Player Stats GET');
+      res.send('Server Error at Player Stats GET');
     }
   })
   .post(async (req, res) => {
@@ -225,7 +222,7 @@ router.route('/player_stats')
       res.send('Player Stats Successfully Updated');
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Player Stats PUT');
+      res.send('Server Error at Player Stats PUT');
     }
   })
   .delete(async (req, res) => {
@@ -243,7 +240,7 @@ router.route('/player_stats/:gamestats_id')
       res.json(gamestats);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at gamestats_id GET');
+      res.send('Server Error at gamestats_id GET');
     }
   })
   .post(async (req, res) => {
@@ -262,10 +259,9 @@ router.route('/player_stats/:gamestats_id')
       res.send('Successfully Deleted');
     } catch (err) {
       console.error(err);
-      res.error('Server Error at gamestats_id DELETE');
+      res.send('Server Error at gamestats_id DELETE');
     }
-  })
-
+  });
 
 /// //////////////////////////////
 /// /// Social Media Endpoints ///
@@ -277,7 +273,7 @@ router.route('/socialmedia')
       res.json(social);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Social Media GET');
+      res.send('Server Error at Social Media GET');
     }
   })
   .post(async (req, res) => {
@@ -301,7 +297,7 @@ router.route('/socialmedia/:social_id')
       res.json(social);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at social_id GET');
+      res.send('Server Error at social_id GET');
     }
   })
   .post(async (req, res) => {
@@ -314,7 +310,6 @@ router.route('/socialmedia/:social_id')
     res.send('Action unavailable');
   });
 
-
 /// //////////////////////////////
 /// /// Stadium Info Endpoints ///
 /// //////////////////////////////
@@ -325,7 +320,7 @@ router.route('/stadium_info')
       res.json(stadium);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Stadium Info GET');
+      res.send('Server Error at Stadium Info GET');
     }
   })
   .post(async (req, res) => {
@@ -341,7 +336,7 @@ router.route('/stadium_info')
 router.route('/stadium_info/:stadium_id')
   .get(async (req, res) => {
     try {
-      const stadium= await db.StadiumInfo.findAll({
+      const stadium = await db.StadiumInfo.findAll({
         where: {
           stadium_id: req.params.stadium_id
         }
@@ -349,7 +344,7 @@ router.route('/stadium_info/:stadium_id')
       res.json(stadium);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at stadium_id GET');
+      res.send('Server Error at stadium_id GET');
     }
   })
   .post(async (req, res) => {
@@ -362,7 +357,6 @@ router.route('/stadium_info/:stadium_id')
     res.send('Action unavailable');
   });
 
-
 /// ///////////////////////////
 /// /// Team Info Endpoints ///
 /// ///////////////////////////
@@ -372,8 +366,8 @@ router.route('/team_info')
       const teamI = await db.TeamInfo.findAll();
       res.json(teamI);
     } catch (err) {
-        console.error(err);
-        res.error('Server Error at Team Info GET');
+      console.error(err);
+      res.send('Server Error at Team Info GET');
     }
   })
   .post(async (req, res) => {
@@ -397,7 +391,7 @@ router.route('/team_info/:team_id')
       res.json(teamI);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at stadium_id GET');
+      res.send('Server Error at stadium_id GET');
     }
   })
   .post(async (req, res) => {
@@ -410,7 +404,6 @@ router.route('/team_info/:team_id')
     res.send('Action unavailable');
   });
 
-
 /// ////////////////////////////
 /// /// Team Staff Endpoints ///
 /// ////////////////////////////
@@ -421,11 +414,11 @@ router.route('/team_staff')
       res.json(staff);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Team Staff GET');
+      res.send('Server Error at Team Staff GET');
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
     try {
@@ -447,7 +440,7 @@ router.route('/team_staff')
       res.send('Team Staff Successfully Updated');
     } catch (err) {
       console.error(err);
-      res.error('Server Error at Team Staff PUT');
+      res.send('Server Error at Team Staff PUT');
     }
   })
   .delete(async (req, res) => {
@@ -460,7 +453,7 @@ router.route('/team_staff')
       res.send('Successfully Deleted');
     } catch (err) {
       console.error(err);
-      res.error('Server Error at staff_id DELETE');
+      res.send('Server Error at staff_id DELETE');
     }
   });
 
@@ -475,7 +468,7 @@ router.route('/team_staff/:staff_id')
       res.json(staff);
     } catch (err) {
       console.error(err);
-      res.error('Server Error at staff_id GET');
+      res.send('Server Error at staff_id GET');
     }
   })
   .post(async (req, res) => {
@@ -494,27 +487,25 @@ router.route('/team_staff/:staff_id')
       res.send('Successfully Deleted');
     } catch (err) {
       console.error(err);
-      res.error('Server Error at staff_id DELETE');
+      res.send('Server Error at staff_id DELETE');
     }
   });
-
 
 /// /////////////////////////////////
 /// //////Custom SQL Endpoint////////
 /// /////////////////////////////////
-router.get("/custom", async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT,
-    });
-    console.log("Result: ", result);
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error("Server error");
-  }
-})
-
+// router.get('/custom', async (req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(req.body.query, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     console.log('Result: ', result);
+//     res.json(result);
+//   } catch (err) {
+//     console.error(err);
+//     res.send('Server error');
+//   }
+// });
 
 /// ///////////////////////////
 /// /// Custom SQL Endpoint ///
@@ -524,7 +515,7 @@ FROM team_info JOIN team_staff
 	USING (team_id)
 ORDER BY year_founded, team_location;`;
 
-router.route('/custom')
+router.route('/teamCustom')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(teamCustom, {
@@ -533,7 +524,7 @@ router.route('/custom')
       res.json(result);
     } catch (err) {
       console.error(err);
-      res.error('Server error');
+      res.send('Server error');
     }
   })
   .post(async (req, res) => {
@@ -546,7 +537,6 @@ router.route('/custom')
     res.send('Action unavailable');
   });
 
-
 /// ///////////////////////////
 /// /// Custom SQL Endpoint ///
 /// ///////////////////////////
@@ -557,16 +547,16 @@ JOIN player_biostats
   USING (player_id)
 ORDER BY position, shooting_pct, three_pt_pct;`;
 
-router.route('/custom')
+router.route('/playerCustom')
   .get(async (req, res) => {
     try {
-      const result = await db.sequelizeDB.query(teamCustom, {
+      const result = await db.sequelizeDB.query(playerCustom, {
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
     } catch (err) {
       console.error(err);
-      res.error('Server error');
+      res.send('Server error at playerCustom GET');
     }
   })
   .post(async (req, res) => {

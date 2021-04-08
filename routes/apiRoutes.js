@@ -280,7 +280,7 @@ router.put('/museum_info', async (req, res) => { // Where I left off 19:18 4/6/2
 /// ///////Custom Client Query Endpoint////////
 /// /////////////////////////////////
 
-const museumStaffCustom = 'SELECT `employee_first_name`.`employee_last_name`,`staff_id` FROM(`museum_staff`) WHERE (staff_id > 5 AND staff_id < 17');
+const museumStaffCustom = 'SELECT (`employee_first_name`.`employee_last_name`.`staff_id`) FROM(`museum_staff`) WHERE (`staff_id > 5 AND staff_id < 17`)';
 router.get('/museum_staff', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(museumStaffCustom, {

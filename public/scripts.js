@@ -23,7 +23,7 @@
 async function getData() {
   console.log('data request');
   const result = document.querySelector('#resultInfo');
-  const request = await fetch('http://localhost:3000/api/museum_info');
+  const request = await fetch('/api/museum_info');
   const tableData = await request.json();
   // return tableData;
 

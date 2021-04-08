@@ -172,26 +172,26 @@ router.put('/songs', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ///playlist_details Endpoints////
+/// Dietary Restrictions Endpoints///
 /// /////////////////////////////////
-router.get('/playlist_details', async (req, res) => {
+router.get('/restrictions', async (req, res) => {
   try {
-    const pDetails = await db.playlist_details.findAll();
-    res.json(pDetails);
+    const restrictions = await db.DietaryRestrictions.findAll();
+    res.json(restrictions);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/playlist_details/:playlist_details_id', async (req, res) => {
+router.get('/restrictions/:restriction_id', async (req, res) => {
   try {
-    const pDetails = await db.playlist_details.findAll({
+    const restrictions = await db.DietaryRestrictions.findAll({
       where: {
-        pDetails_id: req.params.pDetails_id
+        restriction_id: req.params.restriction_id
       }
     });
-    res.json(pDetails);
+    res.json(restrictions);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -201,7 +201,7 @@ router.get('/playlist_details/:playlist_details_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
+const macrosCustom = 'SELECT `Group20_spotify_playlist`.`songs`.`song_id` AS `song_id`,`Group20_spotify_playlist`.`pla`.`_name` AS `meal_name`,`Dining_Hall_Tracker`.`songs`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
 router.get('/table/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {

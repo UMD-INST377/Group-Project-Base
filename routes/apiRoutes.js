@@ -247,6 +247,34 @@ router.get('/types/:species_id', async (req, res) => {
   }
 });
 
+
+/// /////////////////////////////////
+/// Employees Endpoints///
+/// /////////////////////////////////
+router.get('/employees', async (req, res) => {
+  try {
+    const employees = await db.Employees.findAll();
+    res.json(employees);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/employees/:employee_id', async (req, res) => {
+  try {
+    const employees = await db.Employees.findAll({
+      where: {
+        employee_id: req.params.employee_id
+      }
+    });
+    res.json(employee_id);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////

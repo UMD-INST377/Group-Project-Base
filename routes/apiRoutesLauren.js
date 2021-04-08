@@ -44,7 +44,7 @@ router
         album_songs_number: req.body.album_songs_number,
         television_seasons_number: req.body.television_seasons_number,
         audience_rating: req.body.audience_rating,
-        show_still_airing: req.body.show_still_airing
+        show_still_airing: req.body.show_still_airing,
       });
       res.json(newMedia);
     } catch (err) {
@@ -65,12 +65,12 @@ router
           album_songs_number: req.body.album_songs_number,
           television_seasons_number: req.body.television_seasons_number,
           audience_rating: req.body.audience_rating,
-          show_still_airing: req.body.show_still_airing
+          show_still_airing: req.body.show_still_airing,
         },
         {
           where: {
-            media_id: req.body.media_id
-          }
+            media_id: req.body.media_id,
+          },
         }
       );
       res.send("Successfully Updated");
@@ -119,7 +119,7 @@ router
         creator_last_name: req.body.creator_last_name,
         creator_current_state: req.body.creator_current_state,
         creator_home_state: req.body.creator_home_state,
-        creator_country: req.body.creator_country
+        creator_country: req.body.creator_country,
       });
       res.json(newCreator);
     } catch (err) {
@@ -136,12 +136,12 @@ router
           creator_last_name: req.body.creator_last_name,
           creator_current_state: req.body.creator_current_state,
           creator_home_state: req.body.creator_home_state,
-          creator_country: req.body.creator_country
+          creator_country: req.body.creator_country,
         },
         {
           where: {
-            creator_id: req.body.creator_id
-          }
+            creator_id: req.body.creator_id,
+          },
         }
       );
       res.send("Successfully Updated");
@@ -181,7 +181,7 @@ router
       console.log("POST request on /backgrounds");
       const newBackground = await db.backgrounds.create({
         background_id: currentId,
-        background: req.body.background
+        background: req.body.background,
       });
       res.json(newBackground);
     } catch (err) {
@@ -194,12 +194,12 @@ router
       console.log("PUT request on /backgrounds");
       await db.backgrounds.update(
         {
-          background: req.body.background
+          background: req.body.background,
         },
         {
           where: {
-            background_id: req.body.background_id
-          }
+            background_id: req.body.background_id,
+          },
         }
       );
       res.send("Successfully Updated");
@@ -237,7 +237,7 @@ router
       console.log("POST request on /genres");
       const newGenre = await db.genres.create({
         genre_id: currentId,
-        genre: req.body.genre
+        genre: req.body.genre,
       });
       res.json(newGenre);
     } catch (err) {
@@ -250,12 +250,12 @@ router
       console.log("PUT request on /genres");
       await db.genres.update(
         {
-          genre: req.body.genre
+          genre: req.body.genre,
         },
         {
           where: {
-            genre_id: req.body.genre_id
-          }
+            genre_id: req.body.genre_id,
+          },
         }
       );
       res.send("Successfully Updated");
@@ -293,7 +293,7 @@ router
       console.log("POST request on /roles");
       const newRole = await db.roles.create({
         role_id: currentId,
-        role_description: req.body.role_description
+        role_description: req.body.role_description,
       });
       res.json(newRole);
     } catch (err) {
@@ -306,12 +306,12 @@ router
       console.log("PUT request on /roles");
       await db.roles.update(
         {
-          role_description: req.body.role_description
+          role_description: req.body.role_description,
         },
         {
           where: {
-            role_id: req.body.role_id
-          }
+            role_id: req.body.role_id,
+          },
         }
       );
       res.send("Successfully Updated");
@@ -349,7 +349,7 @@ router
       console.log("POST request on /themes");
       const newTheme = await db.themes.create({
         theme_id: currentId,
-        theme: req.body.theme
+        theme: req.body.theme,
       });
       res.json(newTheme);
     } catch (err) {
@@ -362,12 +362,12 @@ router
       console.log("PUT request on /themes");
       await db.themes.update(
         {
-          theme: req.body.theme
+          theme: req.body.theme,
         },
         {
           where: {
-            theme_id: req.body.theme_id
-          }
+            theme_id: req.body.theme_id,
+          },
         }
       );
       res.send("Successfully Updated");
@@ -464,185 +464,5 @@ router.route("/creatorRoleLinks").get(async (req, res) => {
     res.error("Server error");
   }
 });
-
-// /// /////////////////////////////////
-// /// ////////Meals Endpoints//////////
-// /// /////////////////////////////////
-// router.get("/meals", async (req, res) => {
-//   try {
-//     const meals = await db.Meals.findAll();
-//     res.json(meals);
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
-
-// router.get("/meals/:meal_id", async (req, res) => {
-//   try {
-//     const meals = await db.Meals.findAll({
-//       where: {
-//         meal_id: req.params.meal_id,
-//       },
-//     });
-//     res.json(meals);
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
-
-// router.put("/meals", async (req, res) => {
-//   try {
-//     await db.Meals.update(
-//       {
-//         meal_name: req.body.meal_name,
-//         meal_category: req.body.meal_category,
-//       },
-//       {
-//         where: {
-//           meal_id: req.body.meal_id,
-//         },
-//       }
-//     );
-//     res.send("Meal Successfully Updated");
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
-
-// /// /////////////////////////////////
-// /// ////////Macros Endpoints/////////
-// /// /////////////////////////////////
-// router.get("/macros", async (req, res) => {
-//   try {
-//     const macros = await db.Macros.findAll();
-//     res.send(macros);
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
-
-// router.get("/macros/:meal_id", async (req, res) => {
-//   try {
-//     const meals = await db.Macros.findAll({
-//       where: {
-//         meal_id: req.params.meal_id,
-//       },
-//     });
-//     res.json(meals);
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
-
-// router.put("/macros", async (req, res) => {
-//   try {
-//     // N.B. - this is a good example of where to use code validation to confirm objects
-//     await db.Macros.update(
-//       {
-//         meal_name: req.body.meal_name,
-//         meal_category: req.body.meal_category,
-//         calories: req.body.calories,
-//         serving_size: req.body.serving_size,
-//         cholesterol: req.body.cholesterol,
-//         sodium: req.body.sodium,
-//         carbs: req.body.carbs,
-//         protein: req.body.protein,
-//         fat: req.body.fat,
-//       },
-//       {
-//         where: {
-//           meal_id: req.body.meal_id,
-//         },
-//       }
-//     );
-//     res.send("Successfully Updated");
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
-
-// /// /////////////////////////////////
-// /// Dietary Restrictions Endpoints///
-// /// /////////////////////////////////
-// router.get("/restrictions", async (req, res) => {
-//   try {
-//     const restrictions = await db.DietaryRestrictions.findAll();
-//     res.json(restrictions);
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
-
-// router.get("/restrictions/:restriction_id", async (req, res) => {
-//   try {
-//     const restrictions = await db.DietaryRestrictions.findAll({
-//       where: {
-//         restriction_id: req.params.restriction_id,
-//       },
-//     });
-//     res.json(restrictions);
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
-
-// /// //////////////////////////////////
-// /// ///////Custom SQL Endpoint////////
-// /// /////////////////////////////////
-// const macrosCustom =
-//   "SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)";
-// router.get("/table/data", async (req, res) => {
-//   try {
-//     const result = await db.sequelizeDB.query(macrosCustom, {
-//       type: sequelize.QueryTypes.SELECT,
-//     });
-//     res.json(result);
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
-
-// const mealMapCustom = `SELECT hall_name,
-//   hall_address,
-//   hall_lat,
-//   hall_long,
-//   meal_name
-// FROM
-//   Meals m
-// INNER JOIN Meals_Locations ml
-//   ON m.meal_id = ml.meal_id
-// INNER JOIN Dining_Hall d
-// ON d.hall_id = ml.hall_id;`;
-// router.get("/map/data", async (req, res) => {
-//   try {
-//     const result = await db.sequelizeDB.query(mealMapCustom, {
-//       type: sequelize.QueryTypes.SELECT,
-//     });
-//     res.json(result);
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
-// router.get("/custom", async (req, res) => {
-//   try {
-//     const result = await db.sequelizeDB.query(req.body.query, {
-//       type: sequelize.QueryTypes.SELECT,
-//     });
-//     res.json(result);
-//   } catch (err) {
-//     console.error(err);
-//     res.error("Server error");
-//   }
-// });
 
 export default router;

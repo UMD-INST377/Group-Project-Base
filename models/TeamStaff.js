@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const TeamStaff = sequelize.define(
-    'TeamStaff',
+    'team_staff',
     {
       staff_id: {
         type: DataTypes.INTEGER,

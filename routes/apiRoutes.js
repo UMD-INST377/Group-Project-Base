@@ -25,13 +25,13 @@ router.route('/platform')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 router.route('/platform/:platform_id')
@@ -50,13 +50,13 @@ router.route('/platform/:platform_id')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 
@@ -74,13 +74,13 @@ router.route('/player_biostats')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 router.route('/player_biostats/:biostats_id')
@@ -98,13 +98,13 @@ router.route('/player_biostats/:biostats_id')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 
@@ -122,7 +122,7 @@ router.route('/player_info')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
     try {
@@ -150,7 +150,7 @@ router.route('/player_info')
     }
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 router.route('/player_info/:player_id')
@@ -168,10 +168,10 @@ router.route('/player_info/:player_id')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
     try {
@@ -202,7 +202,7 @@ router.route('/player_stats')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
     try {
@@ -229,7 +229,7 @@ router.route('/player_stats')
     }
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 router.route('/player_stats/:gamestats_id')
@@ -247,10 +247,10 @@ router.route('/player_stats/:gamestats_id')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
     try {
@@ -281,13 +281,13 @@ router.route('/socialmedia')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 router.route('/socialmedia/:social_id')
@@ -305,13 +305,13 @@ router.route('/socialmedia/:social_id')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 
@@ -329,13 +329,13 @@ router.route('/stadium_info')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 router.route('/stadium_info/:stadium_id')
@@ -353,13 +353,13 @@ router.route('/stadium_info/:stadium_id')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 
@@ -377,13 +377,13 @@ router.route('/team_info')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 router.route('/team_info/:team_id')
@@ -401,13 +401,13 @@ router.route('/team_info/:team_id')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   });
 
 
@@ -479,10 +479,10 @@ router.route('/team_staff/:staff_id')
     }
   })
   .post(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    res.send('Action unavailable')
+    res.send('Action unavailable');
   })
   .delete(async (req, res) => {
     try {
@@ -502,51 +502,33 @@ router.route('/team_staff/:staff_id')
 /// ///////////////////////////
 /// /// Custom SQL Endpoint ///
 /// ///////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+const teamCustom = `SELECT team_location, team_name, year_founded, head_coach, general_manager
+FROM team_info JOIN team_staff
+	USING (team_id)
+ORDER BY year_founded, team_location;`;
+
+router.route('/custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(teamCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
 
 export default router;

@@ -8,10 +8,12 @@ export default (database, DataTypes) => {
           primaryKey: true
         },
         Applicants_applicant_id: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
+          allowNull: false
         },
         Animals_animal_id: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
+          allowNull: false
         },
         start_date: {
           type: DataTypes.STRING

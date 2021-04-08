@@ -545,7 +545,7 @@ FROM player_info JOIN player_stats
 	USING (player_id)
 JOIN player_biostats
   USING (player_id)
-ORDER BY position, shooting_pct, three_pt_pct;`;
+ORDER BY position, shooting_percentage, three_pt_pct;`;
 
 router.route('/playerCustom')
   .get(async (req, res) => {

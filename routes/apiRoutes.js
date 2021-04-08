@@ -57,11 +57,11 @@ router.post('/adoption', async (req, res) => {
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/dining/:shelter_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.Shelters.destroy({
       where: {
-        hall_id: req.params.hall_id
+        shelter_id: req.params.shelter_id
       }
     });
     res.send('Successfully Deleted');

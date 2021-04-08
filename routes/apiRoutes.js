@@ -275,6 +275,33 @@ router.get('/employees/:employee_id', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// Websites Endpoints///
+/// /////////////////////////////////
+router.get('/websites', async (req, res) => {
+  try {
+    const websites = await db.Websites.findAll();
+    res.json(websites);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/websites/:website_id', async (req, res) => {
+  try {
+    const websites = await db.Websites.findAll({
+      where: {
+        website_id: req.params.website_id
+      }
+    });
+    res.json(websites);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////

@@ -9,7 +9,7 @@ export default (sequelize, DataTypes) => {
         primaryKey: true
       },
       salary: {
-        type: DataTypes.DATE
+        type: DataTypes.INTEGER
       },
       jersey_number: {
         type: DataTypes.INTEGER

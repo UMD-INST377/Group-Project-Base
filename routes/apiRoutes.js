@@ -57,7 +57,7 @@ router.post('/shelters', async (req, res) => {
   }
 });
 
-router.delete('/adoption/:shelter_id', async (req, res) => {
+router.delete('/shelters/:shelter_id', async (req, res) => {
   try {
     await db.Shelters.destroy({
       where: {
@@ -71,7 +71,7 @@ router.delete('/adoption/:shelter_id', async (req, res) => {
   }
 });
 
-router.put('/adoption', async (req, res) => {
+router.put('/shelters', async (req, res) => {
   try {
     await db.Shelters.update(
       {

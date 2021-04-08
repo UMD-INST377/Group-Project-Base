@@ -498,6 +498,7 @@ router.route('/team_staff/:staff_id')
     }
   });
 
+
 /// /////////////////////////////////
 /// //////Custom SQL Endpoint////////
 /// /////////////////////////////////
@@ -511,11 +512,13 @@ router.get("/custom", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.error("Server error");
+  }
+})
+
 
 /// ///////////////////////////
 /// /// Custom SQL Endpoint ///
 /// ///////////////////////////
-
 const teamCustom = `SELECT team_location, team_name, year_founded, head_coach, general_manager
 FROM team_info JOIN team_staff
 	USING (team_id)
@@ -543,5 +546,37 @@ router.route('/custom')
     res.send('Action unavailable');
   });
 
+
+/// ///////////////////////////
+/// /// Custom SQL Endpoint ///
+/// ///////////////////////////
+const playerCustom = `SELECT first_name, last_name, height(in), position, shooting_pct, three_pt_pct
+FROM player_info JOIN player_stats
+	USING (player_id)
+JOIN player_biostats
+  USING (player_id)
+ORDER BY position, shooting_pct, three_pt_pct;`;
+
+router.route('/custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(teamCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
 
 export default router;

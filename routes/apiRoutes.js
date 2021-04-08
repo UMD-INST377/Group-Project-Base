@@ -550,17 +550,17 @@ router.route('/custom')
 /// ///////////////////////////
 /// /// Custom SQL Endpoint ///
 /// ///////////////////////////
-const playerCustom = `SELECT first_name, last_name, height(in), position, shooting_pct, three_pt_pct
+const playerCustom = `SELECT first_name, last_name, height(in), position, shooting_percentage, three_pt_pct
 FROM player_info JOIN player_stats
 	USING (player_id)
 JOIN player_biostats
   USING (player_id)
-ORDER BY position, shooting_pct, three_pt_pct;`;
+ORDER BY position, shooting_percentage, three_pt_pct;`;
 
 router.route('/custom')
   .get(async (req, res) => {
     try {
-      const result = await db.sequelizeDB.query(teamCustom, {
+      const result = await db.sequelizeDB.query(playerCustom, {
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);

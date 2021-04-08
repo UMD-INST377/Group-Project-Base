@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Shelter Endpoints////////
 /// /////////////////////////////////
 router.get('/adoption', async (req, res) => {
   try {

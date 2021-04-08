@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////artist_info  Endpoints////////
 /// /////////////////////////////////
-router.get("/artist_info", async (req, res) => {
+router.get("/artistInfo", async (req, res) => {
   try {
-    const artists = await db.artist_info.findAll();
+    const artists = await db.artistInfo.findAll();
     const reply =
       artists.length > 0 ? { data: artists } : { message: "no results found" };
     res.json(reply);
@@ -24,9 +24,9 @@ router.get("/artist_info", async (req, res) => {
   }
 });
 
-router.get("/artist_info/:artist_id", async (req, res) => {
+router.get("/artistInfo/:artist_id", async (req, res) => {
   try {
-    const artists = await db.artist_info.findAll({
+    const artists = await db.artistInfo.findAll({
       where: {
         artist_id: req.params.artist_id,
       },
@@ -39,11 +39,11 @@ router.get("/artist_info/:artist_id", async (req, res) => {
 });
 
 
-router.post('/artist_info', async (req, res) => {
-  const artists = await db.artist_info.findAll();
+router.post('/artistInfo', async (req, res) => {
+  const artists = await db.artistInfo.findAll();
   const currentId = (await artists.length) + 1;
   try {
-    const newArtist = await db.artist_info.create({
+    const newArtist = await db.artistInfo.create({
       artist_id: currentId,
       monthly_listeners: req.body.monthly_listeners,
       followers: req.body.followers,
@@ -57,11 +57,11 @@ router.post('/artist_info', async (req, res) => {
   }
 });
 
-router.delete('/artist_info/:artist_id', async (req, res) => {
+router.delete('/artistInfo/:artist_id', async (req, res) => {
   try {
-    await db.artist_info.destroy({
+    await db.artistInfo.destroy({
       where: {
-        artist_info: req.params.artist_id
+        artist_id: req.params.artist_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,9 +71,9 @@ router.delete('/artist_info/:artist_id', async (req, res) => {
   }
 });
 
-router.put('/artist_info', async (req, res) => {
+router.put('/artistInfo', async (req, res) => {
   try {
-    await db.artist_info.update(
+    await db.artistInfo.update(
       {
         monthly_listeners: req.body.monthly_listeners,
         followers: req.body.followers,

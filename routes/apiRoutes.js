@@ -220,6 +220,33 @@ router.get('/pending/:adopt_id', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// Animal Types Endpoints///
+/// /////////////////////////////////
+router.get('/types', async (req, res) => {
+  try {
+    const types = await db.AnimalType.findAll();
+    res.json(types);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/types/:species_id', async (req, res) => {
+  try {
+    const types = await db.AnimalType.findAll({
+      where: {
+        species_id: req.params.species_id
+      }
+    });
+    res.json(types);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////

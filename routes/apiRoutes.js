@@ -292,3 +292,5 @@ router.get('/museum_staff', async (req, res) => {
     res.error('Server error');
   }
 });
+
+export default router;

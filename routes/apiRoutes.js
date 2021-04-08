@@ -92,81 +92,63 @@ router.put('/albums', async (req, res) => {
   }
 });
 
-/**
+
 
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/artist', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const artists = await db.Artist.findAll();
+    res.json(artists);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/lyrics', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
+    const lyr = await db.Lyrics.findAll({
+      
     });
-    res.json(meals);
+    res.json(lyr);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
-  try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+
 
 /// /////////////////////////////////
 /// ////////Macros Endpoints/////////
 /// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.get('/songs', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
+    const song = await db.Songs.findAll();
+    res.send(song);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get('/songs/:song_id', async (req, res) => {
   try {
-    const meals = await db.Macros.findAll({
+    const song = await db.Songs.findAll({
       where: {
-        meal_id: req.params.meal_id
+        song_id: req.params.song_id
       }
     });
-    res.json(meals);
+    res.json(song);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
+
+/** 
 
 router.put('/macros', async (req, res) => {
   try {

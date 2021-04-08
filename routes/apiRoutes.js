@@ -172,7 +172,7 @@ router.put('/staff_role', async (req, res) => {
 /// /////////////////////////////////
 /// ////Museum Info Endpoints////////
 /// /////////////////////////////////
-router.get('/museum_info', async (req, res) => {
+router.get('/Museum_info', async (req, res) => {
   try {
     const museum = await db.MuseumInfo.findAll();
     const museumInfo = museum.length > 0 ? { data: museum } : { message: 'no results found' };
@@ -183,7 +183,7 @@ router.get('/museum_info', async (req, res) => {
   }
 });
 
-router.get('/museum_info/:museum_id', async (req, res) => {
+router.get('/Museum_info/:museum_id', async (req, res) => {
   try {
     const museumID = await db.MuseumInfo.findAll({
       where: {
@@ -198,7 +198,7 @@ router.get('/museum_info/:museum_id', async (req, res) => {
   }
 });
 
-router.post('/museum_info', async (req, res) => {
+router.post('/Museum_info', async (req, res) => {
   const museum = await db.MuseumInfo.findAll();
   const currentMuseumId = (await museum.length) + 1;
   try {
@@ -228,7 +228,7 @@ router.post('/museum_info', async (req, res) => {
   }
 });
 
-router.delete('/museum_info/:museum_id', async (req, res) => {
+router.delete('/Museum_info/:museum_id', async (req, res) => {
   try {
     await db.MuseumInfo.destroy({
       where: {
@@ -242,7 +242,7 @@ router.delete('/museum_info/:museum_id', async (req, res) => {
   }
 });
 
-router.put('/museum_info', async (req, res) => { // Where I left off 19:18 4/6/2021
+router.put('/Museum_info', async (req, res) => { // Where I left off 19:18 4/6/2021
   try {
     await db.MuseumInfo.update(
       {

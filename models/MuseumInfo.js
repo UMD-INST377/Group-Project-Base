@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const MuseumInfo = sequelize.define(
-    'museum_info',
+    'Museum_info',
     {
       museum_id: {
         type: DataTypes.INTEGER,

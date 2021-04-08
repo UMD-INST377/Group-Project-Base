@@ -179,6 +179,90 @@ router.put('/clubs', async (req, res) => {
 });
 
 /// /////////////////////////////////
+/// ////Player Goals Endpoints////////
+/// /////////////////////////////////
+
+router.get('/player_goals', async (req, res) => {
+  try {
+    const player_goals = await db.player_goals.findAll();
+    const reply = player_goals.length > 0 ? { data: player_goals } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/player_goals/:player_id', async (req, res) => {
+  try {
+    const player_goals = await db.player_goals.findAll({
+      where: {
+        player_id: req.params.player_id
+      }
+    });
+
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/player_goals', async (req, res) => {
+  const player_goals = await db.player_goals.findAll();
+  const currentId = (await player_goals.length) + 1;
+  try {
+    const newPlayer_goals = await db.Player_goals.create({
+        player_id: currentId,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        goals: req.body.goals,
+        assists: req.body.assists
+    });
+    res.json(newPlayer_goals);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/player_goals/:player_id', async (req, res) => {
+  try {
+    await db.player_goals.destroy({
+      where: {
+        player_id: req.params.player_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/player_goals', async (req, res) => {
+  try {
+    await db.player_goals.update(
+      {
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        goals: req.body.goals,
+        assists: req.body.assists       
+      },
+      {
+        where: {
+          player_id: req.body.player_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
 router.get('/dining', async (req, res) => {

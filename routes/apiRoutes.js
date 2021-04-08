@@ -150,12 +150,12 @@ router.get('/earnings', async (req, res) => {
 
 router.get('/earnings/:movie_id', async (req, res) => {
   try {
-    const movie = await db.earnings.findAll({
+    const earning = await db.earnings.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-    res.json(movie);
+    res.json(earning);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -188,7 +188,7 @@ router.put('/earnings', async (req, res) => {
 router.get('/genre', async (req, res) => {
   try {
     const genres = await db.genre.findAll();
-    res.json(rgenres);
+    res.json(genres);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -210,64 +210,33 @@ router.get('/genre/:genre_id', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Movie Has Genre Endpoints////////
+/// ////////movie_has_genre Endpoints//////////
 /// /////////////////////////////////
-router.get('/moviehasgenre', async (req, res) => {
+router.get('/movie_has_genre', async (req, res) => {
   try {
-    const  movieHasGenre = await db.movie_has_genre.findAll();
-    const reply2 = movieHasGenre.length > 0 ? { data: movieHasGenre } : { message: 'no results found' };
-    res.json(reply2);
+    const movie_has_genres = await db.movie_has_genre.findAll();
+    res.json(movie_has_genres);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/moviehasgenre/:movie_id', async (req, res) => {
+router.get('/movie_has_genre/:movie_id', async (req, res) => {
   try {
-    const movieHasGenre = await db.movie_has_genre.findAll({
+    const movie_has_genres = await db.movie_has_genre.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-
-    res.json(movieHasGenre);
+    res.json(movie_has_genres);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/moviehasgenre', async (req, res) => {
-  const movieHasGenre = await db.movie_has_genre.findAll();
-  const currentId2 = (await movieHasGenre.length) + 1;
-  try {
-    const newMoviehasgenre = await db.movie_has_genre.create({
-      movie_id: currentId2,
-      genre_id: req.body.genre_id,
-    });
-    res.json(newMoviehasgenre);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.delete('/moviehasgenre/:movie_id', async (req, res) => {
-  try {
-    await db.movie_has_genre.destroy({
-      where: {
-        movie_id: req.params.movie_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/moviehasgenre', async (req, res) => {
+router.put('/movie_has_genre', async (req, res) => {
   try {
     await db.movie_has_genre.update(
       {
@@ -279,7 +248,7 @@ router.put('/moviehasgenre', async (req, res) => {
         }
       }
     );
-    res.send('Successfully Updated');
+    res.send('movie_has_genre Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -287,12 +256,12 @@ router.put('/moviehasgenre', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Movies Endpoints//////////
+/// ////////movies Endpoints/////////
 /// /////////////////////////////////
 router.get('/movies', async (req, res) => {
   try {
     const movie = await db.movies.findAll();
-    res.json(movie);
+    res.send(movie);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -331,20 +300,29 @@ router.put('/movies', async (req, res) => {
         }
       }
     );
-    res.send('Movies Successfully Updated');
+    res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
+
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
+const movies_genre_custom = `SELECT 
+title,
+genre_type
+FROM movies
+JOIN movies_has_genre
+ON movies.movie_id = movies_has_genre.movie_id
+JOIN genre
+ON movies_has_genre.genre_id = genre.genre_id;
+`;
 router.get('/table/data', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
+    const result = await db.sequelizeDB.query(movies_genre_custom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);
@@ -354,20 +332,29 @@ router.get('/table/data', async (req, res) => {
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
+const actor_movie_earnings_custom = `SELECT actor_id,
+first_name,
+last_name,
+gender,
+duration,
+title,
+year,
+country,
+imdb_score,
+earnings.earnings_gross,
+budget
+FROM 
+actor 
+JOIN actor_has_movies
+ON actor.actor_id = actor_has_movies.actor_id
+JOIN movies
+ON movies.movie_id=actor_has_movies.movie_id
+JOIN earnings
+ON earnings.movie_id=movies.movie_id;
+`;
 router.get('/map/data', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
+    const result = await db.sequelizeDB.query(actor_movie_earnings_custom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);

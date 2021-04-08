@@ -39,18 +39,18 @@ router.get('/adoption/:shelter_id', async (req, res) => {
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.post('/adoption', async (req, res) => {
+  const shelters = await db.Shelters.findAll();
+  const currentId = (await shelters.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newShelters = await db.Shelters.create({
+      shelter_id: currentId,
+      shelter_name: req.body.shelter_name,
+      shelter_address: req.body.shelter_address,
+      phone_number: req.body.phone_number,
+      num_employees: req.body.num_employees
     });
-    res.json(newDining);
+    res.json(newShelters);
   } catch (err) {
     console.error(err);
     res.error('Server error');

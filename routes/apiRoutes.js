@@ -238,10 +238,10 @@ router.route('/albums')
         try {
             const newAlbum = await db.Albums.create({
             albums_id: currentId,
-            album_name: req.body.streams,
-            number_songs: req.body.playlist_id,
-            genre: req.body.artist_id,
-            artist_id: req.body.song_id
+            album_name: req.body.album_name,
+            number_songs: req.body.number_songs,
+            genre: req.body.genre,
+            artist_id: req.body.artist_id
             });
             res.json(newAlbum);
         } catch (err) {
@@ -374,17 +374,7 @@ router.route('/songs:song_id')
         res.send('Action unavailable');
     })
     .delete((req, res) => {
-        try {
-            await db.DiningHall.destroy({
-              where: {
-                hall_id: req.params.hall_id
-              }
-            });
-            res.send('Successfully Deleted');
-        } catch (err) {
-            console.error(err);
-            res.error('Server error');
-        }
+        res.send('Action unavailable');
     })
 
 /// /////////////////////////////////
@@ -408,9 +398,9 @@ router.route('/artists')
         try {
             const newArtist = await db.Artists.create({
             artist_id: currentId,
-            artist_name: req.body.streams,
-            verified: req.body.artist_id,
-            monthly_listeners: req.body.streams,
+            artist_name: req.body.artist_name,
+            verified: req.body.verified,
+            monthly_listeners: req.body.monthly_listeners,
             });
             res.json(newArtist);
         } catch (err) {
@@ -423,7 +413,7 @@ router.route('/artists')
             await db.Artists.update(
               {
                 artist_name: req.body.artist_name,
-                verified: req.body.genre,
+                verified: req.body.verified,
                 monthly_listeners: req.body.monthly_listeners,
                 artist_id: req.body.artist_id
               },

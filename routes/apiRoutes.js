@@ -92,46 +92,46 @@ router.put('/adoption', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Animals Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/animals', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const animals = await db.Animals.findAll();
+    res.json(animals);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/animals/:animal_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const animals = await db.Animals.findAll({
       where: {
-        meal_id: req.params.meal_id
+        animal_id: req.params.animal_id
       }
     });
-    res.json(meals);
+    res.json(animals);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
+router.put('/animals', async (req, res) => {
   try {
-    await db.Meals.update(
+    await db.Animals.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        name: req.body.name,
+        status: req.body.status
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          animal_id: req.body.animal_id
         }
       }
     );
-    res.send('Meal Successfully Updated');
+    res.send('Animal Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');

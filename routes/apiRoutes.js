@@ -374,7 +374,17 @@ router.route('/songs:song_id')
         res.send('Action unavailable');
     })
     .delete((req, res) => {
-        res.send('Action unavailable');
+        try {
+            await db.DiningHall.destroy({
+              where: {
+                hall_id: req.params.hall_id
+              }
+            });
+            res.send('Successfully Deleted');
+        } catch (err) {
+            console.error(err);
+            res.error('Server error');
+        }
     })
 
 /// /////////////////////////////////

@@ -76,7 +76,9 @@ router.put('/adoption', async (req, res) => {
     await db.Shelters.update(
       {
         shelter_name: req.body.shelter_name,
-        shelter_address: req.body.shelter_address
+        shelter_address: req.body.shelter_address,
+        phone_number: req.body.phone_number,
+        num_employees: req.body.num_employees
       },
       {
         where: {
@@ -123,7 +125,10 @@ router.put('/animals', async (req, res) => {
     await db.Animals.update(
       {
         name: req.body.name,
-        status: req.body.status
+        status: req.body.status,
+        gender: req.body.gender,
+        Animal_type_species_id: req.body.Animal_type_species_id,
+
       },
       {
         where: {
@@ -139,50 +144,45 @@ router.put('/animals', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Macros Endpoints/////////
+/// ////////Applicants Endpoints/////////
 /// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.get('/applicants', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
+    const applicants = await db.Applicants.findAll();
+    res.send(applicants);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get('/applicants/:applicant_id', async (req, res) => {
   try {
-    const meals = await db.Macros.findAll({
+    const applicants = await db.Applicants.findAll({
       where: {
-        meal_id: req.params.meal_id
+        applicant_id: req.params.applicant_id
       }
     });
-    res.json(meals);
+    res.json(applicants);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/macros', async (req, res) => {
+router.put('/applicants', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
+    await db.Applicants.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
+        last_name: req.body.last_name,
+        first_name: req.body.first_name,
+        phone_number: req.body.phone_number,
+        age: req.body.age
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          applicant_id: req.body.applicant_id
         }
       }
     );

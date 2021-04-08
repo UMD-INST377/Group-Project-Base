@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////Shelter Endpoints////////
 /// /////////////////////////////////
-router.get('/adoption', async (req, res) => {
+router.get('/shelters', async (req, res) => {
   try {
     const shelters = await db.Shelters.findAll();
     const reply = shelters.length > 0 ? { data: shelters } : { message: 'no results found' };
@@ -24,22 +24,22 @@ router.get('/adoption', async (req, res) => {
   }
 });
 
-router.get('/adoption/:shelter_id', async (req, res) => {
+router.get('/shelters/:shelter_id', async (req, res) => {
   try {
-    const shelter = await db.Shelters.findAll({
+    const shelters = await db.Shelters.findAll({
       where: {
         shelter_id: req.params.shelter_id
       }
     });
 
-    res.json(shelter);
+    res.json(shelters);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/adoption', async (req, res) => {
+router.post('/shelters', async (req, res) => {
   const shelters = await db.Shelters.findAll();
   const currentId = (await shelters.length) + 1;
   try {
@@ -194,26 +194,26 @@ router.put('/applicants', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
+/// Pending Adoptions Endpoints///
 /// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+router.get('/pending', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
+    const pending = await db.PendingAdoptions.findAll();
+    res.json(pending);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/restrictions/:restriction_id', async (req, res) => {
+router.get('/pending/:adopt_id', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    const pending = await db.PendingAdoptions.findAll({
       where: {
-        restriction_id: req.params.restriction_id
+        adopt_id: req.params.adopt_id
       }
     });
-    res.json(restrictions);
+    res.json(pending);
   } catch (err) {
     console.error(err);
     res.error('Server error');

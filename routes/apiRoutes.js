@@ -57,7 +57,7 @@ router.post('/adoption', async (req, res) => {
   }
 });
 
-router.delete('/dining/:shelter_id', async (req, res) => {
+router.delete('/adoption/:shelter_id', async (req, res) => {
   try {
     await db.Shelters.destroy({
       where: {
@@ -71,16 +71,16 @@ router.delete('/dining/:shelter_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/adoption', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.Shelters.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        shelter_name: req.body.shelter_name,
+        shelter_address: req.body.shelter_address
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          shelter_id: req.body.shelter_id
         }
       }
     );

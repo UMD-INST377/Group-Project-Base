@@ -273,3 +273,81 @@ router.route('/albums')
     .delete((req, res) => {
         res.send('Action unavailable');
     })
+
+/// /////////////////////////////////
+/// ////Songs Endpoints//////////////
+/// /////////////////////////////////
+router.route('/songs')
+.get(async (req, res) => {
+    try {
+        const songs = await db.Songs.findAll();
+        const reply = songs.length > 0 ? { data: songs } : { message: 'no results found' };
+        res.json(reply);
+    } catch (err) {
+        console.error(err);
+        res.error('Server error');
+    }
+})
+.post(async (req, res) => {
+    const songs = await db.Songs.findAll();
+    const currentId = (await songs.length) + 1;
+    try {
+        const newSong = await db.Songs.create({
+        song_id: currentId,
+        song_name: req.body.song_name,
+        explicit: req.body.explicit,
+        artist_id: req.body.artist_id,
+        album_id: req.body.album_id
+        });
+        res.json(newSong);
+    } catch (err) {
+        console.error(err);
+        res.error('Server error');
+    }
+})
+.put(async (req, res) => {
+    try {
+        await db.Songs.update(
+          {
+            streams: req.body.streams
+          },
+          {
+            where: {
+              us_top50_rank: req.body.us_top50_rank
+            }
+          }
+        );
+        res.send('Successfully Updated');
+    } catch (err) {
+        console.error(err);
+        res.error('Server error');
+    }
+})
+.delete((req, res) => {
+    res.send('Action unavailable');
+})
+
+router.route('/songs:song_id')
+.get(async (req, res) => {
+    try {
+        const rank = await db.USTop50.findAll({
+          where: {
+            song_id: req.params.song_id
+          }
+        });
+    
+        res.json(rank);
+    } catch (err) {
+        console.error(err);
+        res.error('Server error');
+    }
+})
+.post((req, res) => {
+    res.send('Action unavailable');
+})
+.put((req, res) => {
+    res.send('Action unavailable');
+})
+.delete((req, res) => {
+    res.send('Action unavailable');
+})

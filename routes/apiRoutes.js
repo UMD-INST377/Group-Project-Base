@@ -540,7 +540,7 @@ router.route('/teamCustom')
 /// ///////////////////////////
 /// /// Custom SQL Endpoint ///
 /// ///////////////////////////
-const playerCustom = `SELECT first_name, last_name, height(in), position, shooting_percentage, three_pt_pct
+const playerCustom = `SELECT first_name, last_name, height, position, shooting_percentage, three_pt_pct
 FROM player_info JOIN player_stats
 	USING (player_id)
 JOIN player_biostats

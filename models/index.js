@@ -1,11 +1,11 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
+// import DietaryRestrictions from './DietaryRestrictions.js';
 import Artists from './Artists.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+// import Macros from './Macros.js';
+// import Meals from './Meals.js';
 
 export default {
-  DietaryRestrictions,
+  // DietaryRestrictions,
   Artists,
-  Macros,
-  Meals
+  // Macros,
+  // Meals
 };

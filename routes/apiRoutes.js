@@ -7,16 +7,16 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the Animal Adoption API!');
 });
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/adoption', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const shelters = await db.Shelters.findAll();
+    const reply = shelters.length > 0 ? { data: shelters } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,15 +24,15 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/adoption/:shelter_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const shelter = await db.Shelters.findAll({
       where: {
-        hall_id: req.params.hall_id
+        shelter_id: req.params.shelter_id
       }
     });
 
-    res.json(hall);
+    res.json(shelter);
   } catch (err) {
     console.error(err);
     res.error('Server error');

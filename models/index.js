@@ -8,10 +8,10 @@ import reviews from './reviews.js';
 
 export default {
   reviews,
-  listings,
-  calendar,
+  // listings,
+  // calendar,
   neighborhoods,
-  scores,
-  hosts,
-  properties,
+  scores
+  // hosts,
+  // properties,
 };

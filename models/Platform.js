@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const Platform = sequelize.define(
-    'Platform',
+    'platform',
     {
       platform_id: {
         type: DataTypes.INTEGER,

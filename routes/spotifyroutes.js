@@ -351,3 +351,59 @@ router.route('/songs:song_id')
 .delete((req, res) => {
     res.send('Action unavailable');
 })
+
+/// /////////////////////////////////
+/// ////Artists Endpoints////////////
+/// /////////////////////////////////
+
+router.route('/artists')
+    .get(async (req, res) => {
+        try {
+            const artists = await Artists.findAll();
+            const reply = artists.length > 0 ? { data: artists } : { message: 'no results found' };
+            res.json(reply);
+        } catch (err) {
+            console.error(err);
+            res.error('Server error');
+        }
+    })
+    .post(async (req, res) => {
+        const artists = await db.Artists.findAll();
+        const currentId = (await artists.length) + 1;
+        try {
+            const newArtist = await db.Artists.create({
+            artist_id: currentId,
+            artist_name: req.body.streams,
+            verified: req.body.artist_id,
+            monthly_listeners: req.body.streams,
+            });
+            res.json(newArtist);
+        } catch (err) {
+            console.error(err);
+            res.error('Server error');
+        }
+    })
+    .put(async (req, res) => {
+        try {
+            await db.Artists.update(
+              {
+                artist_name: req.body.artist_name,
+                verified: req.body.genre,
+                monthly_listeners: req.body.monthly_listeners,
+                artist_id: req.body.artist_id
+              },
+              {
+                where: {
+                  artist_id: req.body.artists_id
+                }
+              }
+            );
+            res.send('Successfully Updated');
+        } catch (err) {
+            console.error(err);
+            res.error('Server error');
+        }
+    })
+    .delete((req, res) => {
+        res.send('Action unavailable');
+    })

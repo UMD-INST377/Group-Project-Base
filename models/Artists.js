@@ -15,7 +15,7 @@ export default (sequelize, DataTypes) => {
           type: DataTypes.BOOLEAN,
           allowNull: false
         },
-        montly_listeners: {
+        monthly_listeners: {
           type: DataTypes.INTEGER,
           allowNull: true
         }

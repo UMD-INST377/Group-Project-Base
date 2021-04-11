@@ -65,7 +65,7 @@ router.route('/us')
   .get(async (req, res) => {
     try {
       const ustop50 = await db.USTop50.findAll();
-      const reply = playlists.length > 0 ? { data: ustop50 } : { message: 'no results found' };
+      const reply = ustop50.length > 0 ? { data: ustop50 } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {
       console.error(err);
@@ -144,7 +144,7 @@ router.route('/global')
   .get(async (req, res) => {
     try {
       const globaltop50 = await db.GlobalTop50.findAll();
-      const reply = playlists.length > 0 ? { data: globaltop50 } : { message: 'no results found' };
+      const reply = globaltop50.length > 0 ? { data: globaltop50 } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {
       console.error(err);
@@ -222,8 +222,8 @@ router.route('/global:global_top50_rank')
 router.route('/albums')
   .get(async (req, res) => {
     try {
-      const albums = await Albums.findAll();
-      const reply = albums.length > 0 ? { data: albums } : { message: 'no results found' };
+      const albums = await db.Albums.findAll();
+      const reply = albums.length > 0 ? { data : albums } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {
       console.error(err);
@@ -359,7 +359,7 @@ router.route('/songs:song_id')
         }
       });
         
-      res.json(rank);
+      res.json(song);
     } catch (err) {
       console.error(err);
       res.error('Server error');
@@ -382,7 +382,7 @@ router.route('/songs:song_id')
 router.route('/artists')
   .get(async (req, res) => {
     try {
-      const artists = await Artists.findAll();
+      const artists = await db.Artists.findAll();
       const reply = artists.length > 0 ? { data: artists } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {

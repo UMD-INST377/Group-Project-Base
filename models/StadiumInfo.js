@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const StadiumInfo = sequelize.define(
-    'StadiumInfo',
+    'stadium_info',
     {
       stadium_id: {
         type: DataTypes.INTEGER,

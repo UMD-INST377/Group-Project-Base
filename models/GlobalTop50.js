@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
     const GlobalTop50 = sequelize.define(
-      "GlobalTop50",
+      "global_top50",
       {
         global_top50_rank: {
           type: DataTypes.INTEGER,

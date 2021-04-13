@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
     const USTop50 = sequelize.define(
-      "USTop50",
+      "us_top50",
       {
         us_top50_rank: {
           type: DataTypes.INTEGER,

@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
     const Artists = sequelize.define(
-      'Artists',
+      'artists',
       {
         artist_id: {
           type: DataTypes.INTEGER,

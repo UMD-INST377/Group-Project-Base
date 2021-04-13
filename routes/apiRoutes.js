@@ -86,7 +86,7 @@ router.put('/artists', async (req, res) => {
         }
       }
     );
-    res.send('Successfully Updated');
+    res.send('Artists Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -94,51 +94,54 @@ router.put('/artists', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Genres Endpoints//////////
 /// /////////////////////////////////
-// router.get('/meals', async (req, res) => {
-//   try {
-//     const meals = await db.Meals.findAll();
-//     res.json(meals);
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
 
-// router.get('/meals/:meal_id', async (req, res) => {
-//   try {
-//     const meals = await db.Meals.findAll({
-//       where: {
-//         meal_id: req.params.meal_id
-//       }
-//     });
-//     res.json(meals);
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
+// Anna Kafrune
 
-// router.put('/meals', async (req, res) => {
-//   try {
-//     await db.Meals.update(
-//       {
-//         meal_name: req.body.meal_name,
-//         meal_category: req.body.meal_category
-//       },
-//       {
-//         where: {
-//           meal_id: req.body.meal_id
-//         }
-//       }
-//     );
-//     res.send('Meal Successfully Updated');
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
+router.route('/genresRoute').get(async (req, res) => {
+  try {
+    const genres = await db.Genres.findAll();
+    res.json(genres);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/genres/:GENRE_ID', async (req, res) => {
+  try {
+    const genres = await db.Genres.findAll({
+      where: {
+        GENRE_ID: req.params.GENRE_ID
+      }
+    });
+    res.json(genres);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/genres', async (req, res) => {
+  try {
+    await db.Genres.update(
+      {
+        GENRE_NAME: req.body.GENRE_NAME,
+        GENRE_POPULARITY: req.body.GENRE_POPULARITY
+      },
+      {
+        where: {
+          GENRE_ID: req.body.GENRE_ID
+        }
+      }
+    );
+    res.send('Genre Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 // /// /////////////////////////////////
 // /// ////////Macros Endpoints/////////

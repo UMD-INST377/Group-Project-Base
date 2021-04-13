@@ -1,17 +1,22 @@
+// Anna Kafrune
+
 export default (sequelize, DataTypes) => {
-  const DietaryRestrictions = sequelize.define(
-    'Dietary_Restrictions',
+  const Genres = sequelize.define(
+    'genres',
     {
-      restriction_id: {
+      GENRE_ID: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      restriction_type: {
+      GENRE_NAME: {
         type: DataTypes.STRING
+      },
+      GENRE_POPULARITY: {
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return DietaryRestrictions;
+  return Genres;
 };

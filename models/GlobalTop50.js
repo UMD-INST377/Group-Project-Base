@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
     const GlobalTop50 = sequelize.define(
-      "GlobalTop50",
+      "global_top50",
       {
         global_top50_rank: {
           type: DataTypes.INTEGER,
@@ -11,15 +11,15 @@ export default (sequelize, DataTypes) => {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
-        playlist_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
         artist_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
         song_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        playlist_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },

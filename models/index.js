@@ -1,14 +1,3 @@
-// import DietaryRestrictions from './DietaryRestrictions.js';
-// import DiningHall from './DiningHall.js';
-// import Macros from './Macros.js';
-// import Meals from './Meals.js';
-
-// export default {
-//   DietaryRestrictions,
-//   DiningHall,
-//   Macros,
-//   Meals
-// };
 import Playlists from './Playlists.js';
 import USTop50 from './USTop50.js';
 import GlobalTop50 from './GlobalTop50.js';

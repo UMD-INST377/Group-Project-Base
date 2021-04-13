@@ -454,10 +454,10 @@ router.get('/reviews/:review_id', async (req, res) => {
 });
 
 router.post('/reviews', async (req, res) => {
-  const reviews = await db.properties.findAll();
+  const reviews = await db.reviews.findAll();
   const currentId = (await reviews.length) + 1;
   try {
-    const newEntry = await db.listings.create({
+    const newEntry = await db.reviews.create({
       review_id: currentId,
       listing_id: req.body.listing_id,
       host_id: req.body.host_id,
@@ -489,7 +489,7 @@ router.delete('/reviews/:review_id', async (req, res) => {
 router.put('/reviews', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.properties.update(
+    await db.reviews.update(
       {
         reviewer_name: req.body.reviewer_name,
         review_date: req.body.review_date,

@@ -1,11 +1,11 @@
 import Artists from './Artists.js'; // Anna Kafrune
-// import DietaryRestrictions from './DietaryRestrictions.js';
+import Genres from './Genres.js'; // Anna Kafrune
 // import Macros from './Macros.js';
 // import Meals from './Meals.js';
 
 export default {
   Artists, // Anna Kafrune
-  // DietaryRestrictions,
+  Genres, // Anna Kafrune
   // Macros,
   // Meals
 };

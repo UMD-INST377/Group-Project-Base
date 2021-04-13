@@ -33,7 +33,7 @@ router.route('/playlists')
     res.send('Action unavailable');
   })
 
-router.route('/playlists:playlist_id')
+router.route('/playlists/:playlist_id')
   .get(async (req, res) => {
     try {
       const playlist = await db.Playlists.findAll({
@@ -111,7 +111,7 @@ router.route('/us')
     res.send('Action unavailable');
   })
 
-router.route('/us:us_top50_rank')
+router.route('/us/:us_top50_rank')
   .get(async (req, res) => {
     try {
       const rank = await db.USTop50.findAll({
@@ -190,7 +190,7 @@ router.route('/global')
     res.send('Action unavailable');
   })
 
-router.route('/global:global_top50_rank')
+router.route('/global/:global_top50_rank')
   .get(async (req, res) => {
     try {
       const rank = await db.GlobalTop50.findAll({
@@ -271,12 +271,12 @@ router.route('/albums')
     res.send('Action unavailable');
   })
 
-router.route('/albums:albums_id')
+router.route('/albums/:album_id')
   .get(async (req, res) => {
     try {
       const album = await db.Albums.findAll({
         where: {
-          albums_id: req.params.albums_id
+          album_id: req.params.album_id
         }
       });
         
@@ -350,7 +350,7 @@ router.route('/songs')
     res.send('Action unavailable');
   })
 
-router.route('/songs:song_id')
+router.route('/songs/:song_id')
   .get(async (req, res) => {
     try {
       const song = await db.Songs.findAll({
@@ -431,7 +431,7 @@ router.route('/artists')
     res.send('Action unavailable');
   })
 
-router.route('/artists:artist_id')
+router.route('/artists/:artist_id')
   .get(async (req, res) => {
     try {
       const artist = await db.Artists.findAll({

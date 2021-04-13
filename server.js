@@ -15,7 +15,7 @@ app.use('/api', apiRoutes);
 
 async function bootServer() {
   try {
-    const mysql = await db.sequelizeDB; //spotify_database
+    const mysql = await db.sequelizeDB;
     await mysql.sync();
     app.listen(PORT, () => {
       console.log(`Listening on: http//localhost:${PORT}`);

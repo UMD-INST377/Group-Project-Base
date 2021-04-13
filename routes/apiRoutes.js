@@ -11,24 +11,27 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Artists Endpoints////////
+/// ////Artists Endpoints////////////
 /// /////////////////////////////////
-router.get('/artists', async (req, res) => {
+
+// Anna Kafrune
+
+router.route('/artistsRoute').get(async (req, res) => {
   try {
     const arts = await db.Artists.findAll();
     const reply = arts.length > 0 ? { data: arts } : { message: 'no results found' };
-    res.json(reply);
+    res.json({data: reply});
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
-});
+})
 
-router.get('/artsts/:artist_id', async (req, res) => {
+router.get('/artists/:ARTIST_ID', async (req, res) => {
   try {
     const arts = await db.Artists.findAll({
       where: {
-        artist_id: req.params.artist_id
+        ARTIST_ID: req.params.ARTIST_ID
       }
     });
 
@@ -44,10 +47,10 @@ router.post('/artists', async (req, res) => {
   const currentId = (await arts.length) + 1;
   try {
     const newArtist = await db.artists.create({
-      artist_id: currentId,
-      artist_name: req.body.artist_name,
-      artist_popularity: req.body.artist_popularity,
-      genre_id: req.body.genre_id,
+      ARTIST_ID: currentId,
+      ARTIST_NAME: req.body.ARTIST_NAME,
+      ARTIST_POPULARITY: req.body.ARTIST_POPULARITY,
+      GENRE_ID: req.body.GENRE_ID,
     });
     res.json(newArtist);
   } catch (err) {
@@ -56,11 +59,11 @@ router.post('/artists', async (req, res) => {
   }
 });
 
-router.delete('/artists/:artist_id', async (req, res) => {
+router.delete('/artists/:ARTIST_ID', async (req, res) => {
   try {
     await db.Artists.destroy({
       where: {
-        artist_id: req.params.artist_id
+        ARTIST_ID: req.params.ARTIST_ID
       }
     });
     res.send('Successfully Deleted');
@@ -74,12 +77,12 @@ router.put('/artists', async (req, res) => {
   try {
     await db.artists.update(
       {
-        artist_name: req.body.artist_name,
-        artist_popularity: req.body.artist_popularity
+        ARTIST_NAME: req.body.ARTIST_NAME,
+        ARTIST_POPULARITY: req.body.ARTIST_POPULARITY
       },
       {
         where: {
-          artist_id: req.body.artist_id
+          ARTIST_ID: req.body.ARTIST_ID
         }
       }
     );

@@ -1,19 +1,21 @@
+// Anna Kafrune
+
 export default (database, DataTypes) => {
   const Artists = database.define(
-    'Artists',
+    'artists',
     {
-      artist_id: {
+      ARTIST_ID: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      artist_name: {
+      ARTIST_NAME: {
         type: DataTypes.STRING
       },
-      artist_popularity: {
+      ARTIST_POPULARITY: {
         type: DataTypes.INTEGER
       },
-      genre_id: {
+      GENRE_ID: {
         type: DataTypes.INTEGER
       }
     },

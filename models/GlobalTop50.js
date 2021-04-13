@@ -11,15 +11,15 @@ export default (sequelize, DataTypes) => {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
-        playlist_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
         artist_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
         song_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        playlist_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },

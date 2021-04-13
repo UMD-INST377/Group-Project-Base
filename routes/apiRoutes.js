@@ -20,7 +20,7 @@ router.get('/calendar', async (req, res) => {
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -35,7 +35,7 @@ router.get('/calendar/:calendar_id', async (req, res) => {
     res.json(entry);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -55,7 +55,7 @@ router.post('/calendar', async (req, res) => {
     res.json(newEntry);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -69,7 +69,7 @@ router.delete('/calendar/:calendar_id', async (req, res) => {
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -92,7 +92,7 @@ router.put('/calendar', async (req, res) => {
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -105,7 +105,7 @@ router.get('/hosts', async (req, res) => {
     res.json(hosts);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -119,7 +119,7 @@ router.get('/hosts/:host_id', async (req, res) => {
     res.json(hosts);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -138,7 +138,7 @@ router.post('/hosts', async (req, res) => {
     res.json(newEntry);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -152,7 +152,7 @@ router.delete('/hosts/:host_id', async (req, res) => {
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -175,7 +175,7 @@ router.put('/hosts', async (req, res) => {
     res.send('Host Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -188,7 +188,7 @@ router.get('/listings', async (req, res) => {
     res.send(listings);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -202,7 +202,7 @@ router.get('/listings/:listing_id', async (req, res) => {
     res.json(listings);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -222,7 +222,7 @@ router.post('/listings', async (req, res) => {
     res.json(newEntry);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -236,7 +236,7 @@ router.delete('/listings/:listing_id', async (req, res) => {
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -259,7 +259,7 @@ router.put('/listings', async (req, res) => {
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -272,7 +272,7 @@ router.get('/neighborhoods', async (req, res) => {
     res.json(neighborhoods);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -286,7 +286,7 @@ router.get('/neighborhoods/:neighborhood_id', async (req, res) => {
     res.json(neighborhoods);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -301,7 +301,7 @@ router.post('/neighborhoods', async (req, res) => {
     res.json(newEntry);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -315,7 +315,7 @@ router.delete('/neighborhoods/:neighborhood_id', async (req, res) => {
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -335,7 +335,7 @@ router.put('/neighborhoods', async (req, res) => {
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -348,7 +348,7 @@ router.get('/properties', async (req, res) => {
     res.json(properties);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -362,7 +362,7 @@ router.get('/properties/:property_id', async (req, res) => {
     res.json(properties);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -383,7 +383,7 @@ router.post('/properties', async (req, res) => {
     res.json(newEntry);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -397,7 +397,7 @@ router.delete('/properties/:property_id', async (req, res) => {
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -422,7 +422,7 @@ router.put('/properties', async (req, res) => {
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -435,7 +435,7 @@ router.get('/reviews', async (req, res) => {
     res.json(reviews);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -449,7 +449,7 @@ router.get('/reviews/:review_id', async (req, res) => {
     res.json(reviews);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -468,7 +468,7 @@ router.post('/reviews', async (req, res) => {
     res.json(newEntry);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -482,7 +482,7 @@ router.delete('/reviews/:review_id', async (req, res) => {
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -504,7 +504,7 @@ router.put('/reviews', async (req, res) => {
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -517,7 +517,7 @@ router.get('/scores', async (req, res) => {
     res.json(scores);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -531,7 +531,7 @@ router.get('/scores/:scores_id', async (req, res) => {
     res.json(scores);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -552,7 +552,7 @@ router.post('/scores', async (req, res) => {
     res.json(newEntry);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -566,7 +566,7 @@ router.delete('/scores/:score_id', async (req, res) => {
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -591,7 +591,7 @@ router.put('/scores', async (req, res) => {
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 
@@ -621,7 +621,7 @@ router.get('/allrecords', async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error(err);
-    res.status(500).send(`${err.parent.code} ${err.parent.sqlMessage}`);
+    res.status(500).send('Server Error');
   }
 });
 

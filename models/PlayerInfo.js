@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const PlayerInfo = sequelize.define(
-    'PlayerInfo',
+    'player_info',
     {
       player_id: {
         type: DataTypes.INTEGER,
@@ -9,7 +9,7 @@ export default (sequelize, DataTypes) => {
         primaryKey: true
       },
       salary: {
-        type: DataTypes.DATE
+        type: DataTypes.INTEGER
       },
       jersey_number: {
         type: DataTypes.INTEGER
@@ -37,4 +37,4 @@ export default (sequelize, DataTypes) => {
     { freezeTableName: true, timestamps: false }
   );
   return PlayerInfo;
-}
+};

@@ -23,7 +23,7 @@ router.route('/playlists')
       res.error('Server error');
     }
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     const playlists = await db.Playlists.findAll();
     const currentId = (await playlists.length) + 1;
     try {
@@ -37,36 +37,28 @@ router.route('/playlists')
       res.error('Server error');
     }
   })
-  .put((req, res) => {
+  .put(async (req, res) => {
     try {
-      await db.Playlists.update(
-        {
-          playlist_name: req.body.playlist_name
-        },
-        {
-          where: {
-            playlist_id: req.body.playlist_id
+      if (playlist_id != 1 && playlist_id != 2 && playlist_id != 3) {
+        await db.Playlists.update(
+          {
+            playlist_name: req.body.playlist_name
+          },
+          {
+            where: {
+              playlist_id: req.body.playlist_id
+            }
           }
-        }
-      );
-      res.send('Successfully Updated');
+        );
+        res.send('Successfully Updated');
+      }
     } catch (err) {
       console.error(err);
       res.error('Server error');
     }
   })
   .delete((req, res) => {
-    try {
-      await db.Playlists.destroy({
-        where: {
-          playlist_id: req.params.playlist_id
-        }
-      });
-      res.send('Successfully Deleted');
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
-    }
+    res.send('Action unavailable');
   })
 
 router.route('/playlists/:playlist_id')
@@ -90,14 +82,17 @@ router.route('/playlists/:playlist_id')
   .put((req, res) => {
     res.send('Action unavailable');
   })
-  .delete((req, res) => {
+  .delete(async (req, res) => {
     try {
-      await db.Playlists.destroy({
-        where: {
-          playlist_id: req.params.playlist_id
-        }
-      });
-      res.send('Successfully Deleted');
+      if (playlist_id != 1 && playlist_id != 2 && playlist_id != 3) {
+        await db.Playlists.destroy({
+          where: {
+            playlist_id: req.params.playlist_id
+          }
+        });
+        res.send('Successfully Deleted');
+      }
+      
     } catch (err) {
       console.error(err);
       res.error('Server error');

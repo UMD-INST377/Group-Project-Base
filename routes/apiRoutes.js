@@ -281,7 +281,7 @@ router.put('/Museum_info', async (req, res) => { // Where I left off 19:18 4/6/2
 /// /////////////////////////////////
 router.get('/visitors', async (req, res) => {
   try {
-    const visitors = await db.visitors.findAll();
+    const visitors = await db.Visitors.findAll();
     const reply = visitors.length > 0 ? {data: visitors} : {message: 'no results found'};
     res.json(reply)
   } catch(err) {
@@ -292,7 +292,7 @@ router.get('/visitors', async (req, res) => {
 
 router.get('/visitors/:visitor_id', async (req, res) => {
   try {
-    const visitors = await db.visitors.findAll({
+    const visitors = await db.Visitors.findAll({
       where: {
         visitor:id: req.params.visitor_id
       }
@@ -306,7 +306,7 @@ router.get('/visitors/:visitor_id', async (req, res) => {
 });
 
 router.post('/visitors', async (req, res) => {
-  const visitors = await db.visitors.findAll();
+  const visitors = await db.Visitors.findAll();
   const curId = (await visitors.length) + 1;
   try {
     const newVisitor = await db.visitors.create({
@@ -325,7 +325,7 @@ router.post('/visitors', async (req, res) => {
 
 router.delete('/visitors/:visitor_id', async (req, res) => {
   try {
-    await db.visitors.destroy({
+    await db.Visitors.destroy({
       where: {
         visitor_id: req.params.visitor_id
       }
@@ -337,9 +337,9 @@ router.delete('/visitors/:visitor_id', async (req, res) => {
   }
 });
 
-router.put('/visitors', async (req, res) => {
+router.put('/Visitors', async (req, res) => {
   try {
-    await db.visitors.update(
+    await db.Visitors.update(
       {
         visitor_phone_num: req.body.visitor_phone_num,
         visitor_email: req.body.visitor_email

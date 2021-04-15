@@ -490,8 +490,6 @@ router.post('/museum_visits', async (req, res) => {
       museum_id: req.body.museum_id,
       visit_date: req.body.visit_date,
       member_status: req.body.member_status,
-      fk_visitors_has_Museum_info_Museum_info1: req.body.fk_visitors_has_Museum_info_Museum_info1,
-      fk_visitors_has_Museum_info_visitors1: req.body.fk_visitors_has_Museum_info_visitors1
     });
     res.json(newVisit);
   } catch (err) {
@@ -522,8 +520,6 @@ router.put('/museum_visits', async (req, res) => {
         museum_id: req.body.museum_id,
         visit_date: req.body.visit_date,
         member_status: req.body.member_status,
-        fk_visitors_has_Museum_info_Museum_info1: req.body.fk_visitors_has_Museum_info_Museum_info1,
-        fk_visitors_has_Museum_info_visitors1: req.body.fk_visitors_has_Museum_info_visitors1
       },
       {
         where: {

@@ -27,6 +27,4 @@ async function bootServer() {
   }
 }
 
-
-
 bootServer();

@@ -1,11 +1,11 @@
 import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './movies.js';
+import movies from './movies.js';
 import Macros from './Macros.js';
 import Meals from './Meals.js';
 
 export default {
   DietaryRestrictions,
-  DiningHall,
+  movies,
   Macros,
   Meals
 };

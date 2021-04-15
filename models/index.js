@@ -1,13 +1,5 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
-import Clubs from './Clubs.js';
+import clubs from './clubs.js';
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals,
-  Clubs
+  clubs          // remember to seperate between models with a comma 
 };

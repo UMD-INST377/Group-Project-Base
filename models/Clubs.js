@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
     const Clubs = sequelize.define(
-      'Clubs',
+      'clubs',
       {
         club_id: {
           type: DataTypes.INTEGER,
@@ -23,7 +23,7 @@ export default (sequelize, DataTypes) => {
         num_of_players: {
           type: DataTypes.INTEGER,
           allowNull: false
-        },
+        }
       },
       { freezeTableName: true, timestamps: false }
     );

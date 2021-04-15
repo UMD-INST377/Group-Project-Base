@@ -143,6 +143,56 @@ router.put('/genres', async (req, res) => {
   }
 });
 
+////////////////////////////////////
+///////Characteristics Endpoints////
+////////////////////////////////////
+
+// Jared Caplan
+
+router.route('/characteristicsRoute').get(async (req, res) => {
+  try {
+    const characteristics = await db.Characteristics.findAll();
+    res.json(characteristics);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/characteristics/:CHARACTERISTICS_ID', async (req, res) => {
+  try {
+    const characteristics = await db.Characteristics.findAll({
+      where: {
+        CHARACTERISTICS_ID: req.params.CHARACTERISTICS_ID
+      }
+    });
+    res.json(characteristics);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/characteristics', async (req, res) => {
+  try {
+    await db.Characteristics.update(
+      {
+        CHARACTERISTICS_NAME: req.body.CHARACTERISTICS_NAME,
+        CHARACTERISTICS_DESCRIPTION: req.body.CHARACTERISTICS_DESCRIPTION
+      },
+      {
+        where: {
+          CHARACTERISTICS_ID: req.body.CHARACTERISTICS_ID
+        }
+      }
+    );
+    res.send('characteristics Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 // /// /////////////////////////////////
 // /// ////////Macros Endpoints/////////
 // /// /////////////////////////////////

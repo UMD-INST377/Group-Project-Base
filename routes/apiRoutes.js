@@ -458,7 +458,7 @@ router.put('/ada_compliance', async (req, res) => {
 router.get('/museum_visits', async (req, res) => {
   try {
     const visit = await db.MuseumVisits.findAll();
-    const reply = ada.length > 0 ? { data: ada } : { message: 'no results found' };
+    const reply = visit.length > 0 ? { data: visit } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -483,7 +483,7 @@ router.get('/museum_visits/:visitor_id', async (req, res) => {
 
 router.post('/museum_visits', async (req, res) => {
   const visit = await db.MuseumVisits.findAll();
-  const currentId = (await visits.length) + 1;
+  const currentId = (await visit.length) + 1;
   try {
     const newVisit = await db.MuseumVisits.create({
       vistor_id: currentId,

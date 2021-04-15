@@ -1,3 +1,94 @@
 h1 {
-    font-size: 55px;
+    font-size: 80px;
+    text-align: center;
 }
+
+.h2 {
+    color: white;
+}
+.title {
+    color: white;
+    text-align: center;
+}
+
+.subtitle {
+    color: white;
+    text-align: center;
+}
+
+nav {
+    margin-top: 20px;
+    width: auto;  
+    margin-left: 25px; 
+    margin-right: 25px; 
+}
+
+.navbar-item {
+    color: white;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subcategory {
+    color: black;
+}
+
+.button {
+    color: white;
+    margin-top: 20px;
+    width: 1500px;  
+    margin-left: 25px; 
+    margin-right: 25px; 
+}
+
+
+/* || main layout */
+.box, .navbar, .button {
+    align-content: center;
+    background-color: rgb(98, 0, 255);;
+}
+  
+
+.container {
+    display: flex;
+}
+
+.box {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px white;
+}  
+
+.box:first-child{
+    margin-right: 20px;
+}
+
+.sub-box {
+    width: 30%;
+    float: left;
+    padding: 20px;
+    border: 2px white;
+}
+.box:first-child{
+    margin-right: 10px;
+}
+
+.sub-box {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 600px;
+    border: 1px black solid;
+    margin: 0 auto;
+}
+
+#leftbox,#middlebox ,#rightbox {
+    width:30%;
+    height:180px;
+    background-color:white;
+    border:solid gray;
+}
+

@@ -261,7 +261,7 @@ router.put('/Museum_info', async (req, res) => { // Where I left off 19:18 4/6/2
 				museum_address: req.body.museum_address,
 				museum_city: req.body.museum_city,
 				museum_zipcode: req.body.museum_zipcode,
-				ada_id: req.body.ada_id 
+				ada_id: req.body.ada_id
       },
       {
         where: {
@@ -273,6 +273,87 @@ router.put('/Museum_info', async (req, res) => { // Where I left off 19:18 4/6/2
   } catch (err) {
     console.error(err);
     res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////Visitor Endpoints////////
+/// /////////////////////////////////
+router.get('/visitors', async (req, res) => {
+  try {
+    const visitors = await db.Visitors.findAll();
+    const reply = visitors.length > 0 ? {data: visitors} : {message: 'no results found'};
+    res.json(reply)
+  } catch(err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/visitors/:visitor_id', async (req, res) => {
+  try {
+    const visitors = await db.Visitors.findAll({
+      where: {
+        visitor:id: req.params.visitor_id
+      }
+    });
+
+    res.json(visitors)
+  } catch (err) {
+    console.log(err);
+    res.error('Server error')
+  }
+});
+
+router.post('/visitors', async (req, res) => {
+  const visitors = await db.Visitors.findAll();
+  const curId = (await visitors.length) + 1;
+  try {
+    const newVisitor = await db.visitors.create({
+      visitor_id: curId,
+      visitor_fn: req.body.vistor_fn,
+      visitor_ln: req.body.visitor_ln,
+      visitor_phone_num: req.body.visitor_phone_num,
+      visitor_email: req.body.visitor_email
+    });
+    res.json(newVisitor);
+  } catch (err) {
+    console.log(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/visitors/:visitor_id', async (req, res) => {
+  try {
+    await db.Visitors.destroy({
+      where: {
+        visitor_id: req.params.visitor_id
+      }
+    });
+    res.send('Successfully deleted');
+  } catch (err) {
+    console.log(err);
+    res.error('Server error')
+  }
+});
+
+router.put('/Visitors', async (req, res) => {
+  try {
+    await db.Visitors.update(
+      {
+        visitor_phone_num: req.body.visitor_phone_num,
+        visitor_email: req.body.visitor_email
+      },
+      {
+        where: {
+          visitor_id: req.body.visitor_id
+        }
+      }
+    );
+    res.send('Successfully updated');
+  } catch (err) {
+    console.log(err);
+    res.error('Server error')
   }
 });
 
@@ -293,6 +374,7 @@ router.get('/museum_staff', async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 /// /////////////////////////////////
  /// ////Ada Compliance Endpoints////////
  /// /////////////////////////////////
@@ -458,3 +540,6 @@ router.put('/museum_visits', async (req, res) => {
 });
 
 export default router;
+=======
+export default router;
+>>>>>>> 8a99b36374a0a1f111b156c1ae52871fd2506a99

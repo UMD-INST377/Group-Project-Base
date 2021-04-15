@@ -23,11 +23,39 @@ router.route('/playlists')
       res.error('Server error');
     }
   })
-  .post((req, res) => {
-    res.send('Action unavailable');
+  .post(async (req, res) => {
+    const playlists = await db.Playlists.findAll();
+    const currentId = (await playlists.length) + 1;
+    try {
+      const newPlaylist = await db.Playlists.create({
+        playlist_id: currentId,
+        playlist_name: req.body.playlist_name
+      });
+      res.json(newPlaylist);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
   })
-  .put((req, res) => {
-    res.send('Action unavailable');
+  .put(async (req, res) => {
+    try {
+      if (playlist_id != 1 && playlist_id != 2 && playlist_id != 3) {
+        await db.Playlists.update(
+          {
+            playlist_name: req.body.playlist_name
+          },
+          {
+            where: {
+              playlist_id: req.body.playlist_id
+            }
+          }
+        );
+        res.send('Successfully Updated');
+      }
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
   })
   .delete((req, res) => {
     res.send('Action unavailable');
@@ -54,8 +82,21 @@ router.route('/playlists/:playlist_id')
   .put((req, res) => {
     res.send('Action unavailable');
   })
-  .delete((req, res) => {
-    res.send('Action unavailable');
+  .delete(async (req, res) => {
+    try {
+      if (playlist_id != 1 && playlist_id != 2 && playlist_id != 3) {
+        await db.Playlists.destroy({
+          where: {
+            playlist_id: req.params.playlist_id
+          }
+        });
+        res.send('Successfully Deleted');
+      }
+      
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
   })
 
 /// /////////////////////////////////
@@ -73,39 +114,12 @@ router.route('/us')
     }
   })
   .post(async (req, res) => {
-    const ustop50 = await db.USTop50.findAll();
-    const currentId = (await ustop50.length) + 1;
-    try {
-      const newSong = await db.USTop50.create({
-        us_top50_rank: currentId,
-        streams: req.body.streams,
-        playlist_id: req.body.playlist_id,
-        artist_id: req.body.artist_id,
-        song_id: req.body.song_id
-      });
-      res.json(newSong);
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
-    }
+    // users can't add new song to main db
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    try {
-      await db.USTop50.update(
-        {
-          streams: req.body.streams
-        },
-        {
-          where: {
-            us_top50_rank: req.body.us_top50_rank
-          }
-        }
-      );
-      res.send('Successfully Updated');
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
-    }
+    // users can't update song to main db
+    res.send('Action unavailable');
   })
   .delete((req, res) => {
     res.send('Action unavailable');

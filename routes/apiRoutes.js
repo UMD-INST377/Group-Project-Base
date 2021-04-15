@@ -116,41 +116,10 @@ router.route('/us')
   .post(async (req, res) => {
     // users can't add new song to main db
     res.send('Action unavailable');
-  //   const ustop50 = await db.USTop50.findAll();
-  //   const currentId = (await ustop50.length) + 1;
-  //   try {
-  //     const newSong = await db.USTop50.create({
-  //       us_top50_rank: currentId,
-  //       streams: req.body.streams,
-  //       playlist_id: req.body.playlist_id,
-  //       artist_id: req.body.artist_id,
-  //       song_id: req.body.song_id
-  //     });
-  //     res.json(newSong);
-  //   } catch (err) {
-  //     console.error(err);
-  //     res.error('Server error');
-  //   }
   })
   .put(async (req, res) => {
     // users can't update song to main db
     res.send('Action unavailable');
-    // try {
-    //   await db.USTop50.update(
-    //     {
-    //       streams: req.body.streams
-    //     },
-    //     {
-    //       where: {
-    //         us_top50_rank: req.body.us_top50_rank
-    //       }
-    //     }
-    //   );
-    //   res.send('Successfully Updated');
-    // } catch (err) {
-    //   console.error(err);
-    //   res.error('Server error');
-    // }
   })
   .delete((req, res) => {
     res.send('Action unavailable');

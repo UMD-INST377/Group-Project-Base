@@ -294,7 +294,7 @@ router.get('/visitors/:visitor_id', async (req, res) => {
   try {
     const visitors = await db.Visitors.findAll({
       where: {
-        visitor:id: req.params.visitor_id
+        visitor_id: req.params.visitor_id
       }
     });
 
@@ -374,7 +374,6 @@ router.get('/museum_staff', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
 /// /////////////////////////////////
  /// ////Ada Compliance Endpoints////////
  /// /////////////////////////////////
@@ -540,6 +539,3 @@ router.put('/museum_visits', async (req, res) => {
 });
 
 export default router;
-=======
-export default router;
->>>>>>> 8a99b36374a0a1f111b156c1ae52871fd2506a99

@@ -1,0 +1,49 @@
+h1 {
+    font-size: 55px;
+}
+#resultContainer{
+    background-color: aliceblue;
+    height: 600px;
+    width: 1300px;
+    padding: 20px;
+    margin: auto;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.result {
+    height: 260px;
+    width: 290px;
+    padding: 10px;
+    display: flex;
+}
+.result img {
+    max-height: 234px;
+    max-width: 155px;
+}
+.imageArea {
+    height: 234px;
+    width: 155px;
+}
+.bookInfo{
+    margin: 5px;
+}
+hr{
+    margin: 13px;
+    background-color:lightgray;
+}
+.pageSelector{
+    height: 25px;
+    width: 100px;
+    font-size: 18px;
+    background-color: lightgray;
+
+}
+#nextPageFooter{
+    display: flex;
+    justify-content: flex-end
+
+
+}

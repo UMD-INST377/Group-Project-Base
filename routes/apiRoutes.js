@@ -89,4 +89,66 @@ router.delete('/order/:order_id', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// ////customers Endpoints////////
+/// /////////////////////////////////
+
+// Get all database records from the Customers table
+router.get('/customer', async (req, res) => {
+  try {
+    const customerItem = await db.customers.findAll();
+    const reply = customerItem.length > 0 ? { data: customerItem} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from Customers table
+router.get('/customer/:customer_id', async (req, res) => {
+  try {
+    const customerItem = await db.customers.findAll({
+      where: {
+        customer_id: req.params.customer_id
+      }
+    });
+    res.json(customerItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////orderItems Endpoints////////
+/// /////////////////////////////////
+
+// Get all database records from the Order Items table
+router.get('/orderItems', async (req, res) => {
+  try {
+    const orderItems = await db.orderItems.findAll();
+    const reply = orderItems.length > 0 ? { data: orderItems} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from Order Items table
+router.get('/orderItems/:order_item_id', async (req, res) => {
+  try {
+    const orderItems = await db.orderItems.findAll({
+      where: {
+        order_item_id: req.params.order_item_id
+      }
+    });
+    res.json(orderItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

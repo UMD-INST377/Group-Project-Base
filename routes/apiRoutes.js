@@ -300,7 +300,7 @@ router.get('/visitors/:visitor_id', async (req, res) => {
 
     res.json(visitors)
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.error('Server error')
   }
 });
@@ -309,7 +309,7 @@ router.post('/visitors', async (req, res) => {
   const visitors = await db.Visitors.findAll();
   const curId = (await visitors.length) + 1;
   try {
-    const newVisitor = await db.visitors.create({
+    const newVisitor = await db.Visitors.create({
       visitor_id: curId,
       visitor_fn: req.body.vistor_fn,
       visitor_ln: req.body.visitor_ln,
@@ -318,7 +318,7 @@ router.post('/visitors', async (req, res) => {
     });
     res.json(newVisitor);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.error('Server error');
   }
 });
@@ -332,12 +332,12 @@ router.delete('/visitors/:visitor_id', async (req, res) => {
     });
     res.send('Successfully deleted');
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.error('Server error')
   }
 });
 
-router.put('/Visitors', async (req, res) => {
+router.put('/visitors', async (req, res) => {
   try {
     await db.Visitors.update(
       {
@@ -352,8 +352,86 @@ router.put('/Visitors', async (req, res) => {
     );
     res.send('Successfully updated');
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.error('Server error')
+  }
+});
+
+/// /////////////////////////////////
+/// ////Visitor Transaction Endpoints////////
+/// /////////////////////////////////
+router.get('/visitor_transactions', async (req, res) => {
+  try {
+    const visTran = await db.VisitorTransactions.findAll();
+    const reply = visTran.length > 0 ? {data: visTran} : {message: 'no results found'};
+    res.json(reply);
+  } catch(err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/visitor_transaction/:transaction_id', async (req, res) => {
+  try {
+    const visTranID = await db.VisitorTransactions.findAll({
+      where: {
+        visTranID: req.params.transaction_id
+      }
+    });
+    res.json(visTranID);
+  } catch(err) {
+    console.error(err)
+    res.error('Server error');
+  }
+});
+
+router.post('visitor_transactions', async (req, res) => {
+  const visTran = await db.VisitorTransactions.findAll();
+  const curId = (await visTran.length) + 1;
+  try {
+    const newVisTran = await db.VisitorTransactions.create({
+      transaction_id: curId,
+      visitor_id: req.body.visitor_id,
+      visitor_transactions: req.body.visitor_transactions
+    });
+    res.json(newVisTran);
+  } catch(err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/visitor_transactions/:transaction_id', async (req, res) => {
+  try {
+    await db.VisitorTransactions.destroy({
+      where: {
+        transaction_id: req.params.transaction_id
+      }
+    });
+    res.send('Successfully deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/visitor_transactions', async (req, res) => {
+  try {
+    await db.VisitorTransactions.update(
+      {
+        visitor_transactions: req.body.visitor_transactions,
+        visitor_id: req.body.visitor_id
+      },
+      {
+        where: {
+          transaction_id: req.body.transaction_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch(err) {
+    console.error(err);
+    res.error('Server error');
   }
 });
 

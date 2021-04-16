@@ -127,8 +127,7 @@ router.put('/animals', async (req, res) => {
         name: req.body.name,
         status: req.body.status,
         gender: req.body.gender,
-        Animal_type_species_id: req.body.Animal_type_species_id,
-
+        Animal_type_species_id: req.body.Animal_type_species_id
       },
       {
         where: {
@@ -246,7 +245,6 @@ router.get('/types/:species_id', async (req, res) => {
     res.error('Server error');
   }
 });
-
 
 /// /////////////////////////////////
 /// Employees Endpoints///

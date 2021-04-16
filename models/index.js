@@ -6,7 +6,7 @@ import SongDetails from './SongDetails.js';
 
 export default {
   DietaryRestrictions,
-  DiningHall,
+  Playlist,
   Macros,
   PlaylistDetails,
   SongDetails

@@ -252,22 +252,22 @@ router.get('/playlist_details/:playlist_details_id', async (req, res) => {
 /// /////////////////////////////////
 router.get('/songDetails', async (req, res) => {
   try {
-    const pDetails = await db.playlist_details.findAll();
-    res.json(pDetails);
+    const sDetails = await db.song_details.findAll();
+    res.json(sDetails);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/songDetails/:playlist_details_id', async (req, res) => {
+router.get('/songDetails/:song_details_id', async (req, res) => {
   try {
-    const pDetails = await db.playlist_details.findAll({
+    const sDetails = await db.song_details.findAll({
       where: {
-        pDetails_id: req.params.pDetails_id
+        sDetails_id: req.params.sDetails_id
       }
     });
-    res.json(pDetails);
+    res.json(sDetails);
   } catch (err) {
     console.error(err);
     res.error('Server error');

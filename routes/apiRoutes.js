@@ -97,7 +97,7 @@ router.put('/albums', async (req, res) => {
 /// /////////////////////////////////
 /// ////////Albumss Endpoints//////////
 /// /////////////////////////////////
-router.get('/artist', async (req, res) => {
+router.get('/artists', async (req, res) => {
   try {
     const artists = await db.Artists.findAll();
     res.json(artists);
@@ -107,7 +107,7 @@ router.get('/artist', async (req, res) => {
   }
 });
 
-router.get('/artist/:artist_id', async (req, res) => {
+router.get('/artists/:artist_id', async (req, res) => {
   try {
     const artist = await db.Artists.findAll({
       where: {

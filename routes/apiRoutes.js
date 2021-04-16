@@ -221,54 +221,6 @@ router.put('/songs', async (req, res) => {
   }
 });
 
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
-const macrosCustom = 'SELECT `Group20_spotify_playlist`.`artist_info`.`artists` AS `artists`,`Group20_spotify_playlist`.`artist_info`.`currentID` AS `currentID`,`Dining_Hall_Tracker`.`artist_info`.`newArtist` AS `newArtist`,`Dining_Hall_Tracker`.`playlists`.`playlist` AS `playlist`,`Dining_Hall_Tracker`.`playlists`.`songs` AS `songs`,`Dining_Hall_Tracker`.`restrictions`.`restrictions` AS `restrictions`,';
-router.get('/table/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
 export default router;

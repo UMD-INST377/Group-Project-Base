@@ -1,8 +1,8 @@
 //Alex Ghelman
 
 export default (sequelize, DataTypes) => {
-    const songchar = sequelize.define(
-      'songchar',
+    const Songchar = sequelize.define(
+      'Songchar',
       {
         SONG_CHARACTERISTICS_ID: {
           type: DataTypes.INTEGER,
@@ -21,5 +21,5 @@ export default (sequelize, DataTypes) => {
       },
       { freezeTableName: true, timestamps: false }
     );
-    return songchar;
+    return Songchar;
   };

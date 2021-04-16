@@ -20,6 +20,10 @@ export default (database, DataTypes) => {
       },
       end_hold_date: {
         type: DataTypes.STRING
+      },
+      shelter_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       }
     },
     { freezeTableName: true, timestamps: false }

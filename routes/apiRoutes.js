@@ -221,7 +221,7 @@ router.delete('/genres/:genre_id', async (req, res) => {
 /// /////////////////////////////////
 router.get('/directors', async (req, res) => {
   try {
-    const directors = await db.Directors.findAll();
+    const directors = await db.Director.findAll();
     res.json(directors);
   } catch (err) {
     console.error(err);
@@ -231,7 +231,7 @@ router.get('/directors', async (req, res) => {
 
 router.get('/directors/:directors_id', async (req, res) => {
   try {
-    const directors = await db.Directors.findAll({
+    const directors = await db.Director.findAll({
       where: {
         director_id: req.params.director_id
       }
@@ -246,15 +246,15 @@ router.get('/directors/:directors_id', async (req, res) => {
 router.put('/directors', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Directors.update(
+    await db.Director.update(
       {
-        director_first_name: req.body.director_first_name,
-        director_last_name: req.body.director_last_name,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
         director_salary: req.body.director_salary
       },
       {
         where: {
-          direcor_id: req.body.director_id
+          director_id: req.body.director_id
         }
       }
     );
@@ -267,7 +267,7 @@ router.put('/directors', async (req, res) => {
 
 router.delete('/directors/:director_id', async (req, res) => {
   try {
-    await db.Directors.destroy({
+    await db.Director.destroy({
       where: {
         director_id: req.params.director_id
       }

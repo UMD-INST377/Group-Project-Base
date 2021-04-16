@@ -21,7 +21,6 @@ async function dataHandler() {
 
 async function windowActions() {
   await dataHandler();
-  await macrosData();
 }
 
 window.onload = windowActions;

@@ -8,7 +8,7 @@ export default (database, DataTypes) => {
         primaryKey: true
       },
       Title: {
-        type: DataTypes.VARCHAR
+        type: DataTypes.STRING
       },
       Year: {
         type: DataTypes.INTEGER
@@ -17,17 +17,17 @@ export default (database, DataTypes) => {
         type: DataTypes.INTEGER
       },
       company_id: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         foreignKey: true
       },
       director_id: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         foreignKey: true
       },
       Rating_id: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         foreignKey: true
-      },
+      }
     },
     { freezeTableName: true, timestamps: false }
   );

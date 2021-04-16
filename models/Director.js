@@ -9,13 +9,13 @@ export default (sequelize, DataTypes) => {
         primaryKey: true
       },
       first_name: {
-        type: DataTypes.VARCHAR
+        type: DataTypes.STRING
       },
       last_name: {
-        type: DataTypes.VARCHAR
+        type: DataTypes.STRING
       },
       director_salary: {
-        type: DataTypes.VARCHAR
+        type: DataTypes.INTEGER
       }
 
     },

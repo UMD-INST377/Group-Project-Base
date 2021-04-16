@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////ALbum Endpoints////////
 /// /////////////////////////////////
 router.get('/albums', async (req, res) => {
   try {

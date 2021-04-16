@@ -353,3 +353,55 @@ router.get('/custom', async (req, res) => {
 });
 
 export default router;
+
+/// //////////////////////////////////
+/// ///////Custom SQL Endpoint////////
+/// /////////////////////////////////
+const animalsCustom = 'SELECT `Animal_Shelter_Tracker`.`Animals`.`animal_id` AS `animal_id`,`Animal_Shelter_Tracker`.`Animals`.`animal_name` AS `animal_name`,`Animal_Shelter_Tracker`.`Animals`.`status` AS `status`,`Animal_Shelter_Tracker`.`Animals`.`Animal_type_species_id` AS `Animal_type_species_id`,`Animal_Shelter_Tracker`.`Animals`.`status` AS `status`,`Animal_Shelter_Tracker`.`Animals`.`gender` AS `gender`)';
+router.get('/table/data', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(macrosCustom, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+const mealMapCustom = `SELECT hall_name,
+  hall_address,
+  hall_lat,
+  hall_long,
+  meal_name
+FROM
+  Meals m
+INNER JOIN Meals_Locations ml 
+  ON m.meal_id = ml.meal_id
+INNER JOIN Dining_Hall d
+ON d.hall_id = ml.hall_id;`;
+router.get('/map/data', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(mealMapCustom, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.get('/custom', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(req.body.query, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+export default router;

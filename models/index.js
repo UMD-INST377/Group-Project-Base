@@ -1,4 +1,4 @@
-import AnimalType from './AnimalTypes.js'
+import AnimalType from './AnimalTypes.js';
 import Animals from './Animals.js';
 import Applicants from './Applicants.js';
 import Employees from './Employees.js';

@@ -6,7 +6,7 @@ export default (database, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
-      },      
+      },
       last_name: {
         type: DataTypes.STRING
 
@@ -23,10 +23,11 @@ export default (database, DataTypes) => {
       employee_type: {
         type: DataTypes.INTEGER
       },
-      Shelters_shelter_id: {
+      shelter_id: {
         type: DataTypes.INTEGER,
         allowNull: false
-      },
+      }
     }
-  )
-}
+  );
+  return Employees;
+};

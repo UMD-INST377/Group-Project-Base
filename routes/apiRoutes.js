@@ -46,13 +46,13 @@ router.get('/albums/:album_id', async (req, res) => {
 
 router.post('/albums', async (req, res) => {
   const album = await db.Albums.findAll();
-  const currentId = (await albums.length) + 1;
+  const currentId = (await album.length) + 1;
   try {
-    const newAlabum = await db.Albums.create({
+      const newAlbum = await db.Albums.create({
       album_id: currentId,
-      hall_name: req.body.album_name
+      album_name: req.body.album_name
     });
-    res.json(album);
+    res.json(newAlbum); ///TODO:TEST THIS OUT LATER
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -77,7 +77,7 @@ router.put('/albums', async (req, res) => {
   try {
     await db.Albums.update(
       {
-        album_name: req.body.album_name,
+        album_name: req.body.album_name
       },
       {
         where: {
@@ -95,22 +95,87 @@ router.put('/albums', async (req, res) => {
 
 
 /// /////////////////////////////////
-/// ////////Lyrics Endpoints//////////
+/// ////////Artists Endpoints//////////
 /// /////////////////////////////////
-router.get('/lyrics', async (req, res) => {
+router.get('/artists', async (req, res) => {
   try {
-    const lyrics = await db.Lyrics.findAll();
-    res.json(lyrics);
+    const artists = await db.Artists.findAll();
+    res.json(artists);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
+router.get('/artists/:artist_id', async (req, res) => {
+  try {
+    const artist = await db.Artists.findAll({
+      where: {
+        artist_id: req.params.artist_id
+      }
+    });
+    res.json(artist);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/artists', async (req, res) => {
+  const artist = await db.Artists.findAll();
+  const currentId = (await artist.length) + 1;
+  try {
+    const newArtist = await db.Artists.create({
+      artist_id: currentId,
+      artist_name: req.body.artist_name
+    });
+    res.json(newArtist);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/artists/:artist_id', async (req, res) => {
+  try {
+    await db.Artists.destroy({
+      where: {
+        artist_id: req.params.artist_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/artists', async (req, res) => {
+  try {
+    await db.Artists.update(
+      {
+        artist_name: req.body.artist_name,
+      },
+      {
+        where: {
+          artist_id: req.body.artist_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+///////Artist////////////
+/////////////////////////////
+//////////////////////////////////
+
 router.get('/lyrics', async (req, res) => {
   try {
-    const lyr = await db.Lyrics.findAll({
-      
+    const lyr = await db.Lyrics.findAll({      
     });
     res.json(lyr);
   } catch (err) {
@@ -121,7 +186,7 @@ router.get('/lyrics', async (req, res) => {
 
 
 /// /////////////////////////////////
-/// ////////Macros Endpoints/////////
+/// ////////Songs Endpoints/////////
 /// /////////////////////////////////
 router.get('/songs', async (req, res) => {
   try {

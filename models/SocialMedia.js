@@ -1,3 +1,4 @@
+
 export default (sequelize, DataTypes) => {
   const SocialMedia = sequelize.define(
     'SocialMedia',

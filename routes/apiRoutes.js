@@ -220,7 +220,31 @@ router.put('/songs', async (req, res) => {
     res.error('Server error');
   }
 });
+/// /////////////////////////////////
+/// ///playlist_details Endpoints////
+/// /////////////////////////////////
+router.get('/playlist_details', async (req, res) => {
+  try {
+    const pDetails = await db.playlist_details.findAll();
+    res.json(pDetails);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
-
+router.get('/playlist_details/:playlist_details_id', async (req, res) => {
+  try {
+    const pDetails = await db.playlist_details.findAll({
+      where: {
+        pDetails_id: req.params.pDetails_id
+      }
+    });
+    res.json(pDetails);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 export default router;

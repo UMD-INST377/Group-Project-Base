@@ -7,16 +7,16 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the ourMusic Search APP!');
 });
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/albums', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const albums = await db.Albums.findAll();
+    const reply = albums.length > 0 ? { data: albums } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,44 +24,46 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+
+
+
+router.get('/albums/:album_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const album = await db.Albums.findAll({
       where: {
-        hall_id: req.params.hall_id
+        album_id: req.params.album_id
       }
     });
 
-    res.json(hall);
+    res.json(album);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+
+
+router.post('/albums', async (req, res) => {
+  const album = await db.Albums.findAll();
+  const currentId = (await albums.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newAlabum = await db.Albums.create({
+      album_id: currentId,
+      hall_name: req.body.album_name
     });
-    res.json(newDining);
+    res.json(album);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/albums/:album_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.Albums.destroy({
       where: {
-        hall_id: req.params.hall_id
+        album_id: req.params.album_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +73,15 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/albums', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.Albums.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        album_name: req.body.album_name,
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          album_id: req.body.album_id
         }
       }
     );
@@ -91,79 +92,62 @@ router.put('/dining', async (req, res) => {
   }
 });
 
+
+
 /// /////////////////////////////////
 /// ////////Lyrics Endpoints//////////
 /// /////////////////////////////////
+router.get('/artist', async (req, res) => {
+  try {
+    const artists = await db.Artist.findAll();
+    res.json(artists);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 router.get('/lyrics', async (req, res) => {
   try {
-    const lyrics = await db.Lyrics.findAll();
-    res.json(lyrics));
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/lyrics/:lyrics_id', async (req, res) => {
-  try {
-    const lyrics = await db.Lyrics.findAll({
-      where: {
-        lyrics_id: req.params.lyrics_id
-      }
+    const lyr = await db.Lyrics.findAll({
+      
     });
-    res.json(lyrics);
+    res.json(lyr);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/lyrics', async (req, res) => {
-  try {
-    await db.Lyrics.update(
-      {
-        lyrics: req.body.lyrics,
-        lyrics: req.body.lyrics
-      },
-      {
-        where: {
-          lyrics_id: req.body.lyrics_id
-        }
-      }
-    );
-    res.send('Lyrics Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
 /// /////////////////////////////////
 /// ////////Macros Endpoints/////////
 /// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.get('/songs', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
+    const song = await db.Songs.findAll();
+    res.send(song);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get('/songs/:song_id', async (req, res) => {
   try {
-    const meals = await db.Macros.findAll({
+    const song = await db.Songs.findAll({
       where: {
-        meal_id: req.params.meal_id
+        song_id: req.params.song_id
       }
     });
-    res.json(meals);
+    res.json(song);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
+
+/** 
 
 router.put('/macros', async (req, res) => {
   try {
@@ -269,5 +253,5 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-
+ **/
 export default router;

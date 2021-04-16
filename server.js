@@ -17,9 +17,10 @@ app.use('/api', apiRoutes);
 
 async function bootServer() {
   try {
-    const mysql = await db.sequelizeDB;
-    await mysql.sync();
-    app.listen(PORT, () => {
+    
+    app.listen(PORT, async () => {
+      const mysql = await db.sequelizeDB;
+      await mysql.sync();
       console.log(`Listening on: http//localhost:${PORT}`);
     });
   } catch (err) {

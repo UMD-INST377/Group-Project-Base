@@ -92,46 +92,46 @@ router.put('/dining', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Lyrics Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/lyrics', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const lyrics = await db.Lyrics.findAll();
+    res.json(lyrics));
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/lyrics/:lyrics_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const lyrics = await db.Lyrics.findAll({
       where: {
-        meal_id: req.params.meal_id
+        lyrics_id: req.params.lyrics_id
       }
     });
-    res.json(meals);
+    res.json(lyrics);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
+router.put('/lyrics', async (req, res) => {
   try {
-    await db.Meals.update(
+    await db.Lyrics.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        lyrics: req.body.lyrics,
+        lyrics: req.body.lyrics
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          lyrics_id: req.body.lyrics_id
         }
       }
     );
-    res.send('Meal Successfully Updated');
+    res.send('Lyrics Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');

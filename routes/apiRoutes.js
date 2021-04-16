@@ -97,10 +97,10 @@ router.put('/albums', async (req, res) => {
 /// /////////////////////////////////
 /// ////////Lyrics Endpoints//////////
 /// /////////////////////////////////
-router.get('/artist', async (req, res) => {
+router.get('/lyrics', async (req, res) => {
   try {
-    const artists = await db.Artist.findAll();
-    res.json(artists);
+    const lyrics = await db.Lyrics.findAll();
+    res.json(lyrics);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -254,4 +254,62 @@ router.get('/custom', async (req, res) => {
   }
 });
  **/
+/// /////////////////////////////////
+/// ////////Lyrics Endpoints//////////
+/// /////////////////////////////////
+router.get('/lyrics', async (req, res) => {
+  try {
+    const lyrics = await db.Lyrics.findAll();
+    res.json(lyrics);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/lyrics/:lyrics_id', async (req, res) => {
+  try {
+    const lyrics = await db.Lyrics.findAll({
+      
+    });
+    res.json(lyrics);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/lyrics/:lyrics_id', async (req, res) => {
+  try {
+    await db.Lyrics.destroy({
+      where: {
+        lyrics_id: req.params.lyrics_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/lyrics', async (req, res) => {
+  try {
+    await db.Lyrics.update(
+      {
+        lyrics: req.body.lyrics,
+      },
+      {
+        where: {
+          lyrics_id: req.body.lyrics_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

@@ -3,7 +3,7 @@ export default (database, DataTypes) => {
     'Shelters',
     {
       shelter_id: {
-        type:DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },

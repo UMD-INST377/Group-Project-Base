@@ -322,14 +322,13 @@ const animalMapCustom = `SELECT name,
   animal_id,
   shelter_name,
   shelter_id,
-  last_name,
-  first_name
+  shelter_name
 FROM
   PendingAdoptions p
 INNER JOIN Animals a 
   ON p.animal_id = a.animal_id
-INNER JOIN Applicants ap
-ON ap.applicant_id = p.applicant_id;`;
+INNER JOIN Shelters s
+ON s.shelter_id = p.shelter_id;`;
 router.get('/map/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(animalMapCustom, {

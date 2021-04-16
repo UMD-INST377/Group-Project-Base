@@ -1,21 +1,35 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    'Meals',
+  const PlaylistDetails = sequelize.define(
+    'PlaylistDetails',
     {
-      meal_id: {
+      playlist_details_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
         primaryKey: true
       },
-      meal_name: {
-        type: DataTypes.STRING
+      FK_song_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
-      meal_category: {
-        type: DataTypes.STRING
+      song_title: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      artist_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      song_duration: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      FK_playlist_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  return PlaylistDetails;
 };

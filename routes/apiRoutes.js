@@ -94,7 +94,7 @@ router.delete('/order/:order_id', async (req, res) => {
 /// /////////////////////////////////
 
 // Get all database records from the Customers table
-router.get('/customer', async (req, res) => {
+router.get('/customers', async (req, res) => {
   try {
     const customerItem = await db.customers.findAll();
     const reply = customerItem.length > 0 ? { data: customerItem} : { message: 'no results found' };
@@ -106,7 +106,7 @@ router.get('/customer', async (req, res) => {
 });
 
 // Get an individual element by id from Customers table
-router.get('/customer/:customer_id', async (req, res) => {
+router.get('/customers/:customer_id', async (req, res) => {
   try {
     const customerItem = await db.customers.findAll({
       where: {

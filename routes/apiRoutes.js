@@ -219,7 +219,6 @@ router.delete('/deliveries/:delivery_id', async (req, res) => {
     res.error('Server error');
   }
 });
-export default router;
 
 
 

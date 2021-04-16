@@ -1,5 +1,7 @@
 import clubs from './Clubs.js';
+import players from './Players.js';
 
 export default {
-  clubs          // remember to seperate models with a comma 
+  clubs,
+  players          // remember to seperate models with a comma 
 };

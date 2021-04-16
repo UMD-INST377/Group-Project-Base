@@ -36,6 +36,21 @@ router.get('/order/:order_id', async (req, res) => {
   }
 });
 
+// Get a set of records by client query
+/*router.get('/order/:order_id,order_id2', async (req, res) => {
+  try {
+    const orderItem = await db.orders.findAll({
+      where: {
+        order_id: req.params.order_id
+      }
+    });
+    res.json(orderItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});*/
+
 // Add a new record to the database in orders table
 router.post('/order', async (req, res) => {
   try {

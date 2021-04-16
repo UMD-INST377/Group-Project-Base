@@ -1,5 +1,5 @@
 import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
+import Playlist from './Playlists.js';
 import Macros from './Macros.js';
 import Meals from './Meals.js';
 

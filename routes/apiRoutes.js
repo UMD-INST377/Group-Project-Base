@@ -268,7 +268,7 @@ router.get('/employees/:employee_id', async (req, res) => {
         employee_id: req.params.employee_id
       }
     });
-    res.json(employee_id);
+    res.json(employees);
   } catch (err) {
     console.error(err);
     res.error('Server error');

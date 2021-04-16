@@ -220,3 +220,103 @@ router.delete('/deliveries/:delivery_id', async (req, res) => {
   }
 });
 export default router;
+
+
+
+/// /////////////////////////////////
+/// ////Product Families Endpoints////////
+/// /////////////////////////////////
+
+// Get all database records from the families table
+router.get('/productFamilies', async (req, res) => {
+  try {
+    const family = await db.productFamilies.findAll();
+    const reply = family.length > 0 ? { data: family} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from families table
+router.get('/productFamilies/:family_id', async (req, res) => {
+  try {
+    const family = await db.productFamilies.findAll({
+      where: {
+        family_id: req.params.family_id
+      }
+    });
+    res.json(family);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orders/:orderMin/:orderMax', async (req, res) => {
+//   try {
+//     const orderItem = await db.orders.findAll({
+//       where: {
+//         order_id: req.params.order_id
+//       }
+//     });
+//     res.json(orderItem);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in families table
+router.post('/productFamilies', async (req, res) => {
+  try {
+    const newFamily = await db.deliveries.create({
+      family_id: req.body.family_id,
+      family_name: req.body.family_name
+    });
+    res.json(newFamily);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in families table
+router.put('/productFamilies', async (req, res) => {
+  try {
+    await db.productFamilies.update(
+      {
+        family_id: req.body.family_id,
+        family_name: req.body.family_name
+      },
+      {
+        where: {
+          family_id: req.body.family_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual family record by id
+router.delete('/productFamilies/:family_id', async (req, res) => {
+  try {
+    await db.productFamilies.destroy({
+      where: {
+        family_id: req.params.family_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+export default router;

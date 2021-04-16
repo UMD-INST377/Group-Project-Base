@@ -320,7 +320,7 @@ const animalMapCustom = `SELECT name,
   animal_id,
   shelter_name,
   shelter_id,
-  shelter_name
+  shelter_address
 FROM
   PendingAdoptions p
 INNER JOIN Animals a 

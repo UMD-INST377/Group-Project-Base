@@ -77,7 +77,7 @@ router.put('/albums', async (req, res) => {
   try {
     await db.Albums.update(
       {
-        album_name: req.body.album_name,
+        album_name: req.body.album_name
       },
       {
         where: {

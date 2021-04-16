@@ -186,7 +186,7 @@ router.get('/lyrics', async (req, res) => {
 
 
 /// /////////////////////////////////
-/// ////////Songs Endpoints/////////
+/// ////////Songs Endpoints//////////
 /// /////////////////////////////////
 router.get('/songs', async (req, res) => {
   try {
@@ -211,6 +211,63 @@ router.get('/songs/:song_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
+router.post('/songs', async (req, res) => {
+  const song = await db.Songs.findAll();
+  const currentId = (await song.length) + 1;
+  try {
+    const newSong = await db.Songs.create({
+      song_id: currentId,
+      title: req.body.title,
+      genre: req.body.genre,
+      release_date: req.body.release_date,
+      artist_id: req.body.artist_id,
+      song_length: req.body.song_length,
+      album_id: req.body.album_id
+    });
+    res.json(song);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/songs/:song_id', async (req, res) => {
+  try {
+    await db.Songs.destroy({
+      where: {
+        song_id: req.params.song_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/songs', async (req, res) => {
+  try {
+    await db.Songs.update(
+      {
+        title: req.body.title,
+        genre: req.body.genre,
+        release_date: req.body.release_date,
+        song_length: req.body.song_length
+      },
+      {
+        where: {
+          song_id: req.body.song_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 
 /** 
 

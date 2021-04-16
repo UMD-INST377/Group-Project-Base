@@ -193,6 +193,57 @@ router.put('/characteristics', async (req, res) => {
   }
 });
 
+
+/////////////////////////////////////////
+//////// Song Characteristics ///////////
+/////////////////////////////////////////
+// Alex Ghelman
+
+router.route('/song_characteristicsRoute').get(async (req, res) => {
+  try {
+    const song_characteristics = await db.Song_Characteristics.findAll();
+    res.json(song_characteristics);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/song_characteristics/:SONG_CHARACTERISTICS_ID', async (req, res) => {
+  try {
+    const song_characteristics = await db.Song_Characteristics.findAll({
+      where: {
+        SONG_CHARACTERISTICS_ID: req.params.SONG_CHARACTERISTICS_ID
+      }
+    });
+    res.json(song_characteristics);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/song_characteristics', async (req, res) => {
+  try {
+    await db.Song_Characteristics.update(
+      {
+        SONG_ID: req.body.SONG_ID,
+        CHARACTERISTICS_ID: req.body.CHARACTERISTICS_ID,
+        SONG_CHARACTERISTICS_VALUE: req.body.SONG_CHARACTERISTICS_VALUE
+      },
+      {
+        where: {
+          SONG_CHARACTERISTICS_ID: req.body.SONG_CHARACTERISTICS_ID
+        }
+      }
+    );
+    res.send('song_characteristics Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 // /// /////////////////////////////////
 // /// ////////Macros Endpoints/////////
 // /// /////////////////////////////////

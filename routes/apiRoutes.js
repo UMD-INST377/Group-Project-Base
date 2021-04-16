@@ -221,11 +221,11 @@ router.put('/songs', async (req, res) => {
   }
 });
 /// /////////////////////////////////
-/// ///playlist_details Endpoints////
+/// ///playlistDetails Endpoints////
 /// /////////////////////////////////
-router.get('/playlist_details', async (req, res) => {
+router.get('/playlistDetails', async (req, res) => {
   try {
-    const pDetails = await db.playlist_details.findAll();
+    const pDetails = await db.playlistDetails.findAll();
     res.json(pDetails);
   } catch (err) {
     console.error(err);
@@ -233,9 +233,9 @@ router.get('/playlist_details', async (req, res) => {
   }
 });
 
-router.get('/playlist_details/:playlist_details_id', async (req, res) => {
+router.get('/playlistDetails/:playlistDetails_id', async (req, res) => {
   try {
-    const pDetails = await db.playlist_details.findAll({
+    const pDetails = await db.playlistDetails.findAll({
       where: {
         pDetails_id: req.params.pDetails_id
       }

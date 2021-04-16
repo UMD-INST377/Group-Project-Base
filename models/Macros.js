@@ -1,3 +1,4 @@
+/*
 export default (sequelize, DataTypes) => {
   const Macros = sequelize.define(
     'Macros',
@@ -38,3 +39,5 @@ export default (sequelize, DataTypes) => {
   );
   return Macros;
 };
+
+*/

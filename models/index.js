@@ -7,7 +7,7 @@ import songchar from './Song_Characteristics.js'; //Alex Ghelman
 export default {
   Artists, // Anna Kafrune
   Genres, // Anna Kafrune
-  songchar, // Song Characteristics - Alex Ghelman
+  songchar, // Alex Ghelman
   // Macros,
   // Meals
 };

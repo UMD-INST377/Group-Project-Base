@@ -2,7 +2,7 @@
 
 export default (sequelize, DataTypes) => {
     const songchar = sequelize.define(
-      'genres',
+      'songchar',
       {
         SONG_CHARACTERISTICS_ID: {
           type: DataTypes.INTEGER,

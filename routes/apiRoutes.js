@@ -122,7 +122,7 @@ router.get('/lyrics', async (req, res) => {
 
 
 /// /////////////////////////////////
-/// ////////Macros Endpoints/////////
+/// ////////Songs Endpoints//////////
 /// /////////////////////////////////
 router.get('/songs', async (req, res) => {
   try {

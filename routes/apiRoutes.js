@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 router.get('/movie', async (req, res) => {
   try {
-    const movies = await db.Movie.findAll();
+    const movies = await db.movies.findAll();
     const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -26,7 +26,7 @@ router.get('/movie', async (req, res) => {
 
 router.get('/movie/:movie_id', async (req, res) => {
   try {
-    const movie = await db.Movie.findAll({
+    const movie = await db.movies.findAll({
       where: {
         movie_id: req.params.movie_id
       }
@@ -40,10 +40,10 @@ router.get('/movie/:movie_id', async (req, res) => {
 });
 
 router.post('/movie', async (req, res) => {
-  const movies = await db.Movie.findAll();
+  const movies = await db.movies.findAll();
   const currentId = (await halls.length) + 1;
   try {
-    const newMovie = await db.Movie.create({
+    const newMovie = await db.movies.create({
       movie_id: currentId,
       Title: req.body.Title,
       Year: req.body.Year,
@@ -61,7 +61,7 @@ router.post('/movie', async (req, res) => {
 
 router.delete('/movie/:movie_id', async (req, res) => {
   try {
-    await db.Movie.destroy({
+    await db.movies.destroy({
       where: {
         movie_id: req.params.movie_id
       }

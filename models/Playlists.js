@@ -1,26 +1,33 @@
 export default (database, DataTypes) => {
-  const DiningHall = database.define(
-    'Dining_Hall',
+  const Playlist = database.define(
+    'playlists',
     {
-      hall_id: {
+      playlist_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      hall_name: {
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      playlist_name: {
         type: DataTypes.STRING
       },
-      hall_address: {
-        type: DataTypes.STRING
+      number_of_songs: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      hall_lat: {
-        type: DataTypes.DECIMAL
+      number_of_followers: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      hall_long: {
-        type: DataTypes.DECIMAL
+      total_time: {
+        type: DataTypes.STRING,
+        allowNull: false,
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return DiningHall;
+  return Playlist;
 };

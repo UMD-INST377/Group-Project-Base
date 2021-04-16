@@ -247,4 +247,31 @@ router.get('/playlistDetails/:playlistDetails_id', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// ///songDetails Endpoints////
+/// /////////////////////////////////
+router.get('/songDetails', async (req, res) => {
+  try {
+    const sDetails = await db.song_details.findAll();
+    res.json(sDetails);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/songDetails/:song_details_id', async (req, res) => {
+  try {
+    const sDetails = await db.song_details.findAll({
+      where: {
+        sDetails_id: req.params.sDetails_id
+      }
+    });
+    res.json(sDetails);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

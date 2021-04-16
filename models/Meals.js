@@ -1,3 +1,4 @@
+/*
 export default (sequelize, DataTypes) => {
   const Meals = sequelize.define(
     'Meals',
@@ -19,3 +20,4 @@ export default (sequelize, DataTypes) => {
   );
   return Meals;
 };
+*/

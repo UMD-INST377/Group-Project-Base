@@ -93,6 +93,88 @@ router.put('/artists', async (req, res) => {
   }
 });
 
+////////////////////////////////////
+///////Albums Endpoints////
+////////////////////////////////////
+
+// Andrea Tavakol
+
+router.route('/albumsRoute').get(async (req, res) => {
+  try {
+    const albums = await db.Albums.findAll();
+    const reply = albums.length > 0 ? { data: albums } : { message: 'no results found' };
+    res.json({data: reply});
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+})
+
+router.get('/albums/:ALBUM_ID', async (req, res) => {
+  try {
+    const albums = await db.Albums.findAll({
+      where: {
+        ALBUM_ID: req.params.ALBUM_ID
+      }
+    });
+    res.json(albums);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/albums', async (req, res) => {
+  const albums = await db.Albums.findAll();
+  const currentId = (await albums.length) + 1;
+  try {
+    const newAlbum = await db.albums.create({
+      ALBUM_ID: currentId,
+      ALBUM_NAME: req.body.ALBUM_NAME,
+      ALBUM_POPULARITY: req.body.ALBUM_POPULARITY,
+      GENRE_ID: req.body.GENRE_ID,
+    });
+    res.json(newAlbum);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/albums/:ALBUM_ID', async (req, res) => {
+  try {
+    await db.Albums.destroy({
+      where: {
+        ALBUM_ID: req.params.ALBUM_ID
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/albums', async (req, res) => {
+  try {
+    await db.albums.update(
+      {
+        ALBUM_NAME: req.body.ALBUM_NAME,
+        ALBUM_POPULARITY: req.body.ALBUM_POPULARITY
+      },
+      {
+        where: {
+          ALBUM_ID: req.body.ALBUM_ID
+        }
+      }
+    );
+    res.send('Albums Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// /////////////////////////////////
 /// ////////Genres Endpoints//////////
 /// /////////////////////////////////

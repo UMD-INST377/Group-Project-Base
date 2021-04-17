@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const songs = sequelize.define(
+  const Songs = sequelize.define(
     'Songs',
     {
       song_id: {
@@ -26,5 +26,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return songs;
+  return Songs;
 };

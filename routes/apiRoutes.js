@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 router.get("/artistInfo", async (req, res) => {
   try {
-    const artists = await db.artistInfo.findAll();
+    const artists = await db.ArtistInfo.findAll();
     const reply =
       artists.length > 0 ? { data: artists } : { message: "no results found" };
     console.log(reply)
@@ -27,7 +27,7 @@ router.get("/artistInfo", async (req, res) => {
 
 router.get("/artistInfo/:artist_id", async (req, res) => {
   try {
-    const artists = await db.artistInfo.findAll({
+    const artists = await db.ArtistInfo.findAll({
       where: {
         artist_id: req.params.artist_id,
       },

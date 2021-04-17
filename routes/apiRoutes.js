@@ -21,7 +21,7 @@ router.get("/artistInfo", async (req, res) => {
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error("Server error");
+    response.error("Server error");
   }
 });
 
@@ -32,10 +32,10 @@ router.get("/artistInfo/:artist_id", async (req, res) => {
         artist_id: req.params.artist_id,
       },
     });
-    res.json(artists);
+    res.json(artist_id);
   } catch (err) {
     console.error(err);
-    res.error("Server error");
+    response.error("Server error");
   }
 });
 
@@ -54,7 +54,7 @@ router.post('/artistInfo', async (req, res) => {
     res.json(newArtist);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    response.error('Server error');
   }
 });
 
@@ -68,7 +68,7 @@ router.delete('/artistInfo/:artist_id', async (req, res) => {
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    response.error('Server error');
   }
 });
 
@@ -91,7 +91,7 @@ router.put('/artistInfo', async (req, res) => {
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    response.error('Server error');
   }
 });
 

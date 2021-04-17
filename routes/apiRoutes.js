@@ -173,55 +173,6 @@ router.put('/songs', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////songs Endpoints/////////
-/// /////////////////////////////////
-router.get('/songs', async (req, res) => {
-  try {
-    const songs = await db.songs.findAll();
-    res.send(songs);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/songs/:song_id', async (req, res) => {
-  try {
-    const playlists = await db.songs.findAll({
-      where: {
-        song_id: req.params.song_id
-      }
-    });
-    res.json(playlists);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/songs', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.songs.update(
-      {
-        genre: req.body.genre,
-        date_released: req.body.date_released,
-        album_name: req.body.album_name,
-        explicit: req.body.explicit,
-      },
-      {
-        where: {
-          song_id: req.body.song_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-/// /////////////////////////////////
 /// ///playlistDetails Endpoints////
 /// /////////////////////////////////
 router.get('/playlistDetails', async (req, res) => {

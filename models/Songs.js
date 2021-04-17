@@ -1,40 +1,30 @@
 export default (sequelize, DataTypes) => {
-  const Macros = sequelize.define(
-    'Macros',
+  const songs = sequelize.define(
+    'Songs',
     {
-      macro_id: {
+      song_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
         primaryKey: true
       },
-      calories: {
-        type: DataTypes.DOUBLE
+      genre: {
+        type: DataTypes.STRING
       },
-      serving_size: {
-        type: DataTypes.DOUBLE
+      date_released: {
+        type: DataTypes.DATEONLY
       },
-      cholesterol: {
+      album_name: {
+        type: DataTypes.STRING
+      },
+      explicit: {
+        type: DataTypes.STRING
+      },
+      artist_id: {
         type: DataTypes.INTEGER
       },
-      sodium: {
-        type: DataTypes.DOUBLE
-      },
-      carbs: {
-        type: DataTypes.DOUBLE
-      },
-      protein: {
-        type: DataTypes.DOUBLE
-      },
-      meal_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
-      fat: {
-        type: DataTypes.DOUBLE
-      }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Macros;
+  return songs;
 };

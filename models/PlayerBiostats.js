@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const PlayerBiostats = sequelize.define(
-    'PlayerBiostats',
+    'player_biostats',
     {
       biostats_id: {
         type: DataTypes.INTEGER,
@@ -12,20 +12,20 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.DATE
       },
       age: {
-        type: DataTypes.INT
+        type: DataTypes.INTEGER
       },
       height_inches: {
-        type: DataTypes.INT
+        type: DataTypes.INTEGER
       },
       weight_pounds: {
-        type: DataTypes.INT
+        type: DataTypes.INTEGER
       },
       player_id: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         foreignKey: true
       }
     },
     { freezeTableName: true, timestamps: false }
   );
   return PlayerBiostats;
-}
+};

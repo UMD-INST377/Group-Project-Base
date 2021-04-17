@@ -169,21 +169,6 @@ router.put('/artists', async (req, res) => {
   }
 });
 
-///////Artist////////////
-/////////////////////////////
-//////////////////////////////////
-
-router.get('/lyrics', async (req, res) => {
-  try {
-    const lyr = await db.Lyrics.findAll({      
-    });
-    res.json(lyr);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
 
 /// /////////////////////////////////
 /// ////////Songs Endpoints//////////
@@ -226,6 +211,35 @@ router.post('/songs', async (req, res) => {
       album_id: req.body.album_id
     });
     res.json(song);
+  }catch(err){
+    res.error(err);
+  }
+});
+
+    
+/// /////////////////////////////////
+/// ////Song Info Endpoints////////
+/// /////////////////////////////////
+router.get('/songinfo', async (req, res) => {
+  try {
+    const songinfo = await db.Song_info.findAll();
+    const reply = songinfo.length > 0 ? { data: songinfo } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/songinfo/:song_info_id', async (req, res) => {
+  try {
+    const songinfo = await db.Song_info.findAll({
+      where: {
+        song_info_id: req.params.song_info_id
+      }
+    });
+
+    res.json(songinfo);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -237,6 +251,19 @@ router.delete('/songs/:song_id', async (req, res) => {
     await db.Songs.destroy({
       where: {
         song_id: req.params.song_id
+      }
+    })
+  }catch(err){
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/songinfo/:song_info_id', async (req, res) => {
+  try {
+    await db.Song_info.destroy({
+      where: {
+        song_info_id: req.params.song_info_id
       }
     });
     res.send('Successfully Deleted');
@@ -258,6 +285,24 @@ router.put('/songs', async (req, res) => {
       {
         where: {
           song_id: req.body.song_id
+
+        }
+      })
+    }catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+});
+
+router.put('/songinfo', async (req, res) => {
+  try {
+    await db.Song_info.update(
+      {
+        bpm: req.body.bpm
+      },
+      {
+        where: {
+          song_info_id: req.body.song_info_id
         }
       }
     );
@@ -267,7 +312,6 @@ router.put('/songs', async (req, res) => {
     res.error('Server error');
   }
 });
-
 
 /** 
 

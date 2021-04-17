@@ -53,7 +53,7 @@ router.get('/orders/:orderMin/:orderMax', async (req, res) => {
 });
 
 // Get a set of records by client query
-/*router.get('/order/:order_id,order_id2', async (req, res) => {
+/* router.get('/order/:order_id,order_id2', async (req, res) => {
   try {
     const orderItem = await db.orders.findAll({
       where: {
@@ -65,7 +65,7 @@ router.get('/orders/:orderMin/:orderMax', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
-});*/
+}); */
 
 // Add a new record to the database in orders table
 router.post('/orders', async (req, res) => {
@@ -219,8 +219,6 @@ router.delete('/deliveries/:delivery_id', async (req, res) => {
     res.error('Server error');
   }
 });
-
-
 
 /// /////////////////////////////////
 /// ////Product Families Endpoints////////

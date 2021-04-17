@@ -148,6 +148,71 @@ router.get('/songs/:song_id', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// ////Song Info Endpoints////////
+/// /////////////////////////////////
+router.get('/songinfo', async (req, res) => {
+  try {
+    const songinfo = await db.Song_info.findAll();
+    const reply = songinfo.length > 0 ? { data: songinfo } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+
+
+router.get('/songinfo/:song_info_id', async (req, res) => {
+  try {
+    const songinfo = await db.Song_info.findAll({
+      where: {
+        song_info_id: req.params.song_info_id
+      }
+    });
+
+    res.json(songinfo);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/songinfo/:song_info_id', async (req, res) => {
+  try {
+    await db.Song_info.destroy({
+      where: {
+        song_info_id: req.params.song_info_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/songinfo', async (req, res) => {
+  try {
+    await db.Song_info.update(
+      {
+        bpm: req.body.bpm
+      },
+      {
+        where: {
+          song_info_id: req.body.song_info_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /** 
 
 router.put('/macros', async (req, res) => {

@@ -41,10 +41,10 @@ router.get("/artistInfo/:artist_id", async (req, res) => {
 
 
 router.post('/artistInfo', async (req, res) => {
-  const artists = await db.artistInfo.findAll();
+  const artists = await db.ArtistInfo.findAll();
   const currentId = (await artists.length) + 1;
   try {
-    const newArtist = await db.artistInfo.create({
+    const newArtist = await db.ArtistInfo.create({
       artist_id: currentId,
       monthly_listeners: req.body.monthly_listeners,
       followers: req.body.followers,
@@ -60,7 +60,7 @@ router.post('/artistInfo', async (req, res) => {
 
 router.delete('/artistInfo/:artist_id', async (req, res) => {
   try {
-    await db.artistInfo.destroy({
+    await db.ArtistInfo.destroy({
       where: {
         artist_id: req.params.artist_id
       }
@@ -74,7 +74,7 @@ router.delete('/artistInfo/:artist_id', async (req, res) => {
 
 router.put('/artistInfo', async (req, res) => {
   try {
-    await db.artistInfo.update(
+    await db.ArtistInfo.update(
       {
         monthly_listeners: req.body.monthly_listeners,
         followers: req.body.followers,

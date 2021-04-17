@@ -17,7 +17,7 @@ router.get("/artistInfo", async (req, res) => {
     const artists = await db.ArtistInfo.findAll();
     const reply =
       artists.length > 0 ? { data: artists } : { message: "no results found" };
-    console.log(reply)
+    console.log(artist_name)
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -32,7 +32,7 @@ router.get("/artistInfo/:artist_id", async (req, res) => {
         artist_id: req.params.artist_id,
       },
     });
-    res.json(artist_id);
+    res.json(artists);
   } catch (err) {
     console.error(err);
     res.error("Server error");

@@ -19,7 +19,7 @@ export default (database, DataTypes) => {
           type: DataTypes.STRING(45),
           allowNull: false,
         },
-        accomodates: {
+        accommodates: {
           type: DataTypes.INTEGER,
           allowNull: false,
         },

@@ -1,14 +1,14 @@
 import Media from './Media.js';
-import Creators from './DiningHall.js';
-import Backgrounds from './Macros.js';
-import Genres from './Meals.js';
-import Roles from './Meals.js';
-import Themes from './Meals.js';
-import MediaBackgroundLinks from './Meals.js';
-import   MediaCreatorLinks from './Meals.js';
-import MediaGenreLinks from './Meals.js';
-import MediaThemeLinks from './Meals.js';
-import CreatorRoleLinks from './Meals.js';
+import Creators from './Creators.js';
+import Backgrounds from './Backgrounds.js';
+import Genres from './Genres.js';
+import Roles from './Roles.js';
+import Themes from './Themes.js';
+import MediaBackgroundLinks from './MediaBackgroundLinks.js';
+import MediaCreatorLinks from './MediaCreatorLinks.js';
+import MediaGenreLinks from './MediaGenreLinks.js';
+import MediaThemeLinks from './MediaThemeLinks.js';
+import CreatorRoleLinks from './CreatorRoleLinks.js';
 
 export default {
   Media,
@@ -21,5 +21,5 @@ export default {
   MediaCreatorLinks,
   MediaGenreLinks,
   MediaThemeLinks,
-  CreatorRoleLinks,
+  CreatorRoleLinks
 };

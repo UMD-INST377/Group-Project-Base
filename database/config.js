@@ -16,8 +16,9 @@ export default {
   production: {
     username: 'student',
     password: 'INST377@UMD',
-    database: 'mydb',
+    database: 'roup14MovieDB',
     host: '3.236.243.212',
     dialect: 'mysql'
   }
 };
+

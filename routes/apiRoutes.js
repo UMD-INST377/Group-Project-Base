@@ -166,39 +166,13 @@ router.route('/global')
     }
   })
   .post(async (req, res) => {
-    const globaltop50 = await db.GlobalTop50.findAll();
-    const currentId = (await globaltop50.length) + 1;
-    try {
-      const newSong = await db.GlobalTop50.create({
-        global_top50_rank: currentId,
-        streams: req.body.streams,
-        playlist_id: req.body.playlist_id,
-        artist_id: req.body.artist_id,
-        song_id: req.body.song_id
-      });
-      res.json(newSong);
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
-    }
+    res.send('Action unavailable');
   })
   .put(async (req, res) => {
-    try {
-      await db.GlobalTop50.update(
-        {
-          streams: req.body.streams
-        },
-        {
-          where: {
-            global_top50_rank: req.body.global_top50_rank
-          }
-        }
-      );
-      res.send('Successfully Updated');
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
-    }
+    res.send('Action unavailable');
+  })
+  .delete((req, res) => {
+    res.send('Action unavailable');
   })
   .delete((req, res) => {
     res.send('Action unavailable');

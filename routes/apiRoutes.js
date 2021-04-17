@@ -17,6 +17,7 @@ router.get("/artistInfo", async (req, res) => {
     const artists = await db.artistInfo.findAll();
     const reply =
       artists.length > 0 ? { data: artists } : { message: "no results found" };
+    console.log(reply)
     res.json(reply);
   } catch (err) {
     console.error(err);

@@ -6,7 +6,7 @@ const staticFolder = "public";
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -19,8 +19,8 @@ async function bootServer() {
   try {
     const mysql = await db.sequelizeDB;
     await mysql.sync();
-    app.listen(port, () => {
-      console.log(`Listening on: http//localhost:${port}`);
+    app.listen(PORT, () => {
+      console.log(`Listening on: http//localhost:${PORT}`);
     });
   } catch (err) {
     console.error(err);

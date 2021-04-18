@@ -316,4 +316,95 @@ router.delete('/productFamilies/:family_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
+/// /////////////////////////////////
+/// ////stores Endpoints////////
+/// /////////////////////////////////
+
+
+// Get all database records from the store table
+router.get('/stores', async (req, res) => {
+  try {
+    const store = await db.stores.findAll();
+    const reply = store.length > 0 ? { data: store} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from stores table
+router.get('/stores/:store_id', async (req, res) => {
+  try {
+    const store = await db.stores.findAll({
+      where: {
+        store_id: req.params.store_id
+      }
+    });
+    res.json(store);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+
+// Add a new record to the database in stores table
+router.post('/stores', async (req, res) => {
+  try {
+    const newStore = await db.stores.create({
+      store_id: req.body.store_id,
+      store_address_line1: req.body.store_address_line1,
+      store_city:req.body.store_city,
+      store_state:req.body.store_state,
+      store_zip_code: req.body. store_zip_code
+    });
+    res.json(newStore);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in stores table
+router.put('/stores', async (req, res) => {
+  try {
+    await db.stores.update(
+      {
+        store_id: req.body.store_id,
+        store_address_line1: req.body.store_address_line1,
+        store_city:req.body.store_city,
+        store_state:req.body.store_state,
+        store_zip_code: req.body. store_zip_code
+      },
+      {
+        where: {
+          store_id: req.body.store_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual store record by id
+router.delete('/stores/:store_id', async (req, res) => {
+  try {
+    await db.stores.destroy({
+      where: {
+        store_id: req.params.store_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

@@ -5,18 +5,15 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
-
-router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
-});
-
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////orders Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+
+// Get all database records from the Orders table
+router.get('/orders', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const orderItem = await db.orders.findAll();
+    const reply = orderItem.length > 0 ? { data: orderItem} : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,44 +21,96 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+// Get an individual element by id from orders table
+router.get('/orders/:order_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const orderItem = await db.orders.findAll({
       where: {
-        hall_id: req.params.hall_id
+        order_id: req.params.order_id
       }
     });
-
-    res.json(hall);
+    res.json(orderItem);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+router.get('/orders/:orderMin/:orderMax', async (req, res) => {
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.delete('/dining/:hall_id', async (req, res) => {
-  try {
-    await db.DiningHall.destroy({
+    const orderItem = await db.orders.findAll({
       where: {
-        hall_id: req.params.hall_id
+        order_id: req.params.order_id
+      }
+    });
+    res.json(orderItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+/* router.get('/order/:order_id,order_id2', async (req, res) => {
+  try {
+    const orderItem = await db.orders.findAll({
+      where: {
+        order_id: req.params.order_id
+      }
+    });
+    res.json(orderItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+}); */
+
+// Add a new record to the database in orders table
+router.post('/orders', async (req, res) => {
+  try {
+    const newOrderItem = await db.orders.create({
+      order_id: req.body.order_id,
+      item_id: req.body.item_id,
+      delivery_id: req.body.delivery_id,
+      customer_id: req.body.customer_id
+    });
+    res.json(newOrderItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in orders table
+
+router.put('/orders', async (req, res) => {
+  try {
+    await db.orders.update(
+      {
+        item_id: req.body.item_id,
+        delivery_id: req.body.delivery_id
+      },
+      {
+        where: {
+          order_id: req.body.order_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual record by id
+router.delete('/orders/:order_id', async (req, res) => {
+  try {
+    await db.orders.destroy({
+      where: {
+        order_id: req.params.order_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +120,81 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+/// /////////////////////////////////
+/// ////deliveries Endpoints////////
+/// /////////////////////////////////
+
+// Get all database records from the delivery table
+router.get('/deliveries', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    const deliveryItem = await db.deliveries.findAll();
+    const reply = deliveryItem.length > 0 ? { data: deliveryItem} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from deliveries table
+router.get('/deliveries/:delivery_id', async (req, res) => {
+  try {
+    const deliveryItem = await db.deliveries.findAll({
+      where: {
+        delivery_id: req.params.delivery_id
+      }
+    });
+    res.json(deliveryItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orders/:orderMin/:orderMax', async (req, res) => {
+//   try {
+//     const orderItem = await db.orders.findAll({
+//       where: {
+//         order_id: req.params.order_id
+//       }
+//     });
+//     res.json(orderItem);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in deliveries table
+router.post('/deliveries', async (req, res) => {
+  try {
+    const newDeliveryItem = await db.deliveries.create({
+      delivery_id: req.body.delivery_id,
+      customer_address: req.body.customer_address,
+      stores_store_id: req.body.stores_store_id,
+      customer_id: req.body.customer_id
+    });
+    res.json(newDeliveryItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in deliveries table
+router.put('/deliveries', async (req, res) => {
+  try {
+    await db.deliveries.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        customer_address: req.body.customer_address,
+        stores_store_id: req.body.stores_store_id,
+        customer_id: req.body.customer_id
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          delivery_id: req.body.delivery_id
         }
       }
     );
@@ -91,98 +205,93 @@ router.put('/dining', async (req, res) => {
   }
 });
 
-/// /////////////////////////////////
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+// Delete an individual record by id
+router.delete('/deliveries/:delivery_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/meals/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll({
+    await db.deliveries.destroy({
       where: {
-        meal_id: req.params.meal_id
+        delivery_id: req.params.delivery_id
       }
     });
-    res.json(meals);
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
+/// /////////////////////////////////
+/// ////Product Families Endpoints////////
+/// /////////////////////////////////
+
+// Get all database records from the families table
+router.get('/productFamilies', async (req, res) => {
   try {
-    await db.Meals.update(
+    const family = await db.productFamilies.findAll();
+    const reply = family.length > 0 ? { data: family} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from families table
+router.get('/productFamilies/:family_id', async (req, res) => {
+  try {
+    const family = await db.productFamilies.findAll({
+      where: {
+        family_id: req.params.family_id
+      }
+    });
+    res.json(family);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orders/:orderMin/:orderMax', async (req, res) => {
+//   try {
+//     const orderItem = await db.orders.findAll({
+//       where: {
+//         order_id: req.params.order_id
+//       }
+//     });
+//     res.json(orderItem);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in families table
+router.post('/productFamilies', async (req, res) => {
+  try {
+    const newFamily = await db.deliveries.create({
+      family_id: req.body.family_id,
+      family_name: req.body.family_name
+    });
+    res.json(newFamily);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in families table
+router.put('/productFamilies', async (req, res) => {
+  try {
+    await db.productFamilies.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        family_id: req.body.family_id,
+        family_name: req.body.family_name
       },
       {
         where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/macros', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
+          family_id: req.body.family_id
         }
       }
     );
@@ -193,77 +302,105 @@ router.put('/macros', async (req, res) => {
   }
 });
 
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+// Delete an individual family record by id
+router.delete('/productFamilies/:family_id', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    await db.productFamilies.destroy({
       where: {
-        restriction_id: req.params.restriction_id
+        family_id: req.params.family_id
       }
     });
-    res.json(restrictions);
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
+/// ////stores Endpoints////////
+/// /////////////////////////////////
+
+
+// Get all database records from the store table
+router.get('/stores', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
+    const store = await db.stores.findAll();
+    const reply = store.length > 0 ? { data: store} : { message: 'no results found' };
+    res.json(reply);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
+// Get an individual element by id from stores table
+router.get('/stores/:store_id', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
+    const store = await db.stores.findAll({
+      where: {
+        store_id: req.params.store_id
+      }
     });
-    res.json(result);
+    res.json(store);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
-router.get('/custom', async (req, res) => {
+
+
+
+// Add a new record to the database in stores table
+router.post('/stores', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
+    const newStore = await db.stores.create({
+      store_id: req.body.store_id,
+      store_address_line1: req.body.store_address_line1,
+      store_city:req.body.store_city,
+      store_state:req.body.store_state,
+      store_zip_code: req.body. store_zip_code
     });
-    res.json(result);
+    res.json(newStore);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in stores table
+router.put('/stores', async (req, res) => {
+  try {
+    await db.stores.update(
+      {
+        store_id: req.body.store_id,
+        store_address_line1: req.body.store_address_line1,
+        store_city:req.body.store_city,
+        store_state:req.body.store_state,
+        store_zip_code: req.body. store_zip_code
+      },
+      {
+        where: {
+          store_id: req.body.store_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual store record by id
+router.delete('/stores/:store_id', async (req, res) => {
+  try {
+    await db.stores.destroy({
+      where: {
+        store_id: req.params.store_id
+      }
+    });
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');

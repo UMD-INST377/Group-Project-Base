@@ -1,21 +1,26 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    'Meals',
+  const stores = sequelize.define(
+    'stores',
     {
-      meal_id: {
+      store_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
         primaryKey: true
       },
-      meal_name: {
+      store_address_line1: {
         type: DataTypes.STRING
       },
-      meal_category: {
+      store_city: {
+        type: DataTypes.STRING
+      },
+      store_state: {
+        type: DataTypes.STRING
+      },
+      store_zip_code: {
         type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  return stores;
 };

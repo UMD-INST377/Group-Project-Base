@@ -20,12 +20,6 @@ export default (sequelize, DataTypes) => {
       member_status: {
         type: DataTypes.BOOLEAN,
         allowNull: true
-      },
-      fk_visitors_has_Museum_info_Museum_info1: {
-        type: DataTypes.STRING
-      },
-      fk_visitors_has_Museum_info_visitors1: {
-        type: DataTypes.STRING
       }
     },
     {freezeTableName: true, timestamps: false}

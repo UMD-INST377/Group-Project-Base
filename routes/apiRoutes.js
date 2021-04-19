@@ -261,7 +261,7 @@ router.put('/Museum_info', async (req, res) => { // Where I left off 19:18 4/6/2
 				museum_address: req.body.museum_address,
 				museum_city: req.body.museum_city,
 				museum_zipcode: req.body.museum_zipcode,
-				ada_id: req.body.ada_id 
+				ada_id: req.body.ada_id
       },
       {
         where: {
@@ -276,6 +276,87 @@ router.put('/Museum_info', async (req, res) => { // Where I left off 19:18 4/6/2
   }
 });
 
+/// /////////////////////////////////
+/// ////Visitor Endpoints////////
+/// /////////////////////////////////
+router.get('/visitors', async (req, res) => {
+  try {
+    const visitors = await db.Visitors.findAll();
+    const reply = visitors.length > 0 ? {data: visitors} : {message: 'no results found'};
+    res.json(reply)
+  } catch(err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/visitors/:visitor_id', async (req, res) => {
+  try {
+    const visitors = await db.Visitors.findAll({
+      where: {
+        visitor_id: req.params.visitor_id
+      }
+    });
+
+    res.json(visitors)
+  } catch (err) {
+    console.log(err);
+    res.error('Server error')
+  }
+});
+
+router.post('/visitors', async (req, res) => {
+  const visitors = await db.Visitors.findAll();
+  const curId = (await visitors.length) + 1;
+  try {
+    const newVisitor = await db.visitors.create({
+      visitor_id: curId,
+      visitor_fn: req.body.vistor_fn,
+      visitor_ln: req.body.visitor_ln,
+      visitor_phone_num: req.body.visitor_phone_num,
+      visitor_email: req.body.visitor_email
+    });
+    res.json(newVisitor);
+  } catch (err) {
+    console.log(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/visitors/:visitor_id', async (req, res) => {
+  try {
+    await db.Visitors.destroy({
+      where: {
+        visitor_id: req.params.visitor_id
+      }
+    });
+    res.send('Successfully deleted');
+  } catch (err) {
+    console.log(err);
+    res.error('Server error')
+  }
+});
+
+router.put('/Visitors', async (req, res) => {
+  try {
+    await db.Visitors.update(
+      {
+        visitor_phone_num: req.body.visitor_phone_num,
+        visitor_email: req.body.visitor_email
+      },
+      {
+        where: {
+          visitor_id: req.body.visitor_id
+        }
+      }
+    );
+    res.send('Successfully updated');
+  } catch (err) {
+    console.log(err);
+    res.error('Server error')
+  }
+});
+
 /// //////////////////////////////////
 /// ///////Custom Client Query Endpoint////////
 /// /////////////////////////////////
@@ -287,6 +368,170 @@ router.get('/museum_staff', async (req, res) => {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+ /// ////Ada Compliance Endpoints////////
+ /// /////////////////////////////////
+ router.get('/ada_compliance', async (req, res) => {
+  try {
+    const ada = await db.AdaCompliance.findAll();
+    const reply = ada.length > 0 ? { data: ada } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/ada_compliance/:ada_id', async (req, res) => {
+  try {
+    const ada = await db.AdaCompliance.findAll({
+      where: {
+        ada_id: req.params.ada_id
+      }
+    });
+
+    res.json(ada);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/ada_compliance', async (req, res) => {
+  const ada = await db.AdaCompliance.findAll();
+  const currentId = (await ada.length) + 1;
+  try {
+    const newAda = await db.AdaCompliance.create({
+      ada_id: currentId,
+      ada_type: req.body.ada_type
+    });
+    res.json(newAda);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/ada_compliance/:ada_id', async (req, res) => {
+  try {
+    await db.AdaCompliance.destroy({
+      where: {
+        ada_id: req.params.ada_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/ada_compliance', async (req, res) => {
+  try {
+    await db.AdaCompliance.update(
+      {
+        ada_id: req.body.ada_id,
+        ada_type: req.body.ada_type
+      },
+      {
+        where: {
+          ada_id: req.body.ada_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////////Museum Visits Endpoints//////////
+/// /////////////////////////////////
+router.get('/museum_visits', async (req, res) => {
+  try {
+    const visit = await db.MuseumVisits.findAll();
+    const reply = visit.length > 0 ? { data: visit } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/museum_visits/:visitor_id', async (req, res) => {
+  try {
+    const visit = await db.MuseumVisits.findAll({
+      where: {
+        visitor_id: req.params.visitor_id
+      }
+    });
+
+    res.json(visit);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/museum_visits', async (req, res) => {
+  const visit = await db.MuseumVisits.findAll();
+  const currentId = (await visit.length) + 1;
+  try {
+    const newVisit = await db.MuseumVisits.create({
+      vistor_id: currentId,
+      museum_id: req.body.museum_id,
+      visit_date: req.body.visit_date,
+      member_status: req.body.member_status,
+      fk_visitors_has_Museum_info_Museum_info1: req.body.fk_visitors_has_Museum_info_Museum_info1,
+      fk_visitors_has_Museum_info_visitors1: req.body.fk_visitors_has_Museum_info_visitors1
+    });
+    res.json(newVisit);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/museum_visits/:visitor_id', async (req, res) => {
+  try {
+    await db.MuseumVisits.destroy({
+      where: {
+        visitor_id: req.params.visitor_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/museum_visits', async (req, res) => {
+  try {
+    await db.MuseumVisits.update(
+      {
+        visitor_id: req.body.visitor_id,
+        museum_id: req.body.museum_id,
+        visit_date: req.body.visit_date,
+        member_status: req.body.member_status,
+        fk_visitors_has_Museum_info_Museum_info1: req.body.fk_visitors_has_Museum_info_Museum_info1,
+        fk_visitors_has_Museum_info_visitors1: req.body.fk_visitors_has_Museum_info_visitors1
+      },
+      {
+        where: {
+          visitor_id: req.body.visitor_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');

@@ -1,0 +1,18 @@
+html {
+    font-size: 15px;
+    font-family: "Roboto";
+}
+
+h1, h2, h3 {
+    font-family: "Bebas Neue";
+    font-weight: 1000;
+    color: #161e72;
+    font-size: 40px;
+    text-align: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

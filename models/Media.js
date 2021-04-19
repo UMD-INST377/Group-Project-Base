@@ -4,8 +4,8 @@ export default (database, DataTypes) => {
         {
             media_id: {
                 type: DataTypes.INTEGER,
-                allowNull = false, 
-                primaryKey = true
+                allowNull: false, 
+                primaryKey: true
             },
             media_title: {
                 type: DataTypes.STRING

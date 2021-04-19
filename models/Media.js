@@ -1,11 +1,11 @@
 export default (database, DataTypes) => {
     const media = database.define(
-     'Media',
+        'Media',
         {
             media_id: {
                 type: DataTypes.INTEGER,
-                allowNull = false, 
-                primaryKey = true
+                allowNull: false, 
+                primaryKey: true
             },
             media_title: {
                 type: DataTypes.STRING
@@ -20,7 +20,7 @@ export default (database, DataTypes) => {
                 type: DataTypes.STRING
             },
             media_duration: {
-                type: DateTypes.STRING
+                type: DataTypes.STRING
             },
             albums_songs_number : {
                 type: DataTypes.INTEGER

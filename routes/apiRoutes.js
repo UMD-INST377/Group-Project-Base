@@ -174,9 +174,6 @@ router.route('/global')
   .delete((req, res) => {
     res.send('Action unavailable');
   })
-  .delete((req, res) => {
-    res.send('Action unavailable');
-  })
 
 router.route('/global/:global_top50_rank')
   .get(async (req, res) => {

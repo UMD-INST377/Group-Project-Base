@@ -4,8 +4,8 @@ export default (Sequelize, DataTypes) => {
         {
             media_id: {
                 type: DataTypes.INTEGER,
-                allowNull = false,
-                primaryKey = true,
+                allowNull: false,
+                primaryKey: true,
             },
             theme_id:{
                 type: DataTypes.INTEGER

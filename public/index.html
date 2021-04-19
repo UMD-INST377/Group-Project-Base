@@ -1,81 +1,97 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Museum Info</title>
-  </head>
-<div class="content is-centered">
-  <body>
-    <h1>Museum Info</h1>
-  </body>
-</div>
-<!-- <div>
-    <table class="table is-bordered is-striped is-hoverable">
-        <thead>
-            <tr>
-                <th>Employee Id</th>
-                <th>First Name</th> 
-                <th>Last Name</th>
-                <th>Museum Id</th>
-                <th>Role Id</th> 
-            </tr>
-        </thead>
-        <tbody id="resultStaff">
-        </tbody>
-    </table>
-</div> -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css"/>
+    <title>Add Staff</title>
+</head>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="ma_logo.png"  >
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          About
+        </a>
+  
+        <a class="navbar-item">
+          Museum
+        </a>
 
-<div class="table-container">
-  <table class="table is-bordered is-striped is-hoverable is-narrow">
-      <thead>
-          <tr>
-              <th>Musuem Id</th>
-              <th>Museum Name</th> 
-              <th>Museum email</th>
-              <th>Musuem Url</th>
-              <th>Museum Phone Number</th> 
-              <th>Museum Entry Fee</th>
-              <th>Musuem Open Time</th>
-              <th>Date Museum Opened</th> 
-              <th>Museum Capacity</th>
-              <th>Musuem Size</th>
-              <th>Museum Parent</th> 
-              <th>Closing time</th>
-              <th>Budget</th>
-              <th>Address</th> 
-              <th>City</th>
-              <th>Zipcode</th>
-          </tr>
-      </thead>
-      <tbody id="resultInfo">
-      </tbody>
-  </table>
-</div>
+        <a class="navbar-item">
+            Transactions
+        </a>
 
-<!-- <div>
-  <body>
-    <h1>Staff Roles </h1>
-  </body>
-</div>
-<div>
-    <table class="table is-bordered is-striped">
-        <thead>
-            <tr>
-                <th>Role Id</th>
-                <th>Role Title</th> 
-            </tr>
-        </thead>
-        <tbody id="resultRole">
-        </tbody>
-    </table>
-</div> -->
+        <a class="navbar-item" href="./personnel.html">
+            Personnel
+        </a>
+
+        <a class="navbar-item">
+            Visitors
+        </a>
+  
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              About
+            </a>
+            <a class="navbar-item">
+              Jobs
+            </a>
+            <a class="navbar-item">
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Report an issue
+            </a>
+          </div>
+        </div>
+      </div> -->
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <!-- <div class="buttons">
+            <a class="button is-primary">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light">
+              Log in
+            </a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </nav>
+<body>
+    <div class = "container">
+        <div class="tabs is-right">
+            <ul>
+              <li ><a href="./add_staff.html">Add Staff</a></li>
+              <li ><a href="./update_staff.html">Update Staff</a></li>
+              <li ><a href="./info_search_staff.html">Information Search</a></li>
+            </ul>
+          </div>
+        <h1>Add Staff</h1>
+
+    </div>
+    
 </body>
-<script src="scripts.js"></script>
+<script src ="scripts.js"></script>
 </html>

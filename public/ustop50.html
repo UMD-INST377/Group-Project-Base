@@ -10,13 +10,13 @@
 </head>
 <body>
     <!-- NAV BAR + HERO -->
-    <section class="hero is-primary is-medium">
+    <section class="hero is-primary is-small">
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
           <nav class="navbar is-primary">
             <div class="container">
               <div class="navbar-brand">
-                <a class="navbar-item">
+                <a class="navbar-item" href="index.html">
                     <!-- CHANGE LOGO -->
                   <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
                 </a>
@@ -30,17 +30,17 @@
               </div>
               <div id="navbarMenuHeroA" class="navbar-menu">
                 <div class="navbar-end">
-                  <a class="navbar-item is-active">
+                  <a class="navbar-item" href="index.html">
                     Home
                   </a>
 
                   <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
+                    <a class="navbar-link is-active">
                     Charts
                     </a>
 
                     <div class="navbar-dropdown">
-                        <a class="navbar-item" href="ustop50.html">
+                        <a class="navbar-item">
                             US Top 50
                         </a>
                         <a class="navbar-item" href="globaltop50.html">
@@ -62,65 +62,30 @@
         <div class="hero-body">
           <div class="container has-text-centered">
             <p class="title">
-              Spotify Music Generator
+              US Top 50 Charts
             </p>
             <p class="subtitle">
-              Expand your horizons.
+              December 2020
             </p>
-            <button class="button is-rounded">Get Started</button>
           </div>
         </div>
     </section>
 
+    <!-- SPACER -->
+    <div class="block"></div>
+
     <!-- Page Content -->
     <section>
         <div class="container is-max-desktop">
-            <!-- SPACER -->
-            <div class="block"></div>
-
-            <!-- What is our app -->
-            <div class="columns">
-                <div class="column is-two-thirds">
-                    <h1 class="title is-2">What is our app?</h1>
-                    <p>With the overwhelming amount of music released, 
-                        it can be difficult to determine which songs are worth 
-                        listening to based on personal taste. 
-                        <br><br>
-                        [The Spotify Music Generator] will generate random 
-                        playlists based on Spotify’s Global and US Top 50 Charts 
-                        and other various user input. 
-                        <br><br>
-                        Explore new music that other users are adding and the latest 
-                        hits with the click of a button. It doesn’t get much simpler than that!
-                    </p>
-                </div>
-                
-                <div class="column">
-                    <!-- Picture -->
-                </div>
-            </div>
-
-            <!-- Spacer -->
-            <div class="block"></div>
-
-            <!-- How to Use -->
-            <div class="columns">
-                <div class="column">
-                    <!-- Picture -->
-                </div>
-                
-                <div class="column is-two-thirds">
-                    <h1 class="title is-2">How to Use</h1>
-                    <ol>
-                        <li>Hit the "Get Started" Button.</li>
-                        <li>Decide whether you want to start off with a completely 
-                            randomized playlist or create your own using the current 
-                            top hits we have available.</li>
-                        <li>Edit and share your playlist!</li>
-                    </ol>
-                    <button class="button is-rounded">Get Started</button>
-                </div>
-            </div>
+            <table class="table is-bordered is-striped is-hoverable">
+                <thead>
+                    <th>Rank</th>
+                    <th>Song</th>
+                    <th>Artist</th>
+                    <th>Streams</th>
+                </thead>
+                <tbody class="us-top-songs"></tbody>
+            </table>
         </div>
     </section>
 

@@ -1,29 +1,29 @@
 export default (database, DataTypes) => {
-    const Creators = database.define(
-      'Creators',
-      {
-        creator_id: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-          primaryKey: true
-        },
-        creator_first_name: {
-          type: DataTypes.STRING
-        },
-        creator_last_name: {
-            type: DataTypes.STRING
-        },
-        creator_current_state: {
-            type: DataTypes.STRING
-        },
-        creator_home_state: {
-            type: DataTypes.STRING
-        },
-        creator_country: {
-            type: DataTypes.STRING
-        }
+  const Creators = database.define(
+    'Creators',
+    {
+      creator_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true
       },
-      { freezeTableName: true, timestamps: false }
-    );
-    return Creators;
-  };
+      creator_first_name: {
+        type: DataTypes.STRING
+      },
+      creator_last_name: {
+        type: DataTypes.STRING
+      },
+      creator_current_state: {
+        type: DataTypes.STRING
+      },
+      creator_home_state: {
+        type: DataTypes.STRING
+      },
+      creator_country: {
+        type: DataTypes.STRING
+      }
+    },
+    { freezeTableName: true, timestamps: false }
+  );
+  return Creators;
+};

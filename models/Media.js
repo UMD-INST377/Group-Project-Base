@@ -20,7 +20,7 @@ export default (database, DataTypes) => {
                 type: DataTypes.STRING
             },
             media_duration: {
-                type: DateTypes.STRING
+                type: DataTypes.STRING
             },
             albums_songs_number : {
                 type: DataTypes.INTEGER

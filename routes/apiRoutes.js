@@ -102,6 +102,35 @@ router.route('/playlists/:playlist_id')
 /// /////////////////////////////////
 /// ////USTop50 Endpoints////////////
 /// /////////////////////////////////
+router.route('/wholeUSchart')
+  .get(async (req, res) => {
+    try {
+      const ranks = await db.USTop50.findAll();
+      const artists = await db.Artists.findAll();
+      const songs = await db.Songs.findAll();
+      // map is like a for each
+      const wholeUSChart = ranks.map((rank) => {
+        const songEntry = songs.find((song) => song.song_id === rank.song_id);
+        const artistEntry = artists.find((artist) => artist.artist_id === rank.artist_id);
+        // console.log('stream', stream.dataValues);
+        // console.log('songEntry', songEntry.dataValues);
+        // console.log('artistEntry', artistEntry.dataValues);
+
+        return {
+          // spread operator
+          ...rank.dataValues,
+          ...songEntry.dataValues,
+          ...artistEntry.dataValues
+        }
+      })
+      res.json({data: wholeUSChart});
+
+    } catch (err) {
+      console.error(err);
+      res.json({message: "Something went wrong on the server"});
+    }
+});
+
 router.route('/us')
   .get(async (req, res) => {
     try {

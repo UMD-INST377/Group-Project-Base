@@ -10,13 +10,13 @@
 </head>
 <body>
     <!-- NAV BAR + HERO -->
-    <section class="hero is-primary is-medium">
+    <section class="hero is-primary is-small">
         <!-- Hero head: will stick at the top -->
         <div class="hero-head">
           <nav class="navbar is-primary">
             <div class="container">
               <div class="navbar-brand">
-                <a class="navbar-item">
+                <a class="navbar-item" href="index.html">
                     <!-- CHANGE LOGO -->
                   <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
                 </a>
@@ -30,7 +30,7 @@
               </div>
               <div id="navbarMenuHeroA" class="navbar-menu">
                 <div class="navbar-end">
-                  <a class="navbar-item is-active">
+                  <a class="navbar-item" href="index.html">
                     Home
                   </a>
 
@@ -49,7 +49,7 @@
                     </div>
                   </div>
                   
-                  <a class="navbar-item" href="playlists.html">
+                  <a class="navbar-item is-active" href="playlists.html">
                     Playlists
                   </a>
                 </div>
@@ -62,68 +62,49 @@
         <div class="hero-body">
           <div class="container has-text-centered">
             <p class="title">
-              Spotify Music Generator
+              Playlists
             </p>
-            <p class="subtitle">
-              Expand your horizons.
-            </p>
-            <a class="button is-rounded" href="createplaylists.html">
-              Get Started
-            </a>
           </div>
         </div>
     </section>
 
+    <!-- SPACER -->
+    <div class="block"></div>
+    
     <!-- Page Content -->
     <section>
         <div class="container is-max-desktop">
-            <!-- SPACER -->
-            <div class="block"></div>
+            <div class="column is-two-thirds">
+                <h1 class="title is-2">The Spotify Playlist Curator</h1>
+                <h2 class="title is-3"> Step One</h2>
+                <p> Select how you want your playlist created:</p>
 
-            <!-- What is our app -->
-            <div class="columns">
-                <div class="column is-two-thirds">
-                    <h1 class="title is-2">What is our app?</h1>
-                    <p>With the overwhelming amount of music released, 
-                        it can be difficult to determine which songs are worth 
-                        listening to based on personal taste. 
-                        <br><br>
-                        [The Spotify Music Generator] will generate random 
-                        playlists based on Spotify’s Global and US Top 50 Charts 
-                        and other various user input. 
-                        <br><br>
-                        Explore new music that other users are adding and the latest 
-                        hits with the click of a button. It doesn’t get much simpler than that!
-                    </p>
+                 <!-- SPACER -->
+    <div class="block"></div>
+
+                <form action="/api" method="post">
+                    <div class="columns">
+                        <div class="column">
+                        <input name='randomize' type='checkbox' id='randomize'>
+                        <label for='randomize'>
+                            <strong>Randomize</strong>
+                        </br>
+                            <emphasis> Automatically create a playlist with randomly selected songs.</emphasis>
+                        </label>
                 </div>
                 
+                
                 <div class="column">
-                    <!-- Picture -->
-                </div>
+                    <input name='customize' type='checkbox' id='customize'>
+                    <label for='customize'>
+                            <strong>Customize</strong>
+                        </br>
+                            <emphasis> Pick out filters to narrow down your randomly selected sogns.</emphasis>
+                        </label>
             </div>
-
-            <!-- Spacer -->
-            <div class="block"></div>
-
-            <!-- How to Use -->
-            <div class="columns">
-                <div class="column">
-                    <!-- Picture -->
                 </div>
-                
-                <div class="column is-two-thirds">
-                    <h1 class="title is-2">How to Use</h1>
-                    <ol>
-                        <li>Hit the "Get Started" Button.</li>
-                        <li>Decide whether you want to start off with a completely 
-                            randomized playlist or create your own using the current 
-                            top hits we have available.</li>
-                        <li>Edit and share your playlist!</li>
-                    </ol>
-                    <a class="button is-rounded" href="createplaylists.html">
-                      Get Started
-                    </a>
-                </div>
+
+                </form>
             </div>
         </div>
     </section>

@@ -4,15 +4,19 @@ async function getUSCharts() {
     return songData;
 }
 
-async function windowActions() {
-    // const request = await fetch('/api/us');
-    // const songData = await request.json;
-    // data = songData.data;
-    // console.log(data);
+async function getGlobalCharts() {
+    const songRequest = await fetch('/api/wholeGlobalChart');
+    const songData = await songRequest.json();
+    return songData;
+}
 
-    const results = await getUSCharts();
+async function windowActions() {
+    const usResults = await getUSCharts();
+    const globalResults = await getGlobalCharts();
     // console.table(usCharts.data);
-    const usCharts = results.data;
+    console.table(globalResults.data);
+    const usCharts = usResults.data;
+    const globalCharts = globalResults.data;
 
     const usTopSong = document.querySelector('.us-top-songs');
     usCharts.forEach((item) => {
@@ -25,6 +29,19 @@ async function windowActions() {
             <td>${item.streams}</td>`;
 
         usTopSong.append(appendItem);
+    });
+
+    const globalTopSong = document.querySelector('.global-top-songs');
+    globalCharts.forEach((item) => {
+        const appendItem = document.createElement('tr');
+
+        appendItem.innerHTML = `
+            <td>${item.global_top50_rank}</td>
+            <td>${item.song_name}</td>
+            <td>${item.artist_name}</td>
+            <td>${item.streams}</td>`;
+
+        globalTopSong.append(appendItem);
     });
 }
 

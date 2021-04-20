@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    const Players = sequelize.define(
+    const Winners = sequelize.define(
       'winners',
       {
         season_id: {
@@ -36,5 +36,5 @@ export default (sequelize, DataTypes) => {
       },
       { freezeTableName: true, timestamps: false }
     );
-    return Players;
+    return Winners;
   };

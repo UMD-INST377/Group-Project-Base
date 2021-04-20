@@ -12,8 +12,8 @@ const router = express.Router();
 // Get all database records from the Orders table
 router.get('/orders', async (req, res) => {
   try {
-    const orderItem = await db.orders.findAll();
-    const reply = orderItem.length > 0 ? { data: orderItem} : { message: 'no results found' };
+    const ordersItem = await db.orders.findAll();
+    const reply = ordersItem.length > 0 ? { data: ordersItem} : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,12 +24,12 @@ router.get('/orders', async (req, res) => {
 // Get an individual element by id from orders table
 router.get('/orders/:order_id', async (req, res) => {
   try {
-    const orderItem = await db.orders.findAll({
+    const ordersItem = await db.orders.findAll({
       where: {
         order_id: req.params.order_id
       }
     });
-    res.json(orderItem);
+    res.json(ordersItem);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -40,12 +40,12 @@ router.get('/orders/:order_id', async (req, res) => {
 // BROKEN NEED TO FIX
 router.get('/orders/:orderMin/:orderMax', async (req, res) => {
   try {
-    const orderItem = await db.orders.findAll({
+    const ordersItem = await db.orders.findAll({
       where: {
         order_id: req.params.order_id
       }
     });
-    res.json(orderItem);
+    res.json(ordersItem);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -70,13 +70,13 @@ router.get('/orders/:orderMin/:orderMax', async (req, res) => {
 // Add a new record to the database in orders table
 router.post('/orders', async (req, res) => {
   try {
-    const newOrderItem = await db.orders.create({
+    const newOrdersItem = await db.orders.create({
       order_id: req.body.order_id,
       item_id: req.body.item_id,
       delivery_id: req.body.delivery_id,
       customer_id: req.body.customer_id
     });
-    res.json(newOrderItem);
+    res.json(newOrdersItem);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -318,9 +318,8 @@ router.delete('/productFamilies/:family_id', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////stores Endpoints////////
+/// ////stores Endpoints/////////////
 /// /////////////////////////////////
-
 
 // Get all database records from the store table
 router.get('/stores', async (req, res) => {
@@ -349,17 +348,15 @@ router.get('/stores/:store_id', async (req, res) => {
   }
 });
 
-
-
 // Add a new record to the database in stores table
 router.post('/stores', async (req, res) => {
   try {
     const newStore = await db.stores.create({
       store_id: req.body.store_id,
       store_address_line1: req.body.store_address_line1,
-      store_city:req.body.store_city,
-      store_state:req.body.store_state,
-      store_zip_code: req.body. store_zip_code
+      store_city: req.body.store_city,
+      store_state: req.body.store_state,
+      store_zip_code: req.body.store_zip_code
     });
     res.json(newStore);
   } catch (err) {
@@ -375,9 +372,9 @@ router.put('/stores', async (req, res) => {
       {
         store_id: req.body.store_id,
         store_address_line1: req.body.store_address_line1,
-        store_city:req.body.store_city,
-        store_state:req.body.store_state,
-        store_zip_code: req.body. store_zip_code
+        store_city: req.body.store_city,
+        store_state: req.body.store_state,
+        store_zip_code: req.body.store_zip_code
       },
       {
         where: {
@@ -398,6 +395,214 @@ router.delete('/stores/:store_id', async (req, res) => {
     await db.stores.destroy({
       where: {
         store_id: req.params.store_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////customers Endpoints////////
+/// /////////////////////////////////
+
+// Get all database records from the customers table
+router.get('/customers', async (req, res) => {
+  try {
+    const customerItem = await db.customers.findAll();
+    const reply = customerItem.length > 0 ? { data: customerItem} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from customers table
+router.get('/customers/:customer_id', async (req, res) => {
+  try {
+    const customerItem = await db.customers.findAll({
+      where: {
+        customer_id: req.params.customer_id
+      }
+    });
+    res.json(customerItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/customers/:customersMin/:customersMax', async (req, res) => {
+//   try {
+//     const customerItem = await db.customers.findAll({
+//       where: {
+//         customer_id: req.params.customer_id
+//       }
+//     });
+//     res.json(customerItem);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in customers table
+router.post('/customers', async (req, res) => {
+  try {
+    const newCustomerItem = await db.customers.create({
+      customer_id: req.body.customer_id,
+      restriction_type: req.body.restriction_type,
+      customer_last_name: req.body.customer_last_name,
+      customer_email_address: req.body.customer_email_address,
+      customer_address: req.body.customer_address,
+      customer_city: req.body.customer_city,
+      customer_state: req.body.customer_state,
+      customer_zip_code: req.body.customer_zip_code
+    });
+    res.json(newCustomerItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in customers table
+router.put('/customers', async (req, res) => {
+  try {
+    await db.customers.update(
+      {
+        restriction_type: req.body.restriction_type,
+        customer_last_name: req.body.customer_last_name,
+        customer_email_address: req.body.customer_email_address,
+        customer_address: req.body.customer_address,
+        customer_city: req.body.customer_city,
+        customer_state: req.body.customer_state,
+        customer_zip_code: req.body.customer_zip_code
+      },
+      {
+        where: {
+          customer_id: req.body.customer_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual record by id
+router.delete('/customers/:customer_id', async (req, res) => {
+  try {
+    await db.customers.destroy({
+      where: {
+        customer_id: req.params.customer_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////orderItems Endpoints/////////
+/// /////////////////////////////////
+
+// Get all database records from the order items table
+router.get('/orderItems', async (req, res) => {
+  try {
+    const orderItems = await db.orderItems.findAll();
+    const reply = orderItems.length > 0 ? { data: orderItems} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from order items table
+router.get('/orderItems/:order_item_id', async (req, res) => {
+  try {
+    const orderItems = await db.orderItems.findAll({
+      where: {
+        order_item_id: req.params.order_item_id
+      }
+    });
+    res.json(orderItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orderItems/:orderItemsMin/:orderItemsMin', async (req, res) => {
+//   try {
+//     const orderItems = await db.orderItems.findAll({
+//       where: {
+//         order_item_id: req.params.order_item_id
+//       }
+//     });
+//     res.json(orderItems);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in order items table
+router.post('/orderItems', async (req, res) => {
+  try {
+    const newOrderItems = await db.orderItems.create({
+      order_item_id: req.body.order_item_id,
+      order_id: req.body.order_id,
+      product_id: req.body.product_id,
+      item_price: req.body.item_price
+    });
+    res.json(newOrderItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in order items table
+router.put('/orderItems', async (req, res) => {
+  try {
+    await db.orderItems.update(
+      {
+        order_id: req.body.order_id,
+        product_id: req.body.product_id,
+        item_price: req.body.item_price
+      },
+      {
+        where: {
+          order_item_id: req.body.order_item_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual record by id
+router.delete('/orderItems/:order_item_id', async (req, res) => {
+  try {
+    await db.orderItems.destroy({
+      where: {
+        order_item_id: req.body.order_item_id
       }
     });
     res.send('Successfully Deleted');

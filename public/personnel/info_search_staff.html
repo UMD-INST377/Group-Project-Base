@@ -94,16 +94,17 @@
           <h1>Information Search</h1>
         </div>
     </div>
-    <div class = "container">
+    <div class = "columns">
+      <div class = "column is-full is-bordered is-three-fifths is-offset-one-fifth">
       <form action = "/api" method = "post" >
           <div class="field" type="checkbox">
               <div>
                   <label class= "label" for="employee_first_name">First Name</label>
-                  <div class ="control"><input type="text" id="employee_first_name" placeholder="Enter your first name here" name="employee_first_name"></div>
+                  <div class ="control"><input type="text" id="employee_first_name" placeholder="Enter employee first name here" name="employee_first_name"></div>
               </div>
               <div>
                   <label class= "label" for="employee_last_name">Last Name</label>
-                  <div class ="control"><input type="text" id="employee_last_name" placeholder="Enter your last name here"
+                  <div class ="control"><input type="text" id="employee_last_name" placeholder="Enter employee last name here"
                   name ="employee_last_name">
                   </div>
               </div>
@@ -133,11 +134,17 @@
                   <!-- <div class="control"><input type="role id" id="role id" placeholder="Enter Role ID"
                   name="role id"></div> -->
               </div>
-              <!-- <div>
+              <div>
                   <label class= "label" for="email">Email</label>
-                  <div class="control"><input type="email" id="email" placeholder="Enter your email here"
+                  <div class="control"><input type="email" id="email" placeholder="Enter Employee email here"
                   name="email"></div>
-              </div> -->
+              </div>
+              <div>
+                <label class= "label" for="museum_name">Museum Name</label>
+                <div class ="control"><input type="text" id="museum_name" placeholder="Enter museum name here"
+                name ="museum_name">
+                </div>
+            </div>
               <!-- <div>
                   <label for="phone">Phone</label>
                   <input type="tel" id="phone" placeholder="Enter your phone number here"
@@ -166,6 +173,7 @@
               </div>   
           </div>
       </form>
+    </div>
   </div>
 </body>
 <footer class="footer">

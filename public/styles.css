@@ -2,3 +2,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.card-button {
+    cursor: pointer;
+}

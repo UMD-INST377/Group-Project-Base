@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../styles.css"/>
+    <title>Add Visitor</title>
+</head>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <img src="/images/ma_logo.png">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          About
+        </a>
+  
+        <a class="navbar-item" href="museum.html">
+          Museum
+        </a>
+
+        <a class="navbar-item">
+            Transactions
+        </a>
+
+        <a class="navbar-item" href="../personnel/personnel.html">
+            Personnel
+        </a>
+
+        <a class="navbar-item" href="./Visitors/visitor-search.html">
+            Visitors
+        </a>  
+      <div class="navbar-end">
+        <div class="navbar-item">          
+        </div>
+      </div>
+    </div>
+  </nav>
+<body>
+    <div class = "container">
+        <div class="tabs is-centered">
+            <ul>
+              <li><a href="./add-visitors.html">Add Visitor</a></li>
+              <li class="is-active"><a href="./visitor-search.html">Visitor Search</a></li>
+            </ul>
+          </div>
+        <div class ="content"> <h1>Search Visitor Information</h1> </div>
+        
+
+        <div>
+            <body>
+              <h1>Displaying visitor information from  
+                <div class="select is-small">
+                    <select>
+                      <option>Select date by calendar</option>
+                      <option>With options</option>
+                      <option>With options</option>
+                      <option>With options</option>
+                    </select>
+                  </div> to 
+                  <div class="select is-small">
+                      <select>
+                        <option>Select date by dropdown</option>
+                        <option>With options</option>
+                        <option>With options</option>
+                        <option>With options</option>
+                      </select>
+                    </div> from 
+                    <div class="select is-small">
+                        <select>
+                          <option>Select Museum by dropdown</option>
+                          <option>With options</option>
+                          <option>With options</option>
+                          <option>With options</option>
+                        </select>
+                      </div></h1>
+            </body>
+          </div>
+          <div>
+              <table class="table is-bordered is-striped">
+                  <thead>
+                      <tr>
+                          <th>Visit Date</th>
+                          <th>Visitor ID</th> 
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Phone #</th> 
+                          <th>Email</th> 
+                          <th>Membership</th> 
+                      </tr>
+                  </thead>
+                  <tbody id="result">
+                  </tbody>
+              </table>
+          </div>
+          </div>
+    </div>
+    
+</body>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+      is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+    </p>
+  </div>
+</footer>
+<script src ="scripts.js"></script>
+</html>
+
+

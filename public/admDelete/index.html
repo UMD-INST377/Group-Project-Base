@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 1</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel='stylesheet' type='text/css' href="style.css"> 
+
+</head>
+<body>
+    <h1>WeBooks</h1>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <a class="navbar-item" href="/">
+          Home
+        </a>
+  
+        <a class="navbar-item" href="/books/">
+          Books
+        </a>
+        <a class="navbar-item" href="/order/">
+          Order
+        </a>
+        <a class="navbar-item" href="/about/">
+          About
+        </a>
+        <a class="navbar-item" href="/contact/">
+          Contact
+        </a>
+  </nav>
+
+  <div class="columns is-centered">
+    <div class="column is-one-fifth">
+        <div class="box"></div>
+    </div>
+    <div class="column is-half">
+        <form>
+            <ul>
+                <div class="box" id="bookTitle">
+                    <h2>Book Selected: (Random Book)</h2>
+                </div>
+                <div class="box">
+                    <li>
+                        <input type="text" id="reasonDel" name="reasonDel" placeholder="Enter reason for deletion">
+                    </li>
+                </div>
+
+                <div class="box" id="delCheck">
+                    <p>Deleted items will be stored in the trash bin for 30 days before permanent deletion</p>
+                    <input type="checkbox" id="termCond" name="undefined">
+                    <label for="termCond">Terms and Conditions</label>
+                </div>
+
+                <div class="box" id="submitBox">
+                    <button type="submit" id="button" name="button">Confirm Delete</button>
+                </div>
+            </ul>
+        </form>
+    </div>
+  </div>
+  
+</body>
+</html>

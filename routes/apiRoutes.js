@@ -326,6 +326,88 @@ router.put('/song_characteristics', async (req, res) => {
   }
 });
 
+/////////////////////////////////////////
+//////// Songs ///////////
+/////////////////////////////////////////
+// Delmar Randolph
+
+router.route('/songsRoute').get(async (req, res) => {
+  try {
+    const arts = await db.Songs.findAll();
+    const reply = arts.length > 0 ? { data: arts } : { message: 'no results found' };
+    res.json({data: reply});
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+})
+
+router.get('/songs/:SONG_ID', async (req, res) => {
+  try {
+    const song = await db.Songs.findAll({
+      where: {
+        SONG_ID: req.params.SONG_ID
+      }
+    });
+
+    res.json(song);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/songs', async (req, res) => {
+  const song = await db.Songs.findAll();
+  const currentId = (await song.length) + 1;
+  try {
+    const newArtist = await db.songs.create({
+      SONG_ID: currentId,
+      SONG_NAME: req.body.SONG_NAME,
+      SONG_POPULARITY: req.body.SONG_POPULARITY,
+      GENRE_ID: req.body.GENRE_ID,
+    });
+    res.json(newSong);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/songs/:SONG_ID', async (req, res) => {
+  try {
+    await db.Songs.destroy({
+      where: {
+        SONG_ID: req.params.SONG_ID
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/songs', async (req, res) => {
+  try {
+    await db.songs.update(
+      {
+        SONG_NAME: req.body.SONG_NAME,
+        SONG_POPULARITY: req.body.SONG_POPULARITY
+      },
+      {
+        where: {
+          SONG_ID: req.body.SONG_ID
+        }
+      }
+    );
+    res.send('Songs Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 // /// /////////////////////////////////
 // /// ////////Macros Endpoints/////////
 // /// /////////////////////////////////

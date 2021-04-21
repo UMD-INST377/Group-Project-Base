@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const orderItems = sequelize.define(
-    'orderItems',
+    'order_items',
     {
       order_item_id: {
         type: DataTypes.INTEGER,

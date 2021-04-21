@@ -85,3 +85,98 @@ async function windowActions() {
 }
 
 window.onload = windowActions;
+
+/* Appending Playlist Cards */
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+function getPlaylists() {
+    let num_playlist = getCookie("num_playlist");
+
+    if (num_playlist.length == 0) {
+        document.cookie = "num_playlist = 0";
+        num_playlist = 0;
+    }
+    const num = parseInt(num_playlist);
+    const playlists = [];
+    for (let i = 0; i < num; i++) {
+        const playlist = getCookie("playlist" + i.toString());
+        playlists.push(playlist);
+    }
+    return playlists;
+}
+
+function generatePlaylist()
+{
+    let num_playlist = getCookie("num_playlist");
+    if (num_playlist.length == 0) {
+        document.cookie = "num_playlist = 0";
+        num_playlist = 0;
+    }
+    const num = parseInt(num_playlist);
+    document.cookie = "num_playlist =" + (num+1).toString();
+    
+
+    document.cookie = "playlist" + num.toString() + "= content";
+    console.log(getPlaylists());
+}
+
+const pDisplay = ` <div class="column is-narrow">
+<div class="box" style="width: 400px;">
+  <div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src= "https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4">Playlist</p>
+          <p class="subtitle is-6">Created on 4/20/21</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>`;
+
+function displayPlaylists() {
+    const playlists = getPlaylists();
+    const preview = document.getElementById("playlist_preview");
+    const container = preview.firstElementChild;
+    container.innerHTML = "";
+    for (let i = 0; i < playlists.length; i++) {
+        container.innerHTML += pDisplay;
+    }
+    console.log(container);
+    // document.getElementById("playlist_preview").firstElementChild.innerHTML=pDisplay;
+}
+
+displayPlaylists();
+
+const button = document.getElementById("p-button");
+console.log(button);
+
+button.addEventListener('click' , generatePlaylist) ;
+
+
+

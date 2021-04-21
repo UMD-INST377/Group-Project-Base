@@ -1,0 +1,19 @@
+h1 {
+    font-size: 80px;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 25px;
+    text-align: center;
+}
+
+.label, .input {
+    color: white;
+    text-align: center;
+}
+
+.box {
+    background-color:  rgb(98, 0, 255);
+}
+

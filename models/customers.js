@@ -1,6 +1,3 @@
-import deliveries from "./deliveries";
-import orders from "./orders";
-
 export default (sequelize, DataTypes) => {
   const customers = sequelize.define(
     'customers',

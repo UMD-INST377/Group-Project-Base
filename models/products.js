@@ -13,7 +13,7 @@ export default (sequelize, DataTypes) => {
       product_color: {
         type: DataTypes.STRING
       },
-      product_unit_type: {
+      product_unit_price: {
         type: DataTypes.FLOAT
       },
       family_id: {

@@ -612,4 +612,209 @@ router.delete('/orderItems/:order_item_id', async (req, res) => {
   }
 });
 
+
+
+/// /////////////////////////////////
+/// ////products Endpoints/////////
+/// /////////////////////////////////
+
+// Get all database records from the products table
+router.get('/products', async (req, res) => {
+  try {
+    const products = await db.products.findAll();
+    const reply = products.length > 0 ? { data: products} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from products table
+router.get('/products/:product_id', async (req, res) => {
+  try {
+    const products = await db.products.findAll({
+      where: {
+        order_item_id: req.params.order_item_id
+      }
+    });
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orderItems/:orderItemsMin/:orderItemsMin', async (req, res) => {
+//   try {
+//     const orderItems = await db.orderItems.findAll({
+//       where: {
+//         order_item_id: req.params.order_item_id
+//       }
+//     });
+//     res.json(orderItems);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in products table
+router.post('/products', async (req, res) => {
+  try {
+    const newProducts = await db.products.create({
+      product_id: req.body.product_id,
+      product_description: req.body.product_description,
+      product_color: req.body.product_color,
+      product_unit_type: req.body.product_unit_type,
+      family_id: req.body.family_id,
+      category_id: req.body.category_id
+    });
+    res.json(newProducts);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in products table
+router.put('/products', async (req, res) => {
+  try {
+    await db.products.update(
+      {
+        category_id: req.body.category_id,
+        family_id: req.body.family_id,
+        product_description: req.body.product_description
+      },
+      {
+        where: {
+          product_id: req.body.product_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual record by id
+router.delete('/products/:product_id', async (req, res) => {
+  try {
+    await db.products.destroy({
+      where: {
+        product_id: req.body.product_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+
+
+/// /////////////////////////////////
+/// ////productCategories Endpoints/////////
+/// /////////////////////////////////
+
+// Get all database records from the products table
+router.get('/productCategories', async (req, res) => {
+  try {
+    const productCategories = await db.productCategories.findAll();
+    const reply = productCategories.length > 0 ? { data: productCategories} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from products table
+router.get('/productCategories/:category_id', async (req, res) => {
+  try {
+    const productCategories = await db.productCategories.findAll({
+      where: {
+        category_id: req.params.category_id
+      }
+    });
+    res.json(productCategories);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orderItems/:orderItemsMin/:orderItemsMin', async (req, res) => {
+//   try {
+//     const orderItems = await db.orderItems.findAll({
+//       where: {
+//         order_item_id: req.params.order_item_id
+//       }
+//     });
+//     res.json(orderItems);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in products table
+router.post('/productCategories', async (req, res) => {
+  try {
+    const productCategories = await db.productCategories.create({
+      category_id: req.body.category_id,
+      category_name: req.body.category_name,
+      category_description: req.body.category_description
+    });
+    res.json(newProducts);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in products table
+router.put('/productCategories', async (req, res) => {
+  try {
+    await db.productCategories.update(
+      {
+        category_name: req.body.category_name,
+        category_description: req.body.category_description
+      },
+      {
+        where: {
+          category_id: req.body.category_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual record by id
+router.delete('/productCategories/:category_id', async (req, res) => {
+  try {
+    await db.productCategories.destroy({
+      where: {
+        category_id: req.body.category_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

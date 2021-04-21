@@ -1,0 +1,18 @@
+.description {
+    display: block;
+    margin-bottom: 5px;
+}
+
+h2{
+    font-size: 25px;
+}
+
+.updateForm{
+    background-color: aliceblue;
+    padding: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+li{
+    margin: 4px;
+}

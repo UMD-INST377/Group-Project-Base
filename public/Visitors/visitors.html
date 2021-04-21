@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../styles.css"/>
+    <title>Add Visitor</title>
+</head>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <img src="/images/ma_logo.png">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          About
+        </a>
+  
+        <a class="navbar-item" href="museum.html">
+          Museum
+        </a>
+
+        <a class="navbar-item">
+            Transactions
+        </a>
+
+        <a class="navbar-item" href="../personnel/personnel.html">
+            Personnel
+        </a>
+
+        <a class="navbar-item" href="">
+            Visitors
+        </a>  
+      <div class="navbar-end">
+        <div class="navbar-item">          
+        </div>
+      </div>
+    </div>
+  </nav>
+<body>
+    <div class = "container">
+        <div class="tabs is-centered">
+            <ul>
+              <li class="is-active"><a href="./add-museum.html">Add Visitor</a></li>
+              <li ><a href="./update-museum.html">Visitor Search</a></li>
+            </ul>
+          </div>
+        <div class ="content"> <h1>Enter Visitor Information</h1> </div>
+        
+
+    </div>
+    <div class = "container">
+        <form action = "/api" method = "post" >
+            <div class="field" type="checkbox">
+                <div>
+                    <label class= "label" for="visitor_first_name">First Name</label>
+                    <div class ="control"><input type="text" id="visitor_first_name" placeholder="Enter your first name here" name="visitor_first_name"></div>
+                </div>
+                <div>
+                    <label class= "label" for="visitor_last_name">Last Name</label>
+                    <div class ="control"><input type="text" id="visitor_last_name" placeholder="Enter your last name here"
+                    name ="visitor_last_name">
+                    </div>
+                </div>
+                <div>
+                  <label class= "label" for="museum_id">Museum ID</label>
+                  <div class="select is-small">
+                      <select>
+                        <option>Select Museum by dropdown</option>
+                        <option>With options</option>
+                        <option>With options</option>
+                        <option>With options</option>
+                      </select>
+                    </div>
+              </div>
+                <div>
+                    <label class= "label" for="member">Member</label>
+                    <div class="select is-small">
+                        <select>
+                          <option>Select by dropdown</option>
+                          <option>Yes</option>
+                          <option>No</option>
+                        </select>
+                      </div>
+                <div>
+                    
+                    <label for="email"><strong> Email</strong></label>
+                    <div><input type="email" name="email" placeholder = "Enter email here" id="email"></div>
+                      
+                </div>
+                    
+                </div>
+                
+                <div>
+                    <button class ="button is-small" type="submit" id="button" method="post" name="button">Submit</button>
+                </div>   
+            </div>
+        </form>
+    </div>
+    
+</body>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+      is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+    </p>
+  </div>
+</footer>
+<script src ="scripts.js"></script>
+</html>

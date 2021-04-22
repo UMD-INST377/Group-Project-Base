@@ -27,7 +27,6 @@ async function getBookData() {
   //console.log(randomArr[0].title)
 }
 
-
 async function windowActions() {
   getBookData();
 }

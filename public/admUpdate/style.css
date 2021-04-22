@@ -1,3 +1,7 @@
+body {
+    margin: 2em 4em 2em 4em;
+}
+
 .description {
     display: block;
     margin-bottom: 5px;
@@ -8,10 +12,11 @@ h2{
 }
 
 .updateForm{
-    background-color: aliceblue;
+    background-color:rgb(98, 0, 255);
     padding: 20px;
     margin-right: 20px;
     margin-left: 20px;
+    color:white;
 }
 li{
     margin: 4px;

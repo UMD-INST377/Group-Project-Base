@@ -4,9 +4,11 @@ h1 {
 #resultContainer{
     background-color: aliceblue;
     height: 600px;
-    width: 1300px;
+    width: auto;
     padding: 20px;
-    margin: auto;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
 }
 .row {
     display: flex;

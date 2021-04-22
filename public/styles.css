@@ -6,3 +6,7 @@
 .card-button {
     cursor: pointer;
 }
+
+.card  {
+    overflow: visible;
+}

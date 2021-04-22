@@ -6,6 +6,15 @@
 .logo {
     width: 120px;
     height: 50px;
+    margin-left: 10px;
+}
+
+.intro {
+    height: 50%;
+    width: 50%;
+    font-size: 36px;
+    margin-left: 10px;
+    text-align: center;
 }
 
 .menu {
@@ -16,7 +25,9 @@
     margin-top: 15px;
     overflow: hidden;
     margin-right: 50px;
+    margin-left: 10px;
 }
+
 
 .menu-item {
     display: inline;
@@ -38,3 +49,20 @@ li a {
 li a:hover {
     background-color: rgb(82, 166, 218);
 }
+
+.randomizer {
+    margin-left: 10px;
+}
+
+#pref {
+    background-color: midnightblue;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 8px;
+  }

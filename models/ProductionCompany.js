@@ -5,7 +5,7 @@ export default (sequelize, DataTypes) => {
             company_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                unique: true
+                unique: true,
                 primaryKey: true
             },
             company_name: {

@@ -3,27 +3,27 @@
 */
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Get all "navbar-burger" elements
-    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
   
-    // Check if there are any navbar burgers
-    if ($navbarBurgers.length > 0) {
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
   
-      // Add a click event on each of them
-      $navbarBurgers.forEach( el => {
-        el.addEventListener('click', () => {
+    // Add a click event on each of them
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
   
-          // Get the target from the "data-target" attribute
-          const target = el.dataset.target;
-          const $target = document.getElementById(target);
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
   
-          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-          el.classList.toggle('is-active');
-          $target.classList.toggle('is-active');
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
   
-        });
       });
-    }
+    });
+  }
   
 });
 
@@ -32,106 +32,108 @@ document.addEventListener('DOMContentLoaded', () => {
     POPULATING CHARTS
 */
 async function getUSCharts() {
-    const songRequest = await fetch('/api/wholeUSchart');
-    const songData = await songRequest.json();
-    return songData;
+  const songRequest = await fetch('/api/wholeUSchart');
+  const songData = await songRequest.json();
+  return songData;
 }
 
 async function getGlobalCharts() {
-    const songRequest = await fetch('/api/wholeGlobalChart');
-    const songData = await songRequest.json();
-    return songData;
+  const songRequest = await fetch('/api/wholeGlobalChart');
+  const songData = await songRequest.json();
+  return songData;
 }
 
 async function windowActions() {
-    const usResults = await getUSCharts();
-    const globalResults = await getGlobalCharts();
-    // console.table(usCharts.data);
-    console.table(globalResults.data);
-    const usCharts = usResults.data;
-    const globalCharts = globalResults.data;
+  const usResults = await getUSCharts();
+  const globalResults = await getGlobalCharts();
+  // console.table(usCharts.data);
+  console.table(globalResults.data);
+  const usCharts = usResults.data;
+  const globalCharts = globalResults.data;
 
-    const usTopSong = document.querySelector('.us-top-songs');
-    usCharts.forEach((item) => {
-        const appendItem = document.createElement('tr');
+  const usTopSong = document.querySelector('.us-top-songs');
+  usCharts.forEach((item) => {
+    const appendItem = document.createElement('tr');
 
-        appendItem.innerHTML = `
+    appendItem.innerHTML = `
             <td>${item.us_top50_rank}</td>
             <td>${item.song_name}</td>
             <td>${item.artist_name}</td>
             <td>${item.streams}</td>`;
         
-        if (usTopSong) {
-            usTopSong.append(appendItem);
-        }
+    if (usTopSong) {
+      usTopSong.append(appendItem);
+    }
         
-    });
+  });
 
-    const globalTopSong = document.querySelector('.global-top-songs');
-    globalCharts.forEach((item) => {
-        const appendItem = document.createElement('tr');
+  const globalTopSong = document.querySelector('.global-top-songs');
+  globalCharts.forEach((item) => {
+    const appendItem = document.createElement('tr');
 
-        appendItem.innerHTML = `
+    appendItem.innerHTML = `
             <td>${item.global_top50_rank}</td>
             <td>${item.song_name}</td>
             <td>${item.artist_name}</td>
             <td>${item.streams}</td>`;
 
-        if (globalTopSong) {
-           globalTopSong.append(appendItem); 
-        }
+    if (globalTopSong) {
+      globalTopSong.append(appendItem); 
+    }
         
-    });
+  });
 }
 
 window.onload = windowActions;
 
-/* Appending Playlist Cards */
+/* 
+    Appending Playlist Cards 
+*/
 
 function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
     }
-    return "";
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
   }
+  return "";
+}
 function getPlaylists() {
-    let num_playlist = getCookie("num_playlist");
+  let num_playlist = getCookie("num_playlist");
 
-    if (num_playlist.length == 0) {
-        document.cookie = "num_playlist = 0";
-        num_playlist = 0;
-    }
-    const num = parseInt(num_playlist);
-    const playlists = [];
-    for (let i = 0; i < num; i++) {
-        const playlist = getCookie("playlist" + i.toString());
-        playlists.push(playlist);
-    }
-    return playlists;
+  if (num_playlist.length == 0) {
+    document.cookie = "num_playlist = 0";
+    num_playlist = 0;
+  }
+  const num = parseInt(num_playlist);
+  const playlists = [];
+  for (let i = 0; i < num; i++) {
+    const playlist = getCookie("playlist" + i.toString());
+    playlists.push(playlist);
+  }
+  return playlists;
 }
 
 function generatePlaylist()
 {
-    let num_playlist = getCookie("num_playlist");
-    if (num_playlist.length == 0) {
-        document.cookie = "num_playlist = 0";
-        num_playlist = 0;
-    }
-    const num = parseInt(num_playlist);
-    document.cookie = "num_playlist =" + (num+1).toString();
+  let num_playlist = getCookie("num_playlist");
+  if (num_playlist.length == 0) {
+    document.cookie = "num_playlist = 0";
+    num_playlist = 0;
+  }
+  const num = parseInt(num_playlist);
+  document.cookie = "num_playlist =" + (num+1).toString();
     
 
-    document.cookie = "playlist" + num.toString() + "= content";
-    console.log(getPlaylists());
+  document.cookie = "playlist" + num.toString() + "= content";
+  console.log(getPlaylists());
 }
 
 const pDisplay = `
@@ -156,15 +158,15 @@ const pDisplay = `
 `;
 
 function displayPlaylists() {
-    const playlists = getPlaylists();
-    const preview = document.getElementById("playlist_preview");
-    const container = preview.firstElementChild;
-    container.innerHTML = "";
-    for (let i = 0; i < playlists.length; i++) {
-        container.innerHTML += pDisplay;
-    }
-    console.log(container);
-    // document.getElementById("playlist_preview").firstElementChild.innerHTML=pDisplay;
+  const playlists = getPlaylists();
+  const preview = document.getElementById("playlist_preview");
+  const container = preview.firstElementChild;
+  container.innerHTML = "";
+  for (let i = 0; i < playlists.length; i++) {
+    container.innerHTML += pDisplay;
+  }
+  console.log(container);
+  // document.getElementById("playlist_preview").firstElementChild.innerHTML=pDisplay;
 }
 
 displayPlaylists();
@@ -175,4 +177,17 @@ console.log(button);
 button.addEventListener('click' , generatePlaylist) ;
 
 
+// function to move through create playlist forms
 
+function togglePage(page1, page2) {
+  page1.style.visibility ="hidden";
+  page2.style.visibility = "visible";
+}
+
+// selecting the page that you want to change
+const stepone = document.querySelector('#step-one');
+const steptwo = document.querySelector('#step-two');
+
+//calling the function (look at HTML for style attribute on these forms)
+next.onclick = togglePage(stepone, steptwo);
+prev.onclick = togglePage(steptwo, stepone);

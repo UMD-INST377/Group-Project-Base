@@ -134,30 +134,26 @@ function generatePlaylist()
     console.log(getPlaylists());
 }
 
-const pDisplay = ` <div class="column is-narrow">
-<div class="box" style="width: 400px;">
-  <div class="card">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <img src= "https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48">
-            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <p class="title is-4">Playlist</p>
-          <p class="subtitle is-6">Created on 4/20/21</p>
-        </div>
+const pDisplay = `
+<div class="column is-one-quarter">
+<div class="card card-button" onclick="location.href='playlistsview.html'">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+    </figure>
+  </div>
+  <div class="card-content has-text-centered">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4">Playlist Name</p>
+        <p class="subtitle is-6">Created on 4/20/2021</p>
       </div>
     </div>
   </div>
 </div>
-</div>`;
+</div>
+</div>
+`;
 
 function displayPlaylists() {
     const playlists = getPlaylists();

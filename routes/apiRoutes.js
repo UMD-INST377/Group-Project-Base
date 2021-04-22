@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
@@ -217,7 +218,7 @@ router.delete('/genres/:genre_id', async (req, res) => {
 });
 
 /// /////////////////////////////////
-///Director Endpoints///
+/// Director Endpoints///
 /// /////////////////////////////////
 router.get('/directors', async (req, res) => {
   try {
@@ -280,7 +281,7 @@ router.delete('/directors/:director_id', async (req, res) => {
 });
 
 /// /////////////////////////////////
-///Production Company Endpoints///
+/// Production Company Endpoints///
 /// /////////////////////////////////
 router.get('/ProductionCompany', async (req, res) => {
   try {
@@ -342,7 +343,7 @@ router.delete('/ProductionCompany/:company_id', async (req, res) => {
 });
 
 /// /////////////////////////////////
-///Ratings Endpoints///
+/// Ratings Endpoints///
 /// /////////////////////////////////
 router.get('/Rating', async (req, res) => {
   try {

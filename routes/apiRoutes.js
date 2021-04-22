@@ -635,7 +635,7 @@ router.get('/products/:product_id', async (req, res) => {
   try {
     const products = await db.products.findAll({
       where: {
-        order_item_id: req.params.order_item_id
+        product_id: req.params.product_id
       }
     });
     res.json(products);

@@ -1,54 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Query Results</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-  <body>
-    <h1 class="has-text-centered">Search Results</h1>
-    <div id="resultContainer">
-      <div class="row">
-        <div class="result box">
-          <div class="imageArea">
-            <a href="../selectedBook/">
-              <img
-                src="example_image.jpg"
-                alt="Example of where pic would go"
-              />
-            </a>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Query Results</title>
 
-          <div class="bookInfo">
-            <h3 class="resultTitle">
-              <a href="../selectedBook/"
-                >Title Goes Here Title Goes Here Title Goes Here Title Goes
-                Here</a
-              >
-            </h3>
-            <hr />
-            <p>By: author name</p>
-          </div>
-        </div>
-        <div class="result box"></div>
-        <div class="result box"></div>
-        <div class="result box"></div>
-      </div>
-      <div class="row">
-        <div class="result box"></div>
-        <div class="result box"></div>
-        <div class="result box"></div>
-        <div class="result box"></div>
-      </div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+  <h1 class="has-text-centered">Search Results</h1>
+  <div id="resultContainer">
+    <div class="row">
+      <!-- fix outcome when there are like 20 book results -->
     </div>
-<div id="nextPageFooter">
+  </div>
+  <div id="nextPageFooter">
     <div class="pageSelector has-text-centered">
       <p>
         <a href="https://en.wikipedia.org/wiki/Link">1</a>
@@ -56,7 +26,8 @@
         <a href="https://en.wikipedia.org/wiki/Link">3</a>
       </p>
     </div>
-</div>
-    <script src="script.js"></script>
-  </body>
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>

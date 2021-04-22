@@ -2,3 +2,39 @@
     height: 200px;
     width: 200px;
 }
+
+.logo {
+    width: 120px;
+    height: 50px;
+}
+
+.menu {
+    background-color: #333;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 15px;
+    overflow: hidden;
+    margin-right: 50px;
+}
+
+.menu-item {
+    display: inline;
+    float: left;
+}
+
+#active {
+    background-color: midnightblue;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: rgb(82, 166, 218);
+}

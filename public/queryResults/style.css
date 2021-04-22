@@ -3,12 +3,15 @@
 } */
 #resultContainer{
     background-color: aliceblue;
-    height: 600px;
+    min-height: 600px;
     width: auto;
     padding: 20px;
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
 }
 .row {
     display: flex;

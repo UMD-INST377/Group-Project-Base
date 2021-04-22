@@ -80,6 +80,10 @@ form .box {
     width: 100%;
 }
 
+.box h2 {
+    color: white;
+}
+
 .box:first-child{
     margin-right: 20px;
 }

@@ -23,7 +23,7 @@ function buildResultBoxes (validBooks) {
     </div>
   </div>`).join('');
 
-  const suggestions = document.querySelector('.row'); // this is where the html above should be added
+  const suggestions = document.querySelector('#resultContainer'); // this is where the html above should be added
   suggestions.innerHTML = html;
 }
 

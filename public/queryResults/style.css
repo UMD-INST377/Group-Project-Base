@@ -1,6 +1,6 @@
-h1 {
+/* h1 {
     font-size: 55px;
-}
+} */
 #resultContainer{
     background-color: aliceblue;
     height: 600px;
@@ -49,3 +49,20 @@ hr{
 
 
 }
+
+h1, h2, h3 {
+    font-family: 'Lemonada';
+    color: #2a2a2a;
+  }
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    text-shadow: 2px 2px 10px black;
+    font-weight: 100;
+  }
+
+  .back {
+    font-size: 17px;
+    background-color: white; 
+  }

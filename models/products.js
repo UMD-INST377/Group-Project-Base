@@ -21,6 +21,9 @@ export default (sequelize, DataTypes) => {
       },
       category_id: {
         type: DataTypes.INTEGER
+      },
+      image_link: {
+        type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }

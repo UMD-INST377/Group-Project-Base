@@ -1,5 +1,4 @@
-const mybutton = document.querySelector('button');
-const myDiv = document.getElementById('randomizer');
+const mybutton = document.getElementById('randomizer');
 const myLabel = document.getElementById('myFurnLabel')
 
 function getRandomIntInclusive(min, max) {
@@ -16,7 +15,7 @@ async function loadData() {
 
     const newSrc = dataProducts[0].image_link;
 
-    document.querySelector('img').setAttribute('src', newSrc)
+    document.getElementsByClassName('testimg')[0].setAttribute('src', newSrc)
 
     const fam_id = dataProducts[0].family_id;
     const cat_id = dataProducts[0].category_id;

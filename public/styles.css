@@ -28,15 +28,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     margin-top: 65px;
     background-color: lightgrey;
     width: 45%
 }
 
 .displayimg {
-    height: 40%;
-    width: 40%;
+    height: 200px;
+    width: 200px;
     background-color: rgba(255, 255, 255, 0.877);
+}
+
+.displayMe {
+    height: 190px;
+    width: 190px;
+}
+
+.leftarrow:hover {
+    cursor: pointer;
+}
+
+.rightarrow {
+    height: 230px;
+}
+
+.rightarrow:hover {
+    cursor: pointer;
+}
+
+.carouselLabel {
+    flex-wrap: wrap;
 }
 
 .menu {

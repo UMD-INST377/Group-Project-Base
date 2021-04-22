@@ -7,7 +7,7 @@ export default (sequelize, DataTypes) => {
         allowNull: false,
         primaryKey: true
       },
-      restriction_type: {
+      customer_first_name: {
         type: DataTypes.STRING
       },
       customer_last_name: {
@@ -26,7 +26,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       customer_zip_code: {
-        type: DataTypes.STRING
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }

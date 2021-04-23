@@ -1,15 +1,88 @@
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>MAIN</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Main.css"></link>
+    <title>Main Page</title>
+</head>
+
+<body>
+    <h1>Top 10 Artists</h1>
     
-        <link rel='stylesheet' type="text/css" href='styles.css'/>
-    </head>
-    <body>
-        <h1>Group 10</h1>
-        
-        <script src="scripts.js"></script>
-    </body>
+    <ol type="1">
+        <li>
+            Post.findAll({
+                where: {
+                    ARTIST_POPULARITY: 1
+                }
+              });
+        </li>
+        <li>
+            Post.findAll({
+                where: {
+                    ARTIST_POPULARITY: 2
+                }
+              });
+        </li>
+        <li>
+            Post.findAll({
+                where: {
+                    ARTIST_POPULARITY: 3
+                }
+              });
+        </li>
+        <li>
+            Post.findAll({
+                where: {
+                    ARTIST_POPULARITY: 4
+                }
+              });
+        </li>  
+        <li>
+            Post.findAll({
+                where: {
+                    ARTIST_POPULARITY: 5
+                }
+              });
+        </li>
+        <li>
+            Post.findAll({
+                where: {
+                    ARTIST_POPULARITY: 6
+                }
+              });
+        </li>  
+        <li>
+            Post.findAll({
+                where: {
+                    ARTIST_POPULARITY: 7
+                }
+              });
+        </li>
+        <li>
+            Post.findAll({
+                where: {
+                    ARTIST_POPULARITY: 8
+                }
+              });
+        </li>  
+        <li>
+            Post.findAll({
+                where: {
+                    ARTIST_POPULARITY: 9
+                }
+              });
+        </li>
+        <li>
+            Post.findAll({
+                where: {
+                    ARTIST_POPULARITY: 10
+                }
+              });
+        </li>
+    </ol>
+    
+</body>
 </html>

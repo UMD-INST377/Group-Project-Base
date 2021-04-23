@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
-  const CreatorRoleLinks = database.define(
-    'CreatorRoleLinks',
+  const creators_roles_link = database.define(
+    'creators_roles_link',
     {
       media_id: {
         type: DataTypes.INTEGER,
@@ -16,5 +16,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return CreatorRoleLinks;
+  return creators_roles_link;
 };

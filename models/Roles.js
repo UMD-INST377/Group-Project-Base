@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
-  const Roles = database.define(
-    'Roles',
+  const roles = database.define(
+    'roles',
     {
       role_id: {
         type: DataTypes.INTEGER,
@@ -13,5 +13,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Roles;
+  return roles;
 };

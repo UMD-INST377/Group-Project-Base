@@ -4,3 +4,52 @@
 .block:not(:last-child) {
     margin-bottom: 1.5rem;
     }
+
+html {
+    background-color: lightgray;
+}
+
+body {
+    color: black;
+   
+}
+
+.tabs a {
+    align-items: center;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -1px;
+    padding: .5em 1em;
+    vertical-align: top;
+}
+
+.tabs li.is-active a {
+    border-bottom-color: red;
+    color: red;
+}
+
+.tabs ul {
+    align-items: center;
+    border-bottom-color:black;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: flex-start;
+}
+
+.box {
+    background-color: rgb(238, 238, 238);
+}
+
+.navbar {
+    background-color: rgb(238, 238, 238);
+    min-height: 3.25rem;
+    position: relative;
+    z-index: 30;
+}

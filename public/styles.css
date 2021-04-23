@@ -1,3 +1,6 @@
 .navbar-item img {
     max-height: 2.75rem;
-}
+    }
+.block:not(:last-child) {
+    margin-bottom: 1.5rem;
+    }

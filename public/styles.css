@@ -3,12 +3,25 @@ html {
     font-family: "Roboto";
 }
 
-h1, h2, h3 {
+h1, h2 {
     font-family: "Bebas Neue";
     font-weight: 1000;
     color: #690202;
     font-size: 40px;
     text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+.content_element {
+    padding: 5%;
+    outline-style: solid;
+    outline-color: rgb(0, 0, 0);
+    outline-width: thin;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .center {

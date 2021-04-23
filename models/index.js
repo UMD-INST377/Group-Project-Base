@@ -1,9 +1,13 @@
 import Artists from './Artists.js';
 import Albums from './Albums.js';
-import Macros from './Macros.js';
+import Lyrics from './Lyrics.js';
+import Songs from './Songs.js';
+import Song_info from './SongInfo.js';
 
 export default {
   Artists,
   Albums,
-  Macros
+  Lyrics,
+  Songs,
+  Song_info
 };

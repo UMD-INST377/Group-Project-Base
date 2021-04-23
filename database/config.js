@@ -19,4 +19,5 @@ export default {
     database: 'imdb_data',
     host: '3.236.243.212',
     dialect: 'mysql'
+  }
 };

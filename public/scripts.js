@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { Sequelize } = require("sequelize");
 
 // Option 1: Passing a connection URI
@@ -17,3 +18,5 @@ try {
 } catch (error) {
   console.error("Unable to connect to the database:", error);
 }
+=======
+>>>>>>> 7b39db21d4bc57d8b4a5c2fc4fddf27c1b601b9f

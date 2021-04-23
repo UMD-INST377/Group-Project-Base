@@ -183,11 +183,11 @@ router.get('/songs', async (req, res) => {
   }
 });
 
-router.get('/songs/:song_id', async (req, res) => {
+router.get('/songs/:genre', async (req, res) => {
   try {
     const song = await db.Songs.findAll({
       where: {
-        song_id: req.params.song_id
+        genre: req.params.genre
       }
     });
     res.json(song);
@@ -250,7 +250,7 @@ router.delete('/songs/:song_id', async (req, res) => {
   try {
     await db.Songs.destroy({
       where: {
-        song_id: req.params.song_id
+        genre: req.params.genre
       }
     })
   }catch(err){
@@ -315,60 +315,6 @@ router.put('/songinfo', async (req, res) => {
 
 /** 
 
-router.put('/macros', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
-      where: {
-        restriction_id: req.params.restriction_id
-      }
-    });
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////

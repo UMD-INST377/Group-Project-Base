@@ -11,12 +11,12 @@
 <body>
     <nav class = "navbar">
         <div class="navbar-brand"> 
-            <a class="navbar-item" href="https://bulma.io">Home</a>
+            <a class="navbar-item" href="/">Home</a>
         </div>
         <div class="navbar-end">
              <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary">Website Name</a>
+                    <a class="button is-primary" href="/about.html">About Website</a> <!-- button color changes -->
                 </div>
              </div>
         </div>
@@ -24,36 +24,57 @@
 
     <h1 class="title">Browse Genres</h1>
 
-    <div class="columns">
-        <div class="column is-one-third">
-            <div class="box"></div>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent is-vertical is-6">
+            <div class="is-child has-background-primary">
+                <p class="title"><a href="https://bulma.io">Search Rock Music</a></p>
+            </div>
+            <br>
+            <div class="is-child has-background-primary">
+                <p class="title"><a href="https://bulma.io">Search Soul Music</a></p>
+            </div>
+            <br>
+            <div class="is-child has-background-primary">
+                <p class="title"><a href="https://bulma.io">Search Electronic Music</a></p>
+            </div>
+            <br>
+            <div class="is-child has-background-primary">
+                <p class="title"><a href="https://bulma.io">Search Dance Pop Music</a></p>
+            </div>
         </div>
-        <div class="column"></div>
-        <div class="column">Soul</div>
-    </div>
-
-    <div class="columns is-vcentered">
-        <div class="column is-one-third">Hip Hop</div>
-        <div class="column">Electronic</div>
-        <div class="column">Indie Pop</div>
-    </div>
-
-    <div class="columns is-vcentered">
-        <div class="column is-one-quarter"></div>
-        <div class="column is-one-quarter">Dance Pop</div>
-        <div class="column is-one-quarter">Alternative</div>
-        <div class="column is-one-quarter"></div>
-    </div>
-
-    <form> <!--this is for the navigation bar to search for artists-->
-        <input type="text" class="search" placeholder="name or type">
-        <div class="artistnames"> <!--this class name is for filtering artist names for search-->
+        <div class="tile is-parent is-vertical is-6">
+            <div class="is-child has-background-primary">
+                <p class="title"><a href="https://bulma.io">Search Pop Music</a></p>
+            </div>
+            <br>
+            <div class="is-child has-background-primary">
+                <p class="title"><a href="https://bulma.io">Search Hip Hop Music</a></p>
+            </div>
+            <br>
+            <div class="is-child has-background-primary">
+                <p class="title"><a href="https://bulma.io">Search Indie Pop Music</a></p>
+            </div>
+            <br>
+            <div class="is-child has-background-primary">
+                <p class="title"><a href="https://bulma.io">Search Alternative Music</a></p>
+            </div>
         </div>
-    </form>
-
-    <div class="genres"> <!--this class name is for javascript input purposes-->
-        <!--add list of genres here as clickable buttons-->
     </div>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>Website Name by Alejandro Chacon, Shruti Kumar, Baldric Nguena, and Amanda Yee.<br>
+                 Website content from <a href="https://kaggle.com">Kaggle.</a> Created in 2021.</p>
+        </div>
+    </footer>
+
+        <!--potential idea: adding a search bar to filter through artists as the user types
+            <form>
+            <input type="text" class="search" placeholder="Search by Artist">
+            <div class="artistnames">
+            </div>
+        </form>
+        -->
+    </footer>
 </body>
 <script src="script.js"></script>
 </html>

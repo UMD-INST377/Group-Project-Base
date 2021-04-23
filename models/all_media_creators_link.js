@@ -1,6 +1,6 @@
 export default (Sequelize, DataTypes) => {
   const MediaCreatorLinks = Sequelize.define(
-    'Media',
+    'all_media_creators_link',
     {
       media_id: {
         type: DataTypes.INTEGER,

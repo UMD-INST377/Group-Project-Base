@@ -4,12 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma-rtl.min.css">
+    <title>Group 5 Working Front End</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    <h1>Group 5</h1>
+    <nav class = "navbar">
+        <div class="navbar-brand"> 
+            <a class="navbar-item" href="https://bulma.io">Home</a>
+        </div>
+        <div class="navbar-end">
+             <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">Website Name</a>
+                </div>
+             </div>
+        </div>
+    </nav>
+
+    <h1 class="title">Browse Genres</h1>
+
+    <div class="columns">
+        <div class="column is-one-third">
+            <div class="box"></div>
+        </div>
+        <div class="column"></div>
+        <div class="column">Soul</div>
+    </div>
+
+    <div class="columns is-vcentered">
+        <div class="column is-one-third">Hip Hop</div>
+        <div class="column">Electronic</div>
+        <div class="column">Indie Pop</div>
+    </div>
+
+    <div class="columns is-vcentered">
+        <div class="column is-one-quarter"></div>
+        <div class="column is-one-quarter">Dance Pop</div>
+        <div class="column is-one-quarter">Alternative</div>
+        <div class="column is-one-quarter"></div>
+    </div>
+
+    <form> <!--this is for the navigation bar to search for artists-->
+        <input type="text" class="search" placeholder="name or type">
+        <div class="artistnames"> <!--this class name is for filtering artist names for search-->
+        </div>
+    </form>
+
+    <div class="genres"> <!--this class name is for javascript input purposes-->
+        <!--add list of genres here as clickable buttons-->
+    </div>
 </body>
 <script src="script.js"></script>
 </html>

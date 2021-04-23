@@ -14,6 +14,15 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 
 app.use('/api', apiRoutes);
+app.get('/', () => {
+  res.send('index.html');
+});
+
+app.set('view engine', 'ejs');
+
+app.get('/about', (req, res) => {
+  res.render('about');
+});
 
 async function bootServer() {
   try {

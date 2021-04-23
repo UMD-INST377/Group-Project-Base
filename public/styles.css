@@ -1,5 +1,5 @@
 .mainContainer {
-    margin-top: 10px;
+    margin-top: 50px;
     display: flex;
     justify-content: space-around;
 }
@@ -13,7 +13,13 @@
 .admin {
     width: 57px;
     height: 50px;
-    float: right;
+    margin-right: 50px;
+}
+
+.topImgContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
 .intro {
@@ -28,7 +34,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     margin-top: 65px;
     background-color: lightgrey;
     width: 45%
@@ -36,13 +41,13 @@
 
 .displayimg {
     height: 200px;
-    width: 200px;
+    width: 500px;
     background-color: rgba(255, 255, 255, 0.877);
 }
 
 .displayMe {
-    height: 190px;
-    width: 190px;
+    height: 200px;
+    width: 500px;
 }
 
 .leftarrow:hover {
@@ -106,7 +111,7 @@ li a:hover {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 10px;
     border-radius: 8px;
 }
 
@@ -121,7 +126,7 @@ li a:hover {
 
 h1 {
     color: black;
-    text-align: left;
+    text-align: center;
     font-size: 35px;
     font-weight: bold;
     margin-bottom: 18px;
@@ -147,4 +152,9 @@ h1 {
 .disclaimer {
     margin-top: 5%;
     text-align: center;
+}
+
+hr {
+    background-color: black;
+    width: 465px;
 }

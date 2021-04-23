@@ -30,7 +30,7 @@ async function loadMyData() {
 function leftShift() {
   const one = data.shift();
   data.push(one);
-  const {display} = data[0];
+  const display = data[0];
   console.log(display);
   myDisplay.setAttribute('src', display);
 }
@@ -38,7 +38,7 @@ function leftShift() {
 function rightShift() {
   const last = data.pop();
   data.unshift(last);
-  const {display} = data[0];
+  const display = data[0];
   console.log(display);
   myDisplay.setAttribute('src', display);
 }

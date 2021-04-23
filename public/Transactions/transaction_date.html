@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css"/>
-    <title>Add Staff</title>
+    <title>Transactions by Date</title>
 </head>
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="./index.html">
-        <img src= "/images/ma_logo.png">
+      <a class="navbar-item" href="/public/index.html">
+        <img src="/images/ma_logo.png">
       </a>
   
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -28,7 +27,7 @@
           About
         </a>
   
-        <a class="navbar-item" href="./Museum/museum.html">
+        <a class="navbar-item">
           Museum
         </a>
 
@@ -36,11 +35,11 @@
             Transactions
         </a>
 
-        <a class="navbar-item" href="/public/Personnel/personnel.html">
+        <a class="navbar-item is-active" href="/public/Personnel/personnel.html" >
             Personnel
         </a>
 
-        <a class="navbar-item" href="./Visitors/visitor.html">
+        <a class="navbar-item" href="">
             Visitors
         </a>
   
@@ -85,26 +84,24 @@
     <div class = "container">
         <div class="tabs is-centered">
             <ul>
-              <li ><a href="./add_staff.html">Add Staff</a></li>
-              <li ><a href="./update_staff.html">Update Staff</a></li>
-              <li class="is-active"><a href="./info_search_staff.html">Information Search</a></li>
+              <li ><a href="./transaction_museum.html">Transactions by Museum</a></li>
+              <li class="is-active" ><a href="./transaction_date.html">Transactions by Date</a></li>
+              <!-- <li ><a href="./info_search_staff.html">Information Search</a></li> -->
             </ul>
           </div>
-        <div class="content">
-          <h1>Information Search</h1>
-        </div>
+        <div class="content"> <h1>Transactions by Date</h1> </div>
+
     </div>
-    <div class = "columns">
-      <div class = "column is-full is-bordered is-three-fifths is-offset-one-fifth">
+  <div class = "container">
       <form action = "/api" method = "post" >
           <div class="field" type="checkbox">
               <div>
                   <label class= "label" for="employee_first_name">First Name</label>
-                  <div class ="control"><input type="text" id="employee_first_name" placeholder="Enter employee first name here" name="employee_first_name"></div>
+                  <div class ="control"><input type="text" id="employee_first_name" placeholder="Enter your first name here" name="employee_first_name"></div>
               </div>
               <div>
                   <label class= "label" for="employee_last_name">Last Name</label>
-                  <div class ="control"><input type="text" id="employee_last_name" placeholder="Enter employee last name here"
+                  <div class ="control"><input type="text" id="employee_last_name" placeholder="Enter your last name here"
                   name ="employee_last_name">
                   </div>
               </div>
@@ -134,17 +131,11 @@
                   <!-- <div class="control"><input type="role id" id="role id" placeholder="Enter Role ID"
                   name="role id"></div> -->
               </div>
-              <div>
+              <!-- <div>
                   <label class= "label" for="email">Email</label>
-                  <div class="control"><input type="email" id="email" placeholder="Enter Employee email here"
+                  <div class="control"><input type="email" id="email" placeholder="Enter your email here"
                   name="email"></div>
-              </div>
-              <div>
-                <label class= "label" for="museum_name">Museum Name</label>
-                <div class ="control"><input type="text" id="museum_name" placeholder="Enter museum name here"
-                name ="museum_name">
-                </div>
-            </div>
+              </div> -->
               <!-- <div>
                   <label for="phone">Phone</label>
                   <input type="tel" id="phone" placeholder="Enter your phone number here"
@@ -168,13 +159,13 @@
                       </div>
                   </div>
               </div> -->
-              <div class="buttons has addons">
-                  <button class ="button is-small" type="submit" value="Submit input" id="button" method="post" name="button">Submit</button>
+              <div>
+                  <button class ="button is-small" type="submit" id="button" method="post" name="button">Submit</button>
               </div>   
           </div>
       </form>
-    </div>
   </div>
+  
 </body>
 <footer class="footer">
   <div class="content has-text-centered">

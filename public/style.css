@@ -1,4 +1,12 @@
-h1 {
-    text-align: center;
+h1,
+h3 {
+  text-align: center;
 }
 
+.subtitle {
+  text-align: center;
+}
+
+.form {
+  text-align: center;
+}

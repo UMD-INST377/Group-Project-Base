@@ -3,22 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <title>MyKea Preferences</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css" />
   </head>
     <body>
         <div class="container">
+          <a href="index.html">
             <img src = "../images/MyKEA.png" class = "logo" alt = "companyLogo">
-                
-        
-                    <ul class="menu">
-                        <li class="menu-item"><a href="index.html">Home Page</a></li >
-                        <li class="menu-item"><a href="about.html">About Us</a></li >
-                        <li class="menu-item"><a href="admin.html">Administrative</a></li >
-                        <li id="active" class="menu-item"><a href="preference_form.html">Preference Form</a></li >
-                        <li class="menu-item"><a href="preference_results.html">Preference Results</a></li>
-                    </ul>
+          </a>
+          <a href="admin.html">
+            <img src = "../images/admin_icon.png" class = "admin" alt = "adminIcon">
+          </a>
+          
+          <ul class="menu">
+            <li class="menu-item"><a href="index.html">Home Page</a></li >
+            <li class="menu-item"><a href="about.html">About Us</a></li >
+            <li class="menu-item"><a href="admin.html">Administrative</a></li >
+            <li id="active" class="menu-item"><a href="preference_form.html">Preference Form</a></li >
+            <li class="menu-item"><a href="preference_results.html">Preference Results</a></li>
+          </ul>
 
-                    <h1>MyKea Preference Form</h1>
+          <h1 id='pref-form'>College Room Redesign</h1>
+          <form>
+            <div class="field control">
+              <h3 id='pref-list'>Budget</h3>
+              <div class="select" id='dropdown'>
+                <select>
+                  <option>Select budget</option>
+                  <option>With options</option>
+                </select>
+              </div>
 
+              <h3 id='pref-list'>Furniture Preferences</h3>
+              <label class="checkbox">
+                <input type="checkbox">
+                Chairs
+                <input type="checkbox">
+                Sofas 
+                <input type="checkbox">
+                Tables
+                <input type="checkbox">
+                Rugs
+                <input type="checkbox">
+                Beds   
+              </label>
+
+              <h3 id='pref-list'>Color Preferences</h3>
+              <label class="checkbox">
+                <input type="checkbox">
+                Light Colors
+                <input type="checkbox">
+                Brown and Beige (Nude Colors) 
+                <input type="checkbox">
+                Black  
+              </label>
+            </div>
+          </form>
+          <a href="preference_results.html"> 
+            <button id = "pref">Save Preferences</button>
+          </a>
     </body>
 </html>

@@ -7,6 +7,10 @@ body {
     color: #444;
     padding: 0 10px;
   }
+
+  .main{
+    font-weight: 500;
+  }
   
   h1,h2,h3 {
     line-height: 1.2;
@@ -26,4 +30,25 @@ body {
     color: rgba(25, 25, 25, 90);
     background: yellow;
     padding: 5px;
+  }
+  
+  /* Style the search field */
+  form.searchBar input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+  }
+  
+  form.searchBar button:hover {
+    background: #0b7dda;
+  }
+  
+  /* Clear floats */
+  form.searchBar::after {
+    content: "";
+    clear: both;
+    display: table;
   }

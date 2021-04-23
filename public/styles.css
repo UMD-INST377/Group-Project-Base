@@ -2,7 +2,6 @@
     margin-top: 10px;
     display: flex;
     justify-content: space-around;
-
 }
 
 .logo {
@@ -73,7 +72,6 @@
     margin-left: 10px;
 }
 
-
 .menu-item {
     display: inline;
     float: left;
@@ -118,7 +116,7 @@ li a:hover {
 }
 
 #dropdown {
-    display:inline-block;
+    display: inline-block;
 }
 
 h1 {
@@ -127,4 +125,26 @@ h1 {
     font-size: 35px;
     font-weight: bold;
     margin-bottom: 18px;
+}
+
+.imagesContainer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.imageItem{
+    width: 20%;
+    height: 20%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.nameLabel{
+    text-align: center;
+}
+
+.disclaimer {
+    margin-top: 5%;
+    text-align: center;
 }

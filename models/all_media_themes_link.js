@@ -1,17 +1,17 @@
 export default (Sequelize, DataTypes) => {
-  const MediaGenreLinks = Sequelize.define(
-    'Media',
+  const MediaThemeLinks = Sequelize.define(
+    'all_media_themes_link',
     {
       media_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      genre_id: {
+      theme_id: {
         type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return MediaGenreLinks;
+  return MediaThemeLinks;
 };

@@ -666,9 +666,10 @@ router.post('/products', async (req, res) => {
       product_id: req.body.product_id,
       product_description: req.body.product_description,
       product_color: req.body.product_color,
-      product_unit_type: req.body.product_unit_type,
+      product_unit_price: req.body.product_unit_price,
       family_id: req.body.family_id,
-      category_id: req.body.category_id
+      category_id: req.body.category_id,
+      image_link: req.body.image_link
     });
     res.json(newProducts);
   } catch (err) {
@@ -811,5 +812,6 @@ router.delete('/productCategories/:category_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
 
 export default router;

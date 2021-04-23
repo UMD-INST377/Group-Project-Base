@@ -158,3 +158,47 @@ hr {
     background-color: black;
     width: 465px;
 }
+
+.loginperson {
+    border-radius: 150px;
+    height: 150px;
+    width: 150px;
+    text-align: center;
+}
+
+.loginContain {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginForm {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.loginbutton {
+    background-color: midnightblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.loginbutton:hover {
+    background-color: rgb(82, 166, 218);
+}
+
+.addNewDiv {
+    background-color: lightgray;
+    height: 500px;
+}

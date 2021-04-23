@@ -28,23 +28,25 @@
 
                 <h1>MyKea Admin</h1>
 
-                <div class="loginContain">
+                <div class="addNewDiv">
+                    <h3>Add a new DB product object</h3>
 
-                  <form action="/login" method="post" class="loginForm">
+                    <form class="addNewForm" action="/products" method="post">
+
+                        <input type="text" placeholder="Product ID" name="id" required>
+                        <input type="text" placeholder="Product Description" name="desc" required>
+                        <input type="text" placeholder="Product Color" name="color" required>
+                        <input type="text" placeholder="Product Unit Price" name="price" required>
+                        <input type="text" placeholder="Family ID" name="fam_id" required>
+                        <input type="text" placeholder="Category ID" name="cat_id" required>
+                        <input type="text" placeholder="Image Link" name="imglink" required>
+
+                        <button type="submit">Submit</button>
                     
-                      <label for="user">Username</label>
-                      <input type="text" placeholder="Enter Username" name="user" required>
-
-                      <label for="pword">Password</label>
-                      <input type="text" placeholder="Password" name="user" required>
                     
-                  </form>
+                    </form>
+                </div>
 
-                  <a href = "admin_inner.html">
-                    <button class="loginbutton">Login</button>
-                  </a>
-
-              </div>
 
     </body>
 </html>

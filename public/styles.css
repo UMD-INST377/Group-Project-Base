@@ -68,3 +68,8 @@ a {
     cursor: pointer;
     text-decoration: none;
 }
+
+.navbar-link.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover {
+    background-color:  rgb(238, 238, 238);
+    color:red;
+}

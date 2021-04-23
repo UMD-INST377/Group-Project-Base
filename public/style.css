@@ -1,14 +1,13 @@
-h1{
+h1.thicker{
     font-family: 'Big Shoulders Display', cursive;
     color: #2a2a2a;
 }
 
-p, input, li{
+p.thick, input, li{
     font-family: 'Roboto Condensed', sans-serif;
-    color: blueviolet;
+    color: black;
 }
 
 body > * {
-    background-color: red;
     padding: 1%;
   }

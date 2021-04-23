@@ -612,8 +612,6 @@ router.delete('/orderItems/:order_item_id', async (req, res) => {
   }
 });
 
-
-
 /// /////////////////////////////////
 /// ////products Endpoints/////////
 /// /////////////////////////////////
@@ -715,9 +713,6 @@ router.delete('/products/:product_id', async (req, res) => {
     res.error('Server error');
   }
 });
-
-
-
 
 /// /////////////////////////////////
 /// ////productCategories Endpoints/////////

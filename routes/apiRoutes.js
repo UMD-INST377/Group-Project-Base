@@ -199,11 +199,11 @@ router.get('/songs', async (req, res) => {
   }
 });
 
-router.get('/songs/:song_id', async (req, res) => {
+router.get('/songs/:genre', async (req, res) => {
   try {
     const song = await db.Songs.findAll({
       where: {
-        song_id: req.params.song_id
+        genre: req.params.genre
       }
     });
     res.json(song);

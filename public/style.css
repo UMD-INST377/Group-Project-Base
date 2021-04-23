@@ -1,0 +1,14 @@
+h1{
+    font-family: 'Big Shoulders Display', cursive;
+    color: #2a2a2a;
+}
+
+p, input, li{
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #2a2a2a;
+}
+
+body > * {
+    background-color: red;
+    padding: 1%;
+  }

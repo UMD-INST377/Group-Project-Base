@@ -1,20 +1,23 @@
 export default {
   development: {
-    username: 'root',
-    database: 'imdb_data',
-    host: '127.0.0.1',
+    username: 'student',
+    password: 'INST377@UMD',
+    database: 'imdb_Data',
+    host: '3.236.243.212',
     dialect: 'mysql'
   },
   test: {
-    username: 'root',
+    username: 'student',
+    password: 'INST377@UMD',
     database: 'imdb_data',
-    host: '127.0.0.1',
+    host: '3.236.243.212',
     dialect: 'mysql'
   },
   production: {
-    username: 'root',
+    username: 'student',
+    password: 'INST377@UMD',
     database: 'imdb_data',
-    host: '127.0.0.1',
+    host: '3.236.243.212',
     dialect: 'mysql'
   }
 };

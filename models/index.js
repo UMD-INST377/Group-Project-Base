@@ -1,13 +1,13 @@
-import Media from './Media.js';
+import Media from './all_media.js';
 import Creators from './Creators.js';
 import Backgrounds from './Backgrounds.js';
 import Genres from './Genres.js';
 import Roles from './Roles.js';
 import Themes from './Themes.js';
-import MediaBackgroundLinks from './MediaBackgroundLinks.js';
-import MediaCreatorLinks from './MediaCreatorLinks.js';
-import MediaGenreLinks from './MediaGenreLinks.js';
-import MediaThemeLinks from './MediaThemeLinks.js';
+import MediaBackgroundLinks from './all_media_backgrounds_link.js';
+import MediaCreatorLinks from './all_media_creators_link.js';
+import MediaGenreLinks from './all_media_genres_link.js';
+import MediaThemeLinks from './all_media_themes_link.js';
 import CreatorRoleLinks from './CreatorRoleLinks.js';
 
 export default {

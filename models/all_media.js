@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const media = database.define(
-    'Media',
+    'all_media',
     {
       media_id: {
         type: DataTypes.INTEGER,

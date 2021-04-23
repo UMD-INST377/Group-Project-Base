@@ -1,4 +1,4 @@
-// import listings from './listings.js';
+import listings from './listings.js';
 import calendar from './calendar.js';
 import neighborhoods from './neighborhoods.js';
 import scores from './scores.js';
@@ -8,10 +8,10 @@ import properties from './properties.js';
 
 export default {
   reviews,
-  // listings,
+  listings,
   calendar,
   neighborhoods,
-  scores
-  // hosts,
-  properties,
+  scores,
+  hosts,
+  properties
 };

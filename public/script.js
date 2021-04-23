@@ -4,24 +4,19 @@ async function Records(){
     const recordsData = await recordsRequest.json();
     return recordsData;
 }
-
 async function Calendar() {
-    const apif = await fetch('/api/calendar');
+    const apif = await fetch('/api/allrecords');
     const x = await apif.json();
-    const arrayd = x.data;
+    const c_array = x.data;
     const y = document.querySelector('.target'); 
-    arrayd.forEach((z) => {
-        const calendarData = document.createElement('tr')
-        foodVar.innerHTML =`
-            <td>${z.calendar_id}</td>
-            <td>${z.listing_id}</td>
-            <td>${z.stay_date}</td>
-            <td>${z.availability}</td>
-            <td>${z.price}</td>
-            <td>${z.min_nights}</td>
-            <td>${z.max_nights}</td>
+    c_array.forEach((c) => {
+        const CVar = document.createElement('tr')
+        CVar.innerHTML =`
+            <td>${c.calendar_id}</td>
+            <td>${c.listing_id}</td>
+            <td>${c.stay_date}</td>
         `;
-        y.append(calendarData)
+        y.append(CVar)
     });
 }
 window.onload = Calendar();

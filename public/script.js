@@ -6,10 +6,9 @@ async function Records(){
 }
 async function Calendar() {
     const apif = await fetch('/api/allrecords');
-    const x = await apif.json();
-    const c_array = x.data;
+    const recordsArray = await apif.json();
     const y = document.querySelector('.target'); 
-    c_array.forEach((c) => {
+    recordsArray.forEach((c) => {
         const CVar = document.createElement('tr')
         CVar.innerHTML =`
             <td>${c.calendar_id}</td>

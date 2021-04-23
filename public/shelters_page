@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group 30 Final Project</title>
+  <link rel='stylesheet' href="styles.css"></link>
+  <script src='Shelters.js' charset="UTF-8"></script>
+
+
+</head>
+<body>
+  <h1 class="bold uppercase">{Shelters.name}</h1>
+  <table>
+  <td>
+  {Shelters.data.forEach((m) => 
+  this.append(`<tr>${m}</tr>`)}
+  </td>
+  </table>
+</body>
+</html>

@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
-  const Backgrounds = database.define(
-    'Backgrounds',
+  const backgrounds = database.define(
+    'backgrounds',
     {
       background_id: {
         type: DataTypes.INTEGER,
@@ -13,5 +13,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Backgrounds;
+  return backgrounds;
 };

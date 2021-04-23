@@ -5,14 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <title>Document</title>
+    <title>Create a Playlist</title>
 </head>
 <body>
+    <h1>Create a Playlist</h1>
     <nav>
-        <div class="buttons">
-            <button class="button is-large is-primary is-rounded"><a href=”public/index.html”> ⇦ Home </a></button>
-            <button class="button is-large is-primary is-rounded"><a href=”public/xxx/index.html”> ⇨ Page </a></button>  
-        </div>
+        <button class="button is-dark is-large is-primary is-rounded"><a href=”public/index.html”> ⇦ Back to Home </a></button>
+        <!-- <button class="button is-large is-primary is-rounded"><a href=”public/xxx/index.html”> ⇨ Page </a></button>   -->
     </nav>
+    <div class="form">
+        <form action='' method='post' class='speaker-form'>
+            <ul class="flex-outer">
+                <li>
+                    <label for="namePlaylist">Name your Playlist</label>
+                    <input name="namePlaylist" type="text" id="namePlaylist">
+                </li>
+                <h2>Add Songs</h2>
+                <li>
+                    <label for="songTitle">Song title</label>
+                    <input name="songTitle" type="text" id="songTitle">
+                </li>
+                <li>
+                    <label for="artistBand">Artist/Band</label>
+                    <input name="artistBand" type="text" id="artistBand">
+                </li>
+                <li>
+                    <label for="songDuration">Song duration</label>
+                    <input name="songDuration" type="text" id="songDuration">
+                </li>
+                <li>
+                    <label for="ifExplicit">Is it explicit?</label>
+                    <nav>
+                        <button class="button is-dark is-small is-primary is-rounded">yes</button>
+                        <button class="button is-dark is-small is-primary is-rounded">no</button>
+                    </nav>
+                </li>
+            </ul>
+        </form>
+    </div>
 </body>
 </html>

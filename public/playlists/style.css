@@ -1,0 +1,39 @@
+body {
+    background: #53B797;
+  }
+  
+.header {
+   display: flex;
+   justify-content: center;
+   color: black;
+   font-size: 40px;
+ }
+  
+.searcher {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-content: space-between;
+}
+  
+.container {
+    max-width: 700px;
+}
+
+.bar {
+    display: flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 8px;
+    border-radius: 4px;
+    justify-content: center;
+}
+  
+input {
+    width: 500px;
+}
+
+.info {
+    background-color: #47978e;
+    padding: 1%;
+  }

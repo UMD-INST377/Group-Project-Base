@@ -45,6 +45,7 @@ body {
 
 .box {
     background-color: rgb(238, 238, 238);
+    border-radius: 0px;
 }
 
 .navbar {
@@ -52,4 +53,18 @@ body {
     min-height: 3.25rem;
     position: relative;
     z-index: 30;
+}
+
+.navbar-item, .navbar-link {
+    color: #4a4a4a;
+    display: block;
+    line-height: 1.5;
+    padding: .5rem .75rem;
+    position: relative;
+}
+
+a {
+    color: red;
+    cursor: pointer;
+    text-decoration: none;
 }

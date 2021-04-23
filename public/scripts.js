@@ -1,6 +1,6 @@
 /* 
     NAVBAR BURGER FUNCTIONALITY
-*/
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // Get all "navbar-burger" elements
@@ -174,20 +174,43 @@ displayPlaylists();
 const button = document.getElementById("p-button");
 console.log(button);
 
-button.addEventListener('click' , generatePlaylist) ;
-
+button.addEventListener('click' , generatePlaylist);
 
 // function to move through create playlist forms
 
+/* function ifRandom() {    
+  if (document.getElementById('random').checked) {
+    document.getElementById('rando').style.display = 'block';
+    document.getElementById('custo').style.display = 'none';
+  }
+  else {   
+    console.log('custom!');
+  }
+}
+function nextPage() {
+  const page1 = document.querySelector('#step-one');
+  const page2 = document.querySelector('#step-two');
+  page1.style.display = 'none';
+  page2.style.display = 'block';
+} */
+/*
+function prevPage() {
+  const page1 = document.querySelector('#step-one');
+  const page2 = document.querySelector('#step-two');
+  page1.style.display = 'block';
+  page2.style.display = 'none';
+}
 function togglePage(page1, page2) {
-  page1.style.visibility ="hidden";
-  page2.style.visibility = "visible";
+  page1.style.display = 'none';
+  page2.style.display = 'block';
 }
 
 // selecting the page that you want to change
-const stepone = document.querySelector('#step-one');
-const steptwo = document.querySelector('#step-two');
+const stepone = document.getElementById('step-one');
+const steptwo = document.getElementById('step-two');
+const next = document.getElementById('next');
+const prev = document.getElementById('prev');
 
-//calling the function (look at HTML for style attribute on these forms)
-next.onclick = togglePage(stepone, steptwo);
-prev.onclick = togglePage(steptwo, stepone);
+// calling the function (look at HTML for style attribute on these forms)
+next.onclick = nextPage(stepone, steptwo);
+prev.onclick = prevPage(steptwo, stepone); */

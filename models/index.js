@@ -5,8 +5,8 @@ import MuseumInfo from './MuseumInfo.js';
 import MuseumStaff from './MuseumStaff.js';
 import MuseumVisits from './MuseumVisits.js';
 import StaffRole from './StaffRole.js';
-import VisitorTransactions from './visitor_transactions.js';
-import Visitors from './visitors.js';
+import VisitorTransactions from './VisitorTransactions.js';
+import Visitors from './Visitors.js';
 
 export default {
   AdaCompliance,

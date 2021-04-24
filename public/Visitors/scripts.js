@@ -14,7 +14,8 @@ async function getData() {
         <td> ${visitor.visitor_fn} </td>
         <td> ${visitor.visitor_ln} </td>
         <td> ${visitor.visitor_phone_num} </td>
-        <td> ${visitor.email} </td>`;
+        <td> ${visitor.email} </td>
+        <td> ${visitor.transaction_id} </td>`;
     result.append(appendItem);
   });
 }

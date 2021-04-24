@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = 'stylesheet' href="styles.css"/>
+    <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title>Updating a Playlist</title>
 </head>
@@ -30,8 +30,21 @@
                       <label   for="song-duration">Song Duration</label>
                       <input id='song-duration' name='song-duration' type="text" placeholder="Enter song duration here">
                     </li>
-                    
-                    
+                    <li>
+                        <p>Is it explicit?</p> 
+                        <ul class="flex-container">
+                            <li class="flex-child">
+                              <input class="button is-info is-light" id='explicit' name ='explicit' type="button" value="Yes">
+                              <label  for="explicit"></label>
+                            </li>
+                            <li class="flex-child"> 
+                              <input class="button is-info is-light" id="not-explicit" name="not-explicit" type="button" value="No">
+                              <label for="not-explicit"></label>
+                            </li>
+                        </ul> 
+                        
+                    </li>
+                </ul>
             </form>
         </div>
         <div class="block" id="submit-block">

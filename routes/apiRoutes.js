@@ -211,6 +211,69 @@ router.route('/wholeGlobalChart')
     }
 });
 
+/*
+router.route('/globalUScombo')
+  .get(async (req, res) => {
+    try {
+      const globaltop = await db.GlobalTop50.findAll();
+      const ustop = await db.USTop50.findAll();
+
+      const combinedTop50 = globaltop.map((song) => {
+        const fullUS = ustop.find((song) => song.song_id === song.song_id);
+        const fullGlobal = globaltop.find((song) => song.song_id === song.song_id);
+        console.log('song', song.dataValues);
+        console.log('artist', fullUS.dataValues);
+
+        return {
+          ...song.dataValues,
+          ...fullUS.dataValues
+        }
+      })
+      res.json({data: combinedTop50});
+
+    } catch (err) {
+      console.error(err);
+      res.json({message: "Something went wrong on the server"});
+    }
+  });
+  */
+
+  router.route('/combinedTop50')
+  .get(async (req, res) => {
+    try {
+      const ranks = await db.GlobalTop50.findAll();
+      const usranks = await db.USTop50.findAll();
+      const artists = await db.Artists.findAll();
+      const songs = await db.Songs.findAll();
+      // map is like a for each
+      /*const wholeUSChart = usranks.map(rank) => {
+        const songEntry = songs.find((song) => song.song_id === rank.song_id);
+        const artistEntry = artists.find((artist) => artist.artist_id === rank.artist_id);
+      }; */
+
+      const wholeGlobalChart = ranks.map((rank) => {
+        const songEntry = songs.find((song) => song.song_id === rank.song_id);
+        const artistEntry = artists.find((artist) => artist.artist_id === rank.artist_id);
+        // console.log('stream', stream.dataValues);
+        // console.log('songEntry', songEntry.dataValues);
+        // console.log('artistEntry', artistEntry.dataValues);
+
+        return {
+          // spread operator
+          ...rank.dataValues,
+          ...songEntry.dataValues,
+          ...artistEntry.dataValues
+        }
+      })
+      res.json({data: wholeGlobalChart});
+
+        
+      } catch (err) {
+        console.error(err);
+        res.json({message:"oh god something broke again"});
+      }
+    });
+
 router.route('/global')
   .get(async (req, res) => {
     try {

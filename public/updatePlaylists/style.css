@@ -12,6 +12,7 @@ body{
 
 #update-container{
     display:inline-flex;
+    background-color: #53B797;
 }
 
 #bbox{
@@ -26,10 +27,10 @@ body{
     vertical-align: middle;
 }
 
-.box{
+#box{
 
-    display:inline-flex;
-    height: 500px;
+    display:block;
+    height: 400px;
     width: 500px;
 
 }
@@ -64,6 +65,12 @@ body{
     background-color: #363636;
     border-color: transparent;
     color: white;
+}
+
+
+#add {
+    margin-top: 30px;
+    display: block;
 }
 
 .submit{

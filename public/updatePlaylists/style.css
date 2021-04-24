@@ -7,12 +7,17 @@ body {
 .subheading{
     display: flex;
 }
+
 #update-container{
     display:inline-flex;
 }
 
 #bbox{
     display: flex;
+}
+
+#back{
+    color:white;
 }
 
 #update-form{
@@ -58,6 +63,13 @@ body {
     border-color: transparent;
     color: white;
 }
-a{
-    color:rgb(255, 255, 255);
+
+.submit{
+    padding:15px;
+    display: flexbox;
+}
+
+#submit{
+    padding:15px;
+    display: flexbox;
 }

@@ -1,3 +1,55 @@
+html {
+    background-color: black;
+}
+
+div.columns {
+    padding-top: 80px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+h1.column.title.has-text-centered.is-size-1 {
+    background-color: grey;
+    color: black;
+}
+
+div.column.is-two-thirds {
+    background-color: grey;
+}
+
+div.column.is-one-fifth {
+    background-color: grey;
+}
+
+p.menu-label {
+    color: black;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+a.categorical {
+    color: black;
+    font-weight: bold;
+    font-size: large;
+}
+
+a.create-listing {
+    color: black;
+    font-weight: bold;
+    font-size: large;
+}
+
+a.contact-us {
+    color: black;
+    font-weight: bold;
+    font-size: large;
+}
+
+label.label.search {
+    color: black;
+    font-weight: bold;
+}
+
 h1.thicker{
     font-family: 'Big Shoulders Display', cursive;
     color: #2a2a2a;

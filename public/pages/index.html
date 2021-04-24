@@ -1,41 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Airbnb Database</title>
-      <link href="style.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-      <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100;300&display=swap" rel="stylesheet">
-  </head>
+    <head>
+        <meta charset="utf-8">
+        <title>Group 13</title>
+        <link href="styles.css" rel="stylesheet">
+    </head>
   <body>
-    <div class="columns">
-      <h1 class="column title has-text-centered is-size-1">AirBnB Database</h1>
-    </div>
-    <div class="columns">
-        <div class="column is-two-thirds">
-          <form class="search-form" action='/api' method='post'>
-            <label class="label search" for="search">Search</label>
-            <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
-            <button type="submit" name="submit" id="submit" class="button">Search</button>
-            <div class="card">
-                <ul class="card-content is-centered" id="search-results"></ul>
-            </div>
-          </form>
-        </div>
-        <div class="column filler"></div>
-        <div class="column is-one-fifth">
-          <aside class="menu">
-              <p class="menu-label">MENU</p>
-              <ul class="menu-list">
-                <li><a class="categorical">Categorical Search</a></li>
-                <li><a class="create-listing">Create a Listing</a></li>
-                <li><a class="contact-us">Contact Us</a></li>
-              </ul>
-            </aside>
+    <!-- All Comment Labels are references to figma wireframes -->  
+    <!-- homepage (Surface Book - 1) -->
+      <div class = "homepage"> 
+          <div class = "header">
+            <h1>AirBnB DataBase</h1>
           </div>
-        </div>
+          <div class = "searchbar">
+            <textarea rows="1" cols = "30" id="search" name = "search" placeholder="Enter your search here"></textarea>
+            <button type="search" name = "search">Search</button>
+          </div>
+          <div class = "Search results"></div>
+          <div class = "Menu">
+              <div>
+                  <p id = "categorical">Categorical Search</p>
+                  <p id = "create">Creating A Listing</p>
+                  <p id = "contact">Contact Us</p>
+              </div>
+          </div>
+      </div>
+
       <!-- Categorical Search (Surface Book - 2) -->
       <div class = "categorical">
         <div class = "header">
@@ -111,17 +101,5 @@
             </ul>
           </form>
     </div>
-    <table class="table table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-      <thead>
-          <tr>
-              <th>Calendar ID</th>
-              <th>Listing_ID</th>
-              <th>Stay_Date</th>
-          </tr>
-      </thead>
-      <tbody class="target"></tbody>
-  </table>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
-    <script src="script.js"></script>
   </body>
 </html>

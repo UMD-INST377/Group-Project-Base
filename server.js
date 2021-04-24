@@ -2,8 +2,11 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import es6Renderer from 'express-es6-template-engine'
 
 const app = express();
+app.engine('html', es6Renderer);
+app.set('views', 'public');
 const staticFolder = 'public';
 
 const PORT = process.env.PORT || 3000;
@@ -14,14 +17,19 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 
 app.use('/api', apiRoutes);
-app.get('/', () => {
-  res.send('index.html');
-});
 
 app.set('view engine', 'html');
 
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
 app.get('/about', (req, res) => {
   res.render('about');
+});
+
+app.get('/insert', (req, res) => {
+  res.render('insert');
 });
 
 async function bootServer() {

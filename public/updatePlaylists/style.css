@@ -1,3 +1,7 @@
+html{
+    background-color: #53B797;
+}
+
 body{
     font-family: "Helvetica Neue", sans-serif;
     font-size: large;
@@ -12,7 +16,7 @@ body{
 
 #update-container{
     display:inline-flex;
-    background-color: #53B797;
+    background-color:teal;
 }
 
 #bbox{
@@ -28,7 +32,7 @@ body{
 }
 
 #box{
-
+    background-color: blue;
     display:block;
     height: 400px;
     width: 500px;
@@ -36,6 +40,7 @@ body{
 }
 
 .flex-container{
+    background-color: brown;
     flex-direction: row;
     display:inline-flex;
 

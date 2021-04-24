@@ -5,16 +5,9 @@ body{
     text-align:center;
 }
 
-.subheading{
+.subheading, #subheading{
     display:inline-flex;
-    height: 500px;
-    width: 500px;
-}
-
-#subheading{
-    display:inline-flex;
-    height: 500px;
-    width: 500px;
+    width: 600px;
 }
 
 #update-container{

@@ -8,46 +8,48 @@
     <link rel="stylesheet" href="../styles.css"/>
     <title>Add Visitor</title>
 </head>
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="index.html">
-        <img src="/images/ma_logo.png">
-      </a>
-  
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-  
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="../index.html">
-          About
+<div class = "box">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img src="/images/ma_logo.png">
         </a>
-  
-        <a class="navbar-item" href="../Museum/museum.html">
-          Museum
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="../index.html">
+            About
+          </a>
+    
+          <a class="navbar-item" href="../Museum/museum.html">
+            Museum
+          </a>
+
+          <a class="navbar-item" href="../Transactions/transactions.html">
+            Transactions
         </a>
 
-        <a class="navbar-item" href="../Transactions/transactions.html">
-          Transactions
-      </a>
+        <a class="navbar-item" href="../Personnel/personnel.html">
+            Personnel
+        </a>
 
-      <a class="navbar-item" href="../Personnel/personnel.html">
-          Personnel
-      </a>
-
-        <a class="navbar-item" href="../Visitors/visitors.html">
-            Visitors
-        </a>  
-      <div class="navbar-end">
-        <div class="navbar-item">          
+          <a class="navbar-item" href="../Visitors/visitors.html">
+              Visitors
+          </a>  
+        <div class="navbar-end">
+          <div class="navbar-item">          
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+</div>
 <body>
     <div class = "container">
         <div class="tabs is-centered">
@@ -56,10 +58,12 @@
               <li class="is-active"><a href="./visitor-search.html">Visitor Search</a></li>
             </ul>
           </div>
-        <div class ="content"> <h1>Search Visitor Information</h1> </div>
-        
+          <div class ="box">
+            <div class ="content"> <h1>Search Visitor Information</h1> </div>
+            <div class ="content"><p> To search visitor information enter date range and Museum. Press submit when done.</p></div>
+          </div>
 
-        <div>
+        <div class = "box">
             <body>
               <h1>Displaying visitor information from  
                 <div class="select is-small">
@@ -88,7 +92,7 @@
                       </div></h1>
             </body>
           </div>
-          <div>
+          <div class = "box">
               <table class="table is-bordered is-striped">
                   <thead>
                       <tr>
@@ -98,7 +102,7 @@
                           <th>Last Name</th>
                           <th>Phone #</th> 
                           <th>Email</th> 
-                          <th>Membership</th> 
+                          <!-- <th>Membership</th>  -->
                       </tr>
                   </thead>
                   <tbody id="result">

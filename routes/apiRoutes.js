@@ -279,6 +279,47 @@ router.put('/Museum_info', async (req, res) => { // Where I left off 19:18 4/6/2
 /// /////////////////////////////////
 /// ////Visitor Endpoints////////
 /// /////////////////////////////////
+router.route('/wholeMeal')
+  .get(async (req, res) => {
+    try {
+      const meals = await db.Meals.findAll();
+      const macros = await db.Macros.findAll();
+      const wholeMeals = meals.map((meal) => {
+        const macroEntry = macros.find((macro) => macro.meal_id === meal.meal_id);
+        console.log('meal', meal)
+        console.log('macroEntry', macroEntry);
+        return {
+          ...meal.dataValues,
+          ...macroEntry.dataValues
+        };
+      });
+      res.json({data: wholeMeals});
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'something went wrong on the server!'});
+    }
+  });
+
+router.route('/wholeVisitor')
+  .get(async (req, res) => {
+    try {
+      const visitor = await db.Visitors.findAll();
+      const visitorTrans = await db.VisitorTransactions.findAll();
+      const wholeVisitor = visitor.map((visit) => {
+        const transEntry = visitorTrans.find((visit) => visit.visitor_id === visitor.visitor_id);
+        console.log('visitor', visit)
+        console.log('transEntry', transEntry);
+        return {
+          ...visit.dataValues,
+          ...transEntry.dataValues
+        };
+      });
+      res.json({data: wholeVisitor});
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'something went wrong on the server!'});
+    }
+  });
 router.get('/visitors', async (req, res) => {
   try {
     const visitors = await db.Visitors.findAll();

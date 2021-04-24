@@ -208,7 +208,7 @@ router.route('/wholeGenresRoute').get(async (req, res) => {
     const genres = await db.Genres.findAll();
     const arts = await db.Artists.findAll();
     const wholeGenres = genres.map((genre) => {
-      const artsEntry = arts.fing((art) => art.GENRE_ID === genre.GENRE_ID);
+      const artsEntry = arts.find((art) => art.GENRE_ID === genre.GENRE_ID);
         console.log('genre', genre)
         console.log('artsEntry', artsEntry);
 

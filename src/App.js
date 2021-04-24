@@ -1,9 +1,9 @@
 import Table from './components/Tables.js';
 
 function App() {
-    return {(
+    return (
         <div className="App">
-        {/* <Table></Table>*/}
+            <Table></Table>
         </div>
     );
 }

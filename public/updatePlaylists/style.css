@@ -1,3 +1,4 @@
+
 html{
     background-color: #53B797;
 }
@@ -14,9 +15,10 @@ body{
     width: 600px;
 }
 
-#container{
+#update-container{
     display:inline-flex;
-    background-color:teal;
+    width: inherit;
+  
 }
 
 #bbox{
@@ -32,7 +34,7 @@ body{
 }
 
 #box{
-    background-color: blue;
+
     display:block;
     height: 400px;
     width: 500px;
@@ -40,7 +42,7 @@ body{
 }
 
 .flex-container{
-    background-color: brown;
+    
     flex-direction: row;
     display:inline-flex;
 

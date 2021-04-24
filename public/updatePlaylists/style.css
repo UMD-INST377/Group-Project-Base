@@ -8,12 +8,17 @@ body {
 }
 
 #update-container{
-
     display:inline-flex;
 }
+
 #bbox{
     display: flex;
 }
+
+#update-form{
+    vertical-align: middle;
+}
+
 .box{
 
     display:inline-flex;
@@ -27,12 +32,6 @@ body {
     display:inline-flex;
 
 }
-
-#back{
-    align-self: flex-start;
-}
-
-
 
 .field{
     padding: 10px;
@@ -49,7 +48,7 @@ body {
 #not-explicit{
     display: flex;
     flex-direction: row;
-    margin: 10px;
+    margin: 5px;
     margin-left: 50px;
 
 }

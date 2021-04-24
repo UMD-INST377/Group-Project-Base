@@ -4,6 +4,7 @@ import path from 'path';
 
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import es6Renderer from 'express-es6-template-engine'
 
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
@@ -11,6 +12,8 @@ const __dirname = path.dirname(__filename);
 
 
 const app = express();
+app.engine('html', es6Renderer);
+app.set('views', 'public');
 const staticFolder = 'public';
 
 
@@ -24,17 +27,22 @@ app.use(express.static(staticFolder));
 
 
 app.use('/api', apiRoutes);
-app.get('/', () => {
-  res.send('index.html');
-});
 
 
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
 app.get('/about', (req, res) => {
   res.render('about');
+});
+
+app.get('/insert', (req, res) => {
+  res.render('insert');
 });
 
 async function bootServer() {

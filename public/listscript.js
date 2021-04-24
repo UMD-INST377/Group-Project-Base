@@ -3,9 +3,21 @@ async function getData(){
     // Simulate a mouse click:
     let html = '';
     result.array.forEach(element => {
-        html += `HTML COde GOES HERE ${element.title}, ${element.genre}, ${element.release_date}, ${element.song_length}
-        Write the HTML format below here then use the the things above to display within html tags. 
-        
+        html += `
+        <table>
+            <tr>
+                <th>Song Title</th>
+                <th>Genre</th>
+                <th>Release Date</th>
+                <th>Song Length</th>
+            </tr>
+            <tr>
+                <td>${element.title}</td>
+                <td>${element.genre}</td>
+                <td>${element.release_date}</td>
+                <td>${element.song_length}</td>
+            </tr>
+        </table>
         `
     });
     return html;

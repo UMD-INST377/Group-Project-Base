@@ -1,0 +1,19 @@
+.flex-container{
+    flex-direction: row;
+    display: flex;
+}
+
+#explicit{
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    margin-left: 90px;
+}
+
+#not-explicit{
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    margin-left: 50px;
+
+}

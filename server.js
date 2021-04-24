@@ -6,14 +6,11 @@ import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 import es6Renderer from 'express-es6-template-engine'
 
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
 
 
 const app = express();
-app.engine('html', es6Renderer);
-app.set('views', 'public');
+
 const staticFolder = 'public';
 
 
@@ -24,17 +21,21 @@ app.use(express.json());
 
 
 app.use(express.static(staticFolder));
+app.engine('html', es6Renderer);
+app.set('views', 'public');
+
+app.set('view engine', 'html');
 
 
 app.use('/api', apiRoutes);
 
 
-
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
 app.get('/', (req, res) => {
   res.render('index');
+});
+
+app.get('/genre', (req, res) => {
+  res.render('genre');
 });
 
 app.get('/about', (req, res) => {

@@ -6,11 +6,15 @@ body{
 }
 
 .subheading{
-    display: flex;
+    display:inline-flex;
+    height: 500px;
+    width: 500px;
 }
 
 #subheading{
-    display: flex;
+    display:inline-flex;
+    height: 500px;
+    width: 500px;
 }
 
 #update-container{

@@ -1,12 +1,12 @@
-
-
 body {
     font-family: "Helvetica Neue", sans-serif;
     font-size: large;
     background-color: #53B797;
     text-align:center;
 }
-
+.subheading{
+    display: flex;
+}
 #update-container{
     display:inline-flex;
 }
@@ -53,6 +53,11 @@ body {
 
 }
 
-#submit{
-    padding:10px;
+.button.is-dark {
+    background-color: #363636;
+    border-color: transparent;
+    color: white;
+}
+a{
+    color:rgb(255, 255, 255);
 }

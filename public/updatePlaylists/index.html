@@ -15,35 +15,45 @@
     </div>
 
     <div class="block" id="update-container">
-        <div class="block" id="form-container">
-            <form id="update-form" action="" class="block form">
+        <div  class="box">
+            <form id="update-form" action="" class="flex-container">
+                
                 <ul class="flex-outer">
-                    <li>
-                      <label  for="song-title">Song Title</label>
-                      <input id='song-title' name='song-title' type="text"  placeholder="Enter the song title here">
-                    </li>
-                    <li>
-                      <label  for="artist-band">Artist/Band</label>
-                      <input id='artist-band' name='artist-band' type="text"  placeholder="Enter artist or band here">
-                    </li>
-                    <li>
-                      <label   for="song-duration">Song Duration</label>
-                      <input id='song-duration' name='song-duration' type="text" placeholder="Enter song duration here">
-                    </li>
-                    <li>
-                        <p>Is it explicit?</p> 
-                        <ul class="flex-container">
-                            <li class="flex-child">
-                              <input class="button is-info is-light" id='explicit' name ='explicit' type="button" value="Yes">
-                              <label  for="explicit"></label>
-                            </li>
-                            <li class="flex-child"> 
-                              <input class="button is-info is-light" id="not-explicit" name="not-explicit" type="button" value="No">
-                              <label for="not-explicit"></label>
-                            </li>
-                        </ul> 
-                        
-                    </li>
+                    <div class="field">
+                        <li>
+                            <label  for="song-title">Song Title</label>
+                            <input id='song-title' name='song-title' type="text"  placeholder="Enter the song title here">
+                          </li>
+                    </div>
+                    <div class="field">
+                        <li>
+                            <label  for="artist-band">Artist/Band</label>
+                            <input id='artist-band' name='artist-band' type="text"  placeholder="Enter artist or band here">
+                          </li>
+                    </div>
+                    <div class="field">
+                        <li>
+                            <label   for="song-duration">Song Duration</label>
+                            <input id='song-duration' name='song-duration' type="text" placeholder="Enter song duration here">
+                        </li>
+                    </div>
+                    <div class="field">
+                        <li>
+                            <p>Is it explicit?</p> 
+                            <ul class="flex-container">
+                                <li class="flex-child">
+                                  <input class="button is-info is-light" id='explicit' name ='explicit' type="button" value="Yes">
+                                  <label  for="explicit"></label>
+                                </li>
+                                <li class="flex-child"> 
+                                  <input class="button is-info is-light" id="not-explicit" name="not-explicit" type="button" value="No">
+                                  <label for="not-explicit"></label>
+                                </li>
+                            </ul> 
+                            
+                        </li>
+                    </div>
+                    
                 </ul>
             </form>
         </div>

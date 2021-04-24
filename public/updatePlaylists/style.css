@@ -4,8 +4,13 @@ html, body {
     background-color: #53B797;
     text-align:center;
 }
+
 .subheading{
     display: flex;
+}
+
+#subheading{
+
 }
 
 #update-container{

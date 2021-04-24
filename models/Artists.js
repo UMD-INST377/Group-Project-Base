@@ -14,12 +14,16 @@ export default (database, DataTypes) => {
       },
       ARTIST_POPULARITY: {
         type: DataTypes.INTEGER
-      },
-      GENRE_ID: {
-        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
+
+  Artists.associate = (models) => {
+    Artists.belongsTo(models.Genres, {
+      foreignKey: 'GENRE_ID'
+    });
+  };
+
   return Artists;
 };

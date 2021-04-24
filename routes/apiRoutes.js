@@ -27,6 +27,28 @@ router.route('/artistsRoute').get(async (req, res) => {
   }
 })
 
+// router.route('/wholeArtistsRoute').get(async (req, res) => {
+//   try {
+//     const arts = await db.Artists.findAll({ include: db.Genres});
+    
+//     const genres = await db.Genres.findAll();
+//     const wholeArtists = arts.map((art) => {
+//       const genresEntry = genres.fing((genre) => genre.GENRE_ID === art.GENRE_ID);
+//         console.log('art', art)
+//         console.log('genresEntry', genresEntry);
+
+//         return {
+//           ...art.dataValues,
+//           ...genresEntry.dataValues
+//         };
+//       });
+//       res.json({data: wholeArtists});
+//     } catch (err){
+//       console.error(err);
+//       res.json({message: 'Something went wrong with the server'});
+//     }
+//     });
+
 router.get('/artists/:ARTIST_ID', async (req, res) => {
   try {
     const arts = await db.Artists.findAll({
@@ -180,6 +202,38 @@ router.put('/albums', async (req, res) => {
 /// /////////////////////////////////
 
 // Anna Kafrune
+
+router.route('/wholeGenresRoute').get(async (req, res) => {
+  try {
+    const genres = await db.Genres.findAll();
+    const arts = await db.Artists.findAll();
+    const wholeGenres = genres.map((genre) => {
+      const artsEntry = arts.fing((art) => art.GENRE_ID === genre.GENRE_ID);
+        console.log('genre', genre)
+        console.log('artsEntry', artsEntry);
+
+        return {
+          ...genre.dataValues,
+          ...artsEntry.dataValues
+        };
+      });
+      res.json({data: wholeGenres});
+    } catch (err){
+      console.error(err);
+      res.json({message: 'Something went wrong with the server'});
+    }
+});
+
+router.route('/wholeGenresRoute2').get(async (req, res) => {
+  try {
+    const genres = await db.Genres.findAll({ include: db.Artists });
+    console.log(genres)
+    res.json(genres);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 router.route('/genresRoute').get(async (req, res) => {
   try {

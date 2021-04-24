@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    </head>
+    <body>
+        <button class = "button is-primary is-large modal-button" data-target="modal-ter" aria-haspopup="true">Launch Card Modal</button>
+        <div id="modal-ter" class="modal">
+
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                <p class="modal-card-title">Modal title</p>
+                <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                <!-- Content ... -->
+                </section>
+                <footer class="modal-card-foot">
+                <button class="button is-success">Save changes</button>
+                <button class="button">Cancel</button>
+                </footer>
+            </div>
+        </div>
+        <script>
+            'use strict';
+
+            document.addEventListener('DOMContentLoaded', function () {
+
+            // Modals
+
+            var rootEl = document.documentElement;
+            var $modals = getAll('.modal');
+            var $modalButtons = getAll('.modal-button');
+            var $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
+
+            if ($modalButtons.length > 0) {
+                $modalButtons.forEach(function ($el) {
+                $el.addEventListener('click', function () {
+                    var target = $el.dataset.target;
+                    var $target = document.getElementById(target);
+                    rootEl.classList.add('is-clipped');
+                    $target.classList.add('is-active');
+                });
+                });
+            }
+
+            if ($modalCloses.length > 0) {
+                $modalCloses.forEach(function ($el) {
+                $el.addEventListener('click', function () {
+                    closeModals();
+                });
+                });
+            }
+
+            document.addEventListener('keydown', function (event) {
+                var e = event || window.event;
+                if (e.keyCode === 27) {
+                closeModals();
+                }
+            });
+
+            function closeModals() {
+                rootEl.classList.remove('is-clipped');
+                $modals.forEach(function ($el) {
+                $el.classList.remove('is-active');
+                });
+            }
+
+            // Functions
+
+            function getAll(selector) {
+                return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+            }
+
+            });
+        </script>
+    </body>
+</html>

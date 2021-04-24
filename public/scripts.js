@@ -1,6 +1,6 @@
 /* 
     NAVBAR BURGER FUNCTIONALITY
-
+*/
 document.addEventListener('DOMContentLoaded', () => {
 
   // Get all "navbar-burger" elements
@@ -87,15 +87,70 @@ async function windowActions() {
 window.onload = windowActions;
 
 /* 
+    MODAL POP-UP 
+*/
+'use strict';
+
+document.addEventListener('DOMContentLoaded', function () {
+
+// Modals
+
+let rootEl = document.documentElement;
+let $modals = getAll('.modal');
+let $modalButtons = getAll('.modal-button');
+let $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
+
+if ($modalButtons.length > 0) {
+    $modalButtons.forEach(function ($el) {
+    $el.addEventListener('click', function () {
+        let target = $el.dataset.target;
+        let $target = document.getElementById(target);
+        rootEl.classList.add('is-clipped');
+        $target.classList.add('is-active');
+    });
+    });
+}
+
+if ($modalCloses.length > 0) {
+    $modalCloses.forEach(function ($el) {
+    $el.addEventListener('click', function () {
+        closeModals();
+    });
+    });
+}
+
+document.addEventListener('keydown', function (event) {
+    let e = event || window.event;
+    if (e.keyCode === 27) {
+    closeModals();
+    }
+});
+
+function closeModals() {
+    rootEl.classList.remove('is-clipped');
+    $modals.forEach(function ($el) {
+    $el.classList.remove('is-active');
+    });
+}
+
+// Functions
+
+function getAll(selector) {
+    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+}
+
+});
+
+/* 
     Appending Playlist Cards 
 */
 
 function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
     }

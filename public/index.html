@@ -3,130 +3,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Group 13 Final Project</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <!-- All Comment Labels are references to figma wireframes -->
-    <!-- homepage (Surface Book - 1) -->
-    <div class="homepage">
-      <div class="header">
-        <h1>AirBnB DataBase</h1>
-      </div>
-      <div class="searchbar">
-        <textarea
-          rows="1"
-          cols="30"
-          id="search"
-          name="search"
-          placeholder="Enter your search here"
-        ></textarea>
-        <button type="search" name="search">Search</button>
-      </div>
-      <div class="Search results"></div>
-      <div class="Menu">
-        <div>
-          <p id="categorical">Categorical Search</p>
-          <p id="create">Creating A Listing</p>
-          <p id="contact">Contact Us</p>
+    <div class="columns">
+      <h1 class="column title has-text-centered is-size-1">AirBnB Database</h1>
+    </div>
+    <div class="columns">
+        <div class="column is-two-thirds">
+          <form class="search-form" action='/api' method='post'>
+            <label class="label search" for="search">Search</label>
+            <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
+            <button type="submit" name="submit" id="submit" class="button">Search</button>
+            <div class="card">
+                <ul class="card-content is-centered" id="search-results"></ul>
+            </div>
+          </form>
         </div>
-      </div>
-    </div>
-
-    <!-- Categorical Search (Surface Book - 2) -->
-    <div class="categorical">
-      <div class="header">
-        <h2>AirBnB DataBase</h2>
-        <p>Menu</p>
-        <button type="dropdown menu" name="dropdown menu">▾</button>
-      </div>
-      <div class="filters">
-        <p>Room Type</p>
-        <p>Bathrooms</p>
-        <p>Number of Beds</p>
-        <p>Property Type</p>
-        <p>Bedrooms</p>
-        <p>Price</p>
-      </div>
-      <div class="filter results"></div>
-    </div>
-
-    <!-- Listings (Surface Book - 3) -->
-    <div class="listings">
-      <div class="header">
-        <h3>AirBnB DataBase</h3>
-        <p>Menu</p>
-        <button type="dropdown menu" name="dropdown menu">▾</button>
-      </div>
-      <ul class="flex-outer">
-        <p>Listing Checklist</p>
-        <ul class="flex-inner">
-          <li>
-            <input type="checkbox" id="number of bedrooms" name="checklist" />
-            <label for="numnber of bedrooms">Number of Bedrooms</label>
-          </li>
-          <li>
-            <input type="checkbox" id="number of bathrooms" name="checklist" />
-            <label for="number of bathrooms">Number of Bathrooms</label>
-          </li>
-          <li>
-            <input type="checkbox" id="number of beds" name="checklist" />
-            <label for="number of beds">Number of Beds</label>
-          </li>
-          <li>
-            <input type="checkbox" id="neighborhood name" name="checklist" />
-            <label for="neighborhood name">Neighborhood Name</label>
-          </li>
-        </ul>
-      </ul>
-      <p>Create Listing</p>
-    </div>
-    <!-- Contact Form (Surface Book - 5) -->
-    <div class="contact form">
-      <p>Contact Form</p>
-      <form action="/api" method="POST">
-        <ul class="flex-outer">
-          <li>
-            <label for="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Enter your name here"
-            />
-          </li>
-          <li>
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email here"
-            />
-          </li>
-          <li>
-            <label for="phone">Phone</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="Enter your phone number here"
-            />
-          </li>
-          <li>
-            <label for="message">Message</label>
-            <textarea
-              rows="5"
-              cols="33"
-              id="message"
-              name="message"
-              placeholder="Enter your message here"
-            ></textarea>
-          </li>
-          <li>
-            <button type="submit" name="submit">Submit</button>
-          </li>
-        </ul>
-      </form>
+        <div class="column filler"></div>
+        <div class="column is-one-fifth">
+          <aside class="menu">
+              <p class="menu-label">MENU</p>
+              <ul class="menu-list">
+                <li><a class="categorical">Categorical Search</a></li>
+                <li><a class="create-listing">Create a Listing</a></li>
+                <li><a class="contact-us">Contact Us</a></li>
+              </ul>
+            </aside>
+          </div>
+        </div>
     </div>
   </body>
   <script src="script.js"></script>

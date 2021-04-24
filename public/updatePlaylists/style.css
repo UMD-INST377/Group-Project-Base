@@ -14,7 +14,7 @@ body{
     width: 600px;
 }
 
-#update-container{
+#container{
     display:inline-flex;
     background-color:teal;
 }

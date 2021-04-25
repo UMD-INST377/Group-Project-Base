@@ -15,10 +15,15 @@ body{
 }
 
 #update-container{
-    display:inline-flex;
+    display:inline-block;
     width: inherit;
   
 }
+
+.add-song{
+    display: initial;
+}
+
 
 #bbox{
     display: flex;
@@ -34,7 +39,7 @@ body{
 
 #box{
 
-    display:block;
+    display:flex;
     height: 400px;
     width: 500px;
 
@@ -49,11 +54,13 @@ p, input, button{
     font-size: 20px;
 }
 
+
 input{
     text-align: center;
     margin-left: 5px;
 }
-.flex-child{
+
+.flex-child, li{
     padding: 10px;
     text-align: left;
     font-size: 20px;
@@ -81,17 +88,13 @@ input{
     color: white;
 }
 
-
-#add {
-    margin-top: 30px;
-    display: block;
-}
+/* 
 .submit{
     padding:15px;
     display: flexbox;
-}
+} */
 
-#submit{
+.submit{
     padding:15px;
-    display: flexbox;
+    display: initial;
 }

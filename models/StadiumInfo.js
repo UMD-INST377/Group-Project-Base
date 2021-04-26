@@ -1,4 +1,3 @@
-
 export default (sequelize, DataTypes) => {
   const StadiumInfo = sequelize.define(
     'stadium_info',

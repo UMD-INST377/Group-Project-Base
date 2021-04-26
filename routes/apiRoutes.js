@@ -23,16 +23,13 @@ router.route('/platform')
       console.error(err);
       res.send('Server Error at Platform GET');
     }
-  });
-router.route('/platform')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/platform')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/platform')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -51,16 +48,13 @@ router.route('/platform/:platform_id')
       console.error(err);
       res.send('Server Error at platform_id GET');
     }
-  });
-router.route('/platform/:platform_id')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/platform/:platform_id')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/platform/:platform_id')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -77,16 +71,13 @@ router.route('/player_biostats')
       console.error(err);
       res.send('Server Error at Player Biostats GET');
     }
-  });
-router.route('/player_biostats')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/player_biostats')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/player_biostats')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -104,16 +95,13 @@ router.route('/player_biostats/:biostats_id')
       console.error(err);
       res.send('Server Error at biostats_id GET');
     }
-  });
-router.route('/player_biostats/:biostats_id')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/player_biostats/:biostats_id')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/player_biostats/:biostats_id')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -130,12 +118,10 @@ router.route('/player_info')
       console.error(err);
       res.send('Server Error at Player Info GET');
     }
-  });
-router.route('/player_info')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/player_info')
+  })
   .put(async (req, res) => {
     try {
       await db.PlayerInfo.update(
@@ -160,8 +146,7 @@ router.route('/player_info')
       console.error(err);
       res.send('Server Error at Player Info PUT');
     }
-  });
-router.route('/player_info')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -179,16 +164,13 @@ router.route('/player_info/:player_id')
       console.error(err);
       res.send('Server Error at player_id GET');
     }
-  });
-router.route('/player_info/:player_id')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/player_info/:player_id')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/player_info/:player_id')
+  })
   .delete(async (req, res) => {
     try {
       await db.PlayerInfo.destroy({
@@ -215,12 +197,10 @@ router.route('/player_stats')
       console.error(err);
       res.send('Server Error at Player Stats GET');
     }
-  });
-router.route('/player_stats')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/player_stats')
+  })
   .put(async (req, res) => {
     try {
       await db.PlayerStats.update(
@@ -244,8 +224,7 @@ router.route('/player_stats')
       console.error(err);
       res.send('Server Error at Player Stats PUT');
     }
-  });
-router.route('/player_stats')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -263,16 +242,13 @@ router.route('/player_stats/:gamestats_id')
       console.error(err);
       res.send('Server Error at gamestats_id GET');
     }
-  });
-router.route('/player_stats/:gamestats_id')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/player_stats/:gamestats_id')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/player_stats/:gamestats_id')
+  })
   .delete(async (req, res) => {
     try {
       await db.PlayerStats.destroy({
@@ -299,16 +275,13 @@ router.route('/socialmedia')
       console.error(err);
       res.send('Server Error at Social Media GET');
     }
-  });
-router.route('/socialmedia')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/socialmedia')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/socialmedia')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -326,16 +299,13 @@ router.route('/socialmedia/:social_id')
       console.error(err);
       res.send('Server Error at social_id GET');
     }
-  });
-router.route('/socialmedia/:social_id')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/socialmedia/:social_id')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/socialmedia/:social_id')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -352,16 +322,13 @@ router.route('/stadium_info')
       console.error(err);
       res.send('Server Error at Stadium Info GET');
     }
-  });
-router.route('/stadium_info')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/stadium_info')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/stadium_info')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -379,16 +346,13 @@ router.route('/stadium_info/:stadium_id')
       console.error(err);
       res.send('Server Error at stadium_id GET');
     }
-  });
-router.route('/stadium_info/:stadium_id')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/stadium_info/:stadium_id')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/stadium_info/:stadium_id')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -405,16 +369,13 @@ router.route('/team_info')
       console.error(err);
       res.send('Server Error at Team Info GET');
     }
-  });
-router.route('/team_info')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/team_info')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/team_info')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -432,16 +393,13 @@ router.route('/team_info/:team_id')
       console.error(err);
       res.send('Server Error at stadium_id GET');
     }
-  });
-router.route('/team_info/:team_id')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/team_info/:team_id')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/team_info/:team_id')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -458,12 +416,10 @@ router.route('/team_staff')
       console.error(err);
       res.send('Server Error at Team Staff GET');
     }
-  });
-router.route('/team_staff')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/team_staff')
+  })
   .put(async (req, res) => {
     try {
       await db.TeamStaff.update(
@@ -486,8 +442,7 @@ router.route('/team_staff')
       console.error(err);
       res.send('Server Error at Team Staff PUT');
     }
-  });
-router.route('/team_staff')
+  })
   .delete(async (req, res) => {
     try {
       await db.TeamStaff.destroy({
@@ -515,16 +470,13 @@ router.route('/team_staff/:staff_id')
       console.error(err);
       res.send('Server Error at staff_id GET');
     }
-  });
-router.route('/team_staff/:staff_id')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/team_staff/:staff_id')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/team_staff/:staff_id')
+  })
   .delete(async (req, res) => {
     try {
       await db.TeamStaff.destroy({
@@ -560,7 +512,7 @@ router.route('/team_staff/:staff_id')
 /// ///////////////////////////
 const teamCustom = `SELECT team_location, team_name, year_founded, head_coach, general_manager
 FROM team_info JOIN team_staff
-USING (team_id)
+	USING (team_id)
 ORDER BY year_founded, team_location;`;
 
 router.route('/teamCustom')
@@ -574,16 +526,13 @@ router.route('/teamCustom')
       console.error(err);
       res.send('Server error');
     }
-  });
-router.route('/teamCustom')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/teamCustom')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/teamCustom')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });
@@ -593,7 +542,7 @@ router.route('/teamCustom')
 /// ///////////////////////////
 const playerCustom = `SELECT first_name, last_name, height, position, shooting_percentage, three_pt_pct
 FROM player_info JOIN player_stats
-USING (player_id)
+	USING (player_id)
 JOIN player_biostats
   USING (player_id)
 ORDER BY position, shooting_percentage, three_pt_pct;`;
@@ -609,16 +558,13 @@ router.route('/playerCustom')
       console.error(err);
       res.send('Server error at playerCustom GET');
     }
-  });
-router.route('/playerCustom')
+  })
   .post(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/playerCustom')
+  })
   .put(async (req, res) => {
     res.send('Action unavailable');
-  });
-router.route('/playerCustom')
+  })
   .delete(async (req, res) => {
     res.send('Action unavailable');
   });

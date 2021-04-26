@@ -339,9 +339,21 @@ router.put('/song_characteristics', async (req, res) => {
 });
 
 /////////////////////////////////////////
-//////// Songs ///////////
+//////// Songs Endpoints///////////
 /////////////////////////////////////////
 // Delmar Randolph
+
+router.route('/wholeSongsRoute').get(async (req, res) => {
+  try {
+      const wholeSongs = await db.Songs.findAll({include:db.Artists});
+      console.log(wholeSongs)
+      res.json({data: wholeSongs});
+      
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong with the server'});
+    }
+});
 
 router.route('/songsRoute').get(async (req, res) => {
   try {
@@ -373,7 +385,7 @@ router.post('/songs', async (req, res) => {
   const song = await db.Songs.findAll();
   const currentId = (await song.length) + 1;
   try {
-    const newArtist = await db.songs.create({
+    const newSong = await db.songs.create({
       SONG_ID: currentId,
       SONG_NAME: req.body.SONG_NAME,
       SONG_POPULARITY: req.body.SONG_POPULARITY,

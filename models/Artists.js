@@ -29,5 +29,11 @@ export default (database, DataTypes) => {
     });
   };
 
+  Artists.associate = (models) => {
+    Artists.hasMany(models.Songs, {
+      foreignKey: 'ARTIST_ID'
+    });
+  };
+
   return Artists;
 };

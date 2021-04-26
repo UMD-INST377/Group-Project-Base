@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
-  const Authors = database.define(
-    'Authors',
+  const authors = database.define(
+    'authors',
     {
       author_id: {
         type: DataTypes.INTEGER,
@@ -28,5 +28,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Authors;
+  return authors;
 };

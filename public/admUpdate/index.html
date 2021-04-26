@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Page</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Cinzel+Decorative:700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <h1>Update Book Record</h1>
+    <div class="updateForm">
+    <h2>Essential Records marked with an asterix *</h2>
+    <form method="get" action="/popularBooksExpanded">
+        <ul>
+            <li>
+                <label for="book_id">book_id that will be updated*</label>
+                    <select id="book_id" name="book_id">
+                        <option value="" selected disabled hidden>Select</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">etc</option>
+                    </select>
+            </li>
+            <li>
+                <label for="title">New title</label>
+                <input type="text" id="title" name="title">
+            </li>
+            <li>
+                <label for="amountSold">Amount sold</label>
+                <input type="amountSold" id="amountSold" name="amountSold">
+            </li>
+            <li>
+                <label for="publishYear">Publish year</label>
+                <input type="publishYear" id="publishYear" name="publishYear">
+            </li>
+            <li>
+                <label for="originalLanguage">Original language</label>
+                <input type="originalLanguage" id="originalLanguage" name="originalLanguage">
+            </li>
+            <li>
+                <label for="publicDomain">In public domain</label>
+                <select id="publicDomain" name="publicDomain">
+                    <option value="" selected disabled hidden>Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </li>
+            <li>
+                <label for="userPercentage">Google user percentage (rating)</label>
+                <input type="userPercentage" id="userPercentage" name="userPercentage">
+            </li>
+            <li>
+                <label for="authorId">author_id</label>
+                <input type="authorId" id="authorId" name="authorId">
+            </li>
+            <li>
+                <label for="publisherId">publisher_id</label>
+                <input type="publisherId" id="publisherId" name="publisherId">
+            </li>
+            <li>
+                <label for="artisticMovementId">artistic_movement_id</label>
+                <input type="artisticMovementId" id="artisticMovementId" name="artisticMovementId">
+            </li>
+            <li>
+                <label for="retailerId">retailer_id</label>
+                <input type="retailerId" id="retailerId" name="retailerId">
+            </li>
+            <li>
+                <label class="description" for="bookDescription">Book description:</label>
+                <textarea name="bookDescription" rows=5 cols=33 id="bookDescription"
+                    placeholder="Enter your description here"></textarea>
+            </li>
+            <li>
+                <button type="submit" name="submit" id="submit">Update Record</button>
+            </li>
+        </ul>
+        </form>
+    </div>
+
+        <script src="script.js"></script>
+
+</body>
+
+<div class= "back">
+    <a href="/">Go Back</a>
+  </div>
+</html>

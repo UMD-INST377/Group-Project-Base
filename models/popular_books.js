@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
-  const PopularBooks = sequelize.define(
-    "Popular_Books",
+  const popularBooks = sequelize.define(
+    'popular_books',
     {
       book_id: {
         type: DataTypes.INTEGER,
@@ -17,7 +17,7 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       },
 
-      published_year: {
+      publish_year: {
         type: DataTypes.INTEGER,
         allowNull: false
 
@@ -77,5 +77,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return PopularBooks;
+  return popularBooks;
 };

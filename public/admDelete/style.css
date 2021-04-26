@@ -46,7 +46,7 @@ nav {
 /* || main layout */
 .box, .navbar, .button {
     align-content: center;
-    background-color: rgb(98, 0, 255);
+    background-color: rgb(98, 0, 255);;
 }
   
 
@@ -55,11 +55,34 @@ nav {
 }
 
 .box {
-    width: 50%;
     float: left;
     padding: 20px;
     border: 2px white;
 }  
+
+#bookTitle {
+    margin-top: 20px;
+}
+
+#bookTitle, #delCheck {
+    color:white;
+}
+
+form .box {
+    width: 100%;
+}
+
+.box li {
+    text-align: center;
+}
+
+.box li input {
+    width: 100%;
+}
+
+.box h2 {
+    color: white;
+}
 
 .box:first-child{
     margin-right: 20px;
@@ -102,4 +125,9 @@ h1 {
     text-align: center;
     text-shadow: 2px 2px 10px black;
     font-weight: 100;
+  }
+
+  .back {
+    font-size: 17px;
+    background-color: white;
   }

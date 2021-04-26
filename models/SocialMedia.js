@@ -1,7 +1,7 @@
 
 export default (sequelize, DataTypes) => {
   const SocialMedia = sequelize.define(
-    'SocialMedia',
+    'socialmedia',
     {
       social_id: {
         type: DataTypes.INTEGER,

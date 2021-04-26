@@ -14,7 +14,11 @@ export default (database, DataTypes) => {
       },
       ARTIST_POPULARITY: {
         type: DataTypes.INTEGER
-      }
+      },
+      GENRE_ID: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
     },
     { freezeTableName: true, timestamps: false }
   );

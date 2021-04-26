@@ -3,34 +3,34 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Group Project</title>
+    <title>Group 14 Final Project</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     </head>
 
-  <body>
-
-      <h1>
-        Group 14 Final Project
-      </h1>
-      <div class="box container">
-        <h1 class = 'title has-text-centered'>Group 14 Project</h1>
-        <div id="chartContainer" style="height: 500px; width: 100%;"></div>
-        <table class="table is-bordered is-striped is-fullwidth">
-          <thead>
-            <tr>
-              <th>Movie name</th>
-              <th>Movie id</th>
-              <th>Movie Genre</th>
-             </tr>
-           </thead>
-        </table>
+    <body>
+      <div class="header">
+          <h1 class="title has-text-centered">Movie Finder</h1>
+          <nav class="navbar is-dark" style="justify-content: center" role="navigation" aria-label="main navigation">
+              <div class="navbar-brand">
+                  <a class="navbar-item" style="padding: .5rem 1.5rem" href="/index.html">Home</a>
+                  <a class="navbar-item" style="padding: .5rem 1.5rem" href="/results.html">Results</a>
+                  <a class="navbar-item" style="padding: .5rem 1.5rem" href="/informationPage.html">Information</a>
+                  <a class="navbar-item" style="padding: .5rem 1.5rem" href="/about.html">About</a>
+                  <a class="navbar-item" style="padding: .5rem 1.5rem" href="/dataEntry.html">Data Entry</a>
+              </div>
+          </nav>
       </div>
-
+      <div class="main">
+        <h1 style="text-align: left">What we do</h1>
+        <div class="aboutBox">
+          <p>
+          Our goal is to make searching for movies to the user easier by adding filters to customize to the users preference. Click here to find more about this project.
+        </p>
+        <form class="searchBar">
+          <input type="text" placeholder="Search for a movie" name="search">
+          <button type="submit"></button>
+        </form>
+      </div>
+      </div>
       <script src="scripts.js"></script>
-
-      <div></div>
-     
-
- 
- 
   </body>

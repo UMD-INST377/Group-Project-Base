@@ -1,8 +1,8 @@
 export default (sequelize, DataTypes) => {
-  const Director = sequelize.define(
-    'Director',
+  const Actors = sequelize.define(
+    'Actors',
     {
-      director_id: {
+      actor_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
@@ -10,19 +10,24 @@ export default (sequelize, DataTypes) => {
       },
       first_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       last_name: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      director_salary: {
+      actor_salary: {
         type: DataTypes.INTEGER,
         allowNull: false
+      },
+      director_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        foreignKey: true
       }
 
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Director;
+  return Actors;
 };

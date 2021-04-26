@@ -13,17 +13,26 @@
     </head>
     <body>
         <div class="header">
-            <h1 class="title has-text-centered">NBA Info Insiders</h1>
-
-            <nav class="navbar is-dark" style="justify-content: center" role="navigation" aria-label="main navigation">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                    <a class="navbar-item" style="padding: .5rem 1.5rem" href="/index.html">Home</a>
-                    <a class="navbar-item" style="padding: .5rem 1.5rem" href="/biostats.html">Player Biostats</a>
-                    <a class="navbar-item" style="padding: .5rem 1.5rem" href="/game-stats.html">Game Stats</a>
-                    <a class="navbar-item" style="padding: .5rem 1.5rem" href="/player-stats.html">Player Stats</a>
-                    <a class="navbar-item" style="padding: .5rem 1.5rem" href="/team-info.html">Team Info</a>
-                    <a class="navbar-item" style="padding: .5rem 1.5rem" href="/about.html">About</a>
-                    <a class="navbar-item" style="padding: .5rem 1.5rem" href="/record-update.html">Record Update</a>
+                    <a href="/index.html" class="navbar-item brand">NBA Info Insiders</a>
+                
+                    <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="/index.html">Home</a>
+                        <a class="navbar-item" href="/biostats.html">Player Biostats</a>
+                        <a class="navbar-item" href="/player-stats.html">Player Stats</a>
+                        <a class="navbar-item" href="/team-info.html">Team Info</a>
+                        <a class="navbar-item" href="/record-update.html">Record Update</a>
+                        <a class="navbar-item" href="/about.html">About</a>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -32,6 +41,11 @@
             <h2 style="text-align: center; padding: 40px">Bio Stats page content will go here (height, weight, etc)</h2>
         </div>
 
+        <div class="footer">
+            <div class="content has-text-centered">
+                <p>This web application was created by Team 12 for Spring 2021 INST377.</p>
+            </div>
+        </div>
         
         <script src="scripts.js"></script>
     </body>

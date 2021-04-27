@@ -510,9 +510,11 @@ router.route('/team_staff/:staff_id')
 /// ///////////////////////////
 /// /// Custom SQL Endpoint ///
 /// ///////////////////////////
-const teamCustom = `SELECT team_location, team_name, year_founded, head_coach, general_manager
+const teamCustom = `SELECT team_location, team_name, year_founded, name AS stadium_name, head_coach, general_manager
 FROM team_info JOIN team_staff
 	USING (team_id)
+JOIN stadium_info
+  USING (team_id)
 ORDER BY year_founded, team_location;`;
 
 router.route('/teamCustom')
@@ -557,6 +559,39 @@ router.route('/playerCustom')
     } catch (err) {
       console.error(err);
       res.send('Server error at playerCustom GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
+  /// ///////////////////////////
+/// /// Custom SQL Endpoint ///
+/// ///////////////////////////
+const playerCustomInfo = `SELECT first_name, last_name, position, jersey_number, player_college, nba_debut, 
+height_inches, weight_pounds, age, team_name, team_location
+FROM player_info JOIN player_biostats
+USING (player_id)
+JOIN team_info
+USING (team_id)
+ORDER BY last_name, first_name;`;
+
+router.route('/playerCustomInfo')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(playerCustomInfo, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at playerCustomInfo GET');
     }
   })
   .post(async (req, res) => {

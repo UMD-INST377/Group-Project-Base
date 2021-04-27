@@ -28,5 +28,11 @@ export default (database, DataTypes) => {
       });
     };
 
+    Songs.associate = (models) => {
+      Songs.hasMany(models.Song_Characteristics, {
+        foreignKey: 'SONG_ID'
+      });
+    };
+
     return Songs;
 };

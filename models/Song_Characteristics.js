@@ -1,8 +1,8 @@
 //Alex Ghelman
 
-export default (sequelize, DataTypes) => {
-    const Songchar = sequelize.define(
-      'Songchar',
+export default (database, DataTypes) => {
+    const Song_Characteristics = database.define(
+      'song_characteristics',
       {
         SONG_CHARACTERISTICS_ID: {
           type: DataTypes.INTEGER,
@@ -12,14 +12,27 @@ export default (sequelize, DataTypes) => {
         SONG_ID: {
           type: DataTypes.INTEGER
         },
-        CHARACTERISTICS_ID: {
+        CHARACTERISTIC_ID: {
           type: DataTypes.INTEGER
         },
-        SONG_CHARACTERISTICS_VALUE: {
+        SONG_CHARACTERISTIC_VALUE: {
           type: DataTypes.INTEGER  
         }
       },
       { freezeTableName: true, timestamps: false }
     );
-    return Songchar;
+    
+    Song_Characteristics.associate = (models) => {
+      Song_Characteristics.belongsTo(models.Songs, {
+        foreignKey: 'SONG_ID'
+      });
+    };
+
+    Song_Characteristics.associate = (models) => {
+      Song_Characteristics.belongsTo(models.Characteristics, {
+        foreignKey: 'CHARACTERISTIC_ID'
+      });
+    };
+    
+    return Song_Characteristics;
   };

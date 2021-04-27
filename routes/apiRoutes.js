@@ -291,6 +291,19 @@ router.put('/characteristics', async (req, res) => {
 /////////////////////////////////////////
 //////// Song Characteristics ///////////
 /////////////////////////////////////////
+
+router.route('/wholeSong_characteristicsRoute').get(async (req, res) => {
+  try {
+      const wholeSong_characteristics = await db.Song_Characteristics.findAll({include:{model: db.Songs, model: db.Characteristics}});
+      console.log(wholeSong_characteristics)
+      res.json({data: wholeSong_characteristics});
+      
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong with the server'});
+    }
+});
+
 // Alex Ghelman
 
 router.route('/song_characteristicsRoute').get(async (req, res) => {
@@ -341,7 +354,6 @@ router.put('/song_characteristics', async (req, res) => {
 /////////////////////////////////////////
 //////// Songs Endpoints///////////
 /////////////////////////////////////////
-// Delmar Randolph
 
 router.route('/wholeSongsRoute').get(async (req, res) => {
   try {
@@ -354,6 +366,8 @@ router.route('/wholeSongsRoute').get(async (req, res) => {
       res.json({message: 'Something went wrong with the server'});
     }
 });
+
+// Delmar Randolph
 
 router.route('/songsRoute').get(async (req, res) => {
   try {

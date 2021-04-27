@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 3 Final</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- still needs to be added to repo -->
+    <!-- <link rel="stylesheet" href="assets/fontawesome/css/all.css"/> -->
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+    <!-- NAV BAR + HERO -->
+    <section class="hero is-primary is-small">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+          <nav class="navbar is-primary">
+            <div class="container">
+              <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                    <!-- CHANGE LOGO -->
+                  <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                </a>
+                <span class="navbar-burger" data-target="navbarMenuHeroA">
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </span>
+              </div>
+              <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-end">
+                  <a class="navbar-item" href="index.html">
+                    Home
+                  </a>
+
+                  <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                    Charts
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="ustop50.html">
+                            US Top 50
+                        </a>
+                        <a class="navbar-item" href="globaltop50.html">
+                            Global Top 50
+                        </a>
+                    </div>
+                  </div>
+                  
+                  <a class="navbar-item is-active" href="playlists.html">
+                    Playlists
+                  </a>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <p class="title">
+              Your Added Songs!
+            </p>
+          </div>
+        </div>
+    </section>
+
+    <!-- SPACER -->
+    <div class="block"></div>
+    
+    <!-- Page Content -->
+    <section>
+      <div class="container is-max-desktop">
+        <!-- SPACER -->
+        <div class="block"></div>
+
+        <!-- Add, Edit, Delete -->
+        <div class="columns">
+            <div class="column">
+                <a class="button is-rounded is-link modal-button" data-target="modal-add" aria-haspopup="true">
+                    Add Song
+                </a>
+                <div id="modal-add" class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                        <header class="modal-card-head">
+                        <p class="modal-card-title">Add Song</p>
+                        <button class="delete" aria-label="close"></button>
+                        </header>
+                        <section class="modal-card-body">
+                          <form>
+                            <div class='form-row'>
+                              <label for='song-title'>Song Title</label>
+                              <input class="input" id='song-title' name='song-title' type='text'/>
+                            </div>
+                            <br>
+                            <div class='form-row'>
+                              <label for='artist-name'>Artist Name</label>
+                              <input class="input" id='artist-name' name='artist-name' type='text'/>
+                            </div>
+                            <br>
+                            <div class='form-row'>
+                              <label for='genre'>Explicit?</label>
+                              <label class="radio">
+                                <input type="radio" name="answer">
+                                Yes
+                              </label>
+                              <label class="radio">
+                                <input type="radio" name="answer">
+                                No
+                              </label>
+                            </div>
+                          </form>
+                        </section>
+                        <footer class="modal-card-foot">
+                        <button class="button is-primary center">Save changes</button>
+                        <button class="button center">Cancel</button>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <a class="button is-rounded is-link is-light modal-button" data-target="modal-edit" aria-haspopup="true">
+                    Edit Song
+                </a>
+            </div>
+            <div class="column">
+                <a class="button is-rounded is-link is-light modal-button" data-target="modal-delete" aria-haspopup="true">
+                    Delete Song
+                </a>
+            </div>
+        </div>
+
+        <!-- Table of User-Added Songs -->
+        <div>
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth center">
+                <thead>
+                    <th>Song</th>
+                    <th>Artist</th>
+                    <th>Explicit</th>
+                </thead>
+                <tbody class="playlist-table"></tbody>
+            </table>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- SPACER -->
+    <div class="block"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Spotify Music Generator</strong> by 
+            <a href="https://github.com/kthrnv/Group3-Final-INST377SP2021">
+                Chris Shea, Ryan Moy, Emily Zheng, Matthew Nguyen, & Katherine Vo</a>.
+          </p>
+          <p>
+              INST377 Spring 2021 Group 3
+          </p>
+        </div>
+    </footer>
+
+    <!-- Link JS -->
+    <script src="scripts.js"></script>
+</body>
+</html>

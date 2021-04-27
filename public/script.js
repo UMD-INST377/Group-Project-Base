@@ -26,7 +26,7 @@ async function getShelters() {
   const shelterRequest = await fetch('/api/Shelters');
   const shelterData = await shelterRequest.json();
   //   return shelterData;
-  console.log(shelterData);
+  console.table(shelterData);
 }
 
 async function windowActions() {

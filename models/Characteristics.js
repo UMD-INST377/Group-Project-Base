@@ -2,22 +2,29 @@
 
 export default (database, DataTypes) => {
     const Characteristics = database.define(
-      'Characteristics',
+      'characteristics',
       {
-        CHARACTERISTICS_ID: {
+        CHARACTERISTIC_ID: {
           type: DataTypes.INTEGER,
           allowNull: false,
           primaryKey: true
         },
-        CHARACTERISTICS_NAME: {
+        CHARACTERISTIC_NAME: {
             type: DataTypes.STRING
         },
-        CHARACTERISTICS_DESCRIPTION: {
+        CHARACTERISTIC_DESCRIPTION: {
             type: DataTypes.STRING
-        }
-    },
+        },
+      },
 
-    { freezeTableName: true, timestamps: false }
+      { freezeTableName: true, timestamps: false }
     );
+
+    Characteristics.associate = (models) => {
+      Characteristics.hasMany(models.Song_Characteristics, {
+        foreignKey: 'CHARACTERISTIC_ID'
+      });
+    };
+
     return Characteristics;
 };

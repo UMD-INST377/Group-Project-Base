@@ -16,10 +16,24 @@ export default (database, DataTypes) => {
         type: DataTypes.INTEGER
       },
       GENRE_ID: {
-        type: DataTypes.INTEGER
-      }
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
     },
     { freezeTableName: true, timestamps: false }
   );
+
+  Artists.associate = (models) => {
+    Artists.belongsTo(models.Genres, {
+      foreignKey: 'GENRE_ID'
+    });
+  };
+
+  Artists.associate = (models) => {
+    Artists.hasMany(models.Songs, {
+      foreignKey: 'ARTIST_ID'
+    });
+  };
+
   return Artists;
 };

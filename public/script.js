@@ -1,3 +1,4 @@
+// code from lecture:
 // function addAnimalData() {
 //     document.querySelector('.animaltable')
 //     Animals.data.forEach((m) =>

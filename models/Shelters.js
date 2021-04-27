@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const Shelters = database.define(
-    'Shelters',
+    'shelters',
     {
       shelter_id: {
         type: DataTypes.INTEGER,

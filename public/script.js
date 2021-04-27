@@ -1,19 +1,25 @@
-// code from lecture:
-// function addAnimalData() {
-//     document.querySelector('.animaltable')
-//     Animals.data.forEach((m) =>
-//         this.append(`<tr>${m}</tr>`);
-// }
-
-async function getAnimals() {
+async function populateAnimals() {
   console.log('data request');
+
   const animalRequest = await fetch('/api/Animals');
   const animalData = await animalRequest.json();
-  //   return animalData;
-  console.table(animalData);
+  const animalTable = document.querySelector('.animaltable');
+
+  animalData.forEach((animal) => {
+    const appendItem = document.createElement('tr');
+    appendItem.innerHTML = `
+    <td>${animal.animal_id}</td>
+    <td>${animal.name}</td>
+    <td>${animal.status}</td>
+    <td>${animal.gender}</td>
+    <td>${animal.Animal_type_species_id}</td>
+    `;
+
+    animalTable.append(appendItem);
+  });
 }
 
-async function getApplicants() {
+async function populateApplicants() {
   console.log('data request');
   const applicantRequest = await fetch('/api/Applicants');
   const applicantData = await applicantRequest.json();
@@ -21,7 +27,7 @@ async function getApplicants() {
   console.table(applicantData);
 }
 
-async function getShelters() {
+async function populateShelters() {
   console.log('data request');
   const shelterRequest = await fetch('/api/Shelters');
   const shelterData = await shelterRequest.json();
@@ -30,9 +36,9 @@ async function getShelters() {
 }
 
 async function windowActions() {
-  getAnimals();
-  getShelters();
-  getApplicants();
+  populateAnimals();
+  populateShelters();
+  populateApplicants();
 }
 
 window.onload = windowActions;

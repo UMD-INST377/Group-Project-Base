@@ -13,6 +13,14 @@ async function getAnimals() {
   console.table(animalData);
 }
 
+async function getApplicants() {
+  console.log('data request');
+  const applicantRequest = await fetch('/api/Applicants');
+  const applicantData = await applicantRequest.json();
+  //   return applicantData;
+  console.table(applicantData);
+}
+
 async function getShelters() {
   console.log('data request');
   const shelterRequest = await fetch('/api/Shelters');
@@ -24,6 +32,7 @@ async function getShelters() {
 async function windowActions() {
   getAnimals();
   getShelters();
+  getApplicants();
 }
 
 window.onload = windowActions;

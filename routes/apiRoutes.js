@@ -287,12 +287,13 @@ router.get('/popularBooksExpanded', async (req, res) => {
     // This is an sql query that fetches popularBooks + author name
     // + book description + publisher name + retailer name + genre(s)
     const sqlQuery = `
-    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name, genre_name
+    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name, genre_name, movement_name
     FROM popular_books
     LEFT JOIN authors ON authors_author_id=author_id
     LEFT JOIN book_description ON book_description_description_id=description_id
     LEFT JOIN publishers ON publishers_publisher_id=publisher_id
     LEFT JOIN book_retailers ON book_retailers_retailer_id=retailer_id
+    LEFT JOIN artistic_movement ON artistic_movement_artistic_movement_id=artistic_movement_id
     JOIN genre_has_popular_books ON book_id =popular_books_book_id
     JOIN genre ON genre_genre_id=genre_id
     `
@@ -309,12 +310,13 @@ router.get('/popularBooksExpanded', async (req, res) => {
 router.get('/popularBooksExpanded/:book_id', async (req, res) => {
   try {
     const sqlQuery = `
-    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name, genre_name
+    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name, genre_name, movement_name
     FROM popular_books
     LEFT JOIN authors ON authors_author_id=author_id
     LEFT JOIN book_description ON book_description_description_id=description_id
     LEFT JOIN publishers ON publishers_publisher_id=publisher_id
     LEFT JOIN book_retailers ON book_retailers_retailer_id=retailer_id
+    LEFT JOIN artistic_movement ON artistic_movement_artistic_movement_id=artistic_movement_id
     JOIN genre_has_popular_books ON book_id =popular_books_book_id
     JOIN genre ON genre_genre_id=genre_id
     WHERE book_id = :book_id
@@ -336,12 +338,13 @@ router.get('/popularBooksExpandedNoGenre', async (req, res) => {
     // + book description + publisher name + retailer name
     // no genre to avoid duplicates
     const sqlQuery = `
-    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name
+    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name, movement_name
     FROM popular_books
     LEFT JOIN authors ON authors_author_id=author_id
     LEFT JOIN book_description ON book_description_description_id=description_id
     LEFT JOIN publishers ON publishers_publisher_id=publisher_id
     LEFT JOIN book_retailers ON book_retailers_retailer_id=retailer_id
+    LEFT JOIN artistic_movement ON artistic_movement_artistic_movement_id=artistic_movement_id
     `
     const result = await db.sequelizeDB.query(sqlQuery, {
       type: sequelize.QueryTypes.SELECT

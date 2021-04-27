@@ -183,34 +183,14 @@ router.put('/albums', async (req, res) => {
 
 router.route('/wholeGenresRoute').get(async (req, res) => {
   try {
-    const genres = await db.Genres.findAll();
-    const arts = await db.Artists.findAll();
-    const wholeGenres = genres.map((genre) => {
-      const artsEntry = arts.find((art) => art.GENRE_ID === genre.GENRE_ID);
-      console.log('genre', genre)
-      console.log('artsEntry', artsEntry);
-
-      return {
-        ...genre.dataValues,
-        ...artsEntry.dataValues
-      };
-    });
+      const wholeGenres = await db.Genres.findAll({include:db.Artists});
+      console.log(wholeGenres)
       res.json({data: wholeGenres});
+      
     } catch (err) {
       console.error(err);
       res.json({message: 'Something went wrong with the server'});
     }
-});
-
-router.route('/wholeGenresRoute2').get(async (req, res) => {
-  try {
-    const genres = await db.Genres.findAll({ include: db.Artists });
-    console.log(genres)
-    res.json(genres);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
 });
 
 router.route('/genresRoute').get(async (req, res) => {
@@ -311,6 +291,19 @@ router.put('/characteristics', async (req, res) => {
 /////////////////////////////////////////
 //////// Song Characteristics ///////////
 /////////////////////////////////////////
+
+router.route('/wholeSong_characteristicsRoute').get(async (req, res) => {
+  try {
+      const wholeSong_characteristics = await db.Song_Characteristics.findAll({include:{model: db.Songs, model: db.Characteristics}});
+      console.log(wholeSong_characteristics)
+      res.json({data: wholeSong_characteristics});
+      
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong with the server'});
+    }
+});
+
 // Alex Ghelman
 
 router.route('/song_characteristicsRoute').get(async (req, res) => {
@@ -359,8 +352,21 @@ router.put('/song_characteristics', async (req, res) => {
 });
 
 /////////////////////////////////////////
-//////// Songs ///////////
+//////// Songs Endpoints///////////
 /////////////////////////////////////////
+
+router.route('/wholeSongsRoute').get(async (req, res) => {
+  try {
+      const wholeSongs = await db.Songs.findAll({include:db.Artists});
+      console.log(wholeSongs)
+      res.json({data: wholeSongs});
+      
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong with the server'});
+    }
+});
+
 // Delmar Randolph
 
 router.route('/songsRoute').get(async (req, res) => {
@@ -393,7 +399,7 @@ router.post('/songs', async (req, res) => {
   const song = await db.Songs.findAll();
   const currentId = (await song.length) + 1;
   try {
-    const newArtist = await db.songs.create({
+    const newSong = await db.songs.create({
       SONG_ID: currentId,
       SONG_NAME: req.body.SONG_NAME,
       SONG_POPULARITY: req.body.SONG_POPULARITY,

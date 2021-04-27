@@ -14,7 +14,11 @@ export default (database, DataTypes) => {
       },
       ARTIST_POPULARITY: {
         type: DataTypes.INTEGER
-      }
+      },
+      GENRE_ID: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
     },
     { freezeTableName: true, timestamps: false }
   );
@@ -22,6 +26,12 @@ export default (database, DataTypes) => {
   Artists.associate = (models) => {
     Artists.belongsTo(models.Genres, {
       foreignKey: 'GENRE_ID'
+    });
+  };
+
+  Artists.associate = (models) => {
+    Artists.hasMany(models.Songs, {
+      foreignKey: 'ARTIST_ID'
     });
   };
 

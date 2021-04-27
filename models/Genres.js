@@ -18,5 +18,12 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
+
+  Genres.associate = (models) => {
+    Genres.hasMany(models.Artists, {
+      foreignKey: 'GENRE_ID'
+    });
+  };
+
   return Genres;
 };

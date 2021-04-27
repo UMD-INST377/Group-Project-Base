@@ -13,8 +13,17 @@ async function getAnimals() {
   console.table(animalData);
 }
 
+async function getShelters() {
+  console.log('data request');
+  const shelterRequest = await fetch('/api/Shelters');
+  const shelterData = await shelterRequest.json();
+  //   return shelterData;
+  console.log(shelterData);
+}
+
 async function windowActions() {
   getAnimals();
+  getShelters();
 }
 
 window.onload = windowActions;

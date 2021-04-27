@@ -68,92 +68,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const songData = await songRequest.json();
     return songData;
   }
+
+  async function getSongsArtists() {
+    const songRequest = await fetch('/api/songsArtists');
+    const songData = await songRequest.json();
+    return songData;
+  }
   
 
 
 
   async function windowActions() {
     
-    
-    const usResults = await getUSCharts();
-    const globalResults = await getGlobalCharts();
-    // console.table(usCharts.data);
-    // console.table(globalResults.data);
-    const usCharts = usResults.data;
-    const globalCharts = globalResults.data;
+    const songsArtists = await getSongsArtists();
+    const songsArtistsData = songsArtists.data;
 
-    const randomUS = [1, 2, 3, 4, 5];
-    const randomGlobal = [1, 2, 3, 4, 5];
-    
-    
+    //console.table(songsArtists.data);
 
-    const selectedUS = randomUS.map((element) => {
-      const random = getRando(0, usResults.data.length - 1);
-      return usResults.data[random];
-        });
+    const random = [1,2,3,4,5,6,7,8,9,10];
     
-    //console.table(randomUS)
-
-    //console.table(selectedUS)
-
-    const selectedGlobal = randomGlobal.map((element) => {
-        const random = getRando(0, globalResults.data.length - 1);
-        return globalResults.data[random];
+    const selectedSongs = random.map((element) => {
+      const randomNum = getRando(0, songsArtistsData.length - 1);
+      return songsArtistsData[randomNum];
         });
 
-    const randomArray = selectedUS.concat(selectedGlobal)
         
-    console.table(randomArray)
+    console.table(selectedSongs)
 
-    const combinedTopSong = document.querySelector('.playlist-table');
-    randomArray.forEach((item) => {
+    const table = document.querySelector('.playlist-table');
+    selectedSongs.forEach((item) => {
       const appendItem = document.createElement('tr');
 
       appendItem.innerHTML = `
               <td>${item.song_name}</td>
               <td>${item.artist_name}</td>
-              <td>${item.album_id}</td>
               <td>${item.explicit}</td>`;
           
-      if (combinedTopSong) {
-        combinedTopSong.append(appendItem);
+      if (table) {
+        table.append(appendItem);
       }
           
     });
-  
 
-
-    const usTopSong = document.querySelector('.us-top-songs');
-    usCharts.forEach((item) => {
-      const appendItem = document.createElement('tr');
-  
-      appendItem.innerHTML = `
-              <td>${item.us_top50_rank}</td>
-              <td>${item.song_name}</td>
-              <td>${item.artist_name}</td>
-              <td>${item.streams}</td>`;
-          
-      if (usTopSong) {
-        usTopSong.append(appendItem);
-      }
-          
-    });
-  
-    const globalTopSong = document.querySelector('.global-top-songs');
-    globalCharts.forEach((item) => {
-      const appendItem = document.createElement('tr');
-  
-      appendItem.innerHTML = `
-              <td>${item.global_top50_rank}</td>
-              <td>${item.song_name}</td>
-              <td>${item.artist_name}</td>
-              <td>${item.streams}</td>`;
-  
-      if (globalTopSong) {
-        globalTopSong.append(appendItem); 
-      }
-          
-    });
   }
   
   window.onload = windowActions;

@@ -562,3 +562,24 @@ router.route('/artists/:artist_id')
   })
 
 export default router;
+
+/// /////////////////////////////////
+/// ////Song & Artist Endpoints//////
+/// /////////////////////////////////
+router.route("/songsArtists").get(async (req, res) => {
+  try {
+    const songs = await db.Songs.findAll();
+    const artists = await db.Artists.findAll();
+    const songsArtists = songs.map((songs) => {
+      const artistsEntry = artists.find((artists) => artists.artist_id === songs.artist_id);
+      return {
+        ...songs.dataValues,
+        ...artistsEntry.dataValues
+      };
+    });
+    res.json({ data: songsArtists });
+  } catch (err) {
+    console.error(err);
+    res.json({ message: "Error" });
+  }
+});

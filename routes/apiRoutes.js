@@ -571,4 +571,37 @@ router.route('/playerCustom')
     res.send('Action unavailable');
   });
 
+  /// ///////////////////////////
+/// /// Custom SQL Endpoint ///
+/// ///////////////////////////
+const playerCustomInfo = `SELECT first_name, last_name, position, jersey_number, player_college, nba_debut, 
+height_inches, weight_pounds, age, team_name, team_location
+FROM player_info JOIN player_biostats
+USING (player_id)
+JOIN team_info
+USING (team_id)
+ORDER BY last_name, first_name;`;
+
+router.route('/playerCustomInfo')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(playerCustomInfo, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at playerCustomInfo GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
 export default router;

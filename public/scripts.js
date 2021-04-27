@@ -2,7 +2,7 @@ async function playerSpotlight() {
   console.log('enter playerSpotlight');
 
   // const variable declarations
-  const playerEndpoint = '/api/player_info';
+  const playerEndpoint = '/api/playerCustomInfo';
   const request = await fetch(playerEndpoint);
   const results = document.querySelector('.player');
 
@@ -23,8 +23,11 @@ async function playerSpotlight() {
 
   const newPlayer = document.createElement('div');
   newPlayer.innerHTML = `<h4 class="title is-5 has-text-centered">${player.first_name} ${player.last_name}</h4>
-    <p class="subtitle is-7 has-text-centered">${player.position} | #${player.jersey_number}</p>
+    <p class="subtitle is-7 has-text-centered">${player.team_location} ${player.team_name} |
+    ${player.position} | #${player.jersey_number}</p>
     <ul>
+        <li>${player.height_inches} inches - ${player.weight_pounds} lbs - ${player.age} years old</li>
+
         <li>College: ${player.player_college}</li>
         <li>NBA Debut: ${player.nba_debut}</li>
     </ul>`;

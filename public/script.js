@@ -8,7 +8,7 @@ async function getAnimals() {
   console.log('data request');
   const animalRequest = await fetch('/api/Animals');
   const animalData = await animalRequest.json();
-//   return animalData;
+  //   return animalData;
   console.table(animalData);
 }
 

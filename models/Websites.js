@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const Websites = database.define(
-    'Websites',
+    'websites',
     {
       website_id: {
         type: DataTypes.INTEGER,

@@ -19,6 +19,24 @@ async function populateAnimals() {
   });
 }
 
+async function populateAnimalTypes() {
+  console.log('data request');
+
+  const typesRequest = await fetch('/api/types');
+  const typesData = await typesRequest.json();
+  const typesTable = document.querySelector('.typestable');
+
+  typesData.forEach((type) => {
+    const appendType = document.createElement('tr');
+    appendType.innerHTML = `
+    <td>${type.species_id}</td>
+    <td>${type.species_name}</td>
+    `;
+    typesTable.append(appendType);
+    console.table(typesData);
+  });
+}
+
 async function populateApplicants() {
   console.log('data request');
   const applicantRequest = await fetch('/api/Applicants');
@@ -43,12 +61,13 @@ async function populateApplicants() {
 
 async function populateShelters() {
   console.log('data request');
-  const shelterRequest = await fetch('/api/shelters');
+  const shelterRequest = await fetch('/api/Shelters');
   const shelterData = await shelterRequest.json();
+  const newShelterData = shelterData.data;
 
   const sheltersTable = document.querySelector('.shelterstable');
 
-  shelterData.forEach((shelter) => {
+  newShelterData.forEach((shelter) => {
     const appendShelter = document.createElement('tr');
     appendShelter.innerHTML = `
     <td>${shelter.shelter_id}</td>
@@ -59,14 +78,39 @@ async function populateShelters() {
     `;
 
     sheltersTable.append(appendShelter);
-    console.table(shelterData);
+    console.table(newShelterData);
+  });
+}
+
+async function populateWebsites() {
+  console.log('data request');
+  const websiteRequest = await fetch('/api/Websites');
+  const websiteData = await websiteRequest.json();
+  // const newWebsiteData = websiteData.data;
+  console.table(websiteData);
+
+  const websiteTable = document.querySelector('.websitestable');
+
+  websiteData.forEach((website) => {
+    const appendWebsite = document.createElement('tr');
+    appendWebsite.innerHTML = `
+    <td>${website.website_id}</td>
+    <td>${website.shelter_id}</td>
+    <td>${website.website_name}</td>
+    `;
+
+    websiteTable.append(appendWebsite);
   });
 }
 
 async function windowActions() {
-  await populateAnimals();
-  await populateApplicants();
-  await populateShelters();
+  // await populateAnimals();
+  await populateAnimalTypes();
+  // await populateApplicants();
+  // await populateEmployees();
+  // await populatePending();
+  // await populateShelters();
+  // await populateWebsites();
 }
 
 window.onload = windowActions;

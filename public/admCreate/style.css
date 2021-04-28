@@ -17,6 +17,10 @@ h1 {
     text-align: center;
 }
 
+.input {
+    color: black;
+}
+
 .box {
     background-color:  rgb(98, 0, 255);
 }

@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(245, 243, 243);
+}
+
 h1 {
     font-size: 80px;
     text-align: center;
@@ -38,8 +42,13 @@ nav {
     color: white;
     margin-top: 20px;
     width: 1500px;  
-    margin-left: 25px; 
-    margin-right: 25px; 
+    margin-left: 20%; 
+    margin-right: 20%; 
+}
+
+.button:hover {
+    background-color: white;
+    color:blueviolet
 }
 
 
@@ -47,11 +56,25 @@ nav {
 .box, .navbar, .button {
     align-content: center;
     background-color: rgb(98, 0, 255);
+    
 }
   
 
 .container {
     display: flex;
+}
+
+.box-search {
+    background-color: rgb(98, 0, 255);
+    color: white;
+    align-content: center;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    width: 1200px;
+    height: 200px;  
+    margin-left: 20%; 
+    margin-right: 20%; 
+    
 }
 
 .box {
@@ -103,3 +126,8 @@ h1 {
     text-shadow: 2px 2px 10px black;
     font-weight: 100;
   }
+
+img {
+    width: 140px;
+    height: 170px;
+}

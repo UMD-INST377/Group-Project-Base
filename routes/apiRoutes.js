@@ -427,6 +427,7 @@ router.route('/songs')
         album_id: req.body.album_id
       });
       res.json(newSong);
+      res.send("New record added: ", newSong);
     } catch (err) {
       console.error(err);
       res.error('Server error');

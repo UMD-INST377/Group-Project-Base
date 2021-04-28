@@ -93,7 +93,8 @@
                         <button class="delete" aria-label="close"></button>
                         </header>
                         <section class="modal-card-body">
-                          <form>
+                          <!-- BEGINNING OF FORM -->
+                          <form action='/api/songs' method='post'>
                             <div class='form-row'>
                               <label for='song-title'>Song Title</label>
                               <input class="input" id='song-title' name='song-title' type='text'/>
@@ -115,12 +116,13 @@
                                 No
                               </label>
                             </div>
-                          </form>
+                          
                         </section>
                         <footer class="modal-card-foot">
-                        <button class="button is-primary center">Save changes</button>
+                        <button class="button is-primary center" type="submit" name="submit" id="submit" formmethod="post">Add</button>
                         <button class="button center">Cancel</button>
                         </footer>
+                          </form>
                     </div>
                 </div>
             </div>

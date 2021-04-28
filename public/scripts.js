@@ -26,7 +26,7 @@ async function playerSpotlight() {
     <p class="subtitle is-7 has-text-centered">${player.team_location} ${player.team_name} |
     ${player.position} | #${player.jersey_number}</p>
     <ul>
-        <li>${player.height_inches} inches - ${player.weight_pounds} lbs - ${player.age} years old</li>
+        <li>${player.height}  - ${player.weight_pounds} lbs - ${player.player_age} years old</li>
 
         <li>College: ${player.player_college}</li>
         <li>NBA Debut: ${player.nba_debut}</li>
@@ -95,6 +95,102 @@ async function teamComparison() {
   results.append(team2Elem);
 }
 
+async function shootingPctData() {
+  console.log('enter shootingPctData');
+
+  // const variable declarations
+  const shtPctEndpoint = '/api/shooting-pct-custom';
+  const request = await fetch(shtPctEndpoint);
+  const results = document.querySelector('.shootPctResults');
+
+  // check successful request
+  if (request.ok) {
+    console.log('endpoint fetched');
+  } else {
+    alert(`HTTP-Error: ${request.status}`);
+  }
+
+  // successful request, create Object for data
+  const shootPcts = await request.json();
+  console.log('shootPcts: ', shootPcts);
+
+  let i = 0;
+  while (i < 5) {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `<td>${i + 1}</td>
+          <td>${shootPcts[i].first_name} ${shootPcts[i].last_name}</td>
+          <td>${shootPcts[i].shooting_percentage}</td>
+    `;
+
+    results.append(newRow);
+    i += 1;
+  }
+}
+
+async function threePtPctData() {
+  console.log('enter threePtPctData');
+
+  // const variable declarations
+  const threePtPctEndpoint = '/api/three-pt-pct-custom';
+  const request = await fetch(threePtPctEndpoint);
+  const results = document.querySelector('.threePtPctResults');
+
+  // check successful request
+  if (request.ok) {
+    console.log('endpoint fetched');
+  } else {
+    alert(`HTTP-Error: ${request.status}`);
+  }
+
+  // successful request, create Object for data
+  const threePcts = await request.json();
+  console.log('threePcts: ', threePcts);
+
+  let i = 0;
+  while (i < 5) {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `<td>${i + 1}</td>
+          <td>${threePcts[i].first_name} ${threePcts[i].last_name}</td>
+          <td>${threePcts[i].three_pt_pct}</td>
+    `;
+
+    results.append(newRow);
+    i += 1;
+  }
+}
+
+async function reboundsData() {
+  console.log('enter reboundsData');
+
+  // const variable declarations
+  const reboundsEndpoint = '/api/rebounds-custom';
+  const request = await fetch(reboundsEndpoint);
+  const results = document.querySelector('.reboundsResults');
+
+  // check successful request
+  if (request.ok) {
+    console.log('endpoint fetched');
+  } else {
+    alert(`HTTP-Error: ${request.status}`);
+  }
+
+  // successful request, create Object for data
+  const reboundsPerGameData = await request.json();
+  console.log('reboundsPerGameData: ', reboundsPerGameData);
+
+  let i = 0;
+  while (i < 5) {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `<td>${i + 1}</td>
+          <td>${reboundsPerGameData[i].first_name} ${reboundsPerGameData[i].last_name}</td>
+          <td>${reboundsPerGameData[i].rebounds_per_game}</td>
+    `;
+
+    results.append(newRow);
+    i += 1;
+  }
+}
+
 // random int function for whole meal selection
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -107,6 +203,9 @@ function getRandomIntInclusive(min, max) {
 async function windowActions() {
   await playerSpotlight();
   await teamComparison();
+  await shootingPctData();
+  await threePtPctData();
+  await reboundsData();
 }
 
 window.onload = windowActions;

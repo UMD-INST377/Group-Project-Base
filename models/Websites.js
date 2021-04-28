@@ -7,12 +7,12 @@ export default (database, DataTypes) => {
         allowNull: false,
         primaryKey: true
       },
+      website_name: {
+        type: DataTypes.STRING
+      },
       shelter_id: {
         type: DataTypes.INTEGER,
         allowNull: false
-      },
-      website_name: {
-        type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }

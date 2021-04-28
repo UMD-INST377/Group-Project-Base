@@ -10,7 +10,7 @@ export default (database, DataTypes) => {
       website_name: {
         type: DataTypes.STRING
       },
-      shelter_id: {
+      Shelters_shelter_id: {
         type: DataTypes.INTEGER,
         allowNull: false
       }

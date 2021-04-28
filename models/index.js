@@ -1,11 +1,13 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import Artists from './Artists.js';
+import Albums from './Albums.js';
+import Lyrics from './Lyrics.js';
+import Songs from './Songs.js';
+import Song_info from './SongInfo.js';
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+  Artists,
+  Albums,
+  Lyrics,
+  Songs,
+  Song_info
 };

@@ -1,49 +1,32 @@
-.header img{
-    display: block;
-    align-items: center;
-  }
-
-  /*  */
-ul{   /* for header and nav */
-    padding: 0;
-    list-style-type: none;
-    flex: 2;
-    display: flex;
-    justify-content: space-between;
-}
-
-li{  /* for header and nav */
-    display: inline;
-    text-align: center;
-    flex: 1;
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none; /*?*/
+    color: rgba(255, 255, 255, 0.911); /*?*/
 }
 
 #title{
     /* LITERATURE & ART CORNER DATABASE */
-    font-family: NATS;
-    font-style: normal;
-    font-weight: normal;
     font-size: 36px;
     line-height: 76px;
-    /* identical to box height */
     align-items: center;
     text-transform: capitalize;
-
-    color: #000000;
+    letter-spacing: 1.5px;
+    color: black;
 }
 
 #goto{
     /* Go to home site */
-    font-family: NATS;
     font-size: 18px;
     line-height: 38px;
-    /* identical to box height */
     display: flex;
     align-items: center;
+    color: black;
+    text-decoration: underline;
+}
 
-    color: #000000;
-
-
+.header img{
+    display: block;
+    align-items: center;
 }
 
 .nav {
@@ -52,16 +35,17 @@ li{  /* for header and nav */
     width: 100%;
     height: 60px;
     background: rgb(136, 5, 12);
-    padding: 0 25px;
+    padding: 0 25px; /*?*/
     margin: auto;
 }
 
-
 .inner_nav{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 100%;
 }
 
 .nav-elements{
@@ -69,4 +53,32 @@ li{  /* for header and nav */
     justify-content: space-around; /*space on left and right*/
     width: 450px; /*customize for desktop and mobile*/
     align-items: center;
+    flex-wrap: wrap;
+    text-decoration: none;
 }
+
+.nav-elements>a{
+    color: rgba(255, 255, 255, 0.911);
+    letter-spacing: 1.5px;
+}
+
+
+
+
+
+
+/* for header and nav */
+/* ul{ 
+    padding: 0;
+    list-style-type: none;
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+li{  
+    display: inline;
+    text-align: center;
+    flex: 1;
+} */

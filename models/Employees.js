@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const Employees = database.define(
-    'employee_volunteer',
+    'employees',
     {
       employee_id: {
         type: DataTypes.INTEGER,

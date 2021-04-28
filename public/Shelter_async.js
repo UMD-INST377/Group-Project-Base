@@ -3,6 +3,7 @@ async function populateShelters() {
   const shelterRequest = await fetch('/api/Shelters');
   const shelterData = await shelterRequest.json();
   const newShelterData = shelterData.data;
+  console.table(newShelterData);
 
   const sheltersTable = document.querySelector('.shelterstable');
 
@@ -17,7 +18,6 @@ async function populateShelters() {
     `;
 
     sheltersTable.append(appendShelter);
-    console.table(newShelterData);
   });
 }
 

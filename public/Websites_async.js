@@ -4,10 +4,13 @@ async function populateWebsites() {
   console.log('data request');
   const websiteRequest = await fetch('/api/Websites');
   const websiteData = await websiteRequest.json();
-  const websiteTable = document.querySelector('.websitestable');
+  const newWebsiteData = websiteData.data
   console.table(websiteData);
 
-  websiteData.forEach((website) => {
+  const websiteTable = document.querySelector('.websitestable');
+  
+
+  newWebsiteData.forEach((website) => {
     const appendWebsite = document.createElement('tr');
     appendWebsite.innerHTML = `
       <td>${website.website_id}</td>

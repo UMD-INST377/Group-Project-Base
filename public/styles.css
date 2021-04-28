@@ -2,18 +2,17 @@
     margin-top: 50px;
     display: flex;
     justify-content: space-around;
+    width: 100%;
 }
 
 .logo {
     width: 120px;
     height: 50px;
-    margin-left: 10px;
 }
 
 .admin {
     width: 57px;
     height: 50px;
-    margin-right: 50px;
 }
 
 .topImgContainer {
@@ -77,19 +76,19 @@
 }
 
 .menu {
-    background-color: #333;
+    background-color: rgb(143, 143, 143);
     list-style-type: none;
     margin: 0px;
     padding: 0px;
     margin-top: 15px;
     overflow: hidden;
-    margin-right: 50px;
-    margin-left: 10px;
+    text-align: justify;
 }
 
 .menu-item {
     display: inline;
     float: left;
+    width: 20%;
 }
 
 #active {

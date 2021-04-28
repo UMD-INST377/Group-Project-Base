@@ -571,11 +571,11 @@ router.route('/playerCustom')
     res.send('Action unavailable');
   });
 
-  /// ///////////////////////////
+/// ///////////////////////////
 /// /// Custom SQL Endpoint ///
 /// ///////////////////////////
 const playerCustomInfo = `SELECT first_name, last_name, position, jersey_number, player_college, nba_debut, 
-height_inches, weight_pounds, age, team_name, team_location
+CONCAT(TRUNCATE((height_inches / 12), 0), "' ", (height_inches % 12), '"') AS height, weight_pounds, TIMESTAMPDIFF(year, birthdate, current_date()) AS player_age, team_name, team_location
 FROM player_info JOIN player_biostats
 USING (player_id)
 JOIN team_info
@@ -592,6 +592,96 @@ router.route('/playerCustomInfo')
     } catch (err) {
       console.error(err);
       res.send('Server error at playerCustomInfo GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
+/// ////////////////////////////////////////
+/// /// Shooting Pct Custom SQL Endpoint ///
+/// ////////////////////////////////////////
+const shootingPctCustom = `SELECT first_name, last_name, CONCAT(ROUND((shooting_percentage * 100), 2), '%') AS shooting_percentage
+FROM player_info JOIN player_stats
+	USING (player_id)
+ORDER BY shooting_percentage DESC;`;
+
+router.route('/shooting-pct-custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(shootingPctCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at shootingPctCustom GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
+/// ////////////////////////////////////
+/// /// 3-Pt Pct Custom SQL Endpoint ///
+/// ////////////////////////////////////
+const threePtPctCustom = `SELECT first_name, last_name, CONCAT(ROUND((three_pt_pct * 100), 2), '%') AS three_pt_pct
+FROM player_info JOIN player_stats
+	USING (player_id)
+ORDER BY three_pt_pct DESC;`;
+
+router.route('/three-pt-pct-custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(threePtPctCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at threePtPctCustom GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
+/// /////////////////////////////////////////////
+/// /// Rebounds Per Game Custom SQL Endpoint ///
+/// /////////////////////////////////////////////
+const reboundsCustom = `SELECT first_name, last_name, ROUND(rebounds_per_game, 1) AS rebounds_per_game
+FROM player_info JOIN player_stats
+	USING (player_id)
+ORDER BY rebounds_per_game DESC;`;
+
+router.route('/rebounds-custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(reboundsCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at reboundsCustom GET');
     }
   })
   .post(async (req, res) => {

@@ -9,9 +9,11 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 
 README (top part of your README.md)
 
-- Link to the Heroku instance where your application is live and running
-- Title of your project
-- Description of your project
+https://inst377-group6project.herokuapp.com/about.html
+MyKea 
+
+When people go to Ikea, they are generally looking for a specific piece of furniture or multiple pieces that fit together. We hope to simplify this experience by creating a web application that encourages a more cohesive room design. The web application will recommend similar furniture to ones users have already selected while also providing general browsing for users that are unsure of what they are looking for. There will be options for selecting similar color schemes and styles. We hope to streamline purchasing new furniture with recommendations to new products similar to what is already chosen and new products in general based on their interests. 
+
 - Description of target browsers (iOS? Android? Which ones? Which versions?)
 - Link to Developer Manual
 

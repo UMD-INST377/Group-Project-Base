@@ -5,7 +5,7 @@ async function populateEmployees() {
   const employeesRequest = await fetch('/api/Employees');
   const employeesData = await employeesRequest.json();
   const employeeTable = document.querySelector('.employeetable');
-  console.table(employeesData);
+  console.log(employeesData);
 
   employeesData.forEach((employee) => {
     const appendEmployee = document.createElement('tr');

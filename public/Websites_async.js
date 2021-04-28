@@ -11,7 +11,7 @@ async function populateWebsites() {
     const appendWebsite = document.createElement('tr');
     appendWebsite.innerHTML = `
       <td>${website.website_id}</td>
-      <td>${website.shelter_id}</td>
+      <td>${website.Shelters_shelter_id}</td>
       <td>${website.website_name}</td>
       `;
 

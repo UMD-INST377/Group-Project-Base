@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 3 Final</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+    <!-- NAV BAR + HERO -->
+    <section class="hero is-primary is-medium">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+          <nav class="navbar is-primary">
+            <div class="container">
+              <div class="navbar-brand">
+                <a class="navbar-item">
+                    <!-- CHANGE LOGO -->
+                  <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                </a>
+                <span class="navbar-burger" data-target="navbarMenuHeroA">
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </span>
+              </div>
+              <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-end">
+                  <a class="navbar-item is-active">
+                    Home
+                  </a>
+
+                  <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                    Charts
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="ustop50.html">
+                            US Top 50
+                        </a>
+                        <a class="navbar-item" href="globaltop50.html">
+                            Global Top 50
+                        </a>
+                    </div>
+                  </div>
+                  
+                  <a class="navbar-item" href="playlists.html">
+                    Playlists
+                  </a>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <p class="title">
+              Spotify Music Generator
+            </p>
+            <p class="subtitle">
+              Expand your horizons.
+            </p>
+            <a class="button is-rounded" href="createplaylists.html">
+              Get Started
+            </a>
+          </div>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <section>
+        <div class="container is-max-desktop">
+            <!-- SPACER -->
+            <div class="block"></div>
+
+            <!-- What is our app -->
+            <div class="columns">
+                <div class="column is-two-thirds">
+                    <h1 class="title is-2">What is our app?</h1>
+                    <p>With the overwhelming amount of music released, 
+                        it can be difficult to determine which songs are worth 
+                        listening to based on personal taste. 
+                        <br><br>
+                        [The Spotify Music Generator] will generate random 
+                        playlists based on Spotify’s Global and US Top 50 Charts 
+                        and other various user input. 
+                        <br><br>
+                        Explore new music that other users are adding and the latest 
+                        hits with the click of a button. It doesn’t get much simpler than that!
+                    </p>
+                </div>
+                
+                <div class="column">
+                    <!-- Picture -->
+                </div>
+            </div>
+
+            <!-- Spacer -->
+            <div class="block"></div>
+
+            <!-- How to Use -->
+            <div class="columns">
+                <div class="column">
+                    <!-- Picture -->
+                </div>
+                
+                <div class="column is-two-thirds">
+                    <h1 class="title is-2">How to Use</h1>
+                    <ol>
+                        <li>Hit the "Get Started" Button.</li>
+                        <li>Decide whether you want to start off with a completely 
+                            randomized playlist or create your own using the current 
+                            top hits we have available.</li>
+                        <li>Edit and share your playlist!</li>
+                    </ol>
+                    <a class="button is-rounded" href="createplaylists.html">
+                      Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPACER -->
+    <div class="block"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Spotify Music Generator</strong> by 
+            <a href="https://github.com/kthrnv/Group3-Final-INST377SP2021">
+                Chris Shea, Ryan Moy, Emily Zheng, Matthew Nguyen, & Katherine Vo</a>.
+          </p>
+          <p>
+              INST377 Spring 2021 Group 3
+          </p>
+        </div>
+    </footer>
+
+    <!-- Link JS -->
+    <script src="scripts.js"></script>
+</body>
+</html>

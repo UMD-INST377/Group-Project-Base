@@ -7,19 +7,19 @@ export default (database, DataTypes) => {
         allowNull: false,
         primaryKey: true
       },
-      applicant_id: {
+      Applicants_applicant_id: {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      animal_id: {
+      Animals_animal_id: {
         type: DataTypes.INTEGER,
         allowNull: false
       },
       start_date: {
-        type: DataTypes.STRING
+        type: DataTypes.INTEGER
       },
       end_hold_date: {
-        type: DataTypes.STRING
+        type: DataTypes.INTEGER
       },
     },
     { freezeTableName: true, timestamps: false }

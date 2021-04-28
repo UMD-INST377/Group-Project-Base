@@ -30,32 +30,42 @@
     text-align: center;
 }
 
+.hrClass {
+    width: 30vw;
+}
+
 .imageWheel {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-top: 65px;
     background-color: lightgrey;
-    width: 45%
+    width: 50vw;
+    height: auto;
+    max-height: 500px;
 }
 
 .displayimg {
-    height: 200px;
-    width: 500px;
+    height: 20vw;
+    width: 30vw;
     background-color: rgba(255, 255, 255, 0.877);
 }
 
 .displayMe {
-    height: 200px;
-    width: 500px;
+    height: 20vw;
+    width: 40vw;
 }
 
 .leftarrow:hover {
     cursor: pointer;
 }
 
+.leftarrow {
+    height: 15vw;
+}
+
 .rightarrow {
-    height: 230px;
+    height: 15vw;
 }
 
 .rightarrow:hover {

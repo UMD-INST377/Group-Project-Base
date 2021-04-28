@@ -19,6 +19,24 @@ async function populateAnimals() {
   });
 }
 
+async function populateAnimalTypes() {
+  console.log('data request');
+
+  const typesRequest = await fetch('/api/types');
+  const typesData = await typesRequest.json();
+  const typesTable = document.querySelector('.typestable');
+
+  typesData.forEach((type) => {
+    const appendType = document.createElement('tr');
+    appendType.innerHTML = `
+    <td>${type.species_id}</td>
+    <td>${type.species_name}</td>
+    `;
+    typesTable.append(appendType);
+    console.table(typesData);
+  });
+}
+
 async function populateApplicants() {
   console.log('data request');
   const applicantRequest = await fetch('/api/Applicants');
@@ -68,9 +86,8 @@ async function populateWebsites() {
   console.log('data request');
   const websiteRequest = await fetch('/api/Websites');
   const websiteData = await websiteRequest.json();
-  const newWebsiteData = websiteData.data;
+  // const newWebsiteData = websiteData.data;
   console.table(websiteData);
-  console.table(newWebsiteData);
 
   const websiteTable = document.querySelector('.websitestable');
 
@@ -88,9 +105,12 @@ async function populateWebsites() {
 
 async function windowActions() {
   // await populateAnimals();
+  await populateAnimalTypes();
   // await populateApplicants();
+  // await populateEmployees();
+  // await populatePending();
   // await populateShelters();
-  await populateWebsites();
+  // await populateWebsites();
 }
 
 window.onload = windowActions;

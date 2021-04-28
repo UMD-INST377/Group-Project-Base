@@ -11,12 +11,10 @@ async function populatePend() {
     const appendPend = document.createElement('tr');
     appendPend.innerHTML = `
           <td>${pend.adopt_id}</td>
-          <td>${pend.applicant_id}</td>
-          <td>${pend.animal_id}</td>
+          <td>${pend.Applicants_applicant_id}</td>
+          <td>${pend.Animals_animal_id}</td>
           <td>${pend.start_date}</td>
           <td>${pend.end_hold_date}</td>
-          <td>${pend.shelter_id}</td>
-
           `;
     pendTable.append(appendPend);
   });

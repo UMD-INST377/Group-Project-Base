@@ -43,12 +43,13 @@ async function populateApplicants() {
 
 async function populateShelters() {
   console.log('data request');
-  const shelterRequest = await fetch('/api/shelters');
+  const shelterRequest = await fetch('/api/Shelters');
   const shelterData = await shelterRequest.json();
+  const newShelterData = shelterData.data;
 
   const sheltersTable = document.querySelector('.shelterstable');
 
-  shelterData.forEach((shelter) => {
+  newShelterData.forEach((shelter) => {
     const appendShelter = document.createElement('tr');
     appendShelter.innerHTML = `
     <td>${shelter.shelter_id}</td>
@@ -59,14 +60,37 @@ async function populateShelters() {
     `;
 
     sheltersTable.append(appendShelter);
-    console.table(shelterData);
+    console.table(newShelterData);
+  });
+}
+
+async function populateWebsites() {
+  console.log('data request');
+  const websiteRequest = await fetch('/api/Websites');
+  const websiteData = await websiteRequest.json();
+  const newWebsiteData = websiteData.data;
+  console.table(websiteData);
+  console.table(newWebsiteData);
+
+  const websiteTable = document.querySelector('.websitestable');
+
+  websiteData.forEach((website) => {
+    const appendWebsite = document.createElement('tr');
+    appendWebsite.innerHTML = `
+    <td>${website.website_id}</td>
+    <td>${website.shelter_id}</td>
+    <td>${website.website_name}</td>
+    `;
+
+    websiteTable.append(appendWebsite);
   });
 }
 
 async function windowActions() {
-  await populateAnimals();
-  await populateApplicants();
-  await populateShelters();
+  // await populateAnimals();
+  // await populateApplicants();
+  // await populateShelters();
+  await populateWebsites();
 }
 
 window.onload = windowActions;

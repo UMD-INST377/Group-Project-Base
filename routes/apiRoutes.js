@@ -306,7 +306,7 @@ router.get('/visitors', async (req, res) => {
     const visitors = await db.Visitors.findAll();
     const reply = visitors.length > 0 ? {data: visitors} : {message: 'no results found'};
     res.json(reply)
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     res.error('Server error');
   }
@@ -382,12 +382,12 @@ router.put('/visitors', async (req, res) => {
 /// /////////////////////////////////
 /// ////Visitor Transaction Endpoints////////
 /// /////////////////////////////////
-router.get('/visitor_transactions', async (req, res) => {
+router.get('/visitor_transaction', async (req, res) => {
   try {
     const visTran = await db.VisitorTransactions.findAll();
-    const reply = visTran.length > 0 ? {data: visTran} : {message: 'no results found'};
+    const reply = visTran.length > 0 ? {data: visTran} : {message: 'no results found' };
     res.json(reply);
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     res.error('Server error');
   }
@@ -397,17 +397,17 @@ router.get('/visitor_transaction/:transaction_id', async (req, res) => {
   try {
     const visTranID = await db.VisitorTransactions.findAll({
       where: {
-        visTranID: req.params.transaction_id
+        transaction_id: req.params.transaction_id
       }
     });
     res.json(visTranID);
-  } catch(err) {
+  } catch (err) {
     console.error(err)
     res.error('Server error');
   }
 });
 
-router.post('visitor_transactions', async (req, res) => {
+router.post('visitor_transaction', async (req, res) => {
   const visTran = await db.VisitorTransactions.findAll();
   const curId = (await visTran.length) + 1;
   try {
@@ -417,13 +417,13 @@ router.post('visitor_transactions', async (req, res) => {
       visitor_transactions: req.body.visitor_transactions
     });
     res.json(newVisTran);
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.delete('/visitor_transactions/:transaction_id', async (req, res) => {
+router.delete('/visitor_transaction/:transaction_id', async (req, res) => {
   try {
     await db.VisitorTransactions.destroy({
       where: {
@@ -437,7 +437,7 @@ router.delete('/visitor_transactions/:transaction_id', async (req, res) => {
   }
 });
 
-router.put('/visitor_transactions', async (req, res) => {
+router.put('/visitor_transaction', async (req, res) => {
   try {
     await db.VisitorTransactions.update(
       {

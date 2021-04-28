@@ -21,13 +21,14 @@ export default (database, DataTypes) => {
         type: DataTypes.INTEGER
       },
       employee_type: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
       },
-      shelter_id: {
+      Shelters_shelter_id: {
         type: DataTypes.INTEGER,
         allowNull: false
       }
-    }
+    },
+    { freezeTableName: true, timestamps: false }
   );
   return Employees;
 };

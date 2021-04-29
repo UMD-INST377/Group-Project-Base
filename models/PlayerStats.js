@@ -2,7 +2,7 @@ export default (sequelize, DataTypes) => {
   const PlayerStats = sequelize.define(
     'player_stats',
     {
-      gamestas_id: {
+      gamestats_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true

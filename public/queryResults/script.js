@@ -23,7 +23,7 @@ function buildResultBoxes (validBooks) {
   suggestions.innerHTML = html;
 }
 
-async function filterWithKeyword(chosenkeyword, books) {
+async function filterBooks(chosenkeyword, books) {
   const keyword = chosenkeyword.toLowerCase();
 
   console.log(keyword);
@@ -46,9 +46,7 @@ async function windowActions() {
   const request = await fetch('/api/popularBooksExpandedNoGenre');
   const books = await request.json();
   const params = new URLSearchParams(window.location.search); // this code allows you to access the "/?" part of the url
-  if (typeof params.get('keyword') !== 'undefined') {
-    filterWithKeyword(params.get('keyword'), books);
-  }
+  filterBooks(params.get('keyword'), books);
 }
 
 window.onload = windowActions;

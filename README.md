@@ -6,7 +6,7 @@ When a member of the public wants to view data on Airbnb reservations in Chicago
 ## Link to Website
 https://group13-final-inst377sp2021.herokuapp.com
 
-### Target Broswer
+## Target Broswer
 * Iphone
 * Macbook
 

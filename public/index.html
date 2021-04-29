@@ -1,54 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="homepage-styles.css" />
-    <title>The 1882 Foundation's Literature and Art Corner Database</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="homepage.css" />
+    <title>Literature & Art Corner Database</title>
   </head>
   <body>
-    <div class="header">
-      <div class="inner-header">
-        <img src="images/1882logo.png" alt="1882 Foundation Logo" height="45">
-        <span id="title">LITERATURE & ART CORNER DATABASE</span>
+    <div class="banner">
+      <div class="inner-banner">
+        <img src="images/1882logo.png" alt="1882 Foundation Logo" class="has-ratio" width="198">
+        <span id="title">Literature & Art Corner Database</span>
         <a href="https://1882foundation.org" id="goto">Go to Home Site</a>
       </div> 
-      <div class="nav">
-        <div class="nav-elements">
+      <div class="menu">
+        <div class="inner-menu">
+          <a href="index.html">Home</a>
           <a href="about.html">About</a>
           <a href="suggestion.html">Make a Suggestion</a>
           <a href="contact.html">Contact Us</a>
         </div>
       </div>
-      <div class="filter-menu">
-        <h2>Filter By:</h2>
-      </div>
       <div class="toggle"> <!-- ? -->
         <i class="fas fa-bars"></i>
       </div>
-  </div>
-
-    <!-- NEW -->
-
-    <div class= "main-container">
-      <div class="searchBar">
-        <form action="/api" method="post">
-          <label for="search">Search</label>
-          <input type="text" id="search" name="Search" />
-        </form>
+    </div>
+    <div class="main-container">
+      <div class="search-tools">
+        <div class="filter-menu, has-ratio">
+          <h2>Filtering Menu</h2>
+          <p>Press CTRL to select multiple options at once.</p>
+          <form action="/api" method="post">
+            <!-- form action is the endpoint you want to go to -->
+            <div class="select is-multiple">
+              <!-- bulma lets you select multiple things -->
+              <select multiple size="5"> 
+                <option type="checkbox" value="choose">Choose a Genre</option>
+                <option type="checkbox" value="literature">Literature</option>
+                <option type="checkbox" value="poetry">Poetry</option>
+                <option type="checkbox" value="film">Film</option>
+                <option type="checkbox" value="music">Music</option>
+              </select>
+            </div>
+          <input type="button" onclick="multipleFunc()" value="Select">
+          </form>
+          <script>
+            function multipleFunc() {
+                document.getElementById("mySelect").multiple = true;
+            }
+          </script> 
+        </div>
+        <div class="search-bar">
+          <h2>Enter your search.</h2>
+          <form action="/api" method="post">
+            <!-- <label for="search">Search</label> -->
+            <input type="text" id="search" name="Search" />
+          </form>
+        </div>
       </div>
     
-      <!-- <main>
-        <h1>The 1882 Foundation's Literature and Art Corner Database</h1>
-        <a href="#">https://1882foundation.org/</a>
-      </main> -->
 
+      <!-- NEW -->
+    
       <div class= "content">
 
         <div class= "item-wrap">
@@ -87,7 +107,103 @@
 </html>
 
 
+<!-- OLD CHECKBOXES -->
 
+<ul class="flex-outer">
+  <!-- unordered list to group the various form elements -->
+  <li>
+    <p>Genre</p>
+    <!--use <p> because there is no corresponding textbox to label-->
+    <ul class="flex-inner">
+      <!-- unordered list to group the checkboxes -->
+      <li>
+        <input
+          type="checkbox"
+          id="history"
+          name="history"
+        />
+        <label for="twenty-to-twentynine">History</label>
+      </li>
+      <li>
+        <input
+          type="checkbox"
+          id="history"
+          name="history"
+        />
+        <label for="thirty-to-thirtynine">History</label>
+      </li>
+      <li>
+        <input 
+          type="checkbox" 
+          id="poetry" 
+          name="poetry" 
+        />
+        <label for="poetry">Poetry</label>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <button
+      type="submit"
+      formmethod="post"
+      id="submit"
+      name="Submit Button"
+      value="submit"
+    >
+      SUBMIT FORM
+    </button>
+  </li>
+</ul>
+
+<!-- FORM -->
+
+<form action="/api" method="post">
+  <!-- form action is the endpoint you want to go to -->
+  <ul class="flex-outer">
+    <!-- unordered list to group the various form elements -->
+    <li>
+      <p>Age</p>
+      <!--use <p> because there is no corresponding textbox to label-->
+      <ul class="flex-inner">
+        <!-- unordered list to group the checkboxes -->
+        <li>
+          <input
+            type="checkbox"
+            id="twenty-to-twentynine"
+            name="Age Input"
+          />
+          <label for="twenty-to-twentynine">18-35</label>
+        </li>
+        <li>
+          <input
+            type="checkbox"
+            id="thirty-to-thirtynine"
+            name="Age Input"
+          />
+          <label for="thirty-to-thirtynine">35-50</label>
+        </li>
+        <li>
+          <input type="checkbox" id="forty-to-fortynine" name="Age Input" />
+          <label for="forty-to-fortynine">50-65</label>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <button
+        type="submit"
+        formmethod="post"
+        id="submit"
+        name="Submit Button"
+        value="submit"
+      >
+        SUBMIT FORM
+      </button>
+    </li>
+  </ul>
+</form>
+
+
+<!-- OLD -->
     
     <!-- <div class="wrapper">
       <div class="nav">

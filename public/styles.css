@@ -4,7 +4,6 @@ html{
 
 h1 {
     text-decoration: rgb(88, 81, 81);
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     padding: 10px;
 }
 
@@ -17,4 +16,10 @@ table, th, td {
     border: 1px solid black;
     margin: 0 auto;
     padding:20px;
+}
+.button {
+    align-self:auto;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
 }

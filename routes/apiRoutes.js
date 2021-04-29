@@ -664,6 +664,36 @@ router.route('/three-pt-pct-custom')
     res.send('Action unavailable');
   });
 
+/// ////////////////////////////////////////////
+/// /// Assists Per Game Custom SQL Endpoint ///
+/// ////////////////////////////////////////////
+const assistsCustom = `SELECT first_name, last_name, ROUND(assists_per_game, 1) AS assists_per_game
+FROM player_info JOIN player_stats
+	USING (player_id)
+ORDER BY assists_per_game DESC;`;
+
+router.route('/assists-custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(assistsCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at assistsCustom GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
 /// /////////////////////////////////////////////
 /// /// Rebounds Per Game Custom SQL Endpoint ///
 /// /////////////////////////////////////////////
@@ -694,4 +724,64 @@ router.route('/rebounds-custom')
     res.send('Action unavailable');
   });
 
+/// ///////////////////////////////////////////
+/// /// Steals Per Game Custom SQL Endpoint ///
+/// ///////////////////////////////////////////
+const stealsCustom = `SELECT first_name, last_name, ROUND(steals_per_game, 1) AS steals_per_game
+FROM player_info JOIN player_stats
+	USING (player_id)
+ORDER BY steals_per_game DESC;`;
+
+router.route('/steals-custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(stealsCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at stealsCustom GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
+/// ///////////////////////////////////////////
+/// /// Blocks Per Game Custom SQL Endpoint ///
+/// ///////////////////////////////////////////
+const blocksCustom = `SELECT first_name, last_name, ROUND(blocks_per_game, 1) AS blocks_per_game
+FROM player_info JOIN player_stats
+	USING (player_id)
+ORDER BY blocks_per_game DESC;`;
+
+router.route('/blocks-custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(blocksCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at blocksCustom GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+  
 export default router;

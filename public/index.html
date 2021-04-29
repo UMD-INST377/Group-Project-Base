@@ -55,9 +55,9 @@
             </div>
 
             <!-- STATS CAROUSEL PREVIEW BOX -->
-            <h3 class="title is-3 has-text-centered">PLAYER SEASON STATS</h3>
+            <h3 class="title is-3 has-text-centered">SEASON LEADERS</h3>
             <div class="columns is-full box">
-                <div class="column is-3 shtPctTable">
+                <div class="column is-4 carousel-table left" id="shootingPctTable">
                     <table class="table is-bordered">
                         <caption>Shooting % Leaders</caption>
                         <thead>
@@ -71,7 +71,7 @@
                     </table>
                 </div>
 
-                <div class="column is-3 threePtPctTable">
+                <div class="column is-4 carousel-table middle" id="threePtPctTable">
                     <table class="table is-bordered">
                         <caption>3-Pt % Leaders</caption>
                         <thead>
@@ -85,7 +85,21 @@
                     </table>
                 </div>
 
-                <div class="column is-3 reboundsTable">
+                <div class="column is-4 carousel-table right" id="assistsTable">
+                    <table class="table is-bordered">
+                        <caption>Assists (per game) Leaders</caption>
+                        <thead>
+                            <th><abbr title="Rank">Rank</abbr></th>
+                            <th><abbr title="Player">Player</abbr></th>
+                            <th><abbr title="Assists Per Game">Assists</abbr></th>
+                        </thead>
+                        <tbody class="assistsResults">
+                                <!-- Assists/Game RESULTS POPULATE HERE -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="column is-4 carousel-table hidden" id="reboundsTable">
                     <table class="table is-bordered">
                         <caption>Rebounds (per game) Leaders</caption>
                         <thead>
@@ -95,6 +109,34 @@
                         </thead>
                         <tbody class="reboundsResults">
                                 <!-- Rebounds/Game RESULTS POPULATE HERE -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="column is-4 carousel-table hidden" id="stealsTable">
+                    <table class="table is-bordered">
+                        <caption>Steals (per game) Leaders</caption>
+                        <thead>
+                            <th><abbr title="Rank">Rank</abbr></th>
+                            <th><abbr title="Player">Player</abbr></th>
+                            <th><abbr title="Steals Per Game">Steals</abbr></th>
+                        </thead>
+                        <tbody class="stealsResults">
+                                <!-- Steals/Game RESULTS POPULATE HERE -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="column is-4 carousel-table hidden" id="blocksTable">
+                    <table class="table is-bordered">
+                        <caption>Blocks (per game) Leaders</caption>
+                        <thead>
+                            <th><abbr title="Rank">Rank</abbr></th>
+                            <th><abbr title="Player">Player</abbr></th>
+                            <th><abbr title="Blocks Per Game">Blocks</abbr></th>
+                        </thead>
+                        <tbody class="blocksResults">
+                                <!-- Blocks/Game RESULTS POPULATE HERE -->
                         </tbody>
                     </table>
                 </div>

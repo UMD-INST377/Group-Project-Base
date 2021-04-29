@@ -15,6 +15,7 @@ https://group13-final-inst377sp2021.herokuapp.com
 * <a href= "#">Devloper manual</a>
 
 <h1 id = "Developer Manual"> Developer Manual</h1>
+<a href= "#">Devloper manual</a>
 
 #  How to install application and all dependencies
 1. Clone this repository through Github Desktop or through Terminal.

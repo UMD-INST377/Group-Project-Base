@@ -1,0 +1,9 @@
+html{
+    background-color: rgba(198, 218, 235, 0.894);
+}
+
+.container {
+    /* background-color: rgb(228, 228, 228); */
+    align-content: center;
+    margin: auto;
+}

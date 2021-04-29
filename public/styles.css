@@ -8,7 +8,7 @@
     width: 140px;
     height: 60px;
     display: block;
-    margin: auto;
+    margin-left: 580px;
 }
 
 .admin {
@@ -54,6 +54,10 @@ li a:hover {
     display: flex;
     justify-content: space-around;
     width: 100%;
+    border: black;
+    border-style:double;
+    height:600px;
+    background-color: lightsteelblue;
 }
 
 .pref-box {
@@ -61,11 +65,13 @@ li a:hover {
 }
 
 .intro {
-    margin-left: 10px;
+    margin-left: 20px;
+    margin-top: 80px;
     width: 35%;
     font-size: 36px;
     padding-left: 10px;
     text-align: center;
+    
 }
 
 .hrClass {
@@ -95,7 +101,6 @@ li a:hover {
     justify-content: space-between;
     align-items: center;
     margin-top: 65px;
-    background-color: lightgrey;
     width: 50vw;
     height: auto;
     max-height: 500px;
@@ -103,6 +108,10 @@ li a:hover {
 
 .leftarrow:hover {
     cursor: pointer;
+}
+
+.aboutTitle {
+    margin-top: 25px;
 }
 
 .leftarrow {

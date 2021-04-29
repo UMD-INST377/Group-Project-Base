@@ -1,7 +1,14 @@
 *{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h2{
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+p{
     text-decoration: none; /*?*/
-    /* color: rgba(255, 255, 255, 0.911);  */
 }
 
 #title{
@@ -9,9 +16,12 @@
     font-size: 36px;
     line-height: 76px;
     align-items: center;
-    text-transform: capitalize;
     letter-spacing: 1.5px;
     color: black;
+    padding: 20px;
+    border: 2px;
+    margin: 3px;
+    text-transform: uppercase;
 }
 
 #goto{
@@ -22,9 +32,12 @@
     align-items: center;
     color: black;
     text-decoration: underline;
+    padding: 20px;
+    border: 2px;
+    margin: 3px;
 }
 
-.inner-header img{
+.inner-banner img{
     display: block;
     align-items: center;
     padding: 20px;
@@ -32,7 +45,7 @@
     margin: 3px;
 }
 
-.nav {
+.menu {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -42,7 +55,7 @@
     margin: auto;
 }
 
-.inner-header{
+.inner-banner{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -51,7 +64,7 @@
     height: 100%;
 }
 
-.nav-elements{
+.inner-menu{
     display: flex;
     justify-content: space-around; /*space on left and right*/
     width: 450px; /*customize for desktop and mobile*/
@@ -60,19 +73,11 @@
     text-decoration: none;
 }
 
-.nav-elements>a{
+.inner-menu>a{
     color: rgba(255, 255, 255, 0.911);
     letter-spacing: 1.5px;
     padding: 10px;
     border: 10px;
-}
-
-.filter-menu{
-    margin:30px; /*margin collapses vertically*/
-    font: black;
-    font-size: 21px;
-    outline: 2px;
-    
 }
 
 .main-container{
@@ -86,12 +91,10 @@
     width: 100%;   
 }
 
-
 .main-container .content .item-wrap{
     width: 50%;
     padding: 10px;
 }
-
 
 .main-container .content .item-wrap .item{
     padding: 25px;
@@ -99,12 +102,33 @@
     line-height: 22px;
 }
 
+.search-tools{
+    display: flex;
+}
+
+.search-bar{
+    margin: auto;
+    width: 41%;
+    padding: 10px;
+}
+
+.filter-menu{
+    font-size: 18px;
+    outline-style: double;
+    padding: 10px;
+    border: 2px;
+    margin: 5px;
+    outline-style: double; /*?*/
+}
+
+
+
 @media (max-width: 992px){
-    .header{
+    .banner{
         height: 100px;
         padding: 12px;
     }
-    .header .inner-header{
+    .banner .inner-banner{
         flex-direction: column;
     }
     .main-container{
@@ -112,16 +136,16 @@
     }
 }
 @media (max-width: 728px){
-    .header{
+    .banner{
         height: 60px;
     }
-    .header .inner-header{
+    .banner .inner-banner{
         flex-direction: row;
     }
     .main-container{
         margin-top: 60px;
     }
-    /* .header .menu ul{
+    /* .header .inner-menu ul{
         position: absolute;
         top: 60px;
         left: 0;
@@ -129,14 +153,14 @@
         background: rgb(136, 5, 12);
         width: 100%;
     }
-    .nav .menu ul li{
+    .menu .inner-menu ul li{
         padding: 10px;
     }
-    .nav .menu ul li a{
+    .menu .inner-menu ul li a{
         width: 100%;
-        padding: 12px; */
-    }
-    .header .toggle{
+        padding: 12px;
+    } */
+    .banner .toggle{
         display: block;
         position: absolute;
         top: 15px;
@@ -146,14 +170,14 @@
         cursor: pointer;
         transition: all 0.25s ease;
     }
-    .header .toggle:hover{
+    .banner .toggle:hover{
         color: rgb(121, 120, 119);
     }
-    /* .header .nav-elements{ makes inner-nav disappear
+    /* .header .inner-menu { makes inner-menu disappear
         display: none;
     } */
-    
-    .header .nav-elements.active{
+
+    .banner .inner-menu.active{
         display: block;
     }
     .main-container .content .item-wrap{
@@ -166,7 +190,7 @@
 
 
 
-/* for header and nav */
+/* for banner and nav */
 /* ul{ 
     padding: 0;
     list-style-type: none;

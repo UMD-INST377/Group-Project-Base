@@ -12,7 +12,7 @@ https://group13-final-inst377sp2021.herokuapp.com
 
 # Links
 * [User manual](https://scheduleofpt.herokuapp.com/documentation.html)
-* <a href="Developer Manual">Devloper manual</a>
+* <a name="Developer Manual"></a>
 
 <a name= "Developer Manual"></a> Developer Manual
 

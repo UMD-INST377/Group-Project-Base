@@ -121,6 +121,16 @@ body {
     line-height: 22px;
 }
 
+.menu {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    background: rgb(199, 48, 56);
+    padding: 0 25px; /*?*/
+    margin: auto;
+}
+
 @media (max-width: 992px){
     .nav{
         height: 100px;

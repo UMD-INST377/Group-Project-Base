@@ -121,7 +121,52 @@ p{
     outline-style: double; /*?*/
 }
 
+.content_element {
+    padding: 5%;
+    outline-style: solid;
+    outline-color: rgb(0, 0, 0);
+    outline-width: thin;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
 
+h3 {
+    text-align: center;
+    font-size: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+.forms {
+    padding: 5%;
+    outline-style: solid;
+    outline-color: rgb(0, 0, 0);
+    outline-width: thin;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.contents {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
 
 @media (max-width: 992px){
     .banner{

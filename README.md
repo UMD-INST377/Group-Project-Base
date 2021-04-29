@@ -10,9 +10,8 @@ https://group13-final-inst377sp2021.herokuapp.com
 * Iphone
 * Macbook
 
-# Links 
+<h1 id = "Links"></h1>
 * [User manual](https://scheduleofpt.herokuapp.com/documentation.html)
-<h1 id = "Developer manual">Developer manual</h1>
 * <a href= "#">Devloper manual</a>
 
 # Developer Manual 

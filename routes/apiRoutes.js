@@ -694,4 +694,37 @@ router.route('/rebounds-custom')
     res.send('Action unavailable');
   });
 
+/// ///////////////////////////
+/// /// Custom SQL Endpoint ///
+/// ///////////////////////////
+const teamCustomfull = `SELECT team_location, team_name, year_founded, name AS stadium_name, head_coach, general_manager, owner, head_physician, ceo, cfo, player_amount
+FROM team_info JOIN team_staff
+	USING (team_id)
+JOIN stadium_info
+  USING (team_id)
+ORDER BY year_founded, team_location;`;
+
+router.route('/teamCustomfull')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(teamCustomfull, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
+
 export default router;

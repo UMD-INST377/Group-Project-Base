@@ -12,3 +12,12 @@ https://group13-final-inst377sp2021.herokuapp.com
 
 # Links 
 * [User manual](https://scheduleofpt.herokuapp.com/documentation.html)
+* [Developer manual]
+
+# Developer Manual 
+
+#  How to install application and all dependencies
+1. Clone this repository through Github Desktop or through Terminal.
+2. Open repository in VSCode Terminal or Terminal application.
+3. type npm install into terminal window and run.
+4. The application should now be set to use.

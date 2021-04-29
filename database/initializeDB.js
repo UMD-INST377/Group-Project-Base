@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 
 import configOptions from './config.js';
-import modelList from '../models/index.js';
+import modelList from '../server_files/index.js';
 
 const { DataTypes } = Sequelize;
 

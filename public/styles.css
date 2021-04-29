@@ -65,6 +65,10 @@ abbr {
     color: white;
 }
 
+table {
+    text-align: center;
+}
+
 /* header/navbar/footer styles */
 .header {
     background-color: #2b2b2b;

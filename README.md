@@ -14,7 +14,7 @@ https://group13-final-inst377sp2021.herokuapp.com
 * [User manual](https://scheduleofpt.herokuapp.com/documentation.html)
 * <a href="Developer manual" >Developer Manual</a>
 
-# <a name ="Developer Manual"></a> Developer Manual
+### <a name ="Developer Manual"></a> Developer Manual
 
 
 ##  How to install application and all dependencies

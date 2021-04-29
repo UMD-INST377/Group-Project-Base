@@ -14,7 +14,7 @@ https://group13-final-inst377sp2021.herokuapp.com
 * [User manual](https://scheduleofpt.herokuapp.com/documentation.html)
 * <a href= "#">Devloper manual</a>
 
-# Developer Manual 
+<h1 id = "Developer Manual"> Developer Manual</h1>
 
 #  How to install application and all dependencies
 1. Clone this repository through Github Desktop or through Terminal.

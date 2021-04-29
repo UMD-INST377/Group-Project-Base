@@ -1,7 +1,7 @@
 # Airbnb Listing in Chicago
 ## Description
 
-When accessing an Airbnb website, it can be laborious to find data about the previous Airbnb reservation in Chicago. To solve this issue, we created a website that shows the rapid analyses of past Airbnb reservations in Chicago. While it is likely that Airbnb has access to analyses tools for their data at their offices, a web-based portal would allow them to better present data to potential hosts and potentially give hosts a method of reviewing data on their previous reservations in an interesting way. This portal should also be complemented by data insert and update capabilities, allowing Airbnb to add new or missing records and change records without having to return to the office. 
+When a member of the public wants to view data on Airbnb reservations in Chicago, they are often unable to view analyses of these data without conducting those analyses themselves. To solve this issue, we created a website that presents data and charts on past Airbnb reservations in Chicago. This website is not intended for Airbnb employees or hosts to use, as they have access to internal tools that likely exceed the capabilities of our website. By providing a public portal for these data, we hope to give residents of Chicago a clearer picture of Airbnb reservations in their city.
 
 ## Link to Website
 https://group13-final-inst377sp2021.herokuapp.com

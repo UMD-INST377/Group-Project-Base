@@ -59,7 +59,7 @@ const matchArray = findMatches(this.value, teamlist);
 
 
 
-const searchInput = document.querySelector('.input');
+const search = document.querySelector('.input');
 const teaminfo2 = document.querySelector('.TeamInfo');
 const formelement = document.querySelector('#formelement');
 searchInput.addEventListener('change', displayMatches);

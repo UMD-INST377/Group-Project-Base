@@ -95,3 +95,8 @@ abbr {
     background-color: #2b2b2b;
     padding: 1.5rem;
 }
+
+li {
+    margin-bottom: 40px;
+    color: black;
+}

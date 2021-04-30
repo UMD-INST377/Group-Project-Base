@@ -1,4 +1,8 @@
+
+//creates boxes that are html and populates boxes with author names
+
 function buildResultBoxes (validBooks) {
+
   // validBook[0] is a title
   // validBook[1] is an author
   console.log(validBooks);
@@ -27,6 +31,8 @@ function buildResultBoxes (validBooks) {
   suggestions.innerHTML = html;
 }
 
+// this function does the keyword and the books
+// keyword is what the user entered and books is the actual data
 async function filterWithKeyword(chosenkeyword, books) {
   const keyword = chosenkeyword.toLowerCase();
 
@@ -50,6 +56,8 @@ async function windowActions() {
   const request = await fetch('/api/popularBooksExpandedNoGenre');
   const books = await request.json();
   const params = new URLSearchParams(window.location.search);
+
+  // in case nothing is entered
   if (typeof params.get('keyword') !== 'undefined') {
     filterWithKeyword(params.get('keyword'), books);
   }

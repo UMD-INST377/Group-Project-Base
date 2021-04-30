@@ -10,53 +10,50 @@
 </head>
 <body>
     <!-- NAV BAR + HERO -->
-    <section class="hero is-primary is-small">
-        <!-- Hero head: will stick at the top -->
-        <div class="hero-head">
-          <nav class="navbar is-primary">
-            <div class="container">
-              <div class="navbar-brand">
-                <a class="navbar-item" href="index.html">
-                    <!-- CHANGE LOGO -->
-                  <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
-                </a>
-                <span class="navbar-burger" data-target="navbarMenuHeroA">
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </span>
-              </div>
-              <div id="navbarMenuHeroA" class="navbar-menu">
-                <div class="navbar-end">
-                  <a class="navbar-item" href="index.html">
-                    Home
-                  </a>
-
-                  <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link is-active">
+    <section class="hero is-small">
+      <div class="hero-head">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <a href="index.html"><img src="images/logo.svg" id="logo" alt="Logo of white shuffle icon over a dark circle"></a>
+            </a>
+        
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+        
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
                     Charts
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="ustop50.html">
+                        US Top 50
                     </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            US Top 50
-                        </a>
-                        <a class="navbar-item" href="globaltop50.html">
-                            Global Top 50
-                        </a>
-                    </div>
-                  </div>
-                  
-                  <a class="navbar-item" href="playlists.html">
-                    Playlists
-                  </a>
+                    <a class="navbar-item" href="globaltop50.html">
+                        Global Top 50
+                    </a>
                 </div>
               </div>
+              <a class="navbar-item" href="playlists.html">
+                My Playlists
+              </a>
             </div>
-          </nav>
-        </div>
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-dark" href="createplaylists.html">
+                    Generate Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
       
         <!-- Hero content: will be in the middle -->
         <div class="hero-body">

@@ -60,3 +60,9 @@ function displayMatches() {
   }).join('');
   suggestions.innerHTML = html;
 }
+
+const searchInput = document.querySelector('.input');
+const suggestions = document.querySelector('.TeamInfo');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);

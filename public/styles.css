@@ -100,5 +100,9 @@ abbr {
 li {
     margin-bottom: 40px;
     color: black;
+    background-image: linear-gradient(orange,white);
+}
+
+.box {
     background-image: linear-gradient(orange,white)
 }

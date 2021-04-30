@@ -12,11 +12,8 @@ function findMatches(wordToMatch, teamlist) {
       return team.team_name.match(regex);
     });
   }
-
-
-
 function displayMatches() {
-    const matchArray = findMatches(this.value, teamlist);
+const matchArray = findMatches(this.value, teamlist);
     const html = matchArray.map((team) => {
       const regex = new RegExp(this.value, 'gi');
       const TeamName = team.team_name.replace(regex, `<span class="hl">${this.value}</span>`);
@@ -59,10 +56,27 @@ function displayMatches() {
     `;
   }).join('');
   teaminfo2.innerHTML = html;
-}
+
+
 
 const searchInput = document.querySelector('.input');
 const teaminfo2 = document.querySelector('.TeamInfo');
-
+const formelement = document.querySelector('#formelement');
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
+
+
+formelement.addEventListener('submit', (events) => {
+    events.preventDefault();
+    console.log('submit activated', search.value);
+    const filtered = data.filter((record) => record.team_name.includes(search.value));
+    const topfive = filtered.slice(0, 5);
+    // add code for filtering top 5
+
+    if (topfive.length < 1) {
+      replyMessage.classList.add('box');
+      replyMessage.innerText = 'No matches found';
+      return
+    }
+});
+};

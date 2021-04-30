@@ -8,7 +8,7 @@ fetch(teamendpoint)
 
 function findMatches(wordToMatch, teamlist) {
     return teamlist.filter((team) => {
-      const regex = new RegExp(wordToMatch, '^gi');
+      const regex = new RegExp(wordToMatch, 'gi');
       return team.team_name.match(regex);
     });
   }

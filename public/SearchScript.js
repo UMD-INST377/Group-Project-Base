@@ -61,7 +61,7 @@ function displayMatches() {
   suggestions.innerHTML = html;
 }
 
-const searchInput = document.querySelector('.input');
+const searchInput = document.querySelector('.button');
 const suggestions = document.querySelector('.TeamInfo');
 
 searchInput.addEventListener('change', displayMatches);

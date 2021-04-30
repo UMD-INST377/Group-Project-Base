@@ -47,7 +47,7 @@ async function windowActions() {
   const usResults = await getUSCharts();
   const globalResults = await getGlobalCharts();
   // console.table(usCharts.data);
-  console.table(globalResults.data);
+  // console.table(globalResults.data);
   const usCharts = usResults.data;
   const globalCharts = globalResults.data;
 
@@ -145,93 +145,95 @@ function getAll(selector) {
     Appending Playlist Cards 
 */
 
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for(let i = 0; i <ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-function getPlaylists() {
-  let num_playlist = getCookie("num_playlist");
+// function getCookie(cname) {
+//   let name = cname + "=";
+//   let decodedCookie = decodeURIComponent(document.cookie);
+//   let ca = decodedCookie.split(';');
+//   for(let i = 0; i <ca.length; i++) {
+//     let c = ca[i];
+//     while (c.charAt(0) == ' ') {
+//       c = c.substring(1);
+//     }
+//     if (c.indexOf(name) == 0) {
+//       return c.substring(name.length, c.length);
+//     }
+//   }
+//   return "";
+// }
+// function getPlaylists() {
+//   let num_playlist = getCookie("num_playlist");
 
-  if (num_playlist.length == 0) {
-    document.cookie = "num_playlist = 0";
-    num_playlist = 0;
-  }
-  const num = parseInt(num_playlist);
-  const playlists = [];
-  for (let i = 0; i < num; i++) {
-    const playlist = getCookie("playlist" + i.toString());
-    playlists.push(playlist);
-  }
-  return playlists;
-}
+//   if (num_playlist.length == 0) {
+//     document.cookie = "num_playlist = 0";
+//     num_playlist = 0;
+//   }
+//   const num = parseInt(num_playlist);
+//   const playlists = [];
+//   for (let i = 0; i < num; i++) {
+//     const playlist = getCookie("playlist" + i.toString());
+//     playlists.push(playlist);
+//   }
+//   return playlists;
+// }
 
-function generatePlaylist()
-{
-  let num_playlist = getCookie("num_playlist");
-  if (num_playlist.length == 0) {
-    document.cookie = "num_playlist = 0";
-    num_playlist = 0;
-  }
-  const num = parseInt(num_playlist);
-  document.cookie = "num_playlist =" + (num+1).toString();
+// function generatePlaylist()
+// {
+//   let num_playlist = getCookie("num_playlist");
+//   if (num_playlist.length == 0) {
+//     document.cookie = "num_playlist = 0";
+//     num_playlist = 0;
+//   }
+//   const num = parseInt(num_playlist);
+//   document.cookie = "num_playlist =" + (num+1).toString();
     
 
-  document.cookie = "playlist" + num.toString() + "= content";
-  console.log(getPlaylists());
-}
+//   document.cookie = "playlist" + num.toString() + "= content";
+//   console.log(getPlaylists());
+// }
 
-const pDisplay = `
-<div class="column is-one-quarter">
-<div class="card card-button" onclick="location.href='playlistsview.html'">
-  <div class="card-image">
-    <figure class="image is-4by3">
-      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-    </figure>
-  </div>
-  <div class="card-content has-text-centered">
-    <div class="media">
-      <div class="media-content">
-        <p class="title is-4">Playlist Name</p>
-        <p class="subtitle is-6">Created on 4/20/2021</p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-`;
+// const pDisplay = `
+// <div class="column is-one-quarter">
+// <div class="card card-button" onclick="location.href='playlistsview.html'">
+//   <div class="card-image">
+//     <figure class="image is-4by3">
+//       <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+//     </figure>
+//   </div>
+//   <div class="card-content has-text-centered">
+//     <div class="media">
+//       <div class="media-content">
+//         <p class="title is-4">Playlist Name</p>
+//         <p class="subtitle is-6">Created on 4/20/2021</p>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+// </div>
+// </div>
+// `;
 
-function displayPlaylists() {
-  const playlists = getPlaylists();
-  const preview = document.getElementById("playlist_preview");
-  const container = preview.firstElementChild;
-  container.innerHTML = "";
-  for (let i = 0; i < playlists.length; i++) {
-    container.innerHTML += pDisplay;
-  }
-  console.log(container);
-  // document.getElementById("playlist_preview").firstElementChild.innerHTML=pDisplay;
-}
+// function displayPlaylists() {
+//   const playlists = getPlaylists();
+//   const preview = document.getElementById("playlist_preview");
+//   const container = preview.firstElementChild;
+//   container.innerHTML = "";
+//   for (let i = 0; i < playlists.length; i++) {
+//     container.innerHTML += pDisplay;
+//   }
+//   console.log(container);
+//   // document.getElementById("playlist_preview").firstElementChild.innerHTML=pDisplay;
+// }
 
-displayPlaylists();
+// displayPlaylists();
 
-const button = document.getElementById("p-button");
-console.log(button);
+// const button = document.getElementById("p-button");
+// console.log(button);
 
-button.addEventListener('click' , generatePlaylist);
+// button.addEventListener('click' , generatePlaylist);
 
-// function to move through create playlist forms
+/* 
+  function to move through create playlist forms
+*/
 
 /* function ifRandom() {    
   if (document.getElementById('random').checked) {

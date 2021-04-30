@@ -18,7 +18,7 @@ function findMatches(wordToMatch, teamlist) {
 function displayMatches() {
     const matchArray = findMatches(this.value, teamlist);
     const html = matchArray.map((team) => {
-      const regex = new RegExp(this.value, '^gi');
+      const regex = new RegExp(this.value, 'gi');
       const TeamName = team.team_name.replace(regex, `<span class="hl">${this.value}</span>`);
       const teamlocation = team.team_location;
       const teamfounded = team.year_founded;

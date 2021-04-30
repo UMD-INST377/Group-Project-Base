@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////Actor Has Movies Endpoints////////
 /// /////////////////////////////////
-router.get('/actorhasmovies', async (req, res) => {
+router.get('/actor_has_movies', async (req, res) => {
   try {
     const  actorHasMovies = await db.actor_has_movies.findAll();
     const reply = actorHasMovies.length > 0 ? { data: actorHasMovies } : { message: 'no results found' };
@@ -24,7 +24,7 @@ router.get('/actorhasmovies', async (req, res) => {
   }
 });
 
-router.get('/actorhasmovies/:actor_id', async (req, res) => {
+router.get('/actor_has_movies/:actor_id', async (req, res) => {
   try {
     const actorHasMovies = await db.actor_has_movies.findAll({
       where: {
@@ -39,7 +39,7 @@ router.get('/actorhasmovies/:actor_id', async (req, res) => {
   }
 });
 
-router.post('/actorhasmovies', async (req, res) => {
+router.post('/actor_has_movies', async (req, res) => {
   const actorHasMovies = await db.actor_has_movies.findAll();
   const currentId = (await actorHasMovies.length) + 1;
   try {
@@ -54,7 +54,7 @@ router.post('/actorhasmovies', async (req, res) => {
   }
 });
 
-router.delete('/actorhasmovies/:', async (req, res) => {
+router.delete('/actor_has_movies/:', async (req, res) => {
   try {
     await db.actor_has_movies.destroy({
       where: {
@@ -68,7 +68,7 @@ router.delete('/actorhasmovies/:', async (req, res) => {
   }
 });
 
-router.put('/actorhasmovies', async (req, res) => {
+router.put('/actor_has_movies', async (req, res) => {
   try {
     await db.actor_has_movies.update(
       {

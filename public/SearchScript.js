@@ -32,8 +32,8 @@ function displayMatches() {
       const tcfo = team.cfo;
       return `
       <li>
-      <div class = "TeamInfo li box is-small has-background-orange">
-        <span class="name" is-capitalized>Name: ${TeamName}</span>
+      <div class = "TeamInfo li box is-small has-background-orange is-capitalized>">
+        <span class="name" Name: ${TeamName}</span>
         <br>
         <span class="Year">Year of Team Foundation: ${teamfounded}</span>
         <br>

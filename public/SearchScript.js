@@ -2,7 +2,7 @@
 const teamendpoint = '/api/teamCustomfull';
 const teamlist = [];
 
-fetch(endpoint)
+fetch(teamendpoint)
   .then((blob) => blob.json())
   .then((data) => teamlist.push(...data));
 

@@ -1,4 +1,4 @@
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   const movieHasGenre = sequelize.define(
     'movies_has_genre',
     {

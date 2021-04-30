@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   development: {
     username: 'student',
     password: 'INST377@UMD',

@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import express from 'express';
-import sequelize from 'sequelize';
+const express = require('express');
+const sequelize = require('sequelize');
 
-import db from '../database/initializeDB.js';
+const db = require('../database/initializeDB.js');
 
 const router = express.Router();
 
@@ -375,4 +375,4 @@ router.get('/custom', async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

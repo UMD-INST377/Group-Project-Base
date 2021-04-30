@@ -1,6 +1,6 @@
-import express from 'express';
-import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
+const express  = require('express');
+const db  = require('./database/initializeDB.js');
+const apiRoutes = require('./routes/apiRoutes.js');
 
 const staticFolder = "public";
 
@@ -20,7 +20,7 @@ async function bootServer() {
     app.listen(PORT, async () => {
       const mysql = await db.sequelizeDB;
       await mysql.sync();
-      console.log(`Listening on: http//localhost:${PORT}`);
+      console.log(`Listening on: http://localhost:${PORT}`);
     });
   } catch (err) {
     console.error(err);

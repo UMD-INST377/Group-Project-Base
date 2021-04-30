@@ -7,11 +7,10 @@ When a member of the public wants to view data on Airbnb reservations in Chicago
 https://group13-final-inst377sp2021.herokuapp.com
 
 ## Target Broswers
-* Iphone 11
-* Macbook Pro 11.3
+* iPhone 11
+* MacBook Pro 11.3
 
 # Links
-* [User manual](https://scheduleofpt.herokuapp.com/documentation.html)
 * <a href="developer-manual" >Developer Manual</a>
 
 ### <a name ="Developer Manual"></a> Developer Manual

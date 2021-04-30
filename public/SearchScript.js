@@ -58,11 +58,11 @@ function displayMatches() {
       </li>
     `;
   }).join('');
-  suggestions.innerHTML = html;
+  teaminfo2.innerHTML = html;
 }
 
 const searchInput = document.querySelector('.input');
-const suggestions = document.querySelector('.TeamInfo');
+const teaminfo2 = document.querySelector('.TeamInfo');
 
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);

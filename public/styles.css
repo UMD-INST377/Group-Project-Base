@@ -95,8 +95,10 @@ abbr {
     background-color: #2b2b2b;
     padding: 1.5rem;
 }
+/* List Items */
 
 li {
     margin-bottom: 40px;
     color: black;
+    background-image: linear-gradient(orange,white)
 }

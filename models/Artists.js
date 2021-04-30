@@ -5,8 +5,7 @@ export default (sequelize, DataTypes) => {
       artist_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
+        primaryKey: true
       },
       artist_name: {
         type: DataTypes.STRING,
@@ -23,10 +22,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  Artists.associate = (models) => {
-    Artists.hasOne(models.Songs, {
-      foreignKey: 'artist_id'
-    });
-  };
   return Artists;
 };

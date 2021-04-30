@@ -14,6 +14,7 @@ p{
 #title{
     /* LITERATURE & ART CORNER DATABASE */
     font-size: 36px;
+    /* font-size: 3vw; sets font-size to always be 5% of the current viewport width, even on re-sizing */
     line-height: 76px;
     align-items: center;
     letter-spacing: 1.5px;
@@ -28,7 +29,7 @@ p{
     /* Go to home site */
     font-size: 18px;
     line-height: 38px;
-    display: flex;
+    display: 0 1 auto;
     align-items: center;
     color: black;
     text-decoration: underline;
@@ -119,6 +120,7 @@ p{
     border: 2px;
     margin: 5px;
     outline-style: double; /*?*/
+    
 }
 
 .content_element {
@@ -168,19 +170,31 @@ form {
     margin-right: 20px;
 }
 
+/* when max-width is 992px or less */
 @media (max-width: 992px){
-    .banner{
+    .banner .inner-banner .menu .inner-menu{
         height: 100px;
         padding: 12px;
-    }
-    .banner .inner-banner{
         flex-direction: column;
     }
+
+    /* makes #goto disappear */
+    #goto { 
+        display: none;
+    }
+
+    #title {
+        text-align: center;
+    }
+
     .main-container{
         margin-top: 100px;
     }
 }
-@media (max-width: 728px){
+
+/* when max-width is 728px or less */
+
+/* @media (max-width: 728px){
     .banner{
         height: 60px;
     }
@@ -190,7 +204,7 @@ form {
     .main-container{
         margin-top: 60px;
     }
-    /* .header .inner-menu ul{
+    .header .inner-menu ul{
         position: absolute;
         top: 60px;
         left: 0;
@@ -204,7 +218,7 @@ form {
     .menu .inner-menu ul li a{
         width: 100%;
         padding: 12px;
-    } */
+    }
     .banner .toggle{
         display: block;
         position: absolute;
@@ -218,9 +232,9 @@ form {
     .banner .toggle:hover{
         color: rgb(121, 120, 119);
     }
-    /* .header .inner-menu { makes inner-menu disappear
+    .banner .inner-menu { 
         display: none;
-    } */
+    }
 
     .banner .inner-menu.active{
         display: block;
@@ -228,25 +242,4 @@ form {
     .main-container .content .item-wrap{
         width: 100%;
     }
-}
-
-
-
-
-
-
-/* for banner and nav */
-/* ul{ 
-    padding: 0;
-    list-style-type: none;
-    flex: 2;
-    display: flex;
-    justify-content: space-between;
-}
-
-
-li{  
-    display: inline;
-    text-align: center;
-    flex: 1;
 } */

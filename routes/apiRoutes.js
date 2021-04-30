@@ -207,19 +207,19 @@ router.post('/Museum_info', async (req, res) => {
       museum_name: req.body.museum_name,
       museum_email: req.body.museum_email,
       museum_url: req.body.museum_url,
-			museum_phone_num: req.body.museum_phone_num,
-			museum_entry_fee: req.body.museum_entry_fee,
-			museum_open_time: req.body.museum_open_time,
-			date_museum_opened: req.body.date_museum_opened,
-			museum_capacity: req.body.museum_capacity,
-			museum_size: req.body.museum_size,
-			museum_parent: req.body.museum_parent,
-			museum_close_time: req.body.museum_close_time,
-			museum_budget: req.body.museum_budget,
-			museum_address: req.body.museum_address,
-			museum_city: req.body.museum_city,
-			museum_zipcode: req.body.museum_zipcode,
-			ada_id: req.body.ada_id
+      museum_phone_num: req.body.museum_phone_num,
+      museum_entry_fee: req.body.museum_entry_fee,
+      museum_open_time: req.body.museum_open_time,
+      date_museum_opened: req.body.date_museum_opened,
+      museum_capacity: req.body.museum_capacity,
+      museum_size: req.body.museum_size,
+      museum_parent: req.body.museum_parent,
+      museum_close_time: req.body.museum_close_time,
+      museum_budget: req.body.museum_budget,
+      museum_address: req.body.museum_address,
+      museum_city: req.body.museum_city,
+      museum_zipcode: req.body.museum_zipcode,
+      ada_id: req.body.ada_id
     });
     res.json(newMuseum);
   } catch (err) {
@@ -246,22 +246,22 @@ router.put('/Museum_info', async (req, res) => { // Where I left off 19:18 4/6/2
   try {
     await db.MuseumInfo.update(
       {
-				museum_name: req.body.museum_name,
+        museum_name: req.body.museum_name,
         museum_email: req.body.museum_email,
       	museum_url: req.body.museum_url,
-				museum_phone_num: req.body.museum_phone_num,
-				museum_entry_fee: req.body.museum_entry_fee,
-				museum_open_time: req.body.museum_open_time,
-				date_museum_opened: req.body.date_museum_opened,
-				museum_capacity: req.body.museum_capacity,
-				museum_size: req.body.museum_size,
-				museum_parent: req.body.museum_parent,
-				museum_close_time: req.body.museum_close_time,
-				museum_budget: req.body.museum_budget,
-				museum_address: req.body.museum_address,
-				museum_city: req.body.museum_city,
-				museum_zipcode: req.body.museum_zipcode,
-				ada_id: req.body.ada_id
+        museum_phone_num: req.body.museum_phone_num,
+        museum_entry_fee: req.body.museum_entry_fee,
+        museum_open_time: req.body.museum_open_time,
+        date_museum_opened: req.body.date_museum_opened,
+        museum_capacity: req.body.museum_capacity,
+        museum_size: req.body.museum_size,
+        museum_parent: req.body.museum_parent,
+        museum_close_time: req.body.museum_close_time,
+        museum_budget: req.body.museum_budget,
+        museum_address: req.body.museum_address,
+        museum_city: req.body.museum_city,
+        museum_zipcode: req.body.museum_zipcode,
+        ada_id: req.body.ada_id
       },
       {
         where: {
@@ -287,7 +287,7 @@ router.route('/wholeVisitor')
       const visitorTrans = await db.VisitorTransactions.findAll();
       const wholeVisitors = visitor.map((visit) => {
         const transEntry = visitorTrans.find((trans) => trans.visitor_id === visit.visitor_id);
-        console.log('visit', visit)
+        console.log('visit', visit);
         console.log('transEntry', transEntry);
         return {
           ...visit.dataValues,
@@ -305,7 +305,7 @@ router.get('/visitors', async (req, res) => {
   try {
     const visitors = await db.Visitors.findAll();
     const reply = visitors.length > 0 ? {data: visitors} : {message: 'no results found'};
-    res.json(reply)
+    res.json(reply);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -320,10 +320,10 @@ router.get('/visitors/:visitor_id', async (req, res) => {
       }
     });
 
-    res.json(visitors)
+    res.json(visitors);
   } catch (err) {
     console.error(err);
-    res.error('Server error')
+    res.error('Server error');
   }
 });
 
@@ -355,7 +355,7 @@ router.delete('/visitors/:visitor_id', async (req, res) => {
     res.send('Successfully deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error')
+    res.error('Server error');
   }
 });
 
@@ -375,13 +375,47 @@ router.put('/visitors', async (req, res) => {
     res.send('Successfully updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error')
+    res.error('Server error');
   }
 });
 
 /// /////////////////////////////////
 /// ////Visitor Transaction Endpoints////////
 /// /////////////////////////////////
+
+router.route('/museumTrans')
+  .get(async (req, res) => {
+    try {
+    // const visitor = await db.Visitors.findAll();
+      const visitorTrans = await db.VisitorTransactions.findAll();
+      const museumVisit = await db.MuseumVisits.findAll();
+      const museumInfo = await db.MuseumInfo.findAll();
+      const museumInfoVisit = museumInfo.map((name) => {
+        const transEntry = musuemVisit.find((visit) => visit.museum_id === name.museum_id);
+        console.log('visit', visit);
+        console.log('transEntry', transEntry);
+        return {
+          ...visit.dataValues,
+          ...transEntry.dataValues
+        };
+      });
+      const MuseumTrans = museumInfoVisit.find((info) => {
+        const visTransEntry = visitorTrans.map((trans) => info.visitor_id === trans.visitor_id);
+        console.log('info', info);
+        console.log('visTransEntry', visTransEntry);
+        return {
+          ...info.dataValues,
+          ...visTransEntry.dataValues
+        };
+      });
+
+      res.json({data: museumTrans});
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'something went wrong on the server!'});
+    }
+  });
+
 router.get('/visitor_transaction', async (req, res) => {
   try {
     const visTran = await db.VisitorTransactions.findAll();
@@ -402,7 +436,7 @@ router.get('/visitor_transaction/:transaction_id', async (req, res) => {
     });
     res.json(visTranID);
   } catch (err) {
-    console.error(err)
+    console.error(err);
     res.error('Server error');
   }
 });
@@ -451,7 +485,7 @@ router.put('/visitor_transaction', async (req, res) => {
       }
     );
     res.send('Successfully Updated');
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     res.error('Server error');
   }
@@ -475,9 +509,9 @@ router.get('/museum_staff', async (req, res) => {
 });
 
 /// /////////////////////////////////
- /// ////Ada Compliance Endpoints////////
- /// /////////////////////////////////
- router.get('/ada_compliance', async (req, res) => {
+/// ////Ada Compliance Endpoints////////
+/// /////////////////////////////////
+router.get('/ada_compliance', async (req, res) => {
   try {
     const ada = await db.AdaCompliance.findAll();
     const reply = ada.length > 0 ? { data: ada } : { message: 'no results found' };
@@ -589,7 +623,7 @@ router.post('/museum_visits', async (req, res) => {
       vistor_id: currentId,
       museum_id: req.body.museum_id,
       visit_date: req.body.visit_date,
-      member_status: req.body.member_status,
+      member_status: req.body.member_status
     });
     res.json(newVisit);
   } catch (err) {
@@ -619,7 +653,7 @@ router.put('/museum_visits', async (req, res) => {
         visitor_id: req.body.visitor_id,
         museum_id: req.body.museum_id,
         visit_date: req.body.visit_date,
-        member_status: req.body.member_status,
+        member_status: req.body.member_status
       },
       {
         where: {

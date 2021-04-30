@@ -16,12 +16,15 @@ nav {
   width: 100%;
 }
 
-label.logo {
+#logo-name {
   color: white;
-  font-size: 35px;
+  font-size: 55px;
   line-height: 175px;
   padding: 0 100px;
   font-weight: bold; 
+  position: fixed;
+  top: 12px;
+  left: 0px;
 }
 
 nav ul {
@@ -57,4 +60,28 @@ a:hover {
 
 #about-para {
   text-align: center;
+}
+
+#search-title {
+  text-align: center;
+  font-size: 40px;
+  color: black;
+  font-family: Open Sans;
+}
+
+.preference-choices {
+  text-align: center;
+  font-family: Open Sans;
+  color: black;
+  padding: 15px;
+  margin: 0 200px;
+}
+
+#genre {
+  position: fixed;
+  left: 50%;
+}
+
+#logo-name {
+  text-decoration: none;
 }

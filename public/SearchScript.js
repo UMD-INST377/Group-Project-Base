@@ -34,30 +34,34 @@ function displayMatches() {
       <li>
       <div class = "TeamInfo li box is-small has-background-orange">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <span class="name">${TeamName}</span>
 =======
         <span class="name">Name:${TeamName}</span>
 >>>>>>> Stashed changes
+=======
+        <span class="name" is-capitalized>Name: ${TeamName}</span>
+>>>>>>> Stashed changes
         <br>
-        <span class="Year">Year of Team Foundation:${teamfounded}</span>
+        <span class="Year">Year of Team Foundation: ${teamfounded}</span>
         <br>
-        <span class="Stadium">Home Stadium:${stadium}</span>
+        <span class="Stadium">Home Stadium :${stadium}</span>
         <br>
-        <span class="Location">Home City:${teamlocation}</span>
+        <span class="Location">Home City: ${teamlocation}</span>
         <br>
-        <span class="Players">Number of Total Players:${playeramount}</span>
+        <span class="Players">Number of Total Players: ${playeramount}</span>
         <br>
-        <span class="Owner">Owner:${ownername}</span>
+        <span class="Owner">Owner: ${ownername}</span>
         <br>
-        <span class="Head Coach">Head Coach:${headcoach}</span>
+        <span class="Head Coach">Head Coach: ${headcoach}</span>
         <br>
-        <span class="General Manager">General Manager:${genmanager}</span>
+        <span class="General Manager">General Manager: ${genmanager}</span>
         <br>
         <span class="Head Physician">Head Physician: ${headphysician}</span>
         <br>
-        <span class="CEO">Team CEO:${tceo}</span>
+        <span class="CEO">Team CEO: ${tceo}</span>
         <br>
-        <span class="CFO">Team CFO:${tcfo}</span>
+        <span class="CFO">Team CFO: ${tcfo}</span>
       </div>
       </li>
     `;

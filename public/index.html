@@ -10,127 +10,156 @@
 </head>
 <body>
     <!-- NAV BAR + HERO -->
-    <section class="hero is-primary is-medium">
-        <!-- Hero head: will stick at the top -->
+    <section class="hero is-medium">
         <div class="hero-head">
-          <nav class="navbar is-primary">
-            <div class="container">
-              <div class="navbar-brand">
-                <a class="navbar-item">
-                    <!-- CHANGE LOGO -->
-                  <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
-                </a>
-                <span class="navbar-burger" data-target="navbarMenuHeroA">
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </span>
-              </div>
-              <div id="navbarMenuHeroA" class="navbar-menu">
-                <div class="navbar-end">
-                  <a class="navbar-item is-active">
-                    Home
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <a href="index.html"><img src="images/logo.svg" id="logo" alt="Logo of white shuffle icon over a dark circle"></a>
+              </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link">
+                      Charts
                   </a>
-
-                  <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                    Charts
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="ustop50.html">
-                            US Top 50
-                        </a>
-                        <a class="navbar-item" href="globaltop50.html">
-                            Global Top 50
-                        </a>
-                    </div>
+                  <div class="navbar-dropdown">
+                      <a class="navbar-item" href="ustop50.html">
+                          US Top 50
+                      </a>
+                      <a class="navbar-item" href="globaltop50.html">
+                          Global Top 50
+                      </a>
                   </div>
-                  
-                  <a class="navbar-item" href="playlists.html">
-                    Playlists
+                </div>
+                <a class="navbar-item" href="playlists.html">
+                  My Playlists
+                </a>
+              </div>
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-dark" href="createplaylists.html">
+                      Generate Now
                   </a>
                 </div>
               </div>
             </div>
           </nav>
         </div>
-      
+
         <!-- Hero content: will be in the middle -->
         <div class="hero-body">
           <div class="container has-text-centered">
             <p class="title">
-              Spotify Music Generator
+              Welcome to Randomize
             </p>
             <p class="subtitle">
-              Expand your horizons.
+              Expand your horizons with our playlists:<br>
+              <strong>Randomly generated, top hits recommendations.</strong>
             </p>
-            <a class="button is-rounded" href="createplaylists.html">
-              Get Started
+            <a class="button is-dark" href="createplaylists.html">
+              Generate Now
             </a>
           </div>
         </div>
     </section>
 
     <!-- Page Content -->
-    <section>
+    <section class="homepage">
         <div class="container is-max-desktop">
-            <!-- SPACER -->
-            <div class="block"></div>
-
+          <div class="section-one">
             <!-- What is our app -->
-            <div class="columns">
-                <div class="column is-two-thirds">
-                    <h1 class="title is-2">What is our app?</h1>
-                    <p>With the overwhelming amount of music released, 
-                        it can be difficult to determine which songs are worth 
-                        listening to based on personal taste. 
-                        <br><br>
-                        [The Spotify Music Generator] will generate random 
-                        playlists based on Spotify’s Global and US Top 50 Charts 
-                        and other various user input. 
-                        <br><br>
-                        Explore new music that other users are adding and the latest 
-                        hits with the click of a button. It doesn’t get much simpler than that!
+            <div class="columns is-variable is-8">
+                <div class="column is-three-fifths">
+                  <div class="content is-normal">
+                    <h1>About Randomize</h1>
+                    <p>With the overwhelming amount of music released every day, 
+                      it can be difficult to keep up with new music or find songs you’d like. 
+                      <br><br>
+                      <strong>Randomize</strong> will generate random playlists, based on Spotify’s Global 
+                      and US Top 50 Charts, to recommend you new music to try out! 
+                      <br><br>
+                      Explore potential songs and the latest hits that can end up being your 
+                      favorite with the click of a button. It doesn’t get much simpler than that!
                     </p>
+                  </div>
+                    
                 </div>
                 
                 <div class="column">
                     <!-- Picture -->
                     <figure class="image is-250x250">
-                      <img src="https://bulma.io/images/placeholders/256x256.png">
+                      <img src="images/headphones girl.jpg" alt="Blonde woman wearing white headphones outside in the city, gazing to the right.">
                     </figure>
                 </div>
             </div>
+          </div>
 
-            <!-- Spacer -->
-            <div class="block"></div>
-
-            <!-- How to Use -->
-            <div class="columns">
+          <!-- Three-columns section -->
+          <div class="section-two">
+            <div class="content is-normal">
+              <div class="instructions">
+                <h1>How It Works</h1>
+                <p>Learn what you can do with the generator.</p>
+              </div>
+            </div>
+            <div class="columns is-variable is-5">
                 <div class="column">
-                    <!-- Picture -->
-                    <figure class="image is-250x250">
-                      <img src="https://bulma.io/images/placeholders/256x256.png">
-                    </figure>
+                  <figure class="image is-square">
+                    <img src="images/start.png" id="three" alt="Glass pane with bright orange start button, angled to the left.">
+                  </figure>
+                  <div class="content is-normal">
+                    <div class="three-cols">
+                      <h2>Start the Generator</h2>
+                      <p>Prepare to be open-minded to new recommendations.</p>
+                    </div>
+                  </div>
                 </div>
-                
-                <div class="column is-two-thirds">
-                    <h1 class="title is-2">How to Use</h1>
-                    <ol>
-                        <li>Hit the "Get Started" Button.</li>
-                        <li>Decide whether you want to start off with a completely 
-                            randomized playlist or create your own using the current 
-                            top hits we have available.</li>
-                        <li>Edit and share your playlist!</li>
-                    </ol>
-                    <a class="button is-rounded" href="createplaylists.html">
-                      Get Started
-                    </a>
+                <div class="column">
+                  <figure class="image is-square">
+                    <img src="images/hold phone.png" id="three" alt="Pale hand holding up an iPhone that's on a music app, in front of a gray background.">
+                  </figure>
+                  <div class="content is-normal">
+                    <div class="three-cols">
+                      <h2>Customization</h2>
+                      <p>Edit your playlist if needed by adding your own songs.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <figure class="image is-square">
+                    <img src="images/boombox.png" id="three" alt="Boombox on the ground, in front of a man laying down.">
+                  </figure>
+                  <div class="content is-normal">
+                    <div class="three-cols">
+                      <h2>Enjoy New Music</h2>
+                      <p>Listen to the playlist's hits and share it with others!</p>
+                    </div>
+                  </div>
                 </div>
             </div>
+          </div>
+          
+
+          <!--Final section with generate button-->
+          <div class="content is-normal">
+            <div class="instructions">
+              <h1>Ready to start listening?</h1>
+              <p>Hit the button below to get started!</p>
+              <a class="button is-dark" href="createplaylists.html">
+                Generate Now
+              </a>
+            </div>
+          </div>
+
         </div>
     </section>
 
@@ -141,7 +170,7 @@
     <footer class="footer">
         <div class="content has-text-centered">
           <p>
-            <strong>Spotify Music Generator</strong> by 
+            <strong>Randomize</strong> by 
             <a href="https://github.com/kthrnv/Group3-Final-INST377SP2021">
                 Chris Shea, Ryan Moy, Emily Zheng, Matthew Nguyen, & Katherine Vo</a>.
           </p>

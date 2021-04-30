@@ -16,3 +16,52 @@
     margin: 30px auto;
     text-align: right;
 }
+
+/* HERO & NAV BAR */
+#logo {
+    width: 20%;
+    padding: 15px 10px 10px 50px;
+}
+
+.title {
+    font-size: 45px;
+    padding: 20px;
+}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.hero {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7),rgba(188, 230, 243, 0.4)), url(images/record\ player.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+/* HOME PAGE */
+.homepage {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-one, .section-two {
+    padding-bottom: 80px;
+}
+
+.instructions {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+}
+
+.three-cols {
+    text-align: center;
+    padding: 20px;
+}
+
+#three {
+    border-radius: 25px;
+}

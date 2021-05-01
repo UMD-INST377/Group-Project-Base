@@ -1,3 +1,5 @@
+<!-- this is the database app's homepage -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="homepage.css" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Literature & Art Corner Database</title>
   </head>
   <body>
@@ -25,6 +27,7 @@
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
           <a href="suggestion.html">Make a Suggestion</a>
+          <a href="featured.html">Featured Reviews</a>
           <a href="contact.html">Contact Us</a>
         </div>
       </div>
@@ -58,19 +61,20 @@
           </script> 
         </div>
         <div class="search-bar">
-          <h2>Enter your search.</h2>
           <form action="/api" method="post">
-            <!-- <label for="search">Search</label> -->
+            <label for="search">Search</label>
             <input type="text" id="search" name="Search" />
           </form>
         </div>
       </div>
     
       <div class= "content">
-
-        <div class= "item-wrap">
-          <div class= "item">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class= "content_element">
+          <div class= "item-wrap">
+            <h3>Featured Review of the Month</h3>
+            <div class= "item">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
           </div>
         </div>
         

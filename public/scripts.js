@@ -18,6 +18,7 @@ try {
   console.error("Unable to connect to the database:", error);
 }
 
+// toggle button
 var toggle = document.querySelector(".toggle");
 var menu = document.querySelector(".menu");
 

@@ -68,7 +68,7 @@ p{
 .inner-menu{
     display: flex;
     justify-content: space-around; /*space on left and right*/
-    width: 450px; /*customize for desktop and mobile*/
+    width: 720px; /*customize for desktop and mobile*/
     align-items: center;
     flex-wrap: wrap;
     text-decoration: none;

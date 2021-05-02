@@ -261,5 +261,93 @@ router.put('/player_goals', async (req, res) => {
     res.error('Server error');
   }
 });
+/// /////////////////////////////////
+/// ////Winners Endpoints////////
+/// /////////////////////////////////
+
+router.get('/winners', async (req, res) => {
+  try {
+    const winners = await db.winners.findAll();
+    const reply = winners.length > 0 ? { data: winners } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/winners/:season_id', async (req, res) => {
+  try {
+    const winners = await db.winners.findAll({
+      where: {
+        season_id: req.params.season_id
+      }
+    });
+
+    res.json(winners);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/winners', async (req, res) => {
+  const winners = await db.winners.findAll();
+  const currentId = (await winners.length) + 1;
+  try {
+    const newWinners = await db.winners.create({
+        season_id: currentId,
+        club_id: req.body.club_id,
+        club_name: req.body.club_name,
+        season: req.body.season,
+        player_id: req.body.player_id,
+        best_player: req.body.best_player,
+        coach_name: req.body.coach_name
+    });
+    res.json(newWinners);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/winners/:season_id', async (req, res) => {
+  try {
+    await db.winners.destroy({
+      where: {
+        season_id: req.params.season_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/winners', async (req, res) => {
+  try {
+    await db.winners.update(
+      {
+        season_id: currentId,
+        club_id: req.body.club_id,
+        club_name: req.body.club_name,
+        season: req.body.season,
+        player_id: req.body.player_id,
+        best_player: req.body.best_player,
+        coach_name: req.body.coach_name      
+      },
+      {
+        where: {
+          season_id: currentId,
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 export default router;

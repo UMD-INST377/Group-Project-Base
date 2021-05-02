@@ -1,7 +1,7 @@
 
 https://blooming-sea-07164.herokuapp.com/
 
-# EPL Stats
+# EPL Developer Manual 
 <table>
   <thead>
     <tr>

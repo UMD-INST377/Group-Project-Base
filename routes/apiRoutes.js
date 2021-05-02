@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   res.send('Welcome to the Movie Museum!');
+  
 });
 
 /// /////////////////////////////////
@@ -40,6 +41,7 @@ router.get('/actor_has_movies/:actor_id', async (req, res) => {
 });
 
 router.post('/actor_has_movies', async (req, res) => {
+  console.log(123);
   const actorHasMovies = await db.actor_has_movies.findAll();
   const currentId = (await actorHasMovies.length) + 1;
   try {
@@ -256,11 +258,11 @@ router.put('/movie_has_genre', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////movies Endpoints/////////
+/// ////////movie Endpoints/////////
 /// /////////////////////////////////
-router.get('/movies', async (req, res) => {
+router.get('/movie', async (req, res) => {
   try {
-    const movie = await db.movies.findAll();
+    const movie = await db.movie.findAll();
     res.send(movie);
   } catch (err) {
     console.error(err);
@@ -268,9 +270,9 @@ router.get('/movies', async (req, res) => {
   }
 });
 
-router.get('/movies/:movie_id', async (req, res) => {
+router.get('/movie/:movie_id', async (req, res) => {
   try {
-    const movie = await db.movies.findAll({
+    const movie = await db.movie.findAll({
       where: {
         movie_id: req.params.movie_id
       }
@@ -282,17 +284,15 @@ router.get('/movies/:movie_id', async (req, res) => {
   }
 });
 
-router.put('/movies', async (req, res) => {
+router.put('/movie', async (req, res) => {
   try {
     await db.movies.update(
       {
-        duration: req.body.duration,
-        title: req.body.title,
-        year: req.body.year,
+        movie_title: req.body.title,
+        title_year: req.body.year,
         country: req.body.country,
-        imdb_score: req.body.imdb_score,
-        earnings_gross: req.body.earnings_gross,
-        studio_id: req.body.studio_id
+        director_name: req.body.director_name
+        
       },
       {
         where: {

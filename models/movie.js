@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const movies = sequelize.define(
-    'movies',
+  const movie = sequelize.define(
+    'movie',
     {
       movie_id: {
         type: DataTypes.INTEGER,
@@ -8,29 +8,20 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
         primaryKey: true
       },
-      duration: {
-        type: DataTypes.INTEGER
-      },
-      title: {
+      movie_title: {
         type: DataTypes.STRING
       },
-      year: {
+      title_year: {
         type: DataTypes.INTEGER
       },
       country: {
         type: DataTypes.STRING
       },
-      imdb_score: {
-        type: DataTypes.FLOAT
-      },
-      earnings_gross: {
-        type: DataTypes.INTEGER
-      },
-      studio_id: {
-        type: DataTypes.INTEGER
+      director_name: {
+        type: DataTypes.STRING
       },
     },
     { freezeTableName: true, timestamps: false }
   );
-  return movies;
+  return movie;
 };

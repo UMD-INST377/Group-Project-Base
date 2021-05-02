@@ -48,7 +48,9 @@ router.post('/players', async (req, res) => {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         club_id: req.body.club_id,
+        club: req.body.club,
         shirt_number: req.body.shirt_number,
+        best_player_counter: req.body.best_player_counter,
         position: req.body.position
     });
     res.json(newPlayer);

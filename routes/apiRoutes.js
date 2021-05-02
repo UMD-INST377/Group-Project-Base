@@ -185,64 +185,41 @@ router.put('/earnings', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// Genre Endpoints///
+/// ////////movie_imdb_ratings Endpoints/////////
 /// /////////////////////////////////
-router.get('/genre', async (req, res) => {
+router.get('/movie_imdb_ratings', async (req, res) => {
   try {
-    const genres = await db.genre.findAll();
-    res.json(genres);
+    const movie_imdb_ratings = await db.movie_imdb_ratings.findAll();
+    res.send(movie_imdb_ratings);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/genre/:genre_id', async (req, res) => {
+router.get('/movie_imdb_ratings/:movie_id', async (req, res) => {
   try {
-    const genres = await db.genre.findAll({
-      where: {
-        genre_id: req.params.genre_id
-      }
-    });
-    res.json(genres);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////movie_has_genre Endpoints//////////
-/// /////////////////////////////////
-router.get('/movie_has_genre', async (req, res) => {
-  try {
-    const movie_has_genres = await db.movie_has_genre.findAll();
-    res.json(movie_has_genres);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/movie_has_genre/:movie_id', async (req, res) => {
-  try {
-    const movie_has_genres = await db.movie_has_genre.findAll({
+    const movie_imdb_ratings = await db.movie_imdb_ratings.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-    res.json(movie_has_genres);
+    res.json(movie_imdb_ratings);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/movie_has_genre', async (req, res) => {
+router.put('/movie_imdb_ratings', async (req, res) => {
   try {
-    await db.movie_has_genre.update(
+    await db.movie_imdb_ratings.update(
       {
-        genre_id: req.body.genre_id,
+        imdb_score: req.body.imdb_score,
+        num_critic_for_reviews: req.body.num_critic_for_reviews,
+        num_user_for_reviews: req.body.num_user_for_reviews,
+        num_voted_users: req.body.num_voted_users
+        
       },
       {
         where: {
@@ -250,7 +227,55 @@ router.put('/movie_has_genre', async (req, res) => {
         }
       }
     );
-    res.send('movie_has_genre Successfully Updated');
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////////movie_technicals Endpoints/////////
+/// /////////////////////////////////
+router.get('/movie_technicals', async (req, res) => {
+  try {
+    const movie_technicals = await db.movie_technicals.findAll();
+    res.send(movie_technicals);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/movie_technicals/:movie_id', async (req, res) => {
+  try {
+    const movie_technicals = await db.movie_technicals.findAll({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.json(movie_technicals);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/movie_technicals', async (req, res) => {
+  try {
+    await db.movies_technicals.update(
+      {
+        color: req.body.color,
+        duration: req.body.duration,
+        aspect_ratio: req.body.aspect_ratio,
+      },
+      {
+        where: {
+          movie_id: req.body.movie_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');

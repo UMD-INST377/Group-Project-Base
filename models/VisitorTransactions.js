@@ -17,5 +17,15 @@ export default (sequelize, DataTypes) => {
     },
     {freezeTableName: true, timestamps: true}
   );
+  VisitorTransactions.associate = (models) => {
+    VisitorTransactions.belongsTo(models.Visitors, {
+      foreignKey: 'visitor_id'
+    });
+  };
+  VisitorTransactions.belongsToMany(MuseumVisits, {
+    through: 'visitors',
+    foreignKey: 'visitor_id',
+    otherKey: 'musuem_id'
+  });
   return VisitorTransactions;
 };

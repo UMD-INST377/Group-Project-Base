@@ -49,17 +49,17 @@
             <div class="field control">
                 <h3 id='pref-list'>Budget</h3>
                 <div class="select" id='dropdown'>
-                <select>
+                <select class="budgetSelect">
                   <option>Select budget (per item)</option>
-                  <option>$0-$99</option>
-                  <option>$100-$199</option>
-                  <option>$200-$299</option>
-                  <option>$300+</option>
+                  <option value="100">$0-$99</option>
+                  <option value="200">$100-$199</option>
+                  <option value="300">$200-$299</option>
+                  <option value="greater">$300+</option>
                 </select>
                 </div>
 
                 <h3>Furniture Preferences</h3>
-                <ul id='pref-list'>
+                <ul id='pref-list-furn'>
                   <li>
                     <label for="Chairs">Chairs</label>
                     <input type="checkbox" class="prefCheckbox" name="Chairs" value="Chairs">
@@ -85,7 +85,7 @@
                   </li>
                 </ul>
 
-                <h3 id='pref-list'>Color Preferences</h3>
+                <h3 id='pref-list-color'>Color Preferences</h3>
                 <ul>
                   <li>
                     <label for="Black">Black</label>

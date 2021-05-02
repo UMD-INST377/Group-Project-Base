@@ -3,11 +3,27 @@ const cpClear = document.querySelector('#cpClear');
 const form = document.querySelector('.preferenceForm');
 const prefCheckboxes = document.querySelectorAll('.prefCheckbox');
 const colorCheckboxes = document.querySelectorAll('.colorCheckbox');
+const budgetSelect = document.querySelector('.budgetSelect');
+
 let data;
 
 function calculateResults(event) {
   event.preventDefault();
   console.log(data);
+  console.log(budgetSelect.value);
+  prefCheckboxes.forEach((checkBox) => {
+    // eslint-disable-next-line no-param-reassign
+    if (checkBox.checked === true) {
+      console.log(checkBox.value);
+    }
+  });
+
+  colorCheckboxes.forEach((checkBox) => {
+    // eslint-disable-next-line no-param-reassign
+    if (checkBox.checked === true) {
+      console.log(checkBox.value);
+    }
+  });
 }
 
 async function loadData() {

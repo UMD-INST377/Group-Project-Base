@@ -104,12 +104,12 @@ router.get('/movie_actors', async (req, res) => {
 
 router.get('/movie_actors/:movie_id', async (req, res) => {
   try {
-    const actors = await db.movie_actors.findAll({
+    const actorsMovieId = await db.movie_actors.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-    res.json(actors);
+    res.json(actorsMovieId);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -336,8 +336,8 @@ router.put('/movie_technicals', async (req, res) => {
 /// /////////////////////////////////
 router.get('/movie', async (req, res) => {
   try {
-    const movie = await db.movie.findAll();
-    res.send(movie);
+    const movies = await db.movie.findAll();
+    res.send(movies);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -346,12 +346,12 @@ router.get('/movie', async (req, res) => {
 
 router.get('/movie/:movie_id', async (req, res) => {
   try {
-    const movie = await db.movie.findAll({
+    const moviesMovirId = await db.movie.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-    res.json(movie);
+    res.json(moviesMovirId);
   } catch (err) {
     console.error(err);
     res.error('Server error');

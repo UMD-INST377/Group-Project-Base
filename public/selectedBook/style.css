@@ -20,3 +20,12 @@ li {
     margin-left:5px;
     margin-top: 3px;
 }
+#goodRating{
+    color:rgb(47, 255, 47);
+}
+#mediumRating{
+    color:rgb(247, 243, 7);
+}
+#badRating{
+    color:rgb(235, 1, 1);
+}

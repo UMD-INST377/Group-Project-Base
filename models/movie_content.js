@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       content_rating: {
-        type: DataTypes.any
+        type: DataTypes.STRING
       },
       language: {
         type: DataTypes.STRING

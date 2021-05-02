@@ -32,7 +32,7 @@ router.get('/players/:player_id', async (req, res) => {
       }
     });
 
-    res.json(hall);
+    res.json(players);
   } catch (err) {
     console.error(err);
     res.error('Server error');

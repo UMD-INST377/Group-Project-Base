@@ -109,7 +109,7 @@ router.get('/clubs', async (req, res) => {
   }
 });
 
-router.get('/clubs/:club_name', async (req, res) => {
+router.get('/clubs/:club_id', async (req, res) => {
   try {
     const clubs = await db.clubs.findAll({
       where: {

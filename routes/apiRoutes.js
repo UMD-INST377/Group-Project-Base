@@ -90,21 +90,21 @@ router.put('/actor_has_movies', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Actor Endpoints//////////
+/// ////////movie_actors Endpoints//////////
 /// /////////////////////////////////
-router.get('/actor', async (req, res) => {
+router.get('/movie_actors', async (req, res) => {
   try {
-    const actors = await db.actor.findAll();
-    res.json(actors);
+    const movieActors = await db.movie_actors.findAll();
+    res.json(movieActors);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/actor/:actor_id', async (req, res) => {
+router.get('/movie_actors/:actor_id', async (req, res) => {
   try {
-    const actors = await db.actor.findAll({
+    const actors = await db.movie_actors.findAll({
       where: {
         actor_id: req.params.actor_id
       }
@@ -116,13 +116,13 @@ router.get('/actor/:actor_id', async (req, res) => {
   }
 });
 
-router.put('/actor', async (req, res) => {
+router.put('/movie_actors', async (req, res) => {
   try {
-    await db.actor.update(
+    await db.movie_actors.update(
       {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        gender: req.body.gender
+        actor_1_name: req.body.actor_1_name,
+        actor_2_name: req.body.actor_2_name,
+        actor_3_name: req.body.actor_3_name
       },
       {
         where: {
@@ -239,7 +239,7 @@ router.put('/movie_imdb_ratings', async (req, res) => {
 /// /////////////////////////////////
 router.get('/movie_technicals', async (req, res) => {
   try {
-    const movie_technicals = await db.movie_technicals.findAll();
+    const movieTechnicals = await db.movie_technicals.findAll();
     res.send(movie_technicals);
   } catch (err) {
     console.error(err);
@@ -249,12 +249,12 @@ router.get('/movie_technicals', async (req, res) => {
 
 router.get('/movie_technicals/:movie_id', async (req, res) => {
   try {
-    const movie_technicals = await db.movie_technicals.findAll({
+    const movieTechnicals = await db.movie_technicals.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-    res.json(movie_technicals);
+    res.json(movieTechnicals);
   } catch (err) {
     console.error(err);
     res.error('Server error');

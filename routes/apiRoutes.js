@@ -383,38 +383,38 @@ router.put('/visitors', async (req, res) => {
 /// ////Visitor Transaction Endpoints////////
 /// /////////////////////////////////
 
-router.route('/museumTrans')
-  .get(async (req, res) => {
-    try {
-    // const visitor = await db.Visitors.findAll();
-      const visitorTrans = await db.VisitorTransactions.findAll();
-      const museumVisit = await db.MuseumVisits.findAll();
-      const museumInfo = await db.MuseumInfo.findAll();
-      const museumInfoVisit = museumInfo.map((name) => {
-        const transEntry = musuemVisit.find((visit) => visit.museum_id === name.museum_id);
-        console.log('visit', visit);
-        console.log('transEntry', transEntry);
-        return {
-          ...visit.dataValues,
-          ...transEntry.dataValues
-        };
-      });
-      const MuseumTrans = museumInfoVisit.find((info) => {
-        const visTransEntry = visitorTrans.map((trans) => info.visitor_id === trans.visitor_id);
-        console.log('info', info);
-        console.log('visTransEntry', visTransEntry);
-        return {
-          ...info.dataValues,
-          ...visTransEntry.dataValues
-        };
-      });
+// router.route('/museumTrans')
+//   .get(async (req, res) => {
+//     try {
+//     // const visitor = await db.Visitors.findAll();
+//       const visitorTrans = await db.VisitorTransactions.findAll();
+//       const museumVisit = await db.MuseumVisits.findAll();
+//       const museumInfo = await db.MuseumInfo.findAll();
+//       const museumInfoVisit = museumInfo.map((name) => {
+//         const transEntry = musuemVisit.find((visit) => visit.museum_id === name.museum_id);
+//         console.log('visit', visit);
+//         console.log('transEntry', transEntry);
+//         return {
+//           ...visit.dataValues,
+//           ...transEntry.dataValues
+//         };
+//       });
+//       const MuseumTrans = museumInfoVisit.find((info) => {
+//         const visTransEntry = visitorTrans.map((trans) => info.visitor_id === trans.visitor_id);
+//         console.log('info', info);
+//         console.log('visTransEntry', visTransEntry);
+//         return {
+//           ...info.dataValues,
+//           ...visTransEntry.dataValues
+//         };
+//       });
 
-      res.json({data: museumTrans});
-    } catch (err) {
-      console.error(err);
-      res.json({message: 'something went wrong on the server!'});
-    }
-  });
+//       res.json({data: museumTrans});
+//     } catch (err) {
+//       console.error(err);
+//       res.json({message: 'something went wrong on the server!'});
+//     }
+//   });
 
 router.get('/visitor_transaction', async (req, res) => {
   try {

@@ -79,7 +79,7 @@ https://blooming-sea-07164.herokuapp.com/
     
 
 
-## Create a new Players
+## Create a new Player
 
 #### Request
 
@@ -125,61 +125,99 @@ https://blooming-sea-07164.herokuapp.com/
     Successfully Deleted
 <hr>
 
-# Meals
+# Clubs
 
-## Get list of Meals
+## Get list of Clubs
 
 #### Request
 
-`GET /api/meals`
+`GET /api/clubs`
 
-    curl http://localhost:3000/api/meals
+    curl http://localhost:3000/api/clubs
 
 #### Response
     [{
-        "meal_id":1,
-        "meal_name":"Scrambled Eggs",
-        "meal_category":"B"
+        "club_id":100,
+        "club_name":"AFC Bournemouth",
+        "coach_first_name":"Eddie",
+        "coach_last_name":"Howe",
+        "num_of_players":26
     },
     {
-        "meal_id":2,
-        "meal_name":"French Toast",
-        "meal_category":"B"
+        "club_id":101,
+        "club_name":"Arsenal",
+        "coach_first_name":"Mikel Arteta",
+        "coach_last_name":"Amatriain",
+        "num_of_players":31
     },
     {
-        "meal_id":3,
-        "meal_name":"Pancakes",
-        "meal_category":"B"
+        "club_id":102,
+        "club_name":"Aston Villa",
+        "coach_first_name":"Dean",
+        "coach_last_name":"Smith",
+        "num_of_players":26
     },
         ...
     ]
-## Get a Specific Meal
+## Get a Specific Club
 
 #### Request
 
-`GET /api/meals/:meal_id`
+`GET /api/clubs/:club_id`
 
-    curl http://localhost:3000/api/meals/1
+    curl http://localhost:3000/api/clubs/100
 
 #### Response
 
     [{
-        "meal_id":1,
-        "meal_name":"Scrambled Eggs",
-        "meal_category":"B"
+        "club_id":100,
+        "club_name":"AFC Bournemouth",
+        "coach_first_name":"Eddie",
+        "coach_last_name":"Howe",
+        "num_of_players":26
     }]
     
-## Updating an Existing Meal
+## Updating an Existing Club
 
 #### Request
 
 `PUT /api/meals`
 
-    curl -d "meal_id=1&meal_name=Scrambled Eggs&meal_category=L" -X PUT http://localhost:3000/api/meal
+    curl -d "club_id=100&club_name=AFC Bournemouth&coach_first_name=Eddie&coach_last_name=Howe&num_of_players=27" -X PUT http://localhost:3000/api/clubs
 
 #### Response
 
     Successfully Updated
+
+## Create a new Club
+
+#### Request
+
+`POST /api/clubs`
+
+    curl -d "club_id=139&club_name=Test&coach_first_name=Example&coach_last_name=Example&num_of_players=26" -X POST http://localhost:3000/api/players
+
+#### Response
+
+    {
+        "club_id":139,
+        "club_name":"Test",
+        "coach_first_name":"Example",
+        "coach_last_name":"Example",
+        "num_of_players":26
+    }
+
+## Delete an Existing Club
+
+#### Request
+
+`DELETE /api/clubs/:club_id`
+
+    curl -X DELETE http://localhost:3000/api/clubs/137
+
+#### Response
+
+    Successfully Deleted    
 
 <hr>
 

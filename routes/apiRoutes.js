@@ -58,7 +58,7 @@ router.post('/players', async (req, res) => {
   }
 });
 
-router.delete('/players/:player_id', async (req, res) => {
+router.delete('/players/del/:player_id', async (req, res) => {
   try {
     await db.players.destroy({
       where: {

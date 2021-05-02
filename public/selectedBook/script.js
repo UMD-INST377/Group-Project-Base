@@ -8,7 +8,7 @@ async function DisplayPic(bookId) {
 }
 async function buildMetaData(bookArray) {
   let genres = ""
-  for (const item of bookArray){
+  for (const item of bookArray) {
     const genreCapitalized = item.genre_name.charAt(0).toUpperCase() + item.genre_name.slice(1)
     genres = `${genres} ${genreCapitalized}`
   }
@@ -17,11 +17,17 @@ async function buildMetaData(bookArray) {
   console.log(book);
   const publicDomain = book.public_domain === 1 ? 'Yes' : 'No';
   const movement = book.movement_name ? book.movement_name : 'N/A'
+  if (book.google_user_percentage >= 80) {
+    judgement = "goodRating"
+  } else if (book.google_user_percentage >= 70 && book.google_user_percentage < 80) {
+    judgement = "mediumRating"
+  } else { judgement = "badRating" }
+
   const html = `<ul>
   <li>Book Title: ${book.title}</li>
   <li>Author: ${book.first_name} ${book.last_name}</li>
   <li>Genre: ${genres}</li>
-  <li>Rating (Google User Percentage): ${book.google_user_percentage}/100</li>
+  <li>Rating (Google User Percentage): <span id="${judgement}">${book.google_user_percentage}/100 </span></li>
   <li>Original Language: ${book.original_language}</li>
   <li>Publish Year: ${book.publish_year}</li>
   <li>Public domain: ${publicDomain}</li>

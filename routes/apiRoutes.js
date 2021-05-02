@@ -32,7 +32,7 @@ router.get('/players/:player_id', async (req, res) => {
       }
     });
 
-    res.json(hall);
+    res.json(players);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -58,7 +58,7 @@ router.post('/players', async (req, res) => {
   }
 });
 
-router.delete('/players/:player_id', async (req, res) => {
+router.delete('/players/del/:player_id', async (req, res) => {
   try {
     await db.players.destroy({
       where: {
@@ -117,7 +117,7 @@ router.get('/clubs/:club_name', async (req, res) => {
       }
     });
 
-    res.json(hall);
+    res.json(clubs);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -201,7 +201,7 @@ router.get('/player_goals/:player_id', async (req, res) => {
       }
     });
 
-    res.json(hall);
+    res.json(player_goals);
   } catch (err) {
     console.error(err);
     res.error('Server error');

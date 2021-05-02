@@ -1,33 +1,8 @@
 
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+https://blooming-sea-07164.herokuapp.com/
 
-# EPL Stats
-<table>
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>GET</td>
-      <td>Retrieves resources</td>
-    </tr>
-    <tr>
-      <td>POST</td>
-      <td>Creates resources</td>
-    </tr>
-    <tr>
-      <td>PUT</td>
-      <td>Changes and/or replaces resources or collections</td>
-    </tr>
-    <tr>
-      <td>DELETE</td>
-      <td>Deletes resources</td>
-    </tr>
-  </tbody>
-</table>
+# EPL Developer Manual 
+
 
 ## Install Dependencies 
 
@@ -85,116 +60,164 @@
 
 #### Request
 
-`GET /api/dining/:hall_id`
+`GET /api/players/:player_id`
 
     curl http://localhost:3000/api/players/1
 
 #### Response
 
     [{
-        "hall_id":1,
-        "hall_name":"North Campus Dining Hall",
-        "hall_location":"North Campus"
+        "player_id":1,
+        "club_id":101,
+        "club":"Arsenal"
+        "shirt_number":51
+        "position":"LW"
+        "best_player_counter":0
+        "first_name":"Alexis"
+        "last_name":"Sanchez"
     }]
     
 
 
-## Create a new Dining Hall
+## Create a new Player
 
 #### Request
 
-`POST /api/dining`
+`POST /api/players`
 
-    curl -d "hall_id=4&hall_name=Example&hall_location=Hornbake" -X POST http://localhost:3000/api/dining
+    curl -d "player_id=462&first_name=Example&last_name=Example&club_id=1&club=Arsenal&shirt_number=5&best_player_counter=0&position=LW" -X POST http://localhost:3000/api/players
 
 #### Response
 
     {
-        "hall_id":"4",
-        "hall_name":"Example",
-        "hall_location":"Hornbake"
+        "player_id":462,
+        "club_id":1,
+        "club":"Arsenal"
+        "shirt_number":5
+        "position":"LW"
+        "best_player_counter":0
+        "first_name":"Example"
+        "last_name":"Example"
     }
 
-## Updating an Existing Dining Hall
+## Updating an Existing Player
 
 #### Request
 
-`PUT /api/dining`
+`PUT /api/players`
 
-    curl -d "hall_id=4&hall_name=Example1&hall_location=Stamp" -X PUT http://localhost:3000/api/dining
+    curl -d "player_id=462&first_name=Example&last_name=Example&club_id=1&club=Arsenal&shirt_number=5&best_player_counter=0&position=G" -X PUT http://localhost:3000/api/players
 
 #### Response
 
     Successfully Updated
 
-## Delete an Existing Dining Hall
+## Delete an Existing Player
 
 #### Request
 
-`DELETE /api/dining/:hall_id`
+`DELETE /api/players/:player_id`
 
-    curl -X DELETE http://localhost:3000/api/dining/4
+    curl -X DELETE http://localhost:3000/api/players/4
 
 #### Response
 
     Successfully Deleted
 <hr>
 
-# Meals
+# Clubs
 
-## Get list of Meals
+## Get list of Clubs
 
 #### Request
 
-`GET /api/meals`
+`GET /api/clubs`
 
-    curl http://localhost:3000/api/meals
+    curl http://localhost:3000/api/clubs
 
 #### Response
     [{
-        "meal_id":1,
-        "meal_name":"Scrambled Eggs",
-        "meal_category":"B"
+        "club_id":100,
+        "club_name":"AFC Bournemouth",
+        "coach_first_name":"Eddie",
+        "coach_last_name":"Howe",
+        "num_of_players":26
     },
     {
-        "meal_id":2,
-        "meal_name":"French Toast",
-        "meal_category":"B"
+        "club_id":101,
+        "club_name":"Arsenal",
+        "coach_first_name":"Mikel Arteta",
+        "coach_last_name":"Amatriain",
+        "num_of_players":31
     },
     {
-        "meal_id":3,
-        "meal_name":"Pancakes",
-        "meal_category":"B"
+        "club_id":102,
+        "club_name":"Aston Villa",
+        "coach_first_name":"Dean",
+        "coach_last_name":"Smith",
+        "num_of_players":26
     },
         ...
     ]
-## Get a Specific Meal
+## Get a Specific Club
 
 #### Request
 
-`GET /api/meals/:meal_id`
+`GET /api/clubs/:club_id`
 
-    curl http://localhost:3000/api/meals/1
+    curl http://localhost:3000/api/clubs/100
 
 #### Response
 
     [{
-        "meal_id":1,
-        "meal_name":"Scrambled Eggs",
-        "meal_category":"B"
+        "club_id":100,
+        "club_name":"AFC Bournemouth",
+        "coach_first_name":"Eddie",
+        "coach_last_name":"Howe",
+        "num_of_players":26
     }]
     
-## Updating an Existing Meal
+## Updating an Existing Club
 
 #### Request
 
 `PUT /api/meals`
 
-    curl -d "meal_id=1&meal_name=Scrambled Eggs&meal_category=L" -X PUT http://localhost:3000/api/meal
+    curl -d "club_id=100&club_name=AFC Bournemouth&coach_first_name=Eddie&coach_last_name=Howe&num_of_players=27" -X PUT http://localhost:3000/api/clubs
 
 #### Response
 
     Successfully Updated
+
+## Create a new Club
+
+#### Request
+
+`POST /api/clubs`
+
+    curl -d "club_id=139&club_name=Test&coach_first_name=Example&coach_last_name=Example&num_of_players=26" -X POST http://localhost:3000/api/players
+
+#### Response
+
+    {
+        "club_id":139,
+        "club_name":"Test",
+        "coach_first_name":"Example",
+        "coach_last_name":"Example",
+        "num_of_players":26
+    }
+
+## Delete an Existing Club
+
+#### Request
+
+`DELETE /api/clubs/:club_id`
+
+    curl -X DELETE http://localhost:3000/api/clubs/137
+
+#### Response
+
+    Successfully Deleted    
 
 <hr>
 

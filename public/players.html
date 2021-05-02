@@ -23,7 +23,7 @@
         </a>
       </div>
     
-      <div id="bar" class="navbar-menu" style="padding-inline: 50px;">
+      <div id="bar" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item" href="index.html">
             Home
@@ -40,7 +40,16 @@
         </div>
       </div>
     </nav>
-  <script src="script.js"></script>
+
+    <div class="container">
+      <form id="search" class="box">
+        <label class="label" for="search-criteria">Enter Player's Name</label>
+        <input class="input" type="text" id="club-name" placeholder="e.g. Mohamed Salah, Cristiano Ronaldo etc."/>
+        <button class="button is-primary" type="submit" id="submit-search">Search</button>
+      </form>
+      <div class="table"></div>
+    </div>
+  <script src="players.js"></script>
 </body>
 
 </html>

@@ -23,7 +23,7 @@
         </a>
       </div>
     
-      <div id="bar" class="navbar-menu" style="padding-inline: 50px;">
+      <div id="bar" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item" href="index.html">
             Home
@@ -40,7 +40,23 @@
         </div>
       </div>
     </nav>
-  <script src="script.js"></script>
+  <div class="container">
+    <form id="search" class="box">
+      <label class="label" for="search-criteria">Enter Club's Name</label>
+      <input class="input" type="text" id="club-name" placeholder="e.g. Manchester United, Liverpool, etc."/>
+      <button class="button is-primary" type="submit" id="submit-search">Search</button>
+    </form>
+    <div class="table" id="table-box">
+      <table class="table is-bordered is-striped is-fullwidth" id="table-target"> 
+        <tr>
+          <th>Club's Name</th>
+          <th>Couch's Name</th>
+          <th>Number of Players</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script src="clubs.js"></script>
 </body>
 
 </html>

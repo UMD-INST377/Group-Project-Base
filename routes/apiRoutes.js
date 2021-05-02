@@ -261,3 +261,5 @@ router.put('/player_goals', async (req, res) => {
     res.error('Server error');
   }
 });
+
+export default router;

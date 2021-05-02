@@ -2,32 +2,7 @@
 https://blooming-sea-07164.herokuapp.com/
 
 # EPL Developer Manual 
-<table>
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>GET</td>
-      <td>Retrieves resources</td>
-    </tr>
-    <tr>
-      <td>POST</td>
-      <td>Creates resources</td>
-    </tr>
-    <tr>
-      <td>PUT</td>
-      <td>Changes and/or replaces resources or collections</td>
-    </tr>
-    <tr>
-      <td>DELETE</td>
-      <td>Deletes resources</td>
-    </tr>
-  </tbody>
-</table>
+
 
 ## Install Dependencies 
 

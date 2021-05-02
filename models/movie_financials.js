@@ -1,22 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-  const earnings = sequelize.define(
-    'earnings',
+  const movieTechnicals = sequelize.define(
+    'movie_technicals',
     {
       movie_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      earnings_gross: {
+      gross: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true
       },
       budget: {
         type: DataTypes.INTEGER,
-        allowNull: false,
       },
     },
     { freezeTableName: true, timestamps: false }
   );
-  return earnings;
+  return movieTechnicals;
 };

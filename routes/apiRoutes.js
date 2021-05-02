@@ -102,11 +102,11 @@ router.get('/movie_actors', async (req, res) => {
   }
 });
 
-router.get('/movie_actors/:actor_id', async (req, res) => {
+router.get('/movie_actors/:movie_id', async (req, res) => {
   try {
     const actors = await db.movie_actors.findAll({
       where: {
-        actor_id: req.params.actor_id
+        movie_id: req.params.movie_id
       }
     });
     res.json(actors);
@@ -126,7 +126,7 @@ router.put('/movie_actors', async (req, res) => {
       },
       {
         where: {
-          actor_id: req.body.actor_id
+          movie_id: req.body.actor_id
         }
       }
     );
@@ -138,37 +138,86 @@ router.put('/movie_actors', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Earnings Endpoints/////////
+/// ////////movie_content Endpoints/////////
 /// /////////////////////////////////
-router.get('/earnings', async (req, res) => {
+router.get('/movie_content', async (req, res) => {
   try {
-    const earning = await db.earnings.findAll();
-    res.send(earning);
+    const movieContent = await db.movie_content.findAll();
+    res.send(movieContent);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/earnings/:movie_id', async (req, res) => {
+router.get('/movie_content/:movie_id', async (req, res) => {
   try {
-    const earning = await db.earnings.findAll({
+    const movieContent = await db.movie_content.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-    res.json(earning);
+    res.json(movieContent);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/earnings', async (req, res) => {
+router.put('/movie_content', async (req, res) => {
   try {
-    await db.earnings.update(
+    await db.movie_content.update(
       {
-        earnings_gross: req.body.earnings_gross,
+        genres: req.body.genres,
+        plot_keywords: req.body.plot_keywords,
+        content_rating: req.body.content_rating,
+        language: req.body.language
+      },
+      {
+        where: {
+          movie_id: req.body.movie_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////////movie_financials Endpoints/////////
+/// /////////////////////////////////
+router.get('/movie_financials', async (req, res) => {
+  try {
+    const movieFinancials = await db.movie_financials.findAll();
+    res.send(movieFinancials);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/movie_financials/:movie_id', async (req, res) => {
+  try {
+    const movieFinancials = await db.movie_financials.findAll({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.json(movieFinancials);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/movie_financials', async (req, res) => {
+  try {
+    await db.movie_financials.update(
+      {
+        gross: req.body.gross,
         budget: req.body.budget
       },
       {

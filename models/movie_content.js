@@ -1,23 +1,27 @@
 module.exports = (sequelize, DataTypes) => {
-  const movieActors = sequelize.define(
-    'movie_actors',
+  const movieContent = sequelize.define(
+    'movie_content',
     {
       movie_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      actor_1_name: {
+      genres: {
         type: DataTypes.STRING
       },
-      actor_2_name: {
+      plot_keywords: {
         type: DataTypes.STRING
       },
-      actor_3_name: {
+      content_rating: {
+        type: DataTypes.any
+      },
+      language: {
         type: DataTypes.STRING
-      }
+      },
+      
     },
     { freezeTableName: true, timestamps: false }
   );
-  return movieActors;
+  return movieContent;
 };

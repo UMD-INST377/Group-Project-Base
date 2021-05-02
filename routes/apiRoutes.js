@@ -117,7 +117,7 @@ router.get('/clubs/:club_name', async (req, res) => {
       }
     });
 
-    res.json(hall);
+    res.json(clubs);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -201,7 +201,7 @@ router.get('/player_goals/:player_id', async (req, res) => {
       }
     });
 
-    res.json(hall);
+    res.json(player_goals);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -267,8 +267,8 @@ router.put('/player_goals', async (req, res) => {
 
 router.get('/winners', async (req, res) => {
   try {
-    const player_goals = await db.player_goals.findAll();
-    const reply = player_goals.length > 0 ? { data: player_goals } : { message: 'no results found' };
+    const winners = await db.winners.findAll();
+    const reply = winners.length > 0 ? { data: winners } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -278,13 +278,13 @@ router.get('/winners', async (req, res) => {
 
 router.get('/winners/:season_id', async (req, res) => {
   try {
-    const player_goals = await db.player_goals.findAll({
+    const winners = await db.winners.findAll({
       where: {
-        player_id: req.params.player_id
+        season_id: req.params.season_id
       }
     });
 
-    res.json(hall);
+    res.json(winners);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -292,17 +292,19 @@ router.get('/winners/:season_id', async (req, res) => {
 });
 
 router.post('/winners', async (req, res) => {
-  const player_goals = await db.player_goals.findAll();
-  const currentId = (await player_goals.length) + 1;
+  const winners = await db.winners.findAll();
+  const currentId = (await winners.length) + 1;
   try {
-    const newPlayer_goals = await db.player_goals.create({
-        player_id: currentId,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        goals: req.body.goals,
-        assists: req.body.assists
+    const newWinners = await db.winners.create({
+        season_id: currentId,
+        club_id: req.body.club_id,
+        club_name: req.body.club_name,
+        season: req.body.season,
+        player_id: req.body.player_id,
+        best_player: req.body.best_player,
+        coach_name: req.body.coach_name
     });
-    res.json(newPlayer_goals);
+    res.json(newWinners);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -311,9 +313,9 @@ router.post('/winners', async (req, res) => {
 
 router.delete('/winners/:season_id', async (req, res) => {
   try {
-    await db.player_goals.destroy({
+    await db.winners.destroy({
       where: {
-        player_id: req.params.player_id
+        season_id: req.params.season_id
       }
     });
     res.send('Successfully Deleted');
@@ -327,72 +329,21 @@ router.put('/winners', async (req, res) => {
   try {
     await db.player_goals.update(
       {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        goals: req.body.goals,
-        assists: req.body.assists       
+        season_id: currentId,
+        club_id: req.body.club_id,
+        club_name: req.body.club_name,
+        season: req.body.season,
+        player_id: req.body.player_id,
+        best_player: req.body.best_player,
+        coach_name: req.body.coach_name      
       },
       {
         where: {
-          player_id: req.body.player_id
+          season_id: currentId,
         }
       }
     );
     res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-
-
-
-
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
   } catch (err) {
     console.error(err);
     res.error('Server error');

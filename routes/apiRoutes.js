@@ -327,7 +327,7 @@ router.delete('/winners/:season_id', async (req, res) => {
 
 router.put('/winners', async (req, res) => {
   try {
-    await db.player_goals.update(
+    await db.winners.update(
       {
         season_id: currentId,
         club_id: req.body.club_id,

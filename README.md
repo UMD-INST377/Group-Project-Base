@@ -40,37 +40,54 @@
 
 # EPL Stats
 
-## Get list of Dining Halls
+## Get list of Players
 
 #### Request
 
-`GET /api/dining`
+`GET /api/players`
 
-    curl http://localhost:3000/api/dining
+    curl http://localhost:3000/api/players
 
 #### Response
     [{
-            "hall_id":1,
-            "hall_name":"North Campus Dining Hall",
-            "hall_location":"North Campus"
-        },
-        {
-            "hall_id":2,
-            "hall_name":"South Campus Dining Hall",
-            "hall_location":"South Campus"
-        },
-        {
-            "hall_id":3,
-            "hall_name":"251 North Dining Hall",
-            "hall_location":"North Campus"
-    }]
-## Get a Specific Dining Hall
+        "player_id":1,
+        "club_id":101,
+        "club":"Arsenal"
+        "shirt_number":51
+        "position":"LW"
+        "best_player_counter":0
+        "first_name":"Alexis"
+        "last_name":"Sanchez"
+     },
+    {
+        "player_id":2,
+        "club_id":101,
+        "club":"Arsenal"
+        "shirt_number":69
+        "position":"AM"
+        "best_player_counter":0
+        "first_name":"Mesut"
+        "last_name":"Ozil"
+     },
+     {
+        "player_id":3,
+        "club_id":101,
+        "club":"Arsenal"
+        "shirt_number":86
+        "position":"GK"
+        "best_player_counter":0
+        "first_name":"Petr"
+        "last_name":"Cech"
+    },
+    ...
+    ]
+## Get a Specific Player
 
 #### Request
 
 `GET /api/dining/:hall_id`
 
-    curl http://localhost:3000/api/dining/1
+    curl http://localhost:3000/api/players/1
 
 #### Response
 

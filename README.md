@@ -1,6 +1,4 @@
 
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
-
 https://blooming-sea-07164.herokuapp.com/
 
 # EPL Stats
@@ -87,55 +85,65 @@ https://blooming-sea-07164.herokuapp.com/
 
 #### Request
 
-`GET /api/dining/:hall_id`
+`GET /api/players/:player_id`
 
     curl http://localhost:3000/api/players/1
 
 #### Response
 
     [{
-        "hall_id":1,
-        "hall_name":"North Campus Dining Hall",
-        "hall_location":"North Campus"
+        "player_id":1,
+        "club_id":101,
+        "club":"Arsenal"
+        "shirt_number":51
+        "position":"LW"
+        "best_player_counter":0
+        "first_name":"Alexis"
+        "last_name":"Sanchez"
     }]
     
 
 
-## Create a new Dining Hall
+## Create a new Players
 
 #### Request
 
-`POST /api/dining`
+`POST /api/players`
 
-    curl -d "hall_id=4&hall_name=Example&hall_location=Hornbake" -X POST http://localhost:3000/api/dining
+    curl -d "player_id=462&first_name=Example&last_name=Example&club_id=1&club=Arsenal&shirt_number=5&best_player_counter=0&position=LW" -X POST http://localhost:3000/api/players
 
 #### Response
 
     {
-        "hall_id":"4",
-        "hall_name":"Example",
-        "hall_location":"Hornbake"
+        "player_id":462,
+        "club_id":1,
+        "club":"Arsenal"
+        "shirt_number":5
+        "position":"LW"
+        "best_player_counter":0
+        "first_name":"Example"
+        "last_name":"Example"
     }
 
-## Updating an Existing Dining Hall
+## Updating an Existing Player
 
 #### Request
 
-`PUT /api/dining`
+`PUT /api/players`
 
-    curl -d "hall_id=4&hall_name=Example1&hall_location=Stamp" -X PUT http://localhost:3000/api/dining
+    curl -d "player_id=462&first_name=Example&last_name=Example&club_id=1&club=Arsenal&shirt_number=5&best_player_counter=0&position=G" -X PUT http://localhost:3000/api/players
 
 #### Response
 
     Successfully Updated
 
-## Delete an Existing Dining Hall
+## Delete an Existing Player
 
 #### Request
 
-`DELETE /api/dining/:hall_id`
+`DELETE /api/players/:player_id`
 
-    curl -X DELETE http://localhost:3000/api/dining/4
+    curl -X DELETE http://localhost:3000/api/players/4
 
 #### Response
 

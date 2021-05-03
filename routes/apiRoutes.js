@@ -8,7 +8,6 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   res.send('Welcome to the Movie Museum!');
-  
 });
 
 /// /////////////////////////////////
@@ -16,7 +15,7 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 router.get('/actor_has_movies', async (req, res) => {
   try {
-    const  actorHasMovies = await db.actor_has_movies.findAll();
+    const actorHasMovies = await db.actor_has_movies.findAll();
     const reply = actorHasMovies.length > 0 ? { data: actorHasMovies } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -47,7 +46,7 @@ router.post('/actor_has_movies', async (req, res) => {
   try {
     const newActorhasmovies = await db.actor_has_movies.create({
       actor_id: currentId,
-      movie_id: req.body.movie_id,
+      movie_id: req.body.movie_id
     });
     res.json(newActorhasmovies);
   } catch (err) {
@@ -74,7 +73,7 @@ router.put('/actor_has_movies', async (req, res) => {
   try {
     await db.actor_has_movies.update(
       {
-        movie_id: req.body.movie_id,
+        movie_id: req.body.movie_id
       },
       {
         where: {
@@ -238,8 +237,8 @@ router.put('/movie_financials', async (req, res) => {
 /// /////////////////////////////////
 router.get('/movie_imdb_ratings', async (req, res) => {
   try {
-    const movie_imdb_ratings = await db.movie_imdb_ratings.findAll();
-    res.send(movie_imdb_ratings);
+    const movieImdbRatings = await db.movie_imdb_ratings.findAll();
+    res.send(movieImdbRatings);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -248,12 +247,12 @@ router.get('/movie_imdb_ratings', async (req, res) => {
 
 router.get('/movie_imdb_ratings/:movie_id', async (req, res) => {
   try {
-    const movie_imdb_ratings = await db.movie_imdb_ratings.findAll({
+    const movieImdbRatings = await db.movie_imdb_ratings.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-    res.json(movie_imdb_ratings);
+    res.json(movieImdbRatings);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -268,7 +267,6 @@ router.put('/movie_imdb_ratings', async (req, res) => {
         num_critic_for_reviews: req.body.num_critic_for_reviews,
         num_user_for_reviews: req.body.num_user_for_reviews,
         num_voted_users: req.body.num_voted_users
-        
       },
       {
         where: {
@@ -289,7 +287,7 @@ router.put('/movie_imdb_ratings', async (req, res) => {
 router.get('/movie_technicals', async (req, res) => {
   try {
     const movieTechnicals = await db.movie_technicals.findAll();
-    res.send(movie_technicals);
+    res.send(movieTechnicals);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -316,7 +314,7 @@ router.put('/movie_technicals', async (req, res) => {
       {
         color: req.body.color,
         duration: req.body.duration,
-        aspect_ratio: req.body.aspect_ratio,
+        aspect_ratio: req.body.aspect_ratio
       },
       {
         where: {
@@ -366,7 +364,6 @@ router.put('/movie', async (req, res) => {
         title_year: req.body.year,
         country: req.body.country,
         director_name: req.body.director_name
-        
       },
       {
         where: {
@@ -381,11 +378,10 @@ router.put('/movie', async (req, res) => {
   }
 });
 
-
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const movies_genre_custom = `SELECT 
+const moviesGnreCustom = `SELECT 
 title,
 genre_type
 FROM movies
@@ -396,7 +392,7 @@ ON movies_has_genre.genre_id = genre.genre_id;
 `;
 router.get('/table/data', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(movies_genre_custom, {
+    const result = await db.sequelizeDB.query(moviesGnreCustom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);
@@ -406,7 +402,7 @@ router.get('/table/data', async (req, res) => {
   }
 });
 
-const actor_movie_earnings_custom = `SELECT actor_id,
+const actorMovieEarningsCustom = `SELECT actor_id,
 first_name,
 last_name,
 gender,
@@ -428,7 +424,7 @@ ON earnings.movie_id=movies.movie_id;
 `;
 router.get('/map/data', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(actor_movie_earnings_custom, {
+    const result = await db.sequelizeDB.query(actorMovieEarningsCustom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);

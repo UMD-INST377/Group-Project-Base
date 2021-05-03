@@ -7,85 +7,8 @@ const db = require('../database/initializeDB.js');
 const router = express.Router();
 
 router.get('/', (req, res) => {
+  console.log(11);
   res.send('Welcome to the Movie Museum!');
-});
-
-/// /////////////////////////////////
-/// ////Actor Has Movies Endpoints////////
-/// /////////////////////////////////
-router.get('/actor_has_movies', async (req, res) => {
-  try {
-    const actorHasMovies = await db.actor_has_movies.findAll();
-    const reply = actorHasMovies.length > 0 ? { data: actorHasMovies } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/actor_has_movies/:actor_id', async (req, res) => {
-  try {
-    const actorHasMovies = await db.actor_has_movies.findAll({
-      where: {
-        actor_id: req.params.actor_id
-      }
-    });
-
-    res.json(actorHasMovies);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.post('/actor_has_movies', async (req, res) => {
-  console.log(123);
-  const actorHasMovies = await db.actor_has_movies.findAll();
-  const currentId = (await actorHasMovies.length) + 1;
-  try {
-    const newActorhasmovies = await db.actor_has_movies.create({
-      actor_id: currentId,
-      movie_id: req.body.movie_id
-    });
-    res.json(newActorhasmovies);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.delete('/actor_has_movies/:', async (req, res) => {
-  try {
-    await db.actor_has_movies.destroy({
-      where: {
-        actor_id: req.params.actor_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/actor_has_movies', async (req, res) => {
-  try {
-    await db.actor_has_movies.update(
-      {
-        movie_id: req.body.movie_id
-      },
-      {
-        where: {
-          actor_id: req.body.actor_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
 });
 
 /// /////////////////////////////////
@@ -93,8 +16,8 @@ router.put('/actor_has_movies', async (req, res) => {
 /// /////////////////////////////////
 router.get('/movie_actors', async (req, res) => {
   try {
-    const movieActors = await db.movie_actors.findAll();
-    res.json(movieActors);
+    const movieActors = await db.movieActors.findAll();
+    res.send(movieActors);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -103,7 +26,7 @@ router.get('/movie_actors', async (req, res) => {
 
 router.get('/movie_actors/:movie_id', async (req, res) => {
   try {
-    const actorsMovieId = await db.movie_actors.findAll({
+    const actorsMovieId = await db.movieActors.findAll({
       where: {
         movie_id: req.params.movie_id
       }
@@ -117,7 +40,7 @@ router.get('/movie_actors/:movie_id', async (req, res) => {
 
 router.put('/movie_actors', async (req, res) => {
   try {
-    await db.movie_actors.update(
+    await db.movieActors.update(
       {
         actor_1_name: req.body.actor_1_name,
         actor_2_name: req.body.actor_2_name,
@@ -141,7 +64,7 @@ router.put('/movie_actors', async (req, res) => {
 /// /////////////////////////////////
 router.get('/movie_content', async (req, res) => {
   try {
-    const movieContent = await db.movie_content.findAll();
+    const movieContent = await db.movieContent.findAll();
     res.send(movieContent);
   } catch (err) {
     console.error(err);
@@ -151,12 +74,12 @@ router.get('/movie_content', async (req, res) => {
 
 router.get('/movie_content/:movie_id', async (req, res) => {
   try {
-    const movieContent = await db.movie_content.findAll({
+    const movieContentId = await db.movieContent.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-    res.json(movieContent);
+    res.json(movieContentId);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -165,7 +88,7 @@ router.get('/movie_content/:movie_id', async (req, res) => {
 
 router.put('/movie_content', async (req, res) => {
   try {
-    await db.movie_content.update(
+    await db.movieContent.update(
       {
         genres: req.body.genres,
         plot_keywords: req.body.plot_keywords,
@@ -190,8 +113,8 @@ router.put('/movie_content', async (req, res) => {
 /// /////////////////////////////////
 router.get('/movie_financials', async (req, res) => {
   try {
-    const movieFinancials = await db.movie_financials.findAll();
-    res.send(movieFinancials);
+    const movieFinancial = await db.movieFinancials.findAll();
+    res.send(movieFinancial);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -200,12 +123,12 @@ router.get('/movie_financials', async (req, res) => {
 
 router.get('/movie_financials/:movie_id', async (req, res) => {
   try {
-    const movieFinancials = await db.movie_financials.findAll({
+    const movieFinMovieId = await db.movieFinancials.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-    res.json(movieFinancials);
+    res.json(movieFinMovieId);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -214,7 +137,7 @@ router.get('/movie_financials/:movie_id', async (req, res) => {
 
 router.put('/movie_financials', async (req, res) => {
   try {
-    await db.movie_financials.update(
+    await db.movieFinancials.update(
       {
         gross: req.body.gross,
         budget: req.body.budget
@@ -237,7 +160,7 @@ router.put('/movie_financials', async (req, res) => {
 /// /////////////////////////////////
 router.get('/movie_imdb_ratings', async (req, res) => {
   try {
-    const movieImdbRatings = await db.movie_imdb_ratings.findAll();
+    const movieImdbRatings = await db.movieImdbRatings.findAll();
     res.send(movieImdbRatings);
   } catch (err) {
     console.error(err);
@@ -247,7 +170,7 @@ router.get('/movie_imdb_ratings', async (req, res) => {
 
 router.get('/movie_imdb_ratings/:movie_id', async (req, res) => {
   try {
-    const movieImdbRatings = await db.movie_imdb_ratings.findAll({
+    const movieImdbRatings = await db.movieImdbRatings.findAll({
       where: {
         movie_id: req.params.movie_id
       }
@@ -261,7 +184,7 @@ router.get('/movie_imdb_ratings/:movie_id', async (req, res) => {
 
 router.put('/movie_imdb_ratings', async (req, res) => {
   try {
-    await db.movie_imdb_ratings.update(
+    await db.movieImdbRatings.update(
       {
         imdb_score: req.body.imdb_score,
         num_critic_for_reviews: req.body.num_critic_for_reviews,
@@ -284,9 +207,9 @@ router.put('/movie_imdb_ratings', async (req, res) => {
 /// /////////////////////////////////
 /// ////////movie_technicals Endpoints/////////
 /// /////////////////////////////////
-router.get('/movie_technicals', async (req, res) => {
+router.get('/movie_technical', async (req, res) => {
   try {
-    const movieTechnicals = await db.movie_technicals.findAll();
+    const movieTechnicals = await db.movieTechnicals.findAll();
     res.send(movieTechnicals);
   } catch (err) {
     console.error(err);
@@ -294,9 +217,9 @@ router.get('/movie_technicals', async (req, res) => {
   }
 });
 
-router.get('/movie_technicals/:movie_id', async (req, res) => {
+router.get('/movie_technical/:movie_id', async (req, res) => {
   try {
-    const movieTechnicals = await db.movie_technicals.findAll({
+    const movieTechnicals = await db.movieTechnicals.findAll({
       where: {
         movie_id: req.params.movie_id
       }
@@ -308,9 +231,9 @@ router.get('/movie_technicals/:movie_id', async (req, res) => {
   }
 });
 
-router.put('/movie_technicals', async (req, res) => {
+router.put('/movie_technical', async (req, res) => {
   try {
-    await db.movies_technicals.update(
+    await db.movieTechnicals.update(
       {
         color: req.body.color,
         duration: req.body.duration,
@@ -344,12 +267,39 @@ router.get('/movie', async (req, res) => {
 
 router.get('/movie/:movie_id', async (req, res) => {
   try {
-    const moviesMovirId = await db.movie.findAll({
+    const moviesMovieId = await db.movie.findAll({
       where: {
         movie_id: req.params.movie_id
       }
     });
-    res.json(moviesMovirId);
+    res.json(moviesMovieId);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/movie_post', async (req, res) => {
+  try {
+    const newMovies = await db.movie.create({
+      actor_id: currentId,
+      movie_id: req.body.movie_id
+    });
+    res.json(newMovies);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/movie/:movie_id', async (req, res) => {
+  try {
+    await db.movie.destroy({
+      where: {
+        movie_id: req.params.movie_id
+      }
+    });
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');

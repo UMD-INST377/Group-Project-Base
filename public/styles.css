@@ -77,3 +77,11 @@ a {
 .footer {
     background-color: lightgray;
 }
+
+.img {
+    width: 50%;
+    height: 400px;
+    object-fit: cover;
+    object-position: bottom;
+    margin-left: 25%;    
+}

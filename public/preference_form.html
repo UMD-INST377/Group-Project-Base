@@ -50,11 +50,11 @@
                 <h3 id='pref-list'>Budget</h3>
                 <div class="select" id='dropdown'>
                 <select class="budgetSelect">
-                  <option>Select budget (per item)</option>
-                  <option value="100">$0-$99</option>
-                  <option value="200">$100-$199</option>
-                  <option value="300">$200-$299</option>
-                  <option value="greater">$300+</option>
+                  <option value=0>Select budget (per item)</option>
+                  <option value=1>$0-$99</option>
+                  <option value=2>$100-$199</option>
+                  <option value=3>$200-$299</option>
+                  <option value=4>$300+</option>
                 </select>
                 </div>
 
@@ -114,6 +114,7 @@
             </div>
             <input type="submit" value="Calculate Results"></input>
         </form>
+        <p class="errorText"></p>
     </div>
 
     <script src="preferenceFormScript.js"></script>

@@ -13,6 +13,7 @@ window.onload = async function windowActions() {
 
     tableTarget.innerHTML = `
         <tr>
+            <th>ID</th>
             <th>Player's Name</th>
             <th>Club's Name</th>
             <th>Shirt Number</th>
@@ -25,6 +26,7 @@ window.onload = async function windowActions() {
     players.forEach(player => {
         goals.forEach(goals => {
             if(player.player_id === goals.player_id) {
+                const player_id = player.player_id
                 const playerName = player.first_name.concat(" ", player.last_name)
                 const clubName = player.club
                 const shirtNum = player.shirt_number
@@ -35,6 +37,7 @@ window.onload = async function windowActions() {
 
                 const table_row = document.createElement('tr')
                 table_row.innerHTML = `
+                    <td>${player_id}</td>
                     <td>${playerName}</td>
                     <td>${clubName}</td>
                     <td>${shirtNum}</td>

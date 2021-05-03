@@ -1,14 +1,17 @@
 export default (sequelize, DataTypes) => {
   const SongDetails = sequelize.define(
-    "SongDetails",
+    "song_details",
     {
       song_details_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true,
+        unique: true,
+        autoIncrement: true
       },
-      acoustrictness: {
+      acousticness: {
         type: DataTypes.FLOAT,
-        allowNull: false
+        allowNull: true
       },
       danceability: {
         type: DataTypes.FLOAT,
@@ -29,6 +32,7 @@ export default (sequelize, DataTypes) => {
       song_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        unique: true
       },
     },
     { freezeTableName: true, timestamps: false }

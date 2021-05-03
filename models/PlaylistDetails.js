@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const PlaylistDetails = sequelize.define(
-    'PlaylistDetails',
+    'playlist_details',
     {
       playlist_details_id: {
         type: DataTypes.INTEGER,

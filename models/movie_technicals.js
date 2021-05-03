@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const movieHasGenre = sequelize.define(
+  const movie_technicals = sequelize.define(
     'movie_technicals',
     {
       movie_id: {
@@ -7,13 +7,18 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         primaryKey: true
       },
-      genre_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true
+      color: {
+        type: DataTypes.STRING
       },
+      duration: {
+        type: DataTypes.INTEGER
+      },
+      aspect_ratio: {
+        type: DataTypes.FLOAT
+      },
+
     },
     { freezeTableName: true, timestamps: false }
   );
-  return movieHasGenre;
+  return movie_technicals;
 };

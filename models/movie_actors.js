@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const movieActors = sequelize.define(
-    'movie_actors',
+    'movieActors',
     {
       movie_id: {
         type: DataTypes.INTEGER,

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const movieTechnicals = sequelize.define(
+  const movieFinancals = sequelize.define(
     'movie_technicals',
     {
       movie_id: {
@@ -15,5 +15,5 @@ module.exports = (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return movieTechnicals;
+  return movieFinancals;
 };

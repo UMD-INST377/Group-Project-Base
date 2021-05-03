@@ -15,10 +15,7 @@ router.get('/', (req, res) => {
 router.get("/artistInfo", async (req, res) => {
   try {
     const artists = await db.ArtistInfo.findAll();
-    const reply =
-      artists.length > 0 ? { data: artists } : { message: "no results found" };
-    console.log(artist_name)
-    res.json(reply);
+    res.json(artists);
   } catch (err) {
     console.error(err);
     response.error("Server error");
@@ -32,7 +29,7 @@ router.get("/artistInfo/:artist_id", async (req, res) => {
         artist_id: req.params.artist_id,
       },
     });
-    res.json(artist_id);
+    res.json(artists);
   } catch (err) {
     console.error(err);
     response.error("Server error");
@@ -100,7 +97,7 @@ router.put('/artistInfo', async (req, res) => {
 /// /////////////////////////////////
 router.get('/playlists', async (req, res) => {
   try {
-    const playlist = await db.playlists.findAll();
+    const playlist = await db.Playlist.findAll();
     res.json(playlist);
   } catch (err) {
     console.error(err);
@@ -110,7 +107,7 @@ router.get('/playlists', async (req, res) => {
 
 router.get('/playlists/:playlist_id', async (req, res) => {
   try {
-    const playlist = await db.playlists.findAll({
+    const playlist = await db.Playlist.findAll({
       where: {
         playlist_id: req.params.playlist_id
       }
@@ -127,7 +124,7 @@ router.get('/playlists/:playlist_id', async (req, res) => {
 /// /////////////////////////////////
 router.get('/songs', async (req, res) => {
   try {
-    const songs = await db.songs.findAll();
+    const songs = await db.Songs.findAll();
     res.send(songs);
   } catch (err) {
     console.error(err);
@@ -137,7 +134,7 @@ router.get('/songs', async (req, res) => {
 
 router.get('/songs/:song_id', async (req, res) => {
   try {
-    const playlists = await db.songs.findAll({
+    const playlists = await db.Songs.findAll({
       where: {
         song_id: req.params.song_id
       }
@@ -152,7 +149,7 @@ router.get('/songs/:song_id', async (req, res) => {
 router.put('/songs', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.songs.update(
+    await db.Songs.update(
       {
         genre: req.body.genre,
         date_released: req.body.date_released,
@@ -177,7 +174,7 @@ router.put('/songs', async (req, res) => {
 /// /////////////////////////////////
 router.get('/playlistDetails', async (req, res) => {
   try {
-    const pDetails = await db.playlistDetails.findAll();
+    const pDetails = await db.PlaylistDetails.findAll();
     res.json(pDetails);
   } catch (err) {
     console.error(err);
@@ -185,11 +182,11 @@ router.get('/playlistDetails', async (req, res) => {
   }
 });
 
-router.get('/playlistDetails/:playlistDetails_id', async (req, res) => {
+router.get('/playlistDetails/:playlist_details_id', async (req, res) => {
   try {
-    const pDetails = await db.playlistDetails.findAll({
+    const pDetails = await db.PlaylistDetails.findAll({
       where: {
-        pDetails_id: req.params.pDetails_id
+        playlist_details_id: req.params.playlist_details_id
       }
     });
     res.json(pDetails);
@@ -204,7 +201,7 @@ router.get('/playlistDetails/:playlistDetails_id', async (req, res) => {
 /// /////////////////////////////////
 router.get('/songDetails', async (req, res) => {
   try {
-    const sDetails = await db.song_details.findAll();
+    const sDetails = await db.SongDetails.findAll();
     res.json(sDetails);
   } catch (err) {
     console.error(err);
@@ -214,9 +211,9 @@ router.get('/songDetails', async (req, res) => {
 
 router.get('/songDetails/:song_details_id', async (req, res) => {
   try {
-    const sDetails = await db.song_details.findAll({
+    const sDetails = await db.SongDetails.findAll({
       where: {
-        sDetails_id: req.params.sDetails_id
+        song_details_id: req.params.song_details_id
       }
     });
     res.json(sDetails);

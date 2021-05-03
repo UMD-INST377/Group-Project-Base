@@ -207,7 +207,7 @@ router.put('/movie_imdb_ratings', async (req, res) => {
 /// /////////////////////////////////
 /// ////////movie_technicals Endpoints/////////
 /// /////////////////////////////////
-router.get('/movie_technical', async (req, res) => {
+router.get('/movie_technicals', async (req, res) => {
   try {
     const movieTechnicals = await db.movieTechnicals.findAll();
     res.send(movieTechnicals);
@@ -217,7 +217,7 @@ router.get('/movie_technical', async (req, res) => {
   }
 });
 
-router.get('/movie_technical/:movie_id', async (req, res) => {
+router.get('/movie_technicals/:movie_id', async (req, res) => {
   try {
     const movieTechnicals = await db.movieTechnicals.findAll({
       where: {
@@ -231,7 +231,7 @@ router.get('/movie_technical/:movie_id', async (req, res) => {
   }
 });
 
-router.put('/movie_technical', async (req, res) => {
+router.put('/movie_technicals', async (req, res) => {
   try {
     await db.movieTechnicals.update(
       {

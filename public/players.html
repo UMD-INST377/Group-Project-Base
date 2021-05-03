@@ -44,10 +44,16 @@
     <div class="container">
       <form id="search" class="box">
         <label class="label" for="search-criteria">Enter Player's Name</label>
-        <input class="input" type="text" id="club-name" placeholder="e.g. Mohamed Salah, Cristiano Ronaldo etc."/>
+        <input class="input" type="text" id="player-name" placeholder="e.g. Mohamed Salah, Wayne Rooney, etc."/>
         <button class="button is-primary" type="submit" id="submit-search">Search</button>
       </form>
-      <div class="table"></div>
+      <div class="table" id="table-box">
+        <button class="button is-primary" type="submit" id="add-button">Add</button>
+        <button class="button is-primary" type="submit" id="edit-button">Edit</button>
+        <button class="button is-primary" type="submit" id="remove-button">Remove</button>
+        <table class="table is-bordered is-striped is-fullwidth" id="table-target"> 
+        </table>
+      </div>
     </div>
   <script src="players.js"></script>
 </body>

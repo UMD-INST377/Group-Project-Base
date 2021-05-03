@@ -29,7 +29,6 @@ window.onload = async function windowActions() {
 
     
     function displaySearchResults() {
-        const notFound = document.createElement(`p`)
         clubs.forEach(element => {
             if(element.club_name === input.value){
                 notFound.remove()

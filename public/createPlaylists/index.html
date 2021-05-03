@@ -5,46 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href='style.css'/>
     <title>Create a Playlist</title>
 </head>
 <body>
-    <h1>Create a Playlist</h1>
-    <nav>
-        <button class="button is-dark is-large is-primary is-rounded"><a href="../index.html"> ⇦ Back to Home </a></button>
-        <!-- <button class="button is-large is-primary is-rounded"><a href=”public/xxx/index.html”> ⇨ Page </a></button>   -->
-    </nav>
-    <div class="form">
-        <form action='' method='post' class='speaker-form'>
-            <ul class="flex-outer">
-                <li>
-                    <label for="namePlaylist">Name your Playlist</label>
-                    <input name="namePlaylist" type="text" id="namePlaylist">
-                </li>
-                <h2>Add Songs</h2>
-                <li>
-                    <label for="songTitle">Song title</label>
-                    <input name="songTitle" type="text" id="songTitle">
-                </li>
-                <li>
-                    <label for="artistBand">Artist/Band</label>
-                    <input name="artistBand" type="text" id="artistBand">
-                </li>
-                <li>
-                    <label for="songDuration">Song duration</label>
-                    <input name="songDuration" type="text" id="songDuration">
-                </li>
-                <li>
-                    <label for="ifExplicit">Is it explicit?</label>
-                    <nav>
-                        <button class="button is-dark is-small is-primary is-rounded">yes</button>
-                        <button class="button is-dark is-small is-primary is-rounded">no</button>
-                    </nav>
-                </li>
-                <li>
-                    <button class= "button is-dark is-small is-primary is-rounded" name="submit" id="submit" type="submit">SUBMIT</button>
-                </li>
-            </ul>
-        </form>
+   
+    <div class='container has-text-centered'></div>
+        <a class='button is-large is-dark' href="../index.html"> ⇦ Back to Home </a>
+        <h1 class='title has-text-centered'>Create a Playlist</h1>
+    
+    <div class= 'container has-text-centered'>
+    <div class= 'box has-text-centered'>
+        <div class="form">
+            <form action='' method='post' class='speaker-form'>
+                <ul class="flex-outer">
+                    <li>
+                        <label for="namePlaylist">Name your Playlist</label>
+                        <input name="namePlaylist" type="text" id="namePlaylist">
+                    </li>
+                    <h2>Add Songs</h2>
+                    <li>
+                        <label for="songTitle">Song title</label>
+                        <input name="songTitle" type="text" id="songTitle">
+                    </li>
+                    <li>
+                        <label for="artistBand">Artist/Band</label>
+                        <input name="artistBand" type="text" id="artistBand">
+                    </li>
+                    <li>
+                        <label for="songDuration">Song duration</label>
+                        <input name="songDuration" type="text" id="songDuration">
+                    </li>
+                    <li>
+                        <label for="ifExplicit">Is it explicit?</label>
+                        <button class="button is-dark is-small">yes</button>
+                        <button class="button is-dark is-small">no</button>
+                    </li>
+                    <li>
+                        <button class= "button is-dark is-small" name="submit" id="submit" type="submit">SUBMIT</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+    </div>
     </div>
 </body>
 </html>

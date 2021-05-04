@@ -6,7 +6,7 @@
 
 ## Target Browsers
 
-#### Desktop browsers
+#### Macbook Pro 13/15
 
 ## Link to Heroku Instance
 
@@ -306,3 +306,7 @@ https://blooming-sea-07164.herokuapp.com/
 
     Successfully Deleted 
 <hr>
+
+## Known Bugs
+
+#### There are no current known bugs, but this will be updated when any are found.

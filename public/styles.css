@@ -270,3 +270,7 @@ input[type=text], input[type=password] {
     background-color: lightgray;
     height: 500px;
 }
+
+.errorText{
+    color: red;
+}

@@ -15,8 +15,6 @@
               <img src = "../images/MyKEA.png" class = "logo" alt = "companyLogo">
             </a>
           </div>
-          
-          <form>
             
             <ul class="menu">
               <!-- <li id="active" class="menu-item"><a href="index.html">
@@ -34,17 +32,15 @@
                 </span></a>
               </li >
             </ul>
-          
-          </form>
 
                 <h1 class="aboutTitle">MyKea Admin</h1>
 
                 <div class="addNewDiv">
                     <h3>Add a new DB product object</h3>
 
-                    <form class="addNewForm" action="/products" method="post">
+                    <form class="addNewForm" id ="addNewForm">
 
-                        <input type="text" placeholder="Product ID" name="id" required>
+                        <input type="text" placeholder="Product ID" name="id">
                         <input type="text" placeholder="Product Description" name="desc" required>
                         <input type="text" placeholder="Product Color" name="color" required>
                         <input type="text" placeholder="Product Unit Price" name="price" required>
@@ -58,6 +54,6 @@
                     </form>
                 </div>
 
-
+        <script src="addNewRecord.js"></script>
     </body>
 </html>

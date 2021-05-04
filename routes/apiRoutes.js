@@ -5,6 +5,34 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
+
+/// /////////////////////////////////
+/// ////custom Endpoints////////
+/// /////////////////////////////////
+router.route('/wholeProduct').get(async (req, res) => {
+  try {
+    const products = await db.products.findAll();
+    const prodCategories = await db.productCategories.findAll();
+    const prodFamilies = await db.productFamilies.findAll();
+
+    const wholeProducts = products.map((product) => {
+      // eslint-disable-next-line max-len
+      const categoryMatch = prodCategories.find((category) => category.category_id === product.category_id);
+      const familyMatch = prodFamilies.find((family) => family.family_id === product.family_id);
+
+      return {
+        ...product.dataValues,
+        ...categoryMatch.dataValues,
+        ...familyMatch.dataValues
+      };
+    });
+    res.json({data: wholeProducts});
+  } catch (err) {
+    console.log(err);
+    res.error('server error');
+  }
+});
+
 /// /////////////////////////////////
 /// ////orders Endpoints////////
 /// /////////////////////////////////
@@ -812,6 +840,5 @@ router.delete('/productCategories/:category_id', async (req, res) => {
     res.error('Server error');
   }
 });
-
 
 export default router;

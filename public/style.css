@@ -1,3 +1,7 @@
+body { 
+    padding-bottom: 50px;
+}
+
 .center { 
     text-align: center;
 }
@@ -8,4 +12,18 @@
 
 .button {
     margin-block: 10px;
+}
+
+#homebutton1, #homebutton2 { 
+    display: inline-block;
+
+}
+
+#homebutton1 { 
+    padding-top: 80px;
+    padding-left: 400px;
+}
+
+#homebutton2 { 
+    padding-left: 80px;
 }

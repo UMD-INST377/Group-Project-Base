@@ -1,10 +1,22 @@
-// Fetch TeamInfo // 
+// Fetch TeamInfo and PlayerInfo// 
 const teamendpoint = '/api/teamCustomfull';
 const teamlist = [];
+
+const player_endpoint = '/apu/playerCustomInfo';
+const playerlist = [];
 
 fetch(teamendpoint)
   .then((blob) => blob.json())
   .then((data) => teamlist.push(...data));
+
+
+  fetch(player_endpoint)
+  .then((blob) => blob.json())
+  .then((data) => playerlist.push(...data));
+
+
+
+ 
 
 function findMatches(wordToMatch, teamlist) {
     return teamlist.filter((team) => {
@@ -12,6 +24,16 @@ function findMatches(wordToMatch, teamlist) {
       return team.team_name.match(regex);
     });
   }
+
+
+function player_find_matches(wordToMatch, playerlist){
+
+  return playerlist.filter((player) => {
+    const regex = new RegExp("^"+wordToMatch, 'gi');
+    const name = player.first_name + player.last_name;
+    return name.match(regex);
+  });
+}
 
 
 
@@ -62,10 +84,46 @@ function displayMatches() {
   teaminfo2.innerHTML = html;
 }
 
+function player_display_matches(){
+  const matchArray = player_find_matches(this.value, playerlist);
+  console.log(matchArray);
+    const html = matchArray.map((player) => {
+      const regex = new RegExp(this.value, 'gi');
+      const player_salary = player.salary;
+      const player_shooting_percentage = player.shooting_percentage;
+      const player_birthdate = player.birthdate;
+      return `
+      <li>
+      <div class = "PlayerInfo li box is-small has-background-orange is-capitalized>">
+        <span> Salary: ${player_salary}</span>
+        <br>
+        <span> Shooting Percentage: ${player_shooting_percentage}</span>
+        <br>
+        <span> Birthdate: ${player_birthdate}</span>
+        <br>
+      </div>
+      </li>
+      `;
+  }).join('');
+  player_info2.innerHTML = html;
+      
+
+
+}
+
 const searchInput = document.querySelector('.input');
 const teaminfo2 = document.querySelector('.TeamInfo');
 
+const player_search_input = document.querySelector('.player_input')
+const player_info2 = document.querySelector('.PlayerInfo');
+
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
+
+
+
+player_search_input.addEventListener('change', player_display_matches);
+player_search_input.addEventListener('keyup', player_display_matches);
+
 
 

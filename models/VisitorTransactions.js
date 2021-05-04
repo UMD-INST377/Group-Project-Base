@@ -22,12 +22,12 @@ export default (sequelize, DataTypes) => {
   //     foreignKey: 'visitor_id'
   //   });
   // };
-  VisitorTransactions.associate = (models) => {
-    VisitorTransactions.belongsToMany(MuseumVisits, {
-      through: 'visitors',
-      foreignKey: 'visitor_id',
-      otherKey: 'visit_date'
-    });
-  };
+  // VisitorTransactions.associate = (models) => {
+  //   VisitorTransactions.belongsToMany(MuseumVisits, {
+  //     through: 'visitors',
+  //     foreignKey: 'visitor_id',
+  //     otherKey: 'visit_date'
+  //   });
+  // };
   return VisitorTransactions;
 };

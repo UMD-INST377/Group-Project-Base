@@ -8,12 +8,13 @@
 
 #### Desktop browsers
 
+## Link to Heroku Instance
+
+https://blooming-sea-07164.herokuapp.com/
+
 ## Developer Manuel
 
 #### See Below
-
-
-https://blooming-sea-07164.herokuapp.com/
 
 # EPL Stats Developer Manual 
 

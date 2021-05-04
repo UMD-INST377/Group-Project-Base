@@ -87,14 +87,6 @@ li a:hover {
     text-align: center;
 } */
 
-/* .pref-box {
-    padding: 20px;
-} */
-
-#all_products {
-    float: right;
-}
-
 .intro {
     margin-left: 20px;
     margin-top: 80px;
@@ -109,7 +101,7 @@ li a:hover {
     width: 30vw;
 }
 
-#pref {
+.pref {
     background-color: midnightblue;
     border: none;
     color: white;
@@ -122,9 +114,14 @@ li a:hover {
     border-radius: 8px;
 }
 
-#pref:hover {
+.pref:hover {
     background-color: rgb(82, 166, 218);
     cursor: pointer;
+}
+
+#viewAll {
+    position: absolute; 
+    right: 0;
 }
 
 .imageWheel {

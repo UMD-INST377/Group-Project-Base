@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const movie_imdb_ratings = sequelize.define(
+  const movieImdbRatings = sequelize.define(
     'movie_imdb_ratings',
     {
       movie_id: {
@@ -23,5 +23,5 @@ module.exports = (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return movie_imdb_ratings;
+  return movieImdbRatings;
 };

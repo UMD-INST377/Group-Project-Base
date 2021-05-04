@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       budget: {
         type: DataTypes.INTEGER
-      }
+      },
     },
     { freezeTableName: true, timestamps: false }
   );

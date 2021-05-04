@@ -1,3 +1,6 @@
+// why isn't this being used
+import Creators from './Creators';
+
 export default (database, DataTypes) => {
   const roles = database.define(
     'roles',
@@ -13,5 +16,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
+  roles.associate = (models) => {
+    creators.belongsTo(models.roles, {
+      foreignKey: 'creator_id'
+    });
+  };
   return roles;
 };

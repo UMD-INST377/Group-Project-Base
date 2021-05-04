@@ -1,3 +1,7 @@
+// BROKEN IMPORT
+
+// import Media from './all_media.js';
+
 export default (database, DataTypes) => {
   const themes = database.define(
     'themes',
@@ -13,5 +17,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
+  themes.associate = (models) => {
+    themes.belongsTo(models.media, {
+      foreignKey: 'media_id'
+    });
+  };
   return themes;
 };

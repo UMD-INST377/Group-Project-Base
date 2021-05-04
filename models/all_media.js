@@ -1,3 +1,9 @@
+import Backgrounds from './Backgrounds';
+import Creators from './Creators';
+import Genres from './Genres';
+import Themes from './Themes';
+
+// const media stores everything in all_media table
 export default (database, DataTypes) => {
   const media = database.define(
     'all_media',
@@ -37,5 +43,25 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
+  media.associate = (models) => {
+    Backgrounds.belongsTo(models.media, {
+      foreignKey: 'background_id' // linking primary key of media table to backgrounds. now, it's the foreign key in the backgrounds table
+    });
+  };
+  media.associate = (models) => {
+    Creators.belongsTo(models.media, {
+      foreignKey: 'creator_id' 
+    });
+  };
+  media.associate = (models) => {
+    Themes.belongsTo(models.media, {
+      foreignKey: 'theme_id'
+    });
+  };
+  media.associate = (models) => {
+    Genres.belongsTo(models.media, {
+      foreignKey: 'genre_id'
+    });
+  };
   return media;
 };

@@ -13,5 +13,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
+  genres.associate = (models) => {
+    genres.belongsTo(models.media, {
+      foreignKey: 'media_id'
+    });
+  };
   return genres;
 };

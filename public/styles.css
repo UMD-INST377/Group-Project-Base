@@ -212,21 +212,21 @@ hr {
     width: 465px;
 }
 
-.loginperson {
+/* .loginperson {
     border-radius: 150px;
     height: 150px;
     width: 150px;
     text-align: center;
-}
+} */
 
 .loginContain {
     display: flex;
     flex-direction: column;
 }
 
-.loginForm {
+/* .loginForm {
     border: 3px solid #f1f1f1;
-}
+} */
 
 input[type=text], input[type=password] {
     width: 100%;

@@ -16,9 +16,11 @@
     <div class="columns">
         <div class="column is-two-thirds">
           <form class="search-form" action='/api' method='post'>
-            <label class="label search" for="search">Search</label>
-            <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
-            <button type="submit" name="submit" id="submit" class="button">Search</button>
+            <div class ="level is-mobile">
+              <!-- <label class="label search" for="search">Search </label> -->
+              <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
+              <button type="submit" name="submit" id="submit" class="button">Search</button>
+            </div>
             <div class="card">
                 <ul class="card-content is-centered" id="search-results"></ul>
             </div>
@@ -41,26 +43,47 @@
         <!-- Categorical Search (Surface Book - 2) -->
       <div class = "categorical box">
         <div class = "filters">
-            <p>Room Type</p>
-            <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
-            <p>Bathrooms</p>
-            <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
-            <p>Number of Beds</p>
-            <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
-            <p>Property Type</p>
-            <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
-            <p>Bedrooms</p>
-            <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
-            <p>Price</p>
-            <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
+          <div class="level-item">
+            <div class="rows"> <!--  -->
+              <div class="level is-mobile">
+                <p>Room Type</p>
+                <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
+              </div>
+              <div class="level is-mobile"> 
+                <p>Bathrooms</p>
+                <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
+              </div>
+              <div class="level is-mobile"> 
+                <p>Number of Beds</p>
+                <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
+              </div>
+            </div>
+            <div class="column filler"></div>
+            <div class="rows">
+              <div class="level is-mobile"> 
+                <p>Property Type</p>
+                <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
+              </div>
+              <div class="level is-mobile"> 
+                <p>Bedrooms</p>
+                <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
+              </div>
+              <div class="level is-mobile"> 
+                <p>Price</p>
+                <input type="text" class="input" name="search" id="search" placeholder="Enter search terms">
+              </div>
+            </div>
+          </div>
         </div>
-        <div class = "filter results"></div>
+        <div class="card">
+          <ul class="card-content is-centered" id="search-results"></ul>
+        </div>
       </div>
 
       <!-- Listings (Surface Book - 3) -->
       <div class = "listings box">
         <ul class="flex-outer">
-            <p>Listing Checklist</p>
+            <h1 class="column title has-text-centered is-size-1">Listing Checklist</h1>
             <ul class="flex-inner">
                 <li>
                     <input class = "checkbox" type="checkbox" id="number of bedrooms" name = "checklist" >
@@ -84,7 +107,7 @@
     </div>
     <!-- Contact Form (Surface Book - 5) -->
     <div class = "form box">
-        <p>Contact Form</p>
+        <h1 class="column title has-text-centered is-size-1">Contact Form</h1>
         <form action ="/api" method = "POST">
             <ul class="flex-outer">
               <li>

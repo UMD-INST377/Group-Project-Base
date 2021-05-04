@@ -2,17 +2,13 @@ html {
     background-color: #cfe5fc;
 }
 
-.topImgContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
 .logo {
+    margin-top: 10px;
     width: 140px;
     height: 60px;
     display: block;
-    margin-left: 580px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .admin {

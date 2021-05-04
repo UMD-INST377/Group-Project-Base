@@ -71,12 +71,11 @@ router.post('/movie_actors', async (req, res) => {
   }
 });
 
-router.delete('/movie_actors', async (req, res) => {
+router.delete('/movie_actors/:movie_id', async (req, res) => {
   try {
     await db.movie.destroy({
       where: {
-        movie_id: req.body.movie_id,
-        actor_1_name: req.body.actor_1_name
+        movie_id: req.params.movie_id
       }
     });
     res.send('Successfully Deleted');
@@ -333,11 +332,11 @@ router.post('/movie', async (req, res) => {
   }
 });
 
-router.delete('/movie', async (req, res) => {
+router.delete('/movie/:movie_id', async (req, res) => {
   try {
     await db.movie.destroy({
       where: {
-        movie_id: req.body.movie_id
+        movie_id: req.params.movie_id
       }
     });
     res.send('Successfully Deleted');

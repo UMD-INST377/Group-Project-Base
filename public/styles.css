@@ -83,24 +83,16 @@ li a:hover {
     padding-bottom: 10px;
 }
 
-#pref-list {
-    padding-left: 70px;
-}
-
-.pref-button {
+/* .pref-button {
     text-align: center;
-}
+} */
 
-.pref-item {
-    display: flex;
-}
-
-#pref-head {
-    text-align: left;
-}
-
-.pref-box {
+/* .pref-box {
     padding: 20px;
+} */
+
+#all_products {
+    float: right;
 }
 
 .intro {

@@ -42,9 +42,8 @@ router.put('/movie_actors', async (req, res) => {
   try {
     await db.movieActors.update(
       {
-        actor_1_name: req.body.actor_1_name,
-        actor_2_name: req.body.actor_2_name,
-        actor_3_name: req.body.actor_3_name
+        movie_id: req.body.movie_id,
+        actor_1_name: req.body.actor_1_name
       },
       {
         where: {
@@ -61,13 +60,11 @@ router.put('/movie_actors', async (req, res) => {
 
 router.post('/movie_actors', async (req, res) => {
   try {
-    const newMovies = await db.movie.create({
+    const newMoviesActors = await db.movieActors.create({
       movie_id: req.body.movie_id,
-      actor_1_name: req.body.actor_1_name,
-      actor_2_name: req.body.actor_2_name,
-      actor_3_name: req.body.actor_3_name
+      actor_1_name: req.body.actor_1_name
     });
-    res.json(newMovies);
+    res.json(newMoviesActors);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -131,6 +128,19 @@ router.put('/movie_content', async (req, res) => {
       }
     );
     res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/movie_content', async (req, res) => {
+  try {
+    const newMoviesContent = await db.movie.create({
+      movie_id: req.body.movie_id,
+      genres: req.body.genres
+    });
+    res.json(newMoviesContent);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -311,12 +321,12 @@ router.get('/movie/:movie_id', async (req, res) => {
 router.post('/movie', async (req, res) => {
   try {
     const newMovies = await db.movie.create({
+      movie_id: req.body.movie_id,
       movie_title: req.body.movie_title,
       title_year: req.body.title_year,
       director_name: req.body.director_name
     });
     res.json(newMovies);
-    res.send('Successfully Added');
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -339,10 +349,11 @@ router.delete('/movie', async (req, res) => {
 
 router.put('/movie', async (req, res) => {
   try {
-    await db.movies.update(
+    await db.movie.update(
       {
-        movie_title: req.body.title,
-        title_year: req.body.year,
+        movie_id: req.body.movie_id,
+        movie_title: req.body.movie_title,
+        title_year: req.body.title_year,
         country: req.body.country,
         director_name: req.body.director_name
       },

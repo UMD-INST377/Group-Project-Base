@@ -1,22 +1,21 @@
 const express  = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const db  = require('./database/initializeDB.js');
 const apiRoutes = require('./routes/apiRoutes.js');
 
-const staticFolder = "public";
+const staticFolder = 'public';
 
 const app = express();
+
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json()); 
+app.use(cors())
 
 const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const cors = require('cors')
-var bodyParser = require('body-parser')
-
-
-app.use(bodyParser.urlencoded());
-app.use(bodyParser.json()); 
-app.use(cors())
 
 app.use(express.static(staticFolder));
 

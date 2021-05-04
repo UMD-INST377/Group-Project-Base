@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
-import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
+import db from './server_files/database/initializeDB.js';
+import apiRoutes from './server_files/routes/apiRoutes.js';
 
 const app = express();
 

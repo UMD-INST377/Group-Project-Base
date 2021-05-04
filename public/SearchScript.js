@@ -2,7 +2,7 @@
 const teamendpoint = '/api/teamCustomfull';
 const teamlist = [];
 
-const player_endpoint = '/apu/playerCustomInfo';
+const player_endpoint = '/api/playerCustomInfo';
 const playerlist = [];
 
 fetch(teamendpoint)
@@ -85,8 +85,10 @@ function displayMatches() {
 }
 
 function player_display_matches(){
+  console.log("hello");
   const matchArray = player_find_matches(this.value, playerlist);
   console.log(matchArray);
+  
     const html = matchArray.map((player) => {
       const regex = new RegExp(this.value, 'gi');
       const player_salary = player.salary;
@@ -120,7 +122,7 @@ const player_info2 = document.querySelector('.PlayerInfo');
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
 
-
+console.log(player_search_input);
 
 player_search_input.addEventListener('change', player_display_matches);
 player_search_input.addEventListener('keyup', player_display_matches);

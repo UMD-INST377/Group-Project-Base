@@ -1,7 +1,21 @@
+# EPL Stats
+
+## Project Description
+
+#### EPL Statistics is a website created by UMD students that contains a variety of datasets related to the English Premiere League (EPL). On this website, you can find data relating to EPL players, matches, and team rosters.
+
+## Target Browsers
+
+#### Desktop browsers
+
+## Developer Manuel
+
+#### See Below
+
 
 https://blooming-sea-07164.herokuapp.com/
 
-# EPL Developer Manual 
+# EPL Stats Developer Manual 
 
 
 ## Install Dependencies 

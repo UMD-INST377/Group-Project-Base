@@ -10,6 +10,13 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+const cors = require('cors')
+var bodyParser = require('body-parser')
+
+
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json()); 
+app.use(cors())
 
 app.use(express.static(staticFolder));
 

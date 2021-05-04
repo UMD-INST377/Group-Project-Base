@@ -79,9 +79,7 @@ router.delete('/movie_actors', async (req, res) => {
     await db.movie.destroy({
       where: {
         movie_id: req.body.movie_id,
-        actor_1_name: req.body.actor_1_name,
-        actor_2_name: req.body.actor_2_name,
-        actor_3_name: req.body.actor_3_name
+        actor_1_name: req.body.actor_1_name
       }
     });
     res.send('Successfully Deleted');
@@ -313,10 +311,12 @@ router.get('/movie/:movie_id', async (req, res) => {
 router.post('/movie', async (req, res) => {
   try {
     const newMovies = await db.movie.create({
-      actor_id: currentId,
-      movie_id: req.body.movie_id
+      movie_title: req.body.movie_title,
+      title_year: req.body.title_year,
+      director_name: req.body.director_name
     });
     res.json(newMovies);
+    res.send('Successfully Added');
   } catch (err) {
     console.error(err);
     res.error('Server error');

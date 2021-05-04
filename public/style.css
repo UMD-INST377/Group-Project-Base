@@ -27,3 +27,8 @@ body {
 #homebutton2 { 
     padding-left: 80px;
 }
+
+.edit_form { 
+    padding-left: 50px;
+    padding-right: 300px
+}

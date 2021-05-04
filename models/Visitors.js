@@ -23,10 +23,10 @@ export default (sequelize, DataTypes) => {
     },
     {freezeTableName: true, timestamps: false}
   );
-  // Visitors.associate = (models) => {
-  //   Visitors.hasOne(models.VisitorTransactions, {
-  //     foreignKey: 'visitor_id'
-  //   });
-  // };
+  Visitors.associate = (models) => {
+    Visitors.hasOne(models.VisitorTransactions, {
+      foreignKey: 'visitor_id'
+    });
+  };
   return Visitors;
 };

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href='style.css'/>
 </head>
 <body>
-    <a href ="../index.html" class = "button is-dark is-large"> Home</a>
+    <a href ="../index.html" class = "button is-dark is-large">Home</a>
     <div class= 'header'>
         <h1>Playlists</h1>
     </div>
@@ -21,11 +21,16 @@
         </div>
     </div>
     <div class= 'info'>
-        <p>
-            This is a placeholder until Playlist name, Number of songs, Total duration, Explici t data is imported
-        </p>
-     </div>
-    <a href ="/updatePlaylists/index.html" class = "button is-dark is-large"> Update a Playlist</a>
+        <table class='table is-bordered is-striped is-fullwidth'>
+            <tr>
+                <th class='thead'>Playlist Name</th>
+                <th class='thead'>Number of Songs</th>
+                <th class='thead'>Total Duration</th>
+            </tr>
+        </table>
+        <table id='info' class='table is-bordered is-striped is-fullwidth'>
+        </table>
+    </div>
 </body>
 <script src='script.js'></script>
 </html>

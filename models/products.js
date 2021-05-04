@@ -5,7 +5,8 @@ export default (sequelize, DataTypes) => {
       product_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       product_description: {
         type: DataTypes.STRING // .TEXT

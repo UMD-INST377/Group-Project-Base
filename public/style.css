@@ -4,16 +4,17 @@ div.columns {
     padding-right: 60px;
 }
 
+div.rows{
+    display: flex;
+    flex-direction: column;
+}
+
 h1.column.title.has-text-centered.is-size-1 {
     background-color: grey;
     color: black;
 }
 
-div.column.is-two-thirds {
-    background-color: grey;
-}
-
-div.column.is-one-fifth {
+div.column.is-two-thirds, div.column.is-one-fifth{
     background-color: grey;
 }
 
@@ -27,6 +28,10 @@ a.categorical {
     color: black;
     font-weight: bold;
     font-size: large;
+}
+
+.filters input {
+    width: 200px;
 }
 
 a.create-listing {

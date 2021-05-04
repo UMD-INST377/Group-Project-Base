@@ -60,11 +60,11 @@ router.put('/movie_actors', async (req, res) => {
 
 router.post('/movie_actors', async (req, res) => {
   try {
-    const newMoviesActors = await db.movieActors.create({
+    const newMoviesActor = await db.movieActors.create({
       movie_id: req.body.movie_id,
       actor_1_name: req.body.actor_1_name
     });
-    res.json(newMoviesActors);
+    res.json(newMoviesActor);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -136,7 +136,7 @@ router.put('/movie_content', async (req, res) => {
 
 router.post('/movie_content', async (req, res) => {
   try {
-    const newMoviesContent = await db.movie.create({
+    const newMoviesContent = await db.movieContent.create({
       movie_id: req.body.movie_id,
       genres: req.body.genres
     });

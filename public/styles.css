@@ -83,7 +83,7 @@
     padding: 0px;
     margin-top: 15px;
     overflow: hidden;
-    margin-right: 50px;
+    margin-right: 10px;
     margin-left: 10px;
 }
 
@@ -211,4 +211,8 @@ input[type=text], input[type=password] {
 .addNewDiv {
     background-color: lightgray;
     height: 500px;
+}
+
+.hero-body {
+    background-color: #333;
 }

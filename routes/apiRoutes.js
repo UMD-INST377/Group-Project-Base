@@ -571,9 +571,9 @@ router.route('/playerCustom')
     res.send('Action unavailable');
   });
 
-/// ///////////////////////////
-/// /// Custom SQL Endpoint ///
-/// ///////////////////////////
+/// ///////////////////////////////////////
+/// /// Player Custom Info SQL Endpoint ///
+/// ///////////////////////////////////////
 const playerCustomInfo = `SELECT first_name, last_name, position, jersey_number, player_college, nba_debut, 
 CONCAT(TRUNCATE((height_inches / 12), 0), "' ", (height_inches % 12), '"') AS height, weight_pounds, TIMESTAMPDIFF(year, birthdate, current_date()) AS player_age, team_name, team_location
 FROM player_info JOIN player_biostats

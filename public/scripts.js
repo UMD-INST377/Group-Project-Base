@@ -104,7 +104,7 @@ async function teamComparison() {
   results.append(team2Elem);
 }
 
-function carouselSlider() {
+async function carouselSlider() {
   /* Buttons */
   const nextBtn = document.querySelector('#next');
   const prevBtn = document.querySelector('#prev');
@@ -201,7 +201,7 @@ async function shootingPctData() {
   while (i < 5) {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `<td>${i + 1}</td>
-          <td>${shootPcts[i].first_name} ${shootPcts[i].last_name}</td>
+          <td class='playerName'>${shootPcts[i].first_name} ${shootPcts[i].last_name}</td>
           <td>${shootPcts[i].shooting_percentage}</td>
     `;
 
@@ -233,7 +233,7 @@ async function threePtPctData() {
   while (i < 5) {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `<td>${i + 1}</td>
-          <td>${threePcts[i].first_name} ${threePcts[i].last_name}</td>
+          <td data-tip='TEST'>${threePcts[i].first_name} ${threePcts[i].last_name}</td>
           <td>${threePcts[i].three_pt_pct}</td>
     `;
 
@@ -379,7 +379,7 @@ async function windowActions() {
   await reboundsData();
   await stealsData();
   await blocksData();
-  carouselSlider();
+  await carouselSlider();
 }
 
 window.onload = windowActions;

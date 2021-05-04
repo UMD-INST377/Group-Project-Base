@@ -1,7 +1,22 @@
+# EPL Stats
+
+## Project Description
+
+#### EPL Statistics is a website created by UMD students that contains a variety of datasets related to the English Premiere League (EPL). On this website, you can find data relating to EPL players, matches, and team rosters.
+
+## Target Browsers
+
+#### Macbook Pro 13/15
+
+## Link to Heroku Instance
 
 https://blooming-sea-07164.herokuapp.com/
 
-# EPL Developer Manual 
+## Developer Manuel
+
+[Click Here](https://github.com/JacobVanderVat/Group28-Final-INST377SP2021/tree/Jacob#epl-stats-developer-manual)
+
+# EPL Stats Developer Manual 
 
 
 ## Install Dependencies 
@@ -181,7 +196,7 @@ https://blooming-sea-07164.herokuapp.com/
 
 #### Request
 
-`PUT /api/meals`
+`PUT /api/clubs`
 
     curl -d "club_id=100&club_name=AFC Bournemouth&coach_first_name=Eddie&coach_last_name=Howe&num_of_players=27" -X PUT http://localhost:3000/api/clubs
 
@@ -221,125 +236,77 @@ https://blooming-sea-07164.herokuapp.com/
 
 <hr>
 
-# Macros
+# Player Goals
 
-## Get list of Macros
+## Get list of Player Goals
 
 #### Request
 
-`GET /api/macros`
+`GET /api/player_goals`
 
-    curl http://localhost:3000/api/macros
+    curl http://localhost:3000/api/player_goals
 
 #### Response
     [{
-        "macro_id":1,
-        "calories":218,
-        "serving_size":20,
-        "cholesterol":544,
-        "sodium":206,
-        "carbs":1,
-        "protein":17,
-        "meal_id":1,
-        "fat":16
+        "player_id":1,
+        "first_name":"Alexis",
+        "last_name":"Sanchez",
+        "goals":25,
+        "assists":150
     },
     {
-        "macro_id":2,
-        "calories":371,
-        "serving_size":1,
-        "cholesterol":0,
-        "sodium":209,
-        "carbs":10,
-        "protein":5,
-        "meal_id":2,
-        "fat":10
+        "player_id":2,
+        "first_name":"Mesut",
+        "last_name":"Ozil",
+        "goals":30,
+        "assists":60
     },
         ...
     ]
-## Get a Macros for a Specific Meal
+## Get a Goals for a Specific Player
 
 #### Request
 
-`GET /api/macros/:meal_id`
+`GET /api/player_goals/:player_id`
 
-    curl http://localhost:3000/api/macros/1
+    curl http://localhost:3000/api/player_goals/1
 
 #### Response
 
     [{
-        "macro_id":1,
-        "calories":218,
-        "serving_size":20,
-        "cholesterol":544,
-        "sodium":206,
-        "carbs":1,
-        "protein":17,
-        "meal_id":1,
-        "fat":16
+        "player_id":1,
+        "first_name":"Alexis",
+        "last_name":"Sanchez",
+        "goals":25,
+        "assists":150
     }]
     
-## Updating an Existing Macro
+## Updating an Player Goals Record
 
 #### Request
 
-`PUT /api/macros`
+`PUT /api/player_goals`
 
-    curl -d "macro_id=1&calories=318&serving_size=20&cholesterol=544&sodium=206&carbs=1&protein=17&meal_id=1&fat=16" -X PUT http://localhost:3000/api/macros
+    curl -d "player_id=1&first_name=Alexis&last_name=Sanchez&goals=25&assists=150" -X PUT http://localhost:3000/api/player_goals
 
 #### Response
 
     Successfully Updated
-<hr>
+    ## Delete an Existing Club
 
-# Custom Client SQL
+## Delete an Player Goals Record
 
 #### Request
 
-`GET /api/custom`
+`DELETE /api/player_goals/:player_id`
 
-    curl --location --request GET 'http://localhost:3000/api/custom' \
-    --header 'Content-Type: application/x-www-form-urlencoded' \
-    --data-urlencode 'query=SELECT 
-    `DiningHall_Tracker`.`Meals`.`meal_name` AS `meal_name`,
-        `DiningHall_Tracker`.`Macros`.`calories` AS `calories`,
-        `DiningHall_Tracker`.`Macros`.`carbs` AS `carbs`,
-        `DiningHall_Tracker`.`Macros`.`sodium` AS `sodium`,
-        `DiningHall_Tracker`.`Macros`.`protein` AS `protein`,
-        `DiningHall_Tracker`.`Macros`.`fat` AS `fat`,
-        `DiningHall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`
-    FROM
-        (`DiningHall_Tracker`.`Meals`
-        JOIN `DiningHall_Tracker`.`Macros`)
-    WHERE
-        (`DiningHall_Tracker`.`Meals`.`meal_id` = `DiningHall_Tracker`.`Macros`.`meal_id`)'   
+    curl -X DELETE http://localhost:3000/api/clubs/137
 
 #### Response
-    [{
-        "meal_name": "Scrambled Eggs",
-        "calories": 218,
-        "carbs": 1,
-        "sodium": 206,
-        "protein": 17,
-        "fat": 16,
-        "cholesterol": 544
-    },
-    {
-        "meal_name": "French Toast",
-        "calories": 371,
-        "carbs": 10,
-        "sodium": 209,
-        "protein": 5,
-        "fat": 10,
-        "cholesterol": 0
-    },
-    {
-        "meal_name": "Pancakes",
-        "calories": 430,
-        "carbs": 15,
-        "sodium": 111,
-        "protein": 4,
-        "fat": 15,
-        "cholesterol": 30
-    },
-        ...
-    ]
+
+    Successfully Deleted 
+<hr>
+
+## Known Bugs
+
+#### There are no current known bugs, but this will be updated when any are found.

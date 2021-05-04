@@ -12,7 +12,7 @@ h1, h2{
 .container{
   display: flex;
   justify-content: center;
-  background-color: grey;
+  background-color: lightgrey;
   max-width: 400px;
   gap: 50px;
 }

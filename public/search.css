@@ -13,6 +13,14 @@ body {
     color: #000000;
   }
 
-div, form{
+div, .container{
     justify-content: center;
 }
+
+.container{
+    display: flex;
+    justify-content: center;
+    background-color: lightgrey;
+    max-width: 400px;
+    gap: 50px;
+  }

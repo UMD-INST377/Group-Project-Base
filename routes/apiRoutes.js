@@ -58,19 +58,6 @@ router.put('/movie_actors', async (req, res) => {
   }
 });
 
-router.post('/movie_actors', async (req, res) => {
-  try {
-    const newMoviesActor = await db.movieActors.create({
-      movie_id: req.body.movie_id,
-      actor_1_name: req.body.actor_1_name
-    });
-    res.json(newMoviesActor);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
 router.delete('/movie_actors/:movie_id', async (req, res) => {
   try {
     await db.movie.destroy({
@@ -119,66 +106,6 @@ router.put('/movie_content', async (req, res) => {
         plot_keywords: req.body.plot_keywords,
         content_rating: req.body.content_rating,
         language: req.body.language
-      },
-      {
-        where: {
-          movie_id: req.body.movie_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.post('/movie_content', async (req, res) => {
-  try {
-    const newMoviesContent = await db.movieContent.create({
-      movie_id: req.body.movie_id,
-      genres: req.body.genres
-    });
-    res.json(newMoviesContent);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////movie_financials Endpoints/////////
-/// /////////////////////////////////
-router.get('/movie_financials', async (req, res) => {
-  try {
-    const movieFinancial = await db.movieFinancials.findAll();
-    res.send(movieFinancial);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/movie_financials/:movie_id', async (req, res) => {
-  try {
-    const movieFinMovieId = await db.movieFinancials.findAll({
-      where: {
-        movie_id: req.params.movie_id
-      }
-    });
-    res.json(movieFinMovieId);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/movie_financials', async (req, res) => {
-  try {
-    await db.movieFinancials.update(
-      {
-        gross: req.body.gross,
-        budget: req.body.budget
       },
       {
         where: {

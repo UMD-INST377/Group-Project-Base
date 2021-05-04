@@ -43,81 +43,86 @@
       </form>
 
         
-      
-      <h1 class="aboutTitle" id='pref-form'>College Room Redesign</h1>
-        <form>
-            <div class="field control">
-                <h3 id='pref-list'>Budget</h3>
-                <div class="select" id='dropdown'>
+      <div class="prefContainer">
+
+        <h1 class="aboutTitle" id='pref-form'>College Room Redesign</h1>
+          <form>
+              <div class="field control">
+                  <h3 class="pref-head">Budget</h3>
+                  <div class="select" id='dropdown'>
                     <select>
-                  <option>Select budget (per item)</option>
-                  <option>$0-$99</option>
-                  <option>$100-$199</option>
-                  <option>$200-$299</option>
-                  <option>$300+</option>
-                </select>
-                </div>
-
-                <h3>Furniture Preferences</h3>
-                <ul id='pref-list'>
-                  <li>
-                    <label for="Chairs">Chairs</label>
-                    <input type="checkbox" id="Chairs" name="Chairs" value="Chairs">
-                  </li>
-                  <li>
-                    <label for="Sofas">Sofas</label>
-                    <input type="checkbox" id="Sofas" name="Sofas" value="Sofas">
-                  </li>
-                  <li>
-                    <label for="Beds">Beds</label>
-                    <input type="checkbox" id="Beds" name="Beds" value="Beds">
-                  </li>
-                  <li>
-                    <label for="Drawers">Drawers</label>
-                    <input type="checkbox" id="Drawers" name="Drawer" value="Drawer">
-                  </li>
-                  <li>
-                    <label for="Rugs">Rugs</label>
-                    <input type="checkbox" id="Rugs" name="Rugs" value="Rugs">
-                  </li>
-                  <li>
-                    <button type="button" id="fpClear">Clear</button>
-                  </li>
-                </ul>
-
-                <h3 id='pref-list'>Color Preferences</h3>
-                <ul>
-                  <li>
-                    <label for="Black">Black</label>
-                    <input type="checkbox" id="Black" name="Black" value="Black">
-                  </li>
-                  <li>
-                    <label for="White">White</label>
-                    <input type="checkbox" id="White" name="White" value="White">
-                  </li>
-                  <li>
-                    <label for="Brown">Brown</label>
-                    <input type="checkbox" id="Brown" name="Brown" value="Brown">
-                  </li>
-                  <li>
-                    <label for="Yellow">Yellow</label>
-                    <input type="checkbox" id="Yellow" name="Yellow" value="Yellow">
-                  </li>
-                  <li>
-                    <label for="Oak">Oak</label>
-                    <input type="checkbox" id="Oak" name="Oak" value="Oak">
-                  </li>
-                  <li>
-                    <button type="button" id="cpClear">Clear</button>
-                  </li>
-                </ul>
-            </div>
-        </form>
-        <a href="preference_results.html">
-            <button id="pref">Save Preferences</button>
-        </a>
+                      <option>Select budget (per item)</option>
+                      <option>$0-$99</option>
+                      <option>$100-$199</option>
+                      <option>$200-$299</option>
+                      <option>$300+</option>
+                  </select>
+                  </div>
+  
+                  <h3 class="pref-head">Furniture Preferences</h3>
+                  <ul id='pref-list'>
+                    <li>
+                      <label for="Chairs">Chairs</label>
+                      <input type="checkbox" id="Chairs" name="Chairs" value="Chairs">
+                    </li>
+                    <li>
+                      <label for="Sofas">Sofas</label>
+                      <input type="checkbox" id="Sofas" name="Sofas" value="Sofas">
+                    </li>
+                    <li>
+                      <label for="Beds">Beds</label>
+                      <input type="checkbox" id="Beds" name="Beds" value="Beds">
+                    </li>
+                    <li>
+                      <label for="Drawers">Drawers</label>
+                      <input type="checkbox" id="Drawers" name="Drawer" value="Drawer">
+                    </li>
+                    <li>
+                      <label for="Rugs">Rugs</label>
+                      <input type="checkbox" id="Rugs" name="Rugs" value="Rugs">
+                    </li>
+                    <li>
+                      <button type="button" id="fpClear">Clear</button>
+                    </li>
+                  </ul>
+  
+                  <h3 class="pref-head">Color Preferences</h3>
+                  <ul id='pref-list'>
+                    <li>
+                      <label for="Black">Black</label>
+                      <input type="checkbox" id="Black" name="Black" value="Black">
+                    </li>
+                    <li>
+                      <label for="White">White</label>
+                      <input type="checkbox" id="White" name="White" value="White">
+                    </li>
+                    <li>
+                      <label for="Brown">Brown</label>
+                      <input type="checkbox" id="Brown" name="Brown" value="Brown">
+                    </li>
+                    <li>
+                      <label for="Yellow">Yellow</label>
+                      <input type="checkbox" id="Yellow" name="Yellow" value="Yellow">
+                    </li>
+                    <li>
+                      <label for="Oak">Oak</label>
+                      <input type="checkbox" id="Oak" name="Oak" value="Oak">
+                    </li>
+                    <li>
+                      <button type="button" id="cpClear">Clear</button>
+                    </li>
+                  </ul>
+              </div>
+          </form>
+          <div class="pref-button">
+            <a href="preference_results.html">
+                <button id="pref">Save Preferences</button>
+            </a>
+          </div>
+          <div class='clear'></div>
+      </div>
+    
     </div>
-
     <script src="preferenceFormScript.js"></script>
 </body>
 

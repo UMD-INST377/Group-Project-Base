@@ -1,13 +1,12 @@
+body {
+  background: #1db954;
+}
+
 #search {
     width: 500px;
 }
-
-body {
-    background: lightgreen;
-   
-  }
   
-  h1, h2{
+h1, h2{
     display: flex;
     justify-content: center;
     color: #000000;

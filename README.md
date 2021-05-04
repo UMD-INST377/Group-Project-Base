@@ -14,7 +14,7 @@ https://blooming-sea-07164.herokuapp.com/
 
 ## Developer Manuel
 
-#### See Below
+https://github.com/JacobVanderVat/Group28-Final-INST377SP2021/tree/Jacob#epl-stats-developer-manual
 
 # EPL Stats Developer Manual 
 

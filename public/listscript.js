@@ -20,11 +20,13 @@ function getData(){
         </table>
         `
     });
-    return html;
+
+    element = document.getElementById('contra1');
+    element.innerHTML = html;
 }
 
 function start(){
-    document.querySelector('.container').innerHTML = getData();
+    getData();
 }
 
 window.onload = start();

@@ -251,11 +251,6 @@ input[type=text], input[type=password] {
     background-color: rgb(82, 166, 218);
 }
 
-.addNewDiv {
-    background-color: lightgray;
-    height: 500px;
-}
-
 .errorText{
     color: red;
 }

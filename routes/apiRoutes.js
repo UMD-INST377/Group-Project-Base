@@ -48,7 +48,7 @@ router.put('/movie_actors', async (req, res) => {
       },
       {
         where: {
-          movie_id: req.body.actor_id
+          movie_id: req.body.movie_id
         }
       }
     );
@@ -59,6 +59,37 @@ router.put('/movie_actors', async (req, res) => {
   }
 });
 
+router.post('/movie_actors', async (req, res) => {
+  try {
+    const newMovies = await db.movie.create({
+      movie_id: req.body.movie_id,
+      actor_1_name: req.body.actor_1_name,
+      actor_2_name: req.body.actor_2_name,
+      actor_3_name: req.body.actor_3_name
+    });
+    res.json(newMovies);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/movie_actors', async (req, res) => {
+  try {
+    await db.movie.destroy({
+      where: {
+        movie_id: req.body.movie_id,
+        actor_1_name: req.body.actor_1_name,
+        actor_2_name: req.body.actor_2_name,
+        actor_3_name: req.body.actor_3_name
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 /// /////////////////////////////////
 /// ////////movie_content Endpoints/////////
 /// /////////////////////////////////
@@ -279,7 +310,7 @@ router.get('/movie/:movie_id', async (req, res) => {
   }
 });
 
-router.post('/movie_post', async (req, res) => {
+router.post('/movie', async (req, res) => {
   try {
     const newMovies = await db.movie.create({
       actor_id: currentId,
@@ -292,11 +323,11 @@ router.post('/movie_post', async (req, res) => {
   }
 });
 
-router.delete('/movie/:movie_id', async (req, res) => {
+router.delete('/movie', async (req, res) => {
   try {
     await db.movie.destroy({
       where: {
-        movie_id: req.params.movie_id
+        movie_id: req.body.movie_id
       }
     });
     res.send('Successfully Deleted');

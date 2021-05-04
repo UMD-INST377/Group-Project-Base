@@ -1,79 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="custom.css"></link>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <title>Custom Input Page</title>
-</head>
-<body>
-  <div class="dropdown is-active">
-    <div class="dropdown-trigger">
-      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-        <span>Menu</span>
-        <span class="icon is-small">
-          <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-      </button>
-    </div>
-    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-      <div class="dropdown-content">
-        <a href="index.html" class="dropdown-item">
-          Home
-        </a>
-        <a href="search.html" class="dropdown-item">
-          Search
-        </a>
-        <a href="custom.html" class="dropdown-item">
-          Custom Input
-        </a>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="custom.css"></link>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+      <title>Custom Input Page</title>
+  </head>
+  <body>
+    <div class="dropdown is-active">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span>Menu</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-content">
+          <a href="index.html" class="dropdown-item">
+            Home
+          </a>
+          <a href="search.html" class="dropdown-item">
+            Search
+          </a>
+          <a href="custom.html" class="dropdown-item">
+            Custom Input
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  <section class="section">
-    <h1 class="title is-1"
-    >History of Hits
-  </h1>
-    <h2 class="subtitle">
-      Powered by Spotify
-    </h2>
-</section>
-    <h1 class="title">Custom Input</h1>
-    <div class="container is-max-desktop">
-            <ul class="flex-outer">
-              <li>
-                <label for="song">Song Name</label>
-                <input name="undefined" type="text" id="song">
-              </li>
-              <li>
-                <label for="artist">Artist</label>
-                <input name="undefined" type="text" id="artist">
-              </li>
-              <li>
-                <label for="alnum">Album</label>
-                <input name="undefined" type="text" id="album">
-              </li>
-              <li>
-                <label for="genre">Genre</label>
-                <input name="undefined" type="text" id="genre">
-              </li>
-              <li>
-                <label for="addinfo">Additional Information (optional)</label>
-                <textarea name="message" rows="5" cols="33" id="addinfo"></textarea>
-              </li>
-              <li>
-                <label for="link">Link (optional)</label>
-                <input name="undefined" type="text" id="link">                
-              </li>
-              <li>
-                <button class="button" name="undefined" id ="submit" type="submit">Submit</button>
-                <label for="submit"></label>
-              </li>
-            </ul>
-    </div>
-      
-    
-</body>
+    <section class="section">
+      <h1 class="title is-1"
+      >History of Hits
+    </h1>
+      <h2 class="subtitle">
+        Powered by Spotify
+      </h2>
+  </section>
+      <h1 class="title">Custom Input</h1>
+      <div class="container is-max-desktop">
+              <ul class="flex-outer">
+                <li>
+                  <label for="song">Song Name</label>
+                  <input name="undefined" type="text" id="song">
+                </li>
+                <li>
+                  <label for="artist">Artist</label>
+                  <input name="undefined" type="text" id="artist">
+                </li>
+                <li>
+                  <label for="alnum">Album</label>
+                  <input name="undefined" type="text" id="album">
+                </li>
+                <li>
+                  <label for="genre">Genre</label>
+                  <input name="undefined" type="text" id="genre">
+                </li>
+                <li>
+                  <label for="addinfo">Additional Information (optional)</label>
+                  <textarea name="message" rows="5" cols="33" id="addinfo"></textarea>
+                </li>
+                <li>
+                  <label for="link">Link (optional)</label>
+                  <input name="undefined" type="text" id="link">                
+                </li>
+                <li>
+                  <button class="button" name="undefined" id ="submit" type="submit">Submit</button>
+                  <label for="submit"></label>
+                </li>
+              </ul>
+      </div>
+  </body>
+<script src="index.js"></script>
 </html>

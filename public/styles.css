@@ -1,3 +1,7 @@
+html {
+    background-color: #cfe5fc;
+}
+
 .topImgContainer {
     display: flex;
     justify-content: space-between;
@@ -58,6 +62,45 @@ li a:hover {
     border-style:double;
     height:600px;
     background-color: lightsteelblue;
+}
+
+.secondContainer {
+    margin-top: 50px;
+    border: black;
+    border-style:double;
+    height:600px;
+    background-color: lightsteelblue;
+    /* text-align:center; */
+}
+
+.pref-head {
+    font-weight: bold;
+    font-size: 22px;
+    color: black;
+    padding-left: 50px;
+    padding-top: 20px;
+}
+
+.select {
+    padding-left: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#pref-list {
+    padding-left: 70px;
+}
+
+.pref-button {
+    text-align: center;
+}
+
+.pref-item {
+    display: flex;
+}
+
+#pref-head {
+    text-align: left;
 }
 
 .pref-box {

@@ -43,11 +43,12 @@
       </form>
 
         
+    <div class="secondContainer">
       
       <h1 class="aboutTitle" id='pref-form'>College Room Redesign</h1>
         <form class="preferenceForm">
             <div class="field control">
-                <h3 id='pref-list'>Budget</h3>
+                <h3 class="pref-head" id='pref-list'>Budget</h3>
                 <div class="select" id='dropdown'>
                 <select class="budgetSelect">
                   <option value=0>Select budget (per item)</option>
@@ -58,7 +59,7 @@
                 </select>
                 </div>
 
-                <h3>Furniture Preferences</h3>
+                <h3 class="pref-head">Furniture Preferences</h3>
                 <ul id='pref-list-furn'>
                   <li>
                     <label for="Chairs">Chairs</label>
@@ -85,8 +86,8 @@
                   </li>
                 </ul>
 
-                <h3 id='pref-list-color'>Color Preferences</h3>
-                <ul>
+                <h3 class="pref-head" id='pref-list-color'>Color Preferences</h3>
+                <ul id='pref-list'>
                   <li>
                     <label for="Black">Black</label>
                     <input type="checkbox" class="colorCheckbox" name="Black" value="Black">
@@ -114,9 +115,14 @@
             </div>
             <input type="submit" value="Calculate Results"></input>
         </form>
+        <div class="pref-button">
+          <a href="preference_results.html">
+              <button id="pref">Save Preferences</button>
+          </a>
+        </div>
         <p class="errorText"></p>
+    </div>  
     </div>
-
     <script src="preferenceFormScript.js"></script>
 </body>
 

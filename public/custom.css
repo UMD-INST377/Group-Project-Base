@@ -1,83 +1,85 @@
- body {
-    background: lightgreen;
-   
-  }
-  
-  h1{
-    display: flex;
-    justify-content: center;
-    color: #000000;
-  }
-  
-  .container{
-    display: flex;
-    justify-content: center;
-    background-color: grey;
-    max-width: 400px;
-    gap: 50px;
-  }
-  
-label, textarea {
-    text-align: center;
-    font-size: medium;
-    display: block;
-    color: #000000;
-    width: 320px;
-  
-  }
+body {
+  background: lightgreen;
+ 
+}
 
-  input{
-    width: 320px; 
-  }
+h1, h2{
+  display: flex;
+  justify-content: center;
+  color: #000000;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  background-color: grey;
+  max-width: 400px;
+  gap: 50px;
+}
+
+.button{
+  justify-content: center;
+}
+
+label, textarea {
+  text-align: center;
+  font-size: medium;
+  display: block;
+  color: #000000;
+  width: 320px;
+
+}
+input{
+  width: 320px;  
+}
+
+
+.flex-outer{
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  max-width: 1100px;
+  margin: 5% 2.5%;
+
+}
+
+
+
+.flex-outer li{
+  flex-wrap: wrap;
+  justify-content: center;
   
+}
+
+.flex-outer > li:not(:last-child) {
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  width: 320px;
+  justify-content: center;
+}
+
+.flex-outer > li > label + *{
+  flex: 1 0 220px;
+  justify-content: center;
   
-  .flex-outer{
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-    max-width: 1100px;
-    margin: 5% 2.5%;
+}
+
+.flex-outer li p {
+  margin: 0;
+  justify-content: center;
   
-  }
+}
+
+
+.flex-outer li textarea {
+  padding: 0px;
+  border: none;
+  justify-content: center;
   
-  
-  
-  .flex-outer li{
-    flex-wrap: wrap;
-    justify-content: center;
-    
-  }
-  
-  .flex-outer > li:not(:last-child) {
-    margin-bottom: 10px;
-    justify-content: center;
-  }
-  
-  .flex-outer > li > label,
-  .flex-outer li p {
-    flex: 1 0 120px;
-    width: 320px;
-    justify-content: center;
-  }
-  
-  .flex-outer > li > label + *{
-    flex: 1 0 220px;
-    justify-content: center;
-    
-  }
-  
-  .flex-outer li p {
-    margin: 0;
-    justify-content: center;
-    
-  }
-  
-  
-  .flex-outer li textarea {
-    padding: 0px;
-    border: none;
-    justify-content: center;
-    
-  }
-  
-  
+}
+

@@ -2,17 +2,13 @@ html {
     background-color: #cfe5fc;
 }
 
-.topImgContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
 .logo {
+    margin-top: 10px;
     width: 140px;
     height: 60px;
     display: block;
-    margin-left: 580px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .admin {
@@ -68,7 +64,7 @@ li a:hover {
     margin-top: 50px;
     border: black;
     border-style:double;
-    height:600px;
+    /* height:600px; */
     background-color: lightsteelblue;
     /* text-align:center; */
 }
@@ -87,25 +83,9 @@ li a:hover {
     padding-bottom: 10px;
 }
 
-#pref-list {
-    padding-left: 70px;
-}
-
-.pref-button {
+/* .pref-button {
     text-align: center;
-}
-
-.pref-item {
-    display: flex;
-}
-
-#pref-head {
-    text-align: left;
-}
-
-.pref-box {
-    padding: 20px;
-}
+} */
 
 .intro {
     margin-left: 20px;
@@ -121,7 +101,7 @@ li a:hover {
     width: 30vw;
 }
 
-#pref {
+.pref {
     background-color: midnightblue;
     border: none;
     color: white;
@@ -134,9 +114,14 @@ li a:hover {
     border-radius: 8px;
 }
 
-#pref:hover {
+.pref:hover {
     background-color: rgb(82, 166, 218);
     cursor: pointer;
+}
+
+#viewAll {
+    position: absolute; 
+    right: 0;
 }
 
 .imageWheel {
@@ -227,21 +212,21 @@ hr {
     width: 465px;
 }
 
-.loginperson {
+/* .loginperson {
     border-radius: 150px;
     height: 150px;
     width: 150px;
     text-align: center;
-}
+} */
 
 .loginContain {
     display: flex;
     flex-direction: column;
 }
 
-.loginForm {
+/* .loginForm {
     border: 3px solid #f1f1f1;
-}
+} */
 
 input[type=text], input[type=password] {
     width: 100%;
@@ -264,11 +249,6 @@ input[type=text], input[type=password] {
 
 .loginbutton:hover {
     background-color: rgb(82, 166, 218);
-}
-
-.addNewDiv {
-    background-color: lightgray;
-    height: 500px;
 }
 
 .errorText{

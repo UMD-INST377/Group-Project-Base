@@ -177,7 +177,8 @@ router.put('/applicants', async (req, res) => {
         last_name: req.body.last_name,
         first_name: req.body.first_name,
         phone_number: req.body.phone_number,
-        age: req.body.age
+        age: req.body.age,
+        email_address: req.body.email_address
       },
       {
         where: {

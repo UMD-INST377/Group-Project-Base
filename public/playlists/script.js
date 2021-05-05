@@ -18,7 +18,7 @@ async function windowActions() {
             return `
             <tr>
             <th class="tbody"><a href="/updatePlaylists/index.html">${playName}</a></th>
-            <td class="tbody">${item.number_of_songs}</td>
+            <td class="tbody"><a href='/SongDetails/index.html'>${item.number_of_songs}</a></td>
             <td class="tbody">${item.total_time}</td>
             </tr>`;
         }).join('');

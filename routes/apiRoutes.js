@@ -223,4 +223,23 @@ router.get('/songDetails/:song_details_id', async (req, res) => {
   }
 });
 
+router.route('/wholePlaylist')
+  .get(async (req, res) => {
+    try {
+      const playlists = await db.Playlist.findAll();
+      const pdetails = await db.PlaylistDetails.findAll();
+      const wholePlaylists = pdetails.map((play) => {
+        const playEntry = playlists.find((detail) => detail.playlist_id === play.FK_playlist_id);
+        return {
+          ...play.dataValues,
+          ...playEntry.dataValues
+        };
+      });
+      res.json({data: wholePlaylists});
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+
 export default router;

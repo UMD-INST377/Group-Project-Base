@@ -15,7 +15,6 @@ async function populateAnimals() {
       <td>${animal.status}</td>
       <td>${animal.gender}</td>
       <td>${animal.Animal_type_species_id}</td>
-      <td>${animal.description}</td>
       `;
     animalTable.append(appendAnimal);
     console.table(animalData);

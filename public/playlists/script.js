@@ -14,7 +14,7 @@ async function windowActions() {
         const matchArray = findMatches(event.target.value, playlist);
         const html = matchArray.map(item => {
             const regex = RegExp(event.target.value, 'g');
-            const playName = item.playlist_name.replace(regex, `<span class="hl">${event.target.value}</span>`);
+            const playName = item.playlist_name.replace(regex, `${event.target.value}`);
             return `
             <tr>
             <th class="tbody"><a href="/updatePlaylists/index.html">${playName}</a></th>

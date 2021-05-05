@@ -14,7 +14,7 @@ export default (database, DataTypes) => {
     { freezeTableName: true, timestamps: false }
   );
   Themes.associate = (models) => {
-    Themes.belongsTo(models.Media, {
+    Themes.hasMany(models.Media, {
       foreignKey: 'media_id'
     });
   };

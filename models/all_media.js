@@ -41,22 +41,22 @@ export default (sequelize, DataTypes) => {
   // Media.associate does a table join and lets you access data without needing a loop
   // when you get Media, you can get all of the Backgrounds related to it
   Media.associate = (models) => {
-    Media.belongsTo(models.Backgrounds, {
+    Media.hasMany(models.Backgrounds, {
       foreignKey: 'background_id'
     });
   };
   Media.associate = (models) => {
-    Media.belongsTo(models.Creators, {
+    Media.hasMany(models.Creators, {
       foreignKey: 'creator_id'
     });
   };
   Media.associate = (models) => {
-    Media.belongsTo(models.Themes, {
+    Media.hasMany(models.Themes, {
       foreignKey: 'theme_id'
     });
   };
   Media.associate = (models) => {
-    Media.belongsTo(models.Genres, {
+    Media.hasMany(models.Genres, {
       foreignKey: 'genre_id'
     });
   };

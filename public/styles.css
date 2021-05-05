@@ -170,7 +170,7 @@ form {
     margin-right: 20px;
 }
 
-.content_element {
+/* .content_element {
     padding: 5%;
     outline-style: solid;
     outline-color: rgb(0, 0, 0);
@@ -179,7 +179,7 @@ form {
     margin-bottom: 20px;
     margin-left: 20px;
     margin-right: 20px;
-}
+} */
 
 /* when max-width is 992px or less */
 @media (max-width: 992px){

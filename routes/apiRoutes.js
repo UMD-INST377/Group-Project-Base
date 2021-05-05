@@ -119,6 +119,43 @@ router.get('/playlists/:playlist_id', async (req, res) => {
   }
 });
 
+router.delete('/playlists/:playlist_id', async (req, res) => {
+  try {
+    await db.Playlist.destroy({
+      where: {
+        playlist_id: req.params.playlist_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    response.error('Server error');
+  }
+});
+
+router.put('/playlists', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.Playlist.update(
+      {
+        playlist_name: req.body.playlist_name,
+        number_of_songs: req.body.number_of_songs,
+        number_of_followers: req.body.number_of_followers,
+        total_time: req.body.total_time,
+      },
+      {
+        where: {
+          playlist_id: req.body.playlist_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// /////////////////////////////////
 /// ////////songs Endpoints/////////
 /// /////////////////////////////////
@@ -143,6 +180,20 @@ router.get('/songs/:song_id', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.error('Server error');
+  }
+});
+
+router.delete('/songs/:song_id', async (req, res) => {
+  try {
+    await db.Songs.destroy({
+      where: {
+        song_id: req.params.song_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    response.error('Server error');
   }
 });
 
@@ -182,6 +233,20 @@ router.get('/playlistDetails', async (req, res) => {
   }
 });
 
+router.delete('/playlistDetails/:playlist_details_id', async (req, res) => {
+  try {
+    await db.PlaylistDetails.destroy({
+      where: {
+        playlist_details_id: req.params.playlist_details_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    response.error('Server error');
+  }
+});
+
 router.get('/playlistDetails/:playlist_details_id', async (req, res) => {
   try {
     const pDetails = await db.PlaylistDetails.findAll({
@@ -190,6 +255,27 @@ router.get('/playlistDetails/:playlist_details_id', async (req, res) => {
       }
     });
     res.json(pDetails);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/playlistDetails', async (req, res) => {
+  try {
+    // N.B. - this is a good example of where to use code validation to confirm objects
+    await db.PlaylistDetails.update(
+      {
+        song_title: req.body.song_title,
+        song_duration: req.body.song_duration,
+      },
+      {
+        where: {
+          playlist_details_id: req.body.playlist_details_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');

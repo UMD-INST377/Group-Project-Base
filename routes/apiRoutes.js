@@ -367,4 +367,22 @@ router.get('/employeeMapCustom', async (req, res) => {
   }
 });
 
+const websiteMapCustom = `SELECT website_name,
+  shelter_name
+FROM
+  websites w
+INNER JOIN shelters s 
+  ON w.Shelters_shelter_id = s.shelter_id`;
+router.get('/websiteMapCustom', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(websiteMapCustom, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

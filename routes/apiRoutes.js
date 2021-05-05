@@ -58,19 +58,6 @@ router.put('/movie_actors', async (req, res) => {
   }
 });
 
-router.delete('/movie_actors/:movie_id', async (req, res) => {
-  try {
-    await db.movie.destroy({
-      where: {
-        movie_id: req.params.movie_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 /// /////////////////////////////////
 /// ////////movie_content Endpoints/////////
 /// /////////////////////////////////
@@ -250,6 +237,7 @@ router.post('/movie', async (req, res) => {
       movie_id: req.body.movie_id,
       movie_title: req.body.movie_title,
       title_year: req.body.title_year,
+      country: req.body.country,
       director_name: req.body.director_name
     });
     res.json(newMovies);

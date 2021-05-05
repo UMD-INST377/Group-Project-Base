@@ -149,6 +149,7 @@ router.put('/movie_imdb_ratings', async (req, res) => {
         }
       }
     );
+    res.header('Access-Control-Allow-Origin','*');
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
@@ -208,8 +209,11 @@ router.put('/movie_technicals', async (req, res) => {
 /// ////////movie Endpoints/////////
 /// /////////////////////////////////
 router.get('/movie', async (req, res) => {
+  // console.log(111);
   try {
     const movies = await db.movie.findAll();
+    // console.log(movies);
+    res.header('Access-Control-Allow-Origin', '*');
     res.send(movies);
   } catch (err) {
     console.error(err);

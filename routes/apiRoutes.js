@@ -724,7 +724,6 @@ router.route('/rebounds-custom')
     res.send('Action unavailable');
   });
 
-<<<<<<< HEAD
 /// ///////////////////////////////////////////
 /// /// Steals Per Game Custom SQL Endpoint ///
 /// ///////////////////////////////////////////
@@ -737,32 +736,12 @@ router.route('/steals-custom')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(stealsCustom, {
-=======
-/// ///////////////////////////
-/// /// Custom SQL Endpoint ///
-/// ///////////////////////////
-const teamCustomfull = `SELECT team_location, team_name, year_founded, name AS stadium_name, head_coach, general_manager, owner, head_physician, ceo, cfo, player_amount
-FROM team_info JOIN team_staff
-	USING (team_id)
-JOIN stadium_info
-  USING (team_id)
-ORDER BY year_founded, team_location;`;
-
-router.route('/teamCustomfull')
-  .get(async (req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(teamCustomfull, {
->>>>>>> 5a96152199e2d6737959c6909cd71db2f80079f6
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
     } catch (err) {
       console.error(err);
-<<<<<<< HEAD
       res.send('Server error at stealsCustom GET');
-=======
-      res.send('Server error');
->>>>>>> 5a96152199e2d6737959c6909cd71db2f80079f6
     }
   })
   .post(async (req, res) => {
@@ -775,7 +754,6 @@ router.route('/teamCustomfull')
     res.send('Action unavailable');
   });
 
-<<<<<<< HEAD
 /// ///////////////////////////////////////////
 /// /// Blocks Per Game Custom SQL Endpoint ///
 /// ///////////////////////////////////////////
@@ -806,7 +784,4 @@ router.route('/blocks-custom')
     res.send('Action unavailable');
   });
   
-=======
-
->>>>>>> 5a96152199e2d6737959c6909cd71db2f80079f6
 export default router;

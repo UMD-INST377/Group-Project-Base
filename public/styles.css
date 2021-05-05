@@ -115,19 +115,40 @@ table {
     font-weight: bold;
     font-size: 22px;
     color: black;
-    padding-left: 50px;
-    padding-top: 20px;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .select {
-    padding-left: 70px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-/* .pref-button {
-    text-align: center;
-} */
+#pref-list-furn {
+    margin-left: 50px;
+    margin-right: 170px;
+    text-align: right;
+}
+
+#pref-list {
+    margin-left: 50px;
+    margin-right: 170px;
+    text-align: right;
+}
+
+.prefCheckbox {
+    margin: 10px;
+}
+
+.colorCheckbox {
+    margin: 10px;
+}
+
+.preferenceForm {
+    width: 30%;
+}
 
 .intro {
     margin-left: 20px;
@@ -154,6 +175,7 @@ table {
     font-size: 16px;
     margin: 10px;
     border-radius: 8px;
+    width: 98%;
 }
 
 .pref:hover {

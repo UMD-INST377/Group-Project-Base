@@ -130,3 +130,13 @@ table {
     background-color: #2b2b2b;
     padding: 1.5rem;
 }
+/* List Items */
+
+li {
+    margin-bottom: 40px;
+    color: black;
+}
+
+.box {
+    background-image: linear-gradient(#e45353,lightgray)
+}

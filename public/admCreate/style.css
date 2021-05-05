@@ -19,7 +19,8 @@ h1 {
 
 .label {
     text-align: center;
-    color: white;
+    color: black;
+}
 
 .box {
     background-color:  rgb(98, 0, 255);

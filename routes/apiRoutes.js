@@ -314,11 +314,14 @@ router.route('/wholePlaylist')
     try {
       const playlists = await db.Playlist.findAll();
       const pdetails = await db.PlaylistDetails.findAll();
+      const songs = await db.Songs.findAll();
       const wholePlaylists = pdetails.map((play) => {
         const playEntry = playlists.find((detail) => detail.playlist_id === play.FK_playlist_id);
+        const songEntry = songs.find((song) => song.song_id === play.FK_song_id);
         return {
           ...play.dataValues,
-          ...playEntry.dataValues
+          ...playEntry.dataValues,
+          ...songEntry.dataValues
         };
       });
       res.json({data: wholePlaylists});

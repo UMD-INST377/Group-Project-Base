@@ -13,6 +13,30 @@ const delForm = document.querySelector('#deleteForm')
 const delProdID = document.querySelector('#delproductid')
 
 
+const updateForm = document.querySelector('#updateForm')
+const UPproductid = document.querySelector('#UPproductid')
+const UPdescription = document.querySelector('#UPdescription')
+const UPfamilyid = document.querySelector('#UPfamilyid')
+
+
+
+updateForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    console.info('submitted', event.target);
+    const update = await fetch('/api/products/' + UPproductid.value, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            product_id: productid.value,
+            product_description: UPdescription.value,
+            family_id: UPfamilyid.value
+        })
+    })
+})
+
+
 delForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const delRecord = await fetch('/api/products/' + delProdID.value, {

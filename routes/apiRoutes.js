@@ -707,7 +707,7 @@ router.post('/products', async (req, res) => {
 });
 
 // Update or change record in products table
-router.put('/products', async (req, res) => {
+router.put('/products/:product_id', async (req, res) => {
   try {
     await db.products.update(
       {
@@ -717,7 +717,7 @@ router.put('/products', async (req, res) => {
       },
       {
         where: {
-          product_id: req.body.product_id
+          product_id: req.params.product_id
         }
       }
     );

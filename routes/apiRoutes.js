@@ -346,9 +346,18 @@ router.get('/speciesMapCustom', async (req, res) => {
   }
 });
 
-router.get('/custom', async (req, res) => {
+const employeeMapCustom = `SELECT CONCAT(last_name, " ", first_name) AS name,
+  e.phone_number,
+  age,
+  employee_type,
+  shelter_name
+FROM
+  employees e
+INNER JOIN shelters s 
+  ON e.Shelters_shelter_id = s.shelter_id`;
+router.get('/employeeMapCustom', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(req.body.query, {
+    const result = await db.sequelizeDB.query(employeeMapCustom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);

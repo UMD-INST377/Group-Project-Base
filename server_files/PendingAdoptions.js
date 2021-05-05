@@ -24,5 +24,6 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
+  PendingAdoptions.belongsTo(Animals, {foreignKey: 'animal_id'})
   return PendingAdoptions;
 };

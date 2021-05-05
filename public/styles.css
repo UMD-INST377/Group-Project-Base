@@ -1,5 +1,5 @@
 html{
-    background-color: rgb(250, 217, 32); 
+    background-color: rgb(224, 237, 255); 
 
 }
 
@@ -60,7 +60,31 @@ table, th, td {
   padding: 0px 10px;
 }
 
+.about {
+  font-size: large;
+  border-style: groove;
+  border-width: 10px;
+  border-color: aquamarine;
+
+}
+
+.animal_pics {
+  text-align: left;
+  right: 150px;
+  width: 200px;
+  height: 120px;
+  list-style-type: none;
+}
+
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

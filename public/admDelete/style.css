@@ -62,7 +62,13 @@ nav {
 
 #bookTitle {
     margin-top: 20px;
+    text-align: center;
 }
+
+#bookTitle img {
+    max-height: 234px;
+    max-width: 155px;
+  }
 
 #bookTitle, #delCheck {
     color:white;

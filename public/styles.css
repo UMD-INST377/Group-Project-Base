@@ -84,9 +84,10 @@ a {
     object-fit: cover;
     object-position: bottom;
     /* margin-left: 25%;     */
+    /* max-width: 50%; */
 }
 
-img {
+.content img {
     height: auto;
     max-width: 50%;
 }

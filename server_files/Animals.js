@@ -26,5 +26,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
+    Animals.associate = (models) => {
+      Animals.hasOne(models.PendingAdoptions, {
+        foreignKey: 'animal_id'
+      });
+    };
   return Animals;
 };

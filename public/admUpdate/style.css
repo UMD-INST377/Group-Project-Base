@@ -8,7 +8,14 @@ body {
 }
 
 h2{
+    color:white;
     font-size: 25px;
+}
+
+h3{
+    color:white;
+    font-size: 18px;
+
 }
 
 .updateForm{
@@ -20,11 +27,12 @@ h2{
 }
 li{
     margin: 4px;
+    
 }
 
 h1, h2, h3 {
     font-family: 'Lemonada';
-    color: #2a2a2a;
+    
   }
 
 h1 {

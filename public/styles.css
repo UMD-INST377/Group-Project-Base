@@ -78,6 +78,11 @@ table {
     margin: 10px;
 }
 
+.products-table {
+    width:100%;
+    table-layout: fixed;
+}
+
 .thFam {
     text-align: left;
 }
@@ -98,7 +103,7 @@ table {
 
 .adminContainer {
     margin-top: 50px;
-    max-width: 60%;
+    /* max-width: 60%; */
     border: black;
     border-style:double;
     /* height:600px; */

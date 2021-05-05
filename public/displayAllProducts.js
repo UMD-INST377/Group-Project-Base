@@ -28,6 +28,9 @@ async function productsTable() {
         productsFam.innerText = product.family_id;
         productsCatg.innerText = product.category_id;
 
+        productsImage.style.height = '20vw';
+        productsImage.style.width = 'auto';
+
         productsBody.append(productsRow);
         productsRow.append(productsPrice);
         productsRow.appendChild(productsImage);

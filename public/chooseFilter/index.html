@@ -3,8 +3,10 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Search Page</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Cinzel+Decorative:700" rel="stylesheet">
+  <link href="https:fonts.googleapis.com/css?family=Roboto+Condensed:300|Cinzel+Decorative:700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"> -->
   <link href="style.css" rel="stylesheet">
 
@@ -23,30 +25,67 @@
   </div>
   <form class='userform' id="filterForm" action="../queryResults/">
     <label for="keyword"></label>
+    
     <input type='text' class='keyword' name="keyword" id="keyword" placeholder="Type a Keyword"></input>
 
 
 
     <div class='main'>
       <!-- <div class='choosefilter'> -->
-      <p class='choose_filter'>Choose Filter</p>
+      <p3 class='choose_filter'>Choose Filter</p>
+      <p1>Rating</p>
       <ul class="flex-inner" style="list-style-type:none;">
+
         <li>
-          <input type="checkbox" id="ratings-over-5">
-          <label for="ratings-over-5">Ratings above 5 stars</label>
+          <div class="select is-multiple">
+            <select multiple size="2">
+              <option> Less than 50 </option>
+              <option> 50-69 </option>
+              <option>70-79 </option>
+              <option> 80-89 </option>
+              <option> 90-100 </option>
+            </select>
+          </div>
         </li>
+        
+          <p2>Genre</p>
+
+
         <li>
-          <input type="checkbox" id="ratings-over-4">
-          <label for="ratings-over-4">Ratings above 4 stars</label>
+          <div class="select is-multiple">
+            <select multiple size="3">
+              <option> Young Adult </option>
+              <option> Fantasy </option>
+              <option> Children </option>
+              <option> Science Fiction</option>
+              <option> Thriller/Mystery </option>
+              <option> Romance </option>
+              <option> Historical </option>
+              <option> Drama </option>
+              <option> Poetry </option>
+              <option> Horror </option>
+              <option> Crime </option>
+              <option> Graphic </option>
+              <option> Humor </option>
+              <option> Self-Help </option>
+              <option> Biography </option>
+              <option> Children Literature </option>
+            </select>
+          </div>
         </li>
-        <li>
-          <input type="checkbox" id="filter-by-genre">
-          <label for="filter-by-genre">Filter by genre</label>
-        </li>
-        <li>
-          <input type="checkbox" id="filter-by-author">
-          <label for="filter-by-author">Filter by author</label>
-        </li>
+        <p2>Author</p>
+        
+          <li>
+            <div class="select is-multiple">
+              <select multiple size="2">
+                <option> Less than 50 </option>
+                <option> 50-69 </option>
+                <option>70-79 </option>
+                <option> 80-89 </option>
+                <option> 90-100 </option>
+              </select>
+            </div>
+          </li>
         <!-- <li>
             <input type="checkbox" id="skip">
             <label for="skip">Skip Filter</label>

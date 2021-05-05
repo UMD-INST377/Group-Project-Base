@@ -304,14 +304,17 @@ router.get('/websites/:website_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const applicantMapCustom = `SELECT CONCAT(first_name, " ", last_name) AS name,
+const applicantMapCustom = `SELECT CONCAT(first_name, " ", last_name) AS app_name,
+  name,
   applicant_id,
   start_date,
   end_hold_date
 FROM
-  applicants a
-INNER JOIN pending_adoptions p 
-  ON a.applicant_id = p.Applicants_applicant_id`;
+  pending_adoptions p
+INNER JOIN applicants a 
+  ON a.applicant_id = p.Applicants_applicant_id
+INNER JOIN animals m 
+  ON m.animal_id = p.Animals_animal_id`;
 router.get('/applicantMapCustom', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(applicantMapCustom, {
@@ -324,16 +327,17 @@ router.get('/applicantMapCustom', async (req, res) => {
   }
 });
 
-const animalMapCustom = `SELECT name,
-  animal_id,
-  adopt_id
+const speciesMapCustom = `SELECT name,
+  status,
+  gender,
+  species_name
 FROM
   animals a
-INNER JOIN pending_adoptions p 
-  ON a.animal_id = p.Animals_animal_id`;
-router.get('/animalMapCustom', async (req, res) => {
+INNER JOIN animal_type t 
+  ON a.Animal_type_species_id = t.species_id`;
+router.get('/speciesMapCustom', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(animalMapCustom, {
+    const result = await db.sequelizeDB.query(speciesMapCustom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);
@@ -342,6 +346,7 @@ router.get('/animalMapCustom', async (req, res) => {
     res.error('Server error');
   }
 });
+
 router.get('/custom', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(req.body.query, {

@@ -18,6 +18,10 @@ export default (database, DataTypes) => {
       },
       age: {
         type: DataTypes.INTEGER
+      },
+      email_address: {
+        type: DataTypes.STRING,
+        allowNull: false
       }
     },
     { freezeTableName: true, timestamps: false }

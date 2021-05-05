@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Group 14 Final Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    </head>
+
+    <body>
+      <nav>
+        <div class="logo">
+          <h1 id="logo-name">Movie Curation</h1>
+        </div>
+        <ul>
+          <li><a class= "active" href="index.html">Home</a></li>
+          <li><a class= "active" href="about.html">About Us</a></li>
+          <li><a class= "active" href="movielist.html">Movie List</a></li>  
+          <li><a class= "active" href="moviedatabase.html">Movie Database</a></li>  
+        </ul>
+      </nav> 
+
+      <header>
+        <h1>Add New Movie</h1>
+      </header>
+
+         <form action="/api" method="POST">
+            <ul class="addmovie-form">
+                <li>
+                    <label for="mname">Name of Movie: </label>
+                    <input type="text" name="fname" id="fname">
+                </li>
+
+                <li>
+                    <label for='email'>Year: </label>
+                    <input id='email' name='email' type='email'/>
+                </li>
+
+                <li>
+                    <label for="lname">Genre: </label>
+                    <div class="select">
+                        <select>
+                            <option>Action</option>
+                            <option>Comedy</option>
+                            <option>Romance</option>
+                            <option>Horror</option>
+                            <option>Drama</option>
+                            <option>No preference</option>
+                        </select>
+                    </div>
+                </li>
+
+                <li>
+                    <label for="lname">Production Company: </label>
+                    <div class="select">
+                        <select>
+                            <option>Warner Bros.</option>
+                            <option>New Line Cinema</option>
+                            <option>Twentieth Century Fox</option>
+                            <option>Fox 2000 Pictures</option>
+                            <option>Pixar Animation Studios	</option>
+                            <option>Metro-Goldwyn-Mayer (MGM)</option>
+                            <option>Alloy Entertainment</option>
+                            <option>Warner Bros. Pictures</option>
+                            <option>New Line Cinema</option>
+                        </select>
+                    </div>
+                </li>
+
+
+            </ul>
+        </form>
+
+      <form action="movielist.html" method="POST">
+        <input type="submit" id="submit-add" name="submit-ad" value="Submit"><br>
+      </form>
+        
+        <script src="./script.js"></script>
+    </body>
+
+    </body>
+</html>

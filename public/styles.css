@@ -1,54 +1,88 @@
-body {
-    /* bulma override /
-    / margin: 40px auto;
-      max-width: 650px; */
-    line-height: 1.6;
-    font-size: 18px;
-    color: #444;
-    padding: 0 10px;
-  }
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
 
-  .main{
-    font-weight: 500;
-  }
-  
-  h1,h2,h3 {
-    line-height: 1.2;
-  }
-  
-  #mapid {
-    height: 480px;
-  }
-  
-  .list-header {
-    font-weight: 500;
-    font-size: 1.25rem;
-  }
-  
-  .list-item {
-    border-radius: 4px;
-    color: rgba(25, 25, 25, 90);
-    background: yellow;
-    padding: 5px;
-  }
-  
-  /* Style the search field */
-  form.searchBar input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
-  }
-  
-  form.searchBar button:hover {
-    background: #0b7dda;
-  }
-  
-  /* Clear floats */
-  form.searchBar::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+}
+
+header {
+  font-size: 3rem;
+  color: black;
+  text-align: center;
+  float: left;
+  width: 100%;
+}
+
+#add-movie, #submit-add {
+  padding: 0.5rem;
+  font-size: 2rem;
+  border: none;
+  width: 50%;
+  height: 2em;
+  background-color: #ffbd59;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+
+nav {
+  background: black;
+  height: 170px;
+  width: 100%;
+}
+
+#logo-name {
+  color: white;
+  font-size: 55px;
+  line-height: 175px;
+  padding: 0 100px;
+  font-weight: bold; 
+  position: fixed;
+  top: 12px;
+  left: 0px;
+}
+
+nav ul {
+  float: right;
+  margin-right: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  line-height: 280px;
+  margin: 0 20px;
+}
+
+nav ul li a {
+  color: white;
+}
+
+a:hover {
+  background-color: yellow;
+}
+
+.homeimage {
+  height: 43%;
+  width: 43%;
+  position: absolute;
+  top: 300px;
+  right: 150px;
+}
+
+#our-device-title {
+  text-align: center;
+}
+
+.addmovie-form {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  background-color: #EEE;
+  padding: 55px;
+}

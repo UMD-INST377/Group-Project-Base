@@ -127,8 +127,7 @@ router.put('/animals', async (req, res) => {
         name: req.body.name,
         status: req.body.status,
         gender: req.body.gender,
-        Animal_type_species_id: req.body.Animal_type_species_id,
-        description: req.body.description
+        Animal_type_species_id: req.body.Animal_type_species_id
       },
       {
         where: {

@@ -29,10 +29,10 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  MuseumStaff.associate = (models) => {
-    MuseumStaff.hasOne(models.StaffRole, {
-      foreignKey: 'role_id'
-    });
-  };
+  // MuseumStaff.associate = (models) => {
+  //   MuseumStaff.hasOne(models.StaffRole, {
+  //     foreignKey: 'role_id'
+  //   });
+  // };
   return MuseumStaff;
 };

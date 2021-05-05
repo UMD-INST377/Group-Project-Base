@@ -14,10 +14,10 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  StaffRole.associate = (models) => {
-    StaffRole.belongsTo(models.MuseumStaff, {
-      foreignKey: 'role_id'
-    });
-  };
+  // StaffRole.associate = (models) => {
+  //   StaffRole.belongsTo(models.MuseumStaff, {
+  //     foreignKey: 'role_id'
+  //   });
+  // };
   return StaffRole;
 };

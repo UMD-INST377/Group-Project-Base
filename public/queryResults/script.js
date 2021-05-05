@@ -1,3 +1,6 @@
+
+//creates boxes that are html and populates boxes with author names
+
 function buildResultBoxes (validBooks) {
   // validBook[0] is the book_id
   // validBook[1] is a title

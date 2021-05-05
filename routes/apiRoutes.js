@@ -179,20 +179,21 @@ router.post('/popularBooks', async (req, res) => {
 });
 
 router.put('/popularBooks', async (req, res) => {
+  console.log('You have reached put endpoint', req.body);
   try {
     await db.popularBooks.update(
       {
-        title: req.body.title,
-        amount_sold: req.body.amount_sold,
-        publish_year: req.body.publish_year,
-        public_domain: req.body.public_domain,
-        google_user_percentage: req.body.google_user_percentage,
-        original_language: req.body.original_language,
-        authors_author_id: req.body.authors_author_id,
-        publishers_publisher_id: req.body.publishers_publisher_id,
-        artistic_movement_artistic_movement_id: req.body.artistic_movement_artistic_movement_id,
-        book_retailers_retailer_id: req.body.book_retailers_retailer_id,
-        book_description_description_id: req.body.book_description_description_id
+        title: req.body.title
+        // amount_sold: req.body.amountSold,
+        // publish_year: req.body.pubilshYear,
+        // public_domain: req.body.publicDomain,
+        // google_user_percentage: req.body.googleUserPercentage,
+        // original_language: req.body.originalLanguage,
+        // authors_author_id: req.body.authorId,
+        // publishers_publisher_id: req.body.publisherId,
+        // artistic_movement_artistic_movement_id: req.body.artisticMovementId,
+        // book_retailers_retailer_id: req.body.bookRetailersId,
+        // book_description_description_id: req.body.bookDescriptionId
       },
       {
         where: {
@@ -296,7 +297,7 @@ router.get('/popularBooksExpanded', async (req, res) => {
     LEFT JOIN artistic_movement ON artistic_movement_artistic_movement_id=artistic_movement_id
     JOIN genre_has_popular_books ON book_id =popular_books_book_id
     JOIN genre ON genre_genre_id=genre_id
-    `
+    `;
     const result = await db.sequelizeDB.query(sqlQuery, {
       type: sequelize.QueryTypes.SELECT
     });
@@ -320,10 +321,10 @@ router.get('/popularBooksExpanded/:book_id', async (req, res) => {
     JOIN genre_has_popular_books ON book_id =popular_books_book_id
     JOIN genre ON genre_genre_id=genre_id
     WHERE book_id = :book_id
-    `
+    `;
     const result = await db.sequelizeDB.query(sqlQuery, {
       replacements: { book_id: req.params.book_id },
-      type: sequelize.QueryTypes.SELECT 
+      type: sequelize.QueryTypes.SELECT
     });
 
     res.json(result);
@@ -345,7 +346,7 @@ router.get('/popularBooksExpandedNoGenre', async (req, res) => {
     LEFT JOIN publishers ON publishers_publisher_id=publisher_id
     LEFT JOIN book_retailers ON book_retailers_retailer_id=retailer_id
     LEFT JOIN artistic_movement ON artistic_movement_artistic_movement_id=artistic_movement_id
-    `
+    `;
     const result = await db.sequelizeDB.query(sqlQuery, {
       type: sequelize.QueryTypes.SELECT
     });

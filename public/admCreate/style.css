@@ -12,12 +12,13 @@ h1 {
     text-align: center;
 }
 
-.label, .input {
-    color: white;
+.input {
+    color: black;
     text-align: center;
 }
 
-.input {
+.label {
+    text-align: center;
     color: black;
 }
 

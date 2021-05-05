@@ -304,7 +304,7 @@ router.get('/websites/:website_id', async (req, res) => {
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
 const adoptionsCustom = 'SELECT `Animal_Shelter_Tracker`.`PendingAdoptions`.`adopt_id` AS `adopt_id`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`applicant_id` AS `applicant_id`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`animal_id` AS `animal_id`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`start_date` AS `start_date`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`end_hold_date` AS `end_hold_date` , `Animal_Shelter_Tracker`.`PendingAdoptions`.`shelter_id` AS `shelter_id`)';
-router.get('/table/data', async (req, res) => {
+router.get('/adoptionCustom', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(adoptionsCustom, {
       type: sequelize.QueryTypes.SELECT
@@ -318,16 +318,12 @@ router.get('/table/data', async (req, res) => {
 
 const animalMapCustom = `SELECT name,
   animal_id,
-  shelter_name,
-  shelter_id,
-  shelter_address
+  adopt_id
 FROM
-  PendingAdoptions p
-INNER JOIN Animals a 
-  ON p.animal_id = a.animal_id
-INNER JOIN Shelters s
-ON s.shelter_id = p.shelter_id;`;
-router.get('/map/data', async (req, res) => {
+  animals a
+INNER JOIN pending_adoptions p 
+  ON a.animal_id = p.Animals_animal_id`;
+router.get('/animalMapCustom', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(animalMapCustom, {
       type: sequelize.QueryTypes.SELECT

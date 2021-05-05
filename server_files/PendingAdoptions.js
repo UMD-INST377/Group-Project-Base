@@ -20,7 +20,7 @@ export default (database, DataTypes) => {
       },
       end_hold_date: {
         type: DataTypes.INTEGER
-      },
+      }
     },
     { freezeTableName: true, timestamps: false }
   );

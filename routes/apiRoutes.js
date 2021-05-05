@@ -156,6 +156,8 @@ router.get('/popularBooks/:book_id', async (req, res) => {
 router.post('/popularBooks', async (req, res) => {
   const books = await db.popularBooks.findAll();
   const currentId = (await books.length) + 1;
+  console.log(currentId)
+  console.log(req.body)
   try {
     const newBook = await db.popularBooks.create({
       book_id: currentId,

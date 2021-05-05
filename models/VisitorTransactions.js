@@ -17,11 +17,11 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: true }
   );
-  // VisitorTransactions.associate = (models) => {
-  //   VisitorTransactions.belongsTo(models.Visitors, {
-  //     foreignKey: 'visitor_id'
-  //   });
-  // };
+  VisitorTransactions.associate = (models) => {
+    VisitorTransactions.belongsTo(models.Visitors, {
+      foreignKey: "visitor_id",
+    });
+  };
   // VisitorTransactions.associate = (models) => {
   //   VisitorTransactions.belongsToMany(MuseumVisits, {
   //     through: 'visitors',

@@ -1,11 +1,6 @@
-import Backgrounds from './Backgrounds';
-import Creators from './Creators';
-import Genres from './Genres';
-import Themes from './Themes';
-
-// const media stores everything in all_media table
-export default (database, DataTypes) => {
-  const media = database.define(
+// const Media stores everything in all_media table
+export default (sequelize, DataTypes) => {
+  const Media = sequelize.define(
     'all_media',
     {
       media_id: {
@@ -43,25 +38,27 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  media.associate = (models) => {
-    Backgrounds.belongsTo(models.media, {
-      foreignKey: 'background_id' // linking primary key of media table to backgrounds. now, it's the foreign key in the backgrounds table
+  // Media.associate does a table join and lets you access data without needing a loop
+  // when you get Media, you can get all of the Backgrounds related to it
+  Media.associate = (models) => {
+    Media.belongsTo(models.Backgrounds, {
+      foreignKey: 'background_id'
     });
   };
-  media.associate = (models) => {
-    Creators.belongsTo(models.media, {
-      foreignKey: 'creator_id' 
+  Media.associate = (models) => {
+    Media.belongsTo(models.Creators, {
+      foreignKey: 'creator_id'
     });
   };
-  media.associate = (models) => {
-    Themes.belongsTo(models.media, {
+  Media.associate = (models) => {
+    Media.belongsTo(models.Themes, {
       foreignKey: 'theme_id'
     });
   };
-  media.associate = (models) => {
-    Genres.belongsTo(models.media, {
+  Media.associate = (models) => {
+    Media.belongsTo(models.Genres, {
       foreignKey: 'genre_id'
     });
   };
-  return media;
+  return Media;
 };

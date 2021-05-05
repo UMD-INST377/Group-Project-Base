@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-  const creators = database.define(
+  const Creators = database.define(
     'creators',
     {
       creator_id: {
@@ -25,10 +25,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  creators.associate = (models) => {
-    creators.belongsTo(models.roles, {
+  Creators.associate = (models) => {
+    Creators.belongsTo(models.Roles, {
       foreignKey: 'role_id' // role_id is a fk in creators
     });
   };
-  return creators;
+  return Creators;
 };

@@ -303,10 +303,17 @@ router.get('/websites/:website_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const adoptionsCustom = 'SELECT `Animal_Shelter_Tracker`.`PendingAdoptions`.`adopt_id` AS `adopt_id`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`applicant_id` AS `applicant_id`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`animal_id` AS `animal_id`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`start_date` AS `start_date`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`end_hold_date` AS `end_hold_date` , `Animal_Shelter_Tracker`.`PendingAdoptions`.`shelter_id` AS `shelter_id`)';
-router.get('/adoptionCustom', async (req, res) => {
+const applicantMapCustom = `SELECT CONCAT(first_name, " ", last_name) AS name,
+  applicant_id,
+  start_date,
+  end_hold_date
+FROM
+  applicants a
+INNER JOIN pending_adoptions p 
+  ON a.applicant_id = p.Applicants_applicant_id`;
+router.get('/applicantMapCustom', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(adoptionsCustom, {
+    const result = await db.sequelizeDB.query(applicantMapCustom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);

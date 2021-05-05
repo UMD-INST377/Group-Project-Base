@@ -125,9 +125,25 @@ table {
     padding-bottom: 10px;
 }
 
-/* .pref-button {
+#pref-list {
+    padding-left: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: black;
+    font-size: 18px;
+}
+
+#pref-list li {
+    padding-bottom: 5px;
+}
+
+#results {
+    padding-left: 50px;
+}
+
+.pref-button {
     text-align: center;
-} */
+}
 
 .intro {
     margin-left: 20px;
@@ -215,9 +231,9 @@ table {
     margin-left: 10px;
 }
 
-#dropdown {
+/* #dropdown {
     display: inline-block;
-}
+} */
 
 h1 {
     color: black;

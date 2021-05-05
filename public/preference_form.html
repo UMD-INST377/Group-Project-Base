@@ -43,13 +43,13 @@
       </form>
 
         
-    <div class="secondContainer">
-      
-      <h1 class="aboutTitle" id='pref-form'>College Room Redesign</h1>
-        <form class="preferenceForm">
-            <div class="field control">
-                <h3 class="pref-head">Budget</h3>
-                <div class="select" id='dropdown'>
+      <div class="secondContainer">
+
+        <h1 class="aboutTitle" id='pref-form'>College Room Redesign</h1>
+        <p class="errorText"></p>
+          <form class="preferenceForm">
+              <h3 class="pref-head">Budget</h3>
+              <div class="select" id='dropdown'>
                 <select class="budgetSelect">
                   <option value=0>Select budget (per item)</option>
                   <option value=1>$0-$99</option>
@@ -57,10 +57,10 @@
                   <option value=3>$200-$299</option>
                   <option value=4>$300+</option>
                 </select>
-                </div>
-
-                <h3 class="pref-head">Furniture Preferences</h3>
-                <ul id='pref-list-furn'>
+              </div>
+              
+              <h3 class="pref-head">Furniture Preferences</h3>
+                <ul id='pref-list'>
                   <li>
                     <label for="Chairs">Chairs</label>
                     <input type="checkbox" class="prefCheckbox" name="Chairs" value="Chairs">
@@ -86,7 +86,7 @@
                   </li>
                 </ul>
 
-                <h3 class="pref-head" id='pref-list-color'>Color Preferences</h3>
+              <h3 class="pref-head" id='pref-list-color'>Color Preferences</h3>
                 <ul id='pref-list'>
                   <li>
                     <label for="Black">Black</label>
@@ -112,16 +112,19 @@
                     <button type="button" id="cpClear">Clear</button>
                   </li>
                 </ul>
-            </div>
-            <input type="submit" value="Calculate Results"></input>
-        </form>
-        <div class="pref-button">
-          <a href="preference_results.html">
-              <button class="pref">Save Preferences</button>
-          </a>
-        </div>
-        <p class="errorText"></p>
-    </div>  
+                
+              <input class="results" type="submit" value="Calculate Results"></input>
+               
+          </form>
+          <div class="pref-button">
+            <a href="preference_results.html">
+                <button class="pref">Display Results</button>
+            </a>
+          </div>
+          
+      </div>
+      
+      
     </div>
     <script src="preferenceFormScript.js"></script>
 </body>

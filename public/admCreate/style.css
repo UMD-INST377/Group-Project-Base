@@ -12,9 +12,14 @@ h1 {
     text-align: center;
 }
 
-.label, .input {
-    color: white;
+.input {
+    color: black;
     text-align: center;
+}
+
+.label {
+    text-align: center;
+    color: white;
 }
 
 .box {

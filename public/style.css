@@ -1,5 +1,6 @@
 body {
     background-color: rgb(245, 243, 243);
+    margin: 2em 4em 2em 4em;
 }
 
 h1 {
@@ -23,8 +24,8 @@ h1 {
 nav {
     margin-top: 20px;
     width: auto;  
-    margin-left: 25px; 
-    margin-right: 25px; 
+    margin-left: 12%; 
+    margin-right: 12%; 
 }
 
 .navbar-item {
@@ -41,7 +42,7 @@ nav {
 .button {
     color: white;
     margin-top: 20px;
-    width: 1500px;  
+    width: 1100px;  
     margin-left: 20%; 
     margin-right: 20%; 
 }
@@ -70,7 +71,7 @@ nav {
     align-content: center;
     margin-top: 5px;
     margin-bottom: 20px;
-    width: 1200px;
+    width: 1065px;
     height: 200px;  
     margin-left: 20%; 
     margin-right: 20%; 
@@ -130,4 +131,10 @@ h1 {
 img {
     width: 140px;
     height: 170px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: -10px;
+    color: rgb(98, 0, 255);
 }

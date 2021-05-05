@@ -1,21 +1,23 @@
 async function getData() {
   console.log("data request");
   const result = document.querySelector("#result");
-  const request = await fetch("/api/visitors");
+  const request = await fetch("/api/museumTrans");
   const tableData = await request.json();
   // return tableData;
 
-  tableData.data.forEach((visitor) => {
-    console.log(visitor);
+  tableData.data.forEach((name) => {
+    console.log(name);
     const appendItem = document.createElement("tr");
     // appendItem.classList.add('title', 'has-text-centered', 'is-parent', 'is-3');
     appendItem.innerHTML = `
-        <td> ${visitor.visitor_id} </td>
-        <td> ${visitor.visitor_fn} </td>
-        <td> ${visitor.visitor_ln} </td>
-        <td> ${visitor.visitor_phone_num} </td>
-        <td> ${visitor.email} </td>
-        <td> ${visitor.transaction_id} </td>`;
+          <select><option> ${name.museum_name} </option></select>
+          <select><option> ${name.museum_name} </option></select>
+          <select><option> ${name.museum_name} </option></select>
+          <select><option> ${name.museum_name} </option></select>
+          <select><option> ${name.museum_name} </option></select>
+          <select><option> ${name.museum_name} </option></select>
+          <select><option> ${name.museum_name} </option></select>
+          <select><option> ${name.museum_name} </option></select>`;
     result.append(appendItem);
   });
 }

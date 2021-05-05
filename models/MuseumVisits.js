@@ -24,5 +24,12 @@ export default (sequelize, DataTypes) => {
     },
     {freezeTableName: true, timestamps: false}
   );
+  // MuseumVisits.belongsToMany = (models) => {
+  //   MuseumVisits.belongsToMany(VisitorTransactions, {
+  //     through: 'visitors',
+  //     foreignKey: 'museum_id',
+  //     otherKey: 'visitor_id'
+  //   });
+  // };
   return MuseumVisits;
 };

@@ -6,82 +6,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="../styles.css"/>
-    <title>Add Staff</title>
+    <title>Museum Information</title>
 </head>
-<div class ="box">
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<div class="box">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="index.html">
-        <img src="/images/ma_logo.png">
+      <a class="navbar-item" href="/index.html">
+        <img src="../images/ma_logo.png" />
       </a>
-  
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+
+      <a
+        role="button"
+        class="navbar-burger burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="navbarBasicExample"
+      >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
-  
+
     <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="../index.html">
-          About
-        </a>
-  
-        <a class="navbar-item" href="../Museum/museum.html">
-          Museum
-        </a>
+      <div style="flex-grow: 1; justify-content: center" class="navbar-start">
+        <a class="navbar-item" href="../index.html"> About </a>
 
-        <a class="navbar-item" href="../Transactions/transactions.html">
-          Transactions
-      </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="./museum.html"> Museum </a>
 
-      <a class="navbar-item" href="../Personnel/personnel.html">
-          Personnel
-      </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="./add-museum.html">
+              Add Museum
+            </a>
+            <a class="navbar-item" href="./update-museum.html">
+              Update Museum
+            </a>
+            <a class="navbar-item" href="./museum-info.html">
+              Museum Information
+            </a>
+          </div>
+        </div>
 
-        <a class="navbar-item" href="../Visitors/visitors.html">
-            Visitors
-        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="../Transactions/transactions.html">
+            Transactions
+          </a>
+
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="../Transactions/transaction_museum.html"
+            >
+              Transactions by Museum
+            </a>
+            <a class="navbar-item" href="../Transactions/transaction_date.html">
+              Transactions by Date
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="../Personnel/personnel.html">
+            Personnel
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="../Personnel/add_staff.html">
+              Add Staff
+            </a>
+            <a class="navbar-item" href="../Personnel/update_staff.html">
+              Update Staff
+            </a>
+            <a class="navbar-item" href="../Personnel/info_search_staff.html">
+              Information Search
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="../Visitors/visitors.html"> Visitors </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="../Visitors/add-visitors.html">
+              Add Visitors
+            </a>
+            <a class="navbar-item" href="../Visitors/visitor-search.html">
+              Visitor Information Search
+            </a>
+          </div>
+        </div>
+      </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">          
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light"> Log in </a>
+          </div>
         </div>
       </div>
     </div>
   </nav>
-  </div>
+</div>
 <body>
     <div class = "container">
         <div class="tabs is-centered">
             <ul>
               <li ><a href="./add-museum.html">Add Museum</a></li>
               <li ><a href="./update-museum.html">Update Museum</a></li>
-              <li ><a href="./museum-info.html">Museum Information</a></li>
+              <li class="is-active"><a href="./museum-info.html">Museum Directory</a></li>
             </ul>
           </div>
-        <div class="box">
-          <div class="content"><h1>Museum Information</h1></div>
-          <div class="content"><p>Welcome to the Museum Information page. Here you can search for a museum.
-          </p>
+          <div class="box">
+            <div class="content"><h1>Museum Directory</h1></div>
+            <div class="content"><p>Welcome to the Museum Information page. Here you can search for a museum and update information by using form at bottom of page.
+            </p>
+            </div>
           </div>
         </div>
-        <div class ="box">
-          <form class="search-form">
-            <div class ="block">
-            <input type="text" class="search" placeholder="Name of Museum">
-
-            <ul class="suggestions">
-
-              <li>Filter for the name of a museum</li>
-
-            </ul>
-            </div>
-          </form>
       </div>
+    
+  <div class="container">
+    <div class="box">
+      <div class="content is-small table-container">
+          <table class="table is-bordered is-striped is-hoverable is-narrow ">
+              <thead>
+                  <tr>
+                      <th>Musuem Id</th>
+                      <th>Museum Name</th> 
+                      <th>Museum email</th>
+                      <th>Musuem Url</th>
+                      <th>Museum Phone Number</th> 
+                      <th>Museum Entry Fee</th>
+                      <th>Musuem Open Time</th>
+                      <th>Date Museum Opened</th> 
+                      <th>Museum Capacity</th>
+                      <th>Musuem Size</th>
+                      <th>Museum Parent</th> 
+                      <th>Closing time</th>
+                      <th>Budget</th>
+                      <th>Address</th> 
+                      <th>City</th>
+                      <th>Zipcode</th>
+                  </tr>
+              </thead>
+              <tbody id="resultInfo">
+              </tbody>
+          </table>
       </div>
     </div>
-      
+  </div> 
+  
+  <div class = "container">
+      <div class ="box">
+        <form class="search-form">
+          <div class="block">
+            <label class= "label" for="Filter for the name of a museum">Enter name of a museum to update.</label>
+            <div class ="control"><input type="text" id="ada_id" placeholder="Filter for the name of a museum" name ="ada_id">
+            </div>
+        </div>
+        <div class="block">
+            <button class ="button is-small" type="submit" id="button" method="post" name="button">Update</button>
+        </div>
+        </form>
+    </div>
+  </div>
 </body>
 <footer class="footer">
   <div class="content has-text-centered">

@@ -7,6 +7,7 @@ async function handleButtonClick(event) {
     const amount_sold = document.querySelector('#amount_sold');
     const public_domain = document.querySelector('#public_domain');
     const book_rating = document.querySelector('#book_rating');
+    const publish_year = document.querySelector('#publish_year');
 
     console.info('Clicked');
     const url = '/api/popularBooks';
@@ -16,16 +17,15 @@ async function handleButtonClick(event) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-            book_id: null,
             title: title.value,
             amount_sold: amount_sold.value,
-            publish_year: null,
-            google_user_percentage: null,
-            authors_author_id: null,
-            publishers_publisher_id: null,
-            artistic_movement_artistic_movement_id: null,
-            book_retailers_retailer_id: null,
-            ook_description_description_id: null,
+            publish_year: 1777,
+            google_user_percentage: book_rating,
+            authors_author_id: 1,
+            publishers_publisher_id: 1,
+            artistic_movement_artistic_movement_id: 1,
+            book_retailers_retailer_id: 1,
+            book_description_description_id: 1,
             public_domain: public_domain.value,
             original_language: original_language.value
         })

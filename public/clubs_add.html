@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>EPL</title>
+</head>
+
+<body>
+    <img src="images/epl-premierleague-logo.png" width="50" height="40">
+    <p class="subtitle is-1 center">EPL Statistics</p>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="bar">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="bar" class="navbar-menu mg-small">
+          <div class="navbar-start">
+            <a class="navbar-item" href="index.html">
+              Home
+            </a>
+            <a class="navbar-item" href="clubs.html">
+              Clubs
+            </a>
+            <a class="navbar-item" href="players.html">
+              Players
+            </a>
+          </div>
+        </div>
+      </nav>
+
+<!---Add Form--->
+
+<div class="container">
+    <h1 class="subtitle is-3">Add a Club</h1>
+    <div class="field">
+      <label class="label">Club Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="e.g. Arsenal, Chelsea, etc.">
+      </div>
+    </div>
+    <div class="field">
+        <label class="label">Coach First Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g. Alex, David, etc.">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Coach Last Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g. Ferguson, Moyes, etc.">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Number of Players</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g. 21, 25, etc.">
+        </div>
+      </div>
+      <button class="button is-link" type="submit" id="add-button">Add Club</button>
+</div>

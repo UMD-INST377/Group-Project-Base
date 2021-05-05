@@ -59,6 +59,14 @@ table, th, td {
   padding: 0px 10px;
 }
 
+.about {
+  font-size: large;
+  border-style: groove;
+  border-width: 10px;
+  border-color: aquamarine;
+
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}

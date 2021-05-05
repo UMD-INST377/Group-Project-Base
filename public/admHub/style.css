@@ -1,3 +1,8 @@
+body {
+    background-color: rgb(245, 243, 243);
+    margin: 2em 4em 2em 4em;
+  }
+
 h1 {
     font-size: 80px;
     text-align: center;
@@ -14,3 +19,9 @@ h1 {
     font-size: 17px;
     background-color: white;
   }
+
+.button {
+    max-width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}

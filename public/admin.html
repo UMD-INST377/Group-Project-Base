@@ -7,6 +7,7 @@
     <link rel="shortcut icon" type="image/png" href="./images/MyKEAfavicon.png"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css" />
+    <script defer src="login.js"></script>
   </head>
     <body>
         <div class="container">
@@ -41,20 +42,25 @@
               <h1 class = "aboutTitle">MyKea Admin</h1>
 
               <div class="loginContain">
-
-                <form action="/login" method="post" class="loginForm">
+                <div id="login-error-msg-holder">
+                  <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+                </div>
+                <form action="/login" method="post" id="loginForm">
                   
-                    <label for="user">Username</label>
-                    <input type="text" placeholder="Enter Username" name="user" required>
+                    <label for="user">username</label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
 
-                    <label for="pword">Password</label>
-                    <input type="text" placeholder="Password" name="user" required>
+                    <label for="pword">password</label>
+                    <input type="text" placeholder="Password" name="password" required>
+                    
+                    
+                    <input type="submit" value="Login" id="loginbutton">
                   
                 </form>
 
-                <a href = "admin_inner.html">
-                  <button class="loginbutton">Login</button>
-                </a>
+                
+                  //<button class="loginbutton">Login</button>
+               
             </div>
 
               </div>

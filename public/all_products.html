@@ -40,7 +40,15 @@
         <div class="secondContainer">
             <h1 class="aboutTitle">All MyKea Products</h1>
 
-            <h3>Products</h3>
+            <h3 class = "allProductsLabel">Products</h3>
+
+            <form>
+                <input id="filterField" type="text" placeholder="Filter by Product ID">
+                <button id="allSubmit" type="submit">Click to Filter</button>
+            </form>
+
+            <div class="searchResultsAll"></div>
+            
             <div class="products-table">
               <table class="table is-bordered is-striped is-narrow is-hoverable">
                 <thead>

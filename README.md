@@ -32,11 +32,11 @@
 * Note: There is no available test for this software yet, however, you can certainly write your own scrip to test it.
 
 ## APIs in server application 
-This software only has one API, which is the `/api` - API route for books information
-1. GET 
-2. POST
-3. PUT
-4. ENDPOINTS
+This software only has one API, which is the `/api` - API route for books information from the database
+1. GET - Retrieve all of the information from the database based on the title or book ID
+2. POST - Add the additional book to the database
+3. PUT - Update books that are already in the database
+4. DELETE - Delete books from the database
 
 ## Known bugs 
 * Note: No bugs have been detected.
@@ -48,17 +48,11 @@ This software only has one API, which is the `/api` - API route for books inform
 
 
 
-
-# To do list
-* Create page (add new book) functionality
-* Update page functionality
-* Delete page functionality
+# To do list 
+* Delete page functionality - Tony
 * Add more search filters (genre, rating, etc...)
-* API documentation
-* README finished 
 * works on mobile
 * Make sure styles work across browsers
-* About page filled out
 * Fast load time on Heroku
 * .env setup on Heroku?
 * Create final presentation

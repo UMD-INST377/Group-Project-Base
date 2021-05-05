@@ -575,11 +575,22 @@ router.route('/playerCustom')
 /// /// Player Custom Info SQL Endpoint ///
 /// ///////////////////////////////////////
 const playerCustomInfo = `SELECT first_name, last_name, position, jersey_number, player_college, nba_debut, 
-CONCAT(TRUNCATE((height_inches / 12), 0), "' ", (height_inches % 12), '"') AS height, weight_pounds, TIMESTAMPDIFF(year, birthdate, current_date()) AS player_age, team_name, team_location
-FROM player_info JOIN player_biostats
+CONCAT(TRUNCATE((height_inches / 12), 0), "' ", (height_inches % 12), '"') AS height, weight_pounds, TIMESTAMPDIFF(year, birthdate, current_date()) AS player_age, team_name, team_location,
+CONCAT(ROUND((shooting_percentage * 100), 2), '%') AS shooting_percentage,
+CONCAT(ROUND((three_pt_pct * 100), 2), '%') AS three_pt_pct,
+salary,
+birthdate,
+rebounds_per_game,
+assists_per_game,
+steals_per_game,
+blocks_per_game
+FROM player_info
+JOIN player_biostats
 USING (player_id)
 JOIN team_info
 USING (team_id)
+JOIN player_stats
+USING (player_id)
 ORDER BY last_name, first_name;`;
 
 router.route('/playerCustomInfo')

@@ -180,19 +180,19 @@ router.post('/popularBooks', async (req, res) => {
 
 router.put('/popularBooks', async (req, res) => {
   console.log('You have reached the "put" endpoint');
-  console.log('Here is incoming form info', req.body)
-  
-  function removeBlanks(obj){
-    for (const metadata of Object.keys(obj)){
-      if (!obj[metadata]){
-        delete obj[metadata]
+  console.log('Here is incoming form info', req.body);
+
+  function removeBlanks(obj) {
+    for (const metadata of Object.keys(obj)) {
+      if (!obj[metadata]) {
+        delete obj[metadata];
+      } if (obj[metadata] === 'nullValue') {
+        obj[metadata] = null;
       }
     }
   }
-  removeBlanks(req.body)
-  console.log('Here is updated form info', req.body)
-
-
+  removeBlanks(req.body);
+  console.log('Here is updated form info', req.body);
 
   try {
     await db.popularBooks.update(
@@ -202,12 +202,12 @@ router.put('/popularBooks', async (req, res) => {
         publish_year: req.body.publishYear,
         public_domain: req.body.publicDomain,
         google_user_percentage: req.body.googleUserPercentage,
-        original_language: req.body.originalLanguage
-        // authors_author_id: req.body.authorId,
-        // publishers_publisher_id: req.body.publisherId,
-        // artistic_movement_artistic_movement_id: req.body.artisticMovementId,
-        // book_retailers_retailer_id: req.body.bookRetailersId,
-        // book_description_description_id: req.body.bookDescriptionId
+        original_language: req.body.originalLanguage,
+        authors_author_id: req.body.authorId,
+        publishers_publisher_id: req.body.publisherId,
+        artistic_movement_artistic_movement_id: req.body.artisticMovementId,
+        book_retailers_retailer_id: req.body.retailerId,
+        book_description_description_id: req.body.bookDescriptionId
       },
       {
         where: {

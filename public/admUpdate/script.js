@@ -5,7 +5,11 @@ async function handleButtonClick(event) {
   const publishYear = document.querySelector('#publishYear');
   const originalLanguage = document.querySelector('#originalLanguage');
   const googleUserPercentage = document.querySelector('#googleUserPercentage');
-  const publicDomain = document.querySelector('#publicDomain')
+  const authorId = document.querySelector('#authorId');
+  const publisherId = document.querySelector('#publisherId');
+  const artisticMovementId = document.querySelector('#artisticMovementId');
+  const retailerId = document.querySelector('#retailerId');
+  const bookDescriptionId = document.querySelector('#bookDescriptionId');
 
   console.log('Clicked');
   const url = '/api/popularBooks';
@@ -22,8 +26,12 @@ async function handleButtonClick(event) {
       publishYear: publishYear.value,
       originalLanguage: originalLanguage.value,
       googleUserPercentage: googleUserPercentage.value,
-      publicDomain: publicDomain.value
-
+      publicDomain: publicDomain.value,
+      authorId: authorId.value,
+      publisherId: publisherId.value,
+      artisticMovementId: artisticMovementId.value,
+      retailerId: retailerId.value,
+      bookDescriptionId: bookDescriptionId.value
     })
   });
 }

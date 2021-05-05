@@ -17,6 +17,7 @@
     <h1>Update Book Record</h1>
     <div class="updateForm">
     <h2>Essential Records marked with an asterix *</h2>
+    <h3>Type "nullValue" to set value in database as null</h3>
     <form  id="recordUpdate">
         <ul>
             <li>
@@ -55,25 +56,24 @@
                 <input type="googleUserPercentage" id="googleUserPercentage" name="googleUserPercentage">
             </li>
             <li>
-                <label for="authorId">author_id</label>
+                <label for="authorId">Author Id</label>
                 <input type="authorId" id="authorId" name="authorId">
             </li>
             <li>
-                <label for="publisherId">publisher_id</label>
+                <label for="publisherId">Publisher Id</label>
                 <input type="publisherId" id="publisherId" name="publisherId">
             </li>
             <li>
-                <label for="artisticMovementId">artistic_movement_id</label>
+                <label for="artisticMovementId">Artistic Movement Id</label>
                 <input type="artisticMovementId" id="artisticMovementId" name="artisticMovementId">
             </li>
             <li>
-                <label for="retailerId">retailer_id</label>
+                <label for="retailerId">Retailer Id</label>
                 <input type="retailerId" id="retailerId" name="retailerId">
             </li>
             <li>
-                <label class="description" for="bookDescription">Book description:</label>
-                <textarea name="bookDescription" rows=5 cols=33 id="bookDescription"
-                    placeholder="Enter your description here"></textarea>
+                <label class="description" for="bookDescriptionId">Book Description Id</label>
+                <input type="bookDescriptionId" id="bookDescriptionId" name="bookDescriptionId">
             </li>
             <li>
                 <button type="submit" name="submit" id="submit">Update Record</button>

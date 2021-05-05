@@ -15,14 +15,14 @@ async function productsTable() {
     productsData.data.forEach((product) => {
         const productsRow = document.createElement('tr');
         const productsPrice = document.createElement('td');
-        const productsImage = document.createElement('td');
+        const productsImage = document.createElement('img');
         const productsDescr = document.createElement('td');
         const productsColor = document.createElement('td');
         const productsFam = document.createElement('td');
         const productsCatg = document.createElement('td');
 
         productsPrice.innerText = product.product_unit_price;
-        productsImage.innerText = product.image_link;
+        productsImage.src = product.image_link;
         productsDescr.innerText = product.product_description;
         productsColor.innerText = product.product_color;
         productsFam.innerText = product.family_id;
@@ -30,13 +30,17 @@ async function productsTable() {
 
         productsBody.append(productsRow);
         productsRow.append(productsPrice);
-        productsRow.append(productsImage);
+        productsRow.appendChild(productsImage);
         productsRow.append(productsDescr);
         productsRow.append(productsColor);
         productsRow.append(productsFam);
         productsRow.append(productsCatg);
     });
 }
+
+// const imgElem = document.createElement('img');
+// imgElem.src = element.image_link;
+// divElem.appendChild(imgElem);
 
 async function familiesTable() {
     const request = await fetch('/api/productFamilies/');
@@ -112,15 +116,3 @@ async function windowActions() {
 }
 
 window.onload = windowActions();
-
-// // Get all database records from the store table
-// router.get('/stores', async (req, res) => {
-//     try {
-//       const store = await db.stores.findAll();
-//       const reply = store.length > 0 ? { data: store} : { message: 'no results found' };
-//       res.json(reply);
-//     } catch (err) {
-//       console.error(err);
-//       res.error('Server error');
-//     }
-// });

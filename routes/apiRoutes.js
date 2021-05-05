@@ -7,16 +7,16 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the Animal Adoption API!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Shelter Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/shelters', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const shelters = await db.Shelters.findAll();
+    const reply = shelters.length > 0 ? { data: shelters } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,44 +24,44 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/shelters/:shelter_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const shelters = await db.Shelters.findAll({
       where: {
-        hall_id: req.params.hall_id
+        shelter_id: req.params.shelter_id
       }
     });
 
-    res.json(hall);
+    res.json(shelters);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.post('/shelters', async (req, res) => {
+  const shelters = await db.Shelters.findAll();
+  const currentId = (await shelters.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newShelters = await db.Shelters.create({
+      shelter_id: currentId,
+      shelter_name: req.body.shelter_name,
+      shelter_address: req.body.shelter_address,
+      phone_number: req.body.phone_number,
+      num_employees: req.body.num_employees
     });
-    res.json(newDining);
+    res.json(newShelters);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/shelters/:shelter_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.Shelters.destroy({
       where: {
-        hall_id: req.params.hall_id
+        shelter_id: req.params.shelter_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +71,18 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/shelters', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.Shelters.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        shelter_name: req.body.shelter_name,
+        shelter_address: req.body.shelter_address,
+        phone_number: req.body.phone_number,
+        num_employees: req.body.num_employees
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          shelter_id: req.body.shelter_id
         }
       }
     );
@@ -92,46 +94,48 @@ router.put('/dining', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Animals Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/animals', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const animals = await db.Animals.findAll();
+    res.json(animals);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/animals/:animal_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const animals = await db.Animals.findAll({
       where: {
-        meal_id: req.params.meal_id
+        animal_id: req.params.animal_id
       }
     });
-    res.json(meals);
+    res.json(animals);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
+router.put('/animals', async (req, res) => {
   try {
-    await db.Meals.update(
+    await db.Animals.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        name: req.body.name,
+        status: req.body.status,
+        gender: req.body.gender,
+        Animal_type_species_id: req.body.Animal_type_species_id
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          animal_id: req.body.animal_id
         }
       }
     );
-    res.send('Meal Successfully Updated');
+    res.send('Animal Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -139,50 +143,45 @@ router.put('/meals', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Macros Endpoints/////////
+/// ////////Applicants Endpoints/////////
 /// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.get('/applicants', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
+    const applicants = await db.Applicants.findAll();
+    res.send(applicants);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get('/applicants/:applicant_id', async (req, res) => {
   try {
-    const meals = await db.Macros.findAll({
+    const applicants = await db.Applicants.findAll({
       where: {
-        meal_id: req.params.meal_id
+        applicant_id: req.params.applicant_id
       }
     });
-    res.json(meals);
+    res.json(applicants);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/macros', async (req, res) => {
+router.put('/applicants', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
+    await db.Applicants.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
+        last_name: req.body.last_name,
+        first_name: req.body.first_name,
+        phone_number: req.body.phone_number,
+        age: req.body.age
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          applicant_id: req.body.applicant_id
         }
       }
     );
@@ -194,26 +193,107 @@ router.put('/macros', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
+/// Pending Adoptions Endpoints///
 /// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+router.get('/pending', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
+    const pending = await db.PendingAdoptions.findAll();
+    res.json(pending);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/restrictions/:restriction_id', async (req, res) => {
+router.get('/pending/:adopt_id', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    const pending = await db.PendingAdoptions.findAll({
       where: {
-        restriction_id: req.params.restriction_id
+        adopt_id: req.params.adopt_id
       }
     });
-    res.json(restrictions);
+    res.json(pending);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// Animal Types Endpoints///
+/// /////////////////////////////////
+router.get('/types', async (req, res) => {
+  try {
+    const types = await db.AnimalType.findAll();
+    res.json(types);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/types/:species_id', async (req, res) => {
+  try {
+    const types = await db.AnimalType.findAll({
+      where: {
+        species_id: req.params.species_id
+      }
+    });
+    res.json(types);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// Employees Endpoints///
+/// /////////////////////////////////
+router.get('/employees', async (req, res) => {
+  try {
+    const employees = await db.Employees.findAll();
+    res.json(employees);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/employees/:employee_id', async (req, res) => {
+  try {
+    const employees = await db.Employees.findAll({
+      where: {
+        employee_id: req.params.employee_id
+      }
+    });
+    res.json(employees);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// Websites Endpoints///
+/// /////////////////////////////////
+router.get('/websites', async (req, res) => {
+  try {
+    const websites = await db.Websites.findAll();
+    res.json(websites);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/websites/:website_id', async (req, res) => {
+  try {
+    const websites = await db.Websites.findAll({
+      where: {
+        website_id: req.params.website_id
+      }
+    });
+    res.json(websites);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -223,10 +303,10 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
+const adoptionsCustom = 'SELECT `Animal_Shelter_Tracker`.`PendingAdoptions`.`adopt_id` AS `adopt_id`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`applicant_id` AS `applicant_id`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`animal_id` AS `animal_id`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`start_date` AS `start_date`,`Animal_Shelter_Tracker`.`PendingAdoptions`.`end_hold_date` AS `end_hold_date` , `Animal_Shelter_Tracker`.`PendingAdoptions`.`shelter_id` AS `shelter_id`)';
 router.get('/table/data', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
+    const result = await db.sequelizeDB.query(adoptionsCustom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);
@@ -236,20 +316,20 @@ router.get('/table/data', async (req, res) => {
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
+const animalMapCustom = `SELECT name,
+  animal_id,
+  shelter_name,
+  shelter_id,
+  shelter_address
 FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
+  PendingAdoptions p
+INNER JOIN Animals a 
+  ON p.animal_id = a.animal_id
+INNER JOIN Shelters s
+ON s.shelter_id = p.shelter_id;`;
 router.get('/map/data', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
+    const result = await db.sequelizeDB.query(animalMapCustom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);

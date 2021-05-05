@@ -27,15 +27,15 @@ function buildResultBoxes (validBooks) {
 }
 
 async function filterBooks(chosenkeyword, books) {
-  const keyword = chosenkeyword.toLowerCase();
+  const titleSearch = chosenkeyword.toLowerCase();
 
-  console.log(keyword);
+  console.log(titleSearch);
   console.log(books);
   const validBooks = [];
 
   for (const book of books) {
     title = book.title.toLowerCase();
-    if (title.includes(keyword)) {
+    if (title.includes(titleSearch)) {
       console.log(book);
       // add other filters here???
       author = `${book.first_name} ${book.last_name}`;
@@ -49,7 +49,7 @@ async function windowActions() {
   const request = await fetch('/api/popularBooksExpandedNoGenre');
   const books = await request.json();
   const params = new URLSearchParams(window.location.search); // this code allows you to access the "/?" part of the url
-  filterBooks(params.get('keyword'), books);
+  filterBooks(params.get('titleSearch'), books);
 }
 
 window.onload = windowActions;

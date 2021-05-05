@@ -1,11 +1,11 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
 html {
   font-size: 10px;
-
 }
 
 body {
@@ -17,13 +17,17 @@ body {
 
 /* || typography */
 
-h1, h2, h3 {
-  font-family: 'Lemonada';
-  color: #2a2a2a;
+h1,
+h2,
+h3 {
+  font-family: "Lemonada";
+  color: white;
 }
 
-p, input, li {
-  font-family: 'Roboto Condensed', sans-serif;
+p,
+input,
+li {
+  font-family: "Roboto Condensed", sans-serif;
   color: #2a2a2a;
 }
 
@@ -37,14 +41,15 @@ h1 {
 h2 {
   font-size: 5rem;
   text-align: center;
-  font-weight: 800;
+  font-size: 45px;
 }
 
 h3 {
   font-size: 2.2rem;
 }
 
-p, li {
+p,
+li {
   font-size: 1.6rem;
   line-height: 1.5;
 }
@@ -62,76 +67,84 @@ body > * {
   padding: 1%;
 }
 
-.main {
-  background-color: rgb(98, 0, 255);
-  padding: 1%;
-}
 .header {
-    background-color: rgb(243, 239, 248);
+  background-color: rgb(243, 239, 248);
 }
 
 h1 {
   flex: 5;
-  
 }
 .choose_filter {
-    font-size: x-large;
+  font-size: x-large;
 }
 
 ul {
-    font-size: large;
+  font-size: large;
 }
 ul.no-bullets {
-    list-style-type: none; /* Remove bullets */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margins */
-  }
-
-.flex-inner li {
-    width: 100px;
-  }
-
-  .flex-inner {
-    justify-content: space-between;
-  }
-
-  .keyword {
-    width: 750px;
-    height: 30px;
-    
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
 }
 
-#keyword {
-    width: 750px;
-    height: 42px;
-    border-radius: 3px;
-    border: 2px solid black;
-    padding: 5px 10px;
-    font-size: 18px;
+.flex-inner li {
+  width: 100px;
+}
+
+.flex-inner {
+  justify-content: space-between;
+}
+
+.titleSearch {
+  width: 750px;
+  height: 30px;
+}
+
+#titleSearch,
+#authorSearch {
+  width: 750px;
+  height: 42px;
+  border-radius: 3px;
+  border: 2px solid black;
+  padding: 5px 10px;
+  font-size: 18px;
 }
 
 .skip {
-    font-size: 16px;
+  font-size: 16px;
 }
 
-.search {
-    margin-top: 30px;
-    display: block;
-    width: 70%;
-    border: none;
-    background-color: #eefcee;
-    padding: 14px 28px;
-    font-size: 18px;
-    cursor: pointer;
-    text-align: center;
-  }
+.searchButton {
+  margin-top: 30px;
+  width: 70%;
+  border: none;
+  background-color: #eefcee;
+  padding: 14px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+}
 
-  .back {
-    font-size: 17px;
-    background-color: white;
-  }
+.back {
+  font-size: 17px;
+  background-color: white;
+}
 
-  .tops{
-    color:black;
-
-  }
+#listedFilters {
+  display: flex;
+  justify-content: space-around;
+}
+.textSearching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 145px;
+  margin-right: 145px;
+}
+.textSearching h3 {
+  align-self: flex-start;
+}
+#buttonArea {
+  display: flex;
+  justify-content: center;
+}

@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <link rel="stylesheet" href="../styles.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../styles.css" />
     <title>Add Museum</title>
-</head>
-<div class = "box">
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  </head>
+  <div class="box">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="../index.html">
-          <img src="/images/ma_logo.png">
+        <a class="navbar-item" href="/index.html">
+          <img src="../images/ma_logo.png" />
         </a>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <a
+          role="button"
+          class="navbar-burger burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -23,60 +32,86 @@
       </div>
 
       <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="../index.html">
-            About
-          </a>
-    
-          <a class="navbar-item" href="../Museum/museum.html">
-            Museum
-          </a>
-  
-          <a class="navbar-item" href="../Transactions/transactions.html">
-            Transactions
-        </a>
-  
-        <a class="navbar-item" href="../Personnel/personnel.html">
-            Personnel
-        </a>
-  
-          <a class="navbar-item" href="../Visitors/visitors.html">
-              Visitors
-          </a>
+        <div style="flex-grow: 1; justify-content: center" class="navbar-start">
+          <a class="navbar-item" href="../index.html"> About </a>
 
-          <!-- <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="./museum.html"> Museum </a>
 
             <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
+              <a class="navbar-item" href="./add-museum.html"> Add Museum </a>
+              <a class="navbar-item" href="./update-museum.html">
+                Update Museum
               </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
+              <a class="navbar-item" href="./museum-info.html">
+                Museum Information
               </a>
             </div>
           </div>
-        </div> -->
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="../Transactions/transactions.html">
+              Transactions
+            </a>
+
+            <div class="navbar-dropdown">
+              <a
+                class="navbar-item"
+                href="../Transactions/transaction_museum.html"
+              >
+                Transactions by Museum
+              </a>
+              <a
+                class="navbar-item"
+                href="../Transactions/transaction_date.html"
+              >
+                Transactions by Date
+              </a>
+            </div>
+          </div>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="../Personnel/personnel.html">
+              Personnel
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="../Personnel/add_staff.html">
+                Add Staff
+              </a>
+              <a class="navbar-item" href="../Personnel/update_staff.html">
+                Update Staff
+              </a>
+              <a class="navbar-item" href="../Personnel/info_search_staff.html">
+                Information Search
+              </a>
+            </div>
+          </div>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="../Visitors/visitors.html">
+              Visitors
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="../Visitors/add-visitors.html">
+                Add Visitors
+              </a>
+              <a class="navbar-item" href="../Visitors/visitor-search.html">
+                Visitor Information Search
+              </a>
+            </div>
+          </div>
+        </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
-            <!-- <div class="buttons">
+            <div class="buttons">
               <a class="button is-primary">
                 <strong>Sign up</strong>
               </a>
-              <a class="button is-light">
-                Log in
-              </a>
-            </div> -->
+              <a class="button is-light"> Log in </a>
+            </div>
           </div>
         </div>
       </div>
@@ -98,105 +133,22 @@
         <div class="block">
 
         </div>
+      </form>
     </div>
-    <div class = "container">
-        <form class="box" action = "/api" method = "post" >
-            <div class="field" type="checkbox">
-              <div class="block">
-                  <label class= "label" for="museum_name">Museum Name</label>
-                  <div class ="control"><input type="text" id="museum_name" placeholder="Enter the museum name here" name="museum_name"></div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_email">Museum Email</label>
-                  <div class ="control"><input type="text" id="museum_email" placeholder="Enter the museum email here" name ="museum_email">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_url">Museum URL</label>
-                  <div class ="control"><input type="text" id="museum_url" placeholder="Enter the museum URL here" name ="museum_url">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_phone_num">Museum Phone Number</label>
-                  <div class ="control"><input type="text" id="museum_phone_num" placeholder="Enter the museum phone number here" name ="museum_phone_num">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_entry_fee">Museum Entry Fee</label>
-                  <div class ="control"><input type="text" id="museum_entry_fee" placeholder="Enter the museum entry fee here" name ="museum_entry_fee">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_open_time">Museum Open Time</label>
-                  <div class ="control"><input type="text" id="museum_open_time" placeholder="Enter the museum openening time here" name ="museum_open_time">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_close_time">Museum Close Time</label>
-                  <div class ="control"><input type="text" id="museum_close_time" placeholder="Enter the museum closing time here" name ="museum_close_time">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="date_museum_opened">Date Museum Opened</label>
-                  <div class ="control"><input type="text" id="date_museum_opened" placeholder="Enter the date the museum opened" name ="date_museum_opened">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_capacity">Museum Capacity</label>
-                  <div class ="control"><input type="text" id="museum_capacity" placeholder="Enter the museum capacity here" name ="museum_capacity">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_size">Museum Size</label>
-                  <div class ="control"><input type="text" id="museum_size" placeholder="Enter the museum size here" name ="museum_size">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_parent">Museum Parent</label>
-                  <div class ="control"><input type="text" id="museum_parent" placeholder="Enter the museum parent here" name ="museum_parent">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_budget">Museum Budget</label>
-                  <div class ="control"><input type="text" id="museum_budget" placeholder="Enter the museum budget here" name ="museum_budget">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_address">Museum Address</label>
-                  <div class ="control"><input type="text" id="museum_address" placeholder="Enter the museum address here" name ="museum_address">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_city">Museum City</label>
-                  <div class ="control"><input type="text" id="museum_city" placeholder="Enter the museum city here" name ="museum_city">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="museum_zipcode">Museum Zipcode</label>
-                  <div class ="control"><input type="text" id="museum_zipcode" placeholder="Enter the museum zip code here" name ="museum_zipcode">
-                  </div>
-              </div>
-              <div class="block">
-                  <label class= "label" for="ada_id">ADA ID</label>
-                  <div class ="control"><input type="text" id="ada_id" placeholder="Enter the ADA ID here" name ="ada_id">
-                  </div>
-              </div>
-              <div class="block">
-                  <button class ="button is-small" type="submit" id="button" method="post" name="button">Submit</button>
-              </div>
-            </div>
-        </form>
+  </body>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma</strong> by
+        <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is
+        licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The
+        website content is licensed
+        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          >CC BY NC SA 4.0</a
+        >.
+      </p>
     </div>
-
-</body>
-<footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-      <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-      is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-    </p>
-  </div>
-</footer>
-<script src ="scripts.js"></script>
+  </footer>
+  <script src="scripts.js"></script>
 </html>

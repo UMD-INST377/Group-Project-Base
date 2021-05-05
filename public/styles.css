@@ -1,93 +1,100 @@
 .navbar-item img {
-    max-height: 2.75rem;
-    }
+  max-height: 2.75rem;
+}
 .block:not(:last-child) {
-    margin-bottom: 1.5rem;
-    }
+  margin-bottom: 1.5rem;
+}
 
 html {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 body {
-    color: black;
-   
+  color: black;
 }
 
 .tabs a {
-    align-items: center;
-    border-bottom-color: black;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    color: black;
-    display: flex;
-    justify-content: center;
-    margin-bottom: -1px;
-    padding: .5em 1em;
-    vertical-align: top;
+  align-items: center;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -1px;
+  padding: 0.5em 1em;
+  vertical-align: top;
 }
 
 .tabs li.is-active a {
-    border-bottom-color: red;
-    color: red;
+  border-bottom-color: red;
+  color: red;
 }
 
 .tabs ul {
-    align-items: center;
-    border-bottom-color:black;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    display: flex;
-    flex-grow: 1;
-    flex-shrink: 0;
-    justify-content: flex-start;
+  align-items: center;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: flex-start;
 }
 
 .box {
-    background-color: rgb(238, 238, 238);
-    border-radius: 0px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 0px;
 }
 
 .navbar {
-    background-color: rgb(238, 238, 238);
-    min-height: 3.25rem;
-    position: relative;
-    z-index: 30;
+  background-color: rgb(238, 238, 238);
+  min-height: 3.25rem;
+  position: relative;
+  z-index: 30;
 }
 
-.navbar-item, .navbar-link {
-    color: #4a4a4a;
-    /* display: block; */
-    line-height: 1.5;
-    padding: .5rem .75rem;
-    position: relative;
+.navbar-item,
+.navbar-link {
+  color: #4a4a4a;
+  /* display: block; */
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  position: relative;
 }
 
 a {
-    color: red;
-    cursor: pointer;
-    text-decoration: none;
+  color: red;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.navbar-link.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover {
-    background-color:  rgb(238, 238, 238);
-    color:red;
+.navbar-link.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+a.navbar-item.is-active,
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover {
+  background-color: rgb(238, 238, 238);
+  color: red;
 }
 
 .footer {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 .img {
-    width: 50%;
-    /* height: 400px; */
-    object-fit: cover;
-    object-position: bottom;
-    /* margin-left: 25%;     */
-    /* max-width: 50%; */
+  width: 50%;
+  /* height: 400px; */
+  object-fit: cover;
+  object-position: bottom;
+  /* margin-left: 25%;     */
+  /* max-width: 50%; */
 }
 
 .content img {
-    height: auto;
-    max-width: 50%;
+  height: auto;
+  max-width: 50%;
 }

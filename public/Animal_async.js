@@ -6,6 +6,7 @@ async function populateAnimals() {
   const animalRequest = await fetch('/api/Animals');
   const animalData = await animalRequest.json();
   const animalTable = document.querySelector('.animaltable');
+  console.table(animalData);
 
   animalData.forEach((animal) => {
     const appendAnimal = document.createElement('tr');
@@ -17,7 +18,6 @@ async function populateAnimals() {
       <td>${animal.Animal_type_species_id}</td>
       `;
     animalTable.append(appendAnimal);
-    console.table(animalData);
   });
 }
 

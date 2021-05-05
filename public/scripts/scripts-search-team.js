@@ -1,36 +1,18 @@
-// Fetch TeamInfo and PlayerInfo//
-const teamendpoint = '/api/teamCustomfull';
+// Fetch TeamInfo //
+const teamendpoint = '/api/teamCustom';
 const teamlist = [];
-
-const playerEndpoint = '/api/playerCustomInfo';
-const playerlist = [];
 
 const searchInput = document.querySelector('.input');
 const teaminfo2 = document.querySelector('.TeamInfo');
-
-const playerSearchInput = document.querySelector('.player_input');
-const playerInfo2 = document.querySelector('.PlayerInfo');
 
 fetch(teamendpoint)
   .then((blob) => blob.json())
   .then((data) => teamlist.push(...data));
 
-fetch(playerEndpoint)
-  .then((blob) => blob.json())
-  .then((data) => playerlist.push(...data));
-
 function findMatches(wordToMatch, teamlist) {
   return teamlist.filter((team) => {
     const regex = new RegExp(`^${wordToMatch}`, 'gi');
     return team.team_name.match(regex);
-  });
-}
-
-function playerFindMatches(wordToMatch, playerlist) {
-  return playerlist.filter((player) => {
-    const regex = new RegExp(`^${wordToMatch}`, 'gi');
-    const name = player.first_name + player.last_name;
-    return name.match(regex);
   });
 }
 
@@ -81,36 +63,27 @@ function displayMatches() {
   teaminfo2.innerHTML = html;
 }
 
-function playerDisplayMatches() {
-  console.log('hello');
-  const matchArray = playerFindMatches(this.value, playerlist);
-  console.log(matchArray);
+// backspace/delete clears result list, markers, and resets map
+function clearResults(e) {
+  if (e.keyCode === 8) {
+    console.log('delete pressed');
 
-  const html = matchArray.map((player) => {
-    const regex = new RegExp(this.value, 'gi');
-    const playerSalary = player.salary;
-    const playerShootingPercentage = player.shooting_percentage;
-    const playerBirthdate = player.birthdate;
-    return `
-      <li>
-      <div class = "PlayerInfo li box is-small has-background-orange is-capitalized>">
-        <span> Salary: ${playerSalary}</span>
-        <br>
-        <span> Shooting Percentage: ${playerShootingPercentage}</span>
-        <br>
-        <span> Birthdate: ${playerBirthdate}</span>
-        <br>
-      </div>
-      </li>
-      `;
-  }).join('');
-  playerInfo2.innerHTML = html;
+    // remove results list
+    while (teaminfo2.firstChild) {
+      teaminfo2.removeChild(teaminfo2.firstChild);
+    }
+  }
 }
+
+// submit event listener
+// form.addEventListener('submit', async (event) => {
+//   event.preventDefault();
+//   console.log('submit fired', searchInput.value);
+//   displayMatches(event);
+// });
 
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
 
-console.log(playerSearchInput);
-
-playerSearchInput.addEventListener('change', playerDisplayMatches);
-playerSearchInput.addEventListener('keyup', playerDisplayMatches);
+// backspace/delete event listener
+searchInput.addEventListener('keydown', clearResults);

@@ -31,14 +31,15 @@
 ## How to run any tests you have written for your software
 * Note: There is no available test for this software yet, however, you can certainly write your own scrip to test it.
 
-## The API for your server application - all GET, POST, PUT, etc endpoints, and what they each do
-1. GET
-
+## APIs in server application 
+This software only has one API, which is the `/api` - API route for books information
+1. GET 
 2. POST
 3. PUT
 4. ENDPOINTS
 
 ## Known bugs 
+* Note: No bugs have been detected.
 
 ## Recomendation Next Step
 1. Adding more data into the database

@@ -24,10 +24,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  PendingAdoptions.associate = (models) => {
-    PendingAdoptions.belongsTo(models.Animals, {
-      foreignKey: 'Animals_animals_id'
-    });
-  };
   return PendingAdoptions;
 };

@@ -19,7 +19,7 @@ export default (sequelize, DataTypes) => {
   );
   VisitorTransactions.associate = (models) => {
     VisitorTransactions.belongsTo(models.Visitors, {
-      foreignKey: "visitor_id",
+      foreignKey: 'visitor_id'
     });
   };
   // VisitorTransactions.associate = (models) => {

@@ -7,12 +7,15 @@ async function populatePend() {
   const pendTable = document.querySelector('.pendingtable');
   console.table(pendData);
 
-  pendData.forEach((pend) => {
+  const appRequest = await fetch('/api/applicantMapCustom');
+  const appData = await appRequest.json();
+  console.table(appData);
+
+  appData.forEach((pend) => {
     const appendPend = document.createElement('tr');
     appendPend.innerHTML = `
-          <td>${pend.adopt_id}</td>
-          <td>${pend.Applicants_applicant_id}</td>
-          <td>${pend.Animals_animal_id}</td>
+          <td>${pend.app_name}</td>
+          <td>${pend.name}</td>
           <td>${pend.start_date}</td>
           <td>${pend.end_hold_date}</td>
           `;

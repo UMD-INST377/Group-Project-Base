@@ -571,9 +571,9 @@ router.route('/playerCustom')
     res.send('Action unavailable');
   });
 
-/// ///////////////////////////
-/// /// Custom SQL Endpoint ///
-/// ///////////////////////////
+/// ///////////////////////////////////////
+/// /// Player Custom Info SQL Endpoint ///
+/// ///////////////////////////////////////
 const playerCustomInfo = `SELECT first_name, last_name, position, jersey_number, player_college, nba_debut, 
 CONCAT(TRUNCATE((height_inches / 12), 0), "' ", (height_inches % 12), '"') AS height, weight_pounds, TIMESTAMPDIFF(year, birthdate, current_date()) AS player_age, team_name, team_location
 FROM player_info JOIN player_biostats
@@ -664,6 +664,36 @@ router.route('/three-pt-pct-custom')
     res.send('Action unavailable');
   });
 
+/// ////////////////////////////////////////////
+/// /// Assists Per Game Custom SQL Endpoint ///
+/// ////////////////////////////////////////////
+const assistsCustom = `SELECT first_name, last_name, ROUND(assists_per_game, 1) AS assists_per_game
+FROM player_info JOIN player_stats
+	USING (player_id)
+ORDER BY assists_per_game DESC;`;
+
+router.route('/assists-custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(assistsCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at assistsCustom GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
 /// /////////////////////////////////////////////
 /// /// Rebounds Per Game Custom SQL Endpoint ///
 /// /////////////////////////////////////////////
@@ -694,26 +724,24 @@ router.route('/rebounds-custom')
     res.send('Action unavailable');
   });
 
-/// ///////////////////////////
-/// /// Custom SQL Endpoint ///
-/// ///////////////////////////
-const teamCustomfull = `SELECT team_location, team_name, year_founded, name AS stadium_name, head_coach, general_manager, owner, head_physician, ceo, cfo, player_amount
-FROM team_info JOIN team_staff
-	USING (team_id)
-JOIN stadium_info
-  USING (team_id)
-ORDER BY year_founded, team_location;`;
+/// ///////////////////////////////////////////
+/// /// Steals Per Game Custom SQL Endpoint ///
+/// ///////////////////////////////////////////
+const stealsCustom = `SELECT first_name, last_name, ROUND(steals_per_game, 1) AS steals_per_game
+FROM player_info JOIN player_stats
+	USING (player_id)
+ORDER BY steals_per_game DESC;`;
 
-router.route('/teamCustomfull')
+router.route('/steals-custom')
   .get(async (req, res) => {
     try {
-      const result = await db.sequelizeDB.query(teamCustomfull, {
+      const result = await db.sequelizeDB.query(stealsCustom, {
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
     } catch (err) {
       console.error(err);
-      res.send('Server error');
+      res.send('Server error at stealsCustom GET');
     }
   })
   .post(async (req, res) => {
@@ -726,5 +754,34 @@ router.route('/teamCustomfull')
     res.send('Action unavailable');
   });
 
+/// ///////////////////////////////////////////
+/// /// Blocks Per Game Custom SQL Endpoint ///
+/// ///////////////////////////////////////////
+const blocksCustom = `SELECT first_name, last_name, ROUND(blocks_per_game, 1) AS blocks_per_game
+FROM player_info JOIN player_stats
+	USING (player_id)
+ORDER BY blocks_per_game DESC;`;
 
+router.route('/blocks-custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(blocksCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at blocksCustom GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+  
 export default router;

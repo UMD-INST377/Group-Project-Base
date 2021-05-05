@@ -1,3 +1,12 @@
+// random int function for whole meal selection
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+
+  // The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 async function playerSpotlight() {
   console.log('enter playerSpotlight');
 
@@ -95,6 +104,80 @@ async function teamComparison() {
   results.append(team2Elem);
 }
 
+async function carouselSlider() {
+  /* Buttons */
+  const nextBtn = document.querySelector('#next');
+  const prevBtn = document.querySelector('#prev');
+
+  /* indexing */
+  let leftIdx = 0;
+  let midIdx = 1;
+  let rightIdx = 2;
+
+  /* Build images array */
+  const tables = document.querySelectorAll('.carousel-table');
+
+  console.log(tables);
+
+  // previous button click functionality
+  prevBtn.onclick = (event) => {
+    event.preventDefault();
+
+    // remove current images class, add hidden to image that is leaving
+    tables[leftIdx].classList.remove('left');
+    tables[midIdx].classList.remove('middle');
+    tables[rightIdx].classList.remove('right');
+    tables[rightIdx].classList.add('hidden');
+
+    // update indexes
+    if (leftIdx === 0) {
+      rightIdx = midIdx;
+      midIdx = leftIdx;
+      leftIdx = tables.length - 1;
+    } else {
+      rightIdx = midIdx;
+      midIdx = leftIdx;
+      leftIdx -= 1;
+    }
+
+    // add appropriate class based on updated indexes, remove
+    // hidden from image entering carousel and add appropriate class
+    tables[rightIdx].classList.add('right');
+    tables[midIdx].classList.add('middle');
+    tables[leftIdx].classList.remove('hidden');
+    tables[leftIdx].classList.add('left');
+  };
+
+  // next button click functionality
+  nextBtn.onclick = (event) => {
+    event.preventDefault();
+
+    // remove current images class, add hidden to image that is leaving
+    tables[leftIdx].classList.remove('left');
+    tables[midIdx].classList.remove('middle');
+    tables[rightIdx].classList.remove('right');
+    tables[leftIdx].classList.add('hidden');
+
+    // update indexes
+    if (rightIdx === tables.length - 1) {
+      leftIdx = midIdx;
+      midIdx = rightIdx;
+      rightIdx = 0;
+    } else {
+      leftIdx = midIdx;
+      midIdx = rightIdx;
+      rightIdx += 1;
+    }
+
+    // add appropriate class based on updated indexes, remove
+    // hidden from image entering carousel and add appropriate class
+    tables[leftIdx].classList.add('left');
+    tables[midIdx].classList.add('middle');
+    tables[rightIdx].classList.remove('hidden');
+    tables[rightIdx].classList.add('right');
+  };
+}
+
 async function shootingPctData() {
   console.log('enter shootingPctData');
 
@@ -118,7 +201,7 @@ async function shootingPctData() {
   while (i < 5) {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `<td>${i + 1}</td>
-          <td>${shootPcts[i].first_name} ${shootPcts[i].last_name}</td>
+          <td class='playerName'>${shootPcts[i].first_name} ${shootPcts[i].last_name}</td>
           <td>${shootPcts[i].shooting_percentage}</td>
     `;
 
@@ -150,8 +233,40 @@ async function threePtPctData() {
   while (i < 5) {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `<td>${i + 1}</td>
-          <td>${threePcts[i].first_name} ${threePcts[i].last_name}</td>
+          <td data-tip='TEST'>${threePcts[i].first_name} ${threePcts[i].last_name}</td>
           <td>${threePcts[i].three_pt_pct}</td>
+    `;
+
+    results.append(newRow);
+    i += 1;
+  }
+}
+
+async function assistsData() {
+  console.log('enter reboundsData');
+
+  // const variable declarations
+  const assistsEndpoint = '/api/assists-custom';
+  const request = await fetch(assistsEndpoint);
+  const results = document.querySelector('.assistsResults');
+
+  // check successful request
+  if (request.ok) {
+    console.log('endpoint fetched');
+  } else {
+    alert(`HTTP-Error: ${request.status}`);
+  }
+
+  // successful request, create Object for data
+  const assistsPerGameData = await request.json();
+  console.log('assistsPerGameData: ', assistsPerGameData);
+
+  let i = 0;
+  while (i < 5) {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `<td>${i + 1}</td>
+          <td>${assistsPerGameData[i].first_name} ${assistsPerGameData[i].last_name}</td>
+          <td>${assistsPerGameData[i].assists_per_game}</td>
     `;
 
     results.append(newRow);
@@ -191,13 +306,68 @@ async function reboundsData() {
   }
 }
 
-// random int function for whole meal selection
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
+async function stealsData() {
+  console.log('enter stealsData');
 
-  // The maximum is inclusive and the minimum is inclusive
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  // const variable declarations
+  const stealsEndpoint = '/api/steals-custom';
+  const request = await fetch(stealsEndpoint);
+  const results = document.querySelector('.stealsResults');
+
+  // check successful request
+  if (request.ok) {
+    console.log('endpoint fetched');
+  } else {
+    alert(`HTTP-Error: ${request.status}`);
+  }
+
+  // successful request, create Object for data
+  const stealsPerGameData = await request.json();
+  console.log('stealsPerGameData: ', stealsPerGameData);
+
+  let i = 0;
+  while (i < 5) {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `<td>${i + 1}</td>
+          <td>${stealsPerGameData[i].first_name} ${stealsPerGameData[i].last_name}</td>
+          <td>${stealsPerGameData[i].steals_per_game}</td>
+    `;
+
+    results.append(newRow);
+    i += 1;
+  }
+}
+
+async function blocksData() {
+  console.log('enter blocksData');
+
+  // const variable declarations
+  const blocksEndpoint = '/api/blocks-custom';
+  const request = await fetch(blocksEndpoint);
+  const results = document.querySelector('.blocksResults');
+
+  // check successful request
+  if (request.ok) {
+    console.log('endpoint fetched');
+  } else {
+    alert(`HTTP-Error: ${request.status}`);
+  }
+
+  // successful request, create Object for data
+  const blocksPerGameData = await request.json();
+  console.log('blocksPerGameData: ', blocksPerGameData);
+
+  let i = 0;
+  while (i < 5) {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `<td>${i + 1}</td>
+          <td>${blocksPerGameData[i].first_name} ${blocksPerGameData[i].last_name}</td>
+          <td>${blocksPerGameData[i].blocks_per_game}</td>
+    `;
+
+    results.append(newRow);
+    i += 1;
+  }
 }
 
 async function windowActions() {
@@ -205,7 +375,11 @@ async function windowActions() {
   await teamComparison();
   await shootingPctData();
   await threePtPctData();
+  await assistsData();
   await reboundsData();
+  await stealsData();
+  await blocksData();
+  await carouselSlider();
 }
 
 window.onload = windowActions;

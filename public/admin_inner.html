@@ -33,25 +33,42 @@
               </li >
             </ul>
 
-            <div class="secondContainer">
-              <a href="admin.html">
-                <button>Back</button>
-              </a>
+            <div class="topAdminContainer">
 
-              <h1 class="aboutTitle">MyKea Admin</h1>
+              <div class="adminContainer">
+                <a href="admin.html">
+                  <button>Back</button>
+                </a>
 
-              <div>
-                  <h3>Add a new DB product object</h3>
+                <h1 class="aboutTitle">MyKea Admin</h1>
 
-                  <form class="addNewForm" id ="addNewForm">
+                <div>
+                    <h3>Add a new DB product object</h3>
 
-                      <input id="productid" type="text" placeholder="Product ID" name="id">
-                      <input id="description" type="text" placeholder="Product Description" name="desc" required>
-                      <input id="color" type="text" placeholder="Product Color" name="color" required>
-                      <input id="price" type="text" placeholder="Product Unit Price" name="price" required>
-                      <input id="familyid" type="text" placeholder="Family ID" name="fam_id" required>
-                      <input id="categoryid" type="text" placeholder="Category ID" name="cat_id" required>
-                      <input id="imglink" type="text" placeholder="Image Link" name="imglink" required>
+                    <form class="addNewForm" id ="addNewForm">
+
+                        <input id="productid" type="text" placeholder="Product ID" name="id">
+                        <input id="description" type="text" placeholder="Product Description" name="desc" required>
+                        <input id="color" type="text" placeholder="Product Color" name="color" required>
+                        <input id="price" type="text" placeholder="Product Unit Price" name="price" required>
+                        <input id="familyid" type="text" placeholder="Family ID" name="fam_id" required>
+                        <input id="categoryid" type="text" placeholder="Category ID" name="cat_id" required>
+                        <input id="imglink" type="text" placeholder="Image Link" name="imglink" required>
+
+                        <button type="submit">Submit</button>
+                    
+                    
+                    </form>
+                </div>
+
+              </br>
+
+                <div>
+                  <h3>Delete a DB Product by ID</h3>
+
+                  <form class="deleteForm" id ="deleteForm">
+
+                      <input id="delproductid" type="text" placeholder="Product ID" name="id">
 
                       <button type="submit">Submit</button>
                   
@@ -59,47 +76,122 @@
                   </form>
               </div>
 
-            </br>
+
+
+              </br>
 
               <div>
-                <h3>Delete a DB Product by ID</h3>
+                <h3>Update a DB Product by ID</h3>
 
-                <form class="deleteForm" id ="deleteForm">
+                <form class="updateForm" id ="updateForm">
 
-                    <input id="delproductid" type="text" placeholder="Product ID" name="id">
+                  <input id="productid" type="text" placeholder="Product ID" name="id">
+                  <input id="description" type="text" placeholder="Product Description" name="desc" required>
+                  <input id="color" type="text" placeholder="Product Color" name="color" required>
+                  <input id="price" type="text" placeholder="Product Unit Price" name="price" required>
+                  <input id="familyid" type="text" placeholder="Family ID" name="fam_id" required>
+                  <input id="categoryid" type="text" placeholder="Category ID" name="cat_id" required>
+                  <input id="imglink" type="text" placeholder="Image Link" name="imglink" required>
 
-                    <button type="submit">Submit</button>
+                  <button type="submit">Submit</button>
                 
                 
                 </form>
             </div>
-
-
-
-          </br>
-
-          <div>
-            <h3>Update a DB Product by ID</h3>
-
-            <form class="updateForm" id ="updateForm">
-
-              <input id="productid" type="text" placeholder="Product ID" name="id">
-              <input id="description" type="text" placeholder="Product Description" name="desc" required>
-              <input id="color" type="text" placeholder="Product Color" name="color" required>
-              <input id="price" type="text" placeholder="Product Unit Price" name="price" required>
-              <input id="familyid" type="text" placeholder="Family ID" name="fam_id" required>
-              <input id="categoryid" type="text" placeholder="Category ID" name="cat_id" required>
-              <input id="imglink" type="text" placeholder="Image Link" name="imglink" required>
-
-              <button type="submit">Submit</button>
+              
             
             
-            </form>
-        </div>
-            
-          
-          
           </div>
+
+          <div class = "referenceTable">
+            <table>
+              <tr>
+                <th class="thFam"><ul>Family Name</ul></th>
+                <th class="thID"><ul>Family ID</ul></th> 
+              </tr>
+              
+              <tr>
+                <th class="thFam">ALEX</th>
+                <th class="thID">3</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">KYNDBY</th>
+                <th class="thID">4</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">MICKE</th>
+                <th class="thID">5</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">FREDAN</th>
+                <th class="thID">9</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">LATT</th>
+                <th class="thID">12</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">TRATTEN</th>
+                <th class="thID">17</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">RIGGAD</th>
+                <th class="thID">19</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">FYRTUR</th>
+                <th class="thID">21</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">STRANDMON</th>
+                <th class="thID">22</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">SOLVINDEN</th>
+                <th class="thID">39</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">TORARED</th>
+                <th class="thID">40</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">HYLLESTAD</th>
+                <th class="thID">41</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">BOLLOLVON</th>
+                <th class="thID">48</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">INVANDIG</th>
+                <th class="thID">51</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">KOLBJARN</th>
+                <th class="thID">57</th>
+              </tr>
+
+              <tr>
+                <th class="thFam">INGOLF</th>
+                <th class="thID">58</th>
+              </tr>
+            </table>
+          </div>
+      </div>
 
         <script src="addNewRecord.js"></script>
     </body>

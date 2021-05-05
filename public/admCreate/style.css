@@ -17,15 +17,9 @@ h1 {
     text-align: center;
 }
 
-<<<<<<< HEAD
 .label {
     text-align: center;
     color: white;
-=======
-.input {
-    color: black;
->>>>>>> 3b495e5107c63364ad36bc94e92d67c4c1404236
-}
 
 .box {
     background-color:  rgb(98, 0, 255);

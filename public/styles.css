@@ -64,7 +64,7 @@ li a:hover {
     margin-top: 50px;
     border: black;
     border-style:double;
-    height:600px;
+    /* height:600px; */
     background-color: lightsteelblue;
     /* text-align:center; */
 }

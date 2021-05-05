@@ -1,12 +1,13 @@
-import Sequelize from 'sequelize';
+const Sequelize =  require('sequelize');
 
-import configOptions from './config.js';
-import modelList from '../models/index.js';
+const configOptions =  require('./config.js');
+const modelList =  require('../models/index.js');
 
 const { DataTypes } = Sequelize;
 
 const env = process.env.NODE_ENV || 'development';
 const config = configOptions[env];
+console.log('config: ', config);
 
 let sequelizeDB;
 if (config.use_env_variable) {
@@ -42,4 +43,4 @@ Object.keys(db).forEach((modelName) => {
 db.sequelizeDB = sequelizeDB;
 db.Sequelize = Sequelize;
 
-export default db;
+module.exports = db;

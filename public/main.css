@@ -1,0 +1,36 @@
+.moviesYouLike {
+    width: 309px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 70px;
+    left: 199px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 22px;
+    opacity: 1;
+    text-align: center;
+}
+.writeReview {
+    width: 120px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 339px;
+    left: 20px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 16px;
+    opacity: 1;
+    text-align: center;
+}
+.submit {
+    width: 57px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 11px;
+    left: 25px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 18px;
+    opacity: 1;
+    text-align: center;
+}

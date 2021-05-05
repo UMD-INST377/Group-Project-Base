@@ -1,11 +1,13 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+const movieContent = require('./movie_content.js');
+const movieActors = require('./movie_actors.js');
+const movie = require('./movie.js');
+const movieImdbRatings = require('./movie_imdb_ratings.js');
+const movieTechnicals = require('./movie_technicals.js');
 
-export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+module.exports = {
+  movieContent,
+  movieActors,
+  movieImdbRatings,
+  movie,
+  movieTechnicals
 };

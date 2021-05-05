@@ -152,9 +152,9 @@ router.put('/movie_imdb_ratings', async (req, res) => {
     await db.movieImdbRatings.update(
       {
         imdb_score: req.body.imdb_score,
-        num_critic_for_reviews: req.body.num_critic_for_reviews,
-        num_user_for_reviews: req.body.num_user_for_reviews,
-        num_voted_users: req.body.num_voted_users
+        //num_critic_for_reviews: req.body.num_critic_for_reviews,
+        //num_user_for_reviews: req.body.num_user_for_reviews,
+        //num_voted_users: req.body.num_voted_users
       },
       {
         where: {

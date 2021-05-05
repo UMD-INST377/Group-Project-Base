@@ -733,7 +733,7 @@ router.delete('/products/:product_id', async (req, res) => {
   try {
     await db.products.destroy({
       where: {
-        product_id: req.body.product_id
+        product_id: req.params.product_id
       }
     });
     res.send('Successfully Deleted');

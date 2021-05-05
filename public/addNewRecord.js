@@ -8,6 +8,24 @@ const categoryid = document.querySelector('#categoryid')
 const imglink = document.querySelector('#imglink')
 
 
+
+const delForm = document.querySelector('#deleteForm')
+const delProdID = document.querySelector('#delproductid')
+
+
+delForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const delRecord = await fetch('/api/products/' + delProdID.value, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+})
+
+
+
+
 myForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     console.info('submitted', event.target);

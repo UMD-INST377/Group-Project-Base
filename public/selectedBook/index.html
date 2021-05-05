@@ -1,57 +1,28 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selected Book</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Cinzel+Decorative:700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <link rel='stylesheet' type='text/css' href="style.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selected Book</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Cinzel+Decorative:700" rel="stylesheet" />
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
-    <div class="selectedBookBox">
-    <div class="container is-widescreen">
-        <!-- <div class="notification is-primary"> -->
-            <!-- <strong>
-                <center>WE BOOKS</center>
-            </strong> -->
-            <h1>WeBooks</h1>
-        </div>
-
-        <div class="tile is-ancestor">
-
-
-
-            <div class="tile is-parent">
-                <ul>
-                    <p><strong> Title: </strong> All The Light We Cannot See </p>
-                    <p><strong> Author: </strong> Anthony Doerr </p>
-                    <p><strong> Language: </strong> English </p>
-                    <strong> Genre: </strong> Historical </p>
-                    <strong> Amount Sold: </strong> 48,000 </p>
-                    <strong> Public Domain: </strong> No </p>
-                    <strong>Rating: </strong> 91% </p>
-                </ul>
-
-            </div>
-
-
-            <center>
-                <div class="section">
-                    <h5> <strong> Photo Image </strong></h5>
-                    <a href="light.jpg"><img src="light.jpg" alt="See book"></a>
-                </div>
-            </center>
-        </div>
-
-
-
-</body>
-
-<div class= "back">
+  <h1 class="has-text-centered">WeBooks</h1>
+  <div class="bookContainer">
+    <div id="bookMetaData"></div>
+    <div id="BookPicture"></div>
+  </div>
+  <div class="back">
     <a href="/">Go to Home</a>
-</div>
+  </div>
+  <script src="script.js"></script>
+</body>
 
 </html>

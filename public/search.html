@@ -49,10 +49,12 @@
             <form class="search-form flex-outer mt-1" name="searchform" id="searchform">
                 <input type="text" class="input mt-1" name="search" id="search" placeholder="Enter text..." />
                 </br>
-                <button class="button" type="submit" name="genrebutton" id="genrebutton">Genre</button>
-                <button class="button" type="submit" name="artistbutton" id="artistbutton">Artist</button>
-                <button class="button" type="submit" name="albumbutton" id="albumbutton">Album</button>
             </form>
+        </div>
+        <div class="container" name="filters" id="filters">
+          <button class="button" name="genrebutton" id="genrebutton" onclick="genreSearch()">Genre</button>
+          <button class="button" name="artistbutton" id="artistbutton" onclick="artistSearch()">Artist</button>
+          <button class="button" name="albumbutton" id="albumbutton" onclick="albumSearch()">Album</button>
         </div>
     </body>
     <script src="dropdown.js"></script>

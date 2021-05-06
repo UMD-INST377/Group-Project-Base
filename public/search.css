@@ -8,21 +8,26 @@ body {
 }
 
 #search {
-    width: 350px;
+  width: 350px;
 }
   
 h1, h2{
-    display: flex;
-    justify-content: center;
-    color: #000000;
-  }
+  display: flex;
+  justify-content: center;
+  color: #000000;
+}
 
 .container{
-    display: flex;
-    justify-content: center;
-    background-color: lightgrey;
-    max-width: 400px;
-    gap: 50px;
+  display: flex;
+  justify-content: center;
+  background-color: lightgrey;
+  max-width: 400px;
+  gap: 50px;
+}
+
+#filters {
+  max-width: 400px;
+  padding-bottom: 10px;
 }
 
 text {
@@ -35,4 +40,16 @@ text {
   padding: 0;
   max-width: 1100px;
   margin: 5% 2.5%;
+}
+
+.button {
+  justify-content: center;
+}
+
+.button:hover {
+  background: #1db954;
+}
+
+.button:focus {
+  background: #127535;
 }

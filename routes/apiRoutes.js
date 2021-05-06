@@ -144,7 +144,7 @@ router.post('/clubs', async (req, res) => {
   }
 });
 
-router.delete('/clubs/', async (req, res) => {
+router.delete('/clubs/:club_id', async (req, res) => {
   try {
     await db.clubs.destroy({
       where: {

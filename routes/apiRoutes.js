@@ -252,16 +252,20 @@ router.post('/movie', async (req, res) => {
 });
 
 router.delete('/movie/:movie_id', async (req, res) => {
+  console.log('====================================');
+  console.log('delete req.params.movie_id: ', req.params.movie_id);
+  console.log('====================================');
   try {
     await db.movie.destroy({
       where: {
-        movie_id: req.params.movie_id
+        movie_id: parseInt(req.params.movie_id)
       }
     });
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.status(404).json({ message: 'error' });
+    // res.error('Server error');
   }
 });
 

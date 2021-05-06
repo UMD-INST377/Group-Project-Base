@@ -1,10 +1,10 @@
 import { classToInvokable } from "sequelize/types/lib/utils";
 
-function creatTable(json){
+function createTable(json){
     if(json==null||json.length === 0) return;
     
-    function creatTableHead(table){
-        let creatTableHead=table.createTHead();
+    function createTableHead(table){
+        let createTableHead=table.createTHead();
         let row=tableHead.insertRow();
     
     for(key in json["data"][0]){
@@ -15,7 +15,7 @@ function creatTable(json){
     }
     console.log('done making table head')
 }
-    function creatTableBody(table){
+    function createTableBody(table){
         for (key in json["data"]){
             let row=table.insertRow();
             for(key2 in json["data"][key]){

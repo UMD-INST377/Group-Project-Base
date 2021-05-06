@@ -9,8 +9,8 @@ Music Data
 
 ## Description
 We intend to develop a system that can assist users with inquiries such as predicting future trends, which genres and artists could be involved in the next big hit, when retro concepts will become popular again, and so on. 
-- The home page will have the top 10 albums displayed. 
-- The search page will allow the user to search for a specific song, artist, genre, or album. 
+- The home page will have the top 10 artists displayed. 
+- The search page will allow the user to search for a specific song, genre, or artist.
 - The custom input page will allow users to input their own music into the database.
 
 ## Target Browsers

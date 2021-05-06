@@ -197,6 +197,20 @@ router.get('/songs/:genre', async (req, res) => {
   }
 });
 
+router.get('/songs/album/:album_id', async (req, res) => {
+  try {
+    const song = await db.Songs.findAll({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.json(song);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 router.post('/songs', async (req, res) => {
   const song = await db.Songs.findAll();
   const currentId = (await song.length) + 1;

@@ -50,9 +50,10 @@ This software only has one API, which is the `/api` - API route for books inform
 
 # To do list 
 * Delete page functionality - Tony
-* Add more search filters (genre, rating, etc...)
 * works on mobile
 * Make sure styles work across browsers
 * Fast load time on Heroku
 * .env setup on Heroku?
 * Create final presentation
+* fix code for selected book
+* make sure add book is working

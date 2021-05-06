@@ -9,7 +9,7 @@ async function DisplayPic(bookId) {
 async function buildMetaData(bookArray) {
   let genres = ""
   for (const item of bookArray) {
-    const genreCapitalized = item.genre_name.charAt(0).toUpperCase() + item.genre_name.slice(1)
+    const genreCapitalized = item.genre_name ? item.genre_name.charAt(0).toUpperCase() + item.genre_name.slice(1) : "no genre";
     genres = `${genres} ${genreCapitalized}`
   }
   const book = bookArray[0];

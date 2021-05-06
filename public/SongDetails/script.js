@@ -9,7 +9,8 @@ async function SongTable() {
         const appendItem = document.createElement("tr");
         appendItem.innerHTML = `<th class='tbody'>${element.playlist_name}</th>
         <td class='tbody'>${element.song_title}</td>
-        <td class='tbody'>${element.song_duration}`;
+        <td class='tbody'>${element.song_duration}</td>
+        <td class='tbody'>${element.explicit}</td>`;
         tab.append(appendItem);
     });
 }

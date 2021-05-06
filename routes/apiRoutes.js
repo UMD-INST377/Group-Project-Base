@@ -14,33 +14,47 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////Museum Staff Endpoints////////
 /// /////////////////////////////////
-// router.route('/museumStaffRole')
-//   .get(asyc (req, res, next) => {
-//     try {
-//       const roles = await db.StaffRole.findAll();
-//       const staffs = await db.MuseumStaff.findAll();
-//     }
-//   });
 router.route('/museumStaffRole')
   .get(async (req, res) => {
     try {
-      const roles = await db.StaffRole.findAll();
-      const staffs = await db.MuseumStaff.findAll();
-      const museumStaffRole = roles.map((role) => {
-        const staffRoles = staffs.find((staff) => staff.role_id === role.role_id);
-        console.log('role', role)
-        console.log('staffRoles', staffRoles);
-        return {
+      const roles = await db.MuseumStaff.findAll({include: db.StaffRole});
+
+      const staffRoles = roles.map((role) => {
+        console.log('role', role);
+        const dataObject = {
           ...role.dataValues,
-          ...staffRoles.dataValues
+          ...role.staff_role.dataValues
         };
+        delete dataObject.staff_role;
+        return dataObject;
       });
-      res.json({data: museumStaffRole});
+      console.log(staffRoles);
+      res.json({data: staffRoles});
     } catch (err) {
       console.error(err);
-      res.json({message: 'something went wrong on the server!'});
+      res.json({message: err});
     }
   });
+// router.route('/museumStaffRole')
+//   .get(async (req, res) => {
+//     try {
+//       const roles = await db.StaffRole.findAll();
+//       const staffs = await db.MuseumStaff.findAll();
+//       const museumStaffRole = roles.map((role) => {
+//         const staffRoles = staffs.find((staff) => staff.role_id === role.role_id);
+//         console.log('role', role)
+//         console.log('staffRoles', staffRoles);
+//         return {
+//           ...role.dataValues,
+//           ...staffRoles.dataValues
+//         };
+//       });
+//       res.json({data: museumStaffRole});
+//     } catch (err) {
+//       console.error(err);
+//       res.json({message: 'something went wrong on the server!'});
+//     }
+//   });
 
 
 router.get('/museum_staff', async (req, res) => {

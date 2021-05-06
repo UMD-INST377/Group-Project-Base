@@ -27,10 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
 async function getData() {
   console.log('data request');
   const result = document.querySelector('#result');
-  const request = await fetch('/api/museum_staff');
+  const request = await fetch('/api/museumStaffRole');
   const tableData = await request.json();
   // return tableData;
-  console.log(tableData);
+  console.table(tableData);
 
   tableData.data.forEach((staff) => {
     console.log(staff);

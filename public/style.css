@@ -25,3 +25,20 @@ th{
 tr {
   text-transform: capitalize;
 }
+
+.aboutbackground{
+  background-color:#c6f0de;
+  padding-top: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+}
+
+.aboutheader{
+  text-align: center;
+}
+
+img{
+  height: 128px;
+  width: 128px;
+}

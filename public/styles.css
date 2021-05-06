@@ -23,6 +23,30 @@ a:hover {
   float: left;
   width: 100%;
 }
+.homepg-two {
+  text-align: center;
+  margin: auto;
+  position: fixed;
+  top: 75%;
+  width: 1000px;
+  padding: 10px 40px;
+  border: 1px solid #CCC;
+  border-radius: 15px;
+  background: #eee;
+}
+
+.intro-box{
+  text-align: center;
+  margin: auto;
+  position: fixed;
+  top: 35%;
+  width: 398px;
+  padding: 10px 40px;
+  border: 1px solid #CCC;
+  border-radius: 15px;
+  background: #eee;
+}
+
 
 #add-movie, #submit-add {
   padding: 0.5rem;
@@ -37,11 +61,15 @@ a:hover {
   height: 43%;
   width: 43%;
   position: absolute;
-  top: 300px;
+  top: 200px;
   right: 150px;
 }
 
 #our-device-title {
+  text-align: center;
+}
+
+#intro-box {
   text-align: center;
 }
 

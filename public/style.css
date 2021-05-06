@@ -21,3 +21,7 @@ table {
 th{
   background-color: #00D1B2;
 }
+
+tr {
+  text-transform: capitalize;
+}

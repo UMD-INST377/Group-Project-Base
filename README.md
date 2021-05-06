@@ -60,6 +60,7 @@ There are no prewritten tests in the source repository, but you can use Cypress 
 ## Known Bugs 
 ### Bugs:
 - There may be null values in the data that may need to be handled. 
+- The playlist page search does not reveal the table until something is placed in the search bar.
 
 ### Future Development: 
 * Handle null values.

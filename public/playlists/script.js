@@ -17,7 +17,7 @@ async function windowActions() {
             const playName = item.playlist_name.replace(regex, `${event.target.value}`);
             return `
             <tr>
-            <th class="tbody"><a href="/updatePlaylists/index.html">${playName}</a></th>
+            <th class="tbody"><a class="play" href="/updatePlaylists/index.html">${playName}</a></th>
             <td class="tbody"><a href='/SongDetails/index.html'>${item.number_of_songs}</a></td>
             <td class="tbody">${item.total_time}</td>
             </tr>`;

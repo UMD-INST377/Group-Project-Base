@@ -144,11 +144,11 @@ router.post('/clubs', async (req, res) => {
   }
 });
 
-router.delete('/clubs/:club_name', async (req, res) => {
+router.delete('/clubs/:club_id', async (req, res) => {
   try {
     await db.clubs.destroy({
       where: {
-        club_name: req.params.club_name
+        club_id: req.params.id
       }
     });
     res.send('Successfully Deleted');

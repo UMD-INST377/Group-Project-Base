@@ -5,27 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Group 14 Final Project</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     </head>
 
     <body>
-      <nav>
-        <div class="logo">
-          <h1 id="logo-name">Movie Curation</h1>
-        </div>
-        <ul>
-          <li><a class= "active" href="index.html">Home</a></li>
-          <li><a class= "active" href="about.html">About Us</a></li>
-          <li><a class= "active" href="movielist.html">Movie List</a></li>  
-          <li><a class= "active" href="moviedatabase.html">Movie Database</a></li>  
+      <main>
+        <section class="hero is-primary" style="background-color:black;">
+          <div class="hero-body">
+            <p class="title is-1" style="text-align:left;">
+              <img src="logo.jpeg" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28">
+              Movie Curation
+            </p>
+            <p class="subtitle">
+              <Primary subtitle>
+              Welcome to our Movie Curation! Click on Movie List to start making your own personal movie list.</p>
+          </div>
+        </section>
+      </main>
+
+      <div class="tabs is-right">
+        <ul style="background-color:black;">
+          <li class="is-active">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="movielist.html">Movie List</a></li>
+          <li><a href="moviedatabase.html">Movie Database</a></li>
         </ul>
-      </nav> 
+      </div>
 
       <header>
         <h1>Add New Movie</h1>
       </header>
 
-         <form action="/api" method="POST">
+         <form action="" method="POST">
             <ul class="addmovie-form">
                 <li>
                     <label for="mname">Name of Movie: </label>
@@ -66,16 +80,17 @@
                             <option>New Line Cinema</option>
                         </select>
                     </div>
-                </li>
+                  </li>
 
-
+                  <li>
+                    <button class="back-movie-button"><a href="movielist.html">Go back to Movie List</a></button>
+                  </li>
             </ul>
         </form>
 
-      <form action="movielist.html" method="POST">
-        <input type="submit" id="submit-add" name="submit-ad" value="Submit"><br>
+      <form action="" method="POST">
+        <input type="submit" id="submit-add" name="submit-add" value="Submit"><br>
       </form>
-        
         <script src="./script.js"></script>
     </body>
 

@@ -35,15 +35,24 @@ function playerDisplayMatches() {
     const regex = new RegExp(this.value, 'gi');
     return `
       <li>
-      <div class="PlayerInfo box">
-        <span>Name: ${player.first_name} ${player.last_name}</span>
+      <div class = "PlayerInfo li box is-small has-background-orange is-capitalized>">
+        <span> Name: ${player.first_name + " " + player.last_name}</span>
         <br>
-        <span>Birthdate: ${player.birthdate}</span>
+        <span> Birthdate: ${playerBirthdate}</span>
         <br>
-        <span>Team: ${player.team_location} ${player.team_name}</span>
+        <span> Jersey Number: ${player.jersey_number}</span>
         <br>
-        <span>Salary: ${player.salary}</span>
+        <span> Player College: ${player.player_college}</span>
         <br>
+        <span> NBA Debut: ${player.nba_debut}</span>
+        <br>
+        <span> Salary: ${playerSalary}</span>
+        <br>
+        <span> Salary: ${playerSalary}</span>
+        <br>
+        <span> Shooting Percentage: ${playerShootingPercentage}</span>
+        <br>
+        
       </div>
       </li>
       `;

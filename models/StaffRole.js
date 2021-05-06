@@ -16,7 +16,7 @@ export default (sequelize, DataTypes) => {
   );
   StaffRole.associate = (models) => {
     StaffRole.hasMany(models.MuseumStaff, {
-      targetKey: 'role_id'
+      foreignKey: 'role_id'
     });
   };
   return StaffRole;

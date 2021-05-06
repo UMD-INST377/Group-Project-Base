@@ -33,12 +33,13 @@ function playerDisplayMatches() {
   const html = matchArray.map((player) => {
     console.log('player: ', player);
     const regex = new RegExp(this.value, 'gi');
+    const player_birthdate = player.birthdate;
     return `
       <li>
       <div class = "PlayerInfo li box is-small has-background-orange is-capitalized>">
         <span> Name: ${player.first_name + " " + player.last_name}</span>
         <br>
-        <span> Birthdate: ${playerBirthdate}</span>
+        <span> Birthdate: ${player_birthdate}</span>
         <br>
         <span> Jersey Number: ${player.jersey_number}</span>
         <br>
@@ -46,11 +47,9 @@ function playerDisplayMatches() {
         <br>
         <span> NBA Debut: ${player.nba_debut}</span>
         <br>
-        <span> Salary: ${playerSalary}</span>
+        <span> Salary: ${player.salary}</span>
         <br>
-        <span> Salary: ${playerSalary}</span>
-        <br>
-        <span> Shooting Percentage: ${playerShootingPercentage}</span>
+        <span> Shooting Percentage: ${player.shooting_percentage}</span>
         <br>
         
       </div>

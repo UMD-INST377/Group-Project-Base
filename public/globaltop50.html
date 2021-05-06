@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 3 Final</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+    <!-- NAV BAR + HERO -->
+    <section class="hero is-small">
+      <div class="hero-head">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <a href="index.html"><img src="images/logo.svg" id="logo" alt="Logo of white shuffle icon over a dark circle"></a>
+            </a>
+        
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+        
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    Charts
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="ustop50.html">
+                        US Top 50
+                    </a>
+                    <a class="navbar-item" href="globaltop50.html">
+                        Global Top 50
+                    </a>
+                </div>
+              </div>
+              <a class="navbar-item" href="playlists.html">
+                My Playlists
+              </a>
+            </div>
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-dark" href="createplaylists.html">
+                    Generate Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <p class="title">
+              Global Top 50 Charts
+            </p>
+            <p class="subtitle">
+              December 2020
+            </p>
+          </div>
+        </div>
+    </section>
+
+    <!-- SPACER -->
+    <div class="block"></div>
+    
+    <!-- Page Content -->
+    <section>
+        <div class="container is-max-desktop">
+            <table class="table is-bordered is-striped is-hoverable center">
+                <thead>
+                    <th>Rank</th>
+                    <th>Song</th>
+                    <th>Artist</th>
+                    <th>Streams</th>
+                </thead>
+                <tbody class="global-top-songs"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SPACER -->
+    <div class="block"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Spotify Music Generator</strong> by 
+            <a href="https://github.com/kthrnv/Group3-Final-INST377SP2021">
+                Chris Shea, Ryan Moy, Emily Zheng, Matthew Nguyen, & Katherine Vo</a>.
+          </p>
+          <p>
+              INST377 Spring 2021 Group 3
+          </p>
+        </div>
+    </footer>
+
+    <!-- Link JS -->
+    <script src="scripts.js"></script>
+</body>
+</html>

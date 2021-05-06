@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 3 Final</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+    <!-- NAV BAR + HERO -->
+    <section class="hero is-medium">
+        <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <a href="index.html"><img src="images/logo.svg" id="logo" alt="Logo of white shuffle icon over a dark circle"></a>
+              </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link">
+                      Charts
+                  </a>
+                  <div class="navbar-dropdown">
+                      <a class="navbar-item" href="ustop50.html">
+                          US Top 50
+                      </a>
+                      <a class="navbar-item" href="globaltop50.html">
+                          Global Top 50
+                      </a>
+                  </div>
+                </div>
+                <a class="navbar-item" href="playlists.html">
+                  My Playlists
+                </a>
+              </div>
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-dark" href="createplaylists.html">
+                      Generate Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <p class="title">
+              Welcome to Randomize
+            </p>
+            <p class="subtitle">
+              Expand your horizons with our playlists:<br>
+              <strong>Randomly generated, top hits recommendations.</strong>
+            </p>
+            <a class="button is-dark" href="createplaylists.html">
+              Generate Now
+            </a>
+          </div>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <section class="homepage">
+        <div class="container is-max-desktop">
+          <div class="section-one">
+            <!-- What is our app -->
+            <div class="columns is-variable is-8">
+                <div class="column is-three-fifths">
+                  <div class="content is-normal">
+                    <h1>About Randomize</h1>
+                    <p>With the overwhelming amount of music released every day, 
+                      it can be difficult to keep up with new music or find songs you’d like. 
+                      <br><br>
+                      <strong>Randomize</strong> will generate random playlists, based on Spotify’s Global 
+                      and US Top 50 Charts, to recommend you new music to try out! 
+                      <br><br>
+                      Explore potential songs and the latest hits that can end up being your 
+                      favorite with the click of a button. It doesn’t get much simpler than that!
+                    </p>
+                  </div>
+                    
+                </div>
+                
+                <div class="column">
+                    <!-- Picture -->
+                    <figure class="image is-250x250">
+                      <img src="images/headphones girl.jpg" alt="Blonde woman wearing white headphones outside in the city, gazing to the right.">
+                    </figure>
+                </div>
+            </div>
+          </div>
+
+          <!-- Three-columns section -->
+          <div class="section-two">
+            <div class="content is-normal">
+              <div class="instructions">
+                <h1>How It Works</h1>
+                <p>Learn what you can do with the generator.</p>
+              </div>
+            </div>
+            <div class="columns is-variable is-5">
+                <div class="column">
+                  <figure class="image is-square">
+                    <img src="images/start.png" id="three" alt="Glass pane with bright orange start button, angled to the left.">
+                  </figure>
+                  <div class="content is-normal">
+                    <div class="three-cols">
+                      <h2>Start the Generator</h2>
+                      <p>Prepare to be open-minded to new recommendations.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <figure class="image is-square">
+                    <img src="images/hold phone.png" id="three" alt="Pale hand holding up an iPhone that's on a music app, in front of a gray background.">
+                  </figure>
+                  <div class="content is-normal">
+                    <div class="three-cols">
+                      <h2>Customization</h2>
+                      <p>Edit your playlist if needed by adding your own songs.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <figure class="image is-square">
+                    <img src="images/boombox.png" id="three" alt="Boombox on the ground, in front of a man laying down.">
+                  </figure>
+                  <div class="content is-normal">
+                    <div class="three-cols">
+                      <h2>Enjoy New Music</h2>
+                      <p>Listen to the playlist's hits and share it with others!</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          
+
+          <!--Final section with generate button-->
+          <div class="content is-normal">
+            <div class="instructions">
+              <h1>Ready to start listening?</h1>
+              <p>Hit the button below to get started!</p>
+              <a class="button is-dark" href="createplaylists.html">
+                Generate Now
+              </a>
+            </div>
+          </div>
+
+        </div>
+    </section>
+
+    <!-- SPACER -->
+    <div class="block"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Randomize</strong> by 
+            <a href="https://github.com/kthrnv/Group3-Final-INST377SP2021">
+                Chris Shea, Ryan Moy, Emily Zheng, Matthew Nguyen, & Katherine Vo</a>.
+          </p>
+          <p>
+              INST377 Spring 2021 Group 3
+          </p>
+        </div>
+    </footer>
+
+    <!-- Link JS -->
+    <script src="scripts.js"></script>
+</body>
+</html>

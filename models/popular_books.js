@@ -13,14 +13,11 @@ export default (sequelize, DataTypes) => {
       },
 
       amount_sold: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+        type: DataTypes.INTEGER
       },
 
       publish_year: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-
+        type: DataTypes.INTEGER
       },
 
       original_language: {
@@ -28,16 +25,13 @@ export default (sequelize, DataTypes) => {
 
       },
 
-
       public_domain: {
-        type: DataTypes.BOOLEAN 
+        type: DataTypes.BOOLEAN
 
       },
 
       google_user_percentage: {
-        type: DataTypes.DECIMAL,
-        allowNull: false
-
+        type: DataTypes.DECIMAL
       },
 
       authors_author_id: {
@@ -56,7 +50,6 @@ export default (sequelize, DataTypes) => {
 
       artistic_movement_artistic_movement_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         unique: true
 
       },
@@ -72,7 +65,6 @@ export default (sequelize, DataTypes) => {
         allowNull: false
 
       }
-
 
     },
     { freezeTableName: true, timestamps: false }

@@ -1,8 +1,8 @@
 # Group 10 Music Data
 
-[Group Git Repository](https://github.com/annachk/Group10-Final-INST377SP2021)
+[Group 10 Git Repository](https://github.com/annachk/Group10-Final-INST377SP2021)
 
-[Group Heroku Instance](https://group10-final-inst377.herokuapp.com/index.html)
+[Group 10 Heroku Instance](https://group10-final-inst377.herokuapp.com/index.html)
 
 ## Title
 Music Data

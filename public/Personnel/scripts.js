@@ -32,6 +32,10 @@ async function getData() {
   // return tableData;
   console.table(tableData);
 
+  // tableData.data.forEach(element => {
+  //   console.table(element.staff_role);
+  // });
+
   tableData.data.forEach((staff) => {
     console.log(staff);
     const appendItem = document.createElement('tr');

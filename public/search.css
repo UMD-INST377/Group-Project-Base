@@ -22,7 +22,7 @@ h1, h2{
   justify-content: center;
   background-color: lightgrey;
   max-width: 400px;
-  gap: 50px;
+  gap: 52px;
 }
 
 #filters {
@@ -46,10 +46,6 @@ text {
   justify-content: center;
 }
 
-.button:hover {
-  background: #1db954;
-}
-
-.button:focus {
-  background: #127535;
+.button:hover, .button:focus {
+  background: #6eda94;
 }

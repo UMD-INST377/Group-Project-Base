@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link rel="stylesheet" href="search.css"></link>
+        <title>Search</title>
+    </head>
+
+    <body>
+        <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Menu</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <a href="index.html" class="dropdown-item">
+                  Home
+                </a>
+                <a href="search.html" class="dropdown-item">
+                  Search
+                </a>
+                <a href="custom.html" class="dropdown-item">
+                  Custom Input
+                </a>
+              </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <h1 class="title is-1">
+              History of Hits
+            </h1>
+            <h2 class="subtitle">
+              Powered by Spotify
+            </h2>
+            <h1 class="title mt-4">Search</h1>
+        </section>
+
+        <div class="userform container is-max-desktop">
+            <form class="search-form flex-outer mt-1" name="searchform" id="searchform">
+                <input type="text" class="input mt-1" name="search" id="search" placeholder="Enter text..." />
+                </br>
+            </form>
+        </div>
+        <div class="container" name="filters" id="filters">
+          <button class="button" name="genrebutton" id="genrebutton" onclick="genreSearch()">Genre</button>
+          <button class="button" name="artistbutton" id="artistbutton" onclick="artistSearch()">Artist</button>
+          <button class="button" name="albumbutton" id="albumbutton" onclick="albumSearch()">Album</button>
+        </div>
+    </body>
+    <script src="dropdown.js"></script>
+    <script src="search.js"></script>
+</html>

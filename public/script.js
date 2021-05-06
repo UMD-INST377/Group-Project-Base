@@ -23,7 +23,7 @@ function start(){
     element5.onclick = ClickGenre;
     let element6 = document.getElementById('soul');
     element6.onclick = ClickGenre;
-    let element7 = document.getElementById('rock');
+    let element7 = document.getElementById('hiphop');
     element7.onclick = ClickGenre;
 }
 

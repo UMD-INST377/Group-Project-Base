@@ -9,3 +9,15 @@ h1, h3 {
 .form {
   text-align: center;
 }
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+}
+
+th{
+  background-color: #00D1B2;
+}

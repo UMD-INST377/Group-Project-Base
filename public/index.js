@@ -26,9 +26,20 @@ function createTable(json){
         }
         console.log('donne makeing table body');
     }
+     
+    //find pop 1-10
+    albumPop.gtAll = function(ap){
+    post.findAll({
+        where: {
+            ALBUM_POPULARITY:{
+                [Op.gte]: 10,
+            }
+        }
+    });
+}
         let table = document.createElement("table");
         document.body.appendChild(table);
         createTableBody(table);
         createTableHead(table);
-        table.setAttribute("class", "table is-borded");
+        table.setAttribute("class", "table is-striped");
 }

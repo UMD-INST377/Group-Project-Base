@@ -15,15 +15,15 @@ div.columns {
   }
 
   h1 {
-    color: green !important;
+    color: rgb(1, 14, 1) !important;
     margin-bottom: 20px;
 
   }
 
   .table td {
-    font-size: 17px
+    font-size: 100px
   }
 
   .table th {
-    font-size: 17px
+    font-size: 100px
   }

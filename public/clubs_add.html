@@ -41,34 +41,36 @@
   <!---Add Form--->
 
   <div class="container">
-    <form class="addclub" id="add">
+    <form class="addclub" id="add-form">
       <h1 class="subtitle is-3">Add a Club</h1>
       <div class="field">
         <label class="label">Club Name</label>
         <div class="control">
-          <input class="input" type="text" id="club-name" placeholder="e.g. Arsenal, Chelsea, etc.">
+          <input class="input" type="text" id="club-name" placeholder="e.g. Arsenal, Chelsea, etc." required>
         </div>
       </div>
       <div class="field">
           <label class="label">Coach First Name</label>
           <div class="control">
-            <input class="input" type="text" id="first-name" placeholder="e.g. Alex, David, etc.">
+            <input class="input" type="text" id="first-name" placeholder="e.g. John, etc." required>
           </div>
-        </div>
+      </div>
         <div class="field">
-          <label class="label">Club Name</label>
+          <label class="label">Coach Last Name</label>
           <div class="control">
-            <input class="input" type="text" id="club-name" placeholder="e.g. Arsenal, Chelsea, etc.">
+            <input class="input" type="text" id="last-name" placeholder="e.g. Smith, etc." required>
           </div>
         </div>
         <div class="field">
-            <label class="label">Coach First Name</label>
-            <div class="control">
-              <input class="input" type="text" id="first-name" placeholder="e.g. Alex, David, etc.">
-            </div>
+          <label class="label">Number of Players</label>
+          <div class="control">
+            <input class="input" type="number" id="num-players" placeholder="Number of Players in digits" required>
           </div>
+          <button class="button is-link" type="submit" id="add-button">Add Club</button>
+          <button class="button is-link" type="reset" id="add-button">Reset</button>
         </div>
-        <button class="button is-link" type="submit" id="add-button">Add Club</button>
+      </div>
     </form>
   </div>
+  <script src="add_clubs.js"></script>
 </body>

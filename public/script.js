@@ -1,9 +1,18 @@
+<<<<<<< Updated upstream
 // async function Records(){
 //     console.log('data request');
 //     const recordsRequest = await fetch('/api/properties');
 //     const recordsData = await recordsRequest.json();
 //     return recordsData;
 // }
+=======
+async function Records(){
+    console.log('data request');
+    const recordsRequest = await fetch('/api/properties');
+    const recordsData = await recordsRequest.json();
+    return recordsData;
+}
+>>>>>>> Stashed changes
 async function calendarTable() {
     const apif = await fetch('/api/properties');
     const recordsArray = await apif.json();

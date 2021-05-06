@@ -15,8 +15,8 @@ export default (sequelize, DataTypes) => {
     { freezeTableName: true, timestamps: false }
   );
   StaffRole.associate = (models) => {
-    StaffRole.hasOne(models.MuseumStaff, {
-      foreignKey: 'role_id'
+    StaffRole.belongsTo(models.MuseumStaff, {
+      targetKey: 'role_id'
     });
   };
   return StaffRole;

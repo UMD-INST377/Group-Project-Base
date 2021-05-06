@@ -4,15 +4,13 @@ export default (sequelize, DataTypes) => {
     {
       amenity_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
       },
       amenity_type: {
         type: DataTypes.STRING,
         allowNull: false,
         primaryKey: false
-      },
-      fk_visitors_has_Museum_info_Museum_info1: {
-        type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }

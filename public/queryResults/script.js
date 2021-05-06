@@ -35,7 +35,7 @@ async function filterBooks(urlParams, books) {
   const validBooks = [];
 
   for (const book of books) {
-    const title = book.title.toLowerCase();
+    const title = book.title ? book.title.toLowerCase() : "";
     const author = `${book.first_name} ${book.last_name}`.toLowerCase();
     const rating = book.google_user_percentage ? book.google_user_percentage : 0;
     const genre = book.genre_name ? book.genre_name : "no genre";

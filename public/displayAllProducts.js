@@ -6,6 +6,9 @@ const productsBody = document.querySelector('.products-body');
 const familiesBody = document.querySelector('.families-body');
 const categoriesBody = document.querySelector('.categories-body');
 const storesBody = document.querySelector('.stores-body');
+const filterField = document.querySelector('#filterField');
+const filterButton = document.querySelector('#allSubmit');
+const resultDisplay = document.querySelector('.searchResultsAll')
 
 async function productsTable() {
     const request = await fetch('/api/products/');
@@ -15,28 +18,36 @@ async function productsTable() {
     productsData.data.forEach((product) => {
         const productsRow = document.createElement('tr');
         const productsPrice = document.createElement('td');
-        const productsImage = document.createElement('td');
+        const productsImage = document.createElement('img');
         const productsDescr = document.createElement('td');
         const productsColor = document.createElement('td');
         const productsFam = document.createElement('td');
         const productsCatg = document.createElement('td');
 
         productsPrice.innerText = product.product_unit_price;
-        productsImage.innerText = product.image_link;
+        productsImage.src = product.image_link;
         productsDescr.innerText = product.product_description;
         productsColor.innerText = product.product_color;
         productsFam.innerText = product.family_id;
         productsCatg.innerText = product.category_id;
 
+        productsImage.style.height = '20vw';
+        productsImage.style.width = 'auto';
+
         productsBody.append(productsRow);
         productsRow.append(productsPrice);
-        productsRow.append(productsImage);
+        productsRow.appendChild(productsImage);
         productsRow.append(productsDescr);
         productsRow.append(productsColor);
         productsRow.append(productsFam);
         productsRow.append(productsCatg);
     });
+    return productsData;
 }
+
+// const imgElem = document.createElement('img');
+// imgElem.src = element.image_link;
+// divElem.appendChild(imgElem);
 
 async function familiesTable() {
     const request = await fetch('/api/productFamilies/');
@@ -104,23 +115,82 @@ async function storesTable() {
     });
 }
 
+
+
 async function windowActions() {
-    productsTable();
+    const data = await productsTable();
     familiesTable();
     categoriesTable();
     storesTable();
+
+    filterButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        const result = data['data'][filterField.value - 1];
+        const newTableResult = document.createElement('table');
+        const newTabTitles = document.createElement('tr');
+        
+        const newThID = document.createElement('th');
+        newThID.innerHTML = "Product ID";
+        const newThPrice = document.createElement('th');
+        newThPrice.innerHTML = "Price";
+        const newThImage = document.createElement('th');
+        newThImage.innerHTML = "Product Image";
+        const newThDescription = document.createElement('th');
+        newThDescription.innerHTML = "Description";
+        const newThColor = document.createElement('th');
+        newThColor.innerHTML = "Color";
+        const newThFam = document.createElement('th');
+        newThFam.innerHTML = "Family ID";
+        const newThCat = document.createElement('th');
+        newThCat.innerHTML = "Category ID";
+
+        newTabTitles.appendChild(newThID);
+        newTabTitles.appendChild(newThPrice);
+        newTabTitles.appendChild(newThImage);
+        newTabTitles.appendChild(newThDescription);
+        newTabTitles.appendChild(newThColor);
+        newTabTitles.appendChild(newThFam);
+        newTabTitles.appendChild(newThCat);
+
+        newTableResult.appendChild(newTabTitles);
+
+        newTableResult.classList.add("table");
+
+        const rowResult = document.createElement('tr');
+
+        const nextThID = document.createElement('th');
+        nextThID.innerHTML = result.product_id;
+        const nextThPrice = document.createElement('th');
+        nextThPrice.innerHTML = result.product_unit_price;
+        const nextThImage = document.createElement('img');
+        nextThImage.src = result.image_link;
+        const nextThDescription = document.createElement('th');
+        nextThDescription.innerHTML = result.product_description
+        const nextThColor = document.createElement('th');
+        nextThColor.innerHTML = result.product_color;
+        const nextThFam = document.createElement('th');
+        nextThFam.innerHTML = result.family_id;
+        const nextThCat = document.createElement('th');
+        nextThCat.innerHTML = result.category_id;
+
+        nextThImage.style.height = '20vw';
+        nextThImage.style.width = 'auto';
+
+        rowResult.appendChild(nextThID);
+        rowResult.appendChild(nextThPrice);
+        rowResult.appendChild(nextThImage);
+        rowResult.appendChild(nextThDescription);
+        rowResult.appendChild(nextThColor);
+        rowResult.appendChild(nextThFam);
+        rowResult.appendChild(nextThCat);
+
+        newTableResult.appendChild(rowResult);
+
+        resultDisplay.appendChild(newTableResult);
+
+
+    });
 }
 
 window.onload = windowActions();
 
-// // Get all database records from the store table
-// router.get('/stores', async (req, res) => {
-//     try {
-//       const store = await db.stores.findAll();
-//       const reply = store.length > 0 ? { data: store} : { message: 'no results found' };
-//       res.json(reply);
-//     } catch (err) {
-//       console.error(err);
-//       res.error('Server error');
-//     }
-// });

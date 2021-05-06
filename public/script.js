@@ -53,8 +53,8 @@ async function Search(){
         });
     };
 
-    function displayMatches(event){
-        query = event.target.value;
+    function displayMatches(event){ //*TODO This <li> class probably needs to be edited!
+         query = event.target.value;
         const matchArr = findMatches(query, mArr); //this.value is the data being input in the form
         const html = matchArr.map(Song => { //.map creates an array with equal size but replaces the values with this instead
             return ` <li class = "box">        

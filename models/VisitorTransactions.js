@@ -9,13 +9,13 @@ export default (sequelize, DataTypes) => {
         unique: true,
       },
       visitor_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
       visitor_transactions: {
-        type: DataTypes.DOUBLE,
-      },
+        type: DataTypes.DOUBLE
+      }
     },
-    { freezeTableName: true, timestamps: true }
+    { freezeTableName: true, timestamps: false }
   );
   VisitorTransactions.associate = (models) => {
     VisitorTransactions.belongsTo(models.Visitors, {

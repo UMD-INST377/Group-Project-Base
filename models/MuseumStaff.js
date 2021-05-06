@@ -29,7 +29,7 @@ export default (sequelize, DataTypes) => {
   );
   MuseumStaff.associate = (models) => {
     MuseumStaff.belongsTo(models.StaffRole, {
-      foreignKey: 'staff_id'
+      foreignKey: 'role_id'
     });
   };
   return MuseumStaff;

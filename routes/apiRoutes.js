@@ -616,6 +616,42 @@ router.route('/playerCustomInfo')
   });
 
 /// ////////////////////////////////////////
+/// /// Player Custom Stats SQL Endpoint ///
+/// ////////////////////////////////////////
+const playerCustomStats = `SELECT first_name, last_name,
+CONCAT(ROUND((shooting_percentage * 100), 2), '%') AS shooting_percentage,
+  CONCAT(ROUND((three_pt_pct * 100), 2), '%') AS three_pt_pct,
+  ROUND(assists_per_game, 1) AS assists_per_game,
+  ROUND(rebounds_per_game, 1) AS rebounds_per_game,
+  ROUND(steals_per_game, 1) AS steals_per_game,
+  ROUND(blocks_per_game, 1) AS blocks_per_game
+FROM player_info JOIN player_stats
+USING (player_id)
+ORDER BY player_id;`;
+
+router.route('/playerCustomStats')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(playerCustomStats, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error at playerCustomStats GET');
+    }
+  })
+  .post(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .put(async (req, res) => {
+    res.send('Action unavailable');
+  })
+  .delete(async (req, res) => {
+    res.send('Action unavailable');
+  });
+
+/// ////////////////////////////////////////
 /// /// Shooting Pct Custom SQL Endpoint ///
 /// ////////////////////////////////////////
 const shootingPctCustom = `SELECT first_name, last_name, CONCAT(ROUND((shooting_percentage * 100), 2), '%') AS shooting_percentage

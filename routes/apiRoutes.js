@@ -3,6 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import MuseumStaff from '../models/MuseumStaff.js';
 
 const router = express.Router();
 
@@ -13,6 +14,27 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////Museum Staff Endpoints////////
 /// /////////////////////////////////
+
+router.route('/museumStaffRole')
+  .get(async (req, res) => {
+    try {
+      const roles = await db.StaffRole.findAll();
+      const staffs = await db.MuseumStaff.findAll();
+      const museumStaffRole = roles.map((role) => {
+        const staffRoles = staffs.find((staff) => staff.role_id === role.role_id);
+        console.log('role', role)
+        console.log('staffRoles', staffRoles);
+        return {
+          ...role.dataValues,
+          ...staffRoles.dataValues
+        };
+      });
+      res.json({data: museumStaffRole});
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'something went wrong on the server!'});
+    }
+  });
 router.get('/museum_staff', async (req, res) => {
   try {
     const staff = await db.MuseumStaff.findAll();

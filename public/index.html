@@ -40,7 +40,7 @@
         <div class="filter-menu, has-ratio">
           <h2>Filtering Menu</h2>
           <p>Press CTRL to select multiple options at once.</p>
-          <form action="/api" method="post">
+          <form action="/api" method="post"> <!-- or get? -->
             <!-- form action is the endpoint you want to go to -->
             <div class="select is-multiple">
               <!-- bulma lets you select multiple things -->
@@ -56,16 +56,21 @@
           </form>
           <script>
             function multipleFunc() {
-                document.getElementById("mySelect").multiple = true;
+                document.querySelector("#mySelect").multiple = true; // changed from getElementById
             }
           </script> 
         </div>
         <div class="search-bar">
-          <form action="/api" method="post">
+          <form id="search-form" action="/api" method="get"> <!-- changed from post -->
             <label for="search">Search</label>
             <input type="text" id="search" name="Search" />
           </form>
         </div>
+        <!-- <div class="reply-box block"> from lab 5
+          <div class="reply-message"></div>
+          <ul class="target-list">
+          </ul>
+        </div> -->
       </div>
     
       <div class= "content">

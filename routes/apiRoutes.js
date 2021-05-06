@@ -14,7 +14,13 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////Museum Staff Endpoints////////
 /// /////////////////////////////////
-
+// router.route('/museumStaffRole')
+//   .get(asyc (req, res, next) => {
+//     try {
+//       const roles = await db.StaffRole.findAll();
+//       const staffs = await db.MuseumStaff.findAll();
+//     }
+//   });
 router.route('/museumStaffRole')
   .get(async (req, res) => {
     try {
@@ -35,6 +41,8 @@ router.route('/museumStaffRole')
       res.json({message: 'something went wrong on the server!'});
     }
   });
+
+
 router.get('/museum_staff', async (req, res) => {
   try {
     const staff = await db.MuseumStaff.findAll();

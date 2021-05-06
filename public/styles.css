@@ -87,3 +87,10 @@ table, th, td {
   margin-right: auto;
   width: 50%;
 }
+
+.title{
+  background-color: rgb(250, 217, 32);
+  width: 100%;
+  overflow: hidden;
+  margin: 0px;
+}

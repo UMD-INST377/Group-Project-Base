@@ -1,7 +1,6 @@
 window.onload = async function windowActions () {
     
     const form = document.getElementById("add-form")
-    
 
     // ADDING CLUBS
     async function add_club() {
@@ -31,7 +30,7 @@ window.onload = async function windowActions () {
 
         const msg = document.createElement('p')
         if (req){
-            msg.innerHTML = "Club Successfully Added"
+            msg.innerHTML = "Club successfully added"
             form.append(msg)
         } else {
             msg.innerHTML = `Failed to add club: ${req.status_code}`
@@ -41,6 +40,6 @@ window.onload = async function windowActions () {
         return false
     }
 
-    form.onsubmit = add_club
+    form.addEventListener("submit", add_club)
     
 }

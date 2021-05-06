@@ -38,15 +38,15 @@
         </div>
       </nav>
 
-  <!---Add Form--->
+  <!---Edit Form--->
 
   <div class="container">
-    <form class="editclub" id="edit-form">
+    <form class="editclub" id="edit-form" onsubmit="return false">
       <h1 class="subtitle is-3">Edit a Club</h1>
       <div class="field">
-        <label class="label">Club Name</label>
+        <label class="label">Club ID</label>
         <div class="control">
-          <input class="input" type="text" id="club-name" placeholder="e.g. Arsenal, Chelsea, etc." required>
+          <input class="input" type="number" id="club-id" required>
         </div>
       </div>
       <div class="field">
@@ -54,10 +54,10 @@
         <div class="control">
           <div class="control">
             <div class="select">
-              <select>
+              <select id="selection">
                 <option>Select dropdown</option>
-                <option>Coach's Name</option>
-                <option>Number of Players</option>
+                <option value="1">Coach's Name</option>
+                <option value="2">Number of Players</option>
               </select>
             </div>
           </div>
@@ -66,19 +66,19 @@
       <div class="field">
           <label class="label">Coach First Name</label>
           <div class="control">
-            <input class="input" type="text" id="first-name" placeholder="e.g. John, etc." required>
+            <input class="input" type="text" id="first-name" placeholder="e.g. John, etc.">
           </div>
       </div>
         <div class="field">
           <label class="label">Coach Last Name</label>
           <div class="control">
-            <input class="input" type="text" id="last-name" placeholder="e.g. Smith, etc." required>
+            <input class="input" type="text" id="last-name" placeholder="e.g. Smith, etc.">
           </div>
         </div>
         <div class="field">
           <label class="label">Number of Players</label>
           <div class="control">
-            <input class="input" type="number" id="num-players" placeholder="Number of Players in digits" required>
+            <input class="input" type="number" id="num-players" placeholder="Number of Players in digits">
           </div>
           <button class="button is-link" type="submit" id="add-button">Edit Club</button>
           <button class="button is-link" type="reset" id="add-button">Reset</button>
@@ -86,6 +86,6 @@
       </div>
     </form>
   </div>
-  <script src=""></script>
+  <script src="edit_clubs.js"></script>
 </body>
 </html>

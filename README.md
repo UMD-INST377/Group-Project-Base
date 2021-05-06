@@ -1,4 +1,4 @@
-# Movie Finder
+# Movie Curation
 ## Description
 
 Our goal is to make searching for movies easier for the user by adding filters to customize to users preferences. Since the start of the pandemic, people of the world have had to stay inside and find other means of entertainment. The majority of these people turned to watching movies and TV shows. Theses users scrolled for hours searching for movies that meet their criteria, only to be unsuccessful and give up. Our system gives the movie enthusiasts the ability to use a filtre to find movies that fit their desired criteria, thus finding their ideal movie much quicker and more efficient. Based on their input in categories such as genre and favorite actors, we will sort through movies in our database and match their preferences with the perfect movie. We are excited to help the user find their ideal movie. 

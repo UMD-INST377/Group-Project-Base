@@ -62,9 +62,8 @@ delBtn.addEventListener('click', () => {
     return;
   }
   axios({
-    method: "put",
+    method: "delete",
     url: `/movie/${movieId}`,
-    data: {},
   }).then(function (res) { //回调函数  接受服务器参数
     console.log(res);
     const data = res.data;

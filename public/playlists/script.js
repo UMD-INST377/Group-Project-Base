@@ -33,13 +33,17 @@ async function windowActions() {
 
     }
     
+    
 
     function setName(el){
         localStorage.setItem("playlistName", el.innerHTML)
         console.log(localStorage.getItem('playlistName'))
     }
     
+
+
     
+
 
     
     

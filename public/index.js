@@ -1,45 +1,45 @@
-import { classToInvokable } from "sequelize/types/lib/utils";
+import { classToInvokable } from 'sequelize/types/lib/utils';
 
-function createTable(json){
-    if(json==null||json.length === 0) return;
-    
-    function createTableHead(table){
-        let createTableHead=table.createTHead();
-        let row=tableHead.insertRow();
-    
-    for(key in json["data"][0]){
-        let th=document.createElement('th');
-        let label=document.createTextNode(key);
-        th.appendChild(label);
-        row.appendChild(th);
+function createTable(json) {
+  if (json == null || json.length === 0) return;
+
+  function createTableHead(table) {
+    const createTableHead = table.createTHead();
+    const row = tableHead.insertRow();
+
+    for (key in json.data[0]) {
+      const th = document.createElement('th');
+      const label = document.createTextNode(key);
+      th.appendChild(label);
+      row.appendChild(th);
     }
-    console.log('done making table head')
-}
-    function createTableBody(table){
-        for (key in json["data"]){
-            let row=table.insertRow();
-            for(key2 in json["data"][key]){
-                let cell=row.insertCell();
-                let text=document.createTextNode(json["data"][key][key2]);
-                classToInvokable.appendChild(text);
-            }
-        }
-        console.log('Done making table body');
+    console.log('done making table head');
+  }
+  function createTableBody(table) {
+    for (key in json.data) {
+      const row = table.insertRow();
+      for (key2 in json.data[key]) {
+        const cell = row.insertCell();
+        const text = document.createTextNode(json.data[key][key2]);
+        classToInvokable.appendChild(text);
+      }
     }
-     
-    //find pop 1-10
-    albumPop.getAll = function(ap){
+    console.log('Done making table body');
+  }
+
+  // find pop 1-10
+  albumPop.getAll = function(ap) {
     post.findAll({
-        where: {
-            ALBUM_POPULARITY:{
-                [Op.gte]: 10,
-            }
+      where: {
+        ALBUM_POPULARITY: {
+          [Op.gte]: 10
         }
+      }
     });
-}
-        let table = document.createElement("table");
-        document.body.appendChild(table);
-        createTableBody(table);
-        createTableHead(table);
-        table.setAttribute("class", "table is-striped");
+  };
+  const table = document.createElement('table');
+  document.body.appendChild(table);
+  createTableBody(table);
+  createTableHead(table);
+  table.setAttribute('class', 'table is-striped');
 }

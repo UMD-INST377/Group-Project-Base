@@ -42,3 +42,13 @@ img{
   height: 128px;
   width: 128px;
 }
+
+.homebackground{
+  background-color: rgb(227, 250, 242);
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.button{
+  width: 250px;
+}

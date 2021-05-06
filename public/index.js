@@ -24,11 +24,11 @@ function createTable(json){
                 classToInvokable.appendChild(text);
             }
         }
-        console.log('donne makeing table body');
+        console.log('Done making table body');
     }
      
     //find pop 1-10
-    albumPop.gtAll = function(ap){
+    albumPop.getAll = function(ap){
     post.findAll({
         where: {
             ALBUM_POPULARITY:{

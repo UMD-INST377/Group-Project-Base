@@ -1,15 +1,15 @@
-async function windowActions() {
-    const artistInfoEndpoint = '/api/artist_info'
-    const artistInfoRequest = await fetch(artistInfoEndpoint)
-    const artistInfoData = await request.json()
+// async function windowActions() {
+//     const artistInfoEndpoint = '/api/artist_info'
+//     const artistInfoRequest = await fetch(artistInfoEndpoint)
+//     const artistInfoData = await request.json()
 
-    const playlistDetailsEndpoint = '/api/playlist_details'
-    const playlistDetailsRequest = await fetch(playlistDetailsEndpoint)
-    const playlistDetailsData = await request.json()
+//     const playlistDetailsEndpoint = '/api/playlist_details'
+//     const playlistDetailsRequest = await fetch(playlistDetailsEndpoint)
+//     const playlistDetailsData = await request.json()
 
-    const songsEndpoint = '/api/songs'
-    const songsRequest = await fetch(songsEndpoint)
-    const songData = await request.json()
+//     const songsEndpoint = '/api/songs'
+//     const songsRequest = await fetch(songsEndpoint)
+//     const songData = await request.json()
 
     
     const playlists = []
@@ -36,6 +36,6 @@ async function windowActions() {
 
         
     
-}
+// }
 
 // window.onload = windowActions();

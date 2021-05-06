@@ -10,7 +10,6 @@ async function populateShelters() {
   newShelterData.forEach((shelter) => {
     const appendShelter = document.createElement('tr');
     appendShelter.innerHTML = `
-    <td>${shelter.shelter_id}</td>
     <td>${shelter.shelter_name}</td>
     <td>${shelter.shelter_address}</td>
     <td>${shelter.phone_number}</td>

@@ -4,11 +4,14 @@ export default (sequelize, DataTypes) => {
     {
       amenity_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
       },
       museum_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
+
       }
     },
     { freezeTableName: true, timestamps: false }

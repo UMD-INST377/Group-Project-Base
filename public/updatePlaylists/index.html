@@ -20,7 +20,12 @@
     </div>
 
     <div class="block" id="sub1">
-        <p class="subheading" >You are currently updating: &nbsp;  <span id="pname"> Insert Name of Playlist</span></p>
+        <p class="subheading" >You are currently updating: &nbsp;  <span id="pname"> Insert Name of Playlist</span>
+        </p>
+        
+        <p class="subheading">Enter Playlist ID shown below in form.</p>
+        
+        <p class="subheading">Playlist ID: &nbsp;  <span id="details"> </span></p>
     </div>
         
     <div class="block" id="sub2">
@@ -29,28 +34,37 @@
 
     <div class="container" id="update-container">
         <div class="box" id="box">
-            <form id="update-form" class="flex-container" action="/playlists" method="post">
+            <form id="update-form" class="flex-container" action="/api/playlistDetails" method="post">
                 
                 <ul class="flex-outer">
-                    
+                        <!-- <li>
+                            <label  for="playlistDetailsId">Playlist Details ID</label>
+                            <input id='playlistDetailsId' name='playlistDetailsId' type="text"  placeholder="Enter the playlist details ID here">
+                        </li> -->
                         <li>
-                            <label  for="song-title">Song Title</label>
-                            <input id='song-title' name='song-title' type="text"  placeholder="Enter the song title here">
+                            <label  for="songId">Song ID</label>
+                            <input id='songId' name='songId' type="text"  placeholder="Enter the song ID here">
+                        </li>
+                        <li>
+                            <label  for="songTitle">Song Title</label>
+                            <input id='songTitle' name='songTitle' type="text"  placeholder="Enter the song title here">
                           </li>
                     
                         <li>
-                            <label  for="artist-band">Artist/Band</label>
-                            <input id='artist-band' name='artist-band' type="text"  placeholder="Enter artist or band here">
+                            <label  for="artistId">Artist/Band ID</label>
+                            <input id='artistId' name='artistId' type="text"  placeholder="Enter artist or band ID here">
                           </li>
                    
                         <li>
-                            <label   for="song-duration">Song Duration</label>
-                            <input id='song-duration' name='song-duration' type="text" placeholder="Enter song duration here">
+                            <label   for="songDuration">Song Duration</label>
+                            <input id='songDuration' name='songDuration' type="text" placeholder="00:00">
                         </li>
                    
                         <li>
-                            <p>Is it explicit?</p> 
-                            <ul class="flex-container">
+                            <!-- <p>Playlist ID</p>  -->
+                            <label   for="playlistId">Playlist ID</label>
+                            <input id='playlistId' name='playlistId' type="text" placeholder="Enter playlist id  here">
+                            <!-- <ul class="flex-container">
                                 <li class="flex-child">
                                   <input class="button" id='explicit' name ='explicit' type="button" value="Yes">
                                   <label  for="explicit"></label>
@@ -59,7 +73,7 @@
                                   <input class="button" id="not-explicit" name="not-explicit" type="button" value="No">
                                   <label for="not-explicit"></label>
                                 </li>
-                            </ul> 
+                            </ul>  -->
                             
                         </li>
                     </div>

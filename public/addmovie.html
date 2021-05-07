@@ -5,79 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Group 14 Final Project</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     </head>
 
     <body>
-      <nav>
-        <div class="logo">
-          <h1 id="logo-name">Movie Curation</h1>
-        </div>
-        <ul>
-          <li><a class= "active" href="index.html">Home</a></li>
-          <li><a class= "active" href="about.html">About Us</a></li>
-          <li><a class= "active" href="movielist.html">Movie List</a></li>  
-          <li><a class= "active" href="moviedatabase.html">Movie Database</a></li>  
+      <main>
+        <section class="hero is-primary" style="background-color:black;">
+          <div class="hero-body">
+            <p class="title is-1" style="text-align:left;">
+              <img src="logo.jpeg" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28">
+              Movie Curation
+            </p>
+            <p class="subtitle">
+              <Primary subtitle>
+              Welcome to our Movie Curation! Click on Movie List to start making your own personal movie list.</p>
+          </div>
+        </section>
+      </main>
+
+      <div class="tabs is-right">
+        <ul style="background-color:black;">
+          <li class="is-active">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="movielist.html">Movie List</a></li>
+          <li><a href="moviedatabase.html">Movie Database</a></li>
         </ul>
-      </nav> 
+      </div>
 
-      <header>
+    <div class="movie-add-title">
         <h1>Add New Movie</h1>
-      </header>
+    </div>
 
-         <form action="/api" method="POST">
-            <ul class="addmovie-form">
-                <li>
-                    <label for="mname">Name of Movie: </label>
-                    <input type="text" name="fname" id="fname">
-                </li>
-
-                <li>
-                    <label for='email'>Year: </label>
-                    <input id='email' name='email' type='email'/>
-                </li>
-
-                <li>
-                    <label for="lname">Genre: </label>
-                    <div class="select">
-                        <select>
-                            <option>Action</option>
-                            <option>Comedy</option>
-                            <option>Romance</option>
-                            <option>Horror</option>
-                            <option>Drama</option>
-                            <option>No preference</option>
-                        </select>
-                    </div>
-                </li>
-
-                <li>
-                    <label for="lname">Production Company: </label>
-                    <div class="select">
-                        <select>
-                            <option>Warner Bros.</option>
-                            <option>New Line Cinema</option>
-                            <option>Twentieth Century Fox</option>
-                            <option>Fox 2000 Pictures</option>
-                            <option>Pixar Animation Studios	</option>
-                            <option>Metro-Goldwyn-Mayer (MGM)</option>
-                            <option>Alloy Entertainment</option>
-                            <option>Warner Bros. Pictures</option>
-                            <option>New Line Cinema</option>
-                        </select>
-                    </div>
-                </li>
-
-
-            </ul>
-        </form>
-
-      <form action="movielist.html" method="POST">
-        <input type="submit" id="submit-add" name="submit-ad" value="Submit"><br>
-      </form>
+      <fieldset class="movie-input-container">
         
-        <script src="./script.js"></script>
-    </body>
+      <div class="field">
+        <label class="label">Name of Movie</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g The Dark Knight">
+        </div>
+      </div>
 
-    </body>
+      <div class="field">
+        <label class="label">Year</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g. 2004">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Genre</label>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <div class="select is-fullwidth">
+              <select name="genre">
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Romance">Romance</option>
+                <option value="Horror">Horror</option>
+                <option value="Drama">Drama</option>
+                <option value="No Preference">No Preference</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+      <div class="field">
+        <label class="label">Production Company</label>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <div class="select is-fullwidth">
+              <select name="production-company">
+                <option value="Warner Bros.">Warner Bros.</option>
+                <option value="New Line Cinema">New Line Cinema</option>
+                <option value="Twentieth Century Fox">Twentieth Century Fox</option>
+                <option value="Fox 2000 Pictures">Fox 2000 Pictures</option>
+                <option value="Pixar Animation Studios">Pixar Animation Studios</option>
+                <option value="Metro-Goldwyn-Mayer (MGM)">Metro-Goldwyn-Mayer (MGM)</option>
+                <option value="Alloy Entertainment">Alloy Entertainment</option>
+                <option value="Warner Bros. Pictures">Warner Bros. Pictures</option>
+                <option value="New Line Cinema">New Line Cinema</option>
+                <option value="No Preference">No Preference</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <a href="" button class="button is-black"> Submit </button></a>
+        <a href="movielist.html" button class="button is-danger"> Cancel </button></a>
+
+      </fieldset>
 </html>

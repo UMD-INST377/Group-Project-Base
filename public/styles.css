@@ -9,15 +9,29 @@
 body {
   font-family: 'Open Sans', sans-serif;
   color: black;
+  height:100%;
 }
 
-header {
+a:hover {
+  background-color: yellow;
+}
+
+.title{
   font-size: 3rem;
   color: black;
   text-align: center;
   float: left;
   width: 100%;
 }
+
+.movie-add-title {
+  font-size: 3rem;
+  color: black;
+  text-align: center;
+  float: left;
+  width: 100%;
+}
+
 .homepg-two {
   text-align: center;
   margin: auto;
@@ -70,45 +84,6 @@ header {
   width: 50%;
   height: 2em;
   background-color: #ffbd59;
-  position: absolute;
-  top: 25%;
-  left: 25%;
-}
-
-nav {
-  background: black;
-  height: 170px;
-  width: 100%;
-}
-
-#logo-name {
-  color: white;
-  font-size: 55px;
-  line-height: 175px;
-  padding: 0 100px;
-  font-weight: bold; 
-  position: fixed;
-  top: 12px;
-  left: 0px;
-}
-
-nav ul {
-  float: right;
-  margin-right: 20px;
-}
-
-nav ul li {
-  display: inline-block;
-  line-height: 280px;
-  margin: 0 20px;
-}
-
-nav ul li a {
-  color: white;
-}
-
-a:hover {
-  background-color: yellow;
 }
 
 .homeimage {
@@ -133,4 +108,34 @@ a:hover {
   left: 30%;
   background-color: #EEE;
   padding: 55px;
+}
+
+.movie-items-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-list {
+  min-width: 30%;
+  list-style: none;
+}
+.back-movie-button {
+  font-size: .9 rem;
+  width: 50%;
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 15%;
+}
+
+.box {
+  display: center;
+  text-align: center;
+  margin: 6rem;
+}
+
+.movie-input-container {
+  display: center;
+  text-align: center;
+  margin: 6rem;
 }

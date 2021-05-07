@@ -24,7 +24,7 @@ window.onload = async function windowActions() {
         console.log(new_club_id);
       }
     });
-    
+
     const new_player = {
       club_name: club_input.value,
       club_id: new_club_id,
@@ -36,38 +36,38 @@ window.onload = async function windowActions() {
       player_goals: goals_input.value,
       player_assists: assists_input.value,
     };
-    
-      // Adding new player to players table
-      const req_player = await fetch("/api/players", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          first_name: new_player.player_first_name,
-          last_name: new_player.player_last_name,
-          club_id: new_player.club_id,
-          club: new_player.club_name,
-          shirt_number: new_player.player_shirtnum,
-          best_player_counter: new_player.player_titles_num,
-          position: new_player.player_position,
-        }),
-      });
 
-      // Adding new player to Player Goals table
-      const req_goals = await fetch("/api/player_goals", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          first_name: new_player.player_first_name,
-          last_name: new_player.player_last_name,
-          goals: new_player.player_goals,
-          assists: new_player.player_assists,
-        }),
-      });
-    
+    // Adding new player to players table
+    const req_player = await fetch("/api/players", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: new_player.player_first_name,
+        last_name: new_player.player_last_name,
+        club_id: new_player.club_id,
+        club: new_player.club_name,
+        shirt_number: new_player.player_shirtnum,
+        best_player_counter: new_player.player_titles_num,
+        position: new_player.player_position,
+      }),
+    });
+
+    // Adding new player to Player Goals table
+    const req_goals = await fetch("/api/player_goals", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: new_player.player_first_name,
+        last_name: new_player.player_last_name,
+        goals: new_player.player_goals,
+        assists: new_player.player_assists,
+      }),
+    });
+
     const msg = document.createElement("p");
     if (req_player && req_goals) {
       msg.innerHTML = "Player successfully added";

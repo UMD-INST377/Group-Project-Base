@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>EPL</title>
-  </head>
 
-  <body>
-    <img src="images/epl-premierleague-logo.png" width="50" height="40" />
-    <p class="subtitle is-1 center">EPL Statistics</p>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="bar"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <title>EPL</title>
+</head>
+
+<body>
+  <img src="images/epl-premierleague-logo.png" width="50" height="40" />
+  <p class="subtitle is-1 center">EPL Statistics</p>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="bar">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="bar" class="navbar-menu mg-small">
+      <div class="navbar-start">
+        <a class="navbar-item" href="index.html"> Home </a>
+        <a class="navbar-item" href="clubs.html"> Clubs </a>
+        <a class="navbar-item" href="players.html"> Players </a>
       </div>
+    </div>
+  </nav>
 
-      <div id="bar" class="navbar-menu mg-small">
-        <div class="navbar-start">
-          <a class="navbar-item" href="index.html"> Home </a>
-          <a class="navbar-item" href="clubs.html"> Clubs </a>
-          <a class="navbar-item" href="players.html"> Players </a>
-        </div>
-      </div>
-    </nav>
-
-    <!---Add Form--->
+  <!---Add Form--->
 
   <div class="container">
     <h1 class="subtitle is-3">Add a Player</h1>
@@ -49,52 +41,53 @@
         <div class="control">
           <input class="input" type="text" id="firstname" placeholder="e.g. John, etc." required>
         </div>
-        </div>
-        <div class="field">
-          <label class="label">Player's Last Name</label>
-          <div class="control">
-            <input class="input" type="text" id = "lastname" placeholder="e.g. Smith, etc." required>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Club's Name</label>
-          <div class="control">
-            <input class="input" type="text" id= "playerclub" placeholder="e.g. Arsenal, etc." required>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Shirt Number</label>
-          <div class="control">
-            <input class="input" type="number" id = "shirtnumber" placeholder="e.g. 51, 69, etc." required>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Player's Position</label>
-          <div class="control">
-            <input class="input" type="text" id = "position" placeholder="Abbreviated. e.g. FW, GK, etc." required>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Number of Goals</label>
-          <div class="control">
-            <input class="input" type="number" id = "playergoals" placeholder="e.g. 25, 30, etc." required>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Number of Assists</label>
-          <div class="control">
-            <input class="input" type="number" id = "playerassists" placeholder="e.g. 150, 60, etc." required>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Number of "Best Player" Titles Won</label>
-          <div class="control">
-            <input class="input" type="number" id="playertitles" placeholder="e.g. 0, 3, etc." required>
-          </div>
-        </div>
-        <button class="button is-link" type="submit" id="add-button">Add Player</button>
-      </form>
+    </div>
+    <div class="field">
+      <label class="label">Player's Last Name</label>
+      <div class="control">
+        <input class="input" type="text" id="lastname" placeholder="e.g. Smith, etc." required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Club's Name</label>
+      <div class="control">
+        <input class="input" type="text" id="playerclub" placeholder="e.g. Arsenal, etc." required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Shirt Number</label>
+      <div class="control">
+        <input class="input" type="number" id="shirtnumber" placeholder="e.g. 51, 69, etc." required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Player's Position</label>
+      <div class="control">
+        <input class="input" type="text" id="position" placeholder="Abbreviated. e.g. FW, GK, etc." required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Number of Goals</label>
+      <div class="control">
+        <input class="input" type="number" id="playergoals" placeholder="e.g. 25, 30, etc." required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Number of Assists</label>
+      <div class="control">
+        <input class="input" type="number" id="playerassists" placeholder="e.g. 150, 60, etc." required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Number of "Best Player" Titles Won</label>
+      <div class="control">
+        <input class="input" type="number" id="playertitles" placeholder="e.g. 0, 3, etc." required>
+      </div>
+    </div>
+    <button class="button is-link" type="submit" id="add-button">Add Player</button>
+    </form>
   </div>
   <script src="add_players.js"></script>
 </body>
+
 </html>

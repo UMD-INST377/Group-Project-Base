@@ -1,11 +1,11 @@
-import Sequelize from 'sequelize';
+import Sequelize from "sequelize";
 
-import configOptions from './config.js';
-import modelList from '../models/index.js';
+import configOptions from "./config.js";
+import modelList from "../models/index.js";
 
 const { DataTypes } = Sequelize;
 
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || "development";
 const config = configOptions[env];
 
 let sequelizeDB;

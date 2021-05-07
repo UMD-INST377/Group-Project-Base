@@ -9,14 +9,14 @@ window.onload = async function windowActions() {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-      }
+      },
     });
 
     const req = await fetch("/api/players/".concat(id_input.value), {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-      }
+      },
     });
 
     const msg = document.createElement("p");

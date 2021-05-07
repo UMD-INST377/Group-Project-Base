@@ -1,197 +1,201 @@
 /* eslint-disable no-console */
-import express from 'express';
-import sequelize from 'sequelize';
+import express from "express";
+import sequelize from "sequelize";
 
-import db from '../database/initializeDB.js';
+import db from "../database/initializeDB.js";
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the EPL Stats API!');
+router.get("/", (req, res) => {
+  res.send("Welcome to the EPL Stats API!");
 });
 
 /// /////////////////////////////////
 /// ////Players Endpoints////////
 /// /////////////////////////////////
-router.get('/players', async (req, res) => {
+router.get("/players", async (req, res) => {
   try {
     const players = await db.players.findAll();
-    const reply = players.length > 0 ? { data: players } : { message: 'no results found' };
+    const reply =
+      players.length > 0 ? { data: players } : { message: "no results found" };
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.get('/players/:player_id', async (req, res) => {
+router.get("/players/:player_id", async (req, res) => {
   try {
     const players = await db.players.findAll({
       where: {
-        player_id: req.params.player_id
-      }
+        player_id: req.params.player_id,
+      },
     });
 
     res.json(players);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.post('/players', async (req, res) => {
+router.post("/players", async (req, res) => {
   const players = await db.players.findAll();
   const currentId = (await players.length) + 1;
   try {
     const newPlayer = await db.players.create({
-        player_id: currentId,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        club_id: req.body.club_id,
-        club: req.body.club,
-        shirt_number: req.body.shirt_number,
-        best_player_counter: req.body.best_player_counter,
-        position: req.body.position
+      player_id: currentId,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      club_id: req.body.club_id,
+      club: req.body.club,
+      shirt_number: req.body.shirt_number,
+      best_player_counter: req.body.best_player_counter,
+      position: req.body.position,
     });
     res.json(newPlayer);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.delete('/players/:player_id', async (req, res) => {
+router.delete("/players/:player_id", async (req, res) => {
   try {
     await db.players.destroy({
       where: {
-        player_id: req.params.player_id
-      }
+        player_id: req.params.player_id,
+      },
     });
-    res.send('Successfully Deleted');
+    res.send("Successfully Deleted");
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.put('/players', async (req, res) => {
+router.put("/players", async (req, res) => {
   try {
     await db.players.update(
       {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
+        club: req.body.club,
         club_id: req.body.club_id,
         shirt_number: req.body.shirt_number,
-        position: req.body.position
+        position: req.body.position,
+        best_player_counter: req.body.best_player_counter,
       },
       {
         where: {
-          player_id: req.body.player_id
-        }
+          player_id: req.body.player_id,
+        },
       }
     );
-    res.send('Successfully Updated');
+    res.send("Successfully Updated");
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
 /// /////////////////////////////////
 /// ////Clubs Endpoints////////
 /// /////////////////////////////////
-router.get('/clubs', async (req, res) => {
+router.get("/clubs", async (req, res) => {
   try {
     const clubs = await db.clubs.findAll();
-    const reply = clubs.length > 0 ? { data: clubs } : { message: 'no results found' };
+    const reply =
+      clubs.length > 0 ? { data: clubs } : { message: "no results found" };
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.get('/clubs/:club_id', async (req, res) => {
+router.get("/clubs/:club_id", async (req, res) => {
   try {
     const clubs = await db.clubs.findAll({
       where: {
-        club_id: req.params.club_id
-      }
+        club_id: req.params.club_id,
+      },
     });
 
     res.json(clubs);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.get('/clubs/:club_name', async (req, res) => {
+router.get("/clubs/:club_name", async (req, res) => {
   try {
     const clubs = await db.clubs.findAll({
       where: {
-        club_name: req.params.club_name
-      }
+        club_name: req.params.club_name,
+      },
     });
 
     res.json(clubs);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.post('/clubs', async (req, res) => {
+router.post("/clubs", async (req, res) => {
   const clubs = await db.clubs.findAll();
   const currentId = (await clubs.length) + 100;
   try {
     const newClub = await db.clubs.create({
-        club_id: currentId,
-        club_name: req.body.club_name,
-        coach_first_name: req.body.coach_first_name,
-        coach_last_name: req.body.coach_last_name,
-        num_of_players: req.body.num_of_players
+      club_id: currentId,
+      club_name: req.body.club_name,
+      coach_first_name: req.body.coach_first_name,
+      coach_last_name: req.body.coach_last_name,
+      num_of_players: req.body.num_of_players,
     });
     res.json(newClub);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.delete('/clubs/:club_id', async (req, res) => {
+router.delete("/clubs/:club_id", async (req, res) => {
   try {
     await db.clubs.destroy({
       where: {
-        club_id: req.params.club_id
-      }
+        club_id: req.params.club_id,
+      },
     });
-    res.send('Successfully Deleted');
+    res.send("Successfully Deleted");
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.put('/clubs', async (req, res) => {
+router.put("/clubs", async (req, res) => {
   try {
     await db.clubs.update(
       {
         club_name: req.body.club_name,
         coach_first_name: req.body.coach_first_name,
         coach_last_name: req.body.coach_last_name,
-        num_of_players: req.body.num_of_players
+        num_of_players: req.body.num_of_players,
       },
       {
         where: {
-          club_id: req.body.club_id
-        }
+          club_id: req.body.club_id,
+        },
       }
     );
-    res.send('Successfully Updated');
+    res.send("Successfully Updated");
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
@@ -199,150 +203,154 @@ router.put('/clubs', async (req, res) => {
 /// ////Player Goals Endpoints////////
 /// /////////////////////////////////
 
-router.get('/player_goals', async (req, res) => {
+router.get("/player_goals", async (req, res) => {
   try {
     const player_goals = await db.player_goals.findAll();
-    const reply = player_goals.length > 0 ? { data: player_goals } : { message: 'no results found' };
+    const reply =
+      player_goals.length > 0
+        ? { data: player_goals }
+        : { message: "no results found" };
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.get('/player_goals/:player_id', async (req, res) => {
+router.get("/player_goals/:player_id", async (req, res) => {
   try {
     const player_goals = await db.player_goals.findAll({
       where: {
-        player_id: req.params.player_id
-      }
+        player_id: req.params.player_id,
+      },
     });
 
     res.json(player_goals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.post('/player_goals', async (req, res) => {
+router.post("/player_goals", async (req, res) => {
   const player_goals = await db.player_goals.findAll();
   const currentId = (await player_goals.length) + 1;
   try {
     const newPlayer_goals = await db.player_goals.create({
-        player_id: currentId,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        goals: req.body.goals,
-        assists: req.body.assists
+      player_id: currentId,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      goals: req.body.goals,
+      assists: req.body.assists,
     });
     res.json(newPlayer_goals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.delete('/player_goals/:player_id', async (req, res) => {
+router.delete("/player_goals/:player_id", async (req, res) => {
   try {
     await db.player_goals.destroy({
       where: {
-        player_id: req.params.player_id
-      }
+        player_id: req.params.player_id,
+      },
     });
-    res.send('Successfully Deleted');
+    res.send("Successfully Deleted");
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.put('/player_goals', async (req, res) => {
+router.put("/player_goals", async (req, res) => {
   try {
     await db.player_goals.update(
       {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         goals: req.body.goals,
-        assists: req.body.assists       
+        assists: req.body.assists,
       },
       {
         where: {
-          player_id: req.body.player_id
-        }
+          player_id: req.body.player_id,
+        },
       }
     );
-    res.send('Successfully Updated');
+    res.send("Successfully Updated");
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 /// /////////////////////////////////
 /// ////Winners Endpoints////////
 /// /////////////////////////////////
 
-router.get('/winners', async (req, res) => {
+router.get("/winners", async (req, res) => {
   try {
     const winners = await db.winners.findAll();
-    const reply = winners.length > 0 ? { data: winners } : { message: 'no results found' };
+    const reply =
+      winners.length > 0 ? { data: winners } : { message: "no results found" };
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.get('/winners/:season_id', async (req, res) => {
+router.get("/winners/:season_id", async (req, res) => {
   try {
     const winners = await db.winners.findAll({
       where: {
-        season_id: req.params.season_id
-      }
+        season_id: req.params.season_id,
+      },
     });
 
     res.json(winners);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.post('/winners', async (req, res) => {
+router.post("/winners", async (req, res) => {
   const winners = await db.winners.findAll();
   const currentId = (await winners.length) + 1;
   try {
     const newWinners = await db.winners.create({
-        season_id: currentId,
-        club_id: req.body.club_id,
-        club_name: req.body.club_name,
-        season: req.body.season,
-        player_id: req.body.player_id,
-        best_player: req.body.best_player,
-        coach_name: req.body.coach_name
+      season_id: currentId,
+      club_id: req.body.club_id,
+      club_name: req.body.club_name,
+      season: req.body.season,
+      player_id: req.body.player_id,
+      best_player: req.body.best_player,
+      coach_name: req.body.coach_name,
     });
     res.json(newWinners);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.delete('/winners/:season_id', async (req, res) => {
+router.delete("/winners/:season_id", async (req, res) => {
   try {
     await db.winners.destroy({
       where: {
-        season_id: req.params.season_id
-      }
+        season_id: req.params.season_id,
+      },
     });
-    res.send('Successfully Deleted');
+    res.send("Successfully Deleted");
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.put('/winners', async (req, res) => {
+router.put("/winners", async (req, res) => {
   try {
     await db.winners.update(
       {
@@ -352,18 +360,18 @@ router.put('/winners', async (req, res) => {
         season: req.body.season,
         player_id: req.body.player_id,
         best_player: req.body.best_player,
-        coach_name: req.body.coach_name      
+        coach_name: req.body.coach_name,
       },
       {
         where: {
           season_id: currentId,
-        }
+        },
       }
     );
-    res.send('Successfully Updated');
+    res.send("Successfully Updated");
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 

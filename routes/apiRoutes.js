@@ -128,7 +128,7 @@ router.get('/clubs/:club_id', async (req, res) => {
 
 router.post('/clubs', async (req, res) => {
   const clubs = await db.clubs.findAll();
-  const currentId = (await clubs.length) + 1;
+  const currentId = (await clubs.length) + 100;
   try {
     const newClub = await db.clubs.create({
         club_id: currentId,
@@ -144,11 +144,11 @@ router.post('/clubs', async (req, res) => {
   }
 });
 
-router.delete('/clubs/:club_name', async (req, res) => {
+router.delete('/clubs/:club_id', async (req, res) => {
   try {
     await db.clubs.destroy({
       where: {
-        club_name: req.params.club_name
+        club_id: req.params.club_id
       }
     });
     res.send('Successfully Deleted');

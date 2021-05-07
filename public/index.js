@@ -101,14 +101,11 @@ generateTable(table, topSongs);
 generateTable(table, topAlbums);
 
 */
-
+//songs chart
 async function songs (){
   const songFetch = await fetch('/api/Songs');
-  const albumFetch = await fetch('/api/Albums');
   const songInfo = await songFetch.json();
-  const albumInfo = await albumFetch.json();
   const arraySong = songInfo.data;
-  const arrayAlbum = AlbumInfo.data;
   const information = document.querySelector ('.target');
 
   arraySong.forEach((element) => {
@@ -121,3 +118,21 @@ async function songs (){
   });
 }
 window.onload = songs();
+
+//album chart
+async function albums (){
+  const albumFetch = await fetch('/api/Albums');
+  const albumInfo = await albumFetch.json();
+  const arrayAlbum = AlbumInfo.data;
+  const information = document.querySelector ('.target2');
+
+  arraySong.forEach((element) => {
+    const makeRows = document.createElement('tr');
+    makeRows.innerHTML =
+    <td>${element.ALBUM_POPULARITY}</td>
+    <td>${element.ALBUM_NAME}</td>
+    ;
+    information.append(makeRows)
+  });
+}
+window.onload = albums();

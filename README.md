@@ -12,7 +12,6 @@ When searching for meida of many different types, we felt as if there is a lack 
 ## Links
 
 # Developer Manual
-
 ## How to install application and all dependencies
 1. Clone this repository through Github Desktop or through Terminal.
 2. Open repository in VSCode Terminal or Terminal application.
@@ -30,7 +29,8 @@ When searching for meida of many different types, we felt as if there is a lack 
 3. In the second terminal run `npm test`.
 
 ## Server application APIs
-/apiRoutes - API route for course grades and GPA data. 
+`/media` -API route for showing the different types of media. 
+- GET 
 # Known Bugs and Future Development
 ## Bugs
 - Users are currently able to directly alter the database. The make a suggestion needs to have a security blanket where only Admins can enter or delete content. 

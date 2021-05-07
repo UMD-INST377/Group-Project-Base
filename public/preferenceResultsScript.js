@@ -15,7 +15,7 @@ async function windowActions() {
     imgElem.alt = 'Image of furniture piece';
     imgElem.style.height = '20vw';
     imgElem.style.width = 'auto';
-    imgElem.style.marginLeft = '10%';
+    imgElem.style.marginLeft = '7%';
     imgElem.style.marginRight = '20px';
     imgElem.style.marginBottom = '20px';
 

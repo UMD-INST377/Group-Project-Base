@@ -68,7 +68,7 @@ li a:hover {
     height: 90%;
     width: 300px;
     margin-top: 50px;
-    margin-left: 25px;
+    margin-left: 10px;
     background-color: lightsteelblue;
     border: black;
     border-style:double;
@@ -80,6 +80,10 @@ li a:hover {
 }
 
 table {
+    margin: 10px;
+}
+
+#other-tables {
     margin: 10px;
     width: 98%;
 }
@@ -357,7 +361,9 @@ input[type=text], input[type=password] {
     font-size: 12px;
     font-weight: bold;
     color: red;
-    border: 2px solid red;
+    border: 2px solid black;
+    background-color: rgb(255, 214, 214);
+    opacity: 0;
   }
   
   #error-msg-second-line {

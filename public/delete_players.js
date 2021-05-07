@@ -3,7 +3,7 @@ window.onload = async function windowActions() {
 
   // DELETE PLAYERS
   async function delete_player() {
-    const id_input = document.getElementById("player-id");
+    const id_input = document.getElementById("player-name");
 
     const req = await fetch("/api/players/".concat(id_input.value), {
       method: "DELETE",

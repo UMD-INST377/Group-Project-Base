@@ -1,3 +1,6 @@
+<!-- users can submit database suggestions through this page. it will connect to POST, PUT, and DELETE requests -->
+<!-- in the future, this database access will be restricted to 1882 staff -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="homepage.css" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Literature & Art Corner Database</title>
   </head>
   <body>
@@ -25,6 +28,7 @@
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
           <a href="suggestion.html">Make a Suggestion</a>
+          <a href="featured.html">Featured Reviews</a>
           <a href="contact.html">Contact Us</a>
         </div>
       </div>
@@ -34,34 +38,49 @@
     </div>
 
     <h1>Make a Suggestion</h1>
+      <div class="suggestion-form">
+        <form id="suggestions" action="/api" method="post"> <!-- or /api/media? -->
+          <h3>Do you have Asian American literature and media suggestions that aren't in our database? Share them with us!</h3>
+          <div class="columns">
 
-    <div class="forms">
-      <form action="/api" method="post">
-        <label for="media">Media Title</label>
-        <input type="text" id="media" name="Media Title" />
-      </form>
-      <form action="/api" method="post">
-        <label for="creator">Creator</label>
-        <input type="text" id="creator" name="Creator" />
-      </form>
-      <form action="/api" method="post">
-        <label for="type">Media Type</label>
-        <input type="text" id="type" name="Media Type" />
-      </form>
-      <form action="/api" method="post">
-        <label for="genre">Genre</label>
-        <input type="text" id="genre" name="Genre" />
-      </form>
-      <form action="/api" method="post">
-        <label for="year">Release Year</label>
-        <input type="text" id="year" name="Release Year" />
-      </form>
-      <form action="/api" method="post">
-        <label for="link">Link To Source</label>
-        <input type="text" id="link" name="Link To Source" />
-      </form>
-      <button type="button">Submit</button>
-    </div>
+            <div class="column">
+                <div class="form-row">
+                  <label for="media">Media Title</label>
+                  <input type="text" id="media" name="media_title" />
+                </div>
+                <div class="form-row">
+                  <label for="creator">Creator</label>
+                  <input type="text" id="creator" name="Creator" />
+                </div>
+                <div class="form-row">
+                  <label for="type">Media Type</label>
+                  <input type="text" id="type" name="Media Type" />
+                </div>
+            </div>
+
+            <div class="column">
+              <div class="form-row">
+                <label for="genre">Genre</label>
+                <input type="text" id="genre" name="Genre" />
+              </div>
+              <div class="form-row">
+                <label for="year">Release Year</label>
+                <input type="text" id="year" name="Release Year" />
+              </div>
+              <div>
+                <label for="link">Link To Source</label>
+                <input type="text" id="link" name="Link To Source" />
+              </div>
+            </div>
+
+          </div>
+
+          <div class="submit-button">
+            <button type="button">Submit</button>
+          </div>
+          
+        </form>
+      </div>
   </body>
   <script src="scripts.js"></script>
 </html>

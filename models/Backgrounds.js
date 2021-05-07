@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-  const backgrounds = database.define(
+  const Backgrounds = database.define(
     'backgrounds',
     {
       background_id: {
@@ -13,5 +13,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return backgrounds;
+  Backgrounds.associate = (models) => {
+    Backgrounds.hasMany(models.Media, {
+      foreignKey: 'media_id' // media_id is a fk in backgrounds
+    });
+  };
+  return Backgrounds;
 };

@@ -1,5 +1,5 @@
-export default (database, DataTypes) => {
-  const genres = database.define(
+export default (sequelize, DataTypes) => {
+  const Genres = sequelize.define(
     'genres',
     {
       genre_id: {
@@ -13,5 +13,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return genres;
+  Genres.associate = (models) => {
+    Genres.hasMany(models.Media, {
+      foreignKey: 'media_id'
+    });
+  };
+  return Genres;
 };

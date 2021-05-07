@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-  const themes = database.define(
+  const Themes = database.define(
     'themes',
     {
       theme_id: {
@@ -13,5 +13,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return themes;
+  Themes.associate = (models) => {
+    Themes.hasMany(models.Media, {
+      foreignKey: 'media_id'
+    });
+  };
+  return Themes;
 };

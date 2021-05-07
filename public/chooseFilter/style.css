@@ -3,21 +3,25 @@ body {
   margin: 0;
   padding: 0;
 }
-
+  
 html {
   font-size: 10px;
 }
 
 body {
   width: 70%;
-  min-width: 800px;
+  margin: 2em 4em 2em 4em;
   margin: 0 auto;
   background-color: #e6ebf0;
 }
 
 /* || typography */
 
-h1,
+h1 {
+  font-family: 'Lemonada';
+    color: #2a2a2a;
+}
+
 h2,
 h3 {
   font-family: "Lemonada";
@@ -147,4 +151,8 @@ ul.no-bullets {
 #buttonArea {
   display: flex;
   justify-content: center;
+}
+
+.userForm {
+
 }

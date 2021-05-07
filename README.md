@@ -19,8 +19,37 @@ When you open the application, you will be brought to our home page which will d
 ## Target Browsers
 The target browsers for our application are most, if not all, devices with web browser capabilities.
 
+## Link to User Manual: [User Manual Link](#user-manual)
+ 
+## Link to Developer Manual: [Developer Manual Link](#developer-manual)
+
+# User Manual
+You will notice in the top left corner of the page the menu button this is how you can naavigate from page to page within our application. The three pages we have are: Home, Search, and Custom Input. 
+
+The Home page is a quick rundown of the top 10 albums and top 10 songs currently ranked in our database.  
+
+The search page allows for the user to search by Genre Song or Artist
+
+The last page the Custom Input page allows the user to input song names, artist, and genre and offers space for additional information and a link to the song. 
+
 # Developer Manual
 
 ## How to install the application and all dependencies
 To download our actual project, just select the clone repository button for this repository to clone it to your computer. Using Github desktop is the most straight-forward way to clone the repository. You can find information about Github Desktop here: https://desktop.github.com/
+
+### API 
+We utalized a database from INST377 
+* Our database is constructed of 7 tables and holds data on genres, songs, artists, and their respective characteristics from the years 1921-2020
+
+### Bulma
+We used Bulma, a CSS framework for styling our HTML in an easy manner. You can find the instructions on how to install Bulma here: *https://bulma.io/documentation/overview/start/*. 
+
+The simplest way to do this is by using npm to install it. Open a new terminal and enter *“npm install bulma”*.
+
+
+### Known Bugs
+
+
+### Future Development
+
 

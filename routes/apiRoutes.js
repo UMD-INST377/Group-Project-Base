@@ -45,12 +45,13 @@ router.get('/artists/:ARTIST_ID', async (req, res) => {
 router.post('/artists', async (req, res) => {
   const arts = await db.Artists.findAll();
   const currentId = (await arts.length) + 1;
+  const currentgenreId = (await genres.length) + 1;
   try {
-    const newArtist = await db.artists.create({
+    const newArtist = await db.Artists.create({
       ARTIST_ID: currentId,
       ARTIST_NAME: req.body.ARTIST_NAME,
       ARTIST_POPULARITY: req.body.ARTIST_POPULARITY,
-      GENRE_ID: req.body.GENRE_ID,
+      GENRE_ID: currentgenreId,
     });
     res.json(newArtist);
   } catch (err) {
@@ -316,11 +317,13 @@ router.get('/songs/:SONG_ID', async (req, res) => {
 router.post('/songs', async (req, res) => {
   const song = await db.Songs.findAll();
   const currentId = (await song.length) + 1;
+  const currentartsId = (await arts.length) + 1; 
   try {
-    const newSong = await db.songs.create({
+    const newSong = await db.Songs.create({
       SONG_ID: currentId,
       SONG_NAME: req.body.SONG_NAME,
       SONG_POPULARITY: req.body.SONG_POPULARITY,
+      ARTIST_ID: currentartsId,
       GENRE_ID: req.body.GENRE_ID,
     });
     res.json(newSong);

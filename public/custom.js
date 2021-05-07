@@ -48,14 +48,14 @@ async function windowActions() {
 async function handleButtonClick(event) {
     console.log('clicked button', event.target);
     console.log('button value', event.target.value);
-    const artist = document.querySelector('#artist');
-    const url = '/api/artists';
+    const song = document.querySelector('#song');
+    const url = '/api/songs';
     const request = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ ARTIST_NAME: artist.value })
+      body: JSON.stringify({ SONG_NAME: song.value })
     });
     console.log('resolved request', request);
     const result = await request.json();

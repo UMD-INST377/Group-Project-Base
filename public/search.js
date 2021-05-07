@@ -1,9 +1,11 @@
-const songs = [];
-const genres = [];
-const artists = [];
-
 //aaaaa
 function generateResults(type) {
+    //putting loading indicator onto the screen
+    let loadingBar = document.createElement('progress');
+    loadingBar.setAttribute("class", "progress is-medium is-dark");
+    loadingBar.setAttribute("max", "100");
+    document.body.appendChild(loadingBar);
+
     //getting text from search bar
     if (!(document.getElementById('search').value)) return;
     
@@ -11,7 +13,7 @@ function generateResults(type) {
 
     if (type === 'songs') displayResults(songSearch(input))
     else if (type === 'genres') displayResults(genreSearch(input))
-    else if (type === 'artists') displayResults(artistSearch(input))
+    else if (type === 'artists') displayResults(artistSearch(input));
 }
 
 function displayResults(results) {
@@ -30,7 +32,17 @@ async function songSearch(input) {
     console.log('Song data loaded');
     //console.log(songs);
 
-    console.log(songs["data"]["data"][0]);
+    const results = [];
+
+    //going through each song to get matches
+    for (key in songs["data"]["data"]) {
+        if (!(songs["data"]["data"][key]["SONG_NAME"])) continue
+        else if (songs["data"]["data"][key]["SONG_NAME"].indexOf(input) !== -1)
+            results.push(songs["data"]["data"][key])
+        else continue;
+    }
+    console.log(results);
+    return results;
 }
 
 async function genreSearch(input) {
@@ -41,7 +53,20 @@ async function genreSearch(input) {
     const genresRequest = await fetch('/api/genresRoute');
     const genresJSON = await genresRequest.json();
     let genres = genresJSON;
+    console.log('Genre data loaded');
     console.log(genres);
+
+    const results = [];
+
+    for (let i = 0; i < genres.length; i++) {
+        if (!(genres[i]["GENRE_NAME"])) continue
+        else if (genres[i]["GENRE_NAME"].includes(input))
+            results.push(genres[i])
+        else continue;
+    }
+
+    console.log(results);
+    return results;
 }
 
 async function artistSearch(input) {
@@ -52,7 +77,20 @@ async function artistSearch(input) {
     const artistsRequest = await fetch('/api/artistsRoute');
     const artistsJSON = await artistsRequest.json();
     let artists = artistsJSON;
+    console.log('Artist data loaded');
     console.log(artists);
+
+    const results = [];
+
+    //going through each artist to get matches
+    for (key in artists["data"]["data"]) {
+        if (!(artists["data"]["data"][key]["ARTIST_NAME"])) continue
+        else if (artists["data"]["data"][key]["ARTIST_NAME"].includes(input))
+            results.push(artists["data"]["data"][key])
+        else continue;
+    }
+    console.log(results);
+    return results;
 }
 
 async function windowActions() {

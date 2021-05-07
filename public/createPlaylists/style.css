@@ -10,7 +10,7 @@ body{
 }
 
 
-#update-container{
+.container{
   display:inline-block;
   width: inherit;
 

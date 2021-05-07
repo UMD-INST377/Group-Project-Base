@@ -44,7 +44,7 @@ a:hover {
   background: #eee;
 }
 
-.intro-box{
+.intro-box {
   text-align: center;
   margin: auto;
   position: fixed;
@@ -90,7 +90,7 @@ a:hover {
   height: 43%;
   width: 43%;
   position: absolute;
-  top: 200px;
+  top: 270px;
   right: 150px;
 }
 

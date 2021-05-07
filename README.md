@@ -49,7 +49,6 @@ This software only has one API, which is the `/api` - API route for books inform
 
 
 # To do list 
-* Finish Delete page functionality 
 * Works on mobile
 * Make sure styles work across browsers
 * .env setup on Heroku?

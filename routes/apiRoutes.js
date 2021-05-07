@@ -10,6 +10,24 @@ router.get('/', (req, res) => {
   res.send('Welcome to the Animal Adoption API!');
 });
 
+router.post('/api', async (req, res) => {
+  // res.send('Form submitted');
+  const animals = await db.Animals.findAll();
+  const currentId = (await animals.length) + 1;
+  try {
+    const newAnimals = await db.Animals.create({
+      animal_id: currentId,
+      name: req.body.name,
+      status: req.body.status,
+      gender: req.body.gender,
+      Animal_type_species_id: req.body.Animal_type_species_id
+    });
+    res.json(newAnimals);
+  } catch (err) {
+    console.error(err);
+    res.json('Server error');
+  }
+});
 /// /////////////////////////////////
 /// ////Shelter Endpoints////////
 /// /////////////////////////////////
@@ -33,24 +51,6 @@ router.get('/shelters/:shelter_id', async (req, res) => {
     });
 
     res.json(shelters);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.post('/shelters', async (req, res) => {
-  const shelters = await db.Shelters.findAll();
-  const currentId = (await shelters.length) + 1;
-  try {
-    const newShelters = await db.Shelters.create({
-      shelter_id: currentId,
-      shelter_name: req.body.shelter_name,
-      shelter_address: req.body.shelter_address,
-      phone_number: req.body.phone_number,
-      num_employees: req.body.num_employees
-    });
-    res.json(newShelters);
   } catch (err) {
     console.error(err);
     res.error('Server error');

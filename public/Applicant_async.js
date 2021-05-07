@@ -15,7 +15,6 @@ async function populateApplicants() {
       <td>${applicant.first_name}</td>
       <td>${applicant.phone_number}</td>
       <td>${applicant.age}</td>
-      <td>${applicant.email_address}</td>
       `;
 
     applicantsTable.append(appendApplicant);

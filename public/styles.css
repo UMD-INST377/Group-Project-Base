@@ -42,6 +42,26 @@ header {
   background: #eee;
 }
 
+.intro-box-yellow
+{
+  text-align: center;
+  margin-left: 140px;
+  position: fixed;
+  top: 30%;
+  width: 300px;
+  padding: 10px 40px;
+  border: 1px solid #CCC;
+  border-radius: 15px;
+  background:orange;
+}
+
+
+
+
+
+
+
+
 
 #add-movie, #submit-add {
   padding: 0.5rem;

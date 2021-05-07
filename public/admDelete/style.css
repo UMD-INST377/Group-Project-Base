@@ -34,16 +34,12 @@ nav {
     color: black;
 }
 
-.button {
-    color: black;
-    width: 100%;
-}
+
 
 
 /* || main layout */
 .box, .button {
     align-content: center;
-    background-color: white;
 }
   
 
@@ -120,3 +116,10 @@ img {
     max-height: 468px;
     max-width: 310px;
   }
+button{
+    background-color: transparent;
+    padding: 0 0;
+}
+#cancelButton{
+    background-color: white;
+}

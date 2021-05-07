@@ -16,13 +16,22 @@ a:hover {
   background-color: yellow;
 }
 
-.title {
+.title{
   font-size: 3rem;
   color: black;
   text-align: center;
   float: left;
   width: 100%;
 }
+
+.movie-add-title {
+  font-size: 3rem;
+  color: black;
+  text-align: center;
+  float: left;
+  width: 100%;
+}
+
 .homepg-two {
   text-align: center;
   margin: auto;
@@ -100,6 +109,12 @@ a:hover {
 }
 
 .box {
+  display: center;
+  text-align: center;
+  margin: 6rem;
+}
+
+.movie-input-container {
   display: center;
   text-align: center;
   margin: 6rem;

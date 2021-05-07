@@ -1,7 +1,7 @@
-import { AsyncQueueError } from 'node_modules/sequelize/types';
-import { classToInvokable } from 'node_modules/sequelize/types/lib/utils';
-import Artists from 'server_files/models/Artists.js';
-import Songs from 'server_files/models/Songs.js';
+import { AsyncQueueError } from 'sequelize/types';
+import { classToInvokable } from 'sequelize/types/lib/utils';
+import Artists from '../models/Artists';
+import Songs from '../models/Songs';
 
 // Commented out to see if I could pin-point issue
 

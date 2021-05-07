@@ -34,11 +34,7 @@ async function windowActions() {
           },
           body: JSON.stringify({GENRE_NAME: genre.value})
         }) 
-    ]). then(function (responses) {
-        return Promise.all(responses.map(function (response) {
-            return response.json();
-        }));
-    }).then(function (data) {
+    ]).then(function (data) {
         console.log(data);
     }).catch(function (error) {
         console.log(error);

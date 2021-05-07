@@ -46,13 +46,15 @@
         </section>
 
         <div class="userform container is-max-desktop">
-            <form action="/api" class="search-form flex-outer mt-1" method="post" name="searchform" id="searchform">
+            <form class="search-form flex-outer mt-1" name="searchform" id="searchform">
                 <input type="text" class="input mt-1" name="search" id="search" placeholder="Enter text..." />
                 </br>
-                <button class="button" type="submit">Genre</button>
-                <button class="button" type="submit">Artist</button>
-                <button class="button" type="submit">Album</button>
             </form>
+        </div>
+        <div class="container" name="filters" id="filters">
+          <button class="button" name="songsbutton" id="songsbutton" onclick="generateResults(searchform.search.value, 'songs')">Songs</button>
+          <button class="button" name="genresbutton" id="genresbutton" onclick="generateResults(searchform.search.value, 'genres')">Genres</button>
+          <button class="button" name="artistsbutton" id="artistsbutton" onclick="generateResults(searchform.search.value, 'artists')">Artists</button>
         </div>
     </body>
     <script src="dropdown.js"></script>

@@ -39,20 +39,6 @@ router.get('/shelters/:shelter_id', async (req, res) => {
   }
 });
 
-router.delete('/shelters/:shelter_id', async (req, res) => {
-  try {
-    await db.Shelters.destroy({
-      where: {
-        shelter_id: req.params.shelter_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
 router.put('/shelters', async (req, res) => {
   try {
     await db.Shelters.update(
@@ -117,10 +103,10 @@ router.put('/animals', async (req, res) => {
         }
       }
     );
-    res.send('Animal Successfully Updated');
+    res.json({update: req.body.animal_name});
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
@@ -136,6 +122,20 @@ router.post('/animals', async (req, res) => {
       Animal_type_species_id: req.body.Animal_type_species_id
     });
     res.json(newAnimals);
+  } catch (err) {
+    console.error(err);
+    res.json('Server error');
+  }
+});
+
+router.delete('/animals', async (req, res) => {
+  try {
+    await db.Animals.destroy({
+      where: {
+        animal_id: req.params.animal_id
+      }
+    });
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.json('Server error');

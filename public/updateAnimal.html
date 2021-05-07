@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group 30 Final Project</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel='stylesheet' href="styles.css"></link>
+  <script src='recordUpdate.js' charset="UTF-8"></script>
+</head>
+<body>
+  <div class="button is-outlined is-white">
+    <a href="index.html" class="block">Back to Main Page</a>
+  </div>
+
+
+  <div class="container"></div>
+    <form action='/api/animals' id="recordSubmit" class="form" method="POST">
+        <ul class="flex-outer">
+                <label for="animalName">Animal Name</label>
+                <input type="text" name="animalName" id="animalName">
+                <button class="button is-outlined is-dark" type="submit">Submit Form</button>
+    </form>
+    <div class="animalTable"></div>
+</body>
+</html> 

@@ -318,3 +318,15 @@ input[type=text], input[type=password] {
 .errorText{
     color: red;
 }
+
+.allProductsLabel {
+    margin-left: 10px;
+}
+
+#allSubmit {
+    margin-left: 10px
+}
+
+.table {
+    width:99%;
+}

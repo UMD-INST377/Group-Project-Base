@@ -1,40 +1,66 @@
-async function getBookData() {
-  const endpoint = '/api/popularBooks/';
-  const request = await fetch(endpoint);
-  const result = await request.json();
+async function windowActions() {
+  async function displayIdSearch(event) {
+    event.preventDefault();
+    console.log('click');
 
-  // Create an array then push data from the json to it
-  const arr = [];
-  arr.push(result.data);
-  console.log(arr[0]);
+    // Extract which book should be deleted from searchbar
+    const bookId = document.querySelector('#bookId').value;
+    console.log('Form entry is', bookId);
 
-  const randomArr = [];
-  const rLength = arr[0].length;
+    // get which book is being searched for
+    const endpoint = `/api/popularBooks/${bookId}`;
+    const request = await fetch(endpoint);
+    const result = await request.json();
+    const chosenBook = await result[0];
 
-  // For loop for a random book
-  let i;
-  for (i = 0; i < 1; i++) {
-    rVariable = Math.floor(Math.random() * rLength);
-    randomArr.push(arr[0][rVariable]);
+    console.log('Chosen book is', chosenBook.title);
+
+    // Target a specific box and add the book info to it
+    const target = document.querySelector('#deleteInfoContainer');
+    const buttonTarget = document.querySelector('#deleteCancelButtons');
+
+    const dividingLine = document.createElement('hr');
+    const appendTitle = document.createElement('h2');
+    const appendId = document.createElement('h2');
+    const appendImg = document.createElement('a');
+
+    const appendCancelButton = document.createElement('button');
+    const appendDeleteButton = document.createElement('button');
+
+    dividingLine.innerHTML = '<hr>';
+    appendTitle.innerHTML = `<h2>Book Title: ${chosenBook.title}</h2>`;
+    appendId.innerHTML = `<h2>Book ID: ${chosenBook.book_id}</h2>`;
+    appendImg.innerHTML = `<img src="../bookPics/book_id_${chosenBook.book_id}.jpg" alt="book cover picture" onerror="if (this.src != '../bookPics/placeholder.jpg') this.src = '../bookPics/placeholder.jpg';"></img>`;
+    appendCancelButton.innerHTML = '<button class="button is-normal" id="cancelButton">Cancel action</button>';
+    appendDeleteButton.innerHTML = '<button class="button is-danger" id="deleteButton">Delete Book From Database</button>';
+
+    target.append(dividingLine);
+    target.append(appendTitle);
+    target.append(appendId);
+    target.append(appendImg);
+    buttonTarget.append(appendCancelButton);
+    buttonTarget.append(appendDeleteButton);
+
+    // this prevents searching for running twice on a webpage
+    const submitButton = document.querySelector('#findByIdButton');
+    submitButton.removeEventListener('click', buildPage);
+
+    async function deleteOrCancel () {
+    // build cancel button
+      const cancelButton = document.querySelector('#cancelButton');
+      cancelButton.addEventListener('click', () => { window.location.reload(); });
+
+      // build delete button
+
+      const deleteButton = document.querySelector('#deleteButton');
+      deleteButton.addEventListener('click', () => { console.log('You have pressed the delete button!!!'); });
+    }
+    deleteOrCancel();
   }
 
-  // Target a specific box and add the book info to it
-  const target = document.querySelector('#bookTitle');
-  const appendTitle = document.createElement('h2');
-  const appendId = document.createElement('h2');
-  const appendImg = document.createElement('a');
-  appendTitle.innerHTML = `<h2>Book Title: ${randomArr[0].title}</h2>`;
-  appendId.innerHTML = `<h2>Book ID: ${randomArr[0].book_id}</h2>`;
-  appendImg.innerHTML = `<img src='../bookPics/book_id_${randomArr[0].book_id}.jpg'>`;
-  target.append(appendTitle);
-  target.append(appendId);
-  target.append(appendImg);
-
-  // console.log(randomArr[0].title)
-}
-
-async function windowActions() {
-  getBookData();
+  const submitButton = document.querySelector('#findByIdButton');
+  const buildPage = (event) => { displayIdSearch(event); };
+  submitButton.addEventListener('click', buildPage);
 }
 
 window.onload = windowActions();

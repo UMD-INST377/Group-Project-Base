@@ -1,6 +1,6 @@
 html, body {
   margin: 0;
-  height: 100%;
+  height: 1000%
 }
 
 body {
@@ -17,14 +17,27 @@ h1, h2{
   color: #000000;
 }
 
+p {
+  background-color: lightgrey;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 li {
   display:block;
+  margin: 15px 0;
+  border-width: 5px;
+  max-width: 600px;
+  text-align: center;
+  gap: 52px;
+  background-color: #1db954;
+  border-color: lightgray;
+  border-radius: 5px;
 }
 
 .container{
   display: flex;
   justify-content: center;
-  background-color: lightgrey;
   max-width: 400px;
   gap: 52px;
 }
@@ -43,8 +56,8 @@ text {
   top: 5%;
   left: 36%;
   max-width: 355px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .flex-outer{
@@ -69,4 +82,12 @@ text {
 
 #resultlistcontainer {
   margin-top: 20px;
+}
+
+#resultlist {
+  max-width: 600px;
+}
+
+.userform, #filters {
+  background-color: lightgray;
 }

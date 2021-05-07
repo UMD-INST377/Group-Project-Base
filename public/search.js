@@ -50,8 +50,8 @@ async function songSearch(input) {
             <li>
                 <p>Song ID: <span class="songID">${entry.SONG_ID}</span></p>
                 <p>Song Name: <span class="songname">${entry.SONG_NAME}</span></p>
+                <p>Artist ID: <span class="artistid">${entry.ARTIST_ID}</span></p>
                 <p>Song Popularity: <span class="songpop">${entry.SONG_POPULARITY}</span></p>
-                <br><br>
             </li>
         `;
     }).join('');
@@ -98,7 +98,6 @@ async function genreSearch(input) {
                 <p>Genre ID: <span class="songID">${entry.GENRE_ID}</span></p>
                 <p>Genre Name: <span class="songname">${entry.GENRE_NAME}</span></p>
                 <p>Genre Popularity: <span class="songpop">${entry.GENRE_POPULARITY}</span></p>
-                <br><br>
             </li>
         `;
     }).join('');
@@ -145,7 +144,6 @@ async function artistSearch(input) {
                 <p>Artist Name: <span class="songname">${entry.ARTIST_NAME}</span></p>
                 <p>Artist Popularity: <span class="songpop">${entry.ARTIST_POPULARITY}</span></p>
                 <p>Genre ID: <span class="songpop">${entry.GENRE_ID}</span></p>
-                <br><br>
             </li>
         `;
     }).join('');

@@ -1,21 +1,22 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    'Meals',
+  const Genres = sequelize.define(
+    'genres',
     {
-      meal_id: {
+      genre_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
         primaryKey: true
       },
-      meal_name: {
-        type: DataTypes.STRING
-      },
-      meal_category: {
+      genre: {
         type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  Genres.associate = (models) => {
+    Genres.belongsTo(models.Media, {
+      foreignKey: 'media_id'
+    });
+  };
+  return Genres;
 };

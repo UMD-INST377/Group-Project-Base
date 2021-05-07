@@ -1,5 +1,9 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# MyKEA
+
+## Description
+College rooms are known for not looking the most spectacular. MyKea aims to simplify the college room furniture design process by creating a web application that presents furniture based on user preferences. Pulling data from a database using Sequelize, the application returns results based on the criteria users select in the preference form and if users are not happy with the results they receive, they can visit the “All Products” tab and browse through other available options.
+
+![alt text](https://github.com/gHenriquez99/Group6-Final-INST377SP2021/blob/main/public/images/mykea_home.png?raw=true)
 
 ### How to use Markdown
 Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
@@ -30,4 +34,5 @@ Your Developer Manual covers:
 - The API for your server application (all GET, POST, PUT, etc endpoints, and what they each do)
 - A clear set of expectations around known bugs and a road-map for future development.
 - Documentation needs to be written in Markdown (MD) files, nicely formatted (they are legible on Github in a way PDFs are not on Canvas)
-- Documentation should be included to each team’s final code submission.
+- Documentation should be included to each team’s final code submission.<img width="983" alt="Screen Shot 2021-05-07 at 4 38 48 PM" src="https://user-images.githubusercontent.com/78005557/117505854-b7289000-af52-11eb-9227-4ea15759ec15.png">
+

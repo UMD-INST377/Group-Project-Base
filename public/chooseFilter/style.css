@@ -1,5 +1,4 @@
-html,
-body {
+html {
   margin: 0;
   padding: 0;
 }
@@ -10,8 +9,8 @@ html {
 
 body {
   width: 70%;
-  margin: 2em 4em 2em 4em;
-  margin: 0 auto;
+  margin-left: 10%;
+  margin-right: 10%;
   background-color: #e6ebf0;
 }
 
@@ -99,15 +98,10 @@ ul.no-bullets {
   justify-content: space-between;
 }
 
-.titleSearch {
-  width: 750px;
-  height: 30px;
-}
 
 #titleSearch,
 #authorSearch {
-  width: 750px;
-  height: 42px;
+  width: auto;
   border-radius: 3px;
   border: 2px solid black;
   padding: 5px 10px;
@@ -154,5 +148,9 @@ ul.no-bullets {
 }
 
 .userForm {
+  margin: auto;
+}
+
+.keywordSearch {
 
 }

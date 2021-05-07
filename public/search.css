@@ -17,6 +17,10 @@ h1, h2{
   color: #000000;
 }
 
+li {
+  display:block;
+}
+
 .container{
   display: flex;
   justify-content: center;
@@ -39,6 +43,8 @@ text {
   top: 5%;
   left: 36%;
   max-width: 355px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .flex-outer{
@@ -55,4 +61,12 @@ text {
 
 .button:hover, .button:focus {
   background: #6eda94;
+}
+
+.invisible {
+  display:none;
+}
+
+#resultlistcontainer {
+  margin-top: 20px;
 }

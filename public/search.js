@@ -1,43 +1,20 @@
 function generateResults(type) {
     //if no text in search bar, stop
     if (!(document.getElementById('search').value)) return;
-
-    //putting loading indicator onto the screen
-    let loadingBar = document.createElement('progress');
-    loadingBar.setAttribute("class", "progress is-medium is-dark");
-    loadingBar.setAttribute("id", "loadingbar");
-    loadingBar.setAttribute("max", "100");
-    document.body.appendChild(loadingBar);
-    console.log('loading bar loaded');
     
+    //display loading bar
+    document.getElementById('loadingbar').className =
+        document.getElementById("loadingbar").className.replace
+        ( /(?:^|\s)invisible(?!\S)/g , '' );
+
     //getting text from search bar
     const input = document.getElementById('search').value;
     console.log('input');
 
     //goes to appropriate search
-    if (type === 'songs') {
-        let results = songSearch(input);
-        displayResults(results);
-    }
-    else if (type === 'genres') {
-        let results = genreSearch(input);
-        displayResults(results);
-    }
-    else if (type === 'artists') {
-        let results = artistSearch(input);
-        displayResults(results);
-    }
-}
-
-function displayResults(results) {
-    console.log('displaying results');
-    //console.log(results);
-
-    //removing loading bar
-    let body = document.getElementById("body");
-    let loadingBar = document.getElementById("loadingbar");
-    let throwaway = body.removeChild(loadingBar);
-    console.log('loading bar removed');
+    if (type === 'songs') songSearch(input)
+    else if (type === 'genres') genreSearch(input)
+    else if (type === 'artists') artistSearch(input);
 }
 
 async function songSearch(input) {
@@ -64,7 +41,27 @@ async function songSearch(input) {
     }
     console.log(results);
     console.log('search complete');
-    return results;
+
+    //display results
+    console.log('starting to display results');
+
+    const html = results.map(entry => {
+        return `
+            <li>
+                <p>Song ID: <span class="songID">${entry.SONG_ID}</span></p>
+                <p>Song Name: <span class="songname">${entry.SONG_NAME}</span></p>
+                <p>Song Popularity: <span class="songpop">${entry.SONG_POPULARITY}</span></p>
+                <br><br>
+            </li>
+        `;
+    }).join('');
+    
+    document.getElementById('resultlist').innerHTML = html;
+    console.log('added all entries to result list');
+
+    //hide loading bar
+    document.getElementById('loadingbar').className += " invisible";
+    console.log('loading bar hidden');
 }
 
 async function genreSearch(input) {
@@ -91,7 +88,27 @@ async function genreSearch(input) {
 
     console.log(results);
     console.log('search complete');
-    return results;
+
+    //display results
+    console.log('starting to display results');
+
+    const html = results.map(entry => {
+        return `
+            <li>
+                <p>Genre ID: <span class="songID">${entry.GENRE_ID}</span></p>
+                <p>Genre Name: <span class="songname">${entry.GENRE_NAME}</span></p>
+                <p>Genre Popularity: <span class="songpop">${entry.GENRE_POPULARITY}</span></p>
+                <br><br>
+            </li>
+        `;
+    }).join('');
+    
+    document.getElementById('resultlist').innerHTML = html;
+    console.log('added all entries to result list');
+
+    //hide loading bar
+    document.getElementById('loadingbar').className += " invisible";
+    console.log('loading bar hidden');
 }
 
 async function artistSearch(input) {
@@ -117,11 +134,40 @@ async function artistSearch(input) {
     }
     console.log(results);
     console.log('search complete');
-    return results;
+
+    //display results
+    console.log('starting to display results');
+
+    const html = results.map(entry => {
+        return `
+            <li>
+                <p>Artist ID: <span class="songID">${entry.ARTIST_ID}</span></p>
+                <p>Artist Name: <span class="songname">${entry.ARTIST_NAME}</span></p>
+                <p>Artist Popularity: <span class="songpop">${entry.ARTIST_POPULARITY}</span></p>
+                <p>Genre ID: <span class="songpop">${entry.GENRE_ID}</span></p>
+                <br><br>
+            </li>
+        `;
+    }).join('');
+    
+    document.getElementById('resultlist').innerHTML = html;
+    console.log('added all entries to result list');
+
+    //hide loading bar
+    document.getElementById('loadingbar').className += " invisible";
+    console.log('loading bar hidden');
 }
 
 async function windowActions() {
     console.log('Window loaded');
+
+    //putting loading indicator onto the screen
+    let loadingBar = document.createElement('progress');
+    loadingBar.setAttribute("class", "progress is-medium is-dark invisible");
+    loadingBar.setAttribute("id", "loadingbar");
+    loadingBar.setAttribute("max", "100");
+    document.getElementById("loadingdiv").appendChild(loadingBar);
+    console.log('loading bar loaded');
 
     //setting up buttons
     const songsButton = document.getElementById('songsbutton');

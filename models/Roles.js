@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-  const roles = database.define(
+  const Roles = database.define(
     'roles',
     {
       role_id: {
@@ -13,5 +13,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return roles;
+  Roles.associate = (models) => {
+    Roles.belongsTo(models.Creators, {
+      foreignKey: 'creator_id'
+    });
+  };
+  return Roles;
 };

@@ -20,6 +20,7 @@ router
   .get(async (req, res) => {
     try {
       console.log('GET request on /media');
+      // const media = await db.Media.findAll({ include: db.Themes });
       const media = await db.Media.findAll();
       const reply = media.length > 0 ? { data: media } : { message: 'no results found' };
       res.json(reply);

@@ -1,22 +1,60 @@
+<!-- users can submit database suggestions through this page. it will connect to POST, PUT, and DELETE requests -->
+<!-- in the future, this database access will be restricted to 1882 staff -->
+
 <!DOCTYPE html>
 <html lang="en">
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
-    <title>Make a Suggestion</title>
+    <title>Literature & Art Corner Database</title>
   </head>
   <body>
+    <div class="banner">
+      <div class="inner-banner">
+        <img src="images/1882logo.png" alt="1882 Foundation Logo" class="has-ratio" width="198">
+        <span id="title">Literature & Art Corner Database</span>
+        <a href="https://1882foundation.org" id="goto">Go to Home Site</a>
+      </div> 
+      <div class="menu">
+        <div class="inner-menu">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="suggestion.html">Make a Suggestion</a>
+          <a href="featured.html">Featured Reviews</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+      <div class="toggle"> <!-- ? -->
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+
     <h1>Make a Suggestion</h1>
 
-    <div class="other">
-        <p>Some random stuff you know blah blah blah.</p>
+    <div class="form">
+      <form id="title" action="/api/media" method="post">
+        <label for="media">Media Title</label>
+        <input type="text" id="media" name="media_title" />
+        <label for="creator">Creator</label>
+        <input type="text" id="creator" name="Creator" />
+        <label for="type">Media Type</label>
+        <input type="text" id="type" name="Media Type" />
+        <label for="genre">Genre</label>
+        <input type="text" id="genre" name="Genre" />
+        <label for="year">Release Year</label>
+        <input type="text" id="year" name="Release Year" />
+        <label for="link">Link To Source</label>
+        <input type="text" id="link" name="Link To Source" />
+      <button type="button">Submit</button>
+      </form>
     </div>
   </body>
   <script src="scripts.js"></script>

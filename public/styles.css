@@ -7,7 +7,7 @@ body {
 }
 .table{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     color: #000000;
 }
 div.columns {
@@ -21,9 +21,9 @@ div.columns {
   }
 
   .table td {
-    font-size: 100px
+    font-size: 50px
   }
 
   .table th {
-    font-size: 100px
+    font-size: 50px
   }

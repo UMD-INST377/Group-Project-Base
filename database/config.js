@@ -1,22 +1,22 @@
-export default {
+module.exports = {
   development: {
     username: 'student',
     password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    database: 'inst377_imdb',
     host: '3.236.243.212',
     dialect: 'mysql'
   },
   test: {
     username: 'student',
     password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    database: 'inst377_imdb',
     host: '3.236.243.212',
     dialect: 'mysql'
   },
   production: {
     username: 'student',
     password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    database: 'inst377_imdb',
     host: '3.236.243.212',
     dialect: 'mysql'
   }

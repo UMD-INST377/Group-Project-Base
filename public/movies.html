@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Group11 Group Project</title>
+</head>
+
+<body>
+  <h1 class="title is-1 is-spaced">Movies Page</h1>
+  <h2 class="subtitle is-4">Movies You Like:</h2>
+  <nav class="navbar is-success" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item is-primary" href="index.html">
+          Home
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="movies.html">
+              Movies
+            </a>
+            <a class="navbar-item" href="review.html">
+              Review
+            </a>
+            <a class="navbar-item" href="add.html">
+              Add
+            </a>
+            <a class="navbar-item" href="update.html">
+              Update
+            </a>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a class="navbar-item">
+              Movies You Like!
+            </a>
+          </div>
+
+        </div>
+      </div>
+  </nav>
+  <div class="field center">
+    <h3 class="subtitle is-4">Movie Search:</h3>
+    <div class="field is-grouped">
+      <p class="control is-expanded input-p">
+        <input class="input" type="text" placeholder="search movie info with titles, directors, actors, etc.">
+      </p>
+      <p class="control">
+        <a class="button search-btn is-info">
+          Search
+        </a>
+      </p>
+    </div>
+    <div class="card movie-card">
+      
+    </div>
+  </div>
+  <script src='script.js'></script>
+  <script src="./movies.js"></script>
+</body>
+
+</html>
+

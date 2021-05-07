@@ -6,14 +6,36 @@
   <title>Group 30 Final Project</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   <link rel='stylesheet' href="styles.css"></link>
-  <script src='script.js' charset="UTF-8"></script>
+  <!-- <script src='script.js' charset="UTF-8"></script> -->
 
   <div class="button is-outlined is-white">
     <a href="index.html" class="block">Back to Main Page</a>
   </div>
+  <div class="info">
+    <p>For the species ID, use the following conversion:</p>
+    <table>
+      <tr>
+        <th>Animal Type:</th>
+        <th>Dog</th>
+        <th>Cat</th>
+        <th>Bird</th>
+        <th>Rabbit</th>
+        <th>Horse</th>
+      </tr>
+      <tr>
+        <td>Species ID</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
 
+    </table>
+
+  </div>
   <div class="container">
-    <form action='/api' method='POST'>
+    <form action='/api/animals' method='POST'>
         <ul class="flex-outer">
           <li>
             <label for="first-name">Animal Name</label>
@@ -28,7 +50,7 @@
             <input type="text" id="gender" name="gender" placeholder="">
           </li>
           <li>
-            <label for="phone">Species Type</label>
+            <label for="phone">Species ID</label>
             <input type="text" id="Animal_type_species_id" name="Animal_type_species_id" placeholder="">
           </li>
           <li>

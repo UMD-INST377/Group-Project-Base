@@ -7,7 +7,7 @@ function loadScript() {
 }
 window.onload = loadScript;
 
-router.route('/api')
+router.route('/api/animals')
   .post(async (req, res) => {
     console.log('POST request detected');
     console.log('Form data in res.body', req.body);

@@ -17,4 +17,9 @@ When you open the application, you will be brought to our home page which will d
 - The custom input page will allow users to input their own music into the database.
 
 ## Target Browsers
-The target browsers for our application are most, if not all, devices with web browser capabilities. 
+The target browsers for our application are most, if not all, devices with web browser capabilities.
+
+# Developer Manual
+
+## Installation Process
+

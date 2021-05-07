@@ -2,23 +2,20 @@ html{
   background-color: #53B797;
 }
 
-body{
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 18px;
-  background-color: #53B797;
-  text-align:center;
+body {
+  background: #53B797;
 }
 
-
-.container{
-  display:inline-block;
-  width: inherit;
-
+.flex-child, li{
+  padding: 10px;
+  text-align: left;
+  font-size: 20px;
+  display: flex;
 }
+
 
 
 #box{
-
   display:flex;
   height: 400px;
   width: 500px;
@@ -27,31 +24,3 @@ body{
 #bhbox{
   display: flex;
 }
-
-.container, .flex-container{
-  flex-direction: row;
-  display:inline-flex;
-
-}
-p, input, button{
-  font-size: 20px;
-}
-
-
-input{
-  text-align: center;
-  margin-left: 5px;
-}
-
-.flex-child, li{
-  padding: 10px;
-  align-items: flex-start;
-  text-align: left;
-  font-size: 20px;
- 
-}
-
-#bbox{
-  display: flex;
-}
-

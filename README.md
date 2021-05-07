@@ -309,4 +309,4 @@ https://blooming-sea-07164.herokuapp.com/
 
 ## Known Bugs
 
-#### There are no current known bugs, but this will be updated when any are found.
+#### Adding players to clubs that do not exist causes crash

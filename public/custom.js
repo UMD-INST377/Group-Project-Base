@@ -16,8 +16,7 @@ async function windowActions() {
             headers: {
                 'Content-Type': 'application/json'
           },
-          body: JSON.stringify({SONG_NAME: name.value}),        
-                 
+          body: JSON.stringify({SONG_NAME: name.value})                      
           
         }),
         fetch('/api/artists', {
@@ -26,15 +25,12 @@ async function windowActions() {
                 'Content-Type': 'application/json'
           },
          body: JSON.stringify({ARTIST_NAME: artist.value})
-        }), 
-        fetch('/api/genres', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({GENRE_NAME: genre.value})
-        }) 
-    ]).then(function (data) {
+        }),
+    ]).then(function (responses) {
+        return Promise.all(responses.map(function (response) {
+            return response.json();
+        }));
+    }).then(function (data) {
         console.log(data);
     }).catch(function (error) {
         console.log(error);

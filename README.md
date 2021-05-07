@@ -51,7 +51,7 @@ We utalized a database from INST377
 
 ### Bulma
 
-We used Bulma, a CSS framework for styling our HTML in an easy manner. You can find the instructions on how to install Bulma here: *https://bulma.io/documentation/overview/start/*. 
+We used Bulma, which is a CSS framework that allows users to style their HTML easily and nicely. You can find the instructions on how to install Bulma here: *https://bulma.io/documentation/overview/start/*. 
 
 The simplest way to do this is by using npm to install it. Open a new terminal and enter *“npm install bulma”*.
 

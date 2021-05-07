@@ -1,6 +1,10 @@
 import { classToInvokable } from 'sequelize/types/lib/utils';
+import Artists from '../models/Artists';
+import Songs from '../models/Songs';
 
-function createTable(json) {
+// Commented out to see if I could pin-point issue
+
+/* function createTable(json) {
   if (json == null || json.length === 0) return;
 
   function createTableHead(table) {
@@ -13,7 +17,7 @@ function createTable(json) {
       th.appendChild(label);
       row.appendChild(th);
     }
-    console.log('done making table head');
+    console.log('Done making table head');
   }
   function createTableBody(table) {
     for (key in json.data) {
@@ -43,3 +47,54 @@ function createTable(json) {
   createTableHead(table);
   table.setAttribute('class', 'table is-striped');
 }
+*/
+
+// Top 10 Songs, Artists, and Albums
+const copiedSongs = { ...Songs};
+const copiedArtists = { ...Artists};
+const copiedAlbums = { ...Albums};
+
+// Copy of Data from Songs, Artists, and Albums in ascending order for Popularity
+copiedArtists.sort((a, b) => parseFloat(a.ARTIST_POPULARITY)
+  - parseFloat(b.ARTIST_POPULARITY));
+
+copiedSongs.sort((a, b) => parseFloat(a.SONG_POPULARITY) - parseFloat(b.SONG_POPULARITY));
+
+copiedAlbums.sort((a, b) => parseFloat(a.ALBUM_POPULARITY)
+- parseFloat(b.ALBUM_POPULARITY));
+
+// Only gives us top 10 results
+const topSongs = copiedSongs.slice(0, 10);
+const topArtists = copiedArtists.slice(0, 10);
+const topAlbums = copiedAlbums.slice(0, 10);
+
+// Creating table using Javascript
+function generateTableHead(table, data) {
+  const thead = table.createTHead();
+  const row = thead.insertRow();
+  for (const key of data) {
+    const th = document.createElement('th');
+    const text = document.createTextNode(key);
+    th.appendChild(text);
+    row.appendChild(th);
+  }
+}
+
+function generateTable(table, data) {
+  for (const element of data) {
+    const row = table.insertRow();
+    for (key in element) {
+      const cell = row.insertCell();
+      const text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+  }
+}
+
+const table = document.querySelector('table');
+const songData = Object.keys(topSongs[0]);
+const albumData = Object.keys(topAlbums[0]);
+generateTableHead(table, songData);
+generateTableHead(table, albumData);
+generateTable(table, topSongs);
+generateTable(table, topAlbums);

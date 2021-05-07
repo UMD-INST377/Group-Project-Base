@@ -155,9 +155,10 @@ router.get('/popularBooks/:book_id', async (req, res) => {
 
 router.post('/popularBooks', async (req, res) => {
   const books = await db.popularBooks.findAll();
-  const currentId = (await books.length) + 1;
+  const currentId = (await books[books.length - 1].dataValues.book_id) + 1;
   console.log(currentId)
-  console.log(req.body)
+  //console.log(currentId)
+  //console.log(req.body)
   try {
     const newBook = await db.popularBooks.create({
       book_id: currentId,
@@ -224,11 +225,12 @@ router.put('/popularBooks', async (req, res) => {
   }
 });
 
-router.delete('/popularBooks/:popularBooks_id', async (req, res) => {
+router.delete('/popularBooks', async (req, res) => {
+  console.log('Here is updated form info', req.body);
   try {
     await db.popularBooks.destroy({
       where: {
-        popularBooks_id: req.params.popularBooks_id
+        book_id: req.body.bookId
       }
     });
     res.send('Successfully Deleted');
@@ -304,15 +306,16 @@ router.get('/popularBooksExpanded', async (req, res) => {
     // This is an sql query that fetches popularBooks + author name
     // + book description + publisher name + retailer name + genre(s)
     const sqlQuery = `
-    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name, genre_name, movement_name
+    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name, GROUP_CONCAT(genre_name SEPARATOR '') as genre_name, movement_name
     FROM popular_books
     LEFT JOIN authors ON authors_author_id=author_id
     LEFT JOIN book_description ON book_description_description_id=description_id
     LEFT JOIN publishers ON publishers_publisher_id=publisher_id
     LEFT JOIN book_retailers ON book_retailers_retailer_id=retailer_id
     LEFT JOIN artistic_movement ON artistic_movement_artistic_movement_id=artistic_movement_id
-    JOIN genre_has_popular_books ON book_id =popular_books_book_id
-    JOIN genre ON genre_genre_id=genre_id
+    LEFT JOIN genre_has_popular_books ON book_id =popular_books_book_id
+    LEFT JOIN genre ON genre_genre_id=genre_id
+	  GROUP BY book_id
     `;
     const result = await db.sequelizeDB.query(sqlQuery, {
       type: sequelize.QueryTypes.SELECT
@@ -327,45 +330,23 @@ router.get('/popularBooksExpanded', async (req, res) => {
 router.get('/popularBooksExpanded/:book_id', async (req, res) => {
   try {
     const sqlQuery = `
-    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name, genre_name, movement_name
+    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name, GROUP_CONCAT(genre_name SEPARATOR '') as genre_name, movement_name
     FROM popular_books
     LEFT JOIN authors ON authors_author_id=author_id
     LEFT JOIN book_description ON book_description_description_id=description_id
     LEFT JOIN publishers ON publishers_publisher_id=publisher_id
     LEFT JOIN book_retailers ON book_retailers_retailer_id=retailer_id
     LEFT JOIN artistic_movement ON artistic_movement_artistic_movement_id=artistic_movement_id
-    JOIN genre_has_popular_books ON book_id =popular_books_book_id
-    JOIN genre ON genre_genre_id=genre_id
-    WHERE book_id = :book_id
+    LEFT JOIN genre_has_popular_books ON book_id =popular_books_book_id
+    LEFT JOIN genre ON genre_genre_id=genre_id
+	  GROUP BY book_id
+    HAVING book_id = :book_id
     `;
     const result = await db.sequelizeDB.query(sqlQuery, {
       replacements: { book_id: req.params.book_id },
       type: sequelize.QueryTypes.SELECT
-    });
+    }); 
 
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/popularBooksExpandedNoGenre', async (req, res) => {
-  try {
-    // This is an sql query that fetches popularBooks + author name
-    // + book description + publisher name + retailer name
-    // no genre to avoid duplicates
-    const sqlQuery = `
-    SELECT popular_books.*, first_name, last_name, book_description, publisher_name, retailer_name, movement_name
-    FROM popular_books
-    LEFT JOIN authors ON authors_author_id=author_id
-    LEFT JOIN book_description ON book_description_description_id=description_id
-    LEFT JOIN publishers ON publishers_publisher_id=publisher_id
-    LEFT JOIN book_retailers ON book_retailers_retailer_id=retailer_id
-    LEFT JOIN artistic_movement ON artistic_movement_artistic_movement_id=artistic_movement_id
-    `;
-    const result = await db.sequelizeDB.query(sqlQuery, {
-      type: sequelize.QueryTypes.SELECT
-    });
     res.json(result);
   } catch (err) {
     console.error(err);

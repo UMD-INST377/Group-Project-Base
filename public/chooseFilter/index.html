@@ -7,12 +7,8 @@
   <title>Search Page</title>
   <link href="https:fonts.googleapis.com/css?family=Roboto+Condensed:300|Cinzel+Decorative:700" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"> -->
   <link href="style.css" rel="stylesheet">
 
-  <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -20,90 +16,84 @@
   <div class='header'>
 
     <h1>WeBooks</h1>
-    <!-- <img src="dove.png" alt="a simple dove logo"> -->
 
   </div>
-  <form class='userform' id="filterForm" action="../queryResults/">
-    <label for="keyword"></label>
-    
-    <input type='text' class='keyword' name="keyword" id="keyword" placeholder="Type a Keyword"></input>
+
+  <h2>Choose Filters</h2>
+
+  <form class='userForm' id="filterForm" action="../queryResults/">
+    <div class="textSearching">
+
+    <h3>Title</h3>
+
+      <label for="titleSearch"></label>
+      <input type='text' class='keywordSearch' name="titleSearch" id="titleSearch"
+        placeholder="Search by title"></input>
+
+      <h3>Author</h3>
+
+      <label for="authorSearch"></label>
+      <input type='text' class='keywordSearch' name="authorSearch" id="authorSearch"
+        placeholder="Type Author Name"></input>
+
+    </div>
+    <ul id="listedFilters" style="list-style-type:none;">
+
+      <li>
+        <h3>Rating</h3>
+        <div class="select is-multiple">
+          <label for="ratingSearch"></label>
+          <select multiple size="4" name="ratingSearch" id="ratingSearch">
+            <option value="0" selected hidden></option>
+            <option value="90"> 90 and higher </option>
+            <option value="80"> 80 and higher </option>
+            <option value="70"> 70 and higher </option>
+            <option value="60"> 60 and higher </option>
+            <option value="50"> 50 and higher </option>
+
+          </select>
+        </div>
+      </li>
 
 
 
-    <div class='main'>
-      <!-- <div class='choosefilter'> -->
-      <p3 class='choose_filter'>Choose Filter</p>
+      <li>
+        <h3>Genre</h3>
+        <div class="select is-multiple">
+          <label for="genreSearch"></label>
+          <select multiple size="7" name="genreSearch" id="genreSearch">
+            <option value=" " selected hidden></option>
+            <option> Young Adult </option>
+            <option> Fantasy </option>
+            <option> Science Fiction</option>
+            <option> Thriller/Mystery </option>
+            <option> Romance </option>
+            <option> Historical </option>
+            <option> Drama </option>
+            <option> Poetry </option>
+            <option> Horror </option>
+            <option> Crime </option>
+            <option> Graphic </option>
+            <option> Humor </option>
+            <option> Self-Help </option>
+            <option> Biography </option>
+            <option value="children"> Children's Literature </option>
+          </select>
+        </div>
+      </li>
+    </ul>
 
-        <p2 class="tops">Author</p>
-        
-          
-          <label for="keyword"></label>
-    
-          <input type='text' class='keyword' name="keyword" id="keyword" placeholder="Type Author Name"></input>
+    <div id="buttonArea">
+    <button type="search" form="filterForm" class="searchButton">Search</button>
+    </div>
 
-       <ul>   
-      <p1 class="tops">Rating</p>
-      </ul>
-      <ul class="flex-inner" style="list-style-type:none;">
-
-        <li>
-          <div class="select is-multiple">
-            <select multiple size="4">
-              <option> Less than 50 </option>
-              <option> 50-69 </option>
-              <option>70-79 </option>
-              <option> 80-89 </option>
-              <option> 90-100 </option>
-            </select>
-          </div>
-        </li>
-        
-          <p2 class="tops">Genre</p>
-
-
-        <li>
-          <div class="select is-multiple">
-            <select multiple size="7">
-              <option> Young Adult </option>
-              <option> Fantasy </option>
-              <option> Children </option>
-              <option> Science Fiction</option>
-              <option> Thriller/Mystery </option>
-              <option> Romance </option>
-              <option> Historical </option>
-              <option> Drama </option>
-              <option> Poetry </option>
-              <option> Horror </option>
-              <option> Crime </option>
-              <option> Graphic </option>
-              <option> Humor </option>
-              <option> Self-Help </option>
-              <option> Biography </option>
-              <option> Children Literature </option>
-            </select>
-          </div>
-        </li>
-          
-        <!-- <li>
-            <input type="checkbox" id="skip">
-            <label for="skip">Skip Filter</label>
-             </li> -->
-
-    
-
-
-      <button type="search" form="filterForm" class="search">Search</button>
   </form>
 
+
+  <div class="back">
+    <a href="/">Go Back</a>
   </div>
 
-<div class= "back">
-  <a href="/">Go Back</a>
-</div>
 
-
-
-
-
-
-  <!--  <p><a href="http://game-icons.net/lorc/originals/dove.html">Dove icon</a> by Lorc.</p>sudo killall -9 node
+</body>
+</html>

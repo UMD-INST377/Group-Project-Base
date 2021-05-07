@@ -1,5 +1,4 @@
-
-//creates boxes that are html and populates boxes with author names
+// creates boxes that are html and populates boxes with author names
 
 function buildResultBoxes (validBooks) {
   // validBook[0] is the book_id
@@ -26,30 +25,36 @@ function buildResultBoxes (validBooks) {
   suggestions.innerHTML = html;
 }
 
-async function filterBooks(chosenkeyword, books) {
-  const keyword = chosenkeyword.toLowerCase();
+async function filterBooks(urlParams, books) {
+  const titleSearch = urlParams.get('titleSearch').toLowerCase();
+  const authorSearch = urlParams.get('authorSearch').toLowerCase();
+  const minRating = urlParams.get('ratingSearch');
+  const genreSearch = urlParams.get('genreSearch').toLowerCase();
 
-  console.log(keyword);
   console.log(books);
   const validBooks = [];
 
   for (const book of books) {
-    title = book.title.toLowerCase();
-    if (title.includes(keyword)) {
-      console.log(book);
-      // add other filters here???
-      author = `${book.first_name} ${book.last_name}`;
-      validBooks.push([book.book_id, book.title, author]);
+    const title = book.title ? book.title.toLowerCase() : "";
+    const author = `${book.first_name} ${book.last_name}`.toLowerCase();
+    const rating = book.google_user_percentage ? book.google_user_percentage : 0;
+    const genre = book.genre_name ? book.genre_name : "no genre";
+
+    if (title.includes(titleSearch)
+    && author.includes(authorSearch)
+    && rating >= minRating
+    && genre.includes(genreSearch)) {
+      validBooks.push([book.book_id, book.title, `${book.first_name} ${book.last_name}`]);
     }
   }
   buildResultBoxes(validBooks);
 }
 
 async function windowActions() {
-  const request = await fetch('/api/popularBooksExpandedNoGenre');
+  const request = await fetch('/api/popularBooksExpanded');
   const books = await request.json();
-  const params = new URLSearchParams(window.location.search); // this code allows you to access the "/?" part of the url
-  filterBooks(params.get('keyword'), books);
+  const params = new URLSearchParams(window.location.search);
+  filterBooks(params, books);
 }
 
 window.onload = windowActions;

@@ -10,7 +10,6 @@ const __dirname = path.resolve();
 
 const app = express();
 
-
 const PORT = process.env.PORT || 3000;
 const staticFolder = 'public';
 
@@ -19,20 +18,18 @@ liveReloadServer.watch(path.join(__dirname, staticFolder));
 
 app.use(connectReload());
 
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(staticFolder));
-
 
 app.use('/api', apiRoutes);
 
 async function bootServer() {
   try {
-    const mysql = await db.sequelizeDB;
-    await mysql.sync();
-    app.listen(PORT, () => {
+    app.listen(PORT, async () => {
       console.log(`Listening on: http//localhost:${PORT}`);
+      const mysql = await db.sequelizeDB;
+      await mysql.sync();
     });
   } catch (err) {
     console.error(err);
@@ -43,7 +40,5 @@ async function bootServer() {
     }, 100);
   });
 }
-
-
 
 bootServer();

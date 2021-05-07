@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team 12's Group Project</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link rel="stylesheet" type="text/css" href="/sandbox/styles.css"/>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+        crossorigin="anonymous">
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a href="/index.html" class="navbar-item brand">NBA Info Insiders</a>
+                
+                    <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="/index.html">Home</a>
+                        <a class="navbar-item" href="/player-info.html">Player Info</a>
+                        <a class="navbar-item" href="/team-info.html">Team Info</a>
+                        <a class="navbar-item" href="/record-update.html">Record Update</a>
+                        <a class="navbar-item" href="/about.html">About</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="main">
+            <!-- PLAYER & TEAM PREVIEW BOXES -->
+            <div class="columns">
+                <div class="column is-4">
+                    <h3 class="title is-3 has-text-centered">PLAYER SPOTLIGHT</h3>
+                    <div class="box player">
+                        <!-- PLAYER INFO POPULATES HERE -->
+                    </div>
+                </div>
+                <div class="column is-7 is-offset-1">
+                    <h3 class="title is-3 has-text-centered">TEAM COMPARISON</h3>
+                    <div class="box columns team-comp">
+                        <!-- TEAM COMPARISON POPULATES HERE -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATS CAROUSEL PREVIEW BOX -->
+            <h3 class="title is-3 has-text-centered">SEASON LEADERS</h3>
+            <div class="columns is-full box">
+                <div class="column is-4 carousel-table left" id="shootingPctTable">
+                    <table class="table is-bordered">
+                        <caption>Shooting % Leaders</caption>
+                        <thead>
+                            <th><abbr title="Rank">Rank</abbr></th>
+                            <th><abbr title="Player">Player</abbr></th>
+                            <th><abbr title="Shooting Pct">Shooting %</abbr></th>
+                        </thead>
+                        <tbody class="shootPctResults">
+                                <!-- Shooting % RESULTS POPULATE HERE -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="column is-4 carousel-table middle" id="threePtPctTable">
+                    <table class="table is-bordered">
+                        <caption>3-Pt % Leaders</caption>
+                        <thead>
+                            <th><abbr title="Rank">Rank</abbr></th>
+                            <th><abbr title="Player">Player</abbr></th>
+                            <th><abbr title="Three Pt Pct">3-Pt %</abbr></th>
+                        </thead>
+                        <tbody class="threePtPctResults">
+                                <!-- 3-Pt % RESULTS POPULATE HERE -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="column is-4 carousel-table right" id="assistsTable">
+                    <table class="table is-bordered">
+                        <caption>Assists (per game) Leaders</caption>
+                        <thead>
+                            <th><abbr title="Rank">Rank</abbr></th>
+                            <th><abbr title="Player">Player</abbr></th>
+                            <th><abbr title="Assists Per Game">Assists</abbr></th>
+                        </thead>
+                        <tbody class="assistsResults">
+                                <!-- Assists/Game RESULTS POPULATE HERE -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="column is-4 carousel-table hidden" id="reboundsTable">
+                    <table class="table is-bordered">
+                        <caption>Rebounds (per game) Leaders</caption>
+                        <thead>
+                            <th><abbr title="Rank">Rank</abbr></th>
+                            <th><abbr title="Player">Player</abbr></th>
+                            <th><abbr title="Rebounds Per Game">Rebounds</abbr></th>
+                        </thead>
+                        <tbody class="reboundsResults">
+                                <!-- Rebounds/Game RESULTS POPULATE HERE -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="column is-4 carousel-table hidden" id="stealsTable">
+                    <table class="table is-bordered">
+                        <caption>Steals (per game) Leaders</caption>
+                        <thead>
+                            <th><abbr title="Rank">Rank</abbr></th>
+                            <th><abbr title="Player">Player</abbr></th>
+                            <th><abbr title="Steals Per Game">Steals</abbr></th>
+                        </thead>
+                        <tbody class="stealsResults">
+                                <!-- Steals/Game RESULTS POPULATE HERE -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="column is-4 carousel-table hidden" id="blocksTable">
+                    <table class="table is-bordered">
+                        <caption>Blocks (per game) Leaders</caption>
+                        <thead>
+                            <th><abbr title="Rank">Rank</abbr></th>
+                            <th><abbr title="Player">Player</abbr></th>
+                            <th><abbr title="Blocks Per Game">Blocks</abbr></th>
+                        </thead>
+                        <tbody class="blocksResults">
+                                <!-- Blocks/Game RESULTS POPULATE HERE -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="columns carouselButtons">
+                <div class="column is-1 is-offset-3 prevButton">
+                    <div class="button" id="prev">&lt;</div>
+                </div>
+                <div class="column is-1 is-offset-4 nextButton">
+                    <div class="button" id="next">&gt;</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="content has-text-centered">
+                <p>This web application was created by Team 12 for Spring 2021 INST377.</p>
+            </div>
+        </div>
+
+        <script src="/sandbox/scripts.js"></script>
+        <script src="scripts-bulma-nav.js"></script>
+    </body>
+</html>

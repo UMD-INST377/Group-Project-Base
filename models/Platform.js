@@ -1,17 +1,17 @@
 export default (sequelize, DataTypes) => {
-  const DietaryRestrictions = sequelize.define(
-    'Dietary_Restrictions',
+  const Platform = sequelize.define(
+    'platform',
     {
-      restriction_id: {
+      platform_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      restriction_type: {
+      platform_name: {
         type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return DietaryRestrictions;
-};
+  return Platform;
+}

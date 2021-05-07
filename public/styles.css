@@ -185,7 +185,7 @@ table {
     font-size: 16px;
     margin: 10px;
     border-radius: 8px;
-    /* width: 98%; */
+    width: 170px;
 }
 
 .pref-button {
@@ -305,6 +305,8 @@ hr {
 .loginContain {
     display: flex;
     flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 /* .loginForm {
@@ -321,17 +323,7 @@ input[type=text], input[type=password] {
 }
 
 .loginbutton {
-    background-color: midnightblue;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-.loginbutton:hover {
-    background-color: rgb(82, 166, 218);
+    text-align: center;
 }
 
 .errorText{
@@ -348,3 +340,26 @@ input[type=text], input[type=password] {
 #allSubmit {
     margin-left: 10px
 }
+
+#login-error-msg-holder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  #login-error-msg {
+    width: 23%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: red;
+    border: 2px solid red;
+  }
+  
+  #error-msg-second-line {
+    display: block;
+  }

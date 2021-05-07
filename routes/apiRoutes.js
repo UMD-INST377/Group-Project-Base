@@ -44,6 +44,7 @@ router.get('/artists/:ARTIST_ID', async (req, res) => {
 
 router.post('/artists', async (req, res) => {
   const arts = await db.Artists.findAll();
+  const genres = await db.Genres.findAll();
   const currentId = (await arts.length) + 1;
   const currentgenreId = (await genres.length) + 1;
   try {
@@ -316,6 +317,7 @@ router.get('/songs/:SONG_ID', async (req, res) => {
 
 router.post('/songs', async (req, res) => {
   const song = await db.Songs.findAll();
+  const arts = await db.Artists.findAll();
   const currentId = (await song.length) + 1;
   const currentartsId = (await arts.length) + 1; 
   try {

@@ -3,6 +3,26 @@ html, body {
   background: #1db954;
 }
 
+::placeholder {
+  color: #383838;
+}
+
+::-webkit-input-placeholder {
+  color: #383838;
+}
+
+:-moz-placeholder {
+  color: #383838;
+}
+
+::-moz-placeholder {
+  color: #383838;
+}
+
+:-ms-input-placeholder {
+  color: #383838;
+}
+
 span {
   color: #1db954;
 }

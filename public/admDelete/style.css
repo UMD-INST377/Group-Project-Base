@@ -99,6 +99,8 @@ h1 {
 #mainContainer {
     background-color: rgb(98, 0, 255);
     text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 h2 {

@@ -21,5 +21,6 @@ The target browsers for our application are most, if not all, devices with web b
 
 # Developer Manual
 
-## Installation Process
+## How to install the application and all dependencies
+To download our actual project, just select the clone repository button for this repository to clone it to your computer. Using Github desktop is the most straight-forward way to clone the repository. You can find information about Github Desktop here: https://desktop.github.com/
 

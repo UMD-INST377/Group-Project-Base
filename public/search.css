@@ -34,6 +34,13 @@ text {
   padding: 0px;
 }
 
+.progress {
+  position: relative;
+  top: 5%;
+  left: 36%;
+  max-width: 355px;
+}
+
 .flex-outer{
   justify-content: center;
   list-style-type: none;

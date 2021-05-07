@@ -1,3 +1,4 @@
+import { AsyncQueueError } from 'sequelize/types';
 import { classToInvokable } from 'sequelize/types/lib/utils';
 import Artists from '../models/Artists';
 import Songs from '../models/Songs';
@@ -50,7 +51,7 @@ import Songs from '../models/Songs';
 */
 
 // Top 10 Songs, Artists, and Albums
-const copiedSongs = { ...Songs};
+/*const copiedSongs = { ...Songs};
 const copiedArtists = { ...Artists};
 const copiedAlbums = { ...Albums};
 
@@ -98,3 +99,25 @@ generateTableHead(table, songData);
 generateTableHead(table, albumData);
 generateTable(table, topSongs);
 generateTable(table, topAlbums);
+
+*/
+
+async function songs (){
+  const songFetch = await fetch('/api/Songs');
+  const albumFetch = await fetch('/api/Albums');
+  const songInfo = await songFetch.json();
+  const albumInfo = await albumFetch.json();
+  const arraySong = songInfo.data;
+  const arrayAlbum = AlbumInfo.data;
+  const information = document.querySelector ('.target');
+
+  arraySong.forEach((element) => {
+    const makeRows = document.createElement('tr');
+    makeRows.innerHTML =
+    <td>${element.SONG_POPULARITY}</td>
+    <td>${element.SONG_NAME}</td>
+    ;
+    information.append(makeRows)
+  });
+}
+window.onload = songs();

@@ -67,6 +67,7 @@ The simplest way to do this is by using npm to install it. Open a new terminal a
 
 ### Future Development
 
+* Display the top ten songs and albums on the home page
 * Continue working on making the form submit data to the server
 * Create our about page to describe our mission
 * Work out any bugs we find along the way

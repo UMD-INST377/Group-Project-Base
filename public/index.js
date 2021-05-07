@@ -80,7 +80,21 @@ function generateTableHead(table, data) {
   }
 }
 
-const table = document.querySelector('table');
-const data = Object.keys(topSongs[0]);
+function generateTable(table, data) {
+  for (const element of data) {
+    const row = table.insertRow();
+    for (key in element) {
+      const cell = row.insertCell();
+      const text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+  }
+}
 
-generateTableHead(table);
+const table = document.querySelector('table');
+const songData = Object.keys(topSongs[0]);
+const albumData = Object.keys(topAlbums[0]);
+generateTableHead(table, songData);
+generateTableHead(table, albumData);
+generateTable(table, topSongs);
+generateTable(table, topAlbums);

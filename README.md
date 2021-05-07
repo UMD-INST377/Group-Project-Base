@@ -41,7 +41,7 @@
     * The endpoint `/popularBooksExpanded` uses a custom SQL query to fill in each foreign key id, like description_id or author_id, with the value present in the other table. Books with multiple genres have their genre values combined into a single string value.
     * The endpoint `/popularBooksExpanded/:book_id` preforms a similar query to `/popularBooksExpanded` but also filters based on the selected book_id.
 2. POST - Adds an additional book to the database
-    * A POST request to `/popularBooks` results in a new entry being added to the table. The endpoint should set the new id to be equal to the length of the table plus one.
+    * A POST request to `/popularBooks` results in a new entry being added to the table. The endpoint should set the new id to be equal to the the highest book_id of the table plus one.
 3. PUT - Update books that are already in the database
     * A PUT request to `/popularBooks` results in an existing record being updated. The id of the book that will be updated should be in the request itself not the url.
 4. DELETE - Delete books from the database
@@ -52,6 +52,7 @@
 
 ## Recomended Next Steps
 * Speed up heroku loading
+* Clean up CSS
 * Adding more data into the database relevant to collegiate education
 * Adjust admCreate and admUpdate so that it is less reliant on Ids
 * Make pages that allow for adding new records to tables other than popular_books

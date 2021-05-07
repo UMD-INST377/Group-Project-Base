@@ -42,14 +42,12 @@ async function handleButtonClick(event) {
 function windowActions() {
 
 
-
   async function nullOnEmpty(formEntry) {
     if (!formEntry) {
       return null;
     } return formEntry;
   }
 
-  console.log(nullOnEmpty(""))
   const submitButton = document.querySelector('#submit');
   submitButton.addEventListener('click', (event) => {
     handleButtonClick(event);

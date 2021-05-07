@@ -69,6 +69,7 @@ router.delete('/playlists/:playlist_id', async (req, res) => {
 });
 
 router.put('/playlists', async (req, res) => {
+  console.info('POST Request to /playlists', req.body)
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
     await db.Playlist.update(
@@ -82,7 +83,7 @@ router.put('/playlists', async (req, res) => {
       },
       {
         where: {
-          playlist_id: req.body.playlist_id
+          playlist_name: req.body.playlist_name
         }
       }
     );
@@ -190,9 +191,10 @@ router.get('/playlistDetails', async (req, res) => {
 });
 
 router.post("/playlistDetails", async (req, res) => {
+ console.info("*****************",req.body)
   try {
     const playlistd = await db.PlaylistDetails.create({
-      playlist_details_id: req.body.playlist_details_id,
+      
       FK_song_id: req.body.FK_song_id,
       song_title: req.body.song_title,
       artist_id: req.body.artist_id,

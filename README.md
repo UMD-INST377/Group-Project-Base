@@ -45,7 +45,7 @@ To download our actual project, just select the clone repository button for this
 ### API 
 
 We utalized a database from INST327 
-* Our database is constructed of 7 tables and holds data on genres, songs, artists, and their respective characteristics from the years 1921-2020
+* Our database is constructed of 7 tables and holds data from Spotify on genres, songs, artists, and their respective characteristics from the years 1921-2020
 * `'GET'` is what allows the user to retrieve the data from our databases. When the top ten songs and albums display and the search results are acquired it is by using the `'GET'` function
 * `'POST'` is what allows the user to input their own information to the databse. The Custom Input page uses the `'POST'` method for when the user adds a song using the form. 
 

@@ -74,14 +74,20 @@ li a:hover {
     border-style:double;
 }
 
-table {
-    margin: 10px;
+#filterField {
+    margin-left: 10px;
+    width: 98%;
 }
 
-.products-table {
+table {
+    margin: 10px;
+    width: 98%;
+}
+
+/* .products-table {
     width:100%;
     table-layout: fixed;
-}
+} */
 
 .thFam {
     text-align: left;
@@ -334,12 +340,11 @@ input[type=text], input[type=password] {
 
 .allProductsLabel {
     margin-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
 }
 
 #allSubmit {
     margin-left: 10px
-}
-
-.table {
-    width:99%;
 }

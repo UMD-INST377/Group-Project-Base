@@ -8,7 +8,7 @@ const categoriesBody = document.querySelector('.categories-body');
 const storesBody = document.querySelector('.stores-body');
 const filterField = document.querySelector('#filterField');
 const filterButton = document.querySelector('#allSubmit');
-const resultDisplay = document.querySelector('.searchResultsAll')
+const resultDisplay = document.querySelector('.searchResultsAll');
 
 async function productsTable() {
     const request = await fetch('/api/products/');
@@ -17,6 +17,7 @@ async function productsTable() {
 
     productsData.data.forEach((product) => {
         const productsRow = document.createElement('tr');
+        const productsId = document.createElement('td');
         const productsPrice = document.createElement('td');
         const productsImage = document.createElement('img');
         const productsDescr = document.createElement('td');
@@ -24,6 +25,7 @@ async function productsTable() {
         const productsFam = document.createElement('td');
         const productsCatg = document.createElement('td');
 
+        productsId.innerText = product.product_id;
         productsPrice.innerText = product.product_unit_price;
         productsImage.src = product.image_link;
         productsDescr.innerText = product.product_description;
@@ -35,6 +37,7 @@ async function productsTable() {
         productsImage.style.width = 'auto';
 
         productsBody.append(productsRow);
+        productsRow.append(productsId);
         productsRow.append(productsPrice);
         productsRow.appendChild(productsImage);
         productsRow.append(productsDescr);
@@ -44,10 +47,6 @@ async function productsTable() {
     });
     return productsData;
 }
-
-// const imgElem = document.createElement('img');
-// imgElem.src = element.image_link;
-// divElem.appendChild(imgElem);
 
 async function familiesTable() {
     const request = await fetch('/api/productFamilies/');
@@ -115,8 +114,6 @@ async function storesTable() {
     });
 }
 
-
-
 async function windowActions() {
     const data = await productsTable();
     familiesTable();
@@ -128,7 +125,7 @@ async function windowActions() {
         const result = data['data'][filterField.value - 1];
         const newTableResult = document.createElement('table');
         const newTabTitles = document.createElement('tr');
-        
+
         const newThID = document.createElement('th');
         newThID.innerHTML = "Product ID";
         const newThPrice = document.createElement('th');
@@ -158,19 +155,19 @@ async function windowActions() {
 
         const rowResult = document.createElement('tr');
 
-        const nextThID = document.createElement('th');
+        const nextThID = document.createElement('td');
         nextThID.innerHTML = result.product_id;
-        const nextThPrice = document.createElement('th');
+        const nextThPrice = document.createElement('td');
         nextThPrice.innerHTML = result.product_unit_price;
         const nextThImage = document.createElement('img');
         nextThImage.src = result.image_link;
-        const nextThDescription = document.createElement('th');
-        nextThDescription.innerHTML = result.product_description
-        const nextThColor = document.createElement('th');
+        const nextThDescription = document.createElement('td');
+        nextThDescription.innerHTML = result.product_description;
+        const nextThColor = document.createElement('td');
         nextThColor.innerHTML = result.product_color;
-        const nextThFam = document.createElement('th');
+        const nextThFam = document.createElement('td');
         nextThFam.innerHTML = result.family_id;
-        const nextThCat = document.createElement('th');
+        const nextThCat = document.createElement('td');
         nextThCat.innerHTML = result.category_id;
 
         nextThImage.style.height = '20vw';
@@ -187,10 +184,7 @@ async function windowActions() {
         newTableResult.appendChild(rowResult);
 
         resultDisplay.appendChild(newTableResult);
-
-
     });
 }
 
 window.onload = windowActions();
-

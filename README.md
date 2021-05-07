@@ -14,7 +14,7 @@ https://infinite-woodland-13862.herokuapp.com/
 
 ### Links
 
-* Developer Manual
+* [Developer Manual] https://github.com/xiaoma521/Group14-Final-INST377SP2021#developer-manual
 
 # Developer Manual 
 
@@ -40,5 +40,19 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 
 ### Server Application APIs
 
-/api cont..
+/api -api route for movie infromation
 
+* GET - Receives the movie information from our database.
+* POST - Adds a new movie to the database.
+* DELETE - Deletes a movie from the database.
+
+## Known Bugs and Future Development
+
+### Bugs:
+
+* There is a problem with the foreign key "director_id"
+
+### Future Development:
+
+* Allow for more of a filter function
+* Create a way to recommend a movie for a user based on preferences or past movie history

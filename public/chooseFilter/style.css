@@ -110,6 +110,7 @@ ul.no-bullets {
 
 .keywordSearch {
   margin: auto;
+  min-width: 150px;
   width: 80%;
 }
 
@@ -146,6 +147,7 @@ ul.no-bullets {
 }
 .textSearching h3 {
   align-self: flex-start;
+  margin-left: 10%;
 }
 #buttonArea {
   display: flex;

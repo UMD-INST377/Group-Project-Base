@@ -97,3 +97,11 @@ window.onload = async function windowActions() {
   form.onsubmit = displaySearchResults;
   form.onreset = windowActions;
 };
+
+// mobile menu
+const burgerIcon = document.querySelector("#burger");
+const navbarMenu = document.querySelector("#bar");
+
+burgerIcon.addEventListener("click", () => {
+  navbarMenu.classList.toggle("is-active");
+});

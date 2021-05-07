@@ -14,3 +14,11 @@ window.onload = async function () {
   const player_goals = await req_player_goals.json();
   console.log(player_goals);
 };
+
+// mobile menu
+const burgerIcon = document.querySelector("#burger");
+const navbarMenu = document.querySelector("#bar");
+
+burgerIcon.addEventListener("click", () => {
+  navbarMenu.classList.toggle("is-active");
+});

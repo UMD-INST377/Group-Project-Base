@@ -25,3 +25,11 @@ window.onload = async function windowActions() {
 
   form.addEventListener("submit", delete_club);
 };
+
+// mobile menu
+const burgerIcon = document.querySelector("#burger");
+const navbarMenu = document.querySelector("#bar");
+
+burgerIcon.addEventListener("click", () => {
+  navbarMenu.classList.toggle("is-active");
+});

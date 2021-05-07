@@ -5,6 +5,7 @@ function generateResults(type) {
     //putting loading indicator onto the screen
     let loadingBar = document.createElement('progress');
     loadingBar.setAttribute("class", "progress is-medium is-dark");
+    loadingBar.setAttribute("id", "loadingbar");
     loadingBar.setAttribute("max", "100");
     document.body.appendChild(loadingBar);
     
@@ -21,7 +22,11 @@ function displayResults(results) {
     console.log('displaying results');
     //console.log(results);
 
-    document.body.removeChild(document.body.lastChild);
+    //removing loading bar
+    let body = document.getElementById("body");
+    let loadingBar = document.getElementById("loadingbar");
+    let throwaway = body.removeChild(loadingBar);
+
 }
 
 async function songSearch(input) {

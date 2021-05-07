@@ -65,9 +65,11 @@ window.onload = async function windowActions() {
             const bestPlayer = player.best_player_counter;
             const numGoals = goals.goals;
             const assists = goals.assists;
+            const playerID = player.player_id;
 
             tableTarget.innerHTML = `
                             <tr>
+                                <th>Player ID</th>
                                 <th>Player's Name</th>
                                 <th>Club's Name</th>
                                 <th>Shirt Number</th>
@@ -77,6 +79,7 @@ window.onload = async function windowActions() {
                                 <th>Assists</th>
                             </tr>
                             <tr>
+                                <td>${playerID}</td>
                                 <td>${playerName}</td>
                                 <td>${clubName}</td>
                                 <td>${shirtNum}</td>

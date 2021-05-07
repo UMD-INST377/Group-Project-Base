@@ -81,10 +81,22 @@ function playerDisplayMatches() {
         <br>
         <span> Team Location: ${player_team_location}</span>
         <br>
-        <span> Salary: ${player.salary}</span>
-        <br>
         <span> Shooting Percentage: ${player.shooting_percentage}</span>
         <br>
+        <span> Three Point Percentage: ${player_three_point_percentage}</span>
+        <br>
+        <span> Salary: ${player_salary}</span>
+        <br>
+        <span> Rebounds Per Game: ${player_rebounds_per_game}</span>
+        <br>
+        <span> Assists Per Gane: ${player_assists_per_game}</span>
+        <br>
+        <span> Steals Per Game: ${player_steals_per_game}</span>
+        <br>
+        <span> Blocks Per Gane: ${player_blocks_per_game}</span>
+        <br>
+        
+    
         
       </div>
       </li>

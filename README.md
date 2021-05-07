@@ -39,7 +39,7 @@ This software only has one API, which is the `/api` - API route for books inform
 4. DELETE - Delete books from the database
 
 ## Known bugs 
-* Note: No bugs have been detected.
+1. Heroku website run a little slower to retrieve the results from the search
 
 ## Recomendation Next Step
 1. Adding more data into the database
@@ -47,12 +47,9 @@ This software only has one API, which is the `/api` - API route for books inform
 3. Adding some additional information and filter for the book
 
 
-
 # To do list 
 * Delete page functionality - Tony
-* Add more search filters (genre, rating, etc...)
-* works on mobile
+* Add more search filters (genre, rating, etc...) - Backend
 * Make sure styles work across browsers
-* Fast load time on Heroku
 * .env setup on Heroku?
 * Create final presentation

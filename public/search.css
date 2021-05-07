@@ -7,6 +7,10 @@ body {
   background: #1db954;
 }
 
+span {
+  color: #1db954;
+}
+
 #search {
   width: 350px;
 }
@@ -18,9 +22,18 @@ h1, h2{
 }
 
 p {
-  background-color: lightgrey;
+  background-color: rgb(54, 54, 54);
   padding-left: 10px;
   padding-right: 10px;
+  color:lightgray;
+}
+
+p:first-child {
+  padding-top: 10px;
+}
+
+p:last-child {
+  padding-bottom: 10px;
 }
 
 li {
@@ -31,8 +44,6 @@ li {
   text-align: center;
   gap: 52px;
   background-color: #1db954;
-  border-color: lightgray;
-  border-radius: 5px;
 }
 
 .container{
@@ -89,5 +100,5 @@ text {
 }
 
 .userform, #filters {
-  background-color: lightgray;
+  background-color: rgb(54, 54, 54);
 }

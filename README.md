@@ -17,12 +17,12 @@ When you open the application, you will be brought to our home page which will d
 - The custom input page will allow users to input their own music into the database.
 
 ## Target Browsers
-The target browsers for our application are most, if not all, devices with web browser capabilities.
+The target browsers for our application are most, if not all, devices with web browser capabilities. Ideally, the user should use the latest versions of their technology, but our application should be avaialable to most softwares including the most popular ones like IOS, Android, Google Chrome, etc.
 
 # Developer Manual
 
 ## How to install the application and all dependencies
-To download our actual project, just select the clone repository button for this repository to clone it to your computer. Using Github desktop is the most straight-forward way to clone the repository. You can find information about Github Desktop here: https://desktop.github.com/
+To download our actual project, just select the clone repository button for this repository to clone it to your computer. Once you have cloned it, you could also fork it by clicking on the 'fork' button in the upper right hand corner. This allows you to use it as a repository for only your device. Using Github desktop is the most straight-forward way to clone the repository. You can find information about Github Desktop here: https://desktop.github.com/
 
 
 # Documentation 

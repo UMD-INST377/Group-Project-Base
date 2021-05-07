@@ -101,11 +101,16 @@ ul.no-bullets {
 
 #titleSearch,
 #authorSearch {
-  width: auto;
+  margin: auto;
   border-radius: 3px;
   border: 2px solid black;
   padding: 5px 10px;
   font-size: 18px;
+}
+
+.keywordSearch {
+  margin: auto;
+  width: 80%;
 }
 
 .skip {
@@ -149,8 +154,4 @@ ul.no-bullets {
 
 .userForm {
   margin: auto;
-}
-
-.keywordSearch {
-
 }

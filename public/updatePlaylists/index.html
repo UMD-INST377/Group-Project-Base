@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css"/>
+    <title>Update a Playlist</title>
+</head>
+<body>
+   
+    <div class="block" id="bbox">
+        <button class="button is-dark" ><a id="back" href="../playlists/index.html"> ⇦ Back to Playlists </a></button>
+       
+    </div>
+    <div class="title">
+        <h1 class="title">Update a Playlist</h1>
+
+    </div>
+
+    <div class="block" id="sub1">
+        <p class="subheading" >You are currently updating: &nbsp;  <span id="pname"> Insert Name of Playlist</span></p>
+    </div>
+        
+    <div class="block" id="sub2">
+        <p class="subheading">Add Song(s):</p>
+    </div>
+
+    <div class="container" id="update-container">
+        <div class="box" id="box">
+            <form id="update-form" class="flex-container" >
+                
+                <ul class="flex-outer">
+                    
+                        <li>
+                            <label  for="song-title">Song Title</label>
+                            <input id='song-title' name='song-title' type="text"  placeholder="Enter the song title here">
+                          </li>
+                    
+                        <li>
+                            <label  for="artist-band">Artist/Band</label>
+                            <input id='artist-band' name='artist-band' type="text"  placeholder="Enter artist or band here">
+                          </li>
+                   
+                        <li>
+                            <label   for="song-duration">Song Duration</label>
+                            <input id='song-duration' name='song-duration' type="text" placeholder="Enter song duration here">
+                        </li>
+                   
+                        <li>
+                            <p>Is it explicit?</p> 
+                            <ul class="flex-container">
+                                <li class="flex-child">
+                                  <input class="button" id='explicit' name ='explicit' type="button" value="Yes">
+                                  <label  for="explicit"></label>
+                                </li>
+                                <li class="flex-child"> 
+                                  <input class="button" id="not-explicit" name="not-explicit" type="button" value="No">
+                                  <label for="not-explicit"></label>
+                                </li>
+                            </ul> 
+                            
+                        </li>
+                    </div>
+                    
+                </ul>
+                <div class="add-song">
+                    <button class="button is-dark" id="add">Add Another Song</button>
+                </div>
+            
+           
+        </div>
+        <div class="submit">
+            <button class="button is-dark" id="submit" name="submit" type="submit">Submit</button>
+        </div>
+    </form>
+    </div>
+    
+</body>
+<script src='script.js'></script>
+</html>

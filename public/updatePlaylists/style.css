@@ -1,0 +1,100 @@
+html{
+    background-color: #53B797;
+}
+
+body{
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    background-color: #53B797;
+    text-align:center;
+}
+
+.subheading, #subheading{
+    display:inline-flex;
+    width: 600px;
+}
+
+#update-container{
+    display:inline-block;
+    width: inherit;
+  
+}
+
+.add-song{
+    display: initial;
+}
+
+
+#bbox{
+    display: flex;
+}
+
+#back{
+    color:white;
+}
+
+#update-form{
+    vertical-align: middle;
+}
+
+#box{
+
+    display:flex;
+    height: 400px;
+    width: 500px;
+
+}
+
+.flex-container{
+    flex-direction: row;
+    display:inline-flex;
+
+}
+p, input, button{
+    font-size: 20px;
+}
+
+
+input{
+    text-align: center;
+    margin-left: 5px;
+}
+
+.flex-child, li{
+    padding: 10px;
+    text-align: left;
+    font-size: 20px;
+    display: flex;
+}
+
+#explicit{
+    display: inline-flex;
+    flex-direction: row;
+    margin: 5px;
+    margin-left: 90px;
+}
+
+#not-explicit{
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    margin-left: 50px;
+
+}
+
+.button.is-dark {
+    background-color: #363636;
+    border-color: transparent;
+    color: white;
+}
+
+/* 
+.submit{
+    padding:15px;
+    display: flexbox;
+} */
+
+.submit{
+    padding:15px;
+    display: initial;
+}

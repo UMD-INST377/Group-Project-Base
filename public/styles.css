@@ -94,6 +94,7 @@ table {
 
 .secondContainer {
     margin-top: 50px;
+    margin-bottom: 50px;
     border: black;
     border-style:double;
     /* height:600px; */
@@ -206,6 +207,10 @@ table {
     margin-top: 25px;
 }
 
+#about {
+    
+}
+
 .leftarrow {
     height: 15vw;
 }
@@ -268,6 +273,11 @@ h1 {
 
 .disclaimer {
     margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+#mission {
     text-align: center;
 }
 

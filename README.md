@@ -314,4 +314,4 @@ https://blooming-sea-07164.herokuapp.com/
 
 ## Road-Map
 
-#### This project as the ability to become something big, but it still needs some work.  Work needs to be put into the database such that more data can be stored.  Also, some time should be spend on site security as currently it is minimal.  Creating a login and log of edits should be a top priority.
+##### This project as the ability to become something big, but it still needs some work.  Work needs to be put into the database such that more data can be stored.  Also, some time should be spend on site security as currently it is minimal.  Creating a login and log of edits should be a top priority.

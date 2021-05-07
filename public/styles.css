@@ -10,20 +10,21 @@ body {
     justify-content: left;
     color: #000000;
 }
+
 div.columns {
     margin-top: 50px;
-  }
+}
 
-  h1 {
-    color: rgb(1, 14, 1) !important;
-    margin-bottom: 20px;
+h1, h2{
+  display: flex;
+  justify-content: center;
+  color: #000000;
+}
 
-  }
+.table td {
+  font-size: 50px
+}
 
-  .table td {
-    font-size: 50px
-  }
-
-  .table th {
-    font-size: 50px
-  }
+.table th {
+  font-size: 50px
+}

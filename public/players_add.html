@@ -41,51 +41,60 @@
 
     <!---Add Form--->
 
-<div class="container">
+  <div class="container">
     <h1 class="subtitle is-3">Add a Player</h1>
     <div class="field">
+      <form id="add-form" onsubmit="return false">
         <label class="label">Player's First Name</label>
         <div class="control">
           <input class="input" type="text" id="firstname" placeholder="e.g. John, etc." required>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Player's Last Name</label>
-        <div class="control">
-          <input class="input" type="text" id = "lastname" placeholder="e.g. Smith, etc." required>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Club's Name</label>
-        <div class="control">
-          <input class="input" type="text" id= "playerclub" placeholder="e.g. Arsenal, etc." required>
+        <div class="field">
+          <label class="label">Player's Last Name</label>
+          <div class="control">
+            <input class="input" type="text" id = "lastname" placeholder="e.g. Smith, etc." required>
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Shirt Number</label>
-        <div class="control">
-          <input class="input" type="number" id = "shirtnumber" placeholder="e.g. 51, 69, etc." required>
+        <div class="field">
+          <label class="label">Club's Name</label>
+          <div class="control">
+            <input class="input" type="text" id= "playerclub" placeholder="e.g. Arsenal, etc." required>
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Number of Goals</label>
-        <div class="control">
-          <input class="input" type="number" id = "playergoals" placeholder="e.g. 25, 30, etc." required>
+        <div class="field">
+          <label class="label">Shirt Number</label>
+          <div class="control">
+            <input class="input" type="number" id = "shirtnumber" placeholder="e.g. 51, 69, etc." required>
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Number of Assists</label>
-        <div class="control">
-          <input class="input" type="number" id = "playerassists" placeholder="e.g. 150, 60, etc." required>
+        <div class="field">
+          <label class="label">Player's Position</label>
+          <div class="control">
+            <input class="input" type="text" id = "position" placeholder="Abbreviated. e.g. FW, GK, etc." required>
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Number of "Best Player" Titles Won</label>
-        <div class="control">
-          <input class="input" type="number" id="playertitles" placeholder="e.g. 0, 3, etc." required>
+        <div class="field">
+          <label class="label">Number of Goals</label>
+          <div class="control">
+            <input class="input" type="number" id = "playergoals" placeholder="e.g. 25, 30, etc." required>
+          </div>
         </div>
-      </div>
-      <button class="button is-link" type="submit" id="add-button">Add Player</button>
-</div>
+        <div class="field">
+          <label class="label">Number of Assists</label>
+          <div class="control">
+            <input class="input" type="number" id = "playerassists" placeholder="e.g. 150, 60, etc." required>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Number of "Best Player" Titles Won</label>
+          <div class="control">
+            <input class="input" type="number" id="playertitles" placeholder="e.g. 0, 3, etc." required>
+          </div>
+        </div>
+        <button class="button is-link" type="submit" id="add-button">Add Player</button>
+      </form>
+  </div>
+  <script src="add_players.js"></script>
 </body>
 </html>

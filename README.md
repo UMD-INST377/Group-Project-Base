@@ -44,6 +44,7 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 
 * GET - Receives the movie information from our database.
 * POST - Adds a new movie to the database.
+* PUT - Returns response "Successfully Updated".
 * DELETE - Deletes a movie from the database.
 
 ## Known Bugs and Future Development

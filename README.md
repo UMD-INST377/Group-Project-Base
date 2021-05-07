@@ -24,6 +24,8 @@ The target browsers for our application are most, if not all, devices with web b
 ## How to install the application and all dependencies
 To download our actual project, just select the clone repository button for this repository to clone it to your computer. Once you have cloned it, you could also fork it by clicking on the 'fork' button in the upper right hand corner. This allows you to use it as a repository for only your device. Using Github desktop is the most straight-forward way to clone the repository. You can find information about Github Desktop here: https://desktop.github.com/
 
+The only other dependency we have is Bulma. We have already linked it to the HTML so that part is set up, but the user would need to install Bulma on their console. https://bulma.io/ has easy to follow instructions on how to do this and plenty of examples and tutorials to guide the user.
+
 
 # Documentation 
 

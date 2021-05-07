@@ -1,15 +1,21 @@
+
+
 async function windowActions() {
     console.log('loaded window');
 
     const form = document.querySelector('#recordSubmit')
     const name = document.querySelector('#song')
     const artist = document.querySelector('#artist')
-    const genre = document.querySelector('#genre')
+
+    // artist.hasMany(name);
+
+    // const genre = document.querySelector('#genre')
+
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         console.info('submitted form', e.target);
-        //const formData = ()
+        // const formData = ()
         const post = await Promise.all([
             fetch('/api/songs', {
             method: 'POST',
@@ -38,5 +44,24 @@ async function windowActions() {
     });
 
 }
+
+async function handleButtonClick(event) {
+    console.log('clicked button', event.target);
+    console.log('button value', event.target.value);
+    const song = document.querySelector('#song');
+    const url = '/api/songs';
+    const request = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ SONG_NAME: song.value })
+    });
+    console.log('resolved request', request);
+    const result = await request.json();
+    console.log(result);
+  
+    // do something with a result here
+  }
 
 window.onload = windowActions;

@@ -23,3 +23,8 @@ The target browsers for our application are most, if not all, devices with web b
 
 ## Installation Process
 
+
+# Documentation 
+
+## Bugs and Incomplete Code
+As of now the custom input form does not send the data back to the server. The errortype is an UnhandledPromiseRejectionWarning. Our team has worked to try and solve this, but we have not been able to figure it out as of yet. 

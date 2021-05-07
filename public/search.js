@@ -1,6 +1,5 @@
-//aaaaa
 function generateResults(type) {
-    //getting text from search bar
+    //if no text in search bar, stop
     if (!(document.getElementById('search').value)) return;
 
     //putting loading indicator onto the screen
@@ -9,8 +8,10 @@ function generateResults(type) {
     loadingBar.setAttribute("max", "100");
     document.body.appendChild(loadingBar);
     
+    //getting text from search bar
     const input = document.getElementById('search').value;
 
+    //goes to appropriate search
     if (type === 'songs') displayResults(songSearch(input))
     else if (type === 'genres') displayResults(genreSearch(input))
     else if (type === 'artists') displayResults(artistSearch(input));
@@ -23,7 +24,7 @@ function displayResults(results) {
 
 async function songSearch(input) {
     console.log('Songs button clicked');
-    console.log(input);
+    //console.log(input);
 
     //getting all songs
     const songsRequest = await fetch('/api/songsRoute');
@@ -32,12 +33,14 @@ async function songSearch(input) {
     console.log('Song data loaded');
     //console.log(songs);
 
+    //making a new array for our results
     const results = [];
+    let regex = new RegExp(input, 'gi');
 
     //going through each song to get matches
     for (key in songs["data"]["data"]) {
         if (!(songs["data"]["data"][key]["SONG_NAME"])) continue
-        else if (songs["data"]["data"][key]["SONG_NAME"].indexOf(input) !== -1)
+        else if (songs["data"]["data"][key]["SONG_NAME"].match(regex))
             results.push(songs["data"]["data"][key])
         else continue;
     }
@@ -59,6 +62,7 @@ async function genreSearch(input) {
     const results = [];
     let regex = new RegExp(input, 'gi');
 
+    //going through each genre to get matches
     for (let i = 0; i < genres.length; i++) {
         if (!(genres[i]["GENRE_NAME"])) continue
         else if (genres[i]["GENRE_NAME"].match(regex))
@@ -82,11 +86,12 @@ async function artistSearch(input) {
     console.log(artists);
 
     const results = [];
+    let regex = new RegExp(input, 'gi');
 
     //going through each artist to get matches
     for (key in artists["data"]["data"]) {
         if (!(artists["data"]["data"][key]["ARTIST_NAME"])) continue
-        else if (artists["data"]["data"][key]["ARTIST_NAME"].includes(input))
+        else if (artists["data"]["data"][key]["ARTIST_NAME"].match(regex))
             results.push(artists["data"]["data"][key])
         else continue;
     }

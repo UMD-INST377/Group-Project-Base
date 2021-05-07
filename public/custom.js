@@ -10,7 +10,7 @@ async function windowActions() {
         e.preventDefault();
         console.info('submitted form', e.target);
         //const formData = ()
-        const post = await Promise.all(
+        const post = await Promise.all([
             fetch('/api/songs', {
             method: 'POST',
             headers: {
@@ -34,7 +34,15 @@ async function windowActions() {
           },
           body: JSON.stringify({GENRE_NAME: genre.value})
         }) 
-        );
+    ]). then(function (responses) {
+        return Promise.all(responses.map(function (response) {
+            return response.json();
+        }));
+    }).then(function (data) {
+        console.log(data);
+    }).catch(function (error) {
+        console.log(error);
+    });
     });
 
 }

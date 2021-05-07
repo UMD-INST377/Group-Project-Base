@@ -1,29 +1,48 @@
-//aaaaa
 function generateResults(type) {
+    //if no text in search bar, stop
+    if (!(document.getElementById('search').value)) return;
+
     //putting loading indicator onto the screen
     let loadingBar = document.createElement('progress');
     loadingBar.setAttribute("class", "progress is-medium is-dark");
+    loadingBar.setAttribute("id", "loadingbar");
     loadingBar.setAttribute("max", "100");
     document.body.appendChild(loadingBar);
-
-    //getting text from search bar
-    if (!(document.getElementById('search').value)) return;
+    console.log('loading bar loaded');
     
+    //getting text from search bar
     const input = document.getElementById('search').value;
+    console.log('input');
 
-    if (type === 'songs') displayResults(songSearch(input))
-    else if (type === 'genres') displayResults(genreSearch(input))
-    else if (type === 'artists') displayResults(artistSearch(input));
+    //goes to appropriate search
+    if (type === 'songs') {
+        let results = songSearch(input);
+        displayResults(results);
+    }
+    else if (type === 'genres') {
+        let results = genreSearch(input);
+        displayResults(results);
+    }
+    else if (type === 'artists') {
+        let results = artistSearch(input);
+        displayResults(results);
+    }
 }
 
 function displayResults(results) {
     console.log('displaying results');
-    console.log(results);
+    //console.log(results);
+
+    //removing loading bar
+    let body = document.getElementById("body");
+    let loadingBar = document.getElementById("loadingbar");
+    let throwaway = body.removeChild(loadingBar);
+    console.log('loading bar removed');
 }
 
 async function songSearch(input) {
     console.log('Songs button clicked');
-    console.log(input);
+    //console.log(input);
 
     //getting all songs
     const songsRequest = await fetch('/api/songsRoute');
@@ -32,64 +51,72 @@ async function songSearch(input) {
     console.log('Song data loaded');
     //console.log(songs);
 
+    //making a new array for our results
     const results = [];
+    let regex = new RegExp(input, 'gi');
 
     //going through each song to get matches
     for (key in songs["data"]["data"]) {
         if (!(songs["data"]["data"][key]["SONG_NAME"])) continue
-        else if (songs["data"]["data"][key]["SONG_NAME"].indexOf(input) !== -1)
+        else if (songs["data"]["data"][key]["SONG_NAME"].match(regex))
             results.push(songs["data"]["data"][key])
         else continue;
     }
     console.log(results);
+    console.log('search complete');
     return results;
 }
 
 async function genreSearch(input) {
     console.log('genres button clicked');
-    console.log(input);
+    //console.log(input);
 
     //getting all genres
     const genresRequest = await fetch('/api/genresRoute');
     const genresJSON = await genresRequest.json();
     let genres = genresJSON;
     console.log('Genre data loaded');
-    console.log(genres);
+    //console.log(genres);
 
     const results = [];
+    let regex = new RegExp(input, 'gi');
 
+    //going through each genre to get matches
     for (let i = 0; i < genres.length; i++) {
         if (!(genres[i]["GENRE_NAME"])) continue
-        else if (genres[i]["GENRE_NAME"].includes(input))
+        else if (genres[i]["GENRE_NAME"].match(regex))
             results.push(genres[i])
         else continue;
     }
 
     console.log(results);
+    console.log('search complete');
     return results;
 }
 
 async function artistSearch(input) {
     console.log('artists button clicked');
-    console.log(input);
+    //console.log(input);
 
     //getting all artists
     const artistsRequest = await fetch('/api/artistsRoute');
     const artistsJSON = await artistsRequest.json();
     let artists = artistsJSON;
     console.log('Artist data loaded');
-    console.log(artists);
+    //console.log(artists);
 
     const results = [];
+    let regex = new RegExp(input, 'gi');
 
     //going through each artist to get matches
     for (key in artists["data"]["data"]) {
         if (!(artists["data"]["data"][key]["ARTIST_NAME"])) continue
-        else if (artists["data"]["data"][key]["ARTIST_NAME"].includes(input))
+        else if (artists["data"]["data"][key]["ARTIST_NAME"].match(regex))
             results.push(artists["data"]["data"][key])
         else continue;
     }
     console.log(results);
+    console.log('search complete');
     return results;
 }
 

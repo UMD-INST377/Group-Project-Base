@@ -1,0 +1,371 @@
+html {
+    background-color: #cfe5fc;
+}
+
+.logo {
+    margin-top: 10px;
+    width: 140px;
+    height: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin {
+    width: 57px;
+    height: 50px;
+}
+
+.menu {
+    background-color: rgb(143, 143, 143);
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 15px;
+    overflow: hidden;
+    text-align: justify;
+}
+
+.menu-item {
+    display: inline;
+    float: left;
+    width: 25%;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: rgb(82, 166, 218);
+}
+
+
+#active {
+    background-color: midnightblue;
+}
+
+.homeContainer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    border: black;
+    border-style:double;
+    height:500px;
+    background-color: lightsteelblue;
+}
+
+.topAdminContainer {
+    display: flex;
+}
+
+.referenceTable {
+    height: 90%;
+    width: 300px;
+    margin-top: 50px;
+    margin-left: 10px;
+    background-color: lightsteelblue;
+    border: black;
+    border-style:double;
+}
+
+#filterField {
+    margin-left: 10px;
+    width: 98%;
+}
+
+table {
+    margin: 10px;
+}
+
+#other-tables {
+    margin: 10px;
+    width: 98%;
+}
+
+/* .products-table {
+    width:100%;
+    table-layout: fixed;
+} */
+
+.thFam {
+    text-align: left;
+}
+
+.thID {
+    text-align: center;
+    margin-left: 20px;
+}
+
+.secondContainer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: black;
+    border-style:double;
+    /* height:600px; */
+    background-color: lightsteelblue;
+    /* text-align:center; */
+}
+
+.adminContainer {
+    margin-top: 50px;
+    /* max-width: 60%; */
+    border: black;
+    border-style:double;
+    /* height:600px; */
+    background-color: lightsteelblue;
+    /* text-align:center; */
+}
+
+.pref-head {
+    font-weight: bold;
+    font-size: 22px;
+    color: black;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.select {
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#pref-list {
+    margin-left: 50px;
+    /* margin-right: 170px; */
+    text-align: left;
+}
+
+/* .prefCheckbox {
+    margin: 10px;
+} */
+
+/* .colorCheckbox {
+    margin: 10px;
+} */
+
+.preferenceForm {
+    width: 30%;
+}
+
+#cpClear {
+    margin-bottom: 10px;
+}
+
+.calculate{
+    color: red;
+    margin-top: 5px;
+}
+
+.intro {
+    margin-left: 20px;
+    margin-top: 80px;
+    width: 35%;
+    font-size: 36px;
+    padding-left: 10px;
+    text-align: center;
+    
+}
+
+.hrClass {
+    width: 30vw;
+}
+
+.pref {
+    background-color: midnightblue;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 8px;
+    width: 170px;
+}
+
+.pref-button {
+    text-align: center;
+}
+
+.pref:hover {
+    background-color: rgb(82, 166, 218);
+    cursor: pointer;
+}
+
+#viewAll {
+    position: absolute; 
+    right: 0;
+}
+
+.imageWheel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 65px;
+    width: 50vw;
+    height: auto;
+    max-height: 500px;
+}
+
+.leftarrow:hover {
+    cursor: pointer;
+}
+
+.aboutTitle {
+    margin-top: 25px;
+}
+
+.leftarrow {
+    height: 15vw;
+}
+
+.displayimg {
+    height: 20vw;
+    width: 30vw;
+    background-color: rgba(255, 255, 255, 0.877);
+}
+
+.displayMe {
+    height: 20vw;
+    width: 40vw;
+}
+
+.rightarrow {
+    height: 15vw;
+}
+
+.rightarrow:hover {
+    cursor: pointer;
+}
+
+.carouselLabel {
+    flex-wrap: wrap;
+}
+
+.randomizer {
+    margin-left: 10px;
+}
+
+/* #dropdown {
+    display: inline-block;
+} */
+
+h1 {
+    color: black;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.imagesContainer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.imageItem{
+    width: 20%;
+    height: 20%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.nameLabel{
+    text-align: center;
+}
+
+.disclaimer {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+#mission {
+    text-align: center;
+}
+
+hr {
+    background-color: black;
+    width: 465px;
+}
+
+/* .loginperson {
+    border-radius: 150px;
+    height: 150px;
+    width: 150px;
+    text-align: center;
+} */
+
+.loginContain {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* .loginForm {
+    border: 3px solid #f1f1f1;
+} */
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.loginbutton {
+    text-align: center;
+}
+
+.errorText{
+    color: red;
+}
+
+.allProductsLabel {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+#allSubmit {
+    margin-left: 10px
+}
+
+#login-error-msg-holder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  #login-error-msg {
+    width: 23%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: red;
+    border: 2px solid black;
+    background-color: rgb(255, 214, 214);
+    opacity: 0;
+  }
+  
+  #error-msg-second-line {
+    display: block;
+  }

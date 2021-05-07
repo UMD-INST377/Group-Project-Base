@@ -40,6 +40,11 @@ router.route('/movies')
       const newMovie = await db.movies.create({
         movie_id: currentId,
         Title: req.body.Title,
+        Year: req.body.Year,
+        Durations: req.body.Durations,
+        company_id: req.body.company_id,
+        director_id: req.body.director_id,
+        Rating_id: req.body.Rating_id,
         explicit: explicitValue
       });
       console.log(currentId, req.body.Title, explicitValue);

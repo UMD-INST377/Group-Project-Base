@@ -1,5 +1,3 @@
-
-
 async function windowActions() {
     console.log('loaded window');
 

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
     <body>
-        <div class="container">
+        
           <div class = "topImgContainer">
             <a href="index.html">
               <img src = "../images/MyKEA.png" class = "logo" alt = "companyLogo">
@@ -32,7 +32,7 @@
                 </span></a>
               </li >
             </ul>
-
+          <div class="container">
             <div class="topAdminContainer">
 
               <div class="adminContainer">
@@ -42,19 +42,19 @@
 
                 <h1 class="aboutTitle">MyKea Admin</h1>
 
-                <div>
-                    <h3><b>Add a new DB product object</b></h3>
+                <div class="loginContain">
+                    <h3 class = "allProductsLabel"><b>Add a new DB product object</b></h3>
 
                     <form class="addNewForm" id ="addNewForm">
 
-                        <input id="productid" type="text" placeholder="Product ID" name="id">
-                        <input id="description" type="text" placeholder="Product Description" name="desc" required>
-                        <input id="color" type="text" placeholder="Product Color" name="color" required>
-                        <input id="price" type="text" placeholder="Product Unit Price" name="price" required>
-                        <input id="familyid" type="text" placeholder="Family ID" name="fam_id" required>
-                        <input id="categoryid" type="text" placeholder="Category ID" name="cat_id" required>
-                        <input id="imglink" type="text" placeholder="Image Link" name="imglink" required>
-
+                        <input class="input" id="productid" type="text" placeholder="Product ID" name="id">
+                        <input class="input" id="description" type="text" placeholder="Product Description" name="desc" required>
+                        <input class="input" id="color" type="text" placeholder="Product Color" name="color" required>
+                        <input class="input" id="price" type="text" placeholder="Product Unit Price" name="price" required>
+                        <input class="input" id="familyid" type="text" placeholder="Family ID" name="fam_id" required>
+                        <input class="input" id="categoryid" type="text" placeholder="Category ID" name="cat_id" required>
+                        <input class="input" id="imglink" type="text" placeholder="Image Link" name="imglink" required>
+                        
                         <button type="submit">Submit</button>
                     
                     
@@ -63,46 +63,38 @@
 
               </br>
 
-                <div>
-                  <h3><b>Delete a DB Product by ID</b></h3>
+                <div class="loginContain">
+                  <h3 class = "allProductsLabel"><b>Delete a DB Product by ID</b></h3>
 
                   <form class="deleteForm" id ="deleteForm">
 
-                      <input id="delproductid" type="text" placeholder="Product ID" name="id" required>
+                      <input class="input" id="delproductid" type="text" placeholder="Product ID" name="id" required>
 
                       <button type="submit">Submit</button>
                   
                   
                   </form>
               </div>
-
-
-
               </br>
-
-              <div>
-                <h3><b>Update a DB Product by ID</b></h3>
+              <div class="loginContain">
+                <h3 class = "allProductsLabel"><b>Update a DB Product by ID</b></h3>
 
                 <form class="updateForm" id ="updateForm">
 
-                  <input id="UPproductid" type="text" placeholder="Product ID" name="id" required>
-                  <input id="UPdescription" type="text" placeholder="Product Description" name="desc" required>
-                  <input id="UPfamilyid" type="text" placeholder="Family ID" name="fam_id" required>
+                  <input class="input" id="UPproductid" type="text" placeholder="Product ID" name="id" required>
+                  <input class="input" id="UPdescription" type="text" placeholder="Product Description" name="desc" required>
+                  <input class="input" id="UPfamilyid" type="text" placeholder="Family ID" name="fam_id" required>
 
                   <button type="submit">Submit</button>
                 
                 
                 </form>
-            </div>
-              
-            
-            
+              </div>
           </div>
-
           <div class = "referenceTable">
-            <h3>Product Families</h3>
+            <h3 class = "allProductsLabel">Product Families</h3>
             <div class="families-table">
-              <table class="table is-bordered is-striped is-narrow is-hoverable">
+              <table class="table is-bordered is-striped is-narrow is-hoverable" id='db-ref-table'>
                 <thead>
                   <tr>
                     <th>Family Id</th>
@@ -112,10 +104,9 @@
                 <tbody class='families-body'></tbody>
               </table>
             </div>
-
-            <h3>Product Categories</h3>
+            <h3 class = "allProductsLabel">Product Categories</h3>
             <div class="categories-table">
-              <table class="table is-bordered is-striped is-narrow is-hoverable">
+              <table class="table is-bordered is-striped is-narrow is-hoverable" id='db-ref-table'>
                 <thead>
                   <tr>
                     <th>Category Id</th>
@@ -127,7 +118,21 @@
             </div>
           </div>
       </div>
-
+      <section class="section">
+      </section>
+      <section class="hero is-medium is-link">
+        <div class="hero-body">
+          <p class="title">
+            MyKea
+          </p>
+          <p class="subtitle">
+            <a href="about.html">About Us</a> <br>
+            <a href="admin.html">Administrative</a> <br>
+            <a href="preference_form.html">Preference Form</a> <br>
+            <a href="preference_results.html">Preference Results</a> <br>
+          </p>
+        </div>
+      </section>
         <script src="addNewRecord.js"></script>
         <script src="displayTablesAdmin.js"></script>
     </body>

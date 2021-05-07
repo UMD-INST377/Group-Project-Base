@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
     <body>
-      <div class="container">
+      
         <div class = "topImgContainer">
           <a href="index.html">
             <img src = "../images/MyKEA.png" class = "logo" alt = "companyLogo">
@@ -17,7 +17,10 @@
         </div>
         
         <form>
+        
+        <div class="container">
           
+        </div>
           <ul class="menu">
             <!-- <li id="active" class="menu-item"><a href="index.html">
               <img src = "../images/MyKEA.png" class = "logo" alt = "companyLogo">
@@ -36,23 +39,24 @@
           </ul>
         
         </form>
-
+      <div class="container">
         <div class="secondContainer">
             <h1 class="aboutTitle">All MyKea Products</h1>
 
             <h3 class = "allProductsLabel">Products</h3>
 
             <form>
-                <input id="filterField" type="text" placeholder="Filter by Product ID">
+                <input class="input" id="filterField" type="text" placeholder="Filter by Product ID">
                 <button id="allSubmit" type="submit">Click to Filter</button>
             </form>
 
             <div class="searchResultsAll"></div>
             
             <div class="products-table">
-              <table class="table is-bordered is-striped is-narrow is-hoverable">
+              <table class="table is-bordered is-narrow is-hoverable">
                 <thead>
                   <tr>
+                    <tH>ID</tH>
                     <th>Price</th>
                     <th>Product Image</th>
                     <th>Description</th>
@@ -65,9 +69,9 @@
               </table>
             </div>
 
-            <h3>Product Families</h3>
-            <div class="families-table">
-              <table class="table is-bordered is-striped is-narrow is-hoverable">
+            <h3 class = "allProductsLabel">Product Families</h3>
+            <div>
+              <table class="table is-bordered is-striped is-narrow is-hoverable" id="other-tables">
                 <thead>
                   <tr>
                     <th>Family Id</th>
@@ -78,9 +82,9 @@
               </table>
             </div>
 
-            <h3>Product Categories</h3>
-            <div class="categories-table">
-              <table class="table is-bordered is-striped is-narrow is-hoverable">
+            <h3 class = "allProductsLabel">Product Categories</h3>
+            <div>
+              <table class="table is-bordered is-striped is-narrow is-hoverable" id="other-tables">
                 <thead>
                   <tr>
                     <th>Category Id</th>
@@ -92,9 +96,9 @@
               </table>
             </div>
 
-            <h3>Stores</h3>
-            <div class="stores-table">
-              <table class="table is-bordered is-striped is-narrow is-hoverable">
+            <h3 class = "allProductsLabel">Stores</h3>
+            <div>
+              <table class="table is-bordered is-striped is-narrow is-hoverable" id="other-tables">
                 <thead>
                   <tr>
                     <th>Store Address</th>
@@ -108,9 +112,22 @@
             </div>
 
         </div>
-
-        
       </div>
+      <section class="section">
+      </section>
+      <section class="hero is-medium is-link">
+        <div class="hero-body">
+          <p class="title">
+            MyKea
+          </p>
+          <p class="subtitle">
+            <a href="about.html">About Us</a> <br>
+            <a href="admin.html">Administrative</a> <br>
+            <a href="preference_form.html">Preference Form</a> <br>
+            <a href="preference_results.html">Preference Results</a> <br>
+          </p>
+        </div>
+      </section>
       <script src="displayAllProducts.js"></script>
     </body>
 </html>

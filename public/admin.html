@@ -10,7 +10,7 @@
     <script defer src="login.js"></script>
   </head>
     <body>
-        <div class="container">
+        
           <div class = "topImgContainer">
             <a href="index.html">
               <img src = "../images/MyKEA.png" class = "logo" alt = "companyLogo">
@@ -37,7 +37,7 @@
             </ul>
           
           </form>
-
+          <div class="container">
             <div class="secondContainer">
               <h1 class = "aboutTitle">MyKea Admin</h1>
 
@@ -47,20 +47,35 @@
                 </div>
                 <form action="/login" method="post" id="loginForm">
                   
-                    <label for="user">username</label>
-                    <input type="text" placeholder="Enter Username" name="username" required>
+                    <label for="user" class = "allProductsLabel">Username</label>
+                    <input class="input" type="text" placeholder="Enter Username" name="username" required>
 
-                    <label for="pword">password</label>
-                    <input type="text" placeholder="Password" name="password" required>
+                    <label for="pword" class = "allProductsLabel">Password</label>
+                    <input class="input" type="text" placeholder="Password" name="password" required>
                     
-                    
-                    <input type="submit" class="loginbutton" value="Login" id="loginbutton">
-                  
+                    <div class="loginbutton">
+                      <input class='pref' type="submit" class="loginbutton" value="Login" id="loginbutton">
+                    </div>
                 </form>
+              </div> 
                
             </div>
-
-              </div>
+          </div>
+          <section class="section">
+          </section>
+          <section class="hero is-medium is-link">
+            <div class="hero-body">
+              <p class="title">
+                MyKea
+              </p>
+              <p class="subtitle">
+                <a href="about.html">About Us</a> <br>
+                <a href="admin.html">Administrative</a> <br>
+                <a href="preference_form.html">Preference Form</a> <br>
+                <a href="preference_results.html">Preference Results</a> <br>
+              </p>
+            </div>
+          </section>
 
     </body>
 </html>

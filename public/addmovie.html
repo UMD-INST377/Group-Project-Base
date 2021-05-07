@@ -39,6 +39,9 @@
         <h1>Add New Movie</h1>
     </div>
 
+    <form action='/api/movies' method='post'>
+      <div class='form-row'>
+
       <fieldset class="movie-input-container">
         
       <div class="field">
@@ -47,14 +50,19 @@
           <input class="input" type="text" placeholder="e.g The Dark Knight">
         </div>
       </div>
+      </div>
+      <br>
 
+    <div class='form-row'>
       <div class="field">
         <label class="label">Year</label>
         <div class="control">
           <input class="input" type="text" placeholder="e.g. 2004">
         </div>
       </div>
+      </div>
 
+      <div class='form-row'>
       <div class="field">
         <label class="label">Genre</label>
         <div class="field has-addons">
@@ -71,7 +79,9 @@
             </div>
           </div>
         </div>
+      </div>
 
+      <div class='form-row'>
       <div class="field">
         <label class="label">Production Company</label>
         <div class="field has-addons">
@@ -92,9 +102,9 @@
             </div>
           </div>
         </div>
-
-        <a href="" button class="button is-black"> Submit </button></a>
+      </div>
+        <button class="button is-link center is-black" type="submit" name="submit" id="submit" formmethod="post">Submit</button>
         <a href="movielist.html" button class="button is-danger"> Cancel </button></a>
-
+      </form>
       </fieldset>
 </html>

@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import express from 'express';
@@ -14,84 +15,75 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////Movie Endpoints////////
 /// /////////////////////////////////
-router.get('/movie', async (req, res) => {
-  try {
-    const movies = await db.movies.findAll();
-    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error at Movie GET');
-  }
-});
-
-router.get('/movie/:movie_id', async (req, res) => {
-  try {
-    const movie = await db.movies.findAll({
-      where: {
-        movie_id: req.params.movie_id
-      }
-    });
-
-    res.json(movie);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error at movie_id GET');
-  }
-});
-
-router.post('/movie', async (req, res) => {
-  const movies = await db.movies.findAll();
-  const currentId = (await halls.length) + 1;
-  try {
-    const newMovie = await db.movies.create({
-      movie_id: currentId,
-      Title: req.body.Title,
-      Year: req.body.Year,
-      Duration: req.body.Duration,
-      company_id: req.body.company_id,
-      director_id: req.body.director_id,
-      Rating_id: req.body.Rating_id
-    });
-    res.json(newMovie);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error at Movie POST');
-  }
-});
-
-router.delete('/movie/:movie_id', async (req, res) => {
-  try {
-    await db.movies.destroy({
-      where: {
-        movie_id: req.params.movie_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error at movie_id DELETE');
-  }
-});
-
-router.put('/movie', async (req, res) => {
-  try {
-    await db.DiningHall.update(
-      {
-        movie_name: req.body.movie_name
-      },
-      {
-        where: {
-          movie_id: req.body.movie_id
+router.route('/movies')
+  .get(async (req, res) => {
+    try {
+      const movie = await db.movies.findAll();
+      const reply = movie.length > 0 ? { data: movie } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  })
+  .post(async (req, res) => {
+    console.log("post request on movies", req.body);
+    const movies1 = await db.movies.findAll();
+    const currentId = (await movies1.length) + 1;
+    let explicitValue = true;
+    if (req.body.explicitInput) {
+      explicitValue = true;
+    } else {
+      explicitValue = false;
+    }
+    try {
+      const newMovie = await db.movies.create({
+        movie_id: currentId,
+        Title: req.body.Title,
+        explicit: explicitValue
+      });
+      console.log(currentId, req.body.Title, explicitValue);
+    } catch (err) {
+      console.error(err);
+      res.json('Post Server error');
+    }
+  })
+  .put(async (req, res) => {
+    try {
+      await db.movies.update(
+        {
+          Title: req.body.Title,
+          explicit: req.body.explicitInput
+        },
+        {
+          where: {
+            movie_id: req.body.movie_id
+          }
         }
-      }
-    );
-    res.send('Movie Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error at movie PUT');
-  }
-});
+      );
+      console.log("put");
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      await db.movies.destroy({
+        where: {
+          Title: req.body.Title,
+          explicit: req.body.explicit
+        }
+      });
+      console.log(req.body.Title);
+      console.log(req.body.explicit);
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
 
 /// /////////////////////////////////
 /// ////////Actors Endpoints//////////

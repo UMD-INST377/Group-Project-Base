@@ -15,19 +15,19 @@ export default (database, DataTypes) => {
       },
       Durations: {
         type: DataTypes.INTEGER
-      },
-      company_id: {
-        type: DataTypes.INTEGER,
-        foreignKey: true
-      },
-      director_id: {
-        type: DataTypes.INTEGER,
-        foreignKey: true
-      },
-      Rating_id: {
-        type: DataTypes.INTEGER,
-        foreignKey: true
       }
+      // company_id: {
+      //   type: DataTypes.INTEGER,
+      //   foreignKey: true
+      // },
+      // director_id: {
+      //   type: DataTypes.INTEGER,
+      //   foreignKey: true
+      // },
+      // Rating_id: {
+      //   type: DataTypes.INTEGER,
+      //   foreignKey: true
+      // }
     },
     { freezeTableName: true, timestamps: false }
   );

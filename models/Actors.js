@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
       },
       first_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       last_name: {
         type: DataTypes.STRING,
@@ -19,13 +19,7 @@ export default (sequelize, DataTypes) => {
       actor_salary: {
         type: DataTypes.INTEGER,
         allowNull: false
-      },
-      director_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        foreignKey: true
       }
-
     },
     { freezeTableName: true, timestamps: false }
   );

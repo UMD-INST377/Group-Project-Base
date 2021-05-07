@@ -35,64 +35,66 @@
         </ul>
       </div>
 
-      <header>
+    <div class="movie-add-title">
         <h1>Add New Movie</h1>
-      </header>
+    </div>
 
-         <form action="" method="POST">
-            <ul class="addmovie-form">
-                <li>
-                    <label for="mname">Name of Movie: </label>
-                    <input type="text" name="fname" id="fname">
-                </li>
+      <fieldset class="movie-input-container">
+        
+      <div class="field">
+        <label class="label">Name of Movie</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g The Dark Knight">
+        </div>
+      </div>
 
-                <li>
-                    <label for='email'>Year: </label>
-                    <input id='email' name='email' type='email'/>
-                </li>
+      <div class="field">
+        <label class="label">Year</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g. 2004">
+        </div>
+      </div>
 
-                <li>
-                    <label for="lname">Genre: </label>
-                    <div class="select">
-                        <select>
-                            <option>Action</option>
-                            <option>Comedy</option>
-                            <option>Romance</option>
-                            <option>Horror</option>
-                            <option>Drama</option>
-                            <option>No preference</option>
-                        </select>
-                    </div>
-                </li>
+      <div class="field">
+        <label class="label">Genre</label>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <div class="select is-fullwidth">
+              <select name="genre">
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Romance">Romance</option>
+                <option value="Horror">Horror</option>
+                <option value="Drama">Drama</option>
+                <option value="No Preference">No Preference</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-                <li>
-                    <label for="lname">Production Company: </label>
-                    <div class="select">
-                        <select>
-                            <option>Warner Bros.</option>
-                            <option>New Line Cinema</option>
-                            <option>Twentieth Century Fox</option>
-                            <option>Fox 2000 Pictures</option>
-                            <option>Pixar Animation Studios	</option>
-                            <option>Metro-Goldwyn-Mayer (MGM)</option>
-                            <option>Alloy Entertainment</option>
-                            <option>Warner Bros. Pictures</option>
-                            <option>New Line Cinema</option>
-                        </select>
-                    </div>
-                  </li>
+      <div class="field">
+        <label class="label">Production Company</label>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <div class="select is-fullwidth">
+              <select name="production-company">
+                <option value="Warner Bros.">Warner Bros.</option>
+                <option value="New Line Cinema">New Line Cinema</option>
+                <option value="Twentieth Century Fox">Twentieth Century Fox</option>
+                <option value="Fox 2000 Pictures">Fox 2000 Pictures</option>
+                <option value="Pixar Animation Studios">Pixar Animation Studios</option>
+                <option value="Metro-Goldwyn-Mayer (MGM)">Metro-Goldwyn-Mayer (MGM)</option>
+                <option value="Alloy Entertainment">Alloy Entertainment</option>
+                <option value="Warner Bros. Pictures">Warner Bros. Pictures</option>
+                <option value="New Line Cinema">New Line Cinema</option>
+                <option value="No Preference">No Preference</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-                  <li>
-                    <button class="back-movie-button"><a href="movielist.html">Go back to Movie List</a></button>
-                  </li>
-            </ul>
-        </form>
+        <a href="" button class="button is-black"> Submit </button></a>
+        <a href="movielist.html" button class="button is-danger"> Cancel </button></a>
 
-      <form action="" method="POST">
-        <input type="submit" id="submit-add" name="submit-add" value="Submit"><br>
-      </form>
-        <script src="./script.js"></script>
-    </body>
-
-    </body>
+      </fieldset>
 </html>

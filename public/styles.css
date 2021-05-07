@@ -16,13 +16,22 @@ a:hover {
   background-color: yellow;
 }
 
-.title {
+.title{
   font-size: 3rem;
   color: black;
   text-align: center;
   float: left;
   width: 100%;
 }
+
+.movie-add-title {
+  font-size: 3rem;
+  color: black;
+  text-align: center;
+  float: left;
+  width: 100%;
+}
+
 .homepg-two {
   text-align: center;
   margin: auto;
@@ -46,6 +55,26 @@ a:hover {
   border-radius: 15px;
   background: #eee;
 }
+
+.intro-box-yellow
+{
+  text-align: center;
+  margin-left: 140px;
+  position: fixed;
+  top: 30%;
+  width: 300px;
+  padding: 10px 40px;
+  border: 1px solid #CCC;
+  border-radius: 15px;
+  background:orange;
+}
+
+
+
+
+
+
+
 
 
 #add-movie, #submit-add {
@@ -100,6 +129,12 @@ a:hover {
 }
 
 .box {
+  display: center;
+  text-align: center;
+  margin: 6rem;
+}
+
+.movie-input-container {
   display: center;
   text-align: center;
   margin: 6rem;

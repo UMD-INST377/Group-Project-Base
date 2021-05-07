@@ -1,4 +1,6 @@
-function windowActions(){function getName(){
+function windowActions(){
+    
+    function getName(){
     document.querySelector("#pname").innerHTML = localStorage.getItem("playlistName");
 }
 
@@ -9,7 +11,7 @@ function windowActions(){function getName(){
 // let clone = boxes.firstElementChild.cloneNode(true);
 // boxes.appendChild(clone);
 // });}
-
+}
 
 
 window.onload = windowActions;

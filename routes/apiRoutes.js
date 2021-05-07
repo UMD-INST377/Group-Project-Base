@@ -191,10 +191,10 @@ router.get('/playlistDetails', async (req, res) => {
 });
 
 router.post("/playlistDetails", async (req, res) => {
- console.info("*****************",req.body)
+ console.info(req.body)
   try {
     const playlistd = await db.PlaylistDetails.create({
-      
+      // playlist_details_id: req.body.playlist_details_id,
       FK_song_id: req.body.FK_song_id,
       song_title: req.body.song_title,
       artist_id: req.body.artist_id,

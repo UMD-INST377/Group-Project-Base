@@ -4,13 +4,13 @@ export default (sequelize, DataTypes) => {
     {
       playlist_details_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        autoIncrement: true,
         unique: true,
         primaryKey: true
       },
       FK_song_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull:false
       },
       song_title: {
         type: DataTypes.STRING,
@@ -26,7 +26,7 @@ export default (sequelize, DataTypes) => {
       },
       FK_playlist_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        foreignKey:true
       }
     },
     { freezeTableName: true, timestamps: false }

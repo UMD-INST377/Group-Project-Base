@@ -137,6 +137,7 @@ ul.no-bullets {
 #listedFilters {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .textSearching {
   display: flex;

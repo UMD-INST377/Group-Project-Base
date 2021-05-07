@@ -88,6 +88,8 @@ nav {
 
 .sub-box {
   width: 50%;
+  display: flex;
+  flex-wrap: wrap;
   float: left;
   padding: 20px;
   border: 2px white;
@@ -105,15 +107,9 @@ nav {
   border: 1px black solid;
   margin: 0 auto;
 }
-.newBookBoxes {
-  width: 30%;
-  height: 180px;
-  background-color: white;
-  border: solid gray;
-}
-.newBookBoxes img {
-  width: 140px;
-  height: 170px;
+img {
+  max-height: 234px;
+  max-width: 155px;
 }
 
 h1,

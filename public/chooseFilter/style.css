@@ -142,8 +142,6 @@ ul.no-bullets {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 145px;
-  margin-right: 145px;
 }
 .textSearching h3 {
   align-self: flex-start;

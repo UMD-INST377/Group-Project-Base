@@ -2,9 +2,6 @@ html {
     background-color: #cfe5fc;
 }
 
-.topImgContainer {
-    background-color: midnightblue;
-}
 .logo {
     margin-top: 10px;
     width: 140px;
@@ -20,10 +17,11 @@ html {
 }
 
 .menu {
-    background-color: midnightblue;
+    background-color: rgb(143, 143, 143);
     list-style-type: none;
     margin: 0px;
     padding: 0px;
+    margin-top: 15px;
     overflow: hidden;
     text-align: justify;
 

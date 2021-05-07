@@ -127,28 +127,31 @@ table {
     margin-bottom: 10px;
 }
 
-#pref-list-furn {
-    margin-left: 50px;
-    margin-right: 170px;
-    text-align: right;
-}
-
 #pref-list {
     margin-left: 50px;
-    margin-right: 170px;
-    text-align: right;
+    /* margin-right: 170px; */
+    text-align: left;
 }
 
-.prefCheckbox {
+/* .prefCheckbox {
     margin: 10px;
-}
+} */
 
-.colorCheckbox {
+/* .colorCheckbox {
     margin: 10px;
-}
+} */
 
 .preferenceForm {
     width: 30%;
+}
+
+#cpClear {
+    margin-bottom: 10px;
+}
+
+.calculate{
+    color: red;
+    margin-top: 5px;
 }
 
 .intro {
@@ -176,7 +179,11 @@ table {
     font-size: 16px;
     margin: 10px;
     border-radius: 8px;
-    width: 98%;
+    /* width: 98%; */
+}
+
+.pref-button {
+    text-align: center;
 }
 
 .pref:hover {
@@ -205,10 +212,6 @@ table {
 
 .aboutTitle {
     margin-top: 25px;
-}
-
-#about {
-    
 }
 
 .leftarrow {

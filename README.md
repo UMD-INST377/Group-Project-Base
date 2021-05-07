@@ -25,8 +25,6 @@ When searching for meida of many different types, we felt as if there is a lack 
 3. In a web browser, go to url: `http://localhost:3000/`.
 
 ## To run tests for software
-The are no prewritten tests in the source repository, but you can use Cypress to run your own written tests.
-
 1. Open two terminals and make sure you are in the main project directory
 2. In the first terminal, run `npm start`.
 3. In the second terminal run `npm test`.

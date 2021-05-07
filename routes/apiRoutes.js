@@ -6,17 +6,42 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+/// /////////////////////////////////
+/// ////custom Endpoints////////
+/// /////////////////////////////////
+router.route('/wholeProduct').get(async (req, res) => {
+  try {
+    const products = await db.products.findAll();
+    const prodCategories = await db.productCategories.findAll();
+    const prodFamilies = await db.productFamilies.findAll();
+
+    const wholeProducts = products.map((product) => {
+      // eslint-disable-next-line max-len
+      const categoryMatch = prodCategories.find((category) => category.category_id === product.category_id);
+      const familyMatch = prodFamilies.find((family) => family.family_id === product.family_id);
+
+      return {
+        ...product.dataValues,
+        ...categoryMatch.dataValues,
+        ...familyMatch.dataValues
+      };
+    });
+    res.json({data: wholeProducts});
+  } catch (err) {
+    console.log(err);
+    res.error('server error');
+  }
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////orders Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+
+// Get all database records from the Orders table
+router.get('/orders', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const ordersItem = await db.orders.findAll();
+    const reply = ordersItem.length > 0 ? { data: ordersItem} : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,44 +49,96 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+// Get an individual element by id from orders table
+router.get('/orders/:order_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const ordersItem = await db.orders.findAll({
       where: {
-        hall_id: req.params.hall_id
+        order_id: req.params.order_id
       }
     });
-
-    res.json(hall);
+    res.json(ordersItem);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+router.get('/orders/:orderMin/:orderMax', async (req, res) => {
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.delete('/dining/:hall_id', async (req, res) => {
-  try {
-    await db.DiningHall.destroy({
+    const ordersItem = await db.orders.findAll({
       where: {
-        hall_id: req.params.hall_id
+        order_id: req.params.order_id
+      }
+    });
+    res.json(ordersItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+/* router.get('/order/:order_id,order_id2', async (req, res) => {
+  try {
+    const orderItem = await db.orders.findAll({
+      where: {
+        order_id: req.params.order_id
+      }
+    });
+    res.json(orderItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+}); */
+
+// Add a new record to the database in orders table
+router.post('/orders', async (req, res) => {
+  try {
+    const newOrdersItem = await db.orders.create({
+      order_id: req.body.order_id,
+      item_id: req.body.item_id,
+      delivery_id: req.body.delivery_id,
+      customer_id: req.body.customer_id
+    });
+    res.json(newOrdersItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in orders table
+
+router.put('/orders', async (req, res) => {
+  try {
+    await db.orders.update(
+      {
+        item_id: req.body.item_id,
+        delivery_id: req.body.delivery_id
+      },
+      {
+        where: {
+          order_id: req.body.order_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual record by id
+router.delete('/orders/:order_id', async (req, res) => {
+  try {
+    await db.orders.destroy({
+      where: {
+        order_id: req.params.order_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +148,81 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+/// /////////////////////////////////
+/// ////deliveries Endpoints////////
+/// /////////////////////////////////
+
+// Get all database records from the delivery table
+router.get('/deliveries', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    const deliveryItem = await db.deliveries.findAll();
+    const reply = deliveryItem.length > 0 ? { data: deliveryItem} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from deliveries table
+router.get('/deliveries/:delivery_id', async (req, res) => {
+  try {
+    const deliveryItem = await db.deliveries.findAll({
+      where: {
+        delivery_id: req.params.delivery_id
+      }
+    });
+    res.json(deliveryItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orders/:orderMin/:orderMax', async (req, res) => {
+//   try {
+//     const orderItem = await db.orders.findAll({
+//       where: {
+//         order_id: req.params.order_id
+//       }
+//     });
+//     res.json(orderItem);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in deliveries table
+router.post('/deliveries', async (req, res) => {
+  try {
+    const newDeliveryItem = await db.deliveries.create({
+      delivery_id: req.body.delivery_id,
+      customer_address: req.body.customer_address,
+      stores_store_id: req.body.stores_store_id,
+      customer_id: req.body.customer_id
+    });
+    res.json(newDeliveryItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in deliveries table
+router.put('/deliveries', async (req, res) => {
+  try {
+    await db.deliveries.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        customer_address: req.body.customer_address,
+        stores_store_id: req.body.stores_store_id,
+        customer_id: req.body.customer_id
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          delivery_id: req.body.delivery_id
         }
       }
     );
@@ -91,98 +233,93 @@ router.put('/dining', async (req, res) => {
   }
 });
 
-/// /////////////////////////////////
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+// Delete an individual record by id
+router.delete('/deliveries/:delivery_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/meals/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll({
+    await db.deliveries.destroy({
       where: {
-        meal_id: req.params.meal_id
+        delivery_id: req.params.delivery_id
       }
     });
-    res.json(meals);
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
+/// /////////////////////////////////
+/// ////Product Families Endpoints////////
+/// /////////////////////////////////
+
+// Get all database records from the families table
+router.get('/productFamilies', async (req, res) => {
   try {
-    await db.Meals.update(
+    const family = await db.productFamilies.findAll();
+    const reply = family.length > 0 ? { data: family} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from families table
+router.get('/productFamilies/:family_id', async (req, res) => {
+  try {
+    const family = await db.productFamilies.findAll({
+      where: {
+        family_id: req.params.family_id
+      }
+    });
+    res.json(family);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orders/:orderMin/:orderMax', async (req, res) => {
+//   try {
+//     const orderItem = await db.orders.findAll({
+//       where: {
+//         order_id: req.params.order_id
+//       }
+//     });
+//     res.json(orderItem);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in families table
+router.post('/productFamilies', async (req, res) => {
+  try {
+    const newFamily = await db.deliveries.create({
+      family_id: req.body.family_id,
+      family_name: req.body.family_name
+    });
+    res.json(newFamily);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in families table
+router.put('/productFamilies', async (req, res) => {
+  try {
+    await db.productFamilies.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        family_id: req.body.family_id,
+        family_name: req.body.family_name
       },
       {
         where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/macros', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
+          family_id: req.body.family_id
         }
       }
     );
@@ -193,77 +330,511 @@ router.put('/macros', async (req, res) => {
   }
 });
 
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+// Delete an individual family record by id
+router.delete('/productFamilies/:family_id', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    await db.productFamilies.destroy({
       where: {
-        restriction_id: req.params.restriction_id
+        family_id: req.params.family_id
       }
     });
-    res.json(restrictions);
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
+/// ////stores Endpoints/////////////
+/// /////////////////////////////////
+
+// Get all database records from the store table
+router.get('/stores', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
+    const store = await db.stores.findAll();
+    const reply = store.length > 0 ? { data: store} : { message: 'no results found' };
+    res.json(reply);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
+// Get an individual element by id from stores table
+router.get('/stores/:store_id', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
+    const store = await db.stores.findAll({
+      where: {
+        store_id: req.params.store_id
+      }
     });
-    res.json(result);
+    res.json(store);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
-router.get('/custom', async (req, res) => {
+
+// Add a new record to the database in stores table
+router.post('/stores', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
+    const newStore = await db.stores.create({
+      store_id: req.body.store_id,
+      store_address_line1: req.body.store_address_line1,
+      store_city: req.body.store_city,
+      store_state: req.body.store_state,
+      store_zip_code: req.body.store_zip_code
     });
-    res.json(result);
+    res.json(newStore);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in stores table
+router.put('/stores', async (req, res) => {
+  try {
+    await db.stores.update(
+      {
+        store_id: req.body.store_id,
+        store_address_line1: req.body.store_address_line1,
+        store_city: req.body.store_city,
+        store_state: req.body.store_state,
+        store_zip_code: req.body.store_zip_code
+      },
+      {
+        where: {
+          store_id: req.body.store_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual store record by id
+router.delete('/stores/:store_id', async (req, res) => {
+  try {
+    await db.stores.destroy({
+      where: {
+        store_id: req.params.store_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////customers Endpoints////////
+/// /////////////////////////////////
+
+// Get all database records from the customers table
+router.get('/customers', async (req, res) => {
+  try {
+    const customerItem = await db.customers.findAll();
+    const reply = customerItem.length > 0 ? { data: customerItem} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from customers table
+router.get('/customers/:customer_id', async (req, res) => {
+  try {
+    const customerItem = await db.customers.findAll({
+      where: {
+        customer_id: req.params.customer_id
+      }
+    });
+    res.json(customerItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/customers/:customersMin/:customersMax', async (req, res) => {
+//   try {
+//     const customerItem = await db.customers.findAll({
+//       where: {
+//         customer_id: req.params.customer_id
+//       }
+//     });
+//     res.json(customerItem);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in customers table
+router.post('/customers', async (req, res) => {
+  try {
+    const newCustomerItem = await db.customers.create({
+      customer_id: req.body.customer_id,
+      restriction_type: req.body.restriction_type,
+      customer_last_name: req.body.customer_last_name,
+      customer_email_address: req.body.customer_email_address,
+      customer_address: req.body.customer_address,
+      customer_city: req.body.customer_city,
+      customer_state: req.body.customer_state,
+      customer_zip_code: req.body.customer_zip_code
+    });
+    res.json(newCustomerItem);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in customers table
+router.put('/customers', async (req, res) => {
+  try {
+    await db.customers.update(
+      {
+        restriction_type: req.body.restriction_type,
+        customer_last_name: req.body.customer_last_name,
+        customer_email_address: req.body.customer_email_address,
+        customer_address: req.body.customer_address,
+        customer_city: req.body.customer_city,
+        customer_state: req.body.customer_state,
+        customer_zip_code: req.body.customer_zip_code
+      },
+      {
+        where: {
+          customer_id: req.body.customer_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual record by id
+router.delete('/customers/:customer_id', async (req, res) => {
+  try {
+    await db.customers.destroy({
+      where: {
+        customer_id: req.params.customer_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////orderItems Endpoints/////////
+/// /////////////////////////////////
+
+// Get all database records from the order items table
+router.get('/orderItems', async (req, res) => {
+  try {
+    const orderItems = await db.orderItems.findAll();
+    const reply = orderItems.length > 0 ? { data: orderItems} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from order items table
+router.get('/orderItems/:order_item_id', async (req, res) => {
+  try {
+    const orderItems = await db.orderItems.findAll({
+      where: {
+        order_item_id: req.params.order_item_id
+      }
+    });
+    res.json(orderItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orderItems/:orderItemsMin/:orderItemsMin', async (req, res) => {
+//   try {
+//     const orderItems = await db.orderItems.findAll({
+//       where: {
+//         order_item_id: req.params.order_item_id
+//       }
+//     });
+//     res.json(orderItems);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in order items table
+router.post('/orderItems', async (req, res) => {
+  try {
+    const newOrderItems = await db.orderItems.create({
+      order_item_id: req.body.order_item_id,
+      order_id: req.body.order_id,
+      product_id: req.body.product_id,
+      item_price: req.body.item_price
+    });
+    res.json(newOrderItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in order items table
+router.put('/orderItems', async (req, res) => {
+  try {
+    await db.orderItems.update(
+      {
+        order_id: req.body.order_id,
+        product_id: req.body.product_id,
+        item_price: req.body.item_price
+      },
+      {
+        where: {
+          order_item_id: req.body.order_item_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual record by id
+router.delete('/orderItems/:order_item_id', async (req, res) => {
+  try {
+    await db.orderItems.destroy({
+      where: {
+        order_item_id: req.body.order_item_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////products Endpoints/////////
+/// /////////////////////////////////
+
+// Get all database records from the products table
+router.get('/products', async (req, res) => {
+  try {
+    const products = await db.products.findAll();
+    const reply = products.length > 0 ? { data: products} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from products table
+router.get('/products/:product_id', async (req, res) => {
+  try {
+    const products = await db.products.findAll({
+      where: {
+        product_id: req.params.product_id
+      }
+    });
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orderItems/:orderItemsMin/:orderItemsMin', async (req, res) => {
+//   try {
+//     const orderItems = await db.orderItems.findAll({
+//       where: {
+//         order_item_id: req.params.order_item_id
+//       }
+//     });
+//     res.json(orderItems);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in products table
+router.post('/products', async (req, res) => {
+  try {
+    const newProducts = await db.products.create({
+      product_id: req.body.product_id,
+      product_description: req.body.product_description,
+      product_color: req.body.product_color,
+      product_unit_price: req.body.product_unit_price,
+      family_id: req.body.family_id,
+      category_id: req.body.category_id,
+      image_link: req.body.image_link
+    });
+    res.json(newProducts);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in products table
+router.put('/products', async (req, res) => {
+  try {
+    await db.products.update(
+      {
+        category_id: req.body.category_id,
+        family_id: req.body.family_id,
+        product_description: req.body.product_description
+      },
+      {
+        where: {
+          product_id: req.body.product_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual record by id
+router.delete('/products/:product_id', async (req, res) => {
+  try {
+    await db.products.destroy({
+      where: {
+        product_id: req.body.product_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////productCategories Endpoints/////////
+/// /////////////////////////////////
+
+// Get all database records from the products table
+router.get('/productCategories', async (req, res) => {
+  try {
+    const productCategories = await db.productCategories.findAll();
+    const reply = productCategories.length > 0 ? { data: productCategories} : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get an individual element by id from products table
+router.get('/productCategories/:category_id', async (req, res) => {
+  try {
+    const productCategories = await db.productCategories.findAll({
+      where: {
+        category_id: req.params.category_id
+      }
+    });
+    res.json(productCategories);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Get a set of records by client query
+// BROKEN NEED TO FIX
+// router.get('/orderItems/:orderItemsMin/:orderItemsMin', async (req, res) => {
+//   try {
+//     const orderItems = await db.orderItems.findAll({
+//       where: {
+//         order_item_id: req.params.order_item_id
+//       }
+//     });
+//     res.json(orderItems);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+// Add a new record to the database in products table
+router.post('/productCategories', async (req, res) => {
+  try {
+    const productCategories = await db.productCategories.create({
+      category_id: req.body.category_id,
+      category_name: req.body.category_name,
+      category_description: req.body.category_description
+    });
+    res.json(newProducts);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Update or change record in products table
+router.put('/productCategories', async (req, res) => {
+  try {
+    await db.productCategories.update(
+      {
+        category_name: req.body.category_name,
+        category_description: req.body.category_description
+      },
+      {
+        where: {
+          category_id: req.body.category_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Delete an individual record by id
+router.delete('/productCategories/:category_id', async (req, res) => {
+  try {
+    await db.productCategories.destroy({
+      where: {
+        category_id: req.body.category_id
+      }
+    });
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Preferences</title>
+    <script src="https://kit.fontawesome.com/4372a3f1c4.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/png" href="./images/MyKEAfavicon.png"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+      
+      
+      
+      <div class = "topImgContainer">
+        <a href="index.html">
+          <img src = "../images/MyKEA.png" class = "logo" alt = "companyLogo">
+        </a>
+      </div>
+      
+      <form>
+        
+        <ul class="menu">
+          <!-- <li id="active" class="menu-item"><a href="index.html">
+            <img src = "../images/MyKEA.png" class = "logo" alt = "companyLogo">
+            </a></li > -->
+          <li class="menu-item"><a href="about.html">About Us</a></li >
+          <li class="menu-item" id="active"><a href="preference_form.html">Preference Form</a></li >
+          <li class="menu-item"><a href="preference_results.html">Preference Results</a></li>
+          <li class="menu-item"><a href="admin.html">
+            <span class="icon-text">
+              <span class="icon">
+                <i class="fas fa-user-cog"></i>
+              </span>
+              <span>Admin</span>
+            </span></a>
+          </li >
+        </ul>
+      
+      </form>
+
+        
+    <div class="secondContainer">
+      
+      <h1 class="aboutTitle" id='pref-form'>College Room Redesign</h1>
+        <form class="preferenceForm">
+            <div class="field control">
+                <h3 class="pref-head" id='pref-list'>Budget</h3>
+                <div class="select" id='dropdown'>
+                <select class="budgetSelect">
+                  <option value=0>Select budget (per item)</option>
+                  <option value=1>$0-$99</option>
+                  <option value=2>$100-$199</option>
+                  <option value=3>$200-$299</option>
+                  <option value=4>$300+</option>
+                </select>
+                </div>
+
+                <h3 class="pref-head">Furniture Preferences</h3>
+                <ul id='pref-list-furn'>
+                  <li>
+                    <label for="Chairs">Chairs</label>
+                    <input type="checkbox" class="prefCheckbox" name="Chairs" value="Chairs">
+                  </li>
+                  <li>
+                    <label for="Sofas">Sofas</label>
+                    <input type="checkbox" class="prefCheckbox" name="Sofas" value="Sofas">
+                  </li>
+                  <li>
+                    <label for="Beds">Beds</label>
+                    <input type="checkbox" class="prefCheckbox" name="Beds" value="Beds">
+                  </li>
+                  <li>
+                    <label for="Drawers">Drawers</label>
+                    <input type="checkbox" class="prefCheckbox" name="Drawer" value="Drawer">
+                  </li>
+                  <li>
+                    <label for="Rugs">Rugs</label>
+                    <input type="checkbox" class="prefCheckbox" name="Rugs" value="Rugs">
+                  </li>
+                  <li>
+                    <button type="button" id="fpClear">Clear</button>
+                  </li>
+                </ul>
+
+                <h3 class="pref-head" id='pref-list-color'>Color Preferences</h3>
+                <ul id='pref-list'>
+                  <li>
+                    <label for="Black">Black</label>
+                    <input type="checkbox" class="colorCheckbox" name="Black" value="Black">
+                  </li>
+                  <li>
+                    <label for="White">White</label>
+                    <input type="checkbox" class="colorCheckbox" name="White" value="White">
+                  </li>
+                  <li>
+                    <label for="Brown">Brown</label>
+                    <input type="checkbox" class="colorCheckbox" name="Brown" value="Brown">
+                  </li>
+                  <li>
+                    <label for="Yellow">Yellow</label>
+                    <input type="checkbox" class="colorCheckbox" name="Yellow" value="Yellow">
+                  </li>
+                  <li>
+                    <label for="Oak">Oak</label>
+                    <input type="checkbox" class="colorCheckbox" name="Oak" value="Oak">
+                  </li>
+                  <li>
+                    <button type="button" id="cpClear">Clear</button>
+                  </li>
+                </ul>
+            </div>
+            <input type="submit" value="Calculate Results"></input>
+        </form>
+        <div class="pref-button">
+          <a href="preference_results.html">
+              <button id="pref">Save Preferences</button>
+          </a>
+        </div>
+        <p class="errorText"></p>
+    </div>  
+    </div>
+    <script src="preferenceFormScript.js"></script>
+</body>
+
+</html>

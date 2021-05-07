@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 const fpClear = document.querySelector('#fpClear');
 const cpClear = document.querySelector('#cpClear');
 const form = document.querySelector('.preferenceForm');
@@ -9,7 +10,9 @@ const errorText = document.querySelector('.errorText');
 let data;
 
 function getRandomIntInclusive(min, max) {
+  // eslint-disable-next-line no-param-reassign
   min = Math.ceil(min);
+  // eslint-disable-next-line no-param-reassign
   max = Math.floor(max);
   // eslint-disable-next-line max-len
   return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive

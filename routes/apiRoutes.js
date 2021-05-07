@@ -125,7 +125,6 @@ router.put('/animals', async (req, res) => {
 });
 
 router.post('/animals', async (req, res) => {
-  console.log('Form submitted');
   const animals = await db.Animals.findAll();
   const currentId = (await animals.length) + 1;
   try {
@@ -194,6 +193,24 @@ router.put('/applicants', async (req, res) => {
   }
 });
 
+router.post('/applicants', async (req, res) => {
+  const applicants = await db.Applicants.findAll();
+  const currentId = (await applicants.length) + 1;
+  try {
+    const newApplicants = await db.Applicants.create({
+      applicant_id: currentId,
+      last_name: req.body.last_name,
+      first_name: req.body.first_name,
+      age: req.body.age,
+      email_address: req.body.email_address,
+      phone_number: req.body.phone_number
+    });
+    res.json(newApplicants);
+  } catch (err) {
+    console.error(err);
+    res.json('Server error');
+  }
+});
 /// /////////////////////////////////
 /// Pending Adoptions Endpoints///
 /// /////////////////////////////////

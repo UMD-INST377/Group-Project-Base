@@ -11,41 +11,42 @@
 
 </head>
 <body>
-  <h1 class="is-size-3 has-text-centered">Shelters in Maryland</h1>
+  <h1 class="is-size-3 has-text-centered">Apply for Adoption</h1>
   <div class="button is-outlined is-white">
-    <a href="index.html" class="block"> Back to Home Page</a>
+    <a href="index.html" class="block">Back to Home Page</a>
   </div>
+
   <div class="container">
-    <div class="field">
-      <label class="label">First Name</label>
-      <div class="control">
-        <input class="input" type="text" placeholder="First is the worst!">
-      </div>  
-    </div>
-    <div class="field">
-      <label class="label">Last Name</label>
-      <div class="control">
-        <input class="input" type="text" placeholder="Last is also the worse!">
-      </div>  
-    </div>
-    <div class="field">
-      <label class="label">Age</label>
-      <div class="control">
-        <input class="input" type="text" placeholder="Don't lie. We'll know.">
-      </div>  
-    </div>
-    <div class="field">
-      <label class="label">Email Address</label>
-      <div class="control">
-        <input class="input" type="email" placeholder="Wonder if we'll get any AOL users...">
-      </div>  
-    </div>
-    <div class="field">
-      <label class="label">Phone Number</label>
-      <div class="control">
-        <input class="input" type="email" placeholder="We'll call you maybe!">
-      </div>  
-    </div>    
-  </div>
+    <form action='/api/applicants' method='POST'>
+        <ul class="flex-outer">
+          <li>
+            <label class="label" for="first-name">First Name</label>
+            <input class="input is-medium" type="text" id="first_name" name="first_name" placeholder="">
+          </li>
+          <li>
+            <label class="label" for="last-name">Last Name</label>
+            <input class="input is-medium" type="text" id="last_name" name="last_name" placeholder="">
+          </li>
+          <li>
+            <label class="label" for="age">Age</label>
+            <input class="input is-medium" type="text" id="age" name="age" placeholder="">
+          </li>
+          <li>
+            <label class="label" for="email">Email Address</label>
+            <input class="input is-medium" type="text" id="email_address" name="email_address" placeholder="">
+          </li>
+          <li>
+            <label class="label" for="phone">Phone Number</label>
+            <input class="input is-medium" type="text" id="phone_number" name="phone_number" placeholder="">
+          </li>
+          <li>
+            <button class="button is-outlined is-dark" type="submit" name="submit">Submit Form</button>
+          </li>
+        </ul>
+
+      </form>
+      </div>
+
+
 </body>
 </html>

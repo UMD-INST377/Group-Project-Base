@@ -18,16 +18,24 @@ https://inst377-group6project.herokuapp.com/
 # Developer Manual
 
 ## How to install the application and all dependencies
+-npm install 
+-npm start 
 
 ## How to run the application on a server
+-application should run on localhost or you can access the deployed project via heroku 
 
 ## How to run tests written for the software
 
 ## Server Application APIs (all GET, POST, PUT, etc endpoints, and what they each do)
 
 ## Known Bugs and Future Development
+-Future Development: Clean styling 
+-Using Bulma for css
+-Using ES6 for JS
+-Deployed using Heroku 
 
 ### Bugs:
+- Header spacing is slightly off 
 
 ### Future Development:
 

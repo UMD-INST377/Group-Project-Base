@@ -26,6 +26,12 @@ To download our actual project, just select the clone repository button for this
 
 The only other dependency we have is Bulma. We have already linked it to the HTML so that part is set up, but the user would need to install Bulma on their console. https://bulma.io/ has easy to follow instructions on how to do this and plenty of examples and tutorials to guide the user.
 
+## How to Run the Application on a Server
+To run on a server, the user can follow the link [HERE](https://group10-final-inst377.herokuapp.com/index.html), which is the link to the Heroku instance that we have documented at the being of this README. This link will take the user to a live instance of the app where they could use the app to its full capacity.
+
+## Tests
+The only tests we have set up thus far are the `console.log`'s that we have set up to be able to check if the server is responding correctly. For example, these tests helped us notice the reason that our form submission was not sending data due to an "UnhandledPromiseRejectionWarning", so we knew that model was not defined properly in our backend.
+
 
 # Documentation 
 

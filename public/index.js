@@ -2,7 +2,9 @@ import { classToInvokable } from 'sequelize/types/lib/utils';
 import Artists from '../models/Artists';
 import Songs from '../models/Songs';
 
-/*function createTable(json) {
+// Commented out to see if I could pin-point issue
+
+/* function createTable(json) {
   if (json == null || json.length === 0) return;
 
   function createTableHead(table) {
@@ -52,7 +54,7 @@ const copiedSongs = { ...Songs};
 const copiedArtists = { ...Artists};
 const copiedAlbums = { ...Albums};
 
-
+// Copy of Data from Songs, Artists, and Albums in ascending order for Popularity
 copiedArtists.sort((a, b) => parseFloat(a.ARTIST_POPULARITY)
   - parseFloat(b.ARTIST_POPULARITY));
 
@@ -61,28 +63,24 @@ copiedSongs.sort((a, b) => parseFloat(a.SONG_POPULARITY) - parseFloat(b.SONG_POP
 copiedAlbums.sort((a, b) => parseFloat(a.ALBUM_POPULARITY)
 - parseFloat(b.ALBUM_POPULARITY));
 
+// Only gives us top 10 results
 const topSongs = copiedSongs.slice(0, 10);
 const topArtists = copiedArtists.slice(0, 10);
 const topAlbums = copiedAlbums.slice(0, 10);
 
 // Creating table using Javascript
 function generateTableHead(table, data) {
-  let thead = table.createTHead();
-  let row = thead.insertRow();
-  for (let key of data) {
-    let th = document.createElement("th");
-    let text = document.createTextNode(key);
+  const thead = table.createTHead();
+  const row = thead.insertRow();
+  for (const key of data) {
+    const th = document.createElement('th');
+    const text = document.createTextNode(key);
     th.appendChild(text);
     row.appendChild(th);
   }
 }
 
-function generateTableHead(table) {
-  let thead = table.createTHead();
-}
-
-let table = document.querySelector("table");
-let data = Object.keys(topSongs[0]);
-
+const table = document.querySelector('table');
+const data = Object.keys(topSongs[0]);
 
 generateTableHead(table);

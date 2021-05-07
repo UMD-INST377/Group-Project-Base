@@ -45,11 +45,3 @@ This software only has one API, which is the `/api` - API route for books inform
 1. Adding more data into the database
 2. Adding a picture section for the update section page
 3. Adding some additional information and filter for the book
-
-
-# To do list 
-* Delete page functionality - Tony
-* Add more search filters (genre, rating, etc...) - Backend
-* Make sure styles work across browsers
-* .env setup on Heroku?
-* Create final presentation

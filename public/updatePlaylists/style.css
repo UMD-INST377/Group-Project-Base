@@ -96,5 +96,9 @@ input{
 
 .submit{
     padding:15px;
-    display: initial;
+    display: flexbox;
+}
+
+.add{
+    display: block;
 }

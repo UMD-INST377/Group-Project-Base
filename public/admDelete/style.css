@@ -98,7 +98,9 @@ h1 {
   }
 #mainContainer {
     background-color: rgb(98, 0, 255);
+    text-align: center;
 }
+
 h2 {
     color: white;
     margin-top: 15px;

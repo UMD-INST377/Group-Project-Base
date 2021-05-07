@@ -10,8 +10,10 @@ body{
 }
 
 .subheading, #subheading{
-    display:inline-flex;
+    display:flexbox;
     width: 600px;
+    margin: 0 auto;
+    text-align: justify;
 }
 
 #update-container{

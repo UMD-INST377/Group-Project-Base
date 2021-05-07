@@ -20,8 +20,10 @@ router
   .get(async (req, res) => {
     try {
       console.log('GET request on /media');
+      // maybe pull data from different tables and display together w/o using many to many rltnship?
       // const media = await db.Media.findAll({ include: db.Themes });
       const media = await db.Media.findAll();
+      const themes = await db.Themes.findAll();
       const reply = media.length > 0 ? { data: media } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {

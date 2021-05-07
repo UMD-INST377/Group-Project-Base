@@ -38,24 +38,49 @@
     </div>
 
     <h1>Make a Suggestion</h1>
+      <div class="suggestion-form">
+        <form id="suggestions" action="/api" method="post"> <!-- or /api/media? -->
+          <h3>Do you have Asian American literature and media suggestions that aren't in our database? Share them with us!</h3>
+          <div class="columns">
 
-    <div class="form">
-      <form id="title" action="/api/media" method="post">
-        <label for="media">Media Title</label>
-        <input type="text" id="media" name="media_title" />
-        <label for="creator">Creator</label>
-        <input type="text" id="creator" name="Creator" />
-        <label for="type">Media Type</label>
-        <input type="text" id="type" name="Media Type" />
-        <label for="genre">Genre</label>
-        <input type="text" id="genre" name="Genre" />
-        <label for="year">Release Year</label>
-        <input type="text" id="year" name="Release Year" />
-        <label for="link">Link To Source</label>
-        <input type="text" id="link" name="Link To Source" />
-      <button type="button">Submit</button>
-      </form>
-    </div>
+            <div class="column">
+                <div class="form-row">
+                  <label for="media">Media Title</label>
+                  <input type="text" id="media" name="media_title" />
+                </div>
+                <div class="form-row">
+                  <label for="creator">Creator</label>
+                  <input type="text" id="creator" name="Creator" />
+                </div>
+                <div class="form-row">
+                  <label for="type">Media Type</label>
+                  <input type="text" id="type" name="Media Type" />
+                </div>
+            </div>
+
+            <div class="column">
+              <div class="form-row">
+                <label for="genre">Genre</label>
+                <input type="text" id="genre" name="Genre" />
+              </div>
+              <div class="form-row">
+                <label for="year">Release Year</label>
+                <input type="text" id="year" name="Release Year" />
+              </div>
+              <div>
+                <label for="link">Link To Source</label>
+                <input type="text" id="link" name="Link To Source" />
+              </div>
+            </div>
+
+          </div>
+
+          <div class="submit-button">
+            <button type="button">Submit</button>
+          </div>
+          
+        </form>
+      </div>
   </body>
   <script src="scripts.js"></script>
 </html>

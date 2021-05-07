@@ -14,7 +14,7 @@ export default (database, DataTypes) => {
     { freezeTableName: true, timestamps: false }
   );
   Backgrounds.associate = (models) => {
-    Backgrounds.belongsTo(models.Media, {
+    Backgrounds.hasMany(models.Media, {
       foreignKey: 'media_id' // media_id is a fk in backgrounds
     });
   };

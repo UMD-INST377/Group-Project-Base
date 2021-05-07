@@ -35,8 +35,8 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 /apiRoutes - API route for course grades and GPA data. 
 # Known Bugs and Future Development
 ## Bugs
-
+- Users are currently able to directly alter the database. The make a suggestion needs to have a security blanket where only Admins can enter or delete content. 
 ## Future Development
-- The “Make a Suggestion” page will be reworked so that user suggestions do not directly alter the database. Instead, they will be sent to a restricted webpage for 1882 Foundation admin to review. Admin will be able to enter/edit/delete database content through this page, which will have the “Make a Suggestion” page’s existing CRUD functionality
-- We may also need to redesign the database so that it does not rely on many to many relationships. We learned that those aren’t optimal for a database app of this kind. 
-- After edits, will link the database app to the 1882 Foundation’s website
+- The “Make a Suggestion” page will be reworked so that user suggestions do not directly alter the database. Instead, they will be sent to a restricted webpage for 1882 Foundation admin to review. Admin will be able to enter/edit/delete database content through this page.
+- Redesign the database so that it does not rely on many to many relationships. 
+- After edits, will link the database app to the 1882 Foundation’s website.

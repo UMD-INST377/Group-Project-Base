@@ -1,3 +1,7 @@
+import { Router } from 'express';
+
+const router = Router();
+
 function loadScript() {
   console.log('script is loaded');
 }

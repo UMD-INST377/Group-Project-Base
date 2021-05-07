@@ -41,6 +41,16 @@ function playerDisplayMatches() {
     const player_nba_debut = player.nba_debut;
     const player_height = player.height;
     const player_weight = player.weight_pounds;
+    const age_of_player = player.player_age;
+    const player_team_name = player.team_name;
+    const player_team_location = player.team_location;
+    const player_shooting_percentage = player.shooting_percentage;
+    const player_three_point_percentage = player.three_pt_pct;
+    const player_salary = player.salary;
+    const player_rebounds_per_game = player.rebounds_per_game;
+    const player_assists_per_game = player.assists_per_game;
+    const player_steals_per_game = player.steals_per_game;
+    const player_blocks_per_game = player.blocks_per_game;
     
 
 

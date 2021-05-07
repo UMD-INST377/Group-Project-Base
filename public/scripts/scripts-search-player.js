@@ -93,7 +93,7 @@ function playerDisplayMatches() {
         <br>
         <span> Steals Per Game: ${player_steals_per_game}</span>
         <br>
-        <span> Blocks Per Gane: ${player_blocks_per_game}</span>
+        <span> Blocks Per Game: ${player_blocks_per_game}</span>
         <br>
         
     

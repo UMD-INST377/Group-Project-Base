@@ -99,3 +99,9 @@ table, th, td {
 .filters {
   margin-left: 20px;
 }
+.subtitle {
+  padding-top: 30px;
+}
+.info {
+  padding-top: 50px;
+}

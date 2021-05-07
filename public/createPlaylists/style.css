@@ -5,3 +5,18 @@ html{
 body {
   background: #53B797;
 }
+
+.flex-child, li{
+  padding: 10px;
+  text-align: left;
+  font-size: 20px;
+  display: flex;
+}
+
+#box{
+
+  display:flex;
+  height: 400px;
+  width: 500px;
+
+}

@@ -58,8 +58,9 @@ The simplest way to do this is by using npm to install it. Open a new terminal a
 
 ### Known Bugs
 
+* Our home page does not display the top ten albums and songs
 * Unable to figure out the form submission
-    We seemed to have the correct code but our databases were not connected properly to retrieve from them
+    We seem to almost have the correct code but there is at least one model that is not defined properly
 * Took out our about page because we wanted to focus on the functionality of the app
 * Adjusted some content as some API’s were not found in our database
 

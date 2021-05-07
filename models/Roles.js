@@ -14,7 +14,7 @@ export default (database, DataTypes) => {
     { freezeTableName: true, timestamps: false }
   );
   Roles.associate = (models) => {
-    Roles.belongsTo(models.Creators, {
+    Roles.hasMany(models.Creators, {
       foreignKey: 'creator_id'
     });
   };

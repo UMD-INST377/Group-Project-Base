@@ -14,7 +14,7 @@ export default (sequelize, DataTypes) => {
     { freezeTableName: true, timestamps: false }
   );
   Genres.associate = (models) => {
-    Genres.belongsTo(models.Media, {
+    Genres.hasMany(models.Media, {
       foreignKey: 'media_id'
     });
   };

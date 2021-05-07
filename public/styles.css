@@ -105,3 +105,17 @@ table, th, td {
 .info {
   padding-top: 50px;
 }
+.label {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  text-align: left;
+}
+.heading {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  text-transform: inherit;
+  text-align: center;
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+.conv {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}

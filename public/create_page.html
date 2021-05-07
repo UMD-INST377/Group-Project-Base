@@ -11,8 +11,8 @@
     <a href="index.html" class="block">Back to Main Page</a>
   </div>
   <div class="info">
-    <p>For the species ID, use the following conversion:</p>
-    <table>
+    <p class="heading">For the animal's species ID, use the following conversion:</p>
+    <table class="conv">
       <tr>
         <th>Animal Type:</th>
         <th>Dog</th>
@@ -22,39 +22,38 @@
         <th>Horse</th>
       </tr>
       <tr>
-        <td>Species ID</td>
+        <td>Species ID:</td>
         <td>1</td>
         <td>2</td>
         <td>3</td>
         <td>4</td>
         <td>5</td>
       </tr>
-
     </table>
-
   </div>
+
   <div class="container">
     <form action='/api/animals' method='POST'>
         <ul class="flex-outer">
           <li>
-            <label for="first-name">Animal Name</label>
-            <input type="text" id="name" name="name" placeholder="">
+            <label class="label" for="animal-name">Animal Name</label>
+            <input class="input is-medium" type="text" id="name" name="name" placeholder="e.g. Lucky">
           </li>
           <li>
-            <label for="last-name">Status</label>
-            <input type="text" id="status" name="status" placeholder="">
+            <label class="label" for="status">Status</label>
+            <input class="input is-medium" type="text" id="status" name="status" placeholder="e.g.healthy">
           </li>
           <li>
-            <label for="email">Gender</label>
-            <input type="text" id="gender" name="gender" placeholder="">
+            <label class="label" for="gender">Gender</label>
+            <input class="input is-medium" type="text" id="gender" name="gender" placeholder="e.g. male">
           </li>
           <li>
-            <label for="phone">Species ID</label>
-            <input type="text" id="Animal_type_species_id" name="Animal_type_species_id" placeholder="">
+            <label class="label" for="speciesID">Species ID</label>
+            <input class="input is-medium" type="text" id="Animal_type_species_id" name="Animal_type_species_id" placeholder="e.g. 1">
           </li>
           <li>
           <li>
-            <button type="submit" name="submit">Submit Form</button>
+            <button class="button is-outlined is-dark" type="submit" name="submit">Submit Form</button>
           </li>
         </ul>
 

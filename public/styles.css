@@ -369,3 +369,10 @@ input[type=text], input[type=password] {
   #error-msg-second-line {
     display: block;
   }
+
+.foot {
+    background-color: lightgray;
+    margin-top: 15px;
+    height: 30px;
+    text-align: center;
+}

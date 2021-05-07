@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
-  const Themes = database.define(
-    'Themes',
+  const themes = database.define(
+    'themes',
     {
       theme_id: {
         type: DataTypes.INTEGER,
@@ -13,5 +13,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Themes;
+  return themes;
 };

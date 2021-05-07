@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
-  const Creators = database.define(
-    'Creators',
+  const creators = database.define(
+    'creators',
     {
       creator_id: {
         type: DataTypes.INTEGER,
@@ -25,5 +25,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Creators;
+  return creators;
 };

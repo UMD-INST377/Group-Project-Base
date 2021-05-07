@@ -48,8 +48,16 @@ The simplest way to do this is by using npm to install it. Open a new terminal a
 
 
 ### Known Bugs
+* Unable to figure out the form submission
+    We seemed to have the correct code but our databases were not connected properly to retrieve from them
+* Took out our about page because we wanted to focus on the functionality of the app
+* Adjusted some content as some API’s were not found in our database
+
 
 
 ### Future Development
+* Continue working on making the form submit data to the server
+* Create our about page to describe our mission
+* Work out any bugs we find along the way
 
 

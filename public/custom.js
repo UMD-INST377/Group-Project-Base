@@ -4,25 +4,41 @@ async function windowActions() {
     const form = document.querySelector('#recordSubmit')
     const name = document.querySelector('#song')
     const artist = document.querySelector('#artist')
-    const album = document.querySelector('#album')
     const genre = document.querySelector('#genre')
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         console.info('submitted form', e.target);
         //const formData = ()
-        const post = await fetch('/api/songs', {
+        const post = await Promise.all([
+            fetch('/api/songs', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
           },
-          body: JSON.stringify({SONG_NAME: name.value}),
-          body: JSON.stringify({ARTIST_NAME: artist.value}),
-          body: JSON.stringify({ALBUM_NAME: album.value}),
-          body: JSON.stringify({GENRE_NAME: genre.value}),
+          body: JSON.stringify({SONG_NAME: name.value}),        
+                 
           
-          
-        });
+        }),
+        fetch('/api/artists', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+          },
+         body: JSON.stringify({ARTIST_NAME: artist.value})
+        }), 
+        fetch('/api/genres', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({GENRE_NAME: genre.value})
+        }) 
+    ]).then(function (data) {
+        console.log(data);
+    }).catch(function (error) {
+        console.log(error);
+    });
     });
 
 }

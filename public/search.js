@@ -1,13 +1,13 @@
 //aaaaa
 function generateResults(type) {
+    //getting text from search bar
+    if (!(document.getElementById('search').value)) return;
+
     //putting loading indicator onto the screen
     let loadingBar = document.createElement('progress');
     loadingBar.setAttribute("class", "progress is-medium is-dark");
     loadingBar.setAttribute("max", "100");
     document.body.appendChild(loadingBar);
-
-    //getting text from search bar
-    if (!(document.getElementById('search').value)) return;
     
     const input = document.getElementById('search').value;
 
@@ -57,10 +57,11 @@ async function genreSearch(input) {
     console.log(genres);
 
     const results = [];
+    let regex = new RegExp(input, 'gi');
 
     for (let i = 0; i < genres.length; i++) {
         if (!(genres[i]["GENRE_NAME"])) continue
-        else if (genres[i]["GENRE_NAME"].includes(input))
+        else if (genres[i]["GENRE_NAME"].match(regex))
             results.push(genres[i])
         else continue;
     }

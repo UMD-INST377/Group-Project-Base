@@ -43,7 +43,7 @@ router.post('/players', async (req, res) => {
   const players = await db.players.findAll();
   const currentId = (await players.length) + 1;
   try {
-    const newPlayer = await db.Players.create({
+    const newPlayer = await db.players.create({
         player_id: currentId,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -116,6 +116,21 @@ router.get('/clubs/:club_id', async (req, res) => {
     const clubs = await db.clubs.findAll({
       where: {
         club_id: req.params.club_id
+      }
+    });
+
+    res.json(clubs);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/clubs/:club_name', async (req, res) => {
+  try {
+    const clubs = await db.clubs.findAll({
+      where: {
+        club_name: req.params.club_name
       }
     });
 

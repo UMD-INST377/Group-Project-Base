@@ -3,14 +3,22 @@ window.onload = async function windowActions() {
 
   // DELETE PLAYERS
   async function delete_player() {
-    const id_input = document.getElementById("player-name");
+    const id_input = document.getElementById("player-id");
+
+    const req_goals = await fetch("/api/player_goals/".concat(id_input.value), {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    });
 
     const req = await fetch("/api/players/".concat(id_input.value), {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-      },
+      }
     });
+
     const msg = document.createElement("p");
     if (req) {
       msg.innerHTML = "Player successfully deleted";

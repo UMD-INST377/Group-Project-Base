@@ -1,6 +1,6 @@
 window.onload = async function () {
     console.log("Testing club data fetching")
-    const request = await fetch('/api/clubs');
+    const request = await fetch('/api/clubs/');
     const clubs = await request.json();
     console.log(clubs["data"])
 
@@ -14,4 +14,6 @@ window.onload = async function () {
     const req_player_goals = await fetch("/api/player_goals")
     const player_goals = await req_player_goals.json()
     console.log(player_goals)
+
+    
 }

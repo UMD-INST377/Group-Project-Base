@@ -59,9 +59,12 @@ text {
 }
 
 .progress {
-  position: relative;
-  top: 5%;
-  left: 36%;
+  position: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  top: 75%;
+  left: 60%;
   max-width: 355px;
   margin-top: 20px;
   margin-bottom: 20px;

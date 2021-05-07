@@ -8,14 +8,25 @@ function generateResults(type) {
     loadingBar.setAttribute("id", "loadingbar");
     loadingBar.setAttribute("max", "100");
     document.body.appendChild(loadingBar);
+    console.log('loading bar loaded');
     
     //getting text from search bar
     const input = document.getElementById('search').value;
+    console.log('input');
 
     //goes to appropriate search
-    if (type === 'songs') displayResults(songSearch(input))
-    else if (type === 'genres') displayResults(genreSearch(input))
-    else if (type === 'artists') displayResults(artistSearch(input));
+    if (type === 'songs') {
+        let results = songSearch(input);
+        displayResults(results);
+    }
+    else if (type === 'genres') {
+        let results = genreSearch(input);
+        displayResults(results);
+    }
+    else if (type === 'artists') {
+        let results = artistSearch(input);
+        displayResults(results);
+    }
 }
 
 function displayResults(results) {
@@ -26,7 +37,7 @@ function displayResults(results) {
     let body = document.getElementById("body");
     let loadingBar = document.getElementById("loadingbar");
     let throwaway = body.removeChild(loadingBar);
-
+    console.log('loading bar removed');
 }
 
 async function songSearch(input) {
@@ -58,14 +69,14 @@ async function songSearch(input) {
 
 async function genreSearch(input) {
     console.log('genres button clicked');
-    console.log(input);
+    //console.log(input);
 
     //getting all genres
     const genresRequest = await fetch('/api/genresRoute');
     const genresJSON = await genresRequest.json();
     let genres = genresJSON;
     console.log('Genre data loaded');
-    console.log(genres);
+    //console.log(genres);
 
     const results = [];
     let regex = new RegExp(input, 'gi');
@@ -85,14 +96,14 @@ async function genreSearch(input) {
 
 async function artistSearch(input) {
     console.log('artists button clicked');
-    console.log(input);
+    //console.log(input);
 
     //getting all artists
     const artistsRequest = await fetch('/api/artistsRoute');
     const artistsJSON = await artistsRequest.json();
     let artists = artistsJSON;
     console.log('Artist data loaded');
-    console.log(artists);
+    //console.log(artists);
 
     const results = [];
     let regex = new RegExp(input, 'gi');

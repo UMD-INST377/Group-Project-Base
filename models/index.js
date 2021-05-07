@@ -1,11 +1,21 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import AdaCompliance from './AdaCompliance.js';
+import MuseumAmenity from './MuseumAmenity.js';
+import MuseumAmenityLink from './MuseumAmenityLink.js';
+import MuseumInfo from './MuseumInfo.js';
+import MuseumStaff from './MuseumStaff.js';
+import MuseumVisits from './MuseumVisits.js';
+import StaffRole from './StaffRole.js';
+import VisitorTransactions from './VisitorTransactions.js';
+import Visitors from './Visitors.js';
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+  AdaCompliance,
+  MuseumAmenity,
+  MuseumAmenityLink,
+  MuseumInfo,
+  MuseumStaff,
+  MuseumVisits,
+  StaffRole,
+  VisitorTransactions,
+  Visitors
 };

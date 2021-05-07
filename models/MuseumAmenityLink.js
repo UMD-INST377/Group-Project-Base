@@ -1,17 +1,20 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    "Meals_Locations",
+  const MuseumAmenityLink = sequelize.define(
+    'museum_amenity_link',
     {
-      hall_id: {
+      amenity_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        primaryKey: true
       },
-      meal_id: {
+      museum_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-      },
+        primaryKey: true
+
+      }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  return MuseumAmenityLink;
 };

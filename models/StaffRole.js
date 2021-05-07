@@ -1,21 +1,23 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    'Meals',
+  const StaffRole = sequelize.define(
+    'staff_role',
     {
-      meal_id: {
+      role_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
         primaryKey: true
       },
-      meal_name: {
-        type: DataTypes.STRING
-      },
-      meal_category: {
+      role_title: {
         type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  StaffRole.associate = (models) => {
+    StaffRole.hasMany(models.MuseumStaff, {
+      foreignKey: 'role_id'
+    });
+  };
+  return StaffRole;
 };

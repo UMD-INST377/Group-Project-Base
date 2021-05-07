@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../styles.css"/>
+    <title>Add Staff</title>
+</head>
+<div class="box">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/index.html">
+        <img src="../images/ma_logo.png" />
+      </a>
+
+      <a
+        role="button"
+        class="navbar-burger burger"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="navbarBasicExample"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div style="flex-grow: 1; justify-content: center" class="navbar-start">
+        <a class="navbar-item" href="../index.html"> About </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="../Museum/museum.html"> Museum </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="../Museum/add-museum.html">
+              Add Museum
+            </a>
+            <a class="navbar-item" href="../Museum/update-museum.html">
+              Update Museum
+            </a>
+            <a class="navbar-item" href="../Museum/museum-info.html">
+              Museum Information
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="../Transactions/transactions.html">
+            Transactions
+          </a>
+
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="../Transactions/transaction_museum.html"
+            >
+              Transactions by Museum
+            </a>
+            <a class="navbar-item" href="../Transactions/transaction_date.html">
+              Transactions by Date
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="./personnel.html">
+            Personnel
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="./add_staff.html">
+              Add Staff
+            </a>
+            <a class="navbar-item" href="./update_staff.html">
+              Update Staff
+            </a>
+            <a class="navbar-item" href="./info_search_staff.html">
+              Information Search
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="../Visitors/visitors.html"> Visitors </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="../Visitors/add-visitors.html">
+              Add Visitors
+            </a>
+            <a class="navbar-item" href="../Visitors/visitor-search.html">
+              Visitor Information Search
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light"> Log in </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<body>
+    <div class = "container">
+        <div class="tabs is-centered">
+            <ul>
+              <li ><a href="./add_staff.html">Add Staff</a></li>
+              <!-- <li ><a href="./update_staff.html">Update Staff</a></li> -->
+              <li class="is-active"><a href="./info_search_staff.html">Staff Directory</a></li>
+            </ul>
+          </div>
+        <div class ="box">
+          <div class="content">
+            <h1>Staff Directory</h1>
+          </div>
+          <div class ="content"><p> To search for staff in the database click update and enter staff information. Press submit when done.</p></div>
+        </div>
+
+        <div class="container">
+          <div class = "block">
+          <table class="box table is-bordered is-striped">
+              <thead>
+                  <tr>
+                      <th>Employee Id</th>
+                      <th>First Name</th> 
+                      <th>Last Name</th> 
+                      <th>Museum Id</th>
+                      <th>Role Id</th>
+                      <th>Role Title</th>
+                      
+                  </tr>
+              </thead>
+              <tbody id="result">
+              </tbody>
+          </table>
+      </div>
+      <div class="container">
+        <div class = "block">
+        <form class ="box" action = "/api" method = "post" >
+            <div class="field" type="checkbox">
+                <div class="block">
+                    <label class= "label" for="employee_first_name">First Name</label>
+                    <div class ="control"><input type="text" id="employee_first_name" placeholder="Enter employee first name here" name="employee_first_name"></div>
+                </div>
+                <div class="block">
+                    <label class= "label" for="employee_last_name">Last Name</label>
+                    <div class ="control"><input type="text" id="employee_last_name" placeholder="Enter employee last name here"
+                    name ="employee_last_name">
+                    </div>
+                </div>
+                <div class="block">
+                  <label class= "label" for="museum_id">Museum ID</label>
+                  <div class="select is-small">
+                      <select>
+                        <option>Select Museum by dropdown</option>
+                        <option>With options</option>
+                        <option>With options</option>
+                        <option>With options</option>
+                      </select>
+                    </div>
+              </div>
+                <div class="block">
+                    <label class= "label" for="role_id">Role ID</label>
+                    <div class="select is-small">
+                        <select>
+                          <option>Select Role by dropdown</option>
+                          <option>1 - </option>
+                          <option>2 - </option>
+                          <option>3 - </option>
+                        </select>
+                      </div>
+
+                    
+                    <!-- <div class="control"><input type="role id" id="role id" placeholder="Enter Role ID"
+                    name="role id"></div> -->
+                </div>
+                <div class="block">
+                    <label class= "label" for="email">Email</label>
+                    <div class="control"><input type="email" id="email" placeholder="Enter Employee email here"
+                    name="email"></div>
+                </div>
+                <div class="block">
+                  <label class= "label" for="museum_name">Museum Name</label>
+                  <div class ="control"><input type="text" id="museum_name" placeholder="Enter museum name here"
+                  name ="museum_name">
+                  </div>
+              </div>
+                <!-- <div>
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number here"
+                    name="phone">
+                </div>
+                <div>
+                    <label for="message">Message</label>
+                    <textarea name="message" rows="6" id="message" rows="5" cols="33" placeholder="Enter your message here" type="checkbox" name="message"></textarea>
+                </div> -->
+                <!-- <div>
+                    <p>Age</p>
+                    <div class ="flex-inner" type="checkbox">
+                        <div>
+                            <input type="checkbox" id="twenty-to-twentynine" name="twenty-to-twentynine">
+                            <label for= "twenty-to-twentynine">20-29</label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" id="other" name="">
+                            <label for= "other">Other</label>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="buttons has addons">
+                    <button class ="button is-small" type="submit" value="Submit input" id="button" method="post" name="button">Submit</button>
+                </div>   
+            </div>
+        </form>
+      </div>
+  
+</body>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p><strong>The University of Maryland. INST 377 Group 15. Spring 2021.</strong></p>
+    <p>
+      <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+      is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+    </p>
+  </div>
+</footer>
+<script src ="scripts.js"></script>
+</html>

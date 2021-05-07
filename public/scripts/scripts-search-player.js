@@ -33,6 +33,17 @@ function playerDisplayMatches() {
   const html = matchArray.map((player) => {
     console.log('player: ', player);
     const regex = new RegExp(this.value, 'gi');
+    const player_first_name = player.first_name;
+    const player_last_name = player.last_name;
+    const player_position = player.position;
+    const player_jersey_number = player.jersey_number;
+    const college_player_attended = player.player_college;
+    const player_nba_debut = player.nba_debut;
+    const player_height = player.height;
+    const player_weight = player.weight_pounds;
+    
+
+
     const player_birthdate = player.birthdate;
     return `
       <li>

@@ -9,15 +9,19 @@
     <title>Create a Playlist</title>
 </head>
 <body>
-   
-    <div class='container has-text-centered'></div>
-        <a class='button is-large is-dark' id="bhbox" href="../index.html"> ⇦ Back to Home </a>
+    
+    <div class="block" id="bbox">
+        <a class='button is-large is-dark' id="back" href="../index.html"> ⇦ Back to Home </a>
+       
+    </div>
+    
+    
         <h1 class='title has-text-centered'>Create a Playlist</h1>
     
     <div class= 'container has-text-centered'>
-    <div class= 'box' id="box">
-        <div class="form">
-            <form action='' method='post' class='speaker-form'>
+    <div class= 'box has-text-centered'>
+        <div class='form'>
+            <form action='/api/playlists' method='post' class='speaker-form' >
                 <ul class="flex-outer">
                     <li>
                         <label for="namePlaylist">Name your Playlist</label>
@@ -25,21 +29,34 @@
                     </li>
                     <h2>Add Songs</h2>
                     <li>
-                        <label for="songTitle">Song title</label>
-                        <input name="songTitle" type="text" id="songTitle">
+                        <label for="user">User ID</label>
+                        <input name="user" type="text" id="user">
                     </li>
                     <li>
-                        <label for="artistBand">Artist/Band</label>
-                        <input name="artistBand" type="text" id="artistBand">
+                        <label for="songs">Number of Songs</label>
+                        <input name="songs" type="text" id="songs">
                     </li>
                     <li>
-                        <label for="songDuration">Song duration</label>
+                        <label for="followers">Follower Count</label>
+                        <input name="followers" type="text" id="followers">
+                    </li>
+                    <li>
+                        <label for="songDuration">Playlist duration</label>
                         <input name="songDuration" type="text" id="songDuration">
                     </li>
+                    
                     <li>
                         <label for="ifExplicit" id=explicityButtons>Is it explicit?
-                            <button class="button is-dark is-small" id="yesButton">yes</button>
-                            <button class="button is-dark is-small" id="noButton">no</button>
+                            <ul class="flex-container">
+                                <li class="flex-child">
+                                  <input  class="button" id='explicit' name ='explicit' type="button" value="Yes">
+                                  <label  for="explicit"></label>
+                                </li>
+                                <li class="flex-child"> 
+                                  <input  class="button" id="not-explicit" name="not-explicit" type="button" value="No">
+                                  <label for="not-explicit"></label>
+                                </li>
+                            </ul>
                         </label>
                     </li>
                     <li>

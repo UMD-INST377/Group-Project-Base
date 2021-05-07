@@ -3,6 +3,8 @@
 //     const artistInfoRequest = await fetch(artistInfoEndpoint)
 //     const artistInfoData = await request.json()
 
+// const { format } = require("sequelize/types/lib/utils");
+
 //     const playlistDetailsEndpoint = '/api/playlist_details'
 //     const playlistDetailsRequest = await fetch(playlistDetailsEndpoint)
 //     const playlistDetailsData = await request.json()
@@ -12,30 +14,47 @@
 //     const songData = await request.json()
 
     
-    const playlists = []
-    const createPlaylist = (ev) => {
-        ev.preventDefault(); 
-        let playlist = {
-            playlistName = document.getElementById('namePlaylist').value,
-            title = document.getElementById('songTitle').value,
-            artist = document.getElementById('artistBand').value,
-            duration = document.getElementById('songDuration').value,
-            explicity = document.
-        }
-        playlists.push(playlist)
-        document.querySelector('form').reset()
+   
+function windowActions(){
+    async function createPlaylist(){
+        const form = document.querySelector('form')
+        const user = document.querySelector('#user')
+        const playlistName = document.querySelector('#namePlaylist')
+        const songs = document.querySelector('#songs')
+        const artist = document.querySelector('#followers')
+        const duration = document.querySelector('#songDuration')
+        console.log(duration)
 
-        console.warn('added', {playlists})
-        let pre = document.querySelector('#msg pre')
-        pre.textContent = '\n' + JSON.stringify(playlists, '\t', 2)
-    }
 
-    document.addEventListener('DOMContentLoaded', ()=>{
-        document.getElementById('submit').addEventListener('click', createPlaylist)
+        form.addEventListener('submit', async(event)=> {
+            event.preventDefault();
+            console.info('submitted form', event.target);
+            
+            
+            
+            const post = await fetch('/api/playlists',
+            {
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({ 
+                    user_id: user.value,
+                    playlist_name: playlistName.value,
+                    number_of_songs: songs.value,
+                    number_of_followers: artist.value,
+                    total_time: duration.value,})
+            });
+            
+        
+        
     })
 
-        
-    
-// }
+};
 
-// window.onload = windowActions();
+
+createPlaylist();
+}
+   
+
+window.onload = windowActions; 

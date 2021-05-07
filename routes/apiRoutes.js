@@ -224,11 +224,12 @@ router.put('/popularBooks', async (req, res) => {
   }
 });
 
-router.delete('/popularBooks/:popularBooks_id', async (req, res) => {
+router.delete('/popularBooks', async (req, res) => {
+  console.log('Here is updated form info', req.body);
   try {
     await db.popularBooks.destroy({
       where: {
-        popularBooks_id: req.params.popularBooks_id
+        book_id: req.body.bookId
       }
     });
     res.send('Successfully Deleted');

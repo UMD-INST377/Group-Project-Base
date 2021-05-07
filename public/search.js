@@ -19,7 +19,9 @@ function generateResults(type) {
 
 function displayResults(results) {
     console.log('displaying results');
-    console.log(results);
+    //console.log(results);
+
+    document.body.removeChild(document.body.lastChild);
 }
 
 async function songSearch(input) {
@@ -45,6 +47,7 @@ async function songSearch(input) {
         else continue;
     }
     console.log(results);
+    console.log('search complete');
     return results;
 }
 
@@ -71,6 +74,7 @@ async function genreSearch(input) {
     }
 
     console.log(results);
+    console.log('search complete');
     return results;
 }
 
@@ -96,6 +100,7 @@ async function artistSearch(input) {
         else continue;
     }
     console.log(results);
+    console.log('search complete');
     return results;
 }
 

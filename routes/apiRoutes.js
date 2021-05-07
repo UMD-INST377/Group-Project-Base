@@ -7,131 +7,115 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the spotify playlists API');
 });
-
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////artist_info  Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get("/artistInfo", async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const artists = await db.ArtistInfo.findAll();
+    const reply =
+      artists.length > 0 ? { data: artists } : { message: "no results found" };
+    console.log(artist_name)
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    response.error("Server error");
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get("/artistInfo/:artist_id", async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const artists = await db.ArtistInfo.findAll({
       where: {
-        hall_id: req.params.hall_id
-      }
+        artist_id: req.params.artist_id,
+      },
     });
-
-    res.json(hall);
+    res.json(artist_id);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    response.error("Server error");
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+
+router.post('/artistInfo', async (req, res) => {
+  const artists = await db.ArtistInfo.findAll();
+  const currentId = (await artists.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newArtist = await db.ArtistInfo.create({
+      artist_id: currentId,
+      monthly_listeners: req.body.monthly_listeners,
+      followers: req.body.followers,
+      world_ranking: req.body.world_ranking,
+      artist_name: req.body.artist_name
     });
-    res.json(newDining);
+    res.json(newArtist);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    response.error('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/artistInfo/:artist_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.ArtistInfo.destroy({
       where: {
-        hall_id: req.params.hall_id
+        artist_id: req.params.artist_id
       }
     });
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    response.error('Server error');
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/artistInfo', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.ArtistInfo.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        monthly_listeners: req.body.monthly_listeners,
+        followers: req.body.followers,
+        world_ranking: req.body.world_ranking,
+        artist_name: req.body.artist_name
+
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          artist_id: req.body.artist_id
         }
       }
     );
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    response.error('Server error');
   }
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////////Playlists Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get('/playlists', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const playlist = await db.playlists.findAll();
+    res.json(playlist);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get('/playlists/:playlist_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const playlist = await db.playlists.findAll({
       where: {
-        meal_id: req.params.meal_id
+        playlist_id: req.params.playlist_id
       }
     });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/meals', async (req, res) => {
-  try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
+    res.json(playlist);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -139,50 +123,45 @@ router.put('/meals', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////////Macros Endpoints/////////
+/// ////////songs Endpoints/////////
 /// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.get('/songs', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
+    const songs = await db.songs.findAll();
+    res.send(songs);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get('/songs/:song_id', async (req, res) => {
   try {
-    const meals = await db.Macros.findAll({
+    const playlists = await db.songs.findAll({
       where: {
-        meal_id: req.params.meal_id
+        song_id: req.params.song_id
       }
     });
-    res.json(meals);
+    res.json(playlists);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/macros', async (req, res) => {
+router.put('/songs', async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
+    await db.songs.update(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
+        genre: req.body.genre,
+        date_released: req.body.date_released,
+        album_name: req.body.album_name,
+        explicit: req.body.explicit,
       },
       {
         where: {
-          meal_id: req.body.meal_id
+          song_id: req.body.song_id
         }
       }
     );
@@ -194,76 +173,53 @@ router.put('/macros', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
+/// ///playlistDetails Endpoints////
 /// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+router.get('/playlistDetails', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
+    const pDetails = await db.playlistDetails.findAll();
+    res.json(pDetails);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/restrictions/:restriction_id', async (req, res) => {
+router.get('/playlistDetails/:playlistDetails_id', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    const pDetails = await db.playlistDetails.findAll({
       where: {
-        restriction_id: req.params.restriction_id
+        pDetails_id: req.params.pDetails_id
       }
     });
-    res.json(restrictions);
+    res.json(pDetails);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
+/// ///songDetails Endpoints////
+/// /////////////////////////////////
+router.get('/songDetails', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
+    const sDetails = await db.song_details.findAll();
+    res.json(sDetails);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
+router.get('/songDetails/:song_details_id', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
+    const sDetails = await db.song_details.findAll({
+      where: {
+        sDetails_id: req.params.sDetails_id
+      }
     });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
+    res.json(sDetails);
   } catch (err) {
     console.error(err);
     res.error('Server error');

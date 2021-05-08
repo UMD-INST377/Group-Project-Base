@@ -30,7 +30,29 @@ When searching for meida of many different types, we felt as if there is a lack 
 
 ## Server application APIs
 `/media` -API route for showing the different types of media. 
-- GET 
+- GET -Returns the data and displays it.
+- POST -Creates new content in the database.
+- PUT -Requests can be made for new media.
+
+`/creators` - API route for the different type of creators. 
+- GET -Returns the data and displays it.
+- POST -Posts new creater information in the database.
+- PUT -Requests can be made for new creator details.
+
+`/genres` - API route for the different type of genres.
+- GET -Returns the data and displays it.
+- POST -Posts new genre information in the database.
+- PUT -Requests can be made for new genre details.
+
+`/backgrounds` - API route for the different type of backgrounds.
+- GET -Returns the data and displays it.
+- POST -Posts new background information in the database.
+- PUT -Requests can be made for new background details.
+
+`/themes` - API route for the different type of themes.
+- GET -Returns the data and displays it.
+- POST -Posts new theme information in the database.
+- PUT -Requests can be made for new theme details.
 # Known Bugs and Future Development
 ## Bugs
 - Users are currently able to directly alter the database. The make a suggestion needs to have a security blanket where only Admins can enter or delete content. 

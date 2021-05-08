@@ -13,42 +13,34 @@ https://inst377-group6project.herokuapp.com/
   - Safari
   - Chrome
   - Firefox
-- iPhone iOS or Andriod OS
+- iPhone iOS or Andriod OS Browsers
 
 # Developer Manual
 
 ## How to install the application and all dependencies
--npm install 
--npm start 
+- npm install 
+- npm start 
 
 ## How to run the application on a server
--application should run on localhost or you can access the deployed project via heroku 
-
-## How to run tests written for the software
+- application should run on localhost or you can access the deployed project via heroku 
 
 ## Server Application APIs (all GET, POST, PUT, etc endpoints, and what they each do)
+- There is an api enpoint of each type (GET, POST, PUT, DELETE) for each table in the database (customers, deliveries, orderItems, orders, productCategories, productFamilies, products, stores). GET endpoints can be used to access individual records by id, a range of records, and get all records. POST endpoints can be used to add a new record to the database, particularly for the products table as accessed by the admin page on the front end. PUT endpoints can be used to update existing records by specifying an ID of a record and the values to be changed, especially for the products table from the admin page.
 
 ## Known Bugs and Future Development
--Future Development: Clean styling 
--Using Bulma for css
--Using ES6 for JS
--Deployed using Heroku 
+-Future Development: Clean styling, securing the admin page with better password management and authentication, email receipts of products selected, tabulation screen for products selected and total price, whether you are on or over budget etc.
+
+## Technology Choices
+- Using Bulma and CSS for styling
+- Using ES6 for JS
+- Using favicon library for the admin icon in the header bar
+- Deployed using Heroku 
 
 ### Bugs:
-- Header spacing is slightly off 
+- Header spacing is slightly off
 
 ### Future Development:
-
-The audience of this document is future developers who will take over your system.
-They know technical terms and have general knowledge about web applications, but do not have knowledge about your system design.
-You need to provide a technical document so that future developers can start setting up the application on their local machines, and keep working on the system development after you leave the team.
-
-Your Developer Manual covers:
-- How to install your application and all dependencies
-- How to run your application on a server
-- How to run any tests you have written for your software
-- The API for your server application (all GET, POST, PUT, etc endpoints, and what they each do)
-- A clear set of expectations around known bugs and a road-map for future development.
-- Documentation needs to be written in Markdown (MD) files, nicely formatted (they are legible on Github in a way PDFs are not on Canvas)
-- Documentation should be included to each team’s final code submission.
+- Note that password for admin page is accessible by the inspector of the browser, this will need to be secured to avoid data manipulation by unwanted users.
+- API endpoints accessed by adding /api/_______ to the url where the underscore is replaced by the desired table.
+- To access record by ID, the url should look like /api/products/_____ where the underscore is replaced by the desired ID.
 

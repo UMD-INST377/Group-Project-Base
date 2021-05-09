@@ -26,7 +26,7 @@ export default (database, DataTypes) => {
     { freezeTableName: true, timestamps: false }
   );
   Creators.associate = (models) => {
-    Creators.hasMany(models.Roles, {
+    Creators.belongsToMany(models.Roles, {
       foreignKey: 'role_id' // role_id is a fk in creators
     });
   };

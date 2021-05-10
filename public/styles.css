@@ -178,6 +178,14 @@ form {
     margin-right: 20px;
 }
 
+.navbar {
+    background: rgb(218, 44, 44);
+}
+
+.navbar-item {
+    color:rgb(255, 255, 255)
+}
+
 /* .content_element {
     padding: 5%;
     outline-style: solid;

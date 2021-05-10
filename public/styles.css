@@ -183,7 +183,8 @@ form {
 }
 
 .navbar-item {
-    color:rgb(255, 255, 255)
+    color:rgb(255, 255, 255);
+    background: rgb(218, 44, 44)
 }
 
 /* .content_element {

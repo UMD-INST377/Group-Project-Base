@@ -23,7 +23,7 @@
       <a href="https://1882foundation.org" id="goto">Go to Home Site</a>
     </div>
     <!-- NAV BAR -->
-    <div class="navbar is-danger">
+    <nav class="navbar is-danger">
       <div class="navbar-brand">
         <span class="navbar-burger burger" data-target="navMenu">
           <span></span>
@@ -33,13 +33,25 @@
       </div>
       <div id="navMenu" class="navbar-menu">
         <div class="navbar-end">
-          <a href="index.html" class="navbar-item is-active">Home</a>
+          <a href="index.html" class="navbar-item">Home</a>
           <a href="about.html" class="navbar-item">About</a>
           <a href="suggestion.html" class="navbar-item">Make a Suggestion</a>
+          <a href="featured.html" class="navbar-item">Featured Reviews</a>
           <a href="contact.html" class="navbar-item">Contact Us</a>
         </div>
       </div>
-    </div>
+    </nav>
+    <script type="text/javascript">
+    (function(){
+      let burger = document.querySelector('.burger');
+      let nav = document.querySelector('#'+burger.dataset.target);
+
+      burger.addEventListener('click', function(){
+        burger.classList.toggle('is-active');
+        nav.classList.toggle('is-active');
+      });
+    })();
+    </script>
   </div>
 
   <div class="columns">

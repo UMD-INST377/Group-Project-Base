@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 5 Working Front End</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css"> 
+    <script src="script.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar-->
+    <nav class = "navbar">
+        <div class="navbar-brand"> 
+            <a class="navbar-item" href="/">Home</a>
+        </div>
+        <div class="navbar-end">
+             <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary" href = "/about" >About Website</a> <!-- button color changes -->
+                    <a class = "button is-primary" href="/insert">Add Artists/Songs</a>
+                </div>
+             </div>
+        </div>
+    </nav>
+
+    <div class = "container">
+        <form class = "filter">
+            <div class = "column is-one-third is-offset-one-third">
+                <input type="text" class = "search" style="width: 100%;" placeholder="Search by albums">
+                <div class = "suggestions">
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+
+    <div class = "homebackground">
+        <h1 class="title">Browse Genres</h1>
+
+        <div class="tile is-ancestor">
+            <div class="tile is-parent is-vertical is-6">
+                <div class="is-child has-background-primary">
+                    <button id="rock" class = "button">Search Rock Music</button>
+                </div>
+                <br>
+                <div class="is-child has-background-primary">
+                    <button id="soul" class = "button">Search Soul Music</button>
+                </div>
+                <br>
+                <div class="is-child has-background-primary">
+                    <button id="electronic" class = "button">Search Electronic Music</button>
+                </div>
+                <br>
+                <div class="is-child has-background-primary">
+                    <button id="dance-music" class = "button">Search Dance Pop Music</button>
+                </div>
+            </div>
+            <div class="tile is-parent is-vertical is-6">
+                <div class="is-child has-background-primary">
+                    <button id="pop" class = "button">Search Pop Music</button>
+                </div>
+                <br>
+                <div class="is-child has-background-primary">
+                    <button id="hiphop" class = "button">Search Hip Hop Music</button>
+                </div>
+                <br>
+                <div class="is-child has-background-primary">
+                    <button id="indie"  class = "button">Search Indie Pop Music</button>
+                </div>
+                <br>
+                <div class="is-child has-background-primary">
+                    <button id="alternative" class ="button">Search Alternative Music</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>Website Name by Alejandro Chacon, Shruti Kumar, Baldric Nguena, and Amanda Yee.<br>
+                 Website content from <a href="https://kaggle.com">Kaggle.</a> Created in 2021.</p>
+        </div>
+    </footer>
+
+    <div class="genres"> <!--this class name is for javascript input purposes-->
+        <!--add list of genres here as clickable buttons-->
+    </div>
+    
+        <!--potential idea: adding a search bar to filter through artists as the user types
+            <form>
+            <input type="text" class="search" placeholder="Search by Artist">
+            <div class="artistnames">
+            </div>
+        </form>
+        -->
+    </footer>
+</body>
+
+</html>

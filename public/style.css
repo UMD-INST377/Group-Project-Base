@@ -1,0 +1,54 @@
+h1, h3 {
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+}
+
+.form {
+  text-align: center;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+}
+
+th{
+  background-color: #00D1B2;
+}
+
+tr {
+  text-transform: capitalize;
+}
+
+.aboutbackground{
+  background-color:rgb(227, 250, 242);
+  padding-top: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+}
+
+.aboutheader{
+  text-align: center;
+}
+
+img{
+  height: 128px;
+  width: 128px;
+}
+
+.homebackground{
+  background-color: rgb(227, 250, 242);
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.button{
+  width: 250px;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Form</title>
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+    <!-- Navigation Bar-->
+    <nav class = "navbar">
+        <div class="navbar-brand"> 
+            <a class="navbar-item" href="/">Home</a>
+        </div>
+        <div class="navbar-end">
+             <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary" href = "/about" >About Website</a> <!-- button color changes -->
+                    <a class = "button is-primary" href="/insert">Add Artists/Songs</a>
+                </div>
+             </div>
+        </div>
+    </nav>
+    <div class="notice">
+        <p class="block">Want to add an artist or song to our website?</p>
+        <p class="block">Submit the information here!</p>
+    </div>
+    <form action="/api/songs" class="form">
+        <div class="field">
+            <div class="control">
+                <input class="input" name="title" type="text" placeholder="Song Title">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input" name="album_name" type="text" placeholder="Album Name">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input" type="text" name="genre" placeholder="Genre">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input" type="text" name="rel_date" placeholder="Release Date">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input" type="text" name="artist_name" placeholder="Artist Name">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input" name="song_lengtht" type="text" placeholder="Song Length">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <textarea name="lyrics" aria-placeholder="Insert Lyrics Here"></textarea>
+            </div>
+        </div>
+        <div class="control">
+            <button class="button is-link">Submit</button>
+        </div>   
+    </form>
+</body>
+</html>

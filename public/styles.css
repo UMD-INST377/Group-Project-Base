@@ -1,0 +1,147 @@
+/* body styles */
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(#e45353,lightgray);
+    color: #e9e9e9;
+}
+
+body > footer {
+    margin-top: auto;
+}
+
+.main {
+    padding: 40px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.main h3 {
+    color: #2c2c2c;
+}
+
+/* carousel styles */
+.hidden {
+    display: none;
+}
+
+.left {
+    order: 1;
+}
+
+.middle {
+    order: 2;
+}
+
+.right {
+    order: 3;
+}
+
+.button {
+    background-color: #2b2b2b;
+    color: #e9e9e9;
+    font-weight: bold;
+    text-align: center;
+    width: 100px;
+    box-sizing: border-box;
+}
+
+.button:hover,
+.button:visited:hover {
+    background-color: #c54646;
+}
+
+/* table styles */
+th {
+    background-color: #c54646;
+}
+
+abbr {
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+table {
+    text-align: center;
+}
+ 
+/* header/navbar/footer styles */
+.header {
+    background-color: #2b2b2b;
+    padding: 15px;
+}
+.navbar {
+    background-color: #2b2b2b;
+}
+
+.brand {
+    color: #e45353;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.navbar-menu .navbar-item {
+    color: #eeeeee;
+    padding: .5rem 1.5rem;
+}
+
+.navbar-brand a.brand:hover {
+    color: #e45353;
+}
+
+.navbar-burger {
+    height: 64px;
+}
+
+.navbar-burger span {
+    height: 2px;
+}
+
+.navbar-brand a.navbar-burger,
+.navbar-brand a.navbar-burger:hover {
+    color: #e9e9e9;
+}
+
+.navbar-brand a.navbar-burger:hover {
+    background-color: #1B1B1B;
+}
+
+.navbar-menu a:hover {
+    background-color: #999999;
+    color: #e9e9e9;
+}
+
+.navbar-menu.is-active {
+    background-color: #2b2b2b;
+    color: #e9e9e9;
+}
+
+.navbar-menu.is-active a:hover {
+    background-color: #999999;
+    color: #e9e9e9;
+}
+
+.footer {
+    background-color: #2b2b2b;
+    padding: 1.5rem;
+}
+
+/* search box */
+input {
+    margin-bottom: 40px;
+}
+
+/* list items */
+li {
+    margin-bottom: 40px;
+    color: black;
+}
+
+.box {
+    background-color: #c5c5c5;
+}

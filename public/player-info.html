@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team 12's Group Project</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+        crossorigin="anonymous">
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a href="/index.html" class="navbar-item brand">NBA Info Insiders</a>
+                
+                    <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="/index.html">Home</a>
+                        <a class="navbar-item" href="/player-info.html">Player Info</a>
+                        <a class="navbar-item" href="/team-info.html">Team Info</a>
+                        <a class="navbar-item" href="/record-update.html">Record Update</a>
+                        <a class="navbar-item" href="/about.html">About</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="main">
+            <h2 style="text-align: center; padding: 40px">The Player Info page gives results about the players themselves. A player's season stats, biological info (think height, weight, etc), career origin and so on.
+                If you have ever wondered how many blocks your favorite player made or what their alma mater is then this is the place to find out!
+            </h2>
+
+        
+                <div class = "wrapper">
+                    <div class = "container">
+                        <form id="formelement" action="" class="block form">
+                            <div class="control">
+                            <input class="player_input input" type="text" placeholder="Player">
+                            </div>
+                            <ul class="PlayerInfo">
+                                
+                    
+                            </ul>
+                        </form>
+                    </div>
+                  </div>    
+            
+        </div>
+        
+        <div class="footer">
+            <div class="content has-text-centered">
+                <p>This web application was created by Team 12 for Spring 2021 INST377.</p>
+            </div>
+        </div>
+        
+        <script src="/scripts/scripts-bulma-nav.js"></script>
+        <script src="/scripts/scripts-search-player.js"></script>
+
+    </body>
+</html>

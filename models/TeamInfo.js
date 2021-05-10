@@ -1,21 +1,27 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    'Meals',
+  const TeamInfo = sequelize.define(
+    'team_info',
     {
-      meal_id: {
+      team_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
         primaryKey: true
       },
-      meal_name: {
+      team_name: {
         type: DataTypes.STRING
       },
-      meal_category: {
+      team_location: {
         type: DataTypes.STRING
+      },
+      year_founded: {
+        type: DataTypes.STRING
+      },
+      player_amount: {
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
-};
+  return TeamInfo;
+}

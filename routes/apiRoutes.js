@@ -12,6 +12,19 @@ router.get('/', (req, res) => {
   res.send('Welcome to the AAPI Art Corner API!');
 });
 
+import filmController from './filmController.js';
+router.get('/media/film', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(filmController, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result)
+  }
+  catch (e){
+    console.error(e);
+  }
+})
+
 /// /////////////////////////////////
 /// ////Media Endpoints////////
 /// /////////////////////////////////

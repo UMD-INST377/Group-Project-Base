@@ -12,10 +12,17 @@ router.get('/', (req, res) => {
   res.send('Welcome to the AAPI Art Corner API!');
 });
 
-import filmController from './filmController.js';
+import film from './filmController.js';
+import album from './albumController.js';
+import article from './articleController.js';
+import book from './bookController.js';
+import doc from './docController.js';
+import poetry from './poetryController.js';
+import tv from './tvController.js';
+
 router.get('/media/film', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(filmController, {
+    const result = await db.sequelizeDB.query(film, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result)
@@ -24,6 +31,73 @@ router.get('/media/film', async (req, res) => {
     console.error(e);
   }
 })
+router.get('/media/album', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(album, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result)
+  }
+  catch (e){
+    console.error(e);
+  }
+})
+router.get('/media/article', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(article, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result)
+  }
+  catch (e){
+    console.error(e);
+  }
+})
+router.get('/media/book', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(book, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result)
+  }
+  catch (e){
+    console.error(e);
+  }
+})
+router.get('/media/doc', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(doc, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result)
+  }
+  catch (e){
+    console.error(e);
+  }
+})
+router.get('/media/poetry', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(poetry, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result)
+  }
+  catch (e){
+    console.error(e);
+  }
+})
+router.get('/media/tv', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(tv, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result)
+  }
+  catch (e){
+    console.error(e);
+  }
+})
+
 
 /// /////////////////////////////////
 /// ////Media Endpoints////////

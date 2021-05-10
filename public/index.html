@@ -23,7 +23,7 @@
       <a href="https://1882foundation.org" id="goto">Go to Home Site</a>
     </div>
     <!-- NAV BAR -->
-    <nav class="navbar">
+    <nav class="navbar is-danger">
       <div class="navbar-brand">
         <span class="navbar-burger burger" data-target="navMenu">
           <span></span>
@@ -67,10 +67,9 @@
           <form action="/api" method="post">
             <!-- or get? -->
             <!-- form action is the endpoint you want to go to -->
-            <div class="select is-multiple">
+            <div class="container">
               <!-- bulma lets you select multiple things -->
-              <select multiple size="5">
-                <option type="checkbox" value="choose">Choose a Type</option>
+              <select onchange="show()">
                 <option type="checkbox" value="music">Album</option>
                 <option type="checkbox" value="literature">Article</option>
                 <option type="checkbox" value="poetry">Book</option>
@@ -80,6 +79,11 @@
                 <option type="checkbox" value="music">Television Series</option>
               </select>
             </div>
+            <script>
+              function show(){
+                document.getElementById('demo').style.display='inline-block';
+              }
+            </script>
             <input type="button" onclick="multipleFunc()" value="Select">
           </form>
 

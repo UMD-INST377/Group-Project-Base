@@ -63,6 +63,48 @@ async function windowActions() {
 
 window.onload = windowActions;
 
+async function windowActions() {
+  console.log('window loaded');
+
+  const form = document.querySelector("#suggestions");
+  const media = document.querySelector("#media");
+  const creator = document.querySelector("#creator");
+  const type = document.querySelector("#type");
+  const genre = document.querySelector("#genre");
+  const year = document.querySelector("#year");
+  const link = document.querySelector("#link");
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    console.info('submitted form', event.target);
+    // const formdata = {}
+    const post1 = await fetch('/api/media', {
+      method = 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ media_title: media.value})
+    });
+    const post2 = await fetch('/api/creators', {
+      method = 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ creator_first_name, creator_last_name: creator.value})
+    });
+    const post3 = await fetch('/api/genre', {
+      method = 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ genre: genre.value})
+    });
+  });
+
+}
+
+window.onload = windowActions;
+
+
 // POST
 // async function windowActions() {
 //   console.log('window loaded');

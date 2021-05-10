@@ -32,10 +32,17 @@ router
     }
   })
   .post(async (req, res) => {
+    console.info('Post request to /media', req.body);
     const media = await db.Media.findAll();
+    const exisitingmedia = await db.Media.findAll({
+      where: {
+        media_title: req.body.media_title
+      }
+    });
+    console.log('exisitingmedia', exisitingmedia);
     const currentId = (await media.length) + 1;
     try {
-      console.log('POST request on /media');
+      //console.log('POST request on /media'
       const newMedia = await db.all_media.create({
         media_id: currentId,
         media_title: req.body.media_title,
@@ -110,10 +117,18 @@ router
     }
   })
   .post(async (req, res) => {
+    console.info('Post request to /creators', req.body);
     const creators = await db.Creators.findAll();
+    const exisitingcreators = await db.Creators.findAll({
+      where: {
+        creator_first_name: req.body.creator_first_name,
+        creator_last_name: req.body.creator_last_name
+      }
+    });
+    console.log('exisitingcreators', exisitingcreators);
     const currentId = (await creators.length) + 1;
     try {
-      console.log('POST request on /creators');
+      //console.log('POST request on /creators');
       const newCreator = await db.Creators.create({
         creator_id: currentId,
         creator_first_name: req.body.creator_first_name,
@@ -456,5 +471,8 @@ router.route('/creatorRoleLinks').get(async (req, res) => {
     res.error('Server error');
   }
 });
+
+
+
 
 export default router;

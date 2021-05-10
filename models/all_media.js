@@ -6,7 +6,8 @@ export default (sequelize, DataTypes) => {
       media_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       media_title: {
         type: DataTypes.STRING

@@ -5,13 +5,13 @@ import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
-import film from './filmController.js';
-import album from './albumController.js';
-import article from './articleController.js';
-import book from './bookController.js';
-import doc from './docController.js';
-import poetry from './poetryController.js';
-import tv from './tvController.js';
+import film from './controllers/filmController.js';
+import album from './controllers/albumController.js';
+import article from './controllers/articleController.js';
+import book from './controllers/bookController.js';
+import doc from './controllers/docController.js';
+import poetry from './controllers/poetryController.js';
+import tv from './controllers/tvController.js';
 
 const router = express.Router();
 

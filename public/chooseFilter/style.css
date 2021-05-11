@@ -1,23 +1,26 @@
-html,
-body {
+html {
   margin: 0;
   padding: 0;
 }
-
+  
 html {
   font-size: 10px;
 }
 
 body {
   width: 70%;
-  min-width: 800px;
-  margin: 0 auto;
+  margin-left: 10%;
+  margin-right: 10%;
   background-color: #e6ebf0;
 }
 
 /* || typography */
 
-h1,
+h1 {
+  font-family: 'Lemonada';
+    color: #2a2a2a;
+}
+
 h2,
 h3 {
   font-family: "Lemonada";
@@ -95,19 +98,20 @@ ul.no-bullets {
   justify-content: space-between;
 }
 
-.titleSearch {
-  width: 750px;
-  height: 30px;
-}
 
 #titleSearch,
 #authorSearch {
-  width: 750px;
-  height: 42px;
+  margin: auto;
   border-radius: 3px;
   border: 2px solid black;
   padding: 5px 10px;
   font-size: 18px;
+}
+
+.keywordSearch {
+  margin: auto;
+  min-width: 150px;
+  width: 80%;
 }
 
 .skip {
@@ -133,18 +137,22 @@ ul.no-bullets {
 #listedFilters {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .textSearching {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 145px;
-  margin-right: 145px;
 }
 .textSearching h3 {
   align-self: flex-start;
+  margin-left: 10%;
 }
 #buttonArea {
   display: flex;
   justify-content: center;
+}
+
+.userForm {
+  margin: auto;
 }

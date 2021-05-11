@@ -6,22 +6,22 @@ async function DisplayPic(bookId) {
   const suggestions = document.querySelector('#BookPicture');
   suggestions.innerHTML = html;
 }
-async function buildMetaData(bookArray) {
-  let genres = ""
-  for (const item of bookArray) {
-    const genreCapitalized = item.genre_name ? item.genre_name.charAt(0).toUpperCase() + item.genre_name.slice(1) : "no genre";
-    genres = `${genres} ${genreCapitalized}`
-  }
-  const book = bookArray[0];
-  console.log('Two Genres');
+async function buildMetaData(book) {
   console.log(book);
+
+  async function toTitleCase(str) {
+    return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+  }
+  let genres = book.genre_name ? book.genre_name : 'no genre';
+  genres = await toTitleCase(`${genres}`);
+
   const publicDomain = book.public_domain === 1 ? 'Yes' : 'No';
-  const movement = book.movement_name ? book.movement_name : 'N/A'
+  const movement = book.movement_name ? book.movement_name : 'N/A';
   if (book.google_user_percentage >= 80) {
-    judgement = "goodRating"
+    judgement = 'goodRating';
   } else if (book.google_user_percentage >= 70 && book.google_user_percentage < 80) {
-    judgement = "mediumRating"
-  } else { judgement = "badRating" }
+    judgement = 'mediumRating';
+  } else { judgement = 'badRating'; }
 
   const html = `<ul>
   <li>Book Title: ${book.title}</li>
@@ -47,11 +47,7 @@ async function windowActions() {
   const chosenId = params.get('bookId');
   const request = await fetch(`/api/popularBooksExpanded/${chosenId}`);
   const book = await request.json();
-  if (book.length === 1) {
-    buildMetaData(book);
-  } else {
-    buildMetaData(book);
-  }
+  buildMetaData(book[0]);
 }
 
 window.onload = windowActions;

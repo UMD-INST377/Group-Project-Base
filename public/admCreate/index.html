@@ -12,60 +12,90 @@
 </head>
 <body>
     <h1>WeBooks</h1>
-    <h2 class="subtitle">Add Book Picture</h2>
+    <h2 class="subtitle">Create New Book Entry</h2>
 
     <div class='container'>
     <form class="box">
+      <h3>Required Fields listed with ***</h3>
+
         <div class="field">
-          <label class="label">Add Book Title</label>
+          <label class="label">Book Title</label>
           <div class="control">
-            <input class="input" type="text" id="title" name="title" placeholder="Text input" />
+            <input class="input" type="text" id="title" name="title" placeholder="Book's official title" />
           </div>
         </div>
 
       <div class="field">
-        <label class="label">Add Author's Name</label>
+        <label class="label">Author Id***</label>
         <div class="control">
-          <input class="input" type="text" id="author_name" name="author_name" placeholder="Text input" />
+          <input class="input" type="text" id="authorId" name="authorId" placeholder="Integer corresponding to desired author" />
         </div>
       </div>
 
       <div class="field">
-        <label class="label">Add Book's Language</label>
+        <label class="label">Book's Oringinal Language</label>
         <div class="control">
-          <input class="input" type="text" id="original_language" name="original_language" placeholder="Text input" />
-        </div>
-      </div>
-
-      <!-- <div class="field">
-        <label class="label">Add Book's Genre</label>
-        <div class="control">
-          <input class="input" type="text" id="genre" name="genre" placeholder="Text input" />
-        </div>
-      </div> -->
-
-      <div class="field">
-        <label class="label">Add Amount Sold</label>
-        <div class="control">
-          <input class="input" type="text" id="amount_sold" name="amount_sold" placeholder="Text input" />
+          <input class="input" type="text" id="originalLanguage" name="originalLanguage" placeholder="Language book was first printed in" />
         </div>
       </div>
 
       <div class="field">
-        <label class="label">Add Domain (Y/N)</label>
+        <label class="label">Amount Sold</label>
         <div class="control">
-          <input class="input" type="text" id="public_domain" name="public_domain" placeholder="Text input" />
+          <input class="input" type="text" id="amountSold" name="amountSold" placeholder="Integer corresponding to book copies sold" />
         </div>
       </div>
 
       <div class="field">
-        <label class="label">Book Rating</label>
+        <label class="label">In Public Domain</label>
         <div class="control">
-          <input class="input" type="text" id="book_rating" name="book_rating" placeholder="Text input" />
+          <input class="input" type="text" id="publicDomain" name="publicDomain" placeholder="1 being public domain, 0 being not in public domain" />
         </div>
       </div>
 
-      <button class="button is-primary" type="submit" name="submit" id="submit">Submit</button>
+      <div class="field">
+        <label class="label">Book Rating (Google User Percentage)</label>
+        <div class="control">
+          <input class="input" type="text" id="bookRating" name="bookRating" placeholder="Integer from 0-100 based on Google User Percentage" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Publish Year</label>
+        <div class="control">
+          <input class="input" type="text" id="publishYear" name="publishYear" placeholder="Year of publication" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Publisher Id***</label>
+        <div class="control">
+          <input class="input" type="text" id="publisherId" name="publisherId" placeholder="Integer corresponding to desired publisher" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Artistic Movement Id</label>
+        <div class="control">
+          <input class="input" type="text" id="artisticMovementId" name="artisticMovementId" placeholder="Integer corresponding to desired artistic movement" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Retailer Id***</label>
+        <div class="control">
+          <input class="input" type="text" id="retailerId" name="retailerId" placeholder="Integer corresponding to desired retailer" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Book Description Id***</label>
+        <div class="control">
+          <input class="input" type="text" id="descriptionId" name="descriptionId" placeholder="Integer corresponding to desired book description" />
+        </div>
+      </div>
+
+      <button class="button is-primary is-light is-link" type="submit" name="submit" id="submit">Submit</button>
     </div>
     </form>
 

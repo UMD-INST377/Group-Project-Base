@@ -1,0 +1,65 @@
+ <!-- users will be redirected to this page if requested info is unavailable-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Literature & Art Corner Database</title>
+  </head>
+  <body>
+    <div class="banner">
+      <div class="inner-banner">
+        <img src="images/1882logo.png" alt="1882 Foundation Logo" class="has-ratio" width="198">
+        <span id="title">Literature & Art Corner Database</span>
+        <a href="https://1882foundation.org" id="goto">Go to Home Site</a>
+      </div> 
+      <!-- NAV BAR -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <span class="navbar-burger burger" data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <a href="index.html" class="navbar-item">Home</a>
+          <a href="about.html" class="navbar-item">About</a>
+          <a href="suggestion.html" class="navbar-item">Make a Suggestion</a>
+          <a href="featured.html" class="navbar-item">Featured Reviews</a>
+          <a href="contact.html" class="navbar-item">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+    <script type="text/javascript">
+    (function(){
+      let burger = document.querySelector('.burger');
+      let nav = document.querySelector('#'+burger.dataset.target);
+
+      burger.addEventListener('click', function(){
+        burger.classList.toggle('is-active');
+        nav.classList.toggle('is-active');
+      });
+    })();
+    </script>
+    </div>
+    
+    <h1>Oops, sorry about that!</h1>
+
+    <h3>This page is still undergoing changes. Thank you for your patience.</h3>
+
+        
+    </div>
+  </body>
+  <script src="scripts.js"></script>
+</html>

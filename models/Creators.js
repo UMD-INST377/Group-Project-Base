@@ -25,10 +25,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  Creators.associate = (models) => {
-    Creators.belongsToMany(models.Roles, {
-      foreignKey: 'role_id' // role_id is a fk in creators
-    });
-  };
+  // Creators.associate = (models) => {
+  //   Creators.belongsToMany(models.Roles, {
+  //     foreignKey: 'role_id' // role_id is a fk in creators
+  //   });
+  // };
   return Creators;
 };

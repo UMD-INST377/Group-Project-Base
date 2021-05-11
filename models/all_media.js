@@ -40,25 +40,25 @@ export default (sequelize, DataTypes) => {
   );
   // Media.associate does a table join and lets you access data without needing a loop
   // when you get Media, you can get all of the Backgrounds related to it
-  Media.associate = (models) => {
-    Media.belongsToMany(models.Backgrounds, {
-      foreignKey: 'background_id'
-    });
-  };
-  Media.associate = (models) => {
-    Media.belongsToMany(models.Creators, {
-      foreignKey: 'creator_id'
-    });
-  };
-  Media.associate = (models) => {
-    Media.belongsToMany(models.Themes, {
-      foreignKey: 'theme_id'
-    });
-  };
-  Media.associate = (models) => {
-    Media.belongsToMany(models.Genres, {
-      foreignKey: 'genre_id'
-    });
-  };
+  // Media.associate = (models) => {
+  //   Media.belongsToMany(models.Backgrounds, {
+  //     foreignKey: 'background_id'
+  //   });
+  // };
+  // Media.associate = (models) => {
+  //   Media.belongsToMany(models.Creators, {
+  //     foreignKey: 'creator_id'
+  //   });
+  // };
+  // Media.associate = (models) => {
+  //   Media.belongsToMany(models.Themes, {
+  //     foreignKey: 'theme_id'
+  //   });
+  // };
+  // Media.associate = (models) => {
+  //   Media.belongsToMany(models.Genres, {
+  //     foreignKey: 'genre_id'
+  //   });
+  // };
   return Media;
 };

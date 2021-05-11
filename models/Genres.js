@@ -13,10 +13,10 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  Genres.associate = (models) => {
-    Genres.belongsToMany(models.Media, {
-      foreignKey: 'media_id'
-    });
-  };
+  // Genres.associate = (models) => {
+  //   Genres.belongsToMany(models.Media, {
+  //     foreignKey: 'media_id'
+  //   });
+  // };
   return Genres;
 };

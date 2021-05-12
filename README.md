@@ -1,3 +1,5 @@
+# Literature & Art Corner Database App
+
 ## Description
 When searching for meida of many different types, we felt as if there is a lack of representation for Asian American narratives and experiences. We wanted a place where we could share the different types and styles of Asian american works. Here users can explore the different media in an easy to use database. They can also leave recommendations, and go to the 1882 foundation website. 
 

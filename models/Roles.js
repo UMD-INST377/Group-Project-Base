@@ -13,11 +13,11 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  Roles.associate = (models) => {
-    Roles.belongsToMany(models.Creators, { // a creator can have many roles
-      foreignKey: 'creator_id',
-      through: 
-    });
-  };
+  // Roles.associate = (models) => {
+  //   Roles.belongsToMany(models.Creators, { // a creator can have many roles
+  //     foreignKey: 'creator_id',
+  //     through: 
+  //   });
+  // };
   return Roles;
 };

@@ -13,10 +13,10 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  Backgrounds.associate = (models) => {
-    Backgrounds.belongsToMany(models.Media, {
-      foreignKey: 'media_id' // media_id is a fk in backgrounds
-    });
-  };
+  // Backgrounds.associate = (models) => {
+  //   Backgrounds.belongsToMany(models.Media, {
+  //     foreignKey: 'media_id' // media_id is a fk in backgrounds
+  //   });
+  // };
   return Backgrounds;
 };

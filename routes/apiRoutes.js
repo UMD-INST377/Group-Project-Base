@@ -120,7 +120,7 @@ router
     console.log('exisitingmedia', exisitingmedia);
     const currentId = (await media.length) + 1;
     try {
-      //console.log('POST request on /media'
+      //console.log('POST request on /media')
       const newMedia = await db.all_media.create({
         media_id: currentId,
         media_title: req.body.media_title,
@@ -252,8 +252,7 @@ router
 /// //// Backgrounds Endpoints////////
 /// /////////////////////////////////
 
-router
-  .route('/backgrounds')
+router.route('/backgrounds')
   .get(async (req, res) => {
     try {
       console.log('GET request on /backgrounds');
@@ -309,8 +308,7 @@ router
 /// //// Genres Endpoints////////
 /// /////////////////////////////////
 
-router
-  .route('/genres')
+router.route('/genres')
   .get(async (req, res) => {
     try {
       console.log('GET request on /genres');
@@ -364,8 +362,7 @@ router
 /// //// Roles Endpoints////////
 /// /////////////////////////////////
 
-router
-  .route('/roles')
+router.route('/roles')
   .get(async (req, res) => {
     try {
       console.log('GET request on /roles');
@@ -550,7 +547,21 @@ router.route('/creatorRoleLinks').get(async (req, res) => {
   }
 });
 
-
+router.route('/movieRequest').post(async (req, res) => {
+  try {
+    const data = req.body;
+    console.log(data); // this is where you find out what's in the form
+    const { genre, creator, title } = req.body;
+    /// .... now you have all of genre, creator, and title....
+    // you can make your queries here, after checking that your form is clear.
+    res.json({
+    // things you get back from your many queries to your DB
+    })
+    } catch (err) {
+    console.error(err);
+    res.json({error: err})
+  }
+});
 
 
 export default router;

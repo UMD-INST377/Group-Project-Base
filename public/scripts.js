@@ -63,7 +63,19 @@ async function windowActions() {
 
 window.onload = windowActions;
 
-async function windowActions() {
+async function getData(url, postData) {
+  // postData _must_ always be an object
+  const request = await fetch(url, {
+  headers: {
+  'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(postData)
+  })
+  const data = await request.json();
+  return data;
+  }
+
+async function addrecord() {
   console.log('window loaded');
 
   const form = document.querySelector("#suggestions");
@@ -73,36 +85,40 @@ async function windowActions() {
   const genre = document.querySelector("#genre");
   const year = document.querySelector("#year");
   const link = document.querySelector("#link");
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     console.info('submitted form', event.target);
     // const formdata = {}
-    const post1 = await fetch('/api/media', {
-      method = 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ media_title: media.value})
-    });
-    const post2 = await fetch('/api/creators', {
-      method = 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ creator_first_name, creator_last_name: creator.value})
-    });
-    const post3 = await fetch('/api/genre', {
-      method = 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ genre: genre.value})
-    });
-  });
+    const post1 = await getData('/api/media', {media_title: media.value});
+    // const post1 = await fetch('/api/media', {
+    //   method = 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ media_title: media.value})
+    // });
+    const post2 = await getData('/api/creators', {creator_first_name, creator_last_name: creator.value});
+    // const post2 = await fetch('/api/creators', {
+    //   method = 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ creator_first_name, creator_last_name: creator.value})
+    // });
+    const post3 = await getData('/api/genre', {genre: genre.value});
+  //   const post3 = await fetch('/api/genre', {
+  //     method = 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({ genre: genre.value})
+  //   });
+  // });
 
 }
 
-window.onload = windowActions;
+window.onload = addrecord;
 
 
 // POST
@@ -139,3 +155,18 @@ window.onload = windowActions;
 // toggle.addEventListener("click", function (){
 //     menu.classList.toggle("active");
 // })
+
+  
+// async function addrecord() {
+//   const form = document.querySelector('#movieForm');
+//   const genre = document.querySelector('#genreFormField');
+//   const creator = document.querySelector('#creatorFormField');
+//   const title = document.querySelector('#titleFormField');
+//   form.addEventListener('submit', async (event) => {
+//   const request = await getData('/api/movieRequest', {genre: genre.value, title: title.value, creator: creator.value})
+//   const data = await request.json()
+//   // now do something with your awaited submit data - pass this to other functions
+//   })
+//   }
+//   window.onload = addrecord;
+

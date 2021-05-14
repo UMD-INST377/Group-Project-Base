@@ -5,7 +5,7 @@ async function searchDatabase(aapidatabase) {
   const targetList = document.querySelector('.target-list');
   const replyMessage = document.querySelector('.reply-message');
 
-  const request = await fetch('/api');
+  const request = await fetch(aapidatabase);
   const data = await request.json();
 
   // from lab 5, after submit fires
@@ -14,25 +14,26 @@ async function searchDatabase(aapidatabase) {
 
     event.preventDefault();
     console.log('submit fired', search.value);
-
-    // search results, if any
-    if (data < 1) {
-      replyMessage.classList.add('box'); /* ? */
-      replyMessage.innerText = 'No matches found';
-    } else {
-      console.table(data);
-    }
   });
 }
 
 // await functions when the window loads
 async function windowActions() {
   console.log('window loaded');
-  await databaseConnection();
-  await searchDatabase(database);
+  await searchDatabase('/api/media');
 }
 
 window.onload = windowActions;
+
+    // search results, if any
+    // if (data < 1) {
+    //   replyMessage.classList.add('box'); /* ? */
+    //   replyMessage.innerText = 'No matches found';
+    // } else {
+    //   console.table(data);
+    // }
+
+    
 
 // const title = document.querySelector('#title');
 // const creator = document.querySelector('#creator');

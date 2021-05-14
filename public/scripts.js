@@ -88,8 +88,97 @@ async function addrecord() {
   // });
 
 }
-
 window.onload = addrecord;
+
+
+async function creatorsdisplay() { // asynchronous function; async gives access to await keyword
+  console.log('window loaded');
+  const endpoint = '/api/creators';
+  const request = await fetch(endpoint);
+  const creator = await request.json(); // creators is request formatted to json; empty array
+  const search = document.querySelector('#search'); // document is html page
+  const suggestions = document.querySelector('.suggestions');
+
+  function findMatches(WordToMatch, creator) {
+    return creator.filter((person) => {
+      const regex = new RegExp(WordToMatch, 'gi'); // gi means all regular expression matches
+      return person.creator_first_name.match(regex) || person.creator_last_name.match(regex) || person.creator_country.match(regex);
+    });
+  }
+
+  function displayMatches(event) {
+    const matchArray = findMatches(event.target.value, creator);
+    const html = matchArray.map((person) => { // creating a box. inside box, set each item
+      console.log(person);
+      return `
+                <li> 
+                    <div class="labels">
+                        <span class="first name">${person.creator_first_name}</span> 
+                        <br>
+                        <span class="last name">${person.creator_last_name}</span>
+                        <br>
+                        <span class="current state">${person.creator_current_state}</span>
+                        <br>
+                        <span class="home state">${person.creator_home_state}</span>
+                        <br>
+                        <span class="country">${person.creator_country}</span>
+                    </div>
+                </li> 
+            `; // span is an inline container
+    }).join('');
+    suggestions.innerHTML = html; // returns inner HTML text content
+  }
+
+  search.addEventListener('keyup', async (event) => { // keyup is stop typing
+    displayMatches(event);
+  });
+
+  search.addEventListener('change', displayMatches); // checking for changes on input field
+}
+window.onload = creatorsdisplay;
+
+
+async function genredisplay() { // asynchronous function; async gives access to await keyword
+  console.log('window loaded');
+  const endpoint = '/api/genre';
+  const request = await fetch(endpoint);
+  const genre = await request.json(); // genre is request formatted to json; empty array
+  const search = document.querySelector('#search'); 
+  const suggestions = document.querySelector('.suggestions');
+
+  function findMatches(WordToMatch, genre) {
+    return genre.filter((type) => {
+      const regex = new RegExp(WordToMatch, 'gi'); 
+      return type.genre.match(regex);
+    });
+  }
+
+  function displayMatches(event) {
+    const matchArray = findMatches(event.target.value, genre);
+    const html = matchArray.map((type) => { 
+      console.log(type);
+      return `
+                <li> 
+                    <div class="labels">
+                        <span class="genre">${type.genre}</span> 
+                    </div>
+                </li> 
+            `; 
+    }).join('');
+    suggestions.innerHTML = html; 
+  }
+
+  search.addEventListener('keyup', async (event) => { 
+  });
+
+  search.addEventListener('change', displayMatches); 
+}
+window.onload = genredisplay;
+
+
+
+
+
 
 
 // POST

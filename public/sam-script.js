@@ -1,38 +1,27 @@
-// need clicking enter to search
-
 // this function will search the database using input form
-async function searchDatabase(aapidatabase) {
-  const form = document.querySelector('#search-form');
+async function searchDatabase(aapiendpdatabase) {
   const search = document.querySelector('#search');
-  //   const targetList = document.querySelector('.target-list');
-  //   const replyMessage = document.querySelector('.reply-message');
+  //   const targetList = document.querySelector('.target-list'); //targetList displays results
+ 
+  // this function will pull creator data from the creators api
+  function getCreators(endpoint) {
+    console.log('creators data requested');
+    const request = fetch(`http://floating-waters-77392.herokuapp.com${endpoint}`);
+    const results = request.json(); // creators is request formatted to json; empty array
+    console.log(results);
+    const creatorData = results.data; // save all creators results in creatorData on page load
+  }
 
-  // from lab 5, after submit fires
-  form.addEventListener('submit', async (event) => {
-    targetList.innerText = ''; /* ? */
-
-    event.preventDefault();
-    console.log('submit fired', search.value);
-  });
+  // this function will find matches from user search input in the creators api
+  function findMatches(wordMatch, results) {
+    return results.filter((person) => {
+      const regex = new RegExp(wordMatch, 'gi'); // gi means all regular expression matches
+      return person.creator_first_name.match(regex) || person.creator_last_name.match(regex) || person.creator_country.match(regex);
+    });
+  }
 }
 
-// with sam
-async function getCreators(endpoint) {
-  console.log('creators data requested');
-  const request = await fetch(`http://floating-waters-77392.herokuapp.com${endpoint}`);
-  const results = await request.json(); // creators is request formatted to json; empty array
-  console.log(results);
-  const creatorData = await results.data; // restaurants is request formatted to json; empty array
-}
-
-// done
-async function findMatches(wordMatch, results) {
-  return results.filter((person) => {
-    const regex = new RegExp(wordMatch, 'gi'); // gi means all regular expression matches
-    return person.creator_first_name.match(regex) || person.creator_last_name.match(regex) || person.creator_country.match(regex);
-  });
-}
-
+// this function will display all matches between user search input and 
 async function displayMatches(event) {
   const matchArray = findMatches(event.target.value, creator);
   const html = matchArray.map((person) => { // creating a box. inside box, set each item
@@ -56,24 +45,22 @@ async function displayMatches(event) {
   suggestions.innerHTML = html; // returns inner HTML text content
 }
 
-function doSearch() {
-  input.addEventListener('keyup', (event) => {
-    event.preventDefault();
-  });
-}
-
 async function windowActions() {
   console.log('window loaded');
-  //   await searchDatabase('/api/creators');
-  await getCreators('/api/creators');
-  await findMatches;
-
-  const creators = await getCreators('/api/creators');
-  processDiningHalls(halls);
+  document.querySelector('#search').addEventListener('keyup', (event) => {
+    event.preventDefault();
+    searchDatabase(document.querySelector('#search').value);
+  });
+  const form = document.querySelector('#search-form');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault(); // hitting submit will prevent default going to another website
+  });
 }
 window.onload = windowActions;
 
 // windowActions(findMatches, displayMatches);
+
+// CODE FOR FINDING GENRES MATCHES
 
 //   async function genredisplay() { // asynchronous function; async gives access to await keyword
 //     console.log('window loaded');

@@ -1,7 +1,7 @@
 # Literature & Art Corner Database App
 
 ## Description
-When searching for meida of many different types, we felt as if there is a lack of representation for Asian American narratives and experiences. We wanted a place where we could share the different types and styles of Asian american works. Here users can explore the different media in an easy to use database. They can also leave recommendations, and go to the 1882 foundation website. 
+The Literature & Art Corner Database App compiles recommendations for books, audiobooks, poetry, films, documentaries, podcasts, music, and articles related to the Asian American experience. When searching for media of many different types, we noticed a lack of representation for Asian American narratives and experiences. So, we created a place to share them. Here, visitors can search for literature and media related to their interests, read featured reviews, and click on a link to visit the 1882 Foundation's website. In the future, they will be able to give their personal suggestions for the database.
 
 ## Link to Website
 [https://floating-waters-77392.herokuapp.com/index.html](https://floating-waters-77392.herokuapp.com/index.html)
@@ -56,9 +56,14 @@ When searching for meida of many different types, we felt as if there is a lack 
 - GET -Returns the data and displays it.
 - POST -Posts new theme information in the database.
 - PUT -Requests can be made for new theme details.
+
+Note: Although we built API routes for deleting and updating records, this functionality will not be available to the average user, so it is not in scripts.js. It is available for the 1882 Foundation to use if they would like to implement it in the future. 
+
 # Known Bugs and Future Development
+
 ## Bugs
 - Users are currently able to directly alter the database. The make a suggestion needs to have a security blanket where only Admins can enter or delete content. 
+
 ## Future Development
 - The “Make a Suggestion” page will be reworked so that user suggestions do not directly alter the database. Instead, they will be sent to a restricted webpage for 1882 Foundation admin to review. Admin will be able to enter/edit/delete database content through this page.
 - Redesign the database so that it does not rely on many to many relationships. 

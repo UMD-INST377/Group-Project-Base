@@ -4,8 +4,8 @@
 async function searchDatabase(aapidatabase) {
   const form = document.querySelector('#search-form');
   const search = document.querySelector('#search');
-  const targetList = document.querySelector('.target-list');
-  const replyMessage = document.querySelector('.reply-message');
+  //   const targetList = document.querySelector('.target-list');
+  //   const replyMessage = document.querySelector('.reply-message');
 
   // from lab 5, after submit fires
   form.addEventListener('submit', async (event) => {
@@ -13,30 +13,22 @@ async function searchDatabase(aapidatabase) {
 
     event.preventDefault();
     console.log('submit fired', search.value);
-
-    // error message if there are no matches
-    if (data < 1) {
-      replyMessage.classList.add('box'); /* ? */
-      replyMessage.innerText = 'No matches found';
-    } else {
-      console.table(data);
-    }
   });
 }
 
-// done
+// with sam
 async function getCreators(endpoint) {
-  console.log('data requested');
-  const request = await fetch(endpoint);
+  console.log('creators data requested');
+  const request = await fetch(`http://floating-waters-77392.herokuapp.com${endpoint}`);
   const results = await request.json(); // creators is request formatted to json; empty array
   console.log(results);
-  return results.data;
+  const creatorData = await results.data; // restaurants is request formatted to json; empty array
 }
 
 // done
-async function findMatches(WordToMatch, results) {
+async function findMatches(wordMatch, results) {
   return results.filter((person) => {
-    const regex = new RegExp(WordToMatch, 'gi'); // gi means all regular expression matches
+    const regex = new RegExp(wordMatch, 'gi'); // gi means all regular expression matches
     return person.creator_first_name.match(regex) || person.creator_last_name.match(regex) || person.creator_country.match(regex);
   });
 }
@@ -64,24 +56,22 @@ async function displayMatches(event) {
   suggestions.innerHTML = html; // returns inner HTML text content
 }
 
-function search() {
+function doSearch() {
   input.addEventListener('keyup', (event) => {
     event.preventDefault();
-    displayMatches();
   });
 }
 
 async function windowActions() {
   console.log('window loaded');
-  await searchDatabase(database);
+  //   await searchDatabase('/api/creators');
   await getCreators('/api/creators');
   await findMatches;
-  await displayMatches;
+
+  const creators = await getCreators('/api/creators');
+  processDiningHalls(halls);
 }
 window.onload = windowActions;
-
-
-
 
 // windowActions(findMatches, displayMatches);
 

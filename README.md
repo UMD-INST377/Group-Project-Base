@@ -12,6 +12,7 @@ When searching for meida of many different types, we felt as if there is a lack 
 - IPhone 8
 
 ## Links
+[a relative link](other_file.md)
 
 # Developer Manual
 ## How to install application and all dependencies

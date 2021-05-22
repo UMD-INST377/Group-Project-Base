@@ -1,0 +1,31 @@
+.bookContainer{
+    display: flex;
+    justify-content: space-around;
+}
+#bookMetaData{
+    margin:7px;
+    width:550px;
+    min-height: 450px;
+    background-color: rgb(98, 0, 255);
+}
+#bookPicture{
+    margin:7px;
+}
+img {
+    max-height: 500px;
+    max-width: 350px;
+}
+li {
+    color: white;
+    margin-left:5px;
+    margin-top: 3px;
+}
+#goodRating{
+    color:rgb(47, 255, 47);
+}
+#mediumRating{
+    color:rgb(247, 243, 7);
+}
+#badRating{
+    color:rgb(235, 1, 1);
+}

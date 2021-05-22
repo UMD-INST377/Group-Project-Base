@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Page</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Cinzel+Decorative:700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+  <link rel='stylesheet' type='text/css' href="style.css">
+
+</head>
+
+<body>
+  <h1>WeBooks</h1>
+  <div class="columns is-centered" id="mainContainer">
+    <div class="column is-one-third">
+      <form id="findBookForm">
+        <div class="field">
+          <label class="label">Find book by Id</label>
+
+
+          <div class="control">
+            <input class="input" id="bookId" type="text" placeholder="Enter book Id">
+          </div>
+        </div>
+
+
+          <div id="findByIdButton">
+            <button class="button is-normal">Find Book</button>
+          </div>
+
+      </form>
+      <div id="deleteInfoContainer"></div>
+      <div id="deleteCancelButtons"></div>
+    </div>
+  </div>
+
+  <footer class='footer'>
+    <div class="content has-text-centered">
+      Note: This page is for admin only. You will have to log in using your admin ID to have the access.
+      This is just for DEMO purposes.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+<div class="back">
+  <a href="/">Go Back</a>
+</div>
+
+</html>

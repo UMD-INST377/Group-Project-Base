@@ -17,16 +17,20 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
+    "connect-livereload": "^0.6.1",
     "express": "^4.17.1",
+    "livereload": "^0.9.1",
     "mysql2": "^2.2.5",
+    "node": "^15.14.0",
     "nodemon": "^2.0.7",
-    "sequelize": "^6.5.0",
+    "react-scripts": "^4.0.3",
+    "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.17",
-    "@babel/register": "^7.12.13",
-    "eslint": "^7.20.0",
+    "@babel/core": "^7.13.15",
+    "@babel/register": "^7.13.14",
+    "eslint": "^7.24.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-cypress": "^2.11.1",
     "eslint-plugin-import": "^2.22.1"

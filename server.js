@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import express from "express";
-import db from "./database/initializeDB.js";
+// import db from "./database/initializeDB.js";
 import apiRoutes from "./routes/apiRoutes.js";
 
 const app = express();
@@ -18,8 +18,8 @@ app.use('/api', apiRoutes);
 async function bootServer() {
   try { // make sure that the port is on before the db is const
     app.listen(PORT, async () => {
-      const mysql = await db.sequelizeDB;
-      await mysql.sync();
+      // const mysql = await db.sequelizeDB;
+      // await mysql.sync();
       console.log(`Listening on: http//localhost:${PORT}`);
     });
   } catch (err) {

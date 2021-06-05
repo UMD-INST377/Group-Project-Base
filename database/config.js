@@ -1,23 +1,44 @@
 export default {
   development: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'AAPI_Art_Corner_377',
-    host: '3.236.243.212',
-    dialect: 'mysql'
+    username: 'juobqogiismfiy',
+    password: '8e6a5c086f555fac438a05a304727a0c7a3f2ea6e2ee251a0823aa2948eb00af',
+    database: 'dcebve18m0ktvm',
+    host: 'ec2-54-167-152-185.compute-1.amazonaws.com',
+    dialect: 'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
   },
   test: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'AAPI_Art_Corner_377',
-    host: '3.236.243.212',
-    dialect: 'mysql'
+    username: 'juobqogiismfiy',
+    password: '8e6a5c086f555fac438a05a304727a0c7a3f2ea6e2ee251a0823aa2948eb00af',
+    database: 'dcebve18m0ktvm',
+    host: 'ec2-54-167-152-185.compute-1.amazonaws.com',
+    dialect: 'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
   },
   production: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'AAPI_Art_Corner_377',
-    host: '3.236.243.212',
-    dialect: 'mysql'
+    username: 'juobqogiismfiy',
+    password: '8e6a5c086f555fac438a05a304727a0c7a3f2ea6e2ee251a0823aa2948eb00af',
+    database: 'dcebve18m0ktvm',
+    host: 'ec2-54-167-152-185.compute-1.amazonaws.com',
+    dialect: 'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
   }
 };

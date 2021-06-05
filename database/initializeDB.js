@@ -20,25 +20,26 @@ if (config.use_env_variable) {
   );
 }
 
-const db = Object.keys(modelList).reduce((collection, modelName) => {
-  if (!collection[modelName]) {
-    // eslint-disable-next-line no-param-reassign
-    collection[modelName] = modelList[modelName](sequelizeDB, DataTypes);
-  }
-  return collection;
-}, {});
+// const db = Object.keys(modelList).reduce((collection, modelName) => {
+//   if (!collection[modelName]) {
+//     // eslint-disable-next-line no-param-reassign
+//     collection[modelName] = modelList[modelName](sequelizeDB, DataTypes);
+//   }
+//   return collection;
+// }, {});
 
 // const models = sequelizeDB.models;
 // Object.keys(models).map((modelKey) => models[modelKey])
 //   .filter((model) => model.associate !== undefined)
 //   .forEach((model) => model.associate(models));
 
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+// Object.keys(db).forEach((modelName) => {
+//   if (db[modelName].associate) {
+//     db[modelName].associate(db);
+//   }
+// });
 
+const db = {};
 db.sequelizeDB = sequelizeDB;
 db.Sequelize = Sequelize;
 

@@ -1,26 +1,26 @@
 export default (database, DataTypes) => {
-  const DiningHall = database.define(
-    'Dining_Hall',
+  const Applicants = database.define(
+    'applicants',
     {
-      hall_id: {
+      applicant_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      hall_name: {
+      last_name: {
         type: DataTypes.STRING
       },
-      hall_address: {
+      first_name: {
         type: DataTypes.STRING
       },
-      hall_lat: {
-        type: DataTypes.DECIMAL
+      phone_number: {
+        type: DataTypes.STRING
       },
-      hall_long: {
-        type: DataTypes.DECIMAL
+      age: {
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return DiningHall;
+  return Applicants;
 };

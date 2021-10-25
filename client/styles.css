@@ -57,7 +57,6 @@ nav {
 .resultcontainer {
     display: flex;
     justify-self: center;
-    align-items: center;
     justify-content: center;
     margin-top: 5px;
     width: 100%;
@@ -65,10 +64,28 @@ nav {
 }
 .results {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-y: scroll;
+    overflow-x: hidden;
     background-color: #958a56;
     border-radius: 5px;
-    height: 850px;
+    height:calc(fit-content*2);
     width: 90%;
+}
+.results::-webkit-scrollbar {
+    display: none;
+}
+.poster {
+    cursor: pointer;
+    display: flexbox;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow: hidden;
+    height:fit-content;
+    width: fit-content;
+    background-color: black;
 }
 .nav-links a{
    color: white;
@@ -86,9 +103,11 @@ nav {
     background-color: white;
     margin: 5px;
 }
+
 .remainingsection {
    background-color: black;
    min-width: 100%;
+   background-image: ;
    min-height: 40%;
 }
 .searchbar {

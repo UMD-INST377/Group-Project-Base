@@ -27,7 +27,12 @@ nav {
     background-color: #22272c;
     font-family: 'Raleway', sans-serif;
 }
-
+.title {
+    font-size: 50pt;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
 .webtitle {
     color: white;
     font-weight: bold;

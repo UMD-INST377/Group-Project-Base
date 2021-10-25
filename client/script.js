@@ -6,7 +6,7 @@ const navSlide = () => {
 
   burger.addEventListener("click", () => {
     nav.classList.toggle("nav-active");
-    search.classList.toggle("hide");
+    if (search!= undefined) search.classList.toggle("hide");
     navLinks.forEach((link, index) => {
       if (link.style.animation) {
         link.style.animation = "";

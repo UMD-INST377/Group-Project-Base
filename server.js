@@ -7,6 +7,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 const staticFolder = 'client';
+const staticFolderEndpoint = 'public';
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

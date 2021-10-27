@@ -1,7 +1,7 @@
 {
   "name": "inst377-group-project-base",
   "version": "1.0.0",
-  "description": "",
+  "description": "You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.",
   "main": "server.js",
   "type": "module",
   "engines": {
@@ -30,5 +30,13 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-cypress": "^2.11.1",
     "eslint-plugin-import": "^2.22.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nelson-Menro/Group10-Final-INST377SP2021.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nelson-Menro/Group10-Final-INST377SP2021/issues"
+  },
+  "homepage": "https://github.com/Nelson-Menro/Group10-Final-INST377SP2021#readme"
 }

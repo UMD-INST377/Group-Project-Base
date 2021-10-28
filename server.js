@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-app.use('/musicServices1', musicSeriveces1Route):
+app.use('/musicServices1', musicServices1Route);
 
 async function bootServer() {
   try {

@@ -27,6 +27,20 @@ router.route("/music")
             console.log(e);
         }
     });
+    
+/// /////////////////////////////////
+/// ////Chi-Hao Sheng ///////////////
+/// /////////////////////////////////
+
+router.route("/music")
+    .post(async(req, res) => {
+        try {
+            console.log("touched /music with POST");
+            res.json("touched /music with POST");
+        } catch (e) {
+            console.log(e);
+        }
+    });
 
 /// /////////////////////////////////
 /// ////William Giovanini ///////////

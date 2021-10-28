@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';

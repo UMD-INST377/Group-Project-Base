@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
@@ -14,40 +16,20 @@ router.get('/', (req, res) => {
 /// ////Jomer Paulino ///////////////
 /// /////////////////////////////////
 
-router.route('/foodServices')
-    .get((req, res) => {
+router.route("/basketball")
+    .get(async(req, res) => {
         try {
-            console.log('You touched the foodServices route!');
-            res.json({ data: data });
-        } catch (err) {
-            console.log(error);
-            res.json({ error: 'Something went wrong on the server' });
-        }
-    })
-    .put((req, res) => {
-        try {} catch (err) {
-            console.log(error);
-            res.json({ error: 'Something went wrong on the server' });
-        }
-    })
-    .post((req, res) => {
-        try {} catch (err) {
-            console.log(error);
-            res.json({ error: 'Something went wrong on the server' });
-        }
-    })
-    .delete((req, res) => {
-        try {} catch (err) {
-            console.log(error);
-            res.json({ error: 'Something went wrong on the server' });
+            const reply = 'Did you know Nikola Jokić is the 2020 NBA MVP?';
+            console.log("touched /basketball with GET");
+            res.json(reply);
+        } catch (e) {
+            console.log(e);
         }
     });
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
-
-
 
 router.get('/dining', async(req, res) => {
     try {

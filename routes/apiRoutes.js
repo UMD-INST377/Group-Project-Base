@@ -36,7 +36,19 @@ router.get('/albumName/:album_id', async (req, res) => {
   }
 });
 
-
+router.delete('/songName/:song_id', async (req, res) => {
+  try {
+    await db.songName.destroy({
+      where: {
+        songName_id: req.params.songName_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

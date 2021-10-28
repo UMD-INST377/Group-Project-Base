@@ -34,6 +34,16 @@ router.post("/basketball", async (req, res) => {
   }
 });
 
+router.put("/basketball", async (req, res) => {
+  try {
+    // Will use await when making actual calls to the DB
+    console.log("touched /basketball with PUT");
+    res.json("Successfully Updated");
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

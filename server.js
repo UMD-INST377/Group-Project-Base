@@ -19,7 +19,7 @@ async function bootServer() {
     // const mysql = await db.sequelizeDB;
     // await mysql.sync();
     app.listen(PORT, () => {
-      console.log(`Listening on: http//localhost:${PORT}`);
+      console.log(`Listening on: http://localhost:${PORT}`);
     });
   } catch (err) {
     console.error(err);

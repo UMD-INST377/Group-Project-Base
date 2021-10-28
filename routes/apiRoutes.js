@@ -35,8 +35,9 @@ router.route("/music")
 router.route("/music")
     .post(async(req, res) => {
         try {
+            const reply = "touched /music with POST";
             console.log("touched /music with POST");
-            res.json("touched /music with POST");
+            res.json(reply);
         } catch (e) {
             console.log(e);
         }
@@ -49,8 +50,8 @@ router.route("/music")
 router.route('/music')
     .put(async(req, res) => {
         try {
-            const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record"
-            console.log("touched /music with PUT")
+            const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record";
+            console.log("touched /music with PUT");
             res.json(reply);
         } catch (err) {
             console.log(err);

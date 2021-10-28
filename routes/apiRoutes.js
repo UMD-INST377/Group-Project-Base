@@ -12,35 +12,35 @@ router.get('/', (req, res) => {
 
 //// Music Sample Endpoitns ////
 
-router.get('/albumName', async (req, res) => {
+router.get('/album_name', async (req, res) => {
   try {
-    const albumName = await db.Albums.findAll();
-    res.json(albumName);
+    const album_name = await db.Albums.findAll();
+    res.json(album_name);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/albumName/:album_id', async (req, res) => {
+router.get('/album_name/:album_id', async (req, res) => {
   try {
-    const albumName = await db.Albums.findAll({
+    const album_name = await db.Albums.findAll({
       where: {
         album_id: req.params.album_id
       }
     });
-    res.json(albumName);
+    res.json(album_name);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.delete('/songName/:song_id', async (req, res) => {
+router.delete('/song_name/:song_id', async (req, res) => {
   try {
-    await db.songName.destroy({
+    await db.song_name.destroy({
       where: {
-        songName_id: req.params.songName_id
+        song_name_id: req.params.song_name_id
       }
     });
     res.send('Successfully Deleted');

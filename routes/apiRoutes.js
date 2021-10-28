@@ -10,6 +10,33 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+//// Music Sample Endpoitns ////
+
+router.get('/albumName', async (req, res) => {
+  try {
+    const albumName = await db.Albums.findAll();
+    res.json(albumName);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/albumName/:album_id', async (req, res) => {
+  try {
+    const albumName = await db.Albums.findAll({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.json(albumName);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

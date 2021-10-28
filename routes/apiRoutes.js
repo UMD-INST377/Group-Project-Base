@@ -41,6 +41,7 @@ router.put("/basketball", async (req, res) => {
     res.json("Successfully Updated");
   } catch (e) {
     console.log(e);
+    res.json("Error")
   }
 });
 

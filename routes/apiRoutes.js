@@ -72,11 +72,38 @@ router.route("/vinyl")
 /// ////William Giovanini ///////////
 /// /////////////////////////////////
 
-router.route('/music')
+router.route('/lp')
+    .get(async(req, res) => {
+        try {
+            const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm LP (Limited Press) record";
+            console.log("touched /lp with GET");
+            res.json(reply);
+        } catch (err) {
+            console.log(err);
+        }
+    })
+    .post(async(req, res) => {
+        try {
+            const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record";
+            console.log("touched /lp with POST");
+            res.json(reply);
+        } catch (err) {
+            console.log(err);
+        }
+    })
     .put(async(req, res) => {
         try {
             const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record";
-            console.log("touched /music with PUT");
+            console.log("touched /lp with PUT");
+            res.json(reply);
+        } catch (err) {
+            console.log(err);
+        }
+    })
+    .delete(async(req, res) => {
+        try {
+            const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record";
+            console.log("touched /lp with DELETE");
             res.json(reply);
         } catch (err) {
             console.log(err);

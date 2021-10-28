@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable linebreak-style */
 /* eslint-disable indent */
 /* eslint-disable no-console */
@@ -16,11 +17,11 @@ router.get('/', (req, res) => {
 /// ////Jomer Paulino ///////////////
 /// /////////////////////////////////
 
-router.route("/basketball")
+router.route("/music")
     .get(async(req, res) => {
         try {
-            const reply = 'Did you know Nikola Jokić is the 2020 NBA MVP?';
-            console.log("touched /basketball with GET");
+            const reply = 'The top-selling vinyl album in the United States was Harry Styles "Fine line" with 232 thousand Vinyl albums sold.';
+            console.log("touched /musicwith GET");
             res.json(reply);
         } catch (e) {
             console.log(e);

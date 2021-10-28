@@ -1,28 +1,48 @@
+/**
+ * INST 377 TEAM 25
+ * Authors: Alec Mattu, Hyeong Choi, John Iglesias, Michael Knapp
+ * Date: 2021-10-31
+ */
+
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
 
+// Instantiate router component
 const router = express.Router();
 
+/*
+ * Root directory
+ */
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Touched the root API endpoint');
 });
 
-/// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
-/// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+/*
+ * Get all schools from the database
+ */
+router.get('/schools', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    // Debug
+    console.log("touched /schools with GET");
+
+    // Send data
+    res.json({status: "success", data: []});
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    res.json({status: "failure", data: null, message: "unknown error"});
   }
 });
+
+/*********************
+*
+* EACH MEMBER DOES ONE ENDPOINT BELOW
+*
+*********************/
 
 router.get('/dining/:hall_id', async (req, res) => {
   try {

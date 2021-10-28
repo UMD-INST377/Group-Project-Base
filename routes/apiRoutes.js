@@ -58,6 +58,22 @@ router.route('/music')
         }
     });
 
+
+/// /////////////////////////////////
+/// ///////////Phat Vu///////////////
+/// /////////////////////////////////
+
+router.route('/music')
+    .delete(async(req, res) => {
+        try {
+            const reply = "touched /music with DELETE";
+            console.log("touched /music with DELETE");
+            res.json(reply);
+        } catch (e) {
+            console.log(e);
+        }
+    });
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

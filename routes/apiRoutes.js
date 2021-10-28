@@ -32,16 +32,41 @@ router.route("/music")
 /// ////Chi-Hao Sheng ///////////////
 /// /////////////////////////////////
 
-router.route("/music")
-    .post(async(req, res) => {
+router.route("/vinyl")
+    .get(async(req, res) => {
         try {
-            const reply = "touched /music with POST";
-            console.log("touched /music with POST");
-            res.json(reply);
+            console.log("touched /music with GET");
+            res.json({message: "touched /music with GET"});
         } catch (e) {
             console.log(e);
+            res.json({error: "Something went wrong"});
+        }
+    })
+    .post((req, res) => {
+        try {
+            console.log("touched /music with POST");
+            res.json({message: "touched /music with GET"});
+        } catch (e) {
+            console.log({error: "Something went wrong"});
+        }
+    })
+    .put((req, res) => {
+        try {
+            console.log("touched /music with PUT");
+            res.json({message: "touched /music with PUT"});
+        } catch (e) {
+            console.log({error: "Something went wrong"});
+        }
+    })
+    .delete((req, res) => {
+        try {
+            console.log("touched /music with DELETE");
+            res.json({message: "touched /music with DELETE"});
+        } catch (e) {
+            console.log({error: "Something went wrong"});
         }
     });
+
 
 /// /////////////////////////////////
 /// ////William Giovanini ///////////

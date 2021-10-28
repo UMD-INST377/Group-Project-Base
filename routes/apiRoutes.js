@@ -24,6 +24,17 @@ router.get("/basketball", async (req, res) => {
   }
 });
 
+router.post("/basketball", async (req, res) => {
+  //Will use await when making actual calls to the db
+  try {
+    console.log("touched /basketball with POST");
+    res.json({ Method: "POST", Endpoint: "/basketball" });
+  } catch (e) {
+    console.error(e);
+  }
+});
+
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

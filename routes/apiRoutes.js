@@ -29,6 +29,21 @@ router.route("/music")
     });
 
 /// /////////////////////////////////
+/// ////William Giovanini ///////////
+/// /////////////////////////////////
+
+router.route('/music')
+    .put(async(req, res) => {
+        try {
+            const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record"
+            console.log("touched /music with PUT")
+            res.json(reply);
+        } catch (err) {
+            console.log(err);
+        }
+    });
+
+/// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
 

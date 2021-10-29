@@ -144,10 +144,11 @@ router.route('/county-info')
             console.log(error);
             res.json({ error: 'Something went wrong' });
         }
-    })
-    /// /////////////////////////////////
-    /// ////Unemployment Endpoint////////
-    /// /////////////////////////////////
+    });
+
+/// /////////////////////////////////
+/// ////Unemployment Endpoint////////
+/// /////////////////////////////////
 router.route('/unemployment')
     .get(async(req, res) => {
         try {

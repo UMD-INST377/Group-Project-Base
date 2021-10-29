@@ -11,6 +11,46 @@ router.get('/', (req, res) => {
   res.send('You have reached the root API endpoint!');
 });
 
+//// Music Sample Endpoitns ////
+
+router.get('/album_name', async (req, res) => {
+  try {
+    const album_name = await db.Albums.findAll();
+    res.json(album_name);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/album_name/:album_id', async (req, res) => {
+  try {
+    const album_name = await db.Albums.findAll({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.json(album_name);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/song_name/:song_id', async (req, res) => {
+  try {
+    await db.song_name.destroy({
+      where: {
+        song_name_id: req.params.song_name_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

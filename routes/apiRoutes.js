@@ -51,5 +51,44 @@ router.route('/covid-stats')
     }
   });
 
-
+/// /////////////////////////////////
+/// ////Vaccine Stats Endpoint////////
+/// /////////////////////////////////
+router.route('/vacc-stats')
+  .get(async (req, res) => {
+    try {
+      res.json({message: "Touched /vacc-stats with GET"});
+      console.log("Touched /vacc-stats with GET");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      res.json({message: "Touched /vacc-stats with PUT"});
+      console.log("Touched /vacc-stats with PUT");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      res.json({message: "Touched /vacc-stats with POST"});
+      console.log("Touched /vacc-stats with POST");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      res.json({message: "Touched /vacc-stats with DELETE"});
+      console.log("Touched /vacc-stats with DELETE");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  });
 export default router;

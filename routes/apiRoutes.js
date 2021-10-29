@@ -91,4 +91,41 @@ router.route('/vacc-stats')
       res.json({error: 'Something went wrong'});
     }
   });
+  router.route('/vacc-sites')
+  .get(async (req, res) => {
+    try {
+      res.json({message: "Touched /vacc-sites with GET"});
+      console.log("Touched /vacc-sites with GET");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      res.json({message: "Touched /vacc-sites with PUT"});
+      console.log("Touched /vacc-sites with PUT");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      res.json({message: "Touched /vacc-sites with POST"});
+      console.log("Touched /vacc-sites with POST");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      res.json({message: "Touched /vacc-sites with DELETE"});
+      console.log("Touched /vacc-sites with DELETE");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  });
 export default router;

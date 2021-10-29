@@ -107,7 +107,6 @@ router.delete('/song_name/:song_id', async (req, res) => {
   }
 });
 
-export default router;
 
 
 
@@ -389,3 +388,4 @@ router.get('/custom', async (req, res) => {
   }
 });
 
+export default router;

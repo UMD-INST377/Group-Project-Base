@@ -128,4 +128,18 @@ router.route('/vacc-stats')
       res.json({error: 'Something went wrong'});
     }
   });
+
+/// ////County Info Endpoint////////
+/// /////////////////////////////////
+router.route('/county-info')
+.get(async (req, res) => {
+  try {
+    res.json({message: "Touched /county-info with GET"});
+    console.log("Touched /county-info with GET");
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something went wrong'});
+  }
+})
+
 export default router;

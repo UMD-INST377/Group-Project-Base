@@ -75,6 +75,23 @@ router.post('/songs', async (req, res) => {
   }
 });
 
+router.put("/ratings", async (req, res) => {
+  try {
+    await db.ratings.update(
+      {
+        ratings: req.body.ratings,
+      },
+      {
+        where: {
+          rating_id: req.body.rating_id,
+        },
+      }
+    );
+    res.send("Rating Chart was Successfully Updated");
+  } catch (err) {
+    console.error(err);
+    res.error("Server error");
+
 router.delete('/song_name/:song_id', async (req, res) => {
   try {
     await db.song_name.destroy({

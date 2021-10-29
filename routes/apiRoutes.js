@@ -136,46 +136,46 @@ router.route('/vacc-sites')
 /// ////County Info Endpoint////////
 /// /////////////////////////////////
 router.route('/county-info')
-.get(async (req, res) => {
-  try {
-    res.json({message: "Touched /county-info with GET"});
-    console.log("Touched /county-info with GET");
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Something went wrong'});
-  }
-})
+  .get(async (req, res) => {
+    try {
+      res.json({message: "Touched /county-info with GET"});
+      console.log("Touched /county-info with GET");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
 
-//put request
-.put((req, res) => {
-  try {
-    res.json({message: "Touched /county-info with PUT"});
-    console.log("Touched /county-info with PUT");
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Something went wrong'});
-  }
-})
+  //put request
+  .put((req, res) => {
+    try {
+      res.json({message: "Touched /county-info with PUT"});
+      console.log("Touched /county-info with PUT");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
 
-//post request
-.post((req, res) => {
-  try {
-    res.json({message: "Touched /county-info with POST"});
-    console.log("Touched /county-info with POST");
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Something went wrong'});
-  }
-})
+  //post request
+  .post((req, res) => {
+    try {
+      res.json({message: "Touched /county-info with POST"});
+      console.log("Touched /county-info with POST");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
 
-//delete request
-.delete((req, res) => {
-  try {
-    res.json({message: "Touched /county-info with DELETE"});
-    console.log("Touched /county-info with DELETE");
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Something went wrong'});
-  }
-});
-export default router;
+  //delete request
+  .delete((req, res) => {
+    try {
+      res.json({message: "Touched /county-info with DELETE"});
+      console.log("Touched /county-info with DELETE");
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  });
+  export default router;

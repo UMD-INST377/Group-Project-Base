@@ -142,4 +142,15 @@ router.route('/county-info')
   }
 })
 
+//put request
+.put((req, res) => {
+  try {
+    res.json({message: "Touched /county-info with PUT"});
+    console.log("Touched /county-info with PUT");
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something went wrong'});
+  }
+})
+
 export default router;

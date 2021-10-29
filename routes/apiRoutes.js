@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
-
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
+
+/* start router component */ 
 const router = express.Router();
 
 /* Root */ 
@@ -11,7 +12,27 @@ router.get('/', (req, res) => {
   res.send('You have reached the root API endpoint!');
 });
 
-//// Music Sample Endpoitns ////
+
+// Trying to get all songs from DB // 
+
+router.get('/songs', async (req, res) => {
+  try {
+    /* Help with debugging */ 
+    console.log("Now you've touched /songs with GET");
+
+    /* Sending some data */ 
+    res.json({status: "Yay, successful.", data: []});
+  } catch (e) {
+    /* Debugging */
+    console.error(e);
+
+    /* Sending some more data */
+    res.json({status: "Sorry, this failed.", data: null, message: "Something went wrong here. Error."});
+  }
+});
+
+// Music Database Endpoints below --
+
 
 router.get('/album_name', async (req, res) => {
   try {
@@ -37,6 +58,23 @@ router.get('/album_name/:album_id', async (req, res) => {
   }
 });
 
+router.post('/songs', async (req, res) => {
+  const halls = await db.songs.findAll();
+  const currentId = (await halls.length) + 1;
+  try {
+    const newSong = await db.songs.create({
+      song_id: currentId,
+      song_name: req.body.song_name,
+      duration: req.body.song_duration,
+      genre_id: req.body.genre_id,
+    });
+    res.json(newSong);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 router.delete('/song_name/:song_id', async (req, res) => {
   try {
     await db.song_name.destroy({
@@ -51,9 +89,31 @@ router.delete('/song_name/:song_id', async (req, res) => {
   }
 });
 
+export default router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
+
 router.get('/dining', async (req, res) => {
   try {
     const halls = await db.DiningHall.findAll();
@@ -311,4 +371,3 @@ router.get('/custom', async (req, res) => {
   }
 });
 
-export default router;

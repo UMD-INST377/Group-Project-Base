@@ -17,7 +17,6 @@ router.route('/price')
         // console.log(json)
         // res.json({data:data});
         res.json({message:"touched /price with GET"});
-        
 }
     catch(err){
         console.log(error);

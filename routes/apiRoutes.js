@@ -91,7 +91,11 @@ router.route('/vacc-stats')
       res.json({error: 'Something went wrong'});
     }
   });
-  router.route('/vacc-sites')
+
+/// /////////////////////////////////
+/// ////Vaccine Sites Endpoint////////
+/// /////////////////////////////////  
+router.route('/vacc-sites')
   .get(async (req, res) => {
     try {
       res.json({message: "Touched /vacc-sites with GET"});

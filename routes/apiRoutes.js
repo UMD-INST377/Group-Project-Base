@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-router.route('/   ')
+router.route('/artists')
   .get((req,res) => {
-    console.log('you touched the demo route');
+    console.log('you touched /artists with GET');
     res.json({data: data});
   })

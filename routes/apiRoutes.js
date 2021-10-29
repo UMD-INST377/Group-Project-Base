@@ -45,6 +45,16 @@ router.put("/basketball", async (req, res) => {
   }
 });
 
+router.delete("/basketball", async (req, res) => {
+  try {
+    // Will use await when making actual calls to the DB
+    console.log("touched /basketball with DELETE");
+    res.json("Successfully Deleted");
+  } catch (e) {
+    console.error(e);
+  }
+});
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

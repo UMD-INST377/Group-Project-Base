@@ -92,6 +92,7 @@ router.put("/ratings", async (req, res) => {
     console.error(err);
     res.error("Server error");
 
+    
 router.delete('/song_name/:song_id', async (req, res) => {
   try {
     await db.song_name.destroy({

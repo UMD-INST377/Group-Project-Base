@@ -5,6 +5,77 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
+/* eruption_aoa endpoint */
+router.route('/eruption_aoa')
+  .get((req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched eruption_aoa with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      res.json({message: 'touched eruption_aoa with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post((req, res) => {
+    try {
+      res.json({message: 'touched eruption_aoa with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      res.json({message: 'touched eruption_aoa with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
+
+/* eruption_category endpoint */
+router.route('/eruption_category')
+  .get((req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched eruption_category with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      res.json({message: 'touched eruption_category with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post((req, res) => {
+    try {
+      res.json({message: 'touched eruption_category with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      res.json({message: 'touched eruption_category with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
 
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');

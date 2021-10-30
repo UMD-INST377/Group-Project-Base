@@ -4,6 +4,9 @@ import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 import kamranRoutes from './routes/kamranRoutes.js';
 import faithRoutes from './routes/faithRoutes.js';
+import joshuaRoutes from './routes/joshuaRoutes.js';
+import nickRoutes from './routes/nickroutes.js';
+import thirdPartyRoutes from './routes/thirdPartyRoutes.js';
 
 const app = express();
 
@@ -17,6 +20,9 @@ app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 app.use('/api', kamranRoutes);
 app.use('/api', faithRoutes);
+app.use('/api', joshuaRoutes);
+app.use('/api', nickRoutes);
+app.use('/api', thirdPartyRoutes);
 
 async function bootServer() {
   try {

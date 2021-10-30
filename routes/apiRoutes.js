@@ -6,6 +6,49 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+router.route('/eruption_aoa')
+  .get((async req, res) => {
+    try{
+      const url = ""
+      const data = await fetch(url)
+      const json = await data.json();
+      console.log(json)
+      console.log('you touched the route!');
+      res.json({message: "touched volcano_aoa endpoint"})
+    } catch (err){
+      console.log(error);
+      res.json({error: error});
+    }
+  })
+  .put((req, res)=>{
+    try{
+      res.json({message: "put volcano_aoa endpoint"})
+    }
+    catch (err){
+      console.log(error);
+      res.json({error: "something went wrong!"});
+    }
+  })
+
+  .post((req, res)=>{
+    try{
+      res.json({message: "post volcano_aoa endpoint"})
+    }
+    catch (err){
+      console.log(error);
+      res.json({error: "something went wrong!"});
+    }
+  })
+  .delete((req, res)=>{
+    try{
+      res.json({message: "delete volcano_aoa endpoint"})
+    }
+    catch (err){
+      console.log(error);
+      res.json({error: "something went wrong!"});
+    }
+  });
+
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });

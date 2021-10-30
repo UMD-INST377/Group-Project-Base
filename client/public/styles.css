@@ -13,7 +13,12 @@ body {
 }
 
 h1 {
+    font-weight: bold;
+    font-size: 40pt;
     color: cornsilk;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 ul {
     z-index: 10;
@@ -53,6 +58,25 @@ nav {
 .nav-links a:hover{
     list-style-type: none;
     color: lightblue;
+}
+
+.columns {
+    margin-top: 2vh;
+    padding-left: 10vh;
+    padding-right: 10vh;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between
+}
+.column {
+    font-size: 30pt;
+    min-width: 22%;
+    color: white;
+    background-color: darkslategray;
+    border-radius: 15px;
+    cursor: pointer;
 }
 .resultcontainer {
     display: flex;

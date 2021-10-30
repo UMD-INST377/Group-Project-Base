@@ -24,6 +24,7 @@
             <li><a href="favorites.html">Favorites</a></li>
             <li><a href="addfilm.html">Add Film</a></li>
             <li><a href="about.html">About</a></li>
+            
         </ul>
         <div class="burger">
             <div class="line1"></div>
@@ -33,13 +34,17 @@
     </nav>
     <div class="title">Search</div>
     <div class="searchbar">
-        
+        <div style ="color:red" class="tempsearch">
+            THIS IS A TEMP WIKIPEDIA SEARCH
+            <input class ="titlesearch"><button class="titlesubmit">Search</button>
+        </div>
         <input class="search"><button class="submit">Search</button>
     </div>
     <div class= "resultcontainer">
         <div class="results"></div>
     </div>
     <script src="script.js"></script>
+    <script type ="module" src = "wikipedia.js"></script>
 </body>
 
 </html>

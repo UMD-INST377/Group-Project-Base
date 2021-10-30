@@ -1,0 +1,25 @@
+.header {
+    background-color: lightcoral;
+    border-radius: 20px;
+}
+
+.title-head {
+    padding-top: 25px;
+    padding-left: 20px;
+    font-size: 45px;
+}
+
+.navigation {
+    display: flex;
+    margin-top: 130px;
+    margin-left: 600px;
+    margin-right: 100px;
+    padding-bottom: 10px;
+    justify-content: space-between;
+
+}
+
+a {
+    font-size: 19px;
+    color: black;
+}

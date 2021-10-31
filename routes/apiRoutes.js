@@ -66,6 +66,17 @@ try{
 
   })
 
+  .post((req,res)=>{
+
+    try{
+      console.log('touched/schools with POST');
+      res.json({message: 'post schools endpoint'});
+    }catch(err){
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'})
+    }
+  })
+
   
 	   
 /// /////////////////////////////////

@@ -10,6 +10,8 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+
+
 /* Jim's lab 9 routes */
 router.route('/census')
   .get((req, res) => {
@@ -49,6 +51,45 @@ router.route('/census')
     }
   });
 
+  /* Kaveh's lab 9 routes */
+
+  router.route('/schools')
+  .get((req,res)=>{
+try{
+
+  console.log('touched /schools with GET');
+  res.json({data: []});
+} catch(err){
+  console.error(err);
+  res.json({error: 'Smething went wrong on the server.'});
+}
+
+  })
+
+  .post((req,res)=>{
+
+    try{
+      console.log('touched/schools with POST');
+      res.json({message: 'post schools endpoint'});
+    }catch(err){
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'})
+    }
+  })
+
+
+  .delete((req,res)=>{
+try{
+
+  console.log('touched /schools with DELETE');
+  res.json({message: 'delete census endpoint'});
+} catch(err){
+  console.error(err);
+  res.json({error: 'Something went wrong on the server.'});
+}
+
+  })
+  
 	   
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

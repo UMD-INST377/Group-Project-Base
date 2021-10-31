@@ -6,9 +6,18 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+  try {
+    console.log('default route reached');
+    res.send('You\'ve touched the default route!');
+  } catch (err) {
+    console.log(error);
+  }
+});
+
 router.get('/get', (req, res) => {
   try {
-    console.log('stuff get route reached');
+    console.log('get route reached');
     res.send('You\'ve touched the get route!');
   } catch (err) {
     console.log(error);

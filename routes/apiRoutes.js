@@ -61,7 +61,7 @@ try{
   res.json({data: []});
 } catch(err){
   console.error(err);
-  res.json({error: 'Somethign went wrong on the server.'});
+  res.json({error: 'Smething went wrong on the server.'});
 }
 
   })
@@ -77,6 +77,18 @@ try{
     }
   })
 
+
+  .delete((req,res)=>{
+try{
+
+  console.log('touched /schools with DELETE');
+  res.json({message: 'delete census endpoint'});
+} catch(err){
+  console.error(err);
+  res.json({error: 'Something went wrong on the server.'});
+}
+
+  })
   
 	   
 /// /////////////////////////////////

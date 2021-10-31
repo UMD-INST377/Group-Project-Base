@@ -17,10 +17,10 @@ router.route('/songs')
   .post((req, res) => {
     try {
       console.log('You touched the songs route!');
-      res.send('Songs list updated!');
+      res.json({message: 'Songs list updated!'});
     } catch (err) {
-      console.log(err);
-      res.send('Server error!');
+      console.log(error);
+      res.json({error: 'Server error!'});
     }
   });
 

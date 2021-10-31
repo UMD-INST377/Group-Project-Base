@@ -11,7 +11,7 @@
 
 .navigation {
     display: flex;
-    margin-top: 130px;
+    margin-top: 100px;
     margin-left: 600px;
     margin-right: 100px;
     padding-bottom: 10px;
@@ -22,4 +22,20 @@
 a {
     font-size: 19px;
     color: black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.dropdown {
+    position: relative;
 }

@@ -113,6 +113,77 @@ router.route('/eruption_info')
   }
 });
 
+  /* evidence endpoint */
+router.route('/evidence')
+  .get((req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched evidence with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      res.json({message: 'touched evidence with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post((req, res) => {
+    try {
+      res.json({message: 'touched evidence with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      res.json({message: 'touched evidence with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
+
+/* references_table endpoint */
+router.route('/references_table')
+  .get((req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched references_table with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      res.json({message: 'touched references_table with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post((req, res) => {
+    try {
+      res.json({message: 'touched references_table with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      res.json({message: 'touched references_table with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
 
 
 router.get('/', (req, res) => {

@@ -6,6 +6,40 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+/* Magnitude endpoint */
+router.route('/magnitude')
+  .get(async (req, res) => {
+    try {
+      res.json({ message: 'touched /magnitude with GET' });
+    } catch (err) {
+      console.error(err);
+    }
+  })
+
+  .put(async (req, res) => {
+    try {
+      res.json({ message: 'touched /magnitude with PUT' });
+    } catch (err) {
+      console.error(err);
+    }
+  })
+
+  .post(async (req, res) => {
+    try {
+      res.json({ message: 'touched /magnitude with POST' });
+    } catch (err) {
+      console.error(err);
+    }
+  })
+
+  .delete(async (req, res) => {
+    try {
+      res.json({ message: 'touched /magnitude with DELETE' });
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });

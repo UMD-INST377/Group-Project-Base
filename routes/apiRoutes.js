@@ -261,6 +261,42 @@ router.route('/vei')
   }
 });
 
+/* volcanos endpoint */
+router.route('/volcanos')
+  .get(async(req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched volcanos with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
@@ -274,6 +310,7 @@ router.get('/dining', async (req, res) => {
     res.error('Server error');
   }
 });
+
 
 router.get('/dining/:hall_id', async (req, res) => {
   try {

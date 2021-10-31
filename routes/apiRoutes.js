@@ -23,7 +23,7 @@ router.delete('/', (req, res) => {
   
 });
 
-router.route('/stuff')
+/* router.route('/stuff')
   .get((req, res) => {
     try {
       console.log('stuff default route reached')
@@ -35,6 +35,7 @@ router.route('/stuff')
   })
   .put((req,res) => {
     try {
+      res.send('hello from put')
       console.log('put from stuff')
     }
     catch (error) {
@@ -43,6 +44,7 @@ router.route('/stuff')
   })
   .delete((req, res) => {
     try {
+      res.send('hello from delete')
       console.log('delete from stuff')
     }
     catch (error) {
@@ -52,10 +54,11 @@ router.route('/stuff')
   .post((req, res) => {
     try {
       console.log('post from stuff')
+      res.send('hello from post')
     }
     catch (error) {
       console.log(error)
     }
   })
-
+ */
 export default router;

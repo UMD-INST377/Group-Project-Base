@@ -1,4 +1,5 @@
 /* Group24 */
+// Jacob Walter Lab 9//
 
 import express from "express";
 import sequelize from "sequelize";

@@ -37,8 +37,13 @@ router.post('/', (req, res) => {
 
 });
 
-router.delete('/', (req, res) => {
-
+router.delete('/delete', (req, res) => {
+  try {
+    res.send('delete route');
+    console.log('delete from stuff');
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 /*

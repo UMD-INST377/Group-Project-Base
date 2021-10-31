@@ -50,7 +50,7 @@ router.route('/songs')
   .get((req, res) => {
     try {
       console.log('touched /songs with GET')
-      res.json({ song: 'Smells Like Teen Spirit'});
+      res.json({ prices: 'Smells Like Teen Spirit'});
     } catch (err) {
       console.log(error);
       res.json({ error: 'Oops Error' });
@@ -87,7 +87,7 @@ router.route('/prices')
   .get((req, res) => {
     try {
       console.log('touched /prices with GET')
-      res.json({ song: 'Smells Like Teen Spirit'});
+      res.json({ prices: '10'});
     } catch (err) {
       console.log(error);
       res.json({ error: 'Oops Error' });

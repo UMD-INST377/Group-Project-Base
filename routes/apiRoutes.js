@@ -77,6 +77,44 @@ router.route('/eruption_category')
     }
   });
 
+/* eruption_info endpoint */
+router.route('/eruption_info')
+.get((req, res) => {
+  try {
+    console.log('you touched the route!');
+    res.json({message: 'touched eruption_info with GET'});
+  } catch (err) {
+    res.json({error: 'something went wrong!'});
+  }
+})
+.put((req, res) => {
+  try {
+    res.json({message: 'touched eruption_info with PUT'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'something went wrong!'});
+  }
+})
+
+.post((req, res) => {
+  try {
+    res.json({message: 'touched eruption_info with POST'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'something went wrong!'});
+  }
+})
+.delete((req, res) => {
+  try {
+    res.json({message: 'touched eruption_info with DELETE'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'something went wrong!'});
+  }
+});
+
+
+
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });

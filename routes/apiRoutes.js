@@ -7,7 +7,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 /* eruption_aoa endpoint */
 router.route('/eruption_aoa')
-  .get((req, res) => {
+  .get(async(req, res) => {
     try {
       console.log('you touched the route!');
       res.json({message: 'touched eruption_aoa with GET'});
@@ -15,7 +15,7 @@ router.route('/eruption_aoa')
       res.json({error: 'something went wrong!'});
     }
   })
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
       res.json({message: 'touched eruption_aoa with PUT'});
     } catch (err) {
@@ -24,7 +24,7 @@ router.route('/eruption_aoa')
     }
   })
 
-  .post((req, res) => {
+  .post(async(req, res) => {
     try {
       res.json({message: 'touched eruption_aoa with POST'});
     } catch (err) {
@@ -32,7 +32,7 @@ router.route('/eruption_aoa')
       res.json({error: 'something went wrong!'});
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
       res.json({message: 'touched eruption_aoa with DELETE'});
     } catch (err) {
@@ -43,7 +43,7 @@ router.route('/eruption_aoa')
 
 /* eruption_category endpoint */
 router.route('/eruption_category')
-  .get((req, res) => {
+  .get(async(req, res) => {
     try {
       console.log('you touched the route!');
       res.json({message: 'touched eruption_category with GET'});
@@ -51,7 +51,7 @@ router.route('/eruption_category')
       res.json({error: 'something went wrong!'});
     }
   })
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
       res.json({message: 'touched eruption_category with PUT'});
     } catch (err) {
@@ -60,7 +60,7 @@ router.route('/eruption_category')
     }
   })
 
-  .post((req, res) => {
+  .post(async(req, res) => {
     try {
       res.json({message: 'touched eruption_category with POST'});
     } catch (err) {
@@ -68,7 +68,7 @@ router.route('/eruption_category')
       res.json({error: 'something went wrong!'});
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
       res.json({message: 'touched eruption_category with DELETE'});
     } catch (err) {
@@ -79,43 +79,43 @@ router.route('/eruption_category')
 
 /* eruption_info endpoint */
 router.route('/eruption_info')
-.get((req, res) => {
-  try {
-    console.log('you touched the route!');
-    res.json({message: 'touched eruption_info with GET'});
-  } catch (err) {
-    res.json({error: 'something went wrong!'});
-  }
-})
-.put((req, res) => {
-  try {
-    res.json({message: 'touched eruption_info with PUT'});
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'something went wrong!'});
-  }
-})
+  .get(async(req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched eruption_info with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      res.json({message: 'touched eruption_info with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
 
-.post((req, res) => {
-  try {
-    res.json({message: 'touched eruption_info with POST'});
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'something went wrong!'});
-  }
-})
-.delete((req, res) => {
-  try {
-    res.json({message: 'touched eruption_info with DELETE'});
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'something went wrong!'});
-  }
-});
+  .post(async(req, res) => {
+    try {
+      res.json({message: 'touched eruption_info with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      res.json({message: 'touched eruption_info with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
 
-  /* evidence endpoint */
+/* evidence endpoint */
 router.route('/evidence')
-  .get((req, res) => {
+  .get(async(req, res) => {
     try {
       console.log('you touched the route!');
       res.json({message: 'touched evidence with GET'});
@@ -123,7 +123,7 @@ router.route('/evidence')
       res.json({error: 'something went wrong!'});
     }
   })
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
       res.json({message: 'touched evidence with PUT'});
     } catch (err) {
@@ -132,7 +132,7 @@ router.route('/evidence')
     }
   })
 
-  .post((req, res) => {
+  .post(async(req, res) => {
     try {
       res.json({message: 'touched evidence with POST'});
     } catch (err) {
@@ -140,7 +140,7 @@ router.route('/evidence')
       res.json({error: 'something went wrong!'});
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
       res.json({message: 'touched evidence with DELETE'});
     } catch (err) {
@@ -151,7 +151,7 @@ router.route('/evidence')
 
 /* references_table endpoint */
 router.route('/references_table')
-  .get((req, res) => {
+  .get(async(req, res) => {
     try {
       console.log('you touched the route!');
       res.json({message: 'touched references_table with GET'});
@@ -159,7 +159,7 @@ router.route('/references_table')
       res.json({error: 'something went wrong!'});
     }
   })
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
       res.json({message: 'touched references_table with PUT'});
     } catch (err) {
@@ -168,7 +168,7 @@ router.route('/references_table')
     }
   })
 
-  .post((req, res) => {
+  .post(async(req, res) => {
     try {
       res.json({message: 'touched references_table with POST'});
     } catch (err) {
@@ -176,7 +176,7 @@ router.route('/references_table')
       res.json({error: 'something went wrong!'});
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
       res.json({message: 'touched references_table with DELETE'});
     } catch (err) {
@@ -184,7 +184,6 @@ router.route('/references_table')
       res.json({error: 'something went wrong!'});
     }
   });
-
 
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');

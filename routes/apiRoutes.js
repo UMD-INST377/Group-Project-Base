@@ -22,7 +22,7 @@ router.get("/basketball", async (req, res) => {
     res.json({ Method: "GET", Endpoint: "/basketball" });
   } catch (e) {
     console.log(e);
-    res.json({error: 'Something went wrong on the server'});
+    res.error('Something went wrong on the server');
   }
 });
 
@@ -34,7 +34,7 @@ router.post("/basketball", async (req, res) => {
     res.json({ Method: "POST", Endpoint: "/basketball" });
   } catch (e) {
     console.error(e);
-    res.json({error: 'Something went wrong on the server'});
+    res.error('Something went wrong on the server');
   }
 });
 
@@ -46,7 +46,7 @@ router.put("/basketball", async (req, res) => {
     res.json({ Method: "PUT", Endpoint: "/basketball" });
   } catch (e) {
     console.log(e);
-    res.json({error: 'Something went wrong on the server'});
+    res.error('Something went wrong on the server');
   }
 });
 
@@ -58,7 +58,7 @@ router.delete("/basketball", async (req, res) => {
     res.json({ Method: "DELETE", Endpoint: "/basketball" });
   } catch (e) {
     console.error(e);
-    res.json({error: 'Something went wrong on the server'});
+    res.error('Something went wrong on the server');
   }
 });
 

@@ -11,6 +11,20 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
+/// ////Lucas Ng Sample Endpoint/////
+/// /////////////////////////////////
+router.route('/songs')
+  .get((req, res) => {
+    try {
+      console.log('You touched the songs route!');
+      res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: error});
+    }
+  });
+
+/// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
 router.get('/dining', async (req, res) => {

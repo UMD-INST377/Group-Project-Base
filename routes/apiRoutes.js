@@ -78,6 +78,34 @@ router.get('/schools/:school_id', async (request, response) => {
   }
 });
 
+
+router.get('/schools/:rank_id', async (request, response) => {
+  try {
+    // Debug
+    console.log("touched /schools/:rank_id with GET");
+
+    // Send data
+    response.json({status: "success", data: []});
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    response.json({status: "failure", data: null, message: "unknown error"});
+  }
+});
+/**
+ * Get available information about a specific school
+ *
+ * NOTE:
+ *   (1) No create, update, or delete methods
+ *   are going to be supported for schools. As
+ *   it's a fixed Top 10 list.
+ *
+ * @author Hyeong C.
+ * @date 2021-10-31 18:50:00pm
+ */
+
 /*********************
 *
 * Each member will set up a endpoint for our application

@@ -10,33 +10,37 @@ const router = express.Router();
 router.route('/magnitude')
   .get(async (req, res) => {
     try {
-      res.json({ message: 'touched /magnitude with GET' });
+      console.log('touched /magnitude with GET');
+      res.json({ message: 'GET endpoint' });
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   })
 
   .put(async (req, res) => {
     try {
-      res.json({ message: 'touched /magnitude with PUT' });
+      console.log('touched /magnitude with PUT');
+      res.json({ message: 'PUT endpoint' });
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   })
 
   .post(async (req, res) => {
     try {
-      res.json({ message: 'touched /magnitude with POST' });
+      console.log('touched /magnitude with POST');
+      res.json({ message: 'POST endpoint' });
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   })
 
   .delete(async (req, res) => {
     try {
-      res.json({ message: 'touched /magnitude with DELETE' });
+      console.log('touched /magnitude with DELETE');
+      res.json({ message: 'DELETE endpoint' });
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   });
 

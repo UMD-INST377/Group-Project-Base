@@ -20,11 +20,10 @@ router.put('/put', (req, res) => {
   res.send('hello from put');
   console.log('something cool happens here later');
   try {
-    res.send('hello from put')
-    console.log('put from stuff')
-  }
-  catch (error) {
-    console.log(error)
+    res.send('hello from put');
+    console.log('put from stuff');
+  } catch (error) {
+    console.log(error);
   }
 });
 

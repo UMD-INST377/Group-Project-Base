@@ -1,4 +1,5 @@
 /* Group24 */
+
 import express from "express";
 import sequelize from "sequelize";
 
@@ -8,18 +9,20 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   console.log("Touched / with get")
-  res.send("Success0");
+  res.json("Success0");
 });
 
+// route GET
 router.get("/presidents", async (req, res) => {
   try {
+    // message
     console.log("Touched /presidents with get");
     res.json("READ1");
   } catch (err) {
     console.error(err);
   }
 });
-
+// route get id
 router.get("/presidents/:president_id", async (req, res, next) => {
   try {
     // const hall = await db.presidents.findAll({
@@ -28,6 +31,7 @@ router.get("/presidents/:president_id", async (req, res, next) => {
     //   }
 
     // });
+    // message
     console.log("Touched /presidents/:president_id with get");
 
     res.json("READ2");
@@ -36,6 +40,7 @@ router.get("/presidents/:president_id", async (req, res, next) => {
   }
 });
 
+// route post
 router.post("/presidents", async (req, res) => {
   // const pres = await db.presidents.findAll();
   // const currentId = (await pres.length) + 1;
@@ -54,6 +59,7 @@ router.post("/presidents", async (req, res) => {
   }
 });
 
+// route delete
 router.delete("/presidents/:president_id", async (req, res) => {
   try {
     // await db.presidents.destroy({
@@ -68,6 +74,7 @@ router.delete("/presidents/:president_id", async (req, res) => {
   }
 });
 
+// route put
 router.put("/presidents", async (req, res) => {
   try {
     // await db.presidents.update(

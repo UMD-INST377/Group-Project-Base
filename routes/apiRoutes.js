@@ -1,4 +1,5 @@
 /* Group24 */
+// Name: Ali Shafiq
 
 import express from "express";
 import sequelize from "sequelize";

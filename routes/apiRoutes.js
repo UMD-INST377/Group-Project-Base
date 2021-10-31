@@ -7,8 +7,48 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the Group 10s API!');
 });
+
+/*Tyler D/animals table endpoint*/
+router.route('/animals')
+  .get(async(req, res) => {
+    try {
+      console.log("touched /animals with GET");
+      res.json({message:"/animals GET method"});
+    } catch (err) {
+      console.log(error);
+      res.json({error: "Something went wrong, sorry"});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      console.log("touched /animals with PUT");
+      res.json({message:"/animals PUT method"});
+    } catch (err) {
+      console.log(error);
+      res.json({error: "Something went wrong, sorry"});
+    }
+  })
+  .post(async(req, res) => {
+    try {
+      console.log("touched /animals with POST");
+      res.json({message:"/animals POST method"});
+    } catch (err) {
+      console.log(error);
+      res.json({error: "Something went wrong, sorry"});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      console.log("touched /animals with DELETE");
+      res.json({message:"/animals DELETE method"});
+    } catch (err) {
+      console.log(error);
+      res.json({error: "Something went wrong, sorry"});
+    }
+  });
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

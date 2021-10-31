@@ -1,4 +1,5 @@
 /* Group24 */
+/* Lab 9 Betzalel Moskowitz*/
 
 import express from "express";
 import sequelize from "sequelize";

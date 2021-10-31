@@ -7,7 +7,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the Group 10s API!');
+  res.send('Welcome to the Group 16s API!');
 });
 
 /*Tyler D/animals table endpoint*/

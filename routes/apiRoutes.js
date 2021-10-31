@@ -11,8 +11,13 @@ router.get('/', (req, res) => {
 });
 
 router.put('/put', (req, res) => {
-  res.send('hello from put')
-  console.log('something cool happens here later')
+  try {
+    res.send('hello from put')
+    console.log('put from stuff')
+  }
+  catch (error) {
+    console.log(error)
+  }
 });
 
 router.post('/', (req, res) => {
@@ -23,7 +28,9 @@ router.delete('/', (req, res) => {
   
 });
 
-/* router.route('/stuff')
+/*
+  Testing earlier for postman ignore wink
+  router.route('/stuff')
   .get((req, res) => {
     try {
       console.log('stuff default route reached')

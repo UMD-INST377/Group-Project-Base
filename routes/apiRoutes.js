@@ -58,7 +58,7 @@ router.delete("/basketball", async (req, res) => {
     res.json({ Method: "DELETE", Endpoint: "/basketball" });
   } catch (e) {
     console.error(e);
-    res.json({error: 'Something went wrong on the server'})
+    res.json({error: 'Something went wrong on the server'});
   }
 });
 

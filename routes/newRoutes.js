@@ -82,4 +82,41 @@ router.route('/songs')
     }
   });
 
+// Minghao's routes to the prices endpoint which would map to the "prices" table of our SQL DB
+router.route('/prices')
+  .get((req, res) => {
+    try {
+      console.log('touched /prices with GET')
+      res.json({ song: 'Smells Like Teen Spirit'});
+    } catch (err) {
+      console.log(error);
+      res.json({ error: 'Oops Error' });
+    }
+  })
+
+  .put((req, res) => {
+    try {
+      res.json({ message: 'touched /prices with PUT'})
+    } catch (err) {
+      console.log(error);
+      res.json({ error: 'Oops Error' });
+    }
+  })
+  .post((req, res) => {
+    try {
+      res.json({ message: 'touched /prices with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({ error: 'Oops Error' });
+    }
+  })
+  .delete((req, res) => {
+    try {
+      res.json({ message: 'touched /prices with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({ error: 'Oops Error' });
+    }
+  });
+
 export default router;

@@ -14,13 +14,13 @@ router.get('/', (req, res) => {
 /// ////Lucas Ng Sample Endpoint/////
 /// /////////////////////////////////
 router.route('/songs')
-  .get((req, res) => {
+  .post((req, res) => {
     try {
       console.log('You touched the songs route!');
-      res.json({data: data});
+      res.send('Songs list updated!');
     } catch (err) {
-      console.log(error);
-      res.json({error: error});
+      console.log(err);
+      res.send('Server error!');
     }
   });
 

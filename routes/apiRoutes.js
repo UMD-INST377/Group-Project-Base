@@ -189,6 +189,42 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+/* volcanos_has_references_table endpoint */
+router.route('/volcanos_has_references_table')
+  .get(async(req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched volcanos_has_references_table with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos_has_references_table with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos_has_references_table with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos_has_references_table with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

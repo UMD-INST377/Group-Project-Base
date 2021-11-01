@@ -104,3 +104,36 @@
   flex: initial;
   width: 300px;
 }
+
+.menu-container {
+  color: black;
+  background-color: white;  
+  display: flex;
+  justify-content: center;
+}
+
+
+.menu {
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.links {
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+
+.Home{
+  color: black;
+  margin-left: 20px;
+}
+
+
+.Music_Logo{
+  width: 100px;
+  height: 100px;
+}

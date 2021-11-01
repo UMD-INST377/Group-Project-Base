@@ -73,8 +73,6 @@ function createDetail() {
     });
 
     heading[tabIndex].style.display = 'block';
-
-    console.log(all_content);
   }
 }
 

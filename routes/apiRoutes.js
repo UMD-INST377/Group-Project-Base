@@ -18,7 +18,6 @@ router.get("/basketball", async (req, res) => {
   // Will use await when making actual calls to the db
   try {
     console.log("touched /basketball with GET");
-    res.json("Successfully Requested");
     res.json({ Method: "GET", Endpoint: "/basketball" });
   } catch (e) {
     console.log(e);
@@ -30,7 +29,6 @@ router.post("/basketball", async (req, res) => {
   //Will use await when making actual calls to the db
   try {
     console.log("touched /basketball with POST");
-    res.json("Successfully Submitted");
     res.json({ Method: "POST", Endpoint: "/basketball" });
   } catch (e) {
     console.error(e);
@@ -42,7 +40,6 @@ router.put("/basketball", async (req, res) => {
   try {
     // Will use await when making actual calls to the DB
     console.log("touched /basketball with PUT");
-    res.json("Successfully Updated");
     res.json({ Method: "PUT", Endpoint: "/basketball" });
   } catch (e) {
     console.log(e);
@@ -54,7 +51,6 @@ router.delete("/basketball", async (req, res) => {
   try {
     // Will use await when making actual calls to the DB
     console.log("touched /basketball with DELETE");
-    res.json("Successfully Deleted");
     res.json({ Method: "DELETE", Endpoint: "/basketball" });
   } catch (e) {
     console.error(e);

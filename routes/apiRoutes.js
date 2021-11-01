@@ -7,12 +7,43 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the Housing Database API!');
 });
 
-/// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
-/// /////////////////////////////////
+router.route('/zipcode')
+  .get(async (req, res) => {
+    try {
+      const url = 'https://geodata.md.gov/imap/rest/services/Demographics/MD_CensusData/FeatureServer/1/query?outFields=*&where=1%3D1'
+      const data = await fetch(url);
+      const json = await data.json();
+      console.log(json);
+
+      res.json({data: data});
+    } catch (err) {
+      console.error(err);
+      res.error(error: error);
+    }
+  });
+
+/* Dining Hall Demos
+
+router.get('/dining/:hall_id', async (req, res) => {
+  try {
+    const hall = await db.DiningHall.findAll({
+      where: {
+        hall_id: req.params.hall_id
+      }
+    });
+
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+
 router.get('/dining', async (req, res) => {
   try {
     const halls = await db.DiningHall.findAll();
@@ -271,3 +302,4 @@ router.get('/custom', async (req, res) => {
 });
 
 export default router;
+*/

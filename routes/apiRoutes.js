@@ -10,6 +10,47 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+/// //////////////////////////////////
+/// ///////Tyler Farmer - Albums Endpoints////////
+/// /////////////////////////////////
+router.route('/albums')
+  .get(async (req, res) => {
+    try {
+      console.log('touched /albums route with GET');
+      res.json({data: 'GET albums endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('touched /albums route with PUT');
+      res.json({message: 'PUT albums endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('touched /albums route with POST');
+      res.json({message: 'POST albums endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('touched /albums route with DELETE');
+      res.json({message: 'DELETE albums endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  });
+
 /// /////////////////////////////////
 /// ////Lucas Ng Sample Endpoint/////
 /// /////////////////////////////////

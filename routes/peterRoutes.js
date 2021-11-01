@@ -16,7 +16,7 @@ router.route("/hierarchy")
     console.log("touched /hierarchy with GET");
     res.json({ data: data });
     res.json({ reply: "closed GET request" });
-  } catch (error) {
+  } catch (err) {
     console.error(error);
     res.error("Server error");
   }
@@ -27,7 +27,7 @@ router.route("/hierarchy")
     console.log("touched /hierarchy with PUT");
     res.json({ data: data });
     res.json({ reply: "closed PUT request" });
-  } catch (error) {
+  } catch (err) {
     console.error(error);
     res.error("Server error");
   }
@@ -38,7 +38,7 @@ router.route("/hierarchy")
     console.log("touched /hierarchy with POST");
     res.json({ data: data });
     res.json({ reply: "closed POST request" });
-  } catch (error) {
+  } catch (err) {
     console.error(error);
     res.error("Server error");
   }
@@ -49,7 +49,7 @@ router.route("/hierarchy")
     console.log("touched /hierarchy with DELETE");
     res.json({ data: data });
     res.json({ reply: "closed DELETE request" });
-  } catch (error) {
+  } catch (err) {
     console.error(error);
     res.error("Server error");
   }

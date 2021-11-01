@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////   Food Inspection   ////////
 /// /////////////////////////////////
 router.route('/foodServicePG')
   .get(async (req, res) => {
@@ -28,7 +28,7 @@ router.route('/foodServicePG')
     }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/food_inspection/:hall_id', async (req, res) => {
   try {
     const hall = await db.DiningHall.findAll({
       where: {

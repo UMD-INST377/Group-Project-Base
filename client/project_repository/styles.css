@@ -1,3 +1,4 @@
+
 body{
     background-color: #82D3ED;
 }
@@ -8,6 +9,7 @@ body{
     margin-right: auto;
     text-align: center;
     font-size: 50px;
+    border-radius: 10px;
 
 }
 .globalNavBar{
@@ -21,6 +23,7 @@ body{
     font-size: 20px;
     padding-left: 5px;
     padding-right: 5px;
+    border-radius: 5px;
 }
 a{
     text-decoration: none;
@@ -28,10 +31,24 @@ a{
 a:hover{
     background-color: rgb(210,210,210,.4);
 }
-.contact-us-box{
-    background-color: rgb(255,255,255,.4);
+.contact-us-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 5px;
+    padding-bottom: 5px;
     width: 700px;
     margin-left: auto;
     margin-right: auto;
+    background-color: rgb(255,255,255,.4);
     margin-top: 2.5%;
+}
+.contact-us-text{
+    text-align: center;
+}
+.umdimg{
+    margin-left: auto;
+    margin-right: auto;
+    height:300px;
+    width: 500px;
 }

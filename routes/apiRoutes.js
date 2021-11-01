@@ -100,40 +100,40 @@ router.route('/songs')
 /// /////////////////////////////////
 
 router.route('/playlists')
-  .get((req, res) => {
+  .get(async (req, res) => {
     try {
-      console.log('You touched the playlists route');
+      console.log('You touched the /playlists route');
       res.json({message: 'GET playlists endpoint'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error, try again!'});
     }
   })
-  .put((req, res) => {
+  .put(async (req, res) => {
     try {
-      console.log('You touched the playlists route');
+      console.log('You touched the /playlists route');
       res.json({message: 'PUT playlists endpoint'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error, try again!'});
     }
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     try {
-      console.log('You touched the playlists route');
+      console.log('You touched the /playlists route');
       res.json({message: 'POST playlists endpoint!'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error, try again!'});
     }
   })
-  .delete((req, res) => {
+  .delete(async (req, res) => {
     try {
-      console.log('You touched the playlists route');
-      res.json({message: 'DELETE playlists endpoint!'});
+      console.log('You touched the /playlists route');
+      await res.json({message: 'DELETE playlists endpoint!'});
     } catch (err) {
       console.log(error);
-      res.json({error: 'Server error, try again!'});
+      await res.json({error: 'Server error, try again!'});
     }
   });
 

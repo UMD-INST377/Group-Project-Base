@@ -91,17 +91,17 @@ try{
   })
 
   // Blen's lab 9 routes
-
+ 
   router.route('/ethnicities')
   .get((req, res) => {
     try {
       console.log('touched /ethnicities with GET');
       res.json({data: []}); 
-    } catch(err) {
+    } catch(err) {   
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
-  })
+  }) 
   .put((req, res) => {
     try {
       console.log('touched /ethnicities with PUT');

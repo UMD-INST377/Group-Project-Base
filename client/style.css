@@ -1,3 +1,80 @@
 /**
  * No styling to see here
  */
+
+.top-bar{
+    
+    display: flex;
+    height: 100px;
+}
+
+.top-left-bar{
+    flex-grow: 1;
+    background-color: blue;
+    color: white;
+}
+
+.top-right-bar{
+    flex-grow: 1;
+    display: flex;
+    background-color: lightblue;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-container{
+    display: flex;
+    background-color: gray;
+    height: 100vh; /*height takes up whole page*/
+    flex-grow: 1; /*width*/
+    align-items: center;
+    
+    
+
+}
+
+.preferences-container{
+    flex-grow: 1;
+    height: 30vh;
+    background-color: white;
+    border-radius: 25px;
+    margin:50px
+    
+}
+
+.suggestions-container{
+    flex-grow: 1;
+    height: 80vh;
+    background-color: lightblue;
+    border-radius: 25px;
+    margin:50px;
+    display: flex;
+    flex-direction: column;
+}
+
+#pref-header{
+    margin: 30px;
+}
+
+#sugg-header{
+    display: flex;
+    justify-content: center;
+}
+
+.results{
+    flex-grow: 1;
+}
+
+ul{/*remove bullets from ul elements*/
+    list-style-type: none;
+}
+
+.results li{
+    margin: 100px;
+    background-color: white;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+}

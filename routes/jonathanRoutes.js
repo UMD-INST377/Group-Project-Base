@@ -7,7 +7,7 @@ import db from "../database/initializeDB.js";
 const router = express.Router();
 
 /// /////////////////////////////////
-/// ////Animals Database -////////
+/// ////Animals Database - Biome - Jonathan Chen////////
 /// /////////////////////////////////
 router
   .route("/biome")

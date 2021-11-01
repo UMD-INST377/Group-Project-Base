@@ -12,10 +12,10 @@ body{
 }
 .globalNavBar{
     display: flex;
-    background-color: white;
+    background-color: rgb(240,240,240);
     justify-content: center;
     justify-content: space-between;
-    max-width: 750px;
+    max-width: 550px;
     margin-left: auto;
     margin-right: auto;
     font-size: 20px;

@@ -11,11 +11,6 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////NBA ENDPOINTS////////
-/// /////////////////////////////////
-
-
-/// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
 router.get('/dining', async (req, res) => {
@@ -285,6 +280,14 @@ router.get('/nba-players', async (req, res) => {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.post('/nba-players', async (req, res) => {
+  try {
+    res.json(newNBA);
   } catch (err) {
     console.error(err);
     res.error('Server error');

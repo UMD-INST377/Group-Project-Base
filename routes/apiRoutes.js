@@ -270,4 +270,21 @@ router.get('/custom', async (req, res) => {
   }
 });
 
+/// //////////////////////////////////
+/// ///////NBA Database////////
+/// /////////////////////////////////
+const nbaPlayerQuery = "SELECT * FROM AWARDS"
+router.get('/nba-players', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(nbaPlayerQuery, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
 export default router;

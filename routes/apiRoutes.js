@@ -7,47 +7,43 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  try {
-    console.log('default route reached');
-    res.send('You\'ve touched the default route!');
-  } catch (err) {
-    console.log(error);
-  }
+  res.send('default route');
 });
+router.route('/blob')
+  .get((req, res) => {
+    try {
+      console.log('The get default route is reached');
+      res.send('You have gotten the requested route from blob!');
+    } catch (err) {
+      console.log(error);
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('post from blob');
+      res.send('You have posted something from blob!');
+    } catch (error) {
+      console.log(error);
+    }
+  })
+  .delete((req,res)=> {
+    try {
+      console.log('delete from blob');
+      res.send('This has been deleted.');
+    } catch (error) {
+      console.log(error);
+    }
+  })
+  .put((req, res) => {
+    try {
+      res.send('This request was put in blob!');
+      console.log('put something inside blob');
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
-router.get('/get', (req, res) => {
-  try {
-    console.log('get route reached');
-    res.send('You\'ve touched the get route!');
-  } catch (err) {
-    console.log(error);
-  }
-});
-
-router.put('/put', (req, res) => {
-  try {
-    res.send('hello from put');
-    console.log('put from stuff');
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.post('/', (req, res) => {
-
-});
-
-router.delete('/delete', (req, res) => {
-  try {
-    res.send('delete route');
-    console.log('delete from stuff');
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-
-  //Testing earlier for postman ignore wink
+// Testing earlier for postman ignore wink
 router.route('/stuff')
   .get((req, res) => {
     try {

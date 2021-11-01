@@ -1,0 +1,31 @@
+nav {
+    background-color: gray;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.nav a {
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.footer {
+    background-color: gray;
+    text-align: center;
+    padding: 30px;
+    bottom: 0;
+    position: top;
+    width: 100%;
+}
+
+.playlist-button {
+    width: 300px;
+    height: 300px;
+    justify-content: space-around;
+}

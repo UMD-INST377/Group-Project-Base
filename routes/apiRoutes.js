@@ -13,15 +13,19 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
-  try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
+router.route('/foodServicePG')
+  .get(async (req, res) => {
+    try {
+      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const data = await fetch(url);
+      const json = await data.json();
+      console.log(json);
+
+      res.json(data: data);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
 });
 
 router.get('/dining/:hall_id', async (req, res) => {

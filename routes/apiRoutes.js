@@ -10,46 +10,83 @@ router.get('/', (req, res) => {
   res.send('Welcome to the Group 16s API!');
 });
 
-/*Tyler D/animals table endpoint*/
+/* Tyler D/animals table endpoint */
 router.route('/animals')
   .get(async(req, res) => {
     try {
-      console.log("touched /animals with GET");
-      res.json({message:"/animals GET method"});
+      console.log('touched /animals with GET');
+      res.json({message: '/animals GET method'});
     } catch (err) {
       console.log(error);
-      res.json({error: "Something went wrong, sorry"});
+      res.json({error: 'Something went wrong, sorry'});
     }
   })
   .put(async(req, res) => {
     try {
-      console.log("touched /animals with PUT");
-      res.json({message:"/animals PUT method"});
+      console.log('touched /animals with PUT');
+      res.json({message: '/animals PUT method'});
     } catch (err) {
       console.log(error);
-      res.json({error: "Something went wrong, sorry"});
+      res.json({error: 'Something went wrong, sorry'});
     }
   })
   .post(async(req, res) => {
     try {
-      console.log("touched /animals with POST");
-      res.json({message:"/animals POST method"});
+      console.log('touched /animals with POST');
+      res.json({message: '/animals POST method'});
     } catch (err) {
       console.log(error);
-      res.json({error: "Something went wrong, sorry"});
+      res.json({error: 'Something went wrong, sorry'});
     }
   })
   .delete(async(req, res) => {
     try {
-      console.log("touched /animals with DELETE");
-      res.json({message:"/animals DELETE method"});
+      console.log('touched /animals with DELETE');
+      res.json({message: '/animals DELETE method'});
     } catch (err) {
       console.log(error);
-      res.json({error: "Something went wrong, sorry"});
+      res.json({error: 'Something went wrong, sorry'});
     }
   });
 
-
+// Elijah F /extinction table endpoint*/
+router.route('/extinction')
+  .get(async(req, res) => {
+    try {
+      console.log('touched /extinction with GET');
+      res.json({message: '/extinction GET method'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong, sorry'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      console.log('touched /extinction with PUT');
+      res.json({message: '/extinction PUT method'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong, sorry'});
+    }
+  })
+  .post(async(req, res) => {
+    try {
+      console.log('touched /extinction with POST');
+      res.json({message: '/extinction POST method'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong, sorry'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      console.log('touched /extinction with DELETE');
+      res.json({message: '/extinction DELETE method'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong, sorry'});
+    }
+  });
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

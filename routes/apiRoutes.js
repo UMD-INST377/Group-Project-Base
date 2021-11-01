@@ -7,12 +7,56 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the default route!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Car Data Endpoints////////
 /// /////////////////////////////////
+
+// Jordan's API Routes to Car Endpoint
+router.route('/car')
+  .get(async(req, res) => {
+    try {
+      console.log('You touched the /car route with get');
+      // res.json({data: data});
+    }
+    catch (err) {
+      console.log(error);
+      res.json({error: error});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('You touched the /car route with put');
+      // res.json({data: data});
+    }
+    catch (err) {
+      console.log(EvalError);
+      res.json({error: error});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('You touched the /car route with post');
+      // res.json({data: data});
+    }
+    catch (err) {
+      console.log(error);
+      res.json({error: error});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('You touched the /car route with delete');
+      // res.json({data: data});
+    }
+    catch (err) { 
+      console.log(error);
+      res.json({error: error});
+    }
+  });
+
 router.get('/dining', async (req, res) => {
   try {
     const halls = await db.DiningHall.findAll();

@@ -136,6 +136,45 @@ router.route('/playlists')
       await res.json({error: 'Server error, try again!'});
     }
   });
+  
+  /////////////////////////////Wyatts Endpoints /Artists Endpoints////////////////////////////
+router.route('/artists')
+.get(async (req, res) => {
+  try {
+    console.log('GET on /artists route');
+    res.json({data: 'GET artists endpoint'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Server Error'});
+  }
+})
+.put((req, res) => {
+  try {
+    console.log('PUT on /artists route');
+    res.json({message: 'PUT artists endpoint'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Server Error'});
+  }
+})
+.post((req, res) => {
+  try {
+    console.log('POST on /artists route');
+    res.json({message: 'POST artists endpoint'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Server Error'});
+  }
+})
+.delete((req, res) => {
+  try {
+    console.log('DELETE on /artists route');
+    res.json({message: 'DELETE artists endpoint'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Server Error'});
+  }
+});
 
 router.get('/dining', async (req, res) => {
   try {

@@ -1,0 +1,25 @@
+/* MENU */
+
+.menu-container {
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    /* Blue */
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.menu {
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-page {
+    margin-left: 20px;
+}
+
+.links {
+    display: flex;
+    justify-content: flex-end;
+}

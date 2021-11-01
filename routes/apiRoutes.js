@@ -137,11 +137,41 @@ router.route('/lp')
 /// ///////////Phat Vu///////////////
 /// /////////////////////////////////
 
-router.route('/music')
+router.route('/genre')
     .delete(async(req, res) => {
         try {
-            const reply = "touched /music with DELETE";
-            console.log("touched /music with DELETE");
+            const reply = "touched /genre with DELETE";
+            console.log("touched /genre with DELETE");
+            res.json(reply);
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    .get(async(req, res) => {
+        try {
+            const reply = "touched /genre with GET";
+            console.log("touched /genre with GET");
+            res.json(reply);
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    .post(async(req, res) => {
+        try {
+            const reply = "touched /genre with POST";
+            console.log("touched /genre with POST");
+            res.json(reply);
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    .put(async(req, res) => {
+        try {
+            const reply = "touched /genre with PUT";
+            console.log("touched /genre with PUT");
             res.json(reply);
         } catch (e) {
             console.log(e);

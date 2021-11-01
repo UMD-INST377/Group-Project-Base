@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -13,6 +12,7 @@ const router = express.Router();
 // /////////////////////////////////
 router.route('/driverDemographics')
   .get((req, res) => {
+    res.send('Welcome to the driver demographics portal!')
     try {
       console.log('You touched the destination route!');
       res.json({data: data});

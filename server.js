@@ -15,7 +15,9 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-app.use('/driverDemographics', driverDemographics);
+app.use('/demo', driverDemographics);
+
+
 
 async function bootServer() {
   try {

@@ -294,6 +294,21 @@ router.post('/nba-players', async (req, res) => {
     res.error('Server error');
   }
 });
-
+router.delete((req,res) =>{
+  try {
+    res.json({message: 'delete NBA Database endpoint'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something wend wrong on the server'});
+  }
+});
+router.put((req,res) =>{
+  try {
+    res.json({message: 'delete NBA Database endpoint'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something wend wrong on the server'});
+  }
+});
 
 export default router;

@@ -46,9 +46,9 @@ router.delete('/delete', (req, res) => {
   }
 });
 
-/*
-  Testing earlier for postman ignore wink
-  router.route('/stuff')
+
+  //Testing earlier for postman ignore wink
+router.route('/stuff')
   .get((req, res) => {
     try {
       console.log('stuff default route reached');
@@ -57,44 +57,29 @@ router.delete('/delete', (req, res) => {
       console.log(error);
     }
   })
-  .put((req, res) => {
-    try {
-      console.log('put from stuff');
-    } catch (error) {
-      console.log(error);
-      res.send('hello from put')
-      console.log('put from stuff')
-    }
-    catch (error) {
-      console.log(error)
-    }
-  })
-  .delete((req, res) => {
-    try {
-      console.log('delete from stuff');
-    } catch (error) {
-      console.log(error);
-      res.send('hello from delete')
-      console.log('delete from stuff')
-    }
-    catch (error) {
-      console.log(error)
-    }
-  })
   .post((req, res) => {
     try {
       console.log('post from stuff');
+      res.send('you have posted something cool')
     } catch (error) {
       console.log(error);
     }
-  });
-
-      console.log('post from stuff')
-      res.send('hello from post')
-    }
-    catch (error) {
-      console.log(error)
+  })
+  .delete((req,res)=> {
+    try {
+      console.log('delete from stuff');
+      res.send('<h1>deleting</h1>')
+    } catch (error) {
+      console.log(error);
     }
   })
- */
+  .put((req, res) => {
+    try {
+      res.send('putting stuff')
+      console.log('put from stuff');
+    } catch (error) {
+      console.log(error);
+    }
+  })
+
 export default router;

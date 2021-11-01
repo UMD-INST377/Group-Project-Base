@@ -46,68 +46,65 @@ router.get('/food_inspection/:Establishment_id', async (req, res) => {
 
 router.put('/food_inspection/:Establishment_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const businesses = await db.FoodInspection.findAll({
       where: {
-        hall_id: req.params.hall_id
+        Establishment_id: req.params.Establishment_id
       }
     });
 
-    res.json(hall);
+    res.json(businesses);
   } catch (err) {
     console.error(err);
     res.error('Server error');
+    console.log('touched /food_inspection with GET')
   }
 });
 
 router.post('/food_inspection/:Establishment_id', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const businesses = await db.FoodInspection.findAll({
+      where: {
+        Establishment_id: req.params.Establishment_id
+      }
     });
-    res.json(newDining);
+
+    res.json(businesses);
   } catch (err) {
     console.error(err);
     res.error('Server error');
+    console.log('touched /food_inspection with GET')
   }
 });
 
 router.delete('/food_inspection/:Establishment_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    const businesses = await db.FoodInspection.findAll({
       where: {
-        hall_id: req.params.hall_id
+        Establishment_id: req.params.Establishment_id
       }
     });
-    res.send('Successfully Deleted');
+
+    res.json(businesses);
   } catch (err) {
     console.error(err);
     res.error('Server error');
+    console.log('touched /food_inspection with GET')
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/food_inspection/:Establishment_id', async (req, res) => {
   try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
-        }
+    const businesses = await db.FoodInspection.findAll({
+      where: {
+        Establishment_id: req.params.Establishment_id
       }
-    );
-    res.send('Successfully Updated');
+    });
+
+    res.json(businesses);
   } catch (err) {
     console.error(err);
     res.error('Server error');
+    console.log('touched /food_inspection with GET')
   }
 });
 

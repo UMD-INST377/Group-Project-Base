@@ -2,6 +2,7 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import collegeRoutes from './routes/colleges.js';
 
 const app = express();
 
@@ -12,7 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(staticFolder));
-app.use('/api', apiRoutes);
+app.use("/api", apiRoutes);
+app.use("/college", collegeRoutes);
 
 async function bootServer() {
   try {

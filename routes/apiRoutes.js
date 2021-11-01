@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 router.route('/zipcode')
   .get(async (req, res) => {
     try {
-      const url = 'https://geodata.md.gov/imap/rest/services/Demographics/MD_CensusData/FeatureServer/1/query?outFields=*&where=1%3D1'
+      const url = 'https://geodata.md.gov/imap/rest/services/Demographics/MD_CensusData/FeatureServer/1/query?outFields=*&where=1%3D1';
       const data = await fetch(url);
       const json = await data.json();
       console.log(json);
@@ -21,7 +21,7 @@ router.route('/zipcode')
       res.json({data: data});
     } catch (err) {
       console.error(err);
-      res.error(error: error);
+      res.error({error: error});
     }
   });
 
@@ -41,8 +41,6 @@ router.get('/dining/:hall_id', async (req, res) => {
     res.error('Server error');
   }
 });
-
-
 
 router.get('/dining', async (req, res) => {
   try {
@@ -274,7 +272,7 @@ const mealMapCustom = `SELECT hall_name,
   meal_name
 FROM
   Meals m
-INNER JOIN Meals_Locations ml 
+INNER JOIN Meals_Locations ml
   ON m.meal_id = ml.meal_id
 INNER JOIN Dining_Hall d
 ON d.hall_id = ml.hall_id;`;

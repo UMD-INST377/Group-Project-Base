@@ -52,6 +52,47 @@ router.route('/albums')
   });
 
 /// /////////////////////////////////
+/// ////Lucas Ng Sample Endpoint/////
+/// /////////////////////////////////
+router.route('/songs')
+  .get((req, res) => {
+    try {
+      console.log('You touched the songs route!');
+      res.json({message: 'GET songs endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('You touched the songs route!');
+      res.json({message: 'PUT songs endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('You touched the songs route!');
+      res.json({message: 'POST songs endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('You touched the songs route!');
+      res.json({message: 'DELETE songs endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  });
+
+/// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
 router.get('/dining', async (req, res) => {

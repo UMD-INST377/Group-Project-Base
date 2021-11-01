@@ -87,6 +87,47 @@ router.route('/extinction')
       res.json({error: 'Something went wrong, sorry'});
     }
   });
+
+  //Grant T /fight_mode
+
+  router.route('/fight_mode')
+  .get(async(req, res) => {
+    try {
+      console.log('touched /animals with GET');
+      res.json({message: '/fight_mode GET method'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong, sorry'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      console.log('touched /fight_mode with PUT');
+      res.json({message: '/fight_mode PUT method'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong, sorry'});
+    }
+  })
+  .post(async(req, res) => {
+    try {
+      console.log('touched /fight_mode with POST');
+      res.json({message: '/fight_mode POST method'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong, sorry'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      console.log('touched /fight_mode with DELETE');
+      res.json({message: '/fight_mode DELETE method'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong, sorry'});
+    }
+  });
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

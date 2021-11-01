@@ -92,9 +92,51 @@ router.route('/songs')
     }
   });
 
+/// //////////////////////////////////
+/// ///////Nelson Mendez - Endpoints////////
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
+/// //// Endpoints////////
+/// /////////////////////////////////
+
+router.route('/playlists')
+  .get((req, res) => {
+    try {
+      console.log('You touched the playlists route');
+      res.json({message: 'GET playlists endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error, try again!'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('You touched the playlists route');
+      res.json({message: 'PUT playlists endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error, try again!'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('You touched the playlists route');
+      res.json({message: 'POST playlists endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error, try again!'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('You touched the playlists route');
+      res.json({message: 'DELETE playlists endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error, try again!'});
+    }
+  });
+
 router.get('/dining', async (req, res) => {
   try {
     const halls = await db.DiningHall.findAll();

@@ -28,7 +28,23 @@ router.route('/foodServicePG')
     }
 });
 
-router.get('/food_inspection/:hall_id', async (req, res) => {
+router.get('/food_inspection/:Establishment_id', async (req, res) => {
+  try {
+    const businesses = await db.FoodInspection.findAll({
+      where: {
+        Establishment_id: req.params.Establishment_id
+      }
+    });
+
+    res.json(businesses);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+    console.log('touched /food_inspection with GET')
+  }
+});
+
+router.put('/food_inspection/:Establishment_id', async (req, res) => {
   try {
     const hall = await db.DiningHall.findAll({
       where: {
@@ -43,7 +59,7 @@ router.get('/food_inspection/:hall_id', async (req, res) => {
   }
 });
 
-router.post('/dining', async (req, res) => {
+router.post('/food_inspection/:Establishment_id', async (req, res) => {
   const halls = await db.DiningHall.findAll();
   const currentId = (await halls.length) + 1;
   try {
@@ -61,7 +77,7 @@ router.post('/dining', async (req, res) => {
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/food_inspection/:Establishment_id', async (req, res) => {
   try {
     await db.DiningHall.destroy({
       where: {

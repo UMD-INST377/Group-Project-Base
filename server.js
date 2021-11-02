@@ -8,11 +8,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const staticFolder = 'client';
 
+const staticFolder = 'public';
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
+
+app.use(express.static(staticFolder));
 
 async function bootServer() {
   try {

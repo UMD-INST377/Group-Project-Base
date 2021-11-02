@@ -1,0 +1,29 @@
+body {
+    /* bulma override /
+    / margin: 40px auto;
+      max-width: 650px; */
+    line-height: 1.6;
+    font-size: 18px;
+    color: #444;
+    padding: 0 10px;
+  }
+  
+  h1,h2,h3 {
+    line-height: 1.2;
+  }
+  
+  #mapid {
+    height: 480px;
+  }
+  
+  .list-header {
+    font-weight: 500;
+    font-size: 1.25rem;
+  }
+  
+  .list-item {
+    border-radius: 4px;
+    color: rgba(25, 25, 25, 90);
+    background: yellow;
+    padding: 5px;
+  }

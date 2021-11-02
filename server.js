@@ -2,7 +2,7 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/api.js';
-import collegeRoutes from './routes/colleges.js';
+import universityRoutes from './routes/university.js';
 
 // Initialize express application
 const app = express();
@@ -19,7 +19,7 @@ app.use(express.json());
 // Configure Endpoints
 app.use(express.static(staticFolder));
 app.use("/api", apiRoutes);
-app.use("/college", collegeRoutes);
+app.use("/university", universityRoutes);
 
 // HTTP server function
 async function bootServer() {

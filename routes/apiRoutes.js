@@ -6,6 +6,47 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+/// /////////////////////////////////
+/// ////Congress Endpoints////////
+/// /////////////////////////////////
+router.route('/contact')
+  .get(async(req, res) => {
+    try {
+      console.log('You touched /contact with GET');
+      res.json({message: 'GET Congress endpoint'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      console.log('You touched /contact with PUT');
+      res.json({message: 'GET Congress endpoint'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .post(async(req, res) => {
+    try {
+      console.log('You touched /contact with POST');
+      res.json({message: 'GET Congress endpoint'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      console.log('You touched /contact with DELETE');
+      res.json({message: 'GET Congress endpoint'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });

@@ -9,13 +9,17 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const staticFolder = 'client';
 
+// Set default options
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Configure Endpoints
 app.use(express.static(staticFolder));
 app.use("/api", apiRoutes);
 app.use("/college", collegeRoutes);
 
+// HTTP server function
 async function bootServer() {
   try {
     // const mysql = await db.sequelizeDB;

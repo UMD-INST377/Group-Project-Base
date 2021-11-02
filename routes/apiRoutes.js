@@ -178,4 +178,48 @@ router.route('/genre')
         }
     });
 
+/// /////////////////////////////////
+/// ///////////Mark Schiavo///////////////
+/// /////////////////////////////////
+    router.route('/singer')
+    .delete(async(req, res) => {
+        try {
+            const reply = "touched /singer with DELETE";
+            console.log("touched /singer with DELETE");
+            res.json(reply);
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    .get(async(req, res) => {
+        try {
+            const reply = "touched /singer with GET";
+            console.log("touched /singer with GET");
+            res.json(reply);
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    .post(async(req, res) => {
+        try {
+            const reply = "touched /singer with POST";
+            console.log("touched /singer with POST");
+            res.json(reply);
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    .put(async(req, res) => {
+        try {
+            const reply = "touched /singer with PUT";
+            console.log("touched /singer with PUT");
+            res.json(reply);
+        } catch (e) {
+            console.log(e);
+        }
+    });
+
 export default router;

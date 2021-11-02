@@ -48,8 +48,48 @@ router.route('/contact')
   });
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  console.log('hi')
+  res.send('Welcome to the UMD DiNning API!');
 });
+//Jake Stark General Congress Members Table Endpoint
+router.route('/members')
+  .get(async(req, res) => {
+    try {
+      console.log('touched /members endpoint GET')
+      res.send(' GET members endpoint');
+    } catch (error) {
+      console.log(error)
+      res.json({message: 'Error'})
+    }
+})
+  .put(async(req, res) => {
+    try {
+      console.log('touched /members endpoint PUT')
+      res.send('PUT members endpoint');
+    } catch (error) {
+      console.log(error)
+      res.json({message: 'Error'})
+    }
+  })
+  .post(async(req, res) => {
+    try {
+      console.log('touched /members endpoint POST')
+      res.send('POST members endpoint');
+    } catch (error) {
+      console.log(error)
+      res.json({message: 'Error'})
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      console.log('touched /members endpoint DELETE')
+      res.send('DELETE members endpoint');
+    } catch (error) {
+      console.log(error)
+      res.json({message: 'Error'})
+    }
+  })
+  
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

@@ -17,10 +17,31 @@ const router = express.Router();
  * @date 2021-11-01 06:32PM
  */
 router.get('/:universityName', (request, response) => {
-  //https://stackoverflow.com/questions/55088519/how-to-render-express-views-dynamically
-  response.render('university', {
-    title: request.params.universityName
-  });
+  /**
+   * IMPORTANT NOTE
+   * (1) The code below is a temporary solution
+   * to the lack of database that we currently have
+   * this is just a emulation
+   */
+  const universities = {
+    "university-of-maryland": {
+      name: "University of Maryland",
+      addr: "College Park, MD",
+      url: "https://umd.edu"
+    },
+    "pennsylvania-state-university": {
+      name: "Penn State University",
+      addr: "State College, PA",
+      url: "https://psu.edu"
+    }
+  }
+  const uni = universities[request.params.universityName];
+
+  if (typeof(uni) === "object") {
+    response.render('university', uni);
+  } else {
+    response.status(404).send('Requested university was not found');
+  }
 });
 
 // Export router

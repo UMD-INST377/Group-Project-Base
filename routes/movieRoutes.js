@@ -50,7 +50,7 @@ router.route('/genre')
 
 
 
-  router.route('/award')
+  router.route('/oscar')
   .get(async (req, res) => {
     try {
       console.log();

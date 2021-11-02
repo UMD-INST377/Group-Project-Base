@@ -76,6 +76,7 @@ a:hover{
     background-color: rgb(27,185,100,.75);
     width: 100px;
     height:30px;
+    border-radius: 10px;
     
 }
 button:hover{

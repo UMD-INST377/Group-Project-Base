@@ -19,6 +19,9 @@ const router = express.Router();
 router.get('/:collegeName', (request, response) => {
   // TBD: Dynamically load HTML template with college info
   response.send('TBD open college: ' + request.params.collegeName);
+
+  //response.render('someTemplate', {data:data});
+  //https://stackoverflow.com/questions/55088519/how-to-render-express-views-dynamically
 });
 
 // Export router

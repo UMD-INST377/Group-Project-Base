@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@glidejs/glide": "^3.4.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^5.1.3",
     "chalk": "^4.1.0",

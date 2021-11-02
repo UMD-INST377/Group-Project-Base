@@ -4,11 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+    <link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css"> -->
+    <link rel="stylesheet" href="glide.css">
+    <!-- <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css">  -->
+    <title>Home</title>
 </head>
 <body>
-    <h1>INST377 Group 23</h1>
+    <div class="top-nav">
+        <input type="text" placeholder="Search an Album">
+    </div>
+    <div class="container">
+        <div class="glide">
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+            </div>
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                <li class="glide__slide"><img src="images/album_cover/thriller.png" id="thriller"></li>
+                <li class="glide__slide"><img src="images/album_cover/dark_side_of_the_moon.png" id="dark_side_of_the_moon"></li>
+                <li class="glide__slide"><img src="images/album_cover/back_in_black.jpg" id="back_in_black"></li>
+                <li class="glide__slide"><img src="images/album_cover/greatest_hits.png" id="greatest_hits"></li>
+                <li class="glide__slide"><img src="images/album_cover/like_a_virgin.png" id="like_a_virgin"></li>
+                <li class="glide__slide"><img src="images/album_cover/bad.png" id="bad"></li>
+                <li class="glide__slide"><img src="images/album_cover/lets_dance.jpg" id="lets_dance"></li>
+                <li class="glide__slide"><img src="images/album_cover/master_of_puppets.jpg" id="master_of_puppets"></li>
+                <li class="glide__slide"><img src="images/album_cover/purple_rain.jpg" id="purple_rain"></li>
+                <li class="glide__slide"><img src="images/album_cover/1984.jpg" id="1984"></li>
+                <li class="glide__slide"><img src="images/album_cover/ram.jpg" id="ram"></li>
+                <li class="glide__slide"><img src="images/album_cover/gkmc.jpeg" id="gkmc"></li>
+                <li class="glide__slide"><img src="images/album_cover/born_to_die.png" id="born_to_die"></li>
+                <li class="glide__slide"><img src="images/album_cover/plastic_beach.jpg" id="plastic_beach"></li>
+                <li class="glide__slide"><img src="images/album_cover/25.png" id="25"></li>
+                <li class="glide__slide"><img src="images/album_cover/innerspeaker.png" id="innerspeaker"></li>
+                <li class="glide__slide"><img src="images/album_cover/tpab.png" id="tpab"></li>
+                <li class="glide__slide"><img src="images/album_cover/the_endless_river.jpg" id="the_endless_river"></li>
+                <li class="glide__slide"><img src="images/album_cover/morning_phase.jpg" id="morning_phase"></li>
+                <li class="glide__slide"><img src="images/album_cover/am.png" id="am"></li>
+              </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="home.js"></script>
 </body>
 </html>

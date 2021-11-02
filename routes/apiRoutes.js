@@ -5,6 +5,8 @@ import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
 
+import mealMapCustom from '../server/controllers/DiningHall.js';
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -56,16 +58,63 @@ router.route('/foodServicesPG')
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
-  try {
+
+// TODO CLEAN ROUTE
+router.route('/dining')
+  .get(async (req, res) => {
+    try {
+      const halls = await db.DiningHall.findAll();
+      const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+      res.json(reply);
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on /dining at get');
+    }
+  })
+  .post(async (req, res) => {
     const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+    const currentId = (await halls.length) + 1;
+    try {
+      const newDining = await db.DiningHall.create({
+        hall_id: currentId,
+        hall_name: req.body.hall_name,
+        hall_address: req.body.hall_address,
+        hall_lat: req.body.hall_lat,
+        hall_long: req.body.hall_long
+      });
+      res.json(newDining);
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on /dining at post');
+    }
+  })
+  .put(async (req, res) => {
+    try {
+      await db.DiningHall.update(
+        {
+          hall_name: req.body.hall_name,
+          hall_location: req.body.hall_location
+        },
+        {
+          where: {
+            hall_id: req.body.hall_id
+          }
+        }
+      );
+      res.send('Successfully Updated');
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on /dining at put');
+    }
+  })
+  .delete((req, res) => {
+    try {
+      res.send('touched delete');
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on /dining at delete');
+    }
+  });
 
 router.get('/dining/:hall_id', async (req, res) => {
   try {
@@ -82,24 +131,6 @@ router.get('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
-  try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
 router.delete('/dining/:hall_id', async (req, res) => {
   try {
     await db.DiningHall.destroy({
@@ -108,26 +139,6 @@ router.delete('/dining/:hall_id', async (req, res) => {
       }
     });
     res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/dining', async (req, res) => {
-  try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -184,6 +195,8 @@ router.put('/meals', async (req, res) => {
 /// /////////////////////////////////
 /// ////////Macros Endpoints/////////
 /// /////////////////////////////////
+
+// TODO CLEAN ROUTES
 router.get('/macros', async (req, res) => {
   try {
     const macros = await db.Macros.findAll();
@@ -279,17 +292,17 @@ router.get('/table/data', async (req, res) => {
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
+// const mealMapCustom = `SELECT hall_name,
+//   hall_address,
+//   hall_lat,
+//   hall_long,
+//   meal_name
+// FROM
+//   Meals m
+// INNER JOIN Meals_Locations ml
+//   ON m.meal_id = ml.meal_id
+// INNER JOIN Dining_Hall d
+// ON d.hall_id = ml.hall_id;`;
 router.get('/map/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(mealMapCustom, {

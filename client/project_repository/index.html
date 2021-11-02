@@ -17,6 +17,23 @@
         <div><a href="index.html" style = "color: black">Home Page</a></div>
         <div><a href="contact-us.html" style = "color: black">Contact Us</a></div>
     </div>
+    <br>
+    <br>
+    <div class = 'searchContainer'>
+        
+            <form action='/api' method='get' class='survey-box'>
+                <div>Search for a restaurant by inputting the some of the following:</div>
+                    <label for='res-name'>Restaurant Name: </label>
+                    <input id='res-name' name='res-name' type='text' />
+                    <label for='res-zip'>Restaurant Zip Code: </label>
+                    <input id='res-zip' name='res-zip' type='number' />
+                    <label for='res-city'>Restaurant City: </label>
+                    <input id='res-city' name='res-city' type='text' />
+                <div class = 'button-placement'><button class = 'submit-button'>Submit</button></div>
+            </form>
+    
+
+    </div>
 
     <script src="script.js"></script>
 

@@ -1,3 +1,16 @@
+.resize {
+    width: 75px;
+    height: auto;
+}
+
+.form-control {
+    width: 450px;
+}
+
+.shift {
+    margin-left: 20px;
+}
+
 .top-nav {
     display: flex;
     justify-content: center;
@@ -20,12 +33,11 @@ input {
     height: 800px;
     display: flex;
     flex-direction: row;
-    align-items: center;   
+    align-items: center;
 }
 
 .glide {
     display: flex;
-    
 }
 
 li {
@@ -38,8 +50,6 @@ img {
     max-width: 300px;
     /* transform: rotateY(60deg); */
 }
-
-
 
 .glide__arrows {
     display: flex;
@@ -80,5 +90,3 @@ img {
     height: 300px;
     display: none;
 }
-
-

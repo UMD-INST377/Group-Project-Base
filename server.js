@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 const staticFolder = 'client';
 
 // Set default options
+app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

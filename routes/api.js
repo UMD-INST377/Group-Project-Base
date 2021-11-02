@@ -78,7 +78,17 @@ router.get('/schools/:school_id', async (request, response) => {
   }
 });
 
-
+/**
+ * Get available information about a specific school
+ *
+ * NOTE:
+ *   (1) No create, update, or delete methods
+ *   are going to be supported for schools. As
+ *   it's a fixed Top 10 list.
+ *
+ * @author Hyeong C.
+ * @date 2021-10-31 18:50:00pm
+ */
 router.get('/schools/:rank_id', async (request, response) => {
   try {
     // Debug
@@ -94,17 +104,7 @@ router.get('/schools/:rank_id', async (request, response) => {
     response.json({status: "failure", data: null, message: "unknown error"});
   }
 });
-/**
- * Get available information about a specific school
- *
- * NOTE:
- *   (1) No create, update, or delete methods
- *   are going to be supported for schools. As
- *   it's a fixed Top 10 list.
- *
- * @author Hyeong C.
- * @date 2021-10-31 18:50:00pm
- */
+
 
 /*********************
 *
@@ -113,7 +113,7 @@ router.get('/schools/:rank_id', async (request, response) => {
 *
 *********************/
 
-
+/*
 router.post('/dining', async (req, res) => {
   const halls = await db.DiningHall.findAll();
   const currentId = (await halls.length) + 1;
@@ -165,5 +165,6 @@ router.put('/dining', async (req, res) => {
     res.error('Server error');
   }
 });
+*/
 
 export default router;

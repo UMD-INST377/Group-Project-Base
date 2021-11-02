@@ -1,6 +1,7 @@
-/**
- * No styling to see here
- */
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
 
 .top-bar{
     

@@ -4,13 +4,14 @@ import db from './database/initializeDB.js';
 import apiRoutes from './routes/api.js';
 import collegeRoutes from './routes/colleges.js';
 
+// Initialize express application
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 const staticFolder = 'client';
 
 // Set default options
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', './views');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

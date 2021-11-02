@@ -1,10 +1,14 @@
-/* MENU */
-
-.resize {
-    width: 75px;
-    height: auto;
-}
-
-.form-control {
-    width: 450px;
-}
+    /* MENU */
+    
+    .resize {
+        width: 75px;
+        height: auto;
+    }
+    
+    .form-control {
+        width: 400px;
+    }
+    
+    .html {
+        background-color: beige;
+    }

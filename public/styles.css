@@ -1,0 +1,76 @@
+nav {
+    background-color: gray;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.nav a {
+    color: white;
+    font-size: 125%;
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.footer {
+    background-color: gray;
+    text-align: center;
+    padding: 30px;
+    bottom: 0;
+    position: bottom;
+    left: 0;
+    width: 100%;
+    flex: initial;
+}
+
+.playlist-button {
+    width: 300px;
+    height: 300px;
+    justify-content: space-around;
+}
+
+.center {
+    text-align: center;
+    margin: 70px;
+}
+
+.center-sign-in {
+    text-align: center;
+    margin: 30px;
+}
+
+.margins {
+    margin: 100px;
+    font-size: 200%;
+}
+
+.sign-in-margins {
+    margin: 50px;
+    font-size: 150%;
+}
+
+.form-label {
+    font-size: 150%;
+    margin-bottom: 30px;
+}
+
+.form-input {
+    background-color: gray;
+    width: 300px;
+}
+
+.center-remember-me {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    font-size: 120%;
+}
+
+.login {
+    width: 200px;
+    height: 50px;
+}

@@ -51,7 +51,6 @@ router.route('/albums')
     }
   });
 
-/// /////////////////////////////////
 /// ////Lucas Ng Sample Endpoint/////
 /// /////////////////////////////////
 router.route('/songs')

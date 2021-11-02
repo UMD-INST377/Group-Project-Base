@@ -29,30 +29,59 @@ router.route('/actor')
       res.json({message: 'Something went wrong'});
     }
   });
-  router.delete('/dining/:hall_id', async (req, res) => {
+  .delete((req, res) => {
+      try {
+        console.log();
+        res.json({message: 'Touched the /actors with DELETE'});
+      } catch (error) {
+        console.log(error);
+        res.json({message: 'Something went wrong'});
+      }
+    });
+  .put((req, res) => {
     try {
-      await db.DiningHall.destroy({
-        where: {
-          hall_id: req.params.hall_id
-        }
-      });
-      res.send('Successfully Deleted');
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
+      console.log();
+      res.json({message: 'Touched the /actors with PUT'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+  router.route('/award')
+  .get(async (req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /actors with GET'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+  .post((req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /actors with POST'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+  .delete((req, res) => {
+      try {
+        console.log();
+        res.json({message: 'Touched the /actors with DELETE'});
+      } catch (error) {
+        console.log(error);
+        res.json({message: 'Something went wrong'});
+      }
+    });
+  .put((req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /actors with PUT'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
     }
   });
   
-  router.put('/dining', async (req, res) => {
-    try {
-      await db.DiningHall.update(
-        {
-          hall_name: req.body.hall_name,
-          hall_location: req.body.hall_location
-        },
-        {
-          where: {
-            hall_id: req.body.hall_id
-          }
-        }
-      );

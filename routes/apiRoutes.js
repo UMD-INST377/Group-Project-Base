@@ -10,9 +10,171 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+/// //////////////////////////////////
+/// ///////Tyler Farmer - Albums Endpoints////////
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+router.route('/albums')
+  .get(async (req, res) => {
+    try {
+      console.log('touched /albums route with GET');
+      res.json({data: 'GET albums endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('touched /albums route with PUT');
+      res.json({message: 'PUT albums endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('touched /albums route with POST');
+      res.json({message: 'POST albums endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('touched /albums route with DELETE');
+      res.json({message: 'DELETE albums endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  });
+
+/// ////Lucas Ng Sample Endpoint/////
 /// /////////////////////////////////
+router.route('/songs')
+  .get((req, res) => {
+    try {
+      console.log('You touched the songs route!');
+      res.json({message: 'GET songs endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('You touched the songs route!');
+      res.json({message: 'PUT songs endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('You touched the songs route!');
+      res.json({message: 'POST songs endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('You touched the songs route!');
+      res.json({message: 'DELETE songs endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  });
+
+/// //////////////////////////////////
+/// ///////Nelson Mendez - Endpoints////////
+/// /////////////////////////////////
+/// /////////////////////////////////
+/// //// Endpoints////////
+/// /////////////////////////////////
+
+router.route('/playlists')
+  .get(async (req, res) => {
+    try {
+      console.log('You touched the /playlists route');
+      res.json({message: 'GET playlists endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error, try again!'});
+    }
+  })
+  .put(async (req, res) => {
+    try {
+      console.log('You touched the /playlists route');
+      res.json({message: 'PUT playlists endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error, try again!'});
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      console.log('You touched the /playlists route');
+      res.json({message: 'POST playlists endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error, try again!'});
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      console.log('You touched the /playlists route');
+      await res.json({message: 'DELETE playlists endpoint!'});
+    } catch (err) {
+      console.log(error);
+      await res.json({error: 'Server error, try again!'});
+    }
+  });
+  
+  /////////////////////////////Wyatts Endpoints /Artists Endpoints////////////////////////////
+router.route('/artists')
+.get(async (req, res) => {
+  try {
+    console.log('GET on /artists route');
+    res.json({data: 'GET artists endpoint'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Server Error'});
+  }
+})
+.put((req, res) => {
+  try {
+    console.log('PUT on /artists route');
+    res.json({message: 'PUT artists endpoint'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Server Error'});
+  }
+})
+.post((req, res) => {
+  try {
+    console.log('POST on /artists route');
+    res.json({message: 'POST artists endpoint'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Server Error'});
+  }
+})
+.delete((req, res) => {
+  try {
+    console.log('DELETE on /artists route');
+    res.json({message: 'DELETE artists endpoint'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Server Error'});
+  }
+});
+
 router.get('/dining', async (req, res) => {
   try {
     const halls = await db.DiningHall.findAll();

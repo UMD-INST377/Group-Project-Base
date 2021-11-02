@@ -1,0 +1,39 @@
+body {
+    background-color: white;
+}
+
+.buttons {
+
+}
+.buttons a {
+    text-decoration: none;
+    color: white;
+
+}
+/* .description {
+    position: absolute;
+    width: auto;
+    height: 350px;
+    left: auto;
+    
+
+    background:skyblue;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+} */
+
+/* .contact {
+    position: absolute;
+    width: 172px;
+    height: 80px;
+    left: 222px;
+    top: 500px;
+
+    background: #EDAAA5;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+} */

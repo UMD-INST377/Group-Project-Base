@@ -23,5 +23,32 @@ router.route('/album')
       console.log(error);
       res.json({error: error});
     }
+  })
+  .put((rec, res) => {
+    try {
+      console.log('touched /album with PUT');
+      res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: error});
+    }
+  })
+  .post((rec, res) => {
+    try {
+      console.log('touched /album with POST');
+      res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: error});
+    }
+  })
+  .delete((rec, res) => {
+    try {
+      console.log('touched /album with DELETE');
+      res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: error});
+    }
   });
 export default router;

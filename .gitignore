@@ -3,6 +3,7 @@
 # -------------------------------------------------
 public/answer_key/private
 public/demos/*
+client/answer_key/*
 
 # -------------------------------------------------
 # Example specs from Cypress

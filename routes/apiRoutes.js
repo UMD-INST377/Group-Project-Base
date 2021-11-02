@@ -26,7 +26,7 @@ router.route('/blob')
       console.log(error);
     }
   })
-  .delete((req,res)=> {
+  .delete((req, res) => {
     try {
       console.log('delete from blob');
       res.send('This has been deleted.');
@@ -38,6 +38,40 @@ router.route('/blob')
     try {
       res.send('This request was put in blob!');
       console.log('put something inside blob');
+    } catch (error) {
+      console.log(error);
+    }
+  });
+  
+router.route('/boop')
+  .get((req, res) => {
+    try {
+      console.log('The get default route is reached');
+      res.send('You have gotten something from boop');
+    } catch (err) {
+      console.log(error);
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('post from boop');
+      res.send('You have posted something from boop');
+    } catch (error) {
+      console.log(error);
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('delete from boop');
+      res.send('You have deleted something from boop');
+    } catch (error) {
+      console.log(error);
+    }
+  })
+  .put((req, res) => {
+    try {
+      res.send('This request was put in boop!');
+      console.log('You have put something from boop');
     } catch (error) {
       console.log(error);
     }
@@ -56,26 +90,26 @@ router.route('/stuff')
   .post((req, res) => {
     try {
       console.log('post from stuff');
-      res.send('you have posted something cool')
+      res.send('you have posted something cool');
     } catch (error) {
       console.log(error);
     }
   })
-  .delete((req,res)=> {
+  .delete((req, res) => {
     try {
       console.log('delete from stuff');
-      res.send('<h1>deleting</h1>')
+      res.send('<h1>deleting</h1>');
     } catch (error) {
       console.log(error);
     }
   })
   .put((req, res) => {
     try {
-      res.send('putting stuff')
+      res.send('putting stuff');
       console.log('put from stuff');
     } catch (error) {
       console.log(error);
     }
-  })
+  });
 
 export default router;

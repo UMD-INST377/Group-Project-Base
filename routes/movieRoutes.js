@@ -47,9 +47,6 @@ router.route('/actor')
       res.json({message: 'Something went wrong'});
     }
   });
-
-
-
   router.route('/award')
   .get(async (req, res) => {
     try {
@@ -125,8 +122,6 @@ router.route('/director')
       res.json({message: 'Something went wrong'});
     }
   });
-
-
   router.route('/film')
   .get(async (req, res) => {
     try {

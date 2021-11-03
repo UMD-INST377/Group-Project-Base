@@ -6,14 +6,11 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
-});
 router.route('/actor')
   .get(async (req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /actor with GET'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -21,8 +18,8 @@ router.route('/actor')
   })
   .put((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /actor with PUT'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -30,8 +27,8 @@ router.route('/actor')
   })
   .post((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /actor with POST'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -39,8 +36,8 @@ router.route('/actor')
   })
   .delete((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /actor with DELETE'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -49,8 +46,8 @@ router.route('/actor')
 router.route('/award')
   .get(async (req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /award with GET'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -58,8 +55,8 @@ router.route('/award')
   })
   .put((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /award with PUT'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -67,8 +64,8 @@ router.route('/award')
   })
   .post((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /award with POST'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -76,8 +73,8 @@ router.route('/award')
   })
   .delete((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /award with DELETE'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -86,8 +83,8 @@ router.route('/award')
 router.route('/director')
   .get(async (req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /director with GET'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -95,8 +92,8 @@ router.route('/director')
   })
   .put((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /director with PUT'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -104,8 +101,8 @@ router.route('/director')
   })
   .post((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /director with POST'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -113,8 +110,8 @@ router.route('/director')
   })
   .delete((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /director with DELETE'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -123,8 +120,8 @@ router.route('/director')
 router.route('/film')
   .get(async (req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /film with GET'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -132,8 +129,8 @@ router.route('/film')
   })
   .put((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /film with PUT'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -141,8 +138,8 @@ router.route('/film')
   })
   .post((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /film with POST'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -150,8 +147,8 @@ router.route('/film')
   })
   .delete((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /film with DELETE'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -160,8 +157,8 @@ router.route('/film')
 router.route('/genre')
   .get(async (req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /genre with GET'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -169,8 +166,8 @@ router.route('/genre')
   })
   .put((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /genre with PUT'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -178,8 +175,8 @@ router.route('/genre')
   })
   .post((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /genre with POST'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -187,8 +184,8 @@ router.route('/genre')
   })
   .delete((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /genre with DELETE'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -197,8 +194,8 @@ router.route('/genre')
 router.route('/oscar')
   .get(async (req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /oscar with GET'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -206,8 +203,8 @@ router.route('/oscar')
   })
   .put((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /oscar with PUT'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -215,8 +212,8 @@ router.route('/oscar')
   })
   .post((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /oscar with POST'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -224,8 +221,8 @@ router.route('/oscar')
   })
   .delete((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /oscar with DELETE'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -234,8 +231,8 @@ router.route('/oscar')
 router.route('/studio')
   .get(async (req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /studio with GET'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -243,8 +240,8 @@ router.route('/studio')
   })
   .put((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /studio with PUT'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -252,8 +249,8 @@ router.route('/studio')
   })
   .post((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /studio with POST'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -261,8 +258,8 @@ router.route('/studio')
   })
   .delete((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /studio with DELETE'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -272,8 +269,8 @@ router.route('/studio')
 router.route('/writer')
   .get(async (req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /writer with GET'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -281,8 +278,8 @@ router.route('/writer')
   })
   .put((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /writer with PUT'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -290,8 +287,8 @@ router.route('/writer')
   })
   .post((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /writer with POST'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -299,10 +296,12 @@ router.route('/writer')
   })
   .delete((req, res) => {
     try {
-      console.log(message);
       res.json({message: 'Touched the /writer with DELETE'});
+      console.log(message);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
     }
   });
+
+export default router;

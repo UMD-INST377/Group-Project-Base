@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+nav {
+    background-color: rgba(0, 49, 139, 0.4);
+    display: flex;
+    flex-flow: row wrap;
+    border-radius: 4px;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  /* Page Layout */
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .wrapper {
+    display: flex;
+  }
+  .container {
+    max-width: 960px;
+    margin-top: 25px;
+  }
+
+  .title{
+    display: flex;
+    background-color: rgba(58, 155, 155, 0.8);
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 0;
+    margin-bottom: 5px;
+    justify-content: center;
+  }

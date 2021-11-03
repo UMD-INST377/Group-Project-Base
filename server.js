@@ -14,7 +14,6 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-app.use('/crash', markRoutes);
 
 async function bootServer() {
   try {

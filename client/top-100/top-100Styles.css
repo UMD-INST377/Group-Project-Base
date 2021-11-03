@@ -9,3 +9,7 @@
     color: #24D495;
 }
 
+.photo-grid-container{
+    display: flex;
+    justify-content: center;
+}

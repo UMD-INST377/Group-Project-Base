@@ -2,16 +2,7 @@ body {
     background-color: rgb(54, 54, 54);
 }
 
-.container {
-    align-items: center;
-    position: relative;
-}
-
-.container p {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    transform: translate(0,20%);
+#about {
     font-size: x-large;
     color: white;
 }

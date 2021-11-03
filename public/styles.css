@@ -1,0 +1,18 @@
+.navigationbar {
+    color: #fff;
+    background-color: darkgray;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.title {
+    display: flex;
+    padding: 10px 15px;
+    justify-content: center;
+}
+
+.contentbox {
+    background-color: lightgray;
+    height:450px;
+}

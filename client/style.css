@@ -1,17 +1,20 @@
 body {
-    margin: 0;
-    font-family: sans-serif;
+  margin: 0;
+  font-family: sans-serif;
 }
 
 .top-bar {
   display: flex;
-  height: 100px;
+  color: #fff;
 }
 
 .top-left-bar {
   flex-grow: 1;
   background-color: blue;
-  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
 }
 
 .top-right-bar {
@@ -26,11 +29,11 @@ body {
   margin: 5px;
 }
 
-.home-container{
+.home-container {
   display: flex;
   background-color: gray;
-  height: 100vh; /*height takes up whole page*/
-  flex-grow: 1; /*width*/
+  height: 100vh; /* height takes up whole page */
+  flex-grow: 1; /* width */
   align-items: center;
 }
 
@@ -66,7 +69,7 @@ body {
 }
 
 ul {
-  /*remove bullets from ul elements*/
+  /* remove bullets from ul elements */
   list-style-type: none;
 }
 
@@ -77,4 +80,61 @@ ul {
   display: flex;
   justify-content: space-between;
   padding: 20px;
+}
+
+/**
+ * Styling for University.ejs View
+ */
+.sub-bar {
+  padding: 15px;
+  background: #3b3b3b;
+}
+
+.sub-bar a {
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.university-info-container {
+  padding: 20px;
+}
+
+.university-title h1 {
+  margin-top: 0;
+}
+
+.university-grid {
+  justify-content: center;
+  display: flex;
+}
+
+.university-grid div {
+  margin: 0 auto;
+}
+
+.university-details img {
+  border-radius: 12px;
+}
+
+.university-insight,
+.university-reviews {
+  background: lightblue;
+  border-radius: 12px;
+  padding: 10px 15px;
+  width: 100%;
+  margin-right: 20px !important;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.university-insight a {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #3b3b3b;
+  color: #fff;
+  padding: 15px;
+  border-radius: 6px;
 }

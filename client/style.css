@@ -78,3 +78,17 @@ ul {
   justify-content: space-between;
   padding: 20px;
 }
+
+/**
+ * Styling for University.ejs View
+ */
+.sub-bar {
+  padding: 15px;
+  background: #3b3b3b;
+}
+
+.sub-bar a {
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+}

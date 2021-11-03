@@ -74,3 +74,14 @@
     margin:auto;
     padding: 10px;
 }
+
+/*css for add_a_volcano input*/
+.volcano_form input{
+    margin-bottom: 17px;
+    border: 0px;
+}
+
+#activity-input{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}

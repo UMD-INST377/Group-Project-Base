@@ -10,7 +10,7 @@
     <Body>
         <div class = "container">
             <div class = "column">
-                Add a Volacano
+                <h1 class="title">Add a Volcano</h1>
             </div>
             
             <div class="column is-one-fifth">
@@ -30,7 +30,7 @@
                 </nav>
             </div>
         </div>
-
+    
         <div class="input-container">
             <div class = "columns is-centered">
                 <div class = "column">
@@ -44,13 +44,13 @@
                         Location
                     </div>
                     <div class="box" style="width: 300px;">
-                        Active/Inactive
+                        Activity
                     </div>
                     <div class="box" style="width: 300px;">
-                        Aoa (Area of Activity)
+                        AOA (Area of Activity)
                     </div>
                     <div class="box" style="width: 300px;">
-                        Vei (Volcano Explosivity index)
+                        VEI (Volcano Explosivity index)
                     </div>
                     <div class="box" style="width: 300px;">
                         Eruption Category
@@ -61,17 +61,45 @@
                 </div>
                 
                 <div class = "column">
-                    <input class="input" type="text" placeholder="Large input">
-                    <input class="input" type="text" placeholder="Large input">
-                    <input class="input" type="text" placeholder="Large input">
-                    <input class="input" type="text" placeholder="Large input">
-                    <input class="input" type="text" placeholder="Large input">
-                    <input class="input" type="text" placeholder="Large input">
-                    <input class="input" type="text" placeholder="Large input">
-                    <input class="input" type="text" placeholder="Large input">
+                    <div class = "volcano_form" id="name-input"><input class="input" type="text" placeholder="Large input"></div>
+                    <div class = "volcano_form" id="date-input"><input class="input" type="text" placeholder="Large input"></div>
+                    <div class = "volcano_form" id="location-input"><input class="input" type="text" placeholder="Large input"></div>
+                    <div class = "volcano_form" id="activity-input"><div class="control">
+                        <label class="radio">
+                          <input type="radio" name="answer">
+                          Active
+                        </label>
+                        <label class="radio">
+                          <input type="radio" name="answer">
+                          Inactive
+                        </label>
+                      </div></div>
+                    <div class = "volcano_form" id="aoa-input"><input class="input" type="text" placeholder="Large input"></div>
+                    <div class = "volcano_form" id="vei-input"><input class="input" type="text" placeholder="Large input"></div>
+                    <div class = "volcano_form" id="category-input"><input class="input" type="text" placeholder="Large input"></div>
+                    <div class = "volcano_form" id="evidence-input"><textarea class="textarea"></textarea></div>
                 </div>
 
+                <div class = "column">
+                    <div class="file has-name is-boxed">
+                        <label class="file-label">
+                          <input class="file-input" type="file" name="resume">
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                              Choose a file…
+                            </span>
+                          </span>
+                          <span class="file-name">
+                            Image of volcano
+                          </span>
+                        </label>
+                      </div>
+                </div>
             </div>
             
         </div>
+    </div>
     </Body>

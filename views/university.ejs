@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
+    <!-- Navigation -->
     <div class="top-bar">
       <div class="top-left-bar">
         <h1>INST 377 Group 25</h1>
@@ -24,8 +25,28 @@
         <a href="/">&larr; Return</a>
     </div>
 
-    <h1><%= name %></h1>
-    <h1><%= addr %></h1>
-    <h1><%= url %></h1>
+    <!-- University Information -->
+    <div class='university-info-container'>
+      <div class='university-title'>
+        <h1><%= name %> - <%= addr %></h1>
+      </div>
+      <div class='university-grid'>
+        <div class='university-insight'>
+          <h3>Location: <%= addr %></h3>
+          <h3>Requirements: <em>...More data here</em></h3>
+          <h3>Test Scores: <em>...More data here</em></h3>
+
+          <a href="<%= url %>" target="_blank">Visit Website</a>
+        </div>
+        <div class='university-details'>
+          <img src='https://via.placeholder.com/550x350?text=School%20Preview' />
+
+        </div>
+      </div>
+      <div class='university-reviews' style='margin-top: 20px;'>
+        <h3>Student Reviews (4.5 / 5.0)</h3>
+        <em>...Student review data here</em>
+      </div>
+    </div>
   </body>
 </html>

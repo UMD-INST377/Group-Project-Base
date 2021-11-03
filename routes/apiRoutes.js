@@ -28,6 +28,7 @@ router.route('/foodServicePG').get(async (req, res) => {
   }
 });
 
+
 router.get('/food_inspection/:Establishment_id', async (req, res) => {
   try {
     const businesses = await db.FoodInspection.findAll({
@@ -43,7 +44,15 @@ router.get('/food_inspection/:Establishment_id', async (req, res) => {
     console.log('touched /food_inspection with GET');
   }
 });
-router.put
+
+
+router.put('/food_inspection/:Establishment_id', async (req, res) => {
+  try {
+    const businesses = await db.FoodInspection.findAll({
+      where: {
+        Establishment_id: req.params.Establishment_id
+      }
+    });
 
     res.json(businesses);
   } catch (err) {
@@ -52,6 +61,7 @@ router.put
     console.log('touched /food_inspection with GET');
   }
 });
+
 
 router.post('/food_inspection/:Establishment_id', async (req, res) => {
   try {
@@ -69,6 +79,7 @@ router.post('/food_inspection/:Establishment_id', async (req, res) => {
   }
 });
 
+
 router.delete('/food_inspection/:Establishment_id', async (req, res) => {
   try {
     const businesses = await db.FoodInspection.findAll({
@@ -84,6 +95,7 @@ router.delete('/food_inspection/:Establishment_id', async (req, res) => {
     console.log('touched /food_inspection with GET');
   }
 });
+
 
 router.put('/food_inspection/:Establishment_id', async (req, res) => {
   try {
@@ -115,6 +127,7 @@ router.get('/meals', async (req, res) => {
   }
 });
 
+
 router.get('/meals/:meal_id', async (req, res) => {
   try {
     const meals = await db.Meals.findAll({
@@ -128,6 +141,7 @@ router.get('/meals/:meal_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
 
 router.put('/meals', async (req, res) => {
   try {

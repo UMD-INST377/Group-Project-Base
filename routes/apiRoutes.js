@@ -11,6 +11,7 @@ router.get("/", (req, res) => {
   res.send("Welcome to the UMD Dining API!");
 });
 
+
 /// /////////////////////////////////
 /// ////   Food Inspection   ////////
 /// /////////////////////////////////
@@ -109,6 +110,7 @@ router.put("/food_inspection/:Establishment_id", async (req, res) => {
   }
 });
 
+
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////
@@ -155,6 +157,7 @@ router.put("/meals", async (req, res) => {
     res.error("Server error");
   }
 });
+
 
 /// /////////////////////////////////
 /// ////////Macros Endpoints/////////
@@ -211,6 +214,7 @@ router.put("/macros", async (req, res) => {
   }
 });
 
+
 /// /////////////////////////////////
 /// Dietary Restrictions Endpoints///
 /// /////////////////////////////////
@@ -237,6 +241,7 @@ router.get("/restrictions/:restriction_id", async (req, res) => {
     res.error("Server error");
   }
 });
+
 
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////

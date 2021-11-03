@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css"/>
+    <title>Movie Ratings HQ</title>
+</head>
+
+<body>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="index.html">
+                <figure class="image is-128x128">
+                    <img src="images/logo.png" class="image" width="196" height="196"
+                    alt="Movie Ratings HQ Logo: Film Camera">
+                </figure>
+            </a>
+    
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="./discovery/discovery.html">
+                Discovery
+                </a>
+    
+                <a class="navbar-item" href="./top-100/top-100.html">
+                Top 100
+                </a>
+                <a class="navbar-item" href="./add-movie/add-movie.html">
+                Add Movie
+                </a>
+                <a class="navbar-item" href="./about/about.html">
+                About
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="field">
+        <label class="label">Your Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Enter Name Here">
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-success" type="text" placeholder="Enter Email">
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </div>
+        <p class="help is-success">This email is available</p>
+      </div>
+      
+      <div class="field">
+        <label class="label">Movie</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-danger" type="email" placeholder="Movie Title">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
+        </div>
+        <p class="help is-danger">This movie is invalid</p>
+      </div>
+
+
+
+      <div class="field">
+        <label class="label">Director</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-danger" type="email" placeholder="Director's Name">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span>
+        </div>
+        <p class="help is-danger">This director is invalid</p>
+      </div>
+    
+      <div class="field">
+        <label class="label">Actor</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Actor or Actress Name">
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">Genre</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="What Genre">
+        </div>
+      </div>
+    
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Submit</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light">Cancel</button>
+        </div>
+      </div>

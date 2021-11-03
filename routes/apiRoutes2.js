@@ -52,7 +52,7 @@ router.route('/album')
     }
   });
 
-  router.route('/performers')
+router.route('/performers')
   .get((rec, res) => {
     try {
       console.log('touched /performers with GET');

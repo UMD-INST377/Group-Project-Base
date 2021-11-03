@@ -7,12 +7,91 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the default route!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Car Data Endpoints////////
 /// /////////////////////////////////
+
+// Jordan's API Routes to Car Endpoint
+router.route('/car')
+  .get(async(req, res) => {
+    try {
+      console.log('You touched the /car route with get');
+      // res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: error});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('You touched the /car route with put');
+      // res.json({data: data});
+    } catch (err) {
+      console.log(EvalError);
+      res.json({error: error});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('You touched the /car route with post');
+      // res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: error});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('You touched the /car route with delete');
+      // res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: error});
+    }
+  });
+
+// /////////////////////////////////
+// // driverDemogrpahics Endpoint////////
+// /////////////////////////////////
+router.route('/driverDemographics')
+  .get(async(req, res) => {
+    try {
+      console.log('You touched the driverDemographics route!');
+      res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      res.json({message: 'put driverDemographics endpoint'});
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      res.json({message: 'post driverDemographics endpoint'});
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      res.json({message: 'delete driverDemographics endpoint'});
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  });
+
+/*
 router.get('/dining', async (req, res) => {
   try {
     const halls = await db.DiningHall.findAll();
@@ -223,7 +302,14 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
+const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,
+ `Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories`
+ AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,
+ `Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS
+ `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,
+ `Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM
+ (`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)
+ WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
 router.get('/table/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {
@@ -243,7 +329,7 @@ const mealMapCustom = `SELECT hall_name,
   meal_name
 FROM
   Meals m
-INNER JOIN Meals_Locations ml 
+INNER JOIN Meals_Locations ml
   ON m.meal_id = ml.meal_id
 INNER JOIN Dining_Hall d
 ON d.hall_id = ml.hall_id;`;
@@ -269,5 +355,6 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
+*/
 
 export default router;

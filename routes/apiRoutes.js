@@ -21,7 +21,7 @@ router.route('/foodServicePG')
       const json = await data.json();
       console.log(json);
 
-      res.json(data: data);
+      res.json(data);
     } catch (err) {
       console.error(err);
       res.error('Server error');

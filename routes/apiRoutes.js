@@ -181,11 +181,11 @@ router.route('/genre')
 /// /////////////////////////////////
 /// ///////////Mark Schiavo///////////////
 /// /////////////////////////////////
-    router.route('/singer')
+    router.route('/singers')
     .delete(async(req, res) => {
         try {
-            const reply = "touched /singer with DELETE";
-            console.log("touched /singer with DELETE");
+            const reply = "touched /singers with DELETE";
+            console.log("touched /singers with DELETE");
             res.json(reply);
         } catch (e) {
             console.log(e);
@@ -194,8 +194,8 @@ router.route('/genre')
 
     .get(async(req, res) => {
         try {
-            const reply = "touched /singer with GET";
-            console.log("touched /singer with GET");
+            const reply = "touched /singers with GET";
+            console.log("touched /singers with GET");
             res.json(reply);
         } catch (e) {
             console.log(e);
@@ -204,8 +204,8 @@ router.route('/genre')
 
     .post(async(req, res) => {
         try {
-            const reply = "touched /singer with POST";
-            console.log("touched /singer with POST");
+            const reply = "touched /singers with POST";
+            console.log("touched /singers with POST");
             res.json(reply);
         } catch (e) {
             console.log(e);
@@ -214,8 +214,8 @@ router.route('/genre')
 
     .put(async(req, res) => {
         try {
-            const reply = "touched /singer with PUT";
-            console.log("touched /singer with PUT");
+            const reply = "touched /singers with PUT";
+            console.log("touched /singers with PUT");
             res.json(reply);
         } catch (e) {
             console.log(e);

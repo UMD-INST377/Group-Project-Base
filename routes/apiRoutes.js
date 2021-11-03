@@ -43,14 +43,7 @@ router.get('/food_inspection/:Establishment_id', async (req, res) => {
     console.log('touched /food_inspection with GET');
   }
 });
-
-router.put('/food_inspection/:Establishment_id', async (req, res) => {
-  try {
-    const businesses = await db.FoodInspection.findAll({
-      where: {
-        Establishment_id: req.params.Establishment_id
-      }
-    });
+router.put
 
     res.json(businesses);
   } catch (err) {

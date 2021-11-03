@@ -9,45 +9,44 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
-
-router.route('/genre')
+router.route('/actor')
   .get(async (req, res) => {
     try {
       console.log();
-      res.json({message: 'Touched the /genres with GET'});
+      res.json({message: 'Touched the /actor with GET'});
     } catch (error) {
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .post((req, res) => {
     try {
       console.log();
-      res.json({message: 'Touched the /genres with POST'});
+      res.json({message: 'Touched the /actor with POST'});
     } catch (error) {
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /genres with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
+    try {
+      console.log();
+      res.json({message: 'Touched the /actor with DELETE'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
   .put((req, res) => {
     try {
       console.log();
-      res.json({message: 'Touched the /genres with PUT'});
+      res.json({message: 'Touched the /actor with PUT'});
     } catch (error) {
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
   });
-  router.route('/award')
+router.route('/award')
   .get(async (req, res) => {
     try {
       console.log();
@@ -56,7 +55,7 @@ router.route('/genre')
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .post((req, res) => {
     try {
       console.log();
@@ -65,16 +64,16 @@ router.route('/genre')
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /award with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
+    try {
+      console.log();
+      res.json({message: 'Touched the /award with DELETE'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
   .put((req, res) => {
     try {
       console.log();
@@ -84,82 +83,6 @@ router.route('/genre')
       res.json({message: 'Something went wrong'});
     }
   });
-
-  router.route('/genre')
-  .get(async (req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /genres with GET'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .post((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /genres with POST'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /genres with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
-  .put((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /genres with PUT'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  router.route('/oscar')
-  .get(async (req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /oscars with GET'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .post((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /oscars with POST'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /oscars with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
-  .put((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /oscars with PUT'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-
 router.route('/director')
   .get(async (req, res) => {
     try {
@@ -169,7 +92,7 @@ router.route('/director')
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .post((req, res) => {
     try {
       console.log();
@@ -178,16 +101,16 @@ router.route('/director')
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /director with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
+    try {
+      console.log();
+      res.json({message: 'Touched the /director with DELETE'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
   .put((req, res) => {
     try {
       console.log();
@@ -197,7 +120,7 @@ router.route('/director')
       res.json({message: 'Something went wrong'});
     }
   });
-  router.route('/film')
+router.route('/film')
   .get(async (req, res) => {
     try {
       console.log();
@@ -206,7 +129,7 @@ router.route('/director')
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .post((req, res) => {
     try {
       console.log();
@@ -215,16 +138,16 @@ router.route('/director')
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /film with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
+    try {
+      console.log();
+      res.json({message: 'Touched the /film with DELETE'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
   .put((req, res) => {
     try {
       console.log();
@@ -234,8 +157,81 @@ router.route('/director')
       res.json({message: 'Something went wrong'});
     }
   });
-
-  router.route('/studio')
+router.route('/genre')
+  .get(async (req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /genre with GET'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /genre with POST'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /genre with DELETE'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /genre with PUT'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+router.route('/oscar')
+  .get(async (req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /oscar with GET'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /oscar with POST'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /oscar with DELETE'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log();
+      res.json({message: 'Touched the /oscar with PUT'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+router.route('/studio')
   .get(async (req, res) => {
     try {
       console.log();
@@ -244,7 +240,7 @@ router.route('/director')
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .post((req, res) => {
     try {
       console.log();
@@ -253,16 +249,16 @@ router.route('/director')
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /studio with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
+    try {
+      console.log();
+      res.json({message: 'Touched the /studio with DELETE'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
   .put((req, res) => {
     try {
       console.log();
@@ -273,7 +269,7 @@ router.route('/director')
     }
   });
 
-  router.route('/writer')
+router.route('/writer')
   .get(async (req, res) => {
     try {
       console.log();
@@ -282,7 +278,7 @@ router.route('/director')
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .post((req, res) => {
     try {
       console.log();
@@ -291,16 +287,16 @@ router.route('/director')
       console.log(error);
       res.json({message: 'Something went wrong'});
     }
-  });
+  })
   .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /writer with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
+    try {
+      console.log();
+      res.json({message: 'Touched the /writer with DELETE'});
+    } catch (error) {
+      console.log(error);
+      res.json({message: 'Something went wrong'});
+    }
+  })
   .put((req, res) => {
     try {
       console.log();
@@ -310,4 +306,3 @@ router.route('/director')
       res.json({message: 'Something went wrong'});
     }
   });
-

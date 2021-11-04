@@ -28,8 +28,8 @@ router.route('/zipcode')
 router.route('/Police')
   .get(async (req, res) => {
     try {
-      res.send('Police Stations in Maryland')
-      const url = '';//insert url
+      res.send('Police Stations in Maryland');
+      const url = '';// insert url
       const data = await fetch(url);
       const json = await data.json();
       console.log(json);
@@ -42,7 +42,7 @@ router.route('/Police')
   })
   .put((req, res) => {
     try {
-      res.json({message: "PUT police stations in Maryland"})
+      res.json({message: 'PUT police stations in Maryland'});
     } catch (err) {
       console.log(error);
       res.json({error: 'You are wrong'});
@@ -50,7 +50,7 @@ router.route('/Police')
   })
   .post((req, res) => {
     try {
-      res.json({message: "POST police stations in Maryland"})
+      res.json({message: 'POST police stations in Maryland'});
     } catch (err) {
       console.log(error);
       res.json({error: 'You are wrong'});
@@ -58,7 +58,7 @@ router.route('/Police')
   })
   .delete((req, res) => {
     try {
-      res.json({message: "DELETE police stations in Maryland"})
+      res.json({message: 'DELETE police stations in Maryland'});
     } catch (err) {
       console.log(error);
       res.json({error: 'You are wrong'});
@@ -338,6 +338,5 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-
-export default router;
 */
+export default router;

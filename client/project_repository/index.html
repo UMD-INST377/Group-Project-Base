@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stub Group Project Repository</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+    <h1>Group 13</h1>
+    <h1 class = "pageHeaders"> Food Database Homepage</h1>
+    <div class='globalNavBar'>
+        <div><a href="restaurant-list.html" style = "color: black">Restaurant List</a></div>
+        <div><a href="index.html" style = "color: black">Home Page</a></div>
+        <div><a href="contact-us.html" style = "color: black">Contact Us</a></div>
+    </div>
+    <br>
+    <br>
+    <div class = 'searchContainer'>
+        
+            <form action='/api' method='get' class='survey-box'>
+                <div>Search for a restaurant by inputting the some of the following:</div>
+                    <label for='res-name'>Restaurant Name: </label>
+                    <input id='res-name' name='res-name' type='text' />
+                    <label for='res-zip'>Restaurant Zip Code: </label>
+                    <input id='res-zip' name='res-zip' type='number' />
+                    <label for='res-city'>Restaurant City: </label>
+                    <input id='res-city' name='res-city' type='text' />
+                <div class = 'button-placement'><button class = 'submit-button'>Submit</button></div>
+            </form>
+    
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

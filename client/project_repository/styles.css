@@ -1,0 +1,86 @@
+
+body{
+    background-color: #82D3ED;
+}
+.pageHeaders{
+    background-color: white;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 50px;
+    border-radius: 10px;
+
+}
+.globalNavBar{
+    display: flex;
+    background-color: rgb(240,240,240);
+    justify-content: center;
+    justify-content: space-between;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    background-color: rgb(210,210,210,.4);
+}
+.contact-us-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(255,255,255,.4);
+    margin-top: 2.5%;
+}
+.contact-us-text{
+    text-align: center;
+}
+.umdimg{
+    margin-left: auto;
+    margin-right: auto;
+    height:300px;
+    width: 500px;
+}
+.survey-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5px;
+    background-color: rgb(255,255,255,.4);
+    height: 350px;
+    width: 675px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+}
+.button-placement{
+    margin-left: auto;
+    margin-right:auto;
+}
+.submit-button{
+    background-color: rgb(27,185,100,.75);
+    width: 100px;
+    height:30px;
+    border-radius: 10px;
+    
+}
+button:hover{
+    background-color:rgb(27,185,100,.5);
+}
+
+

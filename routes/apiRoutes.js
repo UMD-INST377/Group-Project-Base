@@ -5,8 +5,8 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
-//sample endpoint
-//router.route('/any table name we're using')
+// sample endpoint
+// router.route('/any table name we're using')
 // router.route('/res-name')
 //   .get(async(req,res)=>{
 //     try{
@@ -31,10 +31,6 @@ const router = express.Router();
 //     res.send('Action unavailable');
 //   })
 
-
-
-  
-
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
@@ -44,8 +40,8 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 router.get('/listofRestaurants', async (req, res) => {
   try {
-    console.log('touched /name with GET')
-    res.send('touched /name with GET')
+    console.log('touched /name with GET');
+    res.send('touched /name with GET');
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -54,8 +50,8 @@ router.get('/listofRestaurants', async (req, res) => {
 });
 router.get('/address', async (req, res) => {
   try {
-    console.log('touched /address_line_1 with GET')
-    res.send('touched /address_line_1 with GET')
+    console.log('touched /address_line_1 with GET');
+    res.send('touched /address_line_1 with GET');
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -64,7 +60,7 @@ router.get('/address', async (req, res) => {
 });
 router.delete('/listofRestaurants/:Establishment_id', async (req, res) => {
   try {
-    console.log('touched establishment_id with DELETE')
+    console.log('touched establishment_id with DELETE');
     res.send('touched establishment_id with DELETE');
   } catch (err) {
     console.error(err);

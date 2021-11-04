@@ -40,6 +40,39 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
+/// ////Food Inspection Endpoints////////
+/// /////////////////////////////////
+router.get('/listofRestaurants', async (req, res) => {
+  try {
+    console.log('touched /name with GET')
+    res.send('touched /name with GET')
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.get('/address', async (req, res) => {
+  try {
+    console.log('touched /address_line_1 with GET')
+    res.send('touched /address_line_1 with GET')
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.delete('/listofRestaurants/:Establishment_id', async (req, res) => {
+  try {
+    console.log('touched establishment_id with DELETE')
+    res.send('touched establishment_id with DELETE');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
 router.get('/dining', async (req, res) => {

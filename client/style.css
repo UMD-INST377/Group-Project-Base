@@ -82,7 +82,7 @@ ul {
 }
 
 /**
- * Styling for University.ejs View
+ * Styling for Views
  */
 .sub-bar {
   padding: 15px;
@@ -93,49 +93,6 @@ ul {
   color: #fff;
   font-size: 20px;
   text-decoration: none;
-}
-
-.university-info-container {
-  padding: 20px;
-}
-
-.university-title h1 {
-  margin-top: 0;
-}
-
-.university-grid {
-  justify-content: center;
-  display: flex;
-}
-
-.university-grid div {
-  margin: 0 auto;
-}
-
-.university-details img {
-  border-radius: 12px;
-}
-
-.university-insight,
-.university-reviews {
-  background: lightblue;
-  border-radius: 12px;
-  padding: 10px 15px;
-  width: 100%;
-  margin-right: 20px !important;
-  position: relative;
-  box-sizing: border-box;
-}
-
-.university-insight a {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #3b3b3b;
-  color: #fff;
-  padding: 15px;
-  border-radius: 6px;
 }
 
 .metrics-container {

@@ -23,38 +23,41 @@
       </div>
     </nav>
     <div class="sub-bar">
-        <a href="./">&larr; Return</a>
+        <a href="/">&larr; Return</a>
     </div>
 
-    <!-- University Information -->
-    <div class='university-info-container'>
-      <div class='university-title'>
-        <h1 class="title"><%= name %> - <%= addr %></h1>
-      </div>
-      <div class='university-grid'>
-        <div class='university-insight'>
-          <h3 class="subtitle is-4">Location: <%= addr %></h3>
-          <h3 class="subtitle is-4">Requirements: <em>...More data here</em></h3>
-          <h3 class="subtitle is-4">Test Scores: <em>...More data here</em></h3>
+    <!-- University Info Columns -->
+    <div class="columns is-centered is-desktop p-5">
+      <div class="column is-6">
+        <h1 class="title"><%= name %> Insight</h1>
+        <div class="box has-background-primary">
+          <h3 class="subtitle is-4">University Details</h3>
+          <p class="subtitle is-6"><b>Location</b>: <%= addr %></p>
+          <p class="subtitle is-6"><b>Requirements</b>: <em>...More data here</em></p>
+          <p class="subtitle is-6"><b>Test Scores</b>: <em>...More data here</em></p>
 
-          <a href="<%= url %>" target="_blank">Visit Website</a>
+          <a class="button is-white" href="<%= url %>" target="_blank" rel="noreferrer">Visit University Site</a>
         </div>
-        <div class='university-details'>
-          <img src='https://via.placeholder.com/550x350?text=School%20Preview' />
+        <div class="box has-background-primary">
+          <h3 class="subtitle is-4">University Reviews <em>(4.5 / 5.0)</em></h3>
 
+          <p class="mb-5">...</br>...</br>...</br>...</p>
+
+          <a class="button is-white" href="./review">New Review</a>
         </div>
       </div>
-      <div class='university-reviews' style='margin-top: 20px;'>
-        <h3 class="subtitle is-4">Student Reviews (4.5 / 5.0)</h3>
-        <em>...Student review data here</em>
+      <div class="column is-6">
+        <img src='https://via.placeholder.com/550x350?text=School%20Preview' />
       </div>
     </div>
+
+    <!-- Page Footer -->
     <footer class="footer p-3">
       <div class="content has-text-centered">
         <p>
           &copy; <%= new Intl.DateTimeFormat('en-US', { year: 'numeric'}).format(new Date()) %> INST 377 Team 25
         </p>
       </div>
-    </footer>    
+    </footer>
   </body>
 </html>

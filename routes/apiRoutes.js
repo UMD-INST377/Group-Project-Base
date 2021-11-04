@@ -5,6 +5,35 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
+//sample endpoint
+//router.route('/any table name we're using')
+router.route('/res-name')
+  .get(async(req,res)=>{
+    try{
+      const resName = await db./*tablename*/.findAll({
+        where:{
+          res-name:req.params.res-name
+        }
+      });
+      res.json(resName);
+    }catch(err){
+      console.error(err);
+      res.error('Server error');
+    }
+  })
+  .post((req,res)=>{
+    res.send('Action unavailable');
+  })
+  .put((req,res)=>{
+    res.send('Action unavailable');
+  })
+  .delete((req,res)=>{
+    res.send('Action unavailable');
+  })
+
+
+
+  
 
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');

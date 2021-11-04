@@ -34,14 +34,15 @@ router.get('/', (request, response) => {
  *   it's a fixed Top 10 list.
  *
  * @author Alec M.
+ * @date 2021-11-04 08:43:00
  */
 router.get('/schools', async (request, response) => {
   try {
-    // Debug
-    console.log("touched /schools with GET");
+    // Fetch all schools
+    const schools = await db.DiningHall.findAll();
 
     // Send data
-    response.json({status: "success", data: []});
+    response.json({status: "success", data: schools});
   } catch (e) {
     // Debug
     console.error(e);
@@ -64,11 +65,15 @@ router.get('/schools', async (request, response) => {
  */
 router.get('/schools/:school_id', async (request, response) => {
   try {
-    // Debug
-    console.log("touched /schools/:school_id with GET");
+    // Fetch all schools
+    const school = await db.DiningHall.findAll({
+      where: {
+        school_id: request.params.school_id
+      }
+    });
 
     // Send data
-    response.json({status: "success", data: []});
+    response.json({status: "success", data: school});
   } catch (e) {
     // Debug
     console.error(e);

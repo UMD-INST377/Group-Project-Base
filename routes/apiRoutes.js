@@ -92,4 +92,45 @@ router.route('/crashInformation')
       res.json({error: 'Something went wrong on the server'});
     }
   });
+
+/// Matt's endpoint driverDemographics
+
+router.route('/driverDemographics')
+  .get(async(req, res) => {
+    try {
+      console.log('You touched the crashInformation endpoint!');
+      res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .put((req, res) => {
+    try {
+      res.json({message: 'You touched crashInformation with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .post((req, res) => {
+    try {
+      res.json({message: 'You touched crashInformation with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .delete((req, res) => {
+    try {
+      res.json({message: 'You touched crashInformation with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  });
+  
 export default router;

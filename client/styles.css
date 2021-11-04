@@ -5,18 +5,22 @@
     font-family: 'Acme';
 }
 
-.movies {
-    margin-top: 50px;
+.content {
     display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    justify-content: space-around;
+  }
+
+.movie {
     flex-flow: row;
-    justify-content: flex-start;
-    align-items: center;
 }
 
-.columns {
+
+
+.title {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content:space-between;
-  }
+    justify-content: center;
+    padding-top: 2%;
+    text-align: center;
+}

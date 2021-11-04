@@ -132,5 +132,45 @@ router.route('/driverDemographics')
       res.json({error: 'Something went wrong on the server'});
     }
   });
-  
+
+// Michael's Endpoint to the vehicleData
+
+router.route('/vehicleData')
+  .get(async(req, res) => {
+    try {
+      console.log('You touched the vehicleData endpoint!');
+      res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .put((req, res) => {
+    try {
+      res.json({message: 'You touched vehicleData with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .post((req, res) => {
+    try {
+      res.json({message: 'You touched vehicleData with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .delete((req, res) => {
+    try {
+      res.json({message: 'You touched vehicleData with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  });
+
 export default router;

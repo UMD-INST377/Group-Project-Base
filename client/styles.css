@@ -14,9 +14,8 @@ body {
   min-height: 100%;
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
-  background-color: darkorange;
+  background-color: white;
 }
-
 /* Page Layout */
 .columns {
   display: flex;

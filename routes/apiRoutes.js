@@ -4,7 +4,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 /* import controller */
-import albumCustom from  '../server/controllers/albumCustom.js
+import albumCustom from  '../server/controllers/albumCustom.js';
 
 /* start router component */
 const router = express.Router();

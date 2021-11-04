@@ -71,11 +71,24 @@
               <textarea class="textarea" placeholder="Tell us about your experience here"></textarea>
             </div>
           </div>
+          <div class="field">
+            <label class="label">Graduation Year</label>
+            <div class="control">
+              <input name="graduation_year" class="input" type="text" value="2021">
+            </div>
+          </div>
         </form>
 
         <!-- Review Submit -->
         <a class="button is-primary" href="./">Submit Review</a>
       </div>
     </div>
+    <footer class="footer p-3">
+      <div class="content has-text-centered">
+        <p>
+          &copy; <%= new Intl.DateTimeFormat('en-US', { year: 'numeric'}).format(new Date()) %> INST 377 Team 25
+        </p>
+      </div>
+    </footer>
   </body>
 </html>

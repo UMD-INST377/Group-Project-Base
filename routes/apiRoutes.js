@@ -82,7 +82,7 @@ router.post("/songs", async (req, res) => {
   }
 });
 
-router.put("/rating_update", async (req, res) => {
+router.put("/rating", async (req, res) => {
   try {
     await db.ratingUpdate.update(
       {

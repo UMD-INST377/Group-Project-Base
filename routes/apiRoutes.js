@@ -3,24 +3,26 @@ import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
+/* import controller */
+import from albumCustom '../server/controllers/albumCustom.js
 
-/* start router component */ 
+/* start router component */
 const router = express.Router();
 
-/* Root */ 
+/* Root */
 router.get('/', (req, res) => {
   res.send('You have reached the root API endpoint!');
 });
 
 
-// Trying to get all songs from DB // 
+// Trying to get all songs from DB //
 
 router.get('/songs', async (req, res) => {
   try {
-    /* Help with debugging */ 
+    /* Help with debugging */
     console.log("Now you've touched /songs with GET");
 
-    /* Sending some data */ 
+    /* Sending some data */
     res.json({status: "Yay, successful.", data: []});
   } catch (e) {
     /* Debugging */
@@ -92,8 +94,8 @@ router.put('/ratings', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
-}); 
-    
+});
+
 router.delete('/song_name/:song_id', async (req, res) => {
   try {
     await db.song_name.destroy({
@@ -107,6 +109,22 @@ router.delete('/song_name/:song_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
+
+/*Music endpoint used imported albumCustom controller*/
+
+router.get('/album', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(albumCustom, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 
 
 /// /////////////////////////////////
@@ -343,7 +361,7 @@ const mealMapCustom = `SELECT hall_name,
   meal_name
 FROM
   Meals m
-INNER JOIN Meals_Locations ml 
+INNER JOIN Meals_Locations ml
   ON m.meal_id = ml.meal_id
 INNER JOIN Dining_Hall d
 ON d.hall_id = ml.hall_id;`;

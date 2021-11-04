@@ -15,7 +15,8 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 router.route('/foodInspectionPG')
   .get(async (req, res) => {
-    try {
+    try { 
+      //const url = 'https://data.princegeorgescountymd.gov/Health/Food-Inspection/umjn-t2iz'
       const inspections = await db.Inspections.findAll();
       const reply = inspections.length > 0 ? { data: inspections } : { message: 'no results found' };
 
@@ -26,6 +27,7 @@ router.route('/foodInspectionPG')
       res.error('Server error');
     }
   })
+  
   .put(async (req, res) => {
     try {
       await db.Inspections.update(
@@ -47,6 +49,7 @@ router.route('/foodInspectionPG')
       res.error('Server error');
     }
   })
+
   .post(async (req, res) => {
     const inspections = await db.Inspections.findAll();
     const currentId = (await inspections.length) + 1;
@@ -91,6 +94,7 @@ router.route('/foodInspectionPG')
       res.error('Server error');
     }
   })
+
   .delete(async (req, res) => {
     try {
       await db.Inspections.destroy({

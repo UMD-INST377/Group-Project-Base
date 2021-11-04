@@ -3,15 +3,15 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   body {
     margin: 0;
     padding: 0;
     font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
       ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
-    background-color: aqua;
+    background-color: rebeccapurple;
   }
-  
+
   /* Page Layout */
   .columns {
     display: flex;
@@ -24,7 +24,7 @@
       max-width: 960px;
       justify-content: space-between;
   }
-  
+
   .wrapper {
     display: flex;
   }
@@ -32,4 +32,11 @@
     max-width: 960px;
     margin-top: 25px;
   }
+
+  #box1 {
+      background-color: #EFB0A1;
+  }
   
+  #box2 {
+      justify-content: space-between;
+  }

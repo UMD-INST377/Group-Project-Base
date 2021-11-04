@@ -33,6 +33,11 @@ router.get('/:universityName', (request, response) => {
       name: "Penn State University",
       addr: "State College, PA",
       url: "https://psu.edu"
+    },
+    "universiy-of-minnesota": {
+      name: "University of Minnesota",
+      addr: "Minneapolis, MN",
+      url: "https://twin-cities.umn.edu"
     }
   }
   const uni = universities[request.params.universityName];
@@ -40,7 +45,7 @@ router.get('/:universityName', (request, response) => {
   if (typeof(uni) === "object") {
     response.render('university', uni);
   } else {
-    response.status(404).send('Requested university was not found');
+    response.status(404).send('<h1>Requested university was not found</h1>');
   }
 });
 

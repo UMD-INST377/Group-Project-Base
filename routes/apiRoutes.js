@@ -3,7 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
-/* import controller */
+/* import albumCustom controller */
 import albumCustom from  '../server/controllers/albumCustom.js';
 
 /* start router component */
@@ -111,7 +111,7 @@ router.delete('/song_name/:song_id', async (req, res) => {
 });
 
 
-/*Music endpoint used imported albumCustom controller*/
+/*Music endpoint that used imported albumCustom controller*/
 
 router.get('/album', async (req, res) => {
   try {

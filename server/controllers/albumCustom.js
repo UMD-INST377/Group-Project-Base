@@ -1,4 +1,4 @@
-//sql query that join songs table to album table
+/*sql query join songs table to album table */
 
 export default `SELECT album_name,
   

@@ -9,6 +9,9 @@ import albumCustom from "../server/controllers/albumCustom.js";
 /*import ratingUpdate controller - mirandavo*/
 import ratingUpdate from "../server/controllers/ratingUpdate.js";
 
+/* Delete for controller Daniel Cutaneo*/
+import deleteCustom from '../server/controllers/deleteCustom.js';
+
 /* start router component */
 const router = express.Router();
 
@@ -101,9 +104,11 @@ router.put("/rating", async (req, res) => {
   }
 });
 
-router.delete("/song_name/:song_id", async (req, res) => {
+
+/* Endpoint that is used to delete the song -Daniel Cutaneo*/
+router.delete('/song_name/:song_id', async (req, res) => {
   try {
-    await db.song_name.destroy({
+    await db.deleteCustom.destroy({
       where: {
         song_name_id: req.params.song_name_id,
       },

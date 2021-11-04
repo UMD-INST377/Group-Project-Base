@@ -20,7 +20,6 @@ body {
 .columns {
   display: flex;
   flex-wrap: wrap;
-  background-color: blue;
 }
 
 .wrapper {

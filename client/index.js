@@ -128,6 +128,8 @@ body.addEventListener("keydown", evt=> {
     albums.forEach(item => {
         item.addEventListener("click", evt => {
             active.style.removeProperty("border")
+            item.style.cssText = `border: 5px solid grey
+                                 `
         })
     })
 })

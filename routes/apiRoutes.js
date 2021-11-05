@@ -65,6 +65,46 @@ router.route('/Police')
     }
   });
 
+  router.route('/Population')
+  .get(async (req, res) => {
+    try {
+      res.send('Population in Maryland');
+      const url = '';
+      const data = await fetch(url);
+      const json = await data.json();
+      console.log(json);
+
+      res.json({data: data});
+    } catch (err) {
+      console.error(err);
+      res.error({error: error});
+    }
+  })
+  .put((req, res) => {
+    try {
+      res.json({message: 'PUT population in Maryland'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'You are wrong'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      res.json({message: 'POST population in Maryland'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'You are wrong'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      res.json({message: 'DELETE population in Maryland'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'You are wrong'});
+    }
+  });
+  
 /* Dining Hall Demos
 
 router.get('/dining/:hall_id', async (req, res) => {

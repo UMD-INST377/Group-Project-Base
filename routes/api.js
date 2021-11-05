@@ -8,6 +8,7 @@
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
+import schoolControllers from '../server/controllers/companiesController.js';
 
 // Instantiate router component
 const router = express.Router();
@@ -39,10 +40,12 @@ router.get('/', (request, response) => {
 router.get('/schools', async (request, response) => {
   try {
     // Fetch all schools
-    const schools = await db.DiningHall.findAll();
+    const d = await db.sequelizeDB.query(schoolControllers.getAllSchools, {
+      type: sequelize.QueryTypes.SELECT
+    });
 
     // Send data
-    response.json({status: "success", data: schools});
+    response.json({status: "success", data: d});
   } catch (e) {
     // Debug
     console.error(e);
@@ -65,15 +68,14 @@ router.get('/schools', async (request, response) => {
  */
 router.get('/schools/:school_id', async (request, response) => {
   try {
-    // Fetch all schools
-    const school = await db.DiningHall.findAll({
-      where: {
-        school_id: request.params.school_id
-      }
+    // Fetch single school
+    const d = await db.sequelizeDB.query(schoolControllers.getSchool, {
+      replacements: { school_id: request.params.school_id },
+      type: sequelize.QueryTypes.SELECT
     });
 
     // Send data
-    response.json({status: "success", data: school});
+    response.json({status: "success", data: d});
   } catch (e) {
     // Debug
     console.error(e);

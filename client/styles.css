@@ -42,3 +42,14 @@
 .test{
     color: black;
 }
+.body-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 25px;
+}
+.login-form-wrapper {
+    margin-right: 25px;
+}

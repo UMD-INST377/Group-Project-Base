@@ -7,18 +7,39 @@
         <link rel="stylesheet" href = "styles.css"/>
     </head>
 
-    <div
+    <body>
         <div class='menu-container'>
             <div class='menu'>
                 <div class="homepage"> <a class='homepagelink' href="./index.html">PG County Food Inspection Postings</div>
                 <div class="aboutpage"> <a class='linkcolor' href="./about.html">About</div>
                 <div class="login"> <a class='linkcolor' href="./login.html">Login</div> 
             </div> 
-        <div>
-        
-    </div>
-    
+        </div>
 
+        <div class='body-wrapper'>
+            <form class="login-form-wrapper box" action="/api">
+                <div class="field">
+                    <label class="label">Login ID</label>
+                    <div class="control">
+                        <input type="text">
+                    </div>
+                </div>
+        
+                <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control">
+                        <input type="text">
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-dark">Log In</button>
+                    </div>
+                </div>
+            </form>    
+        </div>
 
         <script src = "script.js"></script>
+    </body>
 </html>

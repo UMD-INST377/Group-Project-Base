@@ -1,5 +1,5 @@
-import Example from './Example.js';
+import Universities from './Universities.js';
 
 export default {
-  Example,
+  Universities,
 };

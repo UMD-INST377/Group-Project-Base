@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <title>INST377 Group 25 - Big 10 Colleges</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <h1>INST 377 Team 25</h1>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item" href="/">Home</a>
+          <a class="navbar-item" href="/">About Us</a>
+        </div>
+      </div>
+    </nav>
+    <div class="sub-bar">
+        <a href="./">&larr; Return</a>
+    </div>
+
+    <!-- University Review Container -->
+    <div class="columns is-centered is-desktop m-5">
+      <div class="column is-5">
+        <!-- Header -->
+        <h1 class="title" style="text-align: center;">University Feedback</h1>
+
+        <!-- Input Form -->
+        <form class="box has-background-primary" method="" action="" onsubmit="return false;">
+          <div class="field">
+            <label class="label">University Name</label>
+            <div class="control">
+              <input name="universiy_name" class="input" type="text" disabled value="<%= name %>">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Rating</label>
+            <div class="control">
+              <label class="radio">
+                <input type="radio" name="university_rating">
+                1 Star
+              </label>
+              <label class="radio">
+                <input type="radio" name="university_rating">
+                2 Star
+              </label>
+              <label class="radio">
+                <input type="radio" name="university_rating">
+                3 Star
+              </label>
+              <label class="radio">
+                <input type="radio" name="university_rating">
+                4 Star
+              </label>
+              <label class="radio">
+                <input type="radio" name="university_rating">
+                5 Star
+              </label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Comments</label>
+            <div class="control">
+              <textarea class="textarea" placeholder="Tell us about your experience here"></textarea>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Graduation Year</label>
+            <div class="control">
+              <input name="graduation_year" class="input" type="text" value="2021">
+            </div>
+          </div>
+        </form>
+
+        <!-- Review Submit -->
+        <a class="button is-primary" href="./">Submit Review</a>
+      </div>
+    </div>
+
+    <!-- Page Footer -->
+    <footer class="footer p-3">
+      <div class="content has-text-centered">
+        <p>
+          &copy; <%= new Intl.DateTimeFormat('en-US', { year: 'numeric'}).format(new Date()) %> INST 377 Team 25
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

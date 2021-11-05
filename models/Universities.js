@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Example = sequelize.define(
+  const Universities = sequelize.define(
     'university',
     {
       school_name: {
@@ -13,5 +13,5 @@ export default (sequelize, DataTypes) => {
     }
   );
 
-  return Example;
+  return Universities;
 };

@@ -61,3 +61,44 @@ router.get('/hurricanes', async (req, res) => {
 });
 
 export default router;
+/* City Endpoint */
+router.route('/city')
+  .get(async (req, res) => {
+    try {
+      console.log('touched /city with GET');
+      res.json({ message: 'GET endpoint' });
+    } catch (err) {
+      console.log(err);
+    }
+  })
+
+  .put(async (req, res) => {
+    try {
+      console.log('touched /city with PUT');
+      res.json({ message: 'PUT endpoint' });
+    } catch (err) {
+      console.log(err);
+    }
+  })
+
+  .post(async (req, res) => {
+    try {
+      console.log('touched /city with POST');
+      res.json({ message: 'POST endpoint' });
+    } catch (err) {
+      console.log(err);
+    }
+  })
+
+  .delete(async (req, res) => {
+    try {
+      console.log('touched /city with DELETE');
+      res.json({ message: 'DELETE endpoint' });
+    } catch (err) {
+      console.log(err);
+    }
+
+    router.get('/', (req, res) => {
+      res.json('You have touched the city endpoint');
+    });
+  });

@@ -8,7 +8,7 @@
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
-import schoolControllers from '../server/controllers/companiesController.js';
+import schoolControllers from '../controllers/schools.js';
 
 // Instantiate router component
 const router = express.Router();

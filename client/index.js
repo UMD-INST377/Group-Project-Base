@@ -105,7 +105,14 @@ albums.forEach(item => {
         if (!body.contains(document.querySelector(".detail"))) {
             createDetail()
         }
-        
+        body.addEventListener("keydown", evt => {
+            const active = document.querySelector(".glide__slide--active").querySelector("img")
+            if (evt.key === "Enter") {
+                item.style.removeProperty("border")
+                active.style.cssText = ` border: 5px solid grey;
+                                       `
+            }
+        })
     })    
 })
 

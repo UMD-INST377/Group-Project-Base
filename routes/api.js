@@ -8,7 +8,7 @@
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
-import schoolControllers from '../controllers/schools.js';
+import controllers from '../controllers/index.js';
 
 // Instantiate router component
 const router = express.Router();
@@ -40,7 +40,7 @@ router.get('/', (request, response) => {
 router.get('/schools', async (request, response) => {
   try {
     // Fetch all schools
-    const d = await db.sequelizeDB.query(schoolControllers.getAllSchools, {
+    const d = await db.sequelizeDB.query(controllers.schools.getAllSchools, {
       type: sequelize.QueryTypes.SELECT
     });
 
@@ -69,7 +69,7 @@ router.get('/schools', async (request, response) => {
 router.get('/schools/:school_id', async (request, response) => {
   try {
     // Fetch single school
-    const d = await db.sequelizeDB.query(schoolControllers.getSchool, {
+    const d = await db.sequelizeDB.query(controllers.schools.getSchool, {
       replacements: { school_id: request.params.school_id },
       type: sequelize.QueryTypes.SELECT
     });

@@ -15,5 +15,5 @@ const getSchool = ``;
 // Export variables
 export default {
   getAllSchools,
-	getSchool
+  getSchool
 };

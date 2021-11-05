@@ -6,26 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script src="script.js"></script>
     <title>West Coast Earthquakes</title>
 </head>
 
 <body>
-    <div class="description">
-        <h1>West Coast Earthquake Search</h1>
+    <div class="description"></div>
+        <h1 class="title">West Coast Earthquake Search</h1>
         <p>Search for west coast earthquake data using the parameters below:</p>
     </div>
 
-    <div class="form-wrapper">
-        <form action="results.html"> 
-            <h2>Location</h2>
-            <label for="city">City</label>
-            <input type="text" name="city">
-            <label for="zip-code">Zip Code</label>
-            <input type="text" name="zip-code">
+    <section class="form-wrapper">
+        <form action="results.html">
+
+            <div class="section">
+                <div class="field">
+                    <label class="label" for="city">City</label>
+                    <input class="input" type="text" name="city">
+                </div>
+                <div class="field">
+                    <label class="label" for="zip-code">Zip Code</label>
+                    <input class="input" type="text" name="zip-code">
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="field">
+                    <label class="label" for="magnitude">Magnitude</label>
+                    <input class="input" type="text" name="magnitude">
+            </div>
+            </div>
             <button type="submit" value="Submit">Submit</button>
         </form>
-    </div>
+        </div>
 </body>
 
 </html>

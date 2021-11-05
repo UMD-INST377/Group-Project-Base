@@ -13,7 +13,7 @@ import controllers from '../controllers/index.js';
 // Instantiate router component
 const router = express.Router();
 
-/*
+/**
  * Root directory
  *
  * @author Alec M.
@@ -26,7 +26,7 @@ router.get('/', (request, response) => {
   response.send('Touched the root API endpoint');
 });
 
-/*
+/**
  * Get all schools from the database
  *
  * NOTE:

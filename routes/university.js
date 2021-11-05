@@ -36,8 +36,8 @@ const universities = {
 }
 /** END OF TEMP CODE **/
 
-/*
- * Root directory
+/**
+ * Root university directory
  *
  * @author Alec M.
  * @date 2021-11-01 06:32PM
@@ -53,6 +53,12 @@ router.get('/:universityName', (request, response) => {
   }
 });
 
+/**
+ * University review page
+ *
+ * @author Alec M.
+ * @date 2021-11-05 08:43:00
+ */
 router.get("/:universityName/review", (request, response) => {
   /* Temp solution until DB is ready */
   const uni = universities[request.params.universityName];

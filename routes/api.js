@@ -40,7 +40,7 @@ router.get('/', (request, response) => {
 router.get('/schools', async (request, response) => {
   try {
     // Fetch all schools
-    const d = await db.sequelizeDB.query(controllers.schools.getAllSchools, {
+    const d = await db.sequelizeDB.query(controllers.university.getAllUniversities, {
       type: sequelize.QueryTypes.SELECT
     });
 
@@ -69,7 +69,7 @@ router.get('/schools', async (request, response) => {
 router.get('/schools/:school_id', async (request, response) => {
   try {
     // Fetch single school
-    const d = await db.sequelizeDB.query(controllers.schools.getSchool, {
+    const d = await db.sequelizeDB.query(controllers.university.getUniversity, {
       replacements: { school_id: request.params.school_id },
       type: sequelize.QueryTypes.SELECT
     });

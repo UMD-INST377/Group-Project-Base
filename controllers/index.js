@@ -1,7 +1,7 @@
 // Import all controllers
-import schools from './schools.js';
+import university from './university.js';
 
 // Export controllers
 export default {
-  schools,
+  university,
 }

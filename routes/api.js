@@ -22,7 +22,7 @@ router.get('/', (request, response) => {
   console.log("touched / with GET");
 
   // Send default response
-  reponse.send('Touched the root API endpoint');
+  response.send('Touched the root API endpoint');
 });
 
 /*

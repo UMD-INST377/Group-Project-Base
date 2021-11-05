@@ -125,6 +125,11 @@ body.addEventListener("keydown", evt=> {
             item.style.removeProperty("border")
         })
     }
+    albums.forEach(item => {
+        item.addEventListener("click", evt => {
+            active.style.removeProperty("border")
+        })
+    })
 })
 
 

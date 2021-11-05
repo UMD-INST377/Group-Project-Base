@@ -39,7 +39,7 @@ input {
 }
 
 .container {
-    border: 5px solid grey;
+    /* border: 5px solid grey; */
     height: 800px;
     display: flex;
     flex-direction: row;
@@ -69,6 +69,8 @@ img {
 
 .detail {
     display: flex;
+    width: 90%;
+    margin: auto; 
 }
 
 .tab {

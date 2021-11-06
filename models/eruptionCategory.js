@@ -1,4 +1,4 @@
-export default (sequelize, DataTypes) => {
+export default (database, DataTypes) => {
   const eruptionCategory = database.define(
     'eruption_category',
     {
@@ -13,5 +13,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return eruptionAoa;
+  return eruptionCategory;
 };

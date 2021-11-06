@@ -6,6 +6,8 @@ import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
 
+import awardsData from '../controllers/awardsController.js';
+
 const router = express.Router();
 
 /// /////////////////////////////////
@@ -18,7 +20,7 @@ router.route('/awards')
       res.json({message: 'touched /awards with GET'});
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on awards GET'});
     }
   })
 
@@ -28,7 +30,7 @@ router.route('/awards')
       res.json({message: 'touched /awards with PUT'});
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on awards PUT'});
     }
   })
 
@@ -38,7 +40,7 @@ router.route('/awards')
       res.json({message: 'touched /awards with POST'});
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on awards POST'});
     }
   })
 
@@ -48,7 +50,7 @@ router.route('/awards')
       res.json({message: 'touched /awards with DELETE'});
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on awards DELETE'});
     }
   });
 

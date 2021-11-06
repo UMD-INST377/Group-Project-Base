@@ -1,4 +1,4 @@
-export default (sequelize, DataTypes) => {
+export default (database, DataTypes) => {
   const eruptionAoa = database.define(
     'eruption_aoa',
     {

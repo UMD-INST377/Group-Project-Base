@@ -31,9 +31,9 @@ router.route('/awards')
       console.log('touched /awards with GET');
       res.json(result);
     }
-    catch(error){
+    catch (error) {
       console.error(error);
-      res.send('Something went wrong on /awards at GET')
+      res.send('Something went wrong on /awards at GET');
     }
   })
   .post(async(req, res) => {
@@ -41,27 +41,28 @@ router.route('/awards')
       console.log('touched /awards with POST');
       res.json({message: 'touched /awards with POST'}); 
     }
-    catch(error){
+    catch (error) {
       console.error(error);
-      res.send('Something went wrong on /awards at POST')
+      res.send('Something went wrong on /awards at POST');
     }
   })
   .put(async(req, res) => {
     try{
       console.log(res.json(req.body));
-      const award = await db.sequelizeDB.query(filmMapCustom, {
+      const award = await db.sequelizeDB.query(awardMapCustom, {
         type: sequelize.QueryTypes.SELECT
       });
+    
       const currentID = (await award.length) + 1;
       const awardTitle = getIDByValue(award_title, req.body.award_title);
       const awardID = awardTitle.map((awardName) => awardName.award_id)[0];
       const createStatement = `INSERT INTO awards (award_id, award_title) VALUES (${currentID}, '${req.body.award_title}', ${awardId})`;
       const result = await db.sequelizeDB.query(createStatement, {
         type: sequelize.QueryTypes.INSERT
-    }
-    catch(error){
+      }) }
+    catch (error) {
       console.error(error);
-      res.send('Something went wrong on /awards at PUT')
+      res.send('Something went wrong on /awards at PUT');
     }
   })
   .delete(async(req, res) => {
@@ -69,10 +70,10 @@ router.route('/awards')
       console.log('touched /awards with DELETE');
       res.json({message: 'touched /awards with DELETE'});
     }
-    catch(error){
+    catch (error) {
       console.error(error);
-      res.send('Something went wrong on /awards at DELETE')
+      res.send('Something went wrong on /awards at DELETE');
     }
-  })
+  });
 
 export default router;

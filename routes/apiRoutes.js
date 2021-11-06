@@ -1,14 +1,19 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
 
+import aoaController from '../server/controllers/aoaController.js';
+
 const router = express.Router();
+
 /* eruption_aoa endpoint */
 router.route('/eruption_aoa')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(aoaController, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('you touched the route!');
       res.json({message: 'touched eruption_aoa with GET'});
     } catch (err) {

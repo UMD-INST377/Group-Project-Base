@@ -1,1 +1,1 @@
-export default 'SELECT * FROM awards;';
+export default 'SELECT * FROM awards, films, awards_linking;';

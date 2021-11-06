@@ -11,7 +11,7 @@ const router = express.Router();
 router.route('/eruption_aoa')
   .get(async(req, res) => {
     try {
-      const result = await db.sequelizeDB.query(aoaController, {
+      const result = await db.sequelizeDB.query(aoaController.aoaGet, {
         type: sequelize.QueryTypes.SELECT
       });
       console.log('you touched the route!');

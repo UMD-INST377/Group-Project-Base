@@ -5,7 +5,23 @@
  */
 const getAllUniversities = `SELECT university_id, university_name FROM university`;
 
+/**
+ * Get Big 10 university by rank_id
+ *
+ * @type {SQLStmt}
+ */
+const getUniversity = `SELECT a.university_name, b.univ_location, b.univ_region, b.univ_zip
+  FROM university a
+  INNER JOIN location b
+    ON a.university_id = b.university_id
+  WHERE a.university_id = :rank_id
+  LIMIT 0,1`;
+
+const getUniversityName = `SELECT university_name FROM university WHERE university_id = :rank_id LIMIT 0,1`;
+
 // Export variables
 export default {
   getAllUniversities,
+  getUniversity,
+  getUniversityName
 };

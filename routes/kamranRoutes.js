@@ -5,8 +5,17 @@ import chalk from 'chalk';
 import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
+import filmMapCustom from '../controllers/filmsController.js';
 
 const router = express.Router();
+
+function getIDByValue(object, value) {
+  return object.filter((item) => item.genre === value);
+}
+
+function getTableRows(table) {
+  return `SELECT * FROM ${table}`;
+}
 
 /// /////////////////////////////////
 /// ////Films Endpoints////////
@@ -14,8 +23,10 @@ const router = express.Router();
 router.route('/films')
   .get(async (req, res) => {
     try {
-      console.log('touched /films with GET');
-      res.json({message: 'touched /films with GET'});
+      const result = await db.sequelizeDB.query(filmMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -24,8 +35,22 @@ router.route('/films')
 
   .put(async (req, res) => {
     try {
-      console.log('touched /films with PUT');
-      res.json({message: 'touched /films with PUT'});
+      console.log(res.json(req.body));
+      const film = await db.sequelizeDB.query(filmMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const genre = await db.sequelizeDB.query(getTableRows('genre'), {
+        type: sequelize.QueryTypes.SELECT
+      });
+      // didn't add directors will check back later
+      const currentID = (await film.length) + 1;
+      const genreName = getIDByValue(genre, req.body.genre);
+      const genreId = genreName.map((movGenre) => movGenre.genre_id)[0];
+      const createStatement = `INSERT INTO films (film_id, film_title, release_date, genre_id) VALUES (${currentID}, '${req.body.film_title}', '${req.body.release_date}', ${genreId})`;
+      const result = await db.sequelizeDB.query(createStatement, {
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});

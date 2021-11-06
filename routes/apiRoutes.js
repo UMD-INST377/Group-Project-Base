@@ -86,6 +86,9 @@ router.route('/eruption_category')
 router.route('/eruption_info')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(aoaController.aoaGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('you touched the route!');
       res.json({message: 'touched eruption_info with GET'});
     } catch (err) {

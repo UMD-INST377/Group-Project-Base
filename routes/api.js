@@ -58,36 +58,6 @@ router.get('/schools', async (request, response) => {
 /**
  * Get available information about a specific school
  *
- * NOTE:
- *   (1) No create, update, or delete methods
- *   are going to be supported for schools. As
- *   it's a fixed Top 10 list.
- *
- * @author Alec M.
- * @date 2021-10-29 08:41:00am
- */
-router.get('/schools/:school_id', async (request, response) => {
-  try {
-    // Fetch single school
-    const d = await db.sequelizeDB.query(controllers.university.getUniversity, {
-      replacements: { school_id: request.params.school_id },
-      type: sequelize.QueryTypes.SELECT
-    });
-
-    // Send data
-    response.json({status: "success", data: d});
-  } catch (e) {
-    // Debug
-    console.error(e);
-
-    // Send data
-    response.json({status: "failure", data: null, message: "unknown error"});
-  }
-});
-
-/**
- * Get available information about a specific school
- *
  * @author Hyeong C.
  * @date 2021-10-31 18:50:00pm
  */

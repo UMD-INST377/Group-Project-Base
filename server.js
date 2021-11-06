@@ -30,8 +30,8 @@ app.use('/api', udayRoutes);
 
 async function bootServer() {
   try {
-    // const mysql = await db.sequelizeDB;
-    // await mysql.sync();
+    const mysql = await db.sequelizeDB;
+    await mysql.sync();
     app.listen(PORT, () => {
       console.log(`Listening on: http//localhost:${PORT}`);
     });

@@ -1,3 +1,1 @@
-export default 'USE imdb_database
-SELECT *
-FROM awards'
+export default 'SELECT * FROM awards;';

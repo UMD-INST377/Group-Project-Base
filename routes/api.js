@@ -8,24 +8,25 @@
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
+import controllers from '../controllers/index.js';
 
 // Instantiate router component
 const router = express.Router();
 
-/*
+/**
  * Root directory
  *
  * @author Alec M.
  */
 router.get('/', (request, response) => {
   // Debug
-  console.log('touched / with GET');
+  console.log("touched / with GET");
 
   // Send default response
-  reponse.send('Touched the root API endpoint');
+  response.send('Touched the root API endpoint');
 });
 
-/*
+/**
  * Get all schools from the database
  *
  * NOTE:
@@ -34,58 +35,28 @@ router.get('/', (request, response) => {
  *   it's a fixed Top 10 list.
  *
  * @author Alec M.
+ * @date 2021-11-04 08:43:00
  */
 router.get('/schools', async (request, response) => {
   try {
-    // Debug
-    console.log('touched /schools with GET');
+    // Fetch all schools
+    const d = await db.sequelizeDB.query(controllers.university.getAllUniversities, {
+      type: sequelize.QueryTypes.SELECT
+    });
 
     // Send data
-    response.json({status: 'success', data: []});
+    response.json({status: "success", data: d});
   } catch (e) {
     // Debug
     console.error(e);
 
     // Send data
-    response.json({status: 'failure', data: null, message: 'unknown error'});
+    response.json({status: "failure", data: null, message: "unknown error"});
   }
 });
 
 /**
  * Get available information about a specific school
- *
- * NOTE:
- *   (1) No create, update, or delete methods
- *   are going to be supported for schools. As
- *   it's a fixed Top 10 list.
- *
- * @author Alec M.
- * @date 2021-10-29 08:41:00am
- */
-router.get('/schools/:school_id', async (request, response) => {
-  try {
-    // Debug
-    console.log('touched /schools/:school_id with GET');
-
-    // Send data
-    response.json({status: 'success', data: []});
-  } catch (e) {
-    // Debug
-    console.error(e);
-
-    // Send data
-    response.json({status: 'failure', data: null, message: 'unknown error'});
-  }
-});
-
-
-/**
- * Get available information about a specific school
- *
- * NOTE:
- *   (1) No create, update, or delete methods
- *   are going to be supported for schools. As
- *   it's a fixed Top 10 list.
  *
  * @author Hyeong C.
  * @date 2021-10-31 18:50:00pm
@@ -93,16 +64,16 @@ router.get('/schools/:school_id', async (request, response) => {
 router.get('/schools/:rank_id', async (request, response) => {
   try {
     // Debug
-    console.log('touched /schools/:rank_id with GET');
+    console.log("touched /schools/:rank_id with GET");
 
     // Send data
-    response.json({status: 'success', data: []});
+    response.json({status: "success", data: []});
   } catch (e) {
     // Debug
     console.error(e);
 
     // Send data
-    response.json({status: 'failure', data: null, message: 'unknown error'});
+    response.json({status: "failure", data: null, message: "unknown error"});
   }
 });
 
@@ -111,7 +82,7 @@ router.get('/schools/:rank_id', async (request, response) => {
  *
  * @author John I.
  */
- router.get('/schools/:rank_id/sat_scores', async (request, response) => {
+router.get('/schools/:rank_id/sat_scores', async (request, response) => {
   try {
     // Debug
     console.log('touched /schools/:rank_id/sat_scores with GET');
@@ -127,13 +98,12 @@ router.get('/schools/:rank_id', async (request, response) => {
   }
 });
 
-
-/** *******************
+/*********************
 *
 * Each member will set up a endpoint for our application
 * and implement the necessary HTTP methods for it (GET/PUT/POST/DELTE)
 *
-******************** */
+*********************/
 
 /*
 router.post('/dining', async (req, res) => {

@@ -6,35 +6,15 @@
 
 // Module Imports
 import express from 'express';
+import sequelize from 'sequelize';
+import db from '../database/initializeDB.js';
+import controllers from '../controllers/index.js';
 
 // Instantiate router component
 const router = express.Router();
 
-/** TEMP CODE **/
-/**
- * IMPORTANT NOTE
- * (1) The code below is a temporary solution
- * to the lack of database that we currently have
- * this is just a emulation
- */
-const universities = {
-  "university-of-maryland": {
-    name: "University of Maryland",
-    addr: "College Park, MD",
-    url: "https://umd.edu"
-  },
-  "pennsylvania-state-university": {
-    name: "Penn State University",
-    addr: "State College, PA",
-    url: "https://psu.edu"
-  },
-  "universiy-of-minnesota": {
-    name: "University of Minnesota",
-    addr: "Minneapolis, MN",
-    url: "https://twin-cities.umn.edu"
-  }
-}
-/** END OF TEMP CODE **/
+// Response statuses
+const university_404 = '<h1>Requested university was not found</h1>';
 
 /**
  * Root university directory
@@ -42,14 +22,32 @@ const universities = {
  * @author Alec M.
  * @date 2021-11-01 06:32PM
  */
-router.get('/:universityName', (request, response) => {
-  /* Temp solution until DB is ready */
-  const uni = universities[request.params.universityName];
+router.get('/:rank_id', async (request, response) => {
+  // Validate rank_id
+  const rank_id = parseInt(request.params.rank_id);
+  if (rank_id <= 0 || rank_id > 14) {
+    response.status(404).send(university_404);
+  }
 
-  if (typeof(uni) === "object") {
-    response.render('university', uni);
-  } else {
-    response.status(404).send('<h1>Requested university was not found</h1>');
+  // Safely connect to database
+  try {
+    // Validate database data
+    const d = await db.sequelizeDB.query(controllers.university.getUniversity, {
+      replacements: { rank_id: rank_id },
+      type: sequelize.QueryTypes.SELECT
+    });
+    if (d.length != 1 || typeof(d[0]) !== "object" || typeof(d[0].university_name) !== "string") {
+      response.status(404).send(university_404);
+    }
+
+    // Render page
+    response.render('university', d[0]);
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    response.status(404).send();
   }
 });
 
@@ -59,14 +57,32 @@ router.get('/:universityName', (request, response) => {
  * @author Alec M.
  * @date 2021-11-05 08:43:00
  */
-router.get("/:universityName/review", (request, response) => {
-  /* Temp solution until DB is ready */
-  const uni = universities[request.params.universityName];
+router.get("/:rank_id/review", async (request, response) => {
+  // Validate rank_id
+  const rank_id = parseInt(request.params.rank_id);
+  if (rank_id <= 0 || rank_id > 14) {
+    response.status(404).send(university_404);
+  }
 
-  if (typeof(uni) === "object") {
-    response.render('newReview', uni);
-  } else {
-    response.status(404).send('<h1>Requested university was not found</h1>');
+  // Safely connect to database
+  try {
+    // Validate database data
+    const d = await db.sequelizeDB.query(controllers.university.getUniversityName, {
+      replacements: { rank_id: rank_id },
+      type: sequelize.QueryTypes.SELECT
+    });
+    if (d.length != 1 || typeof(d[0]) !== "object" || typeof(d[0].university_name) !== "string") {
+      response.status(404).send(university_404);
+    }
+
+    // Render page
+    response.render('newReview', d[0]);
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    response.status(404).send();
   }
 });
 

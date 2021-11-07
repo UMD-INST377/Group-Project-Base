@@ -16,9 +16,9 @@ export default (database, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false, 
     },
-    first_dose_prop: {
+    second_dose_prop: {
         type: DataTypes.DECIMAL,
     },
   }),
   return VaccineData;
-}
+};

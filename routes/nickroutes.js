@@ -49,7 +49,7 @@ router.route('/awards')
       const awardID = awardName.map((movAward) => movAward.awardID)[0];
       const updateStatement = `UPDATE awards
         SET award_title = '${req.body.award_title}'
-        WHERE award_id = '${awardId}' `;
+        WHERE award_id = '${awardID}'`;
       await db.sequelizeDB.query(updateStatement, {
         type: sequelize.QueryTypes.UPDATE
       });

@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const county = database.define("county", {
+  const COUNTY = database.define("county", {
     county_ID: {
       type: DataTypes.INTEGER,
       allowNull: false,

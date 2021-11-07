@@ -19,6 +19,6 @@ export default (database, DataTypes) => {
     second_dose_prop: {
         type: DataTypes.DECIMAL,
     },
-  }),
+  });
   return VaccineData;
 };

@@ -24,7 +24,7 @@ function getTableRows(table) {
 /// /////////////////////////////////
 router.route('/awards')
   .get(async(req, res) => {
-    try{
+    try {
       const result = await db.sequelizeDB.query(awardMapCustom, {
         type: sequelize.QueryTypes.SELECT
       });
@@ -36,18 +36,8 @@ router.route('/awards')
       res.send('Something went wrong on /awards at GET');
     }
   })
-  .post(async(req, res) => {
-    try{
-      console.log('touched /awards with POST');
-      res.json({message: 'touched /awards with POST'}); 
-    }
-    catch (error) {
-      console.error(error);
-      res.send('Something went wrong on /awards at POST');
-    }
-  })
   .put(async(req, res) => {
-    try{
+    try {
       console.log(res.json(req.body));
       const award = await db.sequelizeDB.query(awardMapCustom, {
         type: sequelize.QueryTypes.SELECT
@@ -65,10 +55,34 @@ router.route('/awards')
       res.send('Something went wrong on /awards at PUT');
     }
   })
+  .post(async(req, res) => {
+    try {
+      await db.sequelizeDB.update(
+        {
+          award_title: req.body.award_title
+        },
+        {
+          where: {
+            award_id: req.params.award_id
+          }
+        }
+      );
+      res.send('Successfully Updated'); 
+    }
+    catch (error) {
+      console.error(error);
+      res.send('Something went wrong on /awards at POST');
+    }
+  })
+  
   .delete(async(req, res) => {
-    try{
-      console.log('touched /awards with DELETE');
-      res.json({message: 'touched /awards with DELETE'});
+    try {
+      await db.sequelizeDB.destroy({
+        where: {
+          award_id: req.params.award_id
+        }
+      });
+      res.send('Successfully Deleted');
     }
     catch (error) {
       console.error(error);

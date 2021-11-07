@@ -73,4 +73,9 @@ router.get('/review', async (req, res) => {
   console.log('you touched the room_type route');
 });
 
+router.get('/cuisine_type', async (req, res) => {
+  res.send('this is the cuisine_type page');
+  console.log('you touched the restaurants route');
+});
+
 export default router;

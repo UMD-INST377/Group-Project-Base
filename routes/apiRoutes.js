@@ -122,10 +122,12 @@ router
   })
   .delete((req, res) => {
     try {
-      console.log("delete from blob");
-      res.send("This has been deleted.");
+      const {writerId} = req.params;
+      const writerlist = await db.Writer.destroy({writer_id: `${writerId}`});
+      res.send('Writer delete');
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      res.send('Something went wrong on the /writers end and unable to delete writer_id');
     }
   })
   .put((req, res) => {

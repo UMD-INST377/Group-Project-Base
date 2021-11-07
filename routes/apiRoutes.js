@@ -48,10 +48,11 @@ router.route("/movies/:filmId")
     }
 });
 
+// This is Jacky's SQL Controllers
 router.route('/genres/:genreId')
   .get(async (req, res) => {
     try {
-      const {genreId} = req.params
+      const {genreId} = req.params;
       const genrelist = await db.Genre.findOne({where: {genre_id: `${genreId}`}});
 
       if (genrelist !== null) {
@@ -60,7 +61,7 @@ router.route('/genres/:genreId')
     }
     catch (error) {
       console.error(error);
-      res.send("Something went wrong on /movies end or the film_id isn't valid");
+      res.send("Something went wrong on the /genres end or the genre_id isn't valid");
     }
   })
   .post(async(req, res) => {
@@ -70,14 +71,14 @@ router.route('/genres/:genreId')
       res.send('Genre added');
     } catch (error) {
       console.error(error);
-      res.send('Something went wrong on /movies end');
+      res.send('Something went wrong on the /genres end and unable to update genre_id');
     }
   })
   .put((req, res) => {
     try {
     } catch (error) {
       console.error(error);
-      res.send('Something went wrong on /movies end');
+      res.send('Something went wrong on the /genres end');
     }
   })
   .delete(async(req, res) => {
@@ -88,10 +89,9 @@ router.route('/genres/:genreId')
       // this is not working, tried everything at the moment
     } catch (error) {
       console.error(error);
-      res.send('Something went wrong on /movies end');
+      res.send('Something went wrong on the /genres end and unable to delete from genre_id');
     }
   });
-
 
 router
   .route("/blob")

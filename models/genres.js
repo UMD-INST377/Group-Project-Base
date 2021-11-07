@@ -9,5 +9,6 @@ export default (database, DataTypes) => {
       type: DataTypes.STRING
     }
   });
+
   return genre;
 };

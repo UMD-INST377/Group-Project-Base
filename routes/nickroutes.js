@@ -80,16 +80,20 @@ router.route('/awards')
   
   .delete(async(req, res) => {
     try {
-      await db.sequelizeDB.destroy({
-        where: {
-          award_id: req.params.award_id
-        }
+      const awardStatement = `SELECT * FROM awards WHERE film_title = "${req.body.award_title}"`;
+      const selectedMovie = await db.sequelizeDB.query(awardStatement, {
+        type: sequelize.QueryTypes.SELECT
       });
-      res.send('Successfully Deleted');
-    }
-    catch (error) {
-      console.error(error);
-      res.send('Something went wrong on /awards at DELETE');
+      const awardId = selectedMovie.map((movId) => movId.award_id)[0];
+      const deleteStatement = `DELETE FROM awards
+      WHERE film_id = "${awardId}"`;
+      await db.sequelizeDB.query(deleteStatement, {
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.send(`Successfully Deleted "${req.body.award_title}"`);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server /awards DELETE'});
     }
   });
 

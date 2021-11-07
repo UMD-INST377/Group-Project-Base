@@ -4,6 +4,7 @@ import chalk from 'chalk';
 import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
+import actorLinkMapCustom from '../controllers/actors_LinkingController.js';
 
 const expressRouter = express.Router();
 
@@ -13,9 +14,12 @@ const errorMsg = 'Server Error!';
 
 expressRouter.route('/actors_linking')
   .get(async(req, res) => {
+    console.log('hi')
     try {
-      console.log(`${actorLinkingMsg} GET`);
-      res.json({message: `${actorLinkingMsg} GET`});
+      const result = await db.sequelizeDB.query(actorLinkMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
     } catch (error) {
       console.log(error);
       res.json({error: errorMsg});

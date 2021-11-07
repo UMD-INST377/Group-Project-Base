@@ -1,39 +1,39 @@
 export default (sequelize, DataTypes) => {
   const biomes = sequelize.define(
-    "biomes",
+    'biomes',
     {
       biome_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
+        primaryKey: true
       },
       animal_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
       Tropical_Rainforest: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
       Temperate_Forest: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
       Desert: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
       Tundra: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
       Grassland: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
       Savanna: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
       Freshwater: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
       Marine: {
-        type: DataTypes.INTEGER,
-      },
+        type: DataTypes.INTEGER
+      }
     },
     { freezeTableName: true, timestamps: false }
   );

@@ -11,10 +11,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.DECIMAL
       },
       special_skill: {
-        type: DataTypes.VARCHAR
+        type: DataTypes.STRING
       },
       weapon_of_choice: {
-        type: DataTypes.VARCHAR
+        type: DataTypes.STRING
       },
       power: {
         type: DataTypes.INTEGER

@@ -5,6 +5,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import getVinylInfo from '../client/controllers/getVinylInfo';
+import deleteVinyl from '../client/controllers/deleteVinyl';
 //import sequelize from 'sequelize';
 
 //import db from '../database/initializeDB.js';
@@ -96,7 +97,7 @@ router.route("/vinyl")
 /// ////William Giovanini ///////////
 /// /////////////////////////////////
 
-router.route('/api/vinyls')
+router.route('/vinyls')
     .get(async(req, res) => {
         try {
             const result = await db.sequelizeDB.query(getVinylInfo, {
@@ -108,16 +109,18 @@ router.route('/api/vinyls')
             console.log(err);
         }
     })
-    .post(async(req, res) => {
+    .delete(async(req, res) => {
         try {
-            const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record";
-            console.log("touched /lp with POST");
-            res.json(reply);
+            const result = await db.sequelizeDB.query(deleteVinyl, {
+                type: sequelize.QueryTypes.DELETE
+            });
+            console.log("touched /vinyls with DELETE");
+            res.json(result);
         } catch (err) {
             console.log(err);
         }
     })
-    .put(async(req, res) => {
+    .post(async(req, res) => {
         try {
             const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record";
             console.log("touched /lp with PUT");
@@ -126,7 +129,7 @@ router.route('/api/vinyls')
             console.log(err);
         }
     })
-    .delete(async(req, res) => {
+    .put(async(req, res) => {
         try {
             const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record";
             console.log("touched /lp with DELETE");

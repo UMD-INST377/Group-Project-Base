@@ -86,7 +86,7 @@ router.route('/awards')
       });
       const awardId = selectedMovie.map((movId) => movId.award_id)[0];
       const deleteStatement = `DELETE FROM awards
-      WHERE film_id = "${awardId}"`;
+      WHERE award_id = "${awardId}"`;
       await db.sequelizeDB.query(deleteStatement, {
         type: sequelize.QueryTypes.DELETE
       });

@@ -308,12 +308,18 @@ router.route('/nba-players')
     }
   })
   .delete(async (req, res) => {
-    try {
-      res.json({ message: 'delete NBA Database endpoint' });
-    } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something wend wrong on the server' });
-    }
+      try {
+          await db.NBA.destroy({
+              where: {
+                  player_id: req.params.player_id
+                }
+          })
+          res.send('Successfully Deleted');
+      } catch (err) {
+          console.log(error);
+          console.error(err);
+          res.error('Server error');
+      }
   })
   .put(async (req, res) => {
     try {

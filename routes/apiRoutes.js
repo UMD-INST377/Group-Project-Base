@@ -4,6 +4,9 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
+//Import Controllers
+import covidStatsCustom from '../controllers/covid-stats.js';
+
 const router = express.Router();
 
 router.get('/', (req, res) => {

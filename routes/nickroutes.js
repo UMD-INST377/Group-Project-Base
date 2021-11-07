@@ -38,6 +38,28 @@ router.route('/awards')
   })
   .put(async(req, res) => {
     try {
+      const awards = await db.sequelizeDB.query(getTableRows('awards'), {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const awardStatement = `SELECT * FROM awards WHERE award_title = "${req.body.award_title}"`;
+      const selectedMovie = await db.sequelizeDB.query(awardStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const awardId = awardName.map((movAward) => movAenre.award_id)[0];
+      const updateStatement = `UPDATE awards
+        SET award_title = '${req.body.award_title}', award_id = ${awardId}
+        WHERE award_id = '${awardId}' `;
+      await db.sequelizeDB.query(updateStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.send(`"${req.body.film_title}" Successfully Updated`);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server /awards POST'});
+    }
+  })
+  .post(async(req, res) => {
+    try {
       console.log(res.json(req.body));
       const award = await db.sequelizeDB.query(awardMapCustom, {
         type: sequelize.QueryTypes.SELECT
@@ -53,25 +75,6 @@ router.route('/awards')
     catch (error) {
       console.error(error);
       res.send('Something went wrong on /awards at PUT');
-    }
-  })
-  .post(async(req, res) => {
-    try {
-      await db.sequelizeDB.update(
-        {
-          award_title: req.body.award_title
-        },
-        {
-          where: {
-            award_id: req.params.award_id
-          }
-        }
-      );
-      res.send('Successfully Updated'); 
-    }
-    catch (error) {
-      console.error(error);
-      res.send('Something went wrong on /awards at POST');
     }
   })
   

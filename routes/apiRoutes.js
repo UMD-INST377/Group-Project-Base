@@ -9,16 +9,20 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.send("default route");
 });
+
 //db.Actor and db.Film work
-router.route("/movies")
+router.route("/movies/:filmId")
   .get(async (req, res) => {
     try {
-      const filmlist = await db.Film.findAll()
-      res.json(filmlist)
+      const {filmId} = req.params
+      const filmlist = await db.Film.findOne({where: {film_id: `${filmId}`}});
+
+      if (filmlist !== null)
+        res.send(filmlist)
     }
     catch (error) {
       console.error(error);
-      res.send("Something went wrong on /movies end");
+      res.send("Something went wrong on /movies end or the film_id isn't valid");
     }
   })
   .post((req, res) => {

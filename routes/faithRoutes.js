@@ -8,28 +8,31 @@ import actorsMap from '../controllers/actorsController.js';
 
 const expressRouter = express.Router();
 
-/// Actor Endpoints ///
+/// Actors Endpoints ///
 const defaultMsg = 'touched /actors with ';
-const errorMsg = 'Server Error!'
+const errorMsg = 'Server Error with ';
 
 expressRouter.route('/actors')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(actorsMap, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log(`${defaultMsg} GET`);
-      res.json({message: `${defaultMsg} GET`});
+      res.json(result);
     } catch (error) {
       console.log(error);
-      res.json({error: errorMsg});
+      res.json({error: `${errorMsg} GET`});
     }
-  }) 
-
+  })
+  
   .put(async (req, res) => {
     try {
       console.log(`${defaultMsg} PUT`);
       res.json({message: `${defaultMsg} PUT`});
     } catch (error) {
       console.log(error);
-      res.json({error: errorMsg});
+      res.json({error: `${errorMsg} PUT`});
     }
   })
 
@@ -39,7 +42,7 @@ expressRouter.route('/actors')
       res.json({message: `${defaultMsg} POST`});
     } catch (error) {
       console.log(error);
-      res.json({error: errorMsg});
+      res.json({error: `${errorMsg} POST`});
     }
   })
 
@@ -49,7 +52,7 @@ expressRouter.route('/actors')
       res.json({message: `${defaultMsg} DELETE`});
     } catch (error) {
       console.log(error);
-      res.json({error: errorMsg});
+      res.json({error: `${errorMsg} DELETE`});
     }
   });
 

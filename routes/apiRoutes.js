@@ -4,10 +4,10 @@
 /* eslint-disable indent */
 /* eslint-disable no-console */
 import express from 'express';
-import getVinylInfo from '../client/controllers/getVinylInfo';
-import deleteVinyl from '../client/controllers/deleteVinyl';
-import postVinyl from '../client/controllers/postVinyl';
-import putVinyl from '../client/controllers/putVinyl';
+import getVinylInfo from '../client/controllers/getVinylInfo.js';
+import deleteVinyl from '../client/controllers/deleteVinyl.js';
+import postVinyl from '../client/controllers/postVinyl.js';
+import putVinyl from '../client/controllers/putVinyl.js';
 //import sequelize from 'sequelize';
 
 //import db from '../database/initializeDB.js';

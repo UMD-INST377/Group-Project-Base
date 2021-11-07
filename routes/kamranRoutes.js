@@ -9,7 +9,7 @@ import filmMapCustom from '../controllers/filmsController.js';
 
 const router = express.Router();
 
-function getIDByValue(object, value) {
+function getGenreIdByValue(object, value) {
   return object.filter((item) => item.genre === value);
 }
 
@@ -29,7 +29,7 @@ router.route('/films')
       res.json(result);
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on the server w/ /films GET '});
     }
   })
 
@@ -44,36 +44,61 @@ router.route('/films')
       });
       // didn't add directors will check back later
       const currentID = (await film.length) + 1;
-      const genreName = getIDByValue(genre, req.body.genre);
+      const genreName = getGenreIdByValue(genre, req.body.genre);
       const genreId = genreName.map((movGenre) => movGenre.genre_id)[0];
-      const createStatement = `INSERT INTO films (film_id, film_title, release_date, genre_id) VALUES (${currentID}, '${req.body.film_title}', '${req.body.release_date}', ${genreId})`;
+      const createStatement = `INSERT INTO films (film_id, film_title, release_date, genre_id) 
+        VALUES (${currentID}, '${req.body.film_title}', '${req.body.release_date}', ${genreId})`;
       const result = await db.sequelizeDB.query(createStatement, {
         type: sequelize.QueryTypes.INSERT
       });
       res.json(result);
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on the server w/ /films PUT'});
     }
   })
 
   .post(async (req, res) => {
     try {
-      console.log('touched /films with POST');
-      res.json({message: 'touched /films with POST'});
+      const genre = await db.sequelizeDB.query(getTableRows('genre'), {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const filmStatement = `SELECT * FROM films WHERE film_title = "${req.body.film_title}"`;
+      const selectedMovie = await db.sequelizeDB.query(filmStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const filmId = selectedMovie.map((movId) => movId.film_id)[0];
+      const genreName = getGenreIdByValue(genre, req.body.genre);
+      const genreId = genreName.map((movGenre) => movGenre.genre_id)[0];
+      const updateStatement = `UPDATE films 
+        SET film_title = '${req.body.film_title}', release_date = '${req.body.release_date}', genre_id = ${genreId}
+        WHERE film_id = '${filmId}' `;
+      await db.sequelizeDB.query(updateStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.send(`"${req.body.film_title}" Successfully Updated`);
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on the server w/ /films POST'});
     }
   })
 
   .delete(async (req, res) => {
     try {
-      console.log('touched /films with DELETE');
-      res.json({message: 'touched /films with DELETE'});
+      const filmStatement = `SELECT * FROM films WHERE film_title = "${req.body.film_title}"`;
+      const selectedMovie = await db.sequelizeDB.query(filmStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const filmId = selectedMovie.map((movId) => movId.film_id)[0];
+      const deleteStatement = `DELETE FROM films 
+      WHERE film_id = "${filmId}"`;
+      await db.sequelizeDB.query(deleteStatement, {
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.send(`Successfully Deleted "${req.body.film_title}"`);
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on the server w/ /films DELETE'});
     }
   });
 

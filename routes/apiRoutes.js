@@ -120,7 +120,7 @@ router
       res.send('Something went wrong on the /writers end and unable to update writer_id');
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
       const {writerId} = req.params;
       const writerlist = await db.Writer.destroy({writer_id: `${writerId}`});

@@ -4,7 +4,9 @@
 // import Meals from './Meals.js';
 
 import County from './County_Info.js'
+import VaccineData from './vaccine_data_by_county.js'
 
 export default {
-  County
+  County,
+  VaccineData
 };

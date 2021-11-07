@@ -125,7 +125,7 @@ router.route('/eruption_info')
 router.route('/eruption_info')
 .get(async(req, res) => {
   try {
-    const ruption_info = await db.ruption_info.query(aoaController.aoaGet, {
+    const ruption_info = await db.ruption_info.query(infoController.infoGet, {
       type: sequelize.QueryTypes.SELECT
     });
     console.log('you touched the route!');

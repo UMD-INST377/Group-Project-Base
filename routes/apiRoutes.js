@@ -7,6 +7,7 @@ import express from 'express';
 import getVinylInfo from '../client/controllers/getVinylInfo';
 import deleteVinyl from '../client/controllers/deleteVinyl';
 import postVinyl from '../client/controllers/postVinyl';
+import putVinyl from '../client/controllers/putVinyl';
 //import sequelize from 'sequelize';
 
 //import db from '../database/initializeDB.js';

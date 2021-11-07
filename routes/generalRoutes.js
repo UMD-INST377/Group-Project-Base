@@ -1,13 +1,17 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import chalk from "chalk";
+import fetch from "node-fetch";
 
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+import general_information from '../server/controllers/general.js';
+
 /// ////Genral Information Endpoints////////
-router.get('/general_info', async (req, res) => {
+router.get('/general_infomation', async (req, res) => {
     try {
         console.log("General Information with GET");
         const games = await db.general_information.findAll();
@@ -19,7 +23,7 @@ router.get('/general_info', async (req, res) => {
     });
   
   
-router.get('/general_info/:game_id', async (req, res) => {
+router.get('/general_infomation/:game_id', async (req, res) => {
     try {
         console.log("General Information with GET");
         const game = await db.general_information.findAll({
@@ -35,7 +39,7 @@ router.get('/general_info/:game_id', async (req, res) => {
     }
   });
   
-router.post('/general_info', async (req, res) => {
+router.post('/general_infomation', async (req, res) => {
     const games = await db.general_information.findAll();
     const currentId = (await games.length) + 1;
     try {
@@ -54,7 +58,7 @@ router.post('/general_info', async (req, res) => {
     }
   });
   
-router.delete('/general_info/:game_id', async (req, res) => {
+router.delete('/general_infomation/:game_id', async (req, res) => {
     try {
         console.log("General Information with DELETE");
       await db.general_information.destroy({
@@ -69,7 +73,7 @@ router.delete('/general_info/:game_id', async (req, res) => {
     }
   });
   
-router.put('/general_info', async (req, res) => {
+router.put('/general_infomation', async (req, res) => {
     try {
         console.log("General Information with PUT");
         await db.general_information.update(
@@ -91,3 +95,4 @@ router.put('/general_info', async (req, res) => {
       res.json({error: 'Something went wrong on the server'});
     }
   });
+export default router;

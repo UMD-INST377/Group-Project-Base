@@ -6,6 +6,7 @@
 import express from 'express';
 import getVinylInfo from '../client/controllers/getVinylInfo';
 import deleteVinyl from '../client/controllers/deleteVinyl';
+import postVinyl from '../client/controllers/postVinyl';
 //import sequelize from 'sequelize';
 
 //import db from '../database/initializeDB.js';
@@ -97,13 +98,16 @@ router.route("/vinyl")
 /// ////William Giovanini ///////////
 /// /////////////////////////////////
 
-router.route('/vinyls')
+const sampleVinylInfo = [18, 'Sample Album', 'genre', 25, 19, '00:55:00', '2014-12-02', 0.98, 0, 'Sample Singer', 'Sample', 'Producer', 21]
+const updatedSampleInfo = [18, 'Updated Album', 'updated genre', 24, 19, '00:56:00', '2015-12-02', 1.02, 1, 'Updated Singer', 'Updated', 'Producer', 22]
+
+router.route('/api/vinyl')
     .get(async(req, res) => {
         try {
             const result = await db.sequelizeDB.query(getVinylInfo, {
                 type: sequelize.QueryTypes.SELECT
             });
-            console.log("touched /vinyls with GET");
+            console.log("touched vinyl with GET");
             res.json(result);
         } catch (err) {
             console.log(err);
@@ -114,7 +118,7 @@ router.route('/vinyls')
             const result = await db.sequelizeDB.query(deleteVinyl, {
                 type: sequelize.QueryTypes.DELETE
             });
-            console.log("touched /vinyls with DELETE");
+            console.log("touched vinyl with DELETE");
             res.json(result);
         } catch (err) {
             console.log(err);
@@ -122,18 +126,22 @@ router.route('/vinyls')
     })
     .post(async(req, res) => {
         try {
-            const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record";
-            console.log("touched /lp with PUT");
-            res.json(reply);
+            const result = await db.sequelizeDB.query(postVinyl, {
+                type: sequelize.QueryTypes.POST
+            }, sampleVinylInfo);
+            console.log("touched vinyl, producers, and singers with POST");
+            res.json(result);
         } catch (err) {
             console.log(err);
         }
     })
     .put(async(req, res) => {
         try {
-            const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm vinyl record";
-            console.log("touched /lp with DELETE");
-            res.json(reply);
+            const result = await db.sequelizeDB.query(putVinyl, {
+                type: sequelize.QueryTypes.PUT
+            }, updatedSampleInfo);
+            console.log("touched vinyl, producers, and singers with PUT");
+            res.json(result);
         } catch (err) {
             console.log(err);
         }

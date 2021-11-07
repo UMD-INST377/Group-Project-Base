@@ -34,31 +34,7 @@ router.route('/films')
   })
 
   .put(async (req, res) => {
-    try {
-      console.log(res.json(req.body));
-      const film = await db.sequelizeDB.query(filmMapCustom, {
-        type: sequelize.QueryTypes.SELECT
-      });
-      const genre = await db.sequelizeDB.query(getTableRows('genre'), {
-        type: sequelize.QueryTypes.SELECT
-      });
-      // didn't add directors will check back later
-      const currentID = (await film.length) + 1;
-      const genreName = getGenreIdByValue(genre, req.body.genre);
-      const genreId = genreName.map((movGenre) => movGenre.genre_id)[0];
-      const createStatement = `INSERT INTO films (film_id, film_title, release_date, genre_id) 
-        VALUES (${currentID}, '${req.body.film_title}', '${req.body.release_date}', ${genreId})`;
-      const result = await db.sequelizeDB.query(createStatement, {
-        type: sequelize.QueryTypes.INSERT
-      });
-      res.json(result);
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server w/ /films PUT'});
-    }
-  })
-
-  .post(async (req, res) => {
+    // PUT should UPDATE
     try {
       const genre = await db.sequelizeDB.query(getTableRows('genre'), {
         type: sequelize.QueryTypes.SELECT
@@ -80,6 +56,32 @@ router.route('/films')
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server w/ /films POST'});
+    }
+  })
+
+  .post(async (req, res) => {
+    // POST should CREATE
+    try {
+      console.log(res.json(req.body));
+      const film = await db.sequelizeDB.query(filmMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const genre = await db.sequelizeDB.query(getTableRows('genre'), {
+        type: sequelize.QueryTypes.SELECT
+      });
+      // didn't add directors will check back later
+      const currentID = (await film.length) + 1;
+      const genreName = getGenreIdByValue(genre, req.body.genre);
+      const genreId = genreName.map((movGenre) => movGenre.genre_id)[0];
+      const createStatement = `INSERT INTO films (film_id, film_title, release_date, genre_id) 
+        VALUES (${currentID}, '${req.body.film_title}', '${req.body.release_date}', ${genreId})`;
+      const result = await db.sequelizeDB.query(createStatement, {
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server w/ /films PUT'});
     }
   })
 

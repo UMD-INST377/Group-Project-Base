@@ -138,11 +138,14 @@ router.route('/vacc-sites')
 /// /////////////////////////////////
 /// ////County Info Endpoint////////
 /// /////////////////////////////////
-router.route('/county-info')
+router.route('/county-info/:county_ID')
   .get(async(req, res) => {
     try {
+      const countyID = req.params
+      const listOfCounties = await.db.County.findOne({where: {county_ID: `$county_ID`})
       res.json({ message: 'Touched /county-info with GET' });
       console.log('Touched /county-info with GET');
+      res.send(listOfCounties)
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });

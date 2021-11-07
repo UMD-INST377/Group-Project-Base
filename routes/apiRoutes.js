@@ -82,11 +82,11 @@ router.route('/eruption_category')
     }
   });
 
-/* eruption_info endpoint */
+/* Jia eruption_info endpoint 
 router.route('/eruption_info')
   .get(async(req, res) => {
     try {
-      const result = await db.sequelizeDB.query(aoaController.aoaGet, {
+      const ruption_info = await db.ruption_info.query(aoaController.aoaGet, {
         type: sequelize.QueryTypes.SELECT
       });
       console.log('you touched the route!');
@@ -119,7 +119,72 @@ router.route('/eruption_info')
       console.log(error);
       res.json({error: 'something went wrong!'});
     }
-  });
+  });*/
+
+  /* Jia eruption_info endpoint */
+router.route('/eruption_info')
+.get(async(req, res) => {
+  try {
+    const ruption_info = await db.ruption_info.query(aoaController.aoaGet, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    console.log('you touched the route!');
+    res.json({message: 'touched eruption_info with GET'});
+  } catch (err) {
+    res.json({error: 'something went wrong!'});
+  }
+})
+
+.put(async(req, res) => {
+  try {
+    await db.ruption_info.update{
+      eruption_number = req.body.eruption_number,
+      year = req.body.year,
+      month = req.body.month,
+      day = req.body.day,
+    }
+    {
+      where:{
+        eruption_id = req.body.eruption_id,
+        /*volcano_id = req.body.volcano_id,
+        aoa_id = req.body.aoa_id,
+        vei_id = req.body.vei_id
+        evidence_id = req.body.evidence_id
+        cagetory_id = req.body.cagetory_id */      
+      }
+    res.send({message: 'touched eruption_info with PUT'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'something went wrong!'});
+  }
+})
+
+.post(async(req, res) => {
+  const ruption_info = await db.ruption_info.findAll();
+  const currentId = (await ruption_info.length)+1
+  try {
+    const newRuption_info = await db.ruption_info.create({
+      eruption_id = req.body.currentId,
+      eruption_number = req.body.eruption_number,
+      year = req.body.year,
+      month = req.body.month,
+      day = req.body.day,
+    })
+   
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'something went wrong!'});
+  }
+})
+.delete(async(req, res) => {
+  try {
+    res.send({message: 'touched eruption_info with DELETE'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'something went wrong!'});
+  }
+});
+
 
 /* evidence endpoint */
 router.route('/evidence')

@@ -9,9 +9,10 @@ const router = express.Router();
 
 /// ////Publisher Endpoints////////
 router.route('/publisher')
-  .get((req, res) => {
+  .get(async (req, res) => {
     try {
-      //const data = await fetch()
+      const games = await db.publisher.findAll();
+      res.json(games);
       console.log('You touched the publisher route!');
       res.json({data: data});
     } catch (err) {
@@ -19,7 +20,7 @@ router.route('/publisher')
         res.json({error: 'Something went wrong on the server'});
     }
   })
-  .put((req, res) =>{
+  .put(async (req, res) =>{
       try {
           res.json({message: "put publisher endpoint"});
       } 
@@ -27,7 +28,7 @@ router.route('/publisher')
         console.log(error);
         res.json({error: 'Something went wrong on the server'});
   })
-  .post((req, res) =>{
+  .post(async (req, res) =>{
     try {
         res.json({message: "post publisher endpoint"});
     } 
@@ -35,7 +36,7 @@ router.route('/publisher')
         console.log(error);
         res.json({error: 'Something went wrong on the server'});
   })
-  .delete((req, res) =>{
+  .delete(async (req, res) =>{
     try {
         res.json({message: "delete publisher endpoint"});
     } 

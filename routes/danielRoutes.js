@@ -85,11 +85,17 @@ expressRouter.route('/actors_linking')
     }
   })
 
-  
+// delete a row based on actors_linking_id arg
   .delete(async (req, res) => {
     try {
-      console.log(`${actorLinkingMsg} DELETE`);
+      const idToDelete = req.body.actors_linking_id
+      const deleteStatement = `DELETE FROM actors_linking
+      WHERE actors_linking_id = ${idToDelete}`;
       res.json({message: `${actorLinkingMsg} DELETE`});
+      await db.sequelizeDB.query(deleteStatement, {
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.send('Deleted "${req.body.acrots_linking_id');
     } catch (error) {
       console.log(error);
       res.json({error: errorMsg});

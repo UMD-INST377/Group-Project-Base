@@ -59,12 +59,14 @@ router.get('/schools', async (request, response) => {
  * Get available information about a specific school
  *
  * @author Hyeong C.
- * @date 2021-10-31 18:50:00pm
+ * @date 2021-11-07 18:40:00pm
  */
-router.get('/schools/:rank_id', async (request, response) => {
+router.get('/schools/:univ_location', async (request, response) => {
   try {
-    // Debug
-    console.log("touched /schools/:rank_id with GET");
+    // Fetch univ rankings
+    const d = await db.sequelizeDB.query(controllers.university.getUniversityLoc, {
+      type: sequelize.QueryTypes.SELECT
+    });
 
     // Send data
     response.json({status: "success", data: []});

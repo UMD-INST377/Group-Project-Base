@@ -274,41 +274,43 @@ router.get('/custom', async (req, res) => {
 /// ///////NBA Database////////
 /// /////////////////////////////////
 const nbaPlayerQuery = 'SELECT * FROM AWARDS';
-router.get('/nba-players', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(nbaPlayerQuery, {
-      type: sequelize.QueryTypes.SELECT
+router.route('/nba-players')
+    .get(async (req, res) => {
+        try {
+            const result = await db.sequelizeDB.query(nbaPlayerQuery, {
+                type: sequelize.QueryTypes.SELECT
+            });
+            console.log('touched /nba-players with GET');
+            res.json(result);
+        } catch (err) {
+            console.error(err);
+            res.error('Server error');
+        }
+    })
+
+    .post(async (req, res) => {
+        try {
+            res.json(newNBA);
+        } catch (err) {
+            console.error(err);
+            res.error('Server error');
+        }
+    })
+    .delete(async (req, res) => {
+        try {
+            res.json({ message: 'delete NBA Database endpoint' });
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something wend wrong on the server' });
+        }
+    })
+    .put(async (req, res) => {
+        try {
+            res.json({ message: 'delete NBA Database endpoint' });
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something wend wrong on the server' });
+        }
     });
-    console.log('touched /nba-players with GET');
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.post('/nba-players', async (req, res) => {
-  try {
-    res.json(newNBA);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.delete((req,res) =>{
-  try {
-    res.json({message: 'delete NBA Database endpoint'});
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Something wend wrong on the server'});
-  }
-});
-router.put((req,res) =>{
-  try {
-    res.json({message: 'delete NBA Database endpoint'});
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Something wend wrong on the server'});
-  }
-});
 
 export default router;

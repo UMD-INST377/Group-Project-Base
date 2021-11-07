@@ -19,9 +19,14 @@ const getUniversity = `SELECT a.university_name, b.univ_location, b.univ_region,
 
 const getUniversityName = `SELECT university_name FROM university WHERE university_id = :rank_id LIMIT 0,1`;
 
+const getUniversityLoc = 'SELECT univ_location FROM location WHERE university_id = :rank_id LIMIT 0,1';
+
 // Export variables
 export default {
   getAllUniversities,
   getUniversity,
-  getUniversityName
+  getUniversityName,
+  getUniversityLoc
 };
+
+

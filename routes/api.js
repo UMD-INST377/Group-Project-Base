@@ -61,7 +61,26 @@ router.get('/schools', async (request, response) => {
  * @author Hyeong C.
  * @date 2021-11-07 18:40:00pm
  */
-router.get('/schools/:univ_location', async (request, response) => {
+
+router.get('/schools/:rank_id', async (request, response) => {
+  try {
+    // Debug
+    console.log('touched /schools/:rank_id with GET');
+
+    // Send data
+    response.json({status: 'success', data: []});
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    response.json({status: 'failure', data: null, message: 'unknown error'});
+  }
+});
+
+
+
+router.get('/schools/:rank_id/univ_location', async (request, response) => {
   try {
     // Fetch univ rankings
     const d = await db.sequelizeDB.query(controllers.university.getUniversityLoc, {

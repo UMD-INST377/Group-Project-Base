@@ -22,5 +22,5 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL,
     },
   });
-  return county;
+  return County;
 };

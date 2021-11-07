@@ -83,9 +83,9 @@ router.route('/genres/:genreId')
   .delete(async(req, res) => {
     try {
       const {genreId} = req.params;
-      const genrelist = await db.Genre.remove({where: {genre_id = genreId}});
-      
-      res.send('Genre added');
+      // const genrelist = await db.Genre.remove({where: {genre_id = genreId}});
+      res.send('Genre deleted');
+      // this is not working, tried everything at the moment
     } catch (error) {
       console.error(error);
       res.send('Something went wrong on /movies end');

@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import express from "express";
 import sequelize from "sequelize";
+import { UPSERT } from "sequelize/types/lib/query-types";
 
 import db from "../database/initializeDB.js";
 
@@ -10,7 +11,7 @@ router.get("/", (req, res) => {
   res.send("default route");
 });
 
-//db.Actor and db.Film work
+// db.Actor and db.Film work
 router.route("/movies/:filmId")
   .get(async (req, res) => {
     try {
@@ -45,7 +46,49 @@ router.route("/movies/:filmId")
       console.error(error);
       res.send("Something went wrong on /movies end");
     }
+});
+
+router.route('/genres/:genreId')
+  .get(async (req, res) => {
+    try {
+      const {genreId} = req.params
+      const genrelist = await db.Genre.findOne({where: {genre_id: `${genreId}`}});
+
+      if (genrelist !== null) {
+        res.send(genrelist);
+      }
+    }
+    catch (error) {
+      console.error(error);
+      res.send("Something went wrong on /movies end or the film_id isn't valid");
+    }
+  })
+  .post(async(req, res) => {
+    try {
+      const {genreId} = req.params;
+      const genrelist = await db.Genre.create({genre_id: `${genreId}`, genre: 'Suspense'});
+      res.send('Genre added');
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on /movies end');
+    }
+  })
+  .put((req, res) => {
+    try {
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on /movies end');
+    }
+  })
+  .delete((req, res) => {
+    try {
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on /movies end');
+    }
   });
+
+
 router
   .route("/blob")
   .get((req, res) => {

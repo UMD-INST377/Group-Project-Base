@@ -4,6 +4,7 @@ import chalk from 'chalk';
 import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
+import actorsMap from '../controllers/actorsController.js';
 
 const expressRouter = express.Router();
 

@@ -93,22 +93,32 @@ router.route('/genres/:genreId')
     }
   });
 
+
+// Henry's SQL routes Post, Del, Get
 router
-  .route("/blob")
-  .get((req, res) => {
+  .route("/writers/:writerId")
+  .get(async (req, res) => {
     try {
-      console.log("The get default route is reached");
-      res.send("You have gotten the requested route from blob!");
-    } catch (err) {
-      console.log(error);
+      const {writerId} = req.params;
+      const writerlist = await db.Writer.findOne({where: {writer_id: `${writerId}`}});
+
+      if (writerlist !== null) {
+        res.send(writerlist);
+      }
+    }
+    catch (error) {
+      console.error(error);
+      res.send("Something went wrong on the /writer end or the writer_id isn't valid");
     }
   })
-  .post((req, res) => {
+  .post(async(req, res) => {
     try {
-      console.log("post from blob");
-      res.send("You have posted something from blob!");
+      const {writerId} = req.params;
+      const writerlist = await db.Writer.create({writer_id: `${writerId}`, writer: 'testwriter'});
+      res.send('Writer added');
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      res.send('Something went wrong on the /writers end and unable to update writer_id');
     }
   })
   .delete((req, res) => {

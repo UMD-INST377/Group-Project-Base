@@ -1,0 +1,2 @@
+USE vinyl;
+DELETE FROM songs WHERE duration > '6:30'

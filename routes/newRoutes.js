@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 router.route('/artists')
   .get((req, res) => {
     try {
-      console.log('touched /artists with GET')
+      console.log('touched /artists with GET');
       res.json({ artist: 'Nirvana'});
     } catch (err) {
       console.log(error);
@@ -22,7 +22,7 @@ router.route('/artists')
 
   .put((req, res) => {
     try {
-      res.json({ message: 'touched /artists with PUT'})
+      res.json({ message: 'touched /artists with PUT'});
     } catch (err) {
       console.log(error);
       res.json({ error: 'Data machine broke!' });
@@ -49,7 +49,7 @@ router.route('/artists')
 router.route('/songs')
   .get((req, res) => {
     try {
-      console.log('touched /songs with GET')
+      console.log('touched /songs with GET');
       res.json({ song: 'Smells Like Teen Spirit'});
     } catch (err) {
       console.log(error);
@@ -59,7 +59,7 @@ router.route('/songs')
 
   .put((req, res) => {
     try {
-      res.json({ message: 'touched /songs with PUT'})
+      res.json({ message: 'touched /songs with PUT'});
     } catch (err) {
       console.log(error);
       res.json({ error: 'Oops Error' });

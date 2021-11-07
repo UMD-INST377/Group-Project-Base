@@ -52,7 +52,7 @@ router.route('/awards')
       await db.sequelizeDB.query(updateStatement, {
         type: sequelize.QueryTypes.UPDATE
       });
-      res.send(`"${req.body.film_title}" Successfully Updated`);
+      res.send(`"${req.body.award_title}" Successfully Updated`);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server /awards POST'});
@@ -80,7 +80,7 @@ router.route('/awards')
   
   .delete(async(req, res) => {
     try {
-      const awardStatement = `SELECT * FROM awards WHERE film_title = "${req.body.award_title}"`;
+      const awardStatement = `SELECT * FROM awards WHERE award_title = "${req.body.award_title}"`;
       const selectedMovie = await db.sequelizeDB.query(awardStatement, {
         type: sequelize.QueryTypes.SELECT
       });

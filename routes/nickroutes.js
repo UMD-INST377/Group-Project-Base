@@ -45,8 +45,8 @@ router.route('/awards')
       const selectedMovie = await db.sequelizeDB.query(awardStatement, {
         type: sequelize.QueryTypes.SELECT
       });
-      const awardID = awardTitle.map((awardName) => awardName.award_id)[0];
-      const awardNameMap = awardName.map((movAward) => movAward.award_id)[0];
+      const awardTitle = getIDByValue(award_title, req.body.award_title);
+      const awardID = awardName.map((movAward) => movAward.award_id)[0];
       const updateStatement = `UPDATE awards
         SET award_title = '${req.body.award_title}'
         WHERE award_id = '${awardId}' `;
@@ -67,8 +67,8 @@ router.route('/awards')
       });
     
       const currentID = (await award.length) + 1;
-      const awardTitle = getIDByValue(award_title, req.body.award_title);
       
+      const awardID = awardTitle.map((awardName) => awardName.award_id)[0];
       const createStatement = `INSERT INTO awards (award_id, award_title) VALUES (${currentID})`;
       const result = await db.sequelizeDB.query(createStatement, {
         type: sequelize.QueryTypes.INSERT

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <title>INST377 Group 25 - Big 10 Colleges</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class="top-bar">
+      <div class="top-left-bar">
+        <h1 class="title has-text-white">INST 377 Group 25</h1>
+      </div>
+      <div class="top-right-bar">
+        <div class="home">
+          <h1 class="title has-text-white"><a href="/">Home</a></h1>
+        </div>
+        <!--
+        <h1>|</h1>
+        <div class="about">
+          <h1 class="title has-text-white"><a href="/about.html">About</a></h1>
+        </div>
+      -->
+      </div>
+    </div>
+    <div class="sub-bar">
+        <a href="/">&larr; Return</a>
+    </div>
+
+    <!-- University Information -->
+    <div class='university-info-container'>
+      <div class='university-title'>
+        <h1 class="title"><%= name %> - <%= addr %></h1>
+      </div>
+      <div class='university-grid'>
+        <div class='university-insight'>
+          <h3 class="subtitle is-4">Location: <%= addr %></h3>
+          <h3 class="subtitle is-4">Requirements: <em>...More data here</em></h3>
+          <h3 class="subtitle is-4">Test Scores: <em>...More data here</em></h3>
+
+          <a href="<%= url %>" target="_blank">Visit Website</a>
+        </div>
+        <div class='university-details'>
+          <img src='https://via.placeholder.com/550x350?text=School%20Preview' />
+
+        </div>
+      </div>
+      <div class='university-reviews' style='margin-top: 20px;'>
+        <h3 class="subtitle is-4">Student Reviews (4.5 / 5.0)</h3>
+        <em>...Student review data here</em>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+export default 'SELECT cities FROM CITIES'

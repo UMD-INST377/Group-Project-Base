@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express from "express";
 import sequelize from "sequelize";
-import { UPSERT } from "sequelize/types/lib/query-types";
+// import { UPSERT } from "sequelize/types/lib/query-types";
 
 import db from "../database/initializeDB.js";
 
@@ -80,8 +80,12 @@ router.route('/genres/:genreId')
       res.send('Something went wrong on /movies end');
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
+      const {genreId} = req.params;
+      const genrelist = await db.Genre.remove({where: {genre_id = genreId}});
+      
+      res.send('Genre added');
     } catch (error) {
       console.error(error);
       res.send('Something went wrong on /movies end');

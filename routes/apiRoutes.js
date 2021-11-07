@@ -4,6 +4,7 @@
 /* eslint-disable indent */
 /* eslint-disable no-console */
 import express from 'express';
+import getVinylInfo from '../client/controllers/getVinylInfo';
 //import sequelize from 'sequelize';
 
 //import db from '../database/initializeDB.js';
@@ -95,12 +96,14 @@ router.route("/vinyl")
 /// ////William Giovanini ///////////
 /// /////////////////////////////////
 
-router.route('/lp')
+router.route('/api/vinyls')
     .get(async(req, res) => {
         try {
-            const reply = "Peter Goldmark is credited as the inventor of the 33 1/3 rpm LP (Limited Press) record";
-            console.log("touched /lp with GET");
-            res.json(reply);
+            const result = await db.sequelizeDB.query(getVinylInfo, {
+                type: sequelize.QueryTypes.SELECT
+            });
+            console.log("touched /vinyls with GET");
+            res.json(result);
         } catch (err) {
             console.log(err);
         }

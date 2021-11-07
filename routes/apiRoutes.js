@@ -123,7 +123,7 @@ router
   .delete(async(req, res) => {
     try {
       const {writerId} = req.params;
-      const writerlist = await db.Writer.destroy({writer_id: `${writerId}`});
+      const writerlist = await db.Writer.destroy({where: {writer_id: `${writerId}`}});
       res.send('Writer delete');
     } catch (error) {
       console.error(error);

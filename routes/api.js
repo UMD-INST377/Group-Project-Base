@@ -59,33 +59,12 @@ router.get('/schools', async (request, response) => {
  * Get available information about a specific school
  *
  * @author Hyeong C.
- * @date 2021-11-07 18:40:00pm
+ * @date 2021-10-31 18:50:00pm
  */
-
 router.get('/schools/:rank_id', async (request, response) => {
   try {
     // Debug
-    console.log('touched /schools/:rank_id with GET');
-
-    // Send data
-    response.json({status: 'success', data: []});
-  } catch (e) {
-    // Debug
-    console.error(e);
-
-    // Send data
-    response.json({status: 'failure', data: null, message: 'unknown error'});
-  }
-});
-
-
-
-router.get('/schools/:rank_id/univ_location', async (request, response) => {
-  try {
-    // Fetch univ rankings
-    const d = await db.sequelizeDB.query(controllers.university.getUniversityLoc, {
-      type: sequelize.QueryTypes.SELECT
-    });
+    console.log("touched /schools/:rank_id with GET");
 
     // Send data
     response.json({status: "success", data: []});
@@ -116,6 +95,26 @@ router.get('/schools/:rank_id/sat_scores', async (request, response) => {
 
     // Send data
     response.json({status: 'failure', data: null, message: 'unknown error'});
+  }
+});
+
+/**
+ * Get admissions rate for Big 10 School
+ * @Author Michael
+ */
+router.get('/schools/:rank_id/admission_rate', async (request, response) => {
+  try {
+    // Debug
+    console.log('touched /schools/:rank_id/admission_rate with GET');
+
+    // Send data
+    response.json({status: "success", data: []});
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    response.json({status: "failure", data: null, message: "unknown error"});
   }
 });
 

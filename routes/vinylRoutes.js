@@ -1,4 +1,4 @@
-router.route('/vinyl')
+export default router.route('/vinyl')
   .get(async(req, res) => {
     try {
       const result = await db.sequelizeDB.query(getVinylInfo, {

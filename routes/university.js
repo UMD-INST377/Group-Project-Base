@@ -31,13 +31,22 @@ router.get('/:rank_id', async (request, response) => {
 
   // Safely connect to database
   try {
-    // Validate database data
+    // Validate university data
     const d = await db.sequelizeDB.query(controllers.university.getUniversity, {
       replacements: { rank_id: rank_id },
       type: sequelize.QueryTypes.SELECT
     });
     if (d.length != 1 || typeof(d[0]) !== "object" || typeof(d[0].university_name) !== "string") {
       response.status(404).send(university_404);
+    }
+
+    // Validate review data
+    const r = await db.sequelizeDB.query(controllers.reviews.getNReviews, {
+      replacements: { rank_id: rank_id, review_limit: 2 },
+      type: sequelize.QueryTypes.SELECT
+    });
+    if (r.length > 0) {
+      d[0]["reviews"] = r;
     }
 
     // Render page

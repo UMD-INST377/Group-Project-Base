@@ -78,7 +78,36 @@ router.get('/schools/:rank_id', async (request, response) => {
   }
 });
 
+/**
+ * Fetch School Reviews by Rank ID
+ *
+ * @author Alec M.
+ * @date 2021-11-08 11:41:00
+ */
+router.get('/schools/:rank_id/reviews', async (request, response) => {
+  // Validate rank_id
+  const rank_id = parseInt(request.params.rank_id);
+  if (rank_id <= 0 || rank_id > 14) {
+    response.json({status: 'failure', data: null, message: 'unknown error'});
+  }
 
+  // Safely connect to database
+  try {
+    const r = await db.sequelizeDB.query(controllers.reviews.getNReviews, {
+      replacements: { rank_id: rank_id, review_limit: 20 },
+      type: sequelize.QueryTypes.SELECT
+    });
+
+    // Send data
+    response.json({status: 'success', data: r});
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    response.json({status: 'failure', data: null, message: 'unknown error'});
+  }
+});
 
 router.get('/schools/:rank_id/univ_location', async (request, response) => {
   try {

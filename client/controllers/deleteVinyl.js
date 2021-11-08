@@ -1,7 +1,3 @@
-export default (sequelize, DataTypes) => {
-  const vinyls = `DELETE *
+export default `DELETE *
   FROM vinyls v
-  WHERE vinyl_id = 21`
-  
-  return vinyls
-};
+  WHERE vinyl_id = 21`;

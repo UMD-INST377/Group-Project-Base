@@ -4,13 +4,13 @@
 /* eslint-disable indent */
 /* eslint-disable no-console */
 import express from 'express';
+import sequelize from 'sequelize';
 import getVinylInfo from '../client/controllers/getVinylInfo.js';
 import deleteVinyl from '../client/controllers/deleteVinyl.js';
 import postVinyl from '../client/controllers/postVinyl.js';
 import putVinyl from '../client/controllers/putVinyl.js';
-//import sequelize from 'sequelize';
 
-//import db from '../database/initializeDB.js';
+import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
@@ -59,7 +59,7 @@ router.route("/music")
 /// /////////////////////////////////
 /// ////Chi-Hao Sheng ///////////////
 /// /////////////////////////////////
-
+/*
 router.route("/vinyl")
     .get(async(req, res) => {
         try {
@@ -94,7 +94,7 @@ router.route("/vinyl")
             console.log({ error: "Something went wrong" });
         }
     });
-
+*/
 /// /////////////////////////////////
 /// ////William Giovanini ///////////
 /// /////////////////////////////////
@@ -102,7 +102,7 @@ router.route("/vinyl")
 const sampleVinylInfo = [18, 'Sample Album', 'genre', 25, 19, '00:55:00', '2014-12-02', 0.98, 0, 'Sample Singer', 'Sample', 'Producer', 21]
 const updatedSampleInfo = [18, 'Updated Album', 'updated genre', 24, 19, '00:56:00', '2015-12-02', 1.02, 1, 'Updated Singer', 'Updated', 'Producer', 22]
 
-router.route('/api/vinyl')
+router.route('/vinyl')
     .get(async(req, res) => {
         try {
             const result = await db.sequelizeDB.query(getVinylInfo, {
@@ -129,7 +129,7 @@ router.route('/api/vinyl')
         try {
             const result = await db.sequelizeDB.query(postVinyl, {
                 type: sequelize.QueryTypes.POST
-            }, sampleVinylInfo);
+            });
             console.log("touched vinyl, producers, and singers with POST");
             res.json(result);
         } catch (err) {

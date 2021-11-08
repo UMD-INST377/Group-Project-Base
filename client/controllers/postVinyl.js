@@ -1,5 +1,4 @@
-export default (sequelize, DataTypes, vinylInfo) => {
-  const vinylInput = `INSERT INTO vinyl
+export default `INSERT INTO vinyl
   VALUES (${vinylInfo[12]},${vinylInfo[0]},${vinylInfo[1]},${vinylInfo[2]},${vinylInfo[3]},${vinylInfo[4]},${vinylInfo[5]},${vinylInfo[6]},${vinylInfo[7]},${vinylInfo[8]});
   
   INSERT INTO singers
@@ -7,7 +6,4 @@ export default (sequelize, DataTypes, vinylInfo) => {
 
   INSERT INTO producers
   VALUES (${vinylInfo[4]},${vinylInfo[10]},${vinylInfo[11]});
-  `
-  
-  return vinylInput
-};
+  `;

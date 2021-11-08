@@ -4,6 +4,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 import aoaController from '../server/controllers/aoaController.js';
+import volcanosHasReferencesController from '../server/controllers/volcanosHasReferencesController.js';
 
 const router = express.Router();
 
@@ -198,6 +199,9 @@ router.get('/', (req, res) => {
 router.route('/volcanos_has_references_table')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('you touched the route!');
       res.json({message: 'touched volcanos_has_references_table with GET'});
     } catch (err) {

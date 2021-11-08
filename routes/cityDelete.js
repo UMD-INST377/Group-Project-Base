@@ -1,0 +1,1 @@
+export default 'DELETE * FROM cities'

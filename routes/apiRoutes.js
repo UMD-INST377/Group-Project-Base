@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
+import controllers from '../controllers/index.js';
 
 const router = express.Router();
 
@@ -14,10 +14,13 @@ router.get('/', (req, res) => {
 
 /* Jim's lab 9 routes */
 router.route('/census')
-  .get((req, res) => {
+  .get(async (req, res) => { // make async because we want to await for the response
     try {
+      const db_response = await db.sequelizeDB.query(controllers.census.getCensusSQL);
       console.log('touched /census with GET');
-      res.json({data: []}); // get census data later
+      console.log(db_response);
+      res.json(db_response); // get census data later
+      return db_response // maybe we need this later idk
     } catch(err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});

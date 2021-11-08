@@ -36,7 +36,7 @@ router.route('/genre')
   .put(async (req, res) => {
     try {
       const updateStatement = `UPDATE genre 
-      SET genre = '${req.body.genre}'
+      SET genre_id = '${req.body.genre_id}', genre = '${req.body.genre}'
       WHERE genre_id = '${req.body.genre}' `;
       await db.sequelizeDB.query(updateStatement, {
         type: sequelize.QueryTypes.UPDATE
@@ -74,9 +74,9 @@ router.route('/genre')
       const selectedGenre = await db.sequelizeDB.query(genreStatement, {
         type: sequelize.QueryTypes.SELECT
       });
-      const genreId = selectedGenre.map((genreId) => genreId.movie_id)[0];
+      const genreId = selectedGenre.map((genreID) => genreID.genre_id)[0];
       const deleteStatement = `DELETE FROM genre 
-      WHERE genre = "${req.body.genre_name}"`;
+      WHERE genreid = "${genreId}"`;
       await db.sequelizeDB.query(deleteStatement, {
         type: sequelize.QueryTypes.DELETE
       });

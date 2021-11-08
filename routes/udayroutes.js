@@ -5,51 +5,85 @@ import chalk from 'chalk';
 import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
+import genreMapCustom from '../controllers/genreController.js';
 
 const router = express.Router();
 
+function getGenreByValue(object, value) {
+  return object.filter((item) => item.genre === value);
+}
+
+function getTableRows(table) {
+  return `SELECT * FROM ${table}`;
+}
+  
 /// /////////////////////////////////
 /// ////Genre Endpoints////////
 /// /////////////////////////////////
 router.route('/genre')
   .get(async (req, res) => {
     try {
-      console.log('touched /genre with GET');
-      res.json({message: 'touched /genre with GET'});
+      const result = await db.sequelizeDB.query(genreMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on the server w/ /genre GET'});
     }
   })
 
   .put(async (req, res) => {
     try {
-      console.log('touched /genre with PUT');
-      res.json({message: 'touched /genre with PUT'});
+      const updateStatement = `UPDATE genre 
+      SET genre = '${req.body.genre}'
+      WHERE genre_id = '${req.body.genre}' `;
+      await db.sequelizeDB.query(updateStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.send(`"${req.body.genre}" Successfully Updated`);
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on the server w/ /genre PUT'});
     }
   })
 
   .post(async (req, res) => {
     try {
-      console.log('touched /genre with POST');
-      res.json({message: 'touched /genre with POST'});
+      const genre = await db.sequelizeDB.query(genreMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+
+      const currentID = (await genre.length) + 1;
+      const createStatement = `INSERT INTO genre (genre_id, genre) 
+        VALUES (${currentID}, '${req.body.genre}')`;
+      const result = await db.sequelizeDB.query(createStatement, {
+        type: sequelize.QueryTypes.INSERT
+      });
+
+      res.send(`"${req.body.genre}" Successfully Updated`);
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on the server w/ /genre POST'});
     }
   })
 
   .delete(async (req, res) => {
     try {
-      console.log('touched /genre with DELETE');
-      res.json({message: 'touched /genre with DELETE'});
+      const genreStatement = `SELECT * FROM imdb_database.genre WHERE genre = "${req.body.genre}"`;
+      const selectedGenre = await db.sequelizeDB.query(genreStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const genreId = selectedGenre.map((genreId) => genreId.movie_id)[0];
+      const deleteStatement = `DELETE FROM genre 
+      WHERE genre = "${req.body.genre_name}"`;
+      await db.sequelizeDB.query(deleteStatement, {
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.send(`Successfully Deleted "${req.body.genre}"`);
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on the server w/ /genre DELETE'});
     }
   });
-
 export default router;

@@ -12,6 +12,16 @@ const expressRouter = express.Router();
 const defaultMsg = 'touched /actors with ';
 const errorMsg = 'Server Error with ';
 
+// Get the table
+function getTable(tableName) {
+  return `SELECT * FROM ${tableName}`;
+}
+
+// get the actorId by value
+function getActorIdByValue(rows, value) {
+  return rows.filter((item) => item.actor_name === value);
+}
+
 expressRouter.route('/actors')
   .get(async(req, res) => {
     try {
@@ -25,11 +35,26 @@ expressRouter.route('/actors')
       res.json({error: `${errorMsg} GET`});
     }
   })
-  
-  .put(async (req, res) => {
+
+  .put(async (req, res) => { // UPDATE ACTOR NAME in the possibility that actor changed their name
     try {
-      console.log(`${defaultMsg} PUT`);
-      res.json({message: `${defaultMsg} PUT`});
+      const actors = await db.sequelizeDB.query(getTable('actors'), {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const actorName = `SELECT * FROM actors WHERE actor_name = "${req.body.actor_name}"`;
+      const selectActor = await db.sequelizeDB.query(actorName, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const actorId = getActorIdByValue(actor_name, req.body.actor_name);
+      const update = `UPDATE actors 
+        SET actor_name = '${req.body.actor_name}'
+        WHERE actor_id = '${actorId}
+      `;
+      await db.sequelizeDB.query(update, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+
+      res.send(`"${req.body.actor_name}" has been sucessfully updated!`);
     } catch (error) {
       console.log(error);
       res.json({error: `${errorMsg} PUT`});

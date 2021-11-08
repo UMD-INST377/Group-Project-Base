@@ -61,10 +61,21 @@ expressRouter.route('/actors')
     }
   })
 
-  .post(async (req, res) => {
+  .post(async (req, res) => { // Create a new actor
     try {
-      console.log(`${defaultMsg} POST`);
-      res.json({message: `${defaultMsg} POST`});
+      const actor = await db.sequelizeDB.query(actorsMap, {
+        type: sequelize.QueryTypes.SELECT
+      });
+
+      // create new actor_name and new actor_id
+      const newActorId = (await actor.length) + 1;
+      const create = `INSERT INTO actors (actor_id, actor_name)
+        VALUES (${newActorId}, '${req.body.actor_name}')
+      `;
+      const result = await db.sequelizeDB.query(create, {
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
     } catch (error) {
       console.log(error);
       res.json({error: `${errorMsg} POST`});

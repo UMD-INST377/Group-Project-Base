@@ -78,7 +78,39 @@ router.get('/schools/:rank_id', async (request, response) => {
   }
 });
 
+/**
+ * Fetch School Reviews by Rank ID
+ *
+ * @author Alec M.
+ * @date 2021-11-08 11:41:00
+ */
+router.get('/schools/:rank_id/reviews', async (request, response) => {
+  // Validate rank_id
+  const rank_id = parseInt(request.params.rank_id);
+  if (rank_id <= 0 || rank_id > 14) {
+    response.status(404).send("");
+  }
 
+  // Safely connect to database
+  try {
+    const r = await db.sequelizeDB.query(controllers.reviews.getNReviews, {
+      replacements: { rank_id: rank_id, review_limit: 20 },
+      type: sequelize.QueryTypes.SELECT
+    });
+    if (!r || r.length <= 0) {
+      response.status(404).send("");
+    }
+
+    // Send data
+    response.render('reviews', {reviews: r});
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    response.status(404).send("");
+  }
+});
 
 router.get('/schools/:rank_id/univ_location', async (request, response) => {
   try {
@@ -119,65 +151,5 @@ router.get('/schools/:rank_id/sat_scores', async (request, response) => {
   }
 });
 
-/*********************
-*
-* Each member will set up a endpoint for our application
-* and implement the necessary HTTP methods for it (GET/PUT/POST/DELTE)
-*
-*********************/
-
-/*
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
-  try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.delete('/dining/:hall_id', async (req, res) => {
-  try {
-    await db.DiningHall.destroy({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/dining', async (req, res) => {
-  try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-*/
-
+// Export Express Router
 export default router;

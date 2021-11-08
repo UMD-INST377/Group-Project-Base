@@ -57,6 +57,13 @@ router.route('/performers')
     try {
       console.log('touched /performers with GET');
       res.json({data: data});
+
+      const performers = await db.performers.findAll({
+        where:  {
+          artist_id: req.params.artist_id
+        }
+      });
+
     } catch (err) {
       console.log(error);
       res.json({error: error});
@@ -84,6 +91,11 @@ router.route('/performers')
     try {
       console.log('touched /performers with DELETE');
       res.json({data: data});
+
+      const performers = await db.performers.destroy({
+        where:  {
+          artist_id: req.params.artist_id
+
     } catch (err) {
       console.log(error);
       res.json({error: error});

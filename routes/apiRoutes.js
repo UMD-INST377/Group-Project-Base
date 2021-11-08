@@ -6,6 +6,8 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+const teamsController = require('../public/controllers/teamsController.js');
+
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
@@ -319,5 +321,20 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
+
+/// //////////////////////////////////
+/// ///////Teams Endpoints////////
+/// /////////////////////////////////
+router.get('/teams', teamsController.get);
+
+router.get('/teams', teamsController.get);
+
+router.get('/teams/:team_id', teamsController.get);
+
+router.post('/teams', teamsController.post);
+
+router.delete('/teams/:team_id', teamsController.delete);
+
+router.put('/teams', teamsController.put);
 
 export default router;

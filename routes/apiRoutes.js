@@ -98,6 +98,7 @@ router.route('/eruption_category')
         replacements: {category: req.body.category},
         type: sequelize.QueryTypes.INSERT
       });
+      console.log('Successfully inserted into eruption_category')
       res.json(result);
     } catch (err) {
       res.json({error: 'something went wrong!'});
@@ -111,6 +112,7 @@ router.route('/eruption_category')
         },
         type: sequelize.QueryTypes.DELETE
       });
+      console.log('Successfully deleted from eruption_category')
       res.json(result);
     } catch (err) {
       res.json({error: 'something went wrong!'});

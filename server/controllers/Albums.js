@@ -1,0 +1,1 @@
+export default `SELECT album_id, album_name, number_songs, genre, artist_id FROM songs`;

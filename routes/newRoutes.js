@@ -105,40 +105,67 @@ router.route('/vinyl')
   });
 
 // Minghao's routes to the prices endpoint which would map to the "prices" table of our SQL DB
+import prices_table from '../sever/controllers/pricescontroller';
 router.route('/prices')
-  .get((req, res) => {
-    try {
-      console.log('touched /prices with GET');
-      res.json({ prices: '10'});
-    } catch (err) {
-      console.log(error);
-      res.json({ error: 'Oops Error' });
-    }
-  })
+    .get(async(req,res) =>{
+        try{
+            const prices=await db.prices.query(pricescontroller.pricesGet,{
+              type: sequelize.QueryTypes.SELECT
+            });
+          console.log('Touched route!')
+          res.json({message:'Touched prices with GET'});
+        } catch(err){
+          res.json({error:'Oops Error!'})
+        }
+    })
 
-  .put((req, res) => {
-    try {
-      res.json({ message: 'touched /prices with PUT'});
-    } catch (err) {
-      console.log(error);
-      res.json({ error: 'Oops Error' });
-    }
-  })
-  .post((req, res) => {
-    try {
-      res.json({ message: 'touched /prices with POST'});
-    } catch (err) {
-      console.log(error);
-      res.json({ error: 'Oops Error' });
-    }
-  })
-  .delete((req, res) => {
-    try {
-      res.json({ message: 'touched /prices with DELETE'});
-    } catch (error) {
-      console.log(error);
-      res.json({ error: 'Oops Error' });
-    }
-  });
+    .put(async(req,res) =>{
+        try{
+            await db.prices.update({
+                highest_discog = req.body.highest_discog,
+                average_discog = req.body.average_discog,
+                lowerst_discog = req.body.lowerest_discog,
+                highest_amazon = req.body.highest_amazon
+            },
+            {
+              where:{
+                vinyl_id = req.body.vinyl_id,
+              }
+            }
+            );
+            res.send({message: 'Touched prices with PUT'});
+          } catch (err){
+            console.log(error);
+            res.json({error: 'Oops Error!'})
+          }
+        })
+    .post(async(req,res) => {
+        const prices = await db.prices.findall();
+        const currentId=(await prices.length)+1
+        try{
+        const newPrice= await db.prices.create({
+          vinyl_id = req.body.vinyl_id,
+          highest_discog = req.body.highest_discog,
+          average_discog = req.body.average_discog,
+          lowerst_discog = req.body.lowerest_discog,
+          highest_amazon = req.body.highest_amazon
+        });   
+        
+        }
+        catch(err){
+            console.log(error);
+            res.json({error:"Oops Error!"});
+        }
+    })
+    .delete((req,res) =>{
+        try{
+            res.send('Touched prices with DELETE');
+        }
+        catch(err){
+            console.log(error);
+            res.json({error:"Oops Error!"});
+        }
+    });
+
 
 export default router;

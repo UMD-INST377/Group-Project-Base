@@ -38,6 +38,7 @@ expressRouter.route('/actors')
 
   .put(async (req, res) => { // UPDATE ACTOR NAME in the possibility that actor changed their name
     try {
+      // will connect this to the films table later
       const actors = await db.sequelizeDB.query(getTable('actors'), {
         type: sequelize.QueryTypes.SELECT
       });
@@ -82,10 +83,20 @@ expressRouter.route('/actors')
     }
   })
 
-  .delete(async (req, res) => {
+  .delete(async (req, res) => { // DELETE an actor's name
     try {
-      console.log(`${defaultMsg} DELETE`);
-      res.json({message: `${defaultMsg} DELETE`});
+      const actorToFind = `SELECT * FROM actors WHERE actor_name = "${req.body.actor_name}"`;
+      const selectActor = await db.sequelizeDB.query(actorToFind, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const actorId = selectActor.map((actorDets) => actorDets.actor_id)[0];
+      const deleteActor = `DELETE FROM actors
+        WHERE actor_id = "${actorId}"
+      `;
+      await db.sequelizeDB.query(deleteActor, {
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.send(`"${req.body.actor_name}" was deleted successfully!`)
     } catch (error) {
       console.log(error);
       res.json({error: `${errorMsg} DELETE`});

@@ -88,7 +88,7 @@ router.get('/schools/:rank_id/reviews', async (request, response) => {
   // Validate rank_id
   const rank_id = parseInt(request.params.rank_id);
   if (rank_id <= 0 || rank_id > 14) {
-    response.json({status: 'failure', data: null, message: 'unknown error'});
+    response.status(404).send("");
   }
 
   // Safely connect to database
@@ -97,15 +97,18 @@ router.get('/schools/:rank_id/reviews', async (request, response) => {
       replacements: { rank_id: rank_id, review_limit: 20 },
       type: sequelize.QueryTypes.SELECT
     });
+    if (!r || r.length <= 0) {
+      response.status(404).send("");
+    }
 
     // Send data
-    response.json({status: 'success', data: r});
+    response.render('reviews', {reviews: r});
   } catch (e) {
     // Debug
     console.error(e);
 
     // Send data
-    response.json({status: 'failure', data: null, message: 'unknown error'});
+    response.status(404).send("");
   }
 });
 

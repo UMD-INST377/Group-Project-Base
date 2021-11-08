@@ -4,6 +4,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 import aoaController from '../server/controllers/aoaController.js';
+import volcanosController from '../server/controllers/volcanosController.js';
 
 const router = express.Router();
 
@@ -270,6 +271,9 @@ router.route('/vei')
 router.route('/volcanos')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(volcanosController.volcanosGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('you touched the route!');
       res.json({message: 'touched volcanos with GET'});
     } catch (err) {

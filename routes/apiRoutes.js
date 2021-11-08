@@ -7,6 +7,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 const teamsController = require('../public/controllers/teamsController.js');
+import teamsController from '../public/controllers/teamsController.js';
 
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');

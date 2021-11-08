@@ -245,6 +245,9 @@ router.route('/volcanos_has_references_table')
       res.json({error: 'something went wrong!'});
     }
   })
+  /* TO DEBUG 
+     put does not work at all due to some foreign key limition and 
+     post works out of order and u have to specifiy topic_id which shouldnt happen 
   .put(async(req, res) => {
     try {
       const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicPut, {
@@ -277,6 +280,7 @@ router.route('/volcanos_has_references_table')
       res.json({error: 'something went wrong!'});
     }
   })
+  */
   .delete(async(req, res) => {
     try {
       const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicDelete, {

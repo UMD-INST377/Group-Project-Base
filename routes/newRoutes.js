@@ -77,7 +77,7 @@ router.route('/vinyl')
   })
   .post(async(req, res) => {
     try {
-      const updateVinylSQL = `UPDATE vinyl SET "${req.body.ablum_name}" = "${req.body.ablum_name}" WHERE "${req.body.ablum_name}"e = "${req.body.ablum_name}"`;
+      const updateVinylSQL = `UPDATE vinyl SET album_name = "${req.body.ablum_name}" WHERE album_name = "${req.body.ablum_name}"`;
 
       await db.sequelizeDB.query(updateVinylSQL, {type: sequelize.QueryTypes.UPDATE});
 

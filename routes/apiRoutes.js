@@ -4,6 +4,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 import aoaController from '../server/controllers/aoaController.js';
+import eruptionCategoryController from '../server/controllers/eruptionCategoryController.js';
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router.route('/eruption_aoa')
         type: sequelize.QueryTypes.SELECT
       });
       console.log('you touched the route!');
-      res.json({message: 'touched eruption_aoa with GET'});
+      res.json(result);
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
@@ -50,6 +51,9 @@ router.route('/eruption_aoa')
 router.route('/eruption_category')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(eruptionCategoryController.categoryGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('you touched the route!');
       res.json({message: 'touched eruption_category with GET'});
     } catch (err) {

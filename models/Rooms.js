@@ -25,12 +25,12 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       },
       cost_per_night: {
-          type: DataTypes.DECIMAL,
-          allowNull: false
-        }
-      },
-      { freezeTableName: true, timestamps: false }
-    );
-    return room;
-  };
+        type: DataTypes.DECIMAL,
+        allowNull: false
+      }
+    },
+    { freezeTableName: true, timestamps: false }
+  );
+  return room;
+};
   

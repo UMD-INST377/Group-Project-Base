@@ -3,6 +3,8 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
+const router = express.Router();
+
 const nbaPlayerQuery = 'SELECT * FROM AWARDS';
 router.route('/nba-players')
   .get(async (req, res) => {

@@ -1,4 +1,4 @@
-export default (database, DataTyles) => {
+export default (database, DataTypes) => {
   const extinction = database.define(
     'extinction',
     {

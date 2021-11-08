@@ -38,9 +38,14 @@ export default controllers = {
   location
   )`,
 
-  putController: '',
+  putController: `UPDATE food_inspections 
+  SET name = 'chipotle'
+  SET category = 'fast food'
+  SET city = 'college park'
+  SET state = 'maryland' `,
+
 
   deleteController: `DELETE
   FROM food_inspections
-  WHERE name='mcdonalds'`
+  WHERE name = mcdonalds`
 };

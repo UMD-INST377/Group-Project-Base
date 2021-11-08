@@ -299,6 +299,7 @@ router.get('/custom', async (req, res) => {
   }
 });
 
+
 router.get('establishmentVar', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(FoodInspection, {

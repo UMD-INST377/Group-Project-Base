@@ -39,9 +39,17 @@
           <a class="button is-white" href="#" target="_blank" rel="noreferrer">Visit University Site</a>
         </div>
         <div class="box has-background-primary">
-          <h3 class="subtitle is-4">University Reviews <em>(4.5 / 5.0)</em></h3>
+          <h3 class="subtitle is-4">University Reviews</h3>
 
-          <p class="mb-5">...</br>...</br>...</br>...</p>
+          <!-- Dynamic Review -->
+          <div class='reviews mb-4' id="university_reviews">
+            <% if (typeof(reviews) === "object") { %>
+              <%- include('reviews', reviews) %>
+              <button class="button is-fullwidth" id="load_all_reviews">Load More Reviews</button>
+            <% } else { %>
+              <p>This university has no reviews. Be the first!</p>
+            <% } %>
+          </div>
 
           <a class="button is-white" href="./review">New Review</a>
         </div>
@@ -59,5 +67,28 @@
         </p>
       </div>
     </footer>
+    <script>
+      // Variables
+      const rankID = <%= university_id %>;
+      const reviewBtn = document.querySelector("#load_all_reviews");
+
+      // Event Handler
+      reviewBtn.onclick =  async () => {
+        // Validate unsafe input
+        if (!rankID || typeof(rankID) !== "number" || rankID <= 0 || rankID >= 15) {
+          return false;
+        }
+
+        // Fetch Reviews
+        const response = await fetch(`../../api/schools/${rankID}/reviews`);
+        const reviews = await response.text();
+        if (!reviews || typeof(reviews) !== "string") {
+          return false;
+        }
+
+        // Render Review content
+        document.querySelector("#university_reviews").innerHTML = reviews;
+      };
+    </script>
   </body>
 </html>

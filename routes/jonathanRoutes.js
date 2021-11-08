@@ -4,6 +4,8 @@ import sequelize from "sequelize";
 
 import db from "../database/initializeDB.js";
 
+import biome from "../server/controllers/jonathanController.js";
+
 const router = express.Router();
 
 /// /////////////////////////////////
@@ -11,44 +13,66 @@ const router = express.Router();
 /// /////////////////////////////////
 router
   .route("/biome")
-  .get("/biome", async (req, res) => {
+  .get(async (req, res) => {
     try {
+      const biome = await db.Biome.findAll();
+      const reply =
+        biome.length > 0 ? { data: biome } : { message: "no results found" };
       console.log("touched /biome with GET");
-      res.json({ data: data });
-      res.json({ reply: "closed GET request" });
+      res.json(reply);
     } catch (err) {
       console.error(err);
       res.error("Server error");
     }
   })
 
-  .put("/biome", async (req, res) => {
+  .put(async (req, res) => {
     try {
+      await db.Biome.update(
+        {
+          Biome: req.body.Biome,
+          Continent: req.body.Continent,
+        },
+        {
+          where: {
+            biome_id: req.body.biome_id,
+          },
+        }
+      );
       console.log("touched /biome with PUT");
-      res.json({ data: data });
-      res.json({ reply: "closed PUT request" });
+      res.send("Successfully updated");
     } catch (err) {
       console.error(err);
       res.error("Server error");
     }
   })
 
-  .post("/biome", async (req, res) => {
+  .post(async (req, res) => {
+    const biome = await db.Biome.findAll();
+    const currentId = (await biome.length) + 1;
     try {
+      const newBiome = await db.Biome.create({
+        biome_id: currentId,
+        Biome: req.body.Biome,
+        Continent: req.body.Continent,
+      });
       console.log("touched /biome with POST");
-      res.json({ data: data });
-      res.json({ reply: "closed POST request" });
+      res.json(newBiome);
     } catch (err) {
       console.error(err);
       res.error("Server error");
     }
   })
 
-  .delete("/biome", async (req, res) => {
+  .delete(async (req, res) => {
     try {
+      await db.Biome.destroy({
+        where: {
+          biome_id: req.params.biome_id,
+        },
+      });
       console.log("touched /biome with DELETE");
-      res.json({ data: data });
-      res.json({ reply: "closed DELETE request" });
+      res.send("Successfully deleted");
     } catch (err) {
       console.error(err);
       res.error("Server error");

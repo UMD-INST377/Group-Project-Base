@@ -299,4 +299,17 @@ router.get('/custom', async (req, res) => {
   }
 });
 
+router.get('establishmentVar', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(FoodInspection, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
 export default router;

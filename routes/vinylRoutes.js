@@ -12,7 +12,7 @@ export default router.route('/vinyl')
   })
   .delete(async(req, res) => {
     try {
-      const deleteQuery = `DELETE FROM vinyl WHERE vinyl_id = 21;`
+      const deleteQuery = `DELETE FROM vinyl WHERE vinyl_id = ${req.body.vinyl_id};`
       const result = await db.sequelizeDB.query(deleteQuery, {
         type: sequelize.QueryTypes.DELETE
       });

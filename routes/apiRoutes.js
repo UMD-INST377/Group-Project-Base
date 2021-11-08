@@ -19,7 +19,7 @@ router
       res.json({ message: '/animals GET method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
@@ -28,7 +28,7 @@ router
       res.json({ message: '/animals PUT method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
@@ -37,7 +37,7 @@ router
       res.json({ message: '/animals POST method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
@@ -46,7 +46,7 @@ router
       res.json({ message: '/animals DELETE method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   });
 
@@ -59,7 +59,7 @@ router
       res.json({ message: '/extinction GET method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
@@ -68,7 +68,7 @@ router
       res.json({ message: '/extinction PUT method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
@@ -77,7 +77,7 @@ router
       res.json({ message: '/extinction POST method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
@@ -86,7 +86,7 @@ router
       res.json({ message: '/extinction DELETE method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   });
 
@@ -100,7 +100,7 @@ router
       res.json({ message: '/fight_mode GET method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
@@ -109,7 +109,7 @@ router
       res.json({ message: '/fight_mode PUT method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
@@ -118,7 +118,7 @@ router
       res.json({ message: '/fight_mode POST method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
@@ -127,7 +127,7 @@ router
       res.json({ message: '/fight_mode DELETE method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   });
 
@@ -141,7 +141,7 @@ router
       res.json({ message: '/biomes GET method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
@@ -150,7 +150,7 @@ router
       res.json({ message: '/biomes PUT method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
@@ -159,7 +159,7 @@ router
       res.json({ message: '/biomes POST method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
@@ -168,7 +168,7 @@ router
       res.json({ message: '/biomes DELETE method' });
     } catch (err) {
       console.log(err);
-      res.error('Something went wrong, sorry');
+      res.send('Something went wrong, sorry');
     }
   });
 

@@ -2,7 +2,7 @@
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
-import getSongs from '../server/controllers/getSongs.js';
+import getVinyls from '../server/controllers/getVinyls.js';
 
 const router = express.Router();
 
@@ -52,7 +52,7 @@ router.route('/artists')
 router.route('/vinyl')
   .get(async(req, res) => {
     try {
-      const result = await db.sequelizeDB.query(getSongs, {
+      const result = await db.sequelizeDB.query(getVinyls, {
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);

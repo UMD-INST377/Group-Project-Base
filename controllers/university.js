@@ -10,7 +10,7 @@ const getAllUniversities = `SELECT university_id, university_name FROM universit
  *
  * @type {SQLStmt}
  */
-const getUniversity = `SELECT a.university_name, b.univ_location, b.univ_region, b.univ_zip
+const getUniversity = `SELECT a.university_id, a.university_name, b.univ_location, b.univ_region, b.univ_zip
   FROM university a
   INNER JOIN location b
     ON a.university_id = b.university_id
@@ -28,5 +28,3 @@ export default {
   getUniversityName,
   getUniversityLoc
 };
-
-

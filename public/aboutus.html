@@ -2,40 +2,86 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Group 17 Project</title>
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <div class='navigationbar'>
-      <div class="links">
-        <a href='index.html'>Home</a>
-      </div>
-      <div class="links">
-        <a href='favorites.html'>Favorites</a>
-      </div>
-      <div class="links">
-        <a href='aboutus.html'>About Us</a>
-      </div>
-      <div class="links"></div>
-        <a href='data.html'>Data</a>
-      </div>
-    </div>
+    <nav
+      class="navbar navigationbar"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <!--logo-->
+      <div class="navbar-brand">
+        <!--<a class="navbar-item" href="https://bulma.io">
+          <img
+            src="https://bulma.io/images/bulma-logo.png"
+            width="112"
+            height="28"
+          />
+        </a>-->
 
-    <div class='title'>About Us</div>
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
 
-    <div class='contentbox'>
-        <p>
-          Many people do not have knowledge about extinct animals, which is relevant to environmental science, history, biology, and possibly more fields, and so our web app will aim to not only educate and encourage people to learn about extinct animals, but also more specifically equip “extinct animals trackers” with the data and knowledge to protect animals similar to our focus group animals, which we have tentatively defined as North American animals under 10 pounds, from going extinct in the future. Armed with the information and visualizations that our web app provides, some of the trackers may even go tracking, and who knows, maybe even disprove the extinction of a species!
-        </p>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="index.html">Home</a>
+          <a class="navbar-item" href="favorites.html">Favorites</a>
+          <a class="navbar-item" href="aboutus.html">About Us</a>
+          <a class="navbar-item" href="data.html">Data</a>
+        </div>
+
+        <div class="navbar-end">
+          <!--
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light"> Log in </a>
+            </div>
+          </div>
+          -->
+        </div>
+      </div>
+    </nav>
+
+    <div class="title">About Us</div>
+
+    <div class="contentbox">
+      <p>
+        Many people do not have knowledge about extinct animals, which is
+        relevant to environmental science, history, biology, and possibly more
+        fields, and so our web app will aim to not only educate and encourage
+        people to learn about extinct animals, but also more specifically equip
+        “extinct animals trackers” with the data and knowledge to protect
+        animals similar to our focus group animals, which we have tentatively
+        defined as North American animals under 10 pounds, from going extinct in
+        the future. Armed with the information and visualizations that our web
+        app provides, some of the trackers may even go tracking, and who knows,
+        maybe even disprove the extinction of a species!
+      </p>
     </div>
 
     <!--Our script-->
     <script src="script.js" charset="utf-8"></script>
-
   </body>
-
 </html>

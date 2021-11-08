@@ -4,6 +4,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 import aoaController from '../server/controllers/aoaController.js';
+import volcanosHasReferencesController from '../server/controllers/volcanosHasReferencesController.js';
 import eruptionCategoryController from '../server/controllers/eruptionCategoryController.js';
 
 const router = express.Router();
@@ -235,34 +236,62 @@ router.get('/', (req, res) => {
 router.route('/volcanos_has_references_table')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('you touched the route!');
-      res.json({message: 'touched volcanos_has_references_table with GET'});
+      res.json(result);
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
   })
+  /* TO DEBUG 
+     put does not work at all due to some foreign key limition and 
+     post works out of order and u have to specifiy topic_id which shouldnt happen 
   .put(async(req, res) => {
     try {
-      res.json({message: 'touched volcanos_has_references_table with PUT'});
+      const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicPut, {
+        replacements: {
+          topic_id: req.body.topic_id,
+          volcanos_volcano_id: req.body.volcanos_volcano_id,
+          references_table_reference_id: req.body.references_table_reference_id
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      console.log('Sucessfully updated volcanos_has_references_table')
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
 
   .post(async(req, res) => {
     try {
-      res.json({message: 'touched volcanos_has_references_table with POST'});
+      const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicPost, {
+        replacements: {
+          volcanos_volcano_id: req.body.volcanos_volcano_id,
+          references_table_reference_id: req.body.references_table_reference_id
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
+      console.log('Sucessfully inserted into volcanos_has_references_table');
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
+  */
   .delete(async(req, res) => {
     try {
-      res.json({message: 'touched volcanos_has_references_table with DELETE'});
+      const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicDelete, {
+        replacements: {
+          topic_id: req.body.topic_id,
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+      console.log('Sucessfully deleted from volcanos_has_references_table');
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   });

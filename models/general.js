@@ -1,9 +1,9 @@
 export default (database, DataTypes) =>{
-    const general_information=databse.define(
+    const general_information=database.define(
         'general_information',
         {
            game_id:{
-               type:DataTypes.INTERGER,
+               type:DataTypes.INTEGER,
                allowNull: false,
                primaryKey: true
            },

@@ -6,6 +6,8 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+import platforms from '../server/controllers/platforms.js';
+
 ////// Platform Endpoints ///////
 router.route('/platforms')
     .get((req, res) => {

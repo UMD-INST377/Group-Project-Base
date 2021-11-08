@@ -1,3 +1,4 @@
+<% for (let i = 0; i < reviews.length; i++) { %>
 <div class="box">
   <article class="media">
     <div class="media-left">
@@ -8,11 +9,12 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>Anonymous Student</strong> <small><%= date %></small>
+          <strong>Anonymous Student</strong> <small><%= reviews[i]["date"] %></small>
           <br>
-          <%= review %>
+          <%= reviews[i]["review"] %>
         </p>
       </div>
     </div>
   </article>
 </div>
+<% } %>

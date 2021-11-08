@@ -27,7 +27,7 @@ router.route('/foodServicePG').get(async (req, res) => {
   }
 });
 
-router.get('/food_inspection/:Establishment_id', async (req, res) => {
+router.get('/FOOD_INSPECTION_GROUP8.Food_Inspection/:Establishment_id', async (req, res) => {
   try {
     const businesses = await db.FoodInspection.findAll({
       where: {
@@ -43,7 +43,7 @@ router.get('/food_inspection/:Establishment_id', async (req, res) => {
   }
 });
 
-router.put('/food_inspection/:Establishment_id', async (req, res) => {
+router.put('/FOOD_INSPECTION_GROUP8.Food_Inspection/:Establishment_id', async (req, res) => {
   try {
     const businesses = await db.FoodInspection.findAll({
       where: {
@@ -59,7 +59,7 @@ router.put('/food_inspection/:Establishment_id', async (req, res) => {
   }
 });
 
-router.post('/food_inspection/:Establishment_id', async (req, res) => {
+router.post('/FOOD_INSPECTION_GROUP8.Food_Inspection/:Establishment_id', async (req, res) => {
   try {
     const businesses = await db.FoodInspection.findAll({
       where: {
@@ -75,7 +75,7 @@ router.post('/food_inspection/:Establishment_id', async (req, res) => {
   }
 });
 
-router.delete('/food_inspection/:Establishment_id', async (req, res) => {
+router.delete('/FOOD_INSPECTION_GROUP8.Food_Inspection/:Establishment_id', async (req, res) => {
   try {
     const businesses = await db.FoodInspection.findAll({
       where: {
@@ -91,7 +91,7 @@ router.delete('/food_inspection/:Establishment_id', async (req, res) => {
   }
 });
 
-router.put('/food_inspection/:Establishment_id', async (req, res) => {
+router.put('/FOOD_INSPECTION_GROUP8.Food_Inspection/:Establishment_id', async (req, res) => {
   try {
     const businesses = await db.FoodInspection.findAll({
       where: {

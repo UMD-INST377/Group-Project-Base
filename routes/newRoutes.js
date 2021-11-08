@@ -1,5 +1,8 @@
 /* eslint-disable no-console */
 import express from 'express';
+import sequelize from 'sequelize';
+import db from '../database/initializeDB.js';
+import getSongs from '../server/controllers/getSongs.js';
 
 const router = express.Router();
 
@@ -46,42 +49,56 @@ router.route('/artists')
   });
 
 // Diego's routes to the songs endpoint which would map to the "songs" table of our SQL DB
-router.route('/songs')
-  .get((req, res) => {
+router.route('/vinyl')
+  .get(async(req, res) => {
     try {
-<<<<<<< HEAD
-      console.log('touched /songs with GET');
-      res.json({ song: 'Smells Like Teen Spirit'});
-=======
-      console.log('touched /songs with GET')
-      res.json({ songs: 'Smells Like Teen Spirit'});
->>>>>>> 89d4ae14231b58be638d5bb89f4a3ae5a73a1e9b
-    } catch (err) {
+      const result = await db.sequelizeDB.query(getSongs, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (error) {
       console.log(error);
       res.json({ error: 'Oops Error' });
     }
   })
 
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
-      res.json({ message: 'touched /songs with PUT'});
-    } catch (err) {
+      const insertVinylSQL = `INSERT INTO vinyl (singer_id, album_name, genre, track_amount, producer_id, runtime, first_available, weight, is_explicit)
+      VALUES (${req.body.singer_id}, "${req.body.album_name}", "${req.body.genre}", ${req.body.track_amount}, ${req.body.producer_id}, "${req.body.runtime}", "${req.body.first_available}", "${req.body.weight}", ${req.body.is_explicit});`;
+
+      await db.sequelizeDB.query(insertVinylSQL, {type: sequelize.QueryTypes.INSERT});
+
+      res.send(`Successfully Inserted ${req.body.album_name}`);
+    } catch (error) {
       console.log(error);
       res.json({ error: 'Oops Error' });
     }
   })
-  .post((req, res) => {
+  .post(async(req, res) => {
     try {
-      res.json({ message: 'touched /songs with POST'});
-    } catch (err) {
+      const updateVinylSQL = `UPDATE vinyl SET "${req.body.ablum_name}" = "${req.body.ablum_name}" WHERE "${req.body.ablum_name}"e = "${req.body.ablum_name}"`;
+
+      await db.sequelizeDB.query(updateVinylSQL, {type: sequelize.QueryTypes.UPDATE});
+
+      res.send(`Successfully Updated ${req.body.album_name}`);
+    } catch (error) {
       console.log(error);
       res.json({ error: 'Oops Error' });
     }
   })
-  .delete((req, res) => {
+
+  .delete(async(req, res) => {
     try {
-      res.json({ message: 'touched /songs with DELETE'});
-    } catch (err) {
+      const vinyl = `SELECT * FROM vinyl WHERE album_name = "${req.body.album_name}"`;
+      const vinylSelected = await db.sequelizeDB.query(vinyl, {type: sequelize.QueryTypes.SELECT});
+      const vinylID = vinylSelected.map((vinID) => vinID.vinyl_id)[0];
+      const deleteVinylSQL = `DELETE FROM vinyl WHERE vinyl_id = "${vinylID}"`;
+
+      await db.sequelizeDB.query(deleteVinylSQL, {type: sequelize.QueryTypes.DELETE});
+
+      res.send(`Successfully Deleted ${req.body.album_name}`);
+    } catch (error) {
       console.log(error);
       res.json({ error: 'Oops Error' });
     }
@@ -91,7 +108,7 @@ router.route('/songs')
 router.route('/prices')
   .get((req, res) => {
     try {
-      console.log('touched /prices with GET')
+      console.log('touched /prices with GET');
       res.json({ prices: '10'});
     } catch (err) {
       console.log(error);
@@ -101,7 +118,7 @@ router.route('/prices')
 
   .put((req, res) => {
     try {
-      res.json({ message: 'touched /prices with PUT'})
+      res.json({ message: 'touched /prices with PUT'});
     } catch (err) {
       console.log(error);
       res.json({ error: 'Oops Error' });
@@ -118,7 +135,7 @@ router.route('/prices')
   .delete((req, res) => {
     try {
       res.json({ message: 'touched /prices with DELETE'});
-    } catch (err) {
+    } catch (error) {
       console.log(error);
       res.json({ error: 'Oops Error' });
     }

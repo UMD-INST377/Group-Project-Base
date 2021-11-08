@@ -1,10 +1,10 @@
 export default (sequelize, DataTypes) => {
-    const room = sequelize.define(
-      'room',
-      {
-        room_id: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
+  const room = sequelize.define(
+    'room',
+    {
+      room_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
           unique: true,
           primaryKey: true
         },

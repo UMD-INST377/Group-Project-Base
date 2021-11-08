@@ -58,7 +58,7 @@ router.route('/price')
     .get(async(req,res) =>{
         try{
             const price=await db.Price.findall();
-            const reply =halls.length>0?{data:halls}:{message:'no results found'}
+            const reply =price.length>0?{data:halls}:{message:'no results found'}
             
             res.json(reply);
             }

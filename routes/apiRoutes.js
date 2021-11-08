@@ -4,6 +4,8 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
+import mdCensusDataTaxCreditCompanies from '../server/controller/md_census_data_tax_credit_company.js'
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -25,16 +27,12 @@ router.route('/zipcode')
     }
   });
 
-router.route('/Police')
+router.route('/mdcensusdatataxcreditcompany')
   .get(async (req, res) => {
     try {
-      res.send('Police Stations in Maryland');
-      const url = '';// insert url
-      const data = await fetch(url);
-      const json = await data.json();
-      console.log(json);
-
-      res.json({data: data});
+      const census = await db.md_census_data_tax_credit_company.findall();
+      const reply = census.length > 0 ? {data: census } : {message: 'no results found' };
+      res.json(reply);
     } catch (err) {
       console.error(err);
       res.error({error: error});

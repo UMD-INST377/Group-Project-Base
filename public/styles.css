@@ -1,0 +1,12 @@
+.viinyl-navigation{
+    padding: 25px 150px 0px 150px;
+}
+
+.viinyl-body{
+    display: flex;
+}
+
+.viinyl-photo-grid{
+    display: flex;
+    max-width: 50%;
+}

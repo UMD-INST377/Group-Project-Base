@@ -2,6 +2,7 @@
 import express from 'express';
 import sequelize from 'sequelize';
 
+import controllers from '../controllers/foodInspectionPGController';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();

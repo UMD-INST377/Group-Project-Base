@@ -15,10 +15,10 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 
 // Jordan's API Routes to Car Endpoint
-router.route('/car')
+router.route('/collisionType')
   .get(async(req, res) => {
     try {
-      console.log('You touched the /car route with get');
+      console.log('You touched the /collisionType route with GET');
       // res.json({data: data});
     } catch (err) {
       console.log(error);
@@ -27,7 +27,7 @@ router.route('/car')
   })
   .put((req, res) => {
     try {
-      console.log('You touched the /car route with put');
+      console.log('You touched the /collisionType route with PUT');
       // res.json({data: data});
     } catch (err) {
       console.log(EvalError);
@@ -36,7 +36,7 @@ router.route('/car')
   })
   .post((req, res) => {
     try {
-      console.log('You touched the /car route with post');
+      console.log('You touched the /collisionType route with POST');
       // res.json({data: data});
     } catch (err) {
       console.log(error);
@@ -45,7 +45,7 @@ router.route('/car')
   })
   .delete((req, res) => {
     try {
-      console.log('You touched the /car route with delete');
+      console.log('You touched the /collisionType route with DELETE');
       // res.json({data: data});
     } catch (err) {
       console.log(error);

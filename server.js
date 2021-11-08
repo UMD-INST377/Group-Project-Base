@@ -17,6 +17,16 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 
+app.use('/api', labelsRoutes);
+app.use('/api', musical_infoRoutes);
+app.use('/api', placementRoutes);
+app.use('/api', pricesRoutes);
+app.use('/api', producersRoutes);
+app.use('/api', singersRoutes);
+app.use('/api', songRoutes);
+app.use('/api', vinylLabelRoutes);
+app.use('/api', vinylRoutes);
+
 async function bootServer() {
     try {
         const mysql = await db.sequelizeDB;

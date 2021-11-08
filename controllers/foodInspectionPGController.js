@@ -40,5 +40,7 @@ export default controllers = {
 
   putController: '',
 
-  deleteController: ''
+  deleteController: `DELETE
+  FROM food_inspections
+  WHERE name='mcdonalds'`
 };

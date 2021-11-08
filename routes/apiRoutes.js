@@ -301,29 +301,41 @@ router.route('/nba-players')
         team_id: req.body.team_id,
         player_number: req.body.player_number
       });
-      res.json(newNBA);
+      res.json(newPlayer);
     } catch (err) {
       console.error(err);
       res.error('Server error');
     }
   })
   .delete(async (req, res) => {
-      try {
-          await db.NBA.destroy({
-              where: {
-                  player_id: req.params.player_id
-                }
-          })
-          res.send('Successfully Deleted');
-      } catch (err) {
-          console.log(error);
-          console.error(err);
-          res.error('Server error');
-      }
+    try {
+      await db.NBA.destroy({
+        where: {
+          player_id: req.params.player_id
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.log(error);
+      console.error(err);
+      res.error('Server error');
+    }
   })
   .put(async (req, res) => {
     try {
-      res.json({ message: 'delete NBA Database endpoint' });
+      await db.DiningHall.update(
+        {
+          ppg: req.body.ppg,
+          assists: req.body.assists,
+          team_id: req.body.team_id
+        },
+        {
+          where: {
+            player_id: req.body.player_id
+          }
+        }
+      );
+      res.send('Successfully Updated');
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something wend wrong on the server' });

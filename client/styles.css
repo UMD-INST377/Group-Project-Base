@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  p {
+    padding:0;
+    margin:0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    background-color: rgb(190, 198, 248);
+    height: 100%;
+  }
+
+nav {
+    background-color: rgba(0, 49, 139, 0.4);
+    display: flex;
+    flex-flow: row wrap;
+    border-radius: 4px;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-top: -25px;
+  }
+
+  html {
+    height: 100%
+  }
+
+  a {
+    text-decoration: none;
+    padding: 2px;
+    color:rgb(0, 0, 112)
+  }
+  
+  a:hover {
+    background-color: rgb(0, 255, 200);
+    display: inline-block;
+    border-radius: 2px;
+  }
+
+  /* Page Layout */
+  .title{
+    display: flex;
+    background-color: rgba(31, 44, 121, 0.8);
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 0;
+    justify-content: center;
+  }
+
+ .columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 960px;
+    justify-content: space-between;
+}
+
+.wrapper {
+  display: flex;
+}
+.container {
+  max-width: 960px;
+  margin-top: 25px;
+}

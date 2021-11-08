@@ -1,10 +1,12 @@
+import getVinylInfo from '../client/controllers/getVinylInfo.js';
+
 export default router.route('/vinyl')
   .get(async(req, res) => {
     try {
       const result = await db.sequelizeDB.query(getVinylInfo, {
         type: sequelize.QueryTypes.SELECT
       });
-      console.log("touched vinyl with GET");
+      console.log('touched vinyl with GET');
       res.json(result);
     } catch (err) {
       console.log(err);
@@ -16,7 +18,7 @@ export default router.route('/vinyl')
       const result = await db.sequelizeDB.query(deleteQuery, {
         type: sequelize.QueryTypes.DELETE
       });
-      console.log("touched vinyl with DELETE");
+      console.log('touched vinyl with DELETE');
       res.json(result);
     } catch (err) {
       console.log(err);
@@ -29,7 +31,7 @@ export default router.route('/vinyl')
       const result = await db.sequelizeDB.query(insertQuery, {
         type: sequelize.QueryTypes.POST
       });
-      console.log("touched vinyl with POST");
+      console.log('touched vinyl with POST');
       res.json(result);
     } catch (err) {
       console.log(err);
@@ -44,7 +46,7 @@ export default router.route('/vinyl')
       const result = await db.sequelizeDB.query(updateQuery, {
         type: sequelize.QueryTypes.PUT
       }, updatedSampleInfo);
-      console.log("touched vinyl with PUT");
+      console.log('touched vinyl with PUT');
       res.json(result);
     } catch (err) {
       console.log(err);

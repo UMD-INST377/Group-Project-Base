@@ -5,7 +5,6 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-import getVinylInfo from '../client/controllers/getVinylInfo.js';
 
 import db from '../database/initializeDB.js';
 

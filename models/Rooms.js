@@ -33,4 +33,3 @@ export default (sequelize, DataTypes) => {
   );
   return room;
 };
-  

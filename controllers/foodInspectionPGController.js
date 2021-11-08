@@ -42,9 +42,8 @@ export default controllers = {
   SET name = 'chipotle'
   SET category = 'fast food'
   SET city = 'college park'
-  SET state = 'maryland'
-  `,
+  SET state = 'maryland' `,
 
 
-  deleteController: ''
+  deleteController: 'DELETE FROM food_inspections WHERE name = mcdonalds'
 };

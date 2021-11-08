@@ -31,6 +31,7 @@ router.route('/eruption_aoa')
         type: sequelize.QueryTypes.UPDATE
       });
       res.json(result);
+      console.log('Successfully updated eruption_aoa')
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
@@ -42,6 +43,7 @@ router.route('/eruption_aoa')
         type: sequelize.QueryTypes.INSERT
       });
       res.json(result);
+      console.log('Successfully inserted into eruption_aoa')
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
@@ -55,6 +57,7 @@ router.route('/eruption_aoa')
         type: sequelize.QueryTypes.DELETE
       });
       res.json(result);
+      console.log('Successfully deleted from eruption_aoa')
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
@@ -83,6 +86,7 @@ router.route('/eruption_category')
         type: sequelize.QueryTypes.UPDATE
       });
       res.json(result);
+      console.log('Successfully updated eruption_category')
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
@@ -103,7 +107,7 @@ router.route('/eruption_category')
     try {
       const result = await db.sequelizeDB.query(eruptionCategoryController.categoryDelete, {
         replacements: {
-          category: req.body.category_id
+          category_id: req.body.category_id
         },
         type: sequelize.QueryTypes.DELETE
       });

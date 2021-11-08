@@ -7,6 +7,7 @@ export default controllers = {
 
   // this statement creates a new record in the database//
   postController: `INSERT INTO food_inspections,
+  VALUES (
   name,
   category,
   inspection_date,
@@ -34,7 +35,8 @@ export default controllers = {
   inspection_type,
   owner,
   type,
-  location`,
+  location
+  )`,
 
   putController: '',
 

@@ -24,10 +24,6 @@ export default (sequelize, DataTypes) => {
           type: DataTypes.INTEGER,
           allowNull: false
         },
-        kitchenette: {
-          type: DataTypes.TINYINT,
-          allowNull: false
-        },
         cost_per_night: {
           type: DataTypes.DECIMAL,
           allowNull: false

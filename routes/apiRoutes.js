@@ -4,6 +4,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 import aoaController from '../server/controllers/aoaController.js';
+import EvidenceController from '../server/controllers/EvidenceController.js';
 
 const router = express.Router();
 
@@ -122,6 +123,10 @@ router.route('/eruption_info')
 router.route('/evidence')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(EvidenceController.evGet,{
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
       console.log('you touched the route!');
       res.json({message: 'touched evidence with GET'});
     } catch (err) {
@@ -147,6 +152,10 @@ router.route('/evidence')
   })
   .delete(async(req, res) => {
     try {
+      const result = db.sequelizeDB.query(EvidenceController.evDelete,{
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
       res.json({message: 'touched evidence with DELETE'});
     } catch (err) {
       console.log(error);

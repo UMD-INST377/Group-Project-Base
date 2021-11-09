@@ -3,7 +3,8 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
-import {const} from '../server/controllers'
+// import carCrashDataCustom from '../server/controllers/carCrashData.js'; //import from the carCrashData controller
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -15,19 +16,17 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 
 // Jordan's API Routes to Car Endpoint
+// All endpoints should follow the basic outline of this first .get route
+
 router.route('/collisionType')
   .get(async(req, res) => {
     try {
-      const something = await query.sequelize(
-        get something {
-          type: sequelize.QueryTypes.SELECT
-        }
-      )
+      const collision_type = await db.collision_type.findAll();   //This pulls from collision_type model
       console.log('You touched the /collisionType route with GET');
-      // res.json({data: data});
+      res.json(collision_type);
     } catch (err) {
-      console.log(error);
-      res.json({error: error});
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
     }
   })
   .put((req, res) => {
@@ -35,8 +34,8 @@ router.route('/collisionType')
       console.log('You touched the /collisionType route with PUT');
       // res.json({data: data});
     } catch (err) {
-      console.log(EvalError);
-      res.json({error: error});
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
     }
   })
   .post((req, res) => {
@@ -44,8 +43,8 @@ router.route('/collisionType')
       console.log('You touched the /collisionType route with POST');
       // res.json({data: data});
     } catch (err) {
-      console.log(error);
-      res.json({error: error});
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
     }
   })
   .delete((req, res) => {
@@ -53,8 +52,8 @@ router.route('/collisionType')
       console.log('You touched the /collisionType route with DELETE');
       // res.json({data: data});
     } catch (err) {
-      console.log(error);
-      res.json({error: error});
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
     }
   });
 
@@ -63,11 +62,12 @@ router.route('/collisionType')
 router.route('/crashInformation')
   .get(async (req, res) => {
     try {
+      const crash_information = await db.crash_information.findAll();
       console.log('You touched the crashInformation endpoint!');
-      res.json({data: data});
+      res.json(crash_information);
     } catch (err) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
     }
   })
 

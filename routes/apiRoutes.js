@@ -1,62 +1,64 @@
 /* eslint-disable no-console */
-import express from 'express';
+import express, { response } from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
-/* import albumCustom controller(updates)*/
-import albumCustom from  '../server/controllers/albumCustom.js';
+/* import controllers -- replaces previous import statment below. */
+import controllers from '../controllers/controls.js';
+
+// /* import albumCustom controller(updates)*/
+// import albumCustom from  '../server/controllers/albumCustom.js';
 
 /* start router component */
 const router = express.Router();
 
 /* Root */
+
 router.get('/', (req, res) => {
+  console.log("touched / using GET"); 
+
   res.send('You have reached the root API endpoint!');
 });
 
 
-// Trying to get all songs from DB //
+/* 
+* Music Database Endpoints below 
+*/ 
+
+
+// Trying to get all songs from DB - Walesia //
 
 router.get('/songs', async (req, res) => {
   try {
-    /* Help with debugging */
-    console.log("Now you've touched /songs with GET");
+    /* Get all songs */
+    const songs = await db.sequelizeDB.query(controllers.songs.getAllSongs, {
+      type: sequelize.QueryTypes.SELECT
+    });
 
     /* Sending some data */
-    res.json({status: "Yay, successful.", data: []});
-  } catch (e) {
+    res.json({status: "Yay, successful.", data: songs});
+  } catch (err) {
     /* Debugging */
-    console.error(e);
+    console.error(err);
 
     /* Sending some more data */
     res.json({status: "Sorry, this failed.", data: null, message: "Something went wrong here. Error."});
   }
 });
 
-// Music Database Endpoints below --
+// Filter songs by rating - Walesia // 
 
-
-router.get('/album_name', async (req, res) => {
+router.get('/songs/:rating', async (req, res) => {
   try {
-    const album_name = await db.Albums.findAll();
-    res.json(album_name);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/album_name/:album_id', async (req, res) => {
-  try {
-    const album_name = await db.Albums.findAll({
+    const rating = await db.sequelizeDB.query(controllers.songs.getSongsByRating, {
       where: {
-        album_id: req.params.album_id
+        rating: req.params.rating
       }
     });
-    res.json(album_name);
+    res.json({status: 'Got it!', data: []});
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error({status: "Something went wrong", data: null, message: "Failed, error."});
   }
 });
 
@@ -111,7 +113,7 @@ router.delete('/song_name/:song_id', async (req, res) => {
 });
 
 
-/*Music endpoint that used imported albumCustom controller(Updates)*/
+/*Music endpoint that used imported albumCustom controller (Updates)*/
 
 router.get('/album', async (req, res) => {
   try {

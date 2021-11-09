@@ -19,10 +19,14 @@ router.get('/', (req, res) => {
 router.route('/covid-stats')
   .get(async(req, res) => {
     try {
-      res.json({ message: 'Touched /covid-stats with GET' });
+      const databaseResponse = await db.sequelizeDB.query(covidStatsCustom,
+        {
+          type: sequelize.QueryTypes.SELECT
+        });
       console.log('Touched /covid-stats with GET');
+      res.json(databaseResponse);
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({ error: 'Something went wrong' });
     }
   })

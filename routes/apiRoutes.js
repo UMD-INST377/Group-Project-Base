@@ -3,7 +3,6 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
-// import carCrashDataCustom from '../server/controllers/carCrashData.js'; //import from the carCrashData controller
 
 const router = express.Router();
 

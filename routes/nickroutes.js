@@ -17,8 +17,6 @@ function getTableRows(table) {
   return `SELECT * FROM ${table}`;
 }
 
-
-
 /// /////////////////////////////////
 /// ////awards Endpoints////////
 /// /////////////////////////////////
@@ -30,22 +28,18 @@ router.route('/awards')
       });
       console.log('touched /awards with GET');
       res.json(result);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       res.send('Something went wrong on /awards at GET');
     }
   })
   .put(async(req, res) => {
     try {
-      const awards = await db.sequelizeDB.query(getTableRows('awards'), {
-        type: sequelize.QueryTypes.SELECT
-      });
       const awardStatement = `SELECT * FROM awards WHERE award_title = "${req.body.award_title}"`;
-      const selectedMovie = await db.sequelizeDB.query(awardStatement, {
+      const selectedAward = await db.sequelizeDB.query(awardStatement, {
         type: sequelize.QueryTypes.SELECT
       });
-      const awardName = getIDByValue(award_title, req.body.award_title);
+      const awardName = getIDByValue(selectedAward, req.body.award_title);
       const awardID = awardName.map((movAward) => movAward.awardID)[0];
       const updateStatement = `UPDATE awards
         SET award_title = '${req.body.award_title}'
@@ -65,20 +59,20 @@ router.route('/awards')
       const award = await db.sequelizeDB.query(awardMapCustom, {
         type: sequelize.QueryTypes.SELECT
       });
-    
+
       const currentID = (await award.length) + 1;
-      
-      
+
       const createStatement = `INSERT INTO awards (award_id, award_title) VALUES (${currentID}, "${req.body.award_title}")`;
-      const result = await db.sequelizeDB.query(createStatement, {
+      await db.sequelizeDB.query(createStatement, {
         type: sequelize.QueryTypes.INSERT
-      }) }
-    catch (error) {
+      });
+      res.send(`"${req.body.award_title}" Successfully Created`);
+    } catch (error) {
       console.error(error);
       res.send('Something went wrong on /awards at PUT');
     }
   })
-  
+
   .delete(async(req, res) => {
     try {
       const awardStatement = `SELECT * FROM awards WHERE award_title = "${req.body.award_title}"`;

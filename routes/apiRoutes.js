@@ -4,6 +4,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 import aoaController from '../server/controllers/aoaController.js';
+import EvidenceController from '../server/controllers/EvidenceController.js';
 import volcanosHasReferencesController from '../server/controllers/volcanosHasReferencesController.js';
 import eruptionCategoryController from '../server/controllers/eruptionCategoryController.js';
 
@@ -160,6 +161,10 @@ router.route('/eruption_info')
 router.route('/evidence')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(EvidenceController.evGet,{
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
       console.log('you touched the route!');
       res.json({message: 'touched evidence with GET'});
     } catch (err) {
@@ -168,7 +173,15 @@ router.route('/evidence')
   })
   .put(async(req, res) => {
     try {
-      res.json({message: 'touched evidence with PUT'});
+      const result = await db.sequelizeDB.query(EvidenceController.evPut, {
+        replacements: {
+          evidence_id :req.body.evidence_id,
+          method: req.body.method
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      res.json({message: 'Successfully updated Evidence'});
     } catch (err) {
       console.log(error);
       res.json({error: 'something went wrong!'});
@@ -177,6 +190,11 @@ router.route('/evidence')
 
   .post(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(EvidenceController.evPost, {
+        replacements: {method: req.body.method},
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
       res.json({message: 'touched evidence with POST'});
     } catch (err) {
       console.log(error);
@@ -185,6 +203,13 @@ router.route('/evidence')
   })
   .delete(async(req, res) => {
     try {
+      const result = db.sequelizeDB.query(EvidenceController.evDelete,{
+        replacements: {
+          evidence_id: req.body.evidence_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
       res.json({message: 'touched evidence with DELETE'});
     } catch (err) {
       console.log(error);

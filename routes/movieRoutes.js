@@ -3,14 +3,17 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import { getActor, putActor, postActor, deleteActor } from '../controllers/actorController.js'
 
 const router = express.Router();
 
 router.route('/actor')
   .get(async (req, res) => {
     try {
-      res.json({message: 'Touched the /actor with GET'});
-      console.log(message);
+      const movieActors = await sequelize.query (
+        getActor, {
+         type: sequelize.QueryTypes.SELECT
+        })
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});

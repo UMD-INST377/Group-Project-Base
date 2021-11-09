@@ -3,6 +3,8 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import animalsController from '../controllers/animalsController.js';
+
 
 const router = express.Router();
 
@@ -16,7 +18,10 @@ router
   .get(async (req, res) => {
     try {
       console.log('touched /animals with GET');
-      res.json({ message: '/animals GET method' });
+      const result = await db.sequelizeDB.query(animalsController.animalsGET, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');

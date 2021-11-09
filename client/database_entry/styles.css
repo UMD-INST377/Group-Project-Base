@@ -1,0 +1,35 @@
+    /* MENU */
+    
+    .resize {
+        width: 75px;
+        height: auto;
+    }
+    
+    .form-control {
+        width: 450px;
+    }
+    
+    .shift {
+        margin-left: 20px;
+    }
+    
+    body {
+        background-color: rgb(199, 202, 202);
+    }
+    
+    h1,
+    h3,
+    p {
+        text-align: center;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    
+    p {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50em;
+    }
+    
+    h1 {
+        background-color: rgb(235, 161, 161);
+    }

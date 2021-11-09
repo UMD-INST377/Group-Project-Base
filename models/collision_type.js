@@ -1,4 +1,4 @@
-// This is essentially defining what we are pulling from the crashes database
+// This is essentially defining what we are pulling from the tables in the crashes database
 // Instead of writing SQL queries, we can just define what we want our tables to look like through here.
 
 export default (sequelize, DataTypes) => {

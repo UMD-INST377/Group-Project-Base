@@ -15,7 +15,9 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 
 // Jordan's API Routes to Car Endpoint
-// All endpoints should follow the basic outline of this first .get route
+// All endpoints should follow the basic outline of this first endpoint.
+// Any instance of "db.XXX" should be your specific table as defined in the models folder.
+// Make sure you add async and check that your 'catch' is formatted correctly to avoid errors.
 
 router.route('/collisionType')
   .get(async(req, res) => {
@@ -105,12 +107,13 @@ router.route('/crashInformation')
           where: {
             report_id: req.body.report_id
           }
-        });
+        }
+      );
       console.log('You touched the /crashInformation route with PUT');
       res.send('Successfully Updated');
     } catch (err) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
     }
   })
 
@@ -128,8 +131,8 @@ router.route('/crashInformation')
       console.log('You touched the /crashInformation route with POST');
       res.json(newCrashInformation);
     } catch (err) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
     }
   })
 
@@ -143,8 +146,8 @@ router.route('/crashInformation')
       console.log('You touched the /crashInformation route with DELETE');
       res.send('Successfully deleted');
     } catch (err) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
     }
   });
 

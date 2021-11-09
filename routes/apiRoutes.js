@@ -3,7 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
-
+import {const} from '../server/controllers'
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -18,6 +18,11 @@ router.get('/', (req, res) => {
 router.route('/collisionType')
   .get(async(req, res) => {
     try {
+      const something = await query.sequelize(
+        get something {
+          type: sequelize.QueryTypes.SELECT
+        }
+      )
       console.log('You touched the /collisionType route with GET');
       // res.json({data: data});
     } catch (err) {

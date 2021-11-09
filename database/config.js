@@ -14,10 +14,9 @@ export default {
     dialect: 'mysql'
   },
   production: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
-    host: '3.236.243.212',
-    dialect: 'mysql'
-  }
+    username: 'ubuntu', 
+    password: 'Veracrypt@12!', 
+    database: 'crashes' 
+    host: '18.212.135.23', 
+    dialect: 'mysql' }
 };

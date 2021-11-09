@@ -6,25 +6,28 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-import platforms from '../server/controllers/platforms.js';
-
+//import { getPlatforms, putPlatforms, postPlatforms, deletePlatforms } from '../server/controllers/platforms.js';
+import getPlatforms from '../server/controllers/getPlatforms.js';
 ////// Platform Endpoints ///////
 router.route('/platforms')
-    .get((req, res) => {
+    .get(async(req, res) => {
         try {
-            console.log('touched /platforms with GET');
-            const gamePlatforms = await db.platforms.findAll();
-            res.json(gamePlatforms);
+            const gamePlatforms = await db.sequelizeDB.query(
+                getPlatforms, {
+                    type: sequelize.QueryTypes.SELECT
+                }
+            )
+            res.send(gamePlatforms);
         } 
         catch (err) {
             console.log(err);
             res.json({error: 'Server error'});
         }
     })
-    .put((req, res) =>{
+    .put(async(req, res) =>{
         try {
             console.log('touched /platforms with PUT');
-            await db.platforms.update(
+            await sequelize.update(
                 {
                     PC: req.body.PC,
                     Playstation: req.body.Playstation,
@@ -45,7 +48,7 @@ router.route('/platforms')
             res.json({error: 'Server error'});
         }
     })
-    .post((req, res) =>{
+    .post(async(req, res) =>{
         const gamePlatforms = await db.platforms.findAll();
         const currentId = (await gamePlatforms.length) + 1;
         try {
@@ -65,7 +68,7 @@ router.route('/platforms')
             res.json({error: 'Server error'});
         }
     })
-    .delete((req, res) =>{
+    .delete(async(req, res) =>{
         try {
             console.log('touched /platforms with DELETE');
             await db.platforms.destroy({
@@ -80,3 +83,4 @@ router.route('/platforms')
             res.json({error: 'Server error'});
         }
     });
+export default router

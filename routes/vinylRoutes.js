@@ -1,6 +1,11 @@
+import express from 'express';
+import sequelize from 'sequelize';
+import db from '../database/initializeDB.js';
 import getVinylInfo from '../client/controllers/getVinylInfo.js';
 
-export default router.route('/vinyl')
+const router = express.Router()
+
+router.route('/vinyl')
   .get(async(req, res) => {
     try {
       const result = await db.sequelizeDB.query(getVinylInfo, {
@@ -52,3 +57,5 @@ export default router.route('/vinyl')
       console.log(err);
     }
   });
+
+export default router;

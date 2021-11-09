@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 router.route('/collisionType')
   .get(async(req, res) => {
     try {
-      const collision_type = await db.collision_type.findAll();   // This pulls from collision_type model
+      const collision_type = await db.collision_type.findAll(); // This pulls from collision_type model
       console.log('You touched the /collisionType route with GET');
       res.json(collision_type);
     } catch (err) {
@@ -91,27 +91,57 @@ router.route('/crashInformation')
     }
   })
 
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
-      res.json({message: 'You touched crashInformation with PUT'});
+      await db.crash_information.update(
+        {
+          report_id: req.body.report_id,
+          location_id: req.body.location_id,
+          report_type: req.body.report_type,
+          acc_date: req.body.acc_date,
+          collision_type_id: req.body.collision_type_id
+        },
+        {
+          where: {
+            report_id: req.body.report_id
+          }
+        });
+      console.log('You touched the /crashInformation route with PUT');
+      res.send('Successfully Updated');
     } catch (err) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
     }
   })
 
-  .post((req, res) => {
+  .post(async(req, res) => {
+    const crash_information = await db.crash_information.findAll();
+    const currentID = (await crash_information.length) + 1;
     try {
-      res.json({message: 'You touched crashInformation with POST'});
+      const newCrashInformation = await db.crash_information.create({
+        report_id: currentID,
+        location_id: req.body.location_id,
+        report_type: req.body.report_type,
+        acc_date: req.body.acc_date,
+        collision_type_id: req.body.collision_type_id
+      });
+      console.log('You touched the /crashInformation route with POST');
+      res.json(newCrashInformation);
     } catch (err) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
     }
   })
 
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
-      res.json({message: 'You touched crashInformation with DELETE'});
+      await db.crash_information.destroy({
+        where: {
+          report_id: req.params.report_id
+        }
+      });
+      console.log('You touched the /crashInformation route with DELETE');
+      res.send('Successfully deleted');
     } catch (err) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});

@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 router.route('/collisionType')
   .get(async(req, res) => {
     try {
-      const collision_type = await db.collision_type.findAll();   //This pulls from collision_type model
+      const collision_type = await db.collision_type.findAll();   // This pulls from collision_type model
       console.log('You touched the /collisionType route with GET');
       res.json(collision_type);
     } catch (err) {
@@ -28,28 +28,49 @@ router.route('/collisionType')
       res.send('Something went wrong on /collisionType');
     }
   })
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
+      await db.collision_type.update(
+        {
+          collision_desc: req.body.collision_desc
+        },
+        {
+          where: {
+            collision_type_id: req.body.collision_type_id
+          }
+        }
+      );
       console.log('You touched the /collisionType route with PUT');
-      // res.json({data: data});
+      res.send('Successfully Updated');
     } catch (err) {
       console.error(err);
       res.send('Something went wrong on /collisionType');
     }
   })
-  .post((req, res) => {
+  .post(async(req, res) => {
+    const collision_type = await db.collision_type.findAll();
+    const currentID = (await collision_type.length) + 1;
     try {
+      const collisionTypeCreate = await db.collision_type.create({
+        collision_type_id: currentID,
+        collision_desc: req.body.collision_desc
+      });
       console.log('You touched the /collisionType route with POST');
-      // res.json({data: data});
+      res.json(collisionTypeCreate);
     } catch (err) {
       console.error(err);
       res.send('Something went wrong on /collisionType');
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
+      await db.collision_type.destroy({
+        where: {
+          collision_type_id: req.params.collision_type_id
+        }
+      });
       console.log('You touched the /collisionType route with DELETE');
-      // res.json({data: data});
+      res.send('Successfully deleted');
     } catch (err) {
       console.error(err);
       res.send('Something went wrong on /collisionType');

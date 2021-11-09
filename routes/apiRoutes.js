@@ -135,45 +135,45 @@ router.route('/playlists')
       await res.json({error: 'Server error, try again!'});
     }
   });
-  
-  /////////////////////////////Wyatts Endpoints /Artists Endpoints////////////////////////////
+
+/// //////////////////////////Wyatts Endpoints /Artists Endpoints////////////////////////////
 router.route('/artists')
-.get(async (req, res) => {
-  try {
-    console.log('GET on /artists route');
-    res.json({data: 'GET artists endpoint'});
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Server Error'});
-  }
-})
-.put((req, res) => {
-  try {
-    console.log('PUT on /artists route');
-    res.json({message: 'PUT artists endpoint'});
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Server Error'});
-  }
-})
-.post((req, res) => {
-  try {
-    console.log('POST on /artists route');
-    res.json({message: 'POST artists endpoint'});
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Server Error'});
-  }
-})
-.delete((req, res) => {
-  try {
-    console.log('DELETE on /artists route');
-    res.json({message: 'DELETE artists endpoint'});
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Server Error'});
-  }
-});
+  .get(async (req, res) => {
+    try {
+      console.log('GET on /artists route');
+      res.json({data: 'GET artists endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server Error'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('PUT on /artists route');
+      res.json({message: 'PUT artists endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server Error'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('POST on /artists route');
+      res.json({message: 'POST artists endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server Error'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('DELETE on /artists route');
+      res.json({message: 'DELETE artists endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server Error'});
+    }
+  });
 
 router.get('/dining', async (req, res) => {
   try {
@@ -385,6 +385,7 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
+
 const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
 router.get('/table/data', async (req, res) => {
   try {

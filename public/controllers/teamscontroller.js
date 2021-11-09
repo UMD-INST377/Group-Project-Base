@@ -66,7 +66,7 @@ exports.post = router.post("/teams", async (req, res) => {
       conference: req.body.conference,
       division: req.body.division,
       general_manager: req.body.general_manager,
-      coach: req.body.coach
+      coach: req.body.coach,
       arena_id: req.body.arena_id
     });
     res.json(newTeam);
@@ -99,7 +99,7 @@ exports.put = router.put("/teams", async (req, res) => {
         conference: req.body.conference,
         division: req.body.division,
         general_manager: req.body.general_manager,
-        coach: req.body.coach
+        coach: req.body.coach,
         arena_id: req.body.arena_id
       });
       res.json(newTeam);

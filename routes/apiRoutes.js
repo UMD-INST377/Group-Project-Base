@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.route('/collisionType')
   .get(async(req, res) => {
     try {
-      const collision_type = await db.collision_type.findAll(); // This pulls from collision_type model
+      const collision_type = await db.collision_type.findAll();
       console.log('You touched the /collisionType route with GET');
       res.json(collision_type);
     } catch (err) {

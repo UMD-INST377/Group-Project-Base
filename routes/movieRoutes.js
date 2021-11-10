@@ -24,6 +24,7 @@ router.route('/actor')
     try {
       res.json({message: 'Touched the /actor with PUT'});
       console.log(message);
+      console.log(req);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});

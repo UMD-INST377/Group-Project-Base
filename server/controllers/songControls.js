@@ -15,7 +15,7 @@ const getAllSongs = `SELECT s.song_name, first_name, last_name, duration
     JOIN artist c 
         ON b.artist_id = c.artist_id`;
 
-const getSongsByRating = `SELECT s.song_name, album_name, first_name, last_name, r.ratings
+const getSongsByRating = `SELECT s.song_name, album_name, first_name, last_name, r.ratings, description, duration
     FROM rating r
     INNER JOIN songs s
         ON r.song_id = s.song_id

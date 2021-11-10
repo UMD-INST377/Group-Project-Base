@@ -1,0 +1,208 @@
+/* .resize {
+    width: 75px;
+    height: auto;
+}
+
+h1{
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: rgb(235, 161, 161);
+}
+
+
+.form-control {
+    width: 450px;
+}
+
+.shift {
+    margin-left: 20px;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: center;
+    margin: 20px
+}
+
+input {
+    border-radius: 25px;
+    height: 25px;
+    width: 500px;
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.container {
+    height: 800px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.glide {
+    display: flex;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.glide__arrows {
+    display: flex;
+    align-items: center;
+    margin: 10px
+}
+
+.detail {
+    display: flex;
+    width: 90%;
+    margin: auto; 
+}
+
+.tab {
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 30%;
+    height: 100%;
+}
+
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.heading {
+    padding: 0px 12px;
+    width: 60%;
+    border-left: none;
+    height: 300px;
+    display: none;
+} */
+@font-face {
+    font-family: GothamBook;
+    src: url(font/GothamBook.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: GothamBold;
+    src: url(font/GothamBold.ttf) format("truetype");
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    background-image: linear-gradient(359deg, rgba(0,0,0, 0.02) 0%, rgba(0,0,0, 0.02) 8%,transparent 8%, transparent 27%,rgba(152, 152, 152,0.02) 27%, rgba(152, 152, 152,0.02) 80%,rgba(156,156,156, 0.02) 80%, rgba(156,156,156, 0.02) 100%),linear-gradient(250deg, rgba(9, 9, 9,0.02) 0%, rgba(9, 9, 9,0.02) 33%,transparent 33%, transparent 40%,rgba(240, 240, 240,0.02) 40%, rgba(240, 240, 240,0.02) 68%,rgba(141, 141, 141,0.02) 68%, rgba(141, 141, 141,0.02) 100%),linear-gradient(107deg, rgba(229, 229, 229,0.02) 0%, rgba(229, 229, 229,0.02) 12%,transparent 12%, transparent 24%,rgba(89, 89, 89,0.02) 24%, rgba(89, 89, 89,0.02) 38%,rgba(0,0,0, 0.02) 38%, rgba(0,0,0, 0.02) 100%),linear-gradient(64deg, rgba(0,0,0, 0.02) 0%, rgba(0,0,0, 0.02) 33%,transparent 33%, transparent 73%,rgba(0,0,0, 0.02) 73%, rgba(0,0,0, 0.02) 78%,rgba(0,0,0, 0.02) 78%, rgba(0,0,0, 0.02) 100%),linear-gradient(90deg, rgb(239,239,239),rgb(239,239,239));    
+    background-attachment: fixed;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: center;
+    margin: 20px
+}
+
+input {
+    border-radius: 25px;
+    height: 25px;
+    width: 500px;
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center; 
+    
+}
+
+.glide {
+    display: flex;
+    margin-bottom: 100px;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.glide__arrows {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    color: gray
+}
+
+.detail {
+    display: flex;
+    height: 60vh;
+    width: 80%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.tab {
+    border-right: 3px solid rgba(128, 128, 128, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    width: 30%;
+    height: 100%;
+}
+
+.tab button {
+    display: block;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.tab button:hover {
+    background-color: rgba(214, 214, 214, 0.8);
+}
+
+.heading {
+    font-family: GothamBold;
+    display: none;
+}
+
+.link {
+    font-family: GothamBook;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.contents {
+    background-color: rgba(214, 214, 214, 0.8);
+    width: 100%;
+}

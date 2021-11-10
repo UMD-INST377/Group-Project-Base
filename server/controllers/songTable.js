@@ -1,4 +1,4 @@
-export default `SELECT s.song_name, first_name, last_name, duration 
+export default `SELECT album_name, s.song_name, first_name, last_name, duration 
 FROM rating r
 INNER JOIN songs s
     ON r.song_id = s.song_id

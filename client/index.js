@@ -113,10 +113,10 @@ albums.forEach((item) => {
 body.addEventListener('click', (evt) => {
   const active = document.querySelector('.glide__slide--active').querySelector('img');
   const detail = document.querySelector('.detail');
-  if (evt.target.nodeName === 'IMG' || evt.target.className === 'detail'
+  if (evt.target.nodeName === 'IMG' || evt.target.nodeName === 'INPUT' || evt.target.className === 'detail'
           || evt.target.className === 'tab' || evt.target.className === 'link'
-          || evt.target.className === 'contents') {
-
+          || evt.target.className === 'contents' ) {
+    
   } else {
     container.style.cssText = `height: 100vh;
                                transition-duration: 1s;
@@ -139,7 +139,6 @@ body.addEventListener('keydown', (evt) => {
     container.style.cssText = `height: 50vh; 
                                    transition-duration: 1s;
                                   `;
-
     if (!body.contains(document.querySelector('.detail'))) {
       createDetail();
     }

@@ -97,6 +97,7 @@ img {
     height: 300px;
     display: none;
 } */
+
 @font-face {
     font-family: GothamBook;
     src: url(font/GothamBook.ttf) format("truetype");
@@ -107,12 +108,22 @@ img {
     src: url(font/GothamBold.ttf) format("truetype");
 }
 
+@font-face {
+    font-family: GothamThin;
+    src: url(font/Gotham-Thin.otf) format("opentype")
+}
+
+@font-face {
+    font-family: GothamMedium;
+    src: url(font/GothamMedium.ttf) format("truetype")
+}
+
 html {
     overflow: hidden;
 }
 
 body {
-    background-image: linear-gradient(359deg, rgba(0,0,0, 0.02) 0%, rgba(0,0,0, 0.02) 8%,transparent 8%, transparent 27%,rgba(152, 152, 152,0.02) 27%, rgba(152, 152, 152,0.02) 80%,rgba(156,156,156, 0.02) 80%, rgba(156,156,156, 0.02) 100%),linear-gradient(250deg, rgba(9, 9, 9,0.02) 0%, rgba(9, 9, 9,0.02) 33%,transparent 33%, transparent 40%,rgba(240, 240, 240,0.02) 40%, rgba(240, 240, 240,0.02) 68%,rgba(141, 141, 141,0.02) 68%, rgba(141, 141, 141,0.02) 100%),linear-gradient(107deg, rgba(229, 229, 229,0.02) 0%, rgba(229, 229, 229,0.02) 12%,transparent 12%, transparent 24%,rgba(89, 89, 89,0.02) 24%, rgba(89, 89, 89,0.02) 38%,rgba(0,0,0, 0.02) 38%, rgba(0,0,0, 0.02) 100%),linear-gradient(64deg, rgba(0,0,0, 0.02) 0%, rgba(0,0,0, 0.02) 33%,transparent 33%, transparent 73%,rgba(0,0,0, 0.02) 73%, rgba(0,0,0, 0.02) 78%,rgba(0,0,0, 0.02) 78%, rgba(0,0,0, 0.02) 100%),linear-gradient(90deg, rgb(239,239,239),rgb(239,239,239));    
+    background-image: linear-gradient(359deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.02) 8%, transparent 8%, transparent 27%, rgba(152, 152, 152, 0.02) 27%, rgba(152, 152, 152, 0.02) 80%, rgba(156, 156, 156, 0.02) 80%, rgba(156, 156, 156, 0.02) 100%), linear-gradient(250deg, rgba(9, 9, 9, 0.02) 0%, rgba(9, 9, 9, 0.02) 33%, transparent 33%, transparent 40%, rgba(240, 240, 240, 0.02) 40%, rgba(240, 240, 240, 0.02) 68%, rgba(141, 141, 141, 0.02) 68%, rgba(141, 141, 141, 0.02) 100%), linear-gradient(107deg, rgba(229, 229, 229, 0.02) 0%, rgba(229, 229, 229, 0.02) 12%, transparent 12%, transparent 24%, rgba(89, 89, 89, 0.02) 24%, rgba(89, 89, 89, 0.02) 38%, rgba(0, 0, 0, 0.02) 38%, rgba(0, 0, 0, 0.02) 100%), linear-gradient(64deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.02) 33%, transparent 33%, transparent 73%, rgba(0, 0, 0, 0.02) 73%, rgba(0, 0, 0, 0.02) 78%, rgba(0, 0, 0, 0.02) 78%, rgba(0, 0, 0, 0.02) 100%), linear-gradient(90deg, rgb(239, 239, 239), rgb(239, 239, 239));
     background-attachment: fixed;
 }
 
@@ -122,11 +133,44 @@ body {
     margin: 20px
 }
 
+.fas fa-user-friends {
+    position: absolute;
+    max-width: 30px;
+    max-height: 30px;
+    left: 50px
+}
+
+.search {
+    position: relative;
+    font-size: 14px;
+}
+
 input {
-    border-radius: 25px;
-    height: 25px;
     width: 500px;
-    text-align: center;
+    border: 3px solid black;
+    background-color: rgba(190, 190, 190, 0.3);
+    margin-top: 5px;
+    font-size: 20px;
+    color: black;
+    background: transparent;
+    outline: none;
+}
+
+.search .placeholder {
+    position: absolute;
+    font-family: GothamBook;
+    font-weight: bold;
+    left: 12px;
+    top: 45px;
+    padding-bottom: 6px;
+    transform: translateY(-150%);
+    transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+    cursor: text;
+}
+
+.search input:valid+.placeholder, .search input:focus+.placeholder {
+    top: 15px;
+    font-size: 10px;
 }
 
 ::-webkit-input-placeholder {
@@ -136,8 +180,7 @@ input {
 .container {
     height: 100vh;
     display: flex;
-    align-items: center; 
-    
+    align-items: center;
 }
 
 .glide {

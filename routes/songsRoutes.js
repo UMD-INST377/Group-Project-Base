@@ -1,6 +1,11 @@
+import express from 'express';
+import sequelize from 'sequelize';
+import db from '../database/initializeDB.js';
 import getSongs from '../client/controllers/getSongs.js';
 
-export default router.route('/songs')
+const router = express.Router()
+
+router.route('/songs')
   .get(async(req, res) => {
     try {
       const result = await db.sequelizeDB.query(getSongs, {
@@ -12,3 +17,4 @@ export default router.route('/songs')
       console.log(err);
     }
   });
+export default router

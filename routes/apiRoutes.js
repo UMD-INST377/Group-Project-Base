@@ -15,6 +15,8 @@ import ratingUpdate from '../server/controllers/ratingUpdate.js';
 /* Delete for controller Daniel Cutaneo */
 import deleteCustom from '../server/controllers/deleteCustom.js';
 
+import songControls from '../server/controllers/songControls.js';
+
 /* start router component */
 const router = express.Router();
 
@@ -134,3 +136,17 @@ router.get('/album', async (req, res) => {
 });
 
 export default router;
+
+/* Create songs table used imported songControls */
+
+router.get('/songsTable', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(getAllSongs, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});

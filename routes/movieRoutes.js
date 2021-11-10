@@ -22,7 +22,7 @@ router.route('/actor')
   })
   .put((req, res) => {
     try {
-      res.json({message: 'Touched the /actor with PUT'});
+      res.json({message: req});
       console.log(message);
       console.log(req);
     } catch (error) {

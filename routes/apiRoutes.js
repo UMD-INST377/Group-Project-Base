@@ -3,6 +3,15 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+import animalsController from '../controllers/animalsController.js';
+
+=======
+import {getBiomes, putBiomes, postBiomes, deleteBiomes} from '../controllers/biomesController.js';
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 const router = express.Router();
 
@@ -137,8 +146,11 @@ router
   .route('/biomes')
   .get(async (req, res) => {
     try {
-      console.log('touched /biomes with GET');
-      res.json({ message: '/biomes GET method' });
+      const b = await sequelize.query(
+        getBiomes, {
+          type: sequelize.QueryTypes.SELECT
+        }
+      )
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong, sorry' });

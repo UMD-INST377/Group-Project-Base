@@ -8,8 +8,8 @@ import db from '../database/initializeDB.js';
 // from '../server/controllers/platforms.js';
 import getPlatforms from '../server/controllers/platforms/getPlatforms.js';
 import putPlatforms from '../server/controllers/platforms/putPlatforms.js';
-import postPlatforms from '../server/controllers/platforms/postPlatforms';
-import deletePlatforms from '../server/controllers/platforms/deletePlatforms';
+import postPlatforms from '../server/controllers/platforms/postPlatforms.js';
+import deletePlatforms from '../server/controllers/platforms/deletePlatforms.js';
 
 const router = express.Router();
 /// /// Platform Endpoints ///////

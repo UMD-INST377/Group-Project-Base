@@ -1,29 +1,23 @@
 export default (sequelize, DataTypes) => {
-  const fight_mode = sequelize.define(
-    'fight_mode',
+  const extinction = sequelize.define(
+    'extinction',
     {
-      fight_mode_id: {
+      extinction_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      kill_death_ratio: {
-        type: DataTypes.DECIMAL
-      },
-      special_skill: {
+      cause: {
         type: DataTypes.STRING
       },
-      weapon_of_choice: {
-        type: DataTypes.STRING
-      },
-      power: {
+      animal_id: {
         type: DataTypes.INTEGER
       },
-      animals_Animal_ID: {
+      age_species_went_extinct: {
         type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return fight_mode;
+  return extinction;
 };

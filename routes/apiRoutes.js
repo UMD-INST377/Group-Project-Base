@@ -3,15 +3,9 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-import animalsController from '../controllers/animalsController.js';
 
-=======
+import animalsController from '../controllers/animalsController.js';
 import {getBiomes, putBiomes, postBiomes, deleteBiomes} from '../controllers/biomesController.js';
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
 const router = express.Router();
 
@@ -25,10 +19,13 @@ router
   .get(async (req, res) => {
     try {
       console.log('touched /animals with GET');
-      res.json({ message: '/animals GET method' });
+      const result = await db.sequelizeDB.query(animalsController.animalsGET, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
@@ -36,8 +33,8 @@ router
       console.log('touched /animals with PUT');
       res.json({ message: '/animals PUT method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
@@ -45,8 +42,8 @@ router
       console.log('touched /animals with POST');
       res.json({ message: '/animals POST method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
@@ -54,8 +51,8 @@ router
       console.log('touched /animals with DELETE');
       res.json({ message: '/animals DELETE method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   });
 
@@ -67,8 +64,8 @@ router
       console.log('touched /extinction with GET');
       res.json({ message: '/extinction GET method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
@@ -76,8 +73,8 @@ router
       console.log('touched /extinction with PUT');
       res.json({ message: '/extinction PUT method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
@@ -85,8 +82,8 @@ router
       console.log('touched /extinction with POST');
       res.json({ message: '/extinction POST method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
@@ -94,8 +91,8 @@ router
       console.log('touched /extinction with DELETE');
       res.json({ message: '/extinction DELETE method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   });
 
@@ -108,8 +105,8 @@ router
       console.log('touched /animals with GET');
       res.json({ message: '/fight_mode GET method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
@@ -117,8 +114,8 @@ router
       console.log('touched /fight_mode with PUT');
       res.json({ message: '/fight_mode PUT method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
@@ -126,8 +123,8 @@ router
       console.log('touched /fight_mode with POST');
       res.json({ message: '/fight_mode POST method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
@@ -135,8 +132,8 @@ router
       console.log('touched /fight_mode with DELETE');
       res.json({ message: '/fight_mode DELETE method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   });
 
@@ -152,8 +149,8 @@ router
         }
       )
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
@@ -161,8 +158,8 @@ router
       console.log('touched /biomes with PUT');
       res.json({ message: '/biomes PUT method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
@@ -170,8 +167,8 @@ router
       console.log('touched /biomes with POST');
       res.json({ message: '/biomes POST method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
@@ -179,8 +176,8 @@ router
       console.log('touched /biomes with DELETE');
       res.json({ message: '/biomes DELETE method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   });
 

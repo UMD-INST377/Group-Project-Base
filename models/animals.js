@@ -8,34 +8,34 @@ export default (sequelize, DataTypes) => {
         primaryKey: true
       },
       common_name: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING,
+        allowNull: false
       },
-      scientific_name: {
-        type: DataTypes.STRING
+      species: {
+        type: DataTypes.STRING,
+        allowNull: false
       },
       aviation: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING.BINARY,
+        allowNull: false
       },
-      weight: {
-        type: DataTypes.INTEGER
+      weight_lbs: {
+        type: DataTypes.DECIMAL(9, 3),
+        allowNull: false
       },
-      extinction_id: {
-        type: DataTypes.INTEGER
-      },
-      hierarchy_id: {
-        type: DataTypes.INTEGER
-      },
-      lifestyle_id: {
-        type: DataTypes.INTEGER
-      },
-      fight_mode_id: {
-        type: DataTypes.INTEGER
-      },
-      hierarchy_position_hierarchy_id: {
+      fight_mode_fight_mode_id: {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      animal_biome_linking_table_animal_id: {
+      hierarchy_hierarchy_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      lifestyle_lifestyle_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      extinction_extinction_id: {
         type: DataTypes.INTEGER,
         allowNull: false
       }

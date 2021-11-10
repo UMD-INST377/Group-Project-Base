@@ -5,6 +5,7 @@ import Meals from './Meals.js';
 import animals from './animals.js';
 import fight_mode from './fight_mode.js';
 import biomes from './biomes.js';
+import extinction from './extinction.js';
 
 export default {
   DietaryRestrictions,
@@ -13,5 +14,6 @@ export default {
   Meals,
   animals,
   fight_mode,
-  biomes
+  biomes,
+  extinction
 };

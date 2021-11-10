@@ -107,25 +107,29 @@ albums.forEach((item) => {
   });
 });
 
-const track = document.querySelector('.glide__slides').childNodes;
-// track.forEach(item => {
-//     item.addEventListener("mouseover", evt => {
-//         // item.style.cssText = `transform: scale(1.5)
-//         //                      `
-//         console.log(item)
-//         item.style.transform = "scale(0.7)"
+// Remove Detail Box When Area Outside of Container Is Clicked On, Other Than the Images
+body.addEventListener('click', (evt) => {
+  const active = document.querySelector('.glide__slide--active').querySelector('img');
+  const detail = document.querySelector('.detail');
+  if (evt.target.nodeName === 'IMG' || evt.target.className === 'detail'
+          || evt.target.className === 'tab' || evt.target.className === 'link'
+          || evt.target.className === 'contents') {
 
-//     })
-//     item.addEventListener("mouseleave", evt => {
-//         item.style.transform = "scale(1)"
-
-//     })
-
-// })
+  } else {
+    container.style.cssText = `height: 100vh;
+                                     transition-duration: 1s;
+                                    `;
+    detail.remove();
+    active.style.removeProperty('border');
+    slider.style.cssText = 'margin-bottom: 100px';
+  }
+});
 
 // Generate Detail Table After an Album is Selected by Enter
+// Delete Detail Table When ESC is Entered
 body.addEventListener('keydown', (evt) => {
   const active = document.querySelector('.glide__slide--active').querySelector('img');
+  const detail = document.querySelector('.detail');
   if (evt.key === 'Enter') {
     active.style.cssText = ` border: 5px solid grey;
                                `;
@@ -141,7 +145,6 @@ body.addEventListener('keydown', (evt) => {
       item.style.removeProperty('border');
     });
   }
-
   albums.forEach((item) => {
     item.addEventListener('click', (evt) => {
       active.style.removeProperty('border');
@@ -149,30 +152,14 @@ body.addEventListener('keydown', (evt) => {
                                  `;
     });
   });
-});
-//
 
-// Remove Box When Other Area of Container Is Clicked On Other Than the Images or When ESC is Pressed
-body.addEventListener('click', (evt) => {
-  const active = document.querySelector('.glide__slide--active').querySelector('img');
-  const detail = document.querySelector('.detail');
-  console.log(evt.target);
-  if (evt.target.nodeName === 'IMG' || evt.target.className === 'detail'
-        || evt.target.className === 'tab' || evt.target.className === 'link'
-        || evt.target.className === 'contents') {
-
-  } else {
+  // Remove Detail Table
+  if (evt.key === 'Escape' && detail) {
     container.style.cssText = `height: 100vh;
                                    transition-duration: 1s;
                                   `;
     detail.remove();
     active.style.removeProperty('border');
-    slider.style.cssText = 'margin-bottom: 100px';
   }
 });
-
-body.addEventListener('keydown', evt => {
-    if (evt.key === 'Escape') {
-        console.log("esc")
-    }
-})
+//

@@ -1,0 +1,1 @@
+export default 'DELETE FROM platforms WHERE platform_id=99';

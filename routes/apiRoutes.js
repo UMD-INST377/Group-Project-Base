@@ -18,6 +18,7 @@ router
   .get(async (req, res) => {
     try {
       console.log('touched /animals with GET');
+      console.log(animalsController.animalsGET)
       const result = await db.sequelizeDB.query(animalsController.animalsGET, {
         type: sequelize.QueryTypes.SELECT
       });

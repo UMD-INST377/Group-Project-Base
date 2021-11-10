@@ -152,7 +152,7 @@ body.addEventListener('keydown', (evt) => {
 });
 //
 
-// Remove Box When Other Area of Container Is Clicked On Other Than the Images
+// Remove Box When Other Area of Container Is Clicked On Other Than the Images or When ESC is Pressed
 body.addEventListener('click', (evt) => {
   const active = document.querySelector('.glide__slide--active').querySelector('img');
   const detail = document.querySelector('.detail');
@@ -170,3 +170,9 @@ body.addEventListener('click', (evt) => {
     slider.style.cssText = 'margin-bottom: 100px';
   }
 });
+
+body.addEventListener('keydown', evt => {
+    if (evt.key === 'Escape') {
+        console.log("esc")
+    }
+})

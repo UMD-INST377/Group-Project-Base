@@ -1,0 +1,1 @@
+export default 'UPDATE platforms SET PC=FALSE,Playstation=FALSE,Xbox=FALSE,Switch=FALSE,Mobile=FALSE WHERE platform_id=99';

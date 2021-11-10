@@ -4,79 +4,66 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
+// import { getPlatforms, putPlatforms, postPlatforms, deletePlatforms}
+// from '../server/controllers/platforms.js';
+import getPlatforms from '../server/controllers/platforms/getPlatforms.js';
+import putPlatforms from '../server/controllers/platforms/putPlatforms.js';
+import postPlatforms from '../server/controllers/platforms/postPlatforms.js';
+import deletePlatforms from '../server/controllers/platforms/deletePlatforms.js';
+
 const router = express.Router();
-
-import platforms from '../server/controllers/platforms.js';
-
-////// Platform Endpoints ///////
+/// /// Platform Endpoints ///////
 router.route('/platforms')
-    .get((req, res) => {
-        try {
-            console.log('touched /platforms with GET');
-            const gamePlatforms = await db.platforms.findAll();
-            res.json(gamePlatforms);
-        } 
-        catch (err) {
-            console.log(err);
-            res.json({error: 'Server error'});
+  .get(async(req, res) => {
+    try {
+      const retrievePlatforms = await db.sequelizeDB.query(
+        getPlatforms, {
+          type: sequelize.QueryTypes.SELECT
         }
-    })
-    .put((req, res) =>{
-        try {
-            console.log('touched /platforms with PUT');
-            await db.platforms.update(
-                {
-                    PC: req.body.PC,
-                    Playstation: req.body.Playstation,
-                    Xbox: req.body.Xbox,
-                    Switch: req.body.Switch,
-                    Mobile: req.body.Mobile
-                },
-                {
-                    where: {
-                        platform_id: req.body.platform_id
-                    }
-                }
-            );
-            res.send('Successfully updated');
+      );
+      res.send(retrievePlatforms);
+    } catch (err) {
+      console.log(err);
+      res.json({error: 'Server error'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      const newPlatforms = await db.sequelizeDB.query(
+        putPlatforms, {
+          type: sequelize.QueryTypes.INSERT // change later
         }
-        catch (err) {
-            console.log(err);
-            res.json({error: 'Server error'});
+      );
+      res.send(newPlatforms);
+    } catch (err) {
+      console.log(err);
+      res.json({error: 'Server error'});
+    }
+  })
+  .post(async(req, res) => {
+    try {
+      const updatePlatforms = await db.sequelizeDB.query(
+        postPlatforms, {
+          type: sequelize.QueryTypes.UPDATE // change later
         }
-    })
-    .post((req, res) =>{
-        const gamePlatforms = await db.platforms.findAll();
-        const currentId = (await gamePlatforms.length) + 1;
-        try {
-            console.log('touched /platforms with POST');
-            const newGamePlatforms = await db.platforms.create({
-                platform_id: currentId,
-                PC: req.body.PC,
-                Playstation: req.body.Playstation,
-                Xbox: req.body.Xbox,
-                Switch: req.body.Switch,
-                Mobile: req.body.Mobile
-            });
-            res.send('Successfully posted');
-        } 
-        catch (err) {
-            console.log(err);
-            res.json({error: 'Server error'});
+      );
+      res.send(updatePlatforms);
+    } catch (err) {
+      console.log(err);
+      res.json({error: 'Server error'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      const removePlatforms = await db.sequelizeDB.query(
+        deletePlatforms, {
+          type: sequelize.QueryTypes.DELETE // change later
         }
-    })
-    .delete((req, res) =>{
-        try {
-            console.log('touched /platforms with DELETE');
-            await db.platforms.destroy({
-                where: {
-                  platform_id: req.params.platform_id
-                }
-            });
-            res.send('Successfully deleted');
-        } 
-        catch (err) {
-            console.log(err);
-            res.json({error: 'Server error'});
-        }
-    });
+      );
+      res.send(removePlatforms);
+    } catch (err) {
+      console.log(err);
+      res.json({error: 'Server error'});
+    }
+  });
+export default router;

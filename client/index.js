@@ -84,14 +84,16 @@ function createDetail() {
 const lastClickedItem = [];
 albums.forEach((item) => {
   item.addEventListener('click', (evt) => {
-    evt.target.style.cssText = ` border: 5px solid grey;
-                                   `;
+    evt.target.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
+                                 transform: scale(0.8);
+                                 transition-duration: 0.5s`;
 
     // Center on Clicked Image
     glide.go(`=${evt.target.id}`);
 
     if (lastClickedItem[0] != evt.target && lastClickedItem[0]) {
-      lastClickedItem[0].style.removeProperty('border');
+      lastClickedItem[0].style.removeProperty('box-shadow');
+      lastClickedItem[0].style.removeProperty('transform');
       lastClickedItem.shift();
     } else if (lastClickedItem.length >= 1) {
       lastClickedItem.splice(0, 2);
@@ -99,7 +101,7 @@ albums.forEach((item) => {
     lastClickedItem.push(evt.target);
 
     container.style.cssText = `height: 50vh; 
-                                   transition-duration: 1s
+                               transition-duration: 1s
                                   `;
     if (!body.contains(document.querySelector('.detail'))) {
       createDetail();
@@ -117,11 +119,11 @@ body.addEventListener('click', (evt) => {
 
   } else {
     container.style.cssText = `height: 100vh;
-                                     transition-duration: 1s;
+                               transition-duration: 1s;
                                     `;
     detail.remove();
-    active.style.removeProperty('border');
-    slider.style.cssText = 'margin-bottom: 100px';
+    active.style.removeProperty('box-shadow');
+    active.style.removeProperty('transform');
   }
 });
 
@@ -131,8 +133,9 @@ body.addEventListener('keydown', (evt) => {
   const active = document.querySelector('.glide__slide--active').querySelector('img');
   const detail = document.querySelector('.detail');
   if (evt.key === 'Enter') {
-    active.style.cssText = ` border: 5px solid grey;
-                               `;
+    active.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
+                             transform: scale(0.8);
+                             transition-duration: 0.5s`;
     container.style.cssText = `height: 50vh; 
                                    transition-duration: 1s;
                                   `;
@@ -142,13 +145,17 @@ body.addEventListener('keydown', (evt) => {
     }
   } else if (evt.key === 'ArrowRight' || evt.key === 'ArrowLeft') {
     albums.forEach((item) => {
-      item.style.removeProperty('border');
+      item.style.removeProperty('box-shadow');
+      item.style.removeProperty('transform');
     });
   }
   albums.forEach((item) => {
     item.addEventListener('click', (evt) => {
-      active.style.removeProperty('border');
-      item.style.cssText = `border: 5px solid grey
+      active.style.removeProperty('box-shadow');
+      active.style.removeProperty('transform');
+      item.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
+                             transform: scale(0.8);
+                             transition-duration: 0.5s
                                  `;
     });
   });
@@ -159,7 +166,8 @@ body.addEventListener('keydown', (evt) => {
                                    transition-duration: 1s;
                                   `;
     detail.remove();
-    active.style.removeProperty('border');
+    active.style.removeProperty('box-shadow');
+    active.style.removeProperty('transform');
   }
 });
 //

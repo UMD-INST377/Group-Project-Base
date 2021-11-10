@@ -133,11 +133,17 @@ body {
     margin: 20px
 }
 
-.fas fa-user-friends {
+.fa-user-friends {
     position: absolute;
     max-width: 30px;
     max-height: 30px;
-    left: 50px
+    left: 1250px;
+    top: 35px;
+    color: black;
+}
+
+.fa-user-friends:hover {
+    transform: scale(1.3);
 }
 
 .search {
@@ -248,4 +254,15 @@ img {
 .contents {
     background-color: rgba(214, 214, 214, 0.8);
     width: 100%;
+}
+
+.fa-plus-circle {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    color: black;
+}
+
+.fa-plus-circle:hover {
+    transform: scale(1.3);
 }

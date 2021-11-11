@@ -1,1 +1,0 @@
-export default 'INSERT INTO platforms VALUES (99,1,FALSE,FALSE,FALSE,FALSE,FALSE)';

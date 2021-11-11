@@ -101,7 +101,13 @@ router.route('/songs')
 router.route('/playlists')
   .get(async (req, res) => {
     try {
-      console.log('You touched the /playlists route');
+      const sqlStatement = 'SELECT * from playlists;'
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      console.log(result);
+      res.json(result);
+      
       res.json({message: 'GET playlists endpoint'});
     } catch (err) {
       console.log(error);

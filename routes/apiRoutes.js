@@ -6,7 +6,8 @@ import db from '../database/initializeDB.js';
 
 //Import Controllers
 import covidStatsCustom from '../controllers/covid-stats.js';
-import countyInfo from '../controllers/county_info.js';
+import countyInfo from '../controllers/county-info_GET.js';
+import addNewCounty from '../controllers/county-info_POST.js';
 
 const router = express.Router();
 
@@ -152,7 +153,6 @@ router.route('/county-info')
         });
       res.json(dbResponse);
       console.log('Touched /county-info with GET');
-      //res.send(listOfCounties)
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });
@@ -172,7 +172,11 @@ router.route('/county-info')
 // post request
   .post((req, res) => {
     try {
-      res.json({ message: 'Touched /county-info with POST' });
+      const addCounty = await db.County.create(addNewCounty,
+        {
+          type: sequelize.QueryTypes.INSERT
+        });
+      res.send(addCounty);
       console.log('Touched /county-info with POST');
     } catch (err) {
       console.log(error);

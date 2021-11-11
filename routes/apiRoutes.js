@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 /// ////Car Data Endpoints////////
 /// /////////////////////////////////
 
-// Jordan's API Routes to Car Endpoint
+// Jordan's API Routes to Collision Type Endpoint
 // All endpoints should follow the basic outline of this first endpoint.
 // Any instance of "db.XXX" should be your specific table as defined in the models folder.
 // Make sure you add async and check that your 'catch' is formatted correctly to avoid errors.

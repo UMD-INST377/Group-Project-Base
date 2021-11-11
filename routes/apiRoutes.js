@@ -6,6 +6,7 @@ import db from '../database/initializeDB.js';
 
 //Import Controllers
 import covidStatsCustom from '../controllers/covid-stats.js';
+import countyInfo from '../controllers/county_info.js';
 
 const router = express.Router();
 
@@ -145,11 +146,13 @@ router.route('/vacc-sites')
 router.route('/county-info')
   .get(async(req, res) => {
     try {
-      // const county_ID = req.params
-      // const listOfCounties = await db.County.findOne({where: {county_ID: `$county_ID`}})
-      res.json({ message: 'Touched /county-info with GET' });
+      const dbResponse = await db.sequelizeDB.query(countyInfo,
+        {
+          type: sequelize.QueryTypes.SELECT
+        });
+      res.json(dbResponse);
       console.log('Touched /county-info with GET');
-      res.send(listOfCounties)
+      //res.send(listOfCounties)
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });

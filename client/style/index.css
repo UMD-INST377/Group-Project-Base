@@ -77,17 +77,18 @@ body {
 
 input {
     position: absolute;
+    background: transparent;
     top: 30px;
     height: 1.3vw;
     width: 20vw;
-    border: 3px solid black;
+    border: 2px solid black;
+    border-radius: 20px;
     background-color: rgba(190, 190, 190, 0.3);
     margin-top: 5px;
     margin-left: 2.7vw;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
     color: black;
-    background: transparent;
     outline: none;
 }
 
@@ -95,8 +96,9 @@ input {
     position: relative;
     font-family: GothamBook;
     font-weight: bold;
-    left: 3vw;
-    top: 45px;
+    font-size: 12px;
+    left: 3.2vw;
+    top: 42px;
     width: 30vw;
     transform: translateY(-150%);
     transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
@@ -106,7 +108,7 @@ input {
 .search input:valid+.placeholder, 
 .search input:focus+.placeholder {
     top: 15px;
-    font-size: 10px;
+    font-size: 9px;
 }
 
 ::-webkit-input-placeholder {

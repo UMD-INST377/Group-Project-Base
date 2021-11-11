@@ -1,24 +1,21 @@
-export default (database, DataTypes) =>{
-    const Price=databse.define(
-        'Price',
+export default (sequelize, DataTypes) =>{
+    const price = sequelize.define(
+        'price',
         {
-           price_id:{
-               type:DataTypes.INTERGER,
+            price_id:{
+               type:DataTypes.INTEGER,
                allowNull: false,
                primaryKey: true
-           },
-           range_game_id:{
-                type:DataTypes.INTERGER,
             },
             price_website:{
                 type:DataTypes.TEXT
             },
             listed_price:{
                 type:DataTypes.DOUBLE
-            },
-
+            }
+            
         },
         {freezerTableName:true, timestamps:false}
     );
-    return Price;
+    return price;
 }

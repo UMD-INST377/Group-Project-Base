@@ -161,7 +161,19 @@ router.route('/county-info')
 // put request
   .put((req, res) => {
     try {
-      res.json({ message: 'Touched /county-info with PUT' });
+      await db.County.update(
+        {
+          population_density: 199,
+          uninsured: 5.99,
+          poverty_rate: 7.89
+        },
+        {
+          where : {
+            county_ID: 16
+          }
+        }
+      )
+      res.send({ message: "Updated county" });
       console.log('Touched /county-info with PUT');
     } catch (err) {
       console.log(error);

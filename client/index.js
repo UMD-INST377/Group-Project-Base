@@ -139,7 +139,6 @@ body.addEventListener('click', (evt) => {
   const detail = document.querySelector('.detail');
   const searchBox = document.querySelector('.search')
 
-  console.log(evt.target.nodeName)
   if (evt.target.nodeName === 'IMG' || evt.target.nodeName === 'INPUT' || evt.target.className === 'detail'
           || evt.target.className === 'tab' || evt.target.className === 'link'
           || evt.target.className === 'contents' || evt.target.nodeName === 'I') {
@@ -148,7 +147,9 @@ body.addEventListener('click', (evt) => {
                                transition-duration: 1s;
                                     `;
     detail.remove();
-    searchBox.remove()
+    if (body.contains(searchBox)) {
+        searchBox.remove();
+    }
     active.style.removeProperty('box-shadow');
     active.style.removeProperty('transform');
   }

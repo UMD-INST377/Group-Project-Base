@@ -9,9 +9,17 @@ import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import controllers from '../controllers/index.js';
+import RateLimit from 'express-rate-limit';
 
 // Instantiate router component
 const router = express.Router();
+const limit = new RateLimit({
+  windowMs: 15 * 1000, // 15s API rate lmit
+  max: 5 // 5 requests per windowMs
+});
+
+// Use RateLimit Module
+router.use(limit);
 
 /**
  * Root directory

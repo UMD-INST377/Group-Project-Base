@@ -170,7 +170,7 @@ router.route('/county-info')
   })
 
 // post request
-  .post((req, res) => {
+  .post(async(req, res) => {
     try {
       const addCounty = await db.County.create(addNewCounty,
         {

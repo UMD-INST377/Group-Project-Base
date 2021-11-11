@@ -1,15 +1,10 @@
 /* eslint-disable no-console */
 import express from 'express';
-import sequelize from 'sequelize';
+// import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
-// import { getPlatforms, putPlatforms, postPlatforms, deletePlatforms}
-// from '../server/controllers/platforms.js';
-import getPlatforms from '../server/controllers/platforms/getPlatforms.js';
-import putPlatforms from '../server/controllers/platforms/putPlatforms.js';
-import postPlatforms from '../server/controllers/platforms/postPlatforms.js';
-import deletePlatforms from '../server/controllers/platforms/deletePlatforms.js';
+import platforms from '../server/controllers/platforms.js';
 
 const router = express.Router();
 /// /// Platform Endpoints ///////
@@ -17,9 +12,7 @@ router.route('/platforms')
   .get(async(req, res) => {
     try {
       const retrievePlatforms = await db.sequelizeDB.query(
-        getPlatforms, {
-          type: sequelize.QueryTypes.SELECT
-        }
+        platforms.get
       );
       res.send(retrievePlatforms);
     } catch (err) {
@@ -30,9 +23,7 @@ router.route('/platforms')
   .put(async(req, res) => {
     try {
       const newPlatforms = await db.sequelizeDB.query(
-        putPlatforms, {
-          type: sequelize.QueryTypes.INSERT // change later
-        }
+        platforms.put
       );
       res.send(newPlatforms);
     } catch (err) {
@@ -43,9 +34,7 @@ router.route('/platforms')
   .post(async(req, res) => {
     try {
       const updatePlatforms = await db.sequelizeDB.query(
-        postPlatforms, {
-          type: sequelize.QueryTypes.UPDATE // change later
-        }
+        platforms.post
       );
       res.send(updatePlatforms);
     } catch (err) {
@@ -56,9 +45,7 @@ router.route('/platforms')
   .delete(async(req, res) => {
     try {
       const removePlatforms = await db.sequelizeDB.query(
-        deletePlatforms, {
-          type: sequelize.QueryTypes.DELETE // change later
-        }
+        platforms.remove
       );
       res.send(removePlatforms);
     } catch (err) {

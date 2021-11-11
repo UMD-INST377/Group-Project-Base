@@ -1,1 +1,0 @@
-export default 'SELECT * FROM platforms';

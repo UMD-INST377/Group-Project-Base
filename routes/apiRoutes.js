@@ -171,12 +171,15 @@ router.route('/county-info')
 
 // post request
   .post(async(req, res) => {
+    const county = await db.County.findAll();
     try {
-      const addCounty = await db.County.create(addNewCounty,
-        {
-          type: sequelize.QueryTypes.INSERT
-        });
-      res.send(addCounty);
+      const addCounty = await db.County.create({
+        county_ID: 16,
+        county: "Kent",
+        population: 55666,
+        population_density: 99
+      });
+      res.json(addCounty);
       console.log('Touched /county-info with POST');
     } catch (err) {
       console.log(error);

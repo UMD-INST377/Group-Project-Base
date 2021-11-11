@@ -159,7 +159,7 @@ router.route('/county-info')
     }
   })
 // put request
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
       await db.County.update(
         {

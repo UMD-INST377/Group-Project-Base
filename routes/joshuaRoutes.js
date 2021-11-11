@@ -64,16 +64,12 @@ router.route('/directors')
         type: sequelize.QueryTypes.INSERT
       });
 
-
       res.send(`"${req.body.director_name}" Successfully Updated`);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server w/ /directors POST'});
     }
   })
-
-
-
 
   .delete(async (req, res) => {
     try {

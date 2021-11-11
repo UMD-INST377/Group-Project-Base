@@ -1,6 +1,6 @@
 const actor = {
   getActor: 'SELECT * FROM actors',
-  putActor: '',
+  putActor: 'UPDATE actors SET name = :name WHERE id = :id',
   postActor: '',
   deleteActor: ''
 }

@@ -11,17 +11,22 @@ const router = express.Router();
 router.route('/actor')
   .get(async (req, res) => {
     try {
-      const movieActors = await db.sequelizeDB.query (actor.getActor, {
+      const movieActors = await db.sequelizeDB.query(actor.getActor, {
         type: sequelize.QueryTypes.SELECT
       });
       res.json(movieActors);
+      console.log(req);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
     }
   })
-  .put((req, res) => {
+  .put(async (req, res) => {
     try {
+      const movieActors = await db.sequelizeDB.query(actor.putActor, {
+        replacements: { name:req.body.name, id:req.body.id },
+        type: sequelize.QueryTypes.SELECT
+      });
       res.json({message: req});
       console.log(message);
       console.log(req);

@@ -10,8 +10,25 @@ const glide = new Glide('.glide', config).mount();
 // Initialize Elements
 const body = document.querySelector('body');
 const container = document.querySelector('.container');
-const slider = document.querySelector('.glide');
 const albums = document.querySelectorAll('img');
+const search = document.querySelector('.fa-search');
+
+// Create Search Bar
+function createSearchBar() {
+  const searchBox = document.createElement('label');
+  searchBox.className = 'search';
+
+  const searchInput = document.createElement('input');
+  searchInput.type = 'text';
+  searchInput.required = 'required';
+
+  const searchPlaceholder = document.createElement('span');
+  searchPlaceholder.className = 'placeholder';
+  searchPlaceholder.innerHTML = 'Search an Album';
+
+  searchBox.append(searchInput, searchPlaceholder);
+  body.appendChild(searchBox);
+}
 
 // Create Detail Table
 function createDetail() {
@@ -80,6 +97,13 @@ function createDetail() {
   }
 }
 
+// Create Search Box When Search Icon is Clicked On
+search.addEventListener('click', (evt) => {
+    if (!body.contains(document.querySelector('.search'))) {
+      createSearchBar();
+    }
+  });
+
 // Generate Detail Table After an Album is Selected by Clicking
 const lastClickedItem = [];
 albums.forEach((item) => {
@@ -113,15 +137,18 @@ albums.forEach((item) => {
 body.addEventListener('click', (evt) => {
   const active = document.querySelector('.glide__slide--active').querySelector('img');
   const detail = document.querySelector('.detail');
+  const searchBox = document.querySelector('.search')
+
+  console.log(evt.target.nodeName)
   if (evt.target.nodeName === 'IMG' || evt.target.nodeName === 'INPUT' || evt.target.className === 'detail'
           || evt.target.className === 'tab' || evt.target.className === 'link'
-          || evt.target.className === 'contents' ) {
-    
+          || evt.target.className === 'contents' || evt.target.nodeName === 'I') {
   } else {
     container.style.cssText = `height: 100vh;
                                transition-duration: 1s;
                                     `;
     detail.remove();
+    searchBox.remove()
     active.style.removeProperty('box-shadow');
     active.style.removeProperty('transform');
   }
@@ -169,4 +196,4 @@ body.addEventListener('keydown', (evt) => {
     active.style.removeProperty('transform');
   }
 });
-//
+

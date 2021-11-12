@@ -1,3 +1,4 @@
+/* eslint-disable no-multiple-empty-lines */
 /**
  * INST 377 TEAM 25
  * Authors: Alec Mattu, Hyeong Choi, John Iglesias, Michael Knapp
@@ -139,17 +140,21 @@ router.get('/schools/:rank_id/univ_location', async (request, response) => {
 });
 
 /**
- * Get available avg SAT scores for a school
+ * Get all average test scores
  *
  * @author John I.
  */
-router.get('/schools/:rank_id/sat_scores', async (request, response) => {
+router.get('/test_scores', async (request, response) => {
   try {
     // Debug
-    console.log('touched /schools/:rank_id/sat_scores with GET');
+    console.log('touched /test_scores with GET');
+    // Fetch all test_scores
+    const d = await db.sequelizeDB.query(controllers.test_scores.getTestScores, {
+      type: sequelize.QueryTypes.SELECT
+    });
 
     // Send data
-    response.json({status: 'success', data: []});
+    response.json({status: 'success', data: d});
   } catch (e) {
     // Debug
     console.error(e);
@@ -158,6 +163,8 @@ router.get('/schools/:rank_id/sat_scores', async (request, response) => {
     response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
+
+
 
 // Export Express Router
 export default router;

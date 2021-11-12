@@ -5,8 +5,10 @@
 
 import County from './County_Info.js'
 import VaccineData from './vaccine_data_by_county.js'
+import CovidStatistics from './covid_stats_by_county.js'
 
 export default {
   County,
-  VaccineData
+  VaccineData, 
+  CovidStatistics
 };

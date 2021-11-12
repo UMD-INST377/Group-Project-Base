@@ -1,13 +1,5 @@
 /* Group24 */
-<<<<<<< HEAD
-// Josh Cohen Lab 9
-=======
-// Name: Ali
-
-////////////////////////////////////////
-//////ENDPOINT FOR PRESIDENT TABLE//////
-////////////////////////////////////////
->>>>>>> main
+// Josh Cohen Lab 10
 
 import express from "express";
 import sequelize from "sequelize";

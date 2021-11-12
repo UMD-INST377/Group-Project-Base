@@ -1,6 +1,5 @@
 import express from 'express';
 
-
 import db from '../database/initializeDB.js';
 import price from '../server/controllers/price.js';
 

@@ -1,4 +1,4 @@
-const communityData = 'SELECT * FROM community';
+const communityData = 'SELECT * FROM community_survey';
 
 export default {
   communityData

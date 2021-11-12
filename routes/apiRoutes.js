@@ -28,11 +28,27 @@ router.get("/basketball", async (req, res) => {
   }
 });
 
+// GET ALL TEAMS
 router.get("/basketball/teams", async (req, res) => {
   try {
     const teams = await db.Teams.findAll();
     res.json(teams);
   } catch (e) {
+    res.send(e);
+  }
+});
+
+// GET SPECIFIC TEAM
+router.get("/basketball/teams/:team_id", async (req, res) => {
+  try {
+    const team = await db.Teams.findAll({
+      where: {
+        team_id: req.params.team_id,
+      },
+    });
+    res.json(team[0]); // return only the first team // returns list be default
+  } catch (e) {
+    console.log(e);
     res.send(e);
   }
 });

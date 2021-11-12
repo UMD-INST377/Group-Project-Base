@@ -1,17 +1,20 @@
+/* eslint-disable no-console */
 import express from 'express';
-
+// import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+
 import price from '../server/controllers/price.js';
 
 const router = express.Router();
+/// /// price Endpoints ///////
 router.route('/price')
   .get(async(req, res) => {
     try {
-      const retrieveprice = await db.sequelizeDB.query(
+      const retrievePrice = await db.sequelizeDB.query(
         price.get
       );
-      res.send(retrieveprice);
+      res.send(retrievePrice);
     } catch (err) {
       console.log(err);
       res.json({error: 'Server error'});
@@ -19,10 +22,10 @@ router.route('/price')
   })
   .put(async(req, res) => {
     try {
-      const newprice= await db.sequelizeDB.query(
+      const newPrice = await db.sequelizeDB.query(
         price.put
       );
-      res.send(newprice);
+      res.send(newPrice);
     } catch (err) {
       console.log(err);
       res.json({error: 'Server error'});
@@ -30,10 +33,10 @@ router.route('/price')
   })
   .post(async(req, res) => {
     try {
-      const updateprice = await db.sequelizeDB.query(
+      const updatePrice = await db.sequelizeDB.query(
         price.post
       );
-      res.send(price);
+      res.send(updatePrice);
     } catch (err) {
       console.log(err);
       res.json({error: 'Server error'});
@@ -41,10 +44,10 @@ router.route('/price')
   })
   .delete(async(req, res) => {
     try {
-      const removeprice = await db.sequelizeDB.query(
+      const removePrice = await db.sequelizeDB.query(
         price.remove
       );
-      res.send(removeprice);
+      res.send(removePrice);
     } catch (err) {
       console.log(err);
       res.json({error: 'Server error'});

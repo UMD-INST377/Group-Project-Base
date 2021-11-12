@@ -7,5 +7,5 @@ export default {
   DietaryRestrictions,
   DiningHall,
   Macros,
-  Meals,
+  Meals
 };

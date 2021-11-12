@@ -1,9 +1,8 @@
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';
-
-import priceRoutes from './routes/priceRoute.js';
-import platformRoutes from './server/controllers/platforms.js';
+import platformRoutes from './routes/platformRoutes.js';
+import priceRoute from './routes/priceRoute.js';
 
 const app = express();
 
@@ -15,8 +14,9 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 
-app.use('/api', priceRoutes);
 app.use('/api', platformRoutes);
+app.use('/api', priceRoute);
+
 
 async function bootServer() {
   try {

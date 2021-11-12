@@ -1,57 +1,53 @@
-import  express  from "express";
-import sequelize  from "sequelize";
-import chalk from "chalk";
-import fetch from "node-fetch";
+import express from 'express';
 
 
 import db from '../database/initializeDB.js';
- 
-const router=express.Router();
+import price from '../server/controllers/price.js';
 
+const router = express.Router();
 router.route('/price')
-.get(async(req,res) =>{
-    try{
-        // const url='https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json'
-        // const data=await fetch(data);
-        // const json = await data.json();
-        // console.log(json)
-        // res.json({data:data});
-        res.json({message:"touched /price with GET"});
-}
-    catch(err){
-        console.log(error);
-        res.json({error:"Something went wrong"});
+  .get(async(req, res) => {
+    try {
+      const retrieveprice = await db.sequelizeDB.query(
+        price.get
+      );
+      res.send(retrieveprice);
+    } catch (err) {
+      console.log(err);
+      res.json({error: 'Server error'});
     }
-    })
-    .put((req,res) =>{
-        try{
-            res.json({message:"touched /price with PUT"});
-        }
-        catch(error){
-            console.log(error);
-            res.json({error:"Something went wrong"});
-        }
-    })
-    .post((req,res) =>{
-        try{
-            res.json({message:"touched /price with POST"});
-        
-        }
-        catch(error){
-            console.log(error);
-            res.json({error:"Something went wrong"});
-        }
-    })
-    .delete((req,res) =>{
-        try{
-            res.json({message:"touched /price with DELETE"});
-        }
-        catch(error){
-            console.log(error);
-            res.json({error:"Something went wrong"});
-        }
-    })
-
+  })
+  .put(async(req, res) => {
+    try {
+      const newprice= await db.sequelizeDB.query(
+        price.put
+      );
+      res.send(newprice);
+    } catch (err) {
+      console.log(err);
+      res.json({error: 'Server error'});
+    }
+  })
+  .post(async(req, res) => {
+    try {
+      const updateprice = await db.sequelizeDB.query(
+        price.post
+      );
+      res.send(price);
+    } catch (err) {
+      console.log(err);
+      res.json({error: 'Server error'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      const removeprice = await db.sequelizeDB.query(
+        price.remove
+      );
+      res.send(removeprice);
+    } catch (err) {
+      console.log(err);
+      res.json({error: 'Server error'});
+    }
+  });
 export default router;
-
-

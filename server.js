@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
-import price from './routes/priceRoute.js';
+import platformRoutes from './routes/platformRoutes.js';
+import priceRoutes from './routes/priceRoutes.js';
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -12,8 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(staticFolder));
-app.use('/api', apiRoutes);
-app.use('/price', priceRoute);
+app.use('/api', platformRoutes);
+app.use('/api', priceRoutes);
 
 async function bootServer() {
   try {

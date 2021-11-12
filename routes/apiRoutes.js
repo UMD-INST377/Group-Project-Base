@@ -59,9 +59,11 @@ router.route('/census')
   router.route('/community')
   .get((req,res)=>{
 try{
-
+  const dbResponse = await db.sequelizeDB.query(controllers.community.communityData);
   console.log('touched /community with GET');
-  res.json({data: []});
+  console.log(dbResponse);
+  res.json(dbResponse); 
+  return dbResponse 
 } catch(err){
   console.error(err);
   res.json({error: 'Smething went wrong on the server.'});

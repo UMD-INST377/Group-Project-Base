@@ -2,9 +2,6 @@
 // import each persons/sql controllers
 import census from './census.js';
 
-
-
-
 export default {
-    census
-}
+  census
+};

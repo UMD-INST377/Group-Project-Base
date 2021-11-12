@@ -56,11 +56,11 @@ router.route('/census')
 
   /* Kaveh's lab 9 routes */
 
-  router.route('/schools')
+  router.route('/community')
   .get((req,res)=>{
 try{
 
-  console.log('touched /schools with GET');
+  console.log('touched /community with GET');
   res.json({data: []});
 } catch(err){
   console.error(err);
@@ -72,8 +72,8 @@ try{
   .post((req,res)=>{
 
     try{
-      console.log('touched/schools with POST');
-      res.json({message: 'post schools endpoint'});
+      console.log('touched/community with POST');
+      res.json({message: 'post community endpoint'});
     }catch(err){
       console.error(err);
       res.json({error: 'Something went wrong on the server.'})
@@ -84,7 +84,7 @@ try{
   .delete((req,res)=>{
 try{
 
-  console.log('touched /schools with DELETE');
+  console.log('touched /community with DELETE');
   res.json({message: 'delete census endpoint'});
 } catch(err){
   console.error(err);

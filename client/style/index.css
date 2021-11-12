@@ -82,7 +82,7 @@ input {
     height: 1.3vw;
     width: 20vw;
     border: 2px solid black;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     background-color: rgba(190, 190, 190, 0.3);
     margin-top: 5px;
     margin-left: 2.7vw;
@@ -172,13 +172,72 @@ img {
 }
 
 .heading {
-    font-family: GothamBold;
-    display: none;
+    height: 100%
+}
+
+.items {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 3vw;
+}
+
+.items-cert {
+    margin-top: 2vw;
+}
+
+.items-prices {
+    margin-top: 6vw;
+}
+
+.item {
+    width: 25%;
+    margin: 20px;
+    text-align: center;
+}
+
+.item.item-cert {
+    width: 30%;
+}
+
+.multi-cert {
+    z-index: 2;
+}
+
+.cert {
+    width: 30px
+}
+
+.flags {
+    height: 20px;
+    width: 30px
+}
+
+.header {
+    font-family: GothamMedium;
+    font-size: 18px
+}
+
+.result {
+    font-family: GothamBook;
+    font-size: 14px
+}
+
+.result-placement {
+    font-family: GothamBook;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    width: 20%;
+    margin: auto;
 }
 
 .link {
-    font-family: GothamBook;
-    font-weight: bold;
+    /* font-family: GothamBook; */
+    font-family: GothamMedium;
+    /* font-weight: ; */
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -197,3 +256,13 @@ img {
 .fa-plus-circle:hover {
     transform: scale(1.3);
 }
+
+/* Tablets */
+
+@media only screen and (max-width: 1100px) {
+    .result-placement {
+      width: 50%
+    }
+  }
+
+

@@ -1,7 +1,7 @@
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
-import getVinylInfo from '../client/controllers/getVinylInfo.js';
+import getVinylInfo from './controllers/getVinylInfo.js';
 
 const router = express.Router()
 

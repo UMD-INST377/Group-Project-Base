@@ -1,7 +1,7 @@
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
-import getPrices from '../client/controllers/getPrices.js';
+import getPrices from './controllers/getPrices.js';
 
 const router = express.Router();
 

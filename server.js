@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';
-
 import priceRoutes from './routes/priceRoute.js';
 
 const app = express();
@@ -13,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(staticFolder));
+
 app.use('/api', priceRoutes);
 
 async function bootServer() {

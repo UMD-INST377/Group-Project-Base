@@ -10,8 +10,6 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
-
-
 /* Jim's lab 9 routes */
 router.route('/census')
   .get(async (req, res) => { // make async because we want to await for the response
@@ -20,8 +18,8 @@ router.route('/census')
       console.log('touched /census with GET');
       console.log(db_response);
       res.json(db_response); // get census data later
-      return db_response // maybe we need this later idk
-    } catch(err) {
+      return db_response; // maybe we need this later idk
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
@@ -30,7 +28,7 @@ router.route('/census')
     try {
       console.log('touched /census with PUT');
       res.json({message: 'put census endpoint'});
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
@@ -39,7 +37,7 @@ router.route('/census')
     try {
       console.log('touched /census with POST');
       res.json({message: 'post census endpoint'});
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
@@ -48,59 +46,56 @@ router.route('/census')
     try {
       console.log('touched /census with DELETE');
       res.json({message: 'delete census endpoint'});
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   });
 
-  /* Kaveh's lab 9 routes */
+/* Kaveh's lab 9 routes */
 
-  router.route('/schools')
-  .get((req,res)=>{
-try{
-
-  console.log('touched /schools with GET');
-  res.json({data: []});
-} catch(err){
-  console.error(err);
-  res.json({error: 'Smething went wrong on the server.'});
-}
-
-  })
-
-  .post((req,res)=>{
-
-    try{
-      console.log('touched/schools with POST');
-      res.json({message: 'post schools endpoint'});
-    }catch(err){
+router.route('/community')
+  .get(async(req, res) => {
+    try {
+      const dbResponse = await db.sequelizeDB.query(controllers.community.communityData);
+      console.log('touched /community with GET');
+      console.log(dbResponse);
+      res.json(dbResponse);
+      return dbResponse;
+    } catch (err) {
       console.error(err);
-      res.json({error: 'Something went wrong on the server.'})
+      res.json({error: 'Smething went wrong on the server.'});
     }
   })
 
-
-  .delete((req,res)=>{
-try{
-
-  console.log('touched /schools with DELETE');
-  res.json({message: 'delete census endpoint'});
-} catch(err){
-  console.error(err);
-  res.json({error: 'Something went wrong on the server.'});
-}
-
+  .post((req, res) => {
+    try {
+      console.log('touched/community with POST');
+      res.json({message: 'post community endpoint'});
+    } catch (err) {
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'});
+    }
   })
 
-  /*Teddy' lab 9 routes */
+  .delete((req, res) => {
+    try {
+      console.log('touched /community with DELETE');
+      res.json({message: 'delete census endpoint'});
+    } catch (err) {
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'});
+    }
+  });
 
-  router.route('/population')
+/* Teddy' lab 9 routes */
+
+router.route('/population')
   .get((req, res) => {
     try {
       console.log('touched /population with GET');
       res.json({data: []}); // get census data later
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
@@ -109,7 +104,7 @@ try{
     try {
       console.log('touched /population with PUT');
       res.json({message: 'put census endpoint'});
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
@@ -118,7 +113,7 @@ try{
     try {
       console.log('touched /population with POST');
       res.json({message: 'post population endpoint'});
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
@@ -127,53 +122,52 @@ try{
     try {
       console.log('touched /population with DELETE');
       res.json({message: 'delete population endpoint'});
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   });
 
-  /* Blen's lab 9 routes */
-
+/* Blen's lab 9 routes */
 
 router.route('/ethnicities')
-.get((req, res) => {
-  try {
-    console.log('touched /ethnicities with GET');
-    res.json({data: []}); // get census data later
-  } catch(err) {
-    console.error(err);
-    res.json({error: 'Something went wrong on the server.'});
-  }
-})
-.put((req, res) => {
-  try {
-    console.log('touched /ethnicities with PUT');
-    res.json({message: 'put ethnicities endpoint'});
-  } catch(err) {
-    console.error(err);
-    res.json({error: 'Something went wrong on the server.'});
-  }
-})
-.post((req, res) => {
-  try {
-    console.log('touched /ethnicities with POST');
-    res.json({message: 'post ethnicities endpoint'});
-  } catch(err) {
-    console.error(err);
-    res.json({error: 'Something went wrong on the server.'});
-  }
-})
-.delete((req, res) => {
-  try {
-    console.log('touched /ethnicities with DELETE');
-    res.json({message: 'delete ethnicities endpoint'});
-  } catch(err) {
-    console.error(err);
-    res.json({error: 'Something went wrong on the server.'});
-  }
-});
-	   
+  .get((req, res) => {
+    try {
+      console.log('touched /ethnicities with GET');
+      res.json({data: []}); // get census data later
+    } catch (err) {
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('touched /ethnicities with PUT');
+      res.json({message: 'put ethnicities endpoint'});
+    } catch (err) {
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('touched /ethnicities with POST');
+      res.json({message: 'post ethnicities endpoint'});
+    } catch (err) {
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('touched /ethnicities with DELETE');
+      res.json({message: 'delete ethnicities endpoint'});
+    } catch (err) {
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'});
+    }
+  });
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

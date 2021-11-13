@@ -32,28 +32,49 @@ router.route('/covid-stats')
       res.json({ error: 'Something went wrong' });
     }
   })
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
-      res.json({ message: 'Touched /covid-stats with PUT' });
-      console.log('Touched /covid-stats with PUT');
+      await db.covidStatsCustom.update({
+        confirmed_deaths: req.body.confirmed_deaths,
+        positive_cases: req.body.positive_cases,
+        county_death_prop: req.body.county_death_prop
+      },
+      {
+        where: {
+          county_ID: req.body.county_ID
+        }
+      })
+      console.log('Successfully Updated with PUT');
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });
     }
   })
-  .post((req, res) => {
+  .post(async(req, res) => {
+    const cStatsTable = await db.covidStatsCustom.findAll();
+    const currentId = (await cStatsTable.length) + 1;
     try {
-      res.json({ message: 'Touched /covid-stats with POST' });
+      const addCovidStats = await db.covidStatsCustom.create({
+        county_ID: currentId,
+        confirmed_deaths: req.body.confirmed_deaths,
+        positive_cases: req.body.positive_cases,
+        county_death_prop: req.body.county_death_prop
+      })
       console.log('Touched /covid-stats with POST');
+      res.send('Successfully added with POST')
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
-      res.json({ message: 'Touched /covid-stats with DELETE' });
-      console.log('Touched /covid-stats with DELETE');
+      await db.covidStatsCustom.destroy({
+        where: {
+          county_ID: req.params.county_ID
+        }
+      })
+      console.log('Successfully Deleted with DELETE');
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });

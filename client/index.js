@@ -1,6 +1,6 @@
 async function getInfo() {
   // Request and Compile VINYL Information
-  const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
+  const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
   const allVinyl = await vinylRequest.json();
   const vinyl = new Object();
   for (const currentVinyl in allVinyl) {
@@ -8,7 +8,7 @@ async function getInfo() {
   }
 
   // Request and Compile PLACEMENTS Information
-  const placementsRequest = await fetch('http://localhost:3000/api/placements');
+  const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/placements');
   const allPlacements = await placementsRequest.json();
   const placements = new Object();
   for (const currentPlacement in allPlacements) {
@@ -16,7 +16,7 @@ async function getInfo() {
   }
 
   // Request and Compile PLACEMENTS Information
-  const certificationsRequest = await fetch('http://localhost:3000/api/certifications');
+  const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/certifications');
   const allCertifications = await certificationsRequest.json();
   const certifications = new Object();
   for (const currentCertification in allCertifications) {
@@ -24,7 +24,7 @@ async function getInfo() {
   }
 
   // Request and Compile PRICES Information
-  const pricesRequest = await fetch('http://localhost:3000/api/prices');
+  const pricesRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/prices');
   const allPrices = await pricesRequest.json();
   const prices = new Object();
   for (const currentPrice in allPrices) {
@@ -382,7 +382,8 @@ async function getInfo() {
                                              transition-duration: 1s
                      `;
                   const image = images[vinyl[eachVinyl].vinyl_id - 1];
-
+                  
+                  // Added CSS to the Selected Image(Album Cover)
                   image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
                                           transform: scale(0.8);
                                           transition-duration: 0.5s`;

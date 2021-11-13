@@ -364,13 +364,15 @@ async function getInfo() {
       // Using Search Box to Search for an Album or an Artist
       createSearchBar();
       const searchInput = document.querySelector('input');
-      
+
       // Display the Results of Search
       searchInput.addEventListener('keyup', (evt) => {
         if (evt.target.value) {
           displayAlbum(evt.target.value);
           const suggestions = document.querySelectorAll('.name');
           suggestions.forEach((item) => {
+            const images = document.querySelectorAll('img');
+
             // When a Result from the Search is Clicked On, Move to that Search Result and Create Detail Table
             item.addEventListener('click', (evt) => {
               for (const eachVinyl in vinyl) {
@@ -379,12 +381,25 @@ async function getInfo() {
                   container.style.cssText = `height: 50vh; 
                                              transition-duration: 1s
                      `;
+                  const image = images[vinyl[eachVinyl].vinyl_id - 1];
+
+                  image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
+                                          transform: scale(0.8);
+                                          transition-duration: 0.5s`;
+
                   if (!body.contains(document.querySelector('.detail'))) {
                     createDetail(vinyl[eachVinyl].vinyl_id - 1);
                   } else if (body.contains(document.querySelector('.detail'))) {
                     const detail = document.querySelector('.detail');
                     detail.remove();
                     createDetail(vinyl[eachVinyl].vinyl_id - 1);
+                    images.forEach((item) => {
+                      item.style.removeProperty('box-shadow');
+                      item.style.removeProperty('transform');
+                    });
+                    image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
+                                          transform: scale(0.8);
+                                          transition-duration: 0.5s`;
                   }
                 }
               }

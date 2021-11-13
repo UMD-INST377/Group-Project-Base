@@ -205,7 +205,7 @@ router.route('/county-info')
 // post request
   .post(async(req, res) => {
     const countyInfoTable = await db.County.findAll();
-    const currentId = await countyInfoTable.length + 1;
+    const currentID = await countyInfoTable.length + 1;
     try {
       const addCounty = await db.County.create({
         county_ID: currentID,
@@ -224,8 +224,13 @@ router.route('/county-info')
 // delete request
   .delete((req, res) => {
     try {
+      await db.County.destroy({
+        where: {
+          county_ID: req.params.county_ID
+        }
+      })
       res.json({ message: 'Touched /county-info with DELETE' });
-      console.log('Touched /county-info with DELETE');
+      console.log("Successfully deleted a county");
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });

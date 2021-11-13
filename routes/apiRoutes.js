@@ -222,7 +222,7 @@ router.route('/county-info')
   })
 
 // delete request
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
       await db.County.destroy({
         where: {

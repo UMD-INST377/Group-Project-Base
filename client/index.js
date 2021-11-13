@@ -355,7 +355,6 @@ async function getInfo() {
     <li class="suggestion">
         <div class="name">${match.album_name}</div></li>
     `).join('');
-
     suggestions.innerHTML = matchResult;
   }
 
@@ -365,10 +364,33 @@ async function getInfo() {
       // Using Search Box to Search for an Album or an Artist
       createSearchBar();
       const searchInput = document.querySelector('input');
-
+      
+      // Display the Results of Search
       searchInput.addEventListener('keyup', (evt) => {
         if (evt.target.value) {
           displayAlbum(evt.target.value);
+          const suggestions = document.querySelectorAll('.name');
+          suggestions.forEach((item) => {
+            // When a Result from the Search is Clicked On, Move to that Search Result and Create Detail Table
+            item.addEventListener('click', (evt) => {
+              for (const eachVinyl in vinyl) {
+                if (evt.target.innerHTML === vinyl[eachVinyl].album_name) {
+                  glide.go(`=${vinyl[eachVinyl].vinyl_id - 1}`);
+                  container.style.cssText = `height: 50vh; 
+                                             transition-duration: 1s
+                     `;
+                  if (!body.contains(document.querySelector('.detail'))) {
+                    createDetail(vinyl[eachVinyl].vinyl_id - 1);
+                  } else if (body.contains(document.querySelector('.detail'))) {
+                    const detail = document.querySelector('.detail');
+                    detail.remove();
+                    createDetail(vinyl[eachVinyl].vinyl_id - 1);
+                  }
+                }
+              }
+            });
+          });
+          // If Search Input Contains No Value, Remove Suggestions
         } else if (!evt.target.value) {
           const suggestions = document.querySelectorAll('.name');
           suggestions.forEach((item) => {
@@ -429,7 +451,8 @@ async function getInfo() {
             || evt.target.className === 'contents' || evt.target.nodeName === 'I'
             || evt.target.className === 'result' || evt.target.className === 'header'
             || evt.target.className === 'items' || evt.target.className === 'item'
-            || evt.target.className === 'heading' || evt.target.className === 'placeholder') {
+            || evt.target.className === 'heading' || evt.target.className === 'placeholder'
+            || evt.target.className === 'name') {
     } else {
       container.style.cssText = `height: 100vh;
                                  transition-duration: 1s;

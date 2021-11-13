@@ -47,6 +47,7 @@ body {
 
 .fa-search {
     margin-right: 50px;
+    cursor: pointer;
 }
 
 .search {
@@ -82,14 +83,15 @@ input {
     height: 1.3vw;
     width: 20vw;
     border: 2px solid black;
-    /* border-radius: 20px; */
     background-color: rgba(190, 190, 190, 0.3);
     margin-top: 5px;
     margin-left: 2.7vw;
+    font-family: GothamBook;
     font-size: 12px;
     font-weight: bold;
     color: black;
     outline: none;
+    
 }
 
 .search .placeholder {
@@ -111,8 +113,33 @@ input {
     font-size: 9px;
 }
 
-::-webkit-input-placeholder {
-    text-align: center;
+.search-result {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 20.2vw;
+    top: 65px;
+    left: 52px;
+    /* left: 54px; */
+    border-color: black;
+    border-style: solid;
+    border-width: 0 2px 2px 2px;
+    background-color: rgba(198, 198, 198, 0.6);
+}
+
+.suggestion {
+    font-family: GothamBook;
+    font-weight: 700;
+    font-size: 12px
+}
+
+.suggestion:hover {
+    background-color: rgba(198, 198, 198);
+}
+
+.name {
+    text-align: left;
+    width: 100%;
 }
 
 .container {

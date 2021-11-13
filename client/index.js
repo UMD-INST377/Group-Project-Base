@@ -1,6 +1,6 @@
 async function getInfo() {
   // Request and Compile VINYL Information
-  const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
+  const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
   const allVinyl = await vinylRequest.json();
   const vinyl = new Object();
   for (const currentVinyl in allVinyl) {
@@ -8,7 +8,7 @@ async function getInfo() {
   }
 
   // Request and Compile PLACEMENTS Information
-  const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/placements');
+  const placementsRequest = await fetch('http://localhost:3000/api/placements');
   const allPlacements = await placementsRequest.json();
   const placements = new Object();
   for (const currentPlacement in allPlacements) {
@@ -16,7 +16,7 @@ async function getInfo() {
   }
 
   // Request and Compile PLACEMENTS Information
-  const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/certifications');
+  const certificationsRequest = await fetch('http://localhost:3000/api/certifications');
   const allCertifications = await certificationsRequest.json();
   const certifications = new Object();
   for (const currentCertification in allCertifications) {
@@ -24,7 +24,12 @@ async function getInfo() {
   }
 
   // Request and Compile PRICES Information
-  
+  const pricesRequest = await fetch('http://localhost:3000/api/prices');
+  const allPrices = await pricesRequest.json();
+  const prices = new Object();
+  for (const currentPrice in allPrices) {
+    prices[currentPrice] = allPrices[currentPrice];
+  }
 
   // Configure and Initialize Glide.js
   const config = {
@@ -35,7 +40,7 @@ async function getInfo() {
 
   const glide = new Glide('.glide', config).mount();
 
-  // Initialize Elements
+  // Initialize GLIDE.JS Elements
   const body = document.querySelector('body');
   const container = document.querySelector('.container');
   const albums = document.querySelectorAll('img');
@@ -43,7 +48,7 @@ async function getInfo() {
 
   // Create Search Bar
   function createSearchBar() {
-    const searchBox = document.createElement('label');
+    const searchBox = document.createElement('div');
     searchBox.className = 'search';
 
     const searchInput = document.createElement('input');
@@ -54,7 +59,10 @@ async function getInfo() {
     searchPlaceholder.className = 'placeholder';
     searchPlaceholder.innerHTML = 'Search an Album';
 
-    searchBox.append(searchInput, searchPlaceholder);
+    const searchResult = document.createElement('ul');
+    searchResult.className = 'search-result';
+
+    searchBox.append(searchInput, searchPlaceholder, searchResult);
     body.appendChild(searchBox);
   }
 
@@ -235,25 +243,25 @@ async function getInfo() {
 
     // Changing Variables Depending on Certification Status
     if (certifications[id].diamond === 1) {
-        certifications[id].gold = "Certified"
-        certifications[id].platinum = "Certified"
-        certifications[id].multi_platinum = "Certified"
-        certifications[id].diamond = "Certified"
+      certifications[id].gold = 'Certified';
+      certifications[id].platinum = 'Certified';
+      certifications[id].multi_platinum = 'Certified';
+      certifications[id].diamond = 'Certified';
     } else if (certifications[id].multi_platinum === 1) {
-        certifications[id].gold = "Certified"
-        certifications[id].platinum = "Certified"
-        certifications[id].multi_platinum = "Certified"
-        certifications[id].diamond = "N/A"
+      certifications[id].gold = 'Certified';
+      certifications[id].platinum = 'Certified';
+      certifications[id].multi_platinum = 'Certified';
+      certifications[id].diamond = 'N/A';
     } else if (certifications[id].platinum === 1) {
-        certifications[id].gold = "Certified"
-        certifications[id].platinum = "Certified"
-        certifications[id].multi_platinum = "N/A"
-        certifications[id].diamond = "N/A"
+      certifications[id].gold = 'Certified';
+      certifications[id].platinum = 'Certified';
+      certifications[id].multi_platinum = 'N/A';
+      certifications[id].diamond = 'N/A';
     } else if (certifications[id].gold === 1) {
-        certifications[id].gold = "Certified"
-        certifications[id].platinum = "N/A"
-        certifications[id].multi_platinum = "N/A"
-        certifications[id].diamond = "N/A"
+      certifications[id].gold = 'Certified';
+      certifications[id].platinum = 'N/A';
+      certifications[id].multi_platinum = 'N/A';
+      certifications[id].diamond = 'N/A';
     }
 
     certifications_content.innerHTML = `
@@ -280,13 +288,34 @@ async function getInfo() {
                     <p class="result">${certifications[id].diamond}</p>
                 </div>
             </div>
-    `
+    `;
 
     // PRICES Contents
-    
+    const prices_content = document.createElement('div');
+    prices_content.className = 'heading';
+    prices_content.innerHTML = `
+            <div class="items items-prices">
+                <div class="item">
+                    <i class="fas fa-dice-six"></i>
+                    <p class="header">Highest Discog Price</p>
+                    <p class="result">$${prices[id].highest_discog}</p>
+                </div>
+                <div class="item">
+                    <i class="fas fa-dice-three"></i>
+                    <p class="header">Average Discog Price</p>
+                    <p class="result">$${prices[id].average_discog}</p>
+                </div>
+                <div class="item">
+                    <i class="fas fa-dice-one"></i>
+                    <p class="header">Lowest Discog Price</p>
+                    <p class="result">$${prices[id].lowerst_discog}</p>
+                </div>
+            </div>
+    `;
+
     // Appends Contents to Content
     content.append(general_info_content, songs_content, placements_content,
-      certifications_content);
+      certifications_content, prices_content);
 
     // Appends Buttons to Tab
     tab.append(general_info, songs, placementsBut, certificationsBut, pricesBut);
@@ -310,10 +339,47 @@ async function getInfo() {
     }
   }
 
+  // Find Matches to Album/Artist Search
+  function findAlbum(input, allEntries) {
+    return allEntries.filter((entry) => {
+      const regex = new RegExp(input, 'gi');
+      return entry.album_name.match(regex) || entry.artist_name.match(regex);
+    });
+  }
+
+  // Display Matches to Album/Artist
+  function displayAlbum(input) {
+    const matchSearch = findAlbum(input, allVinyl);
+    const suggestions = document.querySelector('.search-result');
+    const matchResult = matchSearch.map((match) => `
+    <li class="suggestion">
+        <div class="name">${match.album_name}</div></li>
+    `).join('');
+
+    suggestions.innerHTML = matchResult;
+  }
+
   // Create Search Box When Search Icon is Clicked On
   search.addEventListener('click', (evt) => {
     if (!body.contains(document.querySelector('.search'))) {
+      // Using Search Box to Search for an Album or an Artist
       createSearchBar();
+      const searchInput = document.querySelector('input');
+
+      searchInput.addEventListener('keyup', (evt) => {
+        if (evt.target.value) {
+          displayAlbum(evt.target.value);
+        } else if (!evt.target.value) {
+          const suggestions = document.querySelectorAll('.name');
+          suggestions.forEach((item) => {
+            item.remove();
+          });
+        }
+
+        if (evt.key === 'ArrowDown') {
+          console.log('down');
+        }
+      });
     }
   });
 
@@ -356,19 +422,26 @@ async function getInfo() {
     const active = document.querySelector('.glide__slide--active').querySelector('img');
     const detail = document.querySelector('.detail');
     const searchBox = document.querySelector('.search');
+    const suggestion = document.querySelector('.suggestion');
+
     if (evt.target.nodeName === 'IMG' || evt.target.nodeName === 'INPUT' || evt.target.className === 'detail'
             || evt.target.className === 'tab' || evt.target.className === 'link'
             || evt.target.className === 'contents' || evt.target.nodeName === 'I'
             || evt.target.className === 'result' || evt.target.className === 'header'
             || evt.target.className === 'items' || evt.target.className === 'item'
-            || evt.target.className === 'heading') {
+            || evt.target.className === 'heading' || evt.target.className === 'placeholder') {
     } else {
       container.style.cssText = `height: 100vh;
                                  transition-duration: 1s;
                                       `;
-      detail.remove();
+      if (body.contains(detail)) {
+        detail.remove();
+      }
       if (body.contains(searchBox)) {
         searchBox.remove();
+      }
+      if (body.contains(suggestion)) {
+        suggestion.remove();
       }
       active.style.removeProperty('box-shadow');
       active.style.removeProperty('transform');

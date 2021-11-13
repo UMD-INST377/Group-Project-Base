@@ -184,13 +184,13 @@ router.route('/county-info')
     try {
       await db.County.update(
         {
-          population_density: 199,
-          uninsured: 5.99,
-          poverty_rate: 7.89
+          population_density: req.body.population_density,
+          uninsured: req.body.uninsured,
+          poverty_rate: req.body.poverty_rate
         },
         {
           where : {
-            county_ID: 16
+            county_ID: req.body.county_ID
           }
         }
       )
@@ -204,13 +204,14 @@ router.route('/county-info')
 
 // post request
   .post(async(req, res) => {
-    const county = await db.County.findAll();
+    const countyInfoTable = await db.County.findAll();
+    const currentId = await countyInfoTable.length + 1;
     try {
       const addCounty = await db.County.create({
-        county_ID: 16,
-        county: "Kent",
-        population: 55666,
-        population_density: 99
+        county_ID: currentID,
+        county: req.body.county,
+        population: req.body.population,
+        population_density: req.body.population_density
       });
       res.json(addCounty);
       console.log('Touched /county-info with POST');

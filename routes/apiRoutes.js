@@ -5,24 +5,25 @@
 //////ENDPOINT FOR PRESIDENT TABLE//////
 ////////////////////////////////////////
 
-import express from "express";
-import sequelize from "sequelize";
-import db from "../database/initializeDB.js";
+import express from 'express';
+import sequelize from 'sequelize';
+import db from '../database/initializeDB.js';
+import controllers from '../controllers/routeControllers.js';
 
 const router = express.Router();
 
 //GET api
-router.get("/", (req, res) => {
-  console.log("Touched / with get");
-  res.json("Success0");
+router.get('/', (req, res) => {
+  console.log('Touched / with get');
+  res.json('Success0');
 });
 
 // route GET presidents
-router.get("/presidents", async (req, res) => {
+router.get('/presidents', async (req, res) => {
   try {
     // message
-    console.log("Touched /presidents with get");
-    res.json("READ1");
+    console.log('Touched /presidents with get');
+    res.json('READ1');
   } catch (err) {
     console.error(err);
   }
@@ -30,11 +31,10 @@ router.get("/presidents", async (req, res) => {
 
 // GET the specific president by id number
 
-router.get("/presidents/:president_id", async (req, res) => {
+router.get('/presidents/:president_id', async (req, res) => {
   try {
     // Presidents table query and gets the specific id from the user
-    const presidentInfoQuery = `SELECT  
-     concat(first_name, " ",last_name) as "President Name", birth_date as "Birth Date",
+    const presidentInfoQuery = `SELECT concat(first_name, " ",last_name) as "President Name", birth_date as "Birth Date",
       home_state as "Home State", date_inaurg as "Date Inauguration",party as "Party", president_image as "President Image"
       FROM presidents_table
       WHERE president_id = ${req.params.president_id};`;
@@ -44,27 +44,24 @@ router.get("/presidents/:president_id", async (req, res) => {
       type: sequelize.QueryTypes.SELECT,
     });
     // message on console
-    console.log("Touched /presidents/:president_id with get");
+    console.log('Touched /presidents/:president_id with get');
     // json response when the specific id is entered
     res.json(presidentInfo);
   } catch (err) {
-    //catch error if any
+    // catch error if any
     console.error(err);
   }
 });
 
 // Get timeline of the presidents
-router.get("/time_line", async (req, res) => {
+router.get('/time_line', async (req, res) => {
   try {
-    const timeLine = `SELECT 
-president_id, CONCAT(first_name,'',last_name) AS "President Name", CAST((SPLIT_STR(date_inaurg, ',', 2)-1) AS SIGNED) AS elected_year
-FROM Presidents.presidents_table;`;
-    const pres = await db.sequelizeDB.query(timeLine, {
+    const pres = await db.sequelizeDB.query(controllers.timeLine, {
       type: sequelize.QueryTypes.SELECT,
     });
 
     // message on the console
-    console.log("Touched /presidents/:president_id with get");
+    console.log('Touched /presidents/:president_id with get');
     // response in json from database
     res.json(pres);
   } catch (err) {
@@ -73,22 +70,22 @@ FROM Presidents.presidents_table;`;
 });
 
 // Delete the president by specific id
-router.delete("/presidents/:president_id", async (req, res) => {
+router.delete('/presidents/:president_id', async (req, res) => {
   try {
     const deletePresidentQuery = `DELETE from presidents_table
       where president_id = ${req.params.president_id};`;
     const delPresident = await db.sequelizeDB.query(deletePresidentQuery, {
       type: sequelize.QueryTypes.DELETE,
     });
-    console.log("Touched /presidents/:president_id with Delete");
-    res.json("Row Deleted");
+    console.log('Touched /presidents/:president_id with Delete');
+    res.json('Row Deleted');
   } catch (err) {
     console.error(err);
   }
 });
 
 // create new president when provide the information
-router.post("/presidents", async (req, res) => {
+router.post('/presidents', async (req, res) => {
   try {
     const createQuery = `INSERT INTO presidents_table(president_id, first_name, last_name, date_inaurg, age_inaurg, terms_served, birth_date, death_date, home_state, president_image, party)
 VALUES('${req.body.president_id}','${req.body.first_name}','${req.body.last_name}','${req.body.date_inaurg}','${req.body.age_inaurg}'
@@ -97,7 +94,7 @@ VALUES('${req.body.president_id}','${req.body.first_name}','${req.body.last_name
     const addNewPresident = await db.sequelizeDB.query(createQuery, {
       type: sequelize.QueryTypes.INSERT,
     });
-    console.log("Touched /presidents with post/create");
+    console.log('Touched /presidents with post/create');
     res.json(addNewPresident);
   } catch (err) {
     console.error(err);
@@ -105,7 +102,7 @@ VALUES('${req.body.president_id}','${req.body.first_name}','${req.body.last_name
 });
 
 // update the information of the existing presidents in the database by specific id
-router.put("/presidents/:president_id", async (req, res) => {
+router.put('/presidents/:president_id', async (req, res) => {
   try {
     const updateQuery = `UPDATE presidents_table SET first_name = '${req.body.first_name}', last_name = '${req.body.last_name}', 
     date_inaurg = '${req.body.date_inaurg}', age_inaurg = '${req.body.age_inaurg}', 
@@ -118,7 +115,7 @@ router.put("/presidents/:president_id", async (req, res) => {
     const upPres = await db.sequelizeDB.query(updateQuery, {
       type: sequelize.QueryTypes.UPDATE,
     });
-    console.log("Touched /presidents/:president_id with put/update");
+    console.log('Touched /presidents/:president_id with put/update');
     res.json(upPres);
   } catch (err) {
     console.error(err);

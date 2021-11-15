@@ -286,6 +286,7 @@ img {
 
 .songs-box {
     display: flex;
+    flex-wrap: wrap;
     height: 100%;
     flex-direction: column;
     align-content: space-between;

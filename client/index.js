@@ -190,17 +190,35 @@ async function getInfo() {
         }
 
         // SONGS Contents
-        const songs_content = document.createElement('h3');
-        songs_content.className = 'heading';
+        const songs_content = document.createElement('div');
+        songs_content.className = 'songs-box';
         songs_content.innerHTML = 'Song';
 
+        // Selects only songs relevant to that album
         const albumSongs = [];
         allSongs.forEach((song) => {
           if (Number(id)+1 === song['vinyl_id']) {
             albumSongs.push(song);
           }
         });
-        console.log(albumSongs)
+
+        // Creates a first row for category's for song description
+        const song_cat = document.createElement('div')
+        song_cat.className = 'songs-cat'
+        song_cat.innerHTML = `<h3>Track Name</h3>
+                              <h3>Track Number</h3>
+                              <h3>Duration</h3>`
+        songs_content.appendChild(song_cat);
+
+        // Creates a row for each song
+        albumSongs.forEach((song) => {
+          const song_row = document.createElement('div')
+          song_row.className = 'songs-row'
+          song_row.innerHTML = `<p>Song Name: ${song['song_name']}</p> 
+                                <p>Track Number: ${song['track_num']}</p> 
+                                <p>Duration: ${song['duration']}</p>`
+          songs_content.appendChild(song_row)
+        });
 
         // PLACEMENTS Contents
         const placements_content = document.createElement('div');

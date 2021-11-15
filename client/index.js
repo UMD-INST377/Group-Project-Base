@@ -1,3 +1,5 @@
+let currAlbum
+
 /* eslint-disable camelcase */
 /* eslint-disable indent */
 async function getInfo() {
@@ -32,6 +34,17 @@ async function getInfo() {
     for (const currentPrice in allPrices) {
         prices[currentPrice] = allPrices[currentPrice];
     }
+
+    //Request and Compile SONGS information
+    const albumSongs = [];
+    const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/songs')
+    const allSongs = await songsRequest.json()
+    allSongs.forEach((song) => {
+      if(Number(currAlbum.id)+1 === song['vinyl_id']){
+        albumSongs.append(song);
+      }
+      console.log(albumSongs)
+    });
 
     // Configure and Initialize Glide.js
     const config = {
@@ -423,6 +436,7 @@ async function getInfo() {
     const lastClickedItem = [];
     albums.forEach((item) => {
         item.addEventListener('click', (evt) => {
+            currAlbum = item
             evt.target.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
                                    transform: scale(0.8);
                                    transition-duration: 0.5s`;

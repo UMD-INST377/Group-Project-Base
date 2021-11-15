@@ -197,8 +197,7 @@ async function getInfo() {
         const albumSongs = [];
         allSongs.forEach((song) => {
           if (Number(id)+1 === song['vinyl_id']) {
-            console.log(song)
-            // albumSongs.append(song);
+            albumSongs.push(song);
           }
         });
         console.log(albumSongs)

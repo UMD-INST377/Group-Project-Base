@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable indent */
 async function getInfo() {
     // Request and Compile VINYL Information

@@ -1,3 +1,4 @@
-/* eslint-disable quotes */
-/* eslint-disable semi */
-export default `SELECT * FROM vinyl_23.singers`;
+export default `SELECT *
+                FROM singers s
+                INNER JOIN vinyl v
+                    ON s.singer_id = v.vinyl_id`;

@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable indent */
+/* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';

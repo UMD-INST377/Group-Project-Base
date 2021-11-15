@@ -1,12 +1,11 @@
 /* Group24 */
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 //Casslyn Merritt Lab 9
-=======
+
 /* Lab 9 - Betzalel Moskowitz*/
->>>>>>> cec0a216254ed45f30d6f98e06d3430bd9aa8d42
-=======
->>>>>>> 3a92b89cfe42b3681c8a4fdb38cdc7a2ab6c0589
+
+
+
 
 import express from "express";
 import sequelize from "sequelize";

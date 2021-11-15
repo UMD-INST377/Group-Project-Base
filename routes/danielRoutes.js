@@ -4,8 +4,26 @@ import chalk from 'chalk';
 import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
+import actorLinkMapCustom from '../controllers/actors_LinkingController.js';
 
 const expressRouter = express.Router();
+
+function getRowByIdActorLinking(object, value) { 
+  const rows = object.filter((item)=> item.actors_linking_id == value);
+  return rows;
+}
+function getRowByActorId(object, value) {
+  const rows = object.filter((item) => item.actor_id == value);
+  return rows;
+}
+function changeActorName(object,value) {
+  object.forEach((item=>item.actor_name=value));
+  return object;
+}
+function updateActorInMovie(object,value) {
+  const changeActor = object.actor_id=value;
+  return changeActor;
+}
 
 // Actors_Linking Endpoints
 const actorLinkingMsg = 'touched /actors_linking with ';
@@ -14,38 +32,70 @@ const errorMsg = 'Server Error!';
 expressRouter.route('/actors_linking')
   .get(async(req, res) => {
     try {
-      console.log(`${actorLinkingMsg} GET`);
-      res.json({message: `${actorLinkingMsg} GET`});
+      const result = await db.sequelizeDB.query(actorLinkMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
     } catch (error) {
       console.log(error);
       res.json({error: errorMsg});
     }
   }) 
-
+// change an actor id in a movie - takes args actors_linking_id and new_actor_id
   .put(async (req, res) => {
     try {
-      console.log(`${actorLinkingMsg} PUT`);
-      res.json({message: `${actorLinkingMsg} PUT`});
+
+      const UpdateStatement = `Update actors_linking
+      Set actor_id = '${req.body.new_actor_id}'
+      where actors_linking_id = '${req.body.actors_linking_id}'
+      `;
+      const result = await db.sequelizeDB.query(UpdateStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      const allRows = await db.sequelizeDB.query(actorLinkMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      // output the new entry
+      console.log(getRowByIdActorLinking(allRows,req.body.actors_linking_id));
     } catch (error) {
       console.log(error);
       res.json({error: errorMsg});
     }
   })
-
+// change a film id - take args actors_linking_id and new_film_id
   .post(async (req, res) => {
     try {
-      console.log(`${actorLinkingMsg} POST`);
-      res.json({message: `${actorLinkingMsg} POST`});
+      const UpdateStatement = `Update actors_linking
+      Set film_id = '${req.body.new_film_id}'
+      where actors_linking_id = '${req.body.actors_linking_id}'
+      `;
+      const result = await db.sequelizeDB.query(UpdateStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      const allRows = await db.sequelizeDB.query(actorLinkMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      // output the new entry
+      console.log(getRowByIdActorLinking(allRows,req.body.actors_linking_id));
     } catch (error) {
       console.log(error);
       res.json({error: errorMsg});
     }
   })
 
+// delete a row based on actors_linking_id arg
   .delete(async (req, res) => {
     try {
-      console.log(`${actorLinkingMsg} DELETE`);
+      const idToDelete = req.body.actors_linking_id
+      const deleteStatement = `DELETE FROM actors_linking
+      WHERE actors_linking_id = ${idToDelete}`;
       res.json({message: `${actorLinkingMsg} DELETE`});
+      await db.sequelizeDB.query(deleteStatement, {
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.send('Deleted "${req.body.acrots_linking_id');
     } catch (error) {
       console.log(error);
       res.json({error: errorMsg});

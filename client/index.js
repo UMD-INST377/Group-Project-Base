@@ -24,12 +24,7 @@ async function getInfo() {
   }
 
   // Request and Compile PRICES Information
-  const pricesRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/prices');
-  const allPrices = await pricesRequest.json();
-  const prices = new Object();
-  for (const currentPrice in allPrices) {
-    prices[currentPrice] = allPrices[currentPrice];
-  }
+  
 
   // Configure and Initialize Glide.js
   const config = {
@@ -291,28 +286,7 @@ async function getInfo() {
     `;
 
     // PRICES Contents
-    const prices_content = document.createElement('div');
-    prices_content.className = 'heading';
-    prices_content.innerHTML = `
-            <div class="items items-prices">
-                <div class="item">
-                    <i class="fas fa-dice-six"></i>
-                    <p class="header">Highest Discog Price</p>
-                    <p class="result">$${prices[id].highest_discog}</p>
-                </div>
-                <div class="item">
-                    <i class="fas fa-dice-three"></i>
-                    <p class="header">Average Discog Price</p>
-                    <p class="result">$${prices[id].average_discog}</p>
-                </div>
-                <div class="item">
-                    <i class="fas fa-dice-one"></i>
-                    <p class="header">Lowest Discog Price</p>
-                    <p class="result">$${prices[id].lowerst_discog}</p>
-                </div>
-            </div>
-    `;
-
+    
     // Appends Contents to Content
     content.append(general_info_content, songs_content, placements_content,
       certifications_content, prices_content);
@@ -362,6 +336,7 @@ async function getInfo() {
   search.addEventListener('click', (evt) => {
     if (!body.contains(document.querySelector('.search'))) {
       // Using Search Box to Search for an Album or an Artist
+      // Create the Search Bar
       createSearchBar();
       const searchInput = document.querySelector('input');
 
@@ -387,7 +362,7 @@ async function getInfo() {
                   image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
                                           transform: scale(0.8);
                                           transition-duration: 0.5s`;
-
+                                          
                   if (!body.contains(document.querySelector('.detail'))) {
                     createDetail(vinyl[eachVinyl].vinyl_id - 1);
                   } else if (body.contains(document.querySelector('.detail'))) {
@@ -412,10 +387,6 @@ async function getInfo() {
           suggestions.forEach((item) => {
             item.remove();
           });
-        }
-
-        if (evt.key === 'ArrowDown') {
-          console.log('down');
         }
       });
     }

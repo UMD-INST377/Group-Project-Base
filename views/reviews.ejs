@@ -9,7 +9,20 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>Anonymous</strong> <small><%= (new Date(reviews[i]["date"])).toISOString().split('T')[0] %></small>
+            <strong>Anonymous</strong>
+            <span>
+              <%
+                let numStars = parseInt(reviews[i]["rating"]);
+                let numHalfStars = parseFloat(reviews[i]["rating"]) % 2 === 0 ? 1 : 0;
+              %>
+              <% for (let n = 0; n < numStars; n++) { %>
+                <i class="fas fa-star"></i>
+              <% } %>
+              <% if (numHalfStars > 0) { %>
+                <i class="fas fa-star-half"></i>
+              <% } %>
+            </span>
+            <small class="is-pulled-right"><%= (new Date(reviews[i]["date"])).toISOString().split('T')[0] %></small>
             <br>
             <%= reviews[i]["review"] %>
           </p>

@@ -3,7 +3,7 @@
  *
  * @type {SQLStmt}
  */
-const getNReviews = `SELECT review, date FROM reviews WHERE university_id = :rank_id LIMIT 0,:review_limit`;
+const getNReviews = `SELECT review, rating, date FROM reviews WHERE university_id = :rank_id LIMIT 0,:review_limit`;
 
 // Export variables
 export default {

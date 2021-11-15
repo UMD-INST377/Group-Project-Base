@@ -36,15 +36,8 @@ async function getInfo() {
     }
 
     //Request and Compile SONGS information
-    const albumSongs = [];
     const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/songs')
     const allSongs = await songsRequest.json()
-    allSongs.forEach((song) => {
-      if(Number(currAlbum.id)+1 === song['vinyl_id']){
-        albumSongs.append(song);
-      }
-      console.log(albumSongs)
-    });
 
     // Configure and Initialize Glide.js
     const config = {
@@ -200,6 +193,14 @@ async function getInfo() {
         const songs_content = document.createElement('h3');
         songs_content.className = 'heading';
         songs_content.innerHTML = 'Song';
+
+        const albumSongs = [];
+        allSongs.forEach((song) => {
+          if (id+1 === song['vinyl_id']) {
+            albumSongs.append(song);
+          }
+          console.log(albumSongs)
+        });
 
         // PLACEMENTS Contents
         const placements_content = document.createElement('div');

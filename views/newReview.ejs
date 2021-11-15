@@ -45,23 +45,23 @@
             <label class="label">Rating</label>
             <div class="control">
               <label class="radio">
-                <input type="radio" name="university_rating">
+                <input type="radio" value="1" name="university_rating">
                 1 Star
               </label>
               <label class="radio">
-                <input type="radio" name="university_rating">
+                <input type="radio" value="2" name="university_rating">
                 2 Star
               </label>
               <label class="radio">
-                <input type="radio" name="university_rating">
+                <input type="radio" value="3" name="university_rating">
                 3 Star
               </label>
               <label class="radio">
-                <input type="radio" name="university_rating">
+                <input type="radio" value="4" name="university_rating">
                 4 Star
               </label>
               <label class="radio">
-                <input type="radio" name="university_rating">
+                <input type="radio" value="5" name="university_rating">
                 5 Star
               </label>
             </div>
@@ -69,19 +69,19 @@
           <div class="field">
             <label class="label">Comments</label>
             <div class="control">
-              <textarea class="textarea" placeholder="Tell us about your experience here"></textarea>
+              <textarea class="textarea" placeholder="Tell us about your experience here" id="review"></textarea>
             </div>
           </div>
           <div class="field">
             <label class="label">Graduation Year</label>
             <div class="control">
-              <input name="graduation_year" class="input" type="text" value="2021">
+              <input name="graduation_year" class="input" type="text" value="2021" id="graduation_year">
             </div>
           </div>
         </form>
 
         <!-- Review Submit -->
-        <a class="button is-primary" href="./">Submit Review</a>
+        <a class="button is-primary" href="#" id="submit">Submit Review</a>
       </div>
     </div>
 
@@ -93,5 +93,31 @@
         </p>
       </div>
     </footer>
+
+    <script>
+      document.querySelector("#submit").onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!document.querySelector("input[name='university_rating']:checked")) {
+          return false;
+        }
+
+        fetch("/api/schools/4/review", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            rank_id: <%= rank_id %>,
+            rating: document.querySelector("input[name='university_rating']:checked").value,
+            review: document.querySelector("#review").value,
+            graduation_year: document.querySelector("#graduation_year").value
+          })
+        }).then(d => {
+          window.location.href = "./";
+        });
+      };
+    </script>
   </body>
 </html>

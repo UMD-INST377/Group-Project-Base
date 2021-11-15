@@ -1,3 +1,4 @@
+/* eslint-disable no-multiple-empty-lines */
 /**
  * INST 377 TEAM 25
  * Authors: Alec Mattu, Hyeong Choi, John Iglesias, Michael Knapp
@@ -9,9 +10,17 @@ import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import controllers from '../controllers/index.js';
+import RateLimit from 'express-rate-limit';
 
 // Instantiate router component
 const router = express.Router();
+const limit = new RateLimit({
+  windowMs: 15 * 1000, // 15s API rate lmit
+  max: 5 // 5 requests per windowMs
+});
+
+// Use RateLimit Module
+router.use(limit);
 
 /**
  * Root directory
@@ -78,11 +87,48 @@ router.get('/schools/:rank_id', async (request, response) => {
 });
 
 /**
+<<<<<<< HEAD
  * Get available avg SAT scores for a school
  *
  * @author John I.
  */
 router.get('/schools/:rank_id/sat_scores', async (request, response) => {
+=======
+ * Fetch School Reviews by Rank ID
+ *
+ * @author Alec M.
+ * @date 2021-11-08 11:41:00
+ */
+router.get('/schools/:rank_id/reviews', async (request, response) => {
+  // Validate rank_id
+  const rank_id = parseInt(request.params.rank_id);
+  if (rank_id <= 0 || rank_id > 14) {
+    response.status(404).send("");
+  }
+
+  // Safely connect to database
+  try {
+    const r = await db.sequelizeDB.query(controllers.reviews.getNReviews, {
+      replacements: { rank_id: rank_id, review_limit: 20 },
+      type: sequelize.QueryTypes.SELECT
+    });
+    if (!r || r.length <= 0) {
+      response.status(404).send("");
+    }
+
+    // Send data
+    response.render('reviews', {reviews: r});
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    response.status(404).send("");
+  }
+});
+
+router.get('/schools/:rank_id/univ_location', async (request, response) => {
+>>>>>>> b38423f7fff4ee2b41aec120ec72ac29ed2c8dc6
   try {
     // Debug
     console.log('touched /schools/:rank_id/sat_scores with GET');
@@ -102,13 +148,40 @@ router.get('/schools/:rank_id/sat_scores', async (request, response) => {
  * Get admissions rate for Big 10 School
  * @Author Michael
  */
-router.get('/schools/:rank_id/admission_rate', async (request, response) => {
+router.get('/schools/:rank_id/Admission_rate', async (request, response) => {
   try {
-    // Debug
+
     console.log('touched /schools/:rank_id/admission_rate with GET');
 
+    const a = await db.sequelizeDB.query(controllers.Admission_rate.getAdmissionRate,{
+      replacements: { rank_id: rank_id, review_limit: 20 },
+      type: sequelize.QueryTypes.SELECT
+    });
+
     // Send data
-    response.json({status: "success", data: []});
+    response.json({status: 'success', data: a});
+  } catch(e) {
+    console.error(e);
+
+    response.json({status: 'failure', data: null, message:"unknown error"});
+  }
+});
+
+ * Get all average test scores
+ *
+ * @author John I.
+ */
+router.get('/test_scores', async (request, response) => {
+  try {
+    // Debug
+    console.log('touched /test_scores with GET');
+    // Fetch all test_scores
+    const d = await db.sequelizeDB.query(controllers.test_scores.getTestScores, {
+      type: sequelize.QueryTypes.SELECT
+    });
+
+    // Send data
+    response.json({status: 'success', data: d});
   } catch (e) {
     // Debug
     console.error(e);
@@ -118,65 +191,7 @@ router.get('/schools/:rank_id/admission_rate', async (request, response) => {
   }
 });
 
-/*********************
-*
-* Each member will set up a endpoint for our application
-* and implement the necessary HTTP methods for it (GET/PUT/POST/DELTE)
-*
-*********************/
 
-/*
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
-  try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
-router.delete('/dining/:hall_id', async (req, res) => {
-  try {
-    await db.DiningHall.destroy({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/dining', async (req, res) => {
-  try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-*/
-
+// Export Express Router
 export default router;

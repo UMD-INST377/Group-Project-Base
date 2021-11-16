@@ -329,7 +329,7 @@ function zf_FocusNext(elem, event) {
 
 // Creating event listener for submit button on data entry
 const submitBtn = document.getElementById('submit')
-console.log(submitBtn)
+console.log(submitBtn.id)
 submitBtn.addEventListener('click', postVinyl())
 
 async function postVinyl() {

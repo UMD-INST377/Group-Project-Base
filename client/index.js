@@ -219,7 +219,9 @@ async function getInfo() {
         song_headers.className = 'songs-headers'
         song_headers.innerHTML = `  <th>Track Name</th>
                                     <th>Track Number</th>
-                                    <th>Duration</th>`
+                                    <th>Duration</th>
+                                    <th>Key</th>
+                                    <th>BPM</th>`
         songs_table.appendChild(song_headers);
 
         // Creates a row for each song
@@ -228,7 +230,9 @@ async function getInfo() {
             song_row.className = 'songs-row'
             song_row.innerHTML = `  <td>${song['song_name']}</td> 
                                     <td>${song['track_num']}</td> 
-                                    <td>${song['duration']}</td>`
+                                    <td>${song['duration']}</td>
+                                    <td>${song['m.key']}</td>
+                                    <td>${song['bpm']}</td>`
             songs_table.appendChild(song_row)
         });
 

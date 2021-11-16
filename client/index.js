@@ -202,9 +202,9 @@ async function getInfo() {
         // SONGS Contents
         const songs_content = document.createElement('div');
         songs_content.className = 'heading';
-        const songs_box = document.createElement('div')
-        songs_box.className = 'songs-box'
-        songs_content.appendChild(songs_box)
+        const songs_table = document.createElement('div')
+        songs_table.className = 'songs-table'
+        songs_content.appendChild(songs_table)
         
         // Selects only songs relevant to that album
         const albumSongs = [];
@@ -215,21 +215,25 @@ async function getInfo() {
         });
 
         // Creates a first row for category's for song description
-        const song_cat = document.createElement('div')
-        song_cat.className = 'songs-cat'
-        song_cat.innerHTML = `<h3>Track Name</h3>
-                              <h3>Track Number</h3>
-                              <h3>Duration</h3>`
-        songs_box.appendChild(song_cat);
+        const song_headers = document.createElement('div')
+        song_headers.className = 'songs-headers'
+        song_headers.innerHTML = `  <th>Track Number</th>
+                                    <th>Track Name</th>
+                                    <th>Duration</th>
+                                    <th>Key</th>
+                                    <th>BPM</th>`
+        songs_table.appendChild(song_headers);
 
         // Creates a row for each song
         albumSongs.forEach((song) => {
-          const song_row = document.createElement('div')
-          song_row.className = 'songs-row'
-          song_row.innerHTML = `<p>${song['song_name']}</p> 
-                                <p>${song['track_num']}</p> 
-                                <p>${song['duration']}</p>`
-          songs_box.appendChild(song_row)
+            const song_row = document.createElement('div')
+            song_row.className = 'songs-row'
+            song_row.innerHTML = `  <td>${song['track_num']}</td> 
+                                    <td>${song['song_name']}</td> 
+                                    <td>${song['duration']}</td>
+                                    <td>${song['key']}</td>
+                                    <td>${song['bpm']}</td>`
+            songs_table.appendChild(song_row)
         });
 
         // PLACEMENTS Contents

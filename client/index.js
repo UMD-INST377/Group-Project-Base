@@ -192,7 +192,6 @@ async function getInfo() {
         // SONGS Contents
         const songs_content = document.createElement('div');
         songs_content.className = 'songs-box';
-        songs_content.innerHTML = 'Song';
 
         // Selects only songs relevant to that album
         const albumSongs = [];

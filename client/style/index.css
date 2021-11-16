@@ -301,14 +301,13 @@ img {
 }
 
 .songs-row {
-    display: flex;
     width: 100%;
     font-family: GothamBook;
     font-size: 14px;
 }
 
 .left-p {
-    justify-self: flex-start;
+    justify-self: start;
 }
 
 .center-p{
@@ -316,7 +315,7 @@ img {
 }
 
 .right-p{
-    justify-self: flex-end;
+    justify-self: end;
 }
 
 /* Tablets */

@@ -227,11 +227,12 @@ async function getInfo() {
         // Creates a row for each song
         albumSongs.forEach((song) => {
             const song_row = document.createElement('tr')
+            console.log(song)
             song_row.className = 'songs-row'
             song_row.innerHTML = `  <td>${song['song_name']}</td> 
                                     <td>${song['track_num']}</td> 
                                     <td>${song['duration']}</td>
-                                    <td>${song['m.key']}</td>
+                                    <td>${song['key']}</td>
                                     <td>${song['bpm']}</td>`
             songs_table.appendChild(song_row)
         });

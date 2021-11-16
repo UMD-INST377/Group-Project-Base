@@ -290,7 +290,7 @@ img {
     height: 100%;
     flex-direction: column;
     align-content: space-between;
-    overflow: auto;
+    overflow: scroll;
 }
 
 .songs-cat {

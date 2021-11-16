@@ -199,7 +199,7 @@ router.get('/schools/:rank_id/univ_location', async (request, response) => {
 });
 
 /**
- * Get all average test scores
+ * Get all school names, locations, and sat averages
  *
  * @author John I.
  */
@@ -208,7 +208,7 @@ router.get('/test_scores', async (request, response) => {
     // Debug
     console.log('touched /test_scores with GET');
     // Fetch all test_scores
-    const d = await db.sequelizeDB.query(controllers.test_scores.getTestScores, {
+    const d = await db.sequelizeDB.query(controllers.test_scores.getSchoolInfo, {
       type: sequelize.QueryTypes.SELECT
     });
 
@@ -222,6 +222,7 @@ router.get('/test_scores', async (request, response) => {
     response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
+
 
 
 

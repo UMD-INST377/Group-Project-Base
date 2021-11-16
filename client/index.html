@@ -29,36 +29,25 @@
         <div id="pref-header"><h1 class="title">Set College Preferences</h1></div>
         <hr>
         <div class="metrics-layout">
-        <div class="metrics-container"><strong> Avg. SAT Score <br><em><div class="grey"> ~1200, 1200-1400, 1400~ </div></em></strong></div>
-        <div class="metrics-container"><strong> Admission Req. <br><em><div class="grey"> Low, Medium, High </div></em></strong></div>
-        <div class="metrics-container"><strong> Other Category <br><em><div class="grey"> Low, Medium, High </div></em></strong></div>
+          <form class="metrics-form"><strong> Avg. SAT Score <br></strong>
+            <div>
+              <input type="radio" id="lower-scores" name="sat-scores" value="sat-score">
+                <label for="lower-scores"> < 1256</label><br>
+              <input type="radio" id="middle-scores" name="sat-scores" value="sat-score">
+                <label for="middle-scores">1256-1355</label><br>
+              <input type="radio" id="upper-scores" name="sat-scores" value="sat-score">  
+                <label for="upper-scores">1356+</label><br>
+              
+            </div>
+          </form>
+          <div class="metrics-form"><strong> Admission Req. <br><em><div class="grey"> Low, Medium, High </div></em></strong></div>
+          <div class="metrics-form"><strong> Other Category <br><em><div class="grey"> Low, Medium, High </div></em></strong></div>
         </div>
       </div>
       <div class="suggestions-container">
         <div id="sugg-header"><h1 class="title">Our BIG Suggestions</h1></div>
         <div id="results-container">
           <ul class="results">
-            <li>
-              <div class="uni-info">
-                <h1>UMD</h1><p>College Park, MD</p></div>
-              <div class="read-more">
-                <h3><a href="/university/4/">Read More</a></h3>
-              </div>
-            </li>
-            <li>
-              <div class="uni-info">
-                <h1>PSU</h1><p>University Park, PA</p></div>
-              <div class="read-more">
-                <h3><a href="/university/12/">Read More</a></h3>
-              </div>
-            </li>
-            <li>
-                <div class="uni-info">
-                  <h1>UMN</h1><p>Minnesota, MN</p></div>
-                <div class="read-more">
-                  <h3><a href="/university/6/">Read More</a></h3>
-                </div>
-              </li>
           </ul>
         </div>
       </div>
@@ -72,6 +61,6 @@
         </p>
       </div>
     </footer>
-    <script type="script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

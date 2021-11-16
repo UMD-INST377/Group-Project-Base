@@ -282,7 +282,6 @@ img {
 }
 
 .songs-table {
-    border: 1px;
     width: 100%;
     height: 100%;
 }
@@ -293,13 +292,11 @@ tr {
 }
 
 .songs-headers {
-    border: 1px;
     font-family: GothamMedium;
     font-size: 18px;
 }
 
 .songs-row {
-    border: 1px;
     font-family: GothamBook;
     font-size: 14px;
 }

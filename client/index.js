@@ -524,7 +524,7 @@ async function getInfo() {
             || evt.target.className === 'result' || evt.target.className === 'header'
             || evt.target.className === 'items' || evt.target.className === 'item'
             || evt.target.className === 'heading' || evt.target.className === 'placeholder'
-            || evt.target.className === 'name') {} else {
+            || evt.target.className === 'name' || evt.target.nodeName === 'BUTTON') {} else {
             container.style.cssText = `height: 100vh;
                                  transition-duration: 1s;
                                       `;

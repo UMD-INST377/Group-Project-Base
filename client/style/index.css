@@ -381,6 +381,10 @@ tr {
         display: flex;
     }
 
+    .result-placement {
+        width: 60%;
+    }
+
     .fa-plus-circle {
         bottom: 20px;
         right: 20px

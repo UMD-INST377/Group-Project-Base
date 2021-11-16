@@ -286,11 +286,10 @@ img {
 
 .songs-box {
     display: flex;
-    flex-wrap: wrap;
     height: 100%;
-    max-width: 100%;
     flex-direction: column;
     align-content: space-between;
+    overflow: scroll;
 }
 
 .songs-cat {

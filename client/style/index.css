@@ -284,22 +284,20 @@ img {
 .songs-table {
     width: 100%;
     height: 100%;
-    border: 1px solid black;
 }
 
 tr {
     align-content: space-between;
     text-align: center;
+    border: 1px solid black;
 }
 
 .songs-headers {
-    border: 1px solid black;
     font-family: GothamMedium;
     font-size: 18px;
 }
 
 .songs-row {
-    border: 1px solid black;
     font-family: GothamBook;
     font-size: 14px;
 }

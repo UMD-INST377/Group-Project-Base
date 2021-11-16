@@ -1,3 +1,60 @@
-/**
- * Just an empty script :(
- */
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable indent */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable space-before-blocks */
+/* eslint-disable no-console */
+
+/*displays school sugestions in suggestions bar according to selected
+SAT radio button*/
+function displaySuggestions(event){
+  // eslint-disable-next-line no-multiple-empty-lines
+  let filterData;
+  if(event.target.id === 'upper-scores'){/*filter school data according to radio selected*/
+    filterData = data.data.filter((item) => item.SAT_average > 1355)
+  }else if(event.target.id === 'middle-scores'){
+    console.log("middle scores")
+    filterData = data.data.filter((item) => item.SAT_average >= 1256 && item.SAT_average < 1356);
+  }else{//filter data for lower sat scores
+    filterData = data.data.filter((item) =>item.SAT_average < 1256);
+  }
+  const html = filterData.map((item) => // return filtered school data as list items
+     `
+    <li>
+      <div class="uni-info">
+        <h1><strong>${item.university_name}<strong></h1><p>${item.univ_location}</p></div>
+      <div class="read-more">
+        <h3><a href="/university/4/">Read More</a></h3>
+      </div>
+    </li>
+    `
+  ).join(''); 
+
+  const suggestions = document.querySelector('.results');
+  suggestions.innerHTML = html;
+}
+
+
+/* initializes sat radiobuttons so suggestions are displayed are displayed
+according to what button is selected*/
+async function initSATRadioButtons() {
+  const url = '/api/test_scores';
+  data = [];
+
+  const request = await fetch(url);
+  if (request.ok) {
+    data = await request.json();
+
+    const upperScoreButton = document.querySelector('#upper-scores');
+    const middleScoreButton = document.querySelector('#middle-scores');
+    const lowerScoreButton = document.querySelector('#lower-scores');
+
+    upperScoreButton.addEventListener('change', displaySuggestions);
+    middleScoreButton.addEventListener('change', displaySuggestions);
+    lowerScoreButton.addEventListener('change', displaySuggestions);
+  } else {
+    console.log('messed up'); 
+  } 
+}
+
+initSATRadioButtons();

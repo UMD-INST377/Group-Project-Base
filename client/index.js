@@ -192,6 +192,7 @@ async function getInfo() {
         // SONGS Contents
         const songs_content = document.createElement('div');
         songs_content.className = 'heading';
+        songs_content.appendChild(songs_box)
         const songs_box = document.createElement('div')
         songs_box.className = 'songs-box'
 
@@ -218,7 +219,7 @@ async function getInfo() {
           song_row.innerHTML = `<p>${song['song_name']}</p> 
                                 <p>${song['track_num']}</p> 
                                 <p>${song['duration']}</p>`
-          songs_content.appendChild(song_row)
+          songs_box.appendChild(song_row)
         });
 
         // PLACEMENTS Contents

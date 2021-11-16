@@ -308,15 +308,15 @@ img {
 }
 
 .left-p {
-    align-self: flex-start;
+    justify-self: flex-start;
 }
 
 .center-p{
-    align-self: center;
+    justify-self: center;
 }
 
 .right-p{
-    align-self: flex-end;
+    justify-self: flex-end;
 }
 
 /* Tablets */

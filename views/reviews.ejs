@@ -1,20 +1,33 @@
 <% for (let i = 0; i < reviews.length; i++) { %>
-<div class="box">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-      </figure>
-    </div>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong>Anonymous Student</strong> <small><%= reviews[i]["date"] %></small>
-          <br>
-          <%= reviews[i]["review"] %>
-        </p>
+  <div class="box">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+        </figure>
       </div>
-    </div>
-  </article>
-</div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>Anonymous</strong>
+            <span>
+              <%
+                let numStars = parseInt(reviews[i]["rating"]);
+                let numHalfStars = parseFloat(reviews[i]["rating"]) % 2 === 0 ? 1 : 0;
+              %>
+              <% for (let n = 0; n < numStars; n++) { %>
+                <i class="fas fa-star"></i>
+              <% } %>
+              <% if (numHalfStars > 0) { %>
+                <i class="fas fa-star-half"></i>
+              <% } %>
+            </span>
+            <small class="is-pulled-right"><%= (new Date(reviews[i]["date"])).toISOString().split('T')[0] %></small>
+            <br>
+            <%= reviews[i]["review"] %>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
 <% } %>

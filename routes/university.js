@@ -85,6 +85,7 @@ router.get("/:rank_id/review", async (request, response) => {
     }
 
     // Render page
+    d[0]["rank_id"] = rank_id;
     response.render('newReview', d[0]);
   } catch (e) {
     // Debug

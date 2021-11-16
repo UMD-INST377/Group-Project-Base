@@ -14,7 +14,7 @@ async function getInfo() {
 
     // Request and Compile PLACEMENTS Information
     // const placementsRequest = await fetch('http://localhost:3000/api/placements');
-    const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/placements');
+    const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com//placements');
     const allPlacements = await placementsRequest.json();
     const placements = new Object();
     for (const currentPlacement in allPlacements) {
@@ -23,7 +23,7 @@ async function getInfo() {
 
     // Request and Compile CERTIFICAITON Information
     // const certificationsRequest = await fetch('http://localhost:3000/api/certifications');
-    const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/certifications');
+    const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com//api/certifications');
     const allCertifications = await certificationsRequest.json();
     const certifications = new Object();
     for (const currentCertification in allCertifications) {
@@ -32,7 +32,7 @@ async function getInfo() {
 
     // Request and Compile PRICES Information
     // const pricesRequest = await fetch('http://localhost:3000/api/prices');
-    const pricesRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/prices');
+    const pricesRequest = await fetch('https://inst377-vinylweb.herokuapp.com//api/prices');
     const allPrices = await pricesRequest.json();
     const prices = new Object();
     for (const currentPrice in allPrices) {
@@ -41,7 +41,7 @@ async function getInfo() {
 
     //Request and Compile SONGS information
     // const songsRequest = await fetch('http://localhost:3000/api/songs')
-    const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/songs')
+    const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com//api/songs')
     const allSongs = await songsRequest.json()
 
     // Configure and Initialize Glide.js
@@ -202,34 +202,34 @@ async function getInfo() {
         // SONGS Contents
         const songs_content = document.createElement('div');
         songs_content.className = 'heading';
-        const songs_table = document.createElement('table')
-        songs_table.className = 'songs-table'
-        songs_content.appendChild(songs_table)
+        const songs_box = document.createElement('div')
+        songs_box.className = 'songs-box'
+        songs_content.appendChild(songs_box)
         
         // Selects only songs relevant to that album
         const albumSongs = [];
         allSongs.forEach((song) => {
-            if (Number(id)+1 === song['vinyl_id']) {
-                albumSongs.push(song);
-            }
+          if (Number(id)+1 === song['vinyl_id']) {
+            albumSongs.push(song);
+          }
         });
 
         // Creates a first row for category's for song description
-        const song_headers = document.createElement('tr')
-        song_headers.className = 'songs-headers'
-        song_headers.innerHTML = `  <th>Track Name</th>
-                                    <th>Track Number</th>
-                                    <th>Duration</th>`
-        songs_table.appendChild(song_headers);
+        const song_cat = document.createElement('div')
+        song_cat.className = 'songs-cat'
+        song_cat.innerHTML = `<h3>Track Name</h3>
+                              <h3>Track Number</h3>
+                              <h3>Duration</h3>`
+        songs_box.appendChild(song_cat);
 
         // Creates a row for each song
         albumSongs.forEach((song) => {
-            const song_row = document.createElement('tr')
-            song_row.className = 'songs-row'
-            song_row.innerHTML = `  <td>${song['song_name']}</td> 
-                                    <td>${song['track_num']}</td> 
-                                    <td>${song['duration']}</td>`
-            songs_table.appendChild(song_row)
+          const song_row = document.createElement('div')
+          song_row.className = 'songs-row'
+          song_row.innerHTML = `<p>${song['song_name']}</p> 
+                                <p>${song['track_num']}</p> 
+                                <p>${song['duration']}</p>`
+          songs_box.appendChild(song_row)
         });
 
         // PLACEMENTS Contents
@@ -323,8 +323,10 @@ async function getInfo() {
                     <p class="result">${certifications[id].platinum}</p>
                 </div>
                 <div class="item item-cert">
-                    <img class="cert" src="images/RIAA_cert/multi-platinum.PNG">
-                    <img class="cert" src="images/RIAA_cert/multi-platinum.PNG">
+                    <div class="certs">
+                      <img class="cert" src="images/RIAA_cert/multi-platinum.PNG">
+                      <img class="cert" src="images/RIAA_cert/multi-platinum.PNG">
+                    </div>
                     <p class="header">Multi-Platinum</p>
                     <p class="result">${certifications[id].multi_platinum}</p>
                 </div>

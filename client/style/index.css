@@ -340,8 +340,8 @@ tr {
 
     .search input:valid+.placeholder, 
     .search input:focus+.placeholder {
-    top: 0px;
-    font-size: 7px;
+        top: 0px;
+        font-size: 7px;
     }
 
     .search-result {
@@ -352,7 +352,7 @@ tr {
 
     .tab button {
         font-size: 10px;
-        padding: 19px 10px;
+        padding: 16px 10px;
     }
 
     .item {
@@ -366,6 +366,29 @@ tr {
     .result {
         font-size: 9px;
     }
+
+    .item {
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    .items-cert {
+        margin-top: 5vw;
+    }
+
+    .item.item-cert {
+        width: 25%;
+    }
+
+    .certs {
+        display: flex;
+    }
+
+    .fa-plus-circle {
+        bottom: 20px;
+        right: 20px
+    }
+
   }
 
 

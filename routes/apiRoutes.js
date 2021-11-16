@@ -125,34 +125,66 @@ router.route('/eruption_category')
 router.route('/eruption_info')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(infoController.infoGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('you touched the route!');
-      res.json({message: 'touched eruption_info with GET'});
+      res.json(result);
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
   })
   .put(async(req, res) => {
     try {
-      res.json({message: 'touched eruption_info with PUT'});
+      const result = await db.sequelizeDB.query(infoController.infoPut, {
+        replacements: {
+          eruption_id: req.body.eruption_id,
+          eruption_number: req.body.eruption_number,
+          year: req.body.year,
+          month: req.body.month,
+          day: req.body.day,
+          volcano_id: req.body.volcano_id,
+          aoa_id: req.body.aoa_id,
+          vei_id: req.body.vei_id,
+          evidence_id: req.body.evidence_id,
+          cagetory_id: req.body.cagetory_id,
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      console.log('Successfully updated eruption_info')
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
-
   .post(async(req, res) => {
     try {
-      res.json({message: 'touched eruption_info with POST'});
+      const result = await db.sequelizeDB.query(infoController.infoPost, {
+        replacements: {
+          eruption_number: req.body.eruption_number,
+          year: req.body.year,
+          month: req.body.month,
+          day: req.body.day,
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      console.log('Successfully inserted eruption_info')
+      res.json(result);
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
   .delete(async(req, res) => {
     try {
-      res.json({message: 'touched eruption_info with DELETE'});
+      const result = await db.sequelizeDB.query(infoController.infoDelete, {
+        replacements: {
+          eruption_id: req.body.eruption_id,
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      console.log('Successfully deleted from eruption_info')
+      res.json(result);
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   });

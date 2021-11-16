@@ -1,4 +1,7 @@
 /* eslint-disable block-spacing */
+
+import { text } from "body-parser";
+
 // $Id: $
 function zf_ValidateAndSubmit() {
     if (zf_CheckMandatory()) {
@@ -335,7 +338,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 async function postVinyl() {
     // Selecting all text inputs
     const texts = document.querySelectorAll('input')
-    console.log(texts)
     /*
     3 Song Name
     4 Album Name
@@ -350,9 +352,27 @@ async function postVinyl() {
 
     // Selecting the select inputs
     const selects = document.querySelectorAll('select')
-    
     /*
     0 Genre
     1 Hour 2 Minute
+    */
+
+    // Separating inputs into array so they can be "stringified"
+    const headerInput = [];
+
+    texts.forEach((input) => {
+        console.log(input.text)
+        headerInput.push(input.text)
+    });
+
+    /* Requesting POST
+    const response = await fetch('https://inst377-vinylweb.herokuapp.com/api/prices', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(headerInput)
+    });
+    console.log(json.response());
     */
 }

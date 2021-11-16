@@ -305,18 +305,7 @@ img {
     width: 100%;
     font-family: GothamBook;
     font-size: 14px;
-}
-
-.left-p {
-    justify-self: flex-start;
-}
-
-.center-p{
-    justify-self: center;
-}
-
-.right-p{
-    justify-self: flex-end;
+    justify-content: space-between;
 }
 
 /* Tablets */

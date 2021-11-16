@@ -1,4 +1,7 @@
 /* eslint-disable block-spacing */
+
+import { text } from "body-parser";
+
 // $Id: $
 function zf_ValidateAndSubmit() {
     if (zf_CheckMandatory()) {
@@ -325,4 +328,51 @@ function zf_FocusNext(elem, event) {
             document.getElementsByName(compname + "_second")[0].focus();
         }
     }
+}
+
+// Creating event listener for submit button on data entry
+window.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelector('.zf-submitColor').addEventListener('click', postVinyl());
+});
+
+async function postVinyl() {
+    // Selecting all text inputs
+    const texts = document.querySelectorAll('input')
+    /*
+    3 Song Name
+    4 Album Name
+    5 Artist Name
+    6 Producer FN 7 Producer LN
+    8 Release Date
+    9 Track Num
+    10 weight
+    11 Yes 12 No (is_explicit)
+    13 Album Pic Upload
+    */
+
+    // Selecting the select inputs
+    const selects = document.querySelectorAll('select')
+    /*
+    0 Genre
+    1 Hour 2 Minute
+    */
+
+    // Separating inputs into array so they can be "stringified"
+    const headerInput = [];
+
+    texts.forEach((input) => {
+        console.log(input.text)
+        headerInput.push(input.text)
+    });
+
+    /* Requesting POST
+    const response = await fetch('https://inst377-vinylweb.herokuapp.com/api/prices', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(headerInput)
+    });
+    console.log(json.response());
+    */
 }

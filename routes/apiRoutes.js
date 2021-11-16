@@ -62,7 +62,7 @@ router.get('/hurricanes', async (req, res) => {
 
 export default router;
 /* City Endpoint */
-import endpoint1 from '../routes/cityControllers'
+//import endpoint1 from '../routes/cityControllers'
 
 router.route('/city')
   .get(async (req, res) => {

@@ -288,7 +288,7 @@ img {
     display: flex;
     flex-wrap: wrap;
     height: 100%;
-    flex-direction: row;
+    flex-direction: column;
     align-content: space-between;
     overflow: scroll;
 }

@@ -328,8 +328,8 @@ function zf_FocusNext(elem, event) {
 }
 
 // Creating event listener for submit button on data entry
-const submitBtn = document.getElementsByClassName('zf-submitColor')
-console.log(typeof submitBtn)
+const submitBtn = document.getElementsByClassName('zf-submitColor')[0].focus();
+console.log(typeof submitBtn);
 submitBtn.addEventListener('click', postVinyl())
 
 async function postVinyl() {

@@ -217,8 +217,8 @@ async function getInfo() {
         // Creates a first row for category's for song description
         const song_headers = document.createElement('tr')
         song_headers.className = 'songs-headers'
-        song_headers.innerHTML = `  <th>Track Name</th>
-                                    <th>Track Number</th>
+        song_headers.innerHTML = `  <th>Track Number</th>
+                                    <th>Track Name</th>
                                     <th>Duration</th>
                                     <th>Key</th>
                                     <th>BPM</th>`
@@ -228,8 +228,8 @@ async function getInfo() {
         albumSongs.forEach((song) => {
             const song_row = document.createElement('tr')
             song_row.className = 'songs-row'
-            song_row.innerHTML = `  <td>${song['song_name']}</td> 
-                                    <td>${song['track_num']}</td> 
+            song_row.innerHTML = `  <td>${song['track_num']}</td> 
+                                    <td>${song['song_name']}</td> 
                                     <td>${song['duration']}</td>
                                     <td>${song['key']}</td>
                                     <td>${song['bpm']}</td>`

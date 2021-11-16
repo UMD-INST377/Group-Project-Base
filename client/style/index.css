@@ -290,6 +290,7 @@ img {
 tr {
     align-content: space-between;
     text-align: center;
+    border: 1px black;
 }
 
 .songs-headers {

@@ -18,7 +18,7 @@ function getTable(tableName) {
 }
 
 // get the actorId by value
-function getActorIdByValue(rows, value) {
+function getByActorName(rows, value) {
   return rows.filter((item) => item.actor_name === value);
 }
 
@@ -38,24 +38,20 @@ expressRouter.route('/actors')
 
   .put(async (req, res) => { // UPDATE ACTOR NAME in the possibility that actor changed their name
     try {
-      // will connect this to the films table later
-      const actors = await db.sequelizeDB.query(getTable('actors'), {
-        type: sequelize.QueryTypes.SELECT
-      });
-      const actorName = `SELECT * FROM actors WHERE actor_name = "${req.body.actor_name}"`;
-      const selectActor = await db.sequelizeDB.query(actorName, {
-        type: sequelize.QueryTypes.SELECT
-      });
-      const actorId = getActorIdByValue(actor_name, req.body.actor_name);
       const update = `UPDATE actors 
         SET actor_name = '${req.body.actor_name}'
-        WHERE actor_id = '${actorId}
+        WHERE actor_id = '${req.body.actor_id}
       `;
-      await db.sequelizeDB.query(update, {
+      const result = await db.sequelizeDB.query(update, {
         type: sequelize.QueryTypes.UPDATE
       });
-
+      // all of the selected actor rows
+      const selectActors = await db.sequelizeDB.query(actorsMap, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
       res.send(`"${req.body.actor_name}" has been sucessfully updated!`);
+      console.log(getByActorName(selectActors, req.body.actor_name));
     } catch (error) {
       console.log(error);
       res.json({error: `${errorMsg} PUT`});

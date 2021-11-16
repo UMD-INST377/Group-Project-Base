@@ -192,10 +192,10 @@ async function getInfo() {
         // SONGS Contents
         const songs_content = document.createElement('div');
         songs_content.className = 'heading';
-        songs_content.appendChild(songs_box)
         const songs_box = document.createElement('div')
         songs_box.className = 'songs-box'
-
+        songs_content.appendChild(songs_box)
+        
         // Selects only songs relevant to that album
         const albumSongs = [];
         allSongs.forEach((song) => {

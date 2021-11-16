@@ -304,6 +304,7 @@ img {
     width: 100%;
     font-family: GothamBook;
     font-size: 14px;
+    justify-content: space-evenly;
 }
 
 .left-p {

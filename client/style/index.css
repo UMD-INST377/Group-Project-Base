@@ -295,11 +295,13 @@ img {
 
 .songs-cat {
     display: flex;
+    width: 100%;
     justify-content: space-around;
 }
 
 .songs-row {
     display: flex;
+    width: 100%;
     justify-content: space-around;
 }
 

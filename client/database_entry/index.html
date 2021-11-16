@@ -79,25 +79,16 @@
                         </li>
                         <!---------Single Line Ends Here---------->
 
-                        <!---------Name Starts Here---------->
-                        <li class="zf-tempFrmWrapper zf-name zf-namemedium"><label class="zf-labelName">Artist Name
-    <em class="zf-important">*</em>
-    </label>
-                            <div class="zf-tempContDiv zf-twoType">
-                                <div class="zf-nameWrapper">
-                                    <span> <input type="text" maxlength="255" name="Name1_First" fieldType=7 /><label>First</label> </span>
-                                    </span>
-                                    </span>
-                                    <span> <input type="text" maxlength="255" name="Name1_Last" fieldType=7 /><label>Last</label> </span>
-                                    </span>
-                                    </span>
-                                    <div class="zf-clearBoth"></div>
-                                </div>
-                                <p id="Name1_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                        <!---------Single Line Starts Here---------->
+                        <li class="zf-tempFrmWrapper zf-small"><label class="zf-labelName">Artist Name 
+                            <em class="zf-important">*</em>
+                            </label>
+                            <div class="zf-tempContDiv"><span> <input type="text" name="SingleLine" checktype="c1" value="" maxlength="255" fieldType=1 /></span>
+                                <p id="SingleLine_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
                             </div>
                             <div class="zf-clearBoth"></div>
                         </li>
-                        <!---------Name Ends Here---------->
+                        <!---------Single Line Ends Here---------->
                         <!---------Name Starts Here---------->
                         <li class="zf-tempFrmWrapper zf-name zf-namemedium"><label class="zf-labelName">Producer Name
                             <em class="zf-important">*</em>
@@ -158,7 +149,8 @@
                         <li class="zf-tempFrmWrapper zf-time"><label class="zf-labelName">Album Run Time
 </label>
                             <div class="zf-tempContDiv"><span> <select class="zf-form-sBox" name="Time_hours" checktype="c1"><option value=""></option>
-<option selected>01</option>
+                                <option selected>00</option>
+                                <option>01</option>
 <option>02</option>
 <option>03</option>
 <option>04</option>
@@ -232,8 +224,6 @@
 <option>58</option>
 <option>59</option>
 </select><label>MM</label> </span>
-                                <span class="zf-symbols">:</span> <span> <select class="zf-form-sBox" name="Time_meridiem" checktype="c1"><option value=""></option>
-<option selected>AM</option><option>PM</option></select><label>AM / PM</label> </span>
                                 <div class="zf-clearBoth"></div>
                                 <p id="Time_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
                             </div>

@@ -349,6 +349,7 @@ async function postVinyl() {
 
     // Selecting the select inputs
     const selects = document.querySelectorAll('select')
+    console.log(selects)
     /*
 
     */

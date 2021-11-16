@@ -204,9 +204,9 @@ async function getInfo() {
         // Selects only songs relevant to that album
         const albumSongs = [];
         allSongs.forEach((song) => {
-          if (Number(id)+1 === song['vinyl_id']) {
-            albumSongs.push(song);
-          }
+            if (Number(id)+1 === song['vinyl_id']) {
+                albumSongs.push(song);
+            }
         });
 
         // Creates a first row for category's for song description
@@ -219,12 +219,12 @@ async function getInfo() {
 
         // Creates a row for each song
         albumSongs.forEach((song) => {
-          const song_row = document.createElement('tr')
-          song_row.className = 'songs-row'
-          song_row.innerHTML = `<td>${song['song_name']}</td> 
-                                <td>${song['track_num']}</td> 
-                                <td>${song['duration']}</td>`
-        songs_table.appendChild(song_row)
+            const song_row = document.createElement('tr')
+            song_row.className = 'songs-row'
+            song_row.innerHTML = `  <td>${song['song_name']}</td> 
+                                    <td>${song['track_num']}</td> 
+                                    <td>${song['duration']}</td>`
+            songs_table.appendChild(song_row)
         });
 
         // PLACEMENTS Contents

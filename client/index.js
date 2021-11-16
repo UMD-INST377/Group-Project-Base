@@ -216,9 +216,9 @@ async function getInfo() {
         albumSongs.forEach((song) => {
           const song_row = document.createElement('div')
           song_row.className = 'songs-row'
-          song_row.innerHTML = `<p class='left-p'>${song['song_name']}</p> 
-                                <p class='center-p'>${song['track_num']}</p> 
-                                <p class='right-p>${song['duration']}</p>`
+          song_row.innerHTML = `<p>${song['song_name']}</p> 
+                                <p>${song['track_num']}</p> 
+                                <p>${song['duration']}</p>`
           songs_box.appendChild(song_row)
         });
 

@@ -334,6 +334,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 async function postVinyl() {
     // Selecting all text inputs
-    const inputs = document.querySelectorAll('input')
-    console.log(inputs)
+    const texts = document.querySelectorAll('input')
+    /*
+    3 Song Name
+    4 Album Name
+    5 Artist Name
+    6 Producer FN 7 Producer LN
+    8 Release Date
+    9 Track Num
+    10 weight
+    11 Yes 12 No (is_explicit)
+    13 Album Pic Upload
+    */
+
+    // Selecting the select inputs
+    const selects = document.querySelectorAll('select')
+    /*
+
+    */
 }

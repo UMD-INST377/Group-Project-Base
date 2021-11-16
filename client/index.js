@@ -215,7 +215,7 @@ async function getInfo() {
         song_headers.innerHTML = `  <th>Track Name</th>
                                     <th>Track Number</th>
                                     <th>Duration</th>`
-        songs_box.appendChild(song_headers);
+        songs_table.appendChild(song_headers);
 
         // Creates a row for each song
         albumSongs.forEach((song) => {
@@ -224,7 +224,7 @@ async function getInfo() {
           song_row.innerHTML = `<td>${song['song_name']}</td> 
                                 <td>${song['track_num']}</td> 
                                 <td>${song['duration']}</td>`
-          songs_box.appendChild(song_row)
+        songs_table.appendChild(song_row)
         });
 
         // PLACEMENTS Contents

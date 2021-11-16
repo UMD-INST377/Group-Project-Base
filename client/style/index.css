@@ -284,28 +284,27 @@ img {
     transform: scale(1.3);
 }
 
-.songs-box {
-    display: flex;
+.songs-table {
+    border: 1px;
+    width: 100%;
     height: 100%;
-    flex-direction: column;
-    align-content: space-between;
-    overflow: scroll;
 }
 
-.songs-cat {
-    display: flex;
-    width: 100%;
+tr {
+    align-content: space-between;
+    text-align: center;
+}
+
+.songs-headers {
+    border: 1px;
     font-family: GothamMedium;
     font-size: 18px;
-    justify-content: space-around;
 }
 
 .songs-row {
-    display: flex;
-    width: 100%;
+    border: 1px;
     font-family: GothamBook;
     font-size: 14px;
-    justify-content: space-between;
 }
 
 /* Tablets */

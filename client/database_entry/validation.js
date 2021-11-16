@@ -333,5 +333,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 async function postVinyl() {
-    console.log('here')
+    // Selecting all text inputs
+    const inputs = document.querySelectorAll('input')
+    console.log(inputs)
 }

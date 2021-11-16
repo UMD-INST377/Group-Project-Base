@@ -335,6 +335,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 async function postVinyl() {
     // Selecting all text inputs
     const texts = document.querySelectorAll('input')
+    console.log(texts)
     /*
     3 Song Name
     4 Album Name
@@ -349,8 +350,9 @@ async function postVinyl() {
 
     // Selecting the select inputs
     const selects = document.querySelectorAll('select')
-    console.log(selects)
+    
     /*
-
+    0 Genre
+    1 Hour 2 Minute
     */
 }

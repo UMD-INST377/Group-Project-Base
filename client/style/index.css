@@ -292,10 +292,7 @@ img {
 
 tr {
     align-content: space-between;
-}
-
-td {
-    justify-content: center;
+    text-align: center;
 }
 
 .songs-headers {

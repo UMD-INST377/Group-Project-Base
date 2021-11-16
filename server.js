@@ -30,7 +30,7 @@ app.use(express.static(staticFolder));
 // app.use('/api', labelsRoutes);
 app.use('/api', musical_infoRoutes);
 app.use('/api', placementsRoutes);
-app.use('/api', certificationRoutes)
+app.use('/api', certificationRoutes);
 app.use('/api', pricesRoutes);
 app.use('/api', producersRoutes);
 app.use('/api', singersRoutes);

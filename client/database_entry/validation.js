@@ -366,7 +366,7 @@ async function postVinyl() {
     });
 
     /* Requesting POST
-    const response = await fetch('https://inst377-vinylweb.herokuapp.com/api/prices', {
+    const response = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

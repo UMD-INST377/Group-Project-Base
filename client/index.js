@@ -564,6 +564,10 @@ async function getInfo() {
             active.style.removeProperty('box-shadow');
             active.style.removeProperty('transform');
         }
+
+        // Creating event listener for submit button on data entry
+        const submitBtn = document.querySelector('.zf-submitColor')
+        console.log('here')
     });
 }
 

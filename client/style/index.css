@@ -120,7 +120,6 @@ input {
     width: 20.2vw;
     top: 65px;
     left: 52px;
-    /* left: 54px; */
     border-color: black;
     border-style: solid;
     border-width: 0 2px 2px 2px;
@@ -262,9 +261,7 @@ img {
 }
 
 .link {
-    /* font-family: GothamBook; */
     font-family: GothamMedium;
-    /* font-weight: ; */
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -313,6 +310,62 @@ img {
 @media only screen and (max-width: 1100px) {
     .result-placement {
       width: 50%
+    }
+  }
+
+/* For Smaller Mobile Devices */
+
+@media only screen and (max-width: 400px) {
+    img {
+        max-height: 200px;
+        max-width: 200px;
+    }
+    .search {
+        top: 30px;
+        left: 16vw;
+    }
+
+    input {
+        top: 10px;
+        height: 6vw;
+        width: 200px;
+        font-size: 10px;
+    }
+
+    .search .placeholder {
+        font-size: 9px;
+        left: 3.6vw;
+        top: 22px;
+        width: 30vw;
+    }
+
+    .search input:valid+.placeholder, 
+    .search input:focus+.placeholder {
+    top: 0px;
+    font-size: 7px;
+    }
+
+    .search-result {
+        width: 203px;
+        top: 42px;
+        left: 10px;
+    }
+
+    .tab button {
+        font-size: 10px;
+        padding: 19px 10px;
+    }
+
+    .item {
+        margin-top: 0px;
+    }
+
+    .header {
+        font-size: 10px
+    }
+
+    .result {
+        font-size: 9px;
     }
   }
 

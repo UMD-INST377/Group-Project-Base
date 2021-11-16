@@ -48,7 +48,12 @@ async function getInfo() {
     const config = {
         type: 'slider',
         perView: 5,
-        focusAt: 'center'
+        focusAt: 'center',
+        breakpoints: {
+          450: {
+            perView: 1
+          }
+        }
     };
 
     const glide = new Glide('.glide', config).mount();
@@ -372,10 +377,16 @@ async function getInfo() {
         // Show Only the Tab that is Clicked On
         function openTab(tabIndex) {
             const heading = document.querySelectorAll('.heading');
+            const button = document.querySelectorAll('.link')
             heading.forEach((item) => {
                 item.style.display = 'none';
             });
+            button.forEach(item => {
+              item.style.removeProperty('background-color')
+            })
             heading[tabIndex].style.display = 'block';
+            button[tabIndex].style.cssText = 'background-color: rgba(214, 214, 214, 0.8);'
+
         }
     }
 
@@ -393,8 +404,8 @@ async function getInfo() {
         const suggestions = document.querySelector('.search-result');
         const matchResult = matchSearch.map((match) => `
     <li class="suggestion">
-        <div class="name">${match.album_name}</div></li>
-    `).join('');
+        <div class="name">${match.album_name}</div>
+    </li>`).join('');
         suggestions.innerHTML = matchResult;
     }
 
@@ -421,7 +432,7 @@ async function getInfo() {
                                     glide.go(`=${vinyl[eachVinyl].vinyl_id - 1}`);
                                     container.style.cssText = `height: 50vh; 
                                              transition-duration: 1s
-                     `;
+                                              `;
                                     const image = images[vinyl[eachVinyl].vinyl_id - 1];
 
                                     // Added CSS to the Selected Image(Album Cover)
@@ -434,16 +445,21 @@ async function getInfo() {
                                     } else if (body.contains(document.querySelector('.detail'))) {
                                         const detail = document.querySelector('.detail');
                                         detail.remove();
+                                        
                                         createDetail(vinyl[eachVinyl].vinyl_id - 1);
                                         images.forEach((item) => {
                                             item.style.removeProperty('box-shadow');
                                             item.style.removeProperty('transform');
                                         });
+                                  
                                         image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
                                           transform: scale(0.8);
                                           transition-duration: 0.5s`;
                                     }
                                 }
+                              suggestions.forEach(item => {
+                                item.remove()
+                              })
                             }
                         });
                     });

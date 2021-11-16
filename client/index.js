@@ -14,7 +14,7 @@ async function getInfo() {
 
     // Request and Compile PLACEMENTS Information
     // const placementsRequest = await fetch('http://localhost:3000/api/placements');
-    const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/placements');
+    const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/placements');
     const allPlacements = await placementsRequest.json();
     const placements = new Object();
     for (const currentPlacement in allPlacements) {

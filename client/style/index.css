@@ -295,13 +295,17 @@ img {
 .songs-cat {
     display: flex;
     width: 100%;
+    font-family: GothamMedium;
+    font-size: 18px;
     justify-content: space-around;
 }
 
 .songs-row {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    font-family: GothamBook;
+    font-size: 14px;
+    justify-content: stretch;
 }
 
 /* Tablets */

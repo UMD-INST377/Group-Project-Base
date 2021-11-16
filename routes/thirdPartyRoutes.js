@@ -15,14 +15,14 @@ const expressRouter = express.Router();
 
 // only need it to get movie information via the title, so only used .post
 
-expressRouter.route('/movieImages')
+expressRouter.route('/movieImages/:movieTitle')
   .post(async (req, res) => {
     try {
-      const url = `https://api.themoviedb.org/3/search/movie?api_key=b8e74277443e1aeb8f158e41a802b173&query=${req.body.query}`;
+      const url = `https://api.themoviedb.org/3/search/movie?api_key=b8e74277443e1aeb8f158e41a802b173&query=${req.params.movieTitle}`;
       const data = await fetch(url);
       const movieInfo = await data.json();
-      console.log('touched /movieImages with POST');
-      res.json({data: movieInfo});
+      const posterPath = movieInfo.results;
+      res.send(posterPath);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});

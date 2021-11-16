@@ -305,7 +305,7 @@ img {
     width: 100%;
     font-family: GothamBook;
     font-size: 14px;
-    justify-content: stretch;
+    justify-content: space-around;
 }
 
 /* Tablets */

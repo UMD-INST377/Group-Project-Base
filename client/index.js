@@ -19,7 +19,7 @@ async function getInfo() {
         placements[currentPlacement] = allPlacements[currentPlacement];
     }
 
-    // Request and Compile PLACEMENTS Information
+    // Request and Compile CERTIFICAITON Information
     const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/certifications');
     const allCertifications = await certificationsRequest.json();
     const certifications = new Object();

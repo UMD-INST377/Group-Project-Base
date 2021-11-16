@@ -1,6 +1,6 @@
 /* eslint-disable block-spacing */
 
-import { text } from "body-parser";
+// import { text } from "body-parser";
 
 // $Id: $
 function zf_ValidateAndSubmit() {
@@ -338,24 +338,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
 async function postVinyl() {
     // Selecting all text inputs
     const texts = document.querySelectorAll('input')
-    /*
-    3 Song Name
-    4 Album Name
-    5 Artist Name
-    6 Producer FN 7 Producer LN
-    8 Release Date
-    9 Track Num
-    10 weight
-    11 Yes 12 No (is_explicit)
-    13 Album Pic Upload
-    */
+        /*
+        3 Song Name
+        4 Album Name
+        5 Artist Name
+        6 Producer FN 7 Producer LN
+        8 Release Date
+        9 Track Num
+        10 weight
+        11 Yes 12 No (is_explicit)
+        13 Album Pic Upload
+        */
 
     // Selecting the select inputs
     const selects = document.querySelectorAll('select')
-    /*
-    0 Genre
-    1 Hour 2 Minute
-    */
+        /*
+        0 Genre
+        1 Hour 2 Minute
+        */
 
     // Separating inputs into array so they can be "stringified"
     const headerInput = [];

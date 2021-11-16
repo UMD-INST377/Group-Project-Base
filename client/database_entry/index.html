@@ -39,7 +39,7 @@
 <body class="zf-backgroundBg">
     <!-- Change or deletion of the name attributes in the input tag will lead to empty values on record submission-->
     <div class="zf-templateWidth">
-        <form>
+        <form action="../vinyl" method="POST">
             <!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
             <input type="hidden" name="zf_redirect_url" value="">
             <!-- To redirect to a specific page after record submission , place the respective url within the " " in the above hidden input field -->
@@ -60,7 +60,7 @@
                     <ul>
                         <!---------Single Line Starts Here---------->
                         <li class="zf-tempFrmWrapper zf-small"><label class="zf-labelName">Song Name 
-    <em class="zf-important">*</em>
+    <!-- <em class="zf-important">*</em> -->
     </label>
                             <div class="zf-tempContDiv"><span> <input type="text" name="SingleLine6" checktype="c1" value="" maxlength="255" fieldType=1 /></span>
                                 <p id="SingleLine6_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
@@ -70,7 +70,7 @@
                         <!---------Single Line Ends Here---------->
                         <!---------Single Line Starts Here---------->
                         <li class="zf-tempFrmWrapper zf-small"><label class="zf-labelName">Album Name 
-    <em class="zf-important">*</em>
+    <!-- <em class="zf-important">*</em> -->
     </label>
                             <div class="zf-tempContDiv"><span> <input type="text" name="SingleLine" checktype="c1" value="" maxlength="255" fieldType=1 /></span>
                                 <p id="SingleLine_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
@@ -81,7 +81,7 @@
 
                         <!---------Single Line Starts Here---------->
                         <li class="zf-tempFrmWrapper zf-small"><label class="zf-labelName">Artist Name 
-                            <em class="zf-important">*</em>
+                            <!-- <em class="zf-important">*</em> -->
                             </label>
                             <div class="zf-tempContDiv"><span> <input type="text" name="SingleLine" checktype="c1" value="" maxlength="255" fieldType=1 /></span>
                                 <p id="SingleLine_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
@@ -91,7 +91,7 @@
                         <!---------Single Line Ends Here---------->
                         <!---------Name Starts Here---------->
                         <li class="zf-tempFrmWrapper zf-name zf-namemedium"><label class="zf-labelName">Producer Name
-                            <em class="zf-important">*</em>
+                            
                             </label>
                             <div class="zf-tempContDiv zf-twoType">
                                 <div class="zf-nameWrapper">
@@ -110,7 +110,6 @@
                         <!---------Name Ends Here---------->
                         <!---------Dropdown Starts Here---------->
                         <li class="zf-tempFrmWrapper zf-small"><label class="zf-labelName">Genre
-    <em class="zf-important">*</em>
     </label>
                             <div class="zf-tempContDiv"><select class="zf-form-sBox" name="Dropdown3" checktype="c1"><option selected="true" value="-Select-">-Select-</option>
     <option value="Blues">Blues</option>
@@ -135,9 +134,7 @@
                         </li>
                         <!---------Dropdown Ends Here---------->
                         <!---------Date Starts Here---------->
-                        <li class="zf-tempFrmWrapper zf-date"><label class="zf-labelName">Release Date 
-    <em class="zf-important">*</em>
-    </label>
+                        <li class="zf-tempFrmWrapper zf-date"><label class="zf-labelName">Release Date</label>
                             <div class="zf-tempContDiv"><span> <input type="text" name="Date" checktype="c4" value="" maxlength="25" /><label>dd-MMM-yyyy</label> </span>
                                 <div class="zf-clearBoth"></div>
                                 <p id="Date_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
@@ -255,7 +252,7 @@
                         <!---------Decimal Ends Here---------->
                         <!---------Radio Starts Here---------->
                         <li class="zf-radio zf-tempFrmWrapper zf-oneColumns"><label class="zf-labelName">Explicit Content?
-<em class="zf-important">*</em>
+<!-- <em class="zf-important">*</em> -->
 </label>
                             <div class="zf-tempContDiv">
                                 <div class="zf-overflow">
@@ -288,17 +285,18 @@
                 </div>
                 <!---------template Container Starts Here---------->
                 <ul>
-                    <li class="zf-fmFooter"><button class="zf-submitColor">Submit</button></li>
+                    <li class="zf-fmFooter">
+                        <button type="submit" class=" zf-submitColor ">Submit</button></li>
                 </ul>
             </div>
             <!-- 'zf-templateWrapper' ends -->
         </form>
     </div>
     <!-- 'zf-templateWidth' ends -->
-    <script type="text/javascript">
-        var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[-](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)[-](?:(?:19|20)[0-9]{2})$");
-        var zf_MandArray = ["Dropdown1", "Dropdown2", "Dropdown3", "SingleLine1", "SingleLine", "SingleLine2", "SingleLine3", "Dropdown", "SingleLine4", "SingleLine5"];
-        var zf_FieldArray = ["Dropdown1", "Dropdown2", "Dropdown3", "SingleLine1", "SingleLine", "SingleLine2", "SingleLine3", "Dropdown", "SingleLine4", "SingleLine5"];
+    <script type="text/javascript ">
+        var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[-](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)[-](?:(?:19|20)[0-9]{2})$ ");
+        var zf_MandArray = ["Dropdown1 ", "Dropdown2 ", "Dropdown3 ", "SingleLine1 ", "SingleLine ", "SingleLine2 ", "SingleLine3 ", "Dropdown ", "SingleLine4 ", "SingleLine5 "];
+        var zf_FieldArray = ["Dropdown1 ", "Dropdown2 ", "Dropdown3 ", "SingleLine1 ", "SingleLine ", "SingleLine2 ", "SingleLine3 ", "Dropdown ", "SingleLine4 ", "SingleLine5 "];
         var isSalesIQIntegrationEnabled = false;
         var salesIQFieldsArray = [];
     </script>

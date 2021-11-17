@@ -53,16 +53,16 @@ router.get('/songs', async (req, res) => {
   }
 });
 
-// Filter songs by rating - Walesia //
+// Songs by song_id - Walesia //
 
-router.get('/songs/:rating', async (req, res) => {
+router.get('/songs/:song_id', async (req, res) => {
   try {
-    const rating = await db.sequelizeDB.query(controllers.songs.getSongsByRating, {
+    const songID = await db.sequelizeDB.query(controllers.songControls.getAllSongs, {
       where: {
-        rating: req.params.rating
+        song_id: req.params.song_id
       }
     });
-    res.json({status: 'Got it!', data: []});
+    res.json(songID);
   } catch (err) {
     console.error(err);
     res.error({status: 'Something went wrong', data: null, message: 'Failed, error.'});

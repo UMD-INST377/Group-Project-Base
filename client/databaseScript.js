@@ -23,6 +23,7 @@ async function windowActions() {
             <li>
                 Artist: <span class="artist_name"> ${place.first_name} ${place.last_name}</span>
                 <br>Song: <span class ="song_name">${place.song_name}</span>
+                <br>Rating: <span class="ratings">${place.ratings}/5 stars</span>
                 <br>Album: <span class ="album_name"> ${place.album_name}</span>
                 <br>-----
                 <br>

@@ -20,6 +20,8 @@
 
 html {
     overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -303,8 +305,16 @@ th {
     background-color: rgba(0,0,0,0.10);
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+  }
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.20)
+  ; 
+
 td {
-    padding-left: 30px;
+    padding-left: 35px;
 }
 
 

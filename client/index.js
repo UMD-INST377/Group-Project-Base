@@ -4,8 +4,8 @@ let currAlbum
 /* eslint-disable indent */
 async function getInfo() {
     // Request and Compile VINYL Information
-    const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
-    // const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
+    // const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
+    const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
     const allVinyl = await vinylRequest.json();
     const vinyl = new Object();
     for (const currentVinyl in allVinyl) {

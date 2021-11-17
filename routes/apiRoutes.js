@@ -1,5 +1,5 @@
 /* Group24 */
-// Name: Betz
+// Name: Ali
 
 ////////////////////////////////////////
 //////ENDPOINT FOR PRESIDENT TABLE//////

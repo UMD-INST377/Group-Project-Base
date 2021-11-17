@@ -312,11 +312,11 @@ th {
 ::-webkit-scrollbar-thumb {
   background: rgba(0,0,0,0.20)
   ; 
+}
 
 td {
     padding-left: 35px;
 }
-
 
 /* For Smaller Mobile Devices */
 

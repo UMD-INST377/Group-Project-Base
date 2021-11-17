@@ -18,11 +18,11 @@ router
   .route('/animals')
   .get(async (req, res) => {
     try {
-      console.log('touched /animals with GET');
       const result = await db.sequelizeDB.query(animalsController.animalsGET, {
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
+      console.log(result);
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -30,8 +30,17 @@ router
   })
   .put(async (req, res) => {
     try {
-      console.log('touched /animals with PUT');
-      res.json({ message: '/animals PUT method' });
+      const result = await db.sequelizeDB.query(animalsController.animalPUT, {
+        replacements: {
+          common_name: req.body.common_name,
+          weight_lbs: req.body.weight_lbs,
+          species: req.body.weight_lbs,
+          Animal_ID: req.body.Animal_ID
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      res.send('Database Entry Succesfully Updated');
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -39,8 +48,15 @@ router
   })
   .post(async (req, res) => {
     try {
-      console.log('touched /animals with POST');
-      res.json({ message: '/animals POST method' });
+      const result = await db.sequelizeDB.query(animalsController.animalPOST, {
+        replacements: {
+          common_name: req.body.common_name,
+          weight_lbs: req.body.weight_lbs,
+          species: req.body.species,
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -48,8 +64,14 @@ router
   })
   .delete(async (req, res) => {
     try {
+      const result = await db.sequelizeDB.query(animalsController.animalDELETE, {
+        replacements:{
+          Animal_ID: req.body.Animal_ID
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
       console.log('touched /animals with DELETE');
-      res.json({ message: '/animals DELETE method' });
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function imageExtractor() {
     // fetch the films table
-    const response = await fetch('../api/films');
+    const response = await fetch('../api/top100');
     // extract the json data
   }
 });

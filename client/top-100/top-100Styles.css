@@ -13,3 +13,58 @@
     display: flex;
     justify-content: center;
 }
+
+.top-100-movie-list {
+    margin-top: 200px;
+    justify-content: left;
+}
+
+.movie-card {
+    margin-top: 20px;
+    display: flex;
+    justify-content: left;
+    width: 900px;
+    background: lightgray;
+    padding: 1.5em;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.movie {
+    margin-top: 20px;
+    width:150%;
+}
+.movie img {
+    width: 100%;
+    margin-left: 20px;
+    object-fit: cover;
+}
+.movie-name {
+    font-size: 20px;
+    text-align: center;
+}
+.circle{
+    justify-content: left;
+    height: 80px;
+    width: 80px;
+    background-color: white;
+    border-radius:50%;
+    border-width: 3px;
+    border:thin solid black;
+    text-align: center;
+    z-index: 20;
+    position: relative;
+}
+
+#circleNum {
+    justify-content: center;
+    padding: 1.2em;
+    font-size: 20px ;
+}
+
+.movie-description {
+    padding: 2.5em;
+    overflow: hidden;
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: left;
+}

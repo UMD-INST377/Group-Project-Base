@@ -12,3 +12,34 @@
   background-color: lightgray;
   height: 450px;
 }
+
+.title2 {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.form{
+    margin: auto;
+    max-width:400px;
+    text-align: center
+}
+
+input[type='submit'], button, [aria-label]{
+  cursor: pointer;
+}
+#edit-box{
+  display: none;
+  max-width: 80%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+td{
+    background-color: aliceblue;
+    padding-right: 10px;
+    text-align: left;
+}
+
+.to-do{
+    background: transparent !important;
+}

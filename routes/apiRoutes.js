@@ -200,6 +200,9 @@ router
   .delete(async (req, res) => {
     try {
       const b = await db.sequelize.query(biomesController.deleteBiomes, {
+        replacements: {
+          biome_id: req.body.biome_id
+        },
         type: sequelize.QueryTypes.DELETE
       }
       )

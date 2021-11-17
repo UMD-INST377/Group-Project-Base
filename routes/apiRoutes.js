@@ -5,7 +5,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 import animalsController from '../controllers/animalsController.js';
-import {getBiomes, putBiomes, postBiomes, deleteBiomes} from '../controllers/biomesController.js';
+import biomesController, {getBiomes, putBiomes, postBiomes, deleteBiomes} from '../controllers/biomesController.js';
 
 const router = express.Router();
 
@@ -154,7 +154,7 @@ router
   })
   .put(async (req, res) => {
     try {
-      const b = await db.sequelize.query(animalsController.getBiomes, {
+      const b = await db.sequelize.query(biomesController.getBiomes, {
         replacements: {
           biome_id: req.body.biome_id,
           animal_id: req.body.animal_id,
@@ -177,10 +177,21 @@ router
   })
   .post(async (req, res) => {
     try {
-      const b = await db.sequelize.query(
-        getBiomes, {
-          type: sequelize.QueryTypes.UPDATE
-        }
+      const b = await db.sequelize.query(biomesController.getBiomes, {
+        replacements: {
+          biome_id: req.body.biome_id,
+          animal_id: req.body.animal_id,
+          Tropical_Rainforest: req.body.Tropical_Rainforest,
+          Temperate_Forest: req.body.Temperate_Forest,
+          Desert: req.body.Desert,
+          Tundra: req.body.Tundra,
+          Grassland: req.body.Grassland,
+          Savanna: req.body.Savanna,
+          Freshwater: req.body.Freshwater,
+          Marine: req.body.Marine
+        },
+        type: sequelize.QueryTypes.UPDATE
+      }
       )
     } catch (err) {
       console.log(err);

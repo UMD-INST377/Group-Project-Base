@@ -4,8 +4,8 @@ let currAlbum
 /* eslint-disable indent */
 async function getInfo() {
     // Request and Compile VINYL Information
-    // const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
-    const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
+    const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
+    // const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
     const allVinyl = await vinylRequest.json();
     const vinyl = new Object();
     for (const currentVinyl in allVinyl) {
@@ -220,22 +220,24 @@ async function getInfo() {
         // Creates a first row for category's for song description
         const song_headers = document.createElement('tr')
         song_headers.className = 'songs-headers'
-        song_headers.innerHTML = `  <th>Track Number</th>
+        song_headers.innerHTML = `  
                                     <th>Track Name</th>
                                     <th>Duration</th>
                                     <th>Key</th>
                                     <th>BPM</th>`
+                                    // <th>Track Number</th>
         songs_table.appendChild(song_headers);
 
         // Creates a row for each song
         albumSongs.forEach((song) => {
             const song_row = document.createElement('tr')
             song_row.className = 'songs-row'
-            song_row.innerHTML = `  <td>${song['track_num']}</td> 
-                                    <td>${song['song_name']}</td> 
-                                    <td>${song['duration']}</td>
-                                    <td>${song['key']}</td>
-                                    <td>${song['bpm']}</td>`
+            song_row.innerHTML = ` 
+                                    <td class="song-name">${song['song_name']}</td> 
+                                    <td class="duration">${song['duration']}</td>
+                                    <td class="key">${song['key']}</td>
+                                    <td class="bpm">${song['bpm']}</td>`
+                                    // <td class="track-num">${song['track_num']}</td> 
             songs_table.appendChild(song_row)
         });
 

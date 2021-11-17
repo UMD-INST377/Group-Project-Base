@@ -67,15 +67,6 @@ body {
     }
 }
 
-@keyframes slideUp {
-    from {
-        top: 30px;
-    }
-    to {
-        top: 0;
-    }
-}
-
 input {
     position: absolute;
     background: transparent;
@@ -284,22 +275,33 @@ img {
 .songs-table {
     width: 100%;
     height: 100%;
-}
-
-tr {
-    align-content: space-between;
-    text-align: center;               
+    border-collapse: collapse;
 }
 
 .songs-headers {
     font-family: GothamMedium;
-    font-size: 18px;
+    font-size: 14px;
+    text-align: left;
+    box-shadow: 0px 5px 15px 5px rgba(0,0,0,0.29);
+}
+
+th {
+    padding: 5px
 }
 
 .songs-row {
     font-family: GothamBook;
     font-size: 14px;
 }
+
+.songs-row:nth-child(even) {
+    background-color: rgba(0,0,0,0.10);
+}
+
+td {
+    padding-left: 10px;
+}
+
 
 /* For Smaller Mobile Devices */
 
@@ -398,8 +400,8 @@ tr {
 /* For Bigger Mobile Devices */
 @media only screen and (min-width: 400px) and (max-width: 700px) {
     img {
-        max-height: 250px;
-        max-width: 250px;
+        max-height: 200px;
+        max-width: 200px;
     }
 
     .top-nav {
@@ -464,8 +466,8 @@ tr {
         font-size: 9px;
     }
 
-    .heading { 
-        margin-top: 20px;
+    .result-placement {
+        width: 50%
     }
 
     .fa-plus-circle {

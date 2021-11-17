@@ -142,10 +142,9 @@ router
   .route('/biomes')
   .get(async (req, res) => {
     try {
-      const b = await db.sequelize.query(
-        getBiomes, {
-          type: sequelize.QueryTypes.SELECT
-        }
+      const b = await db.sequelize.query(biomesController.getBiomes, {
+        type: sequelize.QueryTypes.SELECT
+      }
       )
     } catch (err) {
       console.log(err);
@@ -154,7 +153,7 @@ router
   })
   .put(async (req, res) => {
     try {
-      const b = await db.sequelize.query(biomesController.getBiomes, {
+      const b = await db.sequelize.query(biomesController.putBiomes, {
         replacements: {
           biome_id: req.body.biome_id,
           animal_id: req.body.animal_id,
@@ -177,7 +176,7 @@ router
   })
   .post(async (req, res) => {
     try {
-      const b = await db.sequelize.query(biomesController.getBiomes, {
+      const b = await db.sequelize.query(biomesController.postBiomes, {
         replacements: {
           biome_id: req.body.biome_id,
           animal_id: req.body.animal_id,
@@ -200,10 +199,9 @@ router
   })
   .delete(async (req, res) => {
     try {
-      const b = await db.sequelize.query(
-        getBiomes, {
-          type: sequelize.QueryTypes.DELETE
-        }
+      const b = await db.sequelize.query(biomesController.deleteBiomes, {
+        type: sequelize.QueryTypes.DELETE
+      }
       )
     } catch (err) {
       console.log(err);

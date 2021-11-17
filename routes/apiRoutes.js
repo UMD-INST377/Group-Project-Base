@@ -15,9 +15,6 @@ import controllers from '../server/controllers/controls.js';
 // /* Delete for controller Daniel Cutaneo */
 // import deleteCustom from '../server/controllers/deleteCustom.js';
 
-import songTable from '../server/controllers/songTable.js';
-
-import Artist from '../models/Artist.js';
 /* start router component */
 const router = express.Router();
 
@@ -32,8 +29,7 @@ router.get('/', (req, res) => {
 * Music Database Endpoints below
 */
 
-// Trying to get all songs from DB - Walesia //
-
+// Trying to get all songs from DB //
 router.get('/songs', async (req, res) => {
   try {
     /* Get all songs */
@@ -56,16 +52,25 @@ router.get('/songs', async (req, res) => {
   }
 });
 
-// Songs by song_id - Walesia //
-
+// Songs by song_id //
 router.get('/songs/:song_id', async (req, res) => {
   try {
-    const songID = await db.sequelizeDB.query(controllers.songControls.getAllSongs, {
-      where: {
+    // console.log('touched songs/:song_id with GET')
+    // PREV - trying to get song_id from query, but that didn't work...
+    // const songID = await db.sequelizeDB.query(controllers.songControls.getSongsByID, {
+    //   where: {
+    //     song_id: req.params.song_id
+    //   }
+    // });
+    // res.json(songID);
+
+    // Using the Songs table from the original database instead. // 
+    const songs = await db.Songs.findAll({
+      where: { 
         song_id: req.params.song_id
       }
     });
-    res.json(songID);
+    res.json(songs);
   } catch (err) {
     console.error(err);
     res.error({status: 'Something went wrong', data: null, message: 'Failed, error.'});

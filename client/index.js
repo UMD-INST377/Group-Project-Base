@@ -404,8 +404,8 @@ async function getInfo() {
     // Find Matches to Album/Artist Search
     function findAlbum(input, allEntries) {
         return allEntries.filter((entry) => {
-            const regex = new RegExp(input, 'gi');
-            return entry.album_name.match(regex) || entry.artist_name.match(regex);
+            const regex = new RegExp(input, 'giy');
+            return entry.album_name.match(regex);
         });
     }
 

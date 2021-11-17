@@ -32,8 +32,8 @@ async function windowActions() {
             `;
         }).join('');
         if (!event.target.value) {
-            document.querySelector('.suggestions').innerHTML = "";
-            return false;
+           document.querySelector('.suggestions').innerHTML = "";
+            return false; 
           }
     
           document.querySelector('.suggestions').innerHTML = html;

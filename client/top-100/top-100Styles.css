@@ -23,7 +23,7 @@
     margin-top: 20px;
     display: flex;
     justify-content: left;
-    width: 900px;
+    width: 92%;
     background: lightgray;
     padding: 1.5em;
     overflow-x: auto;
@@ -52,7 +52,9 @@
     border:thin solid black;
     text-align: center;
     z-index: 20;
-    position: relative;
+    position: absolute;
+    transform: translateY(100%);
+    left: 1.0vw;
 }
 
 #circleNum {

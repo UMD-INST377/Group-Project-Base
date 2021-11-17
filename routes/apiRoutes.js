@@ -6,14 +6,14 @@ import db from '../database/initializeDB.js';
 /* import controllers -- we can use to replace previous import statements below. - Walesia */
 import controllers from '../server/controllers/controls.js';
 
-/* import albumCustom controller(updates) */
-import albumCustom from '../server/controllers/albumCustom.js';
+// /* import albumCustom controller(updates) */
+// import albumCustom from '../server/controllers/albumCustom.js';
 
-/* import ratingUpdate controller - mirandavo */
-import ratingUpdate from '../server/controllers/ratingUpdate.js';
+// /* import ratingUpdate controller - mirandavo */
+// import ratingUpdate from '../server/controllers/ratingUpdate.js';
 
-/* Delete for controller Daniel Cutaneo */
-import deleteCustom from '../server/controllers/deleteCustom.js';
+// /* Delete for controller Daniel Cutaneo */
+// import deleteCustom from '../server/controllers/deleteCustom.js';
 
 /* start router component */
 const router = express.Router();
@@ -34,12 +34,12 @@ router.get('/', (req, res) => {
 router.get('/songs', async (req, res) => {
   try {
     /* Get all songs */
-    const songs = await db.sequelizeDB.query(controllers.songs.getAllSongs, {
+    const songs = await db.sequelizeDB.query(controllers.songControls.getAllSongs, {
       type: sequelize.QueryTypes.SELECT
     });
 
     /* Sending some data */
-    res.json({status: 'Yay, successful.', data: songs});
+    res.json(songs);
   } catch (err) {
     /* Debugging */
     console.error(err);
@@ -123,7 +123,7 @@ router.delete('/song_name/:song_id', async (req, res) => {
 /* Music endpoint that used imported albumCustom controller(Updates) */
 router.get('/album', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(albumCustom, {
+    const result = await db.sequelizeDB.query(controllers.albumCustom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);

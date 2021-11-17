@@ -20,15 +20,15 @@
            </div>
          </div>
        </div>
-   <div class="search is-size-5">Album/Song Search </h1>
-  	<form action="\api\album" method="get" class="form-row">
-                     <input type = "search" class ="search label is-large" placeholder = "">
-               
-                     <ul class = "suggestions has-background-info"> 
-                    
-                </ul>
-			<button>Submit</button>
-            </form>
+   <div class="is-size-5"><h1>Filter our database by song or artist:</h1></div>
+   <div class="search is-size-5", style = "height: 300px; white-space: nowrap; overflow-y: scroll">
+      <input type = "search" class ="search label is-large" placeholder = "">
+        <ul class = "suggestions has-background-link-light"></ul>
+   </div>
+
+   <form action="customize.html">
+	  <button>Click here to make your own changes </button>
+   </form>
 	
   <script src="databaseScript.js"></script>
   </body>

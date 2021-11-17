@@ -7,6 +7,7 @@ import aoaController from '../server/controllers/aoaController.js';
 import EvidenceController from '../server/controllers/EvidenceController.js';
 import volcanosHasReferencesController from '../server/controllers/volcanosHasReferencesController.js';
 import eruptionCategoryController from '../server/controllers/eruptionCategoryController.js';
+import veiController from '../server/controllers/veiController.js';
 
 const router = express.Router();
 
@@ -325,32 +326,52 @@ router.route('/volcanos_has_references_table')
 router.route('/vei')
   .get(async(req, res) => {
     try {
-      console.log('you touched the route!');
-      res.json({message: 'touched vei with GET'});
+      const result = await db.sequelizeDB.query(veiController.veiGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      console.log('Received a GET HTTP method');
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
   })
   .put(async(req, res) => {
     try {
-      res.json({message: 'touched vei with PUT'});
+      const result = await db.sequelizeDB.query(veiController.veiPut, {
+        replacements: {
+          vei_id: req.body.vei_id,
+          vei: req.body.vei
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      console.log('Successfully updated vei')
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
-
   .post(async(req, res) => {
     try {
-      res.json({message: 'touched vei with POST'});
+      const result = await db.sequelizeDB.query(veiController.veiPost, {
+        replacements: {vei: req.body.vei},
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
+      console.log('Successfully inserted into vei');
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
   .delete(async(req, res) => {
     try {
-      res.json({message: 'touched vei with DELETE'});
+      const result = await db.sequelizeDB.query(veiController.veiDelete, {
+        replacements: {
+          vei_id: req.body.vei_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+      console.log('Received a DELETE HTTP method');
     } catch (err) {
       console.log(error);
       res.json({error: 'something went wrong!'});

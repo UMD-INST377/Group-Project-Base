@@ -159,13 +159,14 @@ router
   });
 
 // Jaeuk Yang -- /Biomes
-
 router
   .route('/biomes')
   .get(async (req, res) => {
     try {
-      console.log('touched /biomes with GET');
-      res.json({ message: '/biomes GET method' });
+      const b = await db.sequelize.query(biomesController.getBiomes, {
+        type: sequelize.QueryTypes.SELECT
+      }
+      )
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -173,8 +174,22 @@ router
   })
   .put(async (req, res) => {
     try {
-      console.log('touched /biomes with PUT');
-      res.json({ message: '/biomes PUT method' });
+      const b = await db.sequelize.query(biomesController.putBiomes, {
+        replacements: {
+          biome_id: req.body.biome_id,
+          animal_id: req.body.animal_id,
+          Tropical_Rainforest: req.body.Tropical_Rainforest,
+          Temperate_Forest: req.body.Temperate_Forest,
+          Desert: req.body.Desert,
+          Tundra: req.body.Tundra,
+          Grassland: req.body.Grassland,
+          Savanna: req.body.Savanna,
+          Freshwater: req.body.Freshwater,
+          Marine: req.body.Marine
+        },
+        type: sequelize.QueryTypes.INSERT
+      }
+      )
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -182,8 +197,22 @@ router
   })
   .post(async (req, res) => {
     try {
-      console.log('touched /biomes with POST');
-      res.json({ message: '/biomes POST method' });
+      const b = await db.sequelize.query(biomesController.postBiomes, {
+        replacements: {
+          biome_id: req.body.biome_id,
+          animal_id: req.body.animal_id,
+          Tropical_Rainforest: req.body.Tropical_Rainforest,
+          Temperate_Forest: req.body.Temperate_Forest,
+          Desert: req.body.Desert,
+          Tundra: req.body.Tundra,
+          Grassland: req.body.Grassland,
+          Savanna: req.body.Savanna,
+          Freshwater: req.body.Freshwater,
+          Marine: req.body.Marine
+        },
+        type: sequelize.QueryTypes.UPDATE
+      }
+      )
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -191,13 +220,19 @@ router
   })
   .delete(async (req, res) => {
     try {
-      console.log('touched /biomes with DELETE');
-      res.json({ message: '/biomes DELETE method' });
+      const b = await db.sequelize.query(biomesController.deleteBiomes, {
+        replacements: {
+          biome_id: req.body.biome_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      }
+      )
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
     }
   });
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

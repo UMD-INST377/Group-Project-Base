@@ -114,11 +114,11 @@ router.put('/rating', async (req, res) => {
 });
 
 /* Endpoint that is used to delete the song -Daniel Cutaneo */
-router.delete('/song_name/:song_id', async (req, res) => {
+router.delete('/songs/:song_id', async (req, res) => {
   try {
     await db.deleteCustom.destroy({
       where: {
-        song_name_id: req.params.song_name_id
+        song_id: req.params.song_id
       }
     });
     res.send('Successfully Deleted');

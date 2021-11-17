@@ -204,7 +204,7 @@ async function getInfo() {
 
         // SONGS Contents
         const songs_content = document.createElement('div');
-        songs_content.className = 'heading';
+        songs_content.className = 'heading heading-songs';
         const songs_table = document.createElement('table')
         songs_table.className = 'songs-table'
         songs_content.appendChild(songs_table)

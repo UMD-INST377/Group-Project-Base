@@ -155,8 +155,11 @@ router
   })
   .put(async (req, res) => {
     try {
-      console.log('touched /biomes with PUT');
-      res.json({ message: '/biomes PUT method' });
+      const b = await sequelize.query(
+        getBiomes, {
+          type: sequelize.QueryTypes.INSERT
+        }
+      )
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -164,8 +167,11 @@ router
   })
   .post(async (req, res) => {
     try {
-      console.log('touched /biomes with POST');
-      res.json({ message: '/biomes POST method' });
+      const b = await sequelize.query(
+        getBiomes, {
+          type: sequelize.QueryTypes.UPDATE
+        }
+      )
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -173,8 +179,11 @@ router
   })
   .delete(async (req, res) => {
     try {
-      console.log('touched /biomes with DELETE');
-      res.json({ message: '/biomes DELETE method' });
+      const b = await sequelize.query(
+        getBiomes, {
+          type: sequelize.QueryTypes.DELETE
+        }
+      )
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');

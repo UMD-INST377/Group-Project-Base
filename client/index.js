@@ -48,7 +48,15 @@ async function getInfo() {
     const config = {
         type: 'slider',
         perView: 5,
-        focusAt: 'center'
+        focusAt: 'center',
+        breakpoints: {
+          450: {
+            perView: 1
+          },
+          800: {
+            perView: 3
+          }
+        }
     };
 
     const glide = new Glide('.glide', config).mount();
@@ -204,26 +212,30 @@ async function getInfo() {
         // Selects only songs relevant to that album
         const albumSongs = [];
         allSongs.forEach((song) => {
-            if (Number(id)+1 === song['vinyl_id']) {
-                albumSongs.push(song);
-            }
+          if (Number(id)+1 === song['vinyl_id']) {
+            albumSongs.push(song);
+          }
         });
 
         // Creates a first row for category's for song description
         const song_headers = document.createElement('tr')
         song_headers.className = 'songs-headers'
-        song_headers.innerHTML = `  <th>Track Name</th>
-                                    <th>Track Number</th>
-                                    <th>Duration</th>`
+        song_headers.innerHTML = `  <th>Track Number</th>
+                                    <th>Track Name</th>
+                                    <th>Duration</th>
+                                    <th>Key</th>
+                                    <th>BPM</th>`
         songs_table.appendChild(song_headers);
 
         // Creates a row for each song
         albumSongs.forEach((song) => {
             const song_row = document.createElement('tr')
             song_row.className = 'songs-row'
-            song_row.innerHTML = `  <td>${song['song_name']}</td> 
-                                    <td>${song['track_num']}</td> 
-                                    <td>${song['duration']}</td>`
+            song_row.innerHTML = `  <td>${song['track_num']}</td> 
+                                    <td>${song['song_name']}</td> 
+                                    <td>${song['duration']}</td>
+                                    <td>${song['key']}</td>
+                                    <td>${song['bpm']}</td>`
             songs_table.appendChild(song_row)
         });
 
@@ -318,8 +330,10 @@ async function getInfo() {
                     <p class="result">${certifications[id].platinum}</p>
                 </div>
                 <div class="item item-cert">
-                    <img class="cert" src="images/RIAA_cert/multi-platinum.PNG">
-                    <img class="cert" src="images/RIAA_cert/multi-platinum.PNG">
+                    <div class="certs">
+                      <img class="cert" src="images/RIAA_cert/multi-platinum.PNG">
+                      <img class="cert" src="images/RIAA_cert/multi-platinum.PNG">
+                    </div>
                     <p class="header">Multi-Platinum</p>
                     <p class="result">${certifications[id].multi_platinum}</p>
                 </div>
@@ -372,10 +386,16 @@ async function getInfo() {
         // Show Only the Tab that is Clicked On
         function openTab(tabIndex) {
             const heading = document.querySelectorAll('.heading');
+            const button = document.querySelectorAll('.link')
             heading.forEach((item) => {
                 item.style.display = 'none';
             });
+            button.forEach(item => {
+              item.style.removeProperty('background-color')
+            })
             heading[tabIndex].style.display = 'block';
+            button[tabIndex].style.cssText = 'background-color: rgba(214, 214, 214, 0.8);'
+
         }
     }
 
@@ -393,8 +413,8 @@ async function getInfo() {
         const suggestions = document.querySelector('.search-result');
         const matchResult = matchSearch.map((match) => `
     <li class="suggestion">
-        <div class="name">${match.album_name}</div></li>
-    `).join('');
+        <div class="name">${match.album_name}</div>
+    </li>`).join('');
         suggestions.innerHTML = matchResult;
     }
 
@@ -421,7 +441,7 @@ async function getInfo() {
                                     glide.go(`=${vinyl[eachVinyl].vinyl_id - 1}`);
                                     container.style.cssText = `height: 50vh; 
                                              transition-duration: 1s
-                     `;
+                                              `;
                                     const image = images[vinyl[eachVinyl].vinyl_id - 1];
 
                                     // Added CSS to the Selected Image(Album Cover)
@@ -434,16 +454,21 @@ async function getInfo() {
                                     } else if (body.contains(document.querySelector('.detail'))) {
                                         const detail = document.querySelector('.detail');
                                         detail.remove();
+                                        
                                         createDetail(vinyl[eachVinyl].vinyl_id - 1);
                                         images.forEach((item) => {
                                             item.style.removeProperty('box-shadow');
                                             item.style.removeProperty('transform');
                                         });
+                                  
                                         image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
                                           transform: scale(0.8);
                                           transition-duration: 0.5s`;
                                     }
                                 }
+                              suggestions.forEach(item => {
+                                item.remove()
+                              })
                             }
                         });
                     });
@@ -506,7 +531,7 @@ async function getInfo() {
             || evt.target.className === 'result' || evt.target.className === 'header'
             || evt.target.className === 'items' || evt.target.className === 'item'
             || evt.target.className === 'heading' || evt.target.className === 'placeholder'
-            || evt.target.className === 'name') {} else {
+            || evt.target.className === 'name' || evt.target.nodeName === 'BUTTON') {} else {
             container.style.cssText = `height: 100vh;
                                  transition-duration: 1s;
                                       `;

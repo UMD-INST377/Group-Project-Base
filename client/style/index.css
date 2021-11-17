@@ -120,7 +120,6 @@ input {
     width: 20.2vw;
     top: 65px;
     left: 52px;
-    /* left: 54px; */
     border-color: black;
     border-style: solid;
     border-width: 0 2px 2px 2px;
@@ -262,9 +261,7 @@ img {
 }
 
 .link {
-    /* font-family: GothamBook; */
     font-family: GothamMedium;
-    /* font-weight: ; */
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -285,34 +282,256 @@ img {
 }
 
 .songs-table {
-    border: 1px;
     width: 100%;
     height: 100%;
 }
 
 tr {
     align-content: space-between;
-    text-align: center;
+    text-align: center;               
 }
 
 .songs-headers {
-    border: 1px;
     font-family: GothamMedium;
     font-size: 18px;
 }
 
 .songs-row {
-    border: 1px;
     font-family: GothamBook;
     font-size: 14px;
 }
 
-/* Tablets */
+/* For Smaller Mobile Devices */
 
-@media only screen and (max-width: 1100px) {
-    .result-placement {
-      width: 50%
+@media only screen and (max-width: 400px) {
+    img {
+        max-height: 200px;
+        max-width: 200px;
     }
+
+    .search {
+        top: 45px;
+        left: 20vw;
+        animation: slideDown 0.5s;
+    }
+
+    @keyframes slideDown {
+        from {
+            top: 0;
+        }
+        to {
+            top: 45px;
+        }
+    }
+
+    .top-nav {
+        margin-top: 6vw;
+    }
+
+    input {
+        top: 10px;
+        height: 6vw;
+        width: 200px;
+        font-size: 10px;
+    }
+
+    .search .placeholder {
+        font-size: 9px;
+        left: 3.6vw;
+        top: 22px;
+        width: 30vw;
+    }
+
+    .search input:valid+.placeholder, 
+    .search input:focus+.placeholder {
+        top: 0px;
+        font-size: 7px;
+    }
+
+    .search-result {
+        width: 203px;
+        top: 42px;
+        left: 10px;
+    }
+
+    .tab button {
+        font-size: 10px;
+        padding: 16px 10px;
+    }
+
+    .item {
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    .header {
+        font-size: 10px
+    }
+
+    .result {
+        font-size: 9px;
+    }
+
+    .items-cert {
+        margin-top: 5vw;
+    }
+
+    .item.item-cert {
+        width: 25%;
+    }
+
+    .certs {
+        display: flex;
+    }
+
+    .result-placement {
+        width: 60%;
+    }
+
+    .fa-plus-circle {
+        bottom: 20px;
+        right: 20px
+    }
+
+  }
+
+/* For Bigger Mobile Devices */
+@media only screen and (min-width: 400px) and (max-width: 700px) {
+    img {
+        max-height: 250px;
+        max-width: 250px;
+    }
+
+    .top-nav {
+        margin-top: 10vw;
+    }
+
+    .search {
+        top: 65px;
+        left: 22vw;
+        animation: slideDown 0.5s
+    }
+
+    @keyframes slideDown {
+        from {
+            top: 0;
+        }
+        to {
+            top: 65px;
+        }
+    }
+
+    input {
+        top: 10px;
+        height: 6vw;
+        width: 200px;
+        font-size: 13px;
+    }
+
+    .search .placeholder {
+        font-size: 11px;
+        left: 3.6vw;
+        top: 22px;
+        width: 30vw;
+    }
+
+    .search input:valid+.placeholder, 
+    .search input:focus+.placeholder {
+        top: 0px;
+        font-size: 9px;
+    }
+
+    .search-result {
+        width: 203px;
+        top: 44px;
+        left: 12px;
+    }
+
+    .tab button {
+        font-size: 10px;
+        padding: 16px 10px;
+    }
+
+    .item {
+        margin-top: 0px;
+    }
+
+    .header {
+        font-size: 10px
+    }
+
+    .result {
+        font-size: 9px;
+    }
+
+    .heading { 
+        margin-top: 20px;
+    }
+
+    .fa-plus-circle {
+        bottom: 20px;
+        right: 20px
+    }
+  }
+
+/* For Tablets */
+@media only screen and (min-width: 701px) and (max-width: 900px) {
+    img {
+        max-height: 225px;
+        max-width: 225px;
+    }
+
+    .top-nav {
+        margin-top: 3vw
+    }
+
+    .search {
+        top: 30px;
+        left: 28vw;
+    }
+
+    input {
+        top: 25px;
+        height: 4vw;
+        width: 300px;
+        font-size: 15px;
+    } 
+
+    .search .placeholder {
+        font-size: 15px;
+        top: 40px;
+        left: 3.6vw;
+    }
+
+    .search-result {
+        width: 304px;
+        top: 65px;
+        left: 21px;
+        margin-top: 1px;
+    }
+
+    .search input:valid+.placeholder, 
+    .search input:focus+.placeholder {
+        top: 5px;
+        font-size: 12px;
+    }
+
+    .suggestion {
+        font-size: 15px
+    }
+
+    .header {
+        font-size: 12px
+    }
+
+    .result {
+        font-size: 10px;
+    }
+
+    .fa-plus-circle {
+        bottom: 20px;
+        right: 20px
+    } 
   }
 
 

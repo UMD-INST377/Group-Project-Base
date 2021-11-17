@@ -47,6 +47,7 @@ router.route('/films')
       const genreName = getGenreIdByValue(genre, req.body.genre);
       const genreId = genreName.map((movGenre) => movGenre.genre_id)[0];
       // const updateStatement = `UPDATE films 
+      // eslint-disable-next-line max-len
       //   SET film_title = '${req.body.film_title}', release_date = '${req.body.release_date}', genre_id = ${genreId}
       //   WHERE film_id = '${filmId}' `;
       await db.sequelizeDB.query(filmMapCustom.filmPut, {

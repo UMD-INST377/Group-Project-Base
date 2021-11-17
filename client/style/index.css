@@ -389,6 +389,11 @@ td {
         font-size: 9px;
     }
 
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+
     th {
         padding: 2px;
         height: 10px
@@ -495,6 +500,10 @@ td {
         font-size: 10px
     }
 
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
     th {
         padding: 2px
     }
@@ -574,6 +583,11 @@ td {
     .header {
         font-size: 12px
     }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
 
     .result {
         font-size: 10px;

@@ -1,7 +1,3 @@
-button:focus {
-  background-color: sandybrown;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -51,15 +47,10 @@ body {
   .btn-group button {
     margin-top: 20px;
     font-size: 10px;
-    color: white;
-    background-color: #212529;
+    background: none;
     padding: 10px 20px;
     cursor: pointer;
     float: left;
-  }
-
-  .btn-group button:hover {
-    background-color: rgb(143, 133, 133);
   }
 
   .arena-pic {
@@ -114,18 +105,23 @@ body {
     border-top-right-radius: 13px;
   }
 
+  button{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border:transparent;
+  }
+
+  button img{
+    height:175px;
+    width:auto;
+  }
+
   .btn-group button {
     margin-top: 20px;
     font-size: 18px;
-    color: white;
-    background-color: #212529;
     padding: 25px 60px;
     cursor: pointer;
     float: left;
-  }
-
-  .btn-group button:hover {
-    background-color: rgb(143, 133, 133);
   }
 
   .arena-pic {
@@ -159,6 +155,7 @@ body {
 }
 
 .photo-grid-container {
+  margin-top:20px;
   display: flex;
   align-self: center;
   align-items: center;
@@ -188,28 +185,38 @@ body {
 }
 
 .carousel {
-  overflow: hidden;
-  max-width: 800px;
+  scroll-behavior: smooth;
+  margin-top:30px;
+  white-space: nowrap;
+  overflow: scroll;
+  width: 600px;
   position: relative;
+  height:auto;
+  display:inline;
+  vertical-align: center;
 }
 
 .carousel_item,
 .carousel_item--hidden {
-  display: none;
+  display:none;
   height: 250px;
 }
 
-.carousel_item img {
-  width: 100%;
-  max-width: 250px;
+
+.carousel_item1 img {
+  margin-top:0px;
+  overflow-x:scroll;
+  display: inline-block;
   max-height: 250px;
-  height: auto;
+  width: 150px;
+  height:auto;
+  position:relative;
+  margin-left: 20px;
+  margin-right: 20px;
+  vertical-align: middle;
 }
 
-.carousel_item--visible {
-  display: block;
-  animation: fadeVisibility 0.5s;
-}
+
 
 .carousel_actions {
   display: flex;
@@ -220,13 +227,10 @@ body {
   transform: translateY(-50%);
 }
 
-.carousel_actions button {
-  border-radius: 50px;
-  border: 0;
-  font-weight: bold;
+.carousel_actions button{
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  background-color:none;
+  background: none;
 }
 
 #carousel_button--prev {
@@ -234,6 +238,8 @@ body {
   border-radius: 4px;
   padding-left: 8px;
   padding-right: 8px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 #carousel_button--next {

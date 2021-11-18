@@ -1,4 +1,4 @@
-const getBiomes = 'SELECT biome_id, Biome, Continent';
+const getBiomes = 'SELECT biome_id, Biome, Continent FROM biomes';
 
 const putBiomes = `INSERT INTO biome (biome_id, Biome, Continent)
 VALUES(DEFAULT, :biome_id, :Biome, :Continent);`;

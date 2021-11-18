@@ -397,6 +397,7 @@ async function postVinyl() {
         const singers = singersRequest.json()
         console.log(singersRequest)
         console.log(singers)
+        console.log(singers['PromiseResult'])
         /*
         let singer_id_vinyl;
         singers.forEach((singer) => {

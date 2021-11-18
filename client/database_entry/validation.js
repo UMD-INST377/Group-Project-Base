@@ -397,9 +397,7 @@ async function postVinyl() {
         .then(function(response) {
             return response.json();
         });
-        console.log(singers);
 
-        /*
         let singer_id_vinyl;
         singers.forEach((singer) => {
             if (singer['artist_name'] === texts[4].value) {
@@ -408,8 +406,10 @@ async function postVinyl() {
         });
 
         //Gets producer_id for vinyl being input
-        const producersRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers');
-        const producers = producersRequest.json()
+        const producers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers')
+        .then(function(response) {
+            return response.json();
+        });
 
         let producer_id_vinyl;
         producers.forEach((producer) => {
@@ -433,8 +433,8 @@ async function postVinyl() {
         }
 
         const vinylDict = {
-            singer_id:singer_id_vinyl
-            producer_id:producer_id_vinyl
+            singer_id:singer_id_vinyl,
+            producer_id:producer_id_vinyl,
             album_name:texts[3].value,
             genre:selects[0].value,
             track_amount:texts[8].value,

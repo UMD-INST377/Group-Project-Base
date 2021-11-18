@@ -4,7 +4,7 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 import animalsController from '../controllers/animalsController.js';
-
+import biomesController from '../controllers/biomesController.js';
 
 const router = express.Router();
 
@@ -177,15 +177,8 @@ router
       const b = await db.sequelize.query(biomesController.putBiomes, {
         replacements: {
           biome_id: req.body.biome_id,
-          animal_id: req.body.animal_id,
-          Tropical_Rainforest: req.body.Tropical_Rainforest,
-          Temperate_Forest: req.body.Temperate_Forest,
-          Desert: req.body.Desert,
-          Tundra: req.body.Tundra,
-          Grassland: req.body.Grassland,
-          Savanna: req.body.Savanna,
-          Freshwater: req.body.Freshwater,
-          Marine: req.body.Marine
+          Biome: req.body.Biome,
+          Continent: req.body.Continent,
         },
         type: sequelize.QueryTypes.INSERT
       }
@@ -200,15 +193,8 @@ router
       const b = await db.sequelize.query(biomesController.postBiomes, {
         replacements: {
           biome_id: req.body.biome_id,
-          animal_id: req.body.animal_id,
-          Tropical_Rainforest: req.body.Tropical_Rainforest,
-          Temperate_Forest: req.body.Temperate_Forest,
-          Desert: req.body.Desert,
-          Tundra: req.body.Tundra,
-          Grassland: req.body.Grassland,
-          Savanna: req.body.Savanna,
-          Freshwater: req.body.Freshwater,
-          Marine: req.body.Marine
+          Biome: req.body.Biome,
+          Continent: req.body.Continent,
         },
         type: sequelize.QueryTypes.UPDATE
       }

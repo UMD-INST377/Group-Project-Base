@@ -397,7 +397,7 @@ async function postVinyl() {
         .then(function(response) {
             return response.json();
         });
-
+        console.log(singers)
         let singer_id_vinyl;
         singers.forEach((singer) => {
             console.log(singer['singer_id'])

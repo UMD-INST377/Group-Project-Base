@@ -10,4 +10,6 @@ WHERE biome_id = :biome_id;`;
 const deleteBiomes = `DELETE FROM biome
 WHERE biome_id = :biome_id;`;
 
-export default {getBiomes, putBiomes, postBiomes, deleteBiomes};
+export default {
+  getBiomes, putBiomes, postBiomes, deleteBiomes
+};

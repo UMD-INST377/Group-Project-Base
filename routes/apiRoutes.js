@@ -168,6 +168,8 @@ router
         type: sequelize.QueryTypes.SELECT
       }
       )
+      res.json(b);
+      console.log(b);
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -184,6 +186,8 @@ router
         type: sequelize.QueryTypes.INSERT
       }
       )
+      res.json(b);
+      console.log(b);
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -200,6 +204,8 @@ router
         type: sequelize.QueryTypes.UPDATE
       }
       )
+      res.json(b);
+      console.log(b);
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -214,6 +220,8 @@ router
         type: sequelize.QueryTypes.DELETE
       }
       )
+      res.json(b);
+      console.log(b);
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');

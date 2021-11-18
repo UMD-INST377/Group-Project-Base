@@ -10,9 +10,6 @@ export default (sequelize, DataTypes) => {
       cause: {
         type: DataTypes.STRING
       },
-      animal_id: {
-        type: DataTypes.INTEGER
-      },
       age_species_went_extinct: {
         type: DataTypes.INTEGER
       }

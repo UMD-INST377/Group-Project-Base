@@ -13,10 +13,10 @@ const router = express.Router();
 router.route('/film')
   .get(async (req, res) => {
     try {
-      const movieActors = await db.sequelizeDB.query(actor.getFilm, {
+      const movieData = await db.sequelizeDB.query(actor.getFilm, {
         type: sequelize.QueryTypes.SELECT
       });
-      res.json(movieActors);
+      res.json(movieData);
       console.log(req);
     } catch (error) {
       console.log(error);
@@ -25,13 +25,13 @@ router.route('/film')
   })
   .put(async (req, res) => {
     try {
-      const movieGenres = await db.sequelizeDB.query(genre.putFilm, {
+      const movieData = await db.sequelizeDB.query(genre.putFilm, {
         replacements: {
           name: req.body.name, id: req.body.id
         },
         type: sequelize.QueryTypes.UPDATE
       });
-      res.json(movieGenres);
+      res.json(movieData);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -39,13 +39,13 @@ router.route('/film')
   })
   .post(async (req, res) => {
     try {
-      const movieGenres = await db.sequelizeDB.query(genre.postFilm, {
+      const movieData = await db.sequelizeDB.query(genre.postFilm, {
         replacements: {
           name: req.body.name, id: req.body.id
         },
         type: sequelize.QueryTypes.INSERT
       });
-      res.json(movieGenres);
+      res.json(movieData);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
@@ -53,13 +53,13 @@ router.route('/film')
   })
   .delete(async (req, res) => {
     try {
-      const movieGenres = await db.sequelizeDB.query(genre.deleteFilm, {
+      const movieData = await db.sequelizeDB.query(genre.deleteFilm, {
         replacements: {
           id: req.body.id
         },
         type: sequelize.QueryTypes.DELETE
       });
-      res.json(movieGenres);
+      res.json(movieData);
     } catch (error) {
       console.log(error);
       res.json({error: 'Can\'t be deleted'});

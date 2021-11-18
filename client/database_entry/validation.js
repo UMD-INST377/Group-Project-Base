@@ -455,8 +455,6 @@ async function postVinyl() {
         console.log('finished post')
 
         //message box
-        function messageBox() {
-            alert("You have successfully submitted a record!");
-        }
+        alert("You have successfully submitted a record!");
     }
 }

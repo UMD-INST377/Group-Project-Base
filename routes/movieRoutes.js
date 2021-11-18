@@ -5,6 +5,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 // works if replace verbs with actorController
 import actor from '../controllers/actorController.js';
+import genre from '../controllers/genreController.js';
 
 const router = express.Router();
 

@@ -5,7 +5,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 import animalsController from '../controllers/animalsController.js';
-import biomesController, {getBiomes, putBiomes, postBiomes, deleteBiomes} from '../controllers/biomesController.js';
+import biomesController from '../controllers/biomesController.js';
 
 const router = express.Router();
 

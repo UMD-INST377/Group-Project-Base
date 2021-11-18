@@ -4,7 +4,8 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
-import mdCensusDataTaxCreditCompanies from '../server/controller/md_census_data_tax_credit_company.js'
+import md_census_data_tax_credit_company from '../server/controller/md_census_data_tax_credit_company.js'
+import small_dev_metro_areas from '../server/controller/small_dev_metro_areas.js';
 
 const router = express.Router();
 

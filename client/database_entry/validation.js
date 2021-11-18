@@ -393,11 +393,11 @@ async function postVinyl() {
         // console.log(responseProducers);
 
         //Gets singer_id for vinyl being input
-        const singersRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers');
-        const singers = singersRequest.json()
+        const singersRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers')
+        const singers = singersRequest.then()
         console.log(singersRequest)
         console.log(singers)
-        console.log(singers['PromiseResult'])
+
         /*
         let singer_id_vinyl;
         singers.forEach((singer) => {

@@ -400,8 +400,10 @@ async function postVinyl() {
 
         let singer_id_vinyl;
         singers.forEach((singer) => {
+            console.log(singer['singer_id'])
             console.log(singer['artist_name'])
             console.log(texts[4].value)
+            
             if (singer['artist_name'] === texts[4].value) {
                 singer_id_vinyl = singer['singer_id']
             }

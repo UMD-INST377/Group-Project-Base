@@ -103,39 +103,57 @@ router.route('/film')
 router.route('/genre')
   .get(async (req, res) => {
     try {
-      res.json({message: 'Touched the /genre with GET'});
-      console.log(message);
+      const movieGenres = await db.sequelizeDB.query(genre.getGenre, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(movieGenres);
+      console.log(req);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
     }
   })
-  .put((req, res) => {
+  .put(async (req, res) => {
     try {
-      res.json({message: 'Touched the /genre with PUT'});
-      console.log(message);
+      const movieGenres = await db.sequelizeDB.query(genre.putGenre, {
+        replacements: {
+          name: req.body.name, id: req.body.id
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(movieGenres);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
     }
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     try {
-      res.json({message: 'Touched the /genre with POST'});
-      console.log(message);
+      const movieGenres = await db.sequelizeDB.query(genre.postActor, {
+        replacements: {
+          name: req.body.name, id: req.body.id
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(movieGenres);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong'});
     }
   })
-  .delete((req, res) => {
+  .delete(async (req, res) => {
     try {
-      res.json({message: 'Touched the /genre with DELETE'});
-      console.log(message);
+      const movieGenres = await db.sequelizeDB.query(genre.deleteGenre, {
+        replacements: {
+          id: req.body.id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(movieGenres);
     } catch (error) {
       console.log(error);
-      res.json({error: 'Something went wrong'});
+      res.json({error: 'Can\'t be deleted'});
     }
   });
-  
+
 export default router;

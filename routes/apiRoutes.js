@@ -66,7 +66,7 @@ router.get('/songs/:song_id', async (req, res) => {
 
     // Using the Songs table from the original database instead. // 
     const songs = await db.Songs.findAll({
-      where: { 
+      where: {
         song_id: req.params.song_id
       }
     });
@@ -116,7 +116,8 @@ router.put('/rating', async (req, res) => {
 /* Endpoint that is used to delete the song -Daniel Cutaneo */
 router.delete('/songs/:song_id', async (req, res) => {
   try {
-    await db.deleteCustom.destroy({
+    // Deletes the songs
+    await db.Songs.destroy({
       where: {
         song_id: req.params.song_id
       }

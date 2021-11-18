@@ -341,7 +341,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 async function postVinyl() {
-
     if (submitted) {
         // Selecting all text inputs
         const texts = document.querySelectorAll('input')
@@ -375,7 +374,6 @@ async function postVinyl() {
             },
             body: JSON.stringify(singerDict)
         });
-
         // console.log(responseSingers);
 
 
@@ -443,14 +441,14 @@ async function postVinyl() {
             is_explicit:explicit};
 
         // Requesting POST for Vinyl table
-        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com:3000/api/vinyl', {
+        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(vinylDict)
         });
-        console.log('finished post')
         // console.log(responseVinyl);
+        console.log('finished post')
     }
 }

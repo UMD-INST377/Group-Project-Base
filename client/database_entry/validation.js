@@ -375,7 +375,7 @@ async function postVinyl() {
             },
             body: JSON.stringify(singerDict)
         });
-        console.log(responseSingers);
+        // console.log(responseSingers);
 
 
 
@@ -390,12 +390,14 @@ async function postVinyl() {
             },
             body: JSON.stringify(producerDict)
         });
-        console.log(responseProducers);
+        // console.log(responseProducers);
 
         //Gets singer_id for vinyl being input
         const singersRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers');
         const singers = singersRequest.json()
-
+        console.log(singersRequest)
+        console.log(singers)
+        /*
         let singer_id_vinyl;
         singers.forEach((singer) => {
             if (singer['artist_name'] === texts[4].value) {
@@ -420,7 +422,7 @@ async function postVinyl() {
         console.log(singer_id_vinyl)
         console.log(producer_id_vinyl)
 
-        /*
+        
         // Separating inputs into array so they can be "stringified"
         // setting variable for is_explicit so its easier to input into dictionary
         const explicit = 'No'

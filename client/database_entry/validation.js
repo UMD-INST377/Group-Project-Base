@@ -335,8 +335,10 @@ function zf_FocusNext(elem, event) {
 // Creating event listener for submit button on data entry
 window.addEventListener('DOMContentLoaded', (event) => {
     const submit = document.querySelector('.zf-submitColor')
-    submit.addEventListener('click', (event) => {submitted = true
-                                                postVinyl()});
+    submit.addEventListener('click', (event) => {
+        submitted = true
+        postVinyl()
+    });
 
 });
 
@@ -344,26 +346,26 @@ async function postVinyl() {
     if (submitted) {
         // Selecting all text inputs
         const texts = document.querySelectorAll('input')
-        /*
-        3 Album Name
-        4 Artist Name
-        5 Producer FN 6 Producer LN
-        7 Release Date
-        8 Track Num
-        9 weight
-        10 Yes 11 No (is_explicit)
-        12 Album Pic Upload
-        */
+            /*
+            3 Album Name
+            4 Artist Name
+            5 Producer FN 6 Producer LN
+            7 Release Date
+            8 Track Num
+            9 weight
+            10 Yes 11 No (is_explicit)
+            12 Album Pic Upload
+            */
 
         // Selecting the select inputs
         const selects = document.querySelectorAll('select')
-        /*
-        0 Genre
-        1 Hour 2 Minute 3 Seconds
-        */
+            /*
+            0 Genre
+            1 Hour 2 Minute 3 Seconds
+            */
 
         // Separating inputs into array so they can be "stringified"
-        const singerDict = {artist_name:texts[4].value};
+        const singerDict = { artist_name: texts[4].value };
 
 
         // Requesting POST for Singers table
@@ -379,7 +381,7 @@ async function postVinyl() {
 
 
         // Separating inputs into array so they can be "stringified"
-        const producerDict = {producer_fn:texts[5].value,producer_ln:texts[6].value};
+        const producerDict = { producer_fn: texts[5].value, producer_ln: texts[6].value };
 
         // Requesting POST for Producers table
         const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers', {
@@ -394,9 +396,9 @@ async function postVinyl() {
 
         //Gets singer_id for vinyl being input
         const singers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers')
-        .then(function(response) {
-            return response.json();
-        });
+            .then(function(response) {
+                return response.json();
+            });
 
         console.log(singers)
         let singer_id_vinyl;
@@ -408,9 +410,9 @@ async function postVinyl() {
 
         //Gets producer_id for vinyl being input
         const producers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers')
-        .then(function(response) {
-            return response.json();
-        });
+            .then(function(response) {
+                return response.json();
+            });
 
         let producer_id_vinyl;
         producers.forEach((producer) => {
@@ -430,15 +432,16 @@ async function postVinyl() {
         }
 
         const vinylDict = {
-            singer_id:singer_id_vinyl,
-            producer_id:producer_id_vinyl,
-            album_name:texts[3].value,
-            genre:selects[0].value,
-            track_amount:texts[8].value,
-            runtime:`${selects[1].value}:${selects[2].value}:${selects[3].value}`,
-            first_available:texts[7].value,
-            weight:texts[9].value,
-            is_explicit:explicit};
+            singer_id: singer_id_vinyl,
+            producer_id: producer_id_vinyl,
+            album_name: texts[3].value,
+            genre: selects[0].value,
+            track_amount: texts[8].value,
+            runtime: `${selects[1].value}:${selects[2].value}:${selects[3].value}`,
+            first_available: texts[7].value,
+            weight: texts[9].value,
+            is_explicit: explicit
+        };
 
         // Requesting POST for Vinyl table
         const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl', {
@@ -450,5 +453,10 @@ async function postVinyl() {
         });
         // console.log(responseVinyl);
         console.log('finished post')
+
+        //message box
+        function messageBox() {
+            alert("You have successfully submitted a record!");
+        }
     }
 }

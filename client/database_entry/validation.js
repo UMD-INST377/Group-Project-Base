@@ -375,6 +375,7 @@ async function postVinyl() {
             },
             body: JSON.stringify(singerDict)
         });
+
         // console.log(responseSingers);
 
 
@@ -390,6 +391,7 @@ async function postVinyl() {
             },
             body: JSON.stringify(producerDict)
         });
+
         // console.log(responseProducers);
 
         //Gets singer_id for vinyl being input
@@ -397,13 +399,10 @@ async function postVinyl() {
         .then(function(response) {
             return response.json();
         });
+
         console.log(singers)
         let singer_id_vinyl;
         singers.forEach((singer) => {
-            console.log(singer['singer_id'])
-            console.log(singer['artist_name'])
-            console.log(texts[4].value)
-            
             if (singer['artist_name'] === texts[4].value) {
                 singer_id_vinyl = singer['singer_id']
             }
@@ -421,16 +420,15 @@ async function postVinyl() {
                 producer_id_vinyl = producer['producer_id']
             }
         });
-        console.log('end result')
-        console.log(singer_id_vinyl)
-        console.log(producer_id_vinyl)
+        // console.log('end result')
+        // console.log(singer_id_vinyl)
+        // console.log(producer_id_vinyl)
 
-        /*
         // Separating inputs into array so they can be "stringified"
         // setting variable for is_explicit so its easier to input into dictionary
-        const explicit = 'No'
+        let explicit = 0
         if (texts[10].checked === true) {
-            explicit = 'Yes'
+            explicit = 1
         }
 
         const vinylDict = {
@@ -452,7 +450,7 @@ async function postVinyl() {
             },
             body: JSON.stringify(vinylDict)
         });
-        console.log(responseVinyl);
-        */
+    
+        // console.log(responseVinyl);
     }
 }

@@ -10,15 +10,13 @@ router.get('/', (req, res) => {
   res.send('Welcome to the NBA API');
 });
 
-
 /// //////////////////////////////////
 /// ///////NBA Database////////
 /// /////////////////////////////////
-const nbaPlayerQuery = (`SELECT player_name, position_name, ppg, assists, name
-                        FROM Positions JOIN `Players table`
-                          USING(position_id) JOIN Team
-                          USING(team_id)`);
-
+const nbaPlayerQuery = `SELECT player_name, position_name, ppg, assists, name
+FROM Positions JOIN players
+	USING(position_id) JOIN Team
+	USING(team_id);`;
 
 router.route('/nba-players')
   .get(async (req, res) => {

@@ -5,10 +5,10 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-const nbaPlayerQuery = (`SELECT player_name, position_name, ppg, assists, name
-                        FROM Positions JOIN `Players table`
-                          USING(position_id) JOIN Team
-                          USING(team_id)`);
+const nbaPlayerQuery = `SELECT player_name, position_name, ppg, assists, name
+FROM Positions JOIN players
+	USING(position_id) JOIN Team
+	USING(team_id);`;
 
 
 router.route('/nba-players')

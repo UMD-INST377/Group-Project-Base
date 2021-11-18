@@ -452,6 +452,5 @@ async function postVinyl() {
             body: JSON.stringify(vinylDict)
         });
         console.log(responseVinyl);
-        */
     }
 }

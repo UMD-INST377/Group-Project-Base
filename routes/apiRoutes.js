@@ -3,6 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import player from '../controllers/apiRoutesController.js';
 
 const router = express.Router();
 
@@ -14,14 +15,14 @@ router.get('/', (req, res) => {
 /// ///////NBA Database////////
 /// /////////////////////////////////
 const nbaPlayerQuery = `SELECT player_name, position_name, ppg, assists, name
-FROM Positions JOIN players
-	USING(position_id) JOIN Team
-	USING(team_id);`;
+                        FROM Positions JOIN players
+                          USING(position_id) JOIN Team
+                          USING(team_id);`;
 
 router.route('/nba-players')
   .get(async (req, res) => {
     try {
-      const result = await db.NBA.query(nbaPlayerQuery, {
+      const result = await db.sequelizeDB.query(player.getPlayer, {
         type: sequelize.QueryTypes.SELECT
       });
       console.log('touched /nba-players with GET');
@@ -33,17 +34,11 @@ router.route('/nba-players')
   })
 
   .post(async (req, res) => {
-    const players = await db.NBA.findAll();
+    const players = await db.sequelizeDB.findAll();
     const currentId = (await players.length) + 1;
     try {
-      const newPlayer = await db.NBA.create({
-        player_id: currentId,
-        player_name: req.body.player_name,
-        position_id: req.body.position_id,
-        ppg: req.body.ppg,
-        assists: req.body.assists,
-        team_id: req.body.team_id,
-        player_number: req.body.player_number
+      const newPlayer = await db.sequelizeDB.query(player.postPlayer, {
+        type: sequelize.QueryTypes.INSERT
       });
       res.json(newPlayer);
     } catch (err) {
@@ -53,7 +48,7 @@ router.route('/nba-players')
   })
   .delete(async (req, res) => {
     try {
-      await db.NBA.destroy({
+      await db.sequelizeDB.destroy({
         where: {
           player_id: req.params.player_id
         }
@@ -67,7 +62,7 @@ router.route('/nba-players')
   })
   .put(async (req, res) => {
     try {
-      await db.DiningHall.update(
+      await db.sequelizeDB.update(
         {
           ppg: req.body.ppg,
           assists: req.body.assists,

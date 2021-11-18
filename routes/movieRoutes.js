@@ -13,7 +13,7 @@ const router = express.Router();
 router.route('/film')
   .get(async (req, res) => {
     try {
-      const movieData = await db.sequelizeDB.query(actor.getFilm, {
+      const movieData = await db.sequelizeDB.query(film.getFilm, {
         type: sequelize.QueryTypes.SELECT
       });
       res.json(movieData);
@@ -25,7 +25,7 @@ router.route('/film')
   })
   .put(async (req, res) => {
     try {
-      const movieData = await db.sequelizeDB.query(genre.putFilm, {
+      const movieData = await db.sequelizeDB.query(film.putFilm, {
         replacements: {
           name: req.body.name, id: req.body.id
         },
@@ -39,7 +39,7 @@ router.route('/film')
   })
   .post(async (req, res) => {
     try {
-      const movieData = await db.sequelizeDB.query(genre.postFilm, {
+      const movieData = await db.sequelizeDB.query(film.postFilm, {
         replacements: {
           name: req.body.name, id: req.body.id
         },
@@ -53,7 +53,7 @@ router.route('/film')
   })
   .delete(async (req, res) => {
     try {
-      const movieData = await db.sequelizeDB.query(genre.deleteFilm, {
+      const movieData = await db.sequelizeDB.query(film.deleteFilm, {
         replacements: {
           id: req.body.id
         },

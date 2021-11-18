@@ -400,6 +400,8 @@ async function postVinyl() {
 
         let singer_id_vinyl;
         singers.forEach((singer) => {
+            console.log(singer['artist_name'])
+            console.log(texts[4].value)
             if (singer['artist_name'] === texts[4].value) {
                 singer_id_vinyl = singer['singer_id']
             }
@@ -413,9 +415,6 @@ async function postVinyl() {
 
         let producer_id_vinyl;
         producers.forEach((producer) => {
-            console.log(`${producer['producer_fn']} ${producer['producer_ln']}`)
-            console.log(`${texts[5].value} ${texts[6].value}`)
-            console.log('')
             if (`${producer['producer_fn']} ${producer['producer_ln']}` === `${texts[5].value} ${texts[6].value}`) {
                 producer_id_vinyl = producer['producer_id']
             }
@@ -424,7 +423,7 @@ async function postVinyl() {
         console.log(singer_id_vinyl)
         console.log(producer_id_vinyl)
 
-        
+        /*
         // Separating inputs into array so they can be "stringified"
         // setting variable for is_explicit so its easier to input into dictionary
         const explicit = 'No'
@@ -452,5 +451,6 @@ async function postVinyl() {
             body: JSON.stringify(vinylDict)
         });
         console.log(responseVinyl);
+        */
     }
 }

@@ -368,7 +368,7 @@ async function postVinyl() {
 
 
         // Requesting POST for Singers table
-        const responseSingers = fetch('https://inst377-vinylweb.herokuapp.com/api/singers', {
+        const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -383,7 +383,7 @@ async function postVinyl() {
         const producerDict = {producer_fn:texts[5].value,producer_ln:texts[6].value};
 
         // Requesting POST for Producers table
-        const responseProducers = fetch('https://inst377-vinylweb.herokuapp.com/api/producers', {
+        const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -392,6 +392,31 @@ async function postVinyl() {
         });
         console.log(responseProducers);
 
+        //Gets singer_id for vinyl being input
+        const singers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers');
+
+        let singer_id_vinyl;
+        singers.forEach((singer) => {
+            if (singer['artist_name'] === texts[4].value) {
+                singer_id_vinyl = singer['singer_id']
+            }
+        });
+
+        //Gets producer_id for vinyl being input
+        const producers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers');
+
+        let producer_id_vinyl;
+        producers.forEach((producer) => {
+            console.log(`${producer['producer_fn']} ${producer['producer_ln']}`)
+            console.log(`${texts[5].value} ${texts[6].value}`)
+            console.log('')
+            if (`${producer['producer_fn']} ${producer['producer_ln']}` === `${texts[5].value} ${texts[6].value}`) {
+                producer_id_vinyl = producer['producer_id']
+            }
+        });
+        console.log('end result')
+        console.log(singer_id_vinyl)
+        console.log(producer_id_vinyl)
 
         /*
         // Separating inputs into array so they can be "stringified"
@@ -402,6 +427,8 @@ async function postVinyl() {
         }
 
         const vinylDict = {
+            singer_id:singer_id_vinyl
+            producer_id:producer_id_vinyl
             album_name:texts[3].value,
             genre:selects[0].value,
             track_amount:texts[8].value,

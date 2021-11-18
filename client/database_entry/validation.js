@@ -393,7 +393,8 @@ async function postVinyl() {
         console.log(responseProducers);
 
         //Gets singer_id for vinyl being input
-        const singers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers');
+        const singersRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers');
+        const singers = singersRequest.json()
 
         let singer_id_vinyl;
         singers.forEach((singer) => {
@@ -403,7 +404,8 @@ async function postVinyl() {
         });
 
         //Gets producer_id for vinyl being input
-        const producers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers');
+        const producersRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers');
+        const producers = producersRequest.json()
 
         let producer_id_vinyl;
         producers.forEach((producer) => {

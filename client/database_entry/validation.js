@@ -443,14 +443,14 @@ async function postVinyl() {
             is_explicit:explicit};
 
         // Requesting POST for Vinyl table
-        const responseVinyl = fetch('https://inst377-vinylweb.herokuapp.com:3000/api/vinyl', {
+        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com:3000/api/vinyl', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(vinylDict)
         });
-    
+        console.log('finished post')
         // console.log(responseVinyl);
     }
 }

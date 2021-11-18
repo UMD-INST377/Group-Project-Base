@@ -1,5 +1,7 @@
 /* eslint-disable block-spacing */
 
+// const { text } = require("body-parser");
+
 let submitted = false
 
 // import { text } from "body-parser";
@@ -347,14 +349,14 @@ async function postVinyl() {
         // Selecting all text inputs
         const texts = document.querySelectorAll('input')
             /*
-            3 Album Name
-            4 Artist Name
-            5 Producer FN 6 Producer LN
-            7 Release Date
-            8 Track Num
-            9 weight
-            10 Yes 11 No (is_explicit)
-            12 Album Pic Upload
+            2 Album Name
+            3 Artist Name
+            4 Producer FN 5 Producer LN
+            6 Release Date
+            7 Track Num
+            8 weight
+            9 Yes 10 No (is_explicit)
+            11 Album Pic Upload
             */
 
         // Selecting the select inputs
@@ -365,7 +367,7 @@ async function postVinyl() {
             */
 
         // Separating inputs into array so they can be "stringified"
-        const singerDict = { artist_name: texts[4].value };
+        const singerDict = { artist_name: texts[3].value };
 
 
         // Requesting POST for Singers table
@@ -376,12 +378,12 @@ async function postVinyl() {
             },
             body: JSON.stringify(singerDict)
         });
-        // console.log(responseSingers);
+        console.log(responseSingers);
 
 
 
         // Separating inputs into array so they can be "stringified"
-        const producerDict = { producer_fn: texts[5].value, producer_ln: texts[6].value };
+        const producerDict = { producer_fn: texts[4].value, producer_ln: texts[5].value };
 
         // Requesting POST for Producers table
         const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers', {
@@ -391,8 +393,7 @@ async function postVinyl() {
             },
             body: JSON.stringify(producerDict)
         });
-
-        // console.log(responseProducers);
+        console.log(responseProducers);
 
         //Gets singer_id for vinyl being input
         const singers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers')
@@ -400,10 +401,9 @@ async function postVinyl() {
                 return response.json();
             });
 
-        console.log(singers)
         let singer_id_vinyl;
         singers.forEach((singer) => {
-            if (singer['artist_name'] === texts[4].value) {
+            if (singer['artist_name'] === texts[3].value) {
                 singer_id_vinyl = singer['singer_id']
             }
         });
@@ -416,10 +416,11 @@ async function postVinyl() {
 
         let producer_id_vinyl;
         producers.forEach((producer) => {
-            if (`${producer['producer_fn']} ${producer['producer_ln']}` === `${texts[5].value} ${texts[6].value}`) {
+            if (`${producer['producer_fn']} ${producer['producer_ln']}` === `${texts[4].value} ${texts[5].value}`) {
                 producer_id_vinyl = producer['producer_id']
             }
         });
+
         // console.log('end result')
         // console.log(singer_id_vinyl)
         // console.log(producer_id_vinyl)
@@ -427,19 +428,19 @@ async function postVinyl() {
         // Separating inputs into array so they can be "stringified"
         // setting variable for is_explicit so its easier to input into dictionary
         let explicit = 0
-        if (texts[10].checked === true) {
+        if (texts[9].checked === true) {
             explicit = 1
         }
 
         const vinylDict = {
             singer_id: singer_id_vinyl,
             producer_id: producer_id_vinyl,
-            album_name: texts[3].value,
+            album_name: texts[2].value,
             genre: selects[0].value,
-            track_amount: texts[8].value,
+            track_amount: texts[7].value,
             runtime: `${selects[1].value}:${selects[2].value}:${selects[3].value}`,
-            first_available: texts[7].value,
-            weight: texts[9].value,
+            first_available: texts[6].value,
+            weight: texts[8].value,
             is_explicit: explicit
         };
 
@@ -451,10 +452,9 @@ async function postVinyl() {
             },
             body: JSON.stringify(vinylDict)
         });
-        // console.log(responseVinyl);
-        console.log('finished post')
+        console.log(responseVinyl);
+        console.log('finished post');
 
-        //message box
-        alert("You have successfully submitted a record!");
+        alert('Album Successfully Submitted')
     }
 }

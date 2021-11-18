@@ -23,7 +23,7 @@ router.route('/singers')
     .post(async(req, res) => {
         try {
             const insertQuery = `INSERT INTO singers(singer_id, artist_name)
-                           SELECT MAX(singer_id) + 1 , ${req.body.artist_name} FROM singers`;
+                           SELECT MAX(singer_id) + 1 , '${req.body.artist_name}' FROM singers`;
             const result = await db.sequelizeDB.query(insertQuery, { type: sequelize.QueryTypes.POST });
             console.log('touched singers with POST');
             res.json(result);

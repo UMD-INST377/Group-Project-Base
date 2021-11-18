@@ -18,7 +18,7 @@ router.route('/producers')
     .post(async(req, res) => {
         try {
             const insertQuery = `INSERT INTO producers (producer_id, producer_fn, producer_ln)
-            VALUES (SELECT MAX(producer_id) + 1, ${req.body.first}, ${req.body.last})`;
+                                SELECT MAX(producer_id) + 1, '${req.body.producer_fn}', '${req.body.producer_ln}' FROM producers`;
             const result = await db.sequelizeDB.query(insertQuery, { type: sequelize.QueryTypes.POST });
             console.log('touched producers with POST');
             res.json(req.body);

@@ -39,7 +39,7 @@ async function getInfo() {
         prices[currentPrice] = allPrices[currentPrice];
     }
 
-    //Request and Compile SONGS information
+    // Request and Compile SONGS information
     // const songsRequest = await fetch('http://localhost:3000/api/songs')
     const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/songs')
     const allSongs = await songsRequest.json()

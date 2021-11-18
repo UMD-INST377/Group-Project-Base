@@ -1,5 +1,7 @@
 /* eslint-disable block-spacing */
 
+let submitted = false
+
 // import { text } from "body-parser";
 
 // $Id: $
@@ -332,47 +334,91 @@ function zf_FocusNext(elem, event) {
 
 // Creating event listener for submit button on data entry
 window.addEventListener('DOMContentLoaded', (event) => {
-    document.querySelector('.zf-submitColor').addEventListener('click', postVinyl());
+    const submit = document.querySelector('.zf-submitColor')
+    submit.addEventListener('click', (event) => {submitted = true
+                                                postVinyl()});
+
 });
 
 async function postVinyl() {
-    // Selecting all text inputs
-    const texts = document.querySelectorAll('input')
+
+    if (submitted) {
+        // Selecting all text inputs
+        const texts = document.querySelectorAll('input')
         /*
-        3 Song Name
-        4 Album Name
-        5 Artist Name
-        6 Producer FN 7 Producer LN
-        8 Release Date
-        9 Track Num
-        10 weight
-        11 Yes 12 No (is_explicit)
-        13 Album Pic Upload
+        3 Album Name
+        4 Artist Name
+        5 Producer FN 6 Producer LN
+        7 Release Date
+        8 Track Num
+        9 weight
+        10 Yes 11 No (is_explicit)
+        12 Album Pic Upload
         */
 
-    // Selecting the select inputs
-    const selects = document.querySelectorAll('select')
+        // Selecting the select inputs
+        const selects = document.querySelectorAll('select')
         /*
         0 Genre
-        1 Hour 2 Minute
+        1 Hour 2 Minute 3 Seconds
         */
 
-    // Separating inputs into array so they can be "stringified"
-    const headerInput = [];
+        // Separating inputs into array so they can be "stringified"
+        const singerDict = {artist_name:texts[4].value};
 
-    texts.forEach((input) => {
-        console.log(input.text)
-        headerInput.push(input.text)
-    });
 
-    /* Requesting POST
-    const response = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(headerInput)
-    });
-    console.log(json.response());
-    */
+        // Requesting POST for Singers table
+        const responseSingers = fetch('https://inst377-vinylweb.herokuapp.com/api/singers', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(singerDict)
+        });
+        console.log(responseSingers);
+
+
+
+        // Separating inputs into array so they can be "stringified"
+        const producerDict = {producer_fn:texts[5].value,producer_ln:texts[6].value};
+
+        // Requesting POST for Producers table
+        const responseProducers = fetch('https://inst377-vinylweb.herokuapp.com/api/producers', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(producerDict)
+        });
+        console.log(responseProducers);
+
+
+        /*
+        // Separating inputs into array so they can be "stringified"
+        // setting variable for is_explicit so its easier to input into dictionary
+        const explicit = 'No'
+        if (texts[10].checked === true) {
+            explicit = 'Yes'
+        }
+
+        const vinylDict = {
+            album_name:texts[3].value,
+            genre:selects[0].value,
+            track_amount:texts[8].value,
+            runtime:`${selects[1].value}:${selects[2].value}:${selects[3].value}`,
+            first_available:texts[7].value,
+            weight:texts[9].value,
+            is_explicit:explicit};
+
+        // Requesting POST for Vinyl table
+        const responseVinyl = fetch('https://inst377-vinylweb.herokuapp.com:3000/api/vinyl', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(vinylDict)
+        });
+        console.log(responseVinyl);
+        */
+    }
 }

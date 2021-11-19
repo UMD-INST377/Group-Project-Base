@@ -333,7 +333,7 @@
 
     <h2 class='title is-2 has-text-weight-bold'>Delete Existing President</h2>
 
-    <form action='' method='delete' class="box" id="create_form">
+    <form action='/presidents' method='delete' class="box" id="create_form">
       <div class="field">
         <label class="label" for="president_id">President ID</label>
         <div class="control">
@@ -343,7 +343,75 @@
       <button class="button is-primary" id="delete_button">Delete President</button>
     </form>
 
-    <script src="script.js"></script>
+    <script src="script.js">
+
+    const asyncGetCall = async () => {
+      try {
+        const response = await fetch('/presidents');
+        const data = await response.json();
+        // enter you logic when the fetch is successful
+        console.log(data);
+      } catch(error) {
+        // enter your logic for when there is an error (ex. error toast)
+        console.log(error)
+      } 
+    }
+    
+    asyncGetCall()
+    
+    const asyncPostCall = async () => {
+      try {
+        const response = await fetch('/presidents', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            // your expected POST request payload goes here
+            title: "My post title",
+            body: "My post content."
+          })
+        });
+        
+        const data = await response.json();
+        // enter you logic when the fetch is successful
+        console.log(data);
+      } catch(error) {
+        // enter your logic for when there is an error (ex. error toast)
+        
+        console.log(error)
+      } 
+    }
+    
+    asyncPostCall()
+
+      update_button();
+
+      async function update_button() {
+
+        const updatePresident = document.querySelector('update_button');
+        updatePresident.addEventListener('click', update_button);
+        //console.log(data);?
+      }
+
+      create_form();
+
+      async function create_form() {
+
+        const createForm = document.querySelector('create_form');
+        updateForm.addEventListener('click', create_form);
+      }
+
+      delete_president();
+
+      async function delete_president() {
+
+        const deletePresident = document.querySelector('delete_button');
+        deletePresident.addEventListener('click', delete_button);
+        //console.log(data);?
+      }
+
+    </script>
   </body>
 
 

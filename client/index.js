@@ -55,6 +55,10 @@ async function getInfo() {
           },
           800: {
             perView: 3
+          },
+
+          1200: {
+            perView: 4
           }
         }
     };

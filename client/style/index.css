@@ -603,4 +603,43 @@ td {
     } 
   }
 
+/* For Smaller Screen Laptops */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+    img {
+        max-height: 225px;
+        max-width: 225px;
+    }
 
+    .search {
+        top: 20px;
+    }
+
+    input {
+        height: 2.3vw
+    }
+
+    @keyframes slideDown {
+        from {
+            top: 0;
+        }
+        to {
+            top: 20px;
+        }
+    }
+
+    .search .placeholder {
+        font-size: 11px;
+        top: 43px;
+        left: 3.3vw;
+    }
+
+    .search-result {
+        top: 63px;
+        left: 28px;
+        width: 20.3vw
+    }
+
+    .name {
+        margin-top: 3px;
+    }
+}

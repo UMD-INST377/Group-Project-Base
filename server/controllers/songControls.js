@@ -4,7 +4,7 @@
  * displaying song title along with album name and duration.
  */
 
-const getAllSongs = `SELECT s.song_name, first_name, last_name, duration 
+const getAllSongs = `SELECT s.song_id, s.song_name, album_name, first_name, last_name, r.ratings, description, duration 
     FROM rating r
     INNER JOIN songs s
         ON r.song_id = s.song_id
@@ -15,7 +15,7 @@ const getAllSongs = `SELECT s.song_name, first_name, last_name, duration
     JOIN artist c 
         ON b.artist_id = c.artist_id`;
 
-const getSongsByRating = `SELECT s.song_name, album_name, first_name, last_name, r.ratings
+const getSongsByID = `SELECT s.song_id, s.song_name, album_name, first_name, last_name, r.ratings, description, duration 
     FROM rating r
     INNER JOIN songs s
         ON r.song_id = s.song_id
@@ -27,7 +27,8 @@ const getSongsByRating = `SELECT s.song_name, album_name, first_name, last_name,
         ON b.artist_id = c.artist_id`;
 
 /* Exporting variables */
+
 export default {
   getAllSongs,
-  getSongsByRating
+  getSongsByID
 };

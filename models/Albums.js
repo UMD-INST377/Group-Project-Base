@@ -1,3 +1,4 @@
+
 export default (sequelize, DataTypes) => {
   const Albums = sequelize.define(
     'albums',

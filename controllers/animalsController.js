@@ -1,5 +1,7 @@
-const animalsGET = `SELECT Animal_ID, common_name, species, weight_lbs
-FROM animals;`;
+const animalsGET = `SELECT Animal_ID, common_name, species, weight_lbs, cause, age_species_went_extinct
+FROM animals
+JOIN extinction
+WHERE extinction_extinction_id = extinction_id;`;
 
 const animalPOST = `INSERT INTO animals (Animal_ID, common_name, species, weight_lbs)
 VALUES(DEFAULT, :common_name, :species, :weight_lbs);`;

@@ -1,4 +1,4 @@
-const mdCensusDataTaxCreditCompanies = `SELECT census_zcta,
+export default `SELECT census_zcta,
     census_identifier,
     median_age,
     num_persons_over_65,
@@ -10,6 +10,3 @@ FROM
     md_census_data mcd
 INNER JOIN tax_credit_companies tcc
     ON mcd.census_ztca = tcc.company_ztca;`;
-
-
-

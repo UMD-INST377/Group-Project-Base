@@ -9,6 +9,7 @@ import film from '../controllers/filmController.js';
 
 const router = express.Router();
 
+/* Films */
 router.route('/film')
   .get(async (req, res) => {
     try {

@@ -1,13 +1,21 @@
 Jim's lab10 guide - for GET requests
+run 'git pull origin main' always
 
-1. inside this folder `controllers`
+1. inside the folder `controllers`
    create a js file for your sql statements,
-   and then write and export the sql statements (see census.js)
+   and then write and export the sql statements (see census.js as an example)
+
+   NOTE: for sql statements that take in arguments like put and post. Use : before the query parameters
+   look at how my sql statements are structured 
+
 
 2. inside the index.js file import your controller js file created in step 1 and add
    as one of the exports (ex. I imported census.js and added it as an export)
 
 3. In apiRoutes.js go to your get request, and add
-   code to call your sql statement and display/retrieve.
-    (View Jim's /census get request in /routes/apiRoutes.js as an example)
+   code to call your sql statement and display/retrieve. (req.query gets the JSON object then you can access your args)
+    (View Jim's routes in apiRoutes as an example)
 
+
+NOTE: make sure put and post are working before you work on delete
+work on each 1 at a time - learn postman

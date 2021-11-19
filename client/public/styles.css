@@ -17,3 +17,7 @@ body{
     flex-direction: column;
 }
 
+table.center {
+  margin-left:auto; 
+  margin-right:auto;
+}

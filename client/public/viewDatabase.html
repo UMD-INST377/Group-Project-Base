@@ -23,7 +23,7 @@
                         <div class="navbar-start">
                             <a href = "newrecentry.html" class = "navbar-item">New Record Entry</a>
                             <a href="viewDatabase.html" class="navbar-item">View The Database</a>
-                            <a class="navbar-item" href="about.html">About Page</a>
+                            <a class="navbar-item" href="about.html"> About Page</a>
                         </div>
                         <div class="navbar-end">
                             <p class="navbar-item">Search The Database</p>
@@ -41,11 +41,32 @@
             </div>
         </div>
         <div class="columns">
-            <div class="column">
-                <h1 class="title has-text-centered">Extinct Animal Records</h1>
+            <div class="column is-full">
+                <h2 class="title has-text-centered">Animals</h2>
+            </div>
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-full">
+                <table class="table center">
+                    <thead>
+                        <tr>
+                            <th>Animal ID</th>
+                            <th>Animal Name</th>
+                            <th>Species</th>
+                            <th>Weight (lbs)</th>
+                            <th>Cause of Extinction</th>
+                            <th>Extinction Age</th>
+                        </tr>
+                    </thead>
+                    <tbody class="animalStuff">
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+    <script src="getDataForTables.js"></script>
 </body>
 
 </html>
+    

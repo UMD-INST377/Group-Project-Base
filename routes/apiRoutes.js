@@ -34,7 +34,7 @@ router
         replacements: {
           common_name: req.body.common_name,
           weight_lbs: req.body.weight_lbs,
-          species: req.body.weight_lbs,
+          species: req.body.species,
           Animal_ID: req.body.Animal_ID
         },
         type: sequelize.QueryTypes.UPDATE
@@ -59,6 +59,7 @@ router
       res.json(result);
     } catch (err) {
       console.log(err);
+      console.log(req.body);
       res.send('Something went wrong, sorry');
     }
   })

@@ -21,7 +21,8 @@
                     </div>
                     <div class="navbar-menu">
                         <div class="navbar-start">
-                            <a href = "newrecentry.html" class = "navbar-item">New Record Entry</a>
+                            <a href="newrecentry.html" class="navbar-item">New Record Entry</a>
+                            <a href="viewDatabase.html" class="navbar-item">View The Database</a>
                             <a class="navbar-item" href="about.html">About Page</a>
                         </div>
                         <div class="navbar-end">
@@ -44,6 +45,31 @@
                 <h1 class="title has-text-centered">New Record Entry</h1>
             </div>
         </div>
+        <form action="/api/animals" method="post">
+            <div class="field">
+                <label class="label" for="common_name">Animal Name</label>
+                <div class="control">
+                    <input name="common_name" class="input" type="text" placeholder="Enter Animal Name Here">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="species">Species</label>
+                <div class="control">
+                    <input name="species" class="input" type="text" placeholder="Enter Species Name Here">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label" for="weight_lbs">Animal Weight (Lbs)</label>
+                <div class="control">
+                    <input name="weight_lbs" class="input" type="text" placeholder="Enter Animal Weight Here">
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link">Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 

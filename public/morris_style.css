@@ -1,0 +1,35 @@
+.media{
+    padding-left:60px
+}
+#topRight{
+    padding-right:80px
+}
+#game_review{
+    padding-left: 60px;
+}
+.content{
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+}
+
+.title {
+    max-width: 960px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    background-color: gray;
+    
+    
+}
+.form {
+    max-width: 960px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+}
+input .button {
+    
+}

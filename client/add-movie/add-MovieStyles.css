@@ -4,3 +4,65 @@
     box-sizing: border-box;
     font-family: 'Acme';
 }
+
+/* .button{
+    align-self: end;
+    right: 10px;
+    margin-left: %;
+    margin-top: 20px;
+} */
+
+.box{
+    background-color: grey;
+    margin: 50px;
+    margin-right: 25%;
+    display: flex;
+    flex-flow: column wrap;
+    
+}
+
+.inputfield{
+    width: 400px;
+}
+
+.column-form{
+    align-items: center;
+}
+
+/* 
+.name-field{
+    width: 700px;
+    margin-left: 20%;
+    margin-top: 20px;
+
+}
+
+.email-field{
+    width: 700px;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+.movie-field{
+    width: 700px;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+.director-field{
+    width: 700px;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+.actor-field{
+    width: 700px;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+.genre-field{
+    width: 700px;
+    margin-top: 10px;
+    margin-left: 20%;
+} */

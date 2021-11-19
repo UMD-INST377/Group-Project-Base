@@ -1,22 +1,45 @@
-const updatePresident = document.querySelector('#update_button');
+/* const updatePresident = document.querySelector('#update_button');
 updatePresident.addEventListener('click', function_name_here);
 
-<form action="signup.html" method="post" id="signup">
-	<h1>Sign Up</h1>
-	<div class="field">
-		<label for="name">Name:</label>
-		<input type="text" id="name" name="name" placeholder="Enter your fullname" />
-		<small></small>
-	</div>
-	<div class="field">
-		<label for="email">Email:</label>
-		<input type="text" id="email" name="email" placeholder="Enter your email address" />
-		<small></small>
-	</div>
-	<button type="submit">Subscribe</button>
-</form>
+const addPresident = document.querySelector('#update_button');
+addPresident.addEventListener('click', function_name_here); */
 
-let data = {"president_id": ,
+const deletePresident = document.querySelector('#delete_button');
+
+function delPres() {
+  const deleteForm = document.querySelector('#delete_button');
+  const data = {
+    president_id: deleteForm.elements.president_id
+  };
+  const url = `/api/presidents/${inputField.value}`;
+  const request = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  },
+
+deletePresident.addEventListener('click', delPres);
+
+/* async function presDelete() {
+  const inputField = document.querySelector('#delete_button');
+  const url = `/api/presidents/${inputField.value}`;
+  const request = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({president_id: inputField.value})
+  });
+}
+
+document.getElementById('delete').addEventListener('click', (event) => {
+  event.preventDefault();
+  presDelete();
+}); */
+
+/* let data = {"president_id": ,
 "first_name": createForm.elements['first_name'],
 "last_name":  createForm.elements['last_name'],
 "date_inaurg": createForm.elements['date_inaurg'],
@@ -27,4 +50,5 @@ let data = {"president_id": ,
 "home_state": createForm.elements['home_state'],
 "president_image": createForm.elements['president_image'],
 "party": createForm.elements['party']
-}
+};
+ */

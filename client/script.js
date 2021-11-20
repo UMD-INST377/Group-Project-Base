@@ -106,11 +106,16 @@ async function pieChartDisplay() {
   const movies = await response.json();
   const movieLst = movies.map((item) => ({
     y: item['Number of Awards'],
-    label: item.film_title
+    x: item.film_title,
+    awards_won: item.awards
   }));
+
   const chart = new CanvasJS.Chart('pieChartContainer', {
     animationEnabled: true,
     theme: 'dark1',
+    toolTip: {
+      content: '{x} Film Won: </br>{awards_won} Award(s)'
+    },
     title: {
       text: 'Number of Awards Won By Trending Movies'
     },
@@ -118,7 +123,7 @@ async function pieChartDisplay() {
       type: 'pie',
       startAngle: 240,
       yValueFormatString: '##0""',
-      indexLabel: '{label} {y}',
+      indexLabel: '{x} {y}',
       dataPoints: movieLst
     }]
   });

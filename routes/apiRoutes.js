@@ -116,7 +116,7 @@ router.put('/rating', async (req, res) => {
 /* Endpoint that is used to delete the song -Daniel Cutaneo */
 router.delete('/songs/:song_id', async (req, res) => {
   try {
-    await db.deleteCustom.destroy({
+    await db.Songs.destroy({
       where: {
         song_id: req.params.song_id
       }

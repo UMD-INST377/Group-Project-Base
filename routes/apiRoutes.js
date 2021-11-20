@@ -6,6 +6,7 @@ import db from '../database/initializeDB.js';
 
 import animalsController from '../controllers/animalsController.js';
 import biomesController from '../controllers/biomesController.js';
+import fight_modeController from '../controllers/fight_modeController.js';
 
 const router = express.Router();
 
@@ -79,7 +80,7 @@ router
     }
   });
 
-// Elijah F /extinction table endpoint*/
+// Grant  T /extinction table endpoint*/
 router
   .route('/extinction')
   .get(async (req, res) => {
@@ -119,14 +120,17 @@ router
     }
   });
 
-//Grant T /fight_mode
+// Elijah Falope /fight_mode
 
 router
   .route('/fight_mode')
   .get(async (req, res) => {
     try {
-      console.log('touched /animals with GET');
-      res.json({ message: '/fight_mode GET method' });
+      const product = await db.sequelizeDB.query(fight_modeController.fightmodeGET, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(product);
+      console.log(product);
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -134,8 +138,16 @@ router
   })
   .put(async (req, res) => {
     try {
-      console.log('touched /fight_mode with PUT');
-      res.json({ message: '/fight_mode PUT method' });
+      const product = await db.sequelizeDB.query(fight_modeController.fightmodePUT, {
+        replacements: {
+          fight_mode_id: req.body.fight_mode_id,
+          special_skill: req.body.special_skill,
+          weapon_of_choice: req.body.weapon_of_choice
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(product);
+      res.send('Database Entry Succesfully Updated');
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -143,8 +155,15 @@ router
   })
   .post(async (req, res) => {
     try {
-      console.log('touched /fight_mode with POST');
-      res.json({ message: '/fight_mode POST method' });
+      const product = await db.sequelizeDB.query(fight_modeController.fightmodePUT, {
+        replacements: {
+          fight_mode_id: req.body.fight_mode_id,
+          special_skill: req.body.special_skill,
+          weapon_of_choice: req.body.weapon_of_choice
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(product);
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -152,8 +171,14 @@ router
   })
   .delete(async (req, res) => {
     try {
-      console.log('touched /fight_mode with DELETE');
-      res.json({ message: '/fight_mode DELETE method' });
+      const product = await db.sequelizeDB.query(fight_modeController.fightmodeDELETE, {
+        replacements:{
+          fight_mode_id: req.body.fight_mode_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(product);
+      console.log('Databsae item deleted!');
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');

@@ -46,26 +46,40 @@
         </div>
     </nav>
     
-    <div class='photo-grid-container'>
-        <!---Still Need to add JS that rotates img at timed interval-->
-        <p>Images Coming Soon</p>
-        <div class='carousel'>
-            <div class='carousel-item carousel-item--visable'>
-               
+    <!--image slider start-->
+    <div class="slider">
+        <div class="slides">
+            <!--radio button start-->
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+            <!--radio button end-->
+            <!--slide images start-->
+            <div class="slide first" id="slide1"></div>
+            <div class="slide" id="slide2"></div>
+            <div class="slide" id="slide3"></div>
+            <div class="slide" id="slide4"></div>
+            <!--slide images end-->
+            <!--automatic nav start-->
+            <div class="navigation-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+                <div class="auto-btn4"></div>
             </div>
-            <div class='carousel-item'>
-               
-            </div>
-            <div class='carousel-item'>
-                
-            </div>
-            <div class='carousel-item'>
-                
-            </div>
-            <div class='carousel-item last-item'>
-                
-            </div>
+            <!--automatic nav end-->
+        </div>
+        <!--manual navigation start-->
+        <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+        </div>
+        <!--manual navigation end-->
     </div>
+    <!--image slider end-->
     <!-- Styling the list-->
     <div class="top-100-movie-list">
         <div class="movie-container">

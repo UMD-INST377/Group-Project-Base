@@ -5,13 +5,12 @@
     font-family: 'Acme';
 }
 /* Have to figure out how to change the hover color */
-.navColor a:hover {
-    color: #24D495;
-}
-
-.photo-grid-container{
+.body{
     display: flex;
     justify-content: center;
+}
+.navColor a:hover {
+    color: #24D495;
 }
 
 .top-100-movie-list {

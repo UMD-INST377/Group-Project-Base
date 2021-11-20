@@ -15,9 +15,6 @@
 .movie {
     flex-flow: row;
 }
-
-
-
 .title {
     display: flex;
     justify-content: center;

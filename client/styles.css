@@ -74,3 +74,54 @@ nav {
   max-width: 960px;
   margin-top: 25px;
 }
+
+.photo-grid-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.photo-grid-container .carousel {
+  overflow: hidden;
+  max-width: 1000px;
+  position: relative;
+  }
+
+.photo-grid-container .carousel .carousel_item,
+.photo-grid-container .carousel .carousel_item--hidden {
+  display: none;
+  } 
+
+.photo-grid-container .carousel .carousel_item img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.photo-grid-container .carousel .carousel_item--visible {
+  display: block;
+  animation: fadeVisibility 0.5s;
+}
+
+.photo-grid-container .carousel_actions {
+  display: flex;
+  align-items: center;
+}
+
+
+.photo-grid-container .carousel_actions button {
+  border-radius: 5px;
+  border: 0;
+  padding: 0.25em;
+  font-weight: bold;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.photo-grid-container .carousel_actions button:focus {
+  border: 2px solid #0099CC;
+  border-width:1px;
+  border-color: blue;
+  background-color: orange;
+}

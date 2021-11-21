@@ -43,7 +43,7 @@ router.get("/basketball/teams/:team_id", async (req, res) => {
   try {
     const team = await db.Teams.findAll({
       where: {
-        team_id: req.params.team_id,
+        team_id: req.params.team_id, 
       },
     });
     res.json(team[0]); // return only the first team // returns list be default

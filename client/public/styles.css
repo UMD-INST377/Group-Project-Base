@@ -81,6 +81,9 @@ nav {
     flex-direction: row;
     justify-content: space-between
 }
+.jsonreq {
+    color: orangered;
+}
 .column {
     font-size: 30pt;
     min-width: 22%;

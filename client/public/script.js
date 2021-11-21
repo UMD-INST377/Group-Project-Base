@@ -17,7 +17,16 @@ const navSlide = () => {
   });
 };
 navSlide();
-
+async function logMovies() {
+  const request = 'http://localhost:3000/api/movies';
+  const json = fetch(request);
+  console.log('hello',json);
+}
+async function moviesReq() {
+  const jsonReq = document.querySelector('.jsonreq');
+  jsonReq.addEventListener('click', logMovies);
+}
+window.onload = moviesReq;
 const result = document.querySelector('.results');
 const submit = document.querySelector('.submit');
 submit.addEventListener('click', () => {

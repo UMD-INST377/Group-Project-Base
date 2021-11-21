@@ -12,6 +12,17 @@ router.get('/', (req, res) => {
 });
 
 // db.Actor and db.Film work
+router.route('/movies')
+  .get(async (req, res) => {
+    try {
+      const filmlist = await db.Film.findAll();
+      if (filmlist !== null) { res.send(filmlist)
+        return filmlist; }
+    } catch (error) {
+      console.error(error);
+      res.send("Something went wrong on /movies end");
+    }
+  })
 router.route('/movies/:filmId')
   .get(async (req, res) => {
     try {

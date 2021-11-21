@@ -5,17 +5,11 @@
     font-family: 'Acme';
 }
 
-/* .button{
-    align-self: end;
-    right: 10px;
-    margin-left: %;
-    margin-top: 20px;
-} */
 
 .box{
     background-color: grey;
-    margin: 50px;
-    margin-right: 25%;
+    margin: 100px;
+    margin-right: 15%;
     display: flex;
     flex-flow: column wrap;
     
@@ -55,14 +49,5 @@
     margin-left: 20%;
 }
 
-.actor-field{
-    width: 700px;
-    margin-top: 10px;
-    margin-left: 20%;
-}
 
-.genre-field{
-    width: 700px;
-    margin-top: 10px;
-    margin-left: 20%;
-} */
+

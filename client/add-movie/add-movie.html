@@ -47,13 +47,13 @@
     </nav>
 
     
-    <form class="box form is-half">
+    <form class="box form is-half" id="form">
     
         <div class="field">
             <label class="label">Your Name:</label>
             <div class="control">
               <div class="control">
-                  <input class="input" type="email" placeholder="Enter Name Here">
+                  <input class="input" id="name-input" placeholder="Enter Name Here">
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@
           <label class="label">Email:</label>
           <div class="control">
             <div class="control">
-                <input class="input" type="email" placeholder="Enter Email">
+                <input class="input" id="email-input" type="email" placeholder="Enter Email">
             </div>
           </div>
         </div>
@@ -70,21 +70,28 @@
         <div class="field">
           <label class="label">Movie:</label>
           <div class="control">
-            <input class="input" type="password" placeholder="Movie Title">
+            <input class="input" id="movie-input" placeholder="Movie Title">
           </div>
         </div>
 
         <div class="field">
             <label class="label">Director:</label>
             <div class="control">
-              <input class="input " type="email" placeholder="Director's Name">
+              <input class="input " id="director-input" placeholder="Director's Name">
             </div>
-          </div>
+          </div>  
 
           <div class="field">
             <label class="label">Actor:</label>
             <div class="control">
-              <input class="input" type="email" placeholder="Actor or Actress Name">
+              <input class="input" id="actor-input" placeholder="Actor or Actress Name">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Date:</label>
+            <div class="control">
+              <input class="input" id="date-input" type="date">
             </div>
           </div>
 
@@ -92,7 +99,7 @@
             <label class="label">Genre:</label>
             <div class="control">
               <div class="select">
-                  <select>
+                  <select id="genre-input">
                      <option>Select Genre</option>
                       <option>Action</option>
                       <option>Adventure</option>
@@ -120,7 +127,7 @@
                 <label class="label">Rating:</label>
                 <div class="control">
                     <div class="select">
-                        <select>
+                        <select id="rating-input">
                             <option>Select Rating</option>
                             <option>1</option>
                             <option>2</option>
@@ -141,8 +148,11 @@
                     
                 </div>
             <div class="full-width">
-                <button class="button is-info is-rounded is-pulled-right">Submit</button> 
+                <button class="button is-info is-rounded is-pulled-right" id="submit-button">Submit</button> 
             </div>
           </div>
       </form>
-      
+
+      <script src="add-movie.js"></script>
+
+      </body>

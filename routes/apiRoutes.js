@@ -105,22 +105,23 @@ router.post("/songs", async (req, res) => {
 /*Updating the rating using rating id*/
 router.put("/songs", async (req, res) => {
   try {
-    await db.Songs.update({
-      song_id: req.body.song_id,
-      song_name: req.body.song_name,
-      album_name: req.body.album_name,
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      ratings: req.body.ratings,
-      description: req.body.description,
-      duration: req.body.duration
+    await db.Songs.update(
+      {
+        song_id: req.body.song_id,
+        song_name: req.body.song_name,
+        album_name: req.body.album_name,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        ratings: req.body.ratings,
+        description: req.body.description,
+        duration: req.body.duration,
       },
       {
         where: {
-          song_id: req.body.song_id
-        }
+          song_id: req.body.song_id,
+        },
       }
-    });
+    );
     res.send("The Song Database was Successfully Updated");
   } catch (err) {
     console.error(err);

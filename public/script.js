@@ -9,11 +9,13 @@ async function windowActions() {
                         <th>Player</th>
                         <th>PPG</th> 
                         <th>Assists</th>
+                        <th>Team</th>
                     </tr>
                     <tr>
                         <td>${player.player_name}</td>
                         <td>${player.ppg}</td> 
                         <td>${player.assists}</td>
+                        <td>${player.name}</td>
                     </tr>`);
     player_table.innerHTML = html;
   }

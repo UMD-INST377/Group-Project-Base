@@ -15,9 +15,9 @@ router.get('/', (req, res) => {
 router.route('/movies')
   .get(async (req, res) => {
     try {
-      const filmlist = await db.Film.findAll();
-      if (filmlist !== null) { res.send(filmlist)
-        return filmlist; }
+      const filmlist = await db.Film.findAll().then(movie => console.log(movie));
+
+      if (filmlist !== null) { res.send(filmlist); }
     } catch (error) {
       console.error(error);
       res.send("Something went wrong on /movies end");

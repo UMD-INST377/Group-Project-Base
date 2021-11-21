@@ -4,18 +4,22 @@ updatePresident.addEventListener('click', function_name_here);
 const addPresident = document.querySelector('#update_button');
 addPresident.addEventListener('click', function_name_here); */
 
-const deletePresident = document.querySelector('#delete_button');
-const uri = 'api'
+// const deletePresident = document.getElementById('#delete_button');
+// const uri = 'api'
 
-function deleteItem(req, res) {
-    fetch(`${uri}/${president_id}`, {
-      method: 'DELETE'
-    })
-    .then(() => getItems())
-    .catch(error => console.error('Unable to delete item.', error));
-  }
+// deletePresident.addEventListener('click', (event) => {
+//   event.preventDefault()
+// })
 
-deletePresident.addEventListener('click', deleteItem);
+// function deleteItem(req, res) {
+//     fetch(`${uri}/${president_id}`, {
+//       method: 'DELETE'
+//     })
+//     .then(() => getItems())
+//     .catch(error => console.error('Unable to delete item.', error));
+//   }
+
+// deletePresident.addEventListener('click', deleteItem);
   
 
 /* async function delPres() {
@@ -32,16 +36,18 @@ deletePresident.addEventListener('click', deleteItem);
     },
   )
 }
+*/
 
-
-/* async function presDelete() {
+async function presDelete() {
   const inputField = document.querySelector('#delete_button');
   const url = `/api/presidents/${inputField.value}`;
   const data = {
-    president_id: inputField.president_id
-  };
+    where: {
+      president_id: inputField.president_id
+    }
+  }
   const request = await fetch(url, {
-    method: 'DELETE',
+    method: 'delete',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -49,9 +55,27 @@ deletePresident.addEventListener('click', deleteItem);
   });
 }
 
-document.getElementById('delete').addEventListener('click', (event) => {
-  event.preventDefault();
-  presDelete();
+// async function presDelete() {
+//   const inputField = document.querySelector('#delete_button');
+//   const data = {
+//         president_id: inputField.president_id
+//       }
+//   try {
+//       let response = await fetch(`/api/presidents/${inputField.value.president_id}`, {
+//           method: 'DELETE',
+//           headers: {
+//                   'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify(data)
+//       });
+//   } catch (err) {
+//   }
+// }
+
+
+document.getElementById('delete_button').addEventListener('click', (event) => {
+  event.preventDefault()
+  presDelete()
 });
 
 /* let data = {"president_id": ,

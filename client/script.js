@@ -22,7 +22,8 @@ function displaySuggestions(event){
      `
     <li>
       <div class="uni-info">
-        <h1><strong>${item.university_name}<strong></h1><p>${item.univ_location}</p></div>
+        <h1><b><strong>${item.university_name}</strong></b></h1>
+        <p>${item.univ_location}</p></div>
       <div class="read-more">
         <h3><a href="/university/4/">Read More</a></h3>
       </div>

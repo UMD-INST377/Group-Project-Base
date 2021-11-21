@@ -30,7 +30,7 @@ body {
 
 .home-container {
   display: flex;
-  background-color: gray;
+  background-color: rgb(140, 135, 135);
   height: 100vh; /* height takes up whole page */
   flex-grow: 1; /* width */
   align-items: center;
@@ -78,7 +78,11 @@ ul {
   border-radius: 25px;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
+}
+
+.results li .uni-info{
+  margin-left: 30px;
 }
 
 /**

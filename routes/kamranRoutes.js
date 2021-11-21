@@ -6,6 +6,7 @@ import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
 import filmMapCustom from '../controllers/filmsController.js';
+import customFilm from '../controllers/customFilms.js';
 
 const router = express.Router();
 
@@ -46,7 +47,7 @@ router.route('/films')
       const filmId = selectedMovie.map((movId) => movId.film_id)[0];
       const genreName = getGenreIdByValue(genre, req.body.genre);
       const genreId = genreName.map((movGenre) => movGenre.genre_id)[0];
-      // const updateStatement = `UPDATE films 
+      // const updateStatement = `UPDATE films
       // eslint-disable-next-line max-len
       //   SET film_title = '${req.body.film_title}', release_date = '${req.body.release_date}', genre_id = ${genreId}
       //   WHERE film_id = '${filmId}' `;
@@ -79,8 +80,6 @@ router.route('/films')
       const currentID = (await film.length) + 1;
       const genreName = getGenreIdByValue(genre, req.body.genre);
       const genreId = genreName.map((movGenre) => movGenre.genre_id)[0];
-      // const createStatement = `INSERT INTO films (film_id, film_title, release_date, genre_id) 
-      //   VALUES (${currentID}, '${req.body.film_title}', '${req.body.release_date}', ${genreId})`;
       await db.sequelizeDB.query(filmMapCustom.filmPost, {
         replacements: {
           currentId: currentID,
@@ -104,7 +103,7 @@ router.route('/films')
         type: sequelize.QueryTypes.SELECT
       });
       const filmId = selectedMovie.map((movId) => movId.film_id)[0];
-      // const deleteStatement = `DELETE FROM films 
+      // const deleteStatement = `DELETE FROM films
       // WHERE film_id = "${filmId}"`;
       await db.sequelizeDB.query(filmMapCustom.filmDelete, {
         replacements: {
@@ -116,6 +115,38 @@ router.route('/films')
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server w/ /films DELETE'});
+    }
+  });
+
+router.route('/customMap')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(customFilm.customAwardsFilm, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server w/ /customMap GET '});
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const filmStatement = `SELECT * FROM films WHERE film_title = "${req.body.film_title}"`;
+      const selectedMovie = await db.sequelizeDB.query(filmStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const filmId = selectedMovie.map((movId) => movId.film_id)[0];
+      const results = await db.sequelizeDB.query(customFilm.customFilmActor, {
+        replacements: {
+          filmid: filmId
+        },
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(results);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server w/ /customMap POST '});
     }
   });
 

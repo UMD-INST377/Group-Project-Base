@@ -1,3 +1,10 @@
+:root {
+    --color:  linear-gradient(67.5deg, rgb(215, 215, 215) 0%, rgb(215, 215, 215) 46%,rgb(198, 198, 198) 46%, rgb(198, 198, 198) 49%,rgb(181, 181, 181) 49%, rgb(181, 181, 181) 56%,rgb(164, 164, 164) 56%, rgb(164, 164, 164) 61%,rgb(146, 146, 146) 61%, rgb(146, 146, 146) 75%,rgb(129, 129, 129) 75%, rgb(129, 129, 129) 84%,rgb(112, 112, 112) 84%, rgb(112, 112, 112) 100%),linear-gradient(22.5deg, rgb(215, 215, 215) 0%, rgb(215, 215, 215) 46%,rgb(198, 198, 198) 46%, rgb(198, 198, 198) 49%,rgb(181, 181, 181) 49%, rgb(181, 181, 181) 56%,rgb(164, 164, 164) 56%, rgb(164, 164, 164) 61%,rgb(146, 146, 146) 61%, rgb(146, 146, 146) 75%,rgb(129, 129, 129) 75%, rgb(129, 129, 129) 84%,rgb(112, 112, 112) 84%, rgb(112, 112, 112) 100%),linear-gradient(112.5deg, rgb(215, 215, 215) 0%, rgb(215, 215, 215) 46%,rgb(198, 198, 198) 46%, rgb(198, 198, 198) 49%,rgb(181, 181, 181) 49%, rgb(181, 181, 181) 56%,rgb(164, 164, 164) 56%, rgb(164, 164, 164) 61%,rgb(146, 146, 146) 61%, rgb(146, 146, 146) 75%,rgb(129, 129, 129) 75%, rgb(129, 129, 129) 84%,rgb(112, 112, 112) 84%, rgb(112, 112, 112) 100%),linear-gradient(90deg, rgb(231, 231, 231),rgb(195, 195, 195));
+    --blend: overlay,overlay,overlay,normal;
+    --orange: linear-gradient(45deg, rgb(240, 99, 99) 0%, rgb(240, 99, 99) 11%,rgb(230, 115, 107) 11%, rgb(230, 115, 107) 24%,rgb(220, 132, 114) 24%, rgb(220, 132, 114) 29%,rgb(210, 148, 122) 29%, rgb(210, 148, 122) 45%,rgb(199, 164, 129) 45%, rgb(199, 164, 129) 87%,rgb(189, 181, 137) 87%, rgb(189, 181, 137) 90%,rgb(179, 197, 144) 90%, rgb(179, 197, 144) 100%),linear-gradient(67.5deg, rgb(240, 99, 99) 0%, rgb(240, 99, 99) 11%,rgb(230, 115, 107) 11%, rgb(230, 115, 107) 24%,rgb(220, 132, 114) 24%, rgb(220, 132, 114) 29%,rgb(210, 148, 122) 29%, rgb(210, 148, 122) 45%,rgb(199, 164, 129) 45%, rgb(199, 164, 129) 87%,rgb(189, 181, 137) 87%, rgb(189, 181, 137) 90%,rgb(179, 197, 144) 90%, rgb(179, 197, 144) 100%),linear-gradient(135deg, rgb(240, 99, 99) 0%, rgb(240, 99, 99) 11%,rgb(230, 115, 107) 11%, rgb(230, 115, 107) 24%,rgb(220, 132, 114) 24%, rgb(220, 132, 114) 29%,rgb(210, 148, 122) 29%, rgb(210, 148, 122) 45%,rgb(199, 164, 129) 45%, rgb(199, 164, 129) 87%,rgb(189, 181, 137) 87%, rgb(189, 181, 137) 90%,rgb(179, 197, 144) 90%, rgb(179, 197, 144) 100%),linear-gradient(90deg, rgb(156, 174, 7),rgb(129, 53, 44)); 
+    --orange-blend: overlay,overlay,overlay,normal;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,10 +12,27 @@
     font-family: 'Acme';
 }
 
+body {
+    background-image: var(--color); 
+    background-blend-mode: var(--blend);
+}
+
+.background {
+    background-color: transparent;
+    background-image: none;
+}
+
+.columns {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .content {
     display: flex;
     flex-flow: row wrap;
-    align-content: center;
     justify-content: space-around;
   }
 
@@ -16,11 +40,88 @@
     flex-flow: row;
 }
 
-
-
 .title {
     display: flex;
-    justify-content: center;
-    padding-top: 2%;
+    justify-content: space-around;
+    padding-bottom: .4%;
     text-align: center;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    color: red;
+    padding-top: 2%;
+}
+
+.note {
+    display: flex;
+    justify-content: center;
+}
+
+/* Source for Flip animation: https://codepen.io/edeesims/pen/iGDzk */
+.scene {
+    width: 342px;
+    height: 513px;
+    perspective: 500px;
+    margin-bottom: 50px;
+  }
+
+.flip-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+
+.scene:hover .flip-card, 
+.scene:active .flip-card {
+    transform: rotateY(180deg);
+    transition: transform 0.9s;
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    height: 513px;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+.flip-card-back {
+    /* background-image: var(--orange);
+    background-blend-mode: var(--orange-blend); */
+    background-image: url('images/movie-curtains.jpg');
+    color: white;
+    transform: rotateY( 180deg );
+  }
+
+.flip-card-back h2, 
+.flip-card-back h3 {
+    margin-top: 50px;
+    color: white;
+}
+
+.card-content {
+    margin-top: -15px;
+}
+
+.graph {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.is-hidden {
+    display: hidden;
+}
+
+.icons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }

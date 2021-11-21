@@ -16,8 +16,6 @@ app.use(express.static(staticFolder));
 
 app.use('/api', platformRoutes);
 app.use('/api', priceRoute);
-
-
 async function bootServer() {
   try {
     // const mysql = await db.sequelizeDB;

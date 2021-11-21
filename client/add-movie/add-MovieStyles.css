@@ -4,3 +4,50 @@
     box-sizing: border-box;
     font-family: 'Acme';
 }
+
+
+.box{
+    background-color: grey;
+    margin: 100px;
+    margin-right: 15%;
+    display: flex;
+    flex-flow: column wrap;
+    
+}
+
+.inputfield{
+    width: 400px;
+}
+
+.column-form{
+    align-items: center;
+}
+
+/* 
+.name-field{
+    width: 700px;
+    margin-left: 20%;
+    margin-top: 20px;
+
+}
+
+.email-field{
+    width: 700px;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+.movie-field{
+    width: 700px;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+.director-field{
+    width: 700px;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+
+

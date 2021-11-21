@@ -56,7 +56,6 @@ router.route('/directors')
       const director = await db.sequelizeDB.query(directorMapCustom, {
         type: sequelize.QueryTypes.SELECT
       });
-      
       const currentID = (await director.length) + 1;
       const createStatement = `INSERT INTO directors (director_id, director_name) 
         VALUES (${currentID}, '${req.body.director_name}')`;

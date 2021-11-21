@@ -10,4 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const response = await fetch('../api/top100');
     // extract the json data
   }
+  let counter = 1;
+  setInterval(() => {
+    document.querySelector('radio' + counter).checked = true;
+    counter++;
+    if (counter > 4) {
+      counter = 1;
+    }
+  }, 5000);
 });

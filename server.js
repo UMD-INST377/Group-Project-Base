@@ -9,6 +9,7 @@ import kamranRoutes from './routes/kamranRoutes.js';
 import nickRoutes from './routes/nickroutes.js';
 import thirdPartyRoutes from './routes/thirdPartyRoutes.js';
 import udayRoutes from './routes/udayroutes.js';
+import top100Routes from './routes/top100Routes.js';
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/api', kamranRoutes);
 app.use('/api', nickRoutes);
 app.use('/api', thirdPartyRoutes);
 app.use('/api', udayRoutes);
+app.use('/api', top100Routes);
 
 async function bootServer() {
   try {

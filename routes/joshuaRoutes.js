@@ -34,6 +34,8 @@ router.route('/directors')
   })
 
   .put(async (req, res) => {
+    // Must pass in both director_id(used to find entry to change) and director_name(what the updates should be)
+
     try {
       const updateStatement = `UPDATE directors 
         SET director_name = '${req.body.director_name}'
@@ -48,6 +50,7 @@ router.route('/directors')
     }
   })
 
+
   .post(async (req, res) => {
     try {
       const director = await db.sequelizeDB.query(directorMapCustom, {
@@ -56,11 +59,11 @@ router.route('/directors')
       const currentID = (await director.length) + 1;
       const createStatement = `INSERT INTO directors (director_id, director_name) 
         VALUES (${currentID}, '${req.body.director_name}')`;
-      await db.sequelizeDB.query(createStatement, {
+      const result = await db.sequelizeDB.query(createStatement, {
         type: sequelize.QueryTypes.INSERT
       });
+
       res.send(`"${req.body.director_name}" Successfully Updated`);
-      res.send(currentID);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server w/ /directors POST'});
@@ -86,4 +89,9 @@ router.route('/directors')
     }
   });
 
-export default router;
+
+
+
+
+export default router; 
+

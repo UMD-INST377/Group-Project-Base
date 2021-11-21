@@ -70,7 +70,15 @@ nav {
     list-style-type: none;
     color: lightblue;
 }
-
+.formContainer label {
+    color: white
+}
+.formContainer {
+    margin: auto;
+    display: block;
+    justify-items: center;
+    width: 50%;
+}
 .columns {
     margin-top: 2vh;
     padding-left: 10vh;

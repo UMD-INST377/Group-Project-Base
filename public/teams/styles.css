@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#nbaLogo{
+  margin-top:600px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+}
+
+.photo-grid-container {
+  margin-top:20px;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  width: 90%;
+}
+
+.photo-grid {
+  width: 900px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.photo-grid-item {
+  border: 1px solid #fff;
+  width: 300px;
+  height: 300px;
+}
+
+.carousel {
+  scroll-behavior: smooth;
+  margin-top:30px;
+  white-space: nowrap;
+  overflow: scroll;
+  width: 100%;
+  position: relative;
+  height:auto;
+  display:inline;
+  vertical-align: center;
+}
+
+.carousel_item,
+.carousel_item--hidden {
+  display:none;
+  height: 250px;
+}
+
+
+.carousel_item1 img {
+  cursor: pointer;
+  margin-top:0px;
+  overflow-x:scroll;
+  display: inline-block;
+  max-height: 250px;
+  width: 150px;
+  height:auto;
+  position:relative;
+  margin-left: 20px;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+.carousel_actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel_actions button{
+  cursor: pointer;
+  background-color:none;
+  background: none;
+}
+
+#carousel_button--prev {
+  margin-left: 20px;
+  border-radius: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  background: none;
+  border:none;
+}
+
+#carousel_button--next {
+  margin-right: 20px;
+  border-radius: 4px;
+  padding-right: 8px;
+  padding-left: 8px;
+  background: none;
+  border:none;
+}
+
+@media only screen and (max-width: 760px) {
+  .carousel_item1 img {
+    margin-top:0px;
+    overflow-x:scroll;
+    display: inline-block;
+    max-height: 125px;
+    width: 75px;
+    height:auto;
+    position:relative;
+    margin-left: 20px;
+    margin-right: 20px;
+    vertical-align: middle;
+  }
+  #carousel_button--prev {
+    margin-left: 20px;
+    border-radius: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    background: none;
+    border:none;
+  }
+  #carousel_button--next {
+    margin-right: 20px;
+    border-radius: 4px;
+    padding-right: 8px;
+    padding-left: 8px;
+    background: none;
+    border:none;
+  }
+  #carousel_button--next img{
+    height:150px;
+    width: auto;
+  }
+  #carousel_button--prev img{
+    height:150px;
+    width: auto;
+  }
+
+  #nbaLogo{
+    margin-top:300px;
+  }
+}

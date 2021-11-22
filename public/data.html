@@ -10,6 +10,36 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
     <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      window.onload = function() {
+      
+      var chart = new CanvasJS.Chart("chartContainer", {
+        theme: "light2", 
+        animationEnabled: true,
+        title: {
+          text: "Distribution of Extinct Animals Diet Types"
+        },
+        data: [{
+          type: "pie",
+          startAngle: 25,
+          toolTipContent: "<b>{label}</b>: {y}%",
+          showInLegend: "true",
+          legendText: "{label}",
+          indexLabelFontSize: 16,
+          indexLabel: "{label} - {y}%",
+          dataPoints: [
+            { y: 53.0, label: "Herbivores" },
+            { y: 21.3, label: "Carnivores" },
+            { y: 28.7, label: "Omnivores" }
+          ]
+        }]
+      });
+      chart.render();
+      
+      }
+      </script>
+
   </head>
 
   <body>
@@ -65,8 +95,12 @@
     </nav>
 
     <div class="title">Data</div>
+
+    <div id="chartContainer" style="height: 450px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
       
     <!--Our script-->
     <script src="script.js" charset="utf-8"></script>
   </body>
 </html>
+

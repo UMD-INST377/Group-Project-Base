@@ -6,7 +6,7 @@ async function windowActions() {
   const data=await (await fetch('http://localhost:3000/api/price', {method: 'POST', mode: 'no-cors', credentials: 'same-origin'}));
   // const endpoint = 'http://localhost:3000/api/price';
   // const data = JSON.parse(JSON.stringify(request));
-  // console.log(data);
+  console.log(data);
 
   function findMatches(wordToMatch, data) {
     return data.filter((result) => {

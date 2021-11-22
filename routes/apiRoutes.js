@@ -9,7 +9,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send({'message': 'Welcome to the UMD Dining API!'});
 });
 
 /// /////////////////////////////////
@@ -19,14 +19,15 @@ router.route('/foodInspectionPG')
   .get(async (req, res) => {
     try {
       // const url = 'https://data.princegeorgescountymd.gov/Health/Food-Inspection/umjn-t2iz'
-      const inspections = await db.Inspections.findAll();
+      const inspections = await db.Food_Inspection.findAll({ limit: 50 });
       const reply = inspections.length > 0 ? { data: inspections } : { message: 'no results found' };
 
       console.log('Touched /foodInspectionPG with GET');
       res.json(reply);
+
     } catch (err) {
       console.error(err);
-      res.error('Server error');
+      // res.error('Server error');
     }
   })
 
@@ -39,7 +40,7 @@ router.route('/foodInspectionPG')
         },
         {
           where: {
-            entry_id: req.body.entry_id
+            establishment_id: req.body.entry_id
           }
         }
       );
@@ -57,7 +58,6 @@ router.route('/foodInspectionPG')
     const currentId = (await inspections.length) + 1;
     try {
       const newInspection = await db.Inspections.create({
-        entry_id: currentId,
         establishment_id: req.body.establishment_id,
         name: req.body.name,
         category: req.body.category,
@@ -101,7 +101,7 @@ router.route('/foodInspectionPG')
     try {
       await db.Inspections.destroy({
         where: {
-          entry_id: req.params.entry_id
+          establishment_id: req.params.entry_id
         }
       });
 

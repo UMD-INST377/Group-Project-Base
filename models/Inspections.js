@@ -3,6 +3,7 @@ export default (database, DataTypes) => {
     'Food_Inspection',
     {
       establishment_id: {
+        primaryKey: true,
         type: DataTypes.INTEGER
       },
       name: {

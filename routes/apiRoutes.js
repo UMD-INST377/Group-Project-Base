@@ -1,6 +1,10 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import DELETEController from '../controllers/DELETEController.js';
+import GETController from '../controllers/GETController.js';
+import POSTController from '../controllers/POSTController.js';
+import PUTController from '../controllers/PUTController.js';
 
 import db from '../database/initializeDB.js';
 

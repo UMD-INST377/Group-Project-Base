@@ -11,38 +11,63 @@ router.get('/', (req, res) => {
 });
 
 /* Magnitude endpoint */
+// Get magnitude based on earthquake id
 router.route('/magnitude')
   .get(async (req, res) => {
     try {
+      const magnitudeData = await db.sequelizeDB.query(magnitude.getMagnitude, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(magnitudeData);
       console.log('touched /magnitude with GET');
-      res.json({ message: 'GET endpoint' });
     } catch (err) {
       console.log(err);
     }
   })
 
+// Update magnitude data for a specific earthquake id
   .put(async (req, res) => {
     try {
+      const magnitudeData = await db.sequelizeDB.query(magnitude.putMagnitude, {
+        replacements: {
+          magnitude: req.body.magnitude, id: req.body.earthquake_id
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(magnitudeData);
       console.log('touched /magnitude with PUT');
-      res.json({ message: 'PUT endpoint' });
     } catch (err) {
       console.log(err);
     }
   })
 
+// Adding a new earthquake data
   .post(async (req, res) => {
     try {
+      const magnitudeData = await db.sequelizeDB.query(magnitude.postMagnitude, {
+        replacements: {
+          magnitude: req.body.magnitude, id: req.body.earthquake_id
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(magnitudeData)
       console.log('touched /magnitude with POST');
-      res.json({ message: 'POST endpoint' });
     } catch (err) {
       console.log(err);
     }
   })
 
+// Delete a earthquake data
   .delete(async (req, res) => {
     try {
+      const magnitudeData = await db.sequelizeDB.query(magnitude.getMagnitude, {
+        replacements: {
+          id: req.body.earthquake_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(magnitudeData);
       console.log('touched /magnitude with DELETE');
-      res.json({ message: 'DELETE endpoint' });
     } catch (err) {
       console.log(err);
     }

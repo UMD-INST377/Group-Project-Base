@@ -79,6 +79,13 @@ nav {
     justify-items: center;
     width: 50%;
 }
+.filmblock {
+    display: flex;
+    min-width: 5rem;
+    max-width: 5rem;
+    padding: auto;
+    word-wrap:normal;
+}
 .columns {
     margin-top: 2vh;
     padding-left: 10vh;
@@ -176,7 +183,16 @@ nav {
     min-width: 300px;
     border-radius: 15px 0px 0px 15px;
 }
-
+.next{
+    display: flex;
+    background-color: white;
+    cursor: pointer;
+}
+.prev{
+    display: flex;
+    background-color: white;
+    cursor: pointer;
+}
 @media screen and (max-width: 1024px) {
     .webtitle {
         font-size: 15pt;

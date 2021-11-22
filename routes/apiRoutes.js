@@ -15,14 +15,24 @@ router.get('/', (req, res) => {
 router.route('/movies')
   .get(async (req, res) => {
     try {
-      const filmlist = await db.Film.findAll().then(movie => console.log(movie));
-
-      if (filmlist !== null) { res.send(filmlist); }
+      const filmlist = await db.Film.findAll();
+      res.json({data: filmlist});
     } catch (error) {
       console.error(error);
-      res.send("Something went wrong on /movies end");
+      res.send('Something went wrong on /movies end');
     }
   })
+  .post(async (req, res) => {
+    try {
+      console.log(req.body.name);
+      res.send('d')
+     
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on /movies end');
+    }
+  });
+
 router.route('/movies/:filmId')
   .get(async (req, res) => {
     try {
@@ -38,7 +48,9 @@ router.route('/movies/:filmId')
   .post(async (req, res) => {
     try {
       const {filmId} = req.params;
-      const filmlist = await db.Film.create({film_id: `${filmId}`,name: 'Test Film', director_id: 69, writer_id: 69, genre_id: 16, country: 'USA', runtime: 420, year: 1969, studio_id: 1, score: 6.9, votes: 69,budget:69696969,released: '1969-12-12',actor_id: 69, rating: 'R'});
+      const filmlist = await db.Film.create({
+        film_id: `${filmId}`, name: 'Test Film', director_id: 69, writer_id: 69, genre_id: 16, country: 'USA', runtime: 420, year: 1969, studio_id: 1, score: 6.9, votes: 69, budget: 69696969, released: '1969-12-12', actor_id: 69, rating: 'R'
+      });
       res.send('Very Immature Film added');
     } catch (error) {
       console.error(error);
@@ -49,7 +61,7 @@ router.route('/movies/:filmId')
     try {
       const {filmId} = req.params;
       await db.Film.destroy({where: {film_id: `${filmId}`}});
-      res.send('Film deleted')
+      res.send('Film deleted');
     } catch (error) {
       console.error(error);
       res.send('Something went wrong on /movies end');

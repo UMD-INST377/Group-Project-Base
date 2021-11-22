@@ -8,7 +8,7 @@ import deleteCustom from './deleteCustom.js';
 /* Export */
 export default {
   albumCustom,
-  songControls, 
-  ratingUpdate, 
+  songControls,
+  ratingUpdate,
   deleteCustom
 };

@@ -6,15 +6,6 @@ import db from '../database/initializeDB.js';
 /* import controllers -- we can use to replace previous import statements below. - Walesia */
 import controllers from '../server/controllers/controls.js';
 
-// /* import albumCustom controller(updates) */
-// import albumCustom from '../server/controllers/albumCustom.js';
-
-// /* import ratingUpdate controller - mirandavo */
-// import ratingUpdate from '../server/controllers/ratingUpdate.js';
-
-// /* Delete for controller Daniel Cutaneo */
-// import deleteCustom from '../server/controllers/deleteCustom.js';
-
 /* start router component */
 const router = express.Router();
 
@@ -26,11 +17,11 @@ router.get('/', (req, res) => {
 });
 
 /*
-* Music Database Endpoints below
+* Music Database Endpoints below.
 */
 
-// Trying to get all songs from DB //
-router.get('/songs', async (req, res) => {
+// Get all songs from database //
+router.get('/songs_project', async (req, res) => {
   try {
     /* Get all songs */
     const songs = await db.sequelizeDB.query(controllers.songControls.getAllSongs, {
@@ -52,71 +43,80 @@ router.get('/songs', async (req, res) => {
   }
 });
 
-// Songs by song_id //
-router.get('/songs/:song_id', async (req, res) => {
+// Get songs by song_id //
+router.get('/songs_project/:song_id', async (req, res) => {
   try {
-    // console.log('touched songs/:song_id with GET')
-    // PREV - trying to get song_id from query, but that didn't work...
-    // const songID = await db.sequelizeDB.query(controllers.songControls.getSongsByID, {
-    //   where: {
-    //     song_id: req.params.song_id
-    //   }
-    // });
-    // res.json(songID);
+    console.log('touched songs_project/:song_id with GET');
 
-    // Using the Songs table from the original database instead. // 
-    const songs = await db.Songs.findAll({
-      where: { 
+    const songs = await db.SongsProject.findAll({
+      where: {
         song_id: req.params.song_id
       }
     });
+
     res.json(songs);
   } catch (err) {
     console.error(err);
-    res.error({status: 'Something went wrong', data: null, message: 'Failed, error.'});
+    res.json({
+      status: 'Something went wrong',
+      data: null,
+      message: 'Failed, error.'
+    });
   }
 });
 
-router.post('/songs', async (req, res) => {
-  const halls = await db.songs.findAll();
-  const currentId = (await halls.length) + 1;
+router.post('/songs_project', async (req, res) => {
+  const songs = await db.SongsProject.findAll();
+  const currentId = (await songs.length) + 1;
   try {
-    const newSong = await db.songs.create({
+    const newSong = await db.SongsProject.create({
       song_id: currentId,
       song_name: req.body.song_name,
-      duration: req.body.song_duration,
-      genre_id: req.body.genre_id
+      album_name: req.body.album_name,
+      first_name: req.body.first_name,
+      last_Name: req.body.last_Name,
+      ratings: req.body.ratings,
+      description: req.body.description,
+      duration: req.body.song_duration
     });
     res.json(newSong);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error. Oops! Something went wrong.');
   }
 });
 
-router.put('/rating', async (req, res) => {
+router.put('/songs_project', async (req, res) => {
   try {
-    await db.ratingUpdate.update(
+    await db.SongsProject.update(
       {
-        ratings: req.body.ratings
+        song_id: req.body.song_id,
+        song_name: req.body.song_name,
+        album_name: req.body.album_name,
+        first_name: req.body.first_name,
+        last_Name: req.body.last_Name,
+        ratings: req.body.ratings,
+        description: req.body.description,
+        duration: req.body.duration
       },
       {
         where: {
-          rating_id: req.body.rating_id
+          song_id: req.body.song_id
         }
       }
     );
-    res.send('Rating Chart was Successfully Updated');
+    res.send('Songs database was successfully updated.');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error('Server error. Oops! Something went wrong.');
   }
 });
 
-/* Endpoint that is used to delete the song -Daniel Cutaneo */
-router.delete('/songs/:song_id', async (req, res) => {
+/* Endpoint that is used to delete the song - Daniel Cutaneo */
+router.delete('/songs_project/:song_id', async (req, res) => {
   try {
-    await db.Songs.destroy({
+    // Deletes the songs
+    await db.SongsProject.destroy({
       where: {
         song_id: req.params.song_id
       }
@@ -128,31 +128,4 @@ router.delete('/songs/:song_id', async (req, res) => {
   }
 });
 
-/* Music endpoint that used imported albumCustom controller(Updates) */
-router.get('/album', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(controllers.albumCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
 export default router;
-
-/* Create songs table used imported songControls */
-
-router.get('/songsTable', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(songTable, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});

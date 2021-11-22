@@ -25,14 +25,63 @@
       </div>
 
         <div class='box' has-text-warning>
-            Database form manipulation box will go here... 
-            <form action="\api\songsTable" method="get" class="form-row">
+            <form action='/songs_project/' method="get" class="form-row">
              <button>song table</button>
             </form>
             <br>
+
+            <h1>Edit Music Database</h1>
+            <hr>
+              <div class="song-form">
+                <form onsubmit="event.preventDefault();submitSongForm();" autocomplete="off">
+                  <div>
+                    <label>Song title: </label><label class="validation-error hide" id="songValidationError">*This field is required!*</label>
+                    <input type="text" name="fullName" id="song_name">
+                  </div>
+                  <div>
+                    <label>Album name:</label>
+                    <input type="text" name="album_name" id="album_name">
+                  </div>
+                  <div>
+                    <label>Artist first name:</label>
+                    <input type="text" name="first_name" id="first_name">
+                  </div>
+                  <div>
+                    <label>Artist last name:</label>
+                    <input type="text" name="last_name" id="last_name">
+                  </div>
+                  <div>
+                    <label>Rating out of 5 stars:</label>
+                    <input type="number" min="0" step="1" max="5" name="rating" id="rating">
+                  </div>
+                  <div class="form-action-buttons">
+                    <input type="submit" value="Submit">
+                  </div>
+                </form>
+            </div>
+
+              <br/>
+
+            <div class = "song-table">
+              <table class="list" id="song_list">
+                <thead>
+                  <tr>
+                    <th>Song</th>
+                    <th>Album</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  To be continued... API will populate table below ... <br>
+                  When songs appear below, there is an EDIT and DELETE button to remove/add songs. <br>
+                  To test, you can input data manually or search the "Music Database" tab.
+                </tbody>
+              </table>
+            </div>
          
-            Followed by a "Contact Us" form for UX feedback or questions.
-        </div>
+          </div>
 
         <div class='footer'>
             <div> Copyright (C) 2021 INST377 Group 22 - All Rights Reserved <br>

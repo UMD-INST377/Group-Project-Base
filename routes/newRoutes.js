@@ -130,7 +130,7 @@ router.route('/prices')
           lowerst_discog = req.body.lowerest_discog,
           highest_amazon = req.body.highest_amazon
         });   
-        
+      //com
         }
         catch(err){
             console.log(error);

@@ -1,3 +1,7 @@
+body {
+    font-family: 'Roboto Mono', monospace;
+}
+
 .aboutpage{
     color: gold;
     margin-left: auto;    
@@ -17,7 +21,7 @@
 .menu-container {
     color: #fff;
     background-color: black;
-    padding: 20px 0;
+    padding: 20px 20px 20px 20px;
     display: flex;
     justify-content: center;   
   }

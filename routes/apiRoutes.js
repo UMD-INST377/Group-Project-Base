@@ -25,8 +25,7 @@ router.route('/movies')
   .post(async (req, res) => {
     try {
       console.log(req.body.name);
-      res.send('d')
-     
+      res.send('d');
     } catch (error) {
       console.error(error);
       res.send('Something went wrong on /movies end');
@@ -104,6 +103,31 @@ router.route('/genres/:genreId')
     try {
       const {genreId} = req.params;
       const genrelist = await db.Genre.destroy({where: {genre_id: `${genreId}`}});
+      res.send('Genre deleted');
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on the /genres end and unable to delete from genre_id');
+    }
+  });
+
+router.route('/genre/')
+  .get(async (req, res) => {
+    res.send("hello");
+  })
+  .post(async(req, res) => {
+    try {
+      let test = req.body.name;
+      const genrelist = await db.Genre.create({genre: `${test}`});
+      res.send('Genre added');
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on the /genres end and unable to update genre_id');
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      let name = req.body.name;
+      const genrelist = await db.Genre.destroy({where: {genre: `${name}`}});
       res.send('Genre deleted');
     } catch (error) {
       console.error(error);

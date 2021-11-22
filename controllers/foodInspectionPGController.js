@@ -8,7 +8,7 @@ export default  {
   // this statement creates a new record in the database//
   postController: `INSERT INTO food_inspections,
   VALUES (
-  entry_id,
+  establishment_id,
   name,
   category,
   inspection_date,
@@ -39,12 +39,13 @@ export default  {
   location
   )`,
 
+  //CHANGE WHERE FROM ARABITRARY VALUE
   putController: `UPDATE food_inspections, 
   SET name = 'name'
   SET category = 'category'
   SET city = 'college park'
   SET state = 'maryland' 
-  WHERE entry_id = current_id,`,
+  WHERE name = current_id,`,
 
   deleteController: `DELETE
   FROM food_inspections

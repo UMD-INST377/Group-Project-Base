@@ -1,13 +1,9 @@
 export default (database, DataTypes) => {
   const Inspections = database.define(
-    'Inspections',
+    'Food_Inspection',
     {
-      entry_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true
-      },
       establishment_id: {
+        primaryKey: true,
         type: DataTypes.INTEGER
       },
       name: {

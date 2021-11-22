@@ -3,48 +3,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="form.css" rel="stylesheet">
-    <script src="js/validation.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous" />
-    <link rel="stylesheet" href="styles.css" />
+    <script src="https://kit.fontawesome.com/22e506707d.js" crossorigin="anonymous"></script>
     <title>About Us</title>
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <img class="resize" href="#" src="..\images\logo.png" />
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="..\index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="..\database_entry\index.html">Database Entry</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="..\about_us\index.html">About Us</a>
-                </li>
-            </ul>
-            <form class="d-flex ">
-                <input class="form-control me-2" type="search " placeholder="Search artist, albums, and more... " aria-label="Search ">
-                <button class="btn btn-outline-success " type="submit ">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<div class="top-nav">
+    <a href="..\index.html" class="fas fa-home"></a>
+    <a href="..\database_entry\index.html" class="fas fa-plus-circle"></a>
+</div>
 
 <body class="zf-backgroundBg">
     <!-- Change or deletion of the name attributes in the input tag will lead to empty values on record submission-->
     <div class="zf-templateWidth">
         <form>
-            <!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
-            <input type="hidden" name="zf_redirect_url" value="">
-            <!-- To redirect to a specific page after record submission , place the respective url within the " " in the above hidden input field -->
-            <input type="hidden" name="zc_gad" value="">
-            <!-- If GCLID is enabled in Zoho CRM Integration, click details of AdWords Ads will be pushed to Zoho CRM -->
             <div class="zf-templateWrapper">
                 <!---------template Header Starts Here---------->
                 <ul class="zf-tempHeadBdr">
@@ -57,21 +29,18 @@
                 <!---------template Header Ends Here---------->
                 <br>
                 <p class="aboutus">Despite the emergence of more "efficient" technologies, many people have still maintained interests in vinyl records. With the passage of time, records being damaged or lost, and the slowing of vinyl production and vending, it has become
-                    more difficult to keep track of vinyl records. While many rely on a collection gathered by the previous generation, or record shops that still exist in some places, it is difficult to manage these records without physically being
-                    around them.<br><br>With the emergence and popularization of music streaming platforms and management systems, vinyl records could benefit from this technological shift. Our goal is to create a management interface that allows users
-                    to gather information on these records without having to be in-person. The digitization of vinyl records information will allow more people to view them efficiently and bridge the gap between 
-                    accessibility and management.</p>
+                    more difficult to keep track of vinyl records. While many rely on a collection gathered by the previous generation, or record shops that still exist in some places, it is difficult to manage these records without physically being around
+                    them.
+                    <br><br>With the emergence and popularization of music streaming platforms and management systems, vinyl records could benefit from this technological shift. Our goal is to create a management interface that allows users to gather
+                    information on these records without having to be in-person. The digitization of vinyl records information will allow more people to view them efficiently and bridge the gap between accessibility and management.</p>
                 <br>
                 <hr>
                 <h3><strong>Group Members</strong></h3>
                 <p>William Giovanini<br> Jomer Paulino<br> Mark Schiavo<br> Chi-Hao Sheng<br> Phat Vu</p>
                 <hr>
                 <p><strong>INST377 | Dynamic Web Applications <br>Group 23</strong></p>
-
         </form>
         </div>
-        <!-- 'zf-templateWidth' ends -->
-
 </body>
 
 </html>

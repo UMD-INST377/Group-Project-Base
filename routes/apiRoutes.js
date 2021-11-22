@@ -19,7 +19,7 @@ router.route('/foodInspectionPG')
   .get(async (req, res) => {
     try {
       // const url = 'https://data.princegeorgescountymd.gov/Health/Food-Inspection/umjn-t2iz'
-      const inspections = await db.Food_Inspection.findAll();
+      const inspections = await db.Food_Inspection.findAll({ limit: 50 });
       const reply = inspections.length > 0 ? { data: inspections } : { message: 'no results found' };
 
       console.log('Touched /foodInspectionPG with GET');

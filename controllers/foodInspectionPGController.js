@@ -1,4 +1,4 @@
-export default controllers = {
+export default  {
 
   // team:the table name is food_inspections in our pg_county_food_inspections database - ms
   /* this statement simply retrieves the entire table, which our front-end will sort based on
@@ -40,8 +40,8 @@ export default controllers = {
   )`,
 
   putController: `UPDATE food_inspections, 
-  SET name = 'chipotle'
-  SET category = 'fast food'
+  SET name = 'name'
+  SET category = 'category'
   SET city = 'college park'
   SET state = 'maryland' 
   WHERE entry_id = current_id,`,

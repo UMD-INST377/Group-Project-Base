@@ -14,7 +14,7 @@ html,body
 }
 
 body {
-    background-color:red;
+    background-color:white;
 }
 
 .columns {
@@ -32,4 +32,9 @@ body {
 .container {
     max-width: 960px;
     margin-top: 25px;
+}
+
+#playertable {
+    width: 80%;
+    margin: 0 auto;
 }

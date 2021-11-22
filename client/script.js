@@ -1,5 +1,5 @@
 const displayTableData = async () => {
-    let data = await fetch('https://localhost:3000/api/foodInspectionPG')
+    let data = await fetch('https://polar-mesa-33091.herokuapp.com/api/foodInspectionPG')
     let res = await data.json();
 
     let text = "";

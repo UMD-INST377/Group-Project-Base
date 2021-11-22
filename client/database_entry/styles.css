@@ -12,7 +12,8 @@
 }
 
 .fa-home:hover {
-    transform: scale(1.3)
+    transform: scale(1.3);
+    color:black
 }
 
 .fa-user-friends {
@@ -24,6 +25,7 @@
 
 .fa-user-friends:hover {
     transform: scale(1.3);
+    color: black
 }
 
 

@@ -109,27 +109,27 @@ router.route('/genres/:genreId')
       res.send('Something went wrong on the /genres end and unable to delete from genre_id');
     }
   });
-  router.route('/actor/')
+router.route('/actor/')
   .get(async (req, res) => {
-    res.send("hello");
+    res.send('hello');
   })
   .post(async(req, res) => {
     try {
-      let actor = req.body.name;
+      const actor = req.body.name;
       const actorAdd = await db.Actor.create({actor: `${actor}`});
       res.send('Actor added');
     } catch (error) {
       console.error(error);
       res.send('Something went wrong on the /actor end and unable to update genre_id');
     }
-  })
+  });
 router.route('/genre/')
   .get(async (req, res) => {
-    res.send("hello");
+    res.send('hello');
   })
   .post(async(req, res) => {
     try {
-      let test = req.body.name;
+      const test = req.body.name;
       const genrelist = await db.Genre.create({genre: `${test}`});
       res.send('Genre added');
     } catch (error) {
@@ -139,7 +139,7 @@ router.route('/genre/')
   })
   .delete(async(req, res) => {
     try {
-      let name = req.body.name;
+      const {name} = req.body;
       const genrelist = await db.Genre.destroy({where: {genre: `${name}`}});
       res.send('Genre deleted');
     } catch (error) {
@@ -190,6 +190,21 @@ router
       console.log('put something inside blob');
     } catch (error) {
       console.log(error);
+    }
+  });
+
+router.route('/writer/')
+  .get(async (req, res) => {
+    res.send('hello');
+  })
+  .post(async(req, res) => {
+    try {
+      const test = req.body.name;
+      const writerlist = await db.Writer.create({writer: `${test}`});
+      res.send('Writer added');
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on the /writer end and unable to update writer_id');
     }
   });
 

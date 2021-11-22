@@ -1,12 +1,7 @@
 export default (database, DataTypes) => {
   const Inspections = database.define(
-    'Inspections',
+    'Food_Inspection',
     {
-      entry_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true
-      },
       establishment_id: {
         type: DataTypes.INTEGER
       },
@@ -97,5 +92,7 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
+  Inspections.removeAttribute('id');
   return Inspections;
 };
+

@@ -93,5 +93,7 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
+  Inspections.removeAttribute('id');
   return Inspections;
 };
+

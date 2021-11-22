@@ -53,15 +53,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     return top100moviesArray;
   }
-  // I was unable to ge the code to link to the API will have to fix later with help 
-  /* const movieList = ['Avengers: Endgame', 'The Dark Knight', 'Django Unchained', 'Spider-Man: Into the Spider-Verse']
-  for (const movie of movieList){
-    const movieTitle = encodeURIComponent(movieData.film_title.trim());
-  } */
-  
+  const movieList = ['Avengers:+Endgame', 'The+Dark+Knight', 'Django+Unchained', 'Spider-Man:+Into+the+Spider-Verse']
+  const imageList = [];
+  async function getImage() {
+    for (let i = 0; i < movieList.length; i++) {
+      const frontUrl = 'https://api.themoviedb.org/3/search/movie?api_key=ee671a8f0facbafb2b7da0decd7157db&query='
+      const results = await fetch(frontUrl+`${movieList[i]}`);
+      const movieResults = await results.json();
+      console.log(movieResults.results[0].backdrop_path);
+      const backdropPath = movieResults.results[0].backdrop_path;
+      const imageRequest = await fetch(`https://image.tmdb.org/t/p/w342/${backdropPath}`);
+      const img = await imageRequest.blob();
+      imageList.push(img);
+      console.log(imageRequest);
+    }
+  }
+  getImage()
+  console.log(imageList);
+  const img1 = document.getElementsByName('slide1');
+  img1.src = imageList[0];
+  const img2 = imageList[1];
+  const img3 = imageList[2];
+  const img4 = imageList[3];
   let counter = 1;
   setInterval(() => {
-    document.getElementById('radio' + counter).checked = true;
+    document.getElementById(`radio${counter}`).checked = true;
     counter++;
     if (counter > 4) {
       counter = 1;

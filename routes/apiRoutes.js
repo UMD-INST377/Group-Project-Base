@@ -2,7 +2,8 @@
 import express from 'express';
 import sequelize from 'sequelize';
 
-import controllers from '../controllers/foodInspectionPGController';
+// eslint-disable-next-line no-unused-vars
+import controllers from '../controllers/foodInspectionPGController.js';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();

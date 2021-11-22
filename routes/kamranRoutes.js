@@ -77,7 +77,7 @@ router.route('/films')
         type: sequelize.QueryTypes.SELECT
       });
       // didn't add directors will check back later
-      const currentID = (await film.length) + 1;
+      const currentID = await (film.length) + 1;
       const genreName = getGenreIdByValue(genre, req.body.genre);
       const genreId = genreName.map((movGenre) => movGenre.genre_id)[0];
       await db.sequelizeDB.query(filmMapCustom.filmPost, {

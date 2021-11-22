@@ -4,58 +4,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name='viewport'
     content='width=device-width, initial-scale=1.0, maximum-scale=.75'/>
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="styles.css"/>
     <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">    
+    <script src="https://kit.fontawesome.com/22e506707d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css"/>
     <title>Movie Ratings HQ</title>
 </head>
 
 <body>
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a href="index.html">
-                <figure class="image is-128x128">
-                    <img src="images/logo.png" class="image" width="196" height="196"
-                    alt="Movie Ratings HQ Logo: Film Camera">
-                </figure>
-            </a>
-    
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="./discovery/discovery.html">
-                Discovery
+    <div class="columns">
+        <nav class="navbar background" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand subtitle">
+                <a href="index.html">
+                    <figure class="image is-128x128">
+                        <img src="images/logo.png" class="image" width="196" height="196"
+                        alt="Movie Ratings HQ Logo: Film Camera">
+                    </figure>
                 </a>
-    
-                <a class="navbar-item" href="./top-100/top-100.html">
-                Top 100
-                </a>
-                <a class="navbar-item" href="./add-movie/add-movie.html">
-                Add Movie
-                </a>
-                <a class="navbar-item" href="./about/about.html">
-                About
+        
+                <a role="button" id="burger" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </a>
             </div>
-        </div>
-    </nav>
-
-    <div class="title is-2">
-        <h1>Welcome to Movie Rating HQ</h1>
-    </div>
-    
-    <div class="column">
-            <div class="content">
-                <div class="box is-one-third">
-                    This will be something in the upcoming weeks
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item is-size-5" href="./discovery/discovery.html">
+                    Discovery
+                    </a>
+        
+                    <a class="navbar-item is-size-5" href="./top-100/top-100.html">
+                    Top 100
+                    </a>
+                    <a class="navbar-item is-size-5" href="./add-movie/add-movie.html">
+                    Add Movie
+                    </a>
+                    <a class="navbar-item is-size-5" href="./about/about.html">
+                    About
+                    </a>
                 </div>
             </div>
+        </nav>
+        <div class="title is-2">
+            <h2>Welcome to Movie Rating HQ</h2>
+        </div>
+
+        <h2 class="subtitle is-3">Trending Movies!</h2>
+        <p class=note><em>*Click or Hover over the Film Picture to see Movie Info*</em></p>
+        <div class="column">
+            <div class="content"></div>
+        </div>
+
+        <h2 class="subtitle is-3">Film Statistics Visualizations</h2>
+        <div class="subtitle icons">
+            <a><i class="fas fa-chart-bar fa-10x" id=bar-graph-icon></i></a>
+            <a><i class="fas fa-chart-pie fa-10x" id=pie-graph-icon></i></a>
+        </div>
+        <div class="graph">
+            <div style="height: 370px; width: 70%;" class="is-hidden" id="chartContainer"></div>
+            <button class="delete is-large is-hidden" id="hide-bar"></button>
+            <div id="pieChartContainer" class="is-hidden" style="height: 370px; width: 70%;"></div>
+            <button class="delete is-large is-hidden" id="hide-pie"></button>
+        </div>
     </div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -6,6 +6,10 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+  res.send('Welcome to the West Coast Earthquake API!');
+});
+
 /* Magnitude endpoint */
 router.route('/magnitude')
   .get(async (req, res) => {
@@ -44,23 +48,6 @@ router.route('/magnitude')
     }
   });
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the West Coast Hurricane API!');
-});
-
-
-router.get('/hurricanes', async (req, res) => {
-  try {
-    const hurricanes = await db.hurricane.findAll();
-    const reply = hurricanes.length > 0 ? { data: hurricanes } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-export default router;
 /* City Endpoint */
 router.route('/city')
   .get(async (req, res) => {
@@ -102,3 +89,5 @@ router.route('/city')
       res.json('You have touched the city endpoint');
     });
   });
+
+export default router; 

@@ -48,7 +48,7 @@ nav {
   /* Page Layout */
   .title{
     display: flex;
-    background-color: rgba(31, 44, 121, 0.8);
+    background-color: rgba(55, 77, 199, 0.8);
     border-radius: 4px;
     padding: 10px 15px;
     margin: 0;
@@ -125,3 +125,4 @@ nav {
   border-color: blue;
   background-color:rgba(31, 44, 121, 0.8);
 }
+

@@ -82,4 +82,56 @@ body {
   .btn-group button:hover {
     background-color: rgb(143, 133, 133);
   }
+
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: 40px;
+  }
+
+  .drop {
+    width: 8cm;
+    height: 1cm;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  select {
+    text-align-last: center;
+  }
+
+  .team1 {
+    display: inline-block;
+  }
+
+  .team2 {
+    display: inline-block;
+  }
+
+  .h1 {
+    display: inline-block;
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    font-size: 20px;
+  }
+
+  .submit {
+    background-color: black;
+    color: white;
+    border-radius: 64px;
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+  }
+
+  .submit-wrap {
+    width: 50%;
+    text-align: center;
+  }
 }

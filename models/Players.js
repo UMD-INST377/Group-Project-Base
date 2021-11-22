@@ -33,9 +33,9 @@ export default (database, DataTypes) => {
           allowNull: false,
           primaryKey: true
         }
-      },
-      { freezeTableName: true, timestamps: false }
-    );
-    return Players;
-  };
+    },
+    { freezeTableName: true, timestamps: false }
+  );
+  return Players;
+};
   

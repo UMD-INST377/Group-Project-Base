@@ -31,8 +31,17 @@ const teamIDIndex = [
     ['Pistons', 'Pistons', '1610612765'],
     ['Hornets', 'Hornets', '1610612766']
 ];
-let teamSelected = ['','',''];
+let teamSelected = ['','','']; //Alt, Name, ID
+let allTeamData;
+let resultDIV = document.querySelector('#teamResults');
 
+fetch('/api/basketball/teams')
+  .then(response => response.json())
+  .then(data => {
+    allTeamData = data;
+    console.log(data);
+    console.log('Team data received!');
+    });
 
 for (let i = 0; i < teamImages.length; i++) {
     teamImages[i].addEventListener("click", function() {
@@ -54,7 +63,36 @@ function teamClicked(selectedTeam){
     console.log('TEAM ALT NAME: ' + teamSelected[0]);
     console.log('TEAM Name: ' + teamSelected[1]);
     console.log('TEAM ID: ' + teamSelected[2]);
+    displayTeamData(teamSelected[2]);
 }
 
-console.log(teamIDIndex);
-console.log(teamImages[1]['childNodes'][1]['alt']);
+function displayTeamData(teamID){
+    let selectedTeamData;
+    for(let i = 0; i < allTeamData.length; i++){
+        if(allTeamData[i]['team_id'] == teamSelected[2]){
+            selectedTeamData = allTeamData[i];
+        }
+    }
+    console.log(selectedTeamData);
+    resultDIV.innerHTML = '';
+    const addedHTML = selectedTeamData.map((team) => `
+    <li>
+      ${team.team_name}, <br> 
+      ${team.conference} <br> 
+      <i>${team.division} <br> 
+      ${team.coach}</i>
+    </li>
+  `);
+    resultDIV.append(selectedTeamData['team_name']);
+    resultDIV.append(selectedTeamData['coach']);
+    resultDIV.append(selectedTeamData['conference']);
+    resultDIV.append(selectedTeamData['division']);
+    console.log(resultDIV);
+}
+
+
+
+
+//Debugging help code
+//console.log(teamIDIndex);
+//console.log(teamImages[1]['childNodes'][1]['alt']);

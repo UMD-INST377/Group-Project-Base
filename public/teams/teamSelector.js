@@ -33,9 +33,12 @@ const teamIDIndex = [
 ];
 let teamSelected = ['','','']; //Alt, Name, ID
 let allTeamData;
+let allPlayerData;
 let resultDIV = document.querySelector('#teamResults');
 let previouslySelected = -1;
+let selectedTeamPlayers = [];
 
+//GET TEAMS
 fetch('/api/basketball/teams')
   .then(response => response.json())
   .then(data => {
@@ -43,6 +46,15 @@ fetch('/api/basketball/teams')
     console.log(data);
     console.log('Team data received!');
     });
+
+//GET PLAYERS
+fetch('/api/basketball/players')
+    .then(response => response.json())
+    .then(data => {
+      allPlayerData = data;
+      console.log(data);
+      console.log('Player data received!');
+      });
 
 for (let i = 0; i < teamImages.length; i++) {
     teamImages[i].addEventListener("click", function() {
@@ -58,6 +70,7 @@ for (let i = 0; i < teamImages.length; i++) {
 }
 
 function teamClicked(selectedTeam){
+    selectedTeamPlayers = [];
     let teamName = selectedTeam['childNodes'][1]['alt'];
     console.log('TEAM CLICKED: ' + teamName);
     teamSelected[0] = teamName;
@@ -70,7 +83,18 @@ function teamClicked(selectedTeam){
     console.log('TEAM ALT NAME: ' + teamSelected[0]);
     console.log('TEAM Name: ' + teamSelected[1]);
     console.log('TEAM ID: ' + teamSelected[2]);
+    getPlayerData(teamSelected[2]);
     displayTeamData(teamSelected[2]);
+}
+
+function getPlayerData(teamID){
+    for(let i = 0; i < allPlayerData.length; i++){
+        if(allPlayerData[i]['team_id'] == teamSelected[2]){
+            selectedTeamPlayers.push(allPlayerData[i])
+        }
+    }
+    console.log('PLAYERS ON SELECTED TEAM')
+    console.log(selectedTeamPlayers)
 }
 
 function displayTeamData(teamID){
@@ -82,7 +106,7 @@ function displayTeamData(teamID){
     }
     console.log(selectedTeamData);
     resultDIV.innerHTML = '';
-    const addedHTML =`
+    let addedHTML =`
     <div class = 'columns is-centered is-mobile'>
     <div class = 'column is-two-thirds'>
     <div class = 'box has-text-black has-background-white mt-6'>
@@ -90,10 +114,13 @@ function displayTeamData(teamID){
         <li>DIVISION: ${selectedTeamData['division']}</li>
         <li>CONFERENCE: ${selectedTeamData['conference']}</li>
         <li>COACH: ${selectedTeamData['coach']}</li>
-    </div>
-    </div>
-    </div>
+        <li>TEAM PLAYERS:</li>
   `;
+    console.log(selectedTeamPlayers[0]['first_name']);
+    for(let i = 0; i < selectedTeamPlayers.length; i++){
+        addedHTML += `<li>${selectedTeamPlayers[i]['first_name']} ${selectedTeamPlayers[i]['last_name']}</li>`;
+    }
+    addedHTML += '</div> </div> </div>'
     resultDIV.innerHTML = addedHTML;
 }
 

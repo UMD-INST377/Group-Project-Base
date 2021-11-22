@@ -3,6 +3,7 @@ import DiningHall from "./DiningHall.js";
 import Macros from "./Macros.js";
 import Meals from "./Meals.js";
 import Teams from "./Teams.js";
+import Players from "./Players.js"
 
 export default {
   DietaryRestrictions,
@@ -10,4 +11,5 @@ export default {
   Macros,
   Meals,
   Teams,
+  Players,
 };

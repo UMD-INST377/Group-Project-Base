@@ -38,6 +38,7 @@ router.get('/basketball/teams', async (req, res) => {
   }
 });
 
+
 // GET SPECIFIC TEAM
 router.get('/basketball/teams/:team_id', async (req, res) => {
   try {
@@ -53,10 +54,49 @@ router.get('/basketball/teams/:team_id', async (req, res) => {
   }
 });
 
+// GET ALL PLAYERS
+router.get('/basketball/players', async (req, res) => {
+  try {
+    const players = await db.Players.findAll();
+    res.json(players);
+  } catch (e) {
+    res.send(e);
+  }
+});
+
 router.post('/basketball', async (req, res) => {
   // Will use await when making actual calls to the db
   try {
     console.log('touched /basketball with POST');
+    res.json({ Method: 'POST', Endpoint: '/basketball' });
+  } catch (e) {
+    console.error(e);
+    res.error('Something went wrong on the server');
+  }
+});
+
+//Used to add new player to database
+router.post('/basketball/players', async (req, res) => {
+  // Will use await when making actual calls to the db
+  const players = await db.Players.findAll();
+  let playerID = Math.random()*100000000;
+  while(await Players.find(c => c.team_id == playerID)){
+    let playerID = Math.random()*100000000;
+  }
+  try {
+      const newPlayer = await db.Players.create({
+        player_id: playerID,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        height: req.body.height,
+        weight: req.body.weight,
+        position: req.body.position,
+        college: req.body.college,
+        year_drafted: req.body.year_drafted,
+        team_id: req.body.team_id,
+      });
+      res.json(newPlayer);
+    console.log('touched /basketball/players with POST');
     res.json({ Method: 'POST', Endpoint: '/basketball' });
   } catch (e) {
     console.error(e);

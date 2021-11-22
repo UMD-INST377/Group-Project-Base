@@ -1,18 +1,26 @@
-/* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
+
+/* eslint-disable no-console */
 
 const router = express.Router();
 
 /* Date Endpoint */
 
+const dateMapCustom = `SELECT day_of,
+time
+FROM
+  date`
+
 router.route('/date')
   .get(async (req, res) => {
     try {
       console.log('touched /date with GET');
-      res.json( {message: 'GET endpoint'} );
+      const result = await db.sequelizeDB.query(dateMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
     } catch (err) {
       console.log(err);
     }      

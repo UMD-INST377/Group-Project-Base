@@ -9,7 +9,7 @@ import general from '../server/controllers/general.js';
 const router = express.Router();
 
 /// ////Genral Information Endpoints////////
-router.route('/general_information')
+router.route('/general')
   .get(async(req, res) => {
     try {
       const retrieveGames = await db.sequelizeDB.query(

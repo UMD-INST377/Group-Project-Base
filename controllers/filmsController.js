@@ -5,7 +5,7 @@ const filmGet = `SELECT film_id,
   imdb_rating,
   genre
 FROM films f
-  INNER JOIN directors d
+  LEFT JOIN directors d
     USING(director_id)
   INNER JOIN genre g
     USING(genre_id)`;

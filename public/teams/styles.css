@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+#nbaLogo{
+  margin-top:600px;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -11,154 +15,12 @@
     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
 }
 
-.max-width-nav {
-  max-width: 700px;
-}
-
-body {
-  min-height: 100%;
-  background-color: rgb(68, 68, 68);
-}
-
-@media only screen and (min-width: 360px) {
-  a {
-    text-decoration: none;
-    color: white;
-  }
-
-  a:visited {
-    color: white;
-  }
-
-  .container {
-    text-align: center;
-  }
-
-  .teams {
-    border-bottom-left-radius: 13px;
-    border-top-left-radius: 13px;
-  }
-
-  .games {
-    border-bottom-right-radius: 13px;
-    border-top-right-radius: 13px;
-  }
-
-  .btn-group button {
-    margin-top: 20px;
-    font-size: 10px;
-    background: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    float: left;
-  }
-
-  .arena-pic {
-    margin-top: 20px;
-    max-width: 100%;
-  }
-
-  .quote {
-    color: white;
-    font-size: 10px;
-    font: bold;
-    margin-top: 10px;
-  }
-
-  .nba-logo {
-    width: 60px;
-  }
-
-  .logo {
-    color: white;
-    margin-top: 25px;
-    font-size: 12px;
-    margin-top: 60px;
-  }
-
-  .logo p {
-    margin-bottom: 0;
-  }
-}
-
-@media only screen and (min-width: 760px) {
-  a {
-    text-decoration: none;
-    color: white;
-  }
-
-  a:visited {
-    color: white;
-  }
-
-  .container {
-    text-align: center;
-  }
-
-  .teams {
-    border-bottom-left-radius: 13px;
-    border-top-left-radius: 13px;
-  }
-
-  .games {
-    border-bottom-right-radius: 13px;
-    border-top-right-radius: 13px;
-  }
-
-  button{
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border:transparent;
-  }
-
-  button img{
-    height:175px;
-    width:auto;
-  }
-
-  .btn-group button {
-    margin-top: 20px;
-    font-size: 18px;
-    padding: 25px 60px;
-    cursor: pointer;
-    float: left;
-  }
-
-  .arena-pic {
-    margin-top: 20px;
-    max-width: 100%;
-  }
-
-  .nba-logo {
-    width: 60px;
-  }
-
-  .logo {
-    color: white;
-    margin-top: 0;
-    font-size: 20px;
-  }
-
-  .logo p {
-    margin-bottom: 0;
-  }
-}
-
-.title {
-  display: inline-block;
-  background-color: rgba(0, 139, 139, 0.8);
-  border-radius: 4px;
-  padding: 10px 15px;
-  display: flex;
-  margin: 0;
-  margin-bottom: 5px;
-}
-
 .photo-grid-container {
   margin-top:20px;
   display: flex;
   align-self: center;
   align-items: center;
+  width: 90%;
 }
 
 .photo-grid {
@@ -168,14 +30,6 @@ body {
   flex-wrap: wrap;
   flex-direction: row-reverse;
   align-items: center;
-}
-
-.first-item {
-  order: 1;
-}
-
-.last-item {
-  order: -1;
 }
 
 .photo-grid-item {
@@ -189,7 +43,7 @@ body {
   margin-top:30px;
   white-space: nowrap;
   overflow: scroll;
-  width: 600px;
+  width: 100%;
   position: relative;
   height:auto;
   display:inline;
@@ -204,6 +58,7 @@ body {
 
 
 .carousel_item1 img {
+  cursor: pointer;
   margin-top:0px;
   overflow-x:scroll;
   display: inline-block;
@@ -240,6 +95,8 @@ body {
   padding-right: 8px;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+  background: none;
+  border:none;
 }
 
 #carousel_button--next {
@@ -247,4 +104,51 @@ body {
   border-radius: 4px;
   padding-right: 8px;
   padding-left: 8px;
+  background: none;
+  border:none;
+}
+
+@media only screen and (max-width: 760px) {
+  .carousel_item1 img {
+    margin-top:0px;
+    overflow-x:scroll;
+    display: inline-block;
+    max-height: 125px;
+    width: 75px;
+    height:auto;
+    position:relative;
+    margin-left: 20px;
+    margin-right: 20px;
+    vertical-align: middle;
+  }
+  #carousel_button--prev {
+    margin-left: 20px;
+    border-radius: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    background: none;
+    border:none;
+  }
+  #carousel_button--next {
+    margin-right: 20px;
+    border-radius: 4px;
+    padding-right: 8px;
+    padding-left: 8px;
+    background: none;
+    border:none;
+  }
+  #carousel_button--next img{
+    height:150px;
+    width: auto;
+  }
+  #carousel_button--prev img{
+    height:150px;
+    width: auto;
+  }
+
+  #nbaLogo{
+    margin-top:300px;
+  }
 }

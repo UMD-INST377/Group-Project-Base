@@ -90,4 +90,32 @@ body {
     justify-content: center;
     column-gap: 40px;
   }
+
+  .drop {
+    width: 8cm;
+    height: 1cm;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  select {
+    text-align-last: center;
+  }
+
+  .team1 {
+    display: inline-block;
+  }
+
+  .team2 {
+    display: inline-block;
+  }
+
+  .h1 {
+    display: inline-block;
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    font-size: 20px;
+  }
 }

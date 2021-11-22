@@ -57,8 +57,26 @@
         </button>
       </div>
     </div>
-    <div class="container" id="arenas">
-      <h1>Games</h1>
+    
+    <div class="columns is-centered">
+      <div class="column is-full">
+      <form method="get" 
+        action="https://inst377-group-project-18.herokuapp.com/games/"
+      >
+        <p>
+          <select class="drop" name="dropdown">
+            <option value="teams" selected>Team 1</option> 
+            <option value=""></option>
+          </select>
+        </p>
+        <p>
+          <select class="drop" name="dropdown">
+            <option value="teams" selected>Team 2</option> 
+            <option value=""></option> 
+          </select>
+        </p>
+        </form>
+      </div>
     </div>
 
     <footer class="bg-black text-center text-lg-start mt-5">

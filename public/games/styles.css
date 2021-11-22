@@ -82,4 +82,12 @@ body {
   .btn-group button:hover {
     background-color: rgb(143, 133, 133);
   }
+
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: 40px;
+  }
 }

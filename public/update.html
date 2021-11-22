@@ -30,7 +30,7 @@
 
     <h2 class='title is-2 has-text-weight-bold'>Add New President</h2>
 
-    <form action='' method='post' class="box" id="create_form">
+    <form action='presidents/' method='post' class="box" id="add_form">
       <div class="columns">
         <div class="column">
           <div class="field">
@@ -121,30 +121,28 @@
 
       </div>
 
-
-
       <div class="field">
-        <label class="label">First Lady First Name</label>
+        <label class="label" for="first_lady_name">First Lady First Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Type first name here">
+          <input class="input" type="text" id="first_lady_name" placeholder="Type first name here">
         </div>
       </div>
 
       <div class="columns">
         <div class="column">
           <div class="field">
-            <label class="label">Vice President First Name</label>
+            <label class="label" for="vp_first_name">Vice President First Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type first name here">
+              <input class="input" type="text" id="vp_first_name" placeholder="Type first name here">
             </div>
           </div>
         </div>
 
         <div class="column">
           <div class="field">
-            <label class="label">Vice President Last Name</label>
+            <label class="label" for="vp_last_name">Vice President Last Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type last name here">
+              <input class="input" type="text" id="vp_last_name" placeholder="Type last name here">
             </div>
           </div>
         </div>
@@ -154,36 +152,36 @@
       <div class="columns">
         <div class="column">
           <div class="field">
-            <label class="label">Child's First Name</label>
+            <label class="label" for="child_first_name">Child's First Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type first name here">
+              <input class="input" type="text" id="child_first_name" placeholder="Type first name here">
             </div>
           </div>
         </div>
 
         <div class="column">
           <div class="field">
-            <label class="label">Child's Last Name</label>
+            <label class="label" for="child_last_name">Child's Last Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type last name here">
+              <input class="input" type="text" id="child_last_name" placeholder="Type last name here">
             </div>
           </div>
         </div>
 
       </div>
     
-      <button class="button is-primary" id="add_button">Add New President</button>
+      <button class="button is-primary" type="submit">Add New President</button>
     </form>
 
     <h2 class='title is-2 has-text-weight-bold'>Update Existing President</h2>
 
-    <form action='' method='put' class="box" id="create_form">
+    <form action='presidents/:president_id' method='put' class="box" id="edit_form">
       <div class="columns">
         <div class="column">
           <div class="field">
             <label class="label" for="president_id">President ID</label>
             <div class="control">
-              <input class="input" type="text" id="president_id" placeholder="Type id here">
+              <input class="input" type="text" id="president_id_put" placeholder="Type id here">
             </div>
           </div>
         </div>
@@ -277,30 +275,28 @@
 
       </div>
 
-
-
       <div class="field">
-        <label class="label">First Lady First Name</label>
+        <label class="label" for="first_lady_name">First Lady First Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Type first name here">
+          <input class="input" type="text" id="first_lady_name" placeholder="Type first name here">
         </div>
       </div>
 
       <div class="columns">
         <div class="column">
           <div class="field">
-            <label class="label">Vice President First Name</label>
+            <label class="label" for="vp_first_name">Vice President First Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type first name here">
+              <input class="input" type="text" id="vp_first_name" placeholder="Type first name here">
             </div>
           </div>
         </div>
 
         <div class="column">
           <div class="field">
-            <label class="label">Vice President Last Name</label>
+            <label class="label" for="vp_last_name">Vice President Last Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type last name here">
+              <input class="input" type="text" id="vp_last_name" placeholder="Type last name here">
             </div>
           </div>
         </div>
@@ -310,41 +306,42 @@
       <div class="columns">
         <div class="column">
           <div class="field">
-            <label class="label">Child's First Name</label>
+            <label class="label" for="child_first_name">Child's First Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type first name here">
+              <input class="input" type="text" id="child_first_name" placeholder="Type first name here">
             </div>
           </div>
         </div>
 
         <div class="column">
           <div class="field">
-            <label class="label">Child's Last Name</label>
+            <label class="label" for="child_last_name">Child's Last Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type last name here">
+              <input class="input" type="text" id="child_last_name" placeholder="Type last name here">
             </div>
           </div>
         </div>
 
       </div>
     
-      <button class="button is-primary" id="update_button">Update President</button>
+      <button class="button is-primary" type="submit">Update President</button>
     </form>
 
     <h2 class='title is-2 has-text-weight-bold'>Delete Existing President</h2>
 
-    <form action='presidents/:president_id' method='delete' class="box" id="delete_button">
+    <form class="box">
       <div class="field">
         <label class="label" for="president_id">President ID</label>
         <div class="control">
-          <input class="input" type="text" id="number" placeholder="Type id here">
+          <input class="input" type="text" id="president_id_delete" name="president_id">
         </div>
 
-      <button type="submit">Delete President</button>
+      <button class="button is-primary" type="submit" id="delete_button">Delete President</button>
     </form>
-
-    <script src="delete_script.js"></script>
   </body>
+
+  <script src="delete_script.js"></script>
+  <script src="post_put.js"></script>
 
 
 </html>

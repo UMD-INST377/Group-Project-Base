@@ -39,21 +39,22 @@ addPresident.addEventListener('click', function_name_here); */
 */
 
 async function presDelete() {
-  const inputField = document.querySelector('#delete_button');
+  const inputField = document.querySelector('#president_id_delete');
   const url = `/api/presidents/${inputField.value}`;
-  const data = {
-    where: {
-      president_id: inputField.president_id
-    }
-  }
-  const request = await fetch(url, {
-    method: 'delete',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
+  // const request = await fetch(url, {
+  //   method: 'delete',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   }
+  console.log(url)
+  console.log(inputField)
+  //});
 }
+
+document.getElementById('delete_button').addEventListener('click', (event) => {
+  event.preventDefault()
+  presDelete()
+});
 
 // async function presDelete() {
 //   const inputField = document.querySelector('#delete_button');
@@ -72,11 +73,6 @@ async function presDelete() {
 //   }
 // }
 
-
-document.getElementById('delete_button').addEventListener('click', (event) => {
-  event.preventDefault()
-  presDelete()
-});
 
 /* let data = {"president_id": ,
 "first_name": createForm.elements['first_name'],

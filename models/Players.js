@@ -26,7 +26,12 @@ export default (database, DataTypes) => {
             type: DataTypes.STRING
         },
         year_drafted: {
-            type: DataTypes.YEAR
+            type: DataTypes.INTEGER
+        },
+        team_id: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          primaryKey: true
         }
       },
       { freezeTableName: true, timestamps: false }

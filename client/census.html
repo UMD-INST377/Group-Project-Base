@@ -4,15 +4,26 @@
     <title>
         The Census
     </title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    <style>
+
+       #map {position: absolute; top: 0; bottom: 0; left: 0; right:0;}
+    </style>
 </head>
 <body>
 
+<div id="map"></div>
 
-<p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3101.2443942599034!2d-76.944742984647!3d38.98691827955686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7c6bd3e9aaaab%3A0xd48e8bdda5e4da9a!2sUniversity%20of%20Maryland!5e0!3m2!1sen!2sus!4v1637537025709!5m2!1sen!2sus" 
-    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</p>
+<script>
+    var map=L.map('map').setView([0,0],1);
+    L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=SmbHLfsrpfb4cLVVqXsd',{
 
+    attribution:'<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+    }).addTo(map);
+</script>
 
 </body>
 

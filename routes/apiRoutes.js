@@ -109,7 +109,20 @@ router.route('/genres/:genreId')
       res.send('Something went wrong on the /genres end and unable to delete from genre_id');
     }
   });
-
+  router.route('/actor/')
+  .get(async (req, res) => {
+    res.send("hello");
+  })
+  .post(async(req, res) => {
+    try {
+      let actor = req.body.name;
+      const actorAdd = await db.Actor.create({actor: `${actor}`});
+      res.send('Actor added');
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on the /actor end and unable to update genre_id');
+    }
+  })
 router.route('/genre/')
   .get(async (req, res) => {
     res.send("hello");

@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
+import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
@@ -8,13 +9,13 @@ import general from '../server/controllers/general.js';
 const router = express.Router();
 
 /// ////Genral Information Endpoints////////
-router.route('/general')
+router.route('/general_information')
   .get(async(req, res) => {
     try {
       const retrieveGames = await db.sequelizeDB.query(
         general.get
       );
-      res.send(retrieveGames);
+      res.json(retrieveGames);
     } catch (err) {
       console.log(err);
       res.json({error: 'Server error'});
@@ -25,7 +26,7 @@ router.route('/general')
       const newGames = await db.sequelizeDB.query(
         general.put
       );
-      res.send(newGames);
+      res.json(newGames);
     } catch (err) {
       console.log(err);
       res.json({error: 'Server error'});
@@ -53,4 +54,5 @@ router.route('/general')
       res.json({error: 'Server error'});
     }
   });
+  
 export default router;

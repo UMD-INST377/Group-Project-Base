@@ -3,6 +3,7 @@ import express from 'express';
 import db from './database/initializeDB.js';
 import platformRoutes from './routes/platformRoutes.js';
 import priceRoute from './routes/priceRoute.js';
+import generalRoutes from './routes/generalRoutes.js';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.static(staticFolder));
 
 app.use('/api', platformRoutes);
 app.use('/api', priceRoute);
+app.use('/api', generalRoutes);
 
 
 async function bootServer() {

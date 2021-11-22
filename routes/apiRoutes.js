@@ -49,6 +49,8 @@ router.route('/magnitude')
   });
 
 /* City Endpoint */
+import endpoint1 from '../routes/cityControllers'
+
 router.route('/city')
   .get(async (req, res) => {
     try {

@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const response = await fetch('../api/top100');
     // extract the json data
   }
+  // I was unable to ge the code to link to the API will have to fix later with help 
+  /* const movieList = ['Avengers: Endgame', 'The Dark Knight', 'Django Unchained', 'Spider-Man: Into the Spider-Verse']
+  for (const movie of movieList){
+    const movieTitle = encodeURIComponent(movieData.film_title.trim());
+  } */
+  
   let counter = 1;
   setInterval(() => {
     document.getElementById('radio' + counter).checked = true;

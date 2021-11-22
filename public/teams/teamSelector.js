@@ -34,6 +34,7 @@ const teamIDIndex = [
 let teamSelected = ['','','']; //Alt, Name, ID
 let allTeamData;
 let resultDIV = document.querySelector('#teamResults');
+let previouslySelected = -1;
 
 fetch('/api/basketball/teams')
   .then(response => response.json())
@@ -46,7 +47,13 @@ fetch('/api/basketball/teams')
 for (let i = 0; i < teamImages.length; i++) {
     teamImages[i].addEventListener("click", function() {
         console.log('CLICKED TEAM');
-        teamClicked(teamImages[i])
+        teamClicked(teamImages[i]);
+        if(previouslySelected != -1){
+            console.log('CHANGED PREV SELECTION');
+            teamImages[previouslySelected].setAttribute('class','carousel_item1');
+        }
+        teamImages[i].setAttribute('class','carousel_item1 selectedImage');
+        previouslySelected = i;
     });
 }
 
@@ -75,19 +82,19 @@ function displayTeamData(teamID){
     }
     console.log(selectedTeamData);
     resultDIV.innerHTML = '';
-    const addedHTML = selectedTeamData.map((team) => `
-    <li>
-      ${team.team_name}, <br> 
-      ${team.conference} <br> 
-      <i>${team.division} <br> 
-      ${team.coach}</i>
-    </li>
-  `);
-    resultDIV.append(selectedTeamData['team_name']);
-    resultDIV.append(selectedTeamData['coach']);
-    resultDIV.append(selectedTeamData['conference']);
-    resultDIV.append(selectedTeamData['division']);
-    console.log(resultDIV);
+    const addedHTML =`
+    <div class = 'columns is-centered is-mobile'>
+    <div class = 'column is-two-thirds'>
+    <div class = 'box has-text-black has-background-white mt-6'>
+        <li>TEAM NAME: ${selectedTeamData['team_name']}</li>
+        <li>DIVISION: ${selectedTeamData['division']}</li>
+        <li>CONFERENCE: ${selectedTeamData['conference']}</li>
+        <li>COACH: ${selectedTeamData['coach']}</li>
+    </div>
+    </div>
+    </div>
+  `;
+    resultDIV.innerHTML = addedHTML;
 }
 
 

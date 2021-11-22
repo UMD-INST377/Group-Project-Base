@@ -4,4 +4,4 @@ import Meals from './Meals.js';
 export default {
   Macros,
   Meals
-};
+}

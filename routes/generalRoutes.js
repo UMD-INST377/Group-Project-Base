@@ -1,17 +1,14 @@
 /* eslint-disable no-console */
 import express from 'express';
-import sequelize from 'sequelize';
-import chalk from "chalk";
-import fetch from "node-fetch";
 
 import db from '../database/initializeDB.js';
 
-const router = express.Router();
-
 import general from '../server/controllers/general.js';
 
+const router = express.Router();
+
 /// ////Genral Information Endpoints////////
-router.route('/general_information')
+router.route('/general')
   .get(async(req, res) => {
     try {
       const retrieveGames = await db.sequelizeDB.query(

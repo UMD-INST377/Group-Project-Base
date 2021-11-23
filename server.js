@@ -1,15 +1,15 @@
 /* eslint-disable no-console */
 import express from 'express';
-import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
-import danielRoutes from './routes/danielRoutes.js';
-import faithRoutes from './routes/faithRoutes.js';
-import joshuaRoutes from './routes/joshuaRoutes.js';
-import kamranRoutes from './routes/kamranRoutes.js';
-import nickRoutes from './routes/nickroutes.js';
-import thirdPartyRoutes from './routes/thirdPartyRoutes.js';
-import udayRoutes from './routes/udayroutes.js';
-import top100Routes from './routes/top100Routes.js';
+import db from './server/database/initializeDB.js';
+import apiRoutes from './server/routes/apiRoutes.js';
+import danielRoutes from './server/routes/danielRoutes.js';
+import faithRoutes from './server/routes/faithRoutes.js';
+import joshuaRoutes from './server/routes/joshuaRoutes.js';
+import kamranRoutes from './server/routes/kamranRoutes.js';
+import nickRoutes from './server/routes/nickroutes.js';
+import thirdPartyRoutes from './server/routes/thirdPartyRoutes.js';
+import udayRoutes from './server/routes/udayroutes.js';
+import top100Routes from './server/routes/top100Routes.js';
 
 const app = express();
 

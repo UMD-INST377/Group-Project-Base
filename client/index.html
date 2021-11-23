@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>Group 22</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel='stylesheet' href='styles.css'/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
 
   </head>
 
@@ -24,30 +24,71 @@
         
     </div>
 
-    <div class='header-container'>
+    <div class='header'>
 
-        <div class='header'>
-
-          <h4>Explore our music playlists of some of the latest hits and add your own!</h4>
-          <div class='Albums'><img src='images/albums.jpg'/></div>
-
-
+        <div class='header-container'>
+          <p class = 'header-item'>Explore our music playlists of some of the latest hits and add your own!</p>
+          <div class='header-item'><img src='images/albums.jpg'/></div>
+        </div>
+    </div>
+  
+    <div class='subheader'>
+        <div class='subheader-container'>
+          <div class='subheader-item'><img src='images/add_to_database.jpg'/> </div>
+          <p class='subheader-item'>Want to add something to our database? <br> 
+            <a class = 'h3' href="/customize.html">Add, Delete, or Update our Database <br></a>
+            <a class = 'h2' href="/customize.html">Click here to start customizing</a>
+          </p>
         </div>
     </div>
 
-    <div class='photo-grid-container'>
-        <div class='photo-grid'>
+    <div class="wrapper">
+      <div class="container">
+        <div class="columns">
           
-        </div>
+          <div class="column is-full">
+            <form class = "box has-background-grey-lighter action="/api">
+              <div> 
+                <label class="title">Contact Us</label>
+              </div>
+              
+              <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                  <input class="input" type="text">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input class="input" type="text">
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Feedback</label>
+                <div class="control">
+                  <textarea class="textarea" placeholder="How can we improve?" rows="10"></textarea>
+                </div>
+              </div>
+
+              <button class="button is-light">Submit</button>
+
+              </form>
+            </div>
+          </div>  
+      </div>
     </div>
+   
 
     <div class='footer'>
         <div> Copyright (C) 2021 INST377 Group 22 - All Rights Reserved <br>
           - Privacy Policy Accessibility at Group_22_Team_Project</div>
        
-      </div>
+    </div>
 
-
+      
   <script src="script.js"></script>
   </body>
   

@@ -6,8 +6,9 @@
 
 .title {
   color: rgb(0, 0, 0);
-  background-color: rgba(0, 139, 139, 0.8);
   padding: 10px 0;
+  align-self: center;
+  
 }
 
 .menu-container {
@@ -35,49 +36,50 @@
   margin-left: 20px;
 }
 
-.header-container {
-  color: #5995da;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-}
-
 .header {
-  width: 900px;
-  height: 300px;
+  border-left: 100px solid rgb(0, 0, 0, 0);
+  border-right: 100px solid rgb(0, 0, 0, 0);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: xx-large;
+  font-weight: bold;
   color: black;
 }
 
-.photo-grid-container {
+.header-container {
   display: flex;
-  justify-content: center;
-}
-
-.photo-grid {
-  width: 900px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: row-reverse;
   align-items: center;
 }
 
-.photo-grid-item {
-  border: 1px solid #fff;
-  width: 300px;
-  height: 300px;
+.header-item {
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  border: 25px solid rgb(0, 0, 0, 0);
 }
 
-.first-item {
-  order: 1;
+.subheader {
+  border-left: 100px solid rgba(0, 0, 0, 0);
+  border-right: 100px solid rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: bold;
+  color: black;
 }
 
-.last-item {
-  order: -1;
+.subheader-container {
+  display: flex;
+  align-items: center;
+}
+
+.subheader-item {
+  align-items: center;
+  justify-content: space-between;
+  max-width: 600px;
+  border: 25px solid rgba(0, 0, 0, 0);
 }
 
 .github,
@@ -153,4 +155,28 @@
   background-color: black;
   height: auto;
   width: 680px;
+}
+
+.h3 {
+  font-size: x-large;
+  font-weight: normal;
+  color: black;
+}
+
+.h2 {
+  font-size: large;
+  font-weight: normal;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper {
+  display: flex;
+}
+.container {
+  max-width: 960px;
+  margin-top: 25px;
 }

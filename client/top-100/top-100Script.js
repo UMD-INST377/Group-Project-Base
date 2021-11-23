@@ -1,5 +1,3 @@
-const { all } = require("sequelize/types/lib/operators");
-
 document.addEventListener('DOMContentLoaded', () => {
   const top100List = document.querySelector('.top-100-movie-list');
 
@@ -79,6 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     return top100moviesArray;
   }
+
+  imageExtractor(top100List);
 
   const movieList = ['Avengers:+Endgame', 'The+Dark+Knight', 'Django+Unchained', 'Spider-Man:+Into+the+Spider-Verse'];
   let movieCounter = 1;

@@ -1,4 +1,4 @@
-function fetchData() {
+async function windowActions() {
   fetch('http://localhost:3000/api/general')
     .then((response) => {
       if (!response.ok) {
@@ -8,9 +8,12 @@ function fetchData() {
     })
     .then((data) => {
       console.log(data.data);
-      const html = data.data.map(user => {
+      const html = data.data
+        // eslint-disable-next-line arrow-body-style
+        .map((user) => {
           return `
-          <table class = "table is-fullwidth is-striped is-bordered">
+
+        <table class = "table is-fullwidth is-striped is-bordered">
             <thead>
                 <tr>
                     <th>Game ID</th>
@@ -30,13 +33,15 @@ function fetchData() {
                 </tr>
             </tbody>
         </table>
-            `}).join('');
-        console.log(html);
-        document.querySelector('#app').insertAdjacentHTML('afterbegin', html);
+
+            `;
+        }).join('');
+      console.log(html);
+      document.querySelector('#app').insertAdjacentHTML('afterbegin', html);
     })
     .catch((error) => {
       console.log(error);
     });
 }
 
-fetchData();
+window.onload = windowActions;

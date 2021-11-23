@@ -177,14 +177,18 @@ router.route('/playlists')
   .post(async (req, res) => {
     try {
       // add id for endpoint
-      const sqlStatement = 'INSERT INTO playlists SET ?';
+      // eslint-disable-next-line quotes
+      const sqlStatement = `INSERT INTO playlists playlist_name VALUES ${req.body.playlist};`;
+      const playlist = {
+        playlist_name: req.body.playlist
+      };
       const result = await db.sequelizeDB.query(sqlStatement, {
         type: sequelize.QueryTypes.INSERT
       });
       console.log(result);
       res.json(result);
     } catch (err) {
-      res.json({error: 'Server error, try again!'});
+      res.json({error: err});
     }
   })
   .delete(async (req, res) => {

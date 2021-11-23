@@ -81,43 +81,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   imageExtractor(top100List);
-
-  const movieSlides = document.querySelector('.slides');
-  const makeSlide = (src, movieName, slideNum) => {
-    movieSlides.innerHTML += `<div class="slide">
-      <img src=${src} alt=${movieName} name= "slide${slideNum}">  
-    </div>`;
-  };
-
-  async function getImage(moviesList) {
-    let slideNum = 0;
-    const response = await fetch('../api/top100');
-    const movieSlidesArray = await response.json();
-    const fourMoviesArray = movieSlidesArray.splice(69, 72);
-
-    await Promise.all(fourMoviesArray.map(async (movieSlide) => {
-      const movieTitle = encodeURIComponent(movieSlide.film_title.trim());
-      const tmdbResponse = await fetch(`../api/movieImages/${movieTitle}`, {method: 'POST'});
-      const tmdbMovieArray = await tmdbResponse.json();
-      const backDropPath = tmdbMovieArray[0].backdrop_path;
-
-      const imageResponse = await fetch(`${apiImageLink}${backDropPath}`);
-      const image = await imageResponse.blob();
-      const imageSource = URL.createObjectURL(image);
-      const movieName = `${movieSlide.film_title}`;
-
-      makeSlide(imageSource, movieName, slideNum += 1);
-    }));
-    return fourMoviesArray;
-  }
-
-  getImage(movieSlides);
-  let counter = 1;
-  setInterval(() => {
-    document.getElementById(`radio${counter}`).checked = true;
-    counter += 1;
-    if (counter > 4) {
-      counter = 1;
-    }
-  }, 5000);
 });

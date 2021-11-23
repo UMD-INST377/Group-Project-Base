@@ -9,47 +9,54 @@ const router = express.Router();
 
 /* Date Endpoint */
 
-router.get('/date', async (req, res) => {
-    try {
-      console.log('touched /date with GET');
-      if (Object.keys(req.body).length===0) {
-        const result = await db.sequelizeDB.query(date.getDate, {
-          type: sequelize.QueryTypes.SELECT
-        })
-      }
-      else {
-        const result = await db.sequelizeDB.query(date.getDateByID, {
-          replacements: {
-            id: req.body.id },
-            type:sequelize.QueryTypes.SELECT
-        });
-      }
-      res.json(result);
-    } catch (err) {
-      console.log(err);
-    }      
-  })
+router.get('/date', async(req,res) => {
+  try {
+    console.log('touched /date with GET');
+    const result = await db.sequelizeDB.query(date.getDate, {
+      type:sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+      console.log(error);
+  }
+})
 
-  // router.get('/date/:id', async (req, res) => {
-  //   try {
-  //     console.log('touched /date with GET');
-  //     const result = await db.sequelizeDB.query(date.getDateByID, {
-  //       replacements: {}
-  //       type: sequelize.QueryTypes.SELECT
-  //     })
-  //     res.json(result);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }      
-  // })
-// router.put(async (req, res) => {
+// router.get('/date', async (req, res) => {
 //     try {
-//       console.log('touched /date with PUT');
-//       res.json( {message: 'PUT endpoint'} );
+//       console.log('touched /date with GET');
+//       if (!req.body) {
+//         const result = await db.sequelizeDB.query(date.getDate, {
+//           replacements: {
+//             id: 'req.body.id'
+//           },
+//           type: sequelize.QueryTypes.SELECT
+//         })
+//       }
+//       else {
+//         const result = await db.sequelizeDB.query(date.getDateByID, {
+//           replacements: {
+//             id: req.body.id }
+//         })
+//       }
+//       res.json(result);
 //     } catch (err) {
 //       console.log(err);
-//     }
+//     }      
 //   })
+
+router.put(async (req, res) => {
+    try {
+      console.log('touched /date with PUT');
+      const result = await db.sequelizeDB.query(date.putDate, {
+        replacements: {
+          id: req.body.id, date: req.body.date
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  })
   // .post(async (req, res) => {
   //   try {
   //     console.log('touched /date with POST');

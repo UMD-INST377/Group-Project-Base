@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.title {
+  color: rgb(0, 0, 0);
+  padding: 10px 0;
+  align-self: center;
+  
+}
+
+.menu-container {
+  color: #fff;
+  background-color: #5995da; /* Blue */
+  padding: 20px 0;
+  display: flex;
+  justify-content: left;
+}
+
+.menu {
+  border: 1px solid #fff;
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  border: 1px solid #fff; /* For debugging */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.main-page {
+  margin-left: 20px;
+}
+
+.header {
+  border-left: 100px solid rgb(0, 0, 0, 0);
+  border-right: 100px solid rgb(0, 0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: bold;
+  color: black;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+}
+
+.header-item {
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  border: 25px solid rgb(0, 0, 0, 0);
+}
+
+.subheader {
+  border-left: 100px solid rgba(0, 0, 0, 0);
+  border-right: 100px solid rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: bold;
+  color: black;
+}
+
+.subheader-container {
+  display: flex;
+  align-items: center;
+}
+
+.subheader-item {
+  align-items: center;
+  justify-content: space-between;
+  max-width: 600px;
+  border: 25px solid rgba(0, 0, 0, 0);
+}
+
+.github,
+.project {
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-item {
+  border: 1px solid #fff;
+  background-color: #d6e9fe;
+  height: 200px;
+  flex: 1;
+}
+
+.footer-three {
+  flex: 2;
+}
+
+.footer-one,
+.footer-three {
+  background-color: #5995da;
+  flex: initial;
+  width: 300px;
+}
+
+.menu-container {
+  color: black;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+
+.Home {
+  color: black;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.Music_Logo {
+  width: 100px;
+  height: 100px;
+}
+
+/* Styling for Customize Page */ 
+/* Walesia */ 
+
+.song-form {
+  border-style: solid;
+  padding: 10px;
+  margin: auto;
+  width: 50%;
+  border: 3px solid darkblue;
+  
+}
+
+.song-table {
+  border-style: solid;
+  padding: 20px;
+  margin: auto;
+  width: 70%;
+  border: 3px solid darkblue;
+}
+
+body > table{
+  width: 80%;
+}
+
+table{
+  border-collapse: collapse;
+}
+table.list{
+  width:100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even),table.list thead>tr {
+  background-color: #dddddd;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 8px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 30%;
+  background-color: plum;
+  color: white;
+  padding: 10px 18px;
+  /* margin: 0px 0; */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form div.form-action-buttons{
+  text-align: right;
+}
+
+a{
+  cursor: pointer;
+  text-decoration: underline;
+  color: #0000ee;
+  margin-right: 4px;
+}
+
+label.validation-error{
+  color:   red;
+  margin-left: 5px;
+}
+
+.hide{
+  display:none;
+}
+.about {
+  height: auto;
+  width: 1500px;
+}
+
+.about_background {
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  height: auto;
+  width: 680px;
+}
+
+.h3 {
+  font-size: x-large;
+  font-weight: normal;
+  color: black;
+}
+
+.h2 {
+  font-size: large;
+  font-weight: normal;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper {
+  display: flex;
+}
+.container {
+  max-width: 960px;
+  margin-top: 25px;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <title>Group 22 Final Project</title>
+    <link rel='stylesheet' href='styles.css'/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
+
+    </head>
+
+    <body>
+      
+      <div class='menu-container'>
+        
+        <div class='menu'>
+            <div class='Music_Logo'><img src='images/Music_Logo.png'/></div>
+            <div class='links has-text-dark'>
+              <div class='Home'><a href='index.html'>Home</a></div>
+              <div class='Home'><a href='about.html'>About Us</a></div>
+              <div class='Home'><a href='database.html'>Music Database</a></div>
+              <div class='Home'><a href='customize.html'>Got Feeback? Let us Know</a></div>
+            </div>
+        </div>
+          
+      </div>
+
+        <div class='box' has-text-warning>
+            <form action='/songs_project/' method="get" class="form-row">
+             <button>song table</button>
+            </form>
+            <br>
+
+            <h1>Edit Music Database</h1>
+            <hr>
+              <div class="song-form">
+                <form onsubmit="event.preventDefault();submitSongForm();" autocomplete="off">
+                  <div>
+                    <label>Song title: </label><label class="validation-error hide" id="songValidationError">*This field is required!*</label>
+                    <input type="text" name="fullName" id="song_name">
+                  </div>
+                  <div>
+                    <label>Album name:</label>
+                    <input type="text" name="album_name" id="album_name">
+                  </div>
+                  <div>
+                    <label>Artist first name:</label>
+                    <input type="text" name="first_name" id="first_name">
+                  </div>
+                  <div>
+                    <label>Artist last name:</label>
+                    <input type="text" name="last_name" id="last_name">
+                  </div>
+                  <div>
+                    <label>Rating out of 5 stars:</label>
+                    <input type="number" min="0" step="1" max="5" name="rating" id="rating">
+                  </div>
+                  <div class="form-action-buttons">
+                    <input type="submit" value="Submit">
+                  </div>
+                </form>
+            </div>
+
+              <br/>
+
+            <div class = "song-table">
+              <table class="list" id="song_list">
+                <thead>
+                  <tr>
+                    <th>Song</th>
+                    <th>Album</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  To be continued... API will populate table below ... <br>
+                  When songs appear below, there is an EDIT and DELETE button to remove/add songs. <br>
+                  To test, you can input data manually or search the "Music Database" tab.
+                </tbody>
+              </table>
+            </div>
+         
+          </div>
+
+        <div class='footer'>
+            <div> Copyright (C) 2021 INST377 Group 22 - All Rights Reserved <br>
+                - Privacy Policy Accessibility at Group_22_Team_Project
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

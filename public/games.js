@@ -1,16 +1,16 @@
-async function windowActions() {
-  await fetch('http://localhost:3000/api/general')
+function fetchData() {
+  fetch('http://localhost:3000/api/general')
     .then((response) => {
       if (!response.ok) {
         throw Error('ERROR');
       }
       return response.json();
     })
-    .then((data) => {
+    .then(data => {
       console.log(data.data);
       const html = data.data
         // eslint-disable-next-line arrow-body-style
-        .map((user) => {
+        .map(user => {
           return `
 
         <table class = "table is-fullwidth is-striped is-bordered">
@@ -44,4 +44,4 @@ async function windowActions() {
     });
 }
 
-window.onload = windowActions();
+fetchData();

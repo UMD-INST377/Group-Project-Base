@@ -1,5 +1,3 @@
-let currAlbum
-
 /* eslint-disable camelcase */
 /* eslint-disable indent */
 async function getInfo() {
@@ -46,7 +44,7 @@ async function getInfo() {
 
     // Configure and Initialize Glide.js
     const config = {
-        type: 'slider',
+        type: 'carousel',
         perView: 5,
         focusAt: 'center',
         breakpoints: {

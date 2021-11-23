@@ -210,7 +210,7 @@ img {
 
 .fa-pencil-alt {
     position: absolute;
-    right: 215px;
+    right: 250px;
     cursor: pointer;
 }
 
@@ -220,7 +220,7 @@ img {
 
 .fa-trash-alt {
     position: absolute;
-    right: 190px;
+    right: 225px;
     color: red;
     cursor: pointer;
 }

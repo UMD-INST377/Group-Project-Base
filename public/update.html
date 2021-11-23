@@ -30,7 +30,7 @@
 
     <h2 class='title is-2 has-text-weight-bold'>Add New President</h2>
 
-    <form action='' method='post' class="box" id="create_form">
+    <form action='presidents/' method='post' class="box" id="add_form">
       <div class="columns">
         <div class="column">
           <div class="field">
@@ -121,30 +121,28 @@
 
       </div>
 
-
-
       <div class="field">
-        <label class="label">First Lady First Name</label>
+        <label class="label" for="first_lady_name">First Lady First Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Type first name here">
+          <input class="input" type="text" id="first_lady_name" placeholder="Type first name here">
         </div>
       </div>
 
       <div class="columns">
         <div class="column">
           <div class="field">
-            <label class="label">Vice President First Name</label>
+            <label class="label" for="vp_first_name">Vice President First Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type first name here">
+              <input class="input" type="text" id="vp_first_name" placeholder="Type first name here">
             </div>
           </div>
         </div>
 
         <div class="column">
           <div class="field">
-            <label class="label">Vice President Last Name</label>
+            <label class="label" for="vp_last_name">Vice President Last Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type last name here">
+              <input class="input" type="text" id="vp_last_name" placeholder="Type last name here">
             </div>
           </div>
         </div>
@@ -154,36 +152,36 @@
       <div class="columns">
         <div class="column">
           <div class="field">
-            <label class="label">Child's First Name</label>
+            <label class="label" for="child_first_name">Child's First Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type first name here">
+              <input class="input" type="text" id="child_first_name" placeholder="Type first name here">
             </div>
           </div>
         </div>
 
         <div class="column">
           <div class="field">
-            <label class="label">Child's Last Name</label>
+            <label class="label" for="child_last_name">Child's Last Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type last name here">
+              <input class="input" type="text" id="child_last_name" placeholder="Type last name here">
             </div>
           </div>
         </div>
 
       </div>
     
-      <button class="button is-primary" id="add_button">Add New President</button>
+      <button class="button is-primary" type="submit">Add New President</button>
     </form>
 
     <h2 class='title is-2 has-text-weight-bold'>Update Existing President</h2>
 
-    <form action='' method='put' class="box" id="create_form">
+    <form action='presidents/:president_id' method='put' class="box" id="edit_form">
       <div class="columns">
         <div class="column">
           <div class="field">
             <label class="label" for="president_id">President ID</label>
             <div class="control">
-              <input class="input" type="text" id="president_id" placeholder="Type id here">
+              <input class="input" type="text" id="president_id_put" placeholder="Type id here">
             </div>
           </div>
         </div>
@@ -277,32 +275,10 @@
 
       </div>
 
-
-
       <div class="field">
-        <label class="label">First Lady First Name</label>
+        <label class="label" for="first_lady_name">First Lady First Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Type first name here">
-        </div>
-      </div>
-
-      <div class="columns">
-        <div class="column">
-          <div class="field">
-            <label class="label">Vice President First Name</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Type first name here">
-            </div>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="field">
-            <label class="label">Vice President Last Name</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Type last name here">
-            </div>
-          </div>
+          <input class="input" type="text" id="first_lady_name" placeholder="Type first name here">
         </div>
 
       </div>
@@ -317,102 +293,66 @@
           </div>
         </div>
 
+      <div class="columns">
         <div class="column">
           <div class="field">
-            <label class="label">Child's Last Name</label>
+            <label class="label" for="vp_first_name">Vice President First Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Type last name here">
+              <input class="input" type="text" id="vp_first_name" placeholder="Type first name here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="vp_last_name">Vice President Last Name</label>
+            <div class="control">
+              <input class="input" type="text" id="vp_last_name" placeholder="Type last name here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="child_first_name">Child's First Name</label>
+            <div class="control">
+              <input class="input" type="text" id="child_first_name" placeholder="Type first name here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="child_last_name">Child's Last Name</label>
+            <div class="control">
+              <input class="input" type="text" id="child_last_name" placeholder="Type last name here">
             </div>
           </div>
         </div>
 
       </div>
     
-      <button class="button is-primary" id="update_button">Update President</button>
+      <button class="button is-primary" type="submit">Update President</button>
     </form>
 
     <h2 class='title is-2 has-text-weight-bold'>Delete Existing President</h2>
 
-    <form action='/presidents' method='delete' class="box" id="create_form">
+    <form class="box">
       <div class="field">
         <label class="label" for="president_id">President ID</label>
         <div class="control">
-          <input class="input" type="text" id="president_id" placeholder="Type id here">
+          <input class="input" type="text" id="president_id_delete" name="president_id">
         </div>
 
-      <button class="button is-primary" id="delete_button">Delete President</button>
+      <button class="button is-primary" type="submit" id="delete_button">Delete President</button>
     </form>
-
-    <script src="script.js">
-
-    const asyncGetCall = async () => {
-      try {
-        const response = await fetch('/presidents');
-        const data = await response.json();
-        // enter you logic when the fetch is successful
-        console.log(data);
-      } catch(error) {
-        // enter your logic for when there is an error (ex. error toast)
-        console.log(error)
-      } 
-    }
-    
-    asyncGetCall()
-    
-    const asyncPostCall = async () => {
-      try {
-        const response = await fetch('/api/presidents', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            // your expected POST request payload goes here
-            title: "My post title",
-            body: "My post content."
-          })
-        });
-        
-        const data = await response.json();
-        // enter you logic when the fetch is successful
-        console.log(data);
-      } catch(error) {
-        // enter your logic for when there is an error (ex. error toast)
-        
-        console.log(error)
-      } 
-    }
-    
-    asyncPostCall()
-
-      update_button();
-
-      async function update_button() {
-
-        const updatePresident = document.querySelector('update_button');
-        updatePresident.addEventListener('click', update_button);
-        //console.log(data);?
-      }
-
-      create_form();
-
-      async function create_form() {
-
-        const createForm = document.querySelector('create_form');
-        updateForm.addEventListener('click', create_form);
-      }
-
-      delete_president();
-
-      async function delete_president() {
-
-        const deletePresident = document.querySelector('delete_button');
-        deletePresident.addEventListener('click', delete_button);
-        //console.log(data);?
-      }
-
-    </script>
   </body>
+
+  <script src="delete_script.js"></script>
+  <script src="post_put.js"></script>
 
 
 </html>

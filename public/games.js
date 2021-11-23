@@ -1,5 +1,5 @@
 async function windowActions() {
-  fetch('http://localhost:3000/api/general')
+  await fetch('http://localhost:3000/api/general')
     .then((response) => {
       if (!response.ok) {
         throw Error('ERROR');
@@ -37,11 +37,11 @@ async function windowActions() {
             `;
         }).join('');
       console.log(html);
-      document.querySelector('#app').insertAdjacentHTML('afterbegin', html);
+      document.querySelector('#table').innerHTML(html);
     })
     .catch((error) => {
       console.log(error);
     });
 }
 
-window.onload = windowActions;
+window.onload = windowActions();

@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 router.route('/albums')
   .get(async (req, res) => {
     try {
-      const sqlStatement = 'SELECT * from albums;'
+      const sqlStatement = 'SELECT * from albums;';
       const result = await db.sequelizeDB.query(sqlStatement, {
         type: sequelize.QueryTypes.SELECT
       });
@@ -55,11 +55,11 @@ router.route('/albums')
     }
   });
 
-  /// Tyler Farmer - Lab 11 - Top 50 US Chart ///
-  router.route('/USchart')
+/// Tyler Farmer - Lab 11 - Top 50 US Chart ///
+router.route('/USchart')
   .get(async (req, res) => {
     try {
-      const sqlStatement = 'SELECT songs.song_name FROM us_top50 INNER JOIN songs ON us_top50.song_id=songs.song_id;'
+      const sqlStatement = 'SELECT songs.song_name FROM us_top50 INNER JOIN songs ON us_top50.song_id=songs.song_id;';
       const result = await db.sequelizeDB.query(sqlStatement, {
         type: sequelize.QueryTypes.SELECT
       });
@@ -148,13 +148,13 @@ router.route('/songs')
 router.route('/playlists')
   .get(async (req, res) => {
     try {
-      const sqlStatement = 'SELECT * from playlists;'
+      const sqlStatement = 'SELECT * from playlists;';
       const result = await db.sequelizeDB.query(sqlStatement, {
         type: sequelize.QueryTypes.SELECT
       });
       console.log(result);
       res.json(result);
-      
+
       res.json({message: 'GET playlists endpoint'});
     } catch (err) {
       console.log(error);
@@ -163,29 +163,41 @@ router.route('/playlists')
   })
   .put(async (req, res) => {
     try {
-      console.log('You touched the /playlists route');
-      res.json({message: 'PUT playlists endpoint'});
+      // add id for endpoint
+      const sqlStatement = 'UPDATE playlists SET playlist_name = ? WHERE condition playlist_id = ?;';
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      console.log(result);
+      res.json(result);
     } catch (err) {
-      console.log(error);
       res.json({error: 'Server error, try again!'});
     }
   })
   .post(async (req, res) => {
     try {
-      console.log('You touched the /playlists route');
-      res.json({message: 'POST playlists endpoint!'});
+      // add id for endpoint
+      const sqlStatement = 'INSERT INTO playlists SET ?';
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.INSERT
+      });
+      console.log(result);
+      res.json(result);
     } catch (err) {
-      console.log(error);
       res.json({error: 'Server error, try again!'});
     }
   })
   .delete(async (req, res) => {
     try {
-      console.log('You touched the /playlists route');
-      await res.json({message: 'DELETE playlists endpoint!'});
+      // add id for endpoint
+      const sqlStatement = 'DELETE playlists SET ?';
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.DELETE
+      });
+      console.log(result);
+      res.json(result);
     } catch (err) {
-      console.log(error);
-      await res.json({error: 'Server error, try again!'});
+      res.json({error: 'Server error, try again!'});
     }
   });
 

@@ -16,8 +16,12 @@ router.get('/', (req, res) => {
 router.route('/albums')
   .get(async (req, res) => {
     try {
-      console.log('touched /albums route with GET');
-      res.json({data: 'GET albums endpoint'});
+      const sqlStatement = 'SELECT * from albums;'
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      res.json({message: 'GET albums endpoint'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error'});
@@ -45,6 +49,49 @@ router.route('/albums')
     try {
       console.log('touched /albums route with DELETE');
       res.json({message: 'DELETE albums endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  });
+
+  /// Tyler Farmer - Lab 11 - Top 50 US Chart ///
+  router.route('/USchart')
+  .get(async (req, res) => {
+    try {
+      const sqlStatement = 'SELECT songs.song_name FROM us_top50 INNER JOIN songs ON us_top50.song_id=songs.song_id;'
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      res.json({message: 'GET USchart endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('touched /USchart route with PUT');
+      res.json({message: 'PUT USchart endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('touched /USchart route with POST');
+      res.json({message: 'POST USchart endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('touched /USchart route with DELETE');
+      res.json({message: 'DELETE USchart endpoint'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error'});

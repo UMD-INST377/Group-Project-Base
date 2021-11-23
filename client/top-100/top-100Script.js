@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const movieTitle = encodeURIComponent(movieData.film_title.trim());
       const movieRating = movieData.imdb_rating;
       // theoretically using kamran's movieImage route
-      const tmdbResponse = await fetch(`../api/movieImages/${movieTitle}`, {method: 'POST'}); // ask kamran about this
+      const tmdbResponse = await fetch(`../api/movieImages/${movieTitle}`, {method: 'POST'}); 
       const tmdbMovieArray = await tmdbResponse.json();
       try {
         const backDropPath = tmdbMovieArray[0].backdrop_path;
@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const imageResponse = await fetch(`${apiImageLink}${posterPath}`);
           const image = await imageResponse.blob();
           const imageSource = URL.createObjectURL(image);
-          console.log(imageSource);
           const imageAlt = `${movieData.film_title} image.`;
           makeMovieImageCard(movieData.film_title, description,
             movieRating, (num += 1), imageSource, imageAlt);
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     return top100moviesArray;
   }
-
+  console.log(top100List);
   imageExtractor(top100List);
 
   const movieList = ['Avengers:+Endgame', 'The+Dark+Knight', 'Django+Unchained', 'Spider-Man:+Into+the+Spider-Verse'];
@@ -88,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const results = await fetch(`../api/movieImages/${movieVal}`, {method: 'POST'});
       const movieResults = await results.json();
       const backdropPath = movieResults[0].backdrop_path;
-      const imageRequest = await fetch(`https://image.tmdb.org/t/p/w500/${backdropPath}`);
+      const imageRequest = await fetch(`${apiImageLink}${backdropPath}`);
       const img = await imageRequest.blob();
       const imgSource = URL.createObjectURL(img);
       const slideShow = `#slide${movieCounter}`;

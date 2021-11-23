@@ -411,6 +411,21 @@ td {
         padding: 16px 10px;
     }
 
+    .fa-pencil-alt {
+        position: absolute;
+        right: 60px;
+        cursor: pointer;
+        transform: scale(0.7)   
+    }
+    
+    .fa-trash-alt {
+        position: absolute;
+        right: 45px;
+        color: red;
+        cursor: pointer;
+        transform: scale(0.7) 
+    }
+        
     .item {
         margin-top: 0px;
         margin-bottom: 5px;
@@ -527,6 +542,21 @@ td {
         padding: 16px 10px;
     }
 
+    .fa-pencil-alt {
+        position: absolute;
+        right: 65px;
+        cursor: pointer;
+        transform: scale(0.7)   
+    }
+    
+    .fa-trash-alt {
+        position: absolute;
+        right: 50px;
+        color: red;
+        cursor: pointer;
+        transform: scale(0.7) 
+    }
+
     .item {
         margin-top: 0px;
     }
@@ -611,6 +641,21 @@ td {
         font-size: 12px;
     }
 
+    .fa-pencil-alt {
+        position: absolute;
+        right: 120px;
+        cursor: pointer;
+        transform: scale(0.8)   
+    }
+    
+    .fa-trash-alt {
+        position: absolute;
+        right: 100px;
+        color: red;
+        cursor: pointer;
+        transform: scale(0.8) 
+    }
+
     .suggestion {
         font-size: 15px
     }
@@ -622,7 +667,6 @@ td {
     ::-webkit-scrollbar {
         width: 5px;
     }
-
 
     .result {
         font-size: 10px;

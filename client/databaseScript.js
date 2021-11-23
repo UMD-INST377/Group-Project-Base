@@ -1,5 +1,5 @@
 async function windowActions() {
-  const endpoint = '/api/songs';
+  const endpoint = '/api/songs_project';
 
   const categories = [];
 

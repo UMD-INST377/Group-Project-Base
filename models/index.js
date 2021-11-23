@@ -6,9 +6,7 @@ import Genre from './Genre.js';
 import Playlist from './Playlist.js';
 import Rating from './Rating.js';
 import Songs from './Songs.js';
-
-
-
+import SongsProject from './SongsProject.js';
 
 export default {
   AlbumHasArtist,
@@ -18,5 +16,6 @@ export default {
   Genre,
   Playlist,
   Rating,
-  Songs
+  Songs,
+  SongsProject
 };

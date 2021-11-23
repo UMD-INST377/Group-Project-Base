@@ -8,150 +8,144 @@
     <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="add-MovieStyles.css"/>
+    <link rel="stylesheet" href="../styles.css"/>
     <title>Add Movie</title>
 </head>
 
 <body>
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a href="../index.html">
-                <figure class="image is-128x128">
-                    <img src="../images/logo.png" class="image" width="196" height="196"
-                    alt="Movie Ratings HQ Logo: Film Camera">
-                </figure>
-            </a>
-    
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="../discovery/discovery.html">
-                Discovery
-                </a>
-
-                <a class="navbar-item" href="../top-100/top-100.html">
-                Top 100
-                </a>
-                <a class="navbar-item" href="../add-movie/add-movie.html">
-                Add Movie
-                </a>
-                <a class="navbar-item" href="../about/about.html">
-                About
-                </a>
+    <div class="columns">
+      <nav class="navbar background" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+              <a href="../index.html">
+                  <figure class="image is-128x128">
+                      <img src="../images/logo.png" class="image" width="196" height="196"
+                      alt="Movie Ratings HQ Logo: Film Camera">
+                  </figure>
+              </a>
+      
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+              </a>
+          </div>
+          <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                  <a class="navbar-item is-size-5" href="../discovery/discovery.html">
+                  Discovery
+                  </a>
+                  <a class="navbar-item is-size-5" href="../top-100/top-100.html">
+                  Top 100
+                  </a>
+                  <a class="navbar-item is-size-5" href="../add-movie/add-movie.html">
+                  Add Movie
+                  </a>
+                  <a class="navbar-item is-size-5" href="../about/about.html">
+                  About
+                  </a>
+              </div>
+          </div>
+      </nav>
+      
+      <form class="box form is-half" id="form">
+      
+          <div class="field">
+              <label class="label">Your Name:</label>
+              <div class="control">
+                <div class="control">
+                    <input class="input" id="name-input" placeholder="Enter Name Here">
+                </div>
+              </div>
             </div>
-        </div>
-    </nav>
-
-    
-    <form class="box form is-half" id="form">
-    
-        <div class="field">
-            <label class="label">Your Name:</label>
+          <div class="field">
+            <label class="label">Email:</label>
             <div class="control">
               <div class="control">
-                  <input class="input" id="name-input" placeholder="Enter Name Here">
+                  <input class="input" id="email-input" type="email" placeholder="Enter Email">
               </div>
             </div>
           </div>
-
-        <div class="field">
-          <label class="label">Email:</label>
-          <div class="control">
-            <div class="control">
-                <input class="input" id="email-input" type="email" placeholder="Enter Email">
-            </div>
-          </div>
-        </div>
       
-        <div class="field">
-          <label class="label">Movie:</label>
-          <div class="control">
-            <input class="input" id="movie-input" placeholder="Movie Title">
-          </div>
-        </div>
-
-        <div class="field">
-            <label class="label">Director:</label>
-            <div class="control">
-              <input class="input " id="director-input" placeholder="Director's Name">
-            </div>
-          </div>  
-
           <div class="field">
-            <label class="label">Actor:</label>
+            <label class="label">Movie:</label>
             <div class="control">
-              <input class="input" id="actor-input" placeholder="Actor or Actress Name">
+              <input class="input" id="movie-input" placeholder="Movie Title">
             </div>
           </div>
-
           <div class="field">
-            <label class="label">Date:</label>
-            <div class="control">
-              <input class="input" id="date-input" type="date">
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">Genre:</label>
-            <div class="control">
-              <div class="select">
-                  <select id="genre-input">
-                     <option>Select Genre</option>
-                      <option>Action</option>
-                      <option>Adventure</option>
-                      <option>Animation</option>
-                      <option>Biography</option>
-                      <option>Comedy</option>
-                      <option>Crime</option>
-                      <option>Drama</option>
-                      <option >Family</option>
-                      <option>Fantasy</option>
-                      <option>Horror</option>
-                      <option>Music</option>
-                      <option>Mystery</option>
-                      <option>Romance</option>
-                      <option>Sci-Fi</option>
-                      <option>Sport</option>
-                      <option>Thriller</option>
-                      <option>Western</option>
-                  </select>
+              <label class="label">Director:</label>
+              <div class="control">
+                <input class="input " id="director-input" placeholder="Director's Name">
               </div>
             </div>
-        </div>
-
             <div class="field">
-                <label class="label">Rating:</label>
-                <div class="control">
-                    <div class="select">
-                        <select id="rating-input">
-                            <option>Select Rating</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option >9</option>
-                            <option>10</option>
-
-                        </select>
-                    </div>
-                    <!-- <button class="button" style="background-color: transparent;">
-                        <img src="../images/Empty_Star.svg" size="6px" style="color: transparent;" />
-                    </button> -->
-                    
-                </div>
-            <div class="full-width">
-                <button class="button is-info is-rounded is-pulled-right" id="submit-button">Submit</button> 
+              <label class="label">Actor:</label>
+              <div class="control">
+                <input class="input" id="actor-input" placeholder="Actor or Actress Name">
+              </div>
             </div>
+            <div class="field">
+              <label class="label">Date:</label>
+              <div class="control">
+                <input class="input" id="date-input" type="date">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Genre:</label>
+              <div class="control">
+                <div class="select">
+                    <select id="genre-input">
+                       <option>Select Genre</option>
+                        <option>Action</option>
+                        <option>Adventure</option>
+                        <option>Animation</option>
+                        <option>Biography</option>
+                        <option>Comedy</option>
+                        <option>Crime</option>
+                        <option>Drama</option>
+                        <option >Family</option>
+                        <option>Fantasy</option>
+                        <option>Horror</option>
+                        <option>Music</option>
+                        <option>Mystery</option>
+                        <option>Romance</option>
+                        <option>Sci-Fi</option>
+                        <option>Sport</option>
+                        <option>Thriller</option>
+                        <option>Western</option>
+                    </select>
+                </div>
+              </div>
           </div>
-      </form>
+              <div class="field">
+                  <label class="label">Rating:</label>
+                  <div class="control">
+                      <div class="select">
+                          <select id="rating-input">
+                              <option>Select Rating</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                              <option>7</option>
+                              <option>8</option>
+                              <option >9</option>
+                              <option>10</option>
+                          </select>
+                      </div>
+                      <!-- <button class="button" style="background-color: transparent;">
+                          <img src="../images/Empty_Star.svg" size="6px" style="color: transparent;" />
+                      </button> -->
+      
+                  </div>
+              <div class="full-width">
+                  <button class="button is-info is-rounded is-pulled-right" id="submit-button">Submit</button>
+              </div>
+            </div>
+        </form>
+    </div>
 
       <script src="add-movie.js"></script>
 

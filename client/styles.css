@@ -72,11 +72,11 @@
   cursor: pointer;
 }
 
-.form-row button:hover {
+.data button:hover {
   background-color: purple;
 }
 
-.form-row button:active {
+.data button:active {
   background-color: purple;
 }
 

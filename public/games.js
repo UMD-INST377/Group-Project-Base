@@ -1,36 +1,22 @@
-async function loadIntoTable(url, table) {
-  const tableHead = table.querySelector('thead');
-  const tableBody = table.querySelector('body');
-  const response = await fetch(url);
-  const { headers, rows } = response.json();
+fetch('http://localhost:3000/api/price').then(
+  res => {
+    res.json().then(
+      data => {
+        console.log(data.data);
+        if (data.data.length > 0) {
 
-  // Clear the table
-  tableHead.innerHTML = '<tr></tr>';
-  tableBody.innerHTML = '';
-
-  // Populate the headers
-  for (const headerText of headers) {
-      const headerElement = document.createElement('th');
-
-      headerElement.textContent = headerText;
-      tableHead.querySelector('tr').appendChild(headerElement);
+          var temp = "";
+          data.data.forEach((itemData) => {
+            temp += '<tr>';
+            temp += '<td>' + itemData.game_id + "</td>";
+            temp += "<td>" + itemData.game_name + "</td>";
+            temp += "<td>" + itemData.release_date + "</td>";
+            temp += "<td>" + itemData.free_to_play + "</td>";
+            temp += "<td>" + itemData.player_population + "</td></tr>";
+          });
+          document.getElementById('data').innerHTML = temp;
+        }
+      }
+    )
   }
-
-  // Populate the rows
-  for (const row of rows) {
-     const rowElement = document.createElement('tr');
-
-     for (const cellText of row) {
-         const cellElement = document.createElement('td');
-         
-         cellElement.textContent = cellText;
-         rowElement.appendChild(cellElement);
-     }
-
-     tableBody.appendChild(rowElement);
-  }
-
-
-}
-
-loadIntoTable('http://localhost:3000/api/general', document.querySelector('table'));
+)

@@ -33,23 +33,46 @@ document.addEventListener('DOMContentLoaded', () => {
     // for each movie {film_title, imdb_rating}
     // extract the movie title and rating from top100
     await Promise.all(top100moviesArray.map(async (movieData) => {
-      console.log(movieData.film_title);
+      // console.log(movieData.film_title);
       const movieTitle = encodeURIComponent(movieData.film_title.trim());
       const movieRating = movieData.imdb_rating;
       // theoretically using kamran's movieImage route
       const tmdbResponse = await fetch(`../api/movieImages/${movieTitle}`, {method: 'POST'}); // ask kamran about this
       const tmdbMovieArray = await tmdbResponse.json();
-      const backDropPath = tmdbMovieArray[0].backdrop_path;
-      const description = tmdbMovieArray[0].overview;
-
+      try {
+        const backDropPath = tmdbMovieArray[0].backdrop_path;
+        const posterPath = tmdbMovieArray[0].poster_path;
+        if (((backDropPath === null) && (posterPath === null)) || (tmdbMovieArray.length === 0)) {
+          const imageSource = '../images/empty-show-curtains.jpg';
+          const imageAlt = `${movieData.film_title} image.`;
+          const description = tmdbMovieArray[0].overview;
+          makeMovieImageCard(movieData.film_title, description,
+            movieRating, (num += 1), imageSource, imageAlt);
+        } else if ((posterPath !== null) && (backDropPath === null)) {
+          const description = tmdbMovieArray[0].overview;
+          const imageResponse = await fetch(`${apiImageLink}${posterPath}`);
+          const image = await imageResponse.blob();
+          const imageSource = URL.createObjectURL(image);
+          const imageAlt = `${movieData.film_title} image.`;
+          makeMovieImageCard(movieData.film_title, description,
+            movieRating, (num += 1), imageSource, imageAlt);
+        } else {
+          const description = tmdbMovieArray[0].overview;
+          const imageResponse = await fetch(`${apiImageLink}${backDropPath}`);
+          const image = await imageResponse.blob();
+          const imageSource = URL.createObjectURL(image);
+          const imageAlt = `${movieData.film_title} image.`;
+          makeMovieImageCard(movieData.film_title, description,
+            movieRating, (num += 1), imageSource, imageAlt);
+        }
+      } catch {
+        const imageSource = '../images/empty-show-curtains.jpg';
+        const imageAlt = `${movieData.film_title} image.`;
+        const description = `N/A Unforunately for ${movieData.film_title}`;
+        makeMovieImageCard(movieData.film_title, description,
+          movieRating, (num += 1), imageSource, imageAlt);
+      }
       // using the path found from the movieTitle, directly search for the image
-      const imageResponse = await fetch(`${apiImageLink}${backDropPath}`);
-      const image = await imageResponse.blob();
-      const imageSource = URL.createObjectURL(image);
-      const imageAlt = `${movieData.film_title} image.`;
-
-      makeMovieImageCard(movieDate.film_title, description,
-        movieRating, (num += 1), imageSource, imageAlt);
     }));
     return top100moviesArray;
   }

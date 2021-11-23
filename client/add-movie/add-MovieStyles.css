@@ -8,9 +8,11 @@
 
 .box{
     background-color: grey;
-    margin: 100px;
-    margin-right: 15%;
     display: flex;
+    justify-content: center;
+    margin-top: 3%;
+    margin-right: 15%;
+    margin-left: 15%;
     flex-flow: column wrap;
     
 }

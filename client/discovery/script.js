@@ -1,16 +1,16 @@
-const burgerIcon = document.getElementById('burger');
-
-function toggleBurgerMenu(burger) {
-  const dropMenu = document.getElementById('navbarBasicExample');
-  burger.classList.toggle('is-active');
-  dropMenu.classList.toggle('is-active');
-}
-
-burgerIcon.addEventListener('click', () => {
-  toggleBurgerMenu(burgerIcon);
-});
-
 async function dataHandler() {
+  const burgerIcon = document.getElementById('burger');
+
+  function toggleBurgerMenu(burger) {
+    const dropMenu = document.getElementById('navbarBasicExample');
+    burger.classList.toggle('is-active');
+    dropMenu.classList.toggle('is-active');
+  }
+
+  burgerIcon.addEventListener('click', () => {
+    toggleBurgerMenu(burgerIcon);
+  });
+
   async function buttonHandler() {
     const genreBox = document.getElementById('genre-input').value;
     if (genreBox === 'Select Genre') {
@@ -29,7 +29,7 @@ async function dataHandler() {
     return filmsJson;
   }
   const searchButton = document.querySelector('.searchButton');
-  const columns = document.querySelector('.columns');
+  const columns = document.querySelector('.columnsMovies');
   const searchInput = document.querySelector('.search');
 
   // get the films data from its endpoint up here

@@ -242,7 +242,7 @@ router.post('/playlist', async (req, res) => {
   } catch (err) {
     res.json({error: err});
   }
-})
+});
 
 router.delete('/playlist/:playlist_id', async (req, res) => {
   try {
@@ -258,103 +258,78 @@ router.delete('/playlist/:playlist_id', async (req, res) => {
     res.json({error: 'Server error, try again!'});
   }
 });
-  
+
 /// //////////////////////////Wyatts Endpoints /Artists Endpoints////////////////////////////
-router.route('/artists')
-  .get(async (req, res) => {
-    try {
-      console.log('GET on /artists route');
-      res.json({data: 'GET artists endpoint'});
-    } catch (err) {
-      console.log(error);
-      res.json({error: 'Server Error'});
-    }
-  })
-  .put((req, res) => {
-    try {
-      console.log('PUT on /artists route');
-      res.json({message: 'PUT artists endpoint'});
-    } catch (err) {
-      console.log(error);
-      res.json({error: 'Server Error'});
-    }
-  })
-  .post((req, res) => {
-    try {
-      console.log('POST on /artists route');
-      res.json({message: 'POST artists endpoint'});
-    } catch (err) {
-      console.log(error);
-      res.json({error: 'Server Error'});
-    }
-  })
-  .delete((req, res) => {
-    try {
-      console.log('DELETE on /artists route');
-      res.json({message: 'DELETE artists endpoint'});
-    } catch (err) {
-      console.log(error);
-      res.json({error: 'Server Error'});
-    }
-  });
-
-router.get('/dining', async (req, res) => {
+router.get('/artists/:artist_id', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/dining/:hall_id', async (req, res) => {
-  try {
-    const hall = await db.DiningHall.findAll({
-      where: {
-        hall_id: req.params.hall_id
-      }
+    const artistId = req.params.artist_id;
+    const sqlStatement = `SELECT * from artist WHERE artist_id = ${artistId};`;
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.SELECT
     });
-
-    res.json(hall);
+    res.json(result);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json(err);
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.get('/artists', async (req, res) => {
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const sqlStatement = 'SELECT * from artist;';
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.SELECT
     });
-    res.json(newDining);
+    console.log(result);
+    res.json(result);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json(err);
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.put('/artists/:artist_id/:artist_name', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
-      where: {
-        hall_id: req.params.hall_id
-      }
+    // add id for endpoint
+    const artistId = req.params.artist_id;
+    const artistName = req.params.artist_name;
+    const sqlStatement = `UPDATE artist SET artist_name = '${artistName}' WHERE artist_id = ${artistId};`;
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.UPDATE
     });
-    res.send('Successfully Deleted');
+    res.json(result);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json({error: 'Server error, try again!'});
   }
 });
+
+router.post('/artists', async (req, res) => {
+  try {
+    // eslint-disable-next-line quotes
+    const sqlStatement = `INSERT INTO artist (artist_name, verified) VALUES ('${req.body.artist}', '${req.body.verified}');`;
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.INSERT
+    });
+    console.log(result);
+    res.json(result);
+  } catch (err) {
+    res.json({error: err});
+  }
+});
+
+/*
+router.delete('/artists/:artist_id', async (req, res) => {
+  try {
+    const artistId = req.params.artist_id;
+    const sqlStatement = `DELETE from artist WHERE artist_id = ${artistId};`;
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.DELETE
+    });
+    console.log('deleted artist');
+    res.json(result);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+*/
 
 router.put('/dining', async (req, res) => {
   try {
@@ -376,33 +351,6 @@ router.put('/dining', async (req, res) => {
   }
 });
 
-/// /////////////////////////////////
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/meals/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
 router.put('/meals', async (req, res) => {
   try {
     await db.Meals.update(
@@ -417,33 +365,6 @@ router.put('/meals', async (req, res) => {
       }
     );
     res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -472,33 +393,6 @@ router.put('/macros', async (req, res) => {
       }
     );
     res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
-      where: {
-        restriction_id: req.params.restriction_id
-      }
-    });
-    res.json(restrictions);
   } catch (err) {
     console.error(err);
     res.error('Server error');

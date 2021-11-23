@@ -63,7 +63,7 @@
   font-weight: bold;
 
   color: #FFFFFF;
-  background-color: rgb(89, 180, 241);
+  background-color: rgb(52, 104, 202);
 
   border: none;
   border-radius: 3px;
@@ -73,11 +73,11 @@
 }
 
 .data button:hover {
-  background-color: purple;
+  background-color: rgb(109, 180, 212);
 }
 
 .data button:active {
-  background-color: purple;
+  background-color: rgb(109, 180, 212);
 }
 
 

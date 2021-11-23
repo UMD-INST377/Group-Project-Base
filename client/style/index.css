@@ -208,6 +208,27 @@ img {
     height: 100%
 }
 
+.fa-pencil-alt {
+    position: absolute;
+    right: 215px;
+    cursor: pointer;
+}
+
+.fa-pencil-alt:hover {
+    transform: scale(1.3)   
+}
+
+.fa-trash-alt {
+    position: absolute;
+    right: 190px;
+    color: red;
+    cursor: pointer;
+}
+
+.fa-trash-alt:hover {
+    transform: scale(1.3)
+}
+
 .items {
     display: flex;
     justify-content: space-evenly;

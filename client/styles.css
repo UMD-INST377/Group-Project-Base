@@ -260,3 +260,31 @@ label.validation-error{
   max-width: 960px;
   margin-top: 25px;
 }
+
+.data_content {
+  display: flex;
+  justify-content: center;
+}
+
+
+.data button {
+  font-size: 16px;
+  font-weight: bold;
+
+  color: #FFFFFF;
+  background-color: rgb(52, 104, 202);
+
+  border: none;
+  border-radius: 3px;
+
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+.data button:hover {
+  background-color: rgb(109, 180, 212);
+}
+
+.data button:active {
+  background-color: rgb(109, 180, 212);
+}

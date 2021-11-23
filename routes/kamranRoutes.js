@@ -76,16 +76,21 @@ router.route('/films')
       const genre = await db.sequelizeDB.query(getTableRows('genre'), {
         type: sequelize.QueryTypes.SELECT
       });
-      // didn't add directors will check back later
+      const directors = await db.sequelizeDB.query(getTableRows('directors'), {
+        type: sequelize.QueryTypes.SELECT
+      });
+      const directorID = await (directors.length);
       const currentID = await (film.length) + 1;
       const genreName = getGenreIdByValue(genre, req.body.genre);
-      const genreId = genreName.map((movGenre) => movGenre.genre_id)[0];
+      const genreID = genreName.map((movGenre) => movGenre.genre_id)[0];
       await db.sequelizeDB.query(filmMapCustom.filmPost, {
         replacements: {
           currentId: currentID,
           film_title: req.body.film_title,
-          release_date: req.body.release_date,
-          genreid: genreId
+          releaseDate: req.body.release_date,
+          genreId: genreID,
+          imdbRating: req.body.rating,
+          directorId: directorID
         },
         type: sequelize.QueryTypes.INSERT
       });

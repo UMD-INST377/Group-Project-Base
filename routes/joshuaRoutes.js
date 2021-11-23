@@ -50,7 +50,6 @@ router.route('/directors')
     }
   })
 
-
   .post(async (req, res) => {
     try {
       const director = await db.sequelizeDB.query(directorMapCustom, {
@@ -59,11 +58,10 @@ router.route('/directors')
       const currentID = (await director.length) + 1;
       const createStatement = `INSERT INTO directors (director_id, director_name) 
         VALUES (${currentID}, '${req.body.director_name}')`;
-      const result = await db.sequelizeDB.query(createStatement, {
+      await db.sequelizeDB.query(createStatement, {
         type: sequelize.QueryTypes.INSERT
       });
-
-      res.send(`"${req.body.director_name}" Successfully Updated`);
+      res.send(`"${req.body.director_name}" Successfully Created`);
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server w/ /directors POST'});

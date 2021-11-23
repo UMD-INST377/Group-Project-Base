@@ -52,6 +52,36 @@
   color: black;
 }
 
+.data_content {
+  display: flex;
+  justify-content: center;
+}
+
+
+.data button {
+  font-size: 16px;
+  font-weight: bold;
+
+  color: #FFFFFF;
+  background-color: rgb(89, 180, 241);
+
+  border: none;
+  border-radius: 3px;
+
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+.form-row button:hover {
+  background-color: purple;
+}
+
+.form-row button:active {
+  background-color: purple;
+}
+
+
+
 .photo-grid-container {
   display: flex;
   justify-content: center;
@@ -59,6 +89,16 @@
 
 .photo-grid {
   width: 900px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.photo-grid_data {
+  width: 400px;
+  height: 400px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

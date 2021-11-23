@@ -6,6 +6,7 @@ import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
 import genreMapCustom from '../controllers/genreController.js';
+import genremovieCustom from '../controllers/searchbygenreController.js';
 
 const router = express.Router();
 
@@ -86,4 +87,21 @@ router.route('/genre')
       res.json({error: 'Something went wrong on the server w/ /genre DELETE'});
     }
   });
+
+router.route('/genremovies')
+  .post(async (req, res) => {
+    try {
+      const selectedgenreMovie = await db.sequelizeDB.query(genremovieCustom, {
+        replacements: {
+          genre: req.body.genre
+        },
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(selectedgenreMovie)
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server w/ /genremovieCustom POST '});
+    }
+  });
+
 export default router;

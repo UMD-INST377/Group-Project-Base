@@ -7,107 +7,108 @@
     <link rel="shortcut icon" type="image/x-icon" href="../images/logo.png" />
     <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="../styles.css"/>
     <link rel="stylesheet" href="top-100Styles.css"/>
     <title>Top 100</title>
-    <script src="top-100Script.js" charset="UTF-8"></script>
 </head>
 
 <body>
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a href="../index.html">
-                <figure class="image is-128x128">
-                    <img src="../images/logo.png" class="image" width="196" height="196"
-                    alt="Movie Ratings HQ Logo: Film Camera">
-                </figure>
-            </a>
-    
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="../discovery/discovery.html">
-                Discovery
+    <div class="columns">
+        <nav class="navbar background" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a href="../index.html">
+                    <figure class="image is-128x128">
+                        <img src="../images/logo.png" class="image" width="196" height="196"
+                        alt="Movie Ratings HQ Logo: Film Camera">
+                    </figure>
                 </a>
-    
-                <a class="navbar-item" href="../top-100/top-100.html">
-                Top 100
-                </a>
-                <a class="navbar-item" href="../add-movie/add-movie.html">
-                Add Movie
-                </a>
-                <a class="navbar-item" href="../about/about.html">
-                About
+        
+                <a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </a>
             </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item is-size-5" href="../discovery/discovery.html">
+                    Discovery
+                    </a>
+        
+                    <a class="navbar-item is-size-5 has-text-weight-bold" href="../top-100/top-100.html">
+                    Top 100
+                    </a>
+                    <a class="navbar-item is-size-5" href="../add-movie/add-movie.html">
+                    Add Movie
+                    </a>
+                    <a class="navbar-item is-size-5" href="../about/about.html">
+                    About
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <!--image slider start-->
+        <div class="slider">
+            <div class="slides">
+                <!--radio button start-->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <!--radio button end-->
+                <!--slide images start-->
+                <div class="slide first">
+                    <img id="#slide1" src="">
+                </div>
+                <div class="slide">
+                    <img src="./images/batman.jpg"  id= "#slide2">
+                </div>
+                <div class="slide">
+                    <img src="./images/django.jpg"  id= "#slide3">
+                </div>
+                <div class="slide">
+                    <img src="./images/spider-verse.jpg"  id= "#slide4">
+                </div>
+                <!--slide images end-->
+                <!--automatic nav start-->
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                </div>
+                <!--automatic nav end-->
+            </div>
+            <!--manual navigation start-->
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+            <!--manual navigation end-->
         </div>
-    </nav>
-    
-    <!--image slider start-->
-    <div class="slider">
-        <div class="slides">
-            <!--radio button start-->
-            <input type="radio" name="radio-btn" id="radio1">
-            <input type="radio" name="radio-btn" id="radio2">
-            <input type="radio" name="radio-btn" id="radio3">
-            <input type="radio" name="radio-btn" id="radio4">
-            <!--radio button end-->
-            <!--slide images start-->
-            <div class="slide first">
-                <img id="#slide1" src="">
-            </div>
-            <div class="slide">
-                <img src="./images/batman.jpg"  id= "#slide2">
-            </div>
-            <div class="slide">
-                <img src="./images/django.jpg"  id= "#slide3">
-            </div>
-            <div class="slide">
-                <img src="./images/spider-verse.jpg"  id= "#slide4">
-            </div>
-            <!--slide images end-->
-            <!--automatic nav start-->
-            <div class="navigation-auto">
-                <div class="auto-btn1"></div>
-                <div class="auto-btn2"></div>
-                <div class="auto-btn3"></div>
-                <div class="auto-btn4"></div>
-            </div>
-            <!--automatic nav end-->
+        <!--image slider end-->
+        <!-- Styling the list-->
+        <div class="top-100-movie-list">
+            <!--
+            <div class="movie-container">
+                <div class="circle"> <div id='circleNum'>1</div></div>
+                <div class="movie-card">
+                    <div class ="movie">
+                        <img src='./images/avengersInfinity.jpg' alt='Avengers Infinity War Image'>
+                        <h1 class="movie-name">Avengers Infinity War</h1>
+                    </div>
+                    <div class="movie-description">
+                        <p class="description-text"> The Avengers and their allies must be willing to sacrifice
+                            all in an attempt to defeat the powerful Thanos before his blitz of devastation
+                            and ruin puts an end to the universe.</p>
+                    </div>
+                    <div class="movie-rating">6.9</div>
+                </div>
+            </div> -->
         </div>
-        <!--manual navigation start-->
-        <div class="navigation-manual">
-            <label for="radio1" class="manual-btn"></label>
-            <label for="radio2" class="manual-btn"></label>
-            <label for="radio3" class="manual-btn"></label>
-            <label for="radio4" class="manual-btn"></label>
-        </div>
-        <!--manual navigation end-->
     </div>
-    <!--image slider end-->
-    <!-- Styling the list-->
-
-    <div class="top-100-movie-list">
-        <!--
-        <div class="movie-container">
-            <div class="circle"> <div id='circleNum'>1</div></div>
-            <div class="movie-card"> 
-                <div class ="movie">
-                    <img src='./images/avengersInfinity.jpg' alt='Avengers Infinity War Image'>
-                    <h1 class="movie-name">Avengers Infinity War</h1>
-                </div>
-                <div class="movie-description">
-                    <p class="description-text"> The Avengers and their allies must be willing to sacrifice 
-                        all in an attempt to defeat the powerful Thanos before his blitz of devastation 
-                        and ruin puts an end to the universe.</p>
-                </div>
-                <div class="movie-rating">6.9</div>
-            </div>
-        </div> -->
-    </div> 
     <script src="top-100Script.js"></script>
 </body>

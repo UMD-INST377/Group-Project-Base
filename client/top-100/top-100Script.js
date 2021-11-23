@@ -1,3 +1,15 @@
+const burgerIcon = document.getElementById('burger');
+
+function toggleBurgerMenu(burger) {
+  const dropMenu = document.getElementById('navbarBasicExample');
+  burger.classList.toggle('is-active');
+  dropMenu.classList.toggle('is-active');
+}
+
+burgerIcon.addEventListener('click', () => {
+  toggleBurgerMenu(burgerIcon);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const top100List = document.querySelector('.top-100-movie-list');
 
@@ -23,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   };
 
-  async function imageExtractor(imageCardList) {
+  async function imageExtractor() {
     let num = 0;
     // fetch the films table
     const response = await fetch('../api/top100');
@@ -76,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     return top100moviesArray;
   }
+  imageExtractor();
 
   const movieList = ['Avengers:+Endgame', 'The+Dark+Knight', 'Django+Unchained', 'Spider-Man:+Into+the+Spider-Verse'];
   let movieCounter = 1;

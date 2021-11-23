@@ -98,7 +98,7 @@ router.route('/USchart')
     }
   });
 
-///Lab 11: Lucas Ng Front Endpoint///
+/// Lab 11: Lucas Ng Front Endpoint///
 router.route('/songslist')
   .get(async (req, res) => {
     try {
@@ -189,66 +189,76 @@ router.route('/songs')
 /// //// Endpoints////////
 /// /////////////////////////////////
 
-router.route('/playlists')
-  .get(async (req, res) => {
-    try {
-      const sqlStatement = 'SELECT * from playlists;';
-      const result = await db.sequelizeDB.query(sqlStatement, {
-        type: sequelize.QueryTypes.SELECT
-      });
-      console.log(result);
-      res.json(result);
+router.get('/playlist/:playlist_id', async (req, res) => {
+  try {
+    const playlistId = req.params.playlist_id;
+    const sqlStatement = `SELECT * from playlists WHERE playlist_id = ${playlistId};`;
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    res.json(err);
+  }
+});
 
-      res.json({message: 'GET playlists endpoint'});
-    } catch (err) {
-      console.log(error);
-      res.json({error: 'Server error, try again!'});
-    }
-  })
-  .put(async (req, res) => {
-    try {
-      // add id for endpoint
-      const sqlStatement = 'UPDATE playlists SET playlist_name = ? WHERE condition playlist_id = ?;';
-      const result = await db.sequelizeDB.query(sqlStatement, {
-        type: sequelize.QueryTypes.UPDATE
-      });
-      console.log(result);
-      res.json(result);
-    } catch (err) {
-      res.json({error: 'Server error, try again!'});
-    }
-  })
-  .post(async (req, res) => {
-    try {
-      // add id for endpoint
-      // eslint-disable-next-line quotes
-      const sqlStatement = `INSERT INTO playlists playlist_name VALUES ${req.body.playlist};`;
-      const playlist = {
-        playlist_name: req.body.playlist
-      };
-      const result = await db.sequelizeDB.query(sqlStatement, {
-        type: sequelize.QueryTypes.INSERT
-      });
-      console.log(result);
-      res.json(result);
-    } catch (err) {
-      res.json({error: err});
-    }
-  })
-  .delete(async (req, res) => {
-    try {
-      // add id for endpoint
-      const sqlStatement = 'DELETE playlists SET ?';
-      const result = await db.sequelizeDB.query(sqlStatement, {
-        type: sequelize.QueryTypes.DELETE
-      });
-      console.log(result);
-      res.json(result);
-    } catch (err) {
-      res.json({error: 'Server error, try again!'});
-    }
-  });
+router.get('/playlists', async (req, res) => {
+  try {
+    const sqlStatement = 'SELECT * from playlists;';
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    console.log(result);
+    res.json(result);
+  } catch (err) {
+    res.json(err);
+  }
+});
 
+router.put('/playlist/:playlist_id/:playlist_name', async (req, res) => {
+  try {
+    // add id for endpoint
+    const playlistId = req.params.playlist_id;
+    const playlistName = req.params.playlist_name;
+    const sqlStatement = `UPDATE playlists SET playlist_name = '${playlistName}' WHERE playlist_id = ${playlistId};`;
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.UPDATE
+    });
+    res.json(result);
+  } catch (err) {
+    res.json({error: 'Server error, try again!'});
+  }
+});
+
+router.post('/playlist', async (req, res) => {
+  try {
+    // eslint-disable-next-line quotes
+    const sqlStatement = `INSERT INTO playlists (playlist_name) VALUES ('${req.body.playlist}');`;
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.INSERT
+    });
+    console.log(result);
+    res.json(result);
+  } catch (err) {
+    res.json({error: err});
+  }
+})
+
+router.delete('/playlist/:playlist_id', async (req, res) => {
+  try {
+    // add id for endpoint
+    const playlistId = req.params.playlist_id;
+    const sqlStatement = `DELETE from playlists WHERE playlist_id = ${playlistId};`;
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.DELETE
+    });
+    console.log('deleted playlist');
+    res.json(result);
+  } catch (err) {
+    res.json({error: 'Server error, try again!'});
+  }
+});
+  
 /// //////////////////////////Wyatts Endpoints /Artists Endpoints////////////////////////////
 router.route('/artists')
   .get(async (req, res) => {

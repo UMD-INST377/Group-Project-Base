@@ -1,38 +1,36 @@
-// eslint-disable-next-line camelcase
-const api_url = 'http://localhost:3000/api/price';
-// Defining async function
-async function getapi(api_url) {
-  // Storing response
-  const response = await fetch(api_url);
-  // Storing data in form of JSON
-  const data = await response.json();
-  console.log(data);
-  if (response) {
-    hideloader();
+async function loadIntoTable(url, table) {
+  const tableHead = table.querySelector('thead');
+  const tableBody = table.querySelector('body');
+  const response = await fetch(url);
+  const { headers, rows } = response.json();
+
+  // Clear the table
+  tableHead.innerHTML = '<tr></tr>';
+  tableBody.innerHTML = '';
+
+  // Populate the headers
+  for (const headerText of headers) {
+      const headerElement = document.createElement('th');
+
+      headerElement.textContent = headerText;
+      tableHead.querySelector('tr').appendChild(headerElement);
   }
-  show(data);
-}
-// Calling that async function
-getapi(api_url);
-  
-// Function to hide the loader
-function hideloader() {
-  document.getElementById('loading').style.display = 'none';
-}
-// Function to define innerHTML for HTML table
-function show(data) {
-  let tab =         
-        `<tr>
-          <th>Price ID</th>
-          <th>Price</th>
-         </tr>`;
-  // Loop to access all rows 
-  for (let r of data.list) {
-    tab += `<tr> 
-    <td>${r.price_id} </td>
-    <td>${r.listed_price}</td>        
-</tr>`;
+
+  // Populate the rows
+  for (const row of rows) {
+     const rowElement = document.createElement('tr');
+
+     for (const cellText of row) {
+         const cellElement = document.createElement('td');
+         
+         cellElement.textContent = cellText;
+         rowElement.appendChild(cellElement);
+     }
+
+     tableBody.appendChild(rowElement);
   }
-  // Setting innerHTML as tab variable
-  document.getElementById('price_table').innerHTML = tab;
+
+
 }
+
+loadIntoTable('http://localhost:3000/api/general', document.querySelector('table'));

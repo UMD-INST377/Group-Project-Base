@@ -78,7 +78,6 @@ router.delete('/presidents/:president_id', async (req, res) => {
     });
     console.log('Touched /presidents/:president_id with Delete');
     res.json('Row Deleted');
-    console.log(req.params)
   } catch (err) {
     console.error(err);
   }

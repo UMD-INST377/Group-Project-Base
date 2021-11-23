@@ -58,7 +58,11 @@ router.put('establishments/establishment_id', async (req, res) => {
 
 router.post('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query();
+    const businesses = await db.sequelizeDB.query(
+      {
+        type: QueryTypes.SELECT
+      }
+    );
 
     res.json(businesses);
   } catch (err) {
@@ -70,7 +74,9 @@ router.post('establishments/establishment_id', async (req, res) => {
 
 router.delete('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query();
+    const businesses = await db.sequelizeDB.query({
+      type: QueryTypes.SELECT
+    });
 
     res.json(businesses);
   } catch (err) {

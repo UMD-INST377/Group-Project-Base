@@ -288,3 +288,10 @@ label.validation-error{
 .data button:active {
   background-color: rgb(109, 180, 212);
 }
+
+.photo-grid_data {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+}

@@ -12,7 +12,10 @@ const router = express.Router();
 router.route('/songs')
   .get(async (req, res) => {
     try {
-      const songsList = await db.songs.findAll();
+      const sqlStatement = 'SELECT * from songs;';
+      const songsList = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
       res.json(songsList);
     } catch (err) {
       console.log(err);

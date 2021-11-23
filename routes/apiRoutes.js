@@ -98,6 +98,50 @@ router.route('/USchart')
     }
   });
 
+///Lab 11: Lucas Ng Front Endpoint///
+router.route('/songslist')
+  .get(async (req, res) => {
+    try {
+      const sqlStatement = 'SELECT albums.album_name FROM songs INNER JOIN albums ON songs.album_id=albums.album_id;';
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      console.log('You touched /songslist route with GET!');
+      res.json(result);
+      res.json({message: 'GET songslist endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('You touched /songslist route with PUT!');
+      res.json({message: 'PUT songslist endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('You touched /songslist route with POST!');
+      res.json({message: 'POST songslist endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('You touched /songslist route with DELETE!');
+      res.json({message: 'DELETE songslist endpoint!'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error!'});
+    }
+  });
+
 /// ////Lucas Ng Sample Endpoint/////
 /// /////////////////////////////////
 router.route('/songs')

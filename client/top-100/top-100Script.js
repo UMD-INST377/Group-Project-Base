@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const imageResponse = await fetch(`${apiImageLink}${posterPath}`);
           const image = await imageResponse.blob();
           const imageSource = URL.createObjectURL(image);
+          console.log(imageSource);
           const imageAlt = `${movieData.film_title} image.`;
           makeMovieImageCard(movieData.film_title, description,
             movieRating, (num += 1), imageSource, imageAlt);
@@ -76,6 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     return top100moviesArray;
   }
+
+  imageExtractor(top100List);
 
   const movieList = ['Avengers:+Endgame', 'The+Dark+Knight', 'Django+Unchained', 'Spider-Man:+Into+the+Spider-Verse'];
   let movieCounter = 1;

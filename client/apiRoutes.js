@@ -24,12 +24,9 @@ router.get('/', (req, res) => {
 router.get('/songs_project', async (req, res) => {
   try {
     /* Get all songs */
-    const songs = await db.sequelizeDB.query(
-      controllers.songControls.getAllSongs,
-      {
-        type: sequelize.QueryTypes.SELECT
-      }
-    );
+    const songs = await db.sequelizeDB.query(controllers.songControls.getAllSongs, {
+      type: sequelize.QueryTypes.SELECT
+    });
 
     /* Sending some data */
     res.json(songs);

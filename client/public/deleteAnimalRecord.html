@@ -28,7 +28,7 @@
                         <div class="navbar-start">
                             <a href = "newrecentry.html" class = "navbar-item">New Record Entry</a>
                             <a href="viewDatabase.html" class="navbar-item">View The Database</a>
-                            <a class="navbar-item" href="about.html"> About Page</a>
+                            <a class="navbar-item" href="about.html">About Page</a>
                         </div>
                         <div class="navbar-end">
                             <p class="navbar-item">Search The Database</p>
@@ -46,45 +46,21 @@
             </div>
         </div>
         <div class="columns">
-            <div class="column is-full">
-                <h2 class="title has-text-centered">Animals</h2>
+            <div class="column">
+                <h1 class="title is-4 has-text-centered">Delete An Animal Record</h1>
             </div>
         </div>
-        <div class="columns is-centered is-vcentered is-multiline">
-            <div class="column is-full">
-                <table class="table center is-bordered is-striped is-narrow is-hoverable">
-                    <thead>
-                        <tr>
-                            <th>Animal ID</th>
-                            <th>Animal Name</th>
-                            <th>Species</th>
-                            <th>Weight (lbs)</th>
-                            <th>Cause of Extinction</th>
-                            <th>Extinction Age</th>
-                        </tr>
-                    </thead>
-                    <tbody class="animalStuff">
-
-                    </tbody>
-                </table>
+        <div class="field">
+            <label class="label">Enter Animal ID</label>
+            <div class="control">
+                <input id="id_delete" class="input" type="text" placeholder="Enter Animal ID To Delete">
             </div>
         </div>
-        <div class="columns">
-            <div class="column is-offset-3">                
-                <a href="editAnimalRecord.html"><div class="control">
-                <button class="button is-link">Edit A Record</button>
-                </div></a>
-            </div>
-            <div class="column">                
-                <a href="deleteAnimalRecord.html"><div class="control">
-                <button class="button is-link">Delete A Record</button>
-                </div></a>
-            </div>
+        <div class="control" onclick="deleteRecord()">
+            <button class="button is-link">Submit</button>
         </div>
     </div>
     <script src="scripts.js"></script>
-    <script src="getDataForTables.js"></script>
+    <script src="editRecords.js"></script>
 </body>
-
 </html>
-    

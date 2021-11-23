@@ -80,5 +80,31 @@ document.addEventListener('DOMContentLoaded', () => {
     return top100moviesArray;
   }
 
-  imageExtractor(top100List);
+  const movieList = ['Avengers:+Endgame', 'The+Dark+Knight', 'Django+Unchained', 'Spider-Man:+Into+the+Spider-Verse'];
+  let movieCounter = 1;
+  async function getImage(titleList) {
+    await Promise.all(titleList.map(async (title) => {
+      const movieVal = encodeURIComponent(title.trim());
+      const results = await fetch(`../api/movieImages/${movieVal}`, {method: 'POST'});
+      const movieResults = await results.json();
+      const backdropPath = movieResults[0].backdrop_path;
+      const imageRequest = await fetch(`https://image.tmdb.org/t/p/w500/${backdropPath}`);
+      const img = await imageRequest.blob();
+      const imgSource = URL.createObjectURL(img);
+      const slideShow = `#slide${movieCounter}`;
+      const slide = document.getElementById(slideShow);
+      slide.src = imgSource;
+      slide.alt = title;
+      movieCounter += 1;
+    }));
+  }
+  getImage(movieList);
+  let counter = 1;
+  setInterval(() => {
+    document.getElementById(`radio${counter}`).checked = true;
+    counter += 1;
+    if (counter > 4) {
+      counter = 1;
+    }
+  }, 5000);
 });

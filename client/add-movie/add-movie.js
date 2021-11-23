@@ -9,15 +9,51 @@ async function formSender() {
   const ratingInput = document.getElementById('rating-input').value;
   const dateInput = document.getElementById('date-input').value;
 
-  const filmSender = await fetch('../api/films', {
-    method: 'post',
-    body: JSON.stringify({film_title: movieInput, release_date: dateInput, genre: genreInput}),
+  await fetch('../api/directors', {
+    method: 'POST',
+    body: JSON.stringify({
+      director_name: directorInput
+    }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8'
     }
   });
-  alert(`Thank You, ${nameInput}, for your Submission. We added your Movie to the Database.`);
+
+  await fetch('../api/actors', {
+    method: 'POST',
+    body: JSON.stringify({
+      actor_name: actorInput
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  });
+
+  await fetch('../api/films', {
+    method: 'POST',
+    body: JSON.stringify({
+      film_title: movieInput,
+      release_date: dateInput,
+      genre: genreInput,
+      rating: ratingInput
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  });
+
+  await fetch('../api/actors_linking', {
+    method: 'POST',
+    body: JSON.stringify({
+      actor_name: actorInput,
+      film_title: movieInput
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  });
 }
+
 submitInput.addEventListener('click', (event) => {
   event.preventDefault();
   formSender();

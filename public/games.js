@@ -1,10 +1,9 @@
 // eslint-disable-next-line camelcase
 const api_url = 'http://localhost:3000/api/price';
-  
 // Defining async function
-async function getapi(url) {
+async function getapi(api_url) {
   // Storing response
-  const response = await fetch(url);
+  const response = await fetch(api_url);
   // Storing data in form of JSON
   const data = await response.json();
   console.log(data);

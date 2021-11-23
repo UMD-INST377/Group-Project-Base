@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/api/price').then(
+fetch('http://localhost:3000/api/general').then(
   res => {
     res.json().then(
       data => {

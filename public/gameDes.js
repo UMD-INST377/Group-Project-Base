@@ -7,7 +7,6 @@ async function windowActions() {
   /*.then(function(response) {
     return response.json();
   })*/;
-
   //await (await fetch('http://localhost:3000/api/price', {method: 'POST', mode: 'no-cors', credentials: 'same-origin'}));
   // const endpoint = 'http://localhost:3000/api/price';
   // const data = JSON.parse(JSON.stringify(request));

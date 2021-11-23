@@ -76,33 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     return top100moviesArray;
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  const movieList = ['Avengers:+Endgame', 'The+Dark+Knight', 'Django+Unchained', 'Spider-Man:+Into+the+Spider-Verse']
+
+  const movieList = ['Avengers:+Endgame', 'The+Dark+Knight', 'Django+Unchained', 'Spider-Man:+Into+the+Spider-Verse'];
   let movieCounter = 1;
   async function getImage(titleList) {
     await Promise.all(titleList.map(async (title) => {

@@ -14,7 +14,7 @@ import top100Routes from './server/routes/top100Routes.js';
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-const staticFolder = 'client';
+const staticFolder = 'public';
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

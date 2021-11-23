@@ -3,13 +3,14 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import foodInspectionVar from '../contollers/food_inspectionController.js';
+
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
-
 
 /// /////////////////////////////////
 /// ////   Food Inspection   ////////
@@ -28,8 +29,54 @@ router.route('/foodServicePG').get(async (req, res) => {
   }
 });
 
+router.get('establishments/establishment_id', async (req, res) => {
+  try {
+    const businesses = await db.sequelizeDB.query(foodInspectionVar);
+    res.json(businesses);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+    console.log('touched /food_inspection with GET');
+  }
+});
 
-router.get('/food_inspection/:Establishment_id', async (req, res) => {
+router.put('establishments/establishment_id', async (req, res) => {
+  try {
+    const businesses = await db.sequelizeDB.query();
+
+    res.json(businesses);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+    console.log('touched /food_inspection with GET');
+  }
+});
+
+router.post('establishments/establishment_id', async (req, res) => {
+  try {
+    const businesses = await db.sequelizeDB.query();
+
+    res.json(businesses);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+    console.log('touched /food_inspection with GET');
+  }
+});
+
+router.delete('establishments/establishment_id', async (req, res) => {
+  try {
+    const businesses = await db.sequelizeDB.query();
+
+    res.json(businesses);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+    console.log('touched /food_inspection with GET');
+  }
+});
+
+/*router.put('/FOOD_INSPECTION_GROUP8.Food_Inspection/:Establishment_id', async (req, res) => {
   try {
     const businesses = await db.FoodInspection.findAll({
       where: {
@@ -44,75 +91,7 @@ router.get('/food_inspection/:Establishment_id', async (req, res) => {
     console.log('touched /food_inspection with GET');
   }
 });
-
-
-router.put('/food_inspection/:Establishment_id', async (req, res) => {
-  try {
-    const businesses = await db.FoodInspection.findAll({
-      where: {
-        Establishment_id: req.params.Establishment_id
-      }
-    });
-
-    res.json(businesses);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-    console.log('touched /food_inspection with GET');
-  }
-});
-
-
-router.post('/food_inspection/:Establishment_id', async (req, res) => {
-  try {
-    const businesses = await db.FoodInspection.findAll({
-      where: {
-        Establishment_id: req.params.Establishment_id
-      }
-    });
-
-    res.json(businesses);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-    console.log('touched /food_inspection with GET');
-  }
-});
-
-
-router.delete('/food_inspection/:Establishment_id', async (req, res) => {
-  try {
-    const businesses = await db.FoodInspection.findAll({
-      where: {
-        Establishment_id: req.params.Establishment_id
-      }
-    });
-
-    res.json(businesses);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-    console.log('touched /food_inspection with GET');
-  }
-});
-
-
-router.put('/food_inspection/:Establishment_id', async (req, res) => {
-  try {
-    const businesses = await db.FoodInspection.findAll({
-      where: {
-        Establishment_id: req.params.Establishment_id
-      }
-    });
-
-    res.json(businesses);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-    console.log('touched /food_inspection with GET');
-  }
-});
-
+*/
 
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////
@@ -127,7 +106,6 @@ router.get('/meals', async (req, res) => {
   }
 });
 
-
 router.get('/meals/:meal_id', async (req, res) => {
   try {
     const meals = await db.Meals.findAll({
@@ -141,7 +119,6 @@ router.get('/meals/:meal_id', async (req, res) => {
     res.error('Server error');
   }
 });
-
 
 router.put('/meals', async (req, res) => {
   try {
@@ -162,7 +139,6 @@ router.put('/meals', async (req, res) => {
     res.error('Server error');
   }
 });
-
 
 /// /////////////////////////////////
 /// ////////Macros Endpoints/////////
@@ -190,7 +166,6 @@ router.get('/macros/:meal_id', async (req, res) => {
     res.error('Server error');
   }
 });
-
 
 router.put('/macros', async (req, res) => {
   try {
@@ -220,7 +195,6 @@ router.put('/macros', async (req, res) => {
   }
 });
 
-
 /// /////////////////////////////////
 /// Dietary Restrictions Endpoints///
 /// /////////////////////////////////
@@ -247,7 +221,6 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
     res.error('Server error');
   }
 });
-
 
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
@@ -298,19 +271,5 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-
-
-router.get('establishmentVar', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(FoodInspection, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
 
 export default router;

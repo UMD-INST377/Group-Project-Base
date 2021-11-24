@@ -524,6 +524,7 @@ async function getInfo() {
     const active = document.querySelector('.glide__slide--active').querySelector('img');
     const detail = document.querySelector('.detail');
     const searchBox = document.querySelector('.search');
+    const suggestion = document.querySelector('.suggestion');
     if (evt.target.nodeName === 'IMG' || evt.target.nodeName === 'INPUT' || evt.target.className === 'detail'
             || evt.target.className === 'tab' || evt.target.className === 'link'
             || evt.target.className === 'contents' || evt.target.nodeName === 'I'

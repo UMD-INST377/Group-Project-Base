@@ -39,3 +39,43 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 } */
+
+.card{
+    width: 300px;
+    padding-bottom: 30px;
+}
+
+.card-image img{
+    height: 450px;
+}
+.row{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.gh{
+    height: 80px;
+    width: 40px;
+}
+
+.gh:hover{
+    height: 80px;
+    width: 80px;
+}
+
+.li{
+    height: 80px;
+    width: 80px;
+}
+
+.li:hover{
+    height: 80px;
+    width: 120px;
+}
+
+.links{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}

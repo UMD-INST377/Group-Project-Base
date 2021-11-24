@@ -370,8 +370,8 @@ async function getInfo() {
             </div>
               `;
     // Appends Contents to Content
-    content.append(general_info_content, songs_content, placements_content, prices_content,
-      certifications_content);
+    content.append(general_info_content, songs_content, placements_content,
+      certifications_content, prices_content);
 
     // Appends Buttons to Tab
     tab.append(general_info, songs, placementsBut, certificationsBut, pricesBut);

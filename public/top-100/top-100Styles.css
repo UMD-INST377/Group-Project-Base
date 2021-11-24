@@ -14,7 +14,7 @@
 }
 
 .top-100-movie-list {
-    margin-top: 200px;
+    margin-top: 100px;
     justify-content: left;
 }
 
@@ -49,9 +49,6 @@
     font-weight: 600;
 }
 
-* {
-    font-family: inherit;
- }
 
 .movie-rating {
     background-color: red;
@@ -97,6 +94,9 @@
     margin-left: 0px;
     margin-right: 0px;
     text-align: left;
+    font-family: inherit;
+    margin-top: 2px;
+    
 }
 
 @media(max-width:767px){

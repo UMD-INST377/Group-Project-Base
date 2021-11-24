@@ -8,7 +8,6 @@ async function deleteRecord() {
     body: JSON.stringify({Animal_ID: recordDelete.value})
   });
   alert('Record #' + recordDelete.value + ' successfully deleted!');
-  window.location.assign('viewDatabase.html');
 }
 
 async function updateRecord() {
@@ -26,7 +25,6 @@ async function updateRecord() {
     
   });
   alert('Record #' + recordUpdate.value + ' successfully updated!');
-  window.location.assign('viewDatabase.html');
 }
   
   

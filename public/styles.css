@@ -10,8 +10,31 @@ body {
 .buttons a {
     text-decoration: none;
     color: white;
-
 }
+
+/* .tl-slider-container-mask {
+    background-color: #f08080 ;
+} */
+
+/* .tl-timenav{
+    background-color: yellow;
+} */
+
+/* .tl-timemarker-timespan{
+ chamges bottom part of timeline under name of each element in timeline
+} */
+/* .tl-timemarker-media-container {
+    background-color: blueviolet;
+
+} */
+
+.tl-timeaxis-tick:before {
+    background-color:#c9483e;
+}
+.tl-menubar{
+    background-color:blue;
+}
+
 /* .description {
     position: absolute;
     width: auto;

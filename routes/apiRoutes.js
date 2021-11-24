@@ -26,7 +26,8 @@ router
       console.log(result);
     } catch (err) {
       console.log(err);
-      res.send('Something went wrong, sorry');
+      console.error(err.message);
+      res.send('Something Went Wrong')
     }
   })
   .put(async (req, res) => {
@@ -41,10 +42,10 @@ router
         type: sequelize.QueryTypes.UPDATE
       });
       res.json(result);
-      res.send('Database Entry Succesfully Updated');
     } catch (err) {
       console.log(err);
-      res.send('Something went wrong, sorry');
+      console.error(err.message);
+      res.send('Something Went Wrong')
     }
   })
   .post(async (req, res) => {
@@ -61,7 +62,8 @@ router
     } catch (err) {
       console.log(err);
       console.log(req.body);
-      res.send('Something went wrong, sorry');
+      console.error(err.message);
+      res.send('Something Went Wrong')
     }
   })
   .delete(async (req, res) => {
@@ -76,7 +78,8 @@ router
       console.log('touched /animals with DELETE');
     } catch (err) {
       console.log(err);
-      res.send('Something went wrong, sorry');
+      console.error(err.message);
+      res.send('Something Went Wrong')
     }
   });
 
@@ -147,7 +150,6 @@ router
         type: sequelize.QueryTypes.UPDATE
       });
       res.json(product);
-      res.send('Database Entry Succesfully Updated');
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');

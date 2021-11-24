@@ -1,83 +1,45 @@
-
 async function getInfo() {
-    // Request and Compile VINYL Information
-    // const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
-    const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
-    const allVinyl = await vinylRequest.json();
-    const vinyl = new Object();
-    for (const currentVinyl in allVinyl) {
-        vinyl[currentVinyl] = allVinyl[currentVinyl];
-    }
-
-    // Request and Compile PLACEMENTS Information
-    // const placementsRequest = await fetch('http://localhost:3000/api/placements');
-    const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/placements');
-    const allPlacements = await placementsRequest.json();
-    const placements = new Object();
-    for (const currentPlacement in allPlacements) {
-        placements[currentPlacement] = allPlacements[currentPlacement];
-    }
-
-    // Request and Compile CERTIFICAITON Information
-    // const certificationsRequest = await fetch('http://localhost:3000/api/certifications');
-    const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/certifications');
-    const allCertifications = await certificationsRequest.json();
-    const certifications = new Object();
-    for (const currentCertification in allCertifications) {
-        certifications[currentCertification] = allCertifications[currentCertification];
-    }
-  
-  
-    // PRICES Contents
-    // Request and Compile PRICES Information
-    // const pricesRequest = await fetch('http://localhost:3000/api/prices');
-    const pricesRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/prices');
-    const allPrices = await pricesRequest.json();
-    const prices = new Object();
-    for (const currentPrice in allPrices) {
-        prices[currentPrice] = allPrices[currentPrice];
-    }
-  
-  // Request and Compile SONGS information
-// const songsRequest = await fetch('http://localhost:3000/api/songs')
-const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/songs')
-const allSongs = await songsRequest.json()
-
-
-// SONGS Contents
-const songs_content = document.createElement('div');
-songs_content.className = 'heading heading-songs';
-const songs_table = document.createElement('table')
-songs_table.className = 'songs-table'
-songs_content.appendChild(songs_table)
-
-// Selects only songs relevant to that album
-const albumSongs = [];
-allSongs.forEach((song) => {
-  if (Number(id)+1 === song['vinyl_id']) {
-    albumSongs.push(song);
+  // Request and Compile VINYL Information
+  // const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
+  const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
+  const allVinyl = await vinylRequest.json();
+  const vinyl = new Object();
+  for (const currentVinyl in allVinyl) {
+    vinyl[currentVinyl] = allVinyl[currentVinyl];
   }
-});
 
-// Creates a first row for category's for song description
-const song_headers = document.createElement('tr')
-song_headers.className = 'songs-headers'
-song_headers.innerHTML = `  <th>Track Name</th>
-                            <th>Duration</th>
-                            <th>Key</th>
-                            <th>BPM</th>`
-songs_table.appendChild(song_headers);
+  // Request and Compile PLACEMENTS Information
+  // const placementsRequest = await fetch('http://localhost:3000/api/placements');
+  const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/placements');
+  const allPlacements = await placementsRequest.json();
+  const placements = new Object();
+  for (const currentPlacement in allPlacements) {
+    placements[currentPlacement] = allPlacements[currentPlacement];
+  }
 
-// Creates a row for each song
-albumSongs.forEach((song) => {
-    const song_row = document.createElement('tr')
-    song_row.className = 'songs-row'
-    song_row.innerHTML = `  <td class="song-name">${song['song_name']}</td> 
-                            <td class="duration">${song['duration']}</td>
-                            <td class="key">${song['key']}</td>
-                            <td class="bpm">${song['bpm']}</td>`
-    songs_table.appendChild(song_row)
-});
+  // Request and Compile CERTIFICAITON Information
+  // const certificationsRequest = await fetch('http://localhost:3000/api/certifications');
+  const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/certifications');
+  const allCertifications = await certificationsRequest.json();
+  const certifications = new Object();
+  for (const currentCertification in allCertifications) {
+    certifications[currentCertification] = allCertifications[currentCertification];
+  }
+
+  // PRICES Contents
+  // Request and Compile PRICES Information
+  // const pricesRequest = await fetch('http://localhost:3000/api/prices');
+  const pricesRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/prices');
+  const allPrices = await pricesRequest.json();
+  const prices = new Object();
+  for (const currentPrice in allPrices) {
+    prices[currentPrice] = allPrices[currentPrice];
+  }
+
+  // Request and Compile SONGS information
+  // const songsRequest = await fetch('http://localhost:3000/api/songs')
+  const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/songs');
+  const allSongs = await songsRequest.json();
 
   // Request and Compile PRICES Information
 
@@ -247,9 +209,39 @@ albumSongs.forEach((song) => {
     }
 
     // SONGS Contents
-    const songs_content = document.createElement('h3');
-    songs_content.className = 'heading';
-    songs_content.innerHTML = 'Song';
+    const songs_content = document.createElement('div');
+    songs_content.className = 'heading heading-songs';
+    const songs_table = document.createElement('table');
+    songs_table.className = 'songs-table';
+    songs_content.appendChild(songs_table);
+
+    // Selects only songs relevant to that album
+    const albumSongs = [];
+    allSongs.forEach((song) => {
+      if (Number(id) + 1 === song.vinyl_id) {
+        albumSongs.push(song);
+      }
+    });
+
+    // Creates a first row for category's for song description
+    const song_headers = document.createElement('tr');
+    song_headers.className = 'songs-headers';
+    song_headers.innerHTML = `  <th>Track Name</th>
+                            <th>Duration</th>
+                            <th>Key</th>
+                            <th>BPM</th>`;
+    songs_table.appendChild(song_headers);
+
+    // Creates a row for each song
+    albumSongs.forEach((song) => {
+      const song_row = document.createElement('tr');
+      song_row.className = 'songs-row';
+      song_row.innerHTML = `  <td class="song-name">${song.song_name}</td> 
+                            <td class="duration">${song.duration}</td>
+                            <td class="key">${song.key}</td>
+                            <td class="bpm">${song.bpm}</td>`;
+      songs_table.appendChild(song_row);
+    });
 
     // PLACEMENTS Contents
     const placements_content = document.createElement('div');
@@ -355,10 +347,10 @@ albumSongs.forEach((song) => {
             </div>
     `;
 
-        // PRICES Contents
-        const prices_content = document.createElement('div');
-        prices_content.className = 'heading';
-        prices_content.innerHTML = `
+    // PRICES Contents
+    const prices_content = document.createElement('div');
+    prices_content.className = 'heading';
+    prices_content.innerHTML = `
             <div class="items items-prices">
                 <div class="item">
                   <i class="fas fa-dice-six"></i>
@@ -428,71 +420,70 @@ albumSongs.forEach((song) => {
   }
 
   // Create Search Box When Search Icon is Clicked On
-   // Create Search Box When Search Icon is Clicked On
-   search.addEventListener('click', (evt) => {
+  // Create Search Box When Search Icon is Clicked On
+  search.addEventListener('click', (evt) => {
     if (!body.contains(document.querySelector('.search'))) {
-        // Using Search Box to Search for an Album or an Artist
-        // Create the Search Bar
-        createSearchBar();
-        const searchInput = document.querySelector('input');
+      // Using Search Box to Search for an Album or an Artist
+      // Create the Search Bar
+      createSearchBar();
+      const searchInput = document.querySelector('input');
 
-        // Display the Results of Search
-        searchInput.addEventListener('keyup', (evt) => {
-            if (evt.target.value) {
-                displayAlbum(evt.target.value);
-                const suggestions = document.querySelectorAll('.name');
-                suggestions.forEach((item) => {
-                    const images = document.querySelectorAll('img');
+      // Display the Results of Search
+      searchInput.addEventListener('keyup', (evt) => {
+        if (evt.target.value) {
+          displayAlbum(evt.target.value);
+          const suggestions = document.querySelectorAll('.name');
+          suggestions.forEach((item) => {
+            const images = document.querySelectorAll('img');
 
-                    // When a Result from the Search is Clicked On, Move to that Search Result and Create Detail Table
-                    item.addEventListener('click', (evt) => {
-                        for (const eachVinyl in vinyl) {
-                            if (evt.target.innerHTML === vinyl[eachVinyl].album_name) {
-                                glide.go(`=${vinyl[eachVinyl].vinyl_id - 1}`);
-                                container.style.cssText = `height: 50vh; 
+            // When a Result from the Search is Clicked On, Move to that Search Result and Create Detail Table
+            item.addEventListener('click', (evt) => {
+              for (const eachVinyl in vinyl) {
+                if (evt.target.innerHTML === vinyl[eachVinyl].album_name) {
+                  glide.go(`=${vinyl[eachVinyl].vinyl_id - 1}`);
+                  container.style.cssText = `height: 50vh; 
                                          transition-duration: 1s
                                           `;
-                                const image = images[vinyl[eachVinyl].vinyl_id - 1];
+                  const image = images[vinyl[eachVinyl].vinyl_id - 1];
 
-                                // Added CSS to the Selected Image(Album Cover)
-                                image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
+                  // Added CSS to the Selected Image(Album Cover)
+                  image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
                                       transform: scale(0.8);
                                       transition-duration: 0.5s`;
 
-                                if (!body.contains(document.querySelector('.detail'))) {
-                                    createDetail(vinyl[eachVinyl].vinyl_id - 1);
-                                } else if (body.contains(document.querySelector('.detail'))) {
-                                    const detail = document.querySelector('.detail');
-                                    detail.remove();
-                                    
-                                    createDetail(vinyl[eachVinyl].vinyl_id - 1);
-                                    images.forEach((item) => {
-                                        item.style.removeProperty('box-shadow');
-                                        item.style.removeProperty('transform');
-                                    });
-                              
-                                    image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
-                                      transform: scale(0.8);
-                                      transition-duration: 0.5s`;
-                                }
-                            }
-                          suggestions.forEach(item => {
-                            item.remove()
-                          })
-                        }
+                  if (!body.contains(document.querySelector('.detail'))) {
+                    createDetail(vinyl[eachVinyl].vinyl_id - 1);
+                  } else if (body.contains(document.querySelector('.detail'))) {
+                    const detail = document.querySelector('.detail');
+                    detail.remove();
+
+                    createDetail(vinyl[eachVinyl].vinyl_id - 1);
+                    images.forEach((item) => {
+                      item.style.removeProperty('box-shadow');
+                      item.style.removeProperty('transform');
                     });
-                });
-                // If Search Input Contains No Value, Remove Suggestions
-            } else if (!evt.target.value) {
-                const suggestions = document.querySelectorAll('.name');
-                suggestions.forEach((item) => {
-                    item.remove();
-                });
-            }
-        });
-    }
-});
 
+                    image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
+                                      transform: scale(0.8);
+                                      transition-duration: 0.5s`;
+                  }
+                }
+                suggestions.forEach((item) => {
+                  item.remove();
+                });
+              }
+            });
+          });
+          // If Search Input Contains No Value, Remove Suggestions
+        } else if (!evt.target.value) {
+          const suggestions = document.querySelectorAll('.name');
+          suggestions.forEach((item) => {
+            item.remove();
+          });
+        }
+      });
+    }
+  });
 
   // Generate Detail Table After an Album is Selected by Clicking
   const lastClickedItem = [];
@@ -545,13 +536,13 @@ albumSongs.forEach((song) => {
                                  transition-duration: 1s;
                                       `;
       if (body.contains(detail)) {
-          detail.remove();
+        detail.remove();
       }
       if (body.contains(searchBox)) {
-          searchBox.remove();
+        searchBox.remove();
       }
       if (body.contains(suggestion)) {
-          suggestion.remove();
+        suggestion.remove();
       }
       active.style.removeProperty('box-shadow');
       active.style.removeProperty('transform');
@@ -605,10 +596,3 @@ albumSongs.forEach((song) => {
     }
   });
 }
-
-
-
-
-
-
-        

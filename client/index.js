@@ -1,27 +1,30 @@
 async function getInfo() {
-  // Request and Compile VINYL Information
-  const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
-  const allVinyl = await vinylRequest.json();
-  const vinyl = new Object();
-  for (const currentVinyl in allVinyl) {
-    vinyl[currentVinyl] = allVinyl[currentVinyl];
-  }
+    // Request and Compile VINYL Information
+    // const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
+    const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
+    const allVinyl = await vinylRequest.json();
+    const vinyl = new Object();
+    for (const currentVinyl in allVinyl) {
+        vinyl[currentVinyl] = allVinyl[currentVinyl];
+    }
 
-  // Request and Compile PLACEMENTS Information
-  const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/placements');
-  const allPlacements = await placementsRequest.json();
-  const placements = new Object();
-  for (const currentPlacement in allPlacements) {
-    placements[currentPlacement] = allPlacements[currentPlacement];
-  }
+    // Request and Compile PLACEMENTS Information
+    // const placementsRequest = await fetch('http://localhost:3000/api/placements');
+    const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/placements');
+    const allPlacements = await placementsRequest.json();
+    const placements = new Object();
+    for (const currentPlacement in allPlacements) {
+        placements[currentPlacement] = allPlacements[currentPlacement];
+    }
 
-  // Request and Compile CERTIFICATION Information
-  const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/certifications');
-  const allCertifications = await certificationsRequest.json();
-  const certifications = new Object();
-  for (const currentCertification in allCertifications) {
-    certifications[currentCertification] = allCertifications[currentCertification];
-  }
+    // Request and Compile CERTIFICAITON Information
+    // const certificationsRequest = await fetch('http://localhost:3000/api/certifications');
+    const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/certifications');
+    const allCertifications = await certificationsRequest.json();
+    const certifications = new Object();
+    for (const currentCertification in allCertifications) {
+        certifications[currentCertification] = allCertifications[currentCertification];
+    }
 
   // Request and Compile PRICES Information
 

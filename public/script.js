@@ -1,3 +1,4 @@
+//nav bar******************************************************************
 document.addEventListener("DOMContentLoaded", () => {
   // Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(
@@ -22,6 +23,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+//display data******************************************************************
+async function biomeFunction() {
+  const biome = await fetch("./api/biome").then((response) => response.json());
+  console.log(biome);
+}
+//document.querySelector(".biomeData").innerHTML = `<table>
+//<tr><td>property1</td><td>${biome.biome_id}</td></tr>
+//</table>`;
+biomeFunction();
+
+//form javascript******************************************************************
 var app = new (function () {
   this.el = document.getElementById("tasks");
 

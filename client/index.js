@@ -25,6 +25,17 @@ async function getInfo() {
     for (const currentCertification in allCertifications) {
         certifications[currentCertification] = allCertifications[currentCertification];
     }
+  
+  
+    // PRICES Contents
+    // Request and Compile PRICES Information
+    // const pricesRequest = await fetch('http://localhost:3000/api/prices');
+    const pricesRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/prices');
+    const allPrices = await pricesRequest.json();
+    const prices = new Object();
+    for (const currentPrice in allPrices) {
+        prices[currentPrice] = allPrices[currentPrice];
+    }
 
   // Request and Compile PRICES Information
 
@@ -302,8 +313,28 @@ async function getInfo() {
             </div>
     `;
 
-    // PRICES Contents
-
+        // PRICES Contents
+        const prices_content = document.createElement('div');
+        prices_content.className = 'heading';
+        prices_content.innerHTML = `
+            <div class="items items-prices">
+                <div class="item">
+                  <i class="fas fa-dice-six"></i>
+                  <p class="header">Highest Discog Price</p>
+                  <p class="result">$${prices[id].highest_discog}</p>
+                </div>
+              <div class="item">
+                  <i class="fas fa-dice-three"></i>
+                  <p class="header">Average Discog Price</p>
+                  <p class="result">$${prices[id].average_discog}</p>
+              </div>
+              <div class="item">
+                  <i class="fas fa-dice-one"></i>
+                  <p class="header">Lowest Discog Price</p>
+                  <p class="result">$${prices[id].lowerst_discog}</p>
+              </div>
+            </div>
+              `;
     // Appends Contents to Content
     content.append(general_info_content, songs_content, placements_content,
       certifications_content);
@@ -533,4 +564,7 @@ async function getInfo() {
   });
 }
 
-window.onload = getInfo();
+
+
+
+        

@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="movie-card"> 
           <div class ="movie">
               <img src=${src} alt=${alt}>
-              <h1 class="movie-name">${title}</h1>
           </div>
           <div class="movie-description">
+              <h1 class="movie-name">${title}</h1>
               <p class="description-text"> ${description} </p>
           </div>
           <div class="movie-rating">${rating}</div>

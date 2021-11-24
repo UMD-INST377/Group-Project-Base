@@ -39,6 +39,9 @@
     overflow: hidden;
     margin: 0px;
     object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 2px #868080;
+
 }
 .movie-name {
     font-size: 30px;
@@ -85,7 +88,7 @@
     padding: inherit;
     font-size: 30px;
     font-weight: 600;
-    line-height: 75px;  
+    line-height: 55px;  
 }
 
 .movie-description {
@@ -119,17 +122,19 @@
     top: 30px;
     }
 }
-
+.navigation-auto{
+    display:none;
+}
 .slider{
     width: 100%;
-    max-height: 90vh;
+    max-height: 80vh;
     height: inherit;
     border-radius: 0px;
     overflow: hidden;
 }
 .slides{
     width: 500%;
-    height: 400px;
+    height: inherit;
     display: flex;
 
 }

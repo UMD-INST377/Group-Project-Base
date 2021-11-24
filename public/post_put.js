@@ -21,7 +21,7 @@ async function presAdd() {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify({add_form: inputField.value })
   });
 }
 
@@ -53,7 +53,7 @@ async function presAdd() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify({edit_form: inputField.value })
     });
   }
   

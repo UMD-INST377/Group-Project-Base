@@ -15,7 +15,7 @@ async function getInfo() {
     placements[currentPlacement] = allPlacements[currentPlacement];
   }
 
-  // Request and Compile PLACEMENTS Information
+  // Request and Compile CERTIFICATION Information
   const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/certifications');
   const allCertifications = await certificationsRequest.json();
   const certifications = new Object();
@@ -24,15 +24,25 @@ async function getInfo() {
   }
 
   // Request and Compile PRICES Information
-  
 
   // Configure and Initialize Glide.js
   const config = {
-    type: 'slider',
+    type: 'carousel',
     perView: 5,
-    focusAt: 'center'
-  };
+    focusAt: 'center',
+    breakpoints: {
+      450: {
+        perView: 1
+      },
+      800: {
+        perView: 3
+      },
 
+      1200: {
+        perView: 4
+      }
+    }
+  };
   const glide = new Glide('.glide', config).mount();
 
   // Initialize Elements
@@ -43,7 +53,7 @@ async function getInfo() {
 
   // Create Search Bar
   function createSearchBar() {
-    const searchBox = document.createElement('label');
+    const searchBox = document.createElement('div');
     searchBox.className = 'search';
 
     const searchInput = document.createElement('input');
@@ -54,7 +64,10 @@ async function getInfo() {
     searchPlaceholder.className = 'placeholder';
     searchPlaceholder.innerHTML = 'Search an Album';
 
-    searchBox.append(searchInput, searchPlaceholder);
+    const searchResult = document.createElement('ul');
+    searchResult.className = 'search-result';
+
+    searchBox.append(searchInput, searchPlaceholder, searchResult);
     body.appendChild(searchBox);
   }
 
@@ -103,6 +116,8 @@ async function getInfo() {
     general_info_content.className = 'heading';
     if (vinyl[id].producer_ln) {
       general_info_content.innerHTML = `
+            <a href="" target="_blank"><i class="fas fa-pencil-alt"></i></a>
+            <i class="far fa-trash-alt"></i>
             <div class="items">
                 <div class="item">
                     <i class="fas fa-music"></i>
@@ -138,6 +153,8 @@ async function getInfo() {
             `;
     } else if (!vinyl[id].producer_ln) {
       general_info_content.innerHTML = `
+            <a href="" target="_blank"><i class="fas fa-pencil-alt"></i></a>
+            <i class="far fa-trash-alt"></i>
             <div class="items">
                 <div class="item">
                     <i class="fas fa-music"></i>
@@ -235,25 +252,25 @@ async function getInfo() {
 
     // Changing Variables Depending on Certification Status
     if (certifications[id].diamond === 1) {
-        certifications[id].gold = "Certified"
-        certifications[id].platinum = "Certified"
-        certifications[id].multi_platinum = "Certified"
-        certifications[id].diamond = "Certified"
+      certifications[id].gold = 'Certified';
+      certifications[id].platinum = 'Certified';
+      certifications[id].multi_platinum = 'Certified';
+      certifications[id].diamond = 'Certified';
     } else if (certifications[id].multi_platinum === 1) {
-        certifications[id].gold = "Certified"
-        certifications[id].platinum = "Certified"
-        certifications[id].multi_platinum = "Certified"
-        certifications[id].diamond = "N/A"
+      certifications[id].gold = 'Certified';
+      certifications[id].platinum = 'Certified';
+      certifications[id].multi_platinum = 'Certified';
+      certifications[id].diamond = 'N/A';
     } else if (certifications[id].platinum === 1) {
-        certifications[id].gold = "Certified"
-        certifications[id].platinum = "Certified"
-        certifications[id].multi_platinum = "N/A"
-        certifications[id].diamond = "N/A"
+      certifications[id].gold = 'Certified';
+      certifications[id].platinum = 'Certified';
+      certifications[id].multi_platinum = 'N/A';
+      certifications[id].diamond = 'N/A';
     } else if (certifications[id].gold === 1) {
-        certifications[id].gold = "Certified"
-        certifications[id].platinum = "N/A"
-        certifications[id].multi_platinum = "N/A"
-        certifications[id].diamond = "N/A"
+      certifications[id].gold = 'Certified';
+      certifications[id].platinum = 'N/A';
+      certifications[id].multi_platinum = 'N/A';
+      certifications[id].diamond = 'N/A';
     }
 
     certifications_content.innerHTML = `
@@ -280,10 +297,10 @@ async function getInfo() {
                     <p class="result">${certifications[id].diamond}</p>
                 </div>
             </div>
-    `
+    `;
 
     // PRICES Contents
-    
+
     // Appends Contents to Content
     content.append(general_info_content, songs_content, placements_content,
       certifications_content);
@@ -303,19 +320,103 @@ async function getInfo() {
     // Show Only the Tab that is Clicked On
     function openTab(tabIndex) {
       const heading = document.querySelectorAll('.heading');
+      const button = document.querySelectorAll('.link');
       heading.forEach((item) => {
         item.style.display = 'none';
       });
+      button.forEach((item) => {
+        item.style.removeProperty('background-color');
+      });
       heading[tabIndex].style.display = 'block';
+      button[tabIndex].style.cssText = 'background-color: rgba(214, 214, 214, 0.8);';
     }
   }
 
+  // Find Matches to Album/Artist Search
+  function findAlbum(input, allEntries) {
+    return allEntries.filter((entry) => {
+      const regex = new RegExp(input, 'giy');
+      return entry.album_name.match(regex);
+    });
+  }
+
+  // Display Matches to Album/Artist
+  function displayAlbum(input) {
+    const matchSearch = findAlbum(input, allVinyl);
+    const suggestions = document.querySelector('.search-result');
+    const matchResult = matchSearch.map((match) => `
+          <li class="suggestion">
+          <div class="name">${match.album_name}</div>
+          </li>`).join('');
+    suggestions.innerHTML = matchResult;
+  }
+
   // Create Search Box When Search Icon is Clicked On
-  search.addEventListener('click', (evt) => {
+   // Create Search Box When Search Icon is Clicked On
+   search.addEventListener('click', (evt) => {
     if (!body.contains(document.querySelector('.search'))) {
-      createSearchBar();
+        // Using Search Box to Search for an Album or an Artist
+        // Create the Search Bar
+        createSearchBar();
+        const searchInput = document.querySelector('input');
+
+        // Display the Results of Search
+        searchInput.addEventListener('keyup', (evt) => {
+            if (evt.target.value) {
+                displayAlbum(evt.target.value);
+                const suggestions = document.querySelectorAll('.name');
+                suggestions.forEach((item) => {
+                    const images = document.querySelectorAll('img');
+
+                    // When a Result from the Search is Clicked On, Move to that Search Result and Create Detail Table
+                    item.addEventListener('click', (evt) => {
+                        for (const eachVinyl in vinyl) {
+                            if (evt.target.innerHTML === vinyl[eachVinyl].album_name) {
+                                glide.go(`=${vinyl[eachVinyl].vinyl_id - 1}`);
+                                container.style.cssText = `height: 50vh; 
+                                         transition-duration: 1s
+                                          `;
+                                const image = images[vinyl[eachVinyl].vinyl_id - 1];
+
+                                // Added CSS to the Selected Image(Album Cover)
+                                image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
+                                      transform: scale(0.8);
+                                      transition-duration: 0.5s`;
+
+                                if (!body.contains(document.querySelector('.detail'))) {
+                                    createDetail(vinyl[eachVinyl].vinyl_id - 1);
+                                } else if (body.contains(document.querySelector('.detail'))) {
+                                    const detail = document.querySelector('.detail');
+                                    detail.remove();
+                                    
+                                    createDetail(vinyl[eachVinyl].vinyl_id - 1);
+                                    images.forEach((item) => {
+                                        item.style.removeProperty('box-shadow');
+                                        item.style.removeProperty('transform');
+                                    });
+                              
+                                    image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
+                                      transform: scale(0.8);
+                                      transition-duration: 0.5s`;
+                                }
+                            }
+                          suggestions.forEach(item => {
+                            item.remove()
+                          })
+                        }
+                    });
+                });
+                // If Search Input Contains No Value, Remove Suggestions
+            } else if (!evt.target.value) {
+                const suggestions = document.querySelectorAll('.name');
+                suggestions.forEach((item) => {
+                    item.remove();
+                });
+            }
+        });
     }
-  });
+});
+
 
   // Generate Detail Table After an Album is Selected by Clicking
   const lastClickedItem = [];
@@ -361,14 +462,20 @@ async function getInfo() {
             || evt.target.className === 'contents' || evt.target.nodeName === 'I'
             || evt.target.className === 'result' || evt.target.className === 'header'
             || evt.target.className === 'items' || evt.target.className === 'item'
-            || evt.target.className === 'heading') {
+            || evt.target.className === 'heading' || evt.target.className === 'placeholder'
+            || evt.target.className === 'name' || evt.target.nodeName === 'BUTTON') {
     } else {
       container.style.cssText = `height: 100vh;
                                  transition-duration: 1s;
                                       `;
-      detail.remove();
+      if (body.contains(detail)) {
+          detail.remove();
+      }
       if (body.contains(searchBox)) {
-        searchBox.remove();
+          searchBox.remove();
+      }
+      if (body.contains(suggestion)) {
+          suggestion.remove();
       }
       active.style.removeProperty('box-shadow');
       active.style.removeProperty('transform');

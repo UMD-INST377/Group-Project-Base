@@ -20,6 +20,8 @@
 
 html {
     overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -31,7 +33,6 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 1vw;
-    /* margin: 20px */
 }
 
 .fa-user-friends {
@@ -47,6 +48,21 @@ body {
 
 .fa-search {
     margin-right: 50px;
+    cursor: pointer;
+}
+
+.fa-search:hover {
+    transform: scale(1.3)
+}
+
+.fa-bars {
+    position: absolute;
+    left: 30px;
+    cursor: pointer
+}
+
+.fa-bars:hover {
+    transform: scale(1.3)
 }
 
 .search {
@@ -66,15 +82,6 @@ body {
     }
 }
 
-@keyframes slideUp {
-    from {
-        top: 30px;
-    }
-    to {
-        top: 0;
-    }
-}
-
 input {
     position: absolute;
     background: transparent;
@@ -82,14 +89,15 @@ input {
     height: 1.3vw;
     width: 20vw;
     border: 2px solid black;
-    /* border-radius: 20px; */
     background-color: rgba(190, 190, 190, 0.3);
     margin-top: 5px;
     margin-left: 2.7vw;
+    font-family: GothamBook;
     font-size: 12px;
     font-weight: bold;
     color: black;
     outline: none;
+    
 }
 
 .search .placeholder {
@@ -111,8 +119,32 @@ input {
     font-size: 9px;
 }
 
-::-webkit-input-placeholder {
-    text-align: center;
+.search-result {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 20.2vw;
+    top: 65px;
+    left: 52px;
+    border-color: black;
+    border-style: solid;
+    border-width: 0 2px 2px 2px;
+    background-color: rgba(198, 198, 198, 0.6);
+}
+
+.suggestion {
+    font-family: GothamBook;
+    font-weight: 700;
+    font-size: 12px
+}
+
+.suggestion:hover {
+    background-color: rgba(198, 198, 198);
+}
+
+.name {
+    text-align: left;
+    width: 100%;
 }
 
 .container {
@@ -175,6 +207,27 @@ img {
     height: 100%
 }
 
+.fa-pencil-alt {
+    position: absolute;
+    right: 250px;
+    cursor: pointer;
+}
+
+.fa-pencil-alt:hover {
+    transform: scale(1.3)   
+}
+
+.fa-trash-alt {
+    position: absolute;
+    right: 225px;
+    color: red;
+    cursor: pointer;
+}
+
+.fa-trash-alt:hover {
+    transform: scale(1.3)
+}
+
 .items {
     display: flex;
     justify-content: space-evenly;
@@ -235,9 +288,7 @@ img {
 }
 
 .link {
-    /* font-family: GothamBook; */
     font-family: GothamMedium;
-    /* font-weight: ; */
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -257,12 +308,368 @@ img {
     transform: scale(1.3);
 }
 
-/* Tablets */
+/* For Smaller Mobile Devices */
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 400px) {
+    img {
+        max-height: 200px;
+        max-width: 200px;
+    }
+
+    .search {
+        top: 45px;
+        left: 20vw;
+        animation: slideDown 0.5s;
+    }
+
+    @keyframes slideDown {
+        from {
+            top: 0;
+        }
+        to {
+            top: 45px;
+        }
+    }
+
+    .top-nav {
+        margin-top: 6vw;
+    }
+
+    input {
+        top: 10px;
+        height: 6vw;
+        width: 200px;
+        font-size: 10px;
+    }
+
+    .search .placeholder {
+        font-size: 9px;
+        left: 3.6vw;
+        top: 22px;
+        width: 30vw;
+    }
+
+    .search input:valid+.placeholder, 
+    .search input:focus+.placeholder {
+        top: 0px;
+        font-size: 7px;
+    }
+
+    .search-result {
+        width: 203px;
+        top: 42px;
+        left: 10px;
+    }
+
+    .tab button {
+        font-size: 10px;
+        padding: 16px 10px;
+    }
+
+    .fa-pencil-alt {
+        position: absolute;
+        right: 60px;
+        cursor: pointer;
+        transform: scale(0.7)   
+    }
+    
+    .fa-trash-alt {
+        position: absolute;
+        right: 45px;
+        color: red;
+        cursor: pointer;
+        transform: scale(0.7) 
+    }
+        
+    .item {
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    .header {
+        font-size: 10px
+    }
+
+    .result {
+        font-size: 9px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+
+    th {
+        padding: 2px;
+        height: 10px
+    }
+
+    .songs-headers {
+        font-size: 9px;
+    }
+
+    .songs-row {
+        font-size: 9px;
+        height: 20px
+    }
+
+    td {
+        padding-left: 0px;
+    }
+
+    .items-cert {
+        margin-top: 5vw;
+    }
+
+    .item.item-cert {
+        width: 25%;
+    }
+
+    .certs {
+        display: flex;
+    }
+
     .result-placement {
-      width: 50%
+        width: 60%;
+    }
+
+    .fa-plus-circle {
+        bottom: 20px;
+        right: 20px
+    }
+
+  }
+
+/* For Bigger Mobile Devices */
+@media only screen and (min-width: 400px) and (max-width: 700px) {
+    img {
+        max-height: 200px;
+        max-width: 200px;
+    }
+
+    .top-nav {
+        margin-top: 10vw;
+    }
+
+    .search {
+        top: 65px;
+        left: 22vw;
+        animation: slideDown 0.5s
+    }
+
+    @keyframes slideDown {
+        from {
+            top: 0;
+        }
+        to {
+            top: 65px;
+        }
+    }
+
+    input {
+        top: 10px;
+        height: 6vw;
+        width: 200px;
+        font-size: 13px;
+    }
+
+    .search .placeholder {
+        font-size: 11px;
+        left: 3.6vw;
+        top: 22px;
+        width: 30vw;
+    }
+
+    .search input:valid+.placeholder, 
+    .search input:focus+.placeholder {
+        top: 0px;
+        font-size: 9px;
+    }
+
+    .search-result {
+        width: 203px;
+        top: 44px;
+        left: 12px;
+    }
+
+    .tab button {
+        font-size: 10px;
+        padding: 16px 10px;
+    }
+
+    .fa-pencil-alt {
+        position: absolute;
+        right: 65px;
+        cursor: pointer;
+        transform: scale(0.7)   
+    }
+    
+    .fa-trash-alt {
+        position: absolute;
+        right: 50px;
+        color: red;
+        cursor: pointer;
+        transform: scale(0.7) 
+    }
+
+    .item {
+        margin-top: 0px;
+    }
+
+    .header {
+        font-size: 10px
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    th {
+        padding: 2px
+    }
+
+    .songs-headers {
+        font-size: 11px
+    }
+
+    .songs-row {
+        font-size: 11px
+    }
+
+    td {
+        padding-left: 0px;
+    }
+
+    .result {
+        font-size: 9px;
+    }
+
+    .result-placement {
+        width: 50%
+    }
+
+    .fa-plus-circle {
+        bottom: 20px;
+        right: 20px
     }
   }
 
+/* For Tablets */
+@media only screen and (min-width: 701px) and (max-width: 900px) {
+    img {
+        max-height: 225px;
+        max-width: 225px;
+    }
 
+    .top-nav {
+        margin-top: 3vw
+    }
+
+    .search {
+        top: 30px;
+        left: 28vw;
+    }
+
+    input {
+        top: 25px;
+        height: 4vw;
+        width: 300px;
+        font-size: 15px;
+    } 
+
+    .search .placeholder {
+        font-size: 15px;
+        top: 40px;
+        left: 3.6vw;
+    }
+
+    .search-result {
+        width: 304px;
+        top: 65px;
+        left: 21px;
+        margin-top: 1px;
+    }
+
+    .search input:valid+.placeholder, 
+    .search input:focus+.placeholder {
+        top: 5px;
+        font-size: 12px;
+    }
+
+    .fa-pencil-alt {
+        position: absolute;
+        right: 120px;
+        cursor: pointer;
+        transform: scale(0.8)   
+    }
+    
+    .fa-trash-alt {
+        position: absolute;
+        right: 100px;
+        color: red;
+        cursor: pointer;
+        transform: scale(0.8) 
+    }
+
+    .suggestion {
+        font-size: 15px
+    }
+
+    .header {
+        font-size: 12px
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .result {
+        font-size: 10px;
+    }
+
+    .fa-plus-circle {
+        bottom: 20px;
+        right: 20px
+    } 
+  }
+
+/* For Smaller Screen Laptops */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+    img {
+        max-height: 225px;
+        max-width: 225px;
+    }
+
+    .search {
+        top: 20px;
+    }
+
+    input {
+        height: 2.3vw
+    }
+
+    @keyframes slideDown {
+        from {
+            top: 0;
+        }
+        to {
+            top: 20px;
+        }
+    }
+
+    .search .placeholder {
+        font-size: 11px;
+        top: 43px;
+        left: 3.3vw;
+    }
+
+    .search-result {
+        top: 63px;
+        left: 28px;
+        width: 20.3vw
+    }
+
+    .name {
+        margin-top: 3px;
+    }
+}

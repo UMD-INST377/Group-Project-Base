@@ -1,6 +1,5 @@
 /* Group24 */
-// Josh Cohen Lab 10
-
+// Ali
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';

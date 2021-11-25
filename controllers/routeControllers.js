@@ -8,7 +8,7 @@ concat(first_ladies.first_ladies_name) as first_lady
 FROM presidents_table LEFT JOIN first_ladies
 USING(president_id)
 JOIN vice_presidents USING(president_id)) as x
-join (select distinct(group_concat(first_name,' ',last_name separator ', ')) as children_name, president_id
+left join (select distinct(group_concat(first_name,' ',last_name separator ', ')) as children_name, president_id
 from children_of_presidents
 where child_id = child_id  
 group by president_id) as a

@@ -4,6 +4,9 @@
 // const { text } = require("body-parser");
 
 let submitted = false
+let updated = false
+let deleted = false
+let currAlbum = -1
 
 // import { text } from "body-parser";
 
@@ -337,12 +340,28 @@ function zf_FocusNext(elem, event) {
 
 // Creating event listener for submit button on data entry
 window.addEventListener('DOMContentLoaded', (event) => {
+    const alreadyExists = document.querySelectorAll('input')[1]
+    alreadyExists.addEventListener('keyup', (event) => {
+        albumExistsInteraction(alreadyExists.value)
+    });
+
     const submit = document.querySelector('.zf-submitColor')
     submit.addEventListener('click', (event) => {
         submitted = true
         postVinyl()
     });
 
+    const update = document.querySelector('.zf-update')
+    update.addEventListener('click', (event) => {
+        updated = true
+        updateVinyl()
+    });
+    
+    const deleteAlbum = document.querySelector('.zf-delete')
+    deleteAlbum.addEventListener('click', (event) => {
+        deleted = confirm("Are you sure you want to delete this vinyl from the database?")
+        deleteVinyl()
+    })
 });
 
 async function postVinyl() {
@@ -350,14 +369,14 @@ async function postVinyl() {
         // Selecting all text inputs
         const texts = document.querySelectorAll('input')
             /*
-            2 Album Name
-            3 Artist Name
-            4 Producer FN 5 Producer LN
-            6 Release Date
-            7 Track Num
-            8 weight
-            9 Yes 10 No (is_explicit)
-            11 Album Pic Upload
+            1 Album Name
+            2 Artist Name
+            3 Producer FN 4 Producer LN
+            5 Release Date
+            6 Track Num
+            7 weight
+            8 Yes 9 No (is_explicit)
+            10 Album Pic Upload
             */
 
         // Selecting the select inputs
@@ -368,7 +387,7 @@ async function postVinyl() {
             */
 
         // Separating inputs into array so they can be "stringified"
-        const singerDict = { artist_name: texts[3].value };
+        const singerDict = { artist_name: texts[2].value };
 
 
         // Requesting POST for Singers table
@@ -382,9 +401,8 @@ async function postVinyl() {
         console.log(responseSingers);
 
 
-
         // Separating inputs into array so they can be "stringified"
-        const producerDict = { producer_fn: texts[4].value, producer_ln: texts[5].value };
+        const producerDict = { producer_fn: texts[3].value, producer_ln: texts[4].value };
 
         // Requesting POST for Producers table
         const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers', {
@@ -396,52 +414,54 @@ async function postVinyl() {
         });
         console.log(responseProducers);
 
-        //Gets singer_id for vinyl being input
+        // Gets singer_id for vinyl being input
         const singers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers')
             .then(function(response) {
                 return response.json();
             });
 
         let singer_id_vinyl;
-        singers.forEach((singer) => {
-            if (singer['artist_name'] === texts[3].value) {
-                singer_id_vinyl = singer['singer_id']
+        for(x = 0; x < singers.length; x++){
+            if (singers[x]['artist_name'] === texts[2].value) {
+                singer_id_vinyl = singers[x]['singer_id'];
+                break;
             }
-        });
+        }
 
-        //Gets producer_id for vinyl being input
+        // Gets producer_id for vinyl being input
         const producers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers')
             .then(function(response) {
                 return response.json();
             });
 
         let producer_id_vinyl;
-        producers.forEach((producer) => {
-            if (`${producer['producer_fn']} ${producer['producer_ln']}` === `${texts[4].value} ${texts[5].value}`) {
-                producer_id_vinyl = producer['producer_id']
+        for(x = 0; x < producers.length; x++){
+            if (`${producers[x]['producer_fn']} ${producers[x]['producer_ln']}` === `${texts[3].value} ${texts[4].value}`) {
+                producer_id_vinyl = producers[x]['producer_id'];
+                break;
             }
-        });
+        }
 
-        // console.log('end result')
-        // console.log(singer_id_vinyl)
-        // console.log(producer_id_vinyl)
+        console.log('end result')
+        console.log(singer_id_vinyl)
+        console.log(producer_id_vinyl)
 
         // Separating inputs into array so they can be "stringified"
         // setting variable for is_explicit so its easier to input into dictionary
         let explicit = 0
-        if (texts[9].checked === true) {
+        if (texts[8].checked === true) {
             explicit = 1
         }
 
         const vinylDict = {
             singer_id: singer_id_vinyl,
             producer_id: producer_id_vinyl,
-            album_name: texts[2].value,
+            album_name: texts[1].value,
             genre: selects[0].value,
-            track_amount: texts[7].value,
+            track_amount: texts[6].value,
             runtime: `${selects[1].value}:${selects[2].value}:${selects[3].value}`,
-            first_available: texts[6].value,
-            weight: texts[8].value,
+            first_available: texts[5].value,
+            weight: texts[7].value,
             is_explicit: explicit
         };
 
@@ -456,6 +476,173 @@ async function postVinyl() {
         console.log(responseVinyl);
         console.log('finished post');
 
-        alert('Album Successfully Submitted')
+        alert('Album Successfully Uploaded')
+    }
+}
+
+async function updateVinyl(){
+    if(updated && currAlbum !== -1){
+        console.log('here')
+        // Selecting all text inputs
+        const texts = document.querySelectorAll('input')
+            /*
+            1 Album Name
+            2 Artist Name
+            3 Producer FN 4 Producer LN
+            5 Release Date
+            6 Track Num
+            7 weight
+            8 Yes 9 No (is_explicit)
+            10 Album Pic Upload
+            */
+
+        // Selecting the select inputs
+        const selects = document.querySelectorAll('select')
+            /*
+            0 Genre
+            1 Hour 2 Minute 3 Seconds
+            */
+        
+
+
+        // Gets singer_id for vinyl being updated
+        const singers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers')
+            .then(function(response) {
+                return response.json();
+            });
+        
+        let singer_id_vinyl = -1;
+        for(x = 0; x < singers.length; x++){
+            if (singers[x]['artist_name'] === texts[2].value) {
+                singer_id_vinyl = singers[x]['singer_id'];
+                break;
+            }
+        }
+        console.log(singer_id_vinyl)
+
+        // If singer doesn't already exists in table then it is posted into singers first
+        if(singer_id_vinyl === -1) {
+            // Separating inputs into array so they can be "stringified"
+            const singerDict = { artist_name: texts[2].value };
+            singer_id_vinyl = singers.length
+            // Requesting POST for Singers table
+            const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(singerDict)
+            });
+            
+        }
+
+
+
+
+        // Gets producer_id for vinyl being updated
+        const producers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers')
+            .then(function(response) {
+                return response.json();
+            });
+
+        let producer_id_vinyl = -1;
+        for(x = 0; x < producers.length; x++){
+            if (`${producers[x]['producer_fn']} ${producers[x]['producer_ln']}` === `${texts[3].value} ${texts[4].value}`) {
+                producer_id_vinyl = producers[x]['producer_id'];
+                break;
+            }
+        }
+        
+        if(producer_id_vinyl === -1){
+            producer_id_vinyl = producers.length
+            const producerDict = { producer_fn: texts[3].value, producer_ln: texts[4].value };
+            // Requesting POST for Producers table
+            const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(producerDict)
+            });
+        }
+
+        // Separating inputs into array so they can be "stringified"
+        // setting variable for is_explicit so its easier to input into dictionary
+        let explicit = 0
+        if (texts[8].checked === true) {
+            explicit = 1
+        }
+
+        const vinylDict = {
+            singer_id: singer_id_vinyl,
+            producer_id: producer_id_vinyl,
+            album_name: texts[1].value,
+            genre: selects[0].value,
+            track_amount: texts[6].value,
+            runtime: `${selects[1].value}:${selects[2].value}:${selects[3].value}`,
+            first_available: texts[5].value,
+            weight: texts[7].value,
+            is_explicit: explicit,
+            vinyl_id: currAlbum
+        };
+
+        // Requesting PUT for Vinyl table
+        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(vinylDict)
+        });
+
+        alert('Album Successfully Updated');
+    }
+}
+
+async function deleteVinyl(){
+    if(deleted && currAlbum !== -1) {
+        vinylDict = {
+            vinyl_id:currAlbum
+        }
+
+        // Requesting PUT for Vinyl table
+        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(vinylDict)
+        });
+
+        alert('Album Successfully Deleted');
+    }
+}
+
+async function albumExistsInteraction(albumName){
+    // Selecting various buttons at the bottom of the page
+    const submitBtn = document.querySelector('.zf-submitColor')
+    const updateBtn = document.querySelector('.zf-update')
+    const deleteBtn = document.querySelector('.zf-delete')
+
+    // Getting vinyl table to compare to user's input so we can activate the update and delete buttons if the vinyl exists
+    let found = false
+    const vinylGet = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl')
+        .then(function(response) {
+            return response.json();
+        });
+    vinylGet.forEach((vinyl) => {
+        // If users input is an existing album
+        if (albumName.toLowerCase() === vinyl['album_name'].toLowerCase()) {
+            console.log('exists')
+            updateBtn.style.background = '#2596e6'
+            deleteBtn.style.background = '#2596e6'
+            found = true
+            currAlbum = vinyl['vinyl_id']
+        }
+    });
+    if (found === false) {
+        updateBtn.style.background = 'grey';
+        deleteBtn.style.background = 'grey';
+        currAlbum = -1
     }
 }

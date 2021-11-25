@@ -1,8 +1,5 @@
 /* Group24 */
-
-////////////////////////////////////////
-//////ENDPOINT FOR PRESIDENT TABLE//////
-////////////////////////////////////////
+// Josh Cohen Lab 10
 
 import express from 'express';
 import sequelize from 'sequelize';

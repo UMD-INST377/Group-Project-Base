@@ -3,26 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <title>Group 24 About Page</title>
+    <link rel="icon" type="image/png" href="/images/american_eagle.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/> 
     <link rel="stylesheet" href="styles.css">
 
   </head>
 
   <body class='p-2'>
+
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img src="/images/american_eagle.png" width= '40px'>
+        </a>
+        <div class="navbar-burger" data-target="navbarExampleIsInfoExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    
+      <div id="navbarExampleIsInfoExample" class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link has-text-weight-bold" href="index.html">
+              Menu
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="index.html">
+                Home
+              </a>
+              <a class="navbar-item" href="update.html">
+                Update Records
+              </a>
+              <a class="navbar-item" href="about.html">
+                About Us
+              </a>
+              <a class="navbar-item" href="login.html">
+                Login
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <a class="button is-info" href="login.html">
+                  <span class="icon">
+                    <i class="fas fa-download"></i>
+                  </span>
+                  <span class ="has-text-weight-bold">Login</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   
     <h1 class='title notification has-text-centered has-background-danger-light has-text-weight-bold'>About Our Project</h1>
-
-    <div class='buttons'>
-      <div class='main button is-info'>
-        <nav>
-          <a class='has-text-weight-bold' href="index.html">Main Page</a>
-        </div>
-
-        <div class ='about button is-info'>
-          <a class='has-text-weight-bold' href="about.html">About Page </a>
-        </nav>
-      </div>
-    </div>
 
     <div class='description box p-2 has-background-info-light'>
       <h2 class='title is-2 has-text-weight-bold'>Our Objective</h2>
@@ -39,32 +80,204 @@
           geared towards children K-8 and their respecive educators.
       </p>
       <br>
-      <h2 class='title is-2 has-text-weight-bold'>Technical Specs</h2>
+      <h2 class='title is-2 has-text-weight-bold'>Technical Specifications</h2>
       <p>For our backend development, we utilized Node.js to develop JavaScript
           outside of a web browser. We used Express as a server frameowrk to 
-          develop API's. We implemented Sequelize to manage our databse, which
-          was created and maintined using MySQL.
+          develop our REST API's. We implemented Sequelize to manage our database, which
+          was created and maintined using MySQL. 
       </p>
 
-      <p>For our frontend development, we used the React framework with Create-
-          React-App. Using the ReactJS web application, we were able to use 
-          multiple separate components that each had their own logic and control.
-          Using these distinct components across the app allowed made applications
-          easier to develop and maintain. Virtual DOM was picked to help speed up
-          application modification.
+      <p>For our frontend development, we used Bulma to style and create interactive components for the website.
+        The website uses Knight Lab's (Northwestern University) open source <a href="https://timeline.knightlab.com/docs/index.html">TimelineJS</a>.
       </p>
     </div>
-    
-    <div class='contact box p-2 has-background-info-light'>
-      <h2 class='title is-2 has-text-weight-bold'>Contact</h2>
-      <p>Feel free to reach out to any member of our team: Josh, Betz, Casslyn,
-          Ali, Adeyinka, or Jacob.
-      </p>
-
-      <p>Lastly, we thank you for taking the time to visit our website and read 
-          about our project. We hope it was of interest.
-      </p>
+    <div class='team'>
+      <div class='description box p-2 has-background-info-light'>
+        <h2 class='title is-2 has-text-weight-bold'>Our Team</h2>
+      </div>
+      <div class='row'>
+      <!--JOSH CARD-->
+      <div class="card">
+        <div class="card-image">
+          <figure class="image">
+            <img src="/images/prof_pic.jpg" alt="Josh Cohen image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">Josh Cohen</p>
+              <p class="subtitle is-6">Executive Director, Full-Stack Developer</p>
+            </div>
+          </div>
+          <div class="content">
+            Josh is an Information Science major and Business Analytics minor from Nice, France. 
+            Josh is particularly interested in data science, machine learning, and the analytical side of business. 
+            He will be starting as a Technology Analyst at Bank of America following graduation in May, 2022. 
+            In the past, Josh has held internships at the United States Department of Commerce (International Trade Administration) as an Investment Services Team intern and at SEAD Software LLC as a data analytics intern. 
+            In his free team, Josh likes to play soccer, practice classical guitar, and spend time with friends.
+            <br>
+            <br>
+            <div class='links'>
+              <a href='https://github.com/joshcohen830' target="blank"><img class='gh' src="/images/gh.svg" alt="Placeholder image"></a>
+              <a href='https://www.linkedin.com/in/joshua-cohen-2345651a3' target="blank"><img class='li' src="/images/li.svg" alt="Placeholder image"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--BETZ CARD-->
+      <div class="card">
+        <div class="card-image">
+          <figure class="image">
+            <img src="/images/betzalel_moskowitz.jpg" alt="Betzalel Moskowitz image">
+          </figure>
+        </div>
+        <div class="card-content is-one-third">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">Betzalel Moskowitz</p>
+              <p class="subtitle is-6">Project Lead, Principal Software Engineer</p>
+            </div>
+          </div>
+          <div class="content">
+            Betzalel is an Information Science major and Business Analytics minor from Baltimore, MD. 
+            Betzalel is particularly interested in data science, machine learning, and artificial intelligence.
+            He will be starting a Master's of Science in Data Science following graduation in December, 2021.
+            In the past, Betzalel has held internships at Harbor Labs as a cyber-engineering intern and at The MITRE Corporation as a machine learning/artificial intelligence intern.
+            Betzalel hopes to become a data scientist and learn many new things along the way. 
+            In his free team, Betzalel likes to arrange music, cook, play sports, spend time with friends, and watch the Baltimore Ravens.
+            <br>
+            <div class='links'>
+              <a href='https://github.com/betzmosk' target="blank"><img class='gh' src="/images/gh.svg" alt="Placeholder image"></a>
+              <a href='https://www.linkedin.com/in/betzalel-moskowitz/' target="blank"><img class='li' src="/images/li.svg" alt="Placeholder image"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Ali Card-->
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-3by3">
+            <img src="/images/prof_pic.jpg" alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">Ali Shafiq</p>
+              <p class="subtitle is-6">Back-end Developer, Senior Software Engineer</p>
+            </div>
+          </div>
+          <div class="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+            <a href="#">#css</a> <a href="#">#responsive</a>
+            <br>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+    <!-- <div class='row'> -->
+      <!--Jacob Card-->
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-3by3">
+            <img src="/images/prof_pic.jpg" alt="Jacob Walter image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">Jacob Walter</p>
+              <p class="subtitle is-6">Front-end Developer</p>
+            </div>
+          </div>
+          <div class="content">
+            Jacob is an information science major from Catonsville, MD. 
+            Jacob is interested in data analytics, database management, and financial analytics. 
+            Jacob will be accepting a position in data analytics and data software development after his graduation in December 2021. 
+            In the past, Jacob has had internships at a high school in Catonsville doing IT work as well as a data and financial analytics internship and manager position at the University of Maryland Department of Transportation Services. 
+            Jacob enjoys playing guitar and singing, cooking, camping, hiking, and hunting.
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class='links'>
+              <a href='https://github.com/jakew173' target="blank"><img class='gh' src="/images/gh.svg" alt="Placeholder image"></a>
+              <a href='https://www.linkedin.com/in/jmwa/' target="blank"><img class='li' src="/images/li.svg" alt="Placeholder image"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Casslyn Card-->
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-3by3">
+            <img src="/images/prof_pic.jpg" alt="Casslyn Merrit image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">Casslyn Merrit</p>
+              <p class="subtitle is-6">Front-end Developer</p>
+            </div>
+          </div>
+          <div class="content">
+            Casslyn is an information science major from St.Petersburg, FL. 
+            Casslyn is interested in data analytics, networking, and UI/UX design. 
+            Casslyn will be pursuing a full time career in networking following summer graduation 2022. 
+            In the past Casslyn has worked as an IT help desk technician while serving in the United States Navy. 
+            Casslyn enjoys dancing, playing soccer, and traveling.
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class='links'>
+              <a href='https://github.com/jakew173' target="blank"><img class='gh' src="/images/gh.svg" alt="Placeholder image"></a>
+              <a href='https://www.linkedin.com/in/jmwa/' target="blank"><img class='li' src="/images/li.svg" alt="Placeholder image"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Adeyinka-->
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-3by3">
+            <img src="/images/A_Telli_Headshot.jpeg" alt="Adeyinka Telli image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">Adeyinka Telli</p>
+              <p class="subtitle is-6">Front-end Developer</p>
+            </div>
+          </div>
+          <div class="content">
+            Adeyinka is an Information Science major from Lanham, MD. 
+            Adeyinka is specifically interested in program management, software engineering, and machine learning. 
+            Adeyinka will be pursuing a full time career in software engineering following his graduation in May 2022. 
+            In the past, Adeyinka has worked as a desk operations supervisor and information technology specialist at UMD, and held a software engineering internship at FootLocker over the summer of 2021. 
+            Adeyinka enjoys cooking, playing the saxophone, sewing, art, and spending time with friends and family in his free time.
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class='links'>
+              <a href='https://github.com/atelli917' target="blank"><img class='gh' src="/images/gh.svg" alt="Placeholder image"></a>
+              <a href='https://www.linkedin.com/in/adeyinka-telli-58359514a/' target="blank"><img class='li' src="/images/li.svg" alt="Placeholder image"></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="script.js"></script>
+  </div>
   </body>
 </html>

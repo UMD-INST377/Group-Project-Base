@@ -10,6 +10,10 @@ burgerIcon.addEventListener('click', () => {
   toggleBurgerMenu(burgerIcon);
 });
 
+function relocatePage() {
+  location.replace('../submission/submission.html');
+}
+
 const submitInput = document.getElementById('submit-button');
 async function formSender() {
   const nameInput = document.getElementById('name-input').value;
@@ -76,15 +80,11 @@ async function formSender() {
         'Content-type': 'application/json; charset=UTF-8'
       }
     });
+    setTimeout(relocatePage, 1000);
   }
-}
-
-function relocatePage() {
-  location.replace('../submission/submission.html');
 }
 
 submitInput.addEventListener('click', (event) => {
   event.preventDefault();
   formSender();
-  setTimeout(relocatePage, 1000);
 });

@@ -7,267 +7,267 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the default route!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Car Data Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
-  try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
-router.get('/dining/:hall_id', async (req, res) => {
-  try {
-    const hall = await db.DiningHall.findAll({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
+// Jordan's API Routes to Collision Type Endpoint
+// All endpoints should follow the basic outline of this first endpoint.
+// Any instance of "db.XXX" should be your specific table as defined in the models folder.
+// Make sure you add async and check that your 'catch' is formatted correctly to avoid errors.
 
-    res.json(hall);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
-  try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.delete('/dining/:hall_id', async (req, res) => {
-  try {
-    await db.DiningHall.destroy({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/dining', async (req, res) => {
-  try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
+router.route('/collisionType')
+  .get(async(req, res) => {
+    try {
+      const collision_type = await db.collision_type.findAll();
+      console.log('You touched the /collisionType route with GET');
+      res.json(collision_type);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      await db.collision_type.update(
+        {
+          collision_desc: req.body.collision_desc
+        },
+        {
+          where: {
+            collision_type_id: req.body.collision_type_id
+          }
         }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/meals/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/meals', async (req, res) => {
-  try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
+      );
+      console.log('You touched the /collisionType route with PUT');
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
+    }
+  })
+  .post(async(req, res) => {
+    const collision_type = await db.collision_type.findAll();
+    const currentID = (await collision_type.length) + 1;
+    try {
+      const collisionTypeCreate = await db.collision_type.create({
+        collision_type_id: currentID,
+        collision_desc: req.body.collision_desc
+      });
+      console.log('You touched the /collisionType route with POST');
+      res.json(collisionTypeCreate);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      await db.collision_type.destroy({
         where: {
-          meal_id: req.body.meal_id
+          collision_type_id: req.params.collision_type_id
         }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+      });
+      console.log('You touched the /collisionType route with DELETE');
+      res.send('Successfully deleted');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
+    }
+  });
 
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+/// Mark's Endpoint CrashInformation
 
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+router.route('/crashInformation')
+  .get(async (req, res) => {
+    try {
+      const crash_information = await db.crash_information.findAll();
+      console.log('You touched the crashInformation endpoint!');
+      res.json(crash_information);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
+    }
+  })
 
-router.put('/macros', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
+  .put(async(req, res) => {
+    try {
+      await db.crash_information.update(
+        {
+          report_id: req.body.report_id,
+          location_id: req.body.location_id,
+          report_type: req.body.report_type,
+          acc_date: req.body.acc_date,
+          collision_type_id: req.body.collision_type_id
+        },
+        {
+          where: {
+            report_id: req.body.report_id
+          }
+        }
+      );
+      console.log('You touched the /crashInformation route with PUT');
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
+    }
+  })
+
+  .post(async(req, res) => {
+    const crash_information = await db.crash_information.findAll();
+    const currentID = (await crash_information.length) + 1;
+    try {
+      const newCrashInformation = await db.crash_information.create({
+        report_id: currentID,
+        location_id: req.body.location_id,
+        report_type: req.body.report_type,
+        acc_date: req.body.acc_date,
+        collision_type_id: req.body.collision_type_id
+      });
+      console.log('You touched the /crashInformation route with POST');
+      res.json(newCrashInformation);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
+    }
+  })
+
+  .delete(async(req, res) => {
+    try {
+      await db.crash_information.destroy({
         where: {
-          meal_id: req.body.meal_id
+          report_id: req.params.report_id
         }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+      });
+      console.log('You touched the /crashInformation route with DELETE');
+      res.send('Successfully deleted');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
+    }
+  });
 
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+/// Matt's endpoint driverDemographics
 
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
-      where: {
-        restriction_id: req.params.restriction_id
-      }
-    });
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+router.route('/driverDemographics')
+  .get(async(req, res) => {
+    try {
+      console.log('You touched the crashInformation endpoint!');
+      res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
 
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+  .put((req, res) => {
+    try {
+      res.json({message: 'You touched crashInformation with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+  .post((req, res) => {
+    try {
+      res.json({message: 'You touched crashInformation with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
 
+  .delete((req, res) => {
+    try {
+      res.json({message: 'You touched crashInformation with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  });
+
+// Michael's Endpoint to the vehicleData
+
+router.route('/vehicleData')
+  .get(async(req, res) => {
+    try {
+      console.log('You touched the vehicleData endpoint!');
+      res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .put((req, res) => {
+    try {
+      res.json({message: 'You touched vehicleData with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .post((req, res) => {
+    try {
+      res.json({message: 'You touched vehicleData with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .delete((req, res) => {
+    try {
+      res.json({message: 'You touched vehicleData with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  });
+
+  // Teyojessam's Endpoint to the roadConditions
+
+router.route('/roadConditions')
+.get(async(req, res) => {
+  try {
+    console.log('You touched the roadConditions endpoint!');
+    res.json({data: data});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something went wrong on the server'});
+  }
+})
+
+.put((req, res) => {
+  try {
+    res.json({message: 'You touched roadConditions with PUT'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something went wrong on the server'});
+  }
+})
+
+.post((req, res) => {
+  try {
+    res.json({message: 'You touched roadConditions with POST'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something went wrong on the server'});
+  }
+})
+
+.delete((req, res) => {
+  try {
+    res.json({message: 'You touched roadConditions with DELETE'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something went wrong on the server'});
+  }
+});
 export default router;

@@ -2,7 +2,7 @@
 /* eslint-disable indent */
 async function getInfo() {
   // Request and Compile VINYL Information
-  // const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
+//   const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
   const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
   const allVinyl = await vinylRequest.json();
   const vinyl = new Object();
@@ -11,7 +11,7 @@ async function getInfo() {
   }
 
   // Request and Compile PLACEMENTS Information
-  // const placementsRequest = await fetch('http://localhost:3000/api/placements');
+//   const placementsRequest = await fetch('http://localhost:3000/api/placements');
   const placementsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/placements');
   const allPlacements = await placementsRequest.json();
   const placements = new Object();
@@ -20,7 +20,7 @@ async function getInfo() {
   }
 
   // Request and Compile CERTIFICAITON Information
-  // const certificationsRequest = await fetch('http://localhost:3000/api/certifications');
+//   const certificationsRequest = await fetch('http://localhost:3000/api/certifications');
   const certificationsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/certifications');
   const allCertifications = await certificationsRequest.json();
   const certifications = new Object();
@@ -29,7 +29,7 @@ async function getInfo() {
   }
 
   // Request and Compile PRICES Information
-  // const pricesRequest = await fetch('http://localhost:3000/api/prices');
+//   const pricesRequest = await fetch('http://localhost:3000/api/prices');
   const pricesRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/prices');
   const allPrices = await pricesRequest.json();
   const prices = new Object();
@@ -38,7 +38,7 @@ async function getInfo() {
   }
 
   // Request and Compile SONGS information
-  // const songsRequest = await fetch('http://localhost:3000/api/songs')
+//   const songsRequest = await fetch('http://localhost:3000/api/songs')
   const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/songs')
   const allSongs = await songsRequest.json()
 
@@ -134,8 +134,10 @@ async function getInfo() {
       general_info_content.className = 'heading';
       if (vinyl[id].producer_ln) {
           general_info_content.innerHTML = `
-          <a href="" target="_blank"><i class="fas fa-pencil-alt"></i></a>
-          <i class="far fa-trash-alt"></i>
+          <div class="edit-delete">
+                <a href="" target="_blank"><i class="fas fa-pencil-alt"></i></a>
+                <i class="far fa-trash-alt"></i>
+          </div>
           <div class="items">
               <div class="item">
                   <i class="fas fa-music"></i>
@@ -171,8 +173,10 @@ async function getInfo() {
           `;
       } else if (!vinyl[id].producer_ln) {
           general_info_content.innerHTML = `
-          <a href="" target="_blank"><i class="fas fa-pencil-alt"></i></a>
-          <i class="far fa-trash-alt"></i>
+          <div class="edit-delete">
+                <a href="" target="_blank"><i class="fas fa-pencil-alt"></i></a>
+                <i class="far fa-trash-alt"></i>
+          </div>
           <div class="items">
               <div class="item">
                   <i class="fas fa-music"></i>

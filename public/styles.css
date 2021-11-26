@@ -48,6 +48,13 @@ body {
 .card-image img{
     height: 450px;
 }
+@media (max-width: 800px){
+    .row{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 .row{
     display: flex;
     justify-content: space-around;

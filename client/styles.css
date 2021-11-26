@@ -8,7 +8,6 @@
   color: rgb(0, 0, 0);
   padding: 10px 0;
   align-self: center;
-  
 }
 
 .menu-container {
@@ -141,8 +140,8 @@
   height: 100px;
 }
 
-/* Styling for Customize Page */ 
-/* Walesia */ 
+/* Styling for Customize Page */
+/* Walesia */
 
 .song-form {
   border-style: solid;
@@ -150,7 +149,6 @@
   margin: auto;
   width: 50%;
   border: 3px solid darkblue;
-  
 }
 
 .song-table {
@@ -161,27 +159,29 @@
   border: 3px solid darkblue;
 }
 
-body > table{
+body > table {
   width: 80%;
 }
 
-table{
+table {
   border-collapse: collapse;
 }
-table.list{
-  width:100%;
+table.list {
+  width: 100%;
 }
 
-td, th {
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
-tr:nth-child(even),table.list thead>tr {
+tr:nth-child(even),
+table.list thead > tr {
   background-color: #dddddd;
 }
 
-input[type=text] {
+input[type="text"] {
   width: 100%;
   padding: 8px 20px;
   margin: 8px 0;
@@ -191,7 +191,7 @@ input[type=text] {
   box-sizing: border-box;
 }
 
-input[type=submit] {
+input[type="submit"] {
   width: 30%;
   background-color: plum;
   color: white;
@@ -202,39 +202,24 @@ input[type=submit] {
   cursor: pointer;
 }
 
-form div.form-action-buttons{
+form div.form-action-buttons {
   text-align: right;
 }
 
-a{
+a {
   cursor: pointer;
   text-decoration: underline;
   color: #0000ee;
   margin-right: 4px;
 }
 
-label.validation-error{
-  color:   red;
+label.validation-error {
+  color: red;
   margin-left: 5px;
 }
 
-.hide{
-  display:none;
-}
-.about {
-  height: auto;
-  width: 1500px;
-}
-
-.about_background {
-  overflow: hidden;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: black;
-  height: auto;
-  width: 680px;
+.hide {
+  display: none;
 }
 
 .h3 {
@@ -266,12 +251,11 @@ label.validation-error{
   justify-content: center;
 }
 
-
 .data button {
   font-size: 16px;
   font-weight: bold;
 
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: rgb(52, 104, 202);
 
   border: none;
@@ -294,4 +278,31 @@ label.validation-error{
   height: 400px;
   display: flex;
   justify-content: center;
+}
+
+/*Miranda CSS for About Us*/
+.about_header {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: -9;
+}
+
+.description {
+  text-align: center;
+}
+
+.about_section {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  margin: -80px auto 0 auto;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px 50px;
+}
+
+.about_image {
+  width: 80vw;
+  object-fit: contain;
 }

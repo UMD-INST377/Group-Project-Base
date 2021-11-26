@@ -1,8 +1,5 @@
 /* Group24 */
 /* Jacob Walter Lab 10 */
-////////////////////////////////////////
-//////ENDPOINT FOR PRESIDENT TABLE//////
-////////////////////////////////////////
 
 import express from 'express';
 import sequelize from 'sequelize';

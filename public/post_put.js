@@ -1,7 +1,7 @@
 async function presAdd() {
   const url = '/api/presidents';
   const data = {
-    president_id: document.querySelector('#president_id_add').value,
+    //president_id: document.querySelector('#president_id_add').value,
     first_name: document.querySelector('#first_name_add').value,
     last_name: document.querySelector('#last_name_add').value,
     date_inaurg: document.querySelector('#date_inaurg_add').value,

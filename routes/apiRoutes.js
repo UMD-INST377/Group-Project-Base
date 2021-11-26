@@ -231,4 +231,43 @@ router.route('/vehicleData')
     }
   });
 
+  // Teyojessam's Endpoint to the roadConditions
+
+router.route('/roadConditions')
+.get(async(req, res) => {
+  try {
+    console.log('You touched the roadConditions endpoint!');
+    res.json({data: data});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something went wrong on the server'});
+  }
+})
+
+.put((req, res) => {
+  try {
+    res.json({message: 'You touched roadConditions with PUT'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something went wrong on the server'});
+  }
+})
+
+.post((req, res) => {
+  try {
+    res.json({message: 'You touched roadConditions with POST'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something went wrong on the server'});
+  }
+})
+
+.delete((req, res) => {
+  try {
+    res.json({message: 'You touched roadConditions with DELETE'});
+  } catch (err) {
+    console.log(error);
+    res.json({error: 'Something went wrong on the server'});
+  }
+});
 export default router;

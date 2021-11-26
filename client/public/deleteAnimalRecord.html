@@ -15,20 +15,24 @@
     <div class="wrapper">
         <div class="columns">
             <div class="column is-full">
-                <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+                <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="index.html">Home</a>
-                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" id="burger">
+                        <a class="navbar-item" href="index.html">
+                            <i class="fas fa-home"></i>Home</a>
+                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
                             <span aria-hidden="true"></span>
                             <span aria-hidden="true"></span>
                             <span aria-hidden="true"></span>
-                          </a>
+                        </a>
                     </div>
                     <div class="navbar-menu" id="navlinks">
                         <div class="navbar-start">
-                            <a href = "newrecentry.html" class = "navbar-item">New Record Entry</a>
-                            <a href="viewDatabase.html" class="navbar-item">View The Database</a>
-                            <a class="navbar-item" href="about.html">About Page</a>
+                            <a href="newrecentry.html" class="navbar-item">
+                                <i class="fas fa-plus"></i>New Record Entry</a>
+                            <a href="viewDatabase.html" class="navbar-item active-page">
+                                <i class="far fa-eye"></i>View The Database</a>
+                            <a class="navbar-item" href="about.html">
+                                <i class="fas fa-info-circle"></i>About Page</a>
                         </div>
                         <div class="navbar-end">
                             <p class="navbar-item">Search The Database</p>
@@ -63,4 +67,5 @@
     <script src="scripts.js"></script>
     <script src="editRecords.js"></script>
 </body>
+
 </html>

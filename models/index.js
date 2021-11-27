@@ -2,8 +2,10 @@
 
 import collision_type from './collision_type.js';
 import crash_information from './crash_information.js';
+import road_conditions from './road_conditions.js';
 
 export default {
   collision_type,
-  crash_information
+  crash_information,
+  road_conditions
 };

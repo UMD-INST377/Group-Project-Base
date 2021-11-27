@@ -1,0 +1,19 @@
+.column {
+    float: left;
+    width: 20%;
+    padding: 5px;
+  }
+  
+  /* Clear floats after image containers */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  body
+  {
+  background: #000000; 
+  height: 100%;
+  }
+  

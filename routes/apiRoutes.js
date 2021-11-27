@@ -227,7 +227,7 @@ router.route('/vehicleData')
       res.json({message: 'You touched vehicleData with DELETE'});
     } catch (err) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on the server '});
     }
   });
 

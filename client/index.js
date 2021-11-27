@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable indent */
+
 async function getInfo() {
   // Request and Compile VINYL Information
 //   const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
@@ -38,9 +39,9 @@ async function getInfo() {
   }
 
   // Request and Compile SONGS information
-//   const songsRequest = await fetch('http://localhost:3000/api/songs')
+//   const songsRequest = await fetch('http://localhost:3000/api/songs');
   const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/songs')
-  const allSongs = await songsRequest.json()
+  const allSongs = await songsRequest.json();
 
   // Configure and Initialize Glide.js
   const config = {
@@ -62,12 +63,24 @@ async function getInfo() {
   };
 
   const glide = new Glide('.glide', config).mount();
-
-  // Initialize GLIDE.JS Elements
+  // Initialize Elements
   const body = document.querySelector('body');
   const container = document.querySelector('.container');
   const albums = document.querySelectorAll('img');
   const search = document.querySelector('.fa-search');
+
+//   const glideCoverList = document.querySelector('.glide__slides')
+//   const newCover = document.createElement('li')
+//   newCover.className = 'glide__slide'
+//   newCover.innerHTML = '<img src="images/vinyl.png" id=20>'
+//   glideCoverList.appendChild(newCover)
+//   console.log(glideCoverList)
+
+const albumName = 'am';
+const artistName = 'arctic monkey';
+const cover = await fetch(`./api/albumCover/${albumName}/${artistName}`, {method: 'POST'});
+const coverAddress = await cover.json();
+console.log(coverAddress.images[1].url);
 
   // Create Search Bar
   function createSearchBar() {
@@ -215,36 +228,36 @@ async function getInfo() {
       // SONGS Contents
       const songs_content = document.createElement('div');
       songs_content.className = 'heading heading-songs';
-      const songs_table = document.createElement('table')
-      songs_table.className = 'songs-table'
-      songs_content.appendChild(songs_table)
-      
+      const songs_table = document.createElement('table');
+      songs_table.className = 'songs-table';
+      songs_content.appendChild(songs_table);
+
       // Selects only songs relevant to that album
       const albumSongs = [];
       allSongs.forEach((song) => {
-        if (Number(id)+1 === song['vinyl_id']) {
+        if (Number(id) + 1 === song.vinyl_id) {
           albumSongs.push(song);
         }
       });
 
       // Creates a first row for category's for song description
-      const song_headers = document.createElement('tr')
-      song_headers.className = 'songs-headers'
+      const song_headers = document.createElement('tr');
+      song_headers.className = 'songs-headers';
       song_headers.innerHTML = `  <th>Track Name</th>
                                   <th>Duration</th>
                                   <th>Key</th>
-                                  <th>BPM</th>`
+                                  <th>BPM</th>`;
       songs_table.appendChild(song_headers);
 
       // Creates a row for each song
       albumSongs.forEach((song) => {
-          const song_row = document.createElement('tr')
-          song_row.className = 'songs-row'
-          song_row.innerHTML = `  <td class="song-name">${song['song_name']}</td> 
-                                  <td class="duration">${song['duration']}</td>
-                                  <td class="key">${song['key']}</td>
-                                  <td class="bpm">${song['bpm']}</td>`
-          songs_table.appendChild(song_row)
+          const song_row = document.createElement('tr');
+          song_row.className = 'songs-row';
+          song_row.innerHTML = `  <td class="song-name">${song.song_name}</td> 
+                                  <td class="duration">${song.duration}</td>
+                                  <td class="key">${song.key}</td>
+                                  <td class="bpm">${song.bpm}</td>`;
+          songs_table.appendChild(song_row);
       });
 
       // PLACEMENTS Contents
@@ -394,16 +407,15 @@ async function getInfo() {
       // Show Only the Tab that is Clicked On
       function openTab(tabIndex) {
           const heading = document.querySelectorAll('.heading');
-          const button = document.querySelectorAll('.link')
+          const button = document.querySelectorAll('.link');
           heading.forEach((item) => {
               item.style.display = 'none';
           });
-          button.forEach(item => {
-            item.style.removeProperty('background-color')
-          })
+          button.forEach((item) => {
+            item.style.removeProperty('background-color');
+          });
           heading[tabIndex].style.display = 'block';
-          button[tabIndex].style.cssText = 'background-color: rgba(214, 214, 214, 0.8);'
-
+          button[tabIndex].style.cssText = 'background-color: rgba(214, 214, 214, 0.8);';
       }
   }
 
@@ -462,21 +474,21 @@ async function getInfo() {
                                   } else if (body.contains(document.querySelector('.detail'))) {
                                       const detail = document.querySelector('.detail');
                                       detail.remove();
-                                      
+
                                       createDetail(vinyl[eachVinyl].vinyl_id - 1);
                                       images.forEach((item) => {
                                           item.style.removeProperty('box-shadow');
                                           item.style.removeProperty('transform');
                                       });
-                                
+
                                       image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
                                         transform: scale(0.8);
                                         transition-duration: 0.5s`;
                                   }
                               }
-                            suggestions.forEach(item => {
-                              item.remove()
-                            })
+                            suggestions.forEach((item) => {
+                              item.remove();
+                            });
                           }
                       });
                   });
@@ -495,7 +507,7 @@ async function getInfo() {
   const lastClickedItem = [];
   albums.forEach((item) => {
       item.addEventListener('click', (evt) => {
-          currAlbum = item
+          currAlbum = item;
           evt.target.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
                                  transform: scale(0.8);
                                  transition-duration: 0.5s`;

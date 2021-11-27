@@ -661,4 +661,38 @@ img {
         margin-top: 3px;
     }
 }
+/* For Medium Screen Laptops */
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+    .search {
+        top: 20px;
+    }
+
+    input {
+        height: 2.3vw
+    }
+
+    @keyframes slideDown {
+        from {
+            top: 0;
+        }
+        to {
+            top: 20px;
+        }
+    }
+
+    .search .placeholder {
+        font-size: 11px;
+        top: 45px;
+    }
+
+    .search-result {
+        top: 68px;
+        left: 34px;
+        width: 20.3vw
+    }
+
+    .name {
+        margin-top: 3px;
+    }
+}
 

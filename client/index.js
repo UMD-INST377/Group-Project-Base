@@ -45,7 +45,7 @@ async function getInfo() {
 
   // Configure and Initialize Glide.js
   const config = {
-      type: 'carousel',
+      type: 'slider',
       perView: 5,
       focusAt: 'center',
       breakpoints: {
@@ -58,10 +58,13 @@ async function getInfo() {
 
         1200: {
           perView: 4
+        }, 
+
+        1300: {
+            perView: 4
         }
       }
   };
-
 
   // Initialize Elements
   const body = document.querySelector('body');
@@ -455,7 +458,7 @@ async function getInfo() {
                                            transition-duration: 1s
                                             `;
                                   const image = images[vinyl[eachVinyl].vinyl_id - 1];
-
+                                    console.log(images)
                                   // Added CSS to the Selected Image(Album Cover)
                                   image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
                                         transform: scale(0.8);

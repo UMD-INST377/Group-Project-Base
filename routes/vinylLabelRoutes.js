@@ -30,3 +30,5 @@ router.route('/vinylLabelRoutes')
       console.log(err);
     }
   });
+
+export default router

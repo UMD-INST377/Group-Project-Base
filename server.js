@@ -16,6 +16,8 @@ import songsRoutes from './routes/songsRoutes.js'
 // import vinyllabelRoutes from './routes/vinyllabelRoutes.js'
 import vinylRoutes from './routes/vinylRoutes.js'
 
+import spotifyAPIRoutes from './routes/spotifyAPIRoutes.js'
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -37,6 +39,8 @@ app.use('/api', singersRoutes);
 app.use('/api', songsRoutes);
 // app.use('/api', vinylLabelRoutes);
 app.use('/api', vinylRoutes);
+
+app.use('/api', spotifyAPIRoutes);
 
 async function bootServer() {
     try {

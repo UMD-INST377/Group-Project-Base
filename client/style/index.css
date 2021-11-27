@@ -197,6 +197,14 @@ img {
     height: 100%;
 }
 
+.message {
+    display: flex;
+    justify-content: center;
+    margin-top: 17vh;
+    font-family: GothamBook;
+    font-size: 22px;
+}
+
 .edit-delete {
     margin-top: 10px;
     margin-right: 10px;
@@ -423,6 +431,11 @@ td {
         font-size: 10px
     }
 
+    .message {
+        margin-top: 14vh;
+        font-size: 12px;
+    }
+
     .result {
         font-size: 9px;
     }
@@ -553,6 +566,11 @@ td {
         font-size: 10px
     }
 
+    .message {
+        margin-top: 13vh;
+        font-size: 14px;
+    }
+
     ::-webkit-scrollbar {
         width: 5px;
     }
@@ -650,6 +668,12 @@ td {
 
     .header {
         font-size: 12px
+    }
+
+    .message {
+        margin-top: 15vh;
+        margin-left: 1vh;
+        font-size: 18px;
     }
 
     ::-webkit-scrollbar {

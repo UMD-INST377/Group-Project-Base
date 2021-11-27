@@ -230,7 +230,9 @@ async function getInfo() {
       });
 
       // If Album ID is Bigger than 19, Skip the Section Since Data is Incomplete
-      if (id > 19) {} else {
+      if (id > 19) {
+        songs_content.innerHTML = `<div class="message"> Songs Information Unavailable At The Moment </div>`
+      } else {
       // Creates a First Row for Category's for Song Description
       const song_headers = document.createElement('tr');
       song_headers.className = 'songs-headers';
@@ -255,7 +257,9 @@ async function getInfo() {
       const placements_content = document.createElement('div');
       placements_content.className = 'heading';
 
-      if (id > 19) {} else {
+      if (id > 19) {
+        placements_content.innerHTML = `<div class="message"> Placements Information Unavailable At The Moment </div>`
+      } else {
       // If the Value from Placement is NULL, Change to N/A
       if (placements[id].billboard === null) {
           placements[id].billboard = 'N/A';
@@ -306,7 +310,9 @@ async function getInfo() {
       // CERTIFICATIONS Contents
       const certifications_content = document.createElement('div');
       certifications_content.className = 'heading';
-      if (id > 19) {} else {
+      if (id > 19) {
+        certifications_content.innerHTML = `<div class="message"> Certifications Information Unavailable At The Moment </div>`
+      } else {
       // Changing Variables Depending on Certification Status
       if (certifications[id].diamond === 1) {
           certifications[id].gold = 'Certified';
@@ -361,7 +367,9 @@ async function getInfo() {
       // PRICES Contents
       const prices_content = document.createElement('div');
       prices_content.className = 'heading';
-      if (id > 19) {} else {
+      if (id > 19) {
+          prices_content.innerHTML = `<div class="message"> Prices Information Unavailable At The Moment </div>`
+      } else {
       prices_content.innerHTML = `
           <div class="items items-prices">
               <div class="item">
@@ -638,7 +646,6 @@ async function getInfo() {
   });
 
   const glide = new Glide('.glide', config).mount();
-//   glide.mount()
 }
 
 window.onload = getInfo();

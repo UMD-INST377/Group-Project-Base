@@ -62,25 +62,11 @@ async function getInfo() {
       }
   };
 
-  const glide = new Glide('.glide', config).mount();
+
   // Initialize Elements
   const body = document.querySelector('body');
   const container = document.querySelector('.container');
-  const albums = document.querySelectorAll('img');
   const search = document.querySelector('.fa-search');
-
-//   const glideCoverList = document.querySelector('.glide__slides')
-//   const newCover = document.createElement('li')
-//   newCover.className = 'glide__slide'
-//   newCover.innerHTML = '<img src="images/vinyl.png" id=20>'
-//   glideCoverList.appendChild(newCover)
-//   console.log(glideCoverList)
-
-const albumName = 'am';
-const artistName = 'arctic monkey';
-const cover = await fetch(`./api/albumCover/${albumName}/${artistName}`, {method: 'POST'});
-const coverAddress = await cover.json();
-console.log(coverAddress.images[1].url);
 
   // Create Search Bar
   function createSearchBar() {
@@ -232,7 +218,7 @@ console.log(coverAddress.images[1].url);
       songs_table.className = 'songs-table';
       songs_content.appendChild(songs_table);
 
-      // Selects only songs relevant to that album
+      // Selects Only Songs Relevant to That Album
       const albumSongs = [];
       allSongs.forEach((song) => {
         if (Number(id) + 1 === song.vinyl_id) {
@@ -240,7 +226,9 @@ console.log(coverAddress.images[1].url);
         }
       });
 
-      // Creates a first row for category's for song description
+      // If Album ID is Bigger than 19, Skip the Section Since Data is Incomplete
+      if (id > 19) {} else {
+      // Creates a First Row for Category's for Song Description
       const song_headers = document.createElement('tr');
       song_headers.className = 'songs-headers';
       song_headers.innerHTML = `  <th>Track Name</th>
@@ -249,7 +237,7 @@ console.log(coverAddress.images[1].url);
                                   <th>BPM</th>`;
       songs_table.appendChild(song_headers);
 
-      // Creates a row for each song
+      // Creates a Row for Each Song
       albumSongs.forEach((song) => {
           const song_row = document.createElement('tr');
           song_row.className = 'songs-row';
@@ -259,11 +247,12 @@ console.log(coverAddress.images[1].url);
                                   <td class="bpm">${song.bpm}</td>`;
           songs_table.appendChild(song_row);
       });
-
+        }
       // PLACEMENTS Contents
       const placements_content = document.createElement('div');
       placements_content.className = 'heading';
 
+      if (id > 19) {} else {
       // If the Value from Placement is NULL, Change to N/A
       if (placements[id].billboard === null) {
           placements[id].billboard = 'N/A';
@@ -309,12 +298,12 @@ console.log(coverAddress.images[1].url);
                   <p class="result-placement">${placements[id].oricon}</p>
               </div>
           </div>
-  `;
+        `;}
 
       // CERTIFICATIONS Contents
       const certifications_content = document.createElement('div');
       certifications_content.className = 'heading';
-
+      if (id > 19) {} else {
       // Changing Variables Depending on Certification Status
       if (certifications[id].diamond === 1) {
           certifications[id].gold = 'Certified';
@@ -364,10 +353,12 @@ console.log(coverAddress.images[1].url);
                   <p class="result">${certifications[id].diamond}</p>
               </div>
           </div>`;
+    }
 
       // PRICES Contents
       const prices_content = document.createElement('div');
       prices_content.className = 'heading';
+      if (id > 19) {} else {
       prices_content.innerHTML = `
           <div class="items items-prices">
               <div class="item">
@@ -387,6 +378,7 @@ console.log(coverAddress.images[1].url);
             </div>
           </div>
             `;
+      }
 
       // Appends Contents to Content
       content.append(general_info_content, songs_content, placements_content,
@@ -503,18 +495,44 @@ console.log(coverAddress.images[1].url);
       }
   });
 
+
+   //Add New Album Cover to the Carousel
+  for (const entry in vinyl) {
+      if (entry > 19) { // Album is New if ID is Above 19
+        const albumName = vinyl[entry].album_name;
+        const artistName = vinyl[entry].artist_name;
+        const cover = await fetch(`./api/albumCover/${albumName}/${artistName}`, {method: 'POST'});
+        const coverAddress = await cover.json();
+
+        const glideCoverList = document.querySelector('.glide__slides')
+        const newAlbum = document.createElement('li')
+        newAlbum.className = 'glide__slide'
+      
+        const newCover = document.createElement('img')
+        newCover.src = coverAddress.images[1].url // Get the 300X300 Size Album Cover
+        newCover.id = entry
+      
+        newAlbum.appendChild(newCover)
+        glideCoverList.appendChild(newAlbum)
+
+        glideCoverList.addEventListener('click', evt => {
+            glide.go(`=${evt.target.id}`);
+        })
+      }
+  }
+ 
+  // Select All the Images
+  const albums = document.querySelectorAll('img');
   // Generate Detail Table After an Album is Selected by Clicking
   const lastClickedItem = [];
   albums.forEach((item) => {
       item.addEventListener('click', (evt) => {
           currAlbum = item;
           evt.target.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
-                                 transform: scale(0.8);
-                                 transition-duration: 0.5s`;
-
+                                       transform: scale(0.8);
+                                       transition-duration: 0.5s`;
           // Center on Clicked Image
           glide.go(`=${evt.target.id}`);
-
           if (lastClickedItem[0] != evt.target && lastClickedItem[0]) {
               lastClickedItem[0].style.removeProperty('box-shadow');
               lastClickedItem[0].style.removeProperty('transform');
@@ -523,7 +541,7 @@ console.log(coverAddress.images[1].url);
               lastClickedItem.splice(0, 2);
           }
           lastClickedItem.push(evt.target);
-
+          console.log(evt.target.id)
           container.style.cssText = `height: 50vh; 
                                transition-duration: 1s
                                   `;
@@ -538,7 +556,7 @@ console.log(coverAddress.images[1].url);
       });
   });
 
-  // Remove Detail Box When Area Outside of Container Is Clicked On, Other Than the Images
+  // Remove Detail Box When Unspecified Areas Outside of Container Is Clicked On
   body.addEventListener('click', (evt) => {
       const active = document.querySelector('.glide__slide--active').querySelector('img');
       const detail = document.querySelector('.detail');
@@ -615,6 +633,9 @@ console.log(coverAddress.images[1].url);
           active.style.removeProperty('transform');
       }
   });
+
+  const glide = new Glide('.glide', config).mount();
+//   glide.mount()
 }
 
 window.onload = getInfo();

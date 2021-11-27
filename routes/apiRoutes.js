@@ -234,41 +234,73 @@ router.route('/vehicleData')
   // Teyojessam's Endpoint to the roadConditions
 
 router.route('/roadConditions')
-.get(async(req, res) => {
+.get(async (req, res) => {
   try {
-    console.log('You touched the roadConditions endpoint!');
-    res.json({data: data});
+    const road_conditions = await db.road_conditions.findAll();
+    console.log('You touched the /roadConditions endpoint!');
+    res.json(road_conditions);
   } catch (err) {
-    console.log(error);
-    res.json({error: 'Something went wrong on the server'});
+    console.error(err);
+    res.send('Something went wrong on /roadConditions');
+  }
+})
+.put(async(req, res) => {
+  try {
+    await db.road_conditions.update(
+      {
+        junction_code: req.body.junction_code,
+        junction_desc: req.body.junction_desc,
+        surf_cond_code: req.body.surf_cond_code,
+        surf_cond_desc: req.body.surf_cond_desc,
+        rd_div_code: req.body.rd_div_code,
+        rd_div_desc: req.body.rd_div_desc
+      },
+      {
+        where: {
+          junction_code: req.body.junction_code
+        }
+      }
+    );
+    console.log('You touched the /roadConditions route with PUT');
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.send('Something went wrong on /roadConditions');
   }
 })
 
-.put((req, res) => {
+.post(async(req, res) => {
+  const road_conditions = await db.road_conditions.findAll();
+  const currentID = (await road_conditions.length) + 1;
   try {
-    res.json({message: 'You touched roadConditions with PUT'});
+    const newRoadConditions = await db.road_conditions.create({
+      junction_code: currentID,
+      junction_desc: req.body.junction_desc,
+      surf_cond_code: req.body.surf_cond_code,
+      surf_cond_desc: req.body.surf_cond_desc,
+      rd_div_code: req.body.rd_div_code,
+      rd_div_desc: req.body.rd_div_desc
+    });
+    console.log('You touched the /roadConditions route with POST');
+    res.json(newRoadConditions);
   } catch (err) {
-    console.log(error);
-    res.json({error: 'Something went wrong on the server'});
+    console.error(err);
+    res.send('Something went wrong on /roadConditions');
   }
 })
 
-.post((req, res) => {
+.delete(async(req, res) => {
   try {
-    res.json({message: 'You touched roadConditions with POST'});
+    await db.road_conditions.destroy({
+      where: {
+        junction_code: req.params.junction_code
+      }
+    });
+    console.log('You touched the /roadConditions route with DELETE');
+    res.send('Successfully deleted');
   } catch (err) {
-    console.log(error);
-    res.json({error: 'Something went wrong on the server'});
-  }
-})
-
-.delete((req, res) => {
-  try {
-    res.json({message: 'You touched roadConditions with DELETE'});
-  } catch (err) {
-    console.log(error);
-    res.json({error: 'Something went wrong on the server'});
+    console.error(err);
+    res.send('Something went wrong on /roadConditions');
   }
 });
-
 export default router;

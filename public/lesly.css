@@ -47,6 +47,7 @@ footer {
 .table {
   margin-left: auto;
   margin-right: auto;
+  width: 960px;
 }
 
 .table th {
@@ -56,6 +57,12 @@ footer {
 .subtitle {
   text-align: center;
   padding-bottom: 0px;
+}
+
+form {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 

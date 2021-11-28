@@ -9,8 +9,14 @@
 
   </head>
 
-        <body>
-            <nav class="navbar is-info">
+
+  <body class='p-2'>
+
+  <!--Betz will take care of creating hamburger menu with navbar, including main,about,and update -->
+    <h1 class='title notification has-text-centered has-background-danger-light 
+    has-text-weight-bold'>Update Page</h1>
+
+    <nav class="navbar is-info">
                 <div class="navbar-brand">
                   <a class="navbar-item" href="index.html">
                     <img src="/images/american_eagle.png" width= '40px'>
@@ -62,12 +68,329 @@
                 </div>
               </nav>
 
-            <h1>
-                this page needs to be pushed to main and pulled by everyone.
-            </h1>
-        </body>
-    </head>
+    <h2 class='title is-2 has-text-weight-bold'>Add New President</h2>
+
+    <form class="box">
+      <div class="columns">
+        <!-- <div class="column">
+          <div class="field">
+            <label class="label" for="president_id">President ID</label>
+            <div class="control">
+              <input class="input" type="text" id="president_id_add" placeholder="Type ID here">
+            </div>
+          </div>
+        </div> -->
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="first_name">President First Name</label>
+            <div class="control">
+              <input class="input" type="text" id="first_name_add" placeholder="Type first name here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="last_name">President Last Name</label>
+            <div class="control">
+              <input class="input" type="text" id="last_name_add" placeholder="Type last name here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="date_inaurg">President Date of Inauguration</label>
+            <div class="control">
+              <input class="input" type="text" id="date_inaurg_add" placeholder="Type date here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="age_inaurg">President age during Inauguration</label>
+            <div class="control">
+              <input class="input" type="text" id="age_inaurg_add" placeholder="Type age here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="terms_served">Terms Served</label>
+            <div class="control">
+              <input class="input" type="text" id="terms_served_add" placeholder="Type terms here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="death_date">Date of Death</label>
+            <div class="control">
+              <input class="input" type="text" id="death_date_add" placeholder="Type date here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="birth_date">President Birth Date</label>
+            <div class="control">
+              <input class="input" type="text" id="birth_date_add" placeholder="Type date here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="home_state">President Home State</label>
+            <div class="control">
+              <input class="input" type="text" id="home_state_add" placeholder="Type state here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="party">President Party</label>
+            <div class="control">
+              <input class="input" type="text" id="party_add" placeholder="Type party here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="field">
+        <label class="label" for="first_lady_name">First Lady First Name</label>
+        <div class="control">
+          <input class="input" type="text" id="first_lady_name_add" placeholder="Type first name here">
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="vp_first_name">Vice President First Name</label>
+            <div class="control">
+              <input class="input" type="text" id="vp_first_name_add" placeholder="Type first name here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="vp_last_name">Vice President Last Name</label>
+            <div class="control">
+              <input class="input" type="text" id="vp_last_name_add" placeholder="Type last name here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="child_first_name">Child's First Name</label>
+            <div class="control">
+              <input class="input" type="text" id="child_first_name_add" placeholder="Type first name here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="child_last_name">Child's Last Name</label>
+            <div class="control">
+              <input class="input" type="text" id="child_last_name_add" placeholder="Type last name here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    
+      <button class="button is-primary" type="submit" id="add_button">Add New President</button>
+    </form>
+
+    <h2 class='title is-2 has-text-weight-bold'>Update Existing President</h2>
+
+    <form class="box">
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="president_id">President ID</label>
+            <div class="control">
+              <input class="input" type="text" id="president_id_edit" placeholder="Type id here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="first_name">President First Name</label>
+            <div class="control">
+              <input class="input" type="text" id="first_name_edit" placeholder="Type first name here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="last_name">President Last Name</label>
+            <div class="control">
+              <input class="input" type="text" id="last_name_edit" placeholder="Type last name here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="date_inaurg">President Date of Inauguration</label>
+            <div class="control">
+              <input class="input" type="text" id="date_inaurg_edit" placeholder="Type date here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="age_inaurg">President age during Inauguration</label>
+            <div class="control">
+              <input class="input" type="text" id="age_inaurg_edit" placeholder="Type age here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="terms_served">Terms Served</label>
+            <div class="control">
+              <input class="input" type="text" id="terms_served_edit" placeholder="Type terms here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="death_date">Date of Death</label>
+            <div class="control">
+              <input class="input" type="text" id="death_date_edit" placeholder="Type date here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="birth_date">President Birth Date</label>
+            <div class="control">
+              <input class="input" type="text" id="birth_date_edit" placeholder="Type date here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="home_state">President Home State</label>
+            <div class="control">
+              <input class="input" type="text" id="home_state_edit" placeholder="Type state here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="party">President Party</label>
+            <div class="control">
+              <input class="input" type="text" id="party_edit" placeholder="Type party here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="field">
+        <label class="label" for="first_lady_name">First Lady First Name</label>
+        <div class="control">
+          <input class="input" type="text" id="first_lady_name" placeholder="Type first name here">
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="vp_first_name">Vice President First Name</label>
+            <div class="control">
+              <input class="input" type="text" id="vp_first_name" placeholder="Type first name here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="vp_last_name">Vice President Last Name</label>
+            <div class="control">
+              <input class="input" type="text" id="vp_last_name" placeholder="Type last name here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="child_first_name">Child's First Name</label>
+            <div class="control">
+              <input class="input" type="text" id="child_first_name" placeholder="Type first name here">
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="child_last_name">Child's Last Name</label>
+            <div class="control">
+              <input class="input" type="text" id="child_last_name" placeholder="Type last name here">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    
+      <button class="button is-primary" type="submit" id="edit_button">Update President</button>
+    </form>
+
+    <h2 class='title is-2 has-text-weight-bold'>Delete Existing President</h2>
+
+    <form class="box">
+      <div class="field">
+        <label class="label" for="president_id">President ID</label>
+        <div class="control">
+          <input class="input" type="text" id="president_id_delete" name="president_id" placeholder="Type ID here">
+        </div>
+
+      <button class="button is-primary" type="submit" id="delete_button">Delete President</button>
+    </form>
+  </body>
+
+  <script src="delete_script.js"></script>
+  <script src="post_put.js"></script>
+
+
 </html>
-
-
-

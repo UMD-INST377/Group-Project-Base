@@ -3,7 +3,7 @@ const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 
 async function windowActions() {
-  const data= await fetch('http://localhost:3000/api/price');
+  const data= await fetch('/api/price');
   /*.then(function(response) {
     return response.json();
   })*/;

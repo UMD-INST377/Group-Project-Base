@@ -53,7 +53,7 @@ router.route('/album')
   });
 
 router.route('/performers')
-  .get((rec, res) => {
+  .get( async (rec, res) => {
     try {
       console.log('touched /performers with GET');
       res.json({data: data});
@@ -69,7 +69,7 @@ router.route('/performers')
       res.json({error: error});
     }
   })
-  .put((rec, res) => {
+  .put( async (rec, res) => {
     try {
       console.log('touched /performers with PUT');
       res.json({data: data});
@@ -93,7 +93,7 @@ router.route('/performers')
       res.json({error: error});
     }
   })
-  .post((rec, res) => {
+  .post( async (rec, res) => {
     try {
       console.log('touched /performers with POST');
       res.json({data: data});
@@ -112,7 +112,7 @@ router.route('/performers')
       res.json({error: error});
     }
   })
-  .delete((rec, res) => {
+  .delete( async (rec, res) => {
     try {
       console.log('touched /performers with DELETE');
       res.json({data: data});

@@ -17,7 +17,8 @@ router.get('/date', async(req,res) => {
     });
     res.json(result);
   } catch (err) {
-      console.log(error);
+      console.log(error)
+      res.send({message:"something went wrong"});
   }
 })
 
@@ -53,8 +54,10 @@ router.put(async (req, res) => {
         },
         type: sequelize.QueryTypes.UPDATE
       });
+      res.json(result);
     } catch (err) {
       console.log(err);
+      res.send({message:"uhoh"});
     }
   })
   // .post(async (req, res) => {

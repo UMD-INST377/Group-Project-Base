@@ -33,5 +33,32 @@ footer {
   color: white;
 }
 
+.content h2 {
+  padding-bottom: 0px;
+}
+
+.trending {
+  padding-top: 0px;
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table th {
+  /*...all th attributes like padding etc*/
+  background-color:#78c2ce;
+}
+
+.subtitle {
+  text-align: center;
+  padding-bottom: 0px;
+}
+
+
 
   

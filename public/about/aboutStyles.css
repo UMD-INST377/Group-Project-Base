@@ -37,7 +37,7 @@
   }
   
   .content {
-    padding: 0 18px;
+    padding: 2px 18px;
     display: none;
     overflow: hidden;
     width: 100%;
@@ -47,6 +47,11 @@
     border-radius: 6px;
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
     color: #4a4a4a;
+  }
+
+  .button-content {
+    display: flex;
+    margin-top: 0px;
   }
 
  .footnotes {

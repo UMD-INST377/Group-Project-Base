@@ -55,16 +55,6 @@ body {
     transform: scale(1.3)
 }
 
-.fa-bars {
-    position: absolute;
-    left: 30px;
-    cursor: pointer
-}
-
-.fa-bars:hover {
-    transform: scale(1.3)
-}
-
 .search {
     position: absolute;
     top: 30px;
@@ -204,35 +194,41 @@ img {
 }
 
 .heading {
-    height: 100%
+    height: 100%;
 }
 
-.fa-pencil-alt {
-    position: absolute;
-    right: 250px;
-    cursor: pointer;
+.message {
+    display: flex;
+    justify-content: center;
+    margin-top: 17vh;
+    font-family: GothamBook;
+    font-size: 22px;
+}
+
+.edit-delete {
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: right;
 }
 
 .fa-pencil-alt:hover {
     transform: scale(1.3)   
 }
 
-.fa-trash-alt {
-    position: absolute;
-    right: 225px;
-    color: red;
-    cursor: pointer;
+.fa-pencil-alt:before{
+    color: black
 }
 
 .fa-trash-alt:hover {
-    transform: scale(1.3)
-}
+    transform: scale(1.3);
+    cursor: pointer
+} 
 
 .items {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 3vw;
+    margin-top: 2.5vw;
 }
 
 .items-cert {
@@ -307,6 +303,7 @@ img {
 .fa-plus-circle:hover {
     transform: scale(1.3);
 }
+
 
 .heading-songs {
     overflow-y: scroll
@@ -432,6 +429,11 @@ td {
 
     .header {
         font-size: 10px
+    }
+
+    .message {
+        margin-top: 14vh;
+        font-size: 12px;
     }
 
     .result {
@@ -564,6 +566,11 @@ td {
         font-size: 10px
     }
 
+    .message {
+        margin-top: 13vh;
+        font-size: 14px;
+    }
+
     ::-webkit-scrollbar {
         width: 5px;
     }
@@ -663,6 +670,12 @@ td {
         font-size: 12px
     }
 
+    .message {
+        margin-top: 15vh;
+        margin-left: 1vh;
+        font-size: 18px;
+    }
+
     ::-webkit-scrollbar {
         width: 5px;
     }
@@ -717,3 +730,38 @@ td {
         margin-top: 3px;
     }
 }
+/* For Medium Screen Laptops */
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+    .search {
+        top: 20px;
+    }
+
+    input {
+        height: 2.3vw
+    }
+
+    @keyframes slideDown {
+        from {
+            top: 0;
+        }
+        to {
+            top: 20px;
+        }
+    }
+
+    .search .placeholder {
+        font-size: 11px;
+        top: 45px;
+    }
+
+    .search-result {
+        top: 68px;
+        left: 34px;
+        width: 20.3vw
+    }
+
+    .name {
+        margin-top: 3px;
+    }
+}
+

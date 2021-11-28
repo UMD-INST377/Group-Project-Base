@@ -7,9 +7,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="../images/logo.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel='stylesheet' href='../styles.css'/>
-    <link rel = 'stylesheet'href ='discoveryStyles.css'>
+    <link rel = 'stylesheet' href='submission.css'>
     <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
-    <title>Discovery</title>
+    <title>Movie Submitted</title>
 </head>
 <body>
     <div class="columns">
@@ -30,9 +30,10 @@
             </div>
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item is-size-5 has-text-weight-bold" href="/discovery/discovery.html">
+                    <a class="navbar-item is-size-5" href="/discovery/discovery.html">
                     Discovery
                     </a>
+        
                     <a class="navbar-item is-size-5" href="/top-100/top-100.html">
                     Top 100
                     </a>
@@ -45,41 +46,16 @@
                 </div>
             </div>
         </nav>
-        <div class="title">
-            <h1>Want to find a movie?</h1>
-        </div>
-        <div class="searchGrid">
-            <select id="genre-input">
-                <option>Select Genre</option>
-                 <option>Action</option>
-                 <option>Adventure</option>
-                 <option>Animation</option>
-                 <option>Biography</option>
-                 <option>Comedy</option>
-                 <option>Crime</option>
-                 <option>Drama</option>
-                 <option >Family</option>
-                 <option>Fantasy</option>
-                 <option>Horror</option>
-                 <option>Music</option>
-                 <option>Mystery</option>
-                 <option>Romance</option>
-                 <option>Sci-Fi</option>
-                 <option>Sport</option>
-                 <option>Thriller</option>
-                 <option>Western</option>
-             </select>
-            <!-- will add the dropdown, and make search box look prettier -->
-            <input class="search" placeholder="Search..."/>
-            <button class="searchButton">Submit</button>
-        </div>
-        <div class="columns">
-        
+            
+        <h2 class="title is-2">Your Submission Has Been Entered!</h2>
+        <p class="note box"><em>
+            The entry should now be in the database! Please feel free to explore elsewhere on the site or search for your entry in the Discovery Page!
+        </p>
+        <div class="column gif">
+            <img src="../images/movietime.gif" alt="GIF of Bird eating Popcorn watching a movie.">
         </div>
     </div>
-    
-    <script src="script.js"> </script>
-
-    
+    <script src="./submissionScript.js"></script>
 </body>
+
 </html>

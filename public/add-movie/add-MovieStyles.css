@@ -7,7 +7,7 @@
 
 
 .box{
-    background-color: grey;
+    background-color: lightgray;
     display: flex;
     justify-content: center;
     margin-top: 3%;

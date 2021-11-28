@@ -42,7 +42,7 @@ body {
 
 .title {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     padding-bottom: .4%;
     text-align: center;
 }
@@ -58,6 +58,7 @@ body {
 .note {
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 /* Source for Flip animation: https://codepen.io/edeesims/pen/iGDzk */
@@ -124,4 +125,9 @@ body {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+}
+
+#chartContainer, #pieChartContainer {
+    height: 370px; 
+    width: 70%;
 }

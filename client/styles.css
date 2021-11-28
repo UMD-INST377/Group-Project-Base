@@ -8,6 +8,11 @@ body {
     align-self: center;
 }
 
+.aboutspace{
+    align-content: flex-start;
+    margin-left: 10px;
+}
+
 .login{
     color: gold;
     align-self: center;

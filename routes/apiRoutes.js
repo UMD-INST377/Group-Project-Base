@@ -45,7 +45,7 @@ router.get('/date', async(req,res) => {
 //     }      
 //   })
 
-router.put(async (req, res) => {
+router.put('/date', async (req, res) => {
     try {
       console.log('touched /date with PUT');
       const result = await db.sequelizeDB.query(date.putDate, {

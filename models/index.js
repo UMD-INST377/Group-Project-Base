@@ -1,11 +1,11 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import HotelOverview from "./HotelOverview.js";
+import Amenities from "./Amenities.js";
+import Rooms from "./Rooms.js";
+import Restaurants from "./Restaurants.js";
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+  HotelOverview,
+  Amenities,
+  Rooms,
+  Restaurants,
 };

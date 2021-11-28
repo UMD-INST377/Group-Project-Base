@@ -1,22 +1,48 @@
+/* Jacob Walter 
+Lab 12 */
+
 body {
     background-color: white;
 }
-
+/* time_line{
+    height: 100vh;
+} */
 .buttons {
 
 }
 .buttons a {
     text-decoration: none;
     color: white;
-
 }
+
+/* .tl-slider-container-mask {
+    background-color: #f08080 ;
+} */
+
+/* .tl-timenav{
+    background-color: yellow;
+} */
+
+/* .tl-timemarker-timespan{
+ chamges bottom part of timeline under name of each element in timeline
+} */
+/* .tl-timemarker-media-container {
+    background-color: blueviolet;
+} */
+
+.tl-timeaxis-tick:before {
+    background-color:#c9483e;
+}
+.tl-menubar{
+    background-color:blue;
+}
+
 /* .description {
     position: absolute;
     width: auto;
     height: 350px;
     left: auto;
     
-
     background:skyblue;
     border: 2px solid #000000;
     box-sizing: border-box;
@@ -30,10 +56,49 @@ body {
     height: 80px;
     left: 222px;
     top: 500px;
-
     background: #EDAAA5;
     border: 2px solid #000000;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 } */
+
+.card{
+    width: 300px;
+    padding-bottom: 30px;
+}
+
+.card-image img{
+    height: 450px;
+}
+.row{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.gh{
+    height: 80px;
+    width: 40px;
+}
+
+.gh:hover{
+    height: 80px;
+    width: 80px;
+}
+
+.li{
+    height: 80px;
+    width: 80px;
+}
+
+.li:hover{
+    height: 80px;
+    width: 120px;
+}
+
+.links{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}

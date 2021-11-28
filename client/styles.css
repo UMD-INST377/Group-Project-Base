@@ -82,9 +82,10 @@ body {
 .footer {
     margin-bottom: auto;
     margin-top: auto;
-    display: flex;
+    
+    /*display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-end;*/
  
   }
   

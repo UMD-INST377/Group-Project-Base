@@ -10,17 +10,20 @@ burgerIcon.addEventListener('click', () => {
   toggleBurgerMenu(burgerIcon);
 });
 
-const coll = document.querySelectorAll('.collapsible');
-let i;
+const coll = Array.from(document.querySelectorAll('.collapsible'));
 
-for (i = 0; i < coll.length; i += 1) {
-  coll[i].addEventListener('click', function () {
-    this.classList.toggle('active');
-    const content = this.nextElementSibling;
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = `${content.scrollHeight} px`;
-    }
-  });
-}
+coll.map((item) => item.addEventListener('click', (event) => {
+  event.target.classList.toggle('active');
+  const opening = document.getElementById(`${event.target.id}Open`);
+  const closing = document.getElementById(`${event.target.id}Close`);
+  const content = event.target.nextElementSibling;
+  if (content.style.display === 'block') {
+    content.style.display = 'none';
+    closing.classList.add('is-hidden');
+    opening.classList.remove('is-hidden');
+  } else {
+    content.style.display = 'block';
+    opening.classList.add('is-hidden');
+    closing.classList.remove('is-hidden');
+  }
+}));

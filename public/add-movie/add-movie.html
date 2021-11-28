@@ -46,6 +46,12 @@
               </div>
           </div>
       </nav>
+
+      <div class="title is-2">
+        <h2>Enter Movies to the Database Here!</h2>
+      </div>
+
+      <p class="note">Any new movies you would like to show on the website? Add it here to add to our database!</p>
       
       <form class="box form is-half" id="form">
       
@@ -53,7 +59,7 @@
               <label class="label">Your Name:</label>
               <div class="control">
                 <div class="control">
-                    <input class="input" id="name-input" placeholder="Enter Name Here">
+                    <input class="input" id="name-input" placeholder="Enter Name Here" required="required">
                 </div>
               </div>
             </div>
@@ -61,7 +67,7 @@
             <label class="label">Email:</label>
             <div class="control">
               <div class="control">
-                  <input class="input" id="email-input" type="email" placeholder="Enter Email">
+                  <input class="input" id="email-input" type="email" placeholder="Enter Email" required="required">
               </div>
             </div>
           </div>
@@ -69,33 +75,33 @@
           <div class="field">
             <label class="label">Movie:</label>
             <div class="control">
-              <input class="input" id="movie-input" placeholder="Movie Title">
+              <input class="input" id="movie-input" placeholder="Movie Title" required="required">
             </div>
           </div>
           <div class="field">
               <label class="label">Director:</label>
               <div class="control">
-                <input class="input " id="director-input" placeholder="Director's Name">
+                <input class="input " id="director-input" placeholder="Director's Name" required="required">
               </div>
             </div>
             <div class="field">
               <label class="label">Actor:</label>
               <div class="control">
-                <input class="input" id="actor-input" placeholder="Actor or Actress Name">
+                <input class="input" id="actor-input" placeholder="Staring Actor or Actress Name" required="required">
               </div>
             </div>
             <div class="field">
               <label class="label">Date:</label>
               <div class="control">
-                <input class="input" id="date-input" type="date">
+                <input class="input" id="date-input" type="date" required="required">
               </div>
             </div>
             <div class="field">
               <label class="label">Genre:</label>
               <div class="control">
                 <div class="select">
-                    <select id="genre-input">
-                       <option>Select Genre</option>
+                    <select id="genre-input" required="required">
+                       <option></option>
                         <option>Action</option>
                         <option>Adventure</option>
                         <option>Animation</option>
@@ -121,8 +127,8 @@
                   <label class="label">Rating:</label>
                   <div class="control">
                       <div class="select">
-                          <select id="rating-input">
-                              <option>Select Rating</option>
+                          <select id="rating-input" required="required">
+                              <option></option>
                               <option>1</option>
                               <option>2</option>
                               <option>3</option>

@@ -7,54 +7,55 @@
     <link rel="shortcut icon" type="image/x-icon" href="../images/logo.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel='stylesheet' href='../styles.css'/>
-    <link rel = 'stylesheet'href ='submission.css'>
+    <link rel = 'stylesheet' href='submission.css'>
     <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
-    <title>New Movie Submission</title>
+    <title>Movie Submitted</title>
 </head>
 <body>
-<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a href="/index.html">
-            <figure class="image is-128x128">
-                <img src="/images/logo.png" class="image" width="196" height="196"
-                alt="Movie Ratings HQ Logo: Film Camera">
-            </figure>
-        </a>
-        
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-    </div>
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item" href="/discovery/discovery.html">
-            Discovery
-            </a>
-
-            <a class="navbar-item" href="/top-100/top-100.html">
-            Top 100
-            </a>
-            <a class="navbar-item" href="/add-movie/add-movie.html">
-            Add Movie
-            </a>
-            <a class="navbar-item" href="/about/about.html">
-            About
-            </a>
-        </div>
-    </div>
-</nav>
-
-
     <div class="columns">
-        <div class="column is-5">
-            <p class="collapsible">Your Submission Has Been Entered!</p>
-            <div class="content">
+        <nav class="navbar background" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a href="/index.html">
+                    <figure class="image is-128x128">
+                        <img src="/images/logo.png" class="image" width="196" height="196"
+                        alt="Movie Ratings HQ Logo: Film Camera">
+                    </figure>
+                </a>
+        
+                <a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
             </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item is-size-5" href="/discovery/discovery.html">
+                    Discovery
+                    </a>
+        
+                    <a class="navbar-item is-size-5" href="/top-100/top-100.html">
+                    Top 100
+                    </a>
+                    <a class="navbar-item is-size-5" href="/add-movie/add-movie.html">
+                    Add Movie
+                    </a>
+                    <a class="navbar-item is-size-5" href="/about/about.html">
+                    About
+                    </a>
+                </div>
+            </div>
+        </nav>
+            
+        <h2 class="title is-2">Your Submission Has Been Entered!</h2>
+        <p class="note box"><em>
+            The entry should now be in the database! Please feel free to explore elsewhere on the site or search for your entry in the Discovery Page!
+        </p>
+        <div class="column gif">
+            <img src="../images/movietime.gif" alt="GIF of Bird eating Popcorn watching a movie.">
         </div>
     </div>
-
+    <script src="./submissionScript.js"></script>
 </body>
 
 </html>

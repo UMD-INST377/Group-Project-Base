@@ -13,9 +13,11 @@ burgerIcon.addEventListener('click', () => {
 async function dataHandler() {
   async function buttonHandler() {
     const genreBox = document.getElementById('genre-input').value;
+    console.log(genreBox)
     if (genreBox === 'Select Genre') {
       const apiRequestFilms = await fetch('/api/films');
       const filmsJson = await apiRequestFilms.json();
+      console.log(filmsJson)
       return filmsJson;
     }
     const apiRequestFilms = await fetch('../api/genremovies', {

@@ -83,6 +83,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin-bottom: auto;
   }
   
   .footer-item {

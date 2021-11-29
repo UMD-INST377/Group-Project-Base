@@ -22,11 +22,23 @@ router.route('/foodServicePG').get(async (req, res) => {
     const json = await data.json();
     console.log(json);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+      res.json(data);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+=======
+    res.json(data: data);
+=======
     res.json(data);
+>>>>>>> a06457a09977265d3d1b45a6838ab393825c4308
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
+>>>>>>> 27e974e78582e9daf813016a9e39c9ab76c2b611
 });
 
 router.get('establishments/establishment_id', async (req, res) => {
@@ -58,7 +70,11 @@ router.put('establishments/establishment_id', async (req, res) => {
 
 router.post('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query();
+    const businesses = await db.sequelizeDB.query(
+      {
+        type: QueryTypes.SELECT
+      }
+    );
 
     res.json(businesses);
   } catch (err) {
@@ -70,7 +86,9 @@ router.post('establishments/establishment_id', async (req, res) => {
 
 router.delete('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query();
+    const businesses = await db.sequelizeDB.query({
+      type: QueryTypes.SELECT
+    });
 
     res.json(businesses);
   } catch (err) {

@@ -3,7 +3,7 @@
     <head>
         <meta charset='UTF-8'/>
         <title>Games Page</title>
-        <link rel='stylesheet' href='yin_style.css'/>
+        <link rel='stylesheet' href='lesly.css'/>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
     </head>
     <body>
@@ -51,16 +51,29 @@
             </div>
           </nav>
 
-
-          <div><p><a href='gameDes.html'>Game Item</a></p></div>
-          <div><p><a href='game_price.html'>Price</a></p></div>
-
           
+          <div class="game-links">
+            <p><a href='gameDes.html'>Game Item</a></p>
+            <p><a href='game_price.html'>Price</a></p>
+          </div>
+          <br>
+          <form>
+            <label class="label">Search Price by ID</label> 
+            <input type='text' class='search input'>
+            
+            </form>
+            <ul class='suggestions'>    
+            </ul>
+            <script src='gameDes.js'>   
+            </script>
+                
+            </form>
+            <br>
 
-          <table class = "table is-fullwidth is-striped is-bordered">
+          <table class = "table is-striped is-bordered">
             <thead>
                 <tr>
-                    <th>Game ID</th>
+                    <th>Game Id</th>
                     <th>Game Name</th>
                     <th>Release Date</th>
                     <th>Free to Play</th>

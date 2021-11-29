@@ -10,3 +10,8 @@
 .content{
     font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
 }
+
+body form, .game-links{
+    max-width: 920px;
+    margin: auto;
+}

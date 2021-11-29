@@ -8,8 +8,16 @@ async function windowActions() {
   function findMatches(wordToMatch, gamePrice) {
     return gamePrice.filter((result) => {
       const regex = new RegExp(wordToMatch, 'gi');
-      console.log(String(result.range_game_id))
-      return String(result.range_game_id).match(regex);
+      console.log(wordToMatch);
+      console.log(String(result.range_game_id));
+      if (wordToMatch === '')
+      {
+        return null; //Ensures no search result display if input field is empty
+      }
+      else {
+        return String(result.range_game_id).match(regex); 
+      }
+      
     });
   }
 
@@ -24,10 +32,9 @@ async function windowActions() {
           return `
 
           <ul>
-            <li><div>${result.range_game_id}</div></li>
+            <li><div><strong>ID: ${result.range_game_id}</strong></div></li>
+            <div>Listed Price: ${result.listed_price}</div>
             <div>${result.price_website}</div>
-            <div>${result.listed_price}</div>
-            
             
           </ul>
           <br></br>

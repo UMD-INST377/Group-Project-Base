@@ -14,7 +14,42 @@ html,body
 }
 
 body {
-    background-color:white;
+    background-color:rgb(130, 231, 238);
+}
+
+.nav-nba-badge {
+    background-color: blue;
+    color: black;
+    font-weight: bold;
+    width: 200px;
+    padding: 0px;
+    margin: 20px;
+    text-align: center;
+    align-items: center;
+  }
+
+.wel {
+    background-color: rgb(68, 139, 180);
+    color: white;
+    text-align: left;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    width: 349px;
+    padding: 30px;
+    margin: 20px;
+  }
+
+  .wel-logo {
+      margin-top: 0.5in;
+      display: flex;
+      align-items: center;
+      justify-content: center
+  }
+
+.welc{
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: 'Trebuchet MS';
 }
 
 .columns {

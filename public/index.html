@@ -1,27 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-        <link rel="stylesheet" href="styles.css">
-        <title>Group1 Final Project</title>
-    </head>
-    <body>
-        <div class="navbar is-link">
-            <div class="buttons is-centered">
-                <div class="button is-danger"><a href="about.html">About</a></div>
-                <div class="button is-danger"><a href="index.html">Home</a></div>
-            </div> 
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Group1 Final Project</title>
+</head>
+
+<body>
+
+    <div class="navbar is-dark">
+        <div class="buttons is-centered">
+            <div class="nav-nba-badge">NBA</div>
+            <div class="button is-dark"><a href="index.html">Home</a></div>
+            <div class="button is-dark"><a href="about.html">About</a></div>
+            <div class="button is-dark"><a href="forms.html">Add Information</a></div>
+            <div class="button is-dark"><a href="">Teams</a></div>
         </div>
-        <h1 class="title is-1">Group1 Homepage</h1>
-        <div class="columns">
-            <div class="column">
-                [Data selection here]
+    </div>
+
+
+    <div class="columns">
+        <ul>
+            <li>
+                <!--First column with logo and welcome message-->
+                <div class="column">
+                    <!--Placing NBA Logo-->
+                    <div class="wel-logo">
+                        <img src="NBA_logo.png" alt="NBA Logo" width="191" height="239">
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="column">
+                    <!--Placing Welcome Text-->
+                    <div class="wel">
+                        <div class="welc">NBA Teams</div>
+                        Welcome to the NBA Teams website!!
+                        Please browse through out monumental
+                        database of NBA information!
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+
+        <div class="column">
+            <h1 class="title is-1">Group1 Homepage</h1>
+            <div class="columns">
+                <div class="column">
+                    [Data selection here]
+                </div>
+                <div class="column">
+                    [Data selection here]
+                </div>
             </div>
-            <div class="column">
-                [Data selection here]
-            </div>
-        </div> 
-        <table id="playertable" class="table"></table>
-        <script src="script.js" charset="utf-8"></script>
-    </body>
+            <table id="playertable" class="table"></table>
+            <script src="script.js" charset="utf-8"></script>
+        </div>
+    </div>
+
+</body>
+
 </html>

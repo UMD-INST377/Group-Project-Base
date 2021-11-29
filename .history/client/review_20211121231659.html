@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Group 4 Project - INST377</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" charset="utf-8"></script>
+  </head>
+
+  
+  <body>
+    <div id="root"></div>
+    <div class="wrapper">
+      <div class="container">
+        <h1 class="title"><a href="index.html">Maui Hotel Finder</a></h1>
+
+        <nav class="navbar">
+          <a href="search.html">Hotel Search</a>
+          <a href="review.html">Leave a Review</a>
+          <a href="aboutus.html">About Us</a>
+        </nav>
+
+
+        <p class="box">This is where you leave a review.</p>
+
+        <!-- <div class="dropdown is-hoverable">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+              <span>Hover me</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content">
+              <div class="dropdown-item">
+                <p>The Westin Maui Resort and Spa</p>
+              </div>
+              <hr class="dropdown-divider">
+              <div class="dropdown-item">
+                <p>Aston Kaanpali Shores</p>
+              </div>
+              <hr class="dropdown-divider">
+              <div class="dropdown-item">
+                <p>Montage Kaplua Bay</p>
+            </div>
+            <hr class="dropdown-divider">
+            <div class="dropdown-item">
+              <p>The Ritz-Carlton, Kaplua</p>
+          </div>
+        </div> -->
+
+        <div class="dropdown is-active">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <span>Content</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+            <div class="dropdown-content">
+              <div class="dropdown-item">
+                <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+              </div>
+              <hr class="dropdown-divider">
+              <div class="dropdown-item">
+                <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
+              </div>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                This is a link
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <form>
+          <label for="review">Leave a review...</label><br>
+          <input type="text" id="review" name="review"><br>
+          <input type="submit" value="Submit">
+        </form>
+
+      </div>
+    </div>
+  </body>
+</html>

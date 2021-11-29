@@ -18,6 +18,12 @@ export default (database, DataTypes) => {
       },
       coach: {
         type: DataTypes.STRING
+      },
+      general_manager: {
+        type: DataTypes.STRING
+      },
+      arena_id: {
+        type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }

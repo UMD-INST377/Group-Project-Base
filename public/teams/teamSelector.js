@@ -34,7 +34,18 @@ const teamIDIndex = [
 let teamSelected = ['','','']; //Alt, Name, ID
 let allTeamData;
 let allPlayerData;
-let resultDIV = document.querySelector('#teamResults');
+let allArenaData;
+let resultDIVOLD = document.querySelector('#teamResultsTEST');
+let teamDiv = {
+    teamName: document.querySelector('#teamName'),
+    division: document.querySelector('#teamDivision'),
+    conference: document.querySelector('#teamConference'),
+    arena: document.querySelector('#teamArena'),
+    coach: document.querySelector('#teamCoach'),
+    generalManager: document.querySelector('#teamGeneralManager'),
+    teamPlayersTable: document.querySelector('#teamPlayers'),
+    teamResultContainer: document.querySelector('#teamResultContainer')
+};
 let previouslySelected = -1;
 let selectedTeamPlayers = [];
 
@@ -55,6 +66,20 @@ fetch('/api/basketball/players')
       console.log(data);
       console.log('Player data received!');
       });
+
+//GET ARENAS
+fetch('/api/basketball/arenas')
+      .then(response => response.json())
+      .then(data => {
+        allArenaData = data;
+        console.log(data);
+        console.log('Arena data received!');
+        });
+
+
+//Hide Team Data Divs
+teamDiv.teamResultContainer.style.display = 'none';
+
 
 for (let i = 0; i < teamImages.length; i++) {
     teamImages[i].addEventListener("click", function() {
@@ -104,8 +129,36 @@ function displayTeamData(teamID){
             selectedTeamData = allTeamData[i];
         }
     }
+    console.log('SELECTED TEAM DATA')
     console.log(selectedTeamData);
-    resultDIV.innerHTML = '';
+    //Team Data
+    teamDiv.teamName.innerHTML = selectedTeamData['team_name'];
+    teamDiv.division.innerHTML = "<b>DIVISION: </b><br>"+selectedTeamData['division'];
+    teamDiv.conference.innerHTML = "<b>CONFERENCE: </b><br>"+selectedTeamData['conference'];
+    let arenaIndexID = selectedTeamData['arena_id'] - 1;
+    teamDiv.arena.innerHTML = "<b>Arena: </b><br>" + allArenaData[arenaIndexID].name;
+    teamDiv.coach.innerHTML = "<b>COACH: </b><br>"+selectedTeamData['coach'];
+    teamDiv.generalManager.innerHTML = "<b>GEN. MANAGER: </b><br>"+selectedTeamData['general_manager'];
+    //Team Players
+    //Clear team players
+    teamDiv.teamPlayersTable.innerHTML = '<thead><tr><th>Name</th><th>Position</th><th>Year Drafted</th><th>More</th></tr></thead>';
+    for(let i = 0; i < selectedTeamPlayers.length; i++){
+        var row = teamDiv.teamPlayersTable.insertRow([i+1]);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        cell1.innerHTML = selectedTeamPlayers[i]['first_name'] + " " + selectedTeamPlayers[i]['last_name'];
+        cell2.innerHTML = selectedTeamPlayers[i]['position'];
+        cell3.innerHTML = selectedTeamPlayers[i]['year_drafted'];
+        cell4.innerHTML = "Edit";
+    }
+    //SHOW
+    teamDiv.teamResultContainer.style.display = 'flex';
+    document.querySelector('#nbaLogo').style.marginTop = '20px'; //makes NBA logo closer so there is not a huge space at the bottom
+    /*
+    //OLD CODE
+    resultDIVOLD.innerHTML = '';
     let addedHTML =`
     <div class = 'columns is-centered is-mobile'>
     <div class = 'column is-two-thirds'>
@@ -121,7 +174,8 @@ function displayTeamData(teamID){
         addedHTML += `<li>${selectedTeamPlayers[i]['first_name']} ${selectedTeamPlayers[i]['last_name']}</li>`;
     }
     addedHTML += '</div> </div> </div>'
-    resultDIV.innerHTML = addedHTML;
+    resultDIVOLD.innerHTML = addedHTML;
+    */
 }
 
 

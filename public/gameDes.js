@@ -2,7 +2,7 @@ const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 
 async function windowActions() {
-  const data= await fetch('http://localhost:3000/api/price');
+  const data= await fetch('/api/price');
 
   
   function findMatches(wordToMatch, gamePrice) {

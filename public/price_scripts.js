@@ -3,11 +3,11 @@ let gamePrice = [];
 
 async function getDummyData() {
   // price table
-  const data= await fetch('http://localhost:3000/api/price');
+  const data= await fetch('/api/price');
   const newData = await data.json();
   const barChatData =newData[0];
   // General table
-  const secdata= await fetch('http://localhost:3000/api/general');
+  const secdata= await fetch('/api/general');
   const secnewData = await secdata.json();
   const secbarChatData =secnewData[0];
   // Get Data from table
@@ -43,4 +43,4 @@ async function dummyChart() {
     }
 })}
 
-dummyChart()
+dummyChart();

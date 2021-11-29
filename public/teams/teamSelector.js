@@ -128,6 +128,7 @@ function displayTeamData(teamID){
     if(allTeamData[i]['team_id'] == teamSelected[2]){
       selectedTeamData = allTeamData[i];
     }
+}
     console.log('SELECTED TEAM DATA')
     console.log(selectedTeamData);
     //Team Data
@@ -176,8 +177,6 @@ function displayTeamData(teamID){
     resultDIVOLD.innerHTML = addedHTML;
     */
 }
-
-
 
 
 //Debugging help code

@@ -20,7 +20,11 @@
 .content{
   height: 100%;
   }
-
+.bar{
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: white;
+}
 .content img {
   height: 300px;
   width: 300px;

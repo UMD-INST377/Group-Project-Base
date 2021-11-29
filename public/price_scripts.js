@@ -31,7 +31,7 @@ async function dummyChart() {
       datasets: [{
         label: 'Game Price',
         backgroundColor: 'rgb(54, 162, 235)',
-        borderColor: 'rgb(255, 99, 132)',
+        borderColor: 'white',
         data: gamePrice
       }
       ]

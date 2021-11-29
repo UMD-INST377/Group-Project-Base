@@ -1,7 +1,7 @@
 const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 
-
+/*
 function structureVolcano(volcanoInfo){
     const getVolcano = {
         title:{
@@ -11,6 +11,7 @@ function structureVolcano(volcanoInfo){
         }
     }
 }
+*/
 
 async function getVolcano() {
   const volcanoInfo = document.querySelector('.volcanoName');

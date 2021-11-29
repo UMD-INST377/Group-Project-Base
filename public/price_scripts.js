@@ -1,72 +1,46 @@
-function BuildChart(labels, values, chartTitle) {
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: chartTitle, // Name the series
-      data: values,
-      backgroundColor: ['rgb(54, 162, 235)',
-        'rgb(54, 162, 235)',
-        'rgb(54, 162, 235)',
-        'rgb(54, 162, 235)',
-        'rgb(54, 162, 235)',
-        'rgb(54, 162, 235)',
-        'rgb(54, 162, 235)',
-        'rgb(54, 162, 235)',
-        'rgb(54, 162, 235)',
-        'rgb(54, 162, 235)'
-      ]
-    }]
-  };
+let gameLabel = [];
+let gamePrice = [];
+
+async function getDummyData() {
+  // price table
+  const data= await fetch('http://localhost:3000/api/price');
+  const newData = await data.json();
+  const barChatData =newData[0];
+  // General table
+  const secdata= await fetch('http://localhost:3000/api/general');
+  const secnewData = await secdata.json();
+  const secbarChatData =secnewData[0];
+  // Get Data from table
+  const price = barChatData.map((x) => x.listed_price)
+  console.log(price)
+  const name = secbarChatData.map((x) => x.game_name)
+  console.log(name)
+
+  gamePrice = price
+  gameLabel = name
+}
+async function dummyChart() {
+  await getDummyData()
 
   const ctx = document.getElementById('myChart').getContext('2d');
-  const myChart = new Chart(ctx, {
-    type: 'horizontalBar',
-    data: data,
+
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: gameLabel,
+      datasets: [{
+        label: 'Game Price',
+        backgroundColor: 'rgb(54, 162, 235)',
+        borderColor: 'white',
+        data: gamePrice
+      }
+      ]
+    },
     options: {
-      responsive: true, 
-      maintainAspectRatio: false,
-      scales: {
-        xAxes: [{
-          scaleLabel: {
-            display: true,
-            labelString: 'Listed Price'
-          }
-        }],
-        yAxes: [{
-          scaleLabel: {
-            display: true,
-            labelString: 'price Id'
-          }
-        }]
+      tooltips: {
+        mode: 'index'
       }
     }
-  });
+})}
 
-  return myChart;
-}
-
-// Ref - https://github.com/jesseokeya/Forbes400  / https://forbes400.herokuapp.com/
-
-const xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    const json = JSON.parse(this.response)[0];
-    console.log(json)
-
-    // Map json labels  back to values array
-    const labels = json.map((e) => e.price_id);
-    console.log(labels)
-
-    // Map json values back to values array
-    const values = json.map((e) => (e.listed_price) 
-    );
-
-    BuildChart(labels, values, 'Real Time Price');
-  }
-};
-
-// const data= await fetch('http://localhost:3000/api/price');
-xhttp.open('GET', 'api/price', false);
-const d=xhttp.open('GET', 'api/price', false);
-console.log(d);
-xhttp.send();
+dummyChart()

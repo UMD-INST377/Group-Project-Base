@@ -47,16 +47,16 @@
   }
 
 #carousel_button--prev{
-  background-color: rgb(228, 134, 80);
+  background-color:rgb(223, 219, 219);
   border-radius:10px;
   border-width: 3px;
   border-color: green;
   font-weight: bold;
   cursor:pointer;
-  width: 70px;
-  height: 30px;
+  width: 100px;
+  height: 100px;
   position:relative;
-  top:42%;
+  top:30%;
   
 }
 
@@ -67,10 +67,10 @@
   border:0;
   font-weight: bold;
   cursor:pointer;
-  width: 70px;
-  height: 30px;
+    width: 100px;
+  height: 100px;
   position:relative;
-  top:42%;
+  top:30%;;
 }
 
 

@@ -1,5 +1,8 @@
 body {
     font-family: 'Roboto Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .aboutpage{
@@ -77,6 +80,21 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.footer {
+    background-color: #f2f2f7;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
 }
 
 /*

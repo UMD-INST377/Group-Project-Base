@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <title>Group1 Final Project</title>
+    </head>
+    <body>
+        <div class="navbar is-link">
+            <div class="buttons is-centered">
+                <div class="button is-danger"><a href="about.html">About</a></div>
+                <div class="button is-danger"><a href="index.html">Home</a></div>
+                <div class="button is-danger"><a href="forms.html">Add Players</a></div>
+            </div> 
+        </div>
+        <div class="wrapper">
+            <div class="container">
+                <div class="columns column is-centered">
+                    <div class = "column is-full">
+                        <div class="box title has-background-primary">Add Players</div>
+                    </div>
+                    <div class="box is-two-fifths has-background-primary">
+                        <div class="column is-centered">
+                            <form action="/api" method="get" class="column">
+                                <div class="column">
+                                    <label><h1><strong>Player name</strong></h1></label>
+                                    <input class="input is-small" type="text">
+                                </div>
+                                <div class="column">
+                                    <label><h1><strong>PPG</strong></h1></label>
+                                    <input class="input is-small" type="text">
+                                </div>
+                                <div class="column">
+                                    <label><h1><strong>Assists</strong></h1></label>
+                                    <input class="input is-small" type="text">
+                                </div>
+                                <div class="column">
+                                    <label><h1><strong>Team</strong></h1></label>
+                                    <input class="input is-small" type="text">
+                                </div>
+                                <div class="column">
+                                    <button class="button is-link has-background-danger"><h1><strong>Submit</strong></h1></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

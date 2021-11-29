@@ -47,6 +47,7 @@ body {
   .btn-group button:hover {
     background-color: rgb(143, 133, 133);
   }
+
 }
 
 @media only screen and (min-width: 760px) {
@@ -81,5 +82,11 @@ body {
 
   .btn-group button:hover {
     background-color: rgb(143, 133, 133);
+  }
+
+  .nba-arenas{
+    display: flex;
+    justify-content: center;
+    
   }
 }

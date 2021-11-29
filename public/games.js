@@ -9,7 +9,7 @@ function fetchData() {
     })
     .then((data => {
       console.log(data.data);
-      const html = data.data.map((user) => {
+      const html = data.data map((user) => {
           return `
 
             

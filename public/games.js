@@ -7,11 +7,9 @@ function fetchData() {
       }
       return response.json();
     })
-    .then(data => {
-      console.log(data);
-      const html = data[0]
-        // eslint-disable-next-line arrow-body-style
-        .map(user => {
+    .then((data => {
+      console.log(data.data);
+      const html = data.data.map((user) => {
           return `
 
             
@@ -29,7 +27,7 @@ function fetchData() {
       document.querySelector('#table').innerHTML = html;
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error)
     });
 }
 

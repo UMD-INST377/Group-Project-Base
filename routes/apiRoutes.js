@@ -38,6 +38,16 @@ router.get('/basketball/teams', async (req, res) => {
   }
 });
 
+// GETS ALL ARENAS
+router.get('/basketball/arenas', async (req, res) => {
+  try {
+    const arenas = await db.Arenas.findAll();
+    res.json(arenas);
+  } catch (e) {
+    res.send(e);
+  }
+});
+
 
 // GET SPECIFIC TEAM
 router.get('/basketball/teams/:team_id', async (req, res) => {

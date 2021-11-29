@@ -66,7 +66,7 @@ xhttp.onreadystatechange = function() {
 };
 
 // const data= await fetch('http://localhost:3000/api/price');
-xhttp.open('GET', 'http://localhost:3000/api/price', false);
-const d=xhttp.open('GET', 'http://localhost:3000/api/price', false);
+xhttp.open('GET', 'api/price', false);
+const d=xhttp.open('GET', 'api/price', false);
 console.log(d);
 xhttp.send();

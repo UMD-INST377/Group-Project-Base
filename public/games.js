@@ -7,11 +7,13 @@ function fetchData() {
       }
       return response.json();
     })
-    .then((data => {
-      console.log(data.data);
-      const html = data.data.map((user) => {
+    .then(data => {
+      console.log(data);
+      const html = data[0]
+        // eslint-disable-next-line arrow-body-style
+        .map(user => {
           return `
-
+        
             
                 <tr>
                     <th>${user.game_id}</th>
@@ -20,16 +22,17 @@ function fetchData() {
                     <td>${user.free_to_play}</td>
                     <td>${user.player_population}</td>
                 </tr>
-
+            </tbody>
+        
             `;
         }).join('');
       console.log(html);
+      
       document.querySelector('#table').innerHTML = html;
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
     });
 }
 
-fetchData();
-
+fetchData(); 

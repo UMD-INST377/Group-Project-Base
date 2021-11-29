@@ -42,4 +42,4 @@ function moveToPrevSlide() {
     }
 
     updateSlidePosition();
-}
+} 

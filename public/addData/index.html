@@ -55,19 +55,16 @@
         <form
           method="post"
           enctype="application/x-www-form-urlencoded"
-          action="https://inst377-group-project-18.herokuapp.com/players/"
+          action="/api/basketball/players"
         >
           <legend class="labels">New Player:</legend>
           <p">
-            <label><input name="firstname" placeholder="First Name" style="color: gray;" /></label>
-            <label><input name="lastname" placeholder="Last Name" style="color: gray;" /></label>
+            <label><input name="first_name" placeholder="First Name" style="color: gray;" /></label>
+            <label><input name="last_name" placeholder="Last Name" style="color: gray;" /></label>
           </p>
           <p>
             <label class="labels">Height:</label>
-            <label> <input name="feet" size="1" /></label>
-            <label class="labels">ft</label>
-            <label> <input name="in" size="1"/></label>
-            <label class="labels">in</label>
+            <label> <input name="height" placeholder="Height" style="color: gray;" size="4" /></label>
           </p>
           <p>
             <label><input name="weight" placeholder="Weight" style="color: gray; width: 1.7cm;"  /></label>
@@ -77,52 +74,50 @@
             <label><input name="college" placeholder="College" style="color: gray;"  /></label>
           </p>
           <p>
-            <label><input name="year" placeholder="Year Drafted" style="color: gray;"  /></label>
+            <label><input name="year_drafted" placeholder="Year Drafted" style="color: gray;"  /></label>
           </p>
           <p>
-            <select class="drop" name="dropdown">
-              <option value="Position" selected>Position</option>
-              <option value="Point Guard">Point Guard</option>
-              <option value="Shooting Guard">Shooting Guard</option>
-              <option value="Small Forward">Small Forward</option>
-              <option value="Power Forward">Power Forward</option>
-              <option value="Center">Center</option>
+            <select class="drop" name="position">
+              <option value="P-G">Point Guard</option>
+              <option value="S-G">Shooting Guard</option>
+              <option value="S-F">Small Forward</option>
+              <option value="P-F">Power Forward</option>
+              <option value="C">Center</option>
             </select>
           </p>
           <p>
-            <select class="drop" name="dropdown">
-              <option value="Team" selected>Team</option>
-              <option value="76ers">76ers</option>
-              <option value="Bucks">Bucks</option>
-              <option value="Bulls">Bulls</option>
-              <option value="Cavaliers">Cavaliers</option>
-              <option value="Celtics">Celtics</option>
-              <option value="Clippers">Clippers</option>
-              <option value="Grizzlies">Grizzlies</option>
-              <option value="Hawks">Hawks</option>
-              <option value="Heat">Heat</option>
-              <option value="Hornets">Hornets</option>
-              <option value="Jazz">Jazz</option>
-              <option value="Kings">Kings</option>
-              <option value="Knicks">Knicks</option>
-              <option value="Lakers">Lakers</option>
-              <option value="Magic">Magic</option>
-              <option value="Mavericks">Mavericks</option>
-              <option value="Nets">Nets</option>
-              <option value="Nuggets">Nuggets</option>
-              <option value="Pacers">Pacers</option>
-              <option value="Pelicans">Pelicans</option>
-              <option value="Pistons">Pistons</option>
-              <option value="Raptors">Raptors</option>
-              <option value="Rockets">Rockets</option>
-              <option value="Sonics">Sonics</option>
-              <option value="Spurs">Spurs</option>
-              <option value="Suns">Suns</option>
-              <option value="Thunder">Thunder</option>
-              <option value="Timberwolves">Timberwolves</option>
-              <option value="Trail Blazers">Trail Blazers</option>
-              <option value="Warriors">Warriors</option>
-              <option value="Wizards">Wizards</option>
+            <select class="drop" name="team_id">
+              <option value="1610612755">76ers</option>
+              <option value="1610612749">Bucks</option>
+              <option value="1610612741">Bulls</option>
+              <option value="1610612739">Cavaliers</option>
+              <option value="1610612738">Celtics</option>
+              <option value="1610612746">Clippers</option>
+              <option value="1610612763">Grizzlies</option>
+              <option value="1610612737">Hawks</option>
+              <option value="1610612748">Heat</option>
+              <option value="1610612766">Hornets</option>
+              <option value="1610612762">Jazz</option>
+              <option value="1610612758">Kings</option>
+              <option value="1610612752">Knicks</option>
+              <option value="1610612747">Lakers</option>
+              <option value="1610612753">Magic</option>
+              <option value="1610612742">Mavericks</option>
+              <option value="1610612751">Nets</option>
+              <option value="1610612743">Nuggets</option>
+              <option value="1610612754">Pacers</option>
+              <option value="1610612740">Pelicans</option>
+              <option value="1610612765">Pistons</option>
+              <option value="1610612761">Raptors</option>
+              <option value="1610612745">Rockets</option>
+              <option value="1610612760">Sonics</option>
+              <option value="1610612759">Spurs</option>
+              <option value="1610612756">Suns</option>
+              <option value="1610612760">Thunder</option>
+              <option value="1610612750">Timberwolves</option>
+              <option value="1610612757">Trail Blazers</option>
+              <option value="1610612744">Warriors</option>
+              <option value="1610612764">Wizards</option>
             </select>
           </p>
           <p><button class="submit">Submit</button></p>

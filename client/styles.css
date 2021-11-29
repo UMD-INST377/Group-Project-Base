@@ -95,7 +95,8 @@ nav {
 .photo-grid-container .carousel .carousel_item img {
   width: 100%;
   max-width: 600px;
-  height: auto;
+  height: 400px;
+  width: 600px;
 }
 
 .photo-grid-container .carousel .carousel_item--visible {

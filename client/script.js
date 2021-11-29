@@ -2,16 +2,6 @@ const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 
 
-function structureVolcano(volcanoInfo){
-    const getVolcano = {
-        title:{
-            media:{
-                url:
-            }
-        }
-    }
-}
-
 async function getVolcano() {
   const volcanoInfo = document.querySelector('.volcanoName');
 

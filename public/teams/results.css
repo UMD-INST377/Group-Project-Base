@@ -2,3 +2,13 @@
     background-color: green;
     background-size: cover;
 }
+
+.table{
+    background-color:transparent;
+    font-size:10pt;
+}
+
+.table thead td, .table thead th{
+    color:white;
+}
+

@@ -59,7 +59,8 @@ xhttp.onreadystatechange = function() {
     BuildChart(labels, values, 'Real Time Price');
   }
 };
-xhttp.open('GET', 'http://localhost:3000/api/price', false);
+// xhttp.open('GET', 'http://localhost:3000/api/price', false);
 const d=xhttp.open('GET', 'http://localhost:3000/api/price', false);
-console.log(d);
+const e=xhttp.open('GET', 'http://localhost:3000/api/price', false);
+
 xhttp.send();

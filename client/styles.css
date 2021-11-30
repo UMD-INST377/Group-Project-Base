@@ -81,6 +81,9 @@ body {
     overflow-x: scroll;.
 }
 
+.tablemargins{
+    margin-left: 20px;
+}
 
 h1 {
     font-size: 2rem;

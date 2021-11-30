@@ -10,6 +10,7 @@ import volcanosHasReferencesController from '../server/controllers/volcanosHasRe
 // eslint-disable-next-line import/no-named-as-default
 import eruptionCategoryController from '../server/controllers/eruptionCategoryController.js';
 import veiController from '../server/controllers/veiController.js';
+import infoController from '../server/controllers/infoController.js';
 
 const router = express.Router();
 
@@ -459,8 +460,8 @@ router.route('/volcanos')
       res.json(result);
       console.log('Successfully inserted in volcanos');
     } catch (err) {
-      console.log(error);
-      res.json({error: 'something went wrong!'});
+      console.log(err);
+      res.json({err: 'something went wrong!'});
     }
   })
   .delete(async(req, res) => {

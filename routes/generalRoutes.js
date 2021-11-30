@@ -35,7 +35,15 @@ router.route('/general')
   .post(async(req, res) => {
     try {
       const updateGames = await db.sequelizeDB.query(
-        general.post
+        general.post, {
+          replacements: {
+            game_id: req.body.id,
+            name: req.body.name,
+            free_to_play: req.body.free_to_play,
+            population: req.body.population
+
+          }
+        }
       );
       res.send(updateGames);
     } catch (err) {

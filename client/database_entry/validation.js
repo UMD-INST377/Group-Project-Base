@@ -608,7 +608,7 @@ async function deleteVinyl() {
         }
 
         // Requesting PUT for Vinyl table
-        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com//api/vinyl', {
+        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

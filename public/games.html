@@ -26,10 +26,6 @@
                     <strong>Games</strong>
                 </a>
 
-                <a class="navbar-item" href="profile.html">
-                    <strong>Profile</strong>
-                   </a>
-
                    <a class="navbar-item" href="about.html">
                     <strong>About</strong>
                    </a>
@@ -40,11 +36,8 @@
               <div class="navbar-end">
                 <div class="navbar-item">
                   <div class="buttons">
-                    <a class="button is-black" href="login.html">
-                      <strong>Sign up</strong>
-                    </a>
-                    <a class="button is-light" href="login.html">
-                      Log in
+                    <a class="button is-light" href="form_page.html">
+                      Add Game
                     </a>
                   </div>
                 </div>
@@ -52,11 +45,6 @@
             </div>
           </nav>
 
-          
-          <div class="game-links">
-            <p><a href='gameDes.html'>Game Item</a></p>
-            <p><a href='game_price.html'>Price</a></p>
-          </div>
           <br>
           <form>
             <label class="label">Search Price by ID</label> 
@@ -76,7 +64,6 @@
                 <tr>
                     <th>Game Id</th>
                     <th>Game Name</th>
-                    <th>Release Date</th>
                     <th>Free to Play</th>
                     <th>Player Population</th>
                 </tr>
@@ -87,19 +74,18 @@
 
             <script src='games.js'></script>
           </table>
-          <div class='price'>
-          <font size=20  ><strong>Game Price</strong></font>
-        </div>
-
+          
+          <div class = 'price'>
+          <font size=20 ><strong>Game Price</strong></font>
         <div class='bar'>
-        <div class="chart" style="position: relative; height:50vh; width:960px">
+        <div class="chart" style="position: relative; height:50vh; width:80vw">
           <canvas id="myChart"></canvas>
           <script src='price_scripts.js'>   
 </script>
           </div>
               </div>
+          </div>
+          
 
-
-         
     </body>
 </html>

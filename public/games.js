@@ -18,7 +18,6 @@ function fetchData() {
                 <tr>
                     <th>${user.game_id}</th>
                     <td>${user.game_name}</td>
-                    <td>${user.release_date}</td>
                     <td>${user.free_to_play}</td>
                     <td>${user.player_population}</td>
                 </tr>

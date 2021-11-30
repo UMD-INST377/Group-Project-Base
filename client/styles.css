@@ -76,6 +76,10 @@ body {
     text-align: center;
 }
 
+.centertable{
+    justify-content: center;
+}
+
 .hscroll {
     background-color: lightblue;
     border: 1px solid black;

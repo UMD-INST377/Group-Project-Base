@@ -1,3 +1,8 @@
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+
 async function getVolcano() {
   const volcanoInfo = document.querySelector('.volcanoName');
 
@@ -37,6 +42,7 @@ function findMatches(wordToMatch, arrayName) {
 }
 
 window.onload = windowActions;
+
 
 function loadFile(event) {
   const image = document.getElementById('output');

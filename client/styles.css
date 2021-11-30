@@ -76,9 +76,10 @@ body {
 .hscroll {
     background-color: lightblue;
     border: 1px solid black;
-    height: 5000px;
-    width: 5000px;
-    overflow-x: scroll;
+    height: 1000px;
+    width: 1000px;
+    overflow-x: scroll;.
+    margin-left: 10px ;
 }
 
 

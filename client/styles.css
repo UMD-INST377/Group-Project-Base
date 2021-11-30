@@ -141,7 +141,7 @@ nav {
 }
 
 .results:hover {
-  background-color: rgb(0, 255, 200);
+  background-color: rgba(31, 44, 121, 0.8);
   display: inline-block;
   border-radius: 2px;
 }

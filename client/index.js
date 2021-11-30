@@ -40,7 +40,7 @@ async function getInfo() {
 
   // Request and Compile SONGS information
 //   const songsRequest = await fetch('http://localhost:3000/api/songs');
-  const songsRequest = await fetch('https://inst377-vinylwebs.herokuapp.com/api/songs')
+  const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/songs')
   const allSongs = await songsRequest.json();
 
   // Configure and Initialize Glide.js

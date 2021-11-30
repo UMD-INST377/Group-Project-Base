@@ -1,3 +1,4 @@
+
 const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 
@@ -41,3 +42,9 @@ function findMatches(wordToMatch, arrayName) {
 }
 
 window.onload = windowActions;
+
+
+function loadFile(event) {
+  const image = document.getElementById('output');
+  image.src = URL.createObjectURL(event.target.files[0]);
+}

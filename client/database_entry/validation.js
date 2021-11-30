@@ -350,13 +350,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
         postVinyl()
     });
 
-    const update = document.querySelector('.zf-updateColor')
+    const update = document.querySelector('.zf-update')
     update.addEventListener('click', (event) => {
         updated = true
         updateVinyl()
     });
 
-    const deleteAlbum = document.querySelector('.zf-deleteColor')
+    const deleteAlbum = document.querySelector('.zf-delete')
     deleteAlbum.addEventListener('click', (event) => {
         deleted = confirm("Are you sure you want to delete this vinyl from the database?")
         deleteVinyl()

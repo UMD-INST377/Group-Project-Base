@@ -10,7 +10,8 @@ const player = {
                 poistion_name=$GET['poisiton_name'], ppg=$GET['ppg'],
                 assists=$GET['assists'],name=$GET['name']`,
 
-  putPlayer: '',
+  putPlayer: `INSERT INTO players (player_name, ppg, assists, team)
+                VALUES ($GET['player_name'], $GET['ppg'], '$GET['assists']', $GET['team']);`,
 
   deletePlayer: `DELETE player FROM Positions JOIN players 
                   USING(poistion_id) JOIN Team

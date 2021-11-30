@@ -1,4 +1,3 @@
-
 /* eslint-disable block-spacing */
 
 // const { text } = require("body-parser");
@@ -356,7 +355,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         updated = true
         updateVinyl()
     });
-    
+
     const deleteAlbum = document.querySelector('.zf-delete')
     deleteAlbum.addEventListener('click', (event) => {
         deleted = confirm("Are you sure you want to delete this vinyl from the database?")
@@ -421,7 +420,7 @@ async function postVinyl() {
             });
 
         let singer_id_vinyl;
-        for(x = 0; x < singers.length; x++){
+        for (x = 0; x < singers.length; x++) {
             if (singers[x]['artist_name'] === texts[2].value) {
                 singer_id_vinyl = singers[x]['singer_id'];
                 break;
@@ -435,7 +434,7 @@ async function postVinyl() {
             });
 
         let producer_id_vinyl;
-        for(x = 0; x < producers.length; x++){
+        for (x = 0; x < producers.length; x++) {
             if (`${producers[x]['producer_fn']} ${producers[x]['producer_ln']}` === `${texts[3].value} ${texts[4].value}`) {
                 producer_id_vinyl = producers[x]['producer_id'];
                 break;
@@ -480,9 +479,16 @@ async function postVinyl() {
     }
 }
 
+
+async function updateVinyl() {
+    if (updated && currAlbum !== -1) {
+        console.log('here')
+            // Selecting all text inputs
+
 async function updateVinyl(){
     if(updated && currAlbum !== -1){
         // Selecting all text inputs
+
         const texts = document.querySelectorAll('input')
             /*
             1 Album Name
@@ -501,7 +507,7 @@ async function updateVinyl(){
             0 Genre
             1 Hour 2 Minute 3 Seconds
             */
-        
+
 
 
         // Gets singer_id for vinyl being updated
@@ -509,9 +515,9 @@ async function updateVinyl(){
             .then(function(response) {
                 return response.json();
             });
-        
+
         let singer_id_vinyl = -1;
-        for(x = 0; x < singers.length; x++){
+        for (x = 0; x < singers.length; x++) {
             if (singers[x]['artist_name'] === texts[2].value) {
                 console.log(singers[x]['singer_id'])
                 singer_id_vinyl = singers[x]['singer_id'];
@@ -521,19 +527,25 @@ async function updateVinyl(){
         
 
         // If singer doesn't already exists in table then it is posted into singers first
-        if(singer_id_vinyl === -1) {
+        if (singer_id_vinyl === -1) {
             // Separating inputs into array so they can be "stringified"
             const singerDict = { artist_name: texts[2].value };
+
+            singer_id_vinyl = singers.length
+                // Requesting POST for Singers table
+            const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers', {
+
             singer_id_vinyl = singers.length+1
             // Requesting POST for Singers table
             const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com//api/singers', {
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(singerDict)
             });
-            
+
         }
         console.log(singer_id_vinyl)
 
@@ -546,15 +558,21 @@ async function updateVinyl(){
             });
 
         let producer_id_vinyl = -1;
-        for(x = 0; x < producers.length; x++){
+        for (x = 0; x < producers.length; x++) {
             if (`${producers[x]['producer_fn']} ${producers[x]['producer_ln']}` === `${texts[3].value} ${texts[4].value}`) {
                 producer_id_vinyl = producers[x]['producer_id'];
                 break;
             }
         }
+
+
+        if (producer_id_vinyl === -1) {
+            producer_id_vinyl = producers.length
+
         
         if(producer_id_vinyl === -1){
             producer_id_vinyl = producers.length+1
+
             const producerDict = { producer_fn: texts[3].value, producer_ln: texts[4].value };
             // Requesting POST for Producers table
             const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com//api/producers', {
@@ -599,10 +617,10 @@ async function updateVinyl(){
     }
 }
 
-async function deleteVinyl(){
-    if(deleted && currAlbum !== -1) {
+async function deleteVinyl() {
+    if (deleted && currAlbum !== -1) {
         vinylDict = {
-            vinyl_id:currAlbum
+            vinyl_id: currAlbum
         }
 
         // Requesting PUT for Vinyl table
@@ -618,11 +636,11 @@ async function deleteVinyl(){
     }
 }
 
-async function albumExistsInteraction(albumName){
+async function albumExistsInteraction(albumName) {
     // Selecting various buttons at the bottom of the page
     const submitBtn = document.querySelector('.zf-submitColor')
-    const updateBtn = document.querySelector('.zf-update')
-    const deleteBtn = document.querySelector('.zf-delete')
+    const updateBtn = document.querySelector('.zf-submitColor')
+    const deleteBtn = document.querySelector('.zf-submitColor')
 
     // Getting vinyl table to compare to user's input so we can activate the update and delete buttons if the vinyl exists
     let found = false

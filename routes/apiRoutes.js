@@ -38,9 +38,15 @@ router.get('/hotel_amenities_join', async (req, res) => {
   console.log('you touched the hotel_amenities_join route');
 });
 
+//Hotel Overview Endpoints//
 router.get('/hotel_overview', async (req, res) => {
-  res.send('this is the hotel_overview page');
-  console.log('you touched the hotel_overview route');
+  try {
+    const hotels = await db.HotelOverview.findAll();
+    res.json(hotels);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
 });
 
 router.get('/hotel_type', async (req, res) => {

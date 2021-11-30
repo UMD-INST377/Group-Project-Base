@@ -21,9 +21,10 @@
   height: 100%;
   }
 .bar{
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: white;
+  width: 960px;
 }
 .content img {
   height: 300px;
@@ -69,6 +70,8 @@ form {
   margin-right: auto;
 }
 
-
+.price{
+  text-align: center;
+}
 
   

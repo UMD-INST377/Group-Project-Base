@@ -72,26 +72,15 @@ body {
     width: 100%;
 }
 
-.hscroll{
-    width: 100px;
-    height: 300px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
 
-.horizontal-scroll-wrapper > div {
-    width: 100px;
+.hscroll {
+    background-color: lightblue;
+    border: 1px solid black;
     height: 100px;
-  }
-
-.horizontal-scroll-wrapper {
-    transform: rotate(-90deg);
-    transform-origin: right top;
-  }  
-
-.horizontal-scroll-wrapper {
-    transform:rotate(-90deg) translateY(-100px);
+    width: 500px;
+    overflow-x: scroll;
 }
+
 
 h1 {
     font-size: 2rem;

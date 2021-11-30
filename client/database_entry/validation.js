@@ -479,12 +479,6 @@ async function postVinyl() {
     }
 }
 
-
-async function updateVinyl() {
-    if (updated && currAlbum !== -1) {
-        console.log('here')
-            // Selecting all text inputs
-
 async function updateVinyl(){
     if(updated && currAlbum !== -1){
         // Selecting all text inputs
@@ -534,7 +528,6 @@ async function updateVinyl(){
             singer_id_vinyl = singers.length+1
             // Requesting POST for Singers table
             const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com//api/singers', {
-
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

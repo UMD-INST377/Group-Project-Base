@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-//Example Comment 
+
 import db from '../database/initializeDB.js';
 import actor from '../controllers/actorController.js';
 import genre from '../controllers/genreController.js';
@@ -9,6 +9,7 @@ import film from '../controllers/filmController.js';
 
 const router = express.Router();
 
+/* Films */
 router.route('/film')
   .get(async (req, res) => {
     try {

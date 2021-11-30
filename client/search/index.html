@@ -8,7 +8,6 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
     <link rel="stylesheet" href="../styles.css" />
-    <script src="script.js" charset="utf-8"></script>
   </head>
 
   <body>
@@ -27,12 +26,12 @@
         <p>This is where you search for hotels.</p>
         <div class="field">
           <div class="control">
-            <input class="input" type="text" placeholder="Search...">
+            <input class="input" type="text" id="searchBar" name="searchBar" placeholder="Search...">
           </div>
         </div>
-        <div id="myData"></div>
-        <script src="searchscript.js" charset="utf-8"></script>
+        <ul id="hotelsList"></ul>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -127,3 +127,22 @@ nav {
   background-color:rgba(31, 44, 121, 0.8);
 }
 
+/* Search Results formatting*/
+#hotelsList {
+  padding-inline-start: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 20px;
+}
+
+.results {
+  background-color: rgb(190, 198, 248);
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.results:hover {
+  background-color: rgb(0, 255, 200);
+  display: inline-block;
+  border-radius: 2px;
+}

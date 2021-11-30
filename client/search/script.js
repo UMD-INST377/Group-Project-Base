@@ -30,10 +30,10 @@ const displayHotels = (hotels) => {
   const htmlString = hotels
     .map((hotel) => {
       return `
-            <li class="results">
+            <li class="results"><a href=#>
                 <ul>${hotel.hotel_name}</ul>
                 <ul>${hotel.street_address}</ul>
-            </li>
+            </a></li>
         `;
     })
     .join("");

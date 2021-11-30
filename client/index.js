@@ -2,7 +2,7 @@
 /* eslint-disable indent */
 
 async function getInfo() {
-  // Request and Compile VINYL Information
+  //Request and Compile VINYL Information
 //   const vinylRequest = await fetch('http://localhost:3000/api/vinyl');
   const vinylRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl');
   const allVinyl = await vinylRequest.json();
@@ -136,10 +136,6 @@ async function getInfo() {
       general_info_content.className = 'heading';
       if (vinyl[id].producer_ln) {
           general_info_content.innerHTML = `
-          <div class="edit-delete">
-                <a href="" target="_blank"><i class="fas fa-pencil-alt"></i></a>
-                <i class="far fa-trash-alt"></i>
-          </div>
           <div class="items">
               <div class="item">
                   <i class="fas fa-music"></i>
@@ -175,10 +171,6 @@ async function getInfo() {
           `;
       } else if (!vinyl[id].producer_ln) {
           general_info_content.innerHTML = `
-          <div class="edit-delete">
-                <a href="" target="_blank"><i class="fas fa-pencil-alt"></i></a>
-                <i class="far fa-trash-alt"></i>
-          </div>
           <div class="items">
               <div class="item">
                   <i class="fas fa-music"></i>

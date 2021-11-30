@@ -205,25 +205,6 @@ img {
     font-size: 22px;
 }
 
-.edit-delete {
-    margin-top: 10px;
-    margin-right: 10px;
-    text-align: right;
-}
-
-.fa-pencil-alt:hover {
-    transform: scale(1.3)   
-}
-
-.fa-pencil-alt:before{
-    color: black
-}
-
-.fa-trash-alt:hover {
-    transform: scale(1.3);
-    cursor: pointer
-} 
-
 .items {
     display: flex;
     justify-content: space-evenly;
@@ -406,21 +387,6 @@ td {
         font-size: 10px;
         padding: 16px 10px;
     }
-
-    .fa-pencil-alt {
-        position: absolute;
-        right: 60px;
-        cursor: pointer;
-        transform: scale(0.7)   
-    }
-    
-    .fa-trash-alt {
-        position: absolute;
-        right: 45px;
-        color: red;
-        cursor: pointer;
-        transform: scale(0.7) 
-    }
         
     .item {
         margin-top: 0px;
@@ -543,21 +509,6 @@ td {
         padding: 16px 10px;
     }
 
-    .fa-pencil-alt {
-        position: absolute;
-        right: 65px;
-        cursor: pointer;
-        transform: scale(0.7)   
-    }
-    
-    .fa-trash-alt {
-        position: absolute;
-        right: 50px;
-        color: red;
-        cursor: pointer;
-        transform: scale(0.7) 
-    }
-
     .item {
         margin-top: 0px;
     }
@@ -645,21 +596,6 @@ td {
     .search input:focus+.placeholder {
         top: 5px;
         font-size: 12px;
-    }
-
-    .fa-pencil-alt {
-        position: absolute;
-        right: 120px;
-        cursor: pointer;
-        transform: scale(0.8)   
-    }
-    
-    .fa-trash-alt {
-        position: absolute;
-        right: 100px;
-        color: red;
-        cursor: pointer;
-        transform: scale(0.8) 
     }
 
     .suggestion {

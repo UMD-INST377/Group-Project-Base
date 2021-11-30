@@ -531,10 +531,6 @@ async function updateVinyl(){
             // Separating inputs into array so they can be "stringified"
             const singerDict = { artist_name: texts[2].value };
 
-            singer_id_vinyl = singers.length
-                // Requesting POST for Singers table
-            const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers', {
-
             singer_id_vinyl = singers.length+1
             // Requesting POST for Singers table
             const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com//api/singers', {
@@ -565,14 +561,9 @@ async function updateVinyl(){
             }
         }
 
-
-        if (producer_id_vinyl === -1) {
-            producer_id_vinyl = producers.length
-
         
         if(producer_id_vinyl === -1){
             producer_id_vinyl = producers.length+1
-
             const producerDict = { producer_fn: texts[3].value, producer_ln: texts[4].value };
             // Requesting POST for Producers table
             const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com//api/producers', {

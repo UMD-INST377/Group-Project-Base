@@ -390,7 +390,7 @@ async function postVinyl() {
 
 
         // Requesting POST for Singers table
-        const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com//api/singers', {
+        const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -404,7 +404,7 @@ async function postVinyl() {
         const producerDict = { producer_fn: texts[3].value, producer_ln: texts[4].value };
 
         // Requesting POST for Producers table
-        const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com//api/producers', {
+        const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -414,7 +414,7 @@ async function postVinyl() {
         console.log(responseProducers);
 
         // Gets singer_id for vinyl being input
-        const singers = await fetch('https://inst377-vinylweb.herokuapp.com//api/singers')
+        const singers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers')
             .then(function(response) {
                 return response.json();
             });
@@ -428,7 +428,7 @@ async function postVinyl() {
         }
 
         // Gets producer_id for vinyl being input
-        const producers = await fetch('https://inst377-vinylweb.herokuapp.com//api/producers')
+        const producers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers')
             .then(function(response) {
                 return response.json();
             });
@@ -465,7 +465,7 @@ async function postVinyl() {
         };
 
         // Requesting POST for Vinyl table
-        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com//api/vinyl', {
+        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -505,7 +505,7 @@ async function updateVinyl(){
 
 
         // Gets singer_id for vinyl being updated
-        const singers = await fetch('https://inst377-vinylweb.herokuapp.com//api/singers')
+        const singers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers')
             .then(function(response) {
                 return response.json();
             });
@@ -527,7 +527,7 @@ async function updateVinyl(){
 
             singer_id_vinyl = singers.length+1
             // Requesting POST for Singers table
-            const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com//api/singers', {
+            const responseSingers = await fetch('https://inst377-vinylweb.herokuapp.com/api/singers', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -541,7 +541,7 @@ async function updateVinyl(){
 
 
         // Gets producer_id for vinyl being updated
-        const producers = await fetch('https://inst377-vinylweb.herokuapp.com//api/producers')
+        const producers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers')
             .then(function(response) {
                 return response.json();
             });
@@ -559,7 +559,7 @@ async function updateVinyl(){
             producer_id_vinyl = producers.length+1
             const producerDict = { producer_fn: texts[3].value, producer_ln: texts[4].value };
             // Requesting POST for Producers table
-            const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com//api/producers', {
+            const responseProducers = await fetch('https://inst377-vinylweb.herokuapp.com/api/producers', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -589,7 +589,7 @@ async function updateVinyl(){
         };
 
         // Requesting PUT for Vinyl table
-        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com//api/vinyl', {
+        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -608,7 +608,7 @@ async function deleteVinyl() {
         }
 
         // Requesting PUT for Vinyl table
-        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com//api/vinyl', {
+        const responseVinyl = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -628,7 +628,7 @@ async function albumExistsInteraction(albumName) {
 
     // Getting vinyl table to compare to user's input so we can activate the update and delete buttons if the vinyl exists
     let found = false
-    const vinylGet = await fetch('https://inst377-vinylweb.herokuapp.com//api/vinyl')
+    const vinylGet = await fetch('https://inst377-vinylweb.herokuapp.com/api/vinyl')
         .then(function(response) {
             return response.json();
         });

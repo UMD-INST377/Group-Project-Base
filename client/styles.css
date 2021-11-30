@@ -94,8 +94,8 @@ nav {
 .photo-grid-container .carousel .carousel_item img {
   width: 100%;
   max-width: 600px;
-  height: 400px;
-  width: 600px;
+  height: 300px;
+  width: 500px;
 }
 
 .photo-grid-container .carousel .carousel_item--visible {
@@ -144,4 +144,13 @@ nav {
   background-color: rgba(31, 44, 121, 0.8);
   display: inline-block;
   border-radius: 2px;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
 }

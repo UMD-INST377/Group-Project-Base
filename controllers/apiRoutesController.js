@@ -5,7 +5,7 @@ const player = {
                           USING(position_id) JOIN Team
                           USING(team_id);`,
 
-  postPlayer: '',
+  postPlayer: "",
 
   putPlayer: '',
 
@@ -13,4 +13,4 @@ const player = {
 
 };
 
-export default player
+export default player;

@@ -23,22 +23,22 @@
                     </div>
                     <div class="box is-two-fifths has-background-primary">
                         <div class="column is-centered">
-                            <form action="/api" method="get" class="column">
+                            <form action="/api/nba-players" method="post" class="column">
                                 <div class="column">
-                                    <label><h1><strong>Player name</strong></h1></label>
-                                    <input class="input is-small" type="text">
+                                    <label for="playername"><h1><strong>Player name</strong></h1></label>
+                                    <input class="input is-small" type="text" id="playername" name="playername">
                                 </div>
                                 <div class="column">
-                                    <label><h1><strong>PPG</strong></h1></label>
-                                    <input class="input is-small" type="text">
+                                    <label for="ppg"><h1><strong>PPG</strong></h1></label>
+                                    <input class="input is-small" type="text" id="ppg" name="ppg">
                                 </div>
                                 <div class="column">
-                                    <label><h1><strong>Assists</strong></h1></label>
-                                    <input class="input is-small" type="text">
+                                    <label for="assists"><h1><strong>Assists</strong></h1></label>
+                                    <input class="input is-small" type="text" id="assists" name="assists">
                                 </div>
                                 <div class="column">
-                                    <label><h1><strong>Team</strong></h1></label>
-                                    <input class="input is-small" type="text">
+                                    <label for="team"><h1><strong>Team</strong></h1></label>
+                                    <input class="input is-small" type="text" id="team" name="team">
                                 </div>
                                 <div class="column">
                                     <button class="button is-link has-background-danger"><h1><strong>Submit</strong></h1></button>

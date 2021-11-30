@@ -34,17 +34,38 @@ router.route('/nba-players')
   })
 
   .post(async (req, res) => {
-    const players = await db.sequelizeDB.findAll();
-    const currentId = (await players.length) + 1;
+    // const players = await db.sequelizeDB.findAll();
+    // const currentId = (await players.length) + 1;
+    // try {
+    //   const newPlayer = await db.sequelizeDB.query(player.postPlayer, {
+    //     type: sequelize.QueryTypes.INSERT
+    //   });
+    //   res.json(newPlayer);
+    // } catch (err) {
+    //   console.error(err);
+    //   res.error('Server error');
+    // }
+    console.log("bootay");
+
+    var playername = req.body.playername;
+    var ppg = req.body.ppg;
+    var assists = req.body.assists;
+    var team = req.body.team;
+
+    var postQuery = "INSERT INTO players (player_id, player_name, position_id, ppg, assists, team_id) VALUES ('" + playername + "', '" + ppg + "', '" + assists + "', '" + team + "');"
+
+    console.log(postQuery);
+
     try {
-      const newPlayer = await db.sequelizeDB.query(player.postPlayer, {
-        type: sequelize.QueryTypes.INSERT
-      });
-      res.json(newPlayer);
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
-    }
+        const newPlayer = await db.sequelizeDB.query(postQuery, {
+          type: sequelize.QueryTypes.INSERT
+        });
+        res.json(newPlayer);
+      } catch (err) {
+        console.error(err);
+      }
+
+
   })
   .delete(async (req, res) => {
     try {

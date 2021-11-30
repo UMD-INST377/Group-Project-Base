@@ -34,7 +34,7 @@ router.route('/price')
   })
   .post(async(req, res) => {
     try {
-      // S
+      // 
       const updatePrice = await db.sequelizeDB.query(
         price.post
       );
@@ -44,6 +44,28 @@ router.route('/price')
       res.json({error: 'Server error'});
     }
   })
+  // .post(async(req, res) => {
+  //   const price1 = await db.price.findAll();
+  //   const currentId = (await price1.length) + 1;
+  //   let explicitValue = true;
+  //   if (req.body.explicitInput) {
+  //     explicitValue = true;
+  //   } else {
+  //     explicitValue = false;
+  //   }
+  //   try {
+  //     const newprice = await db.price.create({
+  //       price_id: currentId,
+  //       price_description: req.body.price_description,
+  //       listed_price: req.body.listed_price,
+  //       explicit: explicitValue
+  //     });
+  //   }
+  //   catch (err) {
+  //     console.log(err);
+  //     res.json({error: 'Server error'});
+  //   }
+  // })
   .delete(async(req, res) => {
     try {
       const removePrice = await db.sequelizeDB.query(

@@ -39,8 +39,8 @@ async function getInfo() {
   }
 
   // Request and Compile SONGS information
-//   const songsRequest = await fetch('http://localhost:3000/api/songs');
-  const songsRequest = await fetch('https://inst377-vinylweb.herokuapp.com/api/songs')
+  const songsRequest = await fetch('http://localhost:3000/api/songs');
+//   const songsRequest = await fetch('https://inst377-vinylwebs.herokuapp.com/api/songs')
   const allSongs = await songsRequest.json();
 
   // Configure and Initialize Glide.js
@@ -446,6 +446,7 @@ async function getInfo() {
               if (evt.target.value) {
                   displayAlbum(evt.target.value);
                   const suggestions = document.querySelectorAll('.name');
+                      
                   suggestions.forEach((item) => {
                       const images = document.querySelectorAll('img');
 
@@ -458,7 +459,6 @@ async function getInfo() {
                                            transition-duration: 1s
                                             `;
                                   const image = images[vinyl[eachVinyl].vinyl_id - 1];
-                                    console.log(images)
                                   // Added CSS to the Selected Image(Album Cover)
                                   image.style.cssText = ` box-shadow: 33px 32px 0px -5px rgba(0,0,0,0.29);
                                         transform: scale(0.8);
@@ -493,7 +493,9 @@ async function getInfo() {
                   suggestions.forEach((item) => {
                       item.remove();
                   });
-              }
+              } 
+              
+              
           });
       }
   });
@@ -504,10 +506,9 @@ async function getInfo() {
       if (entry > 19) { // Album is New if ID is Above 19
         const albumName = vinyl[entry].album_name;
         const artistName = vinyl[entry].artist_name;
-        console.log(artistName)
         const cover = await fetch(`./api/albumCover/${albumName}/${artistName}`, {method: 'POST'});
         const coverAddress = await cover.json();
-
+        
         const glideCoverList = document.querySelector('.glide__slides')
         const newAlbum = document.createElement('li')
         newAlbum.className = 'glide__slide'

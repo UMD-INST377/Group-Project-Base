@@ -623,8 +623,8 @@ async function deleteVinyl() {
 async function albumExistsInteraction(albumName) {
     // Selecting various buttons at the bottom of the page
     const submitBtn = document.querySelector('.zf-submitColor')
-    const updateBtn = document.querySelector('.zf-submitColor')
-    const deleteBtn = document.querySelector('.zf-submitColor')
+    const updateBtn = document.querySelector('.zf-updateColor')
+    const deleteBtn = document.querySelector('.zf-deleteColor')
 
     // Getting vinyl table to compare to user's input so we can activate the update and delete buttons if the vinyl exists
     let found = false

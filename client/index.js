@@ -65,7 +65,7 @@ async function getInfo() {
         }
       }
   };
-
+  const glide = new Glide('.glide', config)
   // Initialize Elements
   const body = document.querySelector('body');
   const container = document.querySelector('.container');
@@ -504,6 +504,7 @@ async function getInfo() {
       if (entry > 19) { // Album is New if ID is Above 19
         const albumName = vinyl[entry].album_name;
         const artistName = vinyl[entry].artist_name;
+        console.log(artistName)
         const cover = await fetch(`./api/albumCover/${albumName}/${artistName}`, {method: 'POST'});
         const coverAddress = await cover.json();
 
@@ -520,8 +521,9 @@ async function getInfo() {
 
         glideCoverList.addEventListener('click', evt => {
             glide.go(`=${evt.target.id}`);
-        })
-      }
+        
+      })
+    }
   }
  
   // Select All the Images
@@ -544,7 +546,6 @@ async function getInfo() {
               lastClickedItem.splice(0, 2);
           }
           lastClickedItem.push(evt.target);
-          console.log(evt.target.id)
           container.style.cssText = `height: 50vh; 
                                transition-duration: 1s
                                   `;
@@ -637,7 +638,7 @@ async function getInfo() {
       }
   });
 
-  const glide = new Glide('.glide', config).mount();
+  glide.mount();
 }
 
 window.onload = getInfo();

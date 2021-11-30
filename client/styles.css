@@ -72,17 +72,21 @@ body {
     width: 100%;
 }
 
+.table-wrapper{
+    text-align: center;
+}
 
 .hscroll {
     background-color: lightblue;
     border: 1px solid black;
     height: 800px;
     width: 1800px;
-    overflow-x: scroll;.
+    overflow-x: scroll;
+    margin-top: 35px;
 }
 
 .tablemargins{
-    margin-left: 20px;
+    /*margin-left: 20px; */
 }
 
 h1 {

@@ -1,3 +1,4 @@
+
 async function windowActions() {
   const endpoint = '/api/eruption_info';
   const request = await fetch(endpoint);

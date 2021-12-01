@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* home page search bar */
+.container{
+    display: flex;
+    justify-content: center; 
+    padding: 10px;
+}
+
+
+.links{
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* featured picture */
+.picture-container{   
+    display: flex;
+    justify-content: center;  
+}
+
+.pic{
+    display: flex;
+ 
+    width: 500px;
+    height: 350px;
+    position: absolute;
+    margin:auto;
+    margin-top: 10px; 
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;  
+    margin:auto;
+    margin-top: 100px; 
+    
+}
+.input{
+    display: flex;
+    width:300px;
+    height:70px;
+    margin:auto;
+    border: 10px solid #fff;
+}
+/* six pictures position */
+.photo-grid-container{
+    display: flex;
+    justify-content: center;  
+    margin:auto;
+    margin-top: 370px; 
+}
+
+.photo-grid{
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.photo-grid-item{
+    border: 1px solid #fff;
+    display: flex;
+    width: 300px;
+    height: 300px;
+    margin:auto;
+    padding: 10px;
+}
+
+/*css for add_a_volcano input*/
+.volcano_form input{
+    margin-bottom: 17px;
+    border: 0px;
+}
+
+#activity-input{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+html {
+    height: 100%;
+}

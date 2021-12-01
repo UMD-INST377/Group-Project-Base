@@ -1,14 +1,339 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
 
+import aoaController from '../server/controllers/aoaController.js';
+
 const router = express.Router();
+
+/* eruption_aoa endpoint */
+router.route('/eruption_aoa')
+  .get(async(req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(aoaController.aoaGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      console.log('you touched the route!');
+      res.json({message: 'touched eruption_aoa with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      res.json({message: 'touched eruption_aoa with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      res.json({message: 'touched eruption_aoa with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      res.json({message: 'touched eruption_aoa with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
+
+/* eruption_category endpoint */
+router.route('/eruption_category')
+  .get(async(req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched eruption_category with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      res.json({message: 'touched eruption_category with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      res.json({message: 'touched eruption_category with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      res.json({message: 'touched eruption_category with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
+
+/* eruption_info endpoint */
+router.route('/eruption_info')
+  .get(async(req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(infoController.infoGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      console.log('you touched the route!');
+      res.json(result);
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(infoController.infoPut, {
+        replacements: {
+          eruption_id: req.body.eruption_id,
+          eruption_number: req.body.eruption_number,
+          year: req.body.year,
+          month: req.body.month,
+          day: req.body.day,
+          volcano_id: req.body.volcano_id,
+          aoa_id: req.body.aoa_id,
+          vei_id: req.body.vei_id,
+          evidence_id: req.body.evidence_id,
+          cagetory_id: req.body.cagetory_id,
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      console.log('Successfully updated eruption_info')
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(infoController.infoPost, {
+        replacements: {
+          eruption_number: req.body.eruption_number,
+          year: req.body.year,
+          month: req.body.month,
+          day: req.body.day,
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      console.log('Successfully inserted eruption_info')
+      res.json(result);
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(infoController.infoDelete, {
+        replacements: {
+          eruption_id: req.body.eruption_id,
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      console.log('Successfully deleted from eruption_info')
+      res.json(result);
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  });
+
+/* evidence endpoint */
+router.route('/evidence')
+  .get(async(req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched evidence with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      res.json({message: 'touched evidence with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      res.json({message: 'touched evidence with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      res.json({message: 'touched evidence with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
+
+/* references_table endpoint */
+router.route('/references_table')
+  .get(async(req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched references_table with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      res.json({message: 'touched references_table with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      res.json({message: 'touched references_table with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      res.json({message: 'touched references_table with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
 
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
+
+/* volcanos_has_references_table endpoint */
+router.route('/volcanos_has_references_table')
+  .get(async(req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched volcanos_has_references_table with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos_has_references_table with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos_has_references_table with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos_has_references_table with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
+
+/* vei endpoint */
+router.route('/vei')
+  .get(async(req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched vei with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      res.json({message: 'touched vei with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      res.json({message: 'touched vei with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      res.json({message: 'touched vei with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
+
+/* volcanos endpoint */
+router.route('/volcanos')
+  .get(async(req, res) => {
+    try {
+      console.log('you touched the route!');
+      res.json({message: 'touched volcanos with GET'});
+    } catch (err) {
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      res.json({message: 'touched volcanos with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'something went wrong!'});
+    }
+  });
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

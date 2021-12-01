@@ -22,49 +22,54 @@
         </div>
       </div>
     </nav>
-    <div class="home-container">
-      <div class="preferences-container">
-        <div id="pref-header"><h1 class="title">Set College Preferences</h1></div>
-        <hr>
-        <div class="metrics-layout">
-          <form class="metrics-form"><strong> Avg. SAT Score <br></strong>
-            <div>
-              <input type="radio" id="lower-scores" name="sat-scores" value="sat-score">
-                <label for="lower-scores"> < 1256</label><br>
-              <input type="radio" id="middle-scores" name="sat-scores" value="sat-score">
-                <label for="middle-scores">1256-1355</label><br>
-              <input type="radio" id="upper-scores" name="sat-scores" value="sat-score">
-                <label for="upper-scores">1356+</label><br>
+    <div class="columns home-container">
+      <div class="column">
+        <div class="preferences-container box">
+          <div id="pref-header"><h1 class="title">Set College Preferences</h1></div>
+          <hr>
+          <div class="metrics-layout">
+            <form class="metrics-form"><strong> Avg. SAT Score <br></strong>
+              <div>
+                <input type="radio" id="lower-scores" name="sat-scores" value="sat-score">
+                  <label for="lower-scores"> < 1256</label><br>
+                <input type="radio" id="middle-scores" name="sat-scores" value="sat-score">
+                  <label for="middle-scores">1256-1355</label><br>
+                <input type="radio" id="upper-scores" name="sat-scores" value="sat-score">
+                  <label for="upper-scores">1356+</label><br>
 
-            </div>
-          </form>
-          <form class="metrics-form"><strong> Test Scores Required <br></strong>
-            <div>
-              <input type="radio" id="yes" name="score-required" value="yes">
-                <label for="yes"> yes </label><br>
-              <input type="radio" id="no" name="score-required" value="no">
-                <label for="no">no</label><br>
+              </div>
+            </form>
+            <form class="metrics-form"><strong> Test Scores Required <br></strong>
+              <div>
+                <input type="radio" id="yes" name="score-required" value="yes">
+                  <label for="yes"> yes </label><br>
+                <input type="radio" id="no" name="score-required" value="no">
+                  <label for="no">no</label><br>
 
-            </div>
-          </form>
-          <form class="metrics-form"><strong> Acceptance Rate <br></strong>
-            <div>
-              <input type="radio" id="lower-acceptance-rate" name="acceptance-rate" value="lower">
-                <label for="lower-acceptance-rate"> < 55%</label><br>
-              <input type="radio" id="middle-acceptance-rate" name="acceptance-rate" value="middle">
-                <label for="middle-acceptance-rate">55-71%</label><br>
-              <input type="radio" id="upper-acceptance-rate" name="acceptance-rate" value="upper">
-                <label for="upper-acceptance-rate">72%+</label><br>
+              </div>
+            </form>
+            <form class="metrics-form"><strong> Acceptance Rate <br></strong>
+              <div>
+                <input type="radio" id="lower-acceptance-rate" name="acceptance-rate" value="lower">
+                  <label for="lower-acceptance-rate"> < 55%</label><br>
+                <input type="radio" id="middle-acceptance-rate" name="acceptance-rate" value="middle">
+                  <label for="middle-acceptance-rate">55-71%</label><br>
+                <input type="radio" id="upper-acceptance-rate" name="acceptance-rate" value="upper">
+                  <label for="upper-acceptance-rate">72%+</label><br>
 
-            </div>
-          </form>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-      <div class="suggestions-container">
-        <div id="sugg-header"><h1 class="title">Our BIG Suggestions</h1></div>
-        <div id="results-container">
-          <ul class="results">
-          </ul>
+      <div class="column">
+        <div class="suggestions-container box">
+          <div id="sugg-header">
+            <h1 class="title">Our BIG Suggestions</h1>
+          </div>
+          <div id="results-container">
+            <ul class="results"></ul>
+          </div>
         </div>
       </div>
     </div>

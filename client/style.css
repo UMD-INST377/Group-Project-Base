@@ -29,11 +29,7 @@ body {
 }
 
 .home-container {
-  display: flex;
-  background-color: rgb(140, 135, 135);
-  height: 100vh; /* height takes up whole page */
-  flex-grow: 1; /* width */
-  align-items: center;
+  background-color: #f2f2f2;
 }
 
 .preferences-container {
@@ -81,7 +77,7 @@ ul {
   padding: 10px;
 }
 
-.results li .uni-info{
+.results li .uni-info {
   margin-left: 30px;
 }
 
@@ -104,13 +100,12 @@ ul {
   background-color: lightblue;
   padding: 10px;
   border-radius: 20px;
-  width: 220px;
+  margin: 0 auto;
+  margin-top: 15px;
 }
 
-.metrics-layout {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+.metrics-form:first-of-type {
+  margin-top: 0;
 }
 
 .buttons {

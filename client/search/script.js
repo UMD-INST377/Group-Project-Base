@@ -14,7 +14,8 @@ searchBar.addEventListener("keyup", (e) => {
   const filteredHotels = hotelsOverview.filter((hotel) => {
     return (
       hotel.hotel_name.toLowerCase().includes(searchString) ||
-      hotel.street_address.toLowerCase().includes(searchString)
+      hotel.street_address.toLowerCase().includes(searchString) ||
+      hotel.city.toLowerCase().includes(searchString)
     );
   });
   displayHotels(filteredHotels);
@@ -31,6 +32,7 @@ const displayHotels = (hotels) => {
           <button type="submit" class="result" onclick="location.href='hotelInformation.html'">
                 <ul><strong>${hotel.hotel_name}</strong></ul>
                 <ul>${hotel.street_address}</ul>
+                <ul>${hotel.city}, ${hotel.zip_code} ${hotel.state}</ul>
             </a></li>
             </button>
             </input>

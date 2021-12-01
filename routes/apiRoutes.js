@@ -46,9 +46,9 @@ router.route('/nba-players')
 
   .delete(async (req, res) => {
     try {
-      await db.sequelizeDB.destroy({
-        where: {
-          player_id: req.params.player_id
+      await db.sequelizeDB.query(player.deletePlayer,{
+        replacements: {
+          player_id: req.body.player_id
         }
       });
       res.send('Successfully Deleted');
@@ -60,7 +60,7 @@ router.route('/nba-players')
   })
   .put(async (req, res) => {
     try {
-      await db.sequelizeDB.update(
+      await db.sequelizeDB.query(player.putPlayer,
         {
           ppg: req.body.ppg,
           assists: req.body.assists,

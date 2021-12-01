@@ -14,10 +14,6 @@ router.get('/', (req, res) => {
 /// //////////////////////////////////
 /// ///////NBA Database////////
 /// /////////////////////////////////
-const nbaPlayerQuery = `SELECT player_name, position_name, ppg, assists, name
-                        FROM Positions JOIN players
-                          USING(position_id) JOIN Team
-                          USING(team_id);`;
 
 router.route('/nba-players')
   .get(async (req, res) => {
@@ -34,39 +30,20 @@ router.route('/nba-players')
   })
 
   .post(async (req, res) => {
-    // const players = await db.sequelizeDB.findAll();
-    // const currentId = (await players.length) + 1;
-    // try {
-    //   const newPlayer = await db.sequelizeDB.query(player.postPlayer, {
-    //     type: sequelize.QueryTypes.INSERT
-    //   });
-    //   res.json(newPlayer);
-    // } catch (err) {
-    //   console.error(err);
-    //   res.error('Server error');
-    // }
-    console.log("bootay");
-
-    var playername = req.body.playername;
-    var ppg = req.body.ppg;
-    var assists = req.body.assists;
-    var team = req.body.team;
-
-    var postQuery = "INSERT INTO players (player_id, player_name, position_id, ppg, assists, team_id) VALUES ('" + playername + "', '" + ppg + "', '" + assists + "', '" + team + "');"
-
-    console.log(postQuery);
-
+    const players = await db.sequelizeDB.findAll();
+    const currentId = (await players.length) + 1;
     try {
-        const newPlayer = await db.sequelizeDB.query(postQuery, {
-          type: sequelize.QueryTypes.INSERT
-        });
-        res.json(newPlayer);
-      } catch (err) {
-        console.error(err);
-      }
-
-
+      const newPlayer = await db.sequelizeDB.query(player.postPlayer, {
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(newPlayer);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+    console.log(postQuery);
   })
+
   .delete(async (req, res) => {
     try {
       await db.sequelizeDB.destroy({

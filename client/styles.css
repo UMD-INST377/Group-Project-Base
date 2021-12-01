@@ -40,6 +40,12 @@ h1 {
     position: relative;
 }
 
+.mdflag img {
+    display: flex;
+    width:340px; /* you can use % */
+    height: auto;
+    padding-left: 290px;
+}
 
 .dropbtn {
     background-color: #3498DB;

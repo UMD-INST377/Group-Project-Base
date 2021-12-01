@@ -29,11 +29,7 @@ body {
 }
 
 .home-container {
-  display: flex;
-  background-color: rgb(140, 135, 135);
-  height: 100vh; /* height takes up whole page */
-  flex-grow: 1; /* width */
-  align-items: center;
+  background-color: #f2f2f2;
 }
 
 .preferences-container {
@@ -63,6 +59,12 @@ body {
   justify-content: center;
 }
 
+#results-container {
+  max-height: 100%;
+  overflow-y: auto;
+  margin: 0 -20px;
+}
+
 .results {
   flex-grow: 1;
 }
@@ -73,15 +75,10 @@ ul {
 }
 
 .results li {
-  margin: 50px;
-  background-color: white;
-  border-radius: 25px;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+  margin: 25px 15px;
 }
 
-.results li .uni-info{
+.results li .uni-info {
   margin-left: 30px;
 }
 
@@ -104,13 +101,12 @@ ul {
   background-color: lightblue;
   padding: 10px;
   border-radius: 20px;
-  width: 220px;
+  margin: 0 auto;
+  margin-top: 15px;
 }
 
-.metrics-layout {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+.metrics-form:first-of-type {
+  margin-top: 0;
 }
 
 .buttons {

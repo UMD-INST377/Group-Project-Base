@@ -4,6 +4,8 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
+import restaurantMapCustom from '../server/controllers/restaurantsController.js';
+
 const router = express.Router();
 // sample endpoint
 // router.route('/any table name we're using')

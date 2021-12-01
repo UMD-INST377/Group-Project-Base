@@ -1,9 +1,14 @@
+import { request } from "express";
+
 const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 
 async function windowActions() {
   /* const volcanoInfo = document.querySelector('.volcanoName = arryName'); */
   const data = await fetch('/api/volcanos');
+  const volcanoInfo = await request.json();
+  console.log(volcanoInfo)
+  
 
   /* const arrayName = await request.json();
   console.log(volcanoName); */

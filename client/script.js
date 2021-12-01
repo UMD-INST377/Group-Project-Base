@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import { request } from "express";
-=======
->>>>>>> e761248896961b0db85d798f7eabb96b9825572a
-
 const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 
@@ -10,8 +5,7 @@ async function windowActions() {
   /* const volcanoInfo = document.querySelector('.volcanoName = arryName'); */
   const data = await fetch('/api/volcanos');
   const volcanoInfo = await request.json();
-  console.log(volcanoInfo)
-  
+  console.log(volcanoInfo);
 
   /* const arrayName = await request.json();
   console.log(volcanoName); */
@@ -60,9 +54,3 @@ async function windowActions() {
 }
 
 window.onload = windowActions;
-
-
-function loadFile(event) {
-  const image = document.getElementById('output');
-  image.src = URL.createObjectURL(event.target.files[0]);
-}

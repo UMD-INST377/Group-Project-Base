@@ -1,1 +1,101 @@
-Hello world!
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Team Project: Basic Front End Turns On</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="styles.css"/>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <input class="input is-medium" type="text" placeholder="Search">
+                </div>
+
+                <div class="links">
+                    <div class="column">
+                        <nav class="navbar is-light" role="navigation" aria-label="dropdown navigation">
+
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">
+                                    Adv Search
+                                </a>
+                            
+                                <div class="navbar-dropdown">
+                                    <input class="navbar-item" type="text" placeholder="Minimum Size (meters)">
+                                    <input class="navbar-item" type="text" placeholder="Location (Country)">
+                                    <input class="navbar-item" type="text" placeholder="Year Range (xxxx-xxxx)">
+                                    <input class="navbar-item" type="text" placeholder="Volcano Explosivity Index">
+                                </div>
+                                <ul class='suggestions'></ul>
+                            </div>
+                        </nav>
+                    </div>
+                   
+                    <div class="column is-two-fifths">
+                        <nav class="navbar is-light" role="navigation" aria-label="dropdown navigation">
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">
+                                    Menu
+                                </a>
+                            
+                                <div class="navbar-dropdown">
+                                    <a class="navbar-item" href="index.html">Home</a>
+                                    <a class="navbar-item" href="about.html">About</a>            
+                                    <a class="navbar-item" href="Add_a_volcano.html">Add a Volcano</a>
+                                    <a class="navbar-item" href="dummy.html">Etc</a>   
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+
+
+            <div class="picture-container">
+                <div class="pic">
+                        <img src='images/Volcano.jpg'/>
+                </div>
+            </div>
+       
+
+            <div class='photo-grid-container'>
+                <div class='photo-grid'>
+                    
+                    <div class='photo-grid-item'>
+                        <img src='images/volcano-lrg.gif'/>
+                    </div>
+                    
+                    <div class='photo-grid-item'>
+                        <img src='images/main-qimg-0538f6ab990c2a59bc509b957c072708.png'/>
+                    </div>
+                    
+                    <div class='photo-grid-item'>
+                        <img src='images/hqdefault.jpg'/>
+                    </div>
+    
+                    <div class='photo-grid-item'>
+                        <img src='images/clouds-dawn-dusk-923228-5c7f1dd2c9e77c0001fd5ae2.jpg'/>
+                    </div>
+
+                    <div class='photo-grid-item'>
+                        <img src='images/volcano-features-earth-science-lesson-powerpoint-buld-a-volcano-51-638.webp'/>
+                    </div>
+    
+                    <div class='photo-grid-item'>
+                        <img src='images/image.adapt.960.high.chile_volcano_01a.jpg'/>
+                    </div>
+    
+                </div>
+            </div>
+            
+            
+            <script src="script.js"></script>
+              
+    </body>
+</html>

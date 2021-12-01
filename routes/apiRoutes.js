@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 import express from 'express';
-/*
-import sequelize, { QueryTypes } from 'sequelize';
-*/
+
+// import sequelize, { QueryTypes } from 'sequelize';
 
 import db from '../database/initializeDB.js';
 import foodInspectionVar from '../contollers/food_inspectionController.js';
+import establishmentController from '../contollers/putController.js';
 
 /*
 const fetch = require('node-fetch');
@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////   Food Inspection   ////////
 /// /////////////////////////////////
+/*
 router.route('/foodServicePG').get(async (req, res) => {
   try {
     const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
@@ -37,6 +38,7 @@ router.route('/foodServicePG').get(async (req, res) => {
   console.log(data);
   res.json(data);
 });
+*/
 
 router.get('/establishments/establishment_id', async (req, res) => {
   try {
@@ -52,8 +54,9 @@ router.get('/establishments/establishment_id', async (req, res) => {
 
 router.put('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query({
-      type: QueryTypes.SELECT
+    const businesses = await db.sequelizeDB.query(establishmentController.updateVar, { 
+      type: QueryTypes.update
+
     });
 
     res.json(businesses);

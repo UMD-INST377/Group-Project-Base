@@ -40,3 +40,8 @@ console.log(names)
   searchInput.addEventListener('keyup', (evt) => { displayMatches(evt); });
 }
 window.onload = windowActions;
+
+function loadFile(event) {
+  const image = document.getElementById('output');
+  image.src = URL.createObjectURL(event.target.files[0]);
+}

@@ -51,12 +51,13 @@
                 
                 <form action="api/volcanos" method="POST">
                 <div class = "column">
-                    <div class = "volcano_form" id="name-input"><input class="input" type="text" placeholder="Large input"></div>
-                    <div class = "volcano_form" id="date-input"><input class="input" type="text" placeholder="Large input"></div>
-                    <div class = "volcano_form" id="location-input"><input class="input" type="text" placeholder="Large input"></div>
-                    <div class = "volcano_form" id="location-input"><input class="input" type="text" placeholder="Large input"></div>
+                    <div class = "volcano_form" id="name-input"><input class="input" type="text" placeholder="Large input" name="volcano_name"></div>
+                    <div class = "volcano_form" id="date-input"><input class="input" type="text" placeholder="Large input" name="latitude"></div>
+                    <div class = "volcano_form" id="location-input"><input class="input" type="text" placeholder="Large input" name="longitude"></div>
+                    <div class = "volcano_form" id="location-input"><input class="input" type="text" placeholder="Large input" name="volcano_number"></div>
+                    <button type="submit">Submit</button>
                 </div>
-            </form>
+                </form>
 
                 <div class = "column">
                     <div id ="file-example" class="file has-name is-boxed">

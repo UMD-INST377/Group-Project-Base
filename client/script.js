@@ -1,12 +1,10 @@
-
 const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
-
 
 async function getVolcano() {
   const volcanoInfo = document.querySelector('.volcanoName');
 
-  const request = await fetch('/api/volcanos'); 
+  const request = await fetch('/api/volcanos');
 }
 
 function findMatches(wordToMatch, arrayName) {
@@ -27,7 +25,7 @@ function findMatches(wordToMatch, arrayName) {
         const regex = new RegExp(event.target.value, 'gi');
         const volcanoName = place.volcano_name;
         return `
-        
+
             <li>
                 <p class='name'>${volcanoName}<br/>
             </li>
@@ -41,13 +39,18 @@ function findMatches(wordToMatch, arrayName) {
   searchInput.addEventListener('keyup', (evt) => { displayMatches(evt); });
 }
 
-window.onload = windowActions;
-
-
 function loadFile(event) {
   const image = document.getElementById('output');
   image.src = URL.createObjectURL(event.target.files[0]);
 }
-const searchInput = document.querySelector('.search');
-const suggestions = document.querySelector('.suggestions');
+const asyncDemoFunction = async (str) => {
+  await waitfunc();
+  console.log(str);
+}
+async function getvolcanoinfo() {
+  const request = await fetch('/api/volcanos');
+  const tableData = await request.json();
+  console.table(tableData);
+}
 
+window.onload = getvolcanoinfo;

@@ -16,9 +16,7 @@ searchBar.addEventListener("keyup", (e) => {
 
 const loadHotels = async () => {
   try {
-    const res = await fetch(
-      "https://group4-final-inst377fa2021.herokuapp.com/api/hotel_overview"
-    );
+    const res = await fetch("https://group4-final-inst377fa2021.herokuapp.com/api/hotel_overview");
     hotelsOverview = await res.json();
     displayHotels(hotelsOverview);
   } catch (err) {
@@ -30,10 +28,16 @@ const displayHotels = (hotels) => {
   const htmlString = hotels
     .map((hotel) => {
       return `
-            <li class="results"><a href=#>
-                <ul>${hotel.hotel_name}</ul>
+          <form action="hotelInformation.html" method="get">
+          <input type="hidden" name="hotel_id" value="${hotel.hotel_id}">
+          <button type="submit" onclick="location.href='hotelInformation.html'">
+            <li class="results">
+                <ul><strong>${hotel.hotel_name}</strong></ul>
                 <ul>${hotel.street_address}</ul>
             </a></li>
+            </button>
+            </input>
+            </form>
         `;
     })
     .join("");

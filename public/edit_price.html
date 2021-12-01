@@ -12,7 +12,7 @@
   
   <body>
     <!-- Get Data -->
-    <p class="title is-1 is-spaced">Get Data</p>
+    <!-- <p class="title is-1 is-spaced">Get Data</p>
     <form class="box" id="get">
         <div class="field">
           <label class="label">Price_Id</label>
@@ -22,15 +22,15 @@
         </div>
         
         <button class="button is-primary">Get</button>
-    </form>
+    </form> -->
     <!-- Insert Data -->
     <p class="title is-1 is-spaced">Insert Data</p>
-    <form class="box" id="put">
+    <form action='/api/price' method='post'>
         <div class="field">
-          <label class="label">Price_Id</label>
+          <!-- <label class="label">Price_Id</label>
           <div class="control">
             <input class="input" type="text" placeholder="Price ID">
-          </div>
+          </div> -->
 
           <div class="field">
             <label class="label">Price Website</label>
@@ -46,10 +46,12 @@
         </div>
         
         <button class="button is-primary">Insert</button>
+        
     </form>
+    <script src='edit_price.js'></script>
     
     <!-- Update Data -->
-    <p class="title is-1 is-spaced">Update Data</p>
+    <!-- <p class="title is-1 is-spaced">Update Data</p>
     <form class="box" id="post">
         <div class="field">
           <label class="label">Price_Id</label>
@@ -71,24 +73,24 @@
         </div>
         
         <button class="button is-primary">Update</button>
-    </form>
+    </form> -->
        
      
 
 
     <!-- Delete Data -->
-    <p class="title is-1 is-spaced">Delete Data</p>
-    <form class="box" id="delete">
+    <!-- <p class="title is-1 is-spaced">Delete Data</p>
+    <form action='/api/price' method='remove'>>
         <div class="field">
           <label class="label">Price_Id</label>
           <div class="control">
             <input class="input" type="text" placeholder="Price ID">
           </div>
-        </div>
+        </div> -->
       
        
-        <button class="button is-primary">Delete</button>
-      </form>
+        <!-- <button class="button is-primary">Delete</button>
+      </form> -->
 
     
     

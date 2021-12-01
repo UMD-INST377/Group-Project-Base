@@ -5,11 +5,18 @@
 }
 
 html, body {
+    font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     height: 100%;
 }
 
 .navbar{
     border-radius: 10px;
+}
+
+.subtitle{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 135px;
 }
 
 .vinyl-grid{
@@ -41,3 +48,8 @@ img{
     border-radius: 10px;
 }
 
+.graphs{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}

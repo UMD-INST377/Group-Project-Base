@@ -1,4 +1,5 @@
 // Graphs
+// eslint-disable-next-line func-names
 window.onload = function() {
   const chart = new CanvasJS.Chart('pie-graph', {
     theme: 'light2', // "light1", "light2", "dark1", "dark2"

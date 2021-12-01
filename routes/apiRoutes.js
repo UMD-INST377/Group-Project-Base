@@ -1,67 +1,125 @@
 /* eslint-disable no-console */
-import express from 'express';
+import express, { response } from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
 
+/* import controllers -- we can use to replace previous import statements below. - Walesia */
+import controllers from '../server/controllers/controls.js';
+
+// /* import albumCustom controller(updates) */
+// import albumCustom from '../server/controllers/albumCustom.js';
+
+// /* import ratingUpdate controller - mirandavo */
+// import ratingUpdate from '../server/controllers/ratingUpdate.js';
+
+// /* Delete for controller Daniel Cutaneo */
+// import deleteCustom from '../server/controllers/deleteCustom.js';
+
+/* start router component */
 const router = express.Router();
 
+/* Root */
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  console.log('touched / using GET');
+
+  res.send('You have reached the root API endpoint!');
 });
 
-/// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
-/// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+/*
+* Music Database Endpoints below
+*/
+
+// Trying to get all songs from DB //
+router.get('/songs', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
+    /* Get all songs */
+    const songs = await db.sequelizeDB.query(controllers.songControls.getAllSongs, {
+      type: sequelize.QueryTypes.SELECT
+    });
+
+    /* Sending some data */
+    res.json(songs);
   } catch (err) {
+    /* Debugging */
     console.error(err);
-    res.error('Server error');
+
+    /* Sending some more data */
+    res.json({
+      status: 'Sorry, this failed.',
+      data: null,
+      message: 'Something went wrong here. Error.'
+    });
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+// Songs by song_id //
+router.get('/songs/:song_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    // console.log('touched songs/:song_id with GET')
+    // PREV - trying to get song_id from query, but that didn't work...
+    // const songID = await db.sequelizeDB.query(controllers.songControls.getSongsByID, {
+    //   where: {
+    //     song_id: req.params.song_id
+    //   }
+    // });
+    // res.json(songID);
+
+    // Using the Songs table from the original database instead. // 
+    const songs = await db.Songs.findAll({
       where: {
-        hall_id: req.params.hall_id
+        song_id: req.params.song_id
       }
     });
-
-    res.json(hall);
+    res.json(songs);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error({status: 'Something went wrong', data: null, message: 'Failed, error.'});
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
+router.post('/songs', async (req, res) => {
+  const halls = await db.songs.findAll();
   const currentId = (await halls.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newSong = await db.songs.create({
+      song_id: currentId,
+      song_name: req.body.song_name,
+      duration: req.body.song_duration,
+      genre_id: req.body.genre_id
     });
-    res.json(newDining);
+    res.json(newSong);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.put('/rating', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.ratingUpdate.update(
+      {
+        ratings: req.body.ratings
+      },
+      {
+        where: {
+          rating_id: req.body.rating_id
+        }
+      }
+    );
+    res.send('Rating Chart was Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/* Endpoint that is used to delete the song -Daniel Cutaneo */
+router.delete('/songs/:song_id', async (req, res) => {
+  try {
+    // Deletes the songs
+    await db.Songs.destroy({
       where: {
-        hall_id: req.params.hall_id
+        song_id: req.params.song_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,196 +129,10 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+/* Music endpoint that used imported albumCustom controller(Updates) */
+router.get('/album', async (req, res) => {
   try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/meals/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/meals', async (req, res) => {
-  try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/macros', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
-      where: {
-        restriction_id: req.params.restriction_id
-      }
-    });
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
+    const result = await db.sequelizeDB.query(controllers.albumCustom, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);
@@ -271,3 +143,17 @@ router.get('/custom', async (req, res) => {
 });
 
 export default router;
+
+/* Create songs table used imported songControls */
+
+router.get('/songsTable', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(songTable, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});

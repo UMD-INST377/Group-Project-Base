@@ -1,0 +1,29 @@
+h1 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+.title {
+    color:white;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 30px;
+    background-color: black;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    height: 50px;
+    width: 100%;
+    
+}
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .container {
+    width: 1200px;
+  }

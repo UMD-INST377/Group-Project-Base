@@ -3,236 +3,179 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import actor from '../controllers/actorController.js';
+import genre from '../controllers/genreController.js';
+import film from '../controllers/filmController.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
-});
+/* Films */
+router.route('/film')
+  .get(async (req, res) => {
+    try {
+      const movieData = await db.sequelizeDB.query(film.getFilm, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(movieData);
+      console.log(req);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .put(async (req, res) => {
+    try {
+      const movieData = await db.sequelizeDB.query(film.putFilm, {
+        replacements: {
+          name: req.body.name, id: req.body.id
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(movieData);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const movieData = await db.sequelizeDB.query(film.postFilm, {
+        replacements: {
+          name: req.body.name, id: req.body.id
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(movieData);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const movieData = await db.sequelizeDB.query(film.deleteFilm, {
+        replacements: {
+          id: req.body.id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(movieData);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Can\'t be deleted'});
+    }
+  });
+
+router.route('/genre')
+  .get(async (req, res) => {
+    try {
+      const movieGenres = await db.sequelizeDB.query(genre.getGenre, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(movieGenres);
+      console.log(req);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .put(async (req, res) => {
+    try {
+      const movieGenres = await db.sequelizeDB.query(genre.putGenre, {
+        replacements: {
+          name: req.body.name, id: req.body.id
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(movieGenres);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const movieGenres = await db.sequelizeDB.query(genre.postGenre, {
+        replacements: {
+          name: req.body.name, id: req.body.id
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(movieGenres);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Something went wrong'});
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const movieGenres = await db.sequelizeDB.query(genre.deleteGenre, {
+        replacements: {
+          id: req.body.id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(movieGenres);
+    } catch (error) {
+      console.log(error);
+      res.json({error: 'Can\'t be deleted'});
+    }
+  });
 
 router.route('/actor')
   .get(async (req, res) => {
     try {
-      console.log();
-      res.json({message: 'Touched the /actor with GET'});
+      const movieActors = await db.sequelizeDB.query(actor.getActor, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(movieActors);
+      console.log(req);
     } catch (error) {
       console.log(error);
-      res.json({message: 'Something went wrong'});
+      res.json({error: 'Something went wrong'});
     }
-  });
-  .post((req, res) => {
+  })
+  .put(async (req, res) => {
     try {
-      console.log();
-      res.json({message: 'Touched the /actor with POST'});
+      const movieActors = await db.sequelizeDB.query(actor.putActor, {
+        replacements: {
+          name: req.body.name, id: req.body.id
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(movieActors);
     } catch (error) {
       console.log(error);
-      res.json({message: 'Something went wrong'});
+      res.json({error: 'Something went wrong'});
     }
-  });
-  .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /actor with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
-  .put((req, res) => {
+  })
+  .post(async (req, res) => {
     try {
-      console.log();
-      res.json({message: 'Touched the /actor with PUT'});
+      const movieActors = await db.sequelizeDB.query(actor.postActor, {
+        replacements: {
+          name: req.body.name, id: req.body.id
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(movieActors);
     } catch (error) {
       console.log(error);
-      res.json({message: 'Something went wrong'});
+      res.json({error: 'Something went wrong'});
     }
-  });
-  router.route('/award')
-  .get(async (req, res) => {
+  })
+  .delete(async (req, res) => {
     try {
-      console.log();
-      res.json({message: 'Touched the /award with GET'});
+      const movieActors = await db.sequelizeDB.query(actor.deleteActor, {
+        replacements: {
+          id: req.body.id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(movieActors);
     } catch (error) {
       console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .post((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /award with POST'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /award with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
-  .put((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /award with PUT'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
+      res.json({error: 'Can\'t be deleted'});
     }
   });
 
-router.route('/director')
-  .get(async (req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /director with GET'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .post((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /director with POST'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /director with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
-  .put((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /director with PUT'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  router.route('/film')
-  .get(async (req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /film with GET'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .post((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /film with POST'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /film with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
-  .put((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /film with PUT'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-
-  router.route('/studio')
-  .get(async (req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /studio with GET'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .post((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /studio with POST'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /studio with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
-  .put((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /studio with PUT'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-
-  router.route('/writer')
-  .get(async (req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /writer with GET'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .post((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /writer with POST'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-  .delete((req, res) => {
-      try {
-        console.log();
-        res.json({message: 'Touched the /writer with DELETE'});
-      } catch (error) {
-        console.log(error);
-        res.json({message: 'Something went wrong'});
-      }
-    });
-  .put((req, res) => {
-    try {
-      console.log();
-      res.json({message: 'Touched the /writer with PUT'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
-
+export default router;

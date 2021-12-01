@@ -105,7 +105,7 @@ router.route('/vinyl')
   });
 
 // Minghao's routes to the prices endpoint which would map to the "prices" table of our SQL DB
-import prices_table from '../sever/controllers/pricescontroller';
+/* import prices_table from '../sever/controllers/pricescontroller';
 router.route('/prices')
     .get(async(req,res) =>{
         try{
@@ -149,8 +149,7 @@ router.route('/prices')
           average_discog = req.body.average_discog,
           lowerst_discog = req.body.lowerest_discog,
           highest_amazon = req.body.highest_amazon
-        });   
-        
+        });
         }
         catch(err){
             console.log(error);
@@ -166,6 +165,6 @@ router.route('/prices')
             res.json({error:"Oops Error!"});
         }
     });
-
+*/
 
 export default router;

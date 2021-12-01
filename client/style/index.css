@@ -701,3 +701,15 @@ td {
     }
 }
 
+@media only screen and (min-width: 1440px)  {
+    img {
+        max-height: 225px;
+        max-width: 225px;
+    }
+    .search-result {
+        width: 20.3vw;
+        top: 7.1vh;
+        left: 2.7vw
+    }
+
+}

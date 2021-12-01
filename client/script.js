@@ -1,5 +1,5 @@
 
-/* const searchInput = document.querySelector('.search');
+/* 12const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 
 /*

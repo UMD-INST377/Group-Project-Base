@@ -75,12 +75,7 @@ ul {
 }
 
 .results li {
-  margin: 50px;
-  background-color: white;
-  border-radius: 25px;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+  margin: 25px 15px;
 }
 
 .results li .uni-info {

@@ -21,11 +21,18 @@ function displaySuggestions(event){
   const html = filterData.map((item) => // return filtered school data as list items
      `
     <li>
-      <div class="uni-info">
-        <h1><b><strong>${item.university_name}</strong></b></h1>
-        <p>${item.univ_location}</p></div>
-      <div class="read-more">
-        <h3><a href="/university/${item.testscore_id}/">Read More</a></h3>
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">${item.university_name}</p>
+              <p class="subtitle is-6">${item.univ_location}</p>
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="/university/${item.testscore_id}/" class="card-footer-item">Read More</a>
+        </footer>
       </div>
     </li>
     `

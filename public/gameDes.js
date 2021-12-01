@@ -32,9 +32,9 @@ async function windowActions() {
           return `
 
           <ul>
-            <li><div><strong>ID: ${result.range_game_id}</strong></div></li>
-            <div>Listed Price: ${result.listed_price}</div>
-            <div>${result.price_website}</div>
+            <li class="game-id">ID: ${result.range_game_id}</li>
+            <li>Listed Price: ${result.listed_price}</l>
+            <li>${result.price_website}</li>
             
           </ul>
           <br></br>

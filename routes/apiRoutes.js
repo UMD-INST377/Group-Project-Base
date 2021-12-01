@@ -4,6 +4,13 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 import aoaController from '../server/controllers/aoaController.js';
+import volcanosController from '../server/controllers/volcanosController.js';
+import EvidenceController from '../server/controllers/EvidenceController.js';
+import volcanosHasReferencesController from '../server/controllers/volcanosHasReferencesController.js';
+// eslint-disable-next-line import/no-named-as-default
+import eruptionCategoryController from '../server/controllers/eruptionCategoryController.js';
+import veiController from '../server/controllers/veiController.js';
+import infoController from '../server/controllers/infoController.js';
 
 const router = express.Router();
 
@@ -15,33 +22,49 @@ router.route('/eruption_aoa')
         type: sequelize.QueryTypes.SELECT
       });
       console.log('you touched the route!');
-      res.json({message: 'touched eruption_aoa with GET'});
+      res.json(result);
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
   })
   .put(async(req, res) => {
     try {
-      res.json({message: 'touched eruption_aoa with PUT'});
+      const result = await db.sequelizeDB.query(aoaController.aoaPut, {
+        replacements: {
+          aoa_id: req.body.aoa_id,
+          aoa: req.body.aoa
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      console.log('Successfully updated eruption_aoa')
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
-
   .post(async(req, res) => {
     try {
-      res.json({message: 'touched eruption_aoa with POST'});
+      const result = await db.sequelizeDB.query(aoaController.aoaPost, {
+        replacements: {aoa: req.body.aoa},
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
+      console.log('Successfully inserted into eruption_aoa')
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
   .delete(async(req, res) => {
     try {
-      res.json({message: 'touched eruption_aoa with DELETE'});
+      const result = await db.sequelizeDB.query(aoaController.aoaDelete, {
+        replacements: {
+          aoa_id: req.body.aoa_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+      console.log('Successfully deleted from eruption_aoa')
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   });
@@ -50,34 +73,54 @@ router.route('/eruption_aoa')
 router.route('/eruption_category')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(eruptionCategoryController.categoryGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('you touched the route!');
-      res.json({message: 'touched eruption_category with GET'});
+      res.json(result);
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
   })
   .put(async(req, res) => {
     try {
-      res.json({message: 'touched eruption_category with PUT'});
+      const result = await db.sequelizeDB.query(eruptionCategoryController.categoryPut, {
+        replacements: {
+          category_id: req.body.category_id,
+          category: req.body.category
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      console.log('Successfully updated eruption_category')
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
 
   .post(async(req, res) => {
     try {
-      res.json({message: 'touched eruption_category with POST'});
+      const result = await db.sequelizeDB.query(eruptionCategoryController.categoryPost, {
+        replacements: {category: req.body.category},
+        type: sequelize.QueryTypes.INSERT
+      });
+      console.log('Successfully inserted into eruption_category')
+      res.json(result);
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
   .delete(async(req, res) => {
     try {
-      res.json({message: 'touched eruption_category with DELETE'});
+      const result = await db.sequelizeDB.query(eruptionCategoryController.categoryDelete, {
+        replacements: {
+          category_id: req.body.category_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      console.log('Successfully deleted from eruption_category')
+      res.json(result);
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   });
@@ -118,7 +161,6 @@ router.route('/eruption_info')
       res.json({error: 'something went wrong!'});
     }
   })
-
   .post(async(req, res) => {
     try {
       const result = await db.sequelizeDB.query(infoController.infoPost, {
@@ -155,6 +197,10 @@ router.route('/eruption_info')
 router.route('/evidence')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(EvidenceController.evGet,{
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
       console.log('you touched the route!');
       res.json({message: 'touched evidence with GET'});
     } catch (err) {
@@ -163,7 +209,15 @@ router.route('/evidence')
   })
   .put(async(req, res) => {
     try {
-      res.json({message: 'touched evidence with PUT'});
+      const result = await db.sequelizeDB.query(EvidenceController.evPut, {
+        replacements: {
+          evidence_id :req.body.evidence_id,
+          method: req.body.method
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      res.json({message: 'Successfully updated Evidence'});
     } catch (err) {
       console.log(error);
       res.json({error: 'something went wrong!'});
@@ -172,6 +226,11 @@ router.route('/evidence')
 
   .post(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(EvidenceController.evPost, {
+        replacements: {method: req.body.method},
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
       res.json({message: 'touched evidence with POST'});
     } catch (err) {
       console.log(error);
@@ -180,6 +239,13 @@ router.route('/evidence')
   })
   .delete(async(req, res) => {
     try {
+      const result = db.sequelizeDB.query(EvidenceController.evDelete,{
+        replacements: {
+          evidence_id: req.body.evidence_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
       res.json({message: 'touched evidence with DELETE'});
     } catch (err) {
       console.log(error);
@@ -231,34 +297,62 @@ router.get('/', (req, res) => {
 router.route('/volcanos_has_references_table')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('you touched the route!');
-      res.json({message: 'touched volcanos_has_references_table with GET'});
+      res.json(result);
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
   })
+  /* TO DEBUG 
+     put does not work at all due to some foreign key limition and 
+     post works out of order and u have to specifiy topic_id which shouldnt happen 
   .put(async(req, res) => {
     try {
-      res.json({message: 'touched volcanos_has_references_table with PUT'});
+      const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicPut, {
+        replacements: {
+          topic_id: req.body.topic_id,
+          volcanos_volcano_id: req.body.volcanos_volcano_id,
+          references_table_reference_id: req.body.references_table_reference_id
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      console.log('Sucessfully updated volcanos_has_references_table')
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
 
   .post(async(req, res) => {
     try {
-      res.json({message: 'touched volcanos_has_references_table with POST'});
+      const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicPost, {
+        replacements: {
+          volcanos_volcano_id: req.body.volcanos_volcano_id,
+          references_table_reference_id: req.body.references_table_reference_id
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
+      console.log('Sucessfully inserted into volcanos_has_references_table');
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
+  */
   .delete(async(req, res) => {
     try {
-      res.json({message: 'touched volcanos_has_references_table with DELETE'});
+      const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicDelete, {
+        replacements: {
+          topic_id: req.body.topic_id,
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+      console.log('Sucessfully deleted from volcanos_has_references_table');
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   });
@@ -267,32 +361,52 @@ router.route('/volcanos_has_references_table')
 router.route('/vei')
   .get(async(req, res) => {
     try {
-      console.log('you touched the route!');
-      res.json({message: 'touched vei with GET'});
+      const result = await db.sequelizeDB.query(veiController.veiGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      console.log('Received a GET HTTP method');
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
   })
   .put(async(req, res) => {
     try {
-      res.json({message: 'touched vei with PUT'});
+      const result = await db.sequelizeDB.query(veiController.veiPut, {
+        replacements: {
+          vei_id: req.body.vei_id,
+          vei: req.body.vei
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      console.log('Successfully updated vei')
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
-
   .post(async(req, res) => {
     try {
-      res.json({message: 'touched vei with POST'});
+      const result = await db.sequelizeDB.query(veiController.veiPost, {
+        replacements: {vei: req.body.vei},
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
+      console.log('Successfully inserted into vei');
     } catch (err) {
-      console.log(error);
       res.json({error: 'something went wrong!'});
     }
   })
   .delete(async(req, res) => {
     try {
-      res.json({message: 'touched vei with DELETE'});
+      const result = await db.sequelizeDB.query(veiController.veiDelete, {
+        replacements: {
+          vei_id: req.body.vei_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+      console.log('Received a DELETE HTTP method');
     } catch (err) {
       console.log(error);
       res.json({error: 'something went wrong!'});
@@ -303,15 +417,29 @@ router.route('/vei')
 router.route('/volcanos')
   .get(async(req, res) => {
     try {
+      const result = await db.sequelizeDB.query(volcanosController.volcanosGet, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('you touched the route!');
-      res.json({message: 'touched volcanos with GET'});
+      res.json(result);
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
   })
   .put(async(req, res) => {
     try {
-      res.json({message: 'touched volcanos with PUT'});
+      const result = await db.sequelizeDB.query(volcanosController.volcanosPut, {
+        replacements: {
+          volcano_id: req.body.volcano_id,
+          volcano_name: req.body.volcano_name,
+          latitude: req.body.latitude,
+          longitude: req.body.longitude,
+          volcano_number: req.body.volcano_name
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      console.log('Successfully updated volcanos')
     } catch (err) {
       console.log(error);
       res.json({error: 'something went wrong!'});
@@ -320,20 +448,92 @@ router.route('/volcanos')
 
   .post(async(req, res) => {
     try {
-      res.json({message: 'touched volcanos with POST'});
+      const result = await db.sequelizeDB.query(volcanosController.volcanosPost, {
+        replacements: {
+          volcano_name: req.body.volcano_name,
+          latitude: req.body.latitude,
+          longitude: req.body.longitude,
+          volcano_number: req.body.volcano_name
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
+      console.log('Successfully inserted in volcanos');
     } catch (err) {
-      console.log(error);
-      res.json({error: 'something went wrong!'});
+      console.log(err);
+      res.json({err: 'something went wrong!'});
     }
   })
   .delete(async(req, res) => {
     try {
-      res.json({message: 'touched volcanos with DELETE'});
+      const result = await db.sequelizeDB.query(volcanosController.volcanosGet, {
+        replacements: {
+          volcano_id: req.body.volcano_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+      console.log('Successfully deleted from volcanos')
     } catch (err) {
       console.log(error);
       res.json({error: 'something went wrong!'});
     }
   });
+
+//   /* eruption_aoa endpoint */
+// router.route('/eruption_aoa')
+// .get(async(req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(aoaController.aoaGet, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     console.log('you touched the route!');
+//     res.json(result);
+//   } catch (err) {
+//     res.json({error: 'something went wrong!'});
+//   }
+// })
+// .put(async(req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(aoaController.aoaPut, {
+//       replacements: {
+//         aoa_id: req.body.aoa_id,
+//         aoa: req.body.aoa
+//       },
+//       type: sequelize.QueryTypes.UPDATE
+//     });
+//     res.json(result);
+//     console.log('Successfully updated eruption_aoa')
+//   } catch (err) {
+//     res.json({error: 'something went wrong!'});
+//   }
+// })
+// .post(async(req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(aoaController.aoaPost, {
+//       replacements: {aoa: req.body.aoa},
+//       type: sequelize.QueryTypes.INSERT
+//     });
+//     res.json(result);
+//     console.log('Successfully inserted into eruption_aoa')
+//   } catch (err) {
+//     res.json({error: 'something went wrong!'});
+//   }
+// })
+// .delete(async(req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(aoaController.aoaDelete, {
+//       replacements: {
+//         aoa_id: req.body.aoa_id
+//       },
+//       type: sequelize.QueryTypes.DELETE
+//     });
+//     res.json(result);
+//     console.log('Successfully deleted from eruption_aoa')
+//   } catch (err) {
+//     res.json({error: 'something went wrong!'});
+//   }
+// });
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

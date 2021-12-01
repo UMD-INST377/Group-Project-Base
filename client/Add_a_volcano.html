@@ -5,6 +5,7 @@
         <title>Team Project: Basic Front End Turns On</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
         <link rel="stylesheet" href="styles.css"/>
+        
     </head>
 
     <Body>
@@ -38,52 +39,30 @@
                         Volcano Name
                     </div>
                     <div class="box" style="width: 300px;">
-                        Date
+                        Latitude
                     </div>
                     <div class="box" style="width: 300px;">
-                        Location
+                        Longitude
                     </div>
                     <div class="box" style="width: 300px;">
-                        Activity
-                    </div>
-                    <div class="box" style="width: 300px;">
-                        AOA (Area of Activity)
-                    </div>
-                    <div class="box" style="width: 300px;">
-                        VEI (Volcano Explosivity index)
-                    </div>
-                    <div class="box" style="width: 300px;">
-                        Eruption Category
-                    </div>
-                    <div class="box" style="width: 300px;">
-                        Eruption Evidence
+                        Volcano Number
                     </div>
                 </div>
                 
+                <form action="api/volcanos" method="POST">
                 <div class = "column">
-                    <div class = "volcano_form" id="name-input"><input class="input" type="text" placeholder="Large input"></div>
-                    <div class = "volcano_form" id="date-input"><input class="input" type="text" placeholder="Large input"></div>
-                    <div class = "volcano_form" id="location-input"><input class="input" type="text" placeholder="Large input"></div>
-                    <div class = "volcano_form" id="activity-input"><div class="control">
-                        <label class="radio">
-                          <input type="radio" name="answer">
-                          Active
-                        </label>
-                        <label class="radio">
-                          <input type="radio" name="answer">
-                          Inactive
-                        </label>
-                      </div></div>
-                    <div class = "volcano_form" id="aoa-input"><input class="input" type="text" placeholder="Large input"></div>
-                    <div class = "volcano_form" id="vei-input"><input class="input" type="text" placeholder="Large input"></div>
-                    <div class = "volcano_form" id="category-input"><input class="input" type="text" placeholder="Large input"></div>
-                    <div class = "volcano_form" id="evidence-input"><textarea class="textarea"></textarea></div>
+                    <div class = "volcano_form" id="name-input"><input class="input" type="text" placeholder="Large input" name="volcano_name"></div>
+                    <div class = "volcano_form" id="date-input"><input class="input" type="text" placeholder="Large input" name="latitude"></div>
+                    <div class = "volcano_form" id="location-input"><input class="input" type="text" placeholder="Large input" name="longitude"></div>
+                    <div class = "volcano_form" id="location-input"><input class="input" type="text" placeholder="Large input" name="volcano_number"></div>
+                    <button type="submit">Submit</button>
                 </div>
+                </form>
 
                 <div class = "column">
-                    <div class="file has-name is-boxed">
-                        <label class="file-label">
-                          <input class="file-input" type="file" name="resume">
+                    <div id ="file-example" class="file has-name is-boxed">
+                        <label for="file" class="file-label" style="cursor: pointer;">
+                          <input id = "file" class="file-input" type="file" accept ="image/*" name="resume" onchange="loadFile(event)" style="display: none;">
                           <span class="file-cta">
                             <span class="file-icon">
                               <i class="fas fa-upload"></i>
@@ -96,10 +75,13 @@
                             Image of volcano
                           </span>
                         </label>
+                        <p><img id="output" width="500"/></p>
                       </div>
                 </div>
+                <div id = "table"></div>
             </div>
-            
         </div>
     </div>
+    <script src="script.js"></script>
     </Body>
+</html>

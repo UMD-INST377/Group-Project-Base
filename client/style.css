@@ -59,6 +59,12 @@ body {
   justify-content: center;
 }
 
+#results-container {
+  max-height: 100%;
+  overflow-y: auto;
+  margin: 0 -20px;
+}
+
 .results {
   flex-grow: 1;
 }

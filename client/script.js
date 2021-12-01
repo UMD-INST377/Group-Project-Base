@@ -25,11 +25,11 @@ function displaySuggestions(event){
         <h1><b><strong>${item.university_name}</strong></b></h1>
         <p>${item.univ_location}</p></div>
       <div class="read-more">
-        <h3><a href="/university/4/">Read More</a></h3>
+        <h3><a href="/university/${item.testscore_id}/">Read More</a></h3>
       </div>
     </li>
     `
-  ).join(''); 
+  ).join('');
 
   const suggestions = document.querySelector('.results');
   suggestions.innerHTML = html;
@@ -54,8 +54,8 @@ async function initSATRadioButtons() {
     middleScoreButton.addEventListener('change', displaySuggestions);
     lowerScoreButton.addEventListener('change', displaySuggestions);
   } else {
-    console.log('messed up'); 
-  } 
+    console.log('messed up');
+  }
 }
 
 initSATRadioButtons();

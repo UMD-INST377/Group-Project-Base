@@ -40,26 +40,83 @@ body {
     border-radius: 10px;
 } */
 
-.card{
-    margin: auto;
-    width: 400px;
-    padding-bottom: 30px;
+/*
+////////////////////////////
+/ Objective & Tech Specs /
+////////////////////////////
+*/
+@media only screen and (max-width: 918px){
+    .top-headings{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 2%;
+    }
+    
+    .tech-specs-section{
+        display: flex;
+        flex-direction: column;
+        margin: 2%;
+    }
+
+    .tech-specs{
+        display: flex;
+        flex-direction: row;
+        margin-left: 2%;
+        margin-right: 2%;
+        flex-wrap: wrap;
+    }
+
+    .front-end, .back-end {
+        margin: 2%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .objective{
+        margin: 2%;
+        font-size: x-large;
+        background-color: #002642;
+    }
 }
 
-@media screen and (max-width: 650px) {
-    .col {
-      width: 100%;
-      display: block;
+@media only screen and (min-width: 919px){
+    .top-headings{
+        display: flex;
+        margin: 2%;
     }
-  }
+    
+    .tech-specs-section{
+        display: flex;
+        flex-direction: column;
+        margin: 2%;
+    }
+    
+    .tech-specs{
+        display: flex;
+        flex-direction: column;
+        margin-left: 2%;
+        margin-right: 2%;
+        flex-wrap: wrap;
+    }
+
+    .front-end, .back-end {
+        margin: 2%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .objective{
+        margin: 2%;
+        font-size: x-large;
+    }
+}
 
 
-.col {
-    float: left;
-    width: 33.3%;
-    margin-bottom: 16px;
-    padding: 0 8px;
-  }
+/*
+////////////
+/ OUR TEAM /
+////////////
+*/
 
 .gh{
     height: 80px;
@@ -82,7 +139,97 @@ body {
 }
 
 .links{
-    padding-top: 20px;
+    position: relative;
+    margin-bottom: auto;
     display: flex;
     justify-content: space-around;
+    align-content: bottom;
+}
+
+.team{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+@media only screen and (max-width: 750px){
+    .card {
+        padding: 2%;
+        margin: 4%;
+        flex-grow: 1;
+        flex-basis: 88%;
+        
+        display: flex;
+        flex-direction: column;
+        }
+
+    .card img{
+        max-width: 100%;
+    }
+
+    .content{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+@media only screen and (min-width: 751px){
+    .card {
+        padding: 2%;
+        margin: 4%;
+        flex-grow: 1;
+        flex-basis: 38%;
+      
+        display: flex;
+        flex-direction: column;
+      }
+
+    .card img{
+        max-width: 100%;
+    }
+    
+    .content{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+@media only screen and (min-width: 1201px){
+    .card {
+        padding: 2%;
+        margin: 4%;
+        flex-grow: 1;
+        flex-basis: 24.33%;
+        
+        display: flex;
+        flex-direction: column;
+        }
+
+    .card img{
+        max-width: 100%;
+    }
+
+    .content{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+.has-background-independence{
+    background-color: #414361;
+}
+
+.has-background-shadow-blue{
+    background-color: #8499b1;
+}
+
+.has-background-space-cadet{
+    background-color: #2A2D43;
+}
+
+.has-background-amaranth-red{
+    background-color: #D72638;
+}
+
+.has-background-shimmering-blush {
+    background-color: #ffd4ca;
 }

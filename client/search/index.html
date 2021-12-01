@@ -23,10 +23,31 @@
         </nav>
         
         <div class="box">
+<<<<<<< Updated upstream
         <p>This is where you search for hotels. Start typing below to search.</p>
+=======
+          <div class="filterdiv">
+            <div><p>This is where you search for hotels.</p></div>
+            <div id="myBtnContainer">
+              <div class="filterdiv">
+                <div><p>Filters : &nbsp</p></div>
+                <div>
+                  <button id="showAllbtn" class="btn1 active" onclick="filterSelection('all')"> Show all</button>
+                  <button class="btn1" onclick="filterSelection('beachside')"> beachside</button>
+                  <button class="btn1" onclick="filterSelection('family_friendly')"> family_friendly</button>
+                  <button class="btn1" onclick="filterSelection('pet_friendly')"> pet_friendly</button>
+                </div>
+              </div>
+              
+              
+            </div>
+            
+          </div>
+        
+>>>>>>> Stashed changes
         <div class="field">
           <div class="control">
-            <input class="input" type="text" id="searchBar" name="searchBar" placeholder="Search...">
+            <input class="input" type="text" id="searchBar" name="searchBar" onkeyup="searchHotels()" placeholder="Search...">
           </div>
         </div>
         <ul id="hotelsList"></ul>

@@ -4,7 +4,7 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
-//Import Controllers
+// Import Controllers
 import covidStatsCustom from '../controllers/covid-stats.js';
 import countyInfo from '../controllers/county-info_GET.js';
 import addNewCounty from '../controllers/county-info_POST.js';
@@ -43,7 +43,7 @@ router.route('/covid-stats')
         where: {
           county_ID: req.body.county_ID
         }
-      })
+      });
       console.log('Successfully Updated with PUT');
     } catch (err) {
       console.log(error);
@@ -59,9 +59,9 @@ router.route('/covid-stats')
         confirmed_deaths: req.body.confirmed_deaths,
         positive_cases: req.body.positive_cases,
         county_death_prop: req.body.county_death_prop
-      })
+      });
       console.log('Touched /covid-stats with POST');
-      res.send('Successfully added with POST')
+      res.send('Successfully added with POST');
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });
@@ -73,7 +73,7 @@ router.route('/covid-stats')
         where: {
           county_ID: req.params.county_ID
         }
-      })
+      });
       console.log('Successfully Deleted with DELETE');
     } catch (err) {
       console.log(error);
@@ -189,12 +189,12 @@ router.route('/county-info')
           poverty_rate: req.body.poverty_rate
         },
         {
-          where : {
+          where: {
             county_ID: req.body.county_ID
           }
         }
-      )
-      res.send({ message: "Updated county" });
+      );
+      res.send({ message: 'Updated county' });
       console.log('Touched /county-info with PUT');
     } catch (err) {
       console.log(error);
@@ -228,9 +228,9 @@ router.route('/county-info')
         where: {
           county_ID: req.params.county_ID
         }
-      })
+      });
       res.json({ message: 'Touched /county-info with DELETE' });
-      console.log("Successfully deleted a county");
+      console.log('Successfully deleted a county');
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });

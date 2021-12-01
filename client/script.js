@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { request } from "express";
+=======
+>>>>>>> e761248896961b0db85d798f7eabb96b9825572a
 
 const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
@@ -57,3 +60,9 @@ async function windowActions() {
 }
 
 window.onload = windowActions;
+
+
+function loadFile(event) {
+  const image = document.getElementById('output');
+  image.src = URL.createObjectURL(event.target.files[0]);
+}

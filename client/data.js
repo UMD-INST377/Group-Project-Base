@@ -1,16 +1,4 @@
 // the map stuff can be done similar to lab 7
-function mapInit() {
-  const mymap = L.map('mapid').setView([38.990, -76.93], 12);
-  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1Ijoibm9uY29tcGxleCIsImEiOiJja3VuY3VzNnU0MGwwMndtYXoyYzE5ZnJjIn0.WKnP0xfs3Wc7GvlFFu8znA'
-  }).addTo(mymap);
-return mymap
-}
 
 function getMatch(event, census) {
   // not that many zips so filtering is fine - return if something matches

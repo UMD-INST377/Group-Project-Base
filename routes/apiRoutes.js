@@ -1,100 +1,95 @@
 /* eslint-disable no-console */
-import express from 'express';
+import express from "express";
+/*
 import sequelize, { QueryTypes } from 'sequelize';
+*/
 
-import db from '../database/initializeDB.js';
-import foodInspectionVar from '../contollers/food_inspectionController.js';
+import db from "../database/initializeDB.js";
+import foodInspectionVar from "../contollers/food_inspectionController.js";
+
+/*
+const fetch = require('node-fetch');
+*/
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+router.get("/", (req, res) => {
+  res.send("Welcome to the UMD Dining API!");
 });
 
 /// /////////////////////////////////
 /// ////   Food Inspection   ////////
 /// /////////////////////////////////
-router.route('/foodServicePG').get(async (req, res) => {
+router.route("/foodServicePG").get(async (req, res) => {
   try {
     const url =
-      'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json";
     const data = await fetch(url);
     const json = await data.json();
     console.log(json);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      res.json(data);
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
-    }
-=======
-    res.json(data: data);
-=======
     res.json(data);
->>>>>>> a06457a09977265d3d1b45a6838ab393825c4308
   } catch (err) {
+    console.log("error");
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
+    throw err;
   }
->>>>>>> 27e974e78582e9daf813016a9e39c9ab76c2b611
+  console.log(data);
+  res.json(data);
 });
 
-router.get('establishments/establishment_id', async (req, res) => {
+router.get("/establishments/establishment_id", async (req, res) => {
   try {
     const businesses = await db.sequelizeDB.query(foodInspectionVar);
+    console.log(businesses);
     res.json(businesses);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
-    console.log('touched /food_inspection with GET');
+    res.error("Server error");
+    console.log("touched /food_inspection with GET");
   }
 });
 
-router.put('establishments/establishment_id', async (req, res) => {
-  try {
-    const businesses = await db.sequelizeDB.query(
-      {
-        type: QueryTypes.SELECT
-      }
-    );
-
-    res.json(businesses);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-    console.log('touched /food_inspection with GET');
-  }
-});
-
-router.post('establishments/establishment_id', async (req, res) => {
-  try {
-    const businesses = await db.sequelizeDB.query(
-      {
-        type: QueryTypes.SELECT
-      }
-    );
-
-    res.json(businesses);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-    console.log('touched /food_inspection with GET');
-  }
-});
-
-router.delete('establishments/establishment_id', async (req, res) => {
+router.put("establishments/establishment_id", async (req, res) => {
   try {
     const businesses = await db.sequelizeDB.query({
-      type: QueryTypes.SELECT
+      type: QueryTypes.SELECT,
     });
 
     res.json(businesses);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
-    console.log('touched /food_inspection with GET');
+    res.error("Server error");
+    console.log("touched /food_inspection with GET");
+  }
+});
+
+router.post("establishments/establishment_id", async (req, res) => {
+  try {
+    const businesses = await db.sequelizeDB.query({
+      type: QueryTypes.SELECT,
+    });
+
+    res.json(businesses);
+  } catch (err) {
+    console.error(err);
+    res.error("Server error");
+    console.log("touched /food_inspection with GET");
+  }
+});
+
+router.delete("establishments/establishment_id", async (req, res) => {
+  try {
+    const businesses = await db.sequelizeDB.query({
+      type: QueryTypes.SELECT,
+    });
+
+    res.json(businesses);
+  } catch (err) {
+    console.error(err);
+    res.error("Server error");
+    console.log("touched /food_inspection with GET");
   }
 });
 
@@ -118,17 +113,17 @@ router.delete('establishments/establishment_id', async (req, res) => {
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.get("/meals", async (req, res) => {
   try {
     const meals = await db.Meals.findAll();
     res.json(meals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.get("/meals/:meal_id", async (req, res) => {
   try {
     const meals = await db.Meals.findAll({
       where: {
@@ -138,11 +133,11 @@ router.get('/meals/:meal_id', async (req, res) => {
     res.json(meals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.put('/meals', async (req, res) => {
+router.put("/meals", async (req, res) => {
   try {
     await db.Meals.update(
       {
@@ -155,27 +150,27 @@ router.put('/meals', async (req, res) => {
         },
       }
     );
-    res.send('Meal Successfully Updated');
+    res.send("Meal Successfully Updated");
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
 /// /////////////////////////////////
 /// ////////Macros Endpoints/////////
 /// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.get("/macros", async (req, res) => {
   try {
     const macros = await db.Macros.findAll();
     res.send(macros);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.get('/macros/:meal_id', async (req, res) => {
+router.get("/macros/:meal_id", async (req, res) => {
   try {
     const meals = await db.Macros.findAll({
       where: {
@@ -185,11 +180,11 @@ router.get('/macros/:meal_id', async (req, res) => {
     res.json(meals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.put('/macros', async (req, res) => {
+router.put("/macros", async (req, res) => {
   try {
     // N.B. - this is a good example of where to use code validation to confirm objects
     await db.Macros.update(
@@ -210,27 +205,27 @@ router.put('/macros', async (req, res) => {
         },
       }
     );
-    res.send('Successfully Updated');
+    res.send("Successfully Updated");
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
 /// /////////////////////////////////
 /// Dietary Restrictions Endpoints///
 /// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+router.get("/restrictions", async (req, res) => {
   try {
     const restrictions = await db.DietaryRestrictions.findAll();
     res.json(restrictions);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
-router.get('/restrictions/:restriction_id', async (req, res) => {
+router.get("/restrictions/:restriction_id", async (req, res) => {
   try {
     const restrictions = await db.DietaryRestrictions.findAll({
       where: {
@@ -240,7 +235,7 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
     res.json(restrictions);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
@@ -248,8 +243,8 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
 const macrosCustom =
-  'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
+  "SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)";
+router.get("/table/data", async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {
       type: sequelize.QueryTypes.SELECT,
@@ -257,7 +252,7 @@ router.get('/table/data', async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 
@@ -272,7 +267,7 @@ INNER JOIN Meals_Locations ml
   ON m.meal_id = ml.meal_id
 INNER JOIN Dining_Hall d
 ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
+router.get("/map/data", async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(mealMapCustom, {
       type: sequelize.QueryTypes.SELECT,
@@ -280,10 +275,10 @@ router.get('/map/data', async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
-router.get('/custom', async (req, res) => {
+router.get("/custom", async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(req.body.query, {
       type: sequelize.QueryTypes.SELECT,
@@ -291,7 +286,7 @@ router.get('/custom', async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.error("Server error");
   }
 });
 

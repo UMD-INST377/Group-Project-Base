@@ -14,10 +14,6 @@ router.get('/', (req, res) => {
 /// //////////////////////////////////
 /// ///////NBA Database////////
 /// /////////////////////////////////
-const nbaPlayerQuery = `SELECT player_name, position_name, ppg, assists, name
-                        FROM Positions JOIN players
-                          USING(position_id) JOIN Team
-                          USING(team_id);`;
 
 router.route('/nba-players')
   .get(async (req, res) => {
@@ -45,7 +41,9 @@ router.route('/nba-players')
       console.error(err);
       res.error('Server error');
     }
+    console.log(postQuery);
   })
+
   .delete(async (req, res) => {
     try {
       await db.sequelizeDB.destroy({

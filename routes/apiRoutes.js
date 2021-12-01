@@ -16,30 +16,22 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 router.route('/foodServicePG').get(async (req, res) => {
   try {
-    const url =
-      'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+    const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
     const data = await fetch(url);
     const json = await data.json();
     console.log(json);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      res.json(data);
-    } catch (err) {
-      console.error(err);
-      res.error('Server error');
-    }
-=======
-    res.json(data: data);
-=======
     res.json(data);
->>>>>>> a06457a09977265d3d1b45a6838ab393825c4308
   } catch (err) {
+    console.log ('error');
     console.error(err);
     res.error('Server error');
+    throw err;
   }
->>>>>>> 27e974e78582e9daf813016a9e39c9ab76c2b611
+  console.log(data);
+  res.json(data);
 });
+
 
 router.get('establishments/establishment_id', async (req, res) => {
   try {

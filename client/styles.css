@@ -155,6 +155,16 @@ flex: 33.33%;
 padding: 5px;
 }
 
+button.result{
+	background: none;
+	border: none;
+	cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 20px;
+  padding: 5px 10px
+}
+
 /* Style the buttons */
 .btn1 {
 border: none;

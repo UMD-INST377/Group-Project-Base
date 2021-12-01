@@ -9,19 +9,37 @@ const hotelsList = document.getElementById('hotelsList');
 const searchBar = document.getElementById('searchBar');
 let hotelsOverview = [];
 
+searchBar.addEventListener("keyup", (e) => {
+  const searchString = e.target.value.toLowerCase();
+  const filteredHotels = hotelsOverview.filter((hotel) => {
+    return (
+      hotel.hotel_name.toLowerCase().includes(searchString) ||
+      hotel.street_address.toLowerCase().includes(searchString)
+    );
+  });
+  displayHotels(filteredHotels);
+});
+
 const displayHotels = (hotels) => {
   const htmlString = hotels
-    .map((hotel) => `
+    .map((hotel) =>  `
             <li class="results${hotel.beachside === 1 ? ' beachside' : ''}${
-  hotel.family_friendly === 1 ? ' family_friendly' : ''
-}${hotel.pet_friendly === 1 ? ' pet_friendly' : ''}"><a href=#>
-                <ul>${hotel.hotel_name}</ul>
+      hotel.family_friendly === 1 ? ' family_friendly' : ''
+      }${hotel.pet_friendly === 1 ? ' pet_friendly' : ''}">
+      <form action="hotelInformation.html" method="get">
+          <input type="hidden" name="hotel_id" value="${hotel.hotel_id}">
+          <button type="submit" class="result" onclick="location.href='hotelInformation.html'">
+                <ul><strong>${hotel.hotel_name}</strong></ul>
                 <ul>${hotel.street_address}</ul>
             </a></li>
+            </button>
+            </input>
+            </form>
         `)
     .join('');
   hotelsList.innerHTML = htmlString;
 };
+
 const loadHotels = async () => {
   try {
     const res = await fetch(
@@ -35,25 +53,6 @@ const loadHotels = async () => {
   }
 };
 
-const displayHotels = (hotels) => {
-  const htmlString = hotels
-    .map((hotel) => {
-      return `
-          <form action="hotelInformation.html" method="get">
-          <input type="hidden" name="hotel_id" value="${hotel.hotel_id}">
-          <button type="submit" onclick="location.href='hotelInformation.html'">
-            <li class="results">
-                <ul><strong>${hotel.hotel_name}</strong></ul>
-                <ul>${hotel.street_address}</ul>
-            </a></li>
-            </button>
-            </input>
-            </form>
-        `;
-    })
-    .join("");
-  hotelsList.innerHTML = htmlString;
-};
 function searchHotels() {
   const btnContainer1 = document.getElementById('myBtnContainer');
   const btns1 = btnContainer1.getElementsByClassName('btn1');

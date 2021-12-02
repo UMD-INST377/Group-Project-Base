@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> New Record Entry </title>
+    <title>Team 16</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://kit.fontawesome.com/69ae1a26d0.js" crossorigin="anonymous"></script>
@@ -27,9 +27,9 @@
                     </div>
                     <div class="navbar-menu" id="navlinks">
                         <div class="navbar-start">
-                            <a href="newrecentry.html" class="navbar-item active-page">
+                            <a href="newrecentry.html" class="navbar-item">
                                 <i class="fas fa-plus"></i>New Record Entry</a>
-                            <a href="viewDatabase.html" class="navbar-item">
+                            <a href="viewDatabase.html" class="navbar-item active-page">
                                 <i class="far fa-eye"></i>View The Database</a>
                             <a class="navbar-item" href="about.html">
                                 <i class="fas fa-info-circle"></i>About Page</a>
@@ -50,40 +50,29 @@
             </div>
         </div>
         <div class="columns">
-            <div class="column">
-                <h1 class="title is-4 has-text-centered">New Record Entry</h1>
+            <div class="column is-full">
+                <h2 class="title has-text-centered">Animals</h2>
             </div>
         </div>
-        <div class=container>
-        <form action="/api/animals" method="post">
-            <div class="field">
-                <label class="label" for="common_name">Animal Name</label>
+        <div class="columns">
+            <div class="column is-offset-3">
                 <div class="control">
-                    <input name="common_name" class="input" type="text" placeholder="Enter Animal Name Here">
+                    <a href="editAnimalRecord.html"><button class="button ton">Edit A Record</button></a>
                 </div>
             </div>
-            <div class="field">
-                <label class="label" for="species">Species</label>
+            <div class="column">
                 <div class="control">
-                    <input name="species" class="input" type="text" placeholder="Enter Species Name Here">
+                    <a href="deleteAnimalRecord.html"><button class="button ton">Delete A Record</button></a>
                 </div>
             </div>
-            <div class="field">
-                <label class="label" for="weight_lbs">Animal Weight (Lbs)</label>
-                <div class="control">
-                    <input name="weight_lbs" class="input" type="text" placeholder="Enter Animal Weight Here">
-                </div>
-            </div>
-            <div class="field is-grouped">
-                <div class="control">
-                    <button class="button ton">Submit</button>
-                </div>
-            </div>
-        </form>
+        </div>
+        <div class="container">
+            <div class="listt">
+        </div>
     </div>
     </div>
     <script src="scripts.js"></script>
-    <script src="editRecords.js"></script>
+    <script src="getData.js"></script>
 </body>
 
 </html>

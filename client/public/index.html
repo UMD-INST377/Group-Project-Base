@@ -15,14 +15,24 @@
     <div class="wrapper">
         <div class="columns">
             <div class="column is-full">
-                <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+                <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="index.html">Home</a>
+                        <a class="navbar-item active-page" href="index.html">
+                            <i class="fas fa-home"></i>Home</a>
+                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
                     </div>
-                    <div class="navbar-menu">
+                    <div class="navbar-menu" id="navlinks">
                         <div class="navbar-start">
-                            <a href = "newrecentry.html" class = "navbar-item">New Record Entry</a>
-                            <a class="navbar-item" href="about.html">About Page</a>
+                            <a href="newrecentry.html" class="navbar-item">
+                                <i class="fas fa-plus"></i>New Record Entry</a>
+                            <a href="viewDatabase.html" class="navbar-item">
+                                <i class="far fa-eye"></i>View The Database</a>
+                            <a class="navbar-item" href="about.html">
+                                <i class="fas fa-info-circle"></i>About Page</a>
                         </div>
                         <div class="navbar-end">
                             <p class="navbar-item">Search The Database</p>
@@ -41,10 +51,25 @@
         </div>
         <div class="columns">
             <div class="column">
-                <h1 class="title has-text-centered">Extinct Animal Records</h1>
+                <h1 class="title has-text-centered">Welcome to Extinct Animal Records!</h1>
+                <div class="container">
+                    <p style="font-family: Serif; font-size: 24px;" class="description">
+                        This website is devoted to be an open user-mutable database on extinct animals.
+                        </br>
+                        We have animals such as the Stellar's Sea Cow, and we look forward to further entries in our database.
+                    </p>
+                    <div class="columns is-vcentered">
+                    <img src="images/OrangeMC.jpg" alt="Orange Mud Crab" class="column is-half">
+                    <img src="images/StellarSC.jpg" alt="Stellar's Sea Cow" class="column is-half">
+                    </div>
+                    <p style="font-family: Serif; font-size: 24px;" class="description">
+                        We urge you to looks through our database to experience and learn about the animals that have gone extinct, such as the Orange Mud Crab and Stellar's Sea Cow shown above, along with their major traits.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+    <script src="scripts.js"></script>
 </body>
 
 </html>

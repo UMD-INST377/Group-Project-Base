@@ -7,21 +7,9 @@ export default (sequelize, DataTypes) => {
         allowNull: false,
         primaryKey: true
       },
-      kill_death_ratio: {
-        type: DataTypes.DECIMAL
-      },
       special_skill: {
-        type: DataTypes.VARCHAR
+        type: DataTypes.STRING
       },
-      weapon_of_choice: {
-        type: DataTypes.VARCHAR
-      },
-      power: {
-        type: DataTypes.INTEGER
-      },
-      animals_Animal_ID: {
-        type: DataTypes.INTEGER
-      }
     },
     { freezeTableName: true, timestamps: false }
   );

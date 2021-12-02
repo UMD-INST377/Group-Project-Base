@@ -15,14 +15,24 @@
     <div class="wrapper">
         <div class="columns">
             <div class="column is-full">
-                <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+                <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="index.html">Home</a>
+                        <a class="navbar-item" href="index.html">
+                            <i class="fas fa-home"></i>Home</a>
+                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
                     </div>
-                    <div class="navbar-menu">
+                    <div class="navbar-menu" id="navlinks">
                         <div class="navbar-start">
-                            <a href = "newrecentry.html" class = "navbar-item">New Record Entry</a>
-                            <a class="navbar-item" href="about.html"> About Page</a>
+                            <a href="newrecentry.html" class="navbar-item">
+                                <i class="fas fa-plus"></i>New Record Entry</a>
+                            <a href="viewDatabase.html" class="navbar-item">
+                                <i class="far fa-eye"></i>View The Database</a>
+                            <a class="navbar-item active-page" href="about.html">
+                                <i class="fas fa-info-circle"></i>About Page</a>
                         </div>
                         <div class="navbar-end">
                             <p class="navbar-item">Search The Database</p>
@@ -41,11 +51,12 @@
         </div>
         <div class="columns">
             <div class="column">
-                <h1 class="title has-text-centered">This database provides records on extinct animals across the world!</h1>
+                <h1 class="title has-text-centered">This database provides records on extinct animals across the world!
+                </h1>
             </div>
         </div>
     </div>
+    <script src="scripts.js"></script>
 </body>
 
 </html>
-    

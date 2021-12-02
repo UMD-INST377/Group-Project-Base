@@ -4,6 +4,10 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
+import animalsController from '../controllers/animalsController.js';
+import biomesController from '../controllers/biomesController.js';
+import fight_modeController from '../controllers/fight_modeController.js';
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -15,42 +19,71 @@ router
   .route('/animals')
   .get(async (req, res) => {
     try {
-      console.log('touched /animals with GET');
-      res.json({ message: '/animals GET method' });
+      const result = await db.sequelizeDB.query(animalsController.animalsGET, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      console.log(result);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      console.error(err.message);
+      res.send('Something Went Wrong')
     }
   })
   .put(async (req, res) => {
     try {
-      console.log('touched /animals with PUT');
-      res.json({ message: '/animals PUT method' });
+      const result = await db.sequelizeDB.query(animalsController.animalPUT, {
+        replacements: {
+          common_name: req.body.common_name,
+          weight_lbs: req.body.weight_lbs,
+          species: req.body.species,
+          Animal_ID: req.body.Animal_ID
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      console.error(err.message);
+      res.send('Something Went Wrong')
     }
   })
   .post(async (req, res) => {
     try {
-      console.log('touched /animals with POST');
-      res.json({ message: '/animals POST method' });
+      const result = await db.sequelizeDB.query(animalsController.animalPOST, {
+        replacements: {
+          common_name: req.body.common_name,
+          weight_lbs: req.body.weight_lbs,
+          species: req.body.species,
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      console.log(req.body);
+      console.error(err.message);
+      res.send('Something Went Wrong')
     }
   })
   .delete(async (req, res) => {
     try {
+      const result = await db.sequelizeDB.query(animalsController.animalDELETE, {
+        replacements:{
+          Animal_ID: req.body.Animal_ID
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
       console.log('touched /animals with DELETE');
-      res.json({ message: '/animals DELETE method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      console.error(err.message);
+      res.send('Something Went Wrong')
     }
   });
 
-// Elijah F /extinction table endpoint*/
+// Grant  T /extinction table endpoint*/
 router
   .route('/extinction')
   .get(async (req, res) => {
@@ -58,8 +91,8 @@ router
       console.log('touched /extinction with GET');
       res.json({ message: '/extinction GET method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
@@ -67,8 +100,8 @@ router
       console.log('touched /extinction with PUT');
       res.json({ message: '/extinction PUT method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
@@ -76,8 +109,8 @@ router
       console.log('touched /extinction with POST');
       res.json({ message: '/extinction POST method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
@@ -85,90 +118,141 @@ router
       console.log('touched /extinction with DELETE');
       res.json({ message: '/extinction DELETE method' });
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   });
 
-//Grant T /fight_mode
+// Elijah Falope /fight_mode
 
 router
   .route('/fight_mode')
   .get(async (req, res) => {
     try {
-      console.log('touched /animals with GET');
-      res.json({ message: '/fight_mode GET method' });
+      const product = await db.sequelizeDB.query(fight_modeController.fightmodeGET, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(product);
+      console.log(product);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
     try {
-      console.log('touched /fight_mode with PUT');
-      res.json({ message: '/fight_mode PUT method' });
+      const product = await db.sequelizeDB.query(fight_modeController.fightmodePUT, {
+        replacements: {
+          fight_mode_id: req.body.fight_mode_id,
+          special_skill: req.body.special_skill,
+          weapon_of_choice: req.body.weapon_of_choice
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(product);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
     try {
-      console.log('touched /fight_mode with POST');
-      res.json({ message: '/fight_mode POST method' });
+      const product = await db.sequelizeDB.query(fight_modeController.fightmodePUT, {
+        replacements: {
+          fight_mode_id: req.body.fight_mode_id,
+          special_skill: req.body.special_skill,
+          weapon_of_choice: req.body.weapon_of_choice
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(product);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
     try {
-      console.log('touched /fight_mode with DELETE');
-      res.json({ message: '/fight_mode DELETE method' });
+      const product = await db.sequelizeDB.query(fight_modeController.fightmodeDELETE, {
+        replacements:{
+          fight_mode_id: req.body.fight_mode_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(product);
+      console.log('Databsae item deleted!');
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   });
 
 // Jaeuk Yang -- /Biomes
-
 router
   .route('/biomes')
   .get(async (req, res) => {
     try {
-      console.log('touched /biomes with GET');
-      res.json({ message: '/biomes GET method' });
+      const b = await db.sequelizeDB.query(biomesController.getBiomes, {
+        type: sequelize.QueryTypes.SELECT
+      }
+      )
+      res.json(b);
+      console.log(b);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .put(async (req, res) => {
     try {
-      console.log('touched /biomes with PUT');
-      res.json({ message: '/biomes PUT method' });
+      const b = await db.sequelizeDB.query(biomesController.putBiomes, {
+        replacements: {
+          biome_id: req.body.biome_id,
+          Biome: req.body.Biome,
+          Continent: req.body.Continent,
+        },
+        type: sequelize.QueryTypes.INSERT
+      }
+      )
+      res.json(b);
+      console.log(b);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .post(async (req, res) => {
     try {
-      console.log('touched /biomes with POST');
-      res.json({ message: '/biomes POST method' });
+      const b = await db.sequelizeDB.query(biomesController.postBiomes, {
+        replacements: {
+          biome_id: req.body.biome_id,
+          Biome: req.body.Biome,
+          Continent: req.body.Continent,
+        },
+        type: sequelize.QueryTypes.UPDATE
+      }
+      )
+      res.json(b);
+      console.log(b);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   })
   .delete(async (req, res) => {
     try {
-      console.log('touched /biomes with DELETE');
-      res.json({ message: '/biomes DELETE method' });
+      const b = await db.sequelizeDB.query(biomesController.deleteBiomes, {
+        replacements: {
+          biome_id: req.body.biome_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      }
+      )
+      res.json(b);
+      console.log(b);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something went wrong, sorry' });
+      console.log(err);
+      res.send('Something went wrong, sorry');
     }
   });
 

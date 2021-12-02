@@ -7,14 +7,85 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/Glide/glide.core.min.css" />
+    <link rel="stylesheet" href="./css/Glide/glide.theme.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
     <title>ABOUT</title>
    </head>
 <body>
-    <h1>THIS IS ABOUT PAGE</h1>
+  <div class="viinyl-container">
+    <div class="viinyl-navigation">
+        <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item">
+                    <img src="./images/viinyl-logo.png" />
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a href="index.html"class="navbar-item"> Collection </a>
+                    <a href="about.html" class="navbar-item"> About </a>
+                    
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link"> More </a>
+                        <div class="navbar-dropdown">
+                            <a href="about.html" class="navbar-item"> About </a>
+                            <a class="navbar-item"> Contact </a>
+                            <hr class="navbar-divider" />
+                            <a class="navbar-item"> Report an issue </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <button class="button is-danger" id="signup">
+                                <strong>Sign up</strong>
+                            </button>
+                            <button class="button is-dark">Log in</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class = "col-4"id="texts">
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1 style="font-size:30px; font-weight: bold;">The authenticity of analog meets the digital era</h1>
+      <br>
+      <br>
+      <h2 class = "col-8" style="font-size:30px;"> Complete your music collection today</h2>
+      <br>
+      <br>
+      <div>This app allows you to add information about your collection of vinyl records at any time, and makes it easier for you to view your collection by classifying</div>
+    </div>
+    <div id = 'pic'>
+      <img src="demo.png" style="width:600px;">
+    </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+<style>
+  #texts {
+      float: left;
+      margin-left: 15%;
+  }
+</style>
 </html>

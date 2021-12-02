@@ -12,3 +12,18 @@
     color:white;
 }
 
+.editPlayerButton{
+    cursor:pointer;
+}
+
+#doneEditing{
+    cursor:pointer;
+}
+
+#year_drafted{
+    width:55px;
+}
+
+#playerName{
+    width:100%;
+}

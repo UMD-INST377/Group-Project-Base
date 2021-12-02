@@ -30,13 +30,15 @@ hr{
     margin: 1px;
 }
 
-img:hover{
+input[type=image]:hover{
     backdrop-filter: blur(3px);
     filter: blur(2px);
     transition: 0.1s ease-out;
     border-radius: 10px;
 }
-img{
+input[type=image]{
+    height: auto;
+    max-width: 100%;
     border-radius: 10px;
 }
 

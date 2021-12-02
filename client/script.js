@@ -5,7 +5,7 @@ async function windowActions() {
   const names = await request.json();
   
   const searchInput = document.querySelector('.nameSearch');
-  const suggestions = document.querySelector('.suggestions');
+  const suggestions = document.querySelector('.suggestions .photo-grid-container .photo-grid');
 
 console.log(names)
   function findMatches(wordToMatch, names) {
@@ -20,7 +20,7 @@ console.log(names)
       const regex = new RegExp(event.target.value, 'gi');
       return `
       <div class='photo-grid-container'>
-                <div class='photo-grid'>
+                <div class='photo-grid-item'>
                 <div class="box">
                 <div class="name">Name: ${info.volcano_name}</div>
                 <div class="num">Eruption Number: ${info.eruption_number} </div>

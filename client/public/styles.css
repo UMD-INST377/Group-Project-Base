@@ -42,7 +42,6 @@ i {
   overflow-x: auto;
 }
 
-
 .listings {
   text-align: left;
   height: 100%;
@@ -66,4 +65,12 @@ img {
   margin: 0;
   height: 500px;
   width: 100%;
+}
+
+.container {
+  align-items: center;
+}
+
+.description {
+  text-align: center;
 }

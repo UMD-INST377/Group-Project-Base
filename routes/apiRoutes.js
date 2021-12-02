@@ -104,26 +104,36 @@ router.route('/community')
 /* Teddy' lab 9 routes */
 
 router.route('/population')
-  .get((req, res) => {
+  .get(async (req, res) => {
     try {
+      const db_response = await db.sequelizeDB.query(controllers.population.getPopulationSQL);
       console.log('touched /population with GET');
-      res.json({data: []}); // get census data later
+      res.json(db_response); 
+      return db_response;
     } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .put((req, res) => {
+  .put(async (req, res) => {
     try {
+      console.log(req.params)
+      await db.sequelizeDB.query(controllers.population.putPopulationSQL, {replacements: {popstat_zcta: req.query.popstat_zcta,
+										  pop_percent_id: req.query.pop_percent_id, pop_percent_category: req.query.pop_percent_category, pop_count: req.query.pop_count}});
       console.log('touched /population with PUT');
-      res.json({message: 'put census endpoint'});
     } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     try {
+      console.log(req.query)
+      await db.sequelizeDB.query(controllers.population.postPopulationSQL,
+				 { replacements: {popstat_zcta: req.query.popstat_zcta,
+					       pop_count: req.query.pop_count
+         },
+				   type: sequelize.QueryTypes.INSERT });
       console.log('touched /population with POST');
       res.json({message: 'post population endpoint'});
     } catch (err) {
@@ -131,8 +141,9 @@ router.route('/population')
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .delete((req, res) => {
+  .delete(async (req, res) => {
     try {
+      await db.sequelizeDB.query(controllers.population.deletePopulationSQL);
       console.log('touched /population with DELETE');
       res.json({message: 'delete population endpoint'});
     } catch (err) {

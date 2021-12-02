@@ -30,18 +30,23 @@ router.route('/nba-players')
   })
 
   .post(async (req, res) => {
-    const players = await db.sequelizeDB.findAll();
-    const currentId = (await players.length) + 1;
+    // const players = await db.sequelizeDB.findAll();
+    // const currentId = (await players.length) - 1;
     try {
       const newPlayer = await db.sequelizeDB.query(player.postPlayer, {
-        type: sequelize.QueryTypes.INSERT
+        type: sequelize.QueryTypes.INSERT,
+        replacements: {
+          player_name: req.body.player_name,
+          ppg: req.body.ppg,
+          assists: req.body.assists,
+          team: req.body.team
+        }
       });
       res.json(newPlayer);
     } catch (err) {
       console.error(err);
-      res.error('Server error');
+      res.send('Server error');
     }
-    console.log(postQuery);
   })
 
   .delete(async (req, res) => {

@@ -5,8 +5,8 @@ const player = {
                           USING(position_id) JOIN Team
                           USING(team_id);`,
 
-  postPlayer: `INSERT INTO players (player_name, ppg, assists, team)
-                VALUES ($GET['player_name'], $GET['ppg'], '$GET['assists']', $GET['team']);`,
+  postPlayer: `INSERT INTO players (player_name, ppg, assists, team_id)
+                VALUES (:player_name, :ppg, :assists, :team);`,
 
   putPlayer: `UPDATE Positions JOIN players USING(poistion_id) JOIN Team USING(team_id)
                 SET player_id = $GET['player_id], player_name = $GET['player_name'], 

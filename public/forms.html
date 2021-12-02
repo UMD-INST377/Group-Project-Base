@@ -23,10 +23,10 @@
                     </div>
                     <div class="box is-two-fifths has-background-info">
                         <div class="column is-centered">
-                            <form action="/api/nba-players" method="post" class="column">
+                            <form onsubmit="return false" class="column" id="form">
                                 <div class="column">
                                     <label for="playername"><h1><strong>Player name</strong></h1></label>
-                                    <input class="input is-small" type="text" id="playername" name="playername">
+                                    <input class="input is-small" type="text" id="playername" name="player_name">
                                 </div>
                                 <div class="column">
                                     <label for="ppg"><h1><strong>PPG</strong></h1></label>
@@ -41,7 +41,7 @@
                                     <input class="input is-small" type="text" id="team" name="team">
                                 </div>
                                 <div class="column">
-                                    <button class="button is-link has-background-danger"><h1><strong>Submit</strong></h1></button>
+                                    <button id="submit" class="button is-link has-background-danger"><h1><strong>Submit</strong></h1></button>
                                 </div>
                             </form>
                         </div>
@@ -49,5 +49,6 @@
                 </div>
             </div>
         </div>
+        <script src="forms.js" charset="utf-8"></script>
     </body>
 </html>

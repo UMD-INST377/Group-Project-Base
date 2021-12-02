@@ -83,7 +83,7 @@ router.post('establishments/establishment_id', async (req, res) => {
   }
 });
 
-router.delete('/establishments/establishment_id', async (req, res) => {
+router.get('/establishments/establishment_id', async (req, res) => {
   try {
     const businesses = await db.sequelizeDB.query({
       type: QueryTypes.SELECT

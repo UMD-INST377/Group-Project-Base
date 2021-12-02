@@ -1,17 +1,84 @@
 body {
     background-color: white;
 }
-/* time_line{
-    height: 100vh;
+
+.p-2{
+    background-color: white;
+}
+.navbar {
+    background-color: hsl(347, 90%, 96%);
+}
+
+/* THIS IS THE SLIDE CONTENT */
+
+#presidents-of-the-united-states {
+    background-color: hsl(206, 70%, 96%);
+}
+
+.tl-slide-content{
+    background-color: hsl(206, 70%, 96%);
+}
+
+/* THIS IS THE ACTUAL TIMELINE */
+
+.tl-timenav{
+    background-color:hsl(347, 90%, 96%) !important;
+}
+
+.tl-attribution{
+    display: none;
+}
+
+.tl-timemarker-content{
+    background-color:hsl(206, 70%, 96%);
+}
+
+.tl-menubar{
+    background-color: hsl(206, 20%, 96%);
+} 
+
+.tl-timemarker-media-container{
+    display: none;
+}
+
+.tl-headline{
+    font-weight: bold !important;
+}
+
+
+
+/* .tl-timemarker-timespan{
+    background-color: darkslateblue;
 } */
-.buttons {
 
-}
-.buttons a {
-    text-decoration: none;
-    color: white;
+/* .tl-timemarker-timespan{
+    background-color: hsl(206, 70%, 96%);
+} */
 
+/* .tl-timenav-slider-background {
+    background-color:  hsl(206, 70%, 96%);
+} */
+
+/* .tl-timeaxis-background {
+    background-color: chartreuse;
+} */
+/* .tl-timemarker-media-container {
+    background-color: hsl(206, 70%, 96%);
+} */
+
+
+/* hsl(347, 90%, 96%) */
+
+/* .tl-slide-content-container{
+    background-color: hsl(206, 70%, 96%);
+} */
+/* .tl-timeaxis-tick:before {
+    background-color:#c9483e;
 }
+.tl-menubar{
+    background-color:blue;
+} */
+
 /* .description {
     position: absolute;
     width: auto;

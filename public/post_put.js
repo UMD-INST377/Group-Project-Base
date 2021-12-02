@@ -5,6 +5,10 @@ async function presAdd() {
   const url = '/api/presidents';
   const data = {
     president_id: document.querySelector('#president_id_add').value,
+async function presAdd() {
+  const url = '/api/presidents';
+  const data = {
+    //president_id: document.querySelector('#president_id_add').value,
     first_name: document.querySelector('#first_name_add').value,
     last_name: document.querySelector('#last_name_add').value,
     date_inaurg: document.querySelector('#date_inaurg_add').value,
@@ -16,7 +20,11 @@ async function presAdd() {
     // president_image: document.querySelector('#president_image_add').value,
     party: document.querySelector('#party_add').value
   };
+<<<<<<< HEAD
   const response = await fetch(url, {
+=======
+  let response = await fetch(url, {
+>>>>>>> 7351bad620b69b67888514eb4c13d467487cb297
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
@@ -27,6 +35,7 @@ async function presAdd() {
 
 document.getElementById('add_button').addEventListener('click', (event) => {
   event.preventDefault();
+<<<<<<< HEAD
   var txt;
   var r = confirm("Would you like to add this president?\nEither OK or Cancel.");
   if (r == true) {
@@ -39,6 +48,64 @@ document.getElementById('add_button').addEventListener('click', (event) => {
   }
 });
 
+=======
+  presAdd();
+});
+
+async function AddFirstLady() {
+  const url = '/api/firstlady';
+  const data = {
+    first_ladies_name: document.querySelector('#lady_name_add').value
+  };
+  let response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  });
+}
+document.getElementById('lady_button').addEventListener('click', (event) => {
+  event.preventDefault();
+  AddFirstLady();
+});
+async function AddVp() {
+  const url = '/api/vicepresident';
+  const data = {
+    first_name: document.querySelector('#vp_first_name_add').value,
+    last_name: document.querySelector('#vp_last_name_add').value
+  };
+  let response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  });
+}
+document.getElementById('vp_button').addEventListener('click', (event) => {
+  event.preventDefault();
+  AddVp();
+});
+async function AddChild() {
+  const url = '/api/children';
+  const data = {
+    first_name: document.querySelector('#child_first_name_add').value,
+    last_name: document.querySelector('#child_last_name_add').value
+  };
+  let response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  });
+}
+document.getElementById('child_button').addEventListener('click', (event) => {
+  event.preventDefault();
+  AddChild();
+});
+>>>>>>> 7351bad620b69b67888514eb4c13d467487cb297
 async function presEdit() {
   const inputField = document.querySelector('#president_id_edit');
   const url = `/api/presidents/${inputField.value}`;
@@ -54,7 +121,11 @@ async function presEdit() {
     // president_image: document.querySelector('#president_image_edit').value,
     party: document.querySelector('#party_edit').value
   };
+<<<<<<< HEAD
   const response = await fetch(url, {
+=======
+  let response = await fetch(url, {
+>>>>>>> 7351bad620b69b67888514eb4c13d467487cb297
     method: 'PUT',
     body: JSON.stringify(data),
     headers: {
@@ -65,6 +136,7 @@ async function presEdit() {
 
 document.getElementById('edit_button').addEventListener('click', (event) => {
   event.preventDefault();
+<<<<<<< HEAD
   var txt;
   var r = confirm("Would you like to update this president?\nEither OK or Cancel.");
   if (r == true) {
@@ -75,4 +147,69 @@ document.getElementById('edit_button').addEventListener('click', (event) => {
     txt = "Update Cancelled";
     confirm("Update Cancelled");
   }
+=======
+  presEdit();
+});
+
+async function editLady() {
+  const inputField = document.querySelector('#edit_ladies_id');
+  const url = `/api/firstlady/${inputField.value}`;
+  const data = {
+    first_ladies_name: document.querySelector('#lady_name_edit').value
+  };
+  let response = await fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  });
+}
+
+document.getElementById('edit_lady_button').addEventListener('click', (event) => {
+  event.preventDefault();
+  editLady();
+});
+
+async function editVp() {
+  const inputField = document.querySelector('#edit_vp_id');
+  const url = `/api/vicepresident/${inputField.value}`;
+  const data = {
+    first_name: document.querySelector('#edit_vp_fname').value,
+    last_name: document.querySelector('#edit_vp_lname').value
+  };
+  let response = await fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  });
+}
+
+document.getElementById('edit_vp_button').addEventListener('click', (event) => {
+  event.preventDefault();
+  editVp();
+});
+
+async function editChild() {
+  const inputField = document.querySelector('#edit_child_id');
+  const url = `/api/children/${inputField.value}`;
+  const data = {
+    first_name: document.querySelector('#child_fname_edit').value,
+    last_name: document.querySelector('#child_lname_edit').value
+  };
+  let response = await fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  });
+}
+
+document.getElementById('edit_child_button').addEventListener('click', (event) => {
+  event.preventDefault();
+  editChild();
+>>>>>>> 7351bad620b69b67888514eb4c13d467487cb297
 });

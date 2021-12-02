@@ -8,6 +8,7 @@ async function presDelete() {
     method: 'DELETE',
   });
 }
+<<<<<<< HEAD
 
 document.getElementById('delete_button').addEventListener('click', (event) => {
   event.preventDefault()
@@ -21,4 +22,31 @@ document.getElementById('delete_button').addEventListener('click', (event) => {
     txt = "Deletion Cancelled";
     confirm("Deletion Cancelled");
   }
+=======
+document.getElementById('delete_button').addEventListener('click', (event) => {
+  event.preventDefault()
+  presDelete()
+});
+
+// pop-up message delete on click
+document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.message-header .delete') || []).forEach(($delete) => {
+    const $notification = $delete.parentNode;
+
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});
+
+// pop-up message delete on click
+document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    const $notification = $delete.parentNode;
+
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+>>>>>>> 7351bad620b69b67888514eb4c13d467487cb297
 });

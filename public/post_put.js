@@ -1,3 +1,6 @@
+/* Group24 */
+/* Jacob Walter Lab 11 */
+
 async function presAdd() {
   const url = '/api/presidents';
   const data = {
@@ -24,7 +27,16 @@ async function presAdd() {
 
 document.getElementById('add_button').addEventListener('click', (event) => {
   event.preventDefault();
-  presAdd();
+  var txt;
+  var r = confirm("Would you like to add this president?\nEither OK or Cancel.");
+  if (r == true) {
+    txt = "President Added";
+    presAdd();
+    confirm("President has been Added");
+  } else {
+    txt = "Addition Cancelled";
+    confirm("Addition Cancelled");
+  }
 });
 
 async function presEdit() {
@@ -53,5 +65,14 @@ async function presEdit() {
 
 document.getElementById('edit_button').addEventListener('click', (event) => {
   event.preventDefault();
-  presEdit();
+  var txt;
+  var r = confirm("Would you like to update this president?\nEither OK or Cancel.");
+  if (r == true) {
+    txt = "President Updated";
+    presEdit();
+    confirm("President has been Updated");
+  } else {
+    txt = "Update Cancelled";
+    confirm("Update Cancelled");
+  }
 });

@@ -49,7 +49,9 @@
           <% } %>
           </ul>
 
-          <a class="button is-white" href="#" target="_blank" rel="noreferrer">Visit University Site</a>
+          <% if (url && url.includes("http")) { %>
+            <a class="button is-white" href="<%- url %>" target="_blank" rel="noreferrer">Visit University Site</a>
+          <% } %>
         </div>
         <div class="box has-background-primary">
           <h3 class="subtitle is-4">University Reviews</h3>
@@ -68,7 +70,12 @@
         </div>
       </div>
       <div class="column is-6">
-        <img src='https://via.placeholder.com/550x350?text=School%20Preview' />
+        <% if (campus_image && campus_image.includes("http")) { %>
+          <!-- This is poorly validated, use carefully -->
+          <img src='<%- campus_image %>' />
+        <% } else { %>
+          <img src='https://via.placeholder.com/550x350?text=Campus%20Image%20Not%20Found' />
+        <% } %>
       </div>
     </div>
 

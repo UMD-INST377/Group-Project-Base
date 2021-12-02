@@ -10,7 +10,7 @@ const getAllUniversities = `SELECT university_id, university_name FROM universit
  *
  * @type {SQLStmt}
  */
-const getUniversity = `SELECT a.university_id, a.university_name, b.univ_location, b.univ_region, b.univ_zip, c.coalition, c.common_app, c.required_test_score
+const getUniversity = `SELECT a.university_id, a.university_name, a.campus_image, a.url, b.univ_location, b.univ_region, b.univ_zip, c.coalition, c.common_app, c.required_test_score
   FROM university a
   INNER JOIN location b
     ON a.university_id = b.university_id

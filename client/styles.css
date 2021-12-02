@@ -89,7 +89,7 @@ html {
 }
 
 /*css for formsuccess*/
-.title {
+#submissiontitle {
     text-align: center;
     margin-top: 40%;
 }

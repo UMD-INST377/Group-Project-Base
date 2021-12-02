@@ -3,6 +3,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import date from '../controllers/dateController.js';
 import city from '../controllers/cityController.js';
+import magnitudeData from '../controllers/magnitudeController.js';
 import all from '../controllers/allController.js';
 
 /* eslint-disable no-console */
@@ -141,13 +142,70 @@ router.delete('/cities', async (req, res) => {
     }
   });
 
-/* Magnitude end point goes here
-*
-*
-*
-*
-*
-*/
+router.get('/magnitude', async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(magnitudeData.getMagnitude, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      console.log('touched /magnitude with GET');
+    } catch (err) {
+      console.log(err);
+      res.send({message:"uhoh"});
+    }
+  })
+
+// Update magnitude data for a specific earthquake id
+  router.put('/magnitude', async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(magnitudeData.putMagnitude, {
+        replacements: {
+          magnitude: req.body.magnitude, id: req.body.id
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+      console.log('touched /magnitude with PUT');
+    } catch (err) {
+      console.log(err);
+      console.log({message:"uhoh"});
+    }
+  })
+
+// Adding a new earthquake data
+router.post('/magnitude', async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(magnitudeData.postMagnitude, {
+        replacements: {
+          magnitude: req.body.magnitude, id: req.body.id
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json(result)
+      console.log('touched /magnitude with POST');
+    } catch (err) {
+      console.log(err);
+      res.send({message:"uhoh"});
+    }
+  })
+
+// Delete a earthquake data
+  router.delete('/magnitude', async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(magnitudeData.deleteMagnitude, {
+        replacements: {
+          id: req.body.id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+      console.log('touched /magnitude with DELETE');
+    } catch (err) {
+      console.log(err);
+      res.send({message:"uhoh"});
+    }
+  });
+
 
 /*below fetches all earthquake data*/
 

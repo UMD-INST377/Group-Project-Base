@@ -1,5 +1,6 @@
+
 nav {
-    background-color: gray;
+    background-color: rgb(30, 215, 96);
     padding: 20px;
     margin-bottom: 20px;
 }
@@ -12,12 +13,13 @@ nav {
 .container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 20px;
 }
 
 .footer {
-    background-color: gray;
+    background-color: rgb(30, 215, 96);
+    color: white;
     text-align: center;
     padding: 30px;
     bottom: 0;
@@ -59,7 +61,7 @@ nav {
 }
 
 .form-input {
-    background-color: gray;
+    background-color: rgb(30, 215, 96);
     width: 300px;
 }
 

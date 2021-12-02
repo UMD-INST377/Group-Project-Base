@@ -16,7 +16,7 @@ async function windowActions () {
         const data = formToObject(form);
         console.log(data);
         const response = await fetch('/api/general', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
               },

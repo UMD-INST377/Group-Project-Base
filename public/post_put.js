@@ -5,10 +5,6 @@ async function presAdd() {
   const url = '/api/presidents';
   const data = {
     president_id: document.querySelector('#president_id_add').value,
-async function presAdd() {
-  const url = '/api/presidents';
-  const data = {
-    //president_id: document.querySelector('#president_id_add').value,
     first_name: document.querySelector('#first_name_add').value,
     last_name: document.querySelector('#last_name_add').value,
     date_inaurg: document.querySelector('#date_inaurg_add').value,
@@ -20,11 +16,7 @@ async function presAdd() {
     // president_image: document.querySelector('#president_image_add').value,
     party: document.querySelector('#party_add').value
   };
-<<<<<<< HEAD
-  const response = await fetch(url, {
-=======
   let response = await fetch(url, {
->>>>>>> 7351bad620b69b67888514eb4c13d467487cb297
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
@@ -35,7 +27,6 @@ async function presAdd() {
 
 document.getElementById('add_button').addEventListener('click', (event) => {
   event.preventDefault();
-<<<<<<< HEAD
   var txt;
   var r = confirm("Would you like to add this president?\nEither OK or Cancel.");
   if (r == true) {
@@ -46,10 +37,6 @@ document.getElementById('add_button').addEventListener('click', (event) => {
     txt = "Addition Cancelled";
     confirm("Addition Cancelled");
   }
-});
-
-=======
-  presAdd();
 });
 
 async function AddFirstLady() {
@@ -67,7 +54,16 @@ async function AddFirstLady() {
 }
 document.getElementById('lady_button').addEventListener('click', (event) => {
   event.preventDefault();
-  AddFirstLady();
+  var txt;
+  var r = confirm("Would you like to add this first lady?\nEither OK or Cancel.");
+  if (r == true) {
+    txt = "First Lady Added";
+    AddFirstLady();
+    confirm("First Lady has been Added");
+  } else {
+    txt = "Addition Cancelled";
+    confirm("Addition Cancelled");
+  }
 });
 async function AddVp() {
   const url = '/api/vicepresident';
@@ -85,7 +81,16 @@ async function AddVp() {
 }
 document.getElementById('vp_button').addEventListener('click', (event) => {
   event.preventDefault();
-  AddVp();
+  var txt;
+  var r = confirm("Would you like to add this vice president?\nEither OK or Cancel.");
+  if (r == true) {
+    txt = "Vice President Added";
+    AddVp();
+    confirm("Vice President has been Added");
+  } else {
+    txt = "Addition Cancelled";
+    confirm("Addition Cancelled");
+  }
 });
 async function AddChild() {
   const url = '/api/children';
@@ -103,9 +108,17 @@ async function AddChild() {
 }
 document.getElementById('child_button').addEventListener('click', (event) => {
   event.preventDefault();
-  AddChild();
+  var txt;
+  var r = confirm("Would you like to add this president's child?\nEither OK or Cancel.");
+  if (r == true) {
+    txt = "President's child Added";
+    AddChild();
+    confirm("President's child has been Added");
+  } else {
+    txt = "Addition Cancelled";
+    confirm("Addition Cancelled");
+  }
 });
->>>>>>> 7351bad620b69b67888514eb4c13d467487cb297
 async function presEdit() {
   const inputField = document.querySelector('#president_id_edit');
   const url = `/api/presidents/${inputField.value}`;
@@ -121,11 +134,7 @@ async function presEdit() {
     // president_image: document.querySelector('#president_image_edit').value,
     party: document.querySelector('#party_edit').value
   };
-<<<<<<< HEAD
-  const response = await fetch(url, {
-=======
   let response = await fetch(url, {
->>>>>>> 7351bad620b69b67888514eb4c13d467487cb297
     method: 'PUT',
     body: JSON.stringify(data),
     headers: {
@@ -136,7 +145,6 @@ async function presEdit() {
 
 document.getElementById('edit_button').addEventListener('click', (event) => {
   event.preventDefault();
-<<<<<<< HEAD
   var txt;
   var r = confirm("Would you like to update this president?\nEither OK or Cancel.");
   if (r == true) {
@@ -147,8 +155,6 @@ document.getElementById('edit_button').addEventListener('click', (event) => {
     txt = "Update Cancelled";
     confirm("Update Cancelled");
   }
-=======
-  presEdit();
 });
 
 async function editLady() {
@@ -168,7 +174,16 @@ async function editLady() {
 
 document.getElementById('edit_lady_button').addEventListener('click', (event) => {
   event.preventDefault();
-  editLady();
+  var txt;
+  var r = confirm("Would you like to update this first lady?\nEither OK or Cancel.");
+  if (r == true) {
+    txt = "First Lady Updated";
+    editLady();
+    confirm("First Lady has been Updated");
+  } else {
+    txt = "Update Cancelled";
+    confirm("Update Cancelled");
+  }
 });
 
 async function editVp() {
@@ -189,7 +204,16 @@ async function editVp() {
 
 document.getElementById('edit_vp_button').addEventListener('click', (event) => {
   event.preventDefault();
-  editVp();
+  var txt;
+  var r = confirm("Would you like to update this vice president?\nEither OK or Cancel.");
+  if (r == true) {
+    txt = "Vice President Updated";
+    editVp();
+    confirm("Vice President has been Updated");
+  } else {
+    txt = "Update Cancelled";
+    confirm("Update Cancelled");
+  }
 });
 
 async function editChild() {
@@ -210,6 +234,14 @@ async function editChild() {
 
 document.getElementById('edit_child_button').addEventListener('click', (event) => {
   event.preventDefault();
-  editChild();
->>>>>>> 7351bad620b69b67888514eb4c13d467487cb297
+  var txt;
+  var r = confirm("Would you like to update this president's child?\nEither OK or Cancel.");
+  if (r == true) {
+    txt = "President's Child Updated";
+    editChild();
+    confirm("President's Child has been Updated");
+  } else {
+    txt = "Update Cancelled";
+    confirm("Update Cancelled");
+  }
 });

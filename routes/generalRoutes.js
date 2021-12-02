@@ -21,10 +21,10 @@ router.route('/general')
       res.json({error: 'Server error'});
     }
   })
-  .put(async(req, res) => {
+  .post(async(req, res) => {
     try {
       const newGames = await db.sequelizeDB.query(
-        general.put
+        general.post
       );
       res.send(newGames);
     } catch (err) {
@@ -32,10 +32,10 @@ router.route('/general')
       res.json({error: 'Server error'});
     }
   })
-  .post(async(req, res) => {
+  .put(async(req, res) => {
     try {
       const updateGames = await db.sequelizeDB.query(
-        general.post, {
+        general.put, {
           replacements: {
             game_id: req.body.id,
             name: req.body.name,

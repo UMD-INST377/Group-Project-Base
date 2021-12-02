@@ -1,173 +1,505 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/Glide/glide.core.min.css" />
-    <link rel="stylesheet" href="./css/Glide/glide.theme.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
 
-    <title>Viinyl</title>
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
-  </head>
-  <body>
-    <div class="viinyl-container">
-        <div class="viinyl-navigation">
-            <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                    <a class="navbar-item">
-                        <img src="./images/viinyl-logo.png" />
-                    </a>
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-
-                <div id="navbarBasicExample" class="navbar-menu">
-                    <div class="navbar-start">
-                        <a class="navbar-item"> Collection </a>
-                        <a class="navbar-item"> About </a>
-                        
-                        <div class="navbar-item has-dropdown is-hoverable">
-                            <a class="navbar-link"> More </a>
-                            <div class="navbar-dropdown">
-                                <a class="navbar-item"> About </a>
-                                <a class="navbar-item"> Contact </a>
-                                <hr class="navbar-divider" />
-                                <a class="navbar-item"> Report an issue </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="navbar-end">
-                        <div class="navbar-item">
-                            <div class="buttons">
-                                <button class="button is-danger" id="signup">
-                                    <strong>Sign up</strong>
-                                </button>
-                                <button class="button is-dark">Log in</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <!-- sign-up modal -->
-        <div class="modal" id="signupModal">
-            <div class="modal-background">
-                <div class="modal-content">
-                    <div class="section modal-wrap">
-                        <div class="field">
-                            <label class="label">Email</label>
-                            <div class="control">
-                                <input class="input" type="email"  placeholder="e.g. alexsmith@gmail.com" />
-                            </div>
-                        </div>
-                        
-                        <div class="field">
-                            <label class="label">Username</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="e.g. alexsmith" />
-                            </div>
-                        </div>
-                        
-                        <div class="field">
-                            <label class="label">Password</label>
-                            <div class="control">
-                                <input class="input" type="password" placeholder="Password" />
-                            </div>
-                        </div>
-                        
-                        <div class="field">
-                            <div class="control">
-                                <button class="button is-danger">Sign Up</button>
-                                <button class="button" id="Cancel">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="modal-close is-large" id="signup-close" aria-label="close"></button>
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="./css/Glide/glide.core.min.css"/>
+  <link rel="stylesheet" href="./css/Glide/glide.theme.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/>
+  <link rel="stylesheet" href="./css/style.css"/>
+  <title>Viinyl</title>
+  <link rel="icon" href="./images/favicon.ico" type="image/x-icon"/>
+</head>
+<div class="viinyl-container">
+  <div class="viinyl-navigation">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand"><a class="navbar-item"><img src="./images/viinyl-logo.png"/></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+      <div class="navbar-menu" id="navbarBasicExample">
+        <div class="navbar-start"><a class="navbar-item"> Collection </a><a class="navbar-item"> About </a>
+          <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link"> More </a>
+            <div class="navbar-dropdown"><a class="navbar-item"> About </a><a class="navbar-item"> Contact </a>
+              <hr class="navbar-divider"/><a class="navbar-item"> Report an issue </a>
             </div>
+          </div>
         </div>
-        <div class="subtitle is-3"><strong>Trending</strong></div>
-        <div class="vinyl-carousel">
-            <div class="vinyl-grid">
-                <div class="glide">
-                    <div class="glide__track" data-glide-el="track">
-                        <ul class="glide__slides">
-                            <li class="glide__slide"><img src="./vinyls/25.png" /></li>
-                            <li class="glide__slide"><img src="./vinyls/am.png" /></li>
-                            <li class="glide__slide"><img src="./vinyls/bad.png" /></li>
-                            <li class="glide__slide"><img src="./vinyls/back_in_black.jpg" /></li>
-                            <li class="glide__slide"><img src="./vinyls/born_to_die.png" /></li>
-                            <li class="glide__slide"><img src="./vinyls/dark_side_of_the_moon.png" /></li>
-                            <li class="glide__slide"><img src="./vinyls/gkmc.jpeg" /></li>
-                            <li class="glide__slide"><img src="./vinyls/greatest_hits.png" /></li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <button class="button is-danger" id="signup"><strong>Sign up</strong></button>
+              <button class="button is-dark">Log in</button>
             </div>
-            <div class="vinyl-grid">
-                <div class="glide">
-                    <div class="glide__track" data-glide-el="track">
-                        <ul class="glide__slides">
-                            <li class="glide__slide"><img src="./vinyls/plastic_beach.jpg" /></li>
-                            <li class="glide__slide"><img src="./vinyls/morning_phase.jpg" /></li>
-                            <li class="glide__slide"><img src="./vinyls/master_of_puppets.jpg" /></li>
-                            <li class="glide__slide"><img src="./vinyls/tpab.png" /></li>
-                            <li class="glide__slide"><img src="./vinyls/thriller.png" /></li>
-                            <li class="glide__slide"><img src="./vinyls/the_endless_river.jpg" /></li>
-                            <li class="glide__slide"><img src="./vinyls/ram.jpg" /></li>
-                            <li class="glide__slide"><img src="./vinyls/purple_rain.jpg" /></li>
-                        </ul>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- sign-up modal-->
+  <div class="modal" id="signupModal">
+    <div class="modal-background">
+      <div class="modal-content">
+        <div class="section modal-wrap">
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com"/>
             </div>
+          </div>
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g. alexsmith"/>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="password" placeholder="Password"/>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button class="button is-danger">Sign Up</button>
+              <button class="button" id="Cancel">Cancel</button>
+            </div>
+          </div>
         </div>
-        <div class="graphs">
-            <div id="pie-graph" style="height: 370px; width: 50%;"></div>
-            <div id="bar-graph" style="height: 370%; width: 50%;"></div>
-        </div>
+      </div>
+      <button class="modal-close is-large" id="signup-close" aria-label="close"></button>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script src="./javascript/graphs.js"></script>
-    <script src="./javascript/modals.js"></script>
-    <script>
-        
-      let config = {
-        type: "carousel",
-        perView: 5,
-        autoplay: 3000,
-        breakpoints: {
-          1024: {
-            perView: 2,
-          },
-          600: {
-            perView: 1,
-          },
-        },
-        animationTimingFunc: "linear",
-        animationDuration: 800,
-        peek: {
-          before: 100,
-          after: 100,
-        },
-        hoverpause: false,
-        dragThreshold: false,
-      };
-
-      const carousel = document.querySelectorAll(".glide");
-
-      for (let i = 0; i < carousel.length; i++) {
-        new Glide(carousel[i], config).mount();
-      }
-    </script>
-  </body>
-</html>
+  </div>
+  <!-- vinyl modal-->
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 0</p>
+        <p>Content 0</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 1</p>
+        <p>Content 1</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 2</p>
+        <p>Content 2</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 3</p>
+        <p>Content 3</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 4</p>
+        <p>Content 4</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 5</p>
+        <p>Content 5</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 6</p>
+        <p>Content 6</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 7</p>
+        <p>Content 7</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 8</p>
+        <p>Content 8</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 9</p>
+        <p>Content 9</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 10</p>
+        <p>Content 10</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 11</p>
+        <p>Content 11</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 12</p>
+        <p>Content 12</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 13</p>
+        <p>Content 13</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 14</p>
+        <p>Content 14</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 15</p>
+        <p>Content 15</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 16</p>
+        <p>Content 16</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 17</p>
+        <p>Content 17</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 18</p>
+        <p>Content 18</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 19</p>
+        <p>Content 19</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="modal" id="vinylmodal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modal title</p>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ...-->
+        <p>Modal 20</p>
+        <p>Content 20</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Add Record</button>
+        <button class="button" id="cancel-vinyl">Cancel</button>
+      </footer>
+    </div>
+  </div>
+  <div class="subtitle is-3"><strong>Trending</strong></div>
+  <div class="vinyl-carousel">
+    <div class="vinyl-grid">
+      <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/25.png"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/am.png"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/bad.png"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/back_in_black.jpg"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/born_to_die.png"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/dark_side_of_the_moon.png"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/gkmc.jpeg"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/greatest_hits.png"/>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="vinyl-grid">
+      <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/plastic_beach.jpg"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/morning_phase.jpg"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/master_of_puppets.jpg"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/tpab.png"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/thriller.png"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/the_endless_river.jpg"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/ram.jpg"/>
+            </li>
+            <li class="glide__slide">
+              <input class="trigger" type="image" src="./vinyls/purple_rain.jpg"/>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="graphs">
+    <div id="pie-graph" style="height: 370px; width: 50%;"></div>
+    <div id="bar-graph" style="height: 370%; width: 50%;"></div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="./javascript/graphs.js"></script>
+<script src="./javascript/modals.js"></script>
+<script src="./javascript/carousel.js"></script>

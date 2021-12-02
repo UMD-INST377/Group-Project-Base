@@ -64,10 +64,8 @@
                 </select>
             </div>
 
-            <div class="carousel">
-                <button class="playlist-button" type="button">Test</button>
-                <button class="playlist-button" type="button">Test2</button>
-                <button class="playlist-button" type="button">Test3</button>
+            <div id="playlistContainer" class="carousel">
+                
             </div>
         </div>
 
@@ -91,6 +89,41 @@
         <div class="footer">
             <p>&copy; 2021 - INST377 Group 10. All Rights Reserved</p>
         </div>
+
+        <script>
+            async function windowsAction() {
+                //change this endpoint later
+                const endPoint = await fetch('http://localhost:3000/api/playlists');
+                const playlists = await endPoint.json();
+
+                console.log(playlists)
+            
+                const playlistContainer = document.querySelector("#playlistContainer");
+
+
+            function displayPlaylists() {
+            // eslint-disable-next-line no-template-curly-in-string
+                // eslint-disable-next-line arrow-body-style
+                const html = playlists.map((playlist) => {
+                    
+                return `<button class="playlist-button" type="button">${playlist.playlist_name}</button>`;
+            }).join('');
+                playlistContainer.innerHTML = html;
+            }
+
+            displayPlaylists();
+                // const searchInput = document.querySelector('#search');
+
+                // searchInput.addEventListener('change', displayMatches);
+                // searchInput.addEventListener('keyup', (evt) => {
+                //     displayMatches(evt);
+                //     });
+        }
+
+            window.onload = windowsAction();
+        </script>
+
+
     </body>
     <script src='script.js'></script>
 </html>

@@ -1,5 +1,6 @@
 /* Group24 */
-// Ali
+/* Jacob Walter Lab 9 & 10 */
+
 import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';

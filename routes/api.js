@@ -70,7 +70,6 @@ router.get('/schools', async (request, response) => {
  * @author Hyeong C.
  * @date 2021-11-07 18:40:00pm
  */
-
 router.get('/schools/:rank_id', async (request, response) => {
   try {
     // Debug
@@ -89,6 +88,13 @@ router.get('/schools/:rank_id', async (request, response) => {
 
 /**
  * Fetch School Reviews by Rank ID
+ *
+ * Note:
+ *   (1) We cannot allow POST/PUT/DELETE for reviews
+ *   because we cannot verify the user wrote the review themselves
+ *
+ * TODO:
+ *   (1) Implement user authentication
  *
  * @author Alec M.
  * @date 2021-11-08 11:41:00
@@ -119,6 +125,18 @@ router.get('/schools/:rank_id/reviews', async (request, response) => {
     // Send data
     response.status(404).send("");
   }
+});
+router.post('/schools/:rank_id/reviews', async (request, response) => {
+  // Unallowed method
+  response.status(405).send("Method Not Allowed");
+});
+router.put('/schools/:rank_id/reviews', async (request, response) => {
+  // Unallowed method
+  response.status(405).send("Method Not Allowed");
+});
+router.delete('/schools/:rank_id/reviews', async (request, response) => {
+  // Unallowed method
+  response.status(405).send("Method Not Allowed");
 });
 
 /**
@@ -179,6 +197,18 @@ router.post('/schools/:rank_id/review', async (request, response) => {
     response.status(404);
   }
 });
+router.get('/schools/:rank_id/review', async (request, response) => {
+  // Unallowed method
+  response.status(405).send("Method Not Allowed");
+});
+router.put('/schools/:rank_id/review', async (request, response) => {
+  // Unallowed method
+  response.status(405).send("Method Not Allowed");
+});
+router.delete('/schools/:rank_id/review', async (request, response) => {
+  // Unallowed method
+  response.status(405).send("Method Not Allowed");
+});
 
 router.get('/schools/:rank_id/univ_location', async (request, response) => {
   try {
@@ -222,8 +252,6 @@ router.get('/test_scores', async (request, response) => {
     response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
-
-
 
 
 // Export Express Router

@@ -8,13 +8,13 @@ This web application uses a game database to show users the player population an
 
 https://group15videogamesproject.herokuapp.com
 
-## GitHubLink
+## GitHub Link
 
 https://github.com/Ken2399/Group15-Final-INST377SP2021
 
 ## Getting Started
 
-* "Clone" or download this repository to your local VScode by using the large green button marked "code"
+* "Clone" or download this repository to your local VScode
 * Install the software dependencies(type npm install in the terminal ) and run the server(type npm start in the terminal)
 * Search http://localhost:3000/ in your broswer
 

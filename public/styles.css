@@ -2,21 +2,89 @@ body {
     background-color: white;
 }
 
-.buttons {
-
+.p-2{
+    background-color: white;
 }
-.buttons a {
-    text-decoration: none;
-    color: white;
-
+.navbar {
+    background-color: hsl(347, 90%, 96%);
 }
+
+/* THIS IS THE SLIDE CONTENT */
+
+#presidents-of-the-united-states {
+    background-color: hsl(206, 70%, 96%);
+}
+
+.tl-slide-content{
+    background-color: hsl(206, 70%, 96%);
+}
+
+/* THIS IS THE ACTUAL TIMELINE */
+
+.tl-timenav{
+    background-color:hsl(347, 90%, 96%) !important;
+}
+
+.tl-attribution{
+    display: none;
+}
+
+.tl-timemarker-content{
+    background-color:hsl(206, 70%, 96%);
+}
+
+.tl-menubar{
+    background-color: hsl(206, 20%, 96%);
+} 
+
+.tl-timemarker-media-container{
+    display: none;
+}
+
+.tl-headline{
+    font-weight: bold !important;
+}
+
+
+
+/* .tl-timemarker-timespan{
+    background-color: darkslateblue;
+} */
+
+/* .tl-timemarker-timespan{
+    background-color: hsl(206, 70%, 96%);
+} */
+
+/* .tl-timenav-slider-background {
+    background-color:  hsl(206, 70%, 96%);
+} */
+
+/* .tl-timeaxis-background {
+    background-color: chartreuse;
+} */
+/* .tl-timemarker-media-container {
+    background-color: hsl(206, 70%, 96%);
+} */
+
+
+/* hsl(347, 90%, 96%) */
+
+/* .tl-slide-content-container{
+    background-color: hsl(206, 70%, 96%);
+} */
+/* .tl-timeaxis-tick:before {
+    background-color:#c9483e;
+}
+.tl-menubar{
+    background-color:blue;
+} */
+
 /* .description {
     position: absolute;
     width: auto;
     height: 350px;
     left: auto;
     
-
     background:skyblue;
     border: 2px solid #000000;
     box-sizing: border-box;
@@ -30,10 +98,202 @@ body {
     height: 80px;
     left: 222px;
     top: 500px;
-
     background: #EDAAA5;
     border: 2px solid #000000;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 } */
+
+/*
+////////////////////////////
+/ Objective & Tech Specs /
+////////////////////////////
+*/
+@media only screen and (max-width: 918px){
+    .top-headings{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 2%;
+    }
+    
+    .tech-specs-section{
+        display: flex;
+        flex-direction: column;
+        margin: 2%;
+    }
+
+    .tech-specs{
+        display: flex;
+        flex-direction: row;
+        margin-left: 2%;
+        margin-right: 2%;
+        flex-wrap: wrap;
+    }
+
+    .front-end, .back-end {
+        margin: 2%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .objective{
+        margin: 2%;
+        font-size: x-large;
+        background-color: #002642;
+    }
+}
+
+@media only screen and (min-width: 919px){
+    .top-headings{
+        display: flex;
+        margin: 2%;
+    }
+    
+    .tech-specs-section{
+        display: flex;
+        flex-direction: column;
+        margin: 2%;
+    }
+    
+    .tech-specs{
+        display: flex;
+        flex-direction: column;
+        margin-left: 2%;
+        margin-right: 2%;
+        flex-wrap: wrap;
+    }
+
+    .front-end, .back-end {
+        margin: 2%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .objective{
+        margin: 2%;
+        font-size: x-large;
+    }
+}
+
+
+/*
+////////////
+/ OUR TEAM /
+////////////
+*/
+
+.gh{
+    height: 80px;
+    width: 40px;
+}
+
+.gh:hover{
+    height: 80px;
+    width: 80px;
+}
+
+.li{
+    height: 80px;
+    width: 80px;
+}
+
+.li:hover{
+    height: 80px;
+    width: 120px;
+}
+
+.links{
+    position: relative;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: space-around;
+    align-content: bottom;
+}
+
+.team{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+@media only screen and (max-width: 750px){
+    .card {
+        padding: 2%;
+        margin: 4%;
+        flex-grow: 1;
+        flex-basis: 88%;
+        
+        display: flex;
+        flex-direction: column;
+        }
+
+    .card img{
+        max-width: 100%;
+    }
+
+    .content{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+@media only screen and (min-width: 751px){
+    .card {
+        padding: 2%;
+        margin: 4%;
+        flex-grow: 1;
+        flex-basis: 38%;
+      
+        display: flex;
+        flex-direction: column;
+      }
+
+    .card img{
+        max-width: 100%;
+    }
+    
+    .content{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+@media only screen and (min-width: 1201px){
+    .card {
+        padding: 2%;
+        margin: 4%;
+        flex-grow: 1;
+        flex-basis: 24.33%;
+        
+        display: flex;
+        flex-direction: column;
+        }
+
+    .card img{
+        max-width: 100%;
+    }
+
+    .content{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+.has-background-independence{
+    background-color: #414361;
+}
+
+.has-background-shadow-blue{
+    background-color: #8499b1;
+}
+
+.has-background-space-cadet{
+    background-color: #2A2D43;
+}
+
+.has-background-amaranth-red{
+    background-color: #D72638;
+}
+
+.has-background-shimmering-blush {
+    background-color: #ffd4ca;

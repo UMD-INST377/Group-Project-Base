@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* const updatePresident = document.querySelector('#update_button');
 updatePresident.addEventListener('click', function_name_here);
 
@@ -51,11 +52,21 @@ async function presDelete() {
   //});
 }
 
+=======
+async function presDelete() {
+  const inputField = document.querySelector('#president_id_delete');
+  const url = `/api/presidents/${inputField.value}`;
+  let response = await fetch(url, {
+    method: 'DELETE',
+  });
+}
+>>>>>>> 0f0ad2349b801e800e4c3ecc5bb5cfd3b9e31ea7
 document.getElementById('delete_button').addEventListener('click', (event) => {
   event.preventDefault()
   presDelete()
 });
 
+<<<<<<< HEAD
 // async function presDelete() {
 //   const inputField = document.querySelector('#delete_button');
 //   const data = {
@@ -87,3 +98,26 @@ document.getElementById('delete_button').addEventListener('click', (event) => {
 "party": createForm.elements['party']
 };
  */
+=======
+// pop-up message delete on click
+document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.message-header .delete') || []).forEach(($delete) => {
+    const $notification = $delete.parentNode;
+
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});
+
+// pop-up message delete on click
+document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    const $notification = $delete.parentNode;
+
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});
+>>>>>>> 0f0ad2349b801e800e4c3ecc5bb5cfd3b9e31ea7

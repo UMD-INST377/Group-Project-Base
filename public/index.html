@@ -3,14 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <title>Group Project (Group24)</title>
+    <link rel="icon" type="image/png" href="/images/american_eagle.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/> 
     <link rel="stylesheet" href="styles.css">
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
   </head>
 
   <body class='p-2'>
-  <!--Betz will take care of creating hamburger menu with navbar, including main,about,and update -->
-    <h1 class='title notification has-text-centered has-background-danger-light has-text-weight-bold'>Welcome to Our Presidents Timeline!</h1>
 
+<<<<<<< HEAD
     <div class='buttons'>
       <div class='main button is-info'>
         <nav>
@@ -25,18 +27,66 @@
             <a class='has-text-weight-bold' href="update.html">Update Page </a>
         </nav>
        </div>
+=======
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img src="/images/american_eagle.png" width= '40px'>
+        </a>
+        <div class="navbar-burger" data-target="navbarExampleIsInfoExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+>>>>>>> 0f0ad2349b801e800e4c3ecc5bb5cfd3b9e31ea7
     </div>
-
-    <div class='comingsoon box p-2 has-background-info-light'>
-      <h2 class='title is-2 has-text-weight-bold'>Coming Soon...</h2>
-    </div>
-    <!--Adeyinka adds previous/next buttons-->
-    <div class='contact box p-2 has-background-info-light'>
-      <h2 class='title is-2 has-text-weight-bold'>Our Interactive Timeline...</h2>
-      <p>Will be placed here!</p>
+    
+    
+      <div id="navbarExampleIsInfoExample" class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link has-text-weight-bold" href="index.html">
+              Menu
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="index.html">
+                Home
+              </a>
+              <a class="navbar-item" href="update.html">
+                Update Records
+              </a>
+              <a class="navbar-item" href="about.html">
+                About Us
+              </a>
+              <a class="navbar-item" href="login.html">
+                Login
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <a class="button is-info" href="login.html">
+                  <span class="icon">
+                    <i class="fas fa-download"></i>
+                  </span>
+                  <span class ="has-text-weight-bold">Login</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    
+    <div id='timeline-embed' class='contact box p-2 has-background-info-light'  style="height: 85vh;">
+      
     </div>
     <script src="script.js"></script>
   </body>
-
-
 </html>

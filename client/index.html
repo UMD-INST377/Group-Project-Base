@@ -3,83 +3,102 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Main Page</title>
+  <title>Movie Search</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" type = "text/css" href="styles.css" >
-</head>
-<body>
-  <p class="title">My Movie Cravings</p>
-  <div class="wrapper">
-    <div class="container">
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-          </a>
-      
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <div id="navbar-menu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="./index.html">Home</a>
+        <a class="navbar-item" href="./about.html"> About Us</a>
+        <a class="navbar-item" href="./search.html"> Search</a>
+        <a class="navbar-item" href="./editMovieDB.html"> Edit a Movie</a>
         </div>
-      
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item">
-              Home
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary">
+               Sign Up
             </a>
-      
-            <a class="navbar-item">
-              Documentation
+            <a class="button is-light">
+              Log in
             </a>
-      
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                More
-              </a>
-      
-              <div class="navbar-dropdown">
-                <a class="navbar-item">
-                  About
-                </a>
-                <a class="navbar-item">
-                  Jobs
-                </a>
-                <a class="navbar-item">
-                  Contact
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                  Report an issue
-                </a>
-              </div>
-            </div>
-          </div>
-      
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button is-light">
-                  Log in
-                </a>
-              </div>
-            </div>
           </div>
         </div>
-      </nav>
-  <!-- <ul>
-    <li><a href="./about.html">About</a></li> 
-    <li><a href="./editMovieDB.html">Edit Movie Preference</a></li>
-    <li><a href="./search.html">Search Movie</a></li>
-    <li><a href="./index.html">Homepage</a></li>
-  </ul> -->
-      </div>
       </div>
     </div>
+    </nav>
+</head>
+<body> 
+
+  <section class="hero is-medium">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title" >
+          Welcome to Movie Search
+        </p>
+        <h2 class="subtitle">
+          Discover New Movies
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="masonry-wrapper">
+    <div class="masonry">
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2021/07/252230963.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src=" https://www.joblo.com/wp-content/uploads/2021/08/dont-look-up-poster.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2018/02/red-notice-poster.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2021/10/being-the-ricardos-poster.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2019/08/Halloween-Kills-Jamie-Lee-Curtis-poster-647x1024-1.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2021/10/rons-gone-wrong-poster.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2021/09/titane-poster.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2021/09/this-is-the-night-poster.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2021/09/this-is-the-night-poster.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2020/10/addams-family-2-new-poster-date.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2021/07/vacation-friends-poster-1.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2021/11/cmon-cmon-poster.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2019/09/doctor-strange-multiverse-poster.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2021/07/moonfall-poster-2.jpg" alt="Movie Image" class="masonry-content">
+    </div>
+    <div class="masonry-item">
+      <img src="https://www.joblo.com/wp-content/uploads/2021/09/benedetta.jpg" alt="Movie Image" class="masonry-content">
+    </div>
   </div>
-<!-- <script src="script.js"></script> -->
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>INST 377 Group 6</strong>
+        All the images, and graphics used on this website to their respective owners and I or this group does not claim any right over them.
+      </p>
+    </div>
+  </footer>
 </body>
+</html>

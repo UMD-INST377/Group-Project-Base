@@ -48,7 +48,49 @@
           </div>
         </div>
       </nav>
-        
-        <script src="script.js" async defer></script> -->
+      <div class="wrapper">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-narrow is-offset-one-fifth">
+              <div class="box">
+                <form  id="form-id" class='speaker-form'>
+                  <div class="field">
+                    <label for='movie_name' class="label">Movie Name</label>
+                    <input id='movie_name' name='movie_name' type='text' />
+                  </div>
+                  <div class="field">
+                    <label for='movie_id' class="label">ID</label>
+                    <input id='movie_id' name='movie_id' type='text' />
+                  </div>
+                  <div class="field">
+                    <label class="label">Options</label>
+                    <label class="radio">POST</label>
+    
+                    <input name="answer" value = "POST" type="radio">
+    
+                    <label class="radio"> PUT </label>
+    
+                    <input name="answer" value ="PUT" type="radio">
+
+                    <label class="radio"> DELETE </label>
+    
+                    <input name="answer" value="DELETE" type="radio">
+    
+                  </div>
+                  <button class="button is-primary" onclick="window.location.href = '/search'" id="submit-button">Submit</button>
+                </form>
+              </div>
+            </div>
+    
+    
+    
+            <div class="column is-two-fifths is-vcentered">
+              <div class="box">
+                This is going to be something in two weeks.
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="script.js" async defer></script> 
     </body>
 </html>

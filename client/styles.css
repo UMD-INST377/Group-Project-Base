@@ -87,3 +87,13 @@
 html {
     height: 100%;
 }
+
+/*css for formsuccess*/
+.title {
+    text-align: center;
+    margin-top: 40%;
+}
+
+#formsuccessbutton{
+    margin-left: 40%;
+}

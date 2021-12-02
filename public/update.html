@@ -3,71 +3,660 @@
   <head>
     <meta charset="UTF-8" />
     <title>Group 24 About Page</title>
-    <link rel="icon" type="image/png" href="/images/american_eagle.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/> 
-    <link rel="stylesheet" href="styles.css">
-
+    <link rel="icon" type="image/png" href="/images/american_eagle.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
-        <body>
-            <nav class="navbar is-info">
-                <div class="navbar-brand">
-                  <a class="navbar-item" href="index.html">
-                    <img src="/images/american_eagle.png" width= '40px'>
-                  </a>
-                  <div class="navbar-burger" data-target="navbarExampleIsInfoExample">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-              
-                <div id="navbarExampleIsInfoExample" class="navbar-menu">
-                  <div class="navbar-start">
-                    <div class="navbar-item has-dropdown is-hoverable">
-                      <a class="navbar-link has-text-weight-bold" href="index.html">
-                        Menu
-                      </a>
-                      <div class="navbar-dropdown is-boxed">
-                        <a class="navbar-item" href="index.html">
-                          Home
-                        </a>
-                        <a class="navbar-item" href="update.html">
-                          Update Records
-                        </a>
-                        <a class="navbar-item" href="about.html">
-                          About Us
-                        </a>
-                        <a class="navbar-item" href="login.html">
-                          Login
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <div class="navbar-end">
-                    <div class="navbar-item">
-                      <div class="field is-grouped">
-                        <p class="control">
-                          <a class="button is-info" href="login.html">
-                            <span class="icon">
-                              <i class="fas fa-download"></i>
-                            </span>
-                            <span class ="has-text-weight-bold">Login</span>
-                          </a>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </nav>
+  <body class="p-2">
+    <form class="box">
+    <nav class="navbar is-info box" style="height: 10vh;">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img src="/images/american_eagle.png" width="40px" />
+        </a>
+        <div class="navbar-burger" data-target="navbarExampleIsInfoExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
 
-            <h1>
-                this page needs to be pushed to main and pulled by everyone.
-            </h1>
-        </body>
-    </head>
+      <div id="navbarExampleIsInfoExample" class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link has-text-weight-bold" href="index.html">
+              Menu
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="index.html"> Home </a>
+              <a class="navbar-item" href="update.html"> Update Records </a>
+              <a class="navbar-item" href="about.html"> About Us </a>
+              <a class="navbar-item" href="login.html"> Login </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <a class="button is-info" href="login.html">
+                  <span class="icon">
+                    <i class="fas fa-download"></i>
+                  </span>
+                  <span class="has-text-weight-bold">Login</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <h1
+      class="
+        title
+        notification
+        has-text-centered has-background-danger-light has-text-weight-bold box">Update Page</h1>
+
+        <article class="message is-danger is-size-4">
+          <div class="message-header">
+            <p>Read it carefully before proceed!</p>
+            <button class="delete" aria-label="delete"></button>
+          </div>
+          <div class="notification is-danger is-light">
+            <button class="delete"></button>
+            <p>This page lets you update or add 
+              information of the Presidents of the United States and the Prsidents family as well as the Vice president of the United States.
+              Please be careful to update or add new information and only <strong>CORRECT INFORMATION MUST BE UPDATED OR ADDED!</strong></p>
+          </div>
+        </article>
+    
+    <h2 class="title is-2 has-text-weight-bold">Add New President</h2>
+
+    <form class="box">
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="first_name">President First Name</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="first_name_add"
+                placeholder="Type first name here"
+                />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="last_name">President Last Name</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="last_name_add"
+                placeholder="Type last name here"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="date_inaurg"
+              >President Date of Inauguration</label
+            >
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="date_inaurg_add"
+                placeholder="Type date here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="age_inaurg">President age during Inauguration</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="age_inaurg_add"
+                placeholder="Type age here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="terms_served">Terms Served</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="terms_served_add"
+                placeholder="Type terms here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="death_date">Date of Death</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="death_date_add"
+                placeholder="Type date here"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="birth_date">President Birth Date</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="birth_date_add"
+                placeholder="Type date here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="home_state">President Home State</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="home_state_add"
+                placeholder="Type state here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="party">President Party</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="party_add"
+                placeholder="Type party here"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="button is-primary" type="submit" id="add_button">
+        Add New President
+      </button>
+    </form>
+
+    <form class="box">
+      <div class="columns">
+        <div class="column">
+        <div class="field">
+          <label class="label" for="first_ladies_name">First Lady's Full Name</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="lady_name_add"
+              placeholder="Type first name here"
+              style="width: 30%;"
+            />
+          </div>
+        </div>
+        </div>
+      </div>
+      <button class="button is-primary" type="submit" id="lady_button">
+        Add First Lady
+      </button>
+    </form>
+
+    <form class="box">
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="vp_first_name">Vice President First Name</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="vp_first_name_add"
+                placeholder="Type first name here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="vp_last_name"
+              >Vice President Last Name</label
+            >
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="vp_last_name_add"
+                placeholder="Type last name here"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="button is-primary" type="submit" id="vp_button">
+        Add Vice President
+      </button>
+    </form>
+
+    <form class="box">
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="child_first_name"
+              >Child's First Name</label
+            >
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="child_first_name_add"
+                placeholder="Type first name here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="child_last_name">Child's Last Name</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="child_last_name_add"
+                placeholder="Type last name here"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="button is-primary" type="submit" id="child_button">
+        Add President children
+      </button>
+    </form>
+
+    <h2 class="title is-2 has-text-weight-bold">Update Existing President</h2>
+
+    <form class="box">
+      <article class="message is-warning is-size-4">
+        <div class="message-header">
+          <p>ID is all INTEGERS no Alphabets</p>
+          <button class="delete" aria-label="delete"></button>
+        </div>
+      </article>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="president_id">President ID</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="president_id_edit"
+                placeholder="Type id here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="first_name">President First Name</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="first_name_edit"
+                placeholder="Type first name here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="last_name">President Last Name</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="last_name_edit"
+                placeholder="Type last name here"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="date_inaurg"
+              >President Date of Inauguration</label
+            >
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="date_inaurg_edit"
+                placeholder="Type date here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="age_inaurg"
+              >President age during Inauguration</label
+            >
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="age_inaurg_edit"
+                placeholder="Type age here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="terms_served">Terms Served</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="terms_served_edit"
+                placeholder="Type terms here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="death_date">Date of Death</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="death_date_edit"
+                placeholder="Type date here"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="birth_date">President Birth Date</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="birth_date_edit"
+                placeholder="Type date here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="home_state">President Home State</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="home_state_edit"
+                placeholder="Type state here"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label" for="party">President Party</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="party_edit"
+                placeholder="Type party here"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="button is-primary" type="submit" id="edit_button">
+        Update President
+      </button>
+    </form>
+
+    <form class="box">
+      <article class="message is-warning is-size-4">
+        <div class="message-header">
+          <p>ID is all INTEGERS no Alphabets</p>
+          <button class="delete" aria-label="delete"></button>
+        </div>
+      </article>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label" for="first_ladies_id">First Lady's ID</label>
+            <div class="control">
+              <input
+                class="input"
+                type="text"
+                id="edit_ladies_id"
+                placeholder="Type id here"
+              />
+            </div>
+          </div>
+        </div>
+      <div class="column">
+      <div class="field">
+        <label class="label" for="first_ladies_name">First Lady Name</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            id="lady_name_edit"
+            placeholder="Type first name here"
+          />
+        </div>
+      </div>
+      </div>
+    </div>
+    <button class="button is-primary" type="submit" id="edit_lady_button">
+        Update First Lady
+      </button>
+  </form>
+
+  <form class="box">
+    <article class="message is-danger is-size-4">
+      <div class="message-header">
+        <p>ID is all INTEGERS no Alphabets</p>
+        <button class="delete" aria-label="delete"></button>
+      </div>
+    </article>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label" for="vp_id">Vice President's ID</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="edit_vp_id"
+              placeholder="Type id here"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label" for="first_name"
+            >Vice President First Name</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="edit_vp_fname"
+              placeholder="Type first name here"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <label class="label" for="last_name">Vice President Last Name</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="edit_vp_lname"
+              placeholder="Type last name here"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="button is-primary" type="submit" id="edit_vp_button">
+      Update Vice President
+    </button>
+  </form>
+
+  <form class="box">
+    <article class="message is-danger is-size-4">
+      <div class="message-header">
+        <p>ID is all INTEGERS no Alphabets</p>
+        <button class="delete" aria-label="delete"></button>
+      </div>
+    </article>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label" for="child_id">Child's ID</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="edit_child_id"
+              placeholder="Type id here"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <label class="label" for="first_name">Child's First Name</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="child_fname_edit"
+              placeholder="Type first name here"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <label class="label" for="last_name">Child's Last Name</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="child_lname_edit"
+              placeholder="Type last name here"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="button is-primary" type="submit" id="edit_child_button">
+      Update President's Children
+    </button>
+  </form>
+
+
+    <h2 class="title is-2 has-text-weight-bold">Delete Existing President</h2>
+
+    <form class="box">
+      <article class="message is-danger is-size-4">
+        <div class="message-header">
+          <p>ID is all INTEGERS no Alphabets. Please be careful when you are deleting information with an ID. THIS FUCNCTION SHOULD ONLY BE USED WHEN 
+            INCORRECT INFORMATION IS ADDED/UPDATED
+          </p>
+          <button class="delete" aria-label="delete"></button>
+        </div>
+      </article>
+      <div class="field">
+        <label class="label" for="president_id">President ID</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            id="president_id_delete"
+            name="president_id"
+            style="width: 150px"
+          />
+        </div>
+      </div>
+
+      <button class="button is-primary is-danger" type="submit" id="delete_button">
+        Delete President
+      </button>
+    </form>
+  </form>
+  </body>
+
+  <script src="delete_script.js"></script>
+  <script src="post_put.js"></script>
 </html>
-
-
-

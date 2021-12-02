@@ -209,7 +209,7 @@ router.route('/metro')
   .post(async (req, res) => {
     try {
       console.log(req.query)
-      console.log(req.query.census_zcta)
+      console.log(req.query.metro_zcta)
       await db.sequelizeDB.query(controllers.metro.postMetroSQL,
 				 { replacements: {metro_zcta: req.query.metro_zcta,
 					       metro_area: req.query.metro_area

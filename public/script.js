@@ -23,18 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-//display data******************************************************************
-async function biomeFunction() {
-  const biome = await fetch("./api/biome").then((response) => response.json());
-  console.log(biome);
-}
-//document.querySelector(".biomeData").innerHTML = `<table>
-//<tr><td>property1</td><td>${biome.biome_id}</td></tr>
-//</table>`;
-biomeFunction();
-
 //form javascript******************************************************************
-var app = new (function () {
+/* var app = new (function () {
   this.el = document.getElementById("tasks");
 
   this.tasks = [];
@@ -125,4 +115,26 @@ app.FetchAll();
 
 function CloseInput() {
   document.getElementById("edit-box").style.display = "none";
+} */
+
+//display data******************************************************************
+async function biomeFunction() {
+  const biome = await fetch("./api/biome").then((response) => response.json());
+  //console.log(biome);
+  document.querySelector(".biomeData").innerHTML = `<table>
+<tr><th>biome_id</th><th>biome</th><th>continent</th></tr> 
+
+${biome.data
+  .map(
+    (elmt) => `<tr>
+<td>${JSON.stringify(elmt.biome_id)}</td> 
+<td>${JSON.stringify(elmt.Biome)}</td> 
+<td>${JSON.stringify(elmt.Continent)}</td>
+</tr>`
+  )
+  .join("")} 
+  
+
+</table>`;
 }
+biomeFunction();

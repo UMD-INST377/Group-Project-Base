@@ -4,7 +4,7 @@ import sequelize from "sequelize";
 
 import db from "../database/initializeDB.js";
 
-import biome from "../server/controllers/jonathanController.js";
+import biomeSQL from "../server/controllers/jonathanController.js";
 
 const router = express.Router();
 
@@ -16,7 +16,9 @@ router
   .get(async (req, res) => {
     try {
       // eslint-disable-next-line no-shadow
-      const biome = await db.Biome.findAll();
+      const biome = await db.sequelizeDB.query(biomeSQL, {
+        type: sequelize.QueryTypes.SELECT,
+      });
       const reply =
         biome.length > 0 ? { data: biome } : { message: "no results found" };
       console.log("touched /biome with GET");
@@ -24,16 +26,16 @@ router
       return reply;
     } catch (err) {
       console.error(err);
-      res.error("Server error");
+      res.send("Server error");
     }
   })
 
   .put(async (req, res) => {
     try {
-      await db.Biome.update(
+      await db.biome.update(
         {
-          Biome: req.body.Biome,
-          Continent: req.body.Continent,
+          biome: req.body.biome,
+          continent: req.body.continent,
         },
         {
           where: {
@@ -45,31 +47,33 @@ router
       res.send("Successfully updated");
     } catch (err) {
       console.error(err);
-      res.error("Server error");
+      res.send("Server error");
     }
   })
 
   .post(async (req, res) => {
     // eslint-disable-next-line no-shadow
-    const biome = await db.Biome.findAll();
+    const biome = await db.sequelizeDB.query(biomeSQL, {
+      type: sequelize.QueryTypes.SELECT,
+    });
     const currentId = (await biome.length) + 1;
     try {
       const newBiome = await db.Biome.create({
         biome_id: currentId,
-        Biome: req.body.Biome,
-        Continent: req.body.Continent,
+        biome: req.body.Biome,
+        continent: req.body.Continent,
       });
       console.log("touched /biome with POST");
       res.json(newBiome);
     } catch (err) {
       console.error(err);
-      res.error("Server error");
+      res.send("Server error");
     }
   })
 
   .delete(async (req, res) => {
     try {
-      await db.Biome.destroy({
+      await db.biome.destroy({
         where: {
           biome_id: req.params.biome_id,
         },
@@ -78,7 +82,7 @@ router
       res.send("Successfully deleted");
     } catch (err) {
       console.error(err);
-      res.error("Server error");
+      res.send("Server error");
     }
   });
 export default router;

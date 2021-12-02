@@ -10,7 +10,7 @@ https://group16-fa2021.herokuapp.com/
 - Samsung Galaxy 
 - Pixel 2/2XL
 ## Links
-Words
+[Developer Manual](https://github.com/efalope2059/Group16-Final-INST377FA2021/blob/main/README.md#developer-manual)
 
 # Developer Manual
 ## How To Install The Application And All Dependencies

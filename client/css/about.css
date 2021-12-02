@@ -1,0 +1,7 @@
+.about-container {
+  height: calc(100vh - 100px);
+}
+
+.about-box {
+  max-width: 750px;
+}

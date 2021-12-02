@@ -2,6 +2,8 @@
 
 ## Brief Description
 
+This web application uses a game database to show users the player population and free-to-play capabilities of a constantly expanding selection of video games. Users can search for games in the database using the specific ID they are assigned to check pricing information and places to buy them. The application also features a graph that can be used to compare the pricing of each of the games. Developers can add and update specific entries to the table of games using the Update Game form.
+
 ## Website Link
 
 https://group15videogamesproject.herokuapp.com
@@ -12,7 +14,7 @@ https://github.com/Ken2399/Group15-Final-INST377SP2021
 
 ## Getting Started
 
-* "Clone" or download this repository to your local VScode
+* "Clone" or download this repository to your local VScode by using the large green button marked "code"
 * Install the software dependencies(type npm install in the terminal ) and run the server(type npm start in the terminal)
 * Search http://localhost:3000/ in your broswer
 

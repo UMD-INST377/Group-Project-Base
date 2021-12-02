@@ -14,3 +14,4 @@ WHERE aoa_id = :aoa_id;`
 export default {
   aoaGet, aoaPut, aoaPost, aoaDelete
 };
+

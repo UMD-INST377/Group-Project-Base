@@ -54,7 +54,6 @@
     display: flex;
     justify-content: center;  
     margin:auto;
-    margin-top: 370px; 
 }
 
 .photo-grid{
@@ -87,4 +86,14 @@
 }
 html {
     height: 100%;
+}
+
+/*css for formsuccess*/
+#submissiontitle {
+    text-align: center;
+    margin-top: 40%;
+}
+
+#formsuccessbutton{
+    margin-left: 40%;
 }

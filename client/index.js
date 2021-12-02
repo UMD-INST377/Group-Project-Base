@@ -24,7 +24,7 @@ function renderTableHTML(match, tableDiv) {
             <td><strong>total population</strong></td><td>${match.total_population}</td>
             </tr>
             <tr>
-            <td><strong>homeowner_rate</strong></td><td>${match.homeowner_rate}</td>
+            <td><strong>homeowner rate</strong></td><td>${match.homeowner_rate}</td>
             </tr>
             <tr>
             <td><strong>% homeowner without mortgage</strong></td><td>${match.percent_homeowner_without_mortgage}</td>

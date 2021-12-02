@@ -1,0 +1,366 @@
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='./css/Glide/glide.core.min.css')
+    link(rel='stylesheet' href='./css/Glide/glide.theme.min.css')
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css')
+    link(rel='stylesheet' href='./css/style.css')
+    title Viinyl
+    link(rel='icon' href='./images/favicon.ico' type='image/x-icon')
+  body
+    .viinyl-container
+      .viinyl-navigation
+        nav.navbar.is-light(role='navigation' aria-label='main navigation')
+          .navbar-brand
+            a.navbar-item
+              img(src='./images/viinyl-logo.png')
+            a.navbar-burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample')
+              span(aria-hidden='true')
+              span(aria-hidden='true')
+              span(aria-hidden='true')
+          #navbarBasicExample.navbar-menu
+            .navbar-start
+              a.navbar-item  Collection 
+              a.navbar-item(href='about.html')  About 
+              .navbar-item.has-dropdown.is-hoverable
+                a.navbar-link  More 
+                .navbar-dropdown
+                  a.navbar-item(href='about.html')  About 
+                  a.navbar-item  Contact 
+                  hr.navbar-divider
+                  a.navbar-item  Report an issue 
+            .navbar-end
+              .navbar-item
+                .buttons
+                  button#signup.button.is-danger
+                    strong Sign up
+                  button.button.is-dark Log in
+      // sign-up modal
+      #signupModal.modal
+        .modal-background
+          .modal-content
+            .section.modal-wrap
+              .field
+                label.label Email
+                .control
+                  input.input(type='email' placeholder='e.g. alexsmith@gmail.com')
+              .field
+                label.label Username
+                .control
+                  input.input(type='text' placeholder='e.g. alexsmith')
+              .field
+                label.label Password
+                .control
+                  input.input(type='password' placeholder='Password')
+              .field
+                .control
+                  button.button.is-danger Sign Up
+                  button#Cancel.button Cancel
+          button#signup-close.modal-close.is-large(aria-label='close')
+      // vinyl modal
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 0
+            p Content 0
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 1
+            p Content 1
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 2
+            p Content 2
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 3
+            p Content 3
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 4
+            p Content 4
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 5
+            p Content 5
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 6
+            p Content 6
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 7
+            p Content 7
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 8
+            p Content 8
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 9
+            p Content 9
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 10
+            p Content 10
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 11
+            p Content 11
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 12
+            p Content 12
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 13
+            p Content 13
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 14
+            p Content 14
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 15
+            p Content 15
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 16
+            p Content 16
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 17
+            p Content 17
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 18
+            p Content 18
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 19
+            p Content 19
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      #vinylmodal.modal
+        .modal-background
+        .modal-card
+          header.modal-card-head
+            p.modal-card-title Modal title
+          section.modal-card-body
+            // Content ...
+            p Modal 20
+            p Content 20
+          footer.modal-card-foot
+            button.button.is-success Add Record
+            button#cancel-vinyl.button Cancel
+      .subtitle.is-3
+        strong Trending
+      .vinyl-carousel
+        .vinyl-grid
+          .glide
+            div(class='glide__track' data-glide-el='track')
+              ul(class='glide__slides')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/25.png')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/am.png')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/bad.png')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/back_in_black.jpg')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/born_to_die.png')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/dark_side_of_the_moon.png')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/gkmc.jpeg')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/greatest_hits.png')
+        .vinyl-grid
+          .glide
+            div(class='glide__track' data-glide-el='track')
+              ul(class='glide__slides')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/plastic_beach.jpg')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/morning_phase.jpg')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/master_of_puppets.jpg')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/tpab.png')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/thriller.png')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/the_endless_river.jpg')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/ram.jpg')
+                li(class='glide__slide')
+                  input.trigger(type='image' src='./vinyls/purple_rain.jpg')
+      .graphs
+        #pie-graph(style='height: 370px; width: 50%;')
+        #bar-graph(style='height: 370%; width: 50%;')
+  script(src='https://cdn.jsdelivr.net/npm/@glidejs/glide')
+  script(src='https://canvasjs.com/assets/script/jquery-1.11.1.min.js')
+  script(src='https://canvasjs.com/assets/script/canvasjs.min.js')
+  script(src='./javascript/graphs.js')
+  script(src='./javascript/modals.js')
+  script(src='./javascript/carousel.js')

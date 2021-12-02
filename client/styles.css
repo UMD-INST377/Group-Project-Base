@@ -1,24 +1,44 @@
- 
-.options {
+
+/*.options {
     color: #fff;
-    background-color: #5995DA;  /* Blue */
+    background-color: #5995DA;
     padding: 20px 0;
     display: flex;
     justify-content: center;
-}
+}*/
 
-.container {
+/* colors generated from coolors.co
+   #080705: rich black
+   #40434E: charcoal
+   #702632: Wine (Red)
+   #912F40: lighter red
+*/
+
+a:link, a:visited {
+    color: #ADD8E6;
+}
+.index-container {
+    color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    zoom: 150%;
 }
 
-
-#mapid {
-    width: 600px;
-    height: 600px;
+.header {
+    color: white;
 }
-
-
+.census-data {
+    padding-top: 20px;
+}
 table, th, td {
-    border:1px solid black;
+    border:1px solid #080705;
+}
+html {
+    height: 100%;
+}
+body {
+    background-color: #702632; /* FF7F7F */
+    min-height: 100%;
 }

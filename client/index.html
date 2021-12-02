@@ -1,19 +1,53 @@
-<html>
-    <head>
-        <link rel='stylesheet' href='styles.css'/>
-    </head>
-
-    <div class='options'>
-    <h1 class="title">Main Page</h1>
-    <nav>
-        <a href="map.html">Map Page</a>
-    </nav>
-</div>
-
-
-
-
-
-
+<!DOCTYPE html>
+<head>
+  <link rel='stylesheet' href='styles.css'/>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <title>Home Page</title>
+</head>
+<body>
+  <div class='index-container'>
+      <div class="title has-text-white">MD Census Data Query Center</div>
+      <div class="md-flag"><img src="./img/mdflag.png" alt="state of MD flag" width="150" height="150"></div>
+      <div class="index-nav">
+	<nav>
+	  <a href="index.html">Home</a>
+	  <a href="data.html">Filter</a>
+	  <a href="guide.html">Guide</a>
+	  <a href="about.html">About</a>
+	</nav>
+      </div>
+      <div class="index-br">
+	<hr>
+      </div>
+      <div>
+	<div class="search-label">Quick Search MD zip code</div>
+	<input type="text", class="search">
+      </div>
+      <div class="census-data">
+	<table class="table"><tr>
+            <td><strong>median age</strong></td><td></td>
+          </tr>
+          <tr>
+            <td><strong># people over 65</strong></td><td></td>
+          </tr>
+          <tr>
+            <td><strong>total population</strong></td><td></td>
+            </tr>
+          <tr>
+            <td><strong>homeowner rate</strong></td><td></td>
+          </tr>
+          <tr>
+            <td><strong>% homeowner without mortgage</strong></td><td></td>
+          </tr>
+          <tr>
+            <td><strong>% renters</strong></td><td></td>
+          </tr>
+	</table>
+      </div>
+  </div>
+</body>
+<script src='index.js'></script>
 </html>
 

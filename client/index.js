@@ -14,23 +14,23 @@ function getMatch(event, census) {
 
 function renderTableHTML(match, tableDiv) {
   tableDiv.innerHTML =
-    `<table><tr>
-            <td>median age</td><td>${match.median_age}</td>
+    `<table class="table"><tr>
+            <td><strong>median age</strong></td><td>${match.median_age}</td>
             </tr>
             <tr>
-            <td># people over 65</td><td>${match.num_persons_over_65}</td>
+            <td><strong># people over 65</strong></td><td>${match.num_persons_over_65}</td>
             </tr>
             <tr>
-            <td>total population</td><td>${match.total_population}</td>
+            <td><strong>total population</strong></td><td>${match.total_population}</td>
             </tr>
             <tr>
-            <td>homeowner_rate</td><td>${match.homeowner_rate}</td>
+            <td><strong>homeowner_rate</strong></td><td>${match.homeowner_rate}</td>
             </tr>
             <tr>
-            <td>% homeowner without mortgage</td><td>${match.percent_homeowner_without_mortgage}</td>
+            <td><strong>% homeowner without mortgage</strong></td><td>${match.percent_homeowner_without_mortgage}</td>
            </tr>
            <tr>
-           <td>% renters</td><td>${match.percent_rent}</td>
+           <td><strong>% renters</strong></td><td>${match.percent_rent}</td>
            </tr>
     </table>`
 }

@@ -114,6 +114,31 @@ router.post('/basketball/players', async (req, res) => {
   }
 });
 
+//Edit player from teams
+router.put('/basketball/teams', async (req, res) => {
+  try {
+    console.log('touched /basketball with PUT');
+    await db.Players.update(
+      {
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        position: req.body.position,
+        year_drafted: req.body.year_drafted,
+      },
+      {
+        where: {
+          player_id: req.body.player_id,
+        },
+      }
+    );
+    console.log('Player is Updated!');
+    res.send('Successfully updated player');
+  } catch (e) {
+    console.log(e);
+    res.error('Something went wrong on the server');
+  }
+});
+
 router.put('/basketball', async (req, res) => {
   try {
     // Will use await when making actual calls to the DB

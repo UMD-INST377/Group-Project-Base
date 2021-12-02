@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Group 12 Page</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">    
+        <link rel="stylesheet" href = "styles.css"/>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Top Nav-->
+        <div class='menu-container'>
+            <div class='menu'>
+                <div class="homepage"> <a class='homepagelink' href="./index.html">PG County Food Inspection Postings</a></div>
+                <div class="aboutpage"> <a class='linkcolor' href="./about.html">About</a></div>
+                <div class="login"> <a class='linkcolor' href="#">Login</a></div> 
+            </div> 
+        </div>
+
+        <div class='body-wrapper'>
+            <form class="login-form-wrapper box" action="/api">
+                <div class="field">
+                    <label class="label" for="id">Login ID</label>
+                    <div class="control">
+                        <input class="input" for="id" type="text"/>
+                    </div>
+                </div>
+        
+                <div class="field">
+                    <label class="label" for="password">Password</label>
+                    <div class="control">
+                        <input class="input" for="password" type="text"/>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-dark">Log In</button>
+                    </div>
+                </div>
+            </form>    
+        </div>
+        
+        <div class='footer'>
+            <div class='footer-item footer-one'>footer item 1</div>
+            <div class='footer-item footer-two'>footer item 2</div>
+            <div class='footer-item footer-three'>footer item 3</div>
+        </div>
+
+        <script src = "script.js"></script>
+    </body>
+</html>

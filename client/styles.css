@@ -1,0 +1,132 @@
+body {
+    font-family: 'Roboto Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutpage{
+    color: gold;
+    margin-left: auto;    
+    align-self: center;
+}
+
+.aboutspace{
+    align-content: flex-start;
+    margin-left: 15px;
+    margin-right: 55px;
+}
+
+.login{
+    color: gold;
+    align-self: center;
+    margin-left: 20px;
+}
+
+.homepage{
+    color: white
+}
+
+.menu-container {
+    color: #fff;
+    background-color: black;
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    justify-content: center;   
+  }
+
+.menu{
+    width: 1500px;
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    align-items: center;
+}
+
+
+.linkcolor{
+    color: gold;
+}
+
+.homepagelink{
+    color:white
+}
+
+.test{
+    color: black;
+}
+.body-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 25px;
+}
+.login-form-wrapper {
+    margin-right: 25px;
+}
+
+.table {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.table-wrapper{
+    text-align: center;
+}
+
+.hscroll {
+    background-color: lightblue;
+    border: 1px solid black;
+    height: 800px;
+    width: 1800px;
+    overflow-x: scroll;
+    margin-top: 35px;
+}
+
+.tablemargins{
+    /*margin-left: 20px; */
+    align-self: center;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.footer {
+    background-color: #f2f2f7;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/*
+.footer {
+    margin-bottom: auto;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+ 
+  }
+  
+  .footer-item {
+    border: 1px solid #fff;
+    background-color: gray;
+    height: 200px;
+    flex: 1;
+  }
+  
+  .footer-one,
+  .footer-three {
+  background-color: black;
+  flex: initial;
+  width: 300px;
+  }
+  */
+  

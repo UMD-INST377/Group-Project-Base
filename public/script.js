@@ -22,5 +22,7 @@ async function windowActions() {
 
   const player_table = document.querySelector('.table');
   displayTable();
+
+  
 }
 window.onload = windowActions;

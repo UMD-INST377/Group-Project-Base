@@ -9,7 +9,10 @@ import film from '../controllers/filmController.js';
 
 const router = express.Router();
 
-/* Films */
+
+/**
+ * Films
+ */
 router.route('/film')
   .get(async (req, res) => {
     try {
@@ -67,6 +70,10 @@ router.route('/film')
     }
   });
 
+/**
+ * Genres
+ */
+
 router.route('/genre')
   .get(async (req, res) => {
     try {
@@ -122,6 +129,10 @@ router.route('/genre')
       res.json({error: 'Can\'t be deleted'});
     }
   });
+
+/**
+ * Actor
+ */
 
 router.route('/actor')
   .get(async (req, res) => {

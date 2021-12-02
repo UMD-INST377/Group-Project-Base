@@ -74,3 +74,8 @@ img {
 .description {
   text-align: center;
 }
+
+.ton {
+  background-color: #ff8800;
+  color: white;
+}

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import express from 'express';
-// import sequelize from 'sequelize';//
+import express, { request } from 'express';
+import sequelize from 'sequelize';//
 
 import db from '../database/initializeDB.js';
 
@@ -21,21 +21,11 @@ router.route('/general')
       res.json({error: 'Server error'});
     }
   })
+  // update
   .put(async(req, res) => {
     try {
-      const newGames = await db.sequelizeDB.query(
-        general.put
-      );
-      res.send(newGames);
-    } catch (err) {
-      console.log(err);
-      res.json({error: 'Server error'});
-    }
-  })
-  .post(async(req, res) => {
-    try {
       const updateGames = await db.sequelizeDB.query(
-        general.post, {
+        general.put, {
           replacements: {
             game_id: req.body.id,
             name: req.body.name,
@@ -45,7 +35,28 @@ router.route('/general')
           }
         }
       );
+  
       res.send(updateGames);
+    } catch (err) {
+      console.log(err);
+      res.json({error: 'Server error'});
+    }
+  })
+  // insert
+  .post(async(req, res) => {
+    try {
+      let newGeneral = general.post.replace(':game_id', req.body.game_id);
+      newGeneral = general.post.replace(':name', req.body.name);
+      newGeneral = general.post.replace(':free_to_play', req.body.free_to_play);
+      newGeneral = general.post.replace(':population', req.body.population);
+
+      const newGames = await db.sequelizeDB.query(
+        newGeneral
+
+      );
+
+      console.log(newGame);
+      res.send(newGames);
     } catch (err) {
       console.log(err);
       res.json({error: 'Server error'});

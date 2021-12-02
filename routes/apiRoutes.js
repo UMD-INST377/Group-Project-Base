@@ -1,10 +1,15 @@
 /* eslint-disable no-console */
 import express from 'express';
-/* import sequelize, { QueryTypes } from 'sequelize'; */
-import pkg from 'sequelize';
+
+// import sequelize, { QueryTypes } from 'sequelize';
 
 import db from '../database/initializeDB.js';
 import foodInspectionVar from '../contollers/food_inspectionController.js';
+import establishmentController from '../contollers/putController.js';
+
+/*
+const fetch = require('node-fetch');
+*/
 
 const {QueryTypes} = pkg;
 
@@ -17,6 +22,7 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////   Food Inspection   ////////
 /// /////////////////////////////////
+/*
 router.route('/foodServicePG').get(async (req, res) => {
   try {
     const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
@@ -26,16 +32,20 @@ router.route('/foodServicePG').get(async (req, res) => {
 
     res.json(data);
   } catch (err) {
+    console.log('error');
     console.error(err);
     res.error('Server error');
+    throw err;
   }
-
+  console.log(data);
   res.json(data);
 });
+*/
 
-router.get('establishments/establishment_id', async (req, res) => {
+router.get('/establishments/establishment_id', async (req, res) => {
   try {
     const businesses = await db.sequelizeDB.query(foodInspectionVar);
+    console.log(businesses);
     res.json(businesses);
   } catch (err) {
     console.error(err);
@@ -46,11 +56,10 @@ router.get('establishments/establishment_id', async (req, res) => {
 
 router.put('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query(
-      {
-        type: QueryTypes.SELECT
-      }
-    );
+    const businesses = await db.sequelizeDB.query(establishmentController.updateVar, { 
+      type: QueryTypes.update
+
+    });
 
     res.json(businesses);
   } catch (err) {
@@ -62,11 +71,9 @@ router.put('establishments/establishment_id', async (req, res) => {
 
 router.post('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query(
-      {
-        type: QueryTypes.SELECT
-      }
-    );
+    const businesses = await db.sequelizeDB.query({
+      type: QueryTypes.SELECT
+    });
 
     res.json(businesses);
   } catch (err) {

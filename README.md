@@ -1,28 +1,42 @@
-# INST377 Group 25 - Top 10 University Recommendation Website
-
+# Top 10 University Recommendation
+### Description
 This website allows students to find their ideal schools by relying on user-selected criteria and matching the constraints against our database of Top 10 schools in the United States.
 
-## Getting Started
+### Link
+It is available at [here](https://inst377-group25.herokuapp.com/).
 
-* "Clone" or download this repository using the large green button marked "code"
+### Target Browsers
+|Device|Browser|Version
+|:-:|:-|:-:|
+|Desktop|Chrome|V80 +|
+|Desktop|Firefox|V88 +|
+|Desktop|Edge (Chromium)|V90 +|
+|Android|Chrome|V91 +|
+|iOS|Safari|13.0 +|
+
+# Developer Manual
+### Getting Started
+* Clone or Download this repository
 * Install the software dependencies
 * Start your server, which will run on `port 3000` locally
 
-### Install Dependencies
+#### Install Dependencies
 
 ```npm install```
 
-### Run the Server
+#### Run the Server
 
 ```npm start```
 
-<hr>
+### Unit Tests
+There are no prewritten tests provided as we tested as we developed. You may use any library available, some examples are:
+- Jest
+- Mocha
+- Puppeteer
+- ... Etc
 
-Below are details of the API contained within the scope of this project.
-
-<hr>
-
-## REST API example using Sequelize
+# Server API (REST)
+### Methods
 <table>
   <thead>
     <tr>
@@ -50,7 +64,7 @@ Below are details of the API contained within the scope of this project.
   </tbody>
 </table>
 
-# Schools
+### Endpoints
 
 ## Get list of Top 10 schools
 
@@ -195,3 +209,17 @@ Below are details of the API contained within the scope of this project.
   ]
 }
 ```
+
+# Wrapping Up
+## Future Development
+We hope to expand this dataset and featureset in the future, an outline is below:
+- Further integrations with other services
+- Include tuition costs
+- Add user accounts
+- Implement automated review requests to graduating students
+- Add More campus images
+- Collect Dorm room images
+- Add Professor ratings
+
+## Known Bugs
+There are no known bugs at this time. Please report them via GitHub Issues.

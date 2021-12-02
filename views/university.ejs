@@ -6,7 +6,7 @@
     <title><%= university_name %> - INST377 Group 25</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/css/index.css" />
   </head>
   <body>
     <!-- Navigation -->
@@ -49,7 +49,9 @@
           <% } %>
           </ul>
 
-          <a class="button is-white" href="#" target="_blank" rel="noreferrer">Visit University Site</a>
+          <% if (url && url.includes("http")) { %>
+            <a class="button is-white" href="<%- url %>" target="_blank" rel="noreferrer">Visit University Site</a>
+          <% } %>
         </div>
         <div class="box has-background-primary">
           <h3 class="subtitle is-4">University Reviews</h3>
@@ -68,7 +70,12 @@
         </div>
       </div>
       <div class="column is-6">
-        <img src='https://via.placeholder.com/550x350?text=School%20Preview' />
+        <% if (campus_image && campus_image.includes("http")) { %>
+          <!-- This is poorly validated, use carefully -->
+          <img src='<%- campus_image %>' />
+        <% } else { %>
+          <img src='https://via.placeholder.com/550x350?text=Campus%20Image%20Not%20Found' />
+        <% } %>
       </div>
     </div>
 

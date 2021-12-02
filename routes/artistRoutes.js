@@ -21,19 +21,6 @@ router.get('/artists/:artist_id', async (req, res) => {
   }
 });
 
-router.get('/artists', async (req, res) => {
-  try {
-    const sqlStatement = 'SELECT * from artist;';
-    const result = await db.sequelizeDB.query(sqlStatement, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    console.log(result);
-    res.json(result);
-  } catch (err) {
-    res.json(err);
-  }
-});
-
 router.put('/artists/:artist_id/:artist_name', async (req, res) => {
   try {
     // add id for endpoint

@@ -13,7 +13,7 @@ router.get('/artists/:artist_id', async (req, res) => {
     const artistId = req.params.artist_id;
     const sqlStatement = `SELECT * from artist WHERE artist_id = ${artistId};`;
     const result = await db.sequelizeDB.query(sqlStatement, {
-      type: sequelize.QueryTypes.SELECT,
+      type: sequelize.QueryTypes.SELECT
     });
     res.json(result);
   } catch (err) {
@@ -25,7 +25,7 @@ router.get('/artists', async (req, res) => {
   try {
     const sqlStatement = 'SELECT * from artist;';
     const result = await db.sequelizeDB.query(sqlStatement, {
-      type: sequelize.QueryTypes.SELECT,
+      type: sequelize.QueryTypes.SELECT
     });
     console.log(result);
     res.json(result);
@@ -41,7 +41,7 @@ router.put('/artists/:artist_id/:artist_name', async (req, res) => {
     const artistName = req.params.artist_name;
     const sqlStatement = `UPDATE artist SET artist_name = '${artistName}' WHERE artist_id = ${artistId};`;
     const result = await db.sequelizeDB.query(sqlStatement, {
-      type: sequelize.QueryTypes.UPDATE,
+      type: sequelize.QueryTypes.UPDATE
     });
     res.json(result);
   } catch (err) {
@@ -54,7 +54,7 @@ router.post('/artists', async (req, res) => {
     // eslint-disable-next-line quotes
     const sqlStatement = `INSERT INTO artist (artist_name, verified) VALUES ('${req.body.artist}', '${req.body.verified}');`;
     const result = await db.sequelizeDB.query(sqlStatement, {
-      type: sequelize.QueryTypes.INSERT,
+      type: sequelize.QueryTypes.INSERT
     });
     console.log(result);
     res.json(result);
@@ -68,7 +68,7 @@ router.delete('/artists/:artist_id', async (req, res) => {
     const artistId = req.params.artist_id;
     const sqlStatement = `DELETE from artist WHERE artist_id = ${artistId};`;
     const result = await db.sequelizeDB.query(sqlStatement, {
-      type: sequelize.QueryTypes.DELETE,
+      type: sequelize.QueryTypes.DELETE
     });
     console.log('deleted artist');
     res.json(result);

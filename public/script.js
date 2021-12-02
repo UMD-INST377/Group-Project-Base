@@ -4,7 +4,7 @@ async function windowActions() {
   const players = await request.json();
   console.log(players);
 
-  function displayTable() {
+  async function displayTable() {
     const html = players.map((player) => `<tr>
                         <th>Player</th>
                         <th>PPG</th> 

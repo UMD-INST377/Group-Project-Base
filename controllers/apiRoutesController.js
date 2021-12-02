@@ -1,9 +1,8 @@
 const player = {
 
-  getPlayer: `SELECT player_id, player_name, position_name, ppg, assists, name
-                        FROM Positions JOIN players
-                          USING(position_id) JOIN Team
-                          USING(team_id);`,
+  getPlayer: `SELECT player_name, ppg, assists, name
+                FROM players JOIN Team
+                    USING(team_id);`,
 
   postPlayer: `INSERT INTO players (player_name, ppg, assists, team_id)
                 VALUES (:player_name, :ppg, :assists, :team);`,

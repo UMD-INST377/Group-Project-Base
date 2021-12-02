@@ -82,10 +82,12 @@ router.delete('/presidents/:president_id', async (req, res) => {
 // create new president when provide the information
 router.post('/presidents', async (req, res) => {
   try {
-    const createQuery = `INSERT INTO presidents_table(president_id, first_name, last_name, date_inaurg, age_inaurg, terms_served, birth_date, death_date, home_state, president_image, party)
-VALUES('${req.body.president_id}','${req.body.first_name}','${req.body.last_name}','${req.body.date_inaurg}','${req.body.age_inaurg}'
-,'${req.body.terms_served}','${req.body.birth_date}','${req.body.death_date}','${req.body.home_state}','${req.body.president_image}','${req.body.party}')
-;`;
+    const createQuery = `INSERT INTO presidents_table(first_name, last_name, date_inaurg, age_inaurg, 
+      terms_served, birth_date, death_date, home_state, 
+      president_image, party)
+      VALUES('${req.body.first_name}','${req.body.last_name}','${req.body.date_inaurg}','${req.body.age_inaurg}',
+      '${req.body.terms_served}','${req.body.birth_date}','${req.body.death_date}','${req.body.home_state}',
+      '${req.body.president_image}','${req.body.party}');`;
     const addNewPresident = await db.sequelizeDB.query(createQuery, {
       type: sequelize.QueryTypes.INSERT,
     });
@@ -95,8 +97,67 @@ VALUES('${req.body.president_id}','${req.body.first_name}','${req.body.last_name
     console.error(err);
   }
 });
-
+router.post('/firstlady', async (req, res) => {
+  try {
+    const createQueryLadies = `
+      INSERT INTO Presidents.first_ladies(first_ladies_name)
+      VALUES('${req.body.first_ladies_name}');`;
+    const addNewLady = await db.sequelizeDB.query(createQueryLadies, {
+      type: sequelize.QueryTypes.INSERT,
+    });
+    console.log('Touched /firstlady with post/create');
+    res.json(addNewLady);
+  } catch (err) {
+    console.error(err);
+  }
+});
+// INSERT INTO presidents_table(first_name, last_name, date_inaurg, age_inaurg, 
+//   terms_served, birth_date, death_date, home_state, 
+//   president_image, party)
+//   VALUES('${req.body.first_name}','${req.body.last_name}','${req.body.date_inaurg}','${req.body.age_inaurg}',
+//   '${req.body.terms_served}','${req.body.birth_date}','${req.body.death_date}','${req.body.home_state}',
+//   '${req.body.president_image}','${req.body.party}');
+//   INSERT INTO first_ladies(first_ladies_name)
+//   VALUES('${req.body.first_ladies_name}');
 // update the information of the existing presidents in the database by specific id
+// if (ladiesQuery !== null)
+// {
+//   const addNewLady = await db.sequelizeDB.query(ladiesQuery, 
+//     {
+//       type: sequelize.QueryTypes.INSERT,
+//     }); 
+// } else {
+//   console.log('no data for ladies')
+// }
+// res.json(addNewLady);
+router.post('/vicepresident', async (req, res) => {
+  try {
+    const createQueryVp = `
+      INSERT INTO Presidents.vice_presidents(first_name, last_name)
+      VALUES('${req.body.first_name}','${req.body.last_name}');`;
+    const addNewVp = await db.sequelizeDB.query(createQueryVp, {
+      type: sequelize.QueryTypes.INSERT,
+    });
+    console.log('Touched /vicepresident with post/create');
+    res.json(addNewVp);
+  } catch (err) {
+    console.error(err);
+  }
+});
+router.post('/children', async (req, res) => {
+  try {
+    const createQueryChild = `
+      INSERT INTO Presidents.children_of_presidents(first_name, last_name)
+      VALUES('${req.body.first_name}','${req.body.last_name}');`;
+    const addNewChild = await db.sequelizeDB.query(createQueryChild, {
+      type: sequelize.QueryTypes.INSERT,
+    });
+    console.log('Touched /childrens with post/create');
+    res.json(addNewChild);
+  } catch (err) {
+    console.error(err);
+  }
+});
 router.put('/presidents/:president_id', async (req, res) => {
   try {
     const updateQuery = `UPDATE presidents_table SET first_name = '${req.body.first_name}', last_name = '${req.body.last_name}', 
@@ -112,6 +173,47 @@ router.put('/presidents/:president_id', async (req, res) => {
     });
     console.log('Touched /presidents/:president_id with put/update');
     res.json(upPres);
+  } catch (err) {
+    console.error(err);
+  }
+});
+router.put('/firstlady/:first_ladies_id', async (req, res) => {
+  try {
+    const updateQueryLady = `UPDATE first_ladies SET first_ladies_name = '${req.body.first_ladies_name}'
+    WHERE first_ladies_id = ${req.params.first_ladies_id}`;
+    const updateLady = await db.sequelizeDB.query(updateQueryLady, {
+      type: sequelize.QueryTypes.UPDATE,
+    });
+    console.log('Touched /firstlady/:first_ladies_id with put/update');
+    res.json(updateLady);
+  } catch (err) {
+    console.error(err);
+  }
+});
+router.put('/vicepresident/:vp_id', async (req, res) => {
+  try {
+    const updateQueryVp = `UPDATE vice_presidents SET first_name = '${req.body.first_name}', 
+    last_name = '${req.body.last_name}'
+    WHERE vp_id = ${req.params.vp_id}`;
+    const updateVp = await db.sequelizeDB.query(updateQueryVp, {
+      type: sequelize.QueryTypes.UPDATE,
+    });
+    console.log('Touched /vicepresident/:vp_id with put/update');
+    res.json(updateVp);
+  } catch (err) {
+    console.error(err);
+  }
+});
+router.put('/children/:child_id', async (req, res) => {
+  try {
+    const updateQueryChild = `UPDATE children_of_presidents SET first_name = '${req.body.first_name}', 
+    last_name = '${req.body.last_name}'
+    WHERE child_id = ${req.params.child_id}`;
+    const updateChild = await db.sequelizeDB.query(updateQueryChild, {
+      type: sequelize.QueryTypes.UPDATE,
+    });
+    console.log('Touched /children/:child_id with put/update');
+    res.json(updateChild);
   } catch (err) {
     console.error(err);
   }

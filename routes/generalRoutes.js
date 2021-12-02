@@ -24,7 +24,15 @@ router.route('/general')
   .post(async(req, res) => {
     try {
       const newGames = await db.sequelizeDB.query(
-        general.post
+        general.post, {
+          replacements: {
+            game_id: req.body.id,
+            name: req.body.name,
+            free_to_play: req.body.free_to_play,
+            population: req.body.population
+
+          }
+        }
       );
       res.send(newGames);
     } catch (err) {
@@ -54,7 +62,11 @@ router.route('/general')
   .delete(async(req, res) => {
     try {
       const removeGames = await db.sequelizeDB.query(
-        general.remove
+        general.remove, {
+          replacements: {
+            game_id: req.body.id,   
+          }
+        }
       );
       res.send(removeGames);
     } catch (err) {

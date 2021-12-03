@@ -1,3 +1,19 @@
 a {
     margin: 10px;
 }
+
+#myBtn {
+    width: 200px;
+    height: 50px;
+}
+
+#buttonbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}

@@ -79,3 +79,11 @@ img {
   background-color: #ff8800;
   color: white;
 }
+
+.box {
+  border: #ff8800;
+  background-color:#ddd;
+  max-width: 700px;
+  margin: auto;
+  background-image: url(2.jpg);
+}

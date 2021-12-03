@@ -45,13 +45,13 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
     npm start
 <hr>
 
-# Dining Hall
+# Songs
 
-## Get list of Dining Halls
+## Get list of Songs
 
 #### Request
 
-`GET /api/dining`
+`GET /songs_project'`
 
     curl http://localhost:3000/api/dining
 
@@ -71,11 +71,11 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
             "hall_name":"251 North Dining Hall",
             "hall_location":"North Campus"
     }]
-## Get a Specific Dining Hall
+## Get a Specific Song
 
 #### Request
 
-`GET /api/dining/:hall_id`
+`GET /songs_project/:song_id`
 
     curl http://localhost:3000/api/dining/1
 
@@ -88,12 +88,11 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
     }]
     
 
-
-## Create a new Dining Hall
+## Create a new Song
 
 #### Request
 
-`POST /api/dining`
+`POST /songs_project`
 
     curl -d "hall_id=4&hall_name=Example&hall_location=Hornbake" -X POST http://localhost:3000/api/dining
 
@@ -105,11 +104,11 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
         "hall_location":"Hornbake"
     }
 
-## Updating an Existing Dining Hall
+## Updating an Existing Song
 
 #### Request
 
-`PUT /api/dining`
+`PUT /songs_project`
 
     curl -d "hall_id=4&hall_name=Example1&hall_location=Stamp" -X PUT http://localhost:3000/api/dining
 

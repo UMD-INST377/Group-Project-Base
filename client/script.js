@@ -35,11 +35,19 @@ async function windowActions() {
                         <div class="modal-background"></div>
                         <div class="modal-card">
                           <header class="modal-card-head">
-                            <p class="modal-card-title">Modal title</p>
+                            <p class="modal-card-title" >Eruption Info</p>
                             <button class="delete" aria-label="close"></button>
                           </header>
                           <section class="modal-card-body">
-                            Content is NOT THERE YET UNFORTUNATELY
+                          ////// PLEASE FIX This doesnt display the information properly because modal gets rerun starting from index 0 each time, which makes the info for the 0th index show \\\\\\\
+                          <div class="name">Name: ${info.volcano_name}</div>
+                          <div class="num">Eruption Number: ${info.eruption_number} </div>
+                          <div class="date"> Date of Eruption: ${info.year}-${info.month}-${info.day} </div>
+                          <div class="aoa">Eruption AOA: ${info.aoa}</div>
+                          <div class="vei">Eruption VEI: ${info.vei}</div>
+                          <div class="method">Method: ${info.method}</div>
+                          <div class="category">Eruption Category: ${info.category}</div>
+
                           </section>
                           <footer class="modal-card-foot">
                           </footer>

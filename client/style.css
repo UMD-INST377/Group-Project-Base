@@ -1,30 +1,47 @@
-#mapid {
-    width: 100%;
-    padding-top: 100%; /* 1:1 Aspect Ratio */
-  }
-  .list-header {
-    font-weight: 600;
-    font-size: 1.25rem;
-  }
-  #wrapper {
-    min-width: 55vw;
-  }
-  .hero .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #34495e;
-    z-index: 9999;
-  }
-  .navbar-burger {
-    color: white;
-  }
-  
-  #navbarMenuHeroB {
-    background-color: #34495e;
-  }
-  
-  .wrapper {
-    display: block;
-    margin: 0 auto;
-  }
+*{
+  color:#C5C6C7;;
+  background:#1F2833;
+  padding: 0px;
+  border:0px;
+  margin:0px;
+}
+
+#flex{
+  display: flex;          
+    flex-direction: column;  
+    justify-content: center; 
+    align-items: center;  
+    height: 100vh;
+}
+
+nav{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin:20px;
+}
+
+.button{
+  text-align: center;
+  padding: 10px;
+  border:2px solid #66FCF1;
+  border-radius: 10px;  
+  transition:all 0.3s ease;
+}
+
+.button:hover{
+  cursor:pointer;
+  background: #233852;
+}
+
+header{
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 70px;
+  color:#66FCF1;
+}
+
+

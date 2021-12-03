@@ -1,5 +1,4 @@
 # About
-
 Our Music Database is a UMD student-curated collection of songs across hip-hop, r&b, indie pop, and more. 
 
 This project was created for INST377: Dynamic Web Applications (Fall 2021). 
@@ -9,6 +8,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
 
 # REST API example using Sequelize
+
 <table>
   <thead>
     <tr>
@@ -117,18 +117,19 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 
     Successfully Updated
 
-## Delete an Existing Dining Hall
+## Delete an Existing Song Entry
 
 #### Request
 
-`DELETE /api/dining/:hall_id`
+`DELETE /songs_project/:song_id`
 
-    curl -X DELETE http://localhost:3000/api/dining/4
+    curl -X DELETE http://localhost:3000/api/songs_project/1
 
 #### Response
 
     Successfully Deleted
-<hr>
-
+    
 # Authors
 Daniel Cutaneo, Walesia Robinson II, Miranda Vo, Pengtong Yang
+
+

@@ -81,9 +81,10 @@ img {
 }
 
 .box {
-  border: #ff8800;
+  border: 10px;
+  border-style: solid;
+  border-color: #ff8800;
   background-color:#ddd;
   max-width: 700px;
   margin: auto;
-  background-image: url(2.jpg);
 }

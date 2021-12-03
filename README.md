@@ -31,7 +31,7 @@ categorized by zip codes.
 
 ## Server application API
 All api endpoints are prefixed with `/api`. For example to `GET` census data you would use `api/census`.\
-In general, the api consists of 1 endpoint for each table in the server's database. Each endpoint's HTTP method corresponds to the following
+In general, the api consists of 1 endpoint for each table in the server's database. Each endpoint's HTTP methods corresponds to the following
 actions.
 * GET - Displays and returns the table's SQL data.
 * PUT - Updates a particular value.

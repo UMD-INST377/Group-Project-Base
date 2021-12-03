@@ -1,13 +1,12 @@
-
 async function windowActions() {
   const endpoint = '/api/eruption_info';
   const request = await fetch(endpoint);
   const names = await request.json();
-  
+
   const searchInput = document.querySelector('.nameSearch');
   const suggestions = document.querySelector('.suggestions .photo-grid-container .photo-grid');
 
-console.log(names)
+  console.log(names);
   function findMatches(wordToMatch, names) {
     return names.filter((info) => {
       const regex = new RegExp(wordToMatch, 'gi');
@@ -15,6 +14,7 @@ console.log(names)
     });
   }
   function displayMatches(event) {
+    console.log('ass');
     const matchArray = findMatches(event.target.value, names);
     const html = matchArray.map((info) => {
       const regex = new RegExp(event.target.value, 'gi');
@@ -47,23 +47,23 @@ console.log(names)
                         </div>
                       </div>
     `;
-    
     }).join('');
     suggestions.innerHTML = html;
-    const info_box1 = document.querySelector('#info_box');//everytime when info box clicks, it runs document.querySelector('.modal').style.display = 'flex';
+    const info_box1 = document.querySelector('#info_box');// everytime when info box clicks, it runs document.querySelector('.modal').style.display = 'flex';
     const elements = document.querySelectorAll('#info_box');
     const delete_box = document.querySelector('.delete');
-    elements.forEach(info_box1 => {
-      info_box1.addEventListener('click', function(){
+    elements.forEach((info_box1) => {
+      info_box1.addEventListener('click', () => {
         document.querySelector('.modal').style.display = 'flex';
         delete_box.addEventListener('click',
-                           function () {
-      document.querySelector('.modal').style.display = 'none'
-    })
+          () => {
+            document.querySelector('.modal').style.display = 'none';
+          });
       });
     });
   }
 
+  window.addEventListener('mousemove', (evt) => { displayMatches(evt); }, { once: true });
   searchInput.addEventListener('input', displayMatches);
   searchInput.addEventListener('keyup', (evt) => { displayMatches(evt); });
 }

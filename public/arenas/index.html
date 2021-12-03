@@ -53,42 +53,10 @@
         <button class="games"><a href="/games">Games</a></button>
       </div>
     </div>
-
-    <div class="arena-images" style="display: none;">
-            <img src="../assets/Stadium_Logos/Philadelphia76ers.png" alt="76ers" />
-            <img src="../assets/Stadium_Logos/MilwaukeeBucks.png" alt="Bucks"/>
-            <img src="../assets/Stadium_Logos/ChicagoBulls.png" alt="Bulls"/>
-            <img src="../assets/Stadium_Logos/ClevelandCavaliers.png" alt="Cavaliers"/>
-            <img src="../assets/Stadium_Logos/BostonCeltics.png" alt="Celtics"/>
-            <img src="../assets/Stadium_Logos/LosAngelesClippers.png" alt="Clippers"/>
-            <img src="../assets/Stadium_Logos/MemphisGrizzlies.png" alt="Grizzlies"/>
-            <img src="../assets/Stadium_Logos/AtlantaHawks.png" alt="Hawks"/>
-            <img src="../assets/Stadium_Logos/MiamiHeat.png" alt="Heat"/>
-            <img src="../assets/Stadium_Logos/CharlotteHornets.png" alt="Hornets"/>
-            <img src="../assets/Stadium_Logos/UtahJazz.png" alt="Jazz"/>
-            <img src="../assets/Stadium_Logos/SacramentoKings.png" alt="Kings"/>
-            <img src="../assets/Stadium_Logos/NewYorkKnicks.png" alt="Knicks"/>
-            <img src="../assets/Stadium_Logos/LosAngelesLakers.png" alt="Lakers"/>
-            <img src="../assets/Stadium_Logos/OrlandoMagic.png" alt="Magic"/>
-            <img src="../assets/Stadium_Logos/DallasMavericks.png" alt="Mavericks"/>
-            <img src="../assets/Stadium_Logos/BrooklynNets.png" alt="Nets"/>
-            <img src="../assets/Stadium_Logos/DenverNuggets.png" alt="Nuggets"/>
-            <img src="../assets/Stadium_Logos/IndianaPacers.png" alt="Pacers"/>
-            <img src="../assets/Stadium_Logos/NewOrleansPelicans.png" alt="Pelicans"/>
-            <img src="../assets/Stadium_Logos/DetriotPistons.png" alt="Pistons"/>
-            <img src="../assets/Stadium_Logos/TorontoRaptors.png" alt="Raptors"/>
-            <img src="../assets/Stadium_Logos/HoustonRockets.png" alt="Rockets"/>
-            <img src="../assets/Stadium_Logos/SanAntonioSpurs.png" alt="Spurs"/>
-            <img src="../assets/Stadium_Logos/PhoenixSuns.png" alt="Suns"/>
-            <img src="../assets/Stadium_Logos/OklahomaCityThunder.png" alt="Thunder"/>
-            <img src="../assets/Stadium_Logos/MinnesotaTimberwolves.png" alt="Timberwolves"/>
-            <img src="../assets/Stadium_Logos/PortlandTrailblazers.png" alt="Trail Blazers"/>
-            <img src="../assets/Stadium_Logos/GoldenStateWarriors.png" alt="Warriors"/>
-            <img src="../assets/Stadium_Logos/WashingtonWizards.png" alt="Wizards"/>
-    </div>
     
-    <div class="nba-arenas">
-      <select class="drop" name="dropdown">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <div class="nba-arena">
+      <select id = "nba-arenas">
         <option value="" disabled selected>Arena</option> 
         <option value="76ers">Wells Fargo Center</option>
         <option value="Bucks">Fiserv Forum</option>
@@ -118,11 +86,131 @@
         <option value="Suns">Footprint Center</option>
         <option value="Thunder">Paycom Center</option>
         <option value="Timberwolves">Target Center</option>
-        <option value="Trail Blazers">Moda Center</option>
+        <option value="TrailBlazers">Moda Center</option>
         <option value="Warriors">Chase Center</option>
         <option value="Wizards">Capital One Arena</option>
       </select>
     </div>
+  
+      <div class = "76ers arena-image"> 
+            <img src="../assets/Stadium_Logos/Philadelphia76ers.png" alt="76ers" />
+      </div>
+
+      <div class = "Bucks arena-image"> 
+            <img src="../assets/Stadium_Logos/MilwaukeeBucks.png" alt="Bucks"/>
+      </div>
+
+      <div class = "Bulls arena-image"> 
+            <img src="../assets/Stadium_Logos/ChicagoBulls.png" alt="Bulls"/>
+      </div>  
+
+      <div class = "Cavaliers arena-image">      
+            <img src="../assets/Stadium_Logos/ClevelandCavaliers.png" alt="Cavaliers"/>
+      </div>
+
+      <div class = "Celtics arena-image">  
+            <img src="../assets/Stadium_Logos/BostonCeltics.png" alt="Celtics"/>
+      </div>
+
+      <div class = "Clippers arena-image"> 
+            <img src="../assets/Stadium_Logos/LosAngelesClippers.png" alt="Clippers"/>
+      </div>
+
+      <div class = "Grizzlies arena-image"> 
+            <img src="../assets/Stadium_Logos/MemphisGrizzlies.png" alt="Grizzlies"/>
+      </div>
+
+      <div class = "Hawks arena-image"> 
+            <img src="../assets/Stadium_Logos/AtlantaHawks.png" alt="Hawks"/>
+      </div>
+
+      <div class = "Heat arena-image"> 
+            <img src="../assets/Stadium_Logos/MiamiHeat.png" alt="Heat"/>
+      </div>
+
+      <div class = "Hornets arena-image"> 
+            <img src="../assets/Stadium_Logos/CharlotteHornets.png" alt="Hornets"/>
+      </div>
+
+      <div class = "Jazz arena-image"> 
+            <img src="../assets/Stadium_Logos/UtahJazz.png" alt="Jazz"/>
+      </div>
+
+      <div class = "Kings arena-image"> 
+            <img src="../assets/Stadium_Logos/SacramentoKings.png" alt="Kings"/>
+      </div>
+
+      <div class = "Knicks arena-image"> 
+            <img src="../assets/Stadium_Logos/NewYorkKnicks.png" alt="Knicks"/>
+      </div>
+
+      <div class = "Lakers arena-image">     
+            <img src="../assets/Stadium_Logos/LosAngelesLakers.png" alt="Lakers"/>
+      </div>
+
+      <div class = "Magic arena-image"> 
+            <img src="../assets/Stadium_Logos/OrlandoMagic.png" alt="Magic"/>
+      </div>
+
+      <div class = "Mavericks arena-image"> 
+            <img src="../assets/Stadium_Logos/DallasMavericks.png" alt="Mavericks"/>
+      </div>
+
+      <div class = "Nets arena-image"> 
+            <img src="../assets/Stadium_Logos/BrooklynNets.png" alt="Nets"/>
+      </div>
+
+      <div class = "Nuggets arena-image"> 
+            <img src="../assets/Stadium_Logos/DenverNuggets.png" alt="Nuggets"/>
+      </div>
+
+      <div class = "Pacers arena-image"> 
+            <img src="../assets/Stadium_Logos/IndianaPacers.png" alt="Pacers"/>
+      </div>
+
+      <div class = "Pelicans arena-image"> 
+            <img src="../assets/Stadium_Logos/NewOrleansPelicans.png" alt="Pelicans"/>
+      </div>
+
+      <div class = "Pistons arena-image"> 
+            <img src="../assets/Stadium_Logos/DetriotPistons.png" alt="Pistons"/>
+      </div>
+
+      <div class = "Raptors arena-image"> 
+            <img src="../assets/Stadium_Logos/TorontoRaptors.png" alt="Raptors"/>
+      </div>
+
+      <div class = "Rockets arena-image"> 
+            <img src="../assets/Stadium_Logos/HoustonRockets.png" alt="Rockets"/>
+      </div>
+
+      <div class = "Spurs arena-image"> 
+            <img src="../assets/Stadium_Logos/SanAntonioSpurs.png" alt="Spurs"/>
+      </div>
+
+      <div class = "Suns arena-image"> 
+            <img src="../assets/Stadium_Logos/PhoenixSuns.png" alt="Suns"/>
+      </div>
+
+      <div class = "Thunder arena-image"> 
+            <img src="../assets/Stadium_Logos/OklahomaCityThunder.png" alt="Thunder"/>
+      </div>
+
+      <div class = "Timberwolves arena-image"> 
+            <img src="../assets/Stadium_Logos/MinnesotaTimberwolves.png" alt="Timberwolves"/>
+      </div>
+
+      <div class = "TrailBlazers arena-image"> 
+            <img src="../assets/Stadium_Logos/PortlandTrailblazers.png" alt="TrailBlazers"/>
+      </div>
+
+      <div class = "Warriors arena-image"> 
+            <img src="../assets/Stadium_Logos/GoldenStateWarriors.png" alt="Warriors"/>
+      </div>
+
+      <div class = "Wizards arena-image"> 
+            <img src="../assets/Stadium_Logos/WashingtonWizards.png" alt="Wizards"/>
+      </div>
 
     <footer class="bg-black text-center text-lg-start mt-5">
       <div class="text-end p-5" style="background-color: rgba(0, 0, 0, 0.2)">
@@ -140,6 +228,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script src="script.js"></script>
+    <script src="arenaSelector.js"></script>
   </body>
 </html>

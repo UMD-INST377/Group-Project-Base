@@ -1,15 +1,11 @@
 /* eslint-disable no-console */
 import express from 'express';
-
-// import sequelize, { QueryTypes } from 'sequelize';
+/*
+import sequelize, { QueryTypes } from 'sequelize';
+*/
 
 import db from '../database/initializeDB.js';
 import foodInspectionVar from '../contollers/food_inspectionController.js';
-import establishmentController from '../contollers/putController.js';
-
-/*
-const fetch = require('node-fetch');
-*/
 
 const router = express.Router();
 
@@ -20,7 +16,6 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////   Food Inspection   ////////
 /// /////////////////////////////////
-/*
 router.route('/foodServicePG').get(async (req, res) => {
   try {
     const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
@@ -30,7 +25,7 @@ router.route('/foodServicePG').get(async (req, res) => {
 
     res.json(data);
   } catch (err) {
-    console.log('error');
+    console.log ('error');
     console.error(err);
     res.error('Server error');
     throw err;
@@ -38,12 +33,11 @@ router.route('/foodServicePG').get(async (req, res) => {
   console.log(data);
   res.json(data);
 });
-*/
 
-router.get('/establishments/establishment_id', async (req, res) => {
+
+router.get('establishments/establishment_id', async (req, res) => {
   try {
     const businesses = await db.sequelizeDB.query(foodInspectionVar);
-    console.log(businesses);
     res.json(businesses);
   } catch (err) {
     console.error(err);
@@ -54,10 +48,11 @@ router.get('/establishments/establishment_id', async (req, res) => {
 
 router.put('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query(establishmentController.updateVar, { 
-      type: QueryTypes.update
-
-    });
+    const businesses = await db.sequelizeDB.query(
+      {
+        type: QueryTypes.SELECT
+      }
+    );
 
     res.json(businesses);
   } catch (err) {
@@ -69,9 +64,11 @@ router.put('establishments/establishment_id', async (req, res) => {
 
 router.post('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query({
-      type: QueryTypes.SELECT
-    });
+    const businesses = await db.sequelizeDB.query(
+      {
+        type: QueryTypes.SELECT
+      }
+    );
 
     res.json(businesses);
   } catch (err) {
@@ -129,8 +126,8 @@ router.get('/meals/:meal_id', async (req, res) => {
   try {
     const meals = await db.Meals.findAll({
       where: {
-        meal_id: req.params.meal_id
-      }
+        meal_id: req.params.meal_id,
+      },
     });
     res.json(meals);
   } catch (err) {
@@ -144,12 +141,12 @@ router.put('/meals', async (req, res) => {
     await db.Meals.update(
       {
         meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        meal_category: req.body.meal_category,
       },
       {
         where: {
-          meal_id: req.body.meal_id
-        }
+          meal_id: req.body.meal_id,
+        },
       }
     );
     res.send('Meal Successfully Updated');
@@ -176,8 +173,8 @@ router.get('/macros/:meal_id', async (req, res) => {
   try {
     const meals = await db.Macros.findAll({
       where: {
-        meal_id: req.params.meal_id
-      }
+        meal_id: req.params.meal_id,
+      },
     });
     res.json(meals);
   } catch (err) {
@@ -199,12 +196,12 @@ router.put('/macros', async (req, res) => {
         sodium: req.body.sodium,
         carbs: req.body.carbs,
         protein: req.body.protein,
-        fat: req.body.fat
+        fat: req.body.fat,
       },
       {
         where: {
-          meal_id: req.body.meal_id
-        }
+          meal_id: req.body.meal_id,
+        },
       }
     );
     res.send('Successfully Updated');
@@ -231,8 +228,8 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
   try {
     const restrictions = await db.DietaryRestrictions.findAll({
       where: {
-        restriction_id: req.params.restriction_id
-      }
+        restriction_id: req.params.restriction_id,
+      },
     });
     res.json(restrictions);
   } catch (err) {
@@ -244,11 +241,12 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
+const macrosCustom =
+  'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
 router.get('/table/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
+      type: sequelize.QueryTypes.SELECT,
     });
     res.json(result);
   } catch (err) {
@@ -271,7 +269,7 @@ ON d.hall_id = ml.hall_id;`;
 router.get('/map/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
+      type: sequelize.QueryTypes.SELECT,
     });
     res.json(result);
   } catch (err) {
@@ -282,7 +280,7 @@ router.get('/map/data', async (req, res) => {
 router.get('/custom', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
+      type: sequelize.QueryTypes.SELECT,
     });
     res.json(result);
   } catch (err) {

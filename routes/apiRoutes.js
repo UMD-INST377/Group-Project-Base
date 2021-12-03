@@ -13,40 +13,40 @@ const router = express.Router();
 /// /////////////////////////////////
 /// ////Congress Member Endpoints////
 /// /////////////////////////////////
-router.route('/phone').get(async(req, res) => {
+router.route('/profiles').get(async(req, res) => {
   try {
-    console.log('touch /phone with GET')
-    res.json({phone: 'touched /phone with GET'})
+    console.log('touch /profiles with GET')
+    res.json({profiles: 'touched /profiles with GET'})
   } catch (error) {
     console.log(error)
     res.json({error: 'Error Occured'})
   }
 })
 
-router.route('/phone').put(async(req, res) => {
+router.route('/profiles').put(async(req, res) => {
   try {
-    console.log('touch /phone with PUT')
-    res.json({phone: 'touched /phone with PUT'})
+    console.log('touch /profiles with PUT')
+    res.json({profiles: 'touched /profiles with PUT'})
   } catch (error) {
     console.log(error)
     res.json({error: 'Error Occured'})
   }
 })
 
-router.route('/phone').post(async(req, res) => {
+router.route('/profiles').post(async(req, res) => {
   try {
-    console.log('touch /phone with POST')
-    res.json({phone: 'touched /phone with POST'})
+    console.log('touch /profiles with POST')
+    res.json({profiles: 'touched /profiles with POST'})
   } catch (error) {
     console.log(error)
     res.json({error: 'Error Occured'})
   }
 })
 
-router.route('/phone').delete(async(req, res) => {
+router.route('/profiles').delete(async(req, res) => {
   try {
-    console.log('touch /phone with DELETE')
-    res.json({phone: 'touched /phone with DELETE'})
+    console.log('touch /profiles with DELETE')
+    res.json({profiles: 'touched /profiles with DELETE'})
   } catch (error) {
     console.log(error)
     res.json({error: 'Error Occured'})

@@ -87,6 +87,22 @@ async function windowsAction() {
     displayPlaylists();
   }
   getHolidaySongs();
+
+  async function getTopPodcasts() {
+    const endPoint = await fetch('http://localhost:3000/api/podcastCharts');
+    const podcasts = await endPoint.json();
+    const podcastContainer = document.querySelector('#topPodcastsContainer');
+
+    function displayPodcasts() {
+      const html = podcasts.map((podcast) => `<ul>
+            <li><span class='podcast_name'>${podcast.podcast_name}</span></li>
+        </ul>`).join('');
+      podcastContainer.innerHTML = html;
+    }
+
+    displayPodcasts();
+  }
+  getTopPodcasts();
 }
 
 window.onload = windowsAction();

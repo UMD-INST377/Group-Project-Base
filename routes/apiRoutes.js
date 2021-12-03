@@ -171,7 +171,7 @@ router.route('/globalCharts')
 router.route('/podcastCharts')
   .get(async (req, res) => {
     try {
-      const sqlStatement = 'SELECT * FROM podcast_charts';
+      const sqlStatement = 'SELECT podcast_name, host, company FROM podcasts_charts';
       const result = await db.sequelizeDB.query(sqlStatement, {
         type: sequelize.QueryTypes.SELECT
       });

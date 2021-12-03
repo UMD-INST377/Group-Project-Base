@@ -13,6 +13,10 @@
    #912F40: lighter red
 */
 
+.columns .title {
+    color: white;
+}
+
 .index-nav a:visited {
     color: #ADD8E6;
 }

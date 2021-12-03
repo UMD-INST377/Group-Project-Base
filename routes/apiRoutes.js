@@ -23,12 +23,13 @@ router.route('/census')
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .put(async (req, res) => { // in postman things hangs for some reason, but I can see the value being updated
+  .put(async (req, res) => { // in postman things hangs for some reason, but I can see the value being updated I think res and return fixes this
     try {
       console.log(req.params)
       await db.sequelizeDB.query(controllers.census.putCensusSQL, {replacements: {census_zcta: req.query.census_zcta,
 										  total_population: req.query.total_population}});
       console.log('touched /census with PUT');
+      return true;
     } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
@@ -104,26 +105,36 @@ router.route('/community')
 /* Teddy' lab 9 routes */
 
 router.route('/population')
-  .get((req, res) => {
+  .get(async (req, res) => {
     try {
+      const db_response = await db.sequelizeDB.query(controllers.population.getPopulationSQL);
       console.log('touched /population with GET');
-      res.json({data: []}); // get census data later
+      res.json(db_response); 
+      return db_response;
     } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .put((req, res) => {
+  .put(async (req, res) => {
     try {
+      console.log(req.params)
+      await db.sequelizeDB.query(controllers.population.putPopulationSQL, {replacements: {popstat_zcta: req.query.popstat_zcta,
+										  pop_percent_id: req.query.pop_percent_id, pop_percent_category: req.query.pop_percent_category, pop_count: req.query.pop_count}});
       console.log('touched /population with PUT');
-      res.json({message: 'put census endpoint'});
     } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     try {
+      console.log(req.query)
+      await db.sequelizeDB.query(controllers.population.postPopulationSQL,
+				 { replacements: {popstat_zcta: req.query.popstat_zcta,
+					       pop_count: req.query.pop_count
+         },
+				   type: sequelize.QueryTypes.INSERT });
       console.log('touched /population with POST');
       res.json({message: 'post population endpoint'});
     } catch (err) {
@@ -131,8 +142,9 @@ router.route('/population')
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .delete((req, res) => {
+  .delete(async (req, res) => {
     try {
+      await db.sequelizeDB.query(controllers.population.deletePopulationSQL);
       console.log('touched /population with DELETE');
       res.json({message: 'delete population endpoint'});
     } catch (err) {
@@ -184,26 +196,37 @@ router.route('/ethnicities')
 /* Desmond's Lab 9 routes */
 
 router.route('/metro')
-  .get((req, res) => {
+  .get(async (req, res) => {
     try {
-      console.log('touched / metro with GET');
-      res.json({data: []}); // get census data later
+      const db_response = await db.sequelizeDB.query(controllers.metro.getMetroSQL);
+      console.log('touched /metro with GET');
+      res.json(db_response); 
+      return db_response;
     } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .put((req, res) => {
+  .put(async (req, res) => {
     try {
+      console.log(req.params)
+      await db.sequelizeDB.query(controllers.metro.putMetroSQL, {replacements: {metro_zcta: req.query.metro_zcta,
+										  metro_area: req.query.metro_area}});
       console.log('touched /metro with PUT');
-      res.json({message: 'put metro endpoint'});
     } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     try {
+      console.log(req.query)
+      console.log(req.query.census_zcta)
+      await db.sequelizeDB.query(controllers.metro.postMetroSQL,
+				 { replacements: {metro_zcta: req.query.metro_zcta,
+					       metro_area: req.query.metro_area
+         },
+				   type: sequelize.QueryTypes.INSERT });
       console.log('touched /metro with POST');
       res.json({message: 'post metro endpoint'});
     } catch (err) {
@@ -211,8 +234,9 @@ router.route('/metro')
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .delete((req, res) => {
+  .delete(async (req, res) => {
     try {
+      await db.sequelizeDB.query(controllers.metro.deleteMetroSQL);
       console.log('touched /metro with DELETE');
       res.json({message: 'delete metro endpoint'});
     } catch (err) {

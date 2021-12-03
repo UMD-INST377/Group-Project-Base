@@ -1,4 +1,24 @@
 * {
+<<<<<<< HEAD
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  p {
+    padding:0;
+    margin:0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    background-color: rgb(190, 198, 248);
+    height: 150%;
+  }
+=======
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,6 +37,7 @@ body {
   background-color: rgb(190, 198, 248);
   height: 100%;
 }
+>>>>>>> 234f6c8cd1e5473fb2b4f91cbd74f92ac11090ac
 
 nav {
   background-color: rgba(0, 49, 139, 0.4);
@@ -180,6 +201,13 @@ border-radius: 4px;
 background-color: #ddd;
 }
 
+<<<<<<< HEAD
+.dropdown-content {
+  max-height: 13em;
+  overflow: auto;
+}
+
+=======
 /* Add a dark background to the active button */
 .btn1.active {
 background-color: #666;
@@ -192,3 +220,4 @@ justify-content: space-between;
 align-items: center;
 margin-bottom: 5px;
 }
+>>>>>>> 234f6c8cd1e5473fb2b4f91cbd74f92ac11090ac

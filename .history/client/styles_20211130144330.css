@@ -15,7 +15,7 @@
     font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
       ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
     background-color: rgb(190, 198, 248);
-    height: 150%;
+    height: 100%;
   }
 
 nav {
@@ -145,9 +145,3 @@ nav {
   display: inline-block;
   border-radius: 2px;
 }
-
-.dropdown-content {
-  max-height: 13em;
-  overflow: auto;
-}
-

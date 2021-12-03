@@ -151,3 +151,6 @@ nav {
   overflow: auto;
 }
 
+.box {
+  justify-content: flex-end;
+}

@@ -145,9 +145,3 @@ nav {
   display: inline-block;
   border-radius: 2px;
 }
-
-.dropdown-content {
-  max-height: 13em;
-  overflow: auto;
-}
-

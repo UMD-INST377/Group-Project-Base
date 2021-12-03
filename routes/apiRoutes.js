@@ -95,17 +95,20 @@ router.route('/contact')
   });
 
   //Jake Stark General Congress Members Table Endpoint
-router.route('/members')
-.get(async(req, res) => {
+router.get('/members',async(req, res) => {
   try {
-    console.log('touched /members endpoint GET')
-    res.send(' GET members endpoint');
-  } catch (error) {
+    const members = await db.sequelizeDB.query(GETcontroller.members, {
+      type: sequelize.QueryTypes.SELECT
+    )};
+
+    console.long('Touched general members with GET');
+    
+    } catch (error) {
     console.log(error)
     res.json({message: 'Error'})
   }
-})
-.put(async(req, res) => {
+});
+router.put(async(req, res) => {
   try {
     console.log('touched /members endpoint PUT')
     res.send('PUT members endpoint');
@@ -113,17 +116,19 @@ router.route('/members')
     console.log(error)
     res.json({message: 'Error'})
   }
-})
-.post(async(req, res) => {
+});
+router.post(async(req, res) => {
   try {
-    console.log('touched /members endpoint POST')
-    res.send('POST members endpoint');
+    const insertQuery = await db.sequelizeDB.query(POSTcontroller.addMember, {
+      type: sequelize.QueryTypes.INSERT,
+      console.log('touched /members endpoint POST')
+      res.send('POST members endpoint');
   } catch (error) {
     console.log(error)
     res.json({message: 'Error'})
   }
-})
-.delete(async(req, res) => {
+});
+router.delete(async(req, res) => {
   try {
     console.log('touched /members endpoint DELETE')
     res.send('DELETE members endpoint');

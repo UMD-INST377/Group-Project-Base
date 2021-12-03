@@ -1,4 +1,4 @@
-const teamImages = document.querySelectorAll(".carousel_item1"); //add sonics
+const teamImages = document.querySelectorAll(".carousel_item1");
 const teamIDIndex = [
   ['Hawks', 'Hawks', '1610612737'],
   ['Celtics', 'Celtics', '1610612738'],

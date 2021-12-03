@@ -1,163 +1,243 @@
-/* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
+import date from '../controllers/dateController.js';
+import city from '../controllers/cityController.js';
+import magnitudeData from '../controllers/magnitudeController.js';
+import all from '../controllers/allController.js';
+
+/* eslint-disable no-console */
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the West Coast Earthquake API!');
-});
+/* Date Endpoint */
 
-/* Magnitude endpoint */
-// Get magnitude based on earthquake id
-router.route('/magnitude')
-  .get(async (req, res) => {
+router.get('/date', async(req,res) => {
+  try {
+    console.log('touched /date with GET');
+    const result = await db.sequelizeDB.query(date.getDate, {
+      type:sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+      console.log(error)
+      res.send({message:"something went wrong"});
+  }
+})
+
+router.put('/date', async (req, res) => {
     try {
-      const magnitudeData = await db.sequelizeDB.query(magnitude.getMagnitude, {
+      console.log('touched /date with PUT');
+      const result = await db.sequelizeDB.query(date.putDate, {
+        replacements: {
+          id: req.body.id, 
+          time: req.body.time,
+          date: req.body.date
+        },
+        type: sequelize.QueryTypes.UPDATE,
+      });
+      res.json(result);
+    } catch(err) {
+      console.log(err);
+      res.send({message:"uhoh"});
+    }
+})
+
+router.post('/date', async (req, res) => {
+    try {
+      console.log('touched /date with POST');
+      const result = await db.sequelizeDB.query(date.postDate, {
+        replacements: {
+          id: req.body.id,
+          time: req.body.time,
+          date: req.body.date
+        },
+        type: sequelize.QueryTypes.CREATE
+      })
+      res.json(result);
+    } catch(err) {
+      console.log(err);
+      res.send({message:"uhoh"});
+    }
+})
+
+router.delete ('/date', async (req, res) => {
+    try {
+      console.log('touched /date with DELETE');
+      const result = await db.sequelizeDB.query(date.deleteDate, {
+        replacements: {
+          id: req.body.id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+    } catch(err) {
+        console.log(err);
+        res.send({message:"uhoh"});
+    }
+  });
+
+/* Cities Endpoint */
+
+router.get('/cities', async(req,res) => {
+  try {
+    console.log('touched /city with GET');
+    const result = await db.sequelizeDB.query(city.getCity, {
+      type:sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+      console.log(error)
+      res.send({message:"something went wrong"});
+  }
+})
+
+router.put('/cities', async (req, res) => {
+    try {
+      console.log('touched /city with PUT');
+      const result = await db.sequelizeDB.query(city.putCity, {
+        replacements: {
+          id: req.body.id, 
+          city: req.body.city
+        },
+        type: sequelize.QueryTypes.UPDATE,
+      });
+      res.json(result);
+    } catch (err) {
+      console.log(err);
+      res.send({message:"uhoh"});
+    }
+  })
+
+router.post('/cities', async (req, res) => {
+    try {
+      console.log('touched /date with POST');
+      const result = await db.sequelizeDB.query(city.postCity, {
+        replacements: {
+          id: req.body.id,
+          city: req.body.city
+        },
+        type: sequelize.QueryTypes.CREATE
+      })
+      res.json(result);
+    } catch (err) {
+        console.log(err);
+        res.send({message:"uhoh"})
+    }
+  })
+
+router.delete('/cities', async (req, res) => {
+    try {
+      console.log('touched /city with DELETE');
+      const result = await db.sequelizeDB.query(city.deleteCity, {
+        replacements: {
+          id: req.body.id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+    } catch(err) {
+        console.log(err);
+        res.send({message:"uhoh"});
+    }
+  });
+
+router.get('/magnitude', async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(magnitudeData.getMagnitude, {
         type: sequelize.QueryTypes.SELECT
       });
-      res.json(magnitudeData);
+      res.json(result);
       console.log('touched /magnitude with GET');
     } catch (err) {
       console.log(err);
+      res.send({message:"uhoh"});
     }
   })
 
 // Update magnitude data for a specific earthquake id
-  .put(async (req, res) => {
+  router.put('/magnitude', async (req, res) => {
     try {
-      const magnitudeData = await db.sequelizeDB.query(magnitude.putMagnitude, {
+      const result = await db.sequelizeDB.query(magnitudeData.putMagnitude, {
         replacements: {
-          magnitude: req.body.magnitude, id: req.body.earthquake_id
+          magnitude: req.body.magnitude, id: req.body.id
         },
         type: sequelize.QueryTypes.UPDATE
       });
-      res.json(magnitudeData);
+      res.json(result);
       console.log('touched /magnitude with PUT');
     } catch (err) {
       console.log(err);
+      console.log({message:"uhoh"});
     }
   })
 
 // Adding a new earthquake data
-  .post(async (req, res) => {
+router.post('/magnitude', async (req, res) => {
     try {
-      const magnitudeData = await db.sequelizeDB.query(magnitude.postMagnitude, {
+      const result = await db.sequelizeDB.query(magnitudeData.postMagnitude, {
         replacements: {
-          magnitude: req.body.magnitude, id: req.body.earthquake_id
+          magnitude: req.body.magnitude, id: req.body.id
         },
         type: sequelize.QueryTypes.INSERT
       });
-      res.json(magnitudeData)
+      res.json(result)
       console.log('touched /magnitude with POST');
     } catch (err) {
       console.log(err);
+      res.send({message:"uhoh"});
     }
   })
 
 // Delete a earthquake data
-  .delete(async (req, res) => {
+  router.delete('/magnitude', async (req, res) => {
     try {
-      const magnitudeData = await db.sequelizeDB.query(magnitude.getMagnitude, {
+      const result = await db.sequelizeDB.query(magnitudeData.deleteMagnitude, {
         replacements: {
-          id: req.body.earthquake_id
+          id: req.body.id
         },
         type: sequelize.QueryTypes.DELETE
       });
-      res.json(magnitudeData);
+      res.json(result);
       console.log('touched /magnitude with DELETE');
     } catch (err) {
       console.log(err);
+      res.send({message:"uhoh"});
     }
   });
 
-/* City Endpoint */
-import endpoint1 from '../routes/cityControllers'
 
-router.route('/city')
-  .get(async (req, res) => {
+/*below fetches all earthquake data*/
+
+  router.get('/', async (req, res) => {
     try {
-      console.log('touched /city with GET');
-      res.json({ message: 'GET endpoint' });
-    } catch (err) {
-      console.log(err);
-    }
-  })
-
-  .put(async (req, res) => {
-    try {
-      console.log('touched /city with PUT');
-      res.json({ message: 'PUT endpoint' });
-    } catch (err) {
-      console.log(err);
-    }
-  })
-
-  .post(async (req, res) => {
-    try {
-      console.log('touched /city with POST');
-      res.json({ message: 'POST endpoint' });
-    } catch (err) {
-      console.log(err);
-    }
-  })
-
-  .delete(async (req, res) => {
-    try {
-      console.log('touched /city with DELETE');
-      res.json({ message: 'DELETE endpoint' });
-    } catch (err) {
-      console.log(err);
-    }
-
-    router.get('/', (req, res) => {
-      res.json('You have touched the city endpoint');
+    const result = await db.sequelizeDB.query(all.getAll, {
+      type: sequelize.QueryTypes.SELECT
     });
-  });
-
-export default router; 
-
-/* Date Endpoint */
-
-router.route('/date')
-  .get(async (req, res) => {
-    try {
-      console.log('touched /date with GET');
-      res.json( {message: 'GET endpoint'} );
-    } catch (err) {
-      console.log(err);
-    }      
-  })
-
-  .put(async (req, res) => {
-    try {
-      console.log('touched /date with PUT');
-      res.json( {message: 'PUT endpoint'} );
-    } catch (err) {
-      console.log(err);
-    }
-  })
-
-  .post(async (req, res) => {
-    try {
-      console.log('touched /date with POST');
-      res.json({ message: 'POST endpoint'} );
-    } catch (err) {
-        console.log(err);
-    }
-  })
-
-  .delete (async (req, res) => {
-    try {
-      console.log('touched /date with DELETE');
-      res.json({ message: 'DELETE endpoint' });
+    res.json(result);
     } catch(err) {
-        console.log(err);
+      console.log(err);
+      res.send({message:"uhoh"});
     }
   });
 
+
+  router.get('/:id', async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(all.getByID, {
+        replacements: {
+          id: req.params.id
+        },
+        type:sequelize.QueryTypes.SELECT,
+      });
+      res.json(result)
+    } catch(err) {
+      console.log(err);
+      res.send({message:"uhoh"});
+    }
+  })
+  
+  export default router;
   router.get('/', (req, res) => {
     res.json('You have touched the date endpoint');
   });

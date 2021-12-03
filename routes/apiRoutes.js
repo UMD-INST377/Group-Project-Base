@@ -37,11 +37,11 @@ router.put('/date', async (req, res) => {
         type: sequelize.QueryTypes.UPDATE,
       });
       res.json(result);
-    } catch (err) {
+    } catch(err) {
       console.log(err);
       res.send({message:"uhoh"});
     }
-  })
+})
 
 router.post('/date', async (req, res) => {
     try {
@@ -55,11 +55,11 @@ router.post('/date', async (req, res) => {
         type: sequelize.QueryTypes.CREATE
       })
       res.json(result);
-    } catch (err) {
-        console.log(err);
-        res.send({message:"uhoh"})
+    } catch(err) {
+      console.log(err);
+      res.send({message:"uhoh"});
     }
-  })
+})
 
 router.delete ('/date', async (req, res) => {
     try {
@@ -221,6 +221,7 @@ router.post('/magnitude', async (req, res) => {
     }
   });
 
+
   router.get('/:id', async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(all.getByID, {
@@ -237,3 +238,6 @@ router.post('/magnitude', async (req, res) => {
   })
   
   export default router;
+  router.get('/', (req, res) => {
+    res.json('You have touched the date endpoint');
+  });

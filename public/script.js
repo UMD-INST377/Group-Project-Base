@@ -87,6 +87,42 @@ async function windowsAction() {
     displayPlaylists();
   }
   getHolidaySongs();
+
+  async function getUSTopSongs() {
+    const endPoint = await fetch('http://localhost:3000/api/ustopSongs');
+    const songs = await endPoint.json();
+    const songContainer = document.querySelector('#ustopsongsContainer');
+
+    function displayPlaylists() {
+      // eslint-disable-next-line no-template-curly-in-string
+      // eslint-disable-next-line arrow-body-style
+      const html = songs.map((song) => {
+        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+      }).join('');
+      songContainer.innerHTML = html;
+    }
+
+    displayPlaylists();
+  }
+  getUSTopSongs();
+
+  async function getGlobalTopSongs() {
+    const endPoint = await fetch('http://localhost:3000/api/globaltopSongs');
+    const songs = await endPoint.json();
+    const songContainer = document.querySelector('#globaltopsongsContainer');
+
+    function displayPlaylists() {
+      // eslint-disable-next-line no-template-curly-in-string
+      // eslint-disable-next-line arrow-body-style
+      const html = songs.map((song) => {
+        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+      }).join('');
+      songContainer.innerHTML = html;
+    }
+
+    displayPlaylists();
+  }
+  getGlobalTopSongs();
 }
 
 window.onload = windowsAction();

@@ -3,6 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import data from '../controllers/apiroutes2controller.js';
 
 const router = express.Router();
 
@@ -15,24 +16,38 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////////
 
 router.route('/album')
-  .get((rec, res) => {
+  .get(async (req, res) => {
     try {
+      const result = await db.sequelizeDB.query(data.getAlbum, {
+        type: sequelize.QueryTypes.SELECT
+      });
       console.log('touched /album with GET');
-      res.json({data: data});
+      res.json(result);
     } catch (err) {
-      console.log(error);
-      res.json({error: error});
+      console.error(err);
+      res.error('Server error');
     }
   })
-  .put((rec, res) => {
+  .put(async (req, res) => {
     try {
-      console.log('touched /album with PUT');
-      res.json({data: data});
+      await db.sequelizeDB.query(data.putAlbum,
+        {
+          album_name: req.body.album_name,
+          album_release_date: req.body.album_release_date,
+          record_label_id: req.body.record_label_id
+        },
+        {
+          where: {
+            album_id: req.body.album_id
+          }
+        });
+      res.send('Successful Update');
     } catch (err) {
       console.log(error);
-      res.json({error: error});
+      res.json({ error: 'Server Error' });
     }
   })
+
   .post((rec, res) => {
     try {
       console.log('touched /album with POST');
@@ -53,19 +68,16 @@ router.route('/album')
   });
 
 router.route('/performers')
-  .get(async (rec, res) => {
+  .get(async (req, res) => {
     try {
-      console.log('touched /performers with GET');
-      res.json({data: data});
-
-      const performers = await db.performers.findAll({
-        where:  {
-          artist_id: req.params.artist_id
-        }
+      const result = await db.sequelizeDB.query(data.getPerformers, {
+        type: sequelize.QueryTypes.SELECT
       });
+      console.log('touched /performers with GET');
+      res.json(result);
     } catch (err) {
-      console.log(error);
-      res.json({error: error});
+      console.error(err);
+      res.error('Server error');
     }
   })
   .put(async (rec, res) => {

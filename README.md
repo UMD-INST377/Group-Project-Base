@@ -29,7 +29,7 @@ categorized by zip codes.
 3. In your browser, navigate to ```http://localhost:3000/```.
 
 
-## Server application APIs
+## Server application API
 All api endpoints are prefixed with `/api`. For example to `GET` census data you would use `api/census`.\
 In general, the api consists of 1 endpoint for each table in the server's database. Each endpoint's HTTP method corresponds to the following
 actions.

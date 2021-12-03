@@ -36,7 +36,7 @@ actions.
 * GET - Displays and returns the table's SQL data.
 * PUT - Updates a particular value.
 * POST - Inserts a new row, based on that table's column values.
-* DELETE - Deletes the last value in the table, generally should not be used in production. Useful for quick testing.
+* DELETE - Deletes the last row a the table, generally should not be used in production. Useful for quick testing.
 
 ### Available Endpoints
 * census - Relates to MD Census Data

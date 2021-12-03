@@ -19,7 +19,7 @@ console.log(names)
     const html = matchArray.map((info) => {
       const regex = new RegExp(event.target.value, 'gi');
       return `
-      <div class='photo-grid-container'>
+      <div class='photo-grid-container' id='info_box'>
                 <div class='photo-grid-item'>
                 <div class="box">
                 <div class="name">Name: ${info.volcano_name}</div>
@@ -32,9 +32,36 @@ console.log(names)
               </div>
              </div>
             </div>
+            <div class="modal">
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                          <header class="modal-card-head">
+                            <p class="modal-card-title">Modal title</p>
+                            <button class="delete" aria-label="close"></button>
+                          </header>
+                          <section class="modal-card-body">
+                            Content is NOT THERE YET UNFORTUNATELY
+                          </section>
+                          <footer class="modal-card-foot">
+                          </footer>
+                        </div>
+                      </div>
     `;
+    
     }).join('');
     suggestions.innerHTML = html;
+    const info_box1 = document.querySelector('#info_box');//everytime when info box clicks, it runs document.querySelector('.modal').style.display = 'flex';
+    const elements = document.querySelectorAll('#info_box');
+    const delete_box = document.querySelector('.delete');
+    elements.forEach(info_box1 => {
+      info_box1.addEventListener('click', function(){
+        document.querySelector('.modal').style.display = 'flex';
+        delete_box.addEventListener('click',
+                           function () {
+      document.querySelector('.modal').style.display = 'none'
+    })
+      });
+    });
   }
 
   searchInput.addEventListener('input', displayMatches);

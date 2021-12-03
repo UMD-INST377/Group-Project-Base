@@ -15,6 +15,9 @@ const router = express.Router();
 /// /////////////////////////////////
 router.route('/profiles').get(async(req, res) => {
   try {
+    const iProfiles = await db.sequelizeDB.query(GETController.memberProfiles, {
+      type: sequelize.QueryTypes.SELECT
+    });
     console.log('touch /profiles with GET')
     res.json({profiles: 'touched /profiles with GET'})
   } catch (error) {

@@ -14,7 +14,6 @@ async function windowActions() {
     });
   }
   function displayMatches(event) {
-    console.log('ass');
     const matchArray = findMatches(event.target.value, names);
     const html = matchArray.map((info) => {
       const regex = new RegExp(event.target.value, 'gi');

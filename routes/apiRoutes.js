@@ -44,7 +44,7 @@ router.get('/', (req, res) => {
 router.get('/listofRestaurants', async (req, res) => {
   try {
     // console.log(restaurantMapCustom);
-    const restaurant = await db.sequelizeDB.query(restaurantMapCustom, {
+    const restaurant = await db.sequelizeDB.query(restaurantMapCustom.getRestaurant, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(restaurant);
@@ -56,7 +56,7 @@ router.get('/listofRestaurants', async (req, res) => {
 
 router.get('/listofRestaurants/:Establishment_id', async (req, res) => {
   try {
-    const restaurants = await db.sequelizeDB.query(restaurantMapCustom, {
+    const restaurants = await db.sequelizeDB.query(restaurantMapCustom.getRestaurant, {
       replacements: {
         Establishment_id: req.params.Establishment_id
       }
@@ -70,7 +70,7 @@ router.get('/listofRestaurants/:Establishment_id', async (req, res) => {
 
 router.put('/listofRestaurants', async (req, res) => {
   try {
-    await db.sequelizeDB.query(restaurantMapCustom, {
+    await db.sequelizeDB.query(restaurantMapCustom.putRestaurant, {
       Name: req.body.Name,
       City: req.body.City,
       Zip: req.body.Zip
@@ -83,12 +83,12 @@ router.put('/listofRestaurants', async (req, res) => {
 });
 
 router.post('/listofRestaurants', async (req, res) => {
-  const restaurant = await db.sequelizeDB.query(restaurantMapCustom, {
+  const restaurant = await db.sequelizeDB.query(restaurantMapCustom.postRestaurant, {
     type: sequelize.QueryTypes.INSERT
   });
   const currentId = (await restaurant.length) + 1;
   try {
-    const newRestaurant = await db.sequelizeDB.query(restaurantMapCustom, {
+    const newRestaurant = await db.sequelizeDB.query(restaurantMapCustom.postRestaurant, {
       Establishment_id: currentId,
       Name: req.body.Name,
       City: req.body.City,
@@ -103,7 +103,7 @@ router.post('/listofRestaurants', async (req, res) => {
 
 router.delete('/listofRestaurants/:Establishment_id', async (req, res) => {
   try {
-    await db.sequelizeDB.query(restaurantMapCustom, {
+    await db.sequelizeDB.query(restaurantMapCustom.deleteRestaurant, {
       replacements: {
         Establishment_id: req.params.Establishment_id
       }

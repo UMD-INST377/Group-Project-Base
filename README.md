@@ -1,10 +1,14 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# About
+Our Music Database is a UMD student-curated collection of songs across hip-hop, r&b, indie pop, and more. 
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
+This project was created for INST377: Dynamic Web Applications (Fall 2021). 
 
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)# REST API example using Sequelize
+The front end is written using HTML/CSS and Bulma libraries while the backend operates using Express, Sequelize, and JavaScript.
+
+[Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+
+# REST API example using Sequelize
+
 <table>
   <thead>
     <tr>
@@ -15,19 +19,19 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
   <tbody>
     <tr>
       <td>GET</td>
-      <td>Retrieves resources</td>
+      <td>Retrieves all songs or song by ID.</td>
     </tr>
     <tr>
       <td>POST</td>
-      <td>Creates resources</td>
+      <td>Creates a new song.</td>
     </tr>
     <tr>
       <td>PUT</td>
-      <td>Changes and/or replaces resources or collections</td>
+      <td>Inserts or replaces a song if it already exists.</td>
     </tr>
     <tr>
       <td>DELETE</td>
-      <td>Deletes resources</td>
+      <td>Deletes all songs or songs by ID.</td>
     </tr>
   </tbody>
 </table>
@@ -124,4 +128,8 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 #### Response
 
     Successfully Deleted
-<hr>
+    
+# Authors
+Daniel Cutaneo, Walesia Robinson II, Miranda Vo, Pengtong Yang
+
+

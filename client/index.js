@@ -1,22 +1,19 @@
+/* eslint-disable no-param-reassign */
 // the map stuff can be done similar to lab 7
 
 function getMatch(event, census) {
   // not that many zips so filtering is fine - return if something matches
-  const matches = census[0].filter(zcta => {
-    return zcta.census_zcta === event.target.value ||
-      zcta.popstat_zcta === event.target.value ||
-      zcta.metro_zcta === event.target.value;
-  });
-  if(matches.length > 0) {
+  const matches = census[0].filter((zcta) => zcta.census_zcta === event.target.value
+      || zcta.popstat_zcta === event.target.value
+      || zcta.metro_zcta === event.target.value);
+  if (matches.length > 0) {
     return matches[0];
-  } else {
-    return false
   }
+  return false;
 }
 
 function renderTableHTML(match, tableDiv) {
-  tableDiv.innerHTML =
-    `<table class="table"><tr>
+  tableDiv.innerHTML = `<table class="table"><tr>
             <tr class="col"><th class="col"> Census ${match.census_zcta} </th></tr>
             <td><strong>median age</strong></td><td>${match.median_age}</td>
             </tr>
@@ -35,21 +32,22 @@ function renderTableHTML(match, tableDiv) {
            <tr>
            <td><strong>% renters</strong></td><td>${match.percent_rent}</td>
            </tr>
-    </table>`
+    </table>`;
 }
 async function dataHandler() {
   const searchInput = document.querySelector('.search');
   const tableDiv = document.querySelector('.census-data');
-  const census = await fetch('./api/census').then(response => response.json());
+  const census = await fetch('./api/census').then((response) => response.json());
 
   // on inputs validate matches, if true render html
   searchInput.addEventListener('input', (evt) => {
     let match = false;
-    if(evt.target.value.length === 5) {
+    if (evt.target.value.length === 5) {
       match = getMatch(evt, census);
     }
-    console.log(match)
-    if(match !== false) {
+    // eslint-disable-next-line no-console
+    console.log(match);
+    if (match !== false) {
       renderTableHTML(match, tableDiv);
     }
   });

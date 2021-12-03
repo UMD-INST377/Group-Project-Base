@@ -24,6 +24,23 @@ router.get('/presidents', async (req, res) => {
   }
 });
 
+// route GET presidents for delete dropdown
+router.get('/delete_options', async (req, res) => {
+  try {
+    const dropDownQuery = `SELECT president_id, CONCAT(first_name, ' ', last_name) as full_name
+    FROM presidents_table;`;
+    const drop_down_info = await db.sequelizeDB.query(dropDownQuery, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(drop_down_info);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+
 // GET the specific president by id number
 
 router.get('/presidents/:president_id', async (req, res) => {

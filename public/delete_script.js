@@ -31,3 +31,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+async function getDropdownData() {
+  return (await fetch('/api/delete_options')).json();
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  let presidents = [];
+  try {
+    presidents = await getDropdownData();
+  } catch (err) {
+    console.log(err);
+  }
+  loadOptions(presidents);
+});
+
+function generateObjectsForDeleteOptions(data) {
+  const options = {};
+  for (let i=0; i < data.length; i++) {
+    options[data[i].full_name] = data[i].president_id;
+  }
+  return options;
+}
+
+function getPresidentIdByPresidentName(data, presidentName) {
+  president_id = data[presidentName];
+  return president_id;
+}
+
+function loadOptions(data) {
+  const options = {};
+
+  for (let i=0; i < data.length; i++) {
+    options[data[i].full_name] = data[i].president_id;
+  }
+
+  let select = document.getElementById("selectPresident");
+  let options_lst = Object.keys(options)
+
+  for (var i = 0; i < options_lst.length; i++) {
+    let opt = options_lst[i];
+    let el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.appendChild(el);
+  }
+}
+
+// pop-up message delete on click
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector("#selectPresident").onchange=function() { 
+    let val = this.value; 
+    console.log(val);
+    const mapData = await getDropdownData();
+    console.log(mapData)
+    //console.log(getPresidentIdByPresidentName(generateObjectsForDeleteOptions(mapData), val)); 
+    
+    
+
+  }
+});

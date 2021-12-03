@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   res.send({'message': 'Welcome to the UMD Dining API!'});
-});
+}); 
 
 /// /////////////////////////////////
 /// //PG County Inspection Endpoints/
@@ -24,7 +24,6 @@ router.route('/foodInspectionPG')
 
       console.log('Touched /foodInspectionPG with GET');
       res.json(reply);
-
     } catch (err) {
       console.error(err);
       // res.error('Server error');

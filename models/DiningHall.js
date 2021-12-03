@@ -17,7 +17,7 @@ export default (database, DataTypes) => {
         type: DataTypes.DECIMAL
       },
       hall_long: {
-        type: DataTypes.DECIMAL
+        type:DataTypes.DECIMAL
       }
     },
     { freezeTableName: true, timestamps: false }

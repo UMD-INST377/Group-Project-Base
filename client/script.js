@@ -53,6 +53,7 @@ async function windowActions() {
                           </footer>
                         </div>
                       </div>
+          
     `;
     }).join('');
     suggestions.innerHTML = html;

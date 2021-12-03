@@ -97,3 +97,8 @@ html {
 #formsuccessbutton{
     margin-left: 40%;
 }
+
+.page{
+    display: flex;
+    justify-content: center;
+}

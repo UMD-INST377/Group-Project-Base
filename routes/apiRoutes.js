@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import express from 'express';
+/*
 import sequelize, { QueryTypes } from 'sequelize';
+*/
 
 import db from '../database/initializeDB.js';
 import foodInspectionVar from '../contollers/food_inspectionController.js';

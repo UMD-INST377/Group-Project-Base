@@ -53,6 +53,7 @@
     <div class="columns is-centered">
       <div class="column is-half">
         <form
+          target="_blank"
           method="post"
           enctype="application/x-www-form-urlencoded"
           action="/api/basketball/players"
@@ -120,7 +121,10 @@
               <option value="1610612764">Wizards</option>
             </select>
           </p>
-          <p><button class="submit">Submit</button></p>
+          <p><button class="submit" onclick="window.location.href = 'https://inst377-group-project-18.herokuapp.com/;">Submit</button></p>
+          <p>
+            <label class="notice">Will open a new page with the submitted information, feel free to close the new page, your data will be saved</label>
+          </p>
         </form>
       </div>
     </div>

@@ -20,3 +20,9 @@ body {
   padding-top: 8px;
   padding-bottom: 8px;
 }
+
+.notice {
+  padding-top: 25px;
+  color: white;
+  width: 400px;
+}

@@ -40,7 +40,7 @@ router.route('/foodServicePG').get(async (req, res) => {
 });
 */
 
-router.get('/establishments/establishment_id', async (req, res) => {
+router.get('/cities', async (req, res) => {
   try {
     const businesses = await db.sequelizeDB.query(foodInspectionVar);
     console.log(businesses);

@@ -3,7 +3,7 @@ You are required to fill it in with documentation similar to that found in the S
 
 ### How to use Markdown
 Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+
 * [Markdown guide](https://www.markdownguide.org/cheat-sheet/)# REST API example using Sequelize
 <table>
   <thead>
@@ -124,62 +124,4 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 #### Response
 
     Successfully Deleted
-<hr>
-
-# Meals
-
-## Get list of Meals
-
-#### Request
-
-`GET /api/meals`
-
-    curl http://localhost:3000/api/meals
-
-#### Response
-    [{
-        "meal_id":1,
-        "meal_name":"Scrambled Eggs",
-        "meal_category":"B"
-    },
-    {
-        "meal_id":2,
-        "meal_name":"French Toast",
-        "meal_category":"B"
-    },
-    {
-        "meal_id":3,
-        "meal_name":"Pancakes",
-        "meal_category":"B"
-    },
-        ...
-    ]
-## Get a Specific Meal
-
-#### Request
-
-`GET /api/meals/:meal_id`
-
-    curl http://localhost:3000/api/meals/1
-
-#### Response
-
-    [{
-        "meal_id":1,
-        "meal_name":"Scrambled Eggs",
-        "meal_category":"B"
-    }]
-    
-## Updating an Existing Meal
-
-#### Request
-
-`PUT /api/meals`
-
-    curl -d "meal_id=1&meal_name=Scrambled Eggs&meal_category=L" -X PUT http://localhost:3000/api/meal
-
-#### Response
-
-    Successfully Updated
-
 <hr>

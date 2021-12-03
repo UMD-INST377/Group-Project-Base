@@ -167,7 +167,7 @@ router.route('/globalCharts')
     }
   });
 
-/// Podcast Chart Endpoint /// 
+/// Podcast Chart Endpoint ///
 router.route('/podcastCharts')
   .get(async (req, res) => {
     try {
@@ -387,6 +387,180 @@ router.route('/holidaySongs')
   .delete(async (req, res) => {
     try {
       // add id for endpoint
+      const albumId = req.body.album_id;
+      const sqlStatement = `DELETE from albums WHERE album_id = ${albumId};`;
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.DELETE
+      });
+      console.log('deleted album');
+      res.json(result);
+    } catch (err) {
+      res.json({error: 'Server error, try again!'});
+    }
+  });
+
+/// Ariana Grande's Songs Endpoint ///
+router.route('/arianaSongs')
+  .get(async (req, res) => {
+    try {
+      const sqlStatement = 'SELECT song_name, artist_name, album_name, genre FROM artist JOIN songs ON artist.artist_id = songs.artist_id JOIN albums ON songs.album_id = albums.album_id WHERE artist.artist_id = 3 ORDER BY song_name;';
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      res.json({message: 'GET arianaSongs endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .put(async (req, res) => {
+    try {
+      // add id for endpoint
+      const albumId = req.body.album_id;
+      const albumName = req.body.album_name;
+      const sqlStatement = `UPDATE albums SET album_name = '${albumName}' WHERE album_id = ${albumId};`;
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+    } catch (err) {
+      res.json(err);
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      // add id for endpoint
+      const albumId = req.body.album_id;
+      const albumName = req.body.album_name;
+      const sqlStatement = `UPDATE albums SET album_name = '${albumName}' WHERE album_id = ${albumId};`;
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+    } catch (err) {
+      res.json(err);
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      // add id for endpoint
+      const albumId = req.body.album_id;
+      const sqlStatement = `DELETE from albums WHERE album_id = ${albumId};`;
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.DELETE
+      });
+      console.log('deleted album');
+      res.json(result);
+    } catch (err) {
+      res.json({error: 'Server error, try again!'});
+    }
+  });
+
+/// Bad Bunny Songs Endpoint ///
+router.route('/badBunnySongs')
+  .get(async (req, res) => {
+    try {
+      const sqlStatement = 'SELECT song_name, artist_name, album_name, genre FROM artist JOIN songs ON artist.artist_id = songs.artist_id JOIN albums ON songs.album_id = albums.album_id WHERE artist.artist_id = 4 ORDER BY song_name;';
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      res.json({message: 'GET badBunnySongs endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .put(async (req, res) => {
+    try {
+    // add id for endpoint
+      const albumId = req.body.album_id;
+      const albumName = req.body.album_name;
+      const sqlStatement = `UPDATE albums SET album_name = '${albumName}' WHERE album_id = ${albumId};`;
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+    } catch (err) {
+      res.json(err);
+    }
+  })
+  .post(async (req, res) => {
+    try {
+    // add id for endpoint
+      const albumId = req.body.album_id;
+      const albumName = req.body.album_name;
+      const sqlStatement = `UPDATE albums SET album_name = '${albumName}' WHERE album_id = ${albumId};`;
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+    } catch (err) {
+      res.json(err);
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+    // add id for endpoint
+      const albumId = req.body.album_id;
+      const sqlStatement = `DELETE from albums WHERE album_id = ${albumId};`;
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.DELETE
+      });
+      console.log('deleted album');
+      res.json(result);
+    } catch (err) {
+      res.json({error: 'Server error, try again!'});
+    }
+  });
+
+/// BTS Endpoint ///
+router.route('/btsSongs')
+  .get(async (req, res) => {
+    try {
+      const sqlStatement = 'SELECT song_name, artist_name, album_name, genre FROM artist JOIN songs ON artist.artist_id = songs.artist_id JOIN albums ON songs.album_id = albums.album_id WHERE artist.artist_id = 9 ORDER BY song_name;';
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+      res.json({message: 'GET btsSongs endpoint'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Server error'});
+    }
+  })
+  .put(async (req, res) => {
+    try {
+    // add id for endpoint
+      const albumId = req.body.album_id;
+      const albumName = req.body.album_name;
+      const sqlStatement = `UPDATE albums SET album_name = '${albumName}' WHERE album_id = ${albumId};`;
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+    } catch (err) {
+      res.json(err);
+    }
+  })
+  .post(async (req, res) => {
+    try {
+    // add id for endpoint
+      const albumId = req.body.album_id;
+      const albumName = req.body.album_name;
+      const sqlStatement = `UPDATE albums SET album_name = '${albumName}' WHERE album_id = ${albumId};`;
+      const result = await db.sequelizeDB.query(sqlStatement, {
+        type: sequelize.QueryTypes.UPDATE
+      });
+      res.json(result);
+    } catch (err) {
+      res.json(err);
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+    // add id for endpoint
       const albumId = req.body.album_id;
       const sqlStatement = `DELETE from albums WHERE album_id = ${albumId};`;
       const result = await db.sequelizeDB.query(sqlStatement, {

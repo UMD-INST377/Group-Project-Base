@@ -83,7 +83,7 @@ router
     }
   });
 
-// Grant  T /extinction table endpoint*/
+// Grant T/extinction table endpoint*/
 router
   .route('/extinction')
   .get(async (req, res) => {

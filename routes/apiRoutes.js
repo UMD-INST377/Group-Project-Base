@@ -23,12 +23,13 @@ router.route('/census')
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .put(async (req, res) => { // in postman things hangs for some reason, but I can see the value being updated
+  .put(async (req, res) => { // in postman things hangs for some reason, but I can see the value being updated I think res and return fixes this
     try {
       console.log(req.params)
       await db.sequelizeDB.query(controllers.census.putCensusSQL, {replacements: {census_zcta: req.query.census_zcta,
 										  total_population: req.query.total_population}});
       console.log('touched /census with PUT');
+      return true;
     } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});

@@ -1,6 +1,40 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# INST377 Group 1 Final Project
+This is Group 1's final project for INST377. Our group decided to use a database
+containing information about NBA players. The goal of the website is to inform users about different player statistics. There is also opportunities for people to update the information on the website in order to provide more accurate and up to date information
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+## Getting Started
+### Install Dependencies
+`npm install`
+### Run the Server
+`npm start`
+
+## REST API
+| Method | Action |
+| ------ | ------ |
+| GET | | Retrieves resources |
+| POST | | Creates resources |
+| PUT | | Changes and/or replaces resources |
+| DELETE | | Deletes resources |
+
+# NBA Players Database
+## Get list of NBA Players
+`GET /api/nba-players`
+`curl http://localhost:3000/api/nba-players`
+
+## Get a specific NBA Player
+`GET /api/nba-players/:player_name`
+`curl http://localhost:3000/api/nba-players/"ID"`
+
+## Create a NBA Player
+`POST /api/nba-players`
+`curl -d "player_name=X&ppg=EX&assists=X&team=X" -X POST http://localhost:3000/api/nba-players`
+
+## Update a NBA Player's Stats
+`PUT /api/nba-players`
+`curl -d "player_name=X&ppg=EX&assists=X&team=X" -X PUT http://localhost:3000/api/nba-players`
+
+## Delete an Exisiting NBA Player
+`DELETE /api/nba-players/:player_name`
+`curl -X DELETE http://localhost:3000/api/nba-players/X`
+
+

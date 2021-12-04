@@ -8,6 +8,7 @@ import db from '../database/initializeDB.js';
 import covidStatsCustom from '../controllers/covid-stats.js';
 import countyInfo from '../controllers/county-info_GET.js';
 import addNewCounty from '../controllers/county-info_POST.js';
+import vacByCountydata from '../controllers/vacByCountyController.js';
 
 const router = express.Router();
 
@@ -84,11 +85,14 @@ router.route('/covid-stats')
 /// /////////////////////////////////
 /// ////Vaccine Stats Endpoint////////
 /// /////////////////////////////////
-router.route('/vacc-stats')
+router.route('/vacByCountyController')
   .get(async(req, res) => {
     try {
-      res.json({ message: 'Touched /vacc-stats with GET' });
-      console.log('Touched /vacc-stats with GET');
+      const dataResponse = await db.sequelizeDB.query(vacByCountydata, 
+        {
+          type: sequelize.QueryTypes.SELECT
+        });
+      console.log('Reached /vacByCounty endpoint with GET')
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });
@@ -96,17 +100,36 @@ router.route('/vacc-stats')
   })
   .put((req, res) => {
     try {
-      res.json({ message: 'Touched /vacc-stats with PUT' });
-      console.log('Touched /vacc-stats with PUT');
+      await db.vacByCountydata.update({
+        first_dose_count = req.body.first_dose_count,
+        first_dose_prop = req.body.first_dose_prop,
+        second_dose_count = req.body.second_dose_count,
+        second_dose_prop = req.body.second_dose_prop,
+      },
+      {
+        where: {
+          county_ID: req.body.county_ID
+        }
+      }); 
+      console.log('Successfully Updated Vaccine County Data with PUT')
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });
     }
   })
   .post((req, res) => {
+    const vacByCountyTable = await db.covidStatsCustom.findAll();
+    const currentID = (await vacByCountyTable.length) + 1; 
     try {
-      res.json({ message: 'Touched /vacc-stats with POST' });
-      console.log('Touched /vacc-stats with POST');
+      const addVacByCountyStats = await db.vacByCountydata.create({
+        county_ID: currentID, 
+        first_dose_count = req.body.first_dose_count,
+        first_dose_prop = req.body.first_dose_prop,
+        second_dose_count = req.body.second_dose_count,
+        second_dose_prop = req.body.second_dose_prop, 
+      });
+      console.log('Reached /vacByCounty endpoint with POST')
+      res.send('Successfully added to Vaccine Data By County with POST')
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });
@@ -114,8 +137,11 @@ router.route('/vacc-stats')
   })
   .delete((req, res) => {
     try {
-      res.json({ message: 'Touched /vacc-stats with DELETE' });
-      console.log('Touched /vacc-stats with DELETE');
+      await db.vacByCountydata.destroy({
+        where: {
+          county_ID: req.params.county_ID
+        }
+      });
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });

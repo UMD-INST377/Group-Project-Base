@@ -98,13 +98,13 @@ router.route('/vacByCountyController')
       res.json({ error: 'Something went wrong' });
     }
   })
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
       await db.vacByCountydata.update({
-        first_dose_count = req.body.first_dose_count,
-        first_dose_prop = req.body.first_dose_prop,
-        second_dose_count = req.body.second_dose_count,
-        second_dose_prop = req.body.second_dose_prop,
+        first_dose_count: req.body.first_dose_count,
+        first_dose_prop: req.body.first_dose_prop,
+        second_dose_count: req.body.second_dose_count,
+        second_dose_prop: req.body.second_dose_prop,
       },
       {
         where: {
@@ -117,16 +117,16 @@ router.route('/vacByCountyController')
       res.json({ error: 'Something went wrong' });
     }
   })
-  .post((req, res) => {
+  .post(async(req, res) => {
     const vacByCountyTable = await db.covidStatsCustom.findAll();
     const currentID = (await vacByCountyTable.length) + 1; 
     try {
       const addVacByCountyStats = await db.vacByCountydata.create({
         county_ID: currentID, 
-        first_dose_count = req.body.first_dose_count,
-        first_dose_prop = req.body.first_dose_prop,
-        second_dose_count = req.body.second_dose_count,
-        second_dose_prop = req.body.second_dose_prop, 
+        first_dose_count: req.body.first_dose_count,
+        first_dose_prop: req.body.first_dose_prop,
+        second_dose_count: req.body.second_dose_count,
+        second_dose_prop: req.body.second_dose_prop, 
       });
       console.log('Reached /vacByCounty endpoint with POST')
       res.send('Successfully added to Vaccine Data By County with POST')
@@ -135,7 +135,7 @@ router.route('/vacByCountyController')
       res.json({ error: 'Something went wrong' });
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
       await db.vacByCountydata.destroy({
         where: {

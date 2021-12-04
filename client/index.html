@@ -13,32 +13,25 @@
 <body>
     <div class="description"></div>
         <h1 class="title">West Coast Earthquake Search</h1>
-        <p>Search for west coast earthquake data using the parameters below:</p>
     </div>
-
-    <section class="form-wrapper">
-        <form action="results.html">
-
-            <div class="section">
-                <div class="field">
-                    <label class="label" for="city">City</label>
-                    <input class="input" type="text" name="city">
-                </div>
-                <div class="field">
-                    <label class="label" for="zip-code">Zip Code</label>
-                    <input class="input" type="text" name="zip-code">
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="field">
-                    <label class="label" for="magnitude">Magnitude</label>
-                    <input class="input" type="text" name="magnitude">
-            </div>
-            </div>
-            <button type="submit" value="Submit">Submit</button>
-        </form>
-        </div>
+    <div id="buttonbox">
+    <button id="myBtn"/>
+    <p>Search the Earthquake Database</p>
+    <script>
+     document.getElementById("myBtn").addEventListener("click", myFunction);
+     function myFunction() {
+       window.location.href="results.html";
+     }
+    </script>
+    <button id="myBtn"/>
+    <p>Add a record</p>
+    <script>
+     document.getElementById("myBtn").addEventListener("click", myFunction);
+     function myFunction() {
+       window.location.href="results.html";
+     }
+    </script>
+    </div>
 </body>
 
 </html>

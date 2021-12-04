@@ -9,7 +9,6 @@ function getFilters(census, medAgeMin, medAgeMax, over65Min, over65Max, popMin, 
       (Number(ele.percent_homeowner_without_mortgage) >= howMin && Number(ele.percent_homeowner_without_mortgage) <= howMax) &&
       (Number(ele.percent_rent) >= renterMin && Number(ele.percent_rent) <= renterMax)
   );
-  console.log(matches.length);  
   if (matches.length > 0) {
     return matches;
   }
@@ -77,7 +76,6 @@ async function dataHandler() {
     const renterMax = form.elements[11].value === "" ? Infinity : form.elements[11].value;
     const metro = await fetch('./api/metro').then((response) => response.json());
     const metro_zips = metro[0].map((ele) => ele.metro_zcta);
-    console.log(metro_zips);
 
     //filter
     /* if (form.elements[12].checked) do nothing */

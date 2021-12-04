@@ -1,7 +1,8 @@
 # About
-Our Music Database is a UMD student-curated collection of songs across hip-hop, r&b, indie pop, and more. 
 
-This project was created for INST377: Dynamic Web Applications (Fall 2021). 
+Our Music Database is a UMD student-curated collection of songs across hip-hop, r&b, indie pop, and more.
+
+This project was created for INST377: Dynamic Web Applications (Fall 2021).
 
 The front end is written using HTML/CSS and Bulma libraries while the backend operates using Express, Sequelize, and JavaScript.
 
@@ -36,13 +37,14 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
   </tbody>
 </table>
 
-## Install Dependencies 
+## Install Dependencies
 
     npm install
 
 ## Run the Server
 
     npm start
+
 <hr>
 
 # Songs
@@ -56,8 +58,9 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
     curl http://localhost:3000/api/songs_project
 
 #### Response
+
      [{
-       
+
           "song_id": 1,
           "song_name": "A Gangsta's Pain",
           "album_name": "A Gangsta's Pain",
@@ -87,7 +90,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
           "description": "This rating is 4 out of 5 stars",
           "duration": "06:01:00"
     }]
-    
+
 ## Get a Specific Song
 
 #### Request
@@ -108,7 +111,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
         "description": "This rating is 4 out of 5 stars",
         "duration": "03:32:00"
     }
-    
+
 ## Create a new Song
 
 #### Request
@@ -132,11 +135,11 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 
 `PUT /songs_project`
 
-    curl -d "hall_id=4&hall_name=Example1&hall_location=Stamp" -X PUT http://localhost:3000/api/dining
+    curl -d "song_id=2&song_name=Holy&album_name=Justice&rating=5" -X PUT http://localhost:3000/api/songs_project
 
 #### Response
 
-    Successfully Updated
+    Songs database was successfully updated
 
 ## Delete an Existing Song Entry
 
@@ -149,6 +152,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 #### Response
 
     Successfully Deleted
-    
+
 # Authors
+
 Daniel Cutaneo, Walesia Robinson II, Miranda Vo, Pengtong Yang

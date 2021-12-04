@@ -92,7 +92,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 
 `GET /songs_project/:song_id`
 
-    curl http://localhost:3000/api/songs_project/1
+    curl http://localhost:3000/api/songs_project/2
 
 #### Response
 
@@ -113,14 +113,15 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 
 `POST /songs_project`
 
-    curl -d "hall_id=4&hall_name=Example&hall_location=Hornbake" -X POST http://localhost:3000/api/dining
+    curl -d "song_id=40&song_name=Talking to the Moon&album_name&ratings=5" -X POST http://localhost:3000/api/songs_project
 
 #### Response
 
     {
-        "hall_id":"4",
-        "hall_name":"Example",
-        "hall_location":"Hornbake"
+      "song_id": 40,
+      "song_name": "Talking to the Moon",
+      "album_name": "Moon",
+      "ratings": 5
     }
 
 ## Updating an Existing Song

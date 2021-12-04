@@ -8,17 +8,33 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
-<body>
-  <nav class="navbar" role="navigation" area-label="main navigation">
+<body class="has-navbar-fixed-top"> <!-- bulma docs say to do this -->
+    <nav class="navbar is-fixed-top" role="navigation" area-label="main navigation">
     <div class="navbar-menu is-active">
       <a class="navbar-item" href="index.html">Home</a>
-      <a class="navbar-item" href="query.html">Query</a>
+      <div class="navbar-item has-dropdown is-hoverable">
+	<a class="navbar-link">
+	  Query
+	</a>
+	<div class="navbar-dropdown">
+	  <a class="navbar-item" href="census.html">
+	    Census
+	  </a>
+	  <a class="navbar-item" href="community.html">
+	    Community Survey
+	  </a>
+	  <a class="navbar-item" href="companies.html">
+	    Companies
+	  </a>
+	</div>
+      </div>
       <a class="navbar-item" href="guide.html">Guide</a>
       <a class="navbar-item" href="about.html">About</a>
     </div>
   </nav>
+
+  
   <br>
-  <div>Census</div>
   
   <div class="container">
     <div class="columns is-centered">

@@ -247,38 +247,49 @@ router.route('/metro')
 
 /*Will's lab 9 routes */
 router.route('/companies')
-  .get((req, res) => {
+  .get(async (req, res) => {
     try {
+      const db_response = await db.sequelizeDB.query(controllers.companies.getCompaniesSQL);
       console.log('touched /companies with GET');
-      res.json({data: []}); // get census data later
-    } catch(err) {
+      res.json(db_response); 
+      return db_response;
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .put((req, res) => {
+  .post(async (req, res) => {
     try {
+      console.log(req.params)
+      await db.sequelizeDB.query(controllers.companies.putCompaniesSQL, {replacements: {company_id: req.query.company_id, company_name: req.query.company_name, company_adress:req.query.company_address, city: req.query.city, company_zcta: req.query.company_zcta
+										 }});
       console.log('touched /companies with PUT');
-      res.json({message: 'put companies endpoint'});
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .post((req, res) => {
+  .put(async (req, res) => {
     try {
+      console.log(req.query)
+      await db.sequelizeDB.query(controllers.companies.postCompaniesSQL,
+				 { replacements: {company_address: req.query.company_address,
+					       city: req.query.city, company_zcta: req.query.company_zcta
+         },
+				   type: sequelize.QueryTypes.INSERT });
       console.log('touched /companies with POST');
       res.json({message: 'post companies endpoint'});
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }
   })
-  .delete((req, res) => {
+  .delete(async (req, res) => {
     try {
+      await db.sequelizeDB.query(controllers.companies.deleteCommpaniesSQL);
       console.log('touched /companies with DELETE');
       res.json({message: 'delete companies endpoint'});
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       res.json({error: 'Something went wrong on the server.'});
     }

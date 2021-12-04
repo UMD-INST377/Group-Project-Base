@@ -56,8 +56,8 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
     curl http://localhost:3000/api/songs_project
 
 #### Response
+   
    [{
-
         "song_id": 1,
         "song_name": "A Gangsta's Pain",
         "album_name": "A Gangsta's Pain",

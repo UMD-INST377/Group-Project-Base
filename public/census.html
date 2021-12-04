@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MD ZIP Code Census Data</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/query_link_styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+  <nav class="navbar" role="navigation" area-label="main navigation">
+    <div class="navbar-menu is-active">
+      <a class="navbar-item" href="index.html">Home</a>
+      <a class="navbar-item" href="query.html">Query</a>
+      <a class="navbar-item" href="guide.html">Guide</a>
+      <a class="navbar-item" href="about.html">About</a>
+    </div>
+  </nav>
+  <br>
+  <div>Census</div>
+  
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="title">
+	<a class="census-query" href="census.html">Census</a> |
+	<a href="community.html"> Community Survey</a> |
+	<a href="companies.html">Companies</a>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-6">
+	<div class="box">
+	  <form action='' method='get' class='census-form'>
+	    <div class="field">
+	      <label class="label">Median Age</label>
+	    </div>
+	    <div class="field is-horizontal is-grouped">
+	      <div class="field-label is-normal">
+		<label class="label"> Min: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric"></div>
+	      <div class="field-label is-normal">
+		<label class="label"> Max: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric"></div>
+	    </div>
+	    <div class="field">
+	      <label class="label"> # of People Over 65</label>
+	    </div>
+	    <div class="field is-horizontal is-grouped">
+	      <div class="field-label is-normal">
+		<label class="label"> Min: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric"></div>
+	      <div class="field-label is-normal">
+		<label class="label"> Max: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric"></div>
+	    </div>
+	    <div class="field">
+	      <label class="label"> Total Population</label>
+	    </div>
+	    <div class="field is-horizontal is-grouped">
+	      <div class="field-label is-normal">
+		<label class="label"> Min: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric"></div>
+	      <div class="field-label is-normal">
+		<label class="label"> Max: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric"></div>
+	    </div>
+	    <div class="field">
+	      <label class="label"> % homeowner </label>
+	    </div>
+	    <div class="field is-horizontal is-grouped">
+	      <div class="field-label is-normal">
+		<label class="label"> Min: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric (0 - 100)"></div>
+	      <div class="field-label is-normal">
+		<label class="label"> Max: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric (0 - 100)"></div>
+	    </div>
+	    <div class="field">
+	      <label class="label"> % homeowner without mortgage </label>
+	    </div>
+	    <div class="field is-horizontal is-grouped">
+	      <div class="field-label is-normal">
+		<label class="label"> Min: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric (0 - 100)"></div>
+	      <div class="field-label is-normal">
+		<label class="label"> Max: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric (0 - 100)"></div>
+	    </div>
+	    <div class="field">
+	      <label class="label"> % renter </label>
+	    </div>
+	    <div class="field is-horizontal is-grouped">
+	      <div class="field-label is-normal">
+		<label class="label"> Min: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric (0 - 100)"></div>
+	      <div class="field-label is-normal">
+		<label class="label"> Max: </label>
+	      </div>
+	      <div class="control"><input class="input" type="text" placeholder="Must be numeric (0 - 100)"></div>
+	    </div>
+	    <br>
+	    <div class="field is-grouped is-grouped-centered">
+	      <button type="button" class="button is-primary census-button">Submit</button>
+	    </div>
+	  </form>
+	</div>
+	<div class="table-container census-table">
+	  <!-- insert table from js here -->
+	</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./scripts/census.js"></script>
+</html>

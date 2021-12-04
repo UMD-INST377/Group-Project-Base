@@ -56,36 +56,36 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
     curl http://localhost:3000/api/songs_project
 
 #### Response
-   
-   [{
-        "song_id": 1,
-        "song_name": "A Gangsta's Pain",
-        "album_name": "A Gangsta's Pain",
-        "first_name": "Moneybagg",
-        "last_name": "Yo",
-        "ratings": 3,
-        "description": "This rating is 3 out of 5 stars",
-        "duration": "01:53:00"
-    },
-    {
-        "song_id": 2,
-        "song_name": "Holy",
-        "album_name": "Justice",
-        "first_name": "Justin",
-        "last_name": "Bieber",
-        "ratings": 4,
-        "description": "This rating is 4 out of 5 stars",
-        "duration": "03:32:00"
-    },
-    {
-        "song_id": 3,
-        "song_name": "After Hours",
-        "album_name": "After Hours",
-        "first_name": "The",
-        "last_name": "Weeknd",
-        "ratings": 4,
-        "description": "This rating is 4 out of 5 stars",
-        "duration": "06:01:00"
+     [{
+       
+          "song_id": 1,
+          "song_name": "A Gangsta's Pain",
+          "album_name": "A Gangsta's Pain",
+          "first_name": "Moneybagg",
+          "last_name": "Yo",
+          "ratings": 3,
+          "description": "This rating is 3 out of 5 stars",
+          "duration": "01:53:00"
+       },
+       {
+          "song_id": 2,
+          "song_name": "Holy",
+          "album_name": "Justice",
+          "first_name": "Justin",
+          "last_name": "Bieber",
+          "ratings": 4,
+          "description": "This rating is 4 out of 5 stars",
+          "duration": "03:32:00"
+       },
+       {
+          "song_id": 3,
+          "song_name": "After Hours",
+          "album_name": "After Hours",
+          "first_name": "The",
+          "last_name": "Weeknd",
+          "ratings": 4,
+          "description": "This rating is 4 out of 5 stars",
+          "duration": "06:01:00"
     }]
     
 ## Get a Specific Song
@@ -98,7 +98,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 
 #### Response
 
-    [{
+    {
         "song_id": 2,
         "song_name": "Holy",
         "album_name": "Justice",
@@ -107,7 +107,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
         "ratings": 4,
         "description": "This rating is 4 out of 5 stars",
         "duration": "03:32:00"
-    }]
+    }
     
 ## Create a new Song
 

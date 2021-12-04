@@ -89,7 +89,7 @@ router.post('/songs_project', async (req, res) => {
   }
 });
 
-router.put('/songs_project', async (req, res) => {
+router.put('/songs_project/:song_id', async (req, res) => {
   try {
     await db.SongsProject.update(
       {
@@ -104,7 +104,7 @@ router.put('/songs_project', async (req, res) => {
       },
       {
         where: {
-          song_id: req.body.song_id
+          song_id: req.params.song_id
         }
       }
     );

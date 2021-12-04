@@ -5,7 +5,7 @@ async function windowActions() {
 
   const request = await fetch(endpoint)
     .then((blob) => blob.json())
-    .then((data) => categories.push(...data))
+    .then((data) => categories.push(...data));
 
   function findMatches(wordToMatch, categories) {
     return categories.filter((place) => {

@@ -130,5 +130,3 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
     
 # Authors
 Daniel Cutaneo, Walesia Robinson II, Miranda Vo, Pengtong Yang
-
-

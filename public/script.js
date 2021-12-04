@@ -87,9 +87,9 @@ async function windowsAction() {
     displayPlaylists();
   }
   getHolidaySongs();
-  
-   async function getUSTopSongs() {
-    const endPoint = await fetch('http://localhost:3000/api/ustopSongs');
+
+  async function getUSTopSongs() {
+    const endPoint = await fetch('./api/ustopSongs');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#ustopsongsContainer');
 
@@ -105,9 +105,9 @@ async function windowsAction() {
     displayPlaylists();
   }
   getUSTopSongs();
-  
+
   async function getGlobalTopSongs() {
-    const endPoint = await fetch('http://localhost:3000/api/globaltopSongs');
+    const endPoint = await fetch('./api/globaltopSongs');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#globaltopsongsContainer');
 

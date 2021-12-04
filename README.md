@@ -113,7 +113,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 
 `POST /songs_project`
 
-    curl -d "song_id=40&song_name=Talking to the Moon&album_name&ratings=5" -X POST http://localhost:3000/api/songs_project
+    curl -d "song_id=40&song_name=Talking to the Moon&album_name=Moon&ratings=5" -X POST http://localhost:3000/api/songs_project
 
 #### Response
 

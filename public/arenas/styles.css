@@ -10,6 +10,12 @@ body {
   color: white;
 }
 
+
+  .arena-image{
+    display: none;
+  }
+
+
 @media only screen and (min-width: 360px) {
   a {
     text-decoration: none;
@@ -22,6 +28,7 @@ body {
 
   .container {
     text-align: center;
+    
   }
 
   .teams {
@@ -46,6 +53,11 @@ body {
 
   .btn-group button:hover {
     background-color: rgb(143, 133, 133);
+  }
+
+  .nba-arena{
+    display: flex;
+    justify-content: center;
   }
 
 }
@@ -84,8 +96,9 @@ body {
     background-color: rgb(143, 133, 133);
   }
 
-  .nba-arenas{
+  .nba-arena{
     display: flex;
     justify-content: center;
   }
 }
+

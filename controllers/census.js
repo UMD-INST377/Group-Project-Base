@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable no-multi-str */
 // Controllers for lab 10
 // AUTHOR: Jim
 // retrieve census table data from database
@@ -23,7 +25,6 @@ export default {
   deleteCensusSQL
 };
 
-
 // group ignore this stuff, just used by me for testing
-//?census_id=2421930&median_age=50.3&num_person_over_65=22&total_population=94&homeowner_rate=23.9&percent_homeowner_without_mortgage=54.2&percent_rent=47.8
-//	2421930	50.3	22	94	23.9	54.2	47.8
+// ?census_id=2421930&median_age=50.3&num_person_over_65=22&total_population=94&homeowner_rate=23.9&percent_homeowner_without_mortgage=54.2&percent_rent=47.8
+// 2421930

@@ -1,5 +1,4 @@
-
-/*.options {
+ /*.options {
     color: #fff;
     background-color: #5995DA;
     padding: 20px 0;
@@ -14,24 +13,49 @@
    #912F40: lighter red
 */
 
-a:link, a:visited {
+.columns .title {
+    color: white;
+}
+
+.title a {
     color: #ADD8E6;
+}
+
+.index-nav a:visited {
+    color: #ADD8E6;
+}
+.index-nav a:hover {
+    color: black;
 }
 .index-container {
     color: white;
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     zoom: 150%;
 }
 
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .header {
     color: white;
 }
 .census-data {
     padding-top: 20px;
 }
+.community-data{ 
+
+  padding-bottom: 20px;
+}
+
+.col {
+    color: white;
+}
+
 table, th, td {
     border:1px solid #080705;
 }
@@ -41,4 +65,11 @@ html {
 body {
     background-color: #702632; /* FF7F7F */
     min-height: 100%;
+}
+
+
+.census-table .table {
+  display: block; /* important */
+  height: 600px;
+  overflow-y: scroll;
 }

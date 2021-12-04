@@ -3,7 +3,8 @@
 import census from './census.js';
 import community from './community.js';
 import metro from './metro.js';
+import population from './population.js';
 
 export default {
-  census, community, metro
+  census, community, metro, population
 };

@@ -41,7 +41,6 @@ router.route('/foodServicePG').get(async (req, res) => {
   res.json(data);
 });
 
-
 router.get('establishments/establishment_id', async (req, res) => {
   try {
     const businesses = await db.sequelizeDB.query(foodInspectionVar);

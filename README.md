@@ -11,24 +11,24 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 
 ### /api/delete_options
 
-Parameters: None
-
-This async endpoint queries the database for all of the presidents names and ids (PK) and and sends a JSON object. This API is used to help populate the dropdown options of current presidents to delete.
+> Parameters: None
+>
+> This async endpoint queries the database for all of the presidents names and ids (PK) and and sends a JSON object. This API is used to help populate the dropdown options of current presidents to delete.
 
 ### /api/presidents/:presidents_id
 
-Parameters: president_id (int)
-
-This async endpoint queries the database to get the name, home state, inauguration date, birth date, party for a given president.
-
-Example: '/api/presidents/1' will return data about George Washington.
+> Parameters: president_id (int)
+>
+> This async endpoint queries the database to get the name, home state, inauguration date, birth date, party for a given president.
+>
+> <strong>Example</strong>: '/api/presidents/1' will return data about George Washington.
 
 
 ### /api/presidents/time_line
 
-Parameters: None
-
-This async endpoint points to a SQL controller *timeLine* which queries joins together the necessary tables in the database and provides the president_id, president_name, birth_date, home_state, date_inauguration, party, death_date, vice_president, first_lady, children_name, elected_year from the database. This information is required to populate the TimeLine with the data.
+> Parameters: None
+>
+>This async endpoint points to a SQL controller *timeLine* which queries joins together the necessary tables in the database and provides the president_id, president_name, birth_date, home_state, date_inauguration, party, death_date, vice_president, first_lady, children_name, elected_year from the database. This information is required to populate the TimeLine with the data.
 
 # Delete API
 

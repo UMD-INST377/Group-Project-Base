@@ -1,6 +1,6 @@
 async function windowsAction() {
   async function getPlaylist() {
-    const endPoint = await fetch('./api/playlists');
+    const endPoint = await fetch('http://localhost:3000/api/playlists');
     const playlists = await endPoint.json();
     const playlistContainer = document.querySelector('#playlistContainer');
 
@@ -18,7 +18,7 @@ async function windowsAction() {
   getPlaylist();
 
   async function getAlbums() {
-    const endPoint = await fetch('./api/albums');
+    const endPoint = await fetch('http://localhost:3000/api/albums');
     const albums = await endPoint.json();
     const albumContainer = document.querySelector('#albumContainer');
 
@@ -36,7 +36,7 @@ async function windowsAction() {
   getAlbums();
 
   async function getPopSongs() {
-    const endPoint = await fetch('./api/popsongs');
+    const endPoint = await fetch('http://localhost:3000/api/popsongs');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#popsongsContainer');
     function displayPlaylists() {
@@ -53,7 +53,7 @@ async function windowsAction() {
   getPopSongs();
 
   async function getHipHopSongs() {
-    const endPoint = await fetch('./api/rapSongs');
+    const endPoint = await fetch('http://localhost:3000/api/rapSongs');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#hiphopsongsContainer');
 
@@ -71,7 +71,7 @@ async function windowsAction() {
   getHipHopSongs();
 
   async function getHolidaySongs() {
-    const endPoint = await fetch('./api/holidaySongs');
+    const endPoint = await fetch('http://localhost:3000/api/holidaySongs');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#holidaysongsContainer');
 
@@ -87,8 +87,8 @@ async function windowsAction() {
     displayPlaylists();
   }
   getHolidaySongs();
-  
-   async function getUSTopSongs() {
+
+  async function getUSTopSongs() {
     const endPoint = await fetch('http://localhost:3000/api/ustopSongs');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#ustopsongsContainer');
@@ -105,7 +105,7 @@ async function windowsAction() {
     displayPlaylists();
   }
   getUSTopSongs();
-  
+
   async function getGlobalTopSongs() {
     const endPoint = await fetch('http://localhost:3000/api/globaltopSongs');
     const songs = await endPoint.json();
@@ -125,7 +125,7 @@ async function windowsAction() {
   getGlobalTopSongs();
 
   async function getTopPodcasts() {
-    const endPoint = await fetch('./api/podcastCharts');
+    const endPoint = await fetch('http://localhost:3000/api/podcastCharts');
     const podcasts = await endPoint.json();
     const podcastContainer = document.querySelector('#topPodcastsContainer');
 

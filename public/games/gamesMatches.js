@@ -31,6 +31,14 @@ const teamIDIndex = [
     ['Hornets', 'Hornets', '1610612766']
   ];
 
+  fetch('/api/basketball/teams')
+  .then(response => response.json())
+  .then(data => {
+    allTeamData = data;
+    console.log(data);
+    console.log('Team data received!');
+  });
+  
   fetch('/api/basketball/games')
   .then(response => response.json())
   .then(data => {
@@ -38,3 +46,4 @@ const teamIDIndex = [
     console.log(data);
     console.log('Team data received!');
   });
+

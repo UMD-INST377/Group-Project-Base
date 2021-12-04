@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Music Database</title>
+    <link rel='stylesheet' href='styles.css'/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
+
+  </head>
+
+  <body>
+    <div class='menu-container'>
+         <div class='menu'>
+           <div class='Music_Logo'><img src='images/Music_Logo.png'/></div>
+           <div class='links has-text-dark'>
+             <div class='Home'><a href='index.html'>Home</a></div>
+             <div class='Home'><a href='about.html'>About Us</a></div>
+             <div class='Home'><a href='database.html'>Music Database</a></div>
+             <div class='Home'><a href='customize.html'>Got Feeback? Let us Know</a></div>
+           </div>
+         </div>
+    </div>
+    <div class="data_content is-size-1">
+      <h1> Listen Now </h1>
+    </div>
+
+ 
+        <div class="data_content">
+          <div class="photo-grid_data">
+           <img src="images/olivia_rodrigo.jpg"/>   
+          </div>
+        </div>
+     
+   <div class="data_content is-size-5"><h1>Filter our database by song or artist:</h1>
+    </div>
+  <div class="data_content">  
+   <div class="is-size-5", style = "height: 200px; white-space: nowrap; overflow-y: scroll">
+     
+        <input type = "search" class ="search label is-large" placeholder = "">
+          <ul class = "suggestions has-background-link-light"></ul>
+      </div>
+   </div>
+   <div class="data_content">
+      <form action="customize.html">
+        <div class="data"><button>Click here to make your own changes</button>
+        </div>
+      </form>
+   </div>
+  <script src="databaseScript.js"></script>
+  <div class='footer'>
+    <div> Copyright (C) 2021 INST377 Group 22 - All Rights Reserved <br>
+      - Privacy Policy Accessibility at Group_22_Team_Project</div>
+   
+  </div>
+
+  </body>
+
+</html>

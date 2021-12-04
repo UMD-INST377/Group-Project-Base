@@ -1,11 +1,18 @@
 /* eslint-disable no-console */
 import express from 'express';
-/*
-import sequelize, { QueryTypes } from 'sequelize';
-*/
+//import sequelize, { QueryTypes } from 'sequelize';
+import pkg from 'sequelize';
 
+const { QueryTypes } = pkg;
 import db from '../database/initializeDB.js';
+
 import foodInspectionVar from '../contollers/food_inspectionController.js';
+import establishmentController from '../contollers/putController.js';
+import postController from '../contollers/postController.js';
+
+/*
+const fetch = require('node-fetch');
+*/
 
 const router = express.Router();
 
@@ -34,7 +41,6 @@ router.route('/foodServicePG').get(async (req, res) => {
   res.json(data);
 });
 
-
 router.get('establishments/establishment_id', async (req, res) => {
   try {
     const businesses = await db.sequelizeDB.query(foodInspectionVar);
@@ -48,11 +54,10 @@ router.get('establishments/establishment_id', async (req, res) => {
 
 router.put('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query(establishmentController.updateVar,
-      {
-        type: QueryTypes.update
-      }
-    );
+    const businesses = await db.sequelizeDB.query(establishmentController.updateVar, {
+      type: QueryTypes.update
+
+    });
 
     res.json(businesses);
   } catch (err) {
@@ -64,17 +69,21 @@ router.put('establishments/establishment_id', async (req, res) => {
 
 router.post('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query(
-      {
-        type: QueryTypes.SELECT
-      }
-    );
+    // eslint-disable-next-line no-unused-vars
+    const establishments = await db.sequelizeDB.query(postController.createPost, {
+      type: QueryTypes.SELECT
+    });
+    console.log('Touched post endpoint', req.body);
+    console.log(req.body?.resto);
+    res.json({establishments: 'post foodServicePG endpoint'});
 
-    res.json(businesses);
+    /* res.json(businesses); */
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
-    console.log('touched /food_inspection with GET');
+    console.log(err);
+
+    res.json({error: 'Server error'});
+    /* res.error('Server error');
+    console.log('touched /food_inspection with GET'); */
   }
 });
 
@@ -266,17 +275,19 @@ INNER JOIN Meals_Locations ml
   ON m.meal_id = ml.meal_id
 INNER JOIN Dining_Hall d
 ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT,
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+router.route('/sqlDemo')
+  .post(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(mealMapCustom, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.send('Server Error');
+    }
+  });
+
 router.get('/custom', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(req.body.query, {

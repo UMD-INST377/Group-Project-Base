@@ -6,15 +6,6 @@ body {
   min-height: 100%;
   background-color: rgb(68, 68, 68);
 }
-#arenas {
-  color: white;
-}
-
-
-  .arena-image{
-    display: none;
-  }
-
 
 @media only screen and (min-width: 360px) {
   a {
@@ -100,5 +91,14 @@ body {
     display: flex;
     justify-content: center;
   }
+
+  .arena-pic {
+    margin-top: 10px;
+    max-width: 1000px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 }
 

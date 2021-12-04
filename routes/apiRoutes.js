@@ -6,8 +6,7 @@ import sequelize, { QueryTypes } from 'sequelize';
 
 import db from '../database/initializeDB.js';
 import foodInspectionVar from '../contollers/food_inspectionController.js';
-import updateVar 
-
+ 
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -50,7 +49,7 @@ router.get('establishments/establishment_id', async (req, res) => {
 
 router.put('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query(establishmentVar)
+    const businesses = await db.sequelizeDB.query(establishmentController.updateVar,
       {
         type: QueryTypes.update
       }
@@ -60,7 +59,7 @@ router.put('establishments/establishment_id', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.error('Server error');
-    console.log('touched /food_inspection with GET');
+    console.log('updated /food_inspection with PUT');
   }
 });
 router.post('establishments/establishment_id', async (req, res) => {

@@ -23,11 +23,6 @@ async function windowActions() {
                 <div class="box">
                 <div class="name">Name: ${info.volcano_name}</div>
                 <div class="num">Eruption Number: ${info.eruption_number} </div>
-                <div class="date"> Date of Eruption: ${info.year}-${info.month}-${info.day} </div>
-                <div class="aoa">Eruption AOA: ${info.aoa}</div>
-                <div class="vei">Eruption VEI: ${info.vei}</div>
-                <div class="method">Method: ${info.method}</div>
-                <div class="category">Eruption Category: ${info.category}</div>
               </div>
              </div>
             </div>
@@ -39,15 +34,6 @@ async function windowActions() {
                             <button class="delete" aria-label="close"></button>
                           </header>
                           <section class="modal-card-body">
-                          ////// PLEASE FIX This doesnt display the information properly because modal gets rerun starting from index 0 each time, which makes the info for the 0th index show \\\\\\\
-                          <div class="name">Name: ${info.volcano_name}</div>
-                          <div class="num">Eruption Number: ${info.eruption_number} </div>
-                          <div class="date"> Date of Eruption: ${info.year}-${info.month}-${info.day} </div>
-                          <div class="aoa">Eruption AOA: ${info.aoa}</div>
-                          <div class="vei">Eruption VEI: ${info.vei}</div>
-                          <div class="method">Method: ${info.method}</div>
-                          <div class="category">Eruption Category: ${info.category}</div>
-
                           </section>
                           <footer class="modal-card-foot">
                           </footer>
@@ -57,18 +43,40 @@ async function windowActions() {
     `;
     }).join('');
     suggestions.innerHTML = html;
-    const info_box1 = document.querySelector('#info_box');// everytime when info box clicks, it runs document.querySelector('.modal').style.display = 'flex';
+    // everytime when info box clicks, it runs document.querySelector('.modal').style.display = 'flex';
     const elements = document.querySelectorAll('#info_box');
     const delete_box = document.querySelector('.delete');
-    elements.forEach((info_box1) => {
-      info_box1.addEventListener('click', () => {
+
+    const modalHtml = matchArray.map((info) => `<div class="name">Name: ${info.volcano_name}</div>
+      <div class="num">Eruption Number: ${info.eruption_number} </div>
+      <div class="date"> Date of Eruption: ${info.year}-${info.month}-${info.day} </div>
+      <div class="aoa">Eruption AOA: ${info.aoa}</div>
+      <div class="vei">Eruption VEI: ${info.vei}</div>
+      <div class="method">Method: ${info.method}</div>
+      <div class="category">Eruption Category: ${info.category}</div>
+      `);
+
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].addEventListener('click', () => {
+        const body = document.querySelector('.modal-card-body');
+        body.innerHTML = modalHtml[i];
         document.querySelector('.modal').style.display = 'flex';
-        delete_box.addEventListener('click',
-          () => {
-            document.querySelector('.modal').style.display = 'none';
-          });
       });
-    });
+      delete_box.addEventListener('click', () => {
+        document.querySelector('.modal').style.display = 'none';
+      });
+    }
+
+    // elements.forEach((infoBox) => {
+    //   infoBox.addEventListener('click', () => {
+    //     const body = document.querySelector('.modal-card-body');
+    //     body.innerHTML = modalHtml[index];
+    //     document.querySelector('.modal').style.display = 'flex';
+    //   });
+    //   delete_box.addEventListener('click', () => {
+    //     document.querySelector('.modal').style.display = 'none';
+    //   });
+    // });
   }
 
   window.addEventListener('mousemove', (evt) => { displayMatches(evt); }, { once: true });

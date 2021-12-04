@@ -296,3 +296,29 @@ label.validation-error{
   display: flex;
   justify-content: center;
 } 
+
+.about_header {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: -9;
+}
+
+.description {
+  text-align: center;
+}
+
+.about_section {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  margin: -80px auto 0 auto;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px 50px;
+}
+
+.about_image {
+  width: 80vw;
+  object-fit: contain;
+}

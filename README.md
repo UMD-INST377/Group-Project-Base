@@ -112,7 +112,7 @@ router.put('/basketball/teams', async (req, res) => {
 ```
 'Something went wrong with the server'
 ```
-## Delete a player with a PUT request
+## Delete a player with a DELETE request
 ### Request
 ```
 router.delete("/basketball", async (req, res) => {

@@ -49,8 +49,9 @@ actions.
 - Scrolling on the Query form makes the input forms go past the Bulma boxes.
 
 ### Potential Future Developments: 
-- Allow optional values
+- Allow the option to remove columns from the filtered output
 - Include Leaflet visualizations by highlighting zip code regions
 - HTTP method that can recreate the database in case some manipulations go wrong
 - Multiple of the same utility functions in multiple files can be placed in a single place
 - Utility functions for a lot of repeated tedious HTML insertions
+- allow for downloadable filtered data as csv

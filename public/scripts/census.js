@@ -16,6 +16,15 @@ function getFilters(census, medAgeMin, medAgeMax, over65Min, over65Max, popMin, 
   return [];
 }
 
+function filterOnlyMetro(census, zipCodes) {
+  const matches = census.filter( (ele) => zipCodes.includes(ele.census_zcta));
+  return matches;
+}
+
+function filterWithoutMetro(census, zipCodes) {
+  const matches = census.filter( (ele) => !zipCodes.includes(ele.census_zcta));
+  return matches;
+}
 
 function renderTableHTML(data, tableDiv) {
   const tableCols = `<table class="table is-scrollable">
@@ -66,7 +75,18 @@ async function dataHandler() {
     const howMax = form.elements[9].value === "" ? Infinity : form.elements[9].value;
     const renterMin = form.elements[10].value === "" ? 0 : form.elements[10].value;
     const renterMax = form.elements[11].value === "" ? Infinity : form.elements[11].value;
-    
+    const metro = await fetch('./api/metro').then((response) => response.json());
+    const metro_zips = metro[0].map((ele) => ele.metro_zcta);
+    console.log(metro_zips);
+
+    //filter
+    /* if (form.elements[12].checked) do nothing */
+    census = census[0];
+    if (form.elements[13].checked) {
+      census = filterOnlyMetro(census, metro_zips);
+    } else if (form.elements[14].checked) {
+      census = filterWithoutMetro(census, metro_zips);
+    }
     //filter
     const filteredCensus = getFilters(census, medAgeMin, medAgeMax, over65Min, over65Max, popMin, popMax,
 				      hoMin, hoMax, howMin, howMax, renterMin, renterMax);

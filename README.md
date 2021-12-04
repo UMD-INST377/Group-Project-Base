@@ -117,7 +117,6 @@ router.put('/basketball/teams', async (req, res) => {
 ```
 router.delete("/basketball", async (req, res) => {
   try {
-    // Will use await when making actual calls to the DB
     console.log("touched /basketball with DELETE");
     res.json({ Method: "DELETE", Endpoint: "/basketball" });
   } catch (e) {

@@ -26,7 +26,14 @@ npm start
 ## Get list of teams
 ### Request
 ```
-
+router.get("/basketball/teams", async (req, res) => {
+  try {
+    const teams = await db.Teams.findAll();
+    res.json(teams);
+  } catch (e) {
+    res.send(e);
+  }
+});
 ```
 ### Response
 ```

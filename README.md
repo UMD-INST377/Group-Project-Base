@@ -112,6 +112,24 @@ router.put('/basketball/teams', async (req, res) => {
 ```
 'Something went wrong with the server'
 ```
+## Delete a player with a PUT request
+### Request
+```
+router.delete("/basketball", async (req, res) => {
+  try {
+    // Will use await when making actual calls to the DB
+    console.log("touched /basketball with DELETE");
+    res.json({ Method: "DELETE", Endpoint: "/basketball" });
+  } catch (e) {
+    console.error(e);
+    res.error("Something went wrong on the server");
+  }
+});
+```
+### Fail Response
+```
+"Something went wrong with the server"
+```
 
 # Custom Client SQL
 ## Get list of teams

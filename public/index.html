@@ -7,18 +7,35 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <title>Home Page</title>
 </head>
-<body>
+<body class="has-navbar-fixed-top"> <!-- bulma docs say to do this -->
+    <nav class="navbar is-fixed-top" role="navigation" area-label="main navigation">
+      <div class="navbar-menu is-active">
+	<a class="navbar-item" href="index.html">Home</a>
+	<div class="navbar-item has-dropdown is-hoverable">
+	<a class="navbar-link">
+	  Query
+	</a>
+	<div class="navbar-dropdown">
+	  <a class="navbar-item" href="census.html">
+	    Census
+	  </a>
+	  <a class="navbar-item" href="community.html">
+	    Community Survey
+	  </a>
+	  <a class="navbar-item" href="companies.html">
+	    Companies
+	  </a>
+	</div>
+	</div>
+	<a class="navbar-item" href="guide.html">Guide</a>
+	<a class="navbar-item" href="about.html">About</a>
+      </div>
+    </nav>
+
   <div class='index-container'>
       <div class="title has-text-white">MD Census Data Query Center</div>
       <div class="md-flag"><img src="./img/mdflag.png" alt="state of MD flag" width="150" height="150"></div>
-      <div class="index-nav">
-	  <a href="index.html">Home</a>
-	  <a href="query.html">Query</a>
-	  <a href="guide.html">Guide</a>
-	  <a href="about.html">About</a>
-      </div>
       <div class="index-br">
-	<hr>
       </div>
       <div class="search">
 	<div class="search-label">Quick Search MD zip code</div>

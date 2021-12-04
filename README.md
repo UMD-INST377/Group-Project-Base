@@ -57,7 +57,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 
 #### Response
    
-   [{
+   {
         "song_id": 1,
         "song_name": "A Gangsta's Pain",
         "album_name": "A Gangsta's Pain",
@@ -86,7 +86,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
         "ratings": 4,
         "description": "This rating is 4 out of 5 stars",
         "duration": "06:01:00"
-    }]
+    }
     
 ## Get a Specific Song
 
@@ -98,7 +98,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 
 #### Response
 
-    [{
+    {
         "song_id": 2,
         "song_name": "Holy",
         "album_name": "Justice",
@@ -107,7 +107,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
         "ratings": 4,
         "description": "This rating is 4 out of 5 stars",
         "duration": "03:32:00"
-    }]
+    }
     
 ## Create a new Song
 

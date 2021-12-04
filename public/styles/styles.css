@@ -13,6 +13,14 @@
    #912F40: lighter red
 */
 
+.columns .title {
+    color: white;
+}
+
+.title a {
+    color: #ADD8E6;
+}
+
 .index-nav a:visited {
     color: #ADD8E6;
 }
@@ -57,4 +65,11 @@ html {
 body {
     background-color: #702632; /* FF7F7F */
     min-height: 100%;
+}
+
+
+.census-table .table {
+  display: block; /* important */
+  height: 600px;
+  overflow-y: scroll;
 }

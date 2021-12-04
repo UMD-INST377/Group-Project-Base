@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 // the map stuff can be done similar to lab 7
 
 function getMatch(event, census) {

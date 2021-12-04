@@ -245,7 +245,44 @@ router.route('/metro')
     }
   });
 
-
+/*Will's lab 9 routes */
+router.route('/companies')
+  .get((req, res) => {
+    try {
+      console.log('touched /companies with GET');
+      res.json({data: []}); // get census data later
+    } catch(err) {
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'});
+    }
+  })
+  .put((req, res) => {
+    try {
+      console.log('touched /companies with PUT');
+      res.json({message: 'put companies endpoint'});
+    } catch(err) {
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'});
+    }
+  })
+  .post((req, res) => {
+    try {
+      console.log('touched /companies with POST');
+      res.json({message: 'post companies endpoint'});
+    } catch(err) {
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'});
+    }
+  })
+  .delete((req, res) => {
+    try {
+      console.log('touched /companies with DELETE');
+      res.json({message: 'delete companies endpoint'});
+    } catch(err) {
+      console.error(err);
+      res.json({error: 'Something went wrong on the server.'});
+    }
+  });
 
 
 

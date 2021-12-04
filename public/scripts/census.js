@@ -1,8 +1,7 @@
-
 function getFilters(census, medAgeMin, medAgeMax, over65Min, over65Max, popMin, popMax,
 		    hoMin, hoMax, howMin, howMax, renterMin, renterMax) {
   
-  const matches = census[0].filter((ele) =>
+  const matches = census.filter((ele) =>
     (Number(ele.median_age) >= medAgeMin && Number(ele.median_age) <= medAgeMax) &&
       (Number(ele.num_persons_over_65) >= over65Min && Number(ele.num_persons_over_65) <= over65Max) &&
       (Number(ele.total_population) >= popMin && Number(ele.total_population) <= popMax) &&
@@ -16,6 +15,7 @@ function getFilters(census, medAgeMin, medAgeMax, over65Min, over65Max, popMin, 
   }
   return [];
 }
+
 
 function renderTableHTML(data, tableDiv) {
   const tableCols = `<table class="table is-scrollable">
@@ -53,7 +53,7 @@ async function dataHandler() {
   // on button clicks get form values, filter, and then render html
   // for empty minimum inputs === 0, empty maximum inputs === Infinity
   btn.addEventListener('click', async (event) => {
-    const census = await fetch('./api/census').then((response) => response.json());
+    let census = await fetch('./api/census').then((response) => response.json());
     const medAgeMin = form.elements[0].value === "" ? 0 : form.elements[0].value;
     const medAgeMax = form.elements[1].value === "" ? Infinity : form.elements[1].value;
     const over65Min = form.elements[2].value === "" ? 0 : form.elements[2].value;
@@ -66,15 +66,13 @@ async function dataHandler() {
     const howMax = form.elements[9].value === "" ? Infinity : form.elements[9].value;
     const renterMin = form.elements[10].value === "" ? 0 : form.elements[10].value;
     const renterMax = form.elements[11].value === "" ? Infinity : form.elements[11].value;
-
+    
     //filter
     const filteredCensus = getFilters(census, medAgeMin, medAgeMax, over65Min, over65Max, popMin, popMax,
 				      hoMin, hoMax, howMin, howMax, renterMin, renterMax);
 
     //render html
     renderTableHTML(filteredCensus, tableDiv);
-
-    console.log(tableDiv.innerHTML);
   }); 
 }
 

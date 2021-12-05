@@ -10,10 +10,36 @@
 </head>
 
 <body>
-    <form action='./api/cities' method='delete'>
-        <input type='text' id='id' name='id'><br>
-        <input type='submit' value='Submit'>
-    </form>
+    <form id="jeremy">
+        <div class="field">
+          <label for='Earthquake ID' class="label">Earthquake ID</label>
+          <input id='earthquake_id' name='earthquake_id' type='text' />
+        </div>
+        <div class="field">
+          <label for='city' class="label">City</label>
+          <input id='city' name='city' type='text' />
+        </div>
+        <div class="field">
+          <label for='date' class="label">Date</label>
+          <input id='date' name='date' type='text' />
+        </div>
+        <div class="field">
+            <label for='magnitude' class="label">Magnitude</label>
+            <input id='magnitude' name='magnitude' type='text' />
+          </div>
+        <div class="field">
+            <input name="answer" value ="PUT" type="radio">
+            <label class="radio">PUT</label>
+            
+            <input name="answer" value = "POST" type="radio">
+            <label class="radio">POST</label>
+
+            <input name="answer" value="DELETE" type="radio">
+            <label class="radio">DELETE</label>
+        </div>
+        <button onclick="window.location.href = '/edit.html'" id="submit">Submit</button>
+      </form>
+      <script src='script2.js' async defer></script>
 </body>
 
 </html>

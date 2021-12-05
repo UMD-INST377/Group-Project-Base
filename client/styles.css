@@ -37,9 +37,11 @@ a {
 }
 
 .back {
+    display:flex;
     align-self:flex-start;
 }
 
 .searchbox {
+    display:flex;
     align-self: center;
 }

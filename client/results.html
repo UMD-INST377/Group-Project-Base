@@ -9,8 +9,16 @@
     <title>West Coast Earthquake Results</title>
 </head>
 <body>
-    <div class='search'><form class="search-form">
-        <button class='back'>Home Page</button>
+    <div class='search'>
+        <button id='back'>Home Page
+            <script>
+                document.getElementById("back").addEventListener("click", myFunction);
+                function myFunction() {
+                  window.location.href="index.html";
+                }
+               </script>
+            </button>
+        <form class="search-form">
         <input type="text" class="searchbox" placeholder="Type in City, Date, or Magnitude">
         <ul class="suggestions">
         </ul>

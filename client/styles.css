@@ -30,3 +30,15 @@ a {
     border-spacing: 60px 2px;  
     border-collapse: separate; 
 }
+
+.search{
+    display: flex;
+}
+
+.back {
+    align-self:flex-start;
+}
+
+.searchbox {
+    align-self: center;
+}

@@ -156,42 +156,51 @@ router.route('/population')
 /* Blen's lab 9 routes */
 
 router.route('/ethnicities')
-  .get((req, res) => {
-    try {
-      console.log('touched /ethnicities with GET');
-      res.json({data: []}); // get census data later
-    } catch (err) {
-      console.error(err);
-      res.json({error: 'Something went wrong on the server.'});
-    }
-  })
-  .put((req, res) => {
-    try {
-      console.log('touched /ethnicities with PUT');
-      res.json({message: 'put ethnicities endpoint'});
-    } catch (err) {
-      console.error(err);
-      res.json({error: 'Something went wrong on the server.'});
-    }
-  })
-  .post((req, res) => {
-    try {
-      console.log('touched /ethnicities with POST');
-      res.json({message: 'post ethnicities endpoint'});
-    } catch (err) {
-      console.error(err);
-      res.json({error: 'Something went wrong on the server.'});
-    }
-  })
-  .delete((req, res) => {
-    try {
-      console.log('touched /ethnicities with DELETE');
-      res.json({message: 'delete ethnicities endpoint'});
-    } catch (err) {
-      console.error(err);
-      res.json({error: 'Something went wrong on the server.'});
-    }
-  });
+.get(async(req, res) => {
+  try {
+    const db_response = await db.sequelizeDB.query(controllers.ethnicities.getEthnicitiesSQL);
+    console.log('touched /ethnicities with GET');
+    res.json(db_response); 
+    return db_response;
+  } catch (err) {
+    console.error(err);
+    res.json({error: 'Something went wrong on the server.'});
+  }
+})
+.put(async(req, res) => {
+  try {
+    console.log(req.params)
+    await db.sequelizeDB.query(controllers.ethnicities.putEthnicitiesSQL, {replacements: {ethnicity_zcta: req.query.ethnicity_zcta, 
+      ethnicity_id: req.query.ethnicity_id, ethnic_category: req.query.ethnic_category, ethnic_count: req.query.ethnic_count }});
+    console.log('touched /ethnicities with PUT');
+  } catch (err) {
+    console.error(err);
+    res.json({error: 'Something went wrong on the server.'});
+  }
+})
+.post(async(req, res) => {
+  try {
+    console.log(req.query)
+    await db.sequelizeDB.query(controllers.ethnicities.postEthnicitiesSQL, {replacements: {ethnicity_zcta: req.query.ethnicity_zcta, 
+       ethnic_count: req.query.ethnic_count }, type: sequelize.QueryTypes.INSERT});
+    console.log('touched /ethnicities with POST');
+    res.json({message: 'post ethnicities endpoint'});
+  } catch (err) {
+    console.error(err);
+    res.json({error: 'Something went wrong on the server.'});
+  }
+})
+.delete(async(req, res) => {
+  try {
+    console.log(req.query)
+    await db.sequelizeDB.query(controllers.ethnicities.deleteEthnicitiesSQL);
+    console.log('touched /ethnicities with DELETE');
+    res.json({message: 'delete ethnicities endpoint'});
+  } catch (err) {
+    console.error(err);
+    res.json({error: 'Something went wrong on the server.'});
+  }
+});
 
 /* Desmond's Lab 9 routes */
 

@@ -87,6 +87,7 @@ async function windowsAction() {
     displayPlaylists();
   }
   getHolidaySongs();
+
   
    async function getUSTopSongs() {
     const endPoint = await fetch('./api/usChart');
@@ -105,7 +106,7 @@ async function windowsAction() {
     displayPlaylists();
   }
   getUSTopSongs();
-  
+
   async function getGlobalTopSongs() {
     const endPoint = await fetch('./api/globalCharts');
     const songs = await endPoint.json();

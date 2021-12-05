@@ -17,9 +17,8 @@ router.route('/albums')
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
-      res.json({message: 'GET albums endpoint'});
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({error: 'Server error'});
     }
   })
@@ -75,9 +74,8 @@ router.route('/USchart')
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
-      res.json({message: 'GET USchart endpoint'});
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({error: 'Server error'});
     }
   })
@@ -86,25 +84,23 @@ router.route('/USchart')
       console.log('touched /USchart route with PUT');
       res.json({message: 'PUT USchart endpoint'});
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({error: 'Server error'});
     }
   })
   .post((req, res) => {
     try {
       console.log('touched /USchart route with POST');
-      res.json({message: 'POST USchart endpoint'});
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({error: 'Server error'});
     }
   })
   .delete((req, res) => {
     try {
       console.log('touched /USchart route with DELETE');
-      res.json({message: 'DELETE USchart endpoint'});
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({error: 'Server error'});
     }
   });
@@ -118,9 +114,8 @@ router.route('/globalCharts')
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
-      res.json({message: 'GET globalCharts endpoint'});
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({error: 'Server error'});
     }
   })
@@ -176,9 +171,8 @@ router.route('/podcastCharts')
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
-      res.json({message: 'GET podcastCharts endpoint'});
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({error: 'Server error'});
     }
   })
@@ -234,9 +228,8 @@ router.route('/popSongs')
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
-      res.json({message: 'GET popSongs endpoint'});
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({error: 'Server error'});
     }
   })
@@ -292,9 +285,8 @@ router.route('/rapSongs')
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
-      res.json({message: 'GET rapSongs endpoint'});
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({error: 'Server error'});
     }
   })
@@ -350,9 +342,8 @@ router.route('/holidaySongs')
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
-      res.json({message: 'GET holidaySongs endpoint'});
     } catch (err) {
-      console.log(error);
+      console.log(err);
       res.json({error: 'Server error'});
     }
   })
@@ -408,7 +399,6 @@ router.route('/arianaSongs')
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
-      res.json({message: 'GET arianaSongs endpoint'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error'});
@@ -466,7 +456,6 @@ router.route('/badBunnySongs')
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
-      res.json({message: 'GET badBunnySongs endpoint'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error'});
@@ -524,7 +513,6 @@ router.route('/btsSongs')
         type: sequelize.QueryTypes.SELECT
       });
       res.json(result);
-      res.json({message: 'GET btsSongs endpoint'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error'});
@@ -583,7 +571,6 @@ router.route('/songslist')
       });
       console.log('You touched /songslist route with GET!');
       res.json(result);
-      res.json({message: 'GET songslist endpoint!'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error!'});
@@ -592,7 +579,6 @@ router.route('/songslist')
   .put((req, res) => {
     try {
       console.log('You touched /songslist route with PUT!');
-      res.json({message: 'PUT songslist endpoint!'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error!'});
@@ -601,7 +587,6 @@ router.route('/songslist')
   .post((req, res) => {
     try {
       console.log('You touched /songslist route with POST!');
-      res.json({message: 'POST songslist endpoint!'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Server error!'});

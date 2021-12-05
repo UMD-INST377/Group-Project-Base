@@ -21,10 +21,12 @@ a {
 .result {
     display: inline-block;
     color: black;
+    display: flex;
+    justify-content: center;
     background-color: lightgray;
     margin: 2px;
     padding: 6px;
     text-align: center;
-    border-spacing: 100px 2px;  
+    border-spacing: 60px 2px;  
     border-collapse: separate; 
 }

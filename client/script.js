@@ -25,7 +25,7 @@ async function windowAction() {
                                   // display 5 results
             top5[i] = matchArray[i]
         }
-        const html = top5.map(place => {
+        const html = top5.map(earthquake => {
             return `
                 <li>
                     <span class='result'>${earthquake.earthquake_id} <br>${earthquake.City}</span>

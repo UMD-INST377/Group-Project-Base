@@ -15,29 +15,19 @@ async function windowAction() {
     }
 
     function displayMatches(event) {
-        if (!event.target.value) {
-            suggestions.innerHTML = "";
-            return false;
-          }
         const matchArray = findMatches(event.target.value, earthquakes)
-        for (let i=0; i<5; i++) { //I realize this isn't the best way to do this but I had already
-                                  // implemented this top5 thing before I realized I only needed to
-                                  // display 5 results
-            top5[i] = matchArray[i]
-        }
-        const html = top5.map(earthquake => {
+        const html = matchArray.map(place => {
+            const regex = new RegExp(event.target.value, 'gi')
+            const city = earthquake.City.replace(regex, `<span class="hl">${event.target.value}</span>`)
+            const eid = earthquake.earthquake_id.replace(regex, `<span class="hl">${event.target.value}</span>`)
             return `
                 <li>
-                    <span class='result'>${earthquake.earthquake_id} <br>${earthquake.City}</span>
+                    <span>${city}</span>
+                    <span>${(eid)}</span>
                 </li>
                 `
         }).join('');
         suggestions.innerHTML = html;
-    }
-
-    function clearResults(event) {
-        suggestions.innerHTML = ``
-        console.log('success')
     }
 
     const searchInput = document.querySelector('.search')

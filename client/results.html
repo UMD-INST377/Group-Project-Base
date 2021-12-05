@@ -6,20 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <script src="script.js"></script>
     <title>West Coast Earthquake Results</title>
 </head>
 <body>
-    <div class="description">
-        <h1 class="title">West Coast Earthquake Results</h1>
+    <div class='search'>
+        <button id='back'>Home Page
+            <script>
+                document.getElementById("back").addEventListener("click", myFunction);
+                function myFunction() {
+                  window.location.href="index.html";
+                }
+               </script>
+            </button>
+        <form class="search-form">
+        <input type="text" class="searchbox" placeholder="Type in City, Date, or Magnitude">
+        <ul class="suggestions">
+        </ul>
+    </form>
     </div>
-
-    <div class="results">
-        <p>Results will be listed here</p>
-    </div>
-
-    <!-- Button to go back to search page -->
-    <a href="index.html" class="button is-dark">New Search</button>
-    
+    <script src="script.js"></script>
 </body>
 </html>

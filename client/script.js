@@ -16,7 +16,7 @@ async function windowAction() {
 
     function displayMatches(event) {
         const matchArray = findMatches(event.target.value, earthquakes)
-        const html = matchArray.map(place => {
+        const html = matchArray.map(earthquake => {
             const regex = new RegExp(event.target.value, 'gi')
             const city = earthquake.City.replace(regex, `<span class="hl">${event.target.value}</span>`)
             const eid = earthquake.earthquake_id.replace(regex, `<span class="hl">${event.target.value}</span>`)

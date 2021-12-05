@@ -215,6 +215,7 @@ router.post('/magnitude', async (req, res) => {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);
+    return result;
     } catch(err) {
       console.log(err);
       res.send({message:"uhoh"});

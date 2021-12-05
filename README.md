@@ -46,7 +46,7 @@ actions.
 
 ## Known Bugs and Potential Future Development
 ### Bugs:
-- Scrolling on the Query form makes the input forms go past the Bulma boxes.
+- Scrolling on the Query form makes the input elements go past the Bulma boxes.
 
 ### Potential Future Developments: 
 - Allow the option to remove columns from the filtered output

@@ -15,7 +15,7 @@
         <h1 class="title">West Coast Earthquake Search</h1>
     </div>
     <div id="buttonbox">
-    <button id="myBtn"/>
+    <button id="myBtn">
     <p>Search the Earthquake Database</p>
     <script>
      document.getElementById("myBtn").addEventListener("click", myFunction);
@@ -23,14 +23,16 @@
        window.location.href="results.html";
      }
     </script>
-    <button id="myBtn"/>
-    <p>Add a record</p>
+    </button>
+    <button id="myBtn2">
+    <p>Add/Delete a record</p>
     <script>
-     document.getElementById("myBtn").addEventListener("click", myFunction);
+     document.getElementById("myBtn2").addEventListener("click", myFunction);
      function myFunction() {
-       window.location.href="results.html";
+       window.location.href="edit.html";
      }
     </script>
+    </button>
     </div>
 </body>
 

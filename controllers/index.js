@@ -6,6 +6,9 @@ import metro from './metro.js';
 import population from './population.js';
 import companies from './companies.js';
 import ethnicities from './ethnicities.js';
+
 export default {
   census, community, metro, population, companies, ethnicities,
 }
+
+

@@ -30,7 +30,7 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 **`/api/singers`**
 | Method | Purpose |
 | :--- | :---: |
-| GET | Returns a list of all artists that have an entry within the database  |
+| GET | Returns a list of all artists that have an entry within the database |
 | POST | Creates a new database entry of an artist |
 
 <br>
@@ -46,7 +46,7 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 **`/api/songs`**
 | Method | Purpose |
 | :--- | :---: |
-| GET | Returns a list of all songs from the selected vinyl  |
+| GET | Returns a list of all songs from the selected vinyl, including the musical info related to each song |
 
 <br>
 

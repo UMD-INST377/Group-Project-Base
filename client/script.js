@@ -19,10 +19,10 @@ async function windowAction() {
         const html = matchArray.map(earthquake => {
             return `
                 <li>
-                    <span>${earthquake.earthquake_id}</span>
-                    <span>${(earthquake.City)}</span>
-                    <span>${(earthquake.day_of)}</span>
-                    <span>${(earthquake.magnitude)}</span>
+                    <span class='result'>${earthquake.earthquake_id} <br>
+                    ${(earthquake.City)} <br>
+                    ${(earthquake.day_of.substring(0,9))} <br>
+                    ${(earthquake.magnitude)}</span>
                 </li>
                 `
         }).join('');

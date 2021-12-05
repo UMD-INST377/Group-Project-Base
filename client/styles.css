@@ -17,3 +17,11 @@ a {
     display: flex;
     justify-content: center;
 }
+
+.result {
+    display: inline-block;
+    color: black;
+    background-color: lightgray;
+    margin: 2px;
+    padding: 6px;
+}

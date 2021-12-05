@@ -28,7 +28,7 @@ async function windowAction() {
         const html = top5.map(place => {
             return `
                 <li>
-                    <span class='result'>${place.name} <br>${place.address_line_1}</span>
+                    <span class='result'>${earthquake.earthquake_id} <br>${earthquake.City}</span>
                 </li>
                 `
         }).join('');

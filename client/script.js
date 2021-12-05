@@ -10,7 +10,7 @@ async function windowAction() {
     function findMatches(wordToMatch, earthquakes) {
         return earthquakes.filter(earthquake => {
             const regex = new RegExp(wordToMatch, 'gi')
-            return earthquake.City.match(regex) //|| earthquake.day_of.match(regex) || earthquake.magnitude.match(regex) || earthquake.time.match(regex)
+            return earthquake.City.match(regex) || earthquake.day_of.match(regex) || earthquake.magnitude.match(regex) || earthquake.time.match(regex)
         })
     }
 
@@ -19,8 +19,10 @@ async function windowAction() {
         const html = matchArray.map(earthquake => {
             return `
                 <li>
-                    <span>${earthquake.City}</span>
-                    <span>${(earthquake.earthquake_id)}</span>
+                    <span>${earthquake.earthquake_id}</span>
+                    <span>${(earthquake.City)}</span>
+                    <span>${(earthquake.day_of)}</span>
+                    <span>${(earthquake.magnitude)}</span>
                 </li>
                 `
         }).join('');

@@ -34,14 +34,14 @@ a {
 .search{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .back {
-    display:flex;
+    display: inline-block;
     align-self:flex-start;
 }
 
 .searchbox {
-    display:flex;
     align-self: center;
 }

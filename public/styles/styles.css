@@ -67,6 +67,13 @@ body {
     min-height: 100%;
 }
 
+.census-data .table {
+    width: 300px;
+}
+
+.community-data .table {
+    width: 300px;
+}
 
 .census-table .table {
   display: block; /* important */

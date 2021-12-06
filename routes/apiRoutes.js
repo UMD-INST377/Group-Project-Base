@@ -15,7 +15,7 @@ const router = express.Router();
 /// /////////////////////////////////
 router.route('/profiles').get(async(req, res) => {
   try {
-    const iProfiles = await db.sequelizeDB.query(GETController.memberProfiles, {
+    const memberProfiles = await db.sequelizeDB.query(GETController.memberProfiles, {
       type: sequelize.QueryTypes.SELECT
     });
     console.log('touch /profiles with GET')
@@ -25,31 +25,31 @@ router.route('/profiles').get(async(req, res) => {
     res.json({error: 'Error Occured'})
   }
 })
-
 router.route('/profiles').put(async(req, res) => {
   try {
     console.log('touch /profiles with PUT')
-    res.json({profiles: 'touched /profiles with PUT'})
+
+    res.send('PUT memberProfiles endpoint')
   } catch (error) {
     console.log(error)
     res.json({error: 'Error Occured'})
   }
 })
-
 router.route('/profiles').post(async(req, res) => {
   try {
-    console.log('touch /profiles with POST')
-    res.json({profiles: 'touched /profiles with POST'})
-  } catch (error) {
+    const createNew = await db.sequelizeDB.query(POSTcontroller.addMemberProfiles, {
+      type: sequelize.QueryTypes.INSERT,
+      console.log('touched /profiles endpoint POST')
+      res.send('POST memberProfiles endpoint')
+    } catch (error) {
     console.log(error)
     res.json({error: 'Error Occured'})
   }
 })
-
 router.route('/profiles').delete(async(req, res) => {
   try {
     console.log('touch /profiles with DELETE')
-    res.json({profiles: 'touched /profiles with DELETE'})
+    res.send('DELETE memberProfiles endpoint');
   } catch (error) {
     console.log(error)
     res.json({error: 'Error Occured'})

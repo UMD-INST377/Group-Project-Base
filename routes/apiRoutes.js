@@ -39,7 +39,7 @@ router.get("/basketball/teams", async (req, res) => {
 });
 
 // GETS ALL ARENAS
-router.get('/basketball/arenas', async (req, res) => {
+router.get("/basketball/arenas", async (req, res) => {
   try {
     const arenas = await db.Arenas.findAll();
     res.json(arenas);
@@ -47,7 +47,6 @@ router.get('/basketball/arenas', async (req, res) => {
     res.send(e);
   }
 });
-
 
 // GET SPECIFIC TEAM
 router.get("/basketball/teams/:team_id", async (req, res) => {
@@ -68,6 +67,23 @@ router.get("/basketball/teams/:team_id", async (req, res) => {
 router.get("/basketball/players", async (req, res) => {
   try {
     const players = await db.Players.findAll();
+    res.json(players);
+  } catch (e) {
+    res.send(e);
+  }
+});
+
+router.get("/basketball/players/:search_query", async (req, res) => {
+  try {
+    const players = await db.Players.findAll({
+      where: {
+        last_name: sequelize.where(
+          sequelize.fn("LOWER", sequelize.col("last_name")),
+          "LIKE",
+          "%" + req.params.search_query.toLocaleLowerCase() + "%"
+        ),
+      },
+    });
     res.json(players);
   } catch (e) {
     res.send(e);
@@ -114,9 +130,9 @@ router.post("/basketball/players", async (req, res) => {
 });
 
 //Edit player from teams
-router.put('/basketball/teams', async (req, res) => {
+router.put("/basketball/teams", async (req, res) => {
   try {
-    console.log('touched /basketball with PUT');
+    console.log("touched /basketball with PUT");
     await db.Players.update(
       {
         first_name: req.body.first_name,
@@ -130,15 +146,15 @@ router.put('/basketball/teams', async (req, res) => {
         },
       }
     );
-    console.log('Player is Updated!');
-    res.send('Successfully updated player');
+    console.log("Player is Updated!");
+    res.send("Successfully updated player");
   } catch (e) {
     console.log(e);
-    res.error('Something went wrong on the server');
+    res.error("Something went wrong on the server");
   }
 });
 
-router.put('/basketball', async (req, res) => {
+router.put("/basketball", async (req, res) => {
   try {
     // Will use await when making actual calls to the DB
     console.log("touched /basketball with PUT");

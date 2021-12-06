@@ -106,3 +106,12 @@ html {
     display: flex;
     justify-content: center;
 }
+
+/*css for charts*/
+#chartContainer{
+    width: 900px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

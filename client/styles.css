@@ -112,6 +112,15 @@ html {
     display: flex;
     justify-content: center;
 }
+
 #input-container{
     background: aquamarine"
+
+/*css for charts*/
+#chartContainer{
+    width: 900px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

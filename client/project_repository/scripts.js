@@ -1,5 +1,6 @@
 async function windowActions() {
-  const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+  // const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+  const endpoint = '../api/listofRestaurants';
   const zip = [];
 
   const request = await fetch(endpoint);

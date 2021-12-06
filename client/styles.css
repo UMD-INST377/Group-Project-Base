@@ -33,16 +33,14 @@ a {
 
 .search{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
-/* .back {
-    display: inline-block;
-    align-self:flex-start;
+.back {
+    height: min-content;
 }
 
 .searchbox {
-    align-self: center;
     width: 210px;
-} */
+}

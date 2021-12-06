@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<head>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='./styles/styles.css'/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <title>Home Page</title>
+  <link rel="shortcut icon" type="image/png" href="./img/mdflag.png"/>
+  <link rel='stylesheet' href='./styles/styles.css'/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body class="has-navbar-fixed-top"> <!-- bulma docs say to do this -->
+    <nav class="navbar is-fixed-top" role="navigation" area-label="main navigation">
+      <div class="navbar-menu is-active">
+	<a class="navbar-item" href="index.html">Home</a>
+	<div class="navbar-item has-dropdown is-hoverable">
+	<a class="navbar-link">
+	  Query
+	</a>
+	<div class="navbar-dropdown">
+	  <a class="navbar-item" href="census.html">
+	    Census
+	  </a>
+	  <a class="navbar-item" href="community.html">
+	    Community Survey
+	  </a>
+	  <a class="navbar-item" href="companies.html">
+	    Companies
+	  </a>
+	</div>
+	</div>
+	<a class="navbar-item" href="guide.html">Guide</a>
+	<a class="navbar-item" href="about.html">About</a>
+      </div>
+    </nav>
+
+  <div class='index-container'>
+      <div class="title has-text-white">MD Census Data Query Center</div>
+      <div class="md-flag"><img src="./img/mdflag.png" alt="state of MD flag" width="150" height="150"></div>
+      <div class="index-br">
+      </div>
+      <div class="search">
+	<div class="search-label">Quick Search MD zip code</div>
+	<input type="text" class="search" placeholder="e.g. 20743">
+      </div>
+      <div class="census-data">
+	<table class="table">
+	  <tr><th> Census </th><th></th><tr>
+	  <tr>
+            <td><strong>median age</strong></td><td></td>
+          </tr>
+          <tr>
+            <td><strong># people over 65</strong></td><td></td>
+          </tr>
+          <tr>
+            <td><strong>total population</strong></td><td></td>
+            </tr>
+          <tr>
+            <td><strong>% homeowner</strong></td><td></td>
+          </tr>
+          <tr>
+            <td><strong>% homeowner without mortgage</strong></td><td></td>
+          </tr>
+          <tr>
+            <td><strong>% renters</strong></td><td></td>
+          </tr>
+	</table>
+      </div>
+
+
+
+      <div class="community-data">
+        <table class="table">
+          <tr><th> Community </th><th></th><tr>
+          <tr>
+                  <td><strong>community idenfifier</strong></td><td></td>
+                </tr>
+                <tr>
+                  <td><strong> % foreign born</strong></td><td></td>
+                </tr>
+                <tr>
+                  <td><strong>% poverty</strong></td><td></td>
+                  </tr>
+                <tr>
+                  <td><strong> % unemployed</strong></td><td></td>
+                </tr>
+                <tr>
+                  <td><strong>% bachelors</strong></td><td></td>
+                </tr>
+                <tr>
+                  <td><strong>median income</strong></td><td></td>
+                </tr>
+
+                <tr>
+                  <td><strong>% little english</strong></td><td></td>
+                </tr>
+        </table>
+            </div>
+  </div>
+
+
+</body>
+<script src='./scripts/index.js'></script>
+</html>
+

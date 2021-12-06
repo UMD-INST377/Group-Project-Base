@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MD ZIP Code Census Data</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/query_link_styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="shortcut icon" type="image/png" href="./img/mdflag.png"/>
+</head>
+
+<body class="has-navbar-fixed-top"> <!-- bulma docs say to do this -->
+    <nav class="navbar is-fixed-top" role="navigation" area-label="main navigation">
+    <div class="navbar-menu is-active">
+      <a class="navbar-item" href="index.html">Home</a>
+      <div class="navbar-item has-dropdown is-hoverable">
+	<a class="navbar-link">
+	  Query
+	</a>
+	<div class="navbar-dropdown">
+	  <a class="navbar-item" href="census.html">
+	    Census
+	  </a>
+	  <a class="navbar-item" href="community.html">
+	    Community Survey
+	  </a>
+	  <a class="navbar-item" href="companies.html">
+	    Companies
+	  </a>
+	</div>
+      </div>
+      <a class="navbar-item" href="guide.html">Guide</a>
+      <a class="navbar-item" href="about.html">About</a>
+    </div>
+  </nav>
+  <br>  
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="title">
+	<a href="census.html">Census</a> |
+	<a href="community.html">Community Survey</a> |
+	<a class="companies-query" href="companies.html">Companies</a>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-3">
+	<div class="search">
+	  <div class="search-label">Search</div>
+	  <input type="text" class="input search" placeholder="Match with any column">
+	</div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <div class="table-container companies-table">
+	  <!-- Will's js injection goes here for his component -->
+	</div>
+	</div>
+    </div>
+  </div>
+</div>
+</body>
+<script src="./scripts/companies.js"></script>
+</html>

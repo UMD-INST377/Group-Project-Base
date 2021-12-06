@@ -19,7 +19,6 @@ a {
 }
 
 .result {
-    display: flex;
     color: black;
     display: flex;
     justify-content: center;
@@ -34,7 +33,6 @@ a {
 .search{
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
 }
 
 #back {

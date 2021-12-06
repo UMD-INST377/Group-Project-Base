@@ -64,43 +64,48 @@ router.route('/profiles').delete(async(req, res) => {
 /// /////////////////////////////////
 /// ////Congress Endpoints////////
 /// /////////////////////////////////
-router.route('/contact')
-  .get(async(req, res) => {
-    try {
-      console.log('You touched /contact with GET');
-      res.json({message: 'GET Congress endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  })
-  .put(async(req, res) => {
-    try {
-      console.log('You touched /contact with PUT');
-      res.json({message: 'GET Congress endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  })
-  .post(async(req, res) => {
-    try {
-      console.log('You touched /contact with POST');
-      res.json({message: 'GET Congress endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  })
-  .delete(async(req, res) => {
-    try {
-      console.log('You touched /contact with DELETE');
-      res.json({message: 'GET Congress endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({message: 'Something went wrong'});
-    }
-  });
+router.get('/contact',async(req, res) => {
+  try {
+    const contact = await db.sequelizeDB.query(GETcontroller.contact, {
+      type: sequelize.QueryTypes.SELECT
+    )};
+
+    console.log('Touched contact with GET')
+
+  } catch (error) {
+    console.log(error);
+    res.json({message: 'Something went wrong'});
+  }
+}); 
+router.put(async(req, res) => {
+  try {
+    console.log('You touched /contact with PUT');
+    res.json({message: 'GET Congress endpoint'});
+  } catch (error) {
+    console.log(error);
+    res.json({message: 'Something went wrong'});
+  }
+});
+router.post(async(req, res) => {
+  try {
+    const insertQuery = await db.sequelizeDB.query(POSTcontroller.addContact, {
+      type: sequelize.QueryTypes.INSERT,
+      console.log('touched /contact endpoint POST')
+      res.send('POST contact endpoint');
+  } catch (error) {
+    console.log(error);
+    res.json({message: 'Something went wrong'});
+  }
+});
+router.delete(async(req, res) => {
+  try {
+    console.log('You touched /contact with DELETE');
+    res.json({message: 'GET Congress endpoint'});
+  } catch (error) {
+    console.log(error);
+    res.json({message: 'Something went wrong'});
+  }
+});
 
   //Jake Stark General Congress Members Table Endpoint
 router.get('/members',async(req, res) => {

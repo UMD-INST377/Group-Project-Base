@@ -1,9 +1,43 @@
 async function windowActions() {
-  const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-  const zip = [];
+  const endpoint = 'http://localhost:3000/api/listofRestaurants';
+  const categories = [];
 
   const request = await fetch(endpoint);
-  const zipJson = await request.json();
+  const json = await request.json();
+  // categories.push(...json);
+  function findMatches(wordToMatch, categories) {
+    return categories.filter((place) => {
+      const regex = new RegExp(wordToMatch, 'gi');
+      return place.Name.match(regex);
+    });
+  }
+
+  function displayMatches(event) {
+    const matchArray = findMatches(event.target.value, json);
+    const html = matchArray.map((place) => {
+      const regex = new RegExp(event.target.value, 'gi');
+      return `
+                  <li>
+                      <span class = "Name">${place.Name}</span>
+                      <br>
+                      <span class = "Inspection_results">${place.Inspection_results}</span>
+                      <br>  
+                  </li> 
+                  `;
+    }).join('');
+    console.log(matchArray);
+
+    suggestions.innerHTML = html;
+  }
+
+  const inputSearch = document.querySelector('#input');
+  const suggestions = document.querySelector('#suggestions');
+
+  inputSearch.addEventListener('change', displayMatches);
+  inputSearch.addEventListener('keyup', displayMatches);
+}
+
+/* const zipJson = await request.json();
   const searchInput = document.querySelector('.search');
   const suggestions = document.querySelector('.suggestions');
 
@@ -33,8 +67,8 @@ async function windowActions() {
                       <br>
                       <span class = "name">${place.city}</span>
                       <br>
-                      <span class = "name">${place.zip}</span>      
-                  </li> 
+                      <span class = "name">${place.zip}</span>
+                  </li>
                   `;
     }).join('');
     console.log(matchArray);
@@ -45,4 +79,7 @@ async function windowActions() {
   searchInput.addEventListener('change', displayMatches);
   searchInput.addEventListener('keyup', (evt) => { displayMatches(evt); });
 }
+
+*/
+
 window.onload = windowActions;

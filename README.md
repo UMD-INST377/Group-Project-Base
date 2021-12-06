@@ -1,6 +1,6 @@
 # Vinyl Records Database 
 ## Background
-Despite the emergence of more "efficient" technologies, many people have still maintained interests in vinyl records. However, the passage of time and records being damaged or lost have added difficulties to keeping track of their existences. It is also impossible to manage a collection of records without being physically present. With the popularization of music streaming platforms and management systems, the team believes vinyl records could benefit from this technological shift. 
+Despite the emergence of more "efficient" technologies, many people have still maintained interests in vinyl records. However, the passage of time and records being damaged or lost have added difficulties to keeping track of their existences. It is also impossible to manage a collection of records without being physically present. With the popularization of music streaming platforms and management systems, the team believes vinyl records could benefit from these technological shifts. 
 
 ## Project Description
 Our goal is to create a management interface that allows users to upload or gather information on these records without having to be in-person. The digitization of vinyl records information will allow more people to view them efficiently and bridge the gap between accessibility and management.
@@ -8,9 +8,10 @@ Our goal is to create a management interface that allows users to upload or gath
 ## Project Link
 https://inst377-vinylweb.herokuapp.com/
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+## Target Browsers
+* Google Chrome
+* Mozilla Firefox
+* Microsoft Edge
 
 # Developer Manual
 
@@ -80,3 +81,15 @@ In this case, the route changes based on the vinyl's name and artist name
 | Method | Purpose |
 | :--- | :---: |
 | POST | Returns the address of an image to be used for the display of newly input vinyls to the database|
+
+## Known Issues and Future Developments
+### Issues ###
+*  Search results appear out of position on some screen sizes. Resolvable if viewed in full screen and in 100% zoom. 
+*  Unstable performance on mobile and tablet devices. 
+*  No deletion for producers and singers. Entries sometimes get duplicated in the database. 
+
+### Future Developments ###
+*  Expand database to include more data on each album. 
+*  Allow users to create accounts. 
+*  Add the ability to play songs with Spotify API ([documentation](https://developer.spotify.com/documentation/web-playback-sdk/)).  
+*  Add the ability to create playlists. 

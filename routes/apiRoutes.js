@@ -236,7 +236,63 @@ router.post('/magnitude', async (req, res) => {
       res.send({message:"uhoh"});
     }
   })
-  
+
+  router.put('/', async (req, res) => {
+    try {
+      console.log('touched / with PUT');
+      const result = await db.sequelizeDB.query(all.putAll, {
+        replacements: {
+          id: req.body.id, 
+          city: req.body.city,
+          date: req.body.date,
+          time: req.body.time,
+          magnitude: req.body.magnitude
+        },
+        type: sequelize.QueryTypes.UPDATE,
+      });
+      res.json(result);
+    } catch (err) {
+      console.log(err);
+      res.send({message:"uhoh"});
+    }
+  })
+
+router.post('/', async (req, res) => {
+    try {
+      console.log('touched / with POST');
+      const result = await db.sequelizeDB.query(all.postAll, {
+        replacements: {
+          id: req.body.id, 
+          city: req.body.city,
+          date: req.body.date,
+          time: req.body.time,
+          magnitude: req.body.magnitude
+        },
+        type: sequelize.QueryTypes.CREATE
+      })
+      res.json(result);
+    } catch (err) {
+        console.log(err);
+        res.send({message:"uhoh"})
+    }
+  })
+
+router.delete('/', async (req, res) => {
+    try {
+      console.log('touched / with DELETE');
+      const result = await db.sequelizeDB.query(all.deleteAll, {
+        replacements: {
+          id: req.body.id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+    } catch(err) {
+        console.log(err);
+        res.send({message:"uhoh"});
+    }
+  });
+
   export default router;
   router.get('/', (req, res) => {
     res.json('You have touched the date endpoint');

@@ -15,6 +15,9 @@ const router = express.Router();
 /// /////////////////////////////////
 router.route('/phone').get(async(req, res) => {
   try {
+    const members = await db.sequelizeDB.query(GETcontroller.members, {
+      type: sequelize.QueryTypes.SELECT
+    })
     console.log('touch /phone with GET')
     res.json({phone: 'touched /phone with GET'})
   } catch (error) {

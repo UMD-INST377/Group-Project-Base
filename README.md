@@ -28,18 +28,18 @@ iOS (iPhones 8-13), Samsung Galaxy S21, Any device capable of using the Internet
 3. In the second terminal run npm test.
 
 ## The API for your server application
-GET - Requests data from a server. Returns response "/listofRestaurants/:Establishment_id".
-POST - Sends changes from the client to the server. Making sure that the list of restaurants are created correctly from the database.
-PUT - Makes edits to existing information. Either returns "Successfully Updated" or "Something went wrong on /listofRestaurants at put".
+* GET - Requests data from a server. Returns response "/listofRestaurants/:Establishment_id".
+* POST - Sends changes from the client to the server. Making sure that the list of restaurants are created correctly from the database.
+* PUT - Makes edits to existing information. Either returns "Successfully Updated" or "Something went wrong on /listofRestaurants at put".
 
 ## A clear set of expectations around known bugs and a road-map for future development.
 # Bugs
 Not gathering all the necessary information regarding restaurant.
 # Future Development
-Add pictures associated with restaurant information provided.
-More options regarding search inputs.
-Provide more information than just Name, Location(Zip,City, State,etc.) and Inspection results.
-More data needed to cover a wider range of results.
+* Add pictures associated with restaurant information provided.
+* More options regarding search inputs.
+* Provide more information than just Name, Location(Zip,City, State,etc.) and Inspection results.
+* More data needed to cover a wider range of results.
 
 
 

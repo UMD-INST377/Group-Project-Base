@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable max-len */
-/* eslint-disable no-param-reassign */
 // the map stuff can be done similar to lab 7
 
 function getMatch(event, census) {

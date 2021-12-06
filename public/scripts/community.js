@@ -1,11 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-tabs */
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable max-len */
 function getFilters(community, bornMin, bornMax, povertyMin, povertyMax, unemployedMin, unemployedMax,
 		    bachelorsMin, bachelorsMax, incomeMin, incomeMax, engMin, engMax) {
   const matches = community.filter((ele) => {

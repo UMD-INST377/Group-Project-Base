@@ -14,7 +14,10 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 
 # Developer Manual
 
-
+## Installation of Application and Dependencies
+1. Clone the [Repository](https://github.com/chihaos1/Group-Project-Base-Vinyl-Web.git) using GitHub Desktop or Terminals with **`git clone https://github.com/chihaos1/Group-Project-Base-Vinyl-Web.git`**.
+2. Navigate to the directory of the cloned repository. 
+3. Enter **`npm start`** in the directory's terminal to install all dependencies. 
 
 ## Implementation of API and Endpoints
 **`/api/vinyl`**

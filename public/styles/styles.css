@@ -80,7 +80,11 @@ body {
   height: 600px;
   overflow-y: scroll;
 }
-
+.community-table .table {
+    display: block;
+    height: 600px;
+    overflow-y: scroll;
+}
 .companies-table .table {
     display: block;
     height: 600px;

@@ -44,8 +44,6 @@ async function dataHandler() {
     if (evt.target.value.length === 5) {
       match = getMatch(evt, census);
     }
-    // eslint-disable-next-line no-console
-    console.log(match);
     if (match !== false) {
       renderTableHTML(match, tableDiv);
     }
@@ -54,7 +52,6 @@ async function dataHandler() {
 
 function getMatchCommunity(event, community) {
   const matches = community[0].filter((ele) => ele.community_identifier.substring(2) === event.target.value);
-  console.log(matches);
   if (matches.length > 0) {
     return matches[0];
   }
@@ -85,7 +82,6 @@ function renderTableHTMLCommunity(match, tableDiv) {
 }
 async function dataHandlerCommunity() {
   const searchInput = document.querySelector('.search');
-  console.log('running');
   const tableDiv = document.querySelector('.community-data');
   const community = await fetch('./api/community').then((response) => response.json());
 

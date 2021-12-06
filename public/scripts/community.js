@@ -1,7 +1,6 @@
 function getFilters(community, bornMin, bornMax, povertyMin, povertyMax, unemployedMin, unemployedMax,
 		    bachelorsMin, bachelorsMax, incomeMin, incomeMax, engMin, engMax) {
   const matches = community.filter((ele) => {
-    console.log(bornMin);
     return (Number(ele.pct_foreign_born) >= bornMin && Number(ele.pct_foreign_born) <= bornMax)
       && (Number(ele.pct_poverty) >= povertyMin && Number(ele.pct_poverty) <= povertyMax)
       && (Number(ele.pct_unemployed) >= unemployedMin && Number(ele.pct_unemployed) <= unemployedMax)
@@ -62,7 +61,6 @@ async function dataHandler() {
     const engMax = form.elements[11].value === '' ? Infinity : form.elements[11].value;
 
     community = community[0];
-    console.log(community);
     // filter
     const filteredCommunity = getFilters(community, bornMin, bornMax, povertyMin, povertyMax, unemployedMin, unemployedMax,
 				      bachelorsMin, bachelorsMax, incomeMin, incomeMax, engMin, engMax);
@@ -71,5 +69,6 @@ async function dataHandler() {
     renderTableHTML(filteredCommunity, tableDiv);
   }); 
 }
+
 
 window.onload = dataHandler;

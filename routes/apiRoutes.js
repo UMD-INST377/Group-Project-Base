@@ -48,6 +48,11 @@ router.route('/profiles').post(async(req, res) => {
 })
 router.route('/profiles').delete(async(req, res) => {
   try {
+    await db.sequelizeDB.destroy({
+      where: {
+        Group26_congress_db: req.params.Group26_congress_db
+      }
+    })
     console.log('touch /profiles with DELETE')
     res.send('DELETE memberProfiles endpoint');
   } catch (error) {
@@ -62,12 +67,8 @@ router.route('/profiles').delete(async(req, res) => {
 router.route('/contact')
   .get(async(req, res) => {
     try {
-      const contact = await db.sequelizeDB.query(GETcontroller.contact, {
-        type: sequelize.QueryTypes.SELECT
-      )};
-
-      console.log('Touched contact with GET')
-
+      console.log('You touched /contact with GET');
+      res.json({message: 'GET Congress endpoint'});
     } catch (error) {
       console.log(error);
       res.json({message: 'Something went wrong'});
@@ -84,10 +85,8 @@ router.route('/contact')
   })
   .post(async(req, res) => {
     try {
-      const insertQuery = await db.sequelizeDB.query(POSTcontroller.addContact, {
-        type: sequelize.QueryTypes.INSERT,
-        console.log('touched /contact endpoint POST')
-        res.send('POST contact endpoint');
+      console.log('You touched /contact with POST');
+      res.json({message: 'GET Congress endpoint'});
     } catch (error) {
       console.log(error);
       res.json({message: 'Something went wrong'});
@@ -110,7 +109,7 @@ router.get('/members',async(req, res) => {
       type: sequelize.QueryTypes.SELECT
     )};
 
-    console.log('Touched general members with GET');
+    console.long('Touched general members with GET');
     
     } catch (error) {
     console.log(error)

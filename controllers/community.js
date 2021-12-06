@@ -1,4 +1,3 @@
-
 /* eslint-disable no-multi-str */
 const communityData = 'SELECT * FROM community_survey';
 

@@ -755,17 +755,20 @@ option {
     padding: 4px 10px;
 }
 
-.zf-fmFooter .zf-updateColor {
+.zf-fmFooter .zf-update {
     font-size: 14px;
     padding: 4px 10px;
 }
 
-.zf-fmFooter .zf-deleteColor {
+.zf-fmFooter .zf-delete {
     font-size: 14px;
     padding: 4px 10px;
 }
 
-.zf-submitColor{
+
+.zf-submitColor,
+.zf-update,
+.zf-delete {
     color: #fff;
     font-family: GothamMedium;
     border: 1px solid;

@@ -180,6 +180,11 @@ border-radius: 4px;
 background-color: #ddd;
 }
 
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+
 <<<<<<< HEAD
 .dropdown-content {
   max-height: 13em;

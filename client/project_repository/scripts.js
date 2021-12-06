@@ -16,7 +16,7 @@ async function windowActions() {
     return zip.filter((place) => {
       const regex = new RegExp(wordToMatch, 'gi');
       return place.zip.match(regex);
-    });2
+    });
   }
 
   function displayMatches(event) {

@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+#wrapper{
+    display: flex;
+    background-image:url('https://cdn-adventures-live.azureedge.net/adventurescache/0/1/0/9/e/b/0109ebe6e25b8c67d497a80cc8a99c0f6d00ce5b.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+}
 
 /* home page search bar. */
 .container{
@@ -105,4 +111,7 @@ html {
 .page{
     display: flex;
     justify-content: center;
+}
+#input-container{
+    background: aquamarine"
 }

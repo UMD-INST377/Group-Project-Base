@@ -43,7 +43,6 @@ async function windowActions() {
     `;
     }).join('');
     suggestions.innerHTML = html;
-    // everytime when info box clicks, it runs document.querySelector('.modal').style.display = 'flex';
     const elements = document.querySelectorAll('#info_box');
     const delete_box = document.querySelector('.delete');
 

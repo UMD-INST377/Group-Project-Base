@@ -37,7 +37,7 @@ a {
     flex-wrap: wrap;
 }
 
-.back {
+#back {
     height: min-content;
 }
 

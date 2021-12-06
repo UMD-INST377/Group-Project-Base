@@ -4,6 +4,7 @@ async function editDatabase() {
     const data = new FormData(raw).entries()
     const dataArray = Array.from(data);
     console.log(dataArray)
+    JSON.stringify(data)
     if (dataArray[4][1] === 'DELETE') {
     }
     else {
@@ -16,8 +17,8 @@ async function editDatabase() {
         });
     }
 }
-//const searchInput = document.querySelector('#jeremy')
-//searchInput.addEventListener('input', editDatabase)
+const searchInput = document.querySelector('#jeremy')
+searchInput.addEventListener('input', editDatabase)
 
 const send = document.querySelector('#submit');
 send.onclick = editDatabase;

@@ -13,13 +13,13 @@ const router = express.Router();
 /// /////////////////////////////////
 /// ////Congress Member Endpoints////
 /// /////////////////////////////////
-router.route('/phone').get(async(req, res) => {
+router.route('/profiles').get(async(req, res) => {
   try {
-    const members = await db.sequelizeDB.query(GETcontroller.members, {
+    const memberProfiles = await db.sequelizeDB.query(GETcontroller.memberProfiles, {
       type: sequelize.QueryTypes.SELECT
     })
-    console.log('touch /phone with GET')
-    res.json({phone: 'touched /phone with GET'})
+    console.log('touch /profiles with GET')
+    res.json({phone: 'touched /profiles with GET'})
   } catch (error) {
     console.log(error)
     res.json({error: 'Error Occured'})

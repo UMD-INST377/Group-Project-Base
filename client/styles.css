@@ -42,3 +42,7 @@ a {
 .searchbox {
     width: 210px;
 }
+
+#date, #city, #id, #magnitude {
+    width: 350px;
+}

@@ -2,10 +2,11 @@
 <html lang='en'>
     <head>
         <meta charset='UTF-8'/>
-        <title>Update Game</title>
+        <title>Delete Game Price</title>
         <link rel='stylesheet' href='morris_style.css'/>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'/>
-        <script src='form.js'></script>
+        <script src='get_price.html'></script>
+        
     </head>
     <body>
         <nav class="navbar has-shadow is-black" role="navigation" aria-label="main navigation">
@@ -60,47 +61,34 @@
             </div>
           </nav>
         
-          <h1 class="title is-light">Update a Game!</h1>
+         <div class="container">
+        <a class="button is-black" href="get_price.html">Get</a>
+        <a class="button is-black" href="update_price.html">Update</a>
+        <a class="button is-black" href="delete_price.html">Delete</a>
+        <a class="button is-black" href="Insert_price.html">Insert</a>
+      </div>
+    </br>
 
           
-          <form class="form" id='general_form' >
-            <div class="columns">
-                <div class="column">
-                  <div class="field">
-                    <label class="label" for = 'id'>Game Id</label>
-                    <div class="control">
-                      <input class="input" type="text" name = 'id'>
-                    </div>
-                  </div>
+    <h1 class="title is-light">Get Game Price!</h1>
+    <div class='atable'>
+    <table class = "table is-striped is-bordered">
+        <thead>
+            <tr>
+                <th>Price Id</th>
+                <th>Price website</th>
+                <th>Listed Price</th>
+                
+            </tr>
+        </thead>
+        <tbody id = 'table'>
+          
+        </tbody>
 
-                    <div class="field">
-                        <label class="label" for = 'name'>Name of Game</label>
-                        <div class="control">
-                          <input class="input" type="text" name = 'name'>
-                        </div>
-                      </div>
-
-                      <div class="field">
-                        <label class="label" for = 'free_to_play'>Free to Play</label>
-                        <div class="control">
-                          <input class="input" type="text" name = 'free_to_play'>
-                        </div>
-                      </div>
-
-                      <div class="field">
-                        <label class="label" for ='population'>Player Population</label>
-                        <div class="control">
-                          <input class="input" type="text" name = 'population'>
-                        </div>
-                        
-                      </div>
-                      <button  class="button" id= "submit_button">Submit</button>
-                </div>
-                      
-                </div>
-
-          </form>
         
+      </table>
+    </div>
 
     </body>
 </html>
+      

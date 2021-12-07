@@ -5,7 +5,7 @@
         <title>Delete Game Price</title>
         <link rel='stylesheet' href='morris_style.css'/>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'/>
-        <script src='get_price.html'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
         
     </head>
     <body>
@@ -71,23 +71,13 @@
 
           
     <h1 class="title is-light">Get Game Price!</h1>
-    <div class='atable'>
-    <table class = "table is-striped is-bordered">
-        <thead>
-            <tr>
-                <th>Price Id</th>
-                <th>Price website</th>
-                <th>Listed Price</th>
-                
-            </tr>
-        </thead>
-        <tbody id = 'table'>
-          
-        </tbody>
-
-        
-      </table>
-    </div>
+  </div>
+  <div class='bar'>
+    <div class="chart" style="position: relative; height:50vh; width:960px">
+        <canvas id="myChart"></canvas>
+        <script src='get_price.js'> </script>
+      </div>
+  </div>
 
     </body>
 </html>

@@ -14,10 +14,10 @@ async function getByID() {
                 <th>Magnitude</th>
             </tr>
             <tr>
-                <th>${(earthquake.earthquake_id)}</th>
-                <th>${(earthquake.City)}</th>
-                <th>${(earthquake.day_of.substring(0,10))}</th>
-                <th>${(earthquake.magnitude)}</th>
+                <th>${(earthquake[0].earthquake_id)}</th>
+                <th>${(earthquake[0].City)}</th>
+                <th>${(earthquake[0].day_of.substring(0,10))}</th>
+                <th>${(earthquake[0].magnitude)}</th>
             </tr>
         </table>
     </li>

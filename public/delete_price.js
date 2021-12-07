@@ -16,7 +16,7 @@ async function windowActions () {
     const data = formToObject(form);
     console.log(data);
     const response = await fetch('/api/price', {
-      method: 'REMOVE',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },

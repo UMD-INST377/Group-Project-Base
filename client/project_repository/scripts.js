@@ -21,14 +21,10 @@ async function windowActions() {
                       <span class = "Name">${place.Name}</span>
                       <br>
                       <span class = "Inspection_results">${place.Inspection_results}</span>
-                      <br> 
-                      <span class = "name">${place.type}</span>
                       <br>
-                      <span class = "name">${place.address_line_1}</span>
+                      <span class = "Name">${place.City}</span>
                       <br>
-                      <span class = "name">${place.city}</span>
-                      <br>
-                      <span class = "name">${place.zip}</span>
+                      <span class = "Name">${place.Zip}</span>
                   </li> 
                   `;
     }).join('');

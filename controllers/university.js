@@ -3,7 +3,7 @@
  *
  * @type {SQLStmt}
  */
-const getAllUniversities = 'SELECT university_id, university_name FROM university';
+const getAllUniversities = `SELECT university_id, university_name FROM university`;
 
 /**
  * Get Big 10 university by rank_id
@@ -19,9 +19,9 @@ const getUniversity = `SELECT a.university_id, a.university_name, a.campus_image
   WHERE a.university_id = :rank_id
   LIMIT 0,1`;
 
-const getUniversityName = 'SELECT university_name FROM university WHERE university_id = :rank_id LIMIT 0,1';
+const getUniversityName = `SELECT university_name FROM university WHERE university_id = :rank_id LIMIT 0,1`;
 
-const getUniversityLoc = 'SELECT univ_location FROM location WHERE university_id = :rank_id LIMIT 0,1';
+const getUniversityLoc = `SELECT univ_location FROM location WHERE university_id = :rank_id LIMIT 0,1`;
 
 // Export variables
 export default {

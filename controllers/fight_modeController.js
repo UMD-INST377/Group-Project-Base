@@ -1,7 +1,7 @@
-const fightmodeGET = `SELECT Animal_ID, fight_mode_id, special_skill, weapon_of_choice
+const fightmodeGET = `SELECT Animal_ID, common_name, fight_mode_id, special_skill, weapon_of_choice
 FROM fight_mode
 JOIN animals
-WHERE fight_mode_id = Animal_id;`;
+WHERE fight_mode.fight_mode_id = animals.fight_mode_fight_mode_id;`;
 
 const fightmodePOST = `INSERT INTO fight_mode (fight_mode_id, special_skill, weapon_of_choice)
 VALUES(DEFAULT, :fight_mode_id, :special_skill, :weapon_of_choice);`;

@@ -82,5 +82,17 @@ a:hover{
 button:hover{
     background-color:rgb(27,185,100,.5);
 }
+.inputBar{
+    margin-top: 1%;
+    margin-left: 43%;
+    border-radius: 10px;
+    width: 200px;
+}
+.resList{
+    margin-left:auto;
+    margin-right:auto;
+    background-color: rgb(255,255,255,.4);
+    max-width: 200px;
+}
 
 

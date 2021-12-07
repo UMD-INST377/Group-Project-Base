@@ -1,6 +1,6 @@
 // test
 async function windowActions() {
-  const endpoint = 'http://localhost:3000/api/listofRestaurants';
+  const endpoint = '/api/listofRestaurants';
   const categories = [];
 
   const request = await fetch(endpoint);

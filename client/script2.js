@@ -9,7 +9,7 @@ async function editDatabase() {
     if (!id || (answer != 'DELETE' && (!city || !date || !magnitude))) {
         console.log('Error: Missing Field')
         message.innerHTML = `<p>Error: Missing field</p>`
-    } else if (!/^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$/.test(date)){
+    } else if (answer!= 'DELETE' && !/^\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d$/.test(date)){
         console.log('Error: Wrong formatting on date')
         message.innerHTML = `<p>Error: Wrong formatting on date</p>`
     } else {

@@ -74,3 +74,17 @@ img {
 .description {
   text-align: center;
 }
+
+.ton {
+  background-color: #ff8800;
+  color: white;
+}
+
+.box {
+  border: 10px;
+  border-style: solid;
+  border-color: #ff8800;
+  background-color:#ddd;
+  max-width: 700px;
+  margin: auto;
+}

@@ -83,13 +83,16 @@ router
     }
   });
 
-// Grant  T /extinction table endpoint*/
+// Grant T/extinction table endpoint*/
 router
   .route('/extinction')
   .get(async (req, res) => {
     try {
-      console.log('touched /extinction with GET');
-      res.json({ message: '/extinction GET method' });
+      const result = await db.sequelizeDB.query(extinctionController.extinctionGET, {
+      type: sequelize.QueryTypes.SELECT
+      });
+      console.log(product);
+      res.json({product});
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -97,6 +100,14 @@ router
   })
   .put(async (req, res) => {
     try {
+      const product = await db.sequelizeDB.query(extinctionController.extinctionPUT, {
+        replacements: {
+          extinction_id: req.body.extinction_id,
+          cause: req.body.cause,
+          age_species_went_extinct: req.body.age_species_went_extinct
+        },
+        type: sequelize.QueryTypes.UPDATE
+      });
       console.log('touched /extinction with PUT');
       res.json({ message: '/extinction PUT method' });
     } catch (err) {
@@ -106,8 +117,15 @@ router
   })
   .post(async (req, res) => {
     try {
-      console.log('touched /extinction with POST');
-      res.json({ message: '/extinction POST method' });
+      const product = await db.sequelizeDB.query(extinctionController.extinctionPUT, {
+        replacements: {
+          extinction_id: req.body.extinction_id,
+          cause: req.body.cause,
+          age_species_went_extinct: req.body.age_species_went_extinct
+        },
+        type: sequelize.QueryTypes.INSERT
+      });
+      res.json({console});
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');
@@ -115,8 +133,14 @@ router
   })
   .delete(async (req, res) => {
     try {
-      console.log('touched /extinction with DELETE');
-      res.json({ message: '/extinction DELETE method' });
+      const product = await db.sequelizeDB.query(exinctionController.extinctionDELETE, {
+        replacements:{
+          extinction_id: req.body.extinction_id
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      console.log('Database item deleted!');
+      res.json({product});
     } catch (err) {
       console.log(err);
       res.send('Something went wrong, sorry');

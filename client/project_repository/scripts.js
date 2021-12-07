@@ -1,10 +1,7 @@
 // test
 async function windowActions() {
-
   const endpoint = '/api/listofRestaurants';
   const categories = [];
-
-
   const request = await fetch(endpoint);
   const json = await request.json();
   // categories.push(...json);
@@ -24,7 +21,14 @@ async function windowActions() {
                       <span class = "Name">${place.Name}</span>
                       <br>
                       <span class = "Inspection_results">${place.Inspection_results}</span>
-                      <br>  
+                      <br> 
+                      <span class = "name">${place.type}</span>
+                      <br>
+                      <span class = "name">${place.address_line_1}</span>
+                      <br>
+                      <span class = "name">${place.city}</span>
+                      <br>
+                      <span class = "name">${place.zip}</span>
                   </li> 
                   `;
     }).join('');

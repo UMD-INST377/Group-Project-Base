@@ -6,7 +6,23 @@ body {
     background-color: white;
 }
 .navbar {
-    background-color: hsl(347, 90%, 96%);
+    background-color: #8499b1;
+}
+
+.fa-facebook{
+    color: #3b5998;
+}
+
+.fa-twitter{
+    color: #1DA1F2;
+}
+
+.fa-instagram{
+    color: #bc2a8d;
+}
+
+#menu-color{
+    color: black;
 }
 
 /* THIS IS THE SLIDE CONTENT */
@@ -297,3 +313,15 @@ body {
 
 .has-background-shimmering-blush {
     background-color: #ffd4ca;
+}
+
+/* SOCIAL MEDIA */
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+  }

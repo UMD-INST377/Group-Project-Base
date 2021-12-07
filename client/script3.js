@@ -26,5 +26,5 @@ async function getByID() {
     `
 }
 
-const send = document.querySelector('#submitID');
+const send = document.querySelector('#submit');
 send.onclick = getByID;

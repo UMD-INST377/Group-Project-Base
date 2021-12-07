@@ -24,4 +24,3 @@ export default {
     dialect: 'mysql'
   }
 };
-

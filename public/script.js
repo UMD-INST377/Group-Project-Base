@@ -88,8 +88,7 @@ async function windowsAction() {
   }
   getHolidaySongs();
 
-  
-   async function getUSTopSongs() {
+  async function getUSTopSongs() {
     const endPoint = await fetch('./api/usChart');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#ustopsongsContainer');

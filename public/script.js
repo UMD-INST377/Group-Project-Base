@@ -88,17 +88,18 @@ async function windowsAction() {
   }
   getHolidaySongs();
 
-  async function getUSTopSongs() {
-    const endPoint = await fetch('./api/ustopSongs');
+  
+   async function getUSTopSongs() {
+    const endPoint = await fetch('./api/usChart');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#ustopsongsContainer');
 
     function displayPlaylists() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
-      const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
-      }).join('');
+      const html = songs.map((song) => `<ul>
+            <li><span class='song_name'>${song.song_name}</span></li>
+        </ul>`).join('');
       songContainer.innerHTML = html;
     }
 
@@ -107,16 +108,16 @@ async function windowsAction() {
   getUSTopSongs();
 
   async function getGlobalTopSongs() {
-    const endPoint = await fetch('./api/globaltopSongs');
+    const endPoint = await fetch('./api/globalCharts');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#globaltopsongsContainer');
 
     function displayPlaylists() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
-      const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
-      }).join('');
+      const html = songs.map((song) => `<ul>
+            <li><span class='song_name'>${song.song_name}</span></li>
+        </ul>`).join('');
       songContainer.innerHTML = html;
     }
 

@@ -3,6 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import crash_information from '../models/crash_information.js';
 
 const router = express.Router();
 

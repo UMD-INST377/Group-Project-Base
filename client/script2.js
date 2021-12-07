@@ -13,8 +13,8 @@ async function editDatabase() {
     });
     console.log(response);
 }
-const searchInput = document.querySelector('#jeremy')
-searchInput.addEventListener('input', editDatabase)
+//const searchInput = document.querySelector('#jeremy')
+//searchInput.addEventListener('input', editDatabase)
 
 const send = document.querySelector('#submit');
 send.onclick = editDatabase;

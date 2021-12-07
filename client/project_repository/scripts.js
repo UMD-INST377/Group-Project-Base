@@ -1,7 +1,12 @@
 // test
 async function windowActions() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> ff0de70a0e36165f07f12e8094a49736e7ad28a5
   const endpoint = '/api/listofRestaurants';
   const categories = [];
+
 
   const request = await fetch(endpoint);
   const json = await request.json();

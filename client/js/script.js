@@ -42,6 +42,60 @@ function displaySuggestions(event){
   suggestions.innerHTML = html;
 }
 
+  let filterData;
+  if(event.target.id === 'upper-acceptance-rate'){
+    filterData = data.data.filter((item) => item.acceptence_rate > 72)
+  }else if(event.target.id === 'middle-acceptance-rate'){
+    console.log('middle acceptance rate')
+    filterData = data.data.filter((item) => item.acceptence_rate >= 55 && item.acceptence_rate < 71);
+  }else{
+    filterData = data.data.filter((item) => item.acceptence_rate < 55);
+  }
+  const html = filterData.map((item) => 
+  `
+  <li>
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">${item.university_name}</p>
+            <p class="subtitle is-6">${item.univ_location}</p>
+          </div>
+        </div>
+      </div>
+      <footer class="card-footer">
+        <a href="/university/${item.acceptence_rate}/" class="card-footer-item">Read More</a>
+      </footer>
+    </div>
+  </li>
+  `
+  ).join('');
+  const suggestions = document.querySelector('.results');
+  suggestions.innerHTML = html
+}
+
+async function initAcceptanceRadioButtons() {
+  const url = '/api/Admissions_rate';
+  data = [];
+
+  const request = await fetch(url);
+  if (request.ok) {
+    data = await request.json();
+
+    const lowerScoreButton = document.querySelector('#lower-acceptance-rate');
+    const middleScoreButton = document.querySelector('#middle-acceptance-rate');
+    const upperScoreButton = document.querySelector('#upper-acceptance-rate');
+
+    upperScoreButton.addEventListener('change', displaySuggestions);
+    middleScoreButton.addEventListener('change', displaySuggestions);
+    lowerScoreButton.addEventListener('change', displaySuggestions);
+  } else{
+    console.log('messed up')
+  }
+}
+
+initAcceptanceRadioButtons()
+
 
 /* initializes sat radiobuttons so suggestions are displayed are displayed
 according to what button is selected*/

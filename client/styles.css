@@ -3,12 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-#wrapper{
-    display: flex;
-    background-image:url('https://cdn-adventures-live.azureedge.net/adventurescache/0/1/0/9/e/b/0109ebe6e25b8c67d497a80cc8a99c0f6d00ce5b.jpg');
-    background-repeat:no-repeat;
-    background-size:cover;
-}
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    }
 
 /* home page search bar. */
 .container{
@@ -84,7 +85,15 @@
     width: 300px;
 }
 
-/*css for add_a_volcano input*/
+/*css for add_a_volcano*/
+.form-input-container {
+    display: flex;
+    justify-content: center;  
+    margin:auto;
+    margin-top: 100px; 
+    align-items: center;
+    
+}
 .volcano_form input{
     margin-bottom: 17px;
     border: 0px;
@@ -97,6 +106,22 @@
 html {
     height: 100%;
 }
+
+#wrapper{
+    display: flex;
+    background-image:url('https://cdn-adventures-live.azureedge.net/adventurescache/0/1/0/9/e/b/0109ebe6e25b8c67d497a80cc8a99c0f6d00ce5b.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.image{
+    width:300px;
+}
+
+#submit{
+    float: right;
+}
+
 
 /*css for formsuccess*/
 #submissiontitle {

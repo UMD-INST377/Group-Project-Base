@@ -1,6 +1,12 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# West Coast Earthquake Database
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+### Description
+It can often be difficult to find detailed information on recent earthquakes, as available data is spread out among multiple databases and usually lacks intuitive UI necessary for use by the general public. To reduce this issue, we created a web page that works with a database containing information about west coast earthquakes, allowing users to browse entries, search by several different categories, and update the database themselves.
+
+### Link to site
+[https://stark-beach-65958.herokuapp.com/](https://stark-beach-65958.herokuapp.com/)
+
+### Target Browsers
+!(/images/firefox-logo-small.png)
+!(/images/Google_Chrome_icon_(2011).png)
+!(/images/Microsoft_Edge_logo_(2019).svg.png)

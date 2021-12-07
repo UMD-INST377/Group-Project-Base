@@ -47,15 +47,15 @@ router.route('/price')
   .post(async(req, res) => {
     try {
       const newPrice = await db.sequelizeDB.query(
-        price.post,{
+        price.post, {
           replacements: {
             price_id: req.body.price_id,
             price_website: req.body.price_website,
             listed_price: req.body.listed_price
+
           }
         }
       );
-      console.log(price.post)
       res.send(newPrice);
       console.log('Insert works')
     } catch (err) {
@@ -67,9 +67,9 @@ router.route('/price')
   .delete(async(req, res) => {
     try {
       const removePrice = await db.sequelizeDB.query(
-        price.remove,{
+        price.remove, {
           replacements: {
-            price_id: req.body.price_id
+            price_id: req.body.price_id,   
           }
         }
       );

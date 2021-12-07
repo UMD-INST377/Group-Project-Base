@@ -7,6 +7,6 @@ It can often be difficult to find detailed information on recent earthquakes, as
 [https://stark-beach-65958.herokuapp.com/](https://stark-beach-65958.herokuapp.com/)
 
 ### Target Browsers
-![firefox](/images/firefox-logo-small.png =50x50)
+<img src="/images/firefox-logo-small.png" width="50" height="50" />
 ![chrome](/images/Google_Chrome_icon_(2011).png =50x50)
 ![edge](/images/Microsoft_Edge_logo_(2019).svg.png =50x50)

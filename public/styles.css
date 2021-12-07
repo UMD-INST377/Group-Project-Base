@@ -4,7 +4,14 @@ nav {
     padding: 20px;
     margin-bottom: 20px;
 }
-
+h1{
+    text-align: center;
+    padding-bottom: 50px;
+}
+h2{
+    text-align: center;
+    padding-bottom:20px
+}
 .nav a {
     color: white;
     font-size: 125%;
@@ -79,9 +86,8 @@ nav {
 .library_search {
     display: flex;
     justify-content: center;
-    font-size: 40px;
-    
-
-    
-
+    margin:auto;
+    padding-bottom: 40px;
+    font-size: 50px;
+    max-width: 400px;
 }

@@ -1,15 +1,15 @@
 async function editDatabase() {
-    console.log(document.querySelector('form'))
-    const raw = document.querySelector('form')
-    const data = new FormData(raw).entries()
-    const dataArray = Array.from(data);
-    console.log(dataArray)
+    const id = document.querySelector('#id').value
+    const city = document.querySelector('#city').value
+    const date = document.querySelector('#date').value
+    const magnitude = document.querySelector('#magnitude').value
+    const answer = document.querySelector('input[type=radio]:checked').value
     const response = await fetch('/api/', {
-        method: dataArray[4][1],
+        method: answer,
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(dataArray),
+        body: JSON.stringify({id: id, city: city, date: date, magnitude: magnitude}),
     });
     console.log(response);
 }

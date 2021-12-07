@@ -37,3 +37,14 @@ input .button {
     display: flex;
     justify-content: center;
 }
+.table th {
+    background-color:#78c2ce;
+  }
+  .atable{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 960px;
+    display: flex;
+    justify-content: center;
+  }

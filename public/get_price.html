@@ -5,7 +5,7 @@
         <title>Delete Game Price</title>
         <link rel='stylesheet' href='morris_style.css'/>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'/>
-        <script src='delete_price.js'></script>
+        <script src='get_price.html'></script>
         
     </head>
     <body>
@@ -61,37 +61,34 @@
             </div>
           </nav>
         
-          <div class="container">
-            <a class="button is-black" href="get_price.html">Get</a>
-            <a class="button is-black" href="update_price.html">Update</a>
-            <a class="button is-black" href="delete_price.html">Delete</a>
-            <a class="button is-black" href="Insert_price.html">Insert</a>
-          </div>
-        </br>
-    
-          <h1 class="title is-light">Delete a Game Price!</h1>
+         <div class="container">
+        <a class="button is-black" href="get_price.html">Get</a>
+        <a class="button is-black" href="update_price.html">Update</a>
+        <a class="button is-black" href="delete_price.html">Delete</a>
+        <a class="button is-black" href="Insert_price.html">Insert</a>
+      </div>
+    </br>
 
           
-          <form class="form" id='price' >
-            <div class="columns">
-                <div class="column">
-                  <div class="field">
-                    <label class="label" for = 'price_id'>Price Id</label>
-                    <div class="control">
-                      <input class="input" type="text" name = 'price_id'>
-                    </div>
-                  </div>
+    <h1 class="title is-light">Get Game Price!</h1>
+    <div class='atable'>
+    <table class = "table is-striped is-bordered">
+        <thead>
+            <tr>
+                <th>Price Id</th>
+                <th>Price website</th>
+                <th>Listed Price</th>
+                
+            </tr>
+        </thead>
+        <tbody id = 'table'>
+          
+        </tbody>
 
-                      
-                      <button  class="button" id= "delete_button">Delete</button>
-                </div>
-                      
-                </div>
-
-          </form>
-
-      
         
-         
+      </table>
+    </div>
+
     </body>
 </html>
+      

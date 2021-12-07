@@ -265,7 +265,7 @@ router.post('/', async (req, res) => {
           id: req.body.id, 
           city: req.body.city,
           date: req.body.date,
-          time: req.body.time,
+          time: '',
           magnitude: req.body.magnitude
         },
         type: sequelize.QueryTypes.CREATE

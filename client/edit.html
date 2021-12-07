@@ -21,7 +21,7 @@
         </div>
         <div class="field">
           <label for='date' class="label">Date</label>
-          <input id='date' name='date' type='text' />
+          <input id='date' name='date' type='text' placeholder='Must be in datetime format (e.g. 1954-12-21 00:00:00)'/>
         </div>
         <div class="field">
             <label for='magnitude' class="label">Magnitude</label>
@@ -37,7 +37,8 @@
             <input name="answer" value="DELETE" type="radio">
             <label class="radio">DELETE</label>
         </div>
-        <button id="submit">Submit</button>
+        <button id="submit" type='button'>Submit</button>
+        <ul id='error-message'></ul>
       </form>
       <script src='script2.js' async defer></script>
 </body>

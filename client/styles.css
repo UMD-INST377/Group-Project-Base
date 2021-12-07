@@ -56,8 +56,14 @@ nav div {
     max-width: 50vw !important;
     width: 50vw !important;
 }
+.searchbox {
+    width: 210px;
+}
 
+#date, #city, #id, #magnitude {
+    width: 350px;
+}
 .vertical-center-wrapper {
     margin-top: 30vh;
     height: 20vh;
-}
+  }

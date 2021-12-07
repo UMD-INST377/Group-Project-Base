@@ -1,3 +1,4 @@
+// test
 async function windowActions() {
   const endpoint = 'http://localhost:3000/api/listofRestaurants';
   const categories = [];

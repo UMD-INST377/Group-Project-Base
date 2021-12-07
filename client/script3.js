@@ -4,6 +4,8 @@ async function getByID() {
     console.log(address)
     const earthquake = await fetch(address).then(response => response.json())
     console.log(earthquake)
+    //Below is the HTML that contains the data on the earthquake with an ID matching the
+    //input in search.html
     message.innerHTML = `
     <li>                    
         <table class='result'>

@@ -13,9 +13,26 @@ a {
     justify-content: space-evenly;
 }
 
-.title {
+.description {
     display: flex;
     justify-content: center;
+}
+
+.description p {
+    display: flex;
+    justify-content: center;
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+
+        display: flex;
+        justify-content: center;
+        align-self: center;
 }
 
 .result {
@@ -32,13 +49,13 @@ a {
 
 .search{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-#back {
-    height: min-content;
+.input {
+    max-width: 50vw !important;
+    width: 50vw !important;
 }
-
 .searchbox {
     width: 210px;
 }
@@ -46,3 +63,7 @@ a {
 #date, #city, #id, #magnitude {
     width: 350px;
 }
+.vertical-center-wrapper {
+    margin-top: 30vh;
+    height: 20vh;
+  }

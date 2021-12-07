@@ -9,14 +9,22 @@
     <title>West Coast Earthquake Results</title>
 </head>
 <body>
+    <nav class="level">
+        <p class="level-item has-text-centered">
+          <a class="link is-info"  onclick="window.location.href = 'index.html'">Home</a>
+        </p>
+        <div><h1 class="title level-item has-text-centered">West Coast Earthquake Search</h1></div>
+        <p class="level-item has-text-centered"  onclick="window.location.href = 'edit.html'">
+          <a class="link is-info">Data Entry</a>
+        </p>
+     </nav>
+
     <div class='search'>
-        <button id='back' onclick="window.location.href = 'index.html'">Home page</button>
         <form class="search-form">
-            <input type="text" class="searchbox" placeholder="Type in City, Date, or Magnitude">
+            <input type="text" class="search-box input is-medium " placeholder="Type in City, Date, or Magnitude">
             <ul class="suggestions">
             </ul>
         </form>
-        <div></div>
     </div>
     <script src="script.js"></script>
 </body>

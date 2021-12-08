@@ -1,5 +1,4 @@
 const displayTableData = async () => {
-    let res = await data.json();
   const data = await fetch('https://polar-mesa-33091.herokuapp.com/api/foodInspectionPG', { mode: 'no-cors' });
   const res = await data.json();
 

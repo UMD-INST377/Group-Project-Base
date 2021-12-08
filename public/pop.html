@@ -13,11 +13,8 @@
         <!--Header of the Main Page-->
         <nav>
             <ul class="nav nav-fill">
-                <li class="nav-item">
+                <li class="nav-item navbar-brand">
                     <a class="nav-link" href="index.html">Spotify DB Home</a>
-                </li>
-                <li class="nav-item">
-                    <input type="text" placeholder="Search">
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="my_library.html">My Library</a>
@@ -26,27 +23,23 @@
                     <a class="nav-link" href="about.html">About</a>
                 </li>
                 <li class="nav-item">
-                    <button type="button" onclick="location.href='sign_in.html'">Sign In</button>
+                    <button type="button" class="button is-outlined" onclick="location.href='sign_in.html'">Sign In</button>
                 </li>
             </ul>
         </nav>
 
-        <div class="container">
+        <div class="background">
             <h2>Pop Songs</h2>
-            <div>
-                <label>Sort By:</label>
-                <select>
-                    <option>Date</option>
-                    <option>Artist</option>
-                </select>
-            </div>
+        
+            <div class="container">
 
-            <div id="popsongsContainer" class="carousel">
+                <div id="popsongsContainer" class="carousel">
    
+                </div>
             </div>
         </div>
         <!--Footer-->
-        <div class="footer">
+        <div class="footers">
             <p>&copy; 2021 - INST377 Group 10. All Rights Reserved</p>
         </div>
         <script src='script.js'></script>

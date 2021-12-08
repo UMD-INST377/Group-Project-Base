@@ -236,9 +236,9 @@ router.route('/popSongs')
   .put(async (req, res) => {
     try {
       // add id for endpoint
-      const albumId = req.body.album_id;
-      const albumName = req.body.album_name;
-      const sqlStatement = `UPDATE albums SET album_name = '${albumName}' WHERE album_id = ${albumId};`;
+      const artist = req.body.song_artist;
+      const songName = req.body.song_name;
+      const sqlStatement = `UPDATE get_pop_songs SET Song = '${songName}' WHERE Artist = '${artist}';`;
       const result = await db.sequelizeDB.query(sqlStatement, {
         type: sequelize.QueryTypes.UPDATE
       });
@@ -293,9 +293,9 @@ router.route('/rapSongs')
   .put(async (req, res) => {
     try {
       // add id for endpoint
-      const albumId = req.body.album_id;
-      const albumName = req.body.album_name;
-      const sqlStatement = `UPDATE albums SET album_name = '${albumName}' WHERE album_id = ${albumId};`;
+      const songId = req.body.song_id;
+      const songName = req.body.song_name;
+      const sqlStatement = `UPDATE songs SET song_name = '${songName}' WHERE song_id = ${songId};`;
       const result = await db.sequelizeDB.query(sqlStatement, {
         type: sequelize.QueryTypes.UPDATE
       });
@@ -317,22 +317,22 @@ router.route('/rapSongs')
     } catch (err) {
       res.json(err);
     }
-  })
-  .delete(async (req, res) => {
-    try {
-      // add id for endpoint
-      const albumId = req.body.album_id;
-      const sqlStatement = `DELETE from albums WHERE album_id = ${albumId};`;
-      const result = await db.sequelizeDB.query(sqlStatement, {
-        type: sequelize.QueryTypes.DELETE
-      });
-      console.log('deleted album');
-      res.json(result);
-    } catch (err) {
-      res.json({error: 'Server error, try again!'});
-    }
   });
-
+router.delete('/rapSongs/:id', async (req, res) => {
+  try {
+    // add id for endpoint
+    const songId = req.params.id;
+    const sqlStatement = `DELETE from songs WHERE song_id = ${songId};`;
+    await db.sequelizeDB.query('SET FOREIGN_KEY_CHECKS = 0', null);
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.DELETE
+    });
+    console.log('deleted album');
+    res.json(result);
+  } catch (err) {
+    res.json(err);
+  }
+});
 /// Holiday songs endpoint ///
 router.route('/holidaySongs')
   .get(async (req, res) => {

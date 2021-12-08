@@ -8,7 +8,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = playlists.map((playlist) => {
-        return `<button class="playlist-button" type="button">${playlist.playlist_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${playlist.playlist_name}</button>`;
       }).join('');
       playlistContainer.innerHTML = html;
     }
@@ -26,7 +26,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = albums.map((album) => {
-        return `<button class="playlist-button" type="button">${album.album_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${album.album_name}</button>`;
       }).join('');
       albumContainer.innerHTML = html;
     }
@@ -43,7 +43,17 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<ul>
+                  <li>
+                    <span class='song_name'>
+                      ${song.song_name}
+                      <form action="/api/popSongs" method="delete">
+                        <button class="button is-warning"  type="submit">Delete</button>
+                        <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+                      </form>
+                    </span>
+                  </li>
+                </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -61,7 +71,17 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<ul>
+        <li>
+          <span class='song_name'>
+            ${song.song_name}
+            <form action="/api/rapSongs" method="delete">
+              <button class="button is-warning"  type="submit">Delete</button>
+              <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+            </form>
+          </span>
+        </li>
+      </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -79,7 +99,17 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<ul>
+        <li>
+          <span class='song_name'>
+            ${song.song_name}
+            <form action="/api/holidaySongs" method="post">
+              <button class="button is-warning"  type="submit">Delete</button>
+              <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+            </form>
+          </span>
+        </li>
+      </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -98,7 +128,7 @@ async function windowsAction() {
       // eslint-disable-next-line arrow-body-style
       // `<ul><li><span class='song_name'>${song.song_name}</span></li></ul>`).join('');
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -116,7 +146,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -131,8 +161,10 @@ async function windowsAction() {
     const podcastContainer = document.querySelector('#topPodcastsContainer');
 
     function displayPodcasts() {
+      // eslint-disable-next-line no-template-curly-in-string
+      // eslint-disable-next-line arrow-body-style
       const html = podcasts.map((podcast) => {
-        return `<button class="playlist-button" type="button">${podcast.podcast_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${podcast.podcast_name}</button>`;
       }).join('');
       podcastContainer.innerHTML = html;
     }
@@ -141,5 +173,95 @@ async function windowsAction() {
   }
   getTopPodcasts();
 }
+
+async function getartists() {
+  const endPoint = await fetch('./api/Artists');
+  const artists = await endPoint.json();
+  const artistcontainer = document.querySelector('#artistcontainer');
+
+  function displayartists() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = artists.map((artist) => {
+      return `<button class="playlist-button box column" type="button">${artist.artist_name}</button>`;
+    }).join('');
+    artistcontainer.innerHTML = html;
+  }
+
+  displayartists();
+}
+getartists();
+
+async function getAriana() {
+  const endPoint = await fetch('./api/arianaSongs');
+  const songs = await endPoint.json();
+  const arianaContainer = document.querySelector('#arianaContainer');
+
+  function displayAriana() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    arianaContainer.innerHTML = html;
+  }
+
+  displayAriana();
+}
+getAriana();
+
+async function getBadbunny() {
+  const endPoint = await fetch('./api/badBunnySongs');
+  const songs = await endPoint.json();
+  const BadbunnyContainer = document.querySelector('#BadbunnyContainer');
+
+  function displayBadbunny() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    BadbunnyContainer.innerHTML = html;
+  }
+
+  displayBadbunny();
+}
+getBadbunny();
+
+async function getBTS() {
+  const endPoint = await fetch('./api/btsSongs');
+  const songs = await endPoint.json();
+  const BTSContainer = document.querySelector('#BTSContainer');
+
+  function displayBTS() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    BTSContainer.innerHTML = html;
+  }
+
+  displayBTS();
+}
+getBTS();
+
+async function getSongs() {
+  const endPoint = await fetch('./api/songs');
+  const songs = await endPoint.json();
+  const songsContainer = document.querySelector('#songsContainer');
+
+  function displaySongs() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    songsContainer.innerHTML = html;
+  }
+
+  displaySongs();
+}
+getSongs();
 
 window.onload = windowsAction();

@@ -8,7 +8,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = playlists.map((playlist) => {
-        return `<button class="playlist-button" type="button">${playlist.playlist_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${playlist.playlist_name}</button>`;
       }).join('');
       playlistContainer.innerHTML = html;
     }
@@ -26,7 +26,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = albums.map((album) => {
-        return `<button class="playlist-button" type="button">${album.album_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${album.album_name}</button>`;
       }).join('');
       albumContainer.innerHTML = html;
     }
@@ -43,6 +43,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
+
         return `<ul>
                   <li>
                     <span class='song_name'>
@@ -54,6 +55,7 @@ async function windowsAction() {
                     </span>
                   </li>
                 </ul>`;
+
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -71,9 +73,11 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
+
         return `<ul>
         <li><span class='song_name'>${song.song_name}</span></li>
     </ul>`;
+
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -91,9 +95,11 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
+
         return `<ul>
         <li><span class='song_name'>${song.song_name}</span></li>
     </ul>`;
+
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -112,7 +118,7 @@ async function windowsAction() {
       // eslint-disable-next-line arrow-body-style
       // `<ul><li><span class='song_name'>${song.song_name}</span></li></ul>`).join('');
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -130,7 +136,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -146,7 +152,7 @@ async function windowsAction() {
 
     function displayPodcasts() {
       const html = podcasts.map((podcast) => {
-        return `<button class="playlist-button" type="button">${podcast.podcast_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${podcast.podcast_name}</button>`;
       }).join('');
       podcastContainer.innerHTML = html;
     }

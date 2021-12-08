@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" class="has-background-warning-light">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <title>West Coast Earthquakes</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <title>West Coast Earthquakes</title>
 </head>
 
 <body>
-    <form id="jeremy">
-        <div class="field">
-          <label for='Earthquake ID' class="label">Earthquake ID</label>
-          <input id='id' name='id' type='text' />
-        </div>
-        <div class="field">
-          <label for='city' class="label">City</label>
-          <input id='city' name='city' type='text' />
-        </div>
-        <div class="field">
-          <label for='date' class="label">Date</label>
-          <input id='date' name='date' type='text' placeholder='Must be in datetime format (e.g. 1954-12-21 00:00:00)'/>
-        </div>
-        <div class="field">
-            <label for='magnitude' class="label">Magnitude</label>
-            <input id='magnitude' name='magnitude' type='text' />
-          </div>
-        <div class="field">
-            <input name="answer" value ="PUT" type="radio">
-            <label class="radio">PUT</label>
-            
-            <input name="answer" value = "POST" type="radio">
-            <label class="radio">POST</label>
+  <nav class="level">
+    <button id="myBtn" onclick="window.location.href='index.html'">Home</button>
+    <div>
+      <h1 class="title level-item has-text-centered">West Coast Earthquake Data Entry</h1>
+    </div>
+    <button id="myBtn" onclick="window.location.href = 'about.html'">About</button>
+  </nav>
 
-            <input name="answer" value="DELETE" type="radio">
-            <label class="radio">DELETE</label>
-        </div>
-        <button id="submit" type='button'>Submit</button>
-        <ul id='error-message'></ul>
-      </form>
-      <script src='script2.js' async defer></script>
+  <div class="columns is-multiline is-centered is-vcentered">
+    <form id="jeremy" class="box has-background-warning-light">
+      <div class="field">
+        <label for='Earthquake ID' class="label">Earthquake ID</label>
+        <input id='id' name='id' type='text' />
+      </div>
+      <div class="field">
+        <label for='city' class="label">City</label>
+        <input id='city' name='city' type='text' />
+      </div>
+      <div class="field">
+        <label for='date' class="label">Date</label>
+        <input id='date' name='date' type='text' placeholder='Must be in datetime format (e.g. 1954-12-21 00:00:00)' />
+      </div>
+      <div class="field">
+        <label for='magnitude' class="label">Magnitude</label>
+        <input id='magnitude' name='magnitude' type='text' />
+      </div>
+      <div class="field">
+        <input name="answer" value="PUT" type="radio">
+        <label class="radio">PUT</label>
+
+        <input name="answer" value="POST" type="radio">
+        <label class="radio">POST</label>
+
+        <input name="answer" value="DELETE" type="radio">
+        <label class="radio">DELETE</label>
+      </div>
+      <button id="submit" type='button'>Submit</button>
+      <ul id='error-message'></ul>
+    </form>
+    <script src='script2.js' async defer></script>
+  </div>
 </body>
 
 </html>

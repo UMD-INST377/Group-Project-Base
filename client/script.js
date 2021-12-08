@@ -19,7 +19,7 @@ const ratingValue = document.getElementById('rating-value');
 
 let output = '';
 
-const url = 'http://localhost:3000/api/songs_project';
+const url = '/api/songs_project';
 
 async function windowActions() {
   // Retrieve songs

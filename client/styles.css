@@ -96,6 +96,7 @@ nav div {
     margin: 10px;
 }
 
+
 #content {
     display: flex;
     margin: 20px;
@@ -111,4 +112,9 @@ nav div {
     width: 60px;
     height: 30px;
     cursor: pointer;
+}
+
+.formWrapper {
+    text-align: center;
+    margin: 25px;
 }

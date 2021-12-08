@@ -24,7 +24,7 @@ h2{
     margin-bottom: 20px;
 }
 
-.footer {
+.footers {
     background-color: rgb(30, 215, 96);
     color: white;
     text-align: center;
@@ -100,10 +100,3 @@ div ul {
 li {
     display: inline-block;
 }
-
-    margin:auto;
-    padding-bottom: 40px;
-    font-size: 50px;
-    max-width: 400px;
-}
-

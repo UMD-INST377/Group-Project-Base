@@ -88,8 +88,7 @@ async function windowsAction() {
   }
   getHolidaySongs();
 
-  
-   async function getUSTopSongs() {
+  async function getUSTopSongs() {
     const endPoint = await fetch('./api/usChart');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#ustopsongsContainer');
@@ -97,9 +96,10 @@ async function windowsAction() {
     function displayPlaylists() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
-      const html = songs.map((song) => `<ul>
-            <li><span class='song_name'>${song.song_name}</span></li>
-        </ul>`).join('');
+      // `<ul><li><span class='song_name'>${song.song_name}</span></li></ul>`).join('');
+      const html = songs.map((song) => {
+        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+      }).join('');
       songContainer.innerHTML = html;
     }
 
@@ -115,9 +115,9 @@ async function windowsAction() {
     function displayPlaylists() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
-      const html = songs.map((song) => `<ul>
-            <li><span class='song_name'>${song.song_name}</span></li>
-        </ul>`).join('');
+      const html = songs.map((song) => {
+        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+      }).join('');
       songContainer.innerHTML = html;
     }
 
@@ -131,9 +131,9 @@ async function windowsAction() {
     const podcastContainer = document.querySelector('#topPodcastsContainer');
 
     function displayPodcasts() {
-      const html = podcasts.map((podcast) => `<ul>
-            <li><span class='podcast_name'>${podcast.podcast_name}</span></li>
-        </ul>`).join('');
+      const html = podcasts.map((podcast) => {
+        return `<button class="playlist-button" type="button">${podcast.podcast_name}</button>`;
+      }).join('');
       podcastContainer.innerHTML = html;
     }
 

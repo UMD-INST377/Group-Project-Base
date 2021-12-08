@@ -177,7 +177,7 @@ async function getartists() {
 getartists();
 
 async function getAriana() {
-  const endPoint = await fetch('./api//arianaSongs');
+  const endPoint = await fetch('./api/arianaSongs');
   const songs = await endPoint.json();
   const arianaContainer = document.querySelector('#arianaContainer');
 
@@ -193,5 +193,41 @@ async function getAriana() {
   displayAriana();
 }
 getAriana();
+
+async function getBadbunny() {
+  const endPoint = await fetch('./api/badBunnySongs');
+  const songs = await endPoint.json();
+  const BadbunnyContainer = document.querySelector('#BadbunnyContainer');
+
+  function displayBadbunny() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    BadbunnyContainer.innerHTML = html;
+  }
+
+  displayBadbunny();
+}
+getBadbunny();
+
+async function getBTS() {
+  const endPoint = await fetch('./api/btsSongs');
+  const songs = await endPoint.json();
+  const BTSContainer = document.querySelector('#BTSContainer');
+
+  function displayBTS() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    BTSContainer.innerHTML = html;
+  }
+
+  displayBTS();
+}
+getBTS();
 
 window.onload = windowsAction();

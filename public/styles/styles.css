@@ -46,10 +46,11 @@
 }
 .census-data {
     padding-top: 20px;
+    padding-bottom: 5px;
 }
 .community-data{ 
 
-  padding-bottom: 20px;
+  padding-bottom: 5px;
 }
 
 .col {
@@ -74,6 +75,7 @@ body {
 .community-data .table {
     width: 300px;
 }
+
 
 .census-table .table {
   display: block; /* important */

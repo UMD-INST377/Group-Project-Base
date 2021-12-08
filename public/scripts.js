@@ -1,6 +1,6 @@
-async function fetchRequest(url) {
+async function fetchRequest(result) {
   try {
-    const request = await fetch(url);
+    const request = await fetch(result);
     const json = await request.json();
     return json;
   } catch (err) {
@@ -52,7 +52,7 @@ async function mainThread() {
   }).addTo(mymap);
 
   const fetchElement = document.querySelector('.fetch');
-  const data = await fetchRequest(url);
+  const data = await fetchRequest(result);
   const dataSet = [];
 
   console.log('external dataset', data);

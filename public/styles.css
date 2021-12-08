@@ -10,8 +10,9 @@ h1{
 }
 h2{
     text-align: center;
-    padding-bottom:20px
+    padding-bottom:20px;
 }
+
 .nav a {
     color: white;
     font-size: 125%;
@@ -22,6 +23,7 @@ h2{
     flex-flow: row wrap;
     justify-content: space-around;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .footers {
@@ -39,9 +41,8 @@ h2{
 .playlist-button {
     width: 300px;
     height: 300px;
-    justify-content: center;
-    border-radius: 5px;
-    float: left;
+    border-radius: 10px;
+    display: inline-block;
     margin: 5px;
 }
 

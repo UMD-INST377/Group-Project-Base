@@ -14,25 +14,21 @@
   <nav class="level">
     <button id="myBtn" onclick="window.location.href='index.html'">Home</button>
     <div>
-      <h1 class="title level-item has-text-centered">West Coast Earthquake Search</h1>
+      <h1 class="title level-item has-text-centered">West Coast Earthquake Search By ID</h1>
     </div>
     <button id="myBtn" onclick="window.location.href = 'edit.html'">Data Entry</button>
   </nav>
 
-  <div class="wrapper">
-    <div class="container">
-      <div class="columns is-multiline is-centered is-vcentered">
-        <form id="IDsearch" class="box has-background-warning-light">
-          <div class="field">
-            <label for='Earthquake ID' class="label">Earthquake ID</label>
-            <input id='earthquakeid' name='earthquakeid' type='text' />
-          </div>
-          <button id="submit" type='button'>Submit</button>
-          <ul id='results'></ul>
-        </form>
-        <script src='script3.js'></script>
+  <div class="columns is-multiline is-centered is-vcentered">
+    <form id="IDsearch" class="box has-background-warning-light">
+      <div class="field">
+        <label for='Earthquake ID' class="label">Earthquake ID</label>
+        <input id='earthquakeid' name='earthquakeid' type='text' />
       </div>
-    </div>
+      <button id="submit" type='button'>Submit</button>
+      <ul id='results'></ul>
+    </form>
+    <script src='script3.js'></script>
   </div>
 
 </body>

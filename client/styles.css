@@ -81,13 +81,12 @@ nav div {
 .vertical-center-wrapper {
     margin-top: 30vh;
     height: 20vh;
-  }
+}
 
 #container {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 25px;
 }
 
 #text {

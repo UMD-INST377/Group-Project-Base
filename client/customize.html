@@ -2,9 +2,12 @@
 <html lang="en">
     <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Group 22 Final Project</title>
     <link rel='stylesheet' href='styles.css'/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     </head>
 
@@ -18,71 +21,74 @@
               <div class='Home'><a href='index.html'>Home</a></div>
               <div class='Home'><a href='about.html'>About Us</a></div>
               <div class='Home'><a href='database.html'>Music Database</a></div>
-              <div class='Home'><a href='customize.html'>Got Feeback? Let us Know</a></div>
+              <div class='Home'><a href='customize.html'>Got Feeback?</a></div>
             </div>
         </div>
-          
       </div>
 
         <div class='box' has-text-warning>
-            <form action='/songs_project/' method="get" class="form-row">
-             <button>song table</button>
-            </form>
-            <br>
 
-            <h1>Edit Music Database</h1>
+            <h1>Add your own changes to our Music Database!</h1>
             <hr>
-              <div class="song-form">
-                <form onsubmit="event.preventDefault();submitSongForm();" autocomplete="off">
-                  <div>
-                    <label>Song title: </label><label class="validation-error hide" id="songValidationError">*This field is required!*</label>
-                    <input type="text" name="fullName" id="song_name">
-                  </div>
-                  <div>
-                    <label>Album name:</label>
-                    <input type="text" name="album_name" id="album_name">
-                  </div>
-                  <div>
-                    <label>Artist first name:</label>
-                    <input type="text" name="first_name" id="first_name">
-                  </div>
-                  <div>
-                    <label>Artist last name:</label>
-                    <input type="text" name="last_name" id="last_name">
-                  </div>
-                  <div>
-                    <label>Rating out of 5 stars:</label>
-                    <input type="number" min="0" step="1" max="5" name="rating" id="rating">
-                  </div>
-                  <div class="form-action-buttons">
-                    <input type="submit" value="Submit">
-                  </div>
-                </form>
-            </div>
 
-              <br/>
+            <!-- Another example with a different look -->
+            <div class='container'>
+              <h4>Enter the details using this form:</h4>
+              <div class="row mt-3">
+                <div class="col-md-4">
+                  <form class="add-song-form">
+          
+                    <!-- For form fields -->
+                    <div class='form-group'>
+                      <label for="title">Song title:</label>
+                      <input type="text" class="form-control" id="title-value">
+                    </div>
+                    
+                    <div class='form-group'>
+                      <label for="album">Album name:</label>
+                      <input type="text" class="form-control" id="album-value">
+                    </div>
 
-            <div class = "song-table">
-              <table class="list" id="song_list">
-                <thead>
-                  <tr>
-                    <th>Song</th>
-                    <th>Album</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Rating</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  To be continued... API will populate table below ... <br>
-                  When songs appear below, there is an EDIT and DELETE button to remove/add songs. <br>
-                  To test, you can input data manually or search the "Music Database" tab.
-                </tbody>
-              </table>
+                    <div class='form-group'>
+                      <label for="first_name">Artist first name:</label>
+                      <input type="text" class="form-control" id="first-name-value">
+                    </div>
+
+                    <div class='form-group'>
+                      <label for="last_name">Artist last name:</label>
+                      <input type="text" class="form-control" id="last-name-value">
+                    </div>
+
+                    <div class='form-group'>
+                      <label for="rating">Rating out of 5 stars:</label>
+                      <div class='form-group col-md-2'>
+                        <input type="number" min="0" step="1" max="5" class="form-control" id="rating-value">
+                      </div>
+                    </div>
+                    <br>
+
+                    <!-- Add submit button  -->
+                    <button type = "submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+              </div>
+
+              <div class="is-size-5", style = "height: 650px; padding: 20px; white-space: nowrap; overflow-y: scroll">
+                <div class="songs-list row">
+
+                <!-- Don't need anymore because added on script.js  -->
+                <!-- <div class="card mt-4 col-md-6 bg-ligt">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Edit</a>
+                    <a href="#" class="card-link">Delete</a>
+                  </div>
+                </div> -->
+          
+              </div>
             </div>
-            
-            <!-- Example with demo data  -->
-            <div id = 'content'></div>>
          
           </div>
 

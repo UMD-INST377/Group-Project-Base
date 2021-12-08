@@ -6,12 +6,14 @@ async function windowActions() {
 
   async function displayTable() {
     const html = players.map((player) => `<tr>
+                        <th>Player ID</th>
                         <th>Player</th>
                         <th>PPG</th> 
                         <th>Assists</th>
                         <th>Team</th>
                     </tr>
                     <tr>
+                        <td>${player.player_id}</td>
                         <td>${player.player_name}</td>
                         <td>${player.ppg}</td> 
                         <td>${player.assists}</td>

@@ -65,22 +65,19 @@ router.route('/nba-players')
   })
   .put(async (req, res) => {
     try {
-      await db.sequelizeDB.query(player.putPlayer,
-        {
+      const updatedPlayer = await db.sequelizeDB.query(player.putPlayer, {
+        type: sequelize.QueryTypes.UPDATE,
+        replacements: {
+          player_id: req.body.player_id,
           ppg: req.body.ppg,
           assists: req.body.assists,
-          team_id: req.body.team_id
-        },
-        {
-          where: {
-            player_id: req.body.player_id
-          }
+          team: req.body.team
         }
-      );
-      res.send('Successfully Updated');
+      });
+      res.json(updatedPlayer);
     } catch (err) {
-      console.log(error);
-      res.json({ error: 'Something wend wrong on the server' });
+      console.error(err);
+      res.send('Server error');
     }
   });
 

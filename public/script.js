@@ -47,7 +47,7 @@ async function windowsAction() {
                   <li>
                     <span class='song_name'>
                       ${song.song_name}
-                      <form action="/api/rapSongs" method="post">
+                      <form action="/api/popSongs" method="delete">
                         <button class="button is-warning"  type="submit">Delete</button>
                         <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
                       </form>
@@ -72,8 +72,16 @@ async function windowsAction() {
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
         return `<ul>
-        <li><span class='song_name'>${song.song_name}</span></li>
-    </ul>`;
+        <li>
+          <span class='song_name'>
+            ${song.song_name}
+            <form action="/api/rapSongs" method="delete">
+              <button class="button is-warning"  type="submit">Delete</button>
+              <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+            </form>
+          </span>
+        </li>
+      </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -92,8 +100,16 @@ async function windowsAction() {
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
         return `<ul>
-        <li><span class='song_name'>${song.song_name}</span></li>
-    </ul>`;
+        <li>
+          <span class='song_name'>
+            ${song.song_name}
+            <form action="/api/holidaySongs" method="post">
+              <button class="button is-warning"  type="submit">Delete</button>
+              <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+            </form>
+          </span>
+        </li>
+      </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -229,5 +245,23 @@ async function getBTS() {
   displayBTS();
 }
 getBTS();
+
+async function getSongs() {
+  const endPoint = await fetch('./api/songs');
+  const songs = await endPoint.json();
+  const songsContainer = document.querySelector('#songsContainer');
+
+  function displaySongs() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    songsContainer.innerHTML = html;
+  }
+
+  displaySongs();
+}
+getSongs();
 
 window.onload = windowsAction();

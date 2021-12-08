@@ -7,6 +7,6 @@ export default `SELECT census_zcta,
     percent_homeowner_without_mortgage,
     percent_rent
 FROM
-    md_census_data mcd
-INNER JOIN tax_credit_companies tcc
-    ON mcd.census_ztca = tcc.company_ztca;`;
+    md_census_data
+INNER JOIN tax_credit_companies 
+    ON md_census_data.census_zcta = tax_credit_companies.company_zcta;`;

@@ -21,11 +21,13 @@
 
   <div class="columns is-multiline is-centered is-vcentered">
     <form id="IDsearch" class="box has-background-warning-light">
-      <div class="field">
-        <label for='Earthquake ID' class="label">Earthquake ID</label>
-        <input id='earthquakeid' name='earthquakeid' type='text' />
+      <div class="formWrapper">
+        <div class="field">
+          <label for='Earthquake ID' class="label">Earthquake ID</label>
+          <input id='earthquakeid' name='earthquakeid' type='text' />
+        </div>
+        <button id="submit" type='button'>Submit</button>
       </div>
-      <button id="submit" type='button'>Submit</button>
       <ul id='results'></ul>
     </form>
     <script src='script3.js'></script>

@@ -20,6 +20,16 @@ https://inst377-vinylweb.herokuapp.com/
 2. Navigate to the directory of the cloned repository. 
 3. Enter **`npm start`** in the directory's terminal to install all dependencies. 
 
+## Running the application on a server
+1. Open the directory, where the [Repository](https://github.com/chihaos1/Group-Project-Base-Vinyl-Web.git) is stored, in VSCode's Terminal or your OS's Terminal
+2. Type into the terminal **`npm start`** and run it by pressing enter. There should be no errors popping up.
+3. In your desired web browser, enter the following URL to view the Application: **`http://localhost:3000/`**
+
+## Running any tests written for the software
+1. Within VSCode, Open a split terminal (or two terminals) in the [Repository](https://github.com/chihaos1/Group-Project-Base-Vinyl-Web.git) directory
+2. In one terminal run **`npm start`**
+3. In the second terminal run **`npm test`**
+
 ## Implementation of API and Endpoints
 **`/api/vinyl`**
 | Method | Purpose |

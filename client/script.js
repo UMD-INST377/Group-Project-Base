@@ -26,6 +26,7 @@ async function mainThread() {
   // fetch request to get the data from the api's
   const collision_type = await fetchRequest('./api/collisionType');
   const crash_information = await fetchRequest('./api/crashInformation');
+  const driver_demographics = await fetchRequest('./api/driverDemographics')
 
   // summing up the number of collision types from the crashInformation
   const numCollType = [];

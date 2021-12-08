@@ -1,0 +1,90 @@
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar {
+  background: linear-gradient(120deg, #ff8800, #ff3300);
+
+}
+
+.navbar-item {
+  color: white;
+}
+
+i {
+  margin-right: 0.2cm;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-item {
+    color: black;
+  }
+
+  .active-page {
+    color: white;
+    background-color: transparent;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative
+  }
+}
+
+.active-page {
+  background-color: black;
+}
+
+.table_wrapper {
+  overflow-x: auto;
+}
+
+.listings {
+  text-align: left;
+  height: 100%;
+}
+
+
+details > summary {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 15em;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border: 1px solid;
+}
+
+img {
+  padding: 0;
+  margin: 0;
+  height: 500px;
+  width: 93.4%;
+}
+
+.container {
+  align-items: center;
+}
+
+.description {
+  text-align: center;
+}
+
+.ton {
+  background-color: #ff8800;
+  color: white;
+}
+
+.box {
+  border: 10px;
+  border-style: solid;
+  border-color: #ff8800;
+  background-color:#ddd;
+  max-width: 700px;
+  margin: auto;
+}

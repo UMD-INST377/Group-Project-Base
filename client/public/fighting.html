@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team 16</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://kit.fontawesome.com/69ae1a26d0.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="columns">
+            <div class="column is-full">
+                <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="index.html">
+                            <i class="fas fa-home"></i>Home</a>
+                        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="navbar-menu" id="navlinks">
+                        <div class="navbar-start">
+                            <a href="newrecentry.html" class="navbar-item">
+                                <i class="fas fa-plus"></i>New Record Entry</a>
+                            <a href="viewDatabase.html" class="navbar-item">
+                                <i class="far fa-eye"></i>View The Database</a>
+                            <a class="navbar-item active-page" href="fighting.html">
+                                <i class="fas fa-paw"></i>Fighting Style</a>
+                            <a class="navbar-item" href="about.html">
+                                <i class="fas fa-info-circle"></i>About Page</a>
+                            
+                        </div>
+                        <div class="navbar-end">
+                            <p class="navbar-item">Search The Database</p>
+                            <div class="navbar-item field">
+                                <p class="control has-icons-left">
+                                    <input class="input" type="text">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="container">
+        <div class = 'figlist'> </div>
+        </div>
+        <script src = "scripts.js"></script>
+        <script src = "getfightdata.js"></script>
+
+    </body>
+</html>

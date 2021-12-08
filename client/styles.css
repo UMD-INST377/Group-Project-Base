@@ -6,9 +6,9 @@
 .container {
   background-position: center center;
   background-size: cover;
-  min-height: 100%; /* modified here */
+  min-height: 100%;
   padding-top: 70px;
-  width: 100%;
+  width: auto;
   }
 
 .song-form {

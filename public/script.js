@@ -177,11 +177,11 @@ async function getartists() {
 getartists();
 
 async function getAriana() {
-  const endPoint = await fetch('./api/Arianagrande');
+  const endPoint = await fetch('./api/Artists/Arianagrande');
   const songs = await endPoint.json();
   const arianaContainer = document.querySelector('#arianaContainer');
 
-  function displayPlaylists() {
+  function displayAriana() {
     // eslint-disable-next-line no-template-curly-in-string
     // eslint-disable-next-line arrow-body-style
     const html = songs.map((song) => {
@@ -190,7 +190,7 @@ async function getAriana() {
     arianaContainer.innerHTML = html;
   }
 
-  displayPlaylists();
+  displayAriana();
 }
 getAriana();
 

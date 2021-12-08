@@ -3,6 +3,14 @@
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
+.container {
+  background-position: center center;
+  background-size: cover;
+  min-height: 100%; /* modified here */
+  padding-top: 70px;
+  width: 100%;
+  }
+
 .song-form {
     border-style: solid;
     padding: 10px;

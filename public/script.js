@@ -167,17 +167,7 @@ async function getartists() {
     // eslint-disable-next-line no-template-curly-in-string
     // eslint-disable-next-line arrow-body-style
     const html = artists.map((artist) => {
-      return `<ul>
-                <li>
-                  <span class='song_name'>
-                    ${song.artist_name}
-                    <form action="/api/Artists" method="post">
-                      <button class="button is-warning"  type="submit">Delete</button>
-                      <input  type = "hidden" name = "artist_id" value = "${song.artist_id}" />
-                    </form>
-                  </span>
-                </li>
-              </ul>`;
+      return `<button class="playlist-button box column" type="button">${artist.artist_name}</button>`;
     }).join('');
     artistcontainer.innerHTML = html;
   }
@@ -187,7 +177,7 @@ async function getartists() {
 getartists();
 
 async function getAriana() {
-  const endPoint = await fetch('./api/Artists/Ariana_grande');
+  const endPoint = await fetch('./api/Artists/ArianaGrande');
   const songs = await endPoint.json();
   const songContainer = document.querySelector('#arianaContainer');
 

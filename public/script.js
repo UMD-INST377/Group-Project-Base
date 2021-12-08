@@ -43,7 +43,19 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+
+        return `<ul>
+                  <li>
+                    <span class='song_name'>
+                      ${song.song_name}
+                      <form action="/api/rapSongs" method="post">
+                        <button class="button is-warning"  type="submit">Delete</button>
+                        <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+                      </form>
+                    </span>
+                  </li>
+                </ul>`;
+
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -61,7 +73,11 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+
+        return `<ul>
+        <li><span class='song_name'>${song.song_name}</span></li>
+    </ul>`;
+
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -79,7 +95,11 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+
+        return `<ul>
+        <li><span class='song_name'>${song.song_name}</span></li>
+    </ul>`;
+
       }).join('');
       songContainer.innerHTML = html;
     }

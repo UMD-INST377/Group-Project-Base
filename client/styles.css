@@ -11,6 +11,10 @@ a {
     cursor: pointer;
 }
 
+#myBtn:hover {
+    background-color: #63afff;
+}
+
 #buttonbox {
     display: flex;
     flex-wrap: wrap;

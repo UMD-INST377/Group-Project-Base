@@ -43,7 +43,9 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<ul>
+        <li><span class='song_name'>${song.song_name}  <button class="button is-warning">Edit</button></span></li>
+    </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -61,7 +63,9 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<ul>
+        <li><span class='song_name'>${song.song_name}</span></li>
+    </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -79,7 +83,9 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<ul>
+        <li><span class='song_name'>${song.song_name}</span></li>
+    </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -88,8 +94,7 @@ async function windowsAction() {
   }
   getHolidaySongs();
 
-  
-   async function getUSTopSongs() {
+  async function getUSTopSongs() {
     const endPoint = await fetch('./api/usChart');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#ustopsongsContainer');

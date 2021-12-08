@@ -97,8 +97,8 @@ songsList.addEventListener('click', (e) => {
   }
 
   // Implementing FETCH for above.
-  submitButton.addEventListener('click', (e) => {
-    e.preventDefault();
+  submitButton.addEventListener('click', (evt) => {
+    evt.preventDefault();
     // debugging
     // console.log('post updated')
     fetch(`${url}/${songID}`, {
@@ -115,15 +115,13 @@ songsList.addEventListener('click', (e) => {
       })
     })
       .then((res) => res.text())
-      .then(() => window.location.reload());
+      .then(() => location.reload());
   });
 });
 
 // Create - Insert new song
 // Method: POST
-addSongForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
+addSongForm.addEventListener('submit', () => {
   // debugging
   // console.log(titleValue.value);
   // more debugging

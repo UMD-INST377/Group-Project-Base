@@ -44,8 +44,16 @@ async function windowsAction() {
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
         return `<ul>
-        <li><span class='song_name'>${song.song_name}  <button class="button is-warning">Edit</button></span></li>
-    </ul>`;
+                  <li>
+                    <span class='song_name'>
+                      ${song.song_name}
+                      <form action="/api/rapSongs" method="post">
+                        <button class="button is-warning"  type="submit">Delete</button>
+                        <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+                      </form>
+                    </span>
+                  </li>
+                </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }

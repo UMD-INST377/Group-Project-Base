@@ -317,22 +317,22 @@ router.route('/rapSongs')
     } catch (err) {
       res.json(err);
     }
-  })
-  .delete(async (req, res) => {
-    try {
-      // add id for endpoint
-      const albumId = req.body.album_id;
-      const sqlStatement = `DELETE from albums WHERE album_id = ${albumId};`;
-      const result = await db.sequelizeDB.query(sqlStatement, {
-        type: sequelize.QueryTypes.DELETE
-      });
-      console.log('deleted album');
-      res.json(result);
-    } catch (err) {
-      res.json({error: 'Server error, try again!'});
-    }
   });
-
+router.delete('/rapSongs/:id', async (req, res) => {
+  try {
+    // add id for endpoint
+    const songId = req.params.id;
+    const sqlStatement = `DELETE from songs WHERE song_id = ${songId};`;
+    await db.sequelizeDB.query('SET FOREIGN_KEY_CHECKS = 0', null);
+    const result = await db.sequelizeDB.query(sqlStatement, {
+      type: sequelize.QueryTypes.DELETE
+    });
+    console.log('deleted album');
+    res.json(result);
+  } catch (err) {
+    res.json(err);
+  }
+});
 /// Holiday songs endpoint ///
 router.route('/holidaySongs')
   .get(async (req, res) => {

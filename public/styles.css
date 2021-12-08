@@ -40,10 +40,11 @@ h2{
 
 .playlist-button {
     width: 300px;
-    height: 300px;
+    height: 200px;
     border-radius: 10px;
     display: inline-block;
     margin: 5px;
+    vertical-align: text-top;
 }
 
 .topPodcastsContainer {

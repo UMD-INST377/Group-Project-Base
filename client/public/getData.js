@@ -32,7 +32,7 @@ async function biomesList() {
   biomes.forEach((biome) => {
     const newRecord = document.createElement('details');
     newRecord.innerHTML = `
-        <summary>Record Number #${biome.biome_id}</summary>
+        <summary>${biome.common_name}</summary>
         <div class= 'columns'> 
           <div class = 'column is-half'>
             <div class="content listings">

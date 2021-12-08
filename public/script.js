@@ -43,7 +43,6 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-
         return `<ul>
                   <li>
                     <span class='song_name'>
@@ -55,7 +54,6 @@ async function windowsAction() {
                     </span>
                   </li>
                 </ul>`;
-
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -73,11 +71,9 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-
         return `<ul>
         <li><span class='song_name'>${song.song_name}</span></li>
     </ul>`;
-
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -95,11 +91,9 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-
         return `<ul>
         <li><span class='song_name'>${song.song_name}</span></li>
     </ul>`;
-
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -151,6 +145,8 @@ async function windowsAction() {
     const podcastContainer = document.querySelector('#topPodcastsContainer');
 
     function displayPodcasts() {
+      // eslint-disable-next-line no-template-curly-in-string
+      // eslint-disable-next-line arrow-body-style
       const html = podcasts.map((podcast) => {
         return `<button class="playlist-button box column" type="button">${podcast.podcast_name}</button>`;
       }).join('');
@@ -161,5 +157,51 @@ async function windowsAction() {
   }
   getTopPodcasts();
 }
+
+async function getartists() {
+  const endPoint = await fetch('./api/Artists');
+  const artists = await endPoint.json();
+  const artistcontainer = document.querySelector('#artistcontainer');
+
+  function displayartists() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = artists.map((artist) => {
+      return `<ul>
+                <li>
+                  <span class='song_name'>
+                    ${song.artist_name}
+                    <form action="/api/Artists" method="post">
+                      <button class="button is-warning"  type="submit">Delete</button>
+                      <input  type = "hidden" name = "artist_id" value = "${song.artist_id}" />
+                    </form>
+                  </span>
+                </li>
+              </ul>`;
+    }).join('');
+    artistcontainer.innerHTML = html;
+  }
+
+  displayartists();
+}
+getartists();
+
+async function getAriana() {
+  const endPoint = await fetch('./api/Artists/Ariana_grande');
+  const songs = await endPoint.json();
+  const songContainer = document.querySelector('#arianaContainer');
+
+  function displayPlaylists() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    songContainer.innerHTML = html;
+  }
+
+  displayPlaylists();
+}
+getAriana();
 
 window.onload = windowsAction();

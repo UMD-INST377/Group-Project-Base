@@ -1,5 +1,5 @@
 async function windowActions() {
-  const endpoint = '/api/songs_project';
+  const endpoint = '/api/songs_project/';
 
   const categories = [];
 
@@ -10,7 +10,8 @@ async function windowActions() {
   function findMatches(wordToMatch, categories) {
     return categories.filter((place) => {
       const regex = new RegExp(wordToMatch, 'gi');
-      return place.first_name.match(regex) || place.last_name.match(regex)
+      return place.first_name.match(regex) || place.last_name.match(regex) 
+      || place.album_name.match(regex) || place.song_name.match(regex)
       || place.song_name.match(regex);
     });
   }
@@ -21,10 +22,11 @@ async function windowActions() {
       const regex = new RegExp(event.target.value, 'gi');
       return ` 
             <li>
-                Artist: <span class="artist_name"> ${place.first_name} ${place.last_name}</span>
+                Song # <span class="song_id"> ${place.song_id}</span>
                 <br>Song: <span class ="song_name">${place.song_name}</span>
-                <br>Rating: <span class="ratings">${place.ratings}/5 stars</span>
+                <br>Artist: <span class="artist_name"> ${place.first_name} ${place.last_name}</span>
                 <br>Album: <span class ="album_name"> ${place.album_name}</span>
+                <br>Rating: <span class="ratings">${place.ratings}/5 stars</span>
                 <br>-----
                 <br>
             </li>  

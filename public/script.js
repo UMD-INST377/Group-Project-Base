@@ -177,7 +177,7 @@ async function getartists() {
 getartists();
 
 async function getAriana() {
-  const endPoint = await fetch('./api/arianagrande');
+  const endPoint = await fetch('./api/songs/artist_id/3');
   const songs = await endPoint.json();
   const arianaContainer = document.querySelector('#arianaContainer');
 

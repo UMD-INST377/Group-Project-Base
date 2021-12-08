@@ -1,5 +1,3 @@
-// the map stuff can be done similar to lab 7
-
 function getMatch(event, census) {
   // not that many zips so filtering is fine - return if something matches
   const matches = census[0].filter((zcta) => zcta.census_zcta === event.target.value
@@ -12,7 +10,7 @@ function getMatch(event, census) {
 }
 
 function renderTableHTML(match, tableDiv) {
-  tableDiv.innerHTML = `<table class="table"><tr>
+  tableDiv.innerHTML = `<table class="table">
             <tr class="col"><th class="col"> Census ${match.census_zcta} </th></tr>
             <td><strong>median age</strong></td><td>${match.median_age}</td>
             </tr>
@@ -58,7 +56,7 @@ function getMatchCommunity(event, community) {
   return false;
 }
 function renderTableHTMLCommunity(match, tableDiv) {
-  tableDiv.innerHTML = `<table class="table"><tr>
+  tableDiv.innerHTML = `<table class="table">
             <tr class="col"><th class="col"> Community ${match.community_identifier.substring(2)} </th></tr>
             <tr>
             <td><strong>% foreign born</strong></td><td>${match.pct_foreign_born}</td>

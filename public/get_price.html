@@ -2,7 +2,7 @@
 <html lang='en'>
     <head>
         <meta charset='UTF-8'/>
-        <title>Delete Game Price</title>
+        <title>Get Game Price</title>
         <link rel='stylesheet' href='morris_style.css'/>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
@@ -49,7 +49,7 @@
                           <a href="form_page.html" class="dropdown-item">
                             Edit General Table
                           </a>
-                          <a href="update_price.html" class="dropdown-item">
+                          <a href="get_price.html" class="dropdown-item">
                             Edit Price Table
                           </a>
                         </div>
@@ -68,9 +68,125 @@
         <a class="button is-black" href="Insert_price.html">Insert</a>
       </div>
     </br>
+    <h1 class="title is-light">Game Name -- Price Id Match Table!(Original Data Only)</h1>
 
+    <div class='atable'>
+      <table is-bordered is-striped is-narrow is-hoverable is-fullwidth  class="table">
+        <thead>
+          <tr>
+            <th><abbr title="Position">Price ID</abbr></th>
+            <th>Game Name</th>
+            
+          </tr>
+        </thead>
+        <tfoot>
           
-    <h1 class="title is-light">Get Game Price!</h1>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <th>Call of Duty: Black Ops: Cold War </th>
+          </tr>
+          <tr>
+            <th>2</th>
+            <th>Call of Duty: Modern Warfare </th>
+          </tr>
+          <tr>
+            <th>3</th>
+            <th>Animal Crossing: New Horizons </th>
+          </tr>
+          <tr>
+            <th>4</th>
+            <th>Madden NFL 21 </th>
+          </tr>
+          <tr>
+            <th>5</th>
+            <th>Assassin's Creed: Valhalla </th>
+          </tr>
+          <tr>
+            <th>6</th>
+            <th>The Last of Us: Part II </th>
+          </tr>
+          <tr>
+            <th>7</th>
+            <th>Ghost of Tsushima </th>
+          </tr>
+          <tr>
+            <th>8</th>
+            <th>Mario Kart 8: Deluxe* </th>
+          </tr>
+          <tr>
+            <th>9</th>
+            <th>Super Mario 3D All-Stars* </th>
+          </tr>
+          <tr>
+            <th>10</th>
+            <th>Final Fantasy VII: Remake </th>
+          </tr>
+          <tr>
+            <th>11</th>
+            <th>Marvel's Avengers </th>
+          </tr>
+          <tr>
+            <th>12</th>
+            <th>Marvel's Spider-Man: Miles Morales </th>
+          </tr>
+          <tr>
+            <th>13</th>
+            <th>NBA 2K21 </th>
+          </tr>
+          <tr>
+            <th>14</th>
+            <th>Super Smash Bros. Ultimate </th>
+          </tr>
+          <tr>
+            <th>15</th>
+            <th>FIFA 21 </th>
+          </tr>
+          <tr>
+            <th>16</th>
+            <th>Mortal Kombat 11 </th>
+          </tr>
+          <tr>
+            <th>17</th>
+            <th>Dragon Ball Z: Kakarot </th>
+          </tr>
+          <tr>
+            <th>18</th>
+            <th>MLB: The Show 20 </th>
+          </tr>
+          <tr>
+            <th>19</th>
+            <th>Cyberpunk 2077 </th>
+          </tr>
+          <tr>
+            <th>20</th>
+            <th>Tony Hawk's Pro Skater 1 + 2 </th>
+          </tr>
+          <tr>
+            <th>21</th>
+            <th>Genshin Impact </th>
+          </tr>
+          <tr>
+            <th>22</th>
+            <th>The WITCHER: Wild Hunt </th>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  </br></br>
+    <h1 class="title is-light">Get A Single Game Price!</h1>  
+    <form>
+      <label class="label">Search Price by ID</label> 
+      <input type='text' class='search input'>
+      
+      </form>
+      <ul class='suggestions'>    
+      </ul>
+      <script src='get_singlePrice.js'>   
+      </script>
+          </br>
+      </form>
+    <h1 class="title is-light">Game Price visualization!</h1>
   </div>
   <div class='bar'>
     <div class="chart" style="position: relative; height:50vh; width:960px">
@@ -78,6 +194,26 @@
         <script src='get_price.js'> </script>
       </div>
   </div>
+
+
+  <h1 class="title is-light">Game Price Table!</h1>
+  <div class='atable'>
+      <table class = "table is-striped is-bordered">
+        <thead>
+            <tr>
+                <th>Price Id</th>
+                <th>Price Website</th>
+                <th>Listed Price</th>
+                
+            </tr>
+        </thead>
+        <tbody id = 'table'>
+          
+        </tbody>
+
+        <script src='get_priceTable.js'></script>
+      </table>
+</div>
 
     </body>
 </html>

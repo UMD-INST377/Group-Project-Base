@@ -19,6 +19,12 @@
       width: 100%;
       max-width: 600px;
   }
+   /* Mobile Styles */
+ @media only screen and (max-width: 400px) {
+  body {
+    background-color: #F09A9D; /* Red */
+  }
+}
 
   .carousel .carousel_item--visible{
       display: flex;

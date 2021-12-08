@@ -7,7 +7,6 @@ import db from '../database/initializeDB.js';
 // Import Controllers
 import covidStatsCustom from '../controllers/covid-stats.js';
 import countyInfo from '../controllers/county-info_GET.js';
-import addNewCounty from '../controllers/county-info_POST.js';
 import vacByCountydata from '../controllers/vacByCountyController.js';
 
 const router = express.Router();

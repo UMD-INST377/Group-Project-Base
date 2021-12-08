@@ -11,6 +11,10 @@ a {
     cursor: pointer;
 }
 
+#myBtn:hover {
+    background-color: #63afff;
+}
+
 #buttonbox {
     display: flex;
     flex-wrap: wrap;
@@ -46,7 +50,7 @@ nav div {
     color: black;
     display: flex;
     justify-content: center;
-    background-color: lightgray;
+    background-color: #61CFFF;
     margin: 2px;
     padding: 6px;
     text-align: center;
@@ -94,4 +98,13 @@ nav div {
     background-color: #61CFFF;
     color: black;
     border-radius: 15px;
+}
+
+#submit {
+    background-color: #61CFFF;
+    border: none;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
 }

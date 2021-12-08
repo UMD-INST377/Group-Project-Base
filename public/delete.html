@@ -20,26 +20,14 @@
             <div class="container">
                 <div class="columns column is-centered">
                     <div class = "column is-full">
-                        <div class="box title has-background-info">Add Players</div>
+                        <div class="box title has-background-info">Delete Players</div>
                     </div>
                     <div class="box is-two-fifths has-background-info">
                         <div class="column is-centered">
                             <form onsubmit="return false" class="column" id="form">
                                 <div class="column">
-                                    <label for="playername"><h1><strong>Player name</strong></h1></label>
-                                    <input class="input is-small" type="text" id="playername" name="player_name">
-                                </div>
-                                <div class="column">
-                                    <label for="ppg"><h1><strong>PPG</strong></h1></label>
-                                    <input class="input is-small" type="text" id="ppg" name="ppg">
-                                </div>
-                                <div class="column">
-                                    <label for="assists"><h1><strong>Assists</strong></h1></label>
-                                    <input class="input is-small" type="text" id="assists" name="assists">
-                                </div>
-                                <div class="column">
-                                    <label for="team"><h1><strong>Team</strong></h1></label>
-                                    <input class="input is-small" type="text" id="team" name="team">
+                                    <label for="playername"><h1><strong>Player Id</strong></h1></label>
+                                    <input class="input is-small" type="number" id="player_id" name="player_id">
                                 </div>
                                 <div class="column">
                                     <button id="submit" class="button is-link has-background-danger"><h1><strong>Submit</strong></h1></button>
@@ -50,6 +38,6 @@
                 </div>
             </div>
         </div>
-        <script src="forms.js" charset="utf-8"></script>
+        <script src="delete.js" charset="utf-8"></script>
     </body>
 </html>

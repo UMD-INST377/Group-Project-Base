@@ -13,9 +13,7 @@ const player = {
                 team_id = :team
               WHERE player_id = :player_id;`,
 
-  deletePlayer: `DELETE player FROM Positions JOIN players 
-                  USING(poistion_id) JOIN Team
-                  USING(team_id)
+  deletePlayer: `DELETE FROM players
                   WHERE player_id = :player_id;`
 
 };

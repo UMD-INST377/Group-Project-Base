@@ -145,3 +145,89 @@ router.delete(async(req, res) => {
     res.json({message: 'Error'})
   }
 })
+///Chris Iemma Routes///
+router.route('/personal_info').get(async(req, res) => {
+  try {
+    const memberProfiles = await db.sequelizeDB.query(GETcontroller.personal_info, {
+      type: sequelize.QueryTypes.SELECT
+    })
+    console.log('touch /Personal Information with GET')
+    res.json({phone: 'touched /Personal Information with GET'})
+  } catch (error) {
+    console.log(error)
+    res.json({error: 'Error Occured'})
+  }
+})
+
+router.route('/personal_info').put(async(req, res) => {
+  try {
+    console.log('touch /Personal Information with PUT')
+    res.json({phone: 'touched /Personal Information with PUT'})
+  } catch (error) {
+    console.log(error)
+    res.json({error: 'Error Occured'})
+  }
+})
+
+router.route('/personal_info').post(async(req, res) => {
+  try {
+    console.log('touch /Personal Information with POST')
+    res.json({phone: 'touched /Personal Information with POST'})
+  } catch (error) {
+    console.log(error)
+    res.json({error: 'Error Occured'})
+  }
+})
+
+router.route('/personal_info').delete(async(req, res) => {
+  try {
+    console.log('touch /Personal Information with DELETE')
+    res.json({phone: 'touched /Personal Information with DELETE'})
+  } catch (error) {
+    console.log(error)
+    res.json({error: 'Error Occured'})
+  }
+})
+///Chris Iemma Congress Personal Information///
+router.get('/personal_info',async(req, res) => {
+  try {
+    const members = await db.sequelizeDB.query(GETcontroller.personal_info, {
+      type: sequelize.QueryTypes.SELECT
+    )};
+
+    console.log('touched /Personal Information GET');
+    
+    } catch (error) {
+    console.log(error)
+    res.json({message: 'Error'})
+  }
+});
+router.put(async(req, res) => {
+  try {
+    console.log('touched /Personal Information PUT')
+    res.send('PUT Personal Information');
+  } catch (error) {
+    console.log(error)
+    res.json({message: 'Error'})
+  }
+});
+router.post(async(req, res) => {
+  try {
+    const insertQuery = await db.sequelizeDB.query(POSTcontroller.addPersonal_Info, {
+      type: sequelize.QueryTypes.INSERT,
+      console.log('touched /Personal Information POST')
+      res.send('POST Personal Information');
+  } catch (error) {
+    console.log(error)
+    res.json({message: 'Error'})
+  }
+});
+router.delete(async(req, res) => {
+  try {
+    console.log('touched /Personal Information DELETE')
+    res.send('DELETE Personal Information');
+  } catch (error) {
+    console.log(error)
+    res.json({message: 'Error'})
+  }
+})

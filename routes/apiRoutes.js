@@ -280,7 +280,7 @@ router.route('/popSongs')
 router.route('/rapSongs')
   .get(async (req, res) => {
     try {
-      const sqlStatement = 'SELECT artist_name, song_name, album_name, genre FROM artist JOIN songs ON artist.artist_id = songs.artist_id JOIN albums ON songs.album_id = albums.album_id WHERE genre = "Hip-Hop/Rap" ORDER BY artist_name;';
+      const sqlStatement = 'SELECT song_id, artist_name, song_name, album_name, genre FROM artist JOIN songs ON artist.artist_id = songs.artist_id JOIN albums ON songs.album_id = albums.album_id WHERE genre = "Hip-Hop/Rap" ORDER BY artist_name;';
       const result = await db.sequelizeDB.query(sqlStatement, {
         type: sequelize.QueryTypes.SELECT
       });

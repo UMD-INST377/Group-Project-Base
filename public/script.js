@@ -38,6 +38,7 @@ async function windowsAction() {
   async function getPopSongs() {
     const endPoint = await fetch('./api/popsongs');
     const songs = await endPoint.json();
+    console.log(songs)
     const songContainer = document.querySelector('#popsongsContainer');
     function displayPlaylists() {
       // eslint-disable-next-line no-template-curly-in-string
@@ -47,10 +48,7 @@ async function windowsAction() {
                   <li>
                     <span class='song_name'>
                       ${song.song_name}
-                      <form action="/api/rapSongs" method="post">
-                        <button class="button is-warning"  type="submit">Delete</button>
-                        <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
-                      </form>
+                        <button class="button is-warning" type="submit"><a href="/api/popsongs/${song.song_id}">Delete</a></button>
                     </span>
                   </li>
                 </ul>`;
@@ -66,14 +64,23 @@ async function windowsAction() {
     const endPoint = await fetch('./api/rapSongs');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#hiphopsongsContainer');
-
+    console.log(songs)
     function displayPlaylists() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
         return `<ul>
-        <li><span class='song_name'>${song.song_name}</span></li>
-    </ul>`;
+        <li>
+          <span class='song_name'>
+            ${song.song_name}
+            <form action="/api/popsongs/${song.song_id}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="button is-warning" type="submit">Delete</button>
+            </form>
+
+          </span>
+        </li>
+      </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }

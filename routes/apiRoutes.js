@@ -168,7 +168,7 @@ router.route('/driverDemographics')
 
   .put(async(req, res) => {
     try {
-      await db.crash_information.update(
+      await db.driver_demographics.update(
         {
           person_id: req.body.person_id,
           report_id: req.body.report_id,
@@ -211,7 +211,7 @@ router.route('/driverDemographics')
     try {
       await db.driver_demographics.destroy({
         where: {
-          person_id: req.params.person_id
+          person_id: req.body.person_id
         }
       });
       console.log('You touched the /driverDemographics route with DELETE');

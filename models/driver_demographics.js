@@ -4,7 +4,7 @@ export default (sequelize, DataTypes) => {
     {
       person_id: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: true,
         primaryKey: true
       },

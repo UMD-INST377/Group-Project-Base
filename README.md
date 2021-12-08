@@ -43,3 +43,4 @@ It can often be difficult to find detailed information on recent earthquakes, as
 ## Roadmap for future development
 * Potentially merging the cities, date, and magnitude tables into one table to eliminate the need for multiple SQL queries per request
 * Adding a choice to sort searched results based on different factors
+* Make search results clickable to give a better visualization of the individual data

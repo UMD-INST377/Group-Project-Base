@@ -61,7 +61,7 @@ async function windowActions() {
     colorSet: 'col',
     animationEnabled: true,
     title: {
-      text: 'Completed Eruption type per month'
+      text: ' Confirmed eruptions per month'
     },
     axisX: {
       valueFormatString: '####',

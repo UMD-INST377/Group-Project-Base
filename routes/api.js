@@ -1,4 +1,8 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable radix */
+/* eslint-disable camelcase */
 /* eslint-disable no-multiple-empty-lines */
+
 /**
  * INST 377 TEAM 25
  * Authors: Alec Mattu, Hyeong Choi, John Iglesias, Michael Knapp
@@ -7,10 +11,10 @@
 
 /* eslint-disable no-console */
 import express from 'express';
+import RateLimit from 'express-rate-limit';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import controllers from '../controllers/index.js';
-import RateLimit from 'express-rate-limit';
 
 // Instantiate router component
 const router = express.Router();
@@ -29,7 +33,7 @@ router.use(limit);
  */
 router.get('/', (request, response) => {
   // Debug
-  console.log("touched / with GET");
+  console.log('touched / with GET');
 
   // Send default response
   response.send('Touched the root API endpoint');
@@ -54,13 +58,13 @@ router.get('/schools', async (request, response) => {
     });
 
     // Send data
-    response.json({status: "success", data: d});
+    response.json({status: 'success', data: d});
   } catch (e) {
     // Debug
     console.error(e);
 
     // Send data
-    response.json({status: "failure", data: null, message: "unknown error"});
+    response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
 
@@ -73,27 +77,29 @@ router.get('/schools', async (request, response) => {
 router.get('/schools/:rank_id', async (request, response) => {
   try {
     // Debug
-    console.log("touched /schools/:rank_id with GET");
+    console.log('touched /schools/:rank_id with GET');
 
     // Send data
-    response.json({status: "success", data: []});
+    response.json({status: 'success', data: []});
   } catch (e) {
     // Debug
     console.error(e);
 
     // Send data
-    response.json({status: "failure", data: null, message: "unknown error"});
+    response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
 
 /**
-<<<<<<< HEAD
  * Get available avg SAT scores for a school
  *
  * @author John I.
  */
 router.get('/schools/:rank_id/sat_scores', async (request, response) => {
- /* Fetch School Reviews by Rank ID
+
+});
+
+/* Fetch School Reviews by Rank ID
  *
  * Note:
  *   (1) We cannot allow POST/PUT/DELETE for reviews
@@ -109,7 +115,7 @@ router.get('/schools/:rank_id/reviews', async (request, response) => {
   // Validate rank_id
   const rank_id = parseInt(request.params.rank_id);
   if (rank_id <= 0 || rank_id > 14) {
-    response.status(404).send("");
+    response.status(404).send('');
   }
 
   // Safely connect to database
@@ -119,7 +125,7 @@ router.get('/schools/:rank_id/reviews', async (request, response) => {
       type: sequelize.QueryTypes.SELECT
     });
     if (!r || r.length <= 0) {
-      response.status(404).send("");
+      response.status(404).send('');
     }
 
     // Send data
@@ -129,20 +135,20 @@ router.get('/schools/:rank_id/reviews', async (request, response) => {
     console.error(e);
 
     // Send data
-    response.status(404).send("");
+    response.status(404).send('');
   }
 });
 router.post('/schools/:rank_id/reviews', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 router.put('/schools/:rank_id/reviews', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 router.delete('/schools/:rank_id/reviews', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 
 /**
@@ -159,7 +165,7 @@ router.post('/schools/:rank_id/review', async (request, response) => {
   }
 
   // Validate Review
-  const review = (request.body.review || "").toString().substr(0, 1024) || "";
+  const review = (request.body.review || '').toString().substr(0, 1024) || '';
   if (!review || review.length <= 0) {
     response.status(400);
   }
@@ -189,12 +195,12 @@ router.post('/schools/:rank_id/review', async (request, response) => {
 
     // Insert new data
     const r = await db.sequelizeDB.query(controllers.reviews.postNewReview, {
-      replacements: { rank_id: rank_id, review: review, rating: rating, graduation_year: grad_year },
+      replacements: {rank_id: rank_id, review: review, rating: rating, graduation_year: grad_year},
       type: sequelize.QueryTypes.INSERT
     });
 
     // Send data
-    response.send("1");
+    response.send('1');
   } catch (e) {
     // Debug
     console.error(e);
@@ -205,19 +211,18 @@ router.post('/schools/:rank_id/review', async (request, response) => {
 });
 router.get('/schools/:rank_id/review', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 router.put('/schools/:rank_id/review', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 router.delete('/schools/:rank_id/review', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 
 router.get('/schools/:rank_id/univ_location', async (request, response) => {
-b38423f7fff4ee2b41aec120ec72ac29ed2c8dc6
   try {
     // Debug
     console.log('touched /schools/:rank_id/sat_scores with GET');
@@ -252,7 +257,7 @@ router.get('/schools/:rank_id/Admission_rate', async (request, response) => {
   } catch(e) {
     console.error(e);
 
-    response.json({status: 'failure', data: null, message:"unknown error"});
+    response.json({status: 'failure', data: null, message:'unknown error'});
   }
 });
 
@@ -276,7 +281,7 @@ router.get('/test_scores', async (request, response) => {
     console.error(e);
 
     // Send data
-    response.json({status: "failure", data: null, message: "unknown error"});
+    response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
 

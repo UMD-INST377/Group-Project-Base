@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 /**
  * INST 377 TEAM 25
  * Authors: Alec Mattu
@@ -7,11 +9,19 @@
 // Module Imports
 import express from 'express';
 import sequelize from 'sequelize';
+import RateLimit from 'express-rate-limit';
 import db from '../database/initializeDB.js';
 import controllers from '../controllers/index.js';
 
 // Instantiate router component
 const router = express.Router();
+const limit = new RateLimit({
+  windowMs: 15 * 1000, // 15s API rate lmit
+  max: 5 // 5 requests per windowMs
+});
+
+// Use RateLimit Module
+router.use(limit);
 
 // Response statuses
 const university_404 = '<h1>Requested university was not found</h1>';
@@ -36,7 +46,7 @@ router.get('/:rank_id', async (request, response) => {
       replacements: { rank_id: rank_id },
       type: sequelize.QueryTypes.SELECT
     });
-    if (d.length != 1 || typeof(d[0]) !== "object" || typeof(d[0].university_name) !== "string") {
+    if (d.length !== 1 || typeof(d[0]) !== 'object' || typeof(d[0].university_name) !== 'string') {
       response.status(404).send(university_404);
     }
 
@@ -46,7 +56,7 @@ router.get('/:rank_id', async (request, response) => {
       type: sequelize.QueryTypes.SELECT
     });
     if (r.length > 0) {
-      d[0]["reviews"] = r;
+      d[0].reviews = r;
     }
 
     // Render page
@@ -66,7 +76,7 @@ router.get('/:rank_id', async (request, response) => {
  * @author Alec M.
  * @date 2021-11-05 08:43:00
  */
-router.get("/:rank_id/review", async (request, response) => {
+router.get('/:rank_id/review', async (request, response) => {
   // Validate rank_id
   const rank_id = parseInt(request.params.rank_id);
   if (rank_id <= 0 || rank_id > 14) {
@@ -80,12 +90,12 @@ router.get("/:rank_id/review", async (request, response) => {
       replacements: { rank_id: rank_id },
       type: sequelize.QueryTypes.SELECT
     });
-    if (d.length != 1 || typeof(d[0]) !== "object" || typeof(d[0].university_name) !== "string") {
+    if (d.length != 1 || typeof(d[0]) !== 'object' || typeof(d[0].university_name) !== 'string') {
       response.status(404).send(university_404);
     }
 
     // Render page
-    d[0]["rank_id"] = rank_id;
+    d[0].rank_id = rank_id;
     response.render('newReview', d[0]);
   } catch (e) {
     // Debug

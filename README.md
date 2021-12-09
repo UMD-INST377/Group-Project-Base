@@ -16,7 +16,7 @@ Macbook Pro
 4. The application should be ready to be used 
 ## How to run your application on a server
 1. Open the repository and a terminal
-2. Type ==npm start== within the terminal
+2. Type =npm start= within the terminal
 3. If working correctly, go to http://localhost:3000/
 
 ## How to run any tests you have written for your software

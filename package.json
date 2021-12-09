@@ -21,8 +21,8 @@
     "mysql2": "^2.2.5",
     "node-fetch": "^3.1.0",
     "nodemon": "^2.0.7",
-    "sequelize": "^6.5.0",
-    "sequelize-cli": "^6.2.0"
+    "sequelize": "^6.11.0",
+    "sequelize-cli": "^6.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.17",

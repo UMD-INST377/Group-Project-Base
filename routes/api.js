@@ -1,4 +1,8 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable radix */
+/* eslint-disable camelcase */
 /* eslint-disable no-multiple-empty-lines */
+
 /**
  * INST 377 TEAM 25
  * Authors: Alec Mattu, Hyeong Choi, John Iglesias, Michael Knapp
@@ -191,7 +195,7 @@ router.post('/schools/:rank_id/review', async (request, response) => {
 
     // Insert new data
     const r = await db.sequelizeDB.query(controllers.reviews.postNewReview, {
-      replacements: { rank_id: rank_id, review: review, rating: rating, graduation_year: grad_year },
+      replacements: {rank_id: rank_id, review: review, rating: rating, graduation_year: grad_year},
       type: sequelize.QueryTypes.INSERT
     });
 

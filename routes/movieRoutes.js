@@ -6,8 +6,8 @@ import db from '../database/initializeDB.js';
 import actor from '../controllers/actorController.js';
 import genre from '../controllers/genreController.js';
 import film from '../controllers/filmController.js';
-import Films from '../models/film.js';
-const Op = sequelize.Op;
+
+
 
 const router = express.Router();
 

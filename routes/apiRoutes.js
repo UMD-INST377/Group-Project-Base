@@ -6,12 +6,13 @@ import express from 'express';
 import db from '../database/initializeDB.js';
 import foodInspectionVar from '../contollers/food_inspectionController.js';
 import establishmentController from '../contollers/putController.js';
+import inspectionResultsVar from '../contollers/inspection_results_get.js';
 
 /*
 const fetch = require('node-fetch');
 */
 
-const {QueryTypes} = pkg;
+// const {QueryTypes} = pkg;
 
 const router = express.Router();
 
@@ -42,7 +43,7 @@ router.route('/foodServicePG').get(async (req, res) => {
 });
 */
 
-router.get('/establishments/establishment_id', async (req, res) => {
+router.get('/cities', async (req, res) => {
   try {
     const businesses = await db.sequelizeDB.query(foodInspectionVar);
     console.log(businesses);
@@ -56,7 +57,7 @@ router.get('/establishments/establishment_id', async (req, res) => {
 
 router.put('establishments/establishment_id', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query(establishmentController.updateVar, { 
+    const businesses = await db.sequelizeDB.query(establishmentController.updateVar, {
       type: QueryTypes.update
 
     });
@@ -83,13 +84,11 @@ router.post('establishments/establishment_id', async (req, res) => {
   }
 });
 
-router.get('/establishments/establishment_id', async (req, res) => {
+router.get('/Inspection_results', async (req, res) => {
   try {
-    const businesses = await db.sequelizeDB.query({
-      type: QueryTypes.SELECT
-    });
-
-    res.json(businesses);
+    const result = await db.sequelizeDB.query(inspectionResultsVar);
+    console.log(result);
+    res.json(result);
   } catch (err) {
     console.error(err);
     res.error('Server error');

@@ -10,11 +10,19 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif
     }
 
+
+
 /* home page search bar. */
 .container{
     display: flex;
     justify-content: center; 
     padding: 10px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-family: Georgia, Geneva, Helvetica, sans-serif;
 }
 
 
@@ -69,6 +77,7 @@ body {
     flex-direction: row-reverse;
     align-items: center;
 }
+
 
 .photo-grid-item{
     display: flex;

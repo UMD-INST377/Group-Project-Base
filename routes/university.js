@@ -9,11 +9,19 @@
 // Module Imports
 import express from 'express';
 import sequelize from 'sequelize';
+import RateLimit from 'express-rate-limit';
 import db from '../database/initializeDB.js';
 import controllers from '../controllers/index.js';
 
 // Instantiate router component
 const router = express.Router();
+const limit = new RateLimit({
+  windowMs: 15 * 1000, // 15s API rate lmit
+  max: 5 // 5 requests per windowMs
+});
+
+// Use RateLimit Module
+router.use(limit);
 
 // Response statuses
 const university_404 = '<h1>Requested university was not found</h1>';

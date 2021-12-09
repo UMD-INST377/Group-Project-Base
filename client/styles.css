@@ -6,13 +6,9 @@
 /* Mobile Styles */
 @media only screen and (max-width: 600px) {
   body {
-    background-color: #FFFFFF ; /* Red */
+    background-color: #FFFFFF ;
     font-size: 15px;
-    }
-   .about_image {
-      width:50%;
-      height:50%;
-    }
+  }
 }
 
 

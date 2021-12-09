@@ -40,10 +40,20 @@ actions.
 
 ### Available Endpoints
 * census - Relates to MD Census Data
+  ```[[
+   {census_zcta: 20601,
+   census_identifier: 2420601,
+   median_age: 37.3,
+   num_persons_over_65: 1922,
+   total_population: 24156,
+   homeowner_rate: 71.1,
+   percent_homeowner_without_mortgage: 11.2,
+   percent_rent: 19.9}, 
+   ...]]```
 * metro - Relates to MD zip codes that are small metropolitan areas
 * community - Relates to MD community survey
 * population - Relates to population statistics for MD zip codes 
-
+* ethnicities - Relates to ethnic counts of ethnicities, requires another SQL table called md_ethnicities_lookup
 ## Known Bugs and Potential Future Development
 ### Bugs:
 - Scrolling on the Query form makes the input elements go past the Bulma boxes.

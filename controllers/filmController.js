@@ -6,4 +6,4 @@ const film = {
   deleteFilm: 'DELETE FROM films WHERE film_id = :id',
 };
 
-export default film ;
+export default film;

@@ -68,26 +68,32 @@ router.get('/schools', async (request, response) => {
  * Get available information about a specific school
  *
  * @author Hyeong C.
- * @date 2021-11-07 18:40:00pm
+ * @date 2021-10-31 18:50:00pm
  */
 router.get('/schools/:rank_id', async (request, response) => {
   try {
     // Debug
-    console.log('touched /schools/:rank_id with GET');
+    console.log("touched /schools/:rank_id with GET");
 
     // Send data
-    response.json({status: 'success', data: []});
+    response.json({status: "success", data: []});
   } catch (e) {
     // Debug
     console.error(e);
 
     // Send data
-    response.json({status: 'failure', data: null, message: 'unknown error'});
+    response.json({status: "failure", data: null, message: "unknown error"});
   }
 });
 
 /**
- * Fetch School Reviews by Rank ID
+<<<<<<< HEAD
+ * Get available avg SAT scores for a school
+ *
+ * @author John I.
+ */
+router.get('/schools/:rank_id/sat_scores', async (request, response) => {
+ /* Fetch School Reviews by Rank ID
  *
  * Note:
  *   (1) We cannot allow POST/PUT/DELETE for reviews
@@ -211,25 +217,46 @@ router.delete('/schools/:rank_id/review', async (request, response) => {
 });
 
 router.get('/schools/:rank_id/univ_location', async (request, response) => {
+b38423f7fff4ee2b41aec120ec72ac29ed2c8dc6
   try {
-    // Fetch univ rankings
-    const d = await db.sequelizeDB.query(controllers.university.getUniversityLoc, {
-      type: sequelize.QueryTypes.SELECT
-    });
+    // Debug
+    console.log('touched /schools/:rank_id/sat_scores with GET');
 
     // Send data
-    response.json({status: "success", data: []});
+    response.json({status: 'success', data: []});
   } catch (e) {
     // Debug
     console.error(e);
 
     // Send data
-    response.json({status: "failure", data: null, message: "unknown error"});
+    response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
 
 /**
- * Get all school names, locations, and sat averages
+ * Get admissions rate for Big 10 School
+ * @Author Michael
+ */
+router.get('/schools/:rank_id/Admission_rate', async (request, response) => {
+  try {
+
+    console.log('touched /schools/:rank_id/admission_rate with GET');
+
+    const a = await db.sequelizeDB.query(controllers.Admission_rate.getAdmissionRate,{
+      replacements: { rank_id: rank_id, review_limit: 20 },
+      type: sequelize.QueryTypes.SELECT
+    });
+
+    // Send data
+    response.json({status: 'success', data: a});
+  } catch(e) {
+    console.error(e);
+
+    response.json({status: 'failure', data: null, message:"unknown error"});
+  }
+});
+
+ /* Get all average test scores
  *
  * @author John I.
  */
@@ -249,7 +276,7 @@ router.get('/test_scores', async (request, response) => {
     console.error(e);
 
     // Send data
-    response.json({status: 'failure', data: null, message: 'unknown error'});
+    response.json({status: "failure", data: null, message: "unknown error"});
   }
 });
 

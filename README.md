@@ -40,15 +40,77 @@ actions.
 
 ### Available Endpoints
 * census - Relates to MD Census Data
+  ```
+   [[
+   {census_zcta: 20601,
+   census_identifier: 2420601,
+   median_age: 37.3,
+   num_persons_over_65: 1922,
+   total_population: 24156,
+   homeowner_rate: 71.1,
+   percent_homeowner_without_mortgage: 11.2,
+   percent_rent: 19.9}, 
+   ...
+   ]]
+   ```
 * metro - Relates to MD zip codes that are small metropolitan areas
+ ```
+ [[
+ {metro_zcta: 21638,
+ metro_area: Baltimore-Columbia-Towson, MD MSA},
+ ...
+ ]]
+ ```
 * community - Relates to MD community survey
-* population - Relates to population statistics for MD zip codes 
+```
+[[
+{community_identifier: 2420601,
+pct_foreign_born: 6.8,
+pct_poverty: 6.0,
+pct_unemployed: 4.2,
+pct_bachelors: 24.4,
+median_household_income: 99031,
+pct_little_english: 2.9},
+...
+]]
+```
+* population - Relates to population statistics for MD zip codes
+```
+[[
+{popstat_zcta: 20601,
+pop_percent_id: 1,
+pop_percent_category: pct_over65,
+pop_count: 8},
+...
+]]
+```
+* ethnicities - Relates to ethnic counts of ethnicities, requires another SQL table called md_ethnicities_lookup
+```
+[[
+{ethnicity_zcta: 20601,
+ethnicity_id: 1,
+ethnic_count: 9785},
+...
+]]
+```
+* companies - Maryland tax credit companies
+```
+[[
+{company_id: 1,
+company_name: 5AM solutions, Inc.,
+company_address: 1700 Rockville Pike, STE 295,
+city: Rockville,
+company_zcta: 20852},
+...
+]]
+```
 
 ## Known Bugs and Potential Future Development
 ### Bugs:
-- Scrolling on the Query form makes the input forms go past the Bulma boxes.
+- Scrolling on the Query form makes the input elements go past the Bulma boxes.
 
-### Potential Future Developments: 
+### Potential Future Developments:
+- improve mobile interface
 - Allow the option to remove columns from the filtered output
 - Include Leaflet visualizations by highlighting zip code regions
 - HTTP method that can recreate the database in case some manipulations go wrong

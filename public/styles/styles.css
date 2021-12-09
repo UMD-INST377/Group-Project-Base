@@ -46,10 +46,11 @@
 }
 .census-data {
     padding-top: 20px;
+    padding-bottom: 5px;
 }
 .community-data{ 
 
-  padding-bottom: 20px;
+  padding-bottom: 5px;
 }
 
 .col {
@@ -75,12 +76,17 @@ body {
     width: 300px;
 }
 
+
 .census-table .table {
   display: block; /* important */
   height: 600px;
   overflow-y: scroll;
 }
-
+.community-table .table {
+    display: block;
+    height: 600px;
+    overflow-y: scroll;
+}
 .companies-table .table {
     display: block;
     height: 600px;

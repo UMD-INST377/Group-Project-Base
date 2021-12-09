@@ -5,6 +5,8 @@
         <title>Group 7 About Page</title>
         <link rel='stylesheet' href='styles.css'/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
+        <link href="nv.d3.min.css" rel="stylesheet">
+        <script src='./chart.js'></script>
     </head>
 
     <body>
@@ -12,12 +14,18 @@
             <div class="container">
                 <div class="columns is-vcentered">
                   <div class="column is-full">
-                    <div class="box title has-background-warning-light">About Page</div>
+                    <div class="box title has-background-warning-light">Data Visualizations</div>
                       <nav class="column">
                         <a href="index.html">Home Page</a>
-                        <a href="visualizations.html">Data Visualizations</a>
                         <a href="new_record.html">New Record</a>
+                        <a href="about.html">About Page</a>
                       </nav>
+                  </div>
+                  <div>
+                    <canvas id="chart" width="400" height="400"></canvas>
+                  </div>
+                  <div>
+                    <canvas id="donut" width="400" height="400"></canvas>
                   </div>
                 </div>
             </div>

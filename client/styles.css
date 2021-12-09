@@ -150,3 +150,11 @@ html {
     justify-content: center;
     align-items: center;
 }
+
+#category_chart_container{
+    width: 900px;
+    margin-top: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

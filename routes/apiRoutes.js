@@ -11,6 +11,7 @@ import eruptionCategoryController from '../server/controllers/eruptionCategoryCo
 import veiController from '../server/controllers/veiController.js';
 import infoController from '../server/controllers/infoController.js';
 import eruptionFrequency from '../server/controllers/eruptionFrequency.js';
+import category_frequency from '../server/controllers/category_frequency.js';
 
 const router = express.Router();
 
@@ -548,5 +549,18 @@ router.route('/eruption_freq')
       res.json({error: 'something went wrong!'});
     }
   });
+
+router.route('/category_freq')
+.get(async(req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(category_frequency.freqGet, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    console.log('you touched the route!');
+    res.json(result);
+  } catch (err) {
+    res.json({error: 'something went wrong!'});
+  }
+});
 
   export default router;

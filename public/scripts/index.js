@@ -1,15 +1,15 @@
 function getMatch(event, census) {
   // not that many zips so filtering is fine - return if something matches
   const matches = census[0].filter((zcta) => zcta.census_zcta === event.target.value
-      || zcta.popstat_zcta === event.target.value
-      || zcta.metro_zcta === event.target.value);
+	|| zcta.popstat_zcta === event.target.value
+	|| zcta.metro_zcta === event.target.value);
   if (matches.length > 0) {
     return matches[0];
   }
   return false;
 }
 
-function renderTableHTML(match, tableDiv) {
+function renderTableHTML(match, ethnicityMatch, tableDiv) {
   tableDiv.innerHTML = `<table class="table">
             <tr class="col"><th class="col"> Census ${match.census_zcta} </th></tr>
             <td><strong>median age</strong></td><td>${match.median_age}</td>
@@ -29,21 +29,75 @@ function renderTableHTML(match, tableDiv) {
            <tr>
            <td><strong>% renters</strong></td><td>${match.percent_rent}</td>
            </tr>
+           <tr>
+           <td><strong>ethnic count</strong></td><td>${ethnicityMatch}</td>
+           </tr>
     </table>`;
 }
 async function dataHandler() {
   const searchInput = document.querySelector('.search');
   const tableDiv = document.querySelector('.census-data');
   const census = await fetch('./api/census').then((response) => response.json());
+  const ethnicities = await fetch('./api/ethnicities').then((response) => response.json());
+  // on inputs validate matches, if true render html
+  searchInput.addEventListener('input', (evt) => {
+    let match = false;
+    let ethnicityMatch = false;
+    if (evt.target.value.length === 5) {
+      match = getMatch(evt, census);
+    }
+    if (match !== false) {
+      ethnicityMatch = ethnicities[0].filter((ele) =>
+	ele.ethnicity_zcta === evt.target.value && ele.ethnic_count !== 0);
+      ethnicityMatch = ethnicityMatch.length;
+      renderTableHTML(match, ethnicityMatch, tableDiv);
+    }
+  });
+}
+
+function getMatchCommunity(event, community) {
+  const matches = community[0].filter((ele) => ele.community_identifier.substring(2) === event.target.value);
+  if (matches.length > 0) {
+    return matches[0];
+  }
+  return false;
+}
+function renderTableHTMLCommunity(match, tableDiv) {
+  tableDiv.innerHTML = `<table class="table">
+            <tr class="col"><th class="col"> Community ${match.community_identifier.substring(2)} </th></tr>
+            <tr>
+            <td><strong>% foreign born</strong></td><td>${match.pct_foreign_born}</td>
+            </tr>
+            <tr>
+            <td><strong>% poverty</strong></td><td>${match.pct_poverty}</td>
+            </tr>
+            <tr>
+            <td><strong>% unemployed</strong></td><td>${match.pct_unemployed}</td>
+           </tr>
+           <tr>
+           <td><strong>% bachelors</strong></td><td>${match.pct_bachelors}</td>
+           </tr>
+           <tr>
+           <td><strong>median income</strong></td><td>${match.median_household_income}</td>
+           </tr>
+           <tr>
+           <td><strong>% little english</strong></td><td>${match.pct_little_english}</td>
+           </tr>
+    </table>`;
+}
+async function dataHandlerCommunity() {
+  const searchInput = document.querySelector('.search');
+  const tableDiv = document.querySelector('.community-data');
+  const community = await fetch('./api/community').then((response) => response.json());
 
   // on inputs validate matches, if true render html
   searchInput.addEventListener('input', (evt) => {
     let match = false;
     if (evt.target.value.length === 5) {
-      match = getMatch(evt, census);
+      match = getMatchCommunity(evt, community);
     }
     if (match !== false) {
-      renderTableHTML(match, tableDiv);
+      renderTableHTMLCommunity(match, tableDiv);
     }
   });
 }

@@ -11,10 +11,20 @@ async function fetchRequest(url) {
 }
 
 // Function to parse through the JSONs and sum based on the 'id' num
-function sumData(id, data) {
+function sumDataColl(id, data) {
   let tot = 0;
   data.forEach((item) => {
-    if (item.collision_type_id == id) {
+    if (item.collision_type_id === id) {
+      tot += 1;
+    }
+  });
+  return tot;
+}
+
+function sumDataCulpa(id, data) {
+  let tot = 0;
+  data.forEach((item) => {
+    if (item.culpability_id === id) {
       tot += 1;
     }
   });
@@ -22,7 +32,7 @@ function sumData(id, data) {
 }
 
 function barChart(labels, data) {
-
+// function to create the bar chart. Requires lables/data input
   const chartData = {
     labels: labels,
     datasets: [{
@@ -50,6 +60,7 @@ function barChart(labels, data) {
     }]
   };
 
+  // adding the barchart to the div html using getelement
   const ctx = document.getElementById('chart').getContext('2d');
   const chart = new Chart(ctx, {
     type: 'bar',
@@ -59,10 +70,46 @@ function barChart(labels, data) {
         y: {
           beginAtZero: true
         }
-        }
       }
+    }
   });
 }
+
+function donutChart(labels, data) {
+  const chartData = {
+    labels: labels,
+    datasets: [{
+      label: 'Driver Culpability',
+      data: data,
+      backgroundColor: [
+        'rgba(120, 28, 129, 0.4)',
+        'rgba(65, 57, 146, 0.4)',
+        'rgba(68, 124, 191, 0.4)',
+        'rgba(91, 167, 166, 0.4)',
+        'rgba(131, 186, 109, 0.4)',
+        'rgba(180, 189, 76, 0.4)',
+        'rgba(219, 171, 59, 0.4)',
+        'rgba(231, 115, 47, 0.4)',
+        'rgba(217, 33, 32, 0.4)'
+      ],
+      hoverOffset: 4
+    }]
+  };
+  const ctx = document.getElementById('donut').getContext('2d');
+  const chart = new Chart(ctx, {
+    type: 'doughnut',
+    data: chartData,
+  });
+}
+
+// function extractData (data.feature) {
+// function to extract the data into an array (not working)
+//   const array = [];
+//   for (let i = 1; i < data.length-1; i++) {
+//     array.push(data[i].feature);
+//   }
+//   return array;
+// }
 
 // Main thread function
 async function mainThread() {
@@ -70,21 +117,41 @@ async function mainThread() {
   const collision_type = await fetchRequest('./api/collisionType');
   const crash_information = await fetchRequest('./api/crashInformation');
   const driver_demographics = await fetchRequest('./api/driverDemographics');
+  const driver_culpability = await fetchRequest('./api/driverCulpability');
 
   // summing up the number of collision types from the crashInformation
-
   const numCollType = [];
-  for (let i = 1; i < collision_type.length-1; i++) {
-    numCollType.push(sumData(i, crash_information));
+  for (let i = 1; i < collision_type.length - 1; i++) {
+    numCollType.push(sumDataColl(i, crash_information));
   }
 
+  // extracting the collision description from the collision_type json data.
   const collLabel = [];
-  for (let i = 1; i < collision_type.length-1; i++) {
+  for (let i = 0; i < collision_type.length - 1; i++) {
     collLabel.push(collision_type[i].collision_desc);
-  };
+  }
+
+  // console log to check that the features were extracted for labels in the bar chart
   console.log(collLabel);
 
+  // bar chart function using the labels and data
   barChart(collLabel, numCollType);
+
+  const culpaData = [];
+  for (let i = 1; i < driver_culpability.length - 1; i++) {
+    culpaData.push(sumDataCulpa(i, driver_demographics));
+  }
+
+  console.log(culpaData);
+
+  const culpaLabel = [];
+  for (let i = 0; i < driver_culpability.length - 1; i++) {
+    culpaLabel.push(driver_culpability[i].culpability_desc);
+  }
+
+  console.log(culpaLabel);
+
+  donutChart(culpaLabel, culpaData);
 }
 
 mainThread();

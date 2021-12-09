@@ -333,4 +333,65 @@ router.route('/roadConditions')
       res.send('Something went wrong on /roadConditions');
     }
   });
+
+// driver culpability endpoint
+  router.route('/driverCulpability')
+  .get(async(req, res) => {
+    try {
+      const driver_culpability = await db.driver_culpability.findAll();
+      console.log('You touched the /driverCulpability route with GET');
+      res.json(driver_culpability);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      await db.driver_culpability.update(
+        {
+          culpability_desc: req.body.culpability_desc
+        },
+        {
+          where: {
+            culpability_id: req.body.culpability_id
+          }
+        }
+      );
+      console.log('You touched the /driverCulpability route with PUT');
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  })
+  .post(async(req, res) => {
+    const driver_culpability = await db.driver_culpability.findAll();
+    const currentID = (await driver_culpability.length) + 1;
+    try {
+      const collisionTypeCreate = await db.driver_culpability.create({
+        culpability_id: req.body.culpability_id,
+        culpability_desc: req.body.culpability_desc
+      });
+      console.log('You touched the /driverCulpability route with POST');
+      res.json(driverCulpabilityCreate);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      await db.driver_culpability.destroy({
+        where: {
+          culpability_id: req.params.culpability_id
+        }
+      });
+      console.log('You touched the /driverCulpability route with DELETE');
+      res.send('Successfully deleted');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  });
 export default router;

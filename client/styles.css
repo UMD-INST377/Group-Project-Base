@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 body {
+    background-color:#fa8975;
+    height: 100%;
     width: 100%;
     margin: 0px;
     padding: 0px;
@@ -15,8 +17,10 @@ body {
 /* home page search bar. */
 .container{
     display: flex;
+    width: 1000px;
     justify-content: center; 
     padding: 10px;
+    background-color:#e28f7a;
 }
 
 .title{
@@ -27,6 +31,7 @@ body {
 
 
 .links{
+    border: 1px solid #e28f7a;
     display: flex;
     justify-content: flex-end;
 }
@@ -67,6 +72,7 @@ body {
     display: flex;
     justify-content: center;  
     margin:auto;
+    
 }
 
 .photo-grid{
@@ -85,6 +91,7 @@ body {
     height: 300px;
     margin:auto;
     padding: 10px;
+    background-color:#e28f7a;
 }
 
 #info_box .box{
@@ -157,10 +164,18 @@ html {
     align-items: center;
 }
 
+
+.page{
+    /*background-color:#73a7d6;*/
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+}
+
 #category_chart_container{
     width: 900px;
     margin-top: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }

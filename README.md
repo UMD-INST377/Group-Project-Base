@@ -49,7 +49,7 @@ actions.
    homeowner_rate: 71.1,
    percent_homeowner_without_mortgage: 11.2,
    percent_rent: 19.9}, 
-   ...]]```
+   ... ]]```
 * metro - Relates to MD zip codes that are small metropolitan areas
 * community - Relates to MD community survey
 * population - Relates to population statistics for MD zip codes 

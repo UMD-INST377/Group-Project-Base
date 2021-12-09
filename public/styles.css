@@ -1,20 +1,31 @@
+p {
+    color: white;
+}
 
 nav {
-    background-color: rgb(30, 215, 96);
+    background-color: mediumseagreen;
     padding: 20px;
     margin-bottom: 20px;
+    color: white;
 }
 h1{
     text-align: center;
     padding-bottom: 50px;
+    color:white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 h2{
     text-align: center;
-    padding-bottom:20px
-}
-.nav a {
+    padding-bottom:20px;
     color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav a {
+    color: rgb(51, 51, 51);
     font-size: 125%;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
@@ -22,11 +33,13 @@ h2{
     flex-flow: row wrap;
     justify-content: space-around;
     margin-bottom: 20px;
+    text-align: center;
 }
 
+/* background-color: rgb(30, 215, 96);*/
 .footers {
-    background-color: rgb(30, 215, 96);
-    color: white;
+    background-color: mediumseagreen;
+    color: rgb(51, 51, 51);
     text-align: center;
     padding: 30px;
     bottom: 0;
@@ -34,15 +47,22 @@ h2{
     left: 0;
     width: 100%;
     flex: initial;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
 }
 
 .playlist-button {
+    background-color: grey;
     width: 300px;
-    height: 300px;
-    justify-content: center;
-    border-radius: 5px;
-    float: left;
+    height: 200px;
+    border-radius: 10px;
+    display: inline-block;
     margin: 5px;
+    vertical-align: text-top;
+    color: white;
+    font-size: 130%;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .topPodcastsContainer {
@@ -72,10 +92,11 @@ h2{
 .form-label {
     font-size: 150%;
     margin-bottom: 30px;
+    color: white;
 }
 
 .form-input {
-    background-color: rgb(30, 215, 96);
+    background-color: mediumseagreen;
     width: 300px;
 }
 
@@ -84,6 +105,7 @@ h2{
     flex-flow: row;
     justify-content: space-evenly;
     font-size: 120%;
+    color: white;
 }
 
 .login {
@@ -104,3 +126,16 @@ div ul {
 li {
     display: inline-block;
 }
+
+.body-color {
+    background-color: rgb(51, 51, 51);
+}
+
+.is-outlined {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight:500;
+}
+
+ span.song_name {
+    color: white;
+ }

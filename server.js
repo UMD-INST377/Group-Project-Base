@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
+import methodOverride from 'method-override';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 
@@ -10,8 +11,10 @@ const staticFolder = 'public';
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 app.use(express.static(staticFolder));
+
 app.use('/api', apiRoutes);
 
 async function bootServer() {

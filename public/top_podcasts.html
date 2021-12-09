@@ -10,15 +10,12 @@
          <link rel='stylesheet' href='styles.css'>
     </head>
 
-    <body>
+    <body class="body-color">
         <!--Header of the Main Page-->
         <nav>
             <ul class="nav nav-fill">
-                <li class="nav-item">
+                <li class="nav-item navbar-brand">
                     <a class="nav-link" href="index.html">Spotify DB Home</a>
-                </li>
-                <li class="nav-item">
-                    <input type="text" placeholder="Search">
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="my_library.html">My Library</a>
@@ -27,15 +24,17 @@
                     <a class="nav-link" href="about.html">About</a>
                 </li>
                 <li class="nav-item">
-                    <button type="button" onclick="location.href='sign_in.html'">Sign In</button>
+                    <button type="button" class="button is-outlined" onclick="location.href='sign_in.html'">Sign In</button>
                 </li>
             </ul>
         </nav>
 
-        <div class="background">
+        <div class='background'>
             <h2>Podcasts</h2>
             <div class="container">
-                <div id="topPodcastsContainer" class="podcast_name"></div>
+                <div class="carousel columns">
+                    <div id="topPodcastsContainer" class="podcast_name"></div>
+                </div>
 
             </div>
 
@@ -43,7 +42,7 @@
 
         <!--Footer-->
         <div class="footers">
-            <p>&copy; 2021 - INST377 Group 10. All Rights Reserved</p>
+            &copy; 2021 - INST377 Group 10. All Rights Reserved
         </div>
     </body>
     <script src='script.js'></script>

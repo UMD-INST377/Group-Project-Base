@@ -304,16 +304,15 @@ router.route('/rapSongs')
       res.json(err);
     }
   })
-  .post(async (req, res) => {
+  .delete(async (req, res) => {
     try {
       // add id for endpoint
-      const albumId = req.body.album_id;
-      const albumName = req.body.album_name;
-      const sqlStatement = `UPDATE albums SET album_name = '${albumName}' WHERE album_id = ${albumId};`;
+      const songId = req.body.song_id;
+      const sqlStatement = `DELETE from songs WHERE song_id = ${songId};`;
       const result = await db.sequelizeDB.query(sqlStatement, {
-        type: sequelize.QueryTypes.UPDATE
+        type: sequelize.QueryTypes.DELETE
       });
-      res.json(result);
+      console.log(result);
     } catch (err) {
       res.json(err);
     }
@@ -327,8 +326,7 @@ router.delete('/rapSongs/:id', async (req, res) => {
     const result = await db.sequelizeDB.query(sqlStatement, {
       type: sequelize.QueryTypes.DELETE
     });
-    console.log('deleted album');
-    res.json(result);
+    res.redirect('/public/index.html', { root: `${__dirname}/..` });
   } catch (err) {
     res.json(err);
   }

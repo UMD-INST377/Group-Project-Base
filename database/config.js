@@ -1,9 +1,9 @@
 export default {
   development: {
-    username: 'root',
-    password: 'password',
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
     database: 'spotify',
-    host: 'localhost',
+    host: '18.212.135.23',
     dialect: 'mysql'
   },
   test: {

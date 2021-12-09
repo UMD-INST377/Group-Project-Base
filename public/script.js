@@ -8,7 +8,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = playlists.map((playlist) => {
-        return `<button class="playlist-button" type="button">${playlist.playlist_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${playlist.playlist_name}</button>`;
       }).join('');
       playlistContainer.innerHTML = html;
     }
@@ -26,7 +26,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = albums.map((album) => {
-        return `<button class="playlist-button" type="button">${album.album_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${album.album_name}</button>`;
       }).join('');
       albumContainer.innerHTML = html;
     }
@@ -38,7 +38,6 @@ async function windowsAction() {
   async function getPopSongs() {
     const endPoint = await fetch('./api/popsongs');
     const songs = await endPoint.json();
-    console.log(songs)
     const songContainer = document.querySelector('#popsongsContainer');
     function displayPlaylists() {
       // eslint-disable-next-line no-template-curly-in-string
@@ -48,7 +47,10 @@ async function windowsAction() {
                   <li>
                     <span class='song_name'>
                       ${song.song_name}
-                        <button class="button is-warning" type="submit"><a href="/api/popsongs/${song.song_id}">Delete</a></button>
+                      <form action="/api/popSongs:"${song.song_id}" method="post">
+                        <button class="button is-warning"  type="submit">Delete</button>
+                        <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+                      </form>
                     </span>
                   </li>
                 </ul>`;
@@ -64,7 +66,6 @@ async function windowsAction() {
     const endPoint = await fetch('./api/rapSongs');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#hiphopsongsContainer');
-    console.log(songs)
     function displayPlaylists() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
@@ -73,11 +74,10 @@ async function windowsAction() {
         <li>
           <span class='song_name'>
             ${song.song_name}
-            <form action="/api/popsongs/${song.song_id}" method="post">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="button is-warning" type="submit">Delete</button>
+            <form action="/api/rapSongs/${song.song_id}?_method=DELETE" method="post"> 
+              <button class="button is-warning"  type="submit">Delete</button>
+              <input type="hidden" name="_method" value="DELETE">
             </form>
-
           </span>
         </li>
       </ul>`;
@@ -99,8 +99,16 @@ async function windowsAction() {
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
         return `<ul>
-        <li><span class='song_name'>${song.song_name}</span></li>
-    </ul>`;
+        <li>
+          <span class='song_name'>
+            ${song.song_name}
+            <form action="/api/holidaySongs" method="post">
+              <button class="button is-warning"  type="submit">Delete</button>
+              <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+            </form>
+          </span>
+        </li>
+      </ul>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -118,9 +126,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       // `<ul><li><span class='song_name'>${song.song_name}</span></li></ul>`).join('');
-      const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
-      }).join('');
+      const html = songs.map((song) => `<button class="playlist-button box column" type="button">${song.song_name}</button>`).join('');
       songContainer.innerHTML = html;
     }
 
@@ -137,7 +143,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       const html = songs.map((song) => {
-        return `<button class="playlist-button" type="button">${song.song_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
       }).join('');
       songContainer.innerHTML = html;
     }
@@ -152,8 +158,10 @@ async function windowsAction() {
     const podcastContainer = document.querySelector('#topPodcastsContainer');
 
     function displayPodcasts() {
+      // eslint-disable-next-line no-template-curly-in-string
+      // eslint-disable-next-line arrow-body-style
       const html = podcasts.map((podcast) => {
-        return `<button class="playlist-button" type="button">${podcast.podcast_name}</button>`;
+        return `<button class="playlist-button box column" type="button">${podcast.podcast_name}</button>`;
       }).join('');
       podcastContainer.innerHTML = html;
     }
@@ -162,5 +170,95 @@ async function windowsAction() {
   }
   getTopPodcasts();
 }
+
+async function getartists() {
+  const endPoint = await fetch('./api/Artists');
+  const artists = await endPoint.json();
+  const artistcontainer = document.querySelector('#artistcontainer');
+
+  function displayartists() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = artists.map((artist) => {
+      return `<button class="playlist-button box column" type="button">${artist.artist_name}</button>`;
+    }).join('');
+    artistcontainer.innerHTML = html;
+  }
+
+  displayartists();
+}
+getartists();
+
+async function getAriana() {
+  const endPoint = await fetch('./api/arianaSongs');
+  const songs = await endPoint.json();
+  const arianaContainer = document.querySelector('#arianaContainer');
+
+  function displayAriana() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    arianaContainer.innerHTML = html;
+  }
+
+  displayAriana();
+}
+getAriana();
+
+async function getBadbunny() {
+  const endPoint = await fetch('./api/badBunnySongs');
+  const songs = await endPoint.json();
+  const BadbunnyContainer = document.querySelector('#BadbunnyContainer');
+
+  function displayBadbunny() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    BadbunnyContainer.innerHTML = html;
+  }
+
+  displayBadbunny();
+}
+getBadbunny();
+
+async function getBTS() {
+  const endPoint = await fetch('./api/btsSongs');
+  const songs = await endPoint.json();
+  const BTSContainer = document.querySelector('#BTSContainer');
+
+  function displayBTS() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+    }).join('');
+    BTSContainer.innerHTML = html;
+  }
+
+  displayBTS();
+}
+getBTS();
+
+async function getSongs() {
+  const endPoint = await fetch('./api/songs');
+  const songs = await endPoint.json();
+  const songsContainer = document.querySelector('#songsContainer');
+
+  function displaySongs() {
+    // eslint-disable-next-line no-template-curly-in-string
+    // eslint-disable-next-line arrow-body-style
+    const html = songs.map((song) => {
+      return `<button class="playlist-button box column" type="button">${song.song_name}<button>delete</button></button>`;
+    }).join('');
+    songsContainer.innerHTML = html;
+  }
+
+  displaySongs();
+}
+getSongs();
 
 window.onload = windowsAction();

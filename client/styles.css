@@ -8,7 +8,11 @@
   body {
     background-color: #FFFFFF ; /* Red */
     font-size: 15px;
-  }
+    }
+   .about_image {
+      width:50%;
+      height:50%;
+    }
 }
 
 
@@ -274,7 +278,10 @@
     margin-left: 20px;
     margin-top: 30px;
   }
-  
+
+  .Home:onclick {
+    background-color: yellow;
+  }
   .Music_Logo {
     width: 100px;
     height: 100px;

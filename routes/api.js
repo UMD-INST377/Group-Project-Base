@@ -87,13 +87,15 @@ router.get('/schools/:rank_id', async (request, response) => {
 });
 
 /**
-<<<<<<< HEAD
  * Get available avg SAT scores for a school
  *
  * @author John I.
  */
 router.get('/schools/:rank_id/sat_scores', async (request, response) => {
- /* Fetch School Reviews by Rank ID
+
+});
+
+/* Fetch School Reviews by Rank ID
  *
  * Note:
  *   (1) We cannot allow POST/PUT/DELETE for reviews
@@ -217,7 +219,6 @@ router.delete('/schools/:rank_id/review', async (request, response) => {
 });
 
 router.get('/schools/:rank_id/univ_location', async (request, response) => {
-b38423f7fff4ee2b41aec120ec72ac29ed2c8dc6
   try {
     // Debug
     console.log('touched /schools/:rank_id/sat_scores with GET');

@@ -55,6 +55,10 @@ router
           common_name: req.body.common_name,
           weight_lbs: req.body.weight_lbs,
           species: req.body.species,
+          fight_mode_fight_mode_id: req.body.fight_mode_fight_mode_id,
+          hierarchy_hierarchy_id: req.body.hierarchy_hierarchy_id,
+          lifestyle_lifestyle_id: req.body.lifestyle_lifestyle_id,
+          extinction_extinction_id: req.body.extinction_extinction_id
         },
         type: sequelize.QueryTypes.INSERT
       });

@@ -330,7 +330,7 @@ router.delete('/rapSongs/:id', async (req, res) => {
     });
     const options = {root: path.join(__dirname, '/public')};
     console.log(options);
-    res.sendFile('deleted.html', options);
+    res.sendFile('hiphop.html', options);
   } catch (err) {
     res.json(err);
   }

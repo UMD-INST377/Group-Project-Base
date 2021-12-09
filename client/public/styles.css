@@ -58,6 +58,7 @@ details > summary {
   cursor: pointer;
   width: 100%;
   border: 1px solid;
+  height: 38px;
 }
 
 img {

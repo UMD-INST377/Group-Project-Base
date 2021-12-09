@@ -6,9 +6,14 @@ import db from '../database/initializeDB.js';
 import actor from '../controllers/actorController.js';
 import genre from '../controllers/genreController.js';
 import film from '../controllers/filmController.js';
+import Films from '../models/film.js';
+const Op = sequelize.Op;
 
 const router = express.Router();
 
+router.get('/', (req,res) => {
+  res.send("Welcome to Movies!");
+});
 
 /**
  * Films
@@ -189,5 +194,26 @@ router.route('/actor')
       res.json({error: 'Can\'t be deleted'});
     }
   });
+
+router.get('/search/:id', async(req,res) => {
+  try {
+    console.log('touched search/:id GET');
+
+    const movieByName = await db.sequelizeDB.query(film.getByID,{
+      replacements: {
+        id : req.params.id
+      }
+    });
+
+    res.json(movieByName);
+  } catch (err) {
+    console.error(err);
+    res.json({
+      status: 'Something went wrong',
+      data: null,
+      message: 'Failed, error.'
+    });
+  }
+});
 
 export default router;

@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 body {
-    height: 100%;
     width: 100%;
     margin: 0px;
     padding: 0px;
@@ -20,7 +19,6 @@ body {
 
 
 .links{
-    border: 1px solid #fff;
     display: flex;
     justify-content: flex-end;
 }
@@ -73,7 +71,6 @@ body {
 }
 
 .photo-grid-item{
-    border: 1px solid #fff;
     display: flex;
     width: 300px;
     height: 300px;

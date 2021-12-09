@@ -1,1 +1,5 @@
-export default putController();
+const testin = 'NA'
+
+export default {
+    testin,
+}

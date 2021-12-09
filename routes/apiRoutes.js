@@ -63,9 +63,10 @@ router.get('/contact',async(req, res) => {
   try {
     const contact = await db.sequelizeDB.query(GETcontroller.contact, {
       type: sequelize.QueryTypes.SELECT
-    )};
+      
+    });
 
-    console.log('Touched contact with GET')
+  
 
   } catch (error) {
     console.log(error);
@@ -85,9 +86,8 @@ router.post(async(req, res) => {
   try {
     const insertQuery = await db.sequelizeDB.query(POSTcontroller.addContact, {
       type: sequelize.QueryTypes.INSERT,
-      console.log('touched /contact endpoint POST')
-      res.send('POST contact endpoint');
-  } catch (error) {
+      
+  })} catch (error) {
     console.log(error);
     res.json({message: 'Something went wrong'});
   }
@@ -107,9 +107,9 @@ router.get('/members',async(req, res) => {
   try {
     const members = await db.sequelizeDB.query(GETcontroller.members, {
       type: sequelize.QueryTypes.SELECT
-    )};
+    });
 
-    console.log('Touched general members with GET');
+    
     
     } catch (error) {
     console.log(error)
@@ -118,7 +118,7 @@ router.get('/members',async(req, res) => {
 });
 router.put(async(req, res) => {
   try {
-    console.log('touched /members endpoint PUT')
+    console.log('touched /members endpoint PUT');
     res.send('PUT members endpoint');
   } catch (error) {
     console.log(error)
@@ -129,9 +129,7 @@ router.post(async(req, res) => {
   try {
     const insertQuery = await db.sequelizeDB.query(POSTcontroller.addMember, {
       type: sequelize.QueryTypes.INSERT,
-      console.log('touched /members endpoint POST')
-      res.send('POST members endpoint');
-  } catch (error) {
+  })} catch (error) {
     console.log(error)
     res.json({message: 'Error'})
   }
@@ -193,7 +191,7 @@ router.get('/personal_info',async(req, res) => {
   try {
     const members = await db.sequelizeDB.query(GETcontroller.personal_info, {
       type: sequelize.QueryTypes.SELECT
-    )};
+    });
 
     console.log('touched /Personal Information GET');
     
@@ -215,9 +213,7 @@ router.post(async(req, res) => {
   try {
     const insertQuery = await db.sequelizeDB.query(POSTcontroller.addPersonal_Info, {
       type: sequelize.QueryTypes.INSERT,
-      console.log('touched /Personal Information POST')
-      res.send('POST Personal Information');
-  } catch (error) {
+  })} catch (error) {
     console.log(error)
     res.json({message: 'Error'})
   }
@@ -231,3 +227,5 @@ router.delete(async(req, res) => {
     res.json({message: 'Error'})
   }
 })
+
+export default router;

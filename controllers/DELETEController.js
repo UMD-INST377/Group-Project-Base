@@ -1,1 +1,5 @@
-export default deleteController();
+const testin = 'NA';
+
+export default {
+    testin,
+}

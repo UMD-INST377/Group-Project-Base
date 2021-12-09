@@ -76,11 +76,7 @@ router.get('/room_type', async (req, res) => {
 
 router.post('/review', async (req, res) => {
   try {
-    const reviews = await db.Reviews.create({
-      hotel_id: req.body.hotel_id,
-      review_text: req.body.review_text
-      //made review_id auto increment 
-    });
+    const reviews = await db.Reviews.findAll();
     res.json(reviews);
   } catch (err) {
     console.error(err);

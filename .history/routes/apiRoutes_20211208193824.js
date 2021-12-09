@@ -79,8 +79,7 @@ router.post('/review', async (req, res) => {
     const reviews = await db.Reviews.create({
       hotel_id: req.body.hotel_id,
       review_text: req.body.review_text
-      //made review_id auto increment 
-    });
+      
     res.json(reviews);
   } catch (err) {
     console.error(err);

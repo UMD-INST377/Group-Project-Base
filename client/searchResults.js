@@ -5,7 +5,7 @@ async function getByID() {
   console.log(endpoint)
   const request = await fetch(endpoint)
   const movies = await request.json()
-  const arr = new Set(Films.getByID);
+  const arr = new Set();
   movies.forEach((movie) => {
                 movie.forEach((data) => {
                         arr.add(data.name)

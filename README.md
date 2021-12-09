@@ -109,7 +109,8 @@ company_zcta: 20852},
 ### Bugs:
 - Scrolling on the Query form makes the input elements go past the Bulma boxes.
 
-### Potential Future Developments: 
+### Potential Future Developments:
+- improve mobile interface
 - Allow the option to remove columns from the filtered output
 - Include Leaflet visualizations by highlighting zip code regions
 - HTTP method that can recreate the database in case some manipulations go wrong

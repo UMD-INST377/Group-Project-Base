@@ -120,10 +120,9 @@ router.route('/crashInformation')
 
   .post(async(req, res) => {
     const crash_information = await db.crash_information.findAll();
-    const currentID = (await crash_information.length) + 1;
     try {
       const newCrashInformation = await db.crash_information.create({
-        report_id: currentID,
+        report_id: req.body.report_id,
         location_id: req.body.location_id,
         report_type: req.body.report_type,
         acc_date: req.body.acc_date,

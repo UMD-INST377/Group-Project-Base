@@ -5,7 +5,8 @@
         <title>Group 7 Project</title>
         <link rel='stylesheet' href='styles.css'/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
-        <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+        <link href="nv.d3.min.css" rel="stylesheet">
+        <script src='./chart.js'></script>
     </head>
 
     <body>
@@ -18,10 +19,12 @@
                             <a href="about.html">About Page</a>
                         </nav>
                   </div>
+                  <div>
+                    <canvas id="chart" width="400" height="400"></canvas>
+                  </div>
                 </div>
             </div>
         </div>
-        <div class="chart"></div>
         <script src="script.js"></script>
     </body>
 

@@ -31,6 +31,22 @@
             </nav>
         </head>
     <body>
+        <div class="columns is-multiline is-centered is-vcentered">
+            <form id="movieSearch" class="box has-background-warning-light">
+              <div class="formWrapper">
+                <div class="field">
+                  <label for='movie' class="label">Search All Movies By Genre</label>
+                  <input id='movieId' name='movieId' type='text' />
+                </div>
+                <button id="submit" type='button'>Submit</button>
+              </div>
+              <ul id='results'></ul>
+            </form>
+          </div>
+        <script src="searchResults.js" async defer></script>
+     
+    
+    
         <section class="hero is-medium">
             <div class="hero-body">
               <div class="container has-text-centered">

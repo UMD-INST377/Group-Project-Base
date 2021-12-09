@@ -36,7 +36,7 @@ router.get('/:rank_id', async (request, response) => {
       replacements: { rank_id: rank_id },
       type: sequelize.QueryTypes.SELECT
     });
-    if (d.length != 1 || typeof(d[0]) !== "object" || typeof(d[0].university_name) !== "string") {
+    if (d.length != 1 || typeof(d[0]) !== 'object' || typeof(d[0].university_name) !== 'string') {
       response.status(404).send(university_404);
     }
 
@@ -46,7 +46,7 @@ router.get('/:rank_id', async (request, response) => {
       type: sequelize.QueryTypes.SELECT
     });
     if (r.length > 0) {
-      d[0]["reviews"] = r;
+      d[0]['reviews'] = r;
     }
 
     // Render page
@@ -66,7 +66,7 @@ router.get('/:rank_id', async (request, response) => {
  * @author Alec M.
  * @date 2021-11-05 08:43:00
  */
-router.get("/:rank_id/review", async (request, response) => {
+router.get('/:rank_id/review', async (request, response) => {
   // Validate rank_id
   const rank_id = parseInt(request.params.rank_id);
   if (rank_id <= 0 || rank_id > 14) {
@@ -80,12 +80,12 @@ router.get("/:rank_id/review", async (request, response) => {
       replacements: { rank_id: rank_id },
       type: sequelize.QueryTypes.SELECT
     });
-    if (d.length != 1 || typeof(d[0]) !== "object" || typeof(d[0].university_name) !== "string") {
+    if (d.length != 1 || typeof(d[0]) !== 'object' || typeof(d[0].university_name) !== 'string') {
       response.status(404).send(university_404);
     }
 
     // Render page
-    d[0]["rank_id"] = rank_id;
+    d[0]['rank_id'] = rank_id;
     response.render('newReview', d[0]);
   } catch (e) {
     // Debug

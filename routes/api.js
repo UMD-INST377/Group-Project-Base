@@ -7,10 +7,10 @@
 
 /* eslint-disable no-console */
 import express from 'express';
+import RateLimit from 'express-rate-limit';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import controllers from '../controllers/index.js';
-import RateLimit from 'express-rate-limit';
 
 // Instantiate router component
 const router = express.Router();
@@ -29,7 +29,7 @@ router.use(limit);
  */
 router.get('/', (request, response) => {
   // Debug
-  console.log("touched / with GET");
+  console.log('touched / with GET');
 
   // Send default response
   response.send('Touched the root API endpoint');
@@ -54,13 +54,13 @@ router.get('/schools', async (request, response) => {
     });
 
     // Send data
-    response.json({status: "success", data: d});
+    response.json({status: 'success', data: d});
   } catch (e) {
     // Debug
     console.error(e);
 
     // Send data
-    response.json({status: "failure", data: null, message: "unknown error"});
+    response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
 
@@ -73,16 +73,16 @@ router.get('/schools', async (request, response) => {
 router.get('/schools/:rank_id', async (request, response) => {
   try {
     // Debug
-    console.log("touched /schools/:rank_id with GET");
+    console.log('touched /schools/:rank_id with GET');
 
     // Send data
-    response.json({status: "success", data: []});
+    response.json({status: 'success', data: []});
   } catch (e) {
     // Debug
     console.error(e);
 
     // Send data
-    response.json({status: "failure", data: null, message: "unknown error"});
+    response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
 
@@ -111,7 +111,7 @@ router.get('/schools/:rank_id/reviews', async (request, response) => {
   // Validate rank_id
   const rank_id = parseInt(request.params.rank_id);
   if (rank_id <= 0 || rank_id > 14) {
-    response.status(404).send("");
+    response.status(404).send('');
   }
 
   // Safely connect to database
@@ -121,7 +121,7 @@ router.get('/schools/:rank_id/reviews', async (request, response) => {
       type: sequelize.QueryTypes.SELECT
     });
     if (!r || r.length <= 0) {
-      response.status(404).send("");
+      response.status(404).send('');
     }
 
     // Send data
@@ -131,20 +131,20 @@ router.get('/schools/:rank_id/reviews', async (request, response) => {
     console.error(e);
 
     // Send data
-    response.status(404).send("");
+    response.status(404).send('');
   }
 });
 router.post('/schools/:rank_id/reviews', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 router.put('/schools/:rank_id/reviews', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 router.delete('/schools/:rank_id/reviews', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 
 /**
@@ -161,7 +161,7 @@ router.post('/schools/:rank_id/review', async (request, response) => {
   }
 
   // Validate Review
-  const review = (request.body.review || "").toString().substr(0, 1024) || "";
+  const review = (request.body.review || '').toString().substr(0, 1024) || '';
   if (!review || review.length <= 0) {
     response.status(400);
   }
@@ -196,7 +196,7 @@ router.post('/schools/:rank_id/review', async (request, response) => {
     });
 
     // Send data
-    response.send("1");
+    response.send('1');
   } catch (e) {
     // Debug
     console.error(e);
@@ -207,15 +207,15 @@ router.post('/schools/:rank_id/review', async (request, response) => {
 });
 router.get('/schools/:rank_id/review', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 router.put('/schools/:rank_id/review', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 router.delete('/schools/:rank_id/review', async (request, response) => {
   // Unallowed method
-  response.status(405).send("Method Not Allowed");
+  response.status(405).send('Method Not Allowed');
 });
 
 router.get('/schools/:rank_id/univ_location', async (request, response) => {
@@ -253,7 +253,7 @@ router.get('/schools/:rank_id/Admission_rate', async (request, response) => {
   } catch(e) {
     console.error(e);
 
-    response.json({status: 'failure', data: null, message:"unknown error"});
+    response.json({status: 'failure', data: null, message:'unknown error'});
   }
 });
 
@@ -277,7 +277,7 @@ router.get('/test_scores', async (request, response) => {
     console.error(e);
 
     // Send data
-    response.json({status: "failure", data: null, message: "unknown error"});
+    response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
 

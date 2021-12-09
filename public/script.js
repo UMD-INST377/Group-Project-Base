@@ -6,4 +6,4 @@ const request = await and then fetch the endpoint
 this will return a response
 const response = request.json
 
-*/ 
+*/

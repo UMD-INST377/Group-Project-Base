@@ -1,0 +1,11 @@
+p{
+    font-size: 17pt;
+    padding-left: 10px;
+}
+
+#house{
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

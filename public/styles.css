@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+body {
+    background-color:rgb(230, 230, 230);
+}
+
+.nav-nba-badge {
+    background-color: rgb(68, 139, 180);
+    color: white;
+    font-weight: bold;
+    width: 200px;
+    height: 40px;
+    padding: 0px;
+    margin: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+  }
+
+.nav-nba-badge-text {
+
+}
+
+.wel {
+    background-color: rgb(68, 139, 180);
+    color: white;
+    text-align: left;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    width: 349px;
+    padding: 30px;
+    margin: 20px;
+  }
+
+  .wel-logo {
+      margin-top: 0.5in;
+      display: flex;
+      align-items: center;
+      justify-content: center
+  }
+
+.welc{
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: 'Trebuchet MS';
+}
+
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+  
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.container {
+    max-width: 960px;
+    margin-top: 25px;
+}
+
+#playertable {
+    width: 80%;
+    margin: 0 auto;
+
+    table-layout: fixed ;
+    
+    overflow-y:scroll;
+    height: 400px;
+    display:block;
+}
+#playertable td {
+    width: 20%
+}
+
+#topdisplay {
+    position: relative;
+    padding-top: 50px;
+    margin: auto;
+    width: 90%;
+    height: 90%;
+    box-shadow: 5px 5px 15px #666666;
+}
+
+#teaminfobox {
+    color: white;
+}
+
+#space {
+    opacity: 0.0;
+}

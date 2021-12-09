@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <title>Group1 Final Project</title>
+    </head>
+    <body>
+        <div class="navbar is-dark">
+            <div class="buttons is-centered">
+                <div class="nav-nba-badge">NBA</div>
+                <div class="button is-dark"><a href="index.html">Home</a></div>
+                <div class="button is-dark"><a href="about.html">About</a></div>
+                <div class="button is-dark"><a href="forms.html">Add Information</a></div>
+                <div class="button is-dark"><a href="update_form.html">Update</a></div>
+                <div class="button is-dark"><a href="delete.html">Delete</a></div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="container">
+                <div class="columns column is-centered">
+                    <div class = "column is-full">
+                        <div class="box title has-background-info">Update Player</div>
+                    </div>
+                    <div class="box has-background-info" id="teaminfobox">
+                        <h1>Team IDs</h1>
+                        <ol>
+                            <li>Bucks</li>
+                            <li>Raptors</li>
+                            <li>Celtics</li>
+                            <li>Pacers</li>
+                            <li>Lakers</li>
+                            <li>Clippers</li>
+                            <li>Nuggets</li>
+                            <li>Rockets</li>
+                        </ol>
+                    </div>
+                    <div class="box is-one-half" id="space"></div>
+                    <div class="box is-two-fifths has-background-info">
+                        <div class="column is-centered">
+                            <form onsubmit="return false" class="column" id="form">
+                                <div class="column">
+                                    <label for="playername"><h1><strong>Player ID</strong></h1></label>
+                                    <input class="input is-small" type="number" id="player_id" name="player_id">
+                                </div>
+                                <div class="column">
+                                    <label for="ppg"><h1><strong>PPG</strong></h1></label>
+                                    <input class="input is-small" type="number" id="ppg" name="ppg">
+                                </div>
+                                <div class="column">
+                                    <label for="assists"><h1><strong>Assists</strong></h1></label>
+                                    <input class="input is-small" type="number" id="assists" name="assists">
+                                </div>
+                                <div class="column">
+                                    <label for="team"><h1><strong>Team</strong></h1></label>
+                                    <input class="input is-small" type="number" id="team" name="team">
+                                </div>
+                                <div class="column">
+                                    <button id="submit" class="button is-link has-background-danger"><h1><strong>Submit</strong></h1></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="update.js" charset="utf-8"></script>
+    </body>
+</html>

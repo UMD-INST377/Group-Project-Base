@@ -38,3 +38,9 @@ body {
   margin: 1px;
   color: white;
 }
+
+.center {
+  padding: 70px 0;
+  border: 3px solid blue;
+  text-align: center;
+}

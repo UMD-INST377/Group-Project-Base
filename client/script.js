@@ -125,7 +125,6 @@ async function mainThread() {
     numCollType.push(sumDataColl(i, crash_information));
   }
 
-<<<<<<< HEAD
   // extracting the collision description from the collision_type json data.
   const collLabel = [];
   for (let i = 0; i < collision_type.length - 1; i++) {
@@ -138,34 +137,26 @@ async function mainThread() {
   // bar chart function using the labels and data
   barChart(collLabel, numCollType);
 
+  // extracting the culpability data from the driver_demographics table
   const culpaData = [];
   for (let i = 1; i < driver_culpability.length - 1; i++) {
     culpaData.push(sumDataCulpa(i, driver_demographics));
   }
 
+  // console log checking the data
   console.log(culpaData);
 
+  //extracting the culpability labels from the driver culpa table
   const culpaLabel = [];
   for (let i = 0; i < driver_culpability.length - 1; i++) {
     culpaLabel.push(driver_culpability[i].culpability_desc);
   }
 
+  // console log to check the culpa
   console.log(culpaLabel);
 
+  // graphing a donut chart using for culpability
   donutChart(culpaLabel, culpaData);
-}
-=======
-  // creating a chart but not loading data
-  document.addEventListener('DOMContentLoaded', (e) => {
-    const data = [4, 8, 15, 16, 23, 42];
-
-    d3.select('.chart')
-      .selectAll('div')
-      .data(data)
-      .enter().append('div')
-      .style('width', (d) => `${d}px`)
-      .text((d) => d);
-  });
 }
 
 // New Record Posting
@@ -190,7 +181,6 @@ function logData() {
   console.log(document.getElementById('person_id').value);
 }
 
-document.getElementById('my_btn').addEventListener('click', postNewRecord);
->>>>>>> 7437e05967649440608f37b86840e57f2707c9c6
+// document.getElementById('my_btn').addEventListener('click', postNewRecord);
 
 mainThread();

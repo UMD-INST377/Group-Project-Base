@@ -1,4 +1,3 @@
-
 const infoGet = `SELECT eruption_number, year, month, day, volcano_name, aoa, vei, method, category
 FROM eruption_info 
 JOIN volcanos USING (volcano_id)

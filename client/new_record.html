@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'/>
+        <title>New Record</title>
+        <link rel='stylesheet' href='styles.css'/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
+    </head>
+
+    <body>
+        <div class = 'wrapper'>
+            <div class="container">
+                <div class="columns is-vcentered">
+                  <div class="column is-full">
+                    <div class="box title has-background-warning-light">New Record</div>
+                      <nav class="column">
+                        <a href="index.html">Home Page</a>
+                      </nav>
+                      <form>
+                          <label for="person_id">Person ID</label>
+                          <input type="text" id="person_id" onkeyup="logData()">
+
+                          <label for="report_id">Report ID</label>
+                          <input type="text" id="report_id">
+
+                          <label for="sex_code">Sex</label>
+                          <input type="text" id="sex_code">
+
+                          <label for="date_of_birth">Date of birth</label>
+                          <input type="text" id="date_of_birth">
+
+                          <label for="culpability_id">Culpability ID</label>
+                          <input type="text" id="culpability_id">
+                          <button id="my_btn">Submit</button>  
+                      </form >
+                  </div>
+                </div>
+            </div>
+        </div>
+        <script src = 'script.js'></script> 
+    </body>
+
+</html>

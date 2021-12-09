@@ -102,9 +102,9 @@ async function windowsAction() {
         <li>
           <span class='song_name'>
             ${song.song_name}
-            <form action="/api/holidaySongs" method="post">
+            <form action="/api/holidaySongs/${song.song_id}?_method=DELETE" method="post"> 
               <button class="button is-warning"  type="submit">Delete</button>
-              <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+              <input type="hidden" name="_method" value="DELETE">
             </form>
           </span>
         </li>

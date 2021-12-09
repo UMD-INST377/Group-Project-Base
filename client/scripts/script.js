@@ -21,8 +21,8 @@ async function windowActions() {
       <div class='photo-grid-container' id='info_box'>
                 <div class='photo-grid-item'>
                 <div class="box">
-                <div class="name">Name: ${info.volcano_name}</div>
-                <div class="num">Eruption Number: ${info.eruption_number} </div>
+                <center><div class="name">${info.volcano_name}</div>
+                <div class="num">Eruption Number: ${info.eruption_number} </div></center>
               </div>
              </div>
             </div>
@@ -46,14 +46,14 @@ async function windowActions() {
     const elements = document.querySelectorAll('#info_box');
     const delete_box = document.querySelector('.delete');
 
-    const modalHtml = matchArray.map((info) => `<div class="name">Name: ${info.volcano_name}</div>
-      <div class="num">Eruption Number: ${info.eruption_number} </div>
-      <div class="date"> Date of Eruption: ${info.year}-${info.month}-${info.day} </div>
-      <div class="aoa">Eruption AOA: ${info.aoa}</div>
-      <div class="vei">Eruption VEI: ${info.vei}</div>
-      <div class="method">Method: ${info.method}</div>
-      <div class="category">Eruption Category: ${info.category}</div>
-      `);
+    const modalHtml = matchArray.map((info) => `<center><big><b><div class="name"> ${info.volcano_name}</div></b></big><br>
+      <div class="num"><b>Eruption Number:</b> ${info.eruption_number} </div>
+      <div class="date"><b>Date of Eruption:</b> ${info.year}-${info.month}-${info.day} </div>
+      <div class="aoa"><b>Eruption AOA:</b> ${info.aoa}</div>
+      <div class="vei"><b>Eruption VEI:</b> ${info.vei}</div>
+      <div class="method"><b>Method:</b> ${info.method}</div>
+      <div class="category"><b>Eruption Category:</b> ${info.category}</div>
+      </center>`);
 
     for (let i = 0; i < elements.length; i++) {
       elements[i].addEventListener('click', () => {

@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 body {
-    /*background-color:#adb8d9;*/
     background-color:#fa8975;
     height: 100%;
     width: 100%;
@@ -13,6 +12,8 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif
     }
 
+
+
 /* home page search bar. */
 .container{
     display: flex;
@@ -20,6 +21,12 @@ body {
     justify-content: center; 
     padding: 10px;
     background-color:#e28f7a;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-family: Georgia, Geneva, Helvetica, sans-serif;
 }
 
 
@@ -77,8 +84,8 @@ body {
     align-items: center;
 }
 
+
 .photo-grid-item{
-    border: 1px solid #fff;
     display: flex;
     width: 300px;
     height: 300px;
@@ -157,8 +164,18 @@ html {
     align-items: center;
 }
 
+
 .page{
     /*background-color:#73a7d6;*/
     font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
       ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+}
+
+#category_chart_container{
+    width: 900px;
+    margin-top: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }

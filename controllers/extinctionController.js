@@ -1,5 +1,7 @@
-const extinctionGET = `SELECT extinction_id, cause, age_species_went_extinct, 
-FROM extinction;`;
+const extinctionGET = `SELECT Animal_ID, common_name, extinction_id, cause, age_species_went_extinct, 
+FROM extinction;
+JOIN animals
+extinction_ID, cause, age_species_went_extinct`;
 
 const extinctionPOST = `INSERT INTO extinction (extinction_ID, cause, age_species_went_extinct)
 VALUES(DEFAULT, :cause, :age_species_went_extinct);`;

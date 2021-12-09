@@ -14,19 +14,30 @@ html,body
 }
 
 body {
-    background-color:rgb(130, 231, 238);
+    background-color:rgb(230, 230, 230);
 }
 
 .nav-nba-badge {
-    background-color: blue;
-    color: black;
+    background-color: rgb(68, 139, 180);
+    color: white;
     font-weight: bold;
     width: 200px;
+    height: 40px;
     padding: 0px;
     margin: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
     text-align: center;
     align-items: center;
+
   }
+
+.nav-nba-badge-text {
+
+}
 
 .wel {
     background-color: rgb(68, 139, 180);
@@ -72,4 +83,30 @@ body {
 #playertable {
     width: 80%;
     margin: 0 auto;
+
+    table-layout: fixed ;
+    
+    overflow-y:scroll;
+    height: 400px;
+    display:block;
+}
+#playertable td {
+    width: 20%
+}
+
+#topdisplay {
+    position: relative;
+    padding-top: 50px;
+    margin: auto;
+    width: 90%;
+    height: 90%;
+    box-shadow: 5px 5px 15px #666666;
+}
+
+#teaminfobox {
+    color: white;
+}
+
+#space {
+    opacity: 0.0;
 }

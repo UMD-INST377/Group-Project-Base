@@ -149,7 +149,43 @@ async function dataHandlerCommunity() {
   });
 }
 
+function getMatchPopulation(event, population) {
+  const matches = population[0].filter((ele) => ele.popstat_zcta === event.target.value);
+  if (matches.length > 1) {
+    return matches;
+  }
+  return false;
+}
+function renderTableHTMLPopulation(match, tableDiv) {
+  tableDiv.innerHTML =` <table class="table">
+            <tr class="col"><th class="col"> Population ${match[0].popstat_zcta} </th></tr>
+            <tr>
+            <td><strong>% over 65</strong></td><td>${match[0].pop_count}</td>
+            </tr>
+            <tr>
+            <td><strong>% under 18</strong></td><td>${match[1].pop_count}</td>
+            </tr>
+    </table>`;
+}
+async function dataHandlerPopulation() {
+  const searchInput = document.querySelector('.search');
+  const tableDiv = document.querySelector('.population-data');
+  const community = await fetch('./api/population').then((response) => response.json());
+
+  // on inputs validate matches, if true render html
+  searchInput.addEventListener('input', (evt) => {
+    let match = false;
+    if (evt.target.value.length === 5) {
+      match = getMatchPopulation(evt, community);
+    }
+    if (match !== false) {
+      renderTableHTMLPopulation(match, tableDiv);
+    }
+  });
+}
+
 window.addEventListener('load', (evt) => {
   dataHandler();
   dataHandlerCommunity();
+  dataHandlerPopulation();
 });

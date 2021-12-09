@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
+    "pivottable": "^2.23.0",
     "sequelize": "^6.9.0",
     "sequelize-cli": "^6.3.0"
   },

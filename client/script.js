@@ -1,4 +1,3 @@
-
 // fetchRequest function to pull the json data from the various api routes
 async function fetchRequest(url) {
   try {
@@ -109,7 +108,7 @@ function donutChart(labels, data) {
   const ctx = document.getElementById('donut').getContext('2d');
   const chart = new Chart(ctx, {
     type: 'doughnut',
-    data: chartData,
+    data: chartData
   });
 }
 
@@ -136,7 +135,7 @@ function donutChart2(labels, data) {
   const ctx = document.getElementById('donut').getContext('2d');
   const chart = new Chart(ctx, {
     type: 'doughnut',
-    data: chartData,
+    data: chartData
   });
 }
 
@@ -185,7 +184,7 @@ async function mainThread() {
   // console log checking the data
   console.log(culpaData);
 
-  //extracting the culpability labels from the driver culpa table
+  // extracting the culpability labels from the driver culpa table
   const culpaLabel = [];
   for (let i = 0; i < driver_culpability.length - 1; i++) {
     culpaLabel.push(driver_culpability[i].culpability_desc);
@@ -206,7 +205,7 @@ async function mainThread() {
   // console log checking the data
   console.log(roadCondData);
 
-  //extracting the road condition types from the road conditions
+  // extracting the road condition types from the road conditions
   const roadCondType = [];
   for (let i = 0; i < road_conditions.length - 1; i++) {
     roadCondType.push(road_conditions[i].junction_desc);
@@ -217,12 +216,11 @@ async function mainThread() {
 
   // graphing a donut chart using for road Condtions
   donutChart2(roadCondType, roadCondData);
-  
 }
 
 // New Record Posting
 async function postNewRecord() {
-  const jperson_id = document.getElementById('#person_id');
+  const person_id = document.querySelector('#person_id');
   const report_id = document.querySelector('#report_id');
   const sex_code = document.querySelector('#sex_code');
   const date_of_birth = document.querySelector('#date_of_birth');
@@ -233,15 +231,24 @@ async function postNewRecord() {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({person_id: jperson_id.value})
+    body: JSON.stringify({
+      person_id: person_id.value,
+      report_id: report_id.value,
+      sex_code: sex_code.value,
+      date_of_birth: date_of_birth.value,
+      culpability_id: culpability_id.value
+    })
   });
-  request.json();
+  console.log(request)
+  return request.json();
 }
 
-function logData() {
-  console.log(document.getElementById('person_id').value);
+async function logData() {
+  const person = document.querySelector('#person_id');
+  console.log('person: ', person.value);
+  console.log('testing');
 }
 
-// document.getElementById('my_btn').addEventListener('click', postNewRecord);
+// document.querySelector('#my_btn').addEventListener('click', logData);
 
 mainThread();

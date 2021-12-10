@@ -7,17 +7,17 @@ CONCAT(vice_presidents.first_name, ' ', vice_presidents.last_name) AS vice_presi
 concat(first_ladies.first_ladies_name) as first_lady
 FROM presidents_table LEFT JOIN first_ladies
 USING(president_id)
-JOIN vice_presidents USING(president_id)) as x
+LEFT JOIN vice_presidents USING(president_id)) as x
 left join (select distinct(group_concat(first_name,' ',last_name separator ', ')) as children_name, president_id
 from children_of_presidents
 where child_id = child_id  
 group by president_id) as a
 using(president_id)
-join (SELECT
+left join (SELECT
 presidents_table.president_id, CAST((SPLIT_STR(date_inaurg, ',', 2)-1) AS SIGNED) AS elected_year
 FROM presidents_table) as y
 USING(president_id)
-ORDER BY president_id
+ORDER BY president_id;
 `;
 
 export default {

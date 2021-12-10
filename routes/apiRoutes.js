@@ -92,6 +92,7 @@ router.route('/vacByCountyController')
           type: sequelize.QueryTypes.SELECT
         });
       console.log('Reached /vacByCounty endpoint with GET')
+      res.json(dataResponse);
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });

@@ -1,4 +1,4 @@
-const getBiomes = 'SELECT biome_id, Biome, Continent FROM biome';
+const getBiomes = 'SELECT Animal_ID, common_name, biome_id, Biome, Continent FROM biome JOIN animals Where biome_id = Animal_id';
 
 const putBiomes = `INSERT INTO biome (biome_id, Biome, Continent)
 VALUES(DEFAULT, :biome_id, :Biome, :Continent);`;

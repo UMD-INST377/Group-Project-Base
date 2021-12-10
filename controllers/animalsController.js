@@ -3,8 +3,8 @@ FROM animals
 JOIN extinction
 WHERE extinction_extinction_id = extinction_id;`;
 
-const animalPOST = `INSERT INTO animals (Animal_ID, common_name, species, weight_lbs)
-VALUES(DEFAULT, :common_name, :species, :weight_lbs);`;
+const animalPOST = `INSERT INTO animals (common_name, species, weight_lbs, fight_mode_fight_mode_id, hierarchy_hierarchy_id, lifestyle_lifestyle_id, extinction_extinction_id)
+VALUES(:common_name, :species, :weight_lbs, :fight_mode_fight_mode_id, :hierarchy_hierarchy_id, :lifestyle_lifestyle_id, :extinction_extinction_id);`;
 
 const animalPUT = `UPDATE animals
 SET common_name = :common_name, weight_lbs = :weight_lbs, species = :species

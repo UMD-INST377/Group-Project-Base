@@ -26,40 +26,5 @@ async function fetchRequest(name, id) {
   });
   console.log(data); 
 } 
-  
-
 const button = document.querySelector('#submit-button');
 button.onclick = fetchRequest;
-  // const response = request.json();
-  // console.log(response);
-// }
-// async function getMovies() {
-//   const request = await fetch('/api/film');
-//   const json = await request.json();
-//   console.log(json);
-
-// }
-// function displayMatches(event) {
-//   //const matchArray = fetchRequest(event.target.value, arrayName);
-//   const html = formToObject.map((place) => {
-//     //const regex = new RegExp(event.target.value, 'gi');
-//     const movieName = place.name;
-//     const movieScore = place.score; 
-//     const movieRating = place.rating;
-//     const movieYear = place.year;
-//     return `
-//   <li class = "card has-background-primary-light">
-//     <div class = "card-content"> 
-//     <div class = "content">
-//       ${movieName}, ${movieScore}, ${movieRating}, ${movieYear}
-//       </div>
-//   </div>
-//   </li>
-//   <br/>
-//   `;
-//   }).join('');
-//   formToObject.innerHTML = html;
-// }
-// const button = document.querySelector('#submit-button');
-// // displayMatches(getMovies());
-// button.onclick = fetchRequest;

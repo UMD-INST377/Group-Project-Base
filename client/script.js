@@ -178,7 +178,7 @@ async function mainThread() {
 
   // extracting the culpability data from the driver_demographics table
   const culpaData = [];
-  for (let i = 1; i < driver_culpability.length - 1; i++) {
+  for (let i = 0; i < driver_culpability.length - 1; i++) {
     culpaData.push(sumDataCulpa(i, driver_demographics));
   }
 
@@ -199,7 +199,7 @@ async function mainThread() {
 
   // extracting the road condition data from the crashInformation
   const roadCondData = [];
-  for (let i = 1; i < road_conditions.length - 1; i++) {
+  for (let i = 0; i < road_conditions.length - 1; i++) {
     roadCondData.push(sumDataRoadCon(i, crash_information));
   }
 

@@ -16,13 +16,26 @@
   justify-content: center;
 }
 
+@media only screen and (min-width: 360px) {
 .arena-pic {
   margin-top: 10px;
-  max-width: 1000px;
+  max-width: 90%;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
+}
+
+@media only screen and (min-width: 760px) {
+  .arena-pic {
+    margin-top: 10px;
+    max-width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  }
+
 .table{
   background-color:transparent;
   font-size:10pt;

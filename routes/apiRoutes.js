@@ -439,7 +439,7 @@ router.route('/volcanos')
           volcano_name: req.body.volcano_name,
           latitude: req.body.latitude,
           longitude: req.body.longitude,
-          volcano_number: req.body.volcano_name
+          volcano_number: req.body.volcano_number
         },
         type: sequelize.QueryTypes.UPDATE
       });
@@ -458,7 +458,7 @@ router.route('/volcanos')
           volcano_name: req.body.volcano_name,
           latitude: req.body.latitude,
           longitude: req.body.longitude,
-          volcano_number: req.body.volcano_name
+          volcano_number: req.body.volcano_number
         },
         type: sequelize.QueryTypes.INSERT
       });

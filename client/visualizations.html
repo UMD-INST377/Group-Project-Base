@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'/>
+        <title>Group 7 About Page</title>
+        <link rel='stylesheet' href='styles.css'/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
+        <link href="nv.d3.min.css" rel="stylesheet">
+        <script src='./chart.js'></script>
+    </head>
+
+    <body>
+        <div class = 'wrapper'>
+            <div class="container">
+                <div class="columns is-vcentered">
+                  <div class="column is-full">
+                    <div class="box title has-background-warning-light">Data Visualizations</div>
+                  </div>
+                  <div class="column is-offset-1 is-full">
+                    <nav class="columns is-full">
+                      <div class="column is-one-third">
+                          <a href="index.html">Home Page</a>
+                      </div>
+                      <div class="column is-one-third">
+                          <a href="new_record.html">New Record</a>
+                      </div>
+                      <div class="column is-one-third">
+                          <a href="about.html">About Page</a>                                
+                      </div>
+                    </nav>
+                  </div>
+              
+                    <div class="columns">
+                      <div class= "column is-half">
+                        <div class="box title has-background-danger-light has-text-centered">Number of Collisions by Type
+                          <canvas id="chart" width="400" height="400"></canvas>
+                        </div>
+                      </div>
+                      <div class= "column is-half">
+                        <div class="box title has-background-success-light has-text-centered">Driver Culpability.
+                          <canvas id="donut" width="400" height="400"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src = 'script.js'></script> 
+    </body>
+
+</html>
+

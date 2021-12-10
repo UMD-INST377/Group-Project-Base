@@ -6,7 +6,7 @@ This project was created for INST377: Dynamic Web Applications (Fall 2021).
 
 The front end is written using HTML/CSS and Bulma libraries while the backend operates using Express, Sequelize, and JavaScript.
 
-[Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+[Markdown guide] (https://www.markdownguide.org/cheat-sheet/)
 
 # REST API example using Sequelize
 
@@ -28,7 +28,7 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
     </tr>
     <tr>
       <td>PUT</td>
-      <td>Inserts or replaces a song if it already exists.</td>
+      <td>Updates or replaces a song if it already exists.</td>
     </tr>
     <tr>
       <td>DELETE</td>
@@ -47,99 +47,127 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 
 <hr>
 
-# Songs
+# Using our Songs API with Postman
 
-## Get list of Songs
+## Get list of all songs
 
 #### Request
 
 `GET /songs_project'`
 
-    curl http://localhost:3000/api/songs_project
+    * api_url http://localhost:3000/api/songs_project
+    * select GET
+    * click SEND
+
 
 #### Response
 
      [{
+        "song_id": 1,
+        "song_name": "Colours",
+        "album_name": "Single",
+        "first_name": "Mat",
+        "last_name": "Zo",
+        "ratings": 5
+        },
+      {
+        "song_id": 2,
+        "song_name": "Holy",
+        "album_name": "Justice",
+        "first_name": "Justin",
+        "last_name": "Bieber",
+        "ratings": 4
+        },
+      {
+        "song_id": 3,
+        "song_name": "After Hours",
+        "album_name": "After Hours",
+        "first_name": "The",
+        "last_name": "Weeknd",
+        "ratings": 4
+      },]
 
-          "song_id": 1,
-          "song_name": "A Gangsta's Pain",
-          "album_name": "A Gangsta's Pain",
-          "first_name": "Moneybagg",
-          "last_name": "Yo",
-          "ratings": 3,
-          "description": "This rating is 3 out of 5 stars",
-          "duration": "01:53:00"
-       },
-       {
-          "song_id": 2,
-          "song_name": "Holy",
-          "album_name": "Justice",
-          "first_name": "Justin",
-          "last_name": "Bieber",
-          "ratings": 4,
-          "description": "This rating is 4 out of 5 stars",
-          "duration": "03:32:00"
-       },
-       {
-          "song_id": 3,
-          "song_name": "After Hours",
-          "album_name": "After Hours",
-          "first_name": "The",
-          "last_name": "Weeknd",
-          "ratings": 4,
-          "description": "This rating is 4 out of 5 stars",
-          "duration": "06:01:00"
-    }]
-
-## Get a Specific Song
+## Get a specific song
 
 #### Request
 
 `GET /songs_project/:song_id`
 
-    curl http://localhost:3000/api/songs_project/2
+##### Example input:
+
+    * api_url http://localhost:3000/api/songs_project/2
+    * select GET
+    * click SEND
 
 #### Response
 
-    {
+      {
         "song_id": 2,
         "song_name": "Holy",
         "album_name": "Justice",
         "first_name": "Justin",
         "last_Name": "Bieber",
-        "ratings": 4,
-        "description": "This rating is 4 out of 5 stars",
-        "duration": "03:32:00"
-    }
+        "ratings": 4
+      }
 
-## Create a new Song
+## Creating a New Song
 
 #### Request
 
 `POST /songs_project`
 
-    curl -d "song_id=40&song_name=Talking to the Moon&album_name=Moon&ratings=5" -X POST http://localhost:3000/api/songs_project
+    * api_url http://localhost:3000/api/songs_project
+    * select POST
+    * under the BODY tab, select the RAW radio button
+    * set drop down option TO JSON
+
+##### Example input:
+
+    {
+        "song_id": 35,
+        "song_name": "Life Is Good",
+        "album_name": "High Off Life",
+        "first_name": "Future",
+        "last_Name": " ",
+        "ratings": "4"
+      }
 
 #### Response
 
-    {
-      "song_id": 40,
-      "song_name": "Talking to the Moon",
-      "album_name": "Moon",
-      "ratings": 5
+  {
+      "song_id": 35,
+      "song_name": "Life Is Good",
+      "album_name": "High Off Life",
+      "first_name": "Future",
+      "last_Name": " ",
+      "ratings": "4"
     }
 
 ## Updating an Existing Song
 
 #### Request
 
-`PUT /songs_project`
+`PUT /songs_project/:song_id`
 
-    curl -d "song_id=2&song_name=Holy&album_name=Justice&rating=5" -X PUT http://localhost:3000/api/songs_project
+    * api_url http://localhost:3000/api/songs_project/1
+    * select PUT
+    * under the BODY tab, select the RAW radio button
+    * set drop down option TO JSON
+
+##### Example input:
+
+  {
+      "song_id": 1,
+      "song_name": "Shivers",
+      "album_name": "=",
+      "first_name": "Ed",
+      "last_name": "Sheeran",
+      "ratings": 5
+    }
 
 #### Response
 
-    Songs database was successfully updated
+    Songs database was successfully updated.
 
 ## Delete an Existing Song Entry
 
@@ -147,11 +175,17 @@ The front end is written using HTML/CSS and Bulma libraries while the backend op
 
 `DELETE /songs_project/:song_id`
 
-    curl -X DELETE http://localhost:3000/api/songs_project/1
+    * api_url http://localhost:3000/api/songs_project/1
+    * select DELETE
+    * click SEND
+
+##### Example input: 
+
+  DELETE: localhost:3000/api/songs_project/35
 
 #### Response
 
-    Successfully Deleted
+    Successfully Deleted.
 
 # Authors
 

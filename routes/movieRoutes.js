@@ -35,7 +35,7 @@ router.route('/film')
     try {
       const movieData = await db.sequelizeDB.query(film.putFilm, {
         replacements: {
-          name: req.body.movie_name, id: req.body.movie_id
+          name: req.body.name, id: req.body.id
         },
         type: sequelize.QueryTypes.UPDATE
       });
@@ -50,7 +50,7 @@ router.route('/film')
     try {
       const movieData = await db.sequelizeDB.query(film.postFilm, {
         replacements: {
-          name: req.body.movie_name, id: req.body.movie_id
+          name: req.body.name, id: req.body.id
         },
         type: sequelize.QueryTypes.INSERT
       });
@@ -64,7 +64,7 @@ router.route('/film')
     try {
       const movieData = await db.sequelizeDB.query(film.deleteFilm, {
         replacements: {
-          id: req.body.movie_id
+          id: req.body.id
         },
         type: sequelize.QueryTypes.DELETE
       });

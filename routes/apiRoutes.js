@@ -69,7 +69,7 @@ router.route('/nba-players')
       const updatedPlayer = await db.sequelizeDB.query(player.putPlayer, {
         type: sequelize.QueryTypes.UPDATE,
         replacements: {
-          player_id: req.body.player_id,
+          player_name: req.body.player_name,
           ppg: req.body.ppg,
           assists: req.body.assists,
           team: req.body.team

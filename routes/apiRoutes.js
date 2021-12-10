@@ -88,6 +88,16 @@ router.post('/reviews', async (req, res) => {
   }
 });
 
+router.get('/reviews', async (req, res) => {
+  try {
+    const reviews = await db.Reviews.findAll();
+    res.json(reviews);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 router.get('/cuisine_type', async (req, res) => {
   res.send('this is the cuisine_type page');
   console.log('you touched the restaurants route');

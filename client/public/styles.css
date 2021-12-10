@@ -53,7 +53,7 @@ details > summary {
   padding: 0;
   margin: 0;
   width: 15em;
-  background-color: #ddd;
+  background-color: #ff8800;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -66,8 +66,11 @@ img {
   height: 500px;
   width: 93.4%;
 }
-
+.container-p {
+  align-items: center;
+} 
 .container {
+  background: #f4ecc2;
   align-items: center;
 }
 

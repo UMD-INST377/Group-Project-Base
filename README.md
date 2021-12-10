@@ -27,3 +27,5 @@ Macbook Pro
 ## API Section
 
 ## Development and Bugs Section
+
+### Bugs

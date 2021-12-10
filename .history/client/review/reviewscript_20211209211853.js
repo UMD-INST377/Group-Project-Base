@@ -1,16 +1,6 @@
 function windowActions() {
   const inputForm = document.querySelector('#form');
 
-<<<<<<< Updated upstream
-dropdown.onclick = function(e) { 
- console.log(e)
- e.path[3].classList.toggle('is-active');
-}
-
-
-}
-=======
->>>>>>> Stashed changes
 
   function formToObject(htmlFormElement) {
     const formItem = new FormData(htmlFormElement).entries();

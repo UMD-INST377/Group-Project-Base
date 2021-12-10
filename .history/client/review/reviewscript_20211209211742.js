@@ -1,16 +1,17 @@
+// import chalk from 'chalk';
+// import fetch from 'node-fetch';
+
+// import db from '../database/initializeDB.js';
+
+// const router = express.Router();
+
+// router.get('/', (req, res) => {
+//   console.log('You touched the default route');
+// });
+
 function windowActions() {
   const inputForm = document.querySelector('#form');
 
-<<<<<<< Updated upstream
-dropdown.onclick = function(e) { 
- console.log(e)
- e.path[3].classList.toggle('is-active');
-}
-
-
-}
-=======
->>>>>>> Stashed changes
 
   function formToObject(htmlFormElement) {
     const formItem = new FormData(htmlFormElement).entries();
@@ -31,7 +32,7 @@ dropdown.onclick = function(e) {
     const formObject = formToObject(inputForm);
     console.log(formObject);
   // e.target.parentnode.classList.toggle('is-active');
-  await fetch('/api/review', {
+  await fetch('https://group4-final-inst377fa2021.herokuapp.com/api/review', {
     method:'POST',
     headers: {
       'Content-Type': 'application/json'

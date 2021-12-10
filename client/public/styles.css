@@ -53,7 +53,7 @@ details > summary {
   padding: 0;
   margin: 0;
   width: 15em;
-  background-color: #ddd;
+  background-color:#ff8800;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -69,6 +69,7 @@ img {
 }
 
 .container {
+  background-color:#ff3300;
   align-items: center;
 }
 

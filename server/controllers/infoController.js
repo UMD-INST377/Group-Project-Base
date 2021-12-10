@@ -16,7 +16,7 @@ volcano_id = :volcano_id,
 aoa_id = :aoa_id, 
 vei_id = :vei_id, 
 evidence_id = :evidence_id, 
-cagetory_id = :cagetory_id
+category_id = :category_id
 WHERE eruption_id = :eruption_id;`
 
 const infoPost = `INSERT INTO eruption_info(eruption_id, eruption_number, year, month, day, volcano_id, aoa_id, vei_id, evidence_id, cagetory_id)

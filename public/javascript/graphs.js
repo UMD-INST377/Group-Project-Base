@@ -6,7 +6,7 @@ window.onload = function() {
     exportEnabled: true,
     animationEnabled: true,
     title: {
-      text: 'Desktop Browser Market Share in 2016'
+      text: 'Most Popular Record Labels (All Time)'
     },
     data: [{
       type: 'pie',
@@ -17,13 +17,13 @@ window.onload = function() {
       indexLabelFontSize: 16,
       indexLabel: '{label} - {y}%',
       dataPoints: [
-        { y: 51.08, label: 'Chrome' },
-        { y: 27.34, label: 'Internet Explorer' },
-        { y: 10.62, label: 'Firefox' },
-        { y: 5.02, label: 'Microsoft Edge' },
-        { y: 4.07, label: 'Safari' },
-        { y: 1.22, label: 'Opera' },
-        { y: 0.44, label: 'Others' }
+        { y: 14.67, label: 'Motown Records' },
+        { y: 9.00, label: 'Atlantic Records' },
+        { y: 6.67, label: 'Epic' },
+        { y: 8.33, label: 'Stax, Casablanca' },
+        { y: 3.33, label: 'EMI' },
+        { y: 5.00, label: 'ATCO, Philadelphia IR' },
+        { y: 53.0, label: 'Others' }
       ]
     }]
   });

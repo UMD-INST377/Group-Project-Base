@@ -28,7 +28,7 @@ Our projects operating system is Windows/macOS/Linux. After testing, our website
 ## Server application APIs
 ```/api``` -  API route for movies and all other information.
 * GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains course name from request body to fetch url. fetch data json from PlanetTerp grades API and returns JSON response. 
+* POST - obtains film name from request body to fetch url. fetch data json from movieRoutes api and returns JSON response. 
 * PUT - returns response 'Got a PUT request at /api'.
 
 ## Known Bugs and Future Development

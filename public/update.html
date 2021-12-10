@@ -11,12 +11,11 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body class="p-2">
-    <form class="box">
-    <nav class="navbar is-info box" style="height: 10vh;">
+  <body class="p-2 has-background-info-light">
+    <nav class="navbar">
       <div class="navbar-brand">
         <a class="navbar-item" href="index.html">
-          <img src="/images/american_eagle.png" width="40px" />
+          <img src="/images/american_eagle.png">
         </a>
         <div class="navbar-burger" data-target="navbarExampleIsInfoExample">
           <span></span>
@@ -24,7 +23,9 @@
           <span></span>
         </div>
       </div>
-
+    </div>
+    
+    
       <div id="navbarExampleIsInfoExample" class="navbar-menu">
         <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable">
@@ -32,36 +33,39 @@
               Menu
             </a>
             <div class="navbar-dropdown is-boxed">
-              <a class="navbar-item" href="index.html"> Home </a>
-              <a class="navbar-item" href="update.html"> Update Records </a>
-              <a class="navbar-item" href="about.html"> About Us </a>
-              <a class="navbar-item" href="login.html"> Login </a>
+              <a class="navbar-item" href="index.html">
+                Home
+              </a>
+              <a class="navbar-item" href="update.html">
+                Update Records
+              </a>
+              <a class="navbar-item" href="about.html">
+                About Us
+              </a>
             </div>
           </div>
         </div>
-
+    
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
-                <a class="button is-info" href="login.html">
-                  <span class="icon">
-                    <i class="fas fa-download"></i>
-                  </span>
-                  <span class="has-text-weight-bold">Login</span>
-                </a>
+                <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+                <a href="https://www.twitter.com" class="fa fa-twitter"></a>
+                <a href="https://www.instagram.com" class="fa fa-instagram"></a>
               </p>
             </div>
           </div>
         </div>
       </div>
     </nav>
-    
+    <form class="box">
     <h1
       class="
+      has-background-shadow-blue
         title
         notification
-        has-text-centered has-background-danger-light has-text-weight-bold box">Update Page</h1>
+        has-text-centered has-text-weight-bold has-text-white box">Update Page</h1>
 
         <article class="message is-danger is-size-4">
           <div class="message-header">
@@ -120,7 +124,7 @@
                 class="input"
                 type="text"
                 id="date_inaurg_add"
-                placeholder="Type date here"
+                placeholder="e.g. December 29, 2000"
               />
             </div>
           </div>
@@ -134,7 +138,7 @@
                 class="input"
                 type="text"
                 id="age_inaurg_add"
-                placeholder="Type age here"
+                placeholder="Type age here e.g. 55"
               />
             </div>
           </div>
@@ -148,7 +152,7 @@
                 class="input"
                 type="text"
                 id="terms_served_add"
-                placeholder="Type terms here"
+                placeholder="Type terms here e.g. 1"
               />
             </div>
           </div>
@@ -162,7 +166,7 @@
                 class="input"
                 type="text"
                 id="death_date_add"
-                placeholder="Type date here"
+                placeholder="e.g. December 29, 2000"
               />
             </div>
           </div>
@@ -178,7 +182,7 @@
                 class="input"
                 type="text"
                 id="birth_date_add"
-                placeholder="Type date here"
+                placeholder="e.g. December 29, 2000"
               />
             </div>
           </div>
@@ -212,7 +216,7 @@
           </div>
         </div>
       </div>
-      <button class="button is-primary" type="submit" id="add_button">
+      <button class="button has-text-white has-background-shadow-blue" type="submit" id="add_button">
         Add New President
       </button>
     </form>
@@ -227,14 +231,14 @@
               class="input"
               type="text"
               id="lady_name_add"
-              placeholder="Type first name here"
+              placeholder="Type first full name here"
               style="width: 30%;"
             />
           </div>
         </div>
         </div>
       </div>
-      <button class="button is-primary" type="submit" id="lady_button">
+      <button class="button has-text-white has-background-shadow-blue" type="submit" id="lady_button">
         Add First Lady
       </button>
     </form>
@@ -271,7 +275,7 @@
           </div>
         </div>
       </div>
-      <button class="button is-primary" type="submit" id="vp_button">
+      <button class="button has-text-white has-background-shadow-blue" type="submit" id="vp_button">
         Add Vice President
       </button>
     </form>
@@ -308,7 +312,7 @@
           </div>
         </div>
       </div>
-      <button class="button is-primary" type="submit" id="child_button">
+      <button class="button has-text-white has-background-shadow-blue" type="submit" id="child_button">
         Add President children
       </button>
     </form>
@@ -316,14 +320,14 @@
     <h2 class="title is-2 has-text-weight-bold">Update Existing President</h2>
 
     <form class="box">
-      <article class="message is-warning is-size-4">
+      <article class="message is-danger is-size-4">
         <div class="message-header">
-          <p>ID is all INTEGERS no Alphabets</p>
+          <p>Pick a President of the United States name that you would like to update</p>
           <button class="delete" aria-label="delete"></button>
         </div>
       </article>
       <div class="columns">
-        <div class="column">
+        <!-- <div class="column">
           <div class="field">
             <label class="label" for="president_id">President ID</label>
             <div class="control">
@@ -335,8 +339,14 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
 
+        <div class="column">
+          <label class="label" for="president_id">Presidents Menu</label>
+        <select id="president_id_edit" style="height: 40px ; width: 500px; border-radius: 7px;">
+          <option>Select President</option>
+        </select>
+      </div>
         <div class="column">
           <div class="field">
             <label class="label" for="first_name">President First Name</label>
@@ -377,7 +387,7 @@
                 class="input"
                 type="text"
                 id="date_inaurg_edit"
-                placeholder="Type date here"
+                placeholder="e.g. December 29, 2000"
               />
             </div>
           </div>
@@ -393,7 +403,7 @@
                 class="input"
                 type="text"
                 id="age_inaurg_edit"
-                placeholder="Type age here"
+                placeholder="Type age here e.g. 55"
               />
             </div>
           </div>
@@ -407,7 +417,7 @@
                 class="input"
                 type="text"
                 id="terms_served_edit"
-                placeholder="Type terms here"
+                placeholder="Type terms here e.g. 1"
               />
             </div>
           </div>
@@ -421,7 +431,7 @@
                 class="input"
                 type="text"
                 id="death_date_edit"
-                placeholder="Type date here"
+                placeholder="e.g. December 29, 2000"
               />
             </div>
           </div>
@@ -437,7 +447,7 @@
                 class="input"
                 type="text"
                 id="birth_date_edit"
-                placeholder="Type date here"
+                placeholder="e.g. December 29, 2000"
               />
             </div>
           </div>
@@ -471,20 +481,20 @@
           </div>
         </div>
       </div>
-      <button class="button is-primary" type="submit" id="edit_button">
+      <button class="button has-text-white has-background-shadow-blue" type="submit" onchange="editPresident()" id="edit_button">
         Update President
       </button>
     </form>
 
     <form class="box">
-      <article class="message is-warning is-size-4">
+      <article class="message is-danger is-size-4">
         <div class="message-header">
-          <p>ID is all INTEGERS no Alphabets</p>
+          <p>Pick a First Lady name that you would like to update</p>
           <button class="delete" aria-label="delete"></button>
         </div>
       </article>
       <div class="columns">
-        <div class="column">
+        <!-- <div class="column">
           <div class="field">
             <label class="label" for="first_ladies_id">First Lady's ID</label>
             <div class="control">
@@ -496,7 +506,13 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
+        <div class="column">
+          <label class="label" for="first_name">First Ladies Menu</label>
+        <select id="edit_ladies_id"  style="height: 40px ; width: 700px; border-radius: 7px;">
+          <option>Select First Lady</option>
+        </select>
+      </div>
       <div class="column">
       <div class="field">
         <label class="label" for="first_ladies_name">First Lady Name</label>
@@ -511,7 +527,7 @@
       </div>
       </div>
     </div>
-    <button class="button is-primary" type="submit" id="edit_lady_button">
+    <button class="button has-text-white has-background-shadow-blue" type="submit" onchange="eeditLady()" id="edit_lady_button">
         Update First Lady
       </button>
   </form>
@@ -519,12 +535,12 @@
   <form class="box">
     <article class="message is-danger is-size-4">
       <div class="message-header">
-        <p>ID is all INTEGERS no Alphabets</p>
+        <p>Pick a Vice President name that you would like to update</p>
         <button class="delete" aria-label="delete"></button>
       </div>
     </article>
     <div class="columns">
-      <div class="column">
+      <!-- <div class="column">
         <div class="field">
           <label class="label" for="vp_id">Vice President's ID</label>
           <div class="control">
@@ -536,7 +552,13 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
+      <div class="column">
+        <label class="label" for="first_name">Vice Presidents Menu</label>
+      <select id="edit_vp_id" style="height: 40px ; width: 500px; border-radius: 7px;">
+        <option>Select Vice President</option>
+      </select>
+    </div>
       <div class="column">
         <div class="field">
           <label class="label" for="first_name"
@@ -566,7 +588,7 @@
         </div>
       </div>
     </div>
-    <button class="button is-primary" type="submit" id="edit_vp_button">
+    <button class="button has-text-white has-background-shadow-blue" type="submit" onclick="eeditvp()" id="edit_vp_button">
       Update Vice President
     </button>
   </form>
@@ -574,12 +596,12 @@
   <form class="box">
     <article class="message is-danger is-size-4">
       <div class="message-header">
-        <p>ID is all INTEGERS no Alphabets</p>
+        <p>Pick a child name that you would like to update</p>
         <button class="delete" aria-label="delete"></button>
       </div>
     </article>
     <div class="columns">
-      <div class="column">
+      <!-- <div class="column">
         <div class="field">
           <label class="label" for="child_id">Child's ID</label>
           <div class="control">
@@ -591,7 +613,13 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
+      <div class="column">
+        <label class="label" for="first_name">Children Menu</label>
+      <select id="edit_child_id" style="height: 40px ; width: 500px; border-radius: 7px;">
+        <option>Select Child</option>
+      </select>
+    </div>
       <div class="column">
         <div class="field">
           <label class="label" for="first_name">Child's First Name</label>
@@ -620,7 +648,7 @@
         </div>
       </div>
     </div>
-    <button class="button is-primary" type="submit" id="edit_child_button">
+    <button class="button has-text-white has-background-shadow-blue" type="submit" onchange="eeditChild()" id="edit_child_button">
       Update President's Children
     </button>
   </form>
@@ -631,13 +659,16 @@
     <form class="box">
       <article class="message is-danger is-size-4">
         <div class="message-header">
-          <p>ID is all INTEGERS no Alphabets. Please be careful when you are deleting information with an ID. THIS FUCNCTION SHOULD ONLY BE USED WHEN 
+          <p> Please be careful when you are deleting information. Pick a President name that the information you want to delete.
+             THIS FUCNCTION SHOULD ONLY BE USED WHEN 
             INCORRECT INFORMATION IS ADDED/UPDATED
           </p>
           <button class="delete" aria-label="delete"></button>
         </div>
       </article>
-      <div class="field">
+
+      <!-- for future ref-->
+      <!-- <div class="field">
         <label class="label" for="president_id">President ID</label>
         <div class="control">
           <input
@@ -648,15 +679,29 @@
             style="width: 150px"
           />
         </div>
-      </div>
+      </div> -->
 
-      <button class="button is-primary is-danger" type="submit" id="delete_button">
+        <select id="selectPresident" style="height: 40px ; width: 500px; border-radius: 7px;">
+          <option>Select President</option>
+        </select>
+        <button class="button is-primary is-danger" type="delete_button" id="delete_button" onclick="myFunction()">Remove ID</button>
+
+      <!-- <button class="button is-primary is-danger" type="submit" id="delete_button" onchange="resDelete()">
         Delete President
-      </button>
+      </button> -->
+      
     </form>
   </form>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">☝</button>
   </body>
-
+  
+  <script src="script.js"></script>
   <script src="delete_script.js"></script>
   <script src="post_put.js"></script>
+  <script src="scrollToTopbutton.js"></script>
+  <script src="childDropDown.js"></script>
+  <script src="vpDropDown.js"></script>
+  <script src="firstLadyDropDown.js"></script>
+  <script src="presidentDropDown.js"></script>
+
 </html>

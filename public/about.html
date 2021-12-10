@@ -12,10 +12,10 @@
 
   <body class='p-2'>
 
-    <nav class="navbar is-info">
+    <nav class="navbar">
       <div class="navbar-brand">
         <a class="navbar-item" href="index.html">
-          <img src="/images/american_eagle.png" width= '40px'>
+          <img src="/images/american_eagle.png">
         </a>
         <div class="navbar-burger" data-target="navbarExampleIsInfoExample">
           <span></span>
@@ -23,10 +23,13 @@
           <span></span>
         </div>
       </div>
+    </div>
+    
+    
       <div id="navbarExampleIsInfoExample" class="navbar-menu">
         <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link has-text-weight-bold" href="index.html">
+            <a class="navbar-link has-text-weight-bold" id="menu-color" href="index.html">
               Menu
             </a>
             <div class="navbar-dropdown is-boxed">
@@ -39,22 +42,17 @@
               <a class="navbar-item" href="about.html">
                 About Us
               </a>
-              <a class="navbar-item" href="login.html">
-                Login
-              </a>
             </div>
           </div>
         </div>
+    
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
-                <a class="button is-info" href="login.html">
-                  <span class="icon">
-                    <i class="fas fa-download"></i>
-                  </span>
-                  <span class ="has-text-weight-bold">Login</span>
-                </a>
+                <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+                <a href="https://www.twitter.com" class="fa fa-twitter"></a>
+                <a href="https://www.instagram.com" class="fa fa-instagram"></a>
               </p>
             </div>
           </div>
@@ -277,5 +275,6 @@
         </div>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -223,10 +223,10 @@ router.route('/driverDemographics')
 
 // Michael's Endpoint to the vehicleData
 
-router.route('/vehicleData')
+router.route('/vehicle_data')
   .get(async(req, res) => {
     try {
-      console.log('You touched the vehicleData endpoint!');
+      console.log('You touched the /vehicle_data endpoint!');
       res.json({data: data});
     } catch (err) {
       console.log(error);
@@ -236,7 +236,7 @@ router.route('/vehicleData')
 
   .put((req, res) => {
     try {
-      res.json({message: 'You touched vehicleData with PUT'});
+      res.json({message: 'You touched /vehicle_data with PUT'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -245,7 +245,7 @@ router.route('/vehicleData')
 
   .post((req, res) => {
     try {
-      res.json({message: 'You touched vehicleData with POST'});
+      res.json({message: 'You touched vehicle_data with POST'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -254,7 +254,7 @@ router.route('/vehicleData')
 
   .delete((req, res) => {
     try {
-      res.json({message: 'You touched vehicleData with DELETE'});
+      res.json({message: 'You touched vehicle_data with DELETE'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});

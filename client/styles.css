@@ -72,11 +72,14 @@ display: flex;
 .container {
 max-width: 960px;
 margin-top: 25px;
-border: 2px solid #ccc;
-background-color: #eee;
-border-radius: 5px;
-padding: 16px;
-margin: 16px 0;
+}
+
+.review-container {
+  border: 2px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0;
 }
 
 .photo-grid-container {
@@ -213,29 +216,29 @@ margin-bottom: 5px;
 	border-radius: 3px;
 }
 
-.container::after {
+.review-container::after {
   content: "";
   clear: both;
   display: table;
 }
 
-.container img {
+.review-container img {
   float: left;
   margin-right: 20px;
   border-radius: 50%;
 }
 
-.container span {
+.review-container span {
   font-size: 20px;
   margin-right: 15px;
 }
 
 @media (max-width: 500px) {
-  .container {
+  .review-container {
     text-align: center;
   }
 
-  .container img {
+  .review-container img {
     margin: auto;
     float: none;
     display: block;

@@ -1,4 +1,4 @@
-/*Put means gets a record and updates the change*/
+/* Put means gets a record and updates the change */
 
 /* Update a rating of a song, updated with rating_id of 1 */
 const ratingUpdate = `UPDATE rating

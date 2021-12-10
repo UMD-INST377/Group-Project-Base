@@ -11,7 +11,7 @@ People often struggle when searching for movies that interest them online. Our m
 Our projects operating system is Windows/macOS/Linux. After testing, our website works on Chrome, version 90.0.4430.85, Safari, version 14.0.3, Firefox, version 87.0, and we believe it will work on most desktop browsers.
 
 ## Links
-* [Developer Manual](https://github.com/jhersh4/finalproject377#developer-manual)
+* [Developer Manual](https://github.com/jchamdi/Group6-Final-INST377FALL2021#developer-manual)
 # Developer Manual
 ## How to install application and all dependencies
 1. Clone this repository through Github Desktop or through Terminal.

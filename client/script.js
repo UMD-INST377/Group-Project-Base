@@ -31,15 +31,6 @@ function sumDataCulpa(id, data) {
   return tot;
 }
 
-function sumDataRoadCon(id, data) {
-  let tot = 0;
-  data.forEach((item) => {
-    if (item.junction_code === id) {
-      tot += 1;
-    }
-  });
-  return tot;
-}
 
 // ------------------------------------------------------------------
 // Graphing Functions
@@ -253,7 +244,7 @@ async function mainThread() {
   const crash_information = await fetchRequest('./api/crashInformation');
   const driver_demographics = await fetchRequest('./api/driverDemographics');
   const driver_culpability = await fetchRequest('./api/driverCulpability');
-  const road_conditions = await fetchRequest('./api/roadConditions');
+
 
   // summing up the number of collision types from the crashInformation
   const numCollType = [];
@@ -265,7 +256,7 @@ async function mainThread() {
   const collLabel = [];
   for (let i = 0; i < collision_type.length - 1; i++) {
     collLabel.push(collision_type[i].collision_desc);
-  }
+  } 
 
   // console log to check that the features were extracted for labels in the bar chart
   console.log(collLabel);
@@ -308,25 +299,7 @@ async function mainThread() {
 
 
   // extracting the road condition data from the crashInformation
-  const roadCondData = [];
-  for (let i = 0; i < road_conditions.length - 1; i++) {
-    roadCondData.push(sumDataRoadCon(i, crash_information));
-  }
 
-  // console log checking the data
-  console.log(roadCondData);
-
-  // extracting the road condition types from the road conditions
-  const roadCondType = [];
-  for (let i = 0; i < road_conditions.length - 1; i++) {
-    roadCondType.push(road_conditions[i].junction_desc);
-  }
-
-  // console log to check the road Conditions
-  console.log(roadCondType);
-
-  // graphing a donut chart using for road Condtions
-  // donutChart2(roadCondType, roadCondData);
 }
 
 // New Record Posting to driverDemographics endpoint

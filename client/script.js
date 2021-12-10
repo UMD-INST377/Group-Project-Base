@@ -10,6 +10,10 @@ async function fetchRequest(url) {
   }
 }
 
+// ------------------------------------------------------------------
+// Math Functions for JSON data
+// ------------------------------------------------------------------
+
 // Function to parse through the JSONs and sum based on the 'id' num
 function sumDataColl(id, data) {
   let tot = 0;
@@ -20,7 +24,7 @@ function sumDataColl(id, data) {
   });
   return tot;
 }
-
+// function to parse through and sum the culpability data
 function sumDataCulpa(id, data) {
   let tot = 0;
   data.forEach((item) => {
@@ -31,13 +35,12 @@ function sumDataCulpa(id, data) {
   return tot;
 }
 
-
 // ------------------------------------------------------------------
 // Graphing Functions
 // ------------------------------------------------------------------
 
+// Simple Vertical bar chart. Requires label and data input. Config info in function
 function barChart(labels, data) {
-// function to create the bar chart. Requires lables/data input
   const chartData = {
     labels: labels,
     datasets: [{
@@ -61,9 +64,7 @@ function barChart(labels, data) {
     }]
   };
 
-  // adding the barchart to the div html using getelement
-  const ctx = document.getElementById('chart').getContext('2d');
-  const chart = new Chart(ctx, {
+  const config = {
     type: 'bar',
     data: chartData,
     options: {
@@ -78,9 +79,14 @@ function barChart(labels, data) {
         }
       }
     }
-  });
+  }
+
+  // adding the barchart to the div html using getelement
+  const ctx = document.getElementById('chart').getContext('2d');
+  const chart = new Chart(ctx, config);
 }
 
+// Donut chart. A lot of the same as the bar chart above.
 function donutChart(labels, data) {
   const chartData = {
     labels: labels,
@@ -101,42 +107,18 @@ function donutChart(labels, data) {
       hoverOffset: 4
     }]
   };
-  const ctx = document.getElementById('donut').getContext('2d');
-  const chart = new Chart(ctx, {
+
+  const config = {
     type: 'doughnut',
     data: chartData
-  });
+  }
+
+  const ctx = document.getElementById('donut').getContext('2d');
+  const chart = new Chart(ctx, config);
 }
 
-// function donutChart2(labels, data) {
-//   const chartData = {
-//     labels: labels,
-//     datasets: [{
-//       label: 'Road Conditions',
-//       data: data,
-//       backgroundColor: [
-//         'rgba(120, 28, 129, 0.4)',
-//         'rgba(65, 57, 146, 0.4)',
-//         'rgba(68, 124, 191, 0.4)',
-//         'rgba(91, 167, 166, 0.4)',
-//         'rgba(131, 186, 109, 0.4)',
-//         'rgba(180, 189, 76, 0.4)',
-//         'rgba(219, 171, 59, 0.4)',
-//         'rgba(231, 115, 47, 0.4)',
-//         'rgba(217, 33, 32, 0.4)'
-//       ],
-//       hoverOffset: 4
-//     }]
-//   };
-//   const ctx = document.getElementById('donut').getContext('2d');
-//   const chart = new Chart(ctx, {
-//     type: 'doughnut',
-//     data: chartData
-//   });
-// }
-
-
-function radarChart (fdata, mdata) {
+// Radar Chart
+function radarChart(fdata, mdata) {
   const data = {
     labels: [
       '24 and Under',
@@ -185,6 +167,61 @@ function radarChart (fdata, mdata) {
   const chart = new Chart(ctx, config);
 }
 
+// Stacked bar chart.
+function stackedBar(labels, data) {
+  const chartData = {
+    labels: labels,
+    datasets: [{
+      axis: 'y',
+      label: 'My First Dataset',
+      data: data,
+      fill: false,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+      borderWidth: 1
+    }]
+  };
+  const config = {
+    type: 'bar',
+    data: chartData,
+    options: {
+      indexAxis: 'y',
+      scales: {
+        x: {
+          stacked: true
+        },
+        y: {
+          stacked: true
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+  };
+  const stackedBar = document.getElementById('stackedBar').getContext('2d');
+  const chart = new Chart(ctx, config);
+}
+
+
 // ------------------------------------------------------------------
 // M/F Functions to extract data from driver demo
 // ------------------------------------------------------------------
@@ -219,7 +256,7 @@ function driverAge(data) {
   return age;
 }
 
-//function to sort the ages into years
+// function to sort the ages into years
 function binGen (data) {
   const histGenerator = d3.bin()
     .domain([0, 100])
@@ -245,7 +282,6 @@ async function mainThread() {
   const driver_demographics = await fetchRequest('./api/driverDemographics');
   const driver_culpability = await fetchRequest('./api/driverCulpability');
 
-
   // summing up the number of collision types from the crashInformation
   const numCollType = [];
   for (let i = 1; i < collision_type.length - 1; i++) {
@@ -256,10 +292,7 @@ async function mainThread() {
   const collLabel = [];
   for (let i = 0; i < collision_type.length - 1; i++) {
     collLabel.push(collision_type[i].collision_desc);
-  } 
-
-  // console log to check that the features were extracted for labels in the bar chart
-  console.log(collLabel);
+  }
 
   // bar chart function using the labels and data
   barChart(collLabel, numCollType);
@@ -269,9 +302,6 @@ async function mainThread() {
   for (let i = 0; i < driver_culpability.length - 1; i++) {
     culpaData.push(sumDataCulpa(i, driver_demographics));
   }
-
-  // console log checking the data
-  console.log(culpaData);
 
   // extracting the culpability labels from the driver culpa table
   const culpaLabel = [];
@@ -297,8 +327,9 @@ async function mainThread() {
 
   radarChart(f_age, m_age);
 
-
+  // ------------------------------------------------------------------
   // extracting the road condition data from the crashInformation
+  // ------------------------------------------------------------------
 
 }
 

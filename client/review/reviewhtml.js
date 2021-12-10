@@ -3,7 +3,7 @@ const idNum = queryString.replace(/^\D+/g, "");
 
 const loadHotels = async () => {
   try {
-    const res = await fetch("https://group4-final-inst377fa2021.herokuapp.com/api/reviews");
+    const res = await fetch("https://group4-final-inst377fa2021.herokuapp.com/reviews");
     hotelsOverview = await res.json();
     console.log(hotelsOverview);
   } catch (err) {

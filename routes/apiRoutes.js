@@ -152,7 +152,7 @@ router.route('/eruption_info')
           aoa_id: req.body.aoa_id,
           vei_id: req.body.vei_id,
           evidence_id: req.body.evidence_id,
-          cagetory_id: req.body.cagetory_id,
+          category_id: req.body.category_id,
         },
         type: sequelize.QueryTypes.UPDATE
       });
@@ -170,6 +170,11 @@ router.route('/eruption_info')
           year: req.body.year,
           month: req.body.month,
           day: req.body.day,
+          volcano_id: req.body.volcano_id,
+          aoa_id: req.body.aoa_id,
+          vei_id: req.body.vei_id,
+          evidence_id: req.body.evidence_id,
+          category_id: req.body.category_id,
         },
         type: sequelize.QueryTypes.INSERT
       });
@@ -435,7 +440,7 @@ router.route('/volcanos')
           volcano_name: req.body.volcano_name,
           latitude: req.body.latitude,
           longitude: req.body.longitude,
-          volcano_number: req.body.volcano_name
+          volcano_number: req.body.volcano_number
         },
         type: sequelize.QueryTypes.UPDATE
       });
@@ -454,7 +459,7 @@ router.route('/volcanos')
           volcano_name: req.body.volcano_name,
           latitude: req.body.latitude,
           longitude: req.body.longitude,
-          volcano_number: req.body.volcano_name
+          volcano_number: req.body.volcano_number
         },
         type: sequelize.QueryTypes.INSERT
       });

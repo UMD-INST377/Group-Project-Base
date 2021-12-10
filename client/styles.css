@@ -74,14 +74,6 @@ max-width: 960px;
 margin-top: 25px;
 }
 
-.review-container {
-  border: 2px solid #ccc;
-  background-color: #eee;
-  border-radius: 5px;
-  padding: 16px;
-  margin: 16px 0;
-}
-
 .photo-grid-container {
 display: flex;
 justify-content: center;
@@ -214,6 +206,14 @@ margin-bottom: 5px;
 	background-color: #023f72;
 	padding: 15px;
 	border-radius: 3px;
+}
+
+.review-container {
+  border: 2px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0;
 }
 
 .review-container::after {

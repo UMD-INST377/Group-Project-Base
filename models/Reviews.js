@@ -1,14 +1,15 @@
 export default (sequelize, DataTypes) => {
-  const reviews = sequelize.define(
+  const Reviews = sequelize.define(
     "reviews",
     {
       review_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
+        autoIncrement: true,
       },
-      hotel_id: {
-        type: DataTypes.INTEGER,
+      hotel_name: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
       review_text: {
@@ -18,5 +19,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return reviews;
+  return Reviews;
 };

@@ -13,6 +13,34 @@ html,body
     overflow-x: hidden; 
 }
 
+.masterContainer{
+
+    display: flex;
+    /*flex-direction: row;*/
+    
+}
+
+.masterContainer > div{
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.colItem{
+    width: 33%;
+}
+
+@media screen and (max-width: 685px){
+    .master-Container{
+        flex-direction: column;
+    }
+}
+
+.divScroll {
+overflow:scroll;
+height:500px;
+width: 500px
+}
+
 body {
     background-color:rgb(230, 230, 230);
 }
@@ -63,6 +91,12 @@ body {
     font-family: 'Trebuchet MS';
 }
 
+#playertable, #playertablefiltered{
+    width: 349px;
+    padding: 30px;
+    margin: 20px;
+}
+
 .columns {
     display: flex;
     flex-wrap: wrap;
@@ -81,14 +115,12 @@ body {
 }
 
 #playertable {
-    width: 80%;
-    margin: 0 auto;
+    width: 33%;
 
     table-layout: fixed ;
     
     overflow-y:scroll;
     height: 400px;
-    display:block;
 }
 #playertable td {
     width: 20%

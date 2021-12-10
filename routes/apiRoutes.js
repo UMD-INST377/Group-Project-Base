@@ -150,26 +150,46 @@ router.route('/vacByCountyController')
 /// /////////////////////////////////
 /// ////Vaccine Sites Endpoint////////
 /// /////////////////////////////////
-router.route('/vacc-sites')
+router.route('/vaccine-site-info')
   .get(async(req, res) => {
     try {
-      res.json({ message: 'Touched /vacc-sites with GET' });
+      const databaseResponse = await db.sequelizeDB.query (vaccSitesInfo,
+        {
+          type: sequelize.QueryTypes.SELECT
+        });
+      res.json(databaseResponse);
       console.log('Touched /vacc-sites with GET');
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });
     }
   })
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
-      res.json({ message: 'Touched /vacc-sites with PUT' });
-      console.log('Touched /vacc-sites with PUT');
+      await db.vaccSitesInfo.update({
+        site_name: req.body.site_name,
+        street_address: req.body.street_address,
+        street_address2: req.body.street_address2,
+        city: req.body.city,
+        zip_code: req.body.zip_code,
+        active: req.body.active,
+        site_type: req.body.site_type,
+        operating_hours: req.body.operating_hours,
+        contact_phone: req.body.contact_phone,
+        website: req.body.website,
+      },
+      {
+        where: {
+          site_id: req.body.site_id
+        }
+      });
+      console.log('Successfully updated with PUT');
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });
     }
   })
-  .post((req, res) => {
+  .post(async(req, res) => {
     try {
       res.json({ message: 'Touched /vacc-sites with POST' });
       console.log('Touched /vacc-sites with POST');

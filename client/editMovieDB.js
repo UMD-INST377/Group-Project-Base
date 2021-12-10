@@ -1,4 +1,3 @@
-
 function formToObject(htmlFormElement) {
   const formItem = new FormData(htmlFormElement).entries();
   const formArray = Array.from(formItem);
@@ -11,17 +10,14 @@ function formToObject(htmlFormElement) {
   return formObject
 }
 async function fetchRequest(name, id) {
-  const data= formToObject(document.querySelector('#form-id'));
+  const data = formToObject(document.querySelector('#form-id'));
 
   const response = await fetch('/api/film', {
     method: data.answer,
     headers: {
       'Content-Type': 'application/json'
     },
-    body: {
-      name: name,
-      id: id
-    }
+    body: JSON.stringify(data),
   });
   console.log(data); 
 } 

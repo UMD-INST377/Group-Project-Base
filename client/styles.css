@@ -30,7 +30,7 @@ nav {
 }
 
 html {
-  height: 150%
+  height: 100%
 }
 
 a {
@@ -180,18 +180,6 @@ border-radius: 4px;
 background-color: #ddd;
 }
 
-.dropdown-content a:hover {
-  background-color: #f1f1f1
-}
-
-
-<<<<<<< HEAD
-.dropdown-content {
-  max-height: 13em;
-  overflow: auto;
-}
-
-=======
 /* Add a dark background to the active button */
 .btn1.active {
 background-color: #666;
@@ -204,4 +192,14 @@ justify-content: space-between;
 align-items: center;
 margin-bottom: 5px;
 }
->>>>>>> 234f6c8cd1e5473fb2b4f91cbd74f92ac11090ac
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+.dropdown-content {
+  max-height: 13em;
+  overflow: auto;
+}
+
+

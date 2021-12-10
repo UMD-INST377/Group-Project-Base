@@ -203,7 +203,7 @@
   
   .subheader-container {
     display: flex;
-    align-items: center;
+    align-items: right;
   }
   
   .subheader-item {
@@ -302,8 +302,8 @@
   }
   
   .photo-grid_data {
-    width: 400px;
-    height: 400px;
+    width: auto;
+    height: auto;
     display: flex;
     justify-content: center;
   } 

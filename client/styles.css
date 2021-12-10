@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
+#home_id{
     background-color:#fa8975;
     height: 100%;
     width: 100%;
@@ -11,16 +11,39 @@ body {
     padding: 0px;
     font-family: Verdana, Geneva, Tahoma, sans-serif
     }
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    }
+/* #About_id{
+    background-color:yellowgreen;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+} */
 
+#Aboutpage_background_id{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-image:url('https://images-ext-2.discordapp.net/external/RvwomGLg9G0ZxVnp-f3TXPrWpWRlWsyGbwkgUosRXKQ/https/upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Eyjafjallaj%25C3%25B6kull_first_crater_20100329.jpg/1200px-Eyjafjallaj%25C3%25B6kull_first_crater_20100329.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+}
 
 
 /* home page search bar. */
 .container{
     display: flex;
-    width: 1000px;
+    width: 1200px;
     justify-content: center; 
-    padding: 10px;
-    background-color:#e28f7a;
+    padding: 10px
 }
 
 .title{

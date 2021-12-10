@@ -53,9 +53,10 @@ router.route('/nba-players')
     try {
       await db.sequelizeDB.query(player.deletePlayer,{
         replacements: {
-          player_id: req.body.player_id
+          player_name: req.body.player_name
         }
       });
+      //if
       res.send('Successfully Deleted');
     } catch (err) {
       console.log(error);

@@ -31,41 +31,31 @@
             </nav>
         </head>
     <body>
-        <div class="columns is-multiline is-centered is-vcentered">
-            <form id="movieSearch" class="box has-background-warning-light">
+      <section class="hero is-halfheight">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title" >
+              Search Similar Movies
+            </p>
+            <h2 class="subtitle">
+              Discover New Movies
+            </p>
+          </div>
+        </div>
+      </section>
+        <div class="columns is-centered is-8">
+            <form id="movieSearch">
               <div class="formWrapper">
                 <div class="field">
-                  <label for='movie' class="label">Search All Movies By Genre</label>
-                  <input id='movieId' name='movieId' type='text' />
+                  <input id='movieId' name='movieId' class="input is-danger" type='text' placeholder="Type in a Genre" />
                 </div>
-                <button id="submit" type='button'>Submit</button>
+                <button id="submit" class="button is-light" type='button'>Submit</button>
+                <button id="clear" class="button is-light">Clear Results</button>
               </div>
-              <ul id='results'></ul>
             </form>
           </div>
-        <script src="searchResults.js" async defer></script>
-     
-    
-    
-        <section class="hero is-medium">
-            <div class="hero-body">
-              <div class="container has-text-centered">
-                <h1 class="title" >
-                  Search Similar Movies
-                </p>
-                <h2 class="subtitle">
-                  Discover New Movies
-                </p>
-              </div>
-            </div>
-          </section>
-        <div class='search'>
-            <form class="search-form">
-                <input type="text" class="search-box input is-medium ">
-                <ul class="suggestions">
-                </ul>
-            </form>
         </div>
-        <script src="search.js"></script>
+        <div class="column" id='results'></div>
+          <script src="searchResults.js" async defer></script>
     </body>
 </html>

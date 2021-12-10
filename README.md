@@ -40,3 +40,5 @@ Our projects operating system is Windows/macOS/Linux. After testing, our website
 ### Future Development: 
 * Fix DB foreign keys check.
 * Display data consumed from endpoint to frontend
+* Expand DB to include larger variety of films
+* Expand target to allow mobile use of app

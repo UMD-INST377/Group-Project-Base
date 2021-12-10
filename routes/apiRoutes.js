@@ -198,10 +198,14 @@ router.route('/vaccine-site-info')
       res.json({ error: 'Something went wrong' });
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
-      res.json({ message: 'Touched /vacc-sites with DELETE' });
-      console.log('Touched /vacc-sites with DELETE');
+      await db.vaccSitesInfo.destroy({
+        where: {
+          site_id: req.params.site_id
+        }
+      });
+      console.log('Successfully deleted with DELETE');
     } catch (err) {
       console.log(error);
       res.json({ error: 'Something went wrong' });

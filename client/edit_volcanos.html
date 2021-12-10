@@ -2,7 +2,7 @@
 <html lang="en" id = "wrapper">
     <head>
         <meta charset="UTF-8"/>
-        <title>Team Project: Basic Front End Turns On</title>
+        <title>Edit Volcanoes</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
         <link rel="stylesheet" href="styles.css"/>
         
@@ -11,7 +11,7 @@
     <Body>
         <div class = "container">
             <div class = "column">
-                <h1 class="title">Add a Volcano</h1>
+                <h1 class="title">Edit Volcanoes</h1>
             </div>
             
                 <nav class="navbar is-light" role="navigation" aria-label="dropdown navigation">
@@ -23,7 +23,8 @@
                         <div class="navbar-dropdown">
                             <a href="index.html" class="navbar-item">Home</a>
                             <a href="about.html" class="navbar-item">About</a>
-                            <a href="Add_a_volcano.html" class="navbar-item">Add a Volcano</a>
+                            <a href="edit_volcanos.html" class="navbar-item">Edit Volcanoes</a>
+                            <a href="edit_eruptions.html" class="navbar-item">Edit Eruptions</a>
                             <a href="charts.html" class="navbar-item">Informational Charts</a>  
                         </div>
                     </div>
@@ -33,6 +34,9 @@
         <div class="form-input-container">
             <div class = "columns is-centered" style = "opacity: 0.8;">
                 <div class = "column">
+                    <div class="box" style="width: 300px;">
+                        Volcano ID
+                    </div>
                     <div class="box" style="width: 300px;">
                         Volcano Name
                     </div>
@@ -47,13 +51,16 @@
                     </div>
                 </div>
                 
-                <form action="api/volcanos" method="POST" action="formsuccess.html">
+                <form>
                 <div class = "column">
+                    <div class = "volcano_form" id="id-input"><input class="input" type="text" name="volcano_id"></div>
                     <div class = "volcano_form" id="name-input"><input class="input" type="text" name="volcano_name"></div>
-                    <div class = "volcano_form" id="date-input"><input class="input" type="text" name="latitude"></div>
-                    <div class = "volcano_form" id="location-input"><input class="input" type="text" name="longitude"></div>
-                    <div class = "volcano_form" id="location-input"><input class="input" type="text" name="volcano_number"></div>
-                    <button class="button" type="submit" id="submit">Submit</button>
+                    <div class = "volcano_form" id="lat-input"><input class="input" type="text" name="latitude"></div>
+                    <div class = "volcano_form" id="long-input"><input class="input" type="text" name="longitude"></div>
+                    <div class = "volcano_form" id="volnum-input"><input class="input" type="text" name="volcano_number"></div>
+                    <button class="button" type="submit" id="insertvol">Insert</button>
+                    <button class="button" type="submit" id="updatevol">Update</button>
+                    <button class="button" type="submit" id="deletevol">Delete</button>
                 </div>
                 </form>
 

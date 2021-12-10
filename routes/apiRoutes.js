@@ -3,6 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import crash_information from '../models/crash_information.js';
 
 const router = express.Router();
 
@@ -119,10 +120,9 @@ router.route('/crashInformation')
 
   .post(async(req, res) => {
     const crash_information = await db.crash_information.findAll();
-    const currentID = (await crash_information.length) + 1;
     try {
       const newCrashInformation = await db.crash_information.create({
-        report_id: currentID,
+        report_id: req.body.report_id,
         location_id: req.body.location_id,
         report_type: req.body.report_type,
         acc_date: req.body.acc_date,
@@ -156,47 +156,77 @@ router.route('/crashInformation')
 router.route('/driverDemographics')
   .get(async(req, res) => {
     try {
-      console.log('You touched the crashInformation endpoint!');
-      res.json({data: data});
+      const driver_demographics = await db.driver_demographics.findAll();
+      console.log('You touched the driverDemographics endpoint!');
+      res.json(driver_demographics);
     } catch (err) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on /driverDemographics'});
     }
   })
 
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
-      res.json({message: 'You touched crashInformation with PUT'});
+      await db.driver_demographics.update(
+        {
+          person_id: req.body.person_id,
+          report_id: req.body.report_id,
+          sex_code: req.body.sex_code,
+          date_of_birth: req.body.date_of_birth,
+          culpability_id: req.body.culpability_id
+        },
+        {
+          where: {
+            person_id: req.body.person_id
+          }
+        }
+      );
+      console.log('You touched the /driverDemographics with PUT');
+      res.send('Successfuly updated');
     } catch (err) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on /driverDemographics'});
     }
   })
 
-  .post((req, res) => {
+  .post(async(req, res) => {
     try {
-      res.json({message: 'You touched crashInformation with POST'});
+      const newDriverDemographics = await db.driver_demographics.create({
+        person_id: req.body.person_id,
+        report_id: req.body.report_id,
+        sex_code: req.body.sex_code,
+        date_of_birth: req.body.date_of_birth,
+        culpability_id: req.body.culpability_id
+      });
+      console.log('You touched the /driverDemographics route with POST');
+      res.json(newDriverDemographics);
     } catch (err) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      console.error(err);
+      res.send('Something went wrong on /driverDemographics');
     }
   })
 
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
-      res.json({message: 'You touched crashInformation with DELETE'});
+      await db.driver_demographics.destroy({
+        where: {
+          person_id: req.body.person_id
+        }
+      });
+      console.log('You touched the /driverDemographics route with DELETE');
+      res.send('Successfully deleted');
     } catch (err) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      console.error(err);
+      res.send('Something went wrong on /driverDemographics');
     }
   });
 
 // Michael's Endpoint to the vehicleData
 
-router.route('/vehicleData')
+router.route('/vehicle_data')
   .get(async(req, res) => {
     try {
-      console.log('You touched the vehicleData endpoint!');
+      console.log('You touched the /vehicle_data endpoint!');
       res.json({data: data});
     } catch (err) {
       console.log(error);
@@ -206,7 +236,7 @@ router.route('/vehicleData')
 
   .put((req, res) => {
     try {
-      res.json({message: 'You touched vehicleData with PUT'});
+      res.json({message: 'You touched /vehicle_data with PUT'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -215,7 +245,7 @@ router.route('/vehicleData')
 
   .post((req, res) => {
     try {
-      res.json({message: 'You touched vehicleData with POST'});
+      res.json({message: 'You touched vehicle_data with POST'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -224,12 +254,13 @@ router.route('/vehicleData')
 
   .delete((req, res) => {
     try {
-      res.json({message: 'You touched vehicleData with DELETE'});
+      res.json({message: 'You touched vehicle_data with DELETE'});
     } catch (err) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
     }
   });
+
 
   // Teyojessam's Endpoint to the roadConditions
 
@@ -303,4 +334,65 @@ router.route('/roadConditions')
     res.send('Something went wrong on /roadConditions');
   }
 });
+// driver culpability endpoint
+  router.route('/driverCulpability')
+  .get(async(req, res) => {
+    try {
+      const driver_culpability = await db.driver_culpability.findAll();
+      console.log('You touched the /driverCulpability route with GET');
+      res.json(driver_culpability);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      await db.driver_culpability.update(
+        {
+          culpability_desc: req.body.culpability_desc
+        },
+        {
+          where: {
+            culpability_id: req.body.culpability_id
+          }
+        }
+      );
+      console.log('You touched the /driverCulpability route with PUT');
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  })
+  .post(async(req, res) => {
+    const driver_culpability = await db.driver_culpability.findAll();
+    const currentID = (await driver_culpability.length) + 1;
+    try {
+      const collisionTypeCreate = await db.driver_culpability.create({
+        culpability_id: req.body.culpability_id,
+        culpability_desc: req.body.culpability_desc
+      });
+      console.log('You touched the /driverCulpability route with POST');
+      res.json(driverCulpabilityCreate);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      await db.driver_culpability.destroy({
+        where: {
+          culpability_id: req.params.culpability_id
+        }
+      });
+      console.log('You touched the /driverCulpability route with DELETE');
+      res.send('Successfully deleted');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  });
+
 export default router;

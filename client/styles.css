@@ -29,3 +29,21 @@ body {
   max-width: 960px;
   margin-top: 25px;
 }
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+.box title {
+  padding: 20px;
+}
+.center {
+  padding: 70px 0;
+  border: 3px solid blue;
+  text-align: center;
+}

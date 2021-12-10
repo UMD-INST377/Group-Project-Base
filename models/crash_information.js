@@ -20,6 +20,14 @@ export default (sequelize, DataTypes) => {
       collision_type_id: {
         type: DataTypes.INTEGER,
         allowNull: true
+      },
+      surf_cond_code: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+      },
+      junction_code: {
+        type: DataTypes.INTEGER,
+        allowNull: true
       }
     },
     { freezeTableName: true, timestamps: false }

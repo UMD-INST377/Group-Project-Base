@@ -59,6 +59,8 @@ details > summary {
   width: 100%;
   border: 1px solid;
   height: 38px;
+  font-size: large;
+  font-weight: 700;
 }
 
 img {
@@ -68,8 +70,12 @@ img {
   width: 93.4%;
 }
 
+.container-p {
+  align-items: center;
+}
+
 .container {
-  background-color:#ff3300;
+  background-color:#f4ecc2;
   align-items: center;
 }
 
@@ -97,7 +103,9 @@ img {
   border: 10px;
   border-style: solid;
   border-color: #ff8800;
+  max-width: 1300px;
   margin: auto;
+  padding: 15px;
 }
 
 

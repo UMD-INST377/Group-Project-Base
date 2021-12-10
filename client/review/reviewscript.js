@@ -1,14 +1,3 @@
-// import chalk from 'chalk';
-// import fetch from 'node-fetch';
-
-// import db from '../database/initializeDB.js';
-
-// const router = express.Router();
-
-// router.get('/', (req, res) => {
-//   console.log('You touched the default route');
-// });
-
 function windowActions() {
   const inputForm = document.querySelector('#form');
 
@@ -45,6 +34,8 @@ function windowActions() {
   inputForm.addEventListener('submit', test);
 }
 
+window.onload = windowActions;
+
 hotelReviews = [];
 
 const loadReviews = async () => {
@@ -72,5 +63,3 @@ const loadReviews = async () => {
 };
 
 loadReviews();
-
-window.onload = windowActions;

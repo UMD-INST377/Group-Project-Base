@@ -8,9 +8,9 @@ It can often be difficult to find detailed information on recent earthquakes, as
 
 ### Target Browsers
 <p float="left">
-    <img src="/images/firefox-logo-small.png" width="30" height="30" />
-    <img src="/images/Microsoft_Edge_logo_(2019).svg.png" width="30" height="30" />
-    <img src="/images/Google_Chrome_icon_(2011).png" width="30" height="30" />
+    <img src="/public/images/firefox-logo-small.png" width="30" height="30" />
+    <img src="/public/images/Microsoft_Edge_logo_(2019).svg.png" width="30" height="30" />
+    <img src="/public/images/Google_Chrome_icon_(2011).png" width="30" height="30" />
 </p>
 
 ## Developer Manual

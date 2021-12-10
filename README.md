@@ -28,4 +28,10 @@ Macbook Pro
 
 ## Development and Bugs Section
 
+### Future Development
+- Add a way for users to enter location of crashes
+- Create a heatmap to plot crashes 
+- Handle unknown and/or new values that were not part of database 
 ### Bugs
+- Could be issues with values that are not specified within database
+

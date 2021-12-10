@@ -219,7 +219,7 @@ async function mainThread() {
   donutChart2(roadCondType, roadCondData);
 }
 
-// New Record Posting
+// New Record Posting to driverDemographics endpoint
 async function postNewRecord() {
   const person_id = document.querySelector('#person_id');
   const report_id = document.querySelector('#report_id');
@@ -240,8 +240,27 @@ async function postNewRecord() {
       culpability_id: culpability_id.value
     })
   });
-  console.log(request)
+  console.log(request.json());
   return request.json();
+}
+
+// testing JSON output for new record
+async function testing() {
+  const person_id = document.querySelector('#person_id');
+  const report_id = document.querySelector('#report_id');
+  const sex_code = document.querySelector('#sex_code');
+  const date_of_birth = document.querySelector('#date_of_birth');
+  const culpability_id = document.querySelector('#culpability_id');
+
+  maybe = JSON.stringify({
+    person_id: person_id.value,
+    report_id: report_id.value,
+    sex_code: sex_code.value,
+    date_of_birth: date_of_birth.value,
+    culpability_id: culpability_id.value
+  });
+
+  console.log(maybe)
 }
 
 async function logData() {

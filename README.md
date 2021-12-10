@@ -1,8 +1,4 @@
 
-# Find my Movie Cravings
-
-## Description
-
 # Welcome to Movie Cravings
 
 ## Project Description

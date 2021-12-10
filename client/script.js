@@ -41,6 +41,10 @@ function sumDataRoadCon(id, data) {
   return tot;
 }
 
+// ------------------------------------------------------------------
+// Graphing Functions
+// ------------------------------------------------------------------
+
 function barChart(labels, data) {
 // function to create the bar chart. Requires lables/data input
   const chartData = {
@@ -113,43 +117,136 @@ function donutChart(labels, data) {
   });
 }
 
-function donutChart2(labels, data) {
-  const chartData = {
-    labels: labels,
-    datasets: [{
-      label: 'Road Conditions',
-      data: data,
-      backgroundColor: [
-        'rgba(120, 28, 129, 0.4)',
-        'rgba(65, 57, 146, 0.4)',
-        'rgba(68, 124, 191, 0.4)',
-        'rgba(91, 167, 166, 0.4)',
-        'rgba(131, 186, 109, 0.4)',
-        'rgba(180, 189, 76, 0.4)',
-        'rgba(219, 171, 59, 0.4)',
-        'rgba(231, 115, 47, 0.4)',
-        'rgba(217, 33, 32, 0.4)'
-      ],
-      hoverOffset: 4
-    }]
-  };
-  const ctx = document.getElementById('donut').getContext('2d');
-  const chart = new Chart(ctx, {
-    type: 'doughnut',
-    data: chartData
-  });
-}
-
-// function extractData (data.feature) {
-// function to extract the data into an array (not working)
-//   const array = [];
-//   for (let i = 1; i < data.length-1; i++) {
-//     array.push(data[i].feature);
-//   }
-//   return array;
+// function donutChart2(labels, data) {
+//   const chartData = {
+//     labels: labels,
+//     datasets: [{
+//       label: 'Road Conditions',
+//       data: data,
+//       backgroundColor: [
+//         'rgba(120, 28, 129, 0.4)',
+//         'rgba(65, 57, 146, 0.4)',
+//         'rgba(68, 124, 191, 0.4)',
+//         'rgba(91, 167, 166, 0.4)',
+//         'rgba(131, 186, 109, 0.4)',
+//         'rgba(180, 189, 76, 0.4)',
+//         'rgba(219, 171, 59, 0.4)',
+//         'rgba(231, 115, 47, 0.4)',
+//         'rgba(217, 33, 32, 0.4)'
+//       ],
+//       hoverOffset: 4
+//     }]
+//   };
+//   const ctx = document.getElementById('donut').getContext('2d');
+//   const chart = new Chart(ctx, {
+//     type: 'doughnut',
+//     data: chartData
+//   });
 // }
 
+
+function radarChart (fdata, mdata) {
+  const data = {
+    labels: [
+      '24 and Under',
+      '25-34',
+      '35-44',
+      '45-54',
+      '55-64',
+      '65 and Older'
+    ],
+    datasets: [{
+      label: 'Females',
+      data: fdata,
+      fill: true,
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgb(255, 99, 132)',
+      pointBackgroundColor: 'rgb(255, 99, 132)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(255, 99, 132)'
+    }, {
+      label: 'Males',
+      data: mdata,
+      fill: true,
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgb(54, 162, 235)',
+      pointBackgroundColor: 'rgb(54, 162, 235)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(54, 162, 235)'
+    }]
+  };
+
+  const config = {
+    type: 'radar',
+    data: data,
+    options: {
+      elements: {
+        line: {
+          borderWidth: 3
+        }
+      }
+    }
+  };
+
+  const ctx = document.getElementById('radar').getContext('2d');
+  const chart = new Chart(ctx, config);
+}
+
+// ------------------------------------------------------------------
+// M/F Functions to extract data from driver demo
+// ------------------------------------------------------------------
+
+// function to separate based on sex
+function driversSex(data, sex) {
+  const array = [];
+  data.forEach((item) => {
+    if (item.sex_code === sex) {
+      array.push(item);
+    }
+  });
+  console.log(array);
+  return array;
+}
+
+// function to extract age based on year (not perfect but good for now)
+function driverAge(data) {
+  dob = [];
+  data.forEach((item) => {
+    dob.push(parseInt(item.date_of_birth.slice(-2)));
+  });
+
+  age = [];
+  data.forEach((item) => {
+    if (parseInt(item.date_of_birth.slice(-2)) > 21) {
+      age.push(100 - parseInt(item.date_of_birth.slice(-2)) + 21);
+    } else {
+      age.push(21 - parseInt(item.date_of_birth.slice(-2)));
+    }
+  });
+  return age;
+}
+
+//function to sort the ages into years
+function binGen (data) {
+  const histGenerator = d3.bin()
+    .domain([0, 100])
+    .thresholds([0, 25, 35, 45, 55, 65]); // number of thresholds; this will create 5+1 bins
+  const bins = histGenerator(data);
+
+  bins_age = [];
+  bins.forEach((item) => {
+    bins_age.push(item.length);
+  });
+  return bins_age;
+}
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
 // Main thread function
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+
 async function mainThread() {
   // fetch request to get the data from the api's
   const collision_type = await fetchRequest('./api/collisionType');
@@ -191,11 +288,24 @@ async function mainThread() {
     culpaLabel.push(driver_culpability[i].culpability_desc);
   }
 
-  // console log to check the culpa
-  console.log(culpaLabel);
-
   // graphing a donut chart using for culpability
   donutChart(culpaLabel, culpaData);
+
+  // ------------------------------------------------------------------
+  // Extract two arrays F/M of driver demo and create radar chart
+  // ------------------------------------------------------------------
+
+  f_drivers = driversSex(driver_demographics, 'F');
+  m_drivers = driversSex(driver_demographics, 'M');
+
+  f_drivers_age = driverAge(f_drivers);
+  m_drivers_age = driverAge(m_drivers);
+
+  f_age = binGen(f_drivers_age);
+  m_age = binGen(m_drivers_age);
+
+  radarChart(f_age, m_age);
+
 
   // extracting the road condition data from the crashInformation
   const roadCondData = [];
@@ -216,7 +326,7 @@ async function mainThread() {
   console.log(roadCondType);
 
   // graphing a donut chart using for road Condtions
-  donutChart2(roadCondType, roadCondData);
+  // donutChart2(roadCondType, roadCondData);
 }
 
 // New Record Posting to driverDemographics endpoint
@@ -260,7 +370,7 @@ async function testing() {
     culpability_id: culpability_id.value
   });
 
-  console.log(maybe)
+  console.log(maybe);
 }
 
 async function logData() {

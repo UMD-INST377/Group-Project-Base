@@ -7,11 +7,13 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
         <link href="nv.d3.min.css" rel="stylesheet">
         <script src='./chart.js'></script>
+        <script src="./d3.js"></script>
     </head>
 
     <body>
         <div class = 'wrapper'>
             <div class="container">
+
                 <div class="columns is-vcentered">
                   <div class="column is-full">
                     <div class="box title has-background-warning-light">Data Visualizations</div>
@@ -21,20 +23,29 @@
                         <a href="about.html">About Page</a>
                       </nav>
                   </div>
-              
-                    <div class="columns">
-                      <div class= "column is-half">
-                        <div class="box title has-background-danger-light has-text-centered">Number of Collisions by Type
-                          <canvas id="chart" width="400" height="400"></canvas>
-                        </div>
-                      </div>
-                      <div class= "column is-half">
-                        <div class="box title has-background-success-light has-text-centered">Driver Culpability
-                          <canvas id="donut" width="400" height="400"></canvas>
-                        </div>
-                      </div>
-                    </div>
                 </div>
+
+                <div class="columns">
+                  <div class= "column is-half">
+                    <div class="box title has-background-danger-light has-text-centered">Collisions by Type
+                      <canvas id="chart" width="400" height="400"></canvas>
+                    </div>
+                  </div>
+                  <div class= "column is-half">
+                    <div class="box title has-background-success-light has-text-centered">Driver Culpability
+                      <canvas id="donut" width="400" height="400"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="columns">
+                  <div class= "column is-half">
+                    <div class="box title has-background-warning-light has-text-centered">Collisions by Age and Sex
+                      <canvas id="radar" width="400" height="400"></canvas>
+                    </div>
+                  </div>
+                </div>
+              
             </div>
         </div>
         <script src = 'script.js'></script> 

@@ -60,3 +60,9 @@ input[type=image]{
      margin-left: 5rem;
      margin-right: 5rem;
  }
+
+ .vinbox{
+     justify-items: center;
+     margin-left: 1rem;
+     margin-right: 1rem;
+ }

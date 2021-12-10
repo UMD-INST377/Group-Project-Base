@@ -13,49 +13,43 @@ const router = express.Router();
 /// /////////////////////////////////
 /// ////Congress Member Endpoints////
 /// /////////////////////////////////
-router.route('/profiles').get(async(req, res) => {
+router.get('/profiles',async(req, res) => {
   try {
-    const memberProfiles = await db.sequelizeDB.query(GETcontroller.memberProfiles, {
+    const profiles = await db.sequelizeDB.query(GETcontroller.profiles, {
       type: sequelize.QueryTypes.SELECT
-    })
-    console.log('touch /profiles with GET')
-    res.json({phone: 'touched /profiles with GET'})
-  } catch (error) {
+    });
+    } catch (error) {
     console.log(error)
-    res.json({error: 'Error Occured'})
+    res.json({message: 'Error'})
   }
-})
-
-router.route('/phone').put(async(req, res) => {
+});
+router.put(async(req, res) => {
   try {
-    console.log('touch /phone with PUT')
-    res.json({phone: 'touched /phone with PUT'})
+    console.log('touched /profiles endpoint PUT');
+    res.send('PUT members endpoint');
   } catch (error) {
     console.log(error)
-    res.json({error: 'Error Occured'})
+    res.json({message: 'Error'})
   }
-})
-
-router.route('/phone').post(async(req, res) => {
+});
+router.post(async(req, res) => {
   try {
-    console.log('touch /phone with POST')
-    res.json({phone: 'touched /phone with POST'})
-  } catch (error) {
+    const insertQuery = await db.sequelizeDB.query(POSTcontroller.addProfiles, {
+      type: sequelize.QueryTypes.INSERT,
+  })} catch (error) {
     console.log(error)
-    res.json({error: 'Error Occured'})
+    res.json({message: 'Error'})
   }
-})
-
-router.route('/phone').delete(async(req, res) => {
+});
+router.delete(async(req, res) => {
   try {
-    console.log('touch /phone with DELETE')
-    res.json({phone: 'touched /phone with DELETE'})
+    console.log('touched /profiles endpoint DELETE')
+    res.send('DELETE profiles endpoint');
   } catch (error) {
     console.log(error)
-    res.json({error: 'Error Occured'})
+    res.json({message: 'Error'})
   }
 })
-
 /// /////////////////////////////////
 /// ////Congress Endpoints////////
 /// /////////////////////////////////

@@ -21,8 +21,7 @@ async function fetchRequest(name, id) {
     body: {
       name: name,
       id: id
-    },
-    body: JSON.stringify(data),
+    }
   });
   console.log(data); 
 } 

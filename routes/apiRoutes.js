@@ -73,6 +73,105 @@ router.get("/basketball/players", async (req, res) => {
   }
 });
 
+// GET A GAME
+router.get("/basketball/games", async (req, res) => {
+  console.log("hit games route");
+  try {
+    const games = await db.Games.findAll({
+      limit: 4,
+    });
+    console.log(games);
+    res.json(games);
+  } catch (e) {
+    res.send(e);
+  }
+});
+
+// GET ALL GAMES BY TEAM BY YEAR
+router.get("/basketball/games/:teamId/:year", async (req, res) => {
+  try {
+    const games = await db.sequelizeDB.query(
+      `SELECT 
+     DATE(games.date_played) AS date_played,
+     team1.team_name AS home_team_name,
+     games.home_team_score,
+     team2.team_name,
+     games.away_team_score AS away_team_name
+ FROM
+     games
+         JOIN
+     teams AS team1 ON games.home_team_id = team1.team_id
+         JOIN
+     teams AS team2 ON games.away_team_id = team2.team_id
+ WHERE
+    (games.home_team_id = ${req.params.teamId}
+         OR games.away_team_id = ${req.params.teamId})
+         AND YEAR(games.date_played) = ${req.params.year};`
+    );
+    res.json(games);
+  } catch (e) {
+    console.log(e);
+    res.send(e);
+  }
+});
+
+// FIND GAMES BETWEEN TWO TEAMS DURING A SPECIFIC YEAR
+router.get(
+  "/basketball/games/:firstTeamId/:secondTeamId/:year",
+  async (req, res) => {
+    try {
+      const games = await db.sequelizeDB.query(
+        `SELECT 
+      Date(games.date_played),
+        team1.team_name AS home_team_name,
+        team2.team_id AS home_team_id
+        games.home_team_score,
+        team2.team_name AS away_team_name,
+        team2.team_id AS away_team_id
+        games.away_team_score
+      FROM
+          games
+              JOIN
+          teams AS team1 ON games.home_team_id = team1.team_id
+              JOIN
+          teams AS team2 ON games.away_team_id = team2.team_id
+              WHERE
+              (games.home_team_id = ${req.params.firstTeamId}
+                  AND games.away_team_id = ${req.params.secondTeamId})
+                  OR (games.away_team_id = ${req.params.firstTeamId}
+                  AND games.home_team_id = ${req.params.secondTeamId})
+                  AND YEAR(games.date_played) = ${req.params.year};`,
+        {
+          model: db.Games,
+          mapToModel: true,
+        }
+      );
+      // const games = await db.Games.findAll({
+      //   where: [
+      //     sequelize.where(
+      //       sequelize.fn("YEAR", sequelize.col("date_played")),
+      //       req.params.year
+      //     ),
+      //     sequelize.or(
+      //       {
+      //         home_team_id: req.params.firstTeam,
+      //         away_team_id: req.params.secondTeam,
+      //       },
+      //       {
+      //         home_team_id: req.params.secondTeam,
+      //         away_team_id: req.params.firstTeam,
+      //       }
+      //     ),
+      //   ],
+      // });
+      res.json(games);
+    } catch (e) {
+      console.log(e);
+      res.send(e);
+    }
+  }
+);
+
 router.get("/basketball/players/:search_query", async (req, res) => {
   try {
     const players = await db.Players.findAll({
@@ -101,7 +200,7 @@ router.post("/basketball", async (req, res) => {
   }
 });
 
-//Used to add new player to database
+// Used to add new player to database
 router.post("/basketball/players", async (req, res) => {
   // Will use await when making actual calls to the db
   const players = await db.Players.findAll();
@@ -129,7 +228,7 @@ router.post("/basketball/players", async (req, res) => {
   }
 });
 
-//Edit player from teams
+// Edit player from teams
 router.put("/basketball/teams", async (req, res) => {
   try {
     console.log("touched /basketball with PUT");

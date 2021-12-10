@@ -14,7 +14,7 @@ const player = {
               WHERE player_id = :player_id;`,
 
   deletePlayer: `DELETE FROM players
-                  WHERE player_id = :player_id;`
+                  WHERE player_name = :player_name;`
 
 };
 

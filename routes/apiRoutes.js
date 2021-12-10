@@ -239,6 +239,24 @@ router.put("/basketball/teams", async (req, res) => {
   }
 });
 
+//Delete Player from teams
+router.delete("/basketball/teams", async (req, res) => {
+  try {
+    console.log("touched /basketball with DELETE");
+    await db.Players.destroy(
+      {
+        where: {
+          player_id: req.body.player_id,
+        },
+      });
+    console.log("Player is Deleted!");
+    res.send("Successfully deleted player");
+  } catch (e) {
+    console.log(e);
+    res.error("Something went wrong on the server");
+  }
+});
+
 router.put("/basketball", async (req, res) => {
   try {
     // Will use await when making actual calls to the DB

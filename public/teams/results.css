@@ -16,6 +16,10 @@
     cursor:pointer;
 }
 
+.deletePlayerButton{
+    cursor:pointer;
+}
+
 #doneEditing{
     cursor:pointer;
 }

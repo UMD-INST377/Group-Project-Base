@@ -207,8 +207,35 @@ function clickEdit(rowSelected, playerID) {
     cell2.innerHTML = '<select id= "position"><option>C</option><option>C-F</option><option>F</option><option>F-C</option><option>F-G</option><option>G</option><option>G-F</option><option>P-G</option></select>';
   }
   cell3.innerHTML = '<input maxlength ="4" type="number" id="year_drafted" name="Player Name" value="'+ selectedPlayerData.year_drafted +'">';
-  cell4.innerHTML = '<u id="doneEditing">Done</u>';
+  cell4.innerHTML = "<u id='doneEditing'>Done</u> <u class='deletePlayerButton' id='p" + selectedPlayerData['player_id'] + "'>X</u>";
   isEditing = true;
+  function deleteSelect(){
+    console.log('player deleted')
+    let updateData = {
+      "player_id": playerID,
+    };
+    fetch("/api/basketball/teams",{
+      method: 'DELETE',
+      headers:{
+      'Content-Type':'application/json'
+      },
+      body:JSON.stringify(updateData)
+    })
+    for(let i = 0; i < allPlayerData.length; i++){ //update player in all player save
+      if(allPlayerData[i]['player_id'] == playerID){
+        allPlayerData.splice(i,1);
+        i = allPlayerData.length;
+      }
+    }
+    for(let i = 0; i < selectedTeamPlayers.length; i++){ //update player in selectedTeamPlayers
+      if(selectedTeamPlayers[i]['player_id'] == playerID){
+        selectedTeamPlayers.splice(i,1);
+        i = selectedTeamPlayers.length;
+      }
+    }
+    displayTeamData(teamSelected[2]);
+    isEditing = false;
+  }
   function doneSelect(){
     console.log('DONE!');
     let pFullName = document.querySelector('#playerName').value;
@@ -269,6 +296,7 @@ function clickEdit(rowSelected, playerID) {
     displayTeamData(teamSelected[2]); //refresh page
   }
   document.querySelector('#doneEditing').addEventListener("click", doneSelect, false);
+  document.querySelector('.deletePlayerButton').addEventListener("click", deleteSelect, false);
   //editPlayerButton to anti symbol
 }
 

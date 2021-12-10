@@ -42,3 +42,4 @@ Our projects operating system is Windows/macOS/Linux. After testing, our website
 * Display data consumed from endpoint to frontend
 * Expand DB to include larger variety of films
 * Expand target to allow mobile use of app
+* Add working "sign-up" and "login" page that's functional and interactive

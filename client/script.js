@@ -134,7 +134,7 @@ async function mainThread() {
   const collLabel = [];
   for (let i = 0; i < collision_type.length - 1; i++) {
     collLabel.push(collision_type[i].collision_desc);
-  }
+  } 
 
   // console log to check that the features were extracted for labels in the bar chart
   console.log(collLabel);

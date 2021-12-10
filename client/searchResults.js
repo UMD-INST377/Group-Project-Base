@@ -2,6 +2,7 @@
 async function getByID() {
   let endpoint = './api/search/' + document.querySelector('#movieId').value 
   const message = document.querySelector('#results')
+  const clearButton = document.querySelector('#clear')
   console.log(endpoint)
   const request = await fetch(endpoint)
   const movies = await request.json()
@@ -15,14 +16,22 @@ async function getByID() {
   arr.forEach((movie) =>{
     message.innerHTML += `
   <li>                    
-      <table class='result'>
-          <tr>
+      <div class="column">
               <th>${(movie)}</th>
-          </tr>
-      </table>
+      </div>
   </li>
   `
   } )
+  function clearList(){
+    // looping through each child of the search results list and remove each child
+    while (arr.firstChild){
+        arr.removeChild(arr.firstChild)
+    }
+  }
+  
+  clearButton.addEventListener("click", () => {
+    clearList()
+  })
 }
 
 const send = document.querySelector('#submit');

@@ -74,13 +74,23 @@ router.get('/room_type', async (req, res) => {
   console.log('you touched the room_type route');
 });
 
-router.post('/review', async (req, res) => {
+router.post('/reviews', async (req, res) => {
   try {
     const reviews = await db.Reviews.create({
-      hotel_id: req.body.hotel_id,
+      hotel_name: req.body.hotel_name,
       review_text: req.body.review_text
       //made review_id auto increment 
     });
+    res.json(reviews);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/reviews', async (req, res) => {
+  try {
+    const reviews = await db.Reviews.findAll();
     res.json(reviews);
   } catch (err) {
     console.error(err);

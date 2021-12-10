@@ -1,22 +1,23 @@
 export default (sequelize, DataTypes) => {
-    const reviews = sequelize.define(
-      'review',
-      {
-        review_id: {
-          type: DataTypes.INTEGER,
-          primaryKey: true,
-          allowNull: false
-        },
-        hotel_id: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        review_text: {
-          type: DataTypes.STRING,
-          allowNull: false
-        }
+  const Reviews = sequelize.define(
+    "reviews",
+    {
+      review_id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true,
       },
-      { freezeTableName: true, timestamps: false }
-    );
-    return reviews;
-  };
+      hotel_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      review_text: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    },
+    { freezeTableName: true, timestamps: false }
+  );
+  return Reviews;
+};

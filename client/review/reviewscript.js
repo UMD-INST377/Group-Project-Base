@@ -32,7 +32,7 @@ function windowActions() {
     const formObject = formToObject(inputForm);
     console.log(formObject);
   // e.target.parentnode.classList.toggle('is-active');
-  await fetch('https://group4-final-inst377fa2021.herokuapp.com/api/review', {
+  await fetch('https://group4-final-inst377fa2021.herokuapp.com/api/reviews', {
     method:'POST',
     headers: {
       'Content-Type': 'application/json'

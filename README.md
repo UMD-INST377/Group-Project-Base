@@ -39,4 +39,4 @@ Our projects operating system is Windows/macOS/Linux. After testing, our website
 
 ### Future Development: 
 * Fix DB foreign keys check.
-* Display data to frontend
+* Display data consumed from endpoint to frontend

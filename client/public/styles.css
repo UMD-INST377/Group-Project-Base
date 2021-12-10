@@ -90,3 +90,18 @@ img {
   max-width: 700px;
   margin: auto;
 }
+
+.boxx {
+  max-width: fit-content; 
+  background-color: white;
+  border: 10px;
+  border-style: solid;
+  border-color: #ff8800;
+  margin: auto;
+}
+
+
+p{
+  font-family: Serif; 
+  font-size: 24px;
+}

@@ -45,6 +45,26 @@ async function biomesList() {
   });
 }
 
+async function extinctionList() {
+  const list = document.querySelector('.eList');
+  const req = await fetch('/api/extinction');
+  const extinction = await req.json();
+  extinction.forEach((extinction) => {
+    const newRecord = document.createElement('details');
+    newRecord.innerHTML = `
+        <summary>${extinction.common_name}</summary>
+        <div class= 'columns'> 
+          <div class = 'column is-half'>
+            <div class="content listings">
+                <h1>Extinction Name: ${extinction.common_name}</h1>
+                <h3>Went extinct: ${extinction.age_species_went_extinct}</h3>
+            </div>
+          </div>
+        </div>`;
+    list.append(newRecord);
+  });
+}
+
 async function windowsActions() {
   await animalList();
   await biomesList();

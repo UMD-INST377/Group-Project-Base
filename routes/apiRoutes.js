@@ -73,20 +73,6 @@ router.get("/basketball/players", async (req, res) => {
   }
 });
 
-// GET A GAME
-router.get("/basketball/games", async (req, res) => {
-  console.log("hit games route");
-  try {
-    const games = await db.Games.findAll({
-      limit: 4,
-    });
-    console.log(games);
-    res.json(games);
-  } catch (e) {
-    res.send(e);
-  }
-});
-
 // GET ALL GAMES BY TEAM BY YEAR
 router.get("/basketball/games/:teamId/:year", async (req, res) => {
   try {
@@ -95,8 +81,8 @@ router.get("/basketball/games/:teamId/:year", async (req, res) => {
      DATE(games.date_played) AS date_played,
      team1.team_name AS home_team_name,
      games.home_team_score,
-     team2.team_name,
-     games.away_team_score AS away_team_name
+     team2.team_name AS away_team_name,
+     games.away_team_score AS away_team_score
  FROM
      games
          JOIN
@@ -106,11 +92,14 @@ router.get("/basketball/games/:teamId/:year", async (req, res) => {
  WHERE
     (games.home_team_id = ${req.params.teamId}
          OR games.away_team_id = ${req.params.teamId})
-         AND YEAR(games.date_played) = ${req.params.year};`
+         AND YEAR(games.date_played) = ${req.params.year};`,
+      {
+        model: db.Games,
+        mapToModel: true,
+      }
     );
     res.json(games);
   } catch (e) {
-    console.log(e);
     res.send(e);
   }
 });
@@ -122,12 +111,12 @@ router.get(
     try {
       const games = await db.sequelizeDB.query(
         `SELECT 
-      Date(games.date_played),
+      Date(games.date_played) AS date_played,
         team1.team_name AS home_team_name,
-        team2.team_id AS home_team_id
+        team2.team_id AS home_team_id,
         games.home_team_score,
         team2.team_name AS away_team_name,
-        team2.team_id AS away_team_id
+        team2.team_id AS away_team_id,
         games.away_team_score
       FROM
           games
@@ -136,10 +125,10 @@ router.get(
               JOIN
           teams AS team2 ON games.away_team_id = team2.team_id
               WHERE
-              (games.home_team_id = ${req.params.firstTeamId}
+              ((games.home_team_id = ${req.params.firstTeamId}
                   AND games.away_team_id = ${req.params.secondTeamId})
                   OR (games.away_team_id = ${req.params.firstTeamId}
-                  AND games.home_team_id = ${req.params.secondTeamId})
+                  AND games.home_team_id = ${req.params.secondTeamId}))
                   AND YEAR(games.date_played) = ${req.params.year};`,
         {
           model: db.Games,
@@ -166,7 +155,6 @@ router.get(
       // });
       res.json(games);
     } catch (e) {
-      console.log(e);
       res.send(e);
     }
   }
@@ -192,10 +180,8 @@ router.get("/basketball/players/:search_query", async (req, res) => {
 router.post("/basketball", async (req, res) => {
   // Will use await when making actual calls to the db
   try {
-    console.log("touched /basketball with POST");
     res.json({ Method: "POST", Endpoint: "/basketball" });
   } catch (e) {
-    console.error(e);
     res.error("Something went wrong on the server");
   }
 });

@@ -57,15 +57,13 @@
         </button>
       </div>
     </div>
-    
-    <div class="columns is-centered">
-      <div class="column is-full">
-      <form method="get" 
-        action="https://inst377-group-project-18.herokuapp.com/games/"
-      >
-        <p class="team1">
-          <select class="drop" name="dropdown">
-              <option value="" disabled selected>Team 1</option> 
+    <div class="container">
+      <div class="d-flex justify-content-around">
+        <div class="d-block">
+          <p class="white">Search Games between two teams by year:</p>
+          <div>
+            <select class="form-select" name="dropdown" id="team1OfTwoSelect">
+              <option value="" disabled selected>Team 1</option>
               <option value="76ers">76ers</option>
               <option value="Bucks">Bucks</option>
               <option value="Bulls">Bulls</option>
@@ -97,12 +95,10 @@
               <option value="Trail Blazers">Trail Blazers</option>
               <option value="Warriors">Warriors</option>
               <option value="Wizards">Wizards</option>
-          </select>
-        </p>
-        <h1 class="h1">Vs.</h1>
-        <p class="team2">
-          <select class="drop" name="dropdown">
-              <option value="" disabled selected>Team 2</option>  
+            </select>
+            <h1 class="h1">Vs.</h1>
+            <select class="form-select" name="dropdown" id="team2OfTwoSelect">
+              <option value="" disabled selected>Team 2</option>
               <option value="76ers">76ers</option>
               <option value="Bucks">Bucks</option>
               <option value="Bulls">Bulls</option>
@@ -134,14 +130,92 @@
               <option value="Trail Blazers">Trail Blazers</option>
               <option value="Warriors">Warriors</option>
               <option value="Wizards">Wizards</option>
+            </select>
+            <h1 class="h1">Year</h1>
+
+            <select class="form-select" name="dropdown" id="twoTeamsYearSelect">
+              <option value="" disabled selected>Year</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+            </select>
+            <div class="p-3 columns is-centered">
+              <p class="submit-wrap">
+                <button class="submit btn" id="submitTwoTeams">Next</button>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="d-block white">
+          <p>Search One Team by Year</p>
+          <select class="form-select" name="dropdown" id="teamSelect">
+            <option value="" disabled selected>Team</option>
+            <option value="76ers">76ers</option>
+            <option value="Bucks">Bucks</option>
+            <option value="Bulls">Bulls</option>
+            <option value="Cavaliers">Cavaliers</option>
+            <option value="Celtics">Celtics</option>
+            <option value="Clippers">Clippers</option>
+            <option value="Grizzlies">Grizzlies</option>
+            <option value="Hawks">Hawks</option>
+            <option value="Heat">Heat</option>
+            <option value="Hornets">Hornets</option>
+            <option value="Jazz">Jazz</option>
+            <option value="Kings">Kings</option>
+            <option value="Knicks">Knicks</option>
+            <option value="Lakers">Lakers</option>
+            <option value="Magic">Magic</option>
+            <option value="Mavericks">Mavericks</option>
+            <option value="Nets">Nets</option>
+            <option value="Nuggets">Nuggets</option>
+            <option value="Pacers">Pacers</option>
+            <option value="Pelicans">Pelicans</option>
+            <option value="Pistons">Pistons</option>
+            <option value="Raptors">Raptors</option>
+            <option value="Rockets">Rockets</option>
+            <option value="Sonics">Sonics</option>
+            <option value="Spurs">Spurs</option>
+            <option value="Suns">Suns</option>
+            <option value="Thunder">Thunder</option>
+            <option value="Timberwolves">Timberwolves</option>
+            <option value="Trail Blazers">Trail Blazers</option>
+            <option value="Warriors">Warriors</option>
+            <option value="Wizards">Wizards</option>
           </select>
-        </p>
-        <div class="columns is-centered">
-        <p class="submit-wrap"><button class="submit">Next</button></p>
-      </div>
-        </form>
+          <h1 class="h1">Year</h1>
+          <select class="form-select" name="dropdown" id="yearSelect">
+            <option value="" disabled selected>Year</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+          </select>
+          <div class="p-3 columns is-centered">
+            <p class="submit-wrap">
+              <button class="submit btn" id="submitOneTeam">Next</button>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
+
+    <table class="table white container">
+      <thead>
+        <tr>
+          <th scope="col">Date Played</th>
+          <th scope="col">Home Team</th>
+          <th scope="col">Home Team Score</th>
+          <th scope="col">Away Team</th>
+          <th scope="col">Away Team Score</th>
+        </tr>
+      </thead>
+      <tbody id="gamesRows"></tbody>
+    </table>
 
     <footer class="bg-black text-center text-lg-start mt-5">
       <div class="text-end p-5" style="background-color: rgba(0, 0, 0, 0.2)">
@@ -159,6 +233,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
   </body>
 </html>

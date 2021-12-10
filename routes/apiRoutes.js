@@ -74,7 +74,7 @@ router.get('/room_type', async (req, res) => {
   console.log('you touched the room_type route');
 });
 
-router.post('/review', async (req, res) => {
+router.post('/reviews', async (req, res) => {
   try {
     const reviews = await db.Reviews.create({
       hotel_id: req.body.hotel_id,

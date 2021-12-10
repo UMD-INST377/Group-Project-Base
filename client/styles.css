@@ -3,14 +3,6 @@
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
-/* Mobile Styles */
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: #FFFFFF ; /* Red */
-    font-size: 15px;
-  }
-}
-
 
 .container {
   background-position: center center;
@@ -342,3 +334,4 @@
     object-fit: contain;
     height: auto;
   }
+

@@ -1,5 +1,5 @@
 
-# Welcome to Movie Cravings
+# Welcome to My Movie Cravings
 
 ## Project Description
 People often struggle when searching for movies that interest them online. Our movie DB lookup allows for users to search for movies based on the genre they are interested in and add or delete movies from their personalized accounts to keep a running list of movies that meet their personal preferences. This allows our users to keep track of their favorites movies, organize a list of future movies to watch, and remove movies that they no longer want to save to their DB. The open ended nature of the websites "intended use" is the our favorite quality as it allows the user to take advantage of the IMDB database, with over 700 movies selections, in whichever way they desire.

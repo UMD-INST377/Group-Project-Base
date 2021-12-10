@@ -10,9 +10,9 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-/// /////////////////////////////////
-/// ////Congress Member Endpoints////
-/// /////////////////////////////////
+/// //////////////////////////////////
+/// ////Congress Profiles Endpoints///
+/// //////////////////////////////////
 router.get('/profiles',async(req, res) => {
   try {
     const profiles = await db.sequelizeDB.query(GETcontroller.profiles, {
@@ -26,7 +26,7 @@ router.get('/profiles',async(req, res) => {
 router.put(async(req, res) => {
   try {
     console.log('touched /profiles endpoint PUT');
-    res.send('PUT members endpoint');
+    res.send('PUT profiles endpoint');
   } catch (error) {
     console.log(error)
     res.json({message: 'Error'})

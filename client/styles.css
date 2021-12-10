@@ -3,22 +3,58 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
+#home_id{
+    background-color:#fa8975;
+    height: 100%;
     width: 100%;
     margin: 0px;
     padding: 0px;
     font-family: Verdana, Geneva, Tahoma, sans-serif
     }
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    }
+/* #About_id{
+    background-color:yellowgreen;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+} */
+
+#Aboutpage_background_id{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-image:url('https://images-ext-2.discordapp.net/external/RvwomGLg9G0ZxVnp-f3TXPrWpWRlWsyGbwkgUosRXKQ/https/upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Eyjafjallaj%25C3%25B6kull_first_crater_20100329.jpg/1200px-Eyjafjallaj%25C3%25B6kull_first_crater_20100329.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
 
 /* home page search bar. */
 .container{
     display: flex;
+    width: 1200px;
     justify-content: center; 
-    padding: 10px;
+    padding: 10px
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-family: Georgia, Geneva, Helvetica, sans-serif;
 }
 
 
 .links{
+    border: 1px solid #e28f7a;
     display: flex;
     justify-content: flex-end;
 }
@@ -59,6 +95,7 @@ body {
     display: flex;
     justify-content: center;  
     margin:auto;
+    
 }
 
 .photo-grid{
@@ -70,12 +107,14 @@ body {
     align-items: center;
 }
 
+
 .photo-grid-item{
     display: flex;
     width: 300px;
     height: 300px;
     margin:auto;
     padding: 10px;
+    background-color:#e28f7a;
 }
 
 #info_box .box{
@@ -148,10 +187,18 @@ html {
     align-items: center;
 }
 
+
+.page{
+    /*background-color:#73a7d6;*/
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+}
+
 #category_chart_container{
     width: 900px;
     margin-top: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }

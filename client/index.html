@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id = "home_id">
     <head>
         <meta charset="UTF-8"/>
-        <title>Team Project: Basic Front End Turns On</title>
+        <title>Volcanic Eruption Database</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
         <link rel="stylesheet" href="styles.css"/>
     </head>
 
 
-    <body style="background-color:#FA8975">
-        
+    <body>
         <div class="container">
             <div class="columns">
                 <div class="column">
@@ -17,25 +16,7 @@
                 </div>
 
                 <div class="links">
-                    <div class="column">
-                        <nav class="navbar is-light" role="navigation" aria-label="dropdown navigation">
-
-                            <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link">
-                                    Adv Search
-                                </a>
-                            
-                                <div class="navbar-dropdown">
-                                    <input class="navbar-item" type="text" placeholder="Minimum Size (meters)">
-                                    <input class="navbar-item" type="text" placeholder="Location (Country)">
-                                    <input class="navbar-item" type="text" placeholder="Year Range (xxxx-xxxx)">
-                                    <input class="navbar-item" type="text" placeholder="Volcano Explosivity Index">
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                   
-                    <div class="column is-two-fifths">
+                 
                         <nav class="navbar is-light" role="navigation" aria-label="dropdown navigation">
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">
@@ -45,18 +26,24 @@
                                 <div class="navbar-dropdown">
                                     <a class="navbar-item" href="index.html">Home</a>
                                     <a class="navbar-item" href="about.html">About</a>            
-                                    <a class="navbar-item" href="Add_a_volcano.html">Add a Volcano</a>
+                                    <a href="edit_volcanos.html" class="navbar-item">Edit Volcanoes</a>
+                                    <a href="edit_eruptions.html" class="navbar-item">Edit Eruptions</a>
                                     <a class="navbar-item" href="charts.html">Informational Charts</a>   
                                 </div>
                             </div>
                         </nav>
-                    </div>
+                    
                 </div>
             </div>
         </div>
+
+        <div class="title">
+            <h1>Volcanic Eruption Database</h1>
+
+        </div>
        
 
-        <div class='page'>
+        <!-- <div class='page'>
             <div class="pagination" role="navigation" aria-label="pagination">
                 <ul class="pagination-list">
                   <li>
@@ -71,7 +58,7 @@
                 </ul>
             </div>
 
-        </div>
+        </div> -->
             <div class='suggestions'>
                     <div class='photo-grid-container'>
                         <div class='photo-grid'>

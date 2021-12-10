@@ -1,4 +1,3 @@
-
 const infoGet = `SELECT eruption_number, year, month, day, volcano_name, aoa, vei, method, category
 FROM eruption_info 
 JOIN volcanos USING (volcano_id)
@@ -16,11 +15,11 @@ volcano_id = :volcano_id,
 aoa_id = :aoa_id, 
 vei_id = :vei_id, 
 evidence_id = :evidence_id, 
-cagetory_id = :cagetory_id
+category_id = :category_id
 WHERE eruption_id = :eruption_id;`
 
-const infoPost = `INSERT INTO eruption_info(eruption_id, eruption_number, year, month, day, volcano_id, aoa_id, vei_id, evidence_id, cagetory_id)
-VALUES(DEFAULT, :eruption_number, :year, :month, :day);`
+const infoPost = `INSERT INTO eruption_info(eruption_id, eruption_number, year, month, day, volcano_id, aoa_id, vei_id, evidence_id, category_id)
+VALUES(DEFAULT, :eruption_number, :year, :month, :day, :volcano_id, :aoa_id, :vei_id, :evidence_id, :category_id);`
 
 const infoDelete = `DELETE FROM eruption_info
 WHERE eruption_id = :eruption_id;`

@@ -1,7 +1,7 @@
-# Schedule of Planet Terps
+# Find my Movie Cravings
 
 ## Description
-When registering for classes, UMD students end up needing to access many different online resources to obtain information on available classes, professor ratings and class difficulty. To address this issue of scattered information, we developed a website that combines course  information, course GPA and professor reviews into a single easy to use resource. Our website draws data from UMD.io and PlanetTerp APIs to create a  tool that makes class scheduling more efficient.
+People often struggle when searching for movies that interest them online. Our movie DB lookup allows for users to search for movies based on the genre they are interested in and add or delete movies from their personalized accounts to keep a running list of movies that meet their personal preferences. This allows our users to keep track of their favorites movies, organize a list of future movies to watch, and remove movies that they no longer want to save to their DB. The open ended nature of the websites "intended use" is the our favorite quality as it allows the user to take advantage of the IMDB database, with over 700 movies selections, in whichever way they desire.
 
 ## Link to Website
 [https://scheduleofpt.herokuapp.com/](https://scheduleofpt.herokuapp.com/)
@@ -12,7 +12,6 @@ When registering for classes, UMD students end up needing to access many differe
 * Macbook Pro 13/15
 
 ## Links
-* [User Manual](https://scheduleofpt.herokuapp.com/documentation.html) 
 * [Developer Manual](https://github.com/jhersh4/finalproject377#developer-manual)
 
 # Developer Manual

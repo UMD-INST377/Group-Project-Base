@@ -9,6 +9,8 @@ export default (database, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     }
-  });
+  },
+  { freezeTableName: true, timestamps: false }
+  );
   return Site;
 };

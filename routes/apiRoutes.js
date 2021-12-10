@@ -23,7 +23,6 @@ router.get('/profiles',async(req, res) => {
     res.json({message: 'Error'})
   }
 });
-//test
 router.put(async(req, res) => {
   try {
     console.log('touched /profiles endpoint PUT');

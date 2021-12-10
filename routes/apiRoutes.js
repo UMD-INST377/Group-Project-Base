@@ -226,11 +226,12 @@ router.route('/driverDemographics')
 router.route('/vehicle_data')
   .get(async(req, res) => {
     try {
+      const vehicle_data = await db.driver_demographics.finalAll();
       console.log('You touched the /vehicle_data endpoint!');
       res.json({data: data});
     } catch (err) {
       console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      res.json({error: 'Something went wrong on /vehicle_data.'});
     }
   })
 

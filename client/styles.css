@@ -5,13 +5,6 @@
 
 /* Mobile Styles */
 @media only screen and (max-width: 600px) {
-  body {
-    background-color: #FFFFFF ;
-    font-size: 15px;
-  }
-}
-
-
 .container {
   background-position: center center;
   background-size: cover;
@@ -274,10 +267,7 @@
     margin-left: 20px;
     margin-top: 30px;
   }
-
-  .Home:onclick {
-    background-color: yellow;
-  }
+  
   .Music_Logo {
     width: 100px;
     height: 100px;
@@ -313,8 +303,8 @@
   }
   
   .photo-grid_data {
-    width: auto;
-    height: auto;
+    width: 400px;
+    height: 400px;
     display: flex;
     justify-content: center;
   } 

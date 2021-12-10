@@ -23,3 +23,14 @@
   margin-left: auto;
   margin-right: auto;
 }
+.table{
+  background-color:transparent;
+  font-size:10pt;
+}
+
+.table thead td, .table thead th{
+  color:white;
+}
+/* #arenaResultContainer {
+  color: white;
+} */

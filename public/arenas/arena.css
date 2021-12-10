@@ -1,17 +1,28 @@
 
+.arena-image{
+  margin-top: 10px;
+  display: none;
+}
+
+@media only screen and (min-width: 360px) {
+  
+    .arena-image img {
+        width: 90%;  
+        display: block;      
+        margin-left: auto;
+        margin-right: auto;
+    }
+  
+  } 
+
 @media only screen and (min-width: 760px) {
 
-    
-.arena-image{
-    margin-top: 10px;
-    display: none;
-  }
-
   .arena-image img {
-      width: 1000px;
+      width: 90%;
       display: block;
       margin-left: auto;
       margin-right: auto;
   }
 
 }
+

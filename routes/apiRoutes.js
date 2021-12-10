@@ -10,57 +10,46 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-/// /////////////////////////////////
-/// ////Congress Member Endpoints////
-/// /////////////////////////////////
-router.route('/profiles').get(async(req, res) => {
+/// //////////////////////////////////
+/// ////Congress Profiles Endpoints///
+/// //////////////////////////////////
+router.get('/profiles',async(req, res) => {
   try {
-    const memberProfiles = await db.sequelizeDB.query(GETController.memberProfiles, {
+    const profiles = await db.sequelizeDB.query(GETcontroller.profiles, {
       type: sequelize.QueryTypes.SELECT
     });
-    console.log('touch /profiles with GET')
-    res.json({profiles: 'touched /profiles with GET'})
-  } catch (error) {
-    console.log(error)
-    res.json({error: 'Error Occured'})
-  }
-})
-router.route('/profiles').put(async(req, res) => {
-  try {
-    console.log('touch /profiles with PUT')
-
-    res.send('PUT memberProfiles endpoint')
-  } catch (error) {
-    console.log(error)
-    res.json({error: 'Error Occured'})
-  }
-})
-router.route('/profiles').post(async(req, res) => {
-  try {
-    const createNew = await db.sequelizeDB.query(POSTcontroller.addMemberProfiles, {
-      type: sequelize.QueryTypes.INSERT,
-      console.log('touched /profiles endpoint POST')
-      res.send('POST memberProfiles endpoint')
     } catch (error) {
     console.log(error)
-    res.json({error: 'Error Occured'})
+    res.json({message: 'Error'})
   }
-})
-router.route('/profiles').delete(async(req, res) => {
+});
+router.put(async(req, res) => {
   try {
-    await db.sequelizeDB.destroy({
-      where: {
-        Group26_congress_db: req.params.Group26_congress_db
-      }
-    })
-    console.log('touch /profiles with DELETE')
-    res.send('DELETE memberProfiles endpoint');
+    console.log('touched /profiles endpoint PUT');
+    res.send('PUT profiles endpoint');
   } catch (error) {
     console.log(error)
-    res.json({error: 'Error Occured'})
+    res.json({message: 'Error'})
+  }
+});
+router.post(async(req, res) => {
+  try {
+    const insertQuery = await db.sequelizeDB.query(POSTcontroller.addProfiles, {
+      type: sequelize.QueryTypes.INSERT,
+  })} catch (error) {
+    console.log(error)
+    res.json({message: 'Error'})
+  }
+});
+router.delete(async(req, res) => {
+  try {
+    console.log('touched /profiles endpoint DELETE')
+    res.send('DELETE profiles endpoint');
+  } catch (error) {
+    console.log(error)
+    res.json({message: 'Error'})
   }
 })
-
 /// /////////////////////////////////
 /// ////Congress Endpoints////////
 /// /////////////////////////////////
@@ -68,9 +57,10 @@ router.get('/contact',async(req, res) => {
   try {
     const contact = await db.sequelizeDB.query(GETcontroller.contact, {
       type: sequelize.QueryTypes.SELECT
-    )};
+      
+    });
 
-    console.log('Touched contact with GET')
+  
 
   } catch (error) {
     console.log(error);
@@ -90,9 +80,8 @@ router.post(async(req, res) => {
   try {
     const insertQuery = await db.sequelizeDB.query(POSTcontroller.addContact, {
       type: sequelize.QueryTypes.INSERT,
-      console.log('touched /contact endpoint POST')
-      res.send('POST contact endpoint');
-  } catch (error) {
+      
+  })} catch (error) {
     console.log(error);
     res.json({message: 'Something went wrong'});
   }
@@ -112,9 +101,9 @@ router.get('/members',async(req, res) => {
   try {
     const members = await db.sequelizeDB.query(GETcontroller.members, {
       type: sequelize.QueryTypes.SELECT
-    )};
+    });
 
-    console.long('Touched general members with GET');
+    
     
     } catch (error) {
     console.log(error)
@@ -123,7 +112,7 @@ router.get('/members',async(req, res) => {
 });
 router.put(async(req, res) => {
   try {
-    console.log('touched /members endpoint PUT')
+    console.log('touched /members endpoint PUT');
     res.send('PUT members endpoint');
   } catch (error) {
     console.log(error)
@@ -134,9 +123,7 @@ router.post(async(req, res) => {
   try {
     const insertQuery = await db.sequelizeDB.query(POSTcontroller.addMember, {
       type: sequelize.QueryTypes.INSERT,
-      console.log('touched /members endpoint POST')
-      res.send('POST members endpoint');
-  } catch (error) {
+  })} catch (error) {
     console.log(error)
     res.json({message: 'Error'})
   }
@@ -150,3 +137,89 @@ router.delete(async(req, res) => {
     res.json({message: 'Error'})
   }
 })
+///Chris Iemma Routes///
+router.route('/personal_info').get(async(req, res) => {
+  try {
+    const memberProfiles = await db.sequelizeDB.query(GETcontroller.personal_info, {
+      type: sequelize.QueryTypes.SELECT
+    })
+    console.log('touch /Personal Information with GET')
+    res.json({phone: 'touched /Personal Information with GET'})
+  } catch (error) {
+    console.log(error)
+    res.json({error: 'Error Occured'})
+  }
+})
+
+router.route('/personal_info').put(async(req, res) => {
+  try {
+    console.log('touch /Personal Information with PUT')
+    res.json({phone: 'touched /Personal Information with PUT'})
+  } catch (error) {
+    console.log(error)
+    res.json({error: 'Error Occured'})
+  }
+})
+
+router.route('/personal_info').post(async(req, res) => {
+  try {
+    console.log('touch /Personal Information with POST')
+    res.json({phone: 'touched /Personal Information with POST'})
+  } catch (error) {
+    console.log(error)
+    res.json({error: 'Error Occured'})
+  }
+})
+
+router.route('/personal_info').delete(async(req, res) => {
+  try {
+    console.log('touch /Personal Information with DELETE')
+    res.json({phone: 'touched /Personal Information with DELETE'})
+  } catch (error) {
+    console.log(error)
+    res.json({error: 'Error Occured'})
+  }
+})
+///Chris Iemma Congress Personal Information///
+router.get('/personal_info',async(req, res) => {
+  try {
+    const members = await db.sequelizeDB.query(GETcontroller.personal_info, {
+      type: sequelize.QueryTypes.SELECT
+    });
+
+    console.log('touched /Personal Information GET');
+    
+    } catch (error) {
+    console.log(error)
+    res.json({message: 'Error'})
+  }
+});
+router.put(async(req, res) => {
+  try {
+    console.log('touched /Personal Information PUT')
+    res.send('PUT Personal Information');
+  } catch (error) {
+    console.log(error)
+    res.json({message: 'Error'})
+  }
+});
+router.post(async(req, res) => {
+  try {
+    const insertQuery = await db.sequelizeDB.query(POSTcontroller.addPersonal_Info, {
+      type: sequelize.QueryTypes.INSERT,
+  })} catch (error) {
+    console.log(error)
+    res.json({message: 'Error'})
+  }
+});
+router.delete(async(req, res) => {
+  try {
+    console.log('touched /Personal Information DELETE')
+    res.send('DELETE Personal Information');
+  } catch (error) {
+    console.log(error)
+    res.json({message: 'Error'})
+  }
+})
+
+export default router;

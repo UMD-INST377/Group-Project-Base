@@ -11,7 +11,7 @@ const player = {
                 SET ppg = :ppg,
                 assists = :assists,
                 team_id = :team
-              WHERE player_id = :player_id;`,
+              WHERE player_name = :player_name;`,
 
   deletePlayer: `DELETE FROM players
                   WHERE player_name = :player_name;`

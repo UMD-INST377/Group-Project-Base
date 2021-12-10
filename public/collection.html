@@ -42,14 +42,17 @@
     
     <div class="collection">
       <div class="columns">
-        <div class="column is-one-third box"><input type="image" src="./vinyls/tpab.png"/><div class="subtitle is-5">To Pimp a Butterfly</div></div>
-        <div class="column box vinbox"><input type="image" src="./vinyls/dark_side_of_the_moon.png"/><div class="subtitle is-5">Dark Side of the Moon</div></div>
-        <div class="column box vinbox"><input type="image" src="./vinyls/purple_rain.jpg"/><div class="subtitle is-5">Purple Rain</div></div>
+        <div class="column is-one-third box">
+          <input type="image" src="./vinyls/tpab.png"/><div class="subtitle is-5">To Pimp a Butterfly</div><div class="subtitle is-7">Kendrick Lamar</div>
+        </div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/dark_side_of_the_moon.png"/><div class="subtitle is-5">Dark Side of the Moon</div>
+        <div class="subtitle is-7">Pink Floyd</div></div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/purple_rain.jpg"/><div class="subtitle is-5">Purple Rain</div><div class="subtitle is-7">Prince</div></div>
       </div>
       <div class="columns">
-        <div class="column is-one-third box"><input type="image" src="./vinyls/ram.jpg"/><div class="subtitle is-5">Random Access Memories</div></div>
-        <div class="column box vinbox"><input type="image" src="./vinyls/thriller.png"/><div class="subtitle is-5">Thriller</div></div>
-        <div class="column box vinbox"><input type="image" src="./vinyls/gkmc.jpeg"/><div class="subtitle is-5">Good Kid MAAD City</div></div>
+        <div class="column is-one-third box"><input type="image" src="./vinyls/ram.jpg"/><div class="subtitle is-5">Random Access Memories</div><div class="subtitle is-7">Daft Punk</div></div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/thriller.png"/><div class="subtitle is-5">Thriller</div><div class="subtitle is-7">Michael Jackson</div></div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/gkmc.jpeg"/><div class="subtitle is-5">Good Kid MAAD City</div><div class="subtitle is-7">Kendrick Lamar</div></div>
       </div>
       
     </div>
@@ -63,7 +66,7 @@
                   <figure class="image is-512x512">
                     <img id="albumart" src="https://bulma.io/images/placeholders/128x128.png">
                   </figure>
-                  <button class="button is-danger" onclick="changeImage();">Search</button>
+                  <button class="button is-danger" onclick="setTimeout(() => {  changeImage(); }, 1000);">Search</button>
                 </div>
                 <div class="column">
                   <div class="field">
@@ -86,7 +89,7 @@
                   </div>
                   <div class="field">
                     <div class="control">
-                      <button class="button is-danger" onClick="parent.location='index.html'">Confirm</button>
+                      <button class="button is-danger" onClick="parent.location='collection.html'">Confirm</button>
                       <button class="button" id="Cancel">Cancel</button>
                     </div>
                   </div>
@@ -120,6 +123,8 @@
 
     function changeImage(){
     var img = document.getElementById("albumart");
+    
+
     img.src="./vinyls/dam.jpg";
     return false;
     }

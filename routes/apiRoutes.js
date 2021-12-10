@@ -180,7 +180,7 @@ router.route('/vaccine-site-info')
       },
       {
         where: {
-          site_id: req.body.site_id
+          site_ID: req.body.site_ID
         }
       });
       console.log('Successfully updated with PUT');
@@ -190,8 +190,23 @@ router.route('/vaccine-site-info')
     }
   })
   .post(async(req, res) => {
+    const vaccSitesTable = await db.vaccSitesInfo.findAll();
+    const currentID = (await vaccSitesTable.length) + 1;
     try {
-      res.json({ message: 'Touched /vacc-sites with POST' });
+      const addVaccSitesStats = await db.vaccSitesInfo.create({
+        site_ID: currentID,
+        site_name: req.body.site_name,
+        street_address: req.body.street_address,
+        street_address2: req.body.street_address2,
+        city: req.body.city,
+        zip_code: req.body.zip_code,
+        active: req.body.active,
+        site_type: req.body.site_type,
+        operating_hours: req.body.operating_hours,
+        contact_phone: req.body.contact_phone,
+        website: req.body.website,
+      });
+      res.send('Successfully added with POST');
       console.log('Touched /vacc-sites with POST');
     } catch (err) {
       console.log(error);
@@ -202,7 +217,7 @@ router.route('/vaccine-site-info')
     try {
       await db.vaccSitesInfo.destroy({
         where: {
-          site_id: req.params.site_id
+          site_ID: req.params.site_ID
         }
       });
       console.log('Successfully deleted with DELETE');

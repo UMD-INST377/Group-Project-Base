@@ -6,19 +6,7 @@
 # Welcome to Movie Cravings
 
 ## Project Description
-As the movie industry continues to grow with over 700 movies released every year, the 
-information barrier that exists between users and deciding what movie to watch also continues to 
-grow. By creating this movie collection app equipped with a simple, functional and interactive 
-interface as well as an easy to query database system, we hope to reduce the level of 
-informational overload that users may experience.  
-  The enjoyment of film and tv is something that seems almost impossible to live without 
-these days, and almost every generation has something they’d love to watch. Experiencing 
-information overload applies to anyone who uses cable or a streaming service to watch movies. 
-There is an abundance of movies there at your fingertips, and with so many options, it often 
-becomes overwhelming. This leads to information queuing, where an individual puts information 
-aside for later use and rarely goes back to it, or escaping, where the individual decides to 
-abandon the information on a whole. We want to get rid of this problem for every person that 
-experiences that all too familiar “Netflix Wormhole”. 
+People often struggle when searching for movies that interest them online. Our movie DB lookup allows for users to search for movies based on the genre they are interested in and add or delete movies from their personalized accounts to keep a running list of movies that meet their personal preferences. This allows our users to keep track of their favorites movies, organize a list of future movies to watch, and remove movies that they no longer want to save to their DB. The open ended nature of the websites "intended use" is the our favorite quality as it allows the user to take advantage of the IMDB database, with over 700 movies selections, in whichever way they desire.
 
 ## Link to Website
 [https://enigmatic-brook-60520.herokuapp.com/](https://enigmatic-brook-60520.herokuapp.com/)

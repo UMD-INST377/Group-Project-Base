@@ -21,12 +21,19 @@
                         <a href="about.html">About Page</a>
                       </nav>
                   </div>
-                  <div>
-                    <canvas id="chart" width="400" height="400"></canvas>
-                  </div>
-                  <div>
-                    <canvas id="donut" width="400" height="400"></canvas>
-                  </div>
+              
+                    <div class="columns">
+                      <div class= "column is-half">
+                        <div class="box title has-background-danger-light has-text-centered">Number of Collisions by Type
+                          <canvas id="chart" width="400" height="400"></canvas>
+                        </div>
+                      </div>
+                      <div class= "column is-half">
+                        <div class="box title has-background-success-light has-text-centered">Driver Culpability
+                          <canvas id="donut" width="400" height="400"></canvas>
+                        </div>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -36,25 +36,21 @@ function barChart(labels, data) {
   const chartData = {
     labels: labels,
     datasets: [{
-      label: 'Number of Collisions by Type',
+      label: 'none',
       data: data,
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(201, 203, 207, 0.2)'
+        'rgba(120, 28, 129, 0.4)',
+        'rgba(68, 124, 191, 0.4)',
+        'rgba(131, 186, 109, 0.4)',
+        'rgba(219, 171, 59, 0.4)',
+        'rgba(217, 33, 32, 0.4)'
       ],
       borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
+        'rgba(120, 28, 129)',
+        'rgba(68, 124, 191)',
+        'rgba(131, 186, 109)',
+        'rgba(219, 171, 59)',
+        'rgba(217, 33, 32)'
       ],
       borderWidth: 1
     }]
@@ -69,6 +65,11 @@ function barChart(labels, data) {
       scales: {
         y: {
           beginAtZero: true
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
         }
       }
     }

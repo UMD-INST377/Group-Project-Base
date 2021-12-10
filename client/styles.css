@@ -38,3 +38,7 @@ body {
   margin: 1px;
   color: white;
 }
+
+.box title {
+  padding: 20px;
+}

@@ -1,3 +1,5 @@
+/* eslint-disable func-names */
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable prefer-const */
 /* eslint-disable no-plusplus */

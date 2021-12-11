@@ -11,19 +11,21 @@ async function windowActions() {
     return formObject;
   }
 
-  document.getElementsByClassName("deleteUserForm")[0].addEventListener("submit", function(event){
-    event.preventDefault();
-    let request  = new XMLHttpRequest();
-    request.open("DELETE", "../api/nba-players", true); //async call
-    request.setRequestHeader("content-type","application/json");
-      request.send(JSON.stringify({"player_name" : document.getElementById("player_name").value}));
-    request.onload = function(event){
-      let resp = request.responseText;
-      alert(resp);
-    }
-  });
+  async function formSubmit() {
+    const form = document.querySelector('#form');
+    const obj = formToObject(form);
+    console.log(obj);
+    fetch('api/nba-players', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    });
+  }
 
   const button = document.querySelector('#submit');
 
+  button.onclick = formSubmit;
 }
 window.onload = windowActions;

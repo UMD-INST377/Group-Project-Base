@@ -1,4 +1,4 @@
-# About
+# About Us
 
 Our Music Database is a dynamic collection of trending and popular songs curated by the students at the University of Maryland. Our design allows users to add their own songs, and delete or edit existing songs, offering a ‘by the listeners, for the listeners’ experience allowing collaboration beyond the restrictions of a paid membership to popular streaming services like Apple Music, Spotify, and Pandora.
 

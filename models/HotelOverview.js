@@ -36,20 +36,24 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      beachside: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      family_friendly: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      pet_friendly: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       hotel_rating: {
         type: DataTypes.REAL,
         allowNull: false,
       },
       hotel_type_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      longitude: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-      },
-      latitude: {
-        type: DataTypes.FLOAT,
         allowNull: false,
       },
     },

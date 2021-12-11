@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Group 4 Project - INST377</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="reviewscript.js" charset="utf-8"></script>
+  </head>
+
+  
+  <body>
+    <div id="root"></div>
+    <div class="wrapper">
+      <div class="container">
+        <h1 class="title"><a href="../index.html">Maui Hotel Finder</a></h1>
+
+        <nav class="navbar">
+          <a href="../search/index.html">Hotel Search</a>
+          <a href="../review/index.html">Leave a Review</a>
+          <a href="../aboutus/index.html">About Us</a>
+        </nav>
+
+
+       <div class="box">
+        <p>This is where you leave a review!</p>
+       </br>
+
+<form id = "form">
+  <input list="hotel_name" name="hotel_name">
+  <datalist id="hotel_name">
+    <option value="The Westin Maui Resort and Spa">
+    <option value="Aston Kaanpali Shores">
+    <option value="Montage Kaplua Bay">
+    <option value="The Ritz-Carlton, Kaplua">
+    <option value="Aston Maui Kaanpali Villas">
+    <option value="Luana Kai">
+    <option value="Wailea Beach Resort">
+    <option value="Makena Oceanfront Cottage">
+    <option value="Residence Inn by Marriot Maui Wailea">
+    <option value="Pala Inn">
+    <option value="Kaanpali Alii Resort">
+    <option value="Courtyard by Marriot Maui Wailea"> 
+    <option value="Maui Beach Hotel"> 
+    <option value="Aston Maui Banyan">
+    <option value="Royal Lahana Resort">
+
+  </datalist>
+  <br/>
+  <input class="input" type="text" id="review" name="review_text" autocomplete="off"><br>
+  <br/>
+  <input class="button is-primary" type="submit" value="Submit Review" onclick="window.location.href='submitResponse.html'">
+</form>
+</div>
+
+<div class = "box">
+  <h1 style="font-size:30px">Browse Reviews</h1>
+<ul id="reviewList"></ul>
+</div>
+</div>
+</div>
+  </body>
+</html>

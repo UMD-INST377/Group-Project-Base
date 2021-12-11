@@ -38,9 +38,15 @@ router.get('/hotel_amenities_join', async (req, res) => {
   console.log('you touched the hotel_amenities_join route');
 });
 
+//Hotel Overview Endpoints//
 router.get('/hotel_overview', async (req, res) => {
-  res.send('this is the hotel_overview page');
-  console.log('you touched the hotel_overview route');
+  try {
+    const hotels = await db.HotelOverview.findAll();
+    res.json(hotels);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
 });
 
 router.get('/hotel_type', async (req, res) => {
@@ -68,12 +74,36 @@ router.get('/room_type', async (req, res) => {
   console.log('you touched the room_type route');
 });
 
-router.get('/review', async (req, res) => {
-  res.send('this is the reviews page');
-  console.log('you touched the room_type route');
+router.post('/reviews', async (req, res) => {
+  try {
+    const reviews = await db.Reviews.create({
+      hotel_name: req.body.hotel_name,
+      review_text: req.body.review_text
+      //made review_id auto increment 
+    });
+    res.json(reviews);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/reviews', async (req, res) => {
+  try {
+    const reviews = await db.Reviews.findAll();
+    res.json(reviews);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
 });
 
 router.get('/cuisine_type', async (req, res) => {
+  res.send('this is the cuisine_type page');
+  console.log('you touched the restaurants route');
+});
+
+router.get('/amenities', async (req, res) => {
   res.send('this is the cuisine_type page');
   console.log('you touched the restaurants route');
 });

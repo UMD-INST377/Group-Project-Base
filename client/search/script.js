@@ -9,24 +9,22 @@ const hotelsList = document.getElementById('hotelsList');
 const searchBar = document.getElementById('searchBar');
 let hotelsOverview = [];
 
-searchBar.addEventListener("keyup", (e) => {
+searchBar.addEventListener('keyup', (e) => {
   const searchString = e.target.value.toLowerCase();
-  const filteredHotels = hotelsOverview.filter((hotel) => {
-    return (
-      hotel.hotel_name.toLowerCase().includes(searchString) ||
-      hotel.street_address.toLowerCase().includes(searchString) ||
-      hotel.city.toLowerCase().includes(searchString)
-    );
-  });
+  const filteredHotels = hotelsOverview.filter((hotel) => (
+    hotel.hotel_name.toLowerCase().includes(searchString)
+      || hotel.street_address.toLowerCase().includes(searchString)
+      || hotel.city.toLowerCase().includes(searchString)
+  ));
   displayHotels(filteredHotels);
 });
 
 const displayHotels = (hotels) => {
   const htmlString = hotels
-    .map((hotel) =>  `
+    .map((hotel) => `
             <li class="results${hotel.beachside === 1 ? ' beachside' : ''}${
-      hotel.family_friendly === 1 ? ' family_friendly' : ''
-      }${hotel.pet_friendly === 1 ? ' pet_friendly' : ''}">
+  hotel.family_friendly === 1 ? ' family_friendly' : ''
+}${hotel.pet_friendly === 1 ? ' pet_friendly' : ''}">
       <form action="hotelInformation.html" method="get">
           <input type="hidden" name="hotel_id" value="${hotel.hotel_id}">
           <button type="submit" class="result" onclick="location.href='hotelInformation.html'">

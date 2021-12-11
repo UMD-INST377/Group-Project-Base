@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+      <meta charset="UTF-8">
+      <title>My List</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+      <link rel="stylesheet" type = "text/css" href="styles.css" >
+      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div id="navbar-menu" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="./index.html">Home</a>
+            <a class="navbar-item" href="./about.html"> About</a>
+            <a class="navbar-item" href="./search.html"> Search Similar Movies</a>
+            <a class="navbar-item" href="./editMovieDB.html"> Edit Movie Preference</a>
+            </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary">
+                   Sign Up
+                </a>
+                <a class="button is-light">
+                  Log in
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </nav>
+    </head>
+    <body> 
+    
+      <section class="hero is-halfheight">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title" >
+              Edit Movie Preference
+            </p>
+            <h2 class="subtitle">
+              Add or Delete Movies
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="wrapper">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-narrow is-offset-one-fifth">
+              <div class="box">
+                <form id="form-id" class='speaker-form'>
+                  <div class="field">
+                    <label for='name' class="label">Movie Name</label>
+                    <input id='name' name='name' type='text' />
+                  </div>
+                  <div class="field">
+                    <label for='id' class="label">ID</label>
+                    <input id='id' name='id' type='text' />
+                  </div>
+                  <div class="field">
+                    <label class="label">Options</label>
+                    <label class="radio">POST</label>
+    
+                    <input name="answer" value = "POST" type="radio">
+    
+                    <label class="radio"> PUT </label>
+    
+                    <input name="answer" value ="PUT" type="radio">
+
+                    <label class="radio"> DELETE </label>
+    
+                    <input name="answer" value="DELETE" type="radio">
+    
+                  </div>
+                  <button class="button is-primary" id="submit-button">Submit</button>
+                </form>
+              </div>
+            </div>
+    
+            <div class="column is-two-fifths is-vcentered">
+              <div class="box" id= "movieList">
+                Your Movie List
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="editMovieDB.js"></script> 
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+            <div id="navbar-menu" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item" href="./index.html">Home</a>
+                <a class="navbar-item" href="./about.html"> About</a>
+                <a class="navbar-item" href="./search.html"> Search Similar Movies</a>
+                <a class="navbar-item" href="./editMovieDB.html"> Edit Movie Preference</a>
+                </div>
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary">
+                       Sign Up
+                    </a>
+                    <a class="button is-light">
+                      Log in
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </nav>
+        </head>
+    <body>
+      <section class="hero is-halfheight">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title" >
+              Search Similar Movies
+            </p>
+            <h2 class="subtitle">
+              Discover New Movies
+            </p>
+          </div>
+        </div>
+      </section>
+        <div class="columns is-centered is-8">
+            <form id="movieSearch">
+              <div class="formWrapper">
+                <div class="field">
+                  <input id='movieId' name='movieId' class="input is-danger" type='text' placeholder="Type in a Genre" />
+                </div>
+                <button id="submit" class="button is-light" type='button'>Submit</button>
+                <button id="clear" class="button is-light">Clear Results</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="column" id='results'></div>
+          <script src="searchResults.js" async defer></script>
+    </body>
+</html>

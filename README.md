@@ -210,8 +210,9 @@ Mobile:
     
 ## Known Bugs and Future Plans
 
-- The Contact Us form is still under construction. Its responses are not being monitored as the submit button only intiates a page reload. 
-- As of 12 December 2021, there are no known bugs. <br> If you encournter a bug in our applications, please let us know by opening an Issue on GitHub and leaving a clear description of what the bug is, how to reproduce the behavior, and any applicable screenshots that could help explain your problem. Thank you!
+The Contact Us form is still under construction. Its responses are not being monitored as the submit button only intiates a page reload. 
+
+As of 12 December 2021, there are no known bugs. <br> - If you encounter a bug in our applications, please let us know by opening an Issue on GitHub and leaving a clear description of what the bug is, how to reproduce the behavior, and any applicable screenshots that could help explain your problem. Thank you!
     
 ## Acknowledgements
 

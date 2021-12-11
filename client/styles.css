@@ -3,6 +3,7 @@
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
+
 .container {
   background-position: center center;
   background-size: cover;
@@ -301,8 +302,8 @@
   }
   
   .photo-grid_data {
-    width: 400px;
-    height: 400px;
+    width: auto;
+    height: auto;
     display: flex;
     justify-content: center;
   } 
@@ -331,4 +332,6 @@
   .about_image {
     width: 80vw;
     object-fit: contain;
+    height: auto;
   }
+

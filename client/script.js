@@ -30,7 +30,7 @@ const displayTableData = async () => {
 };
 
 const deleteTableData = async(id) => {
-  const data = await fetch('http://localhost:3000/api/foodInspectionPG', {
+  const data = await fetch('https://polar-mesa-33091.herokuapp.com/api/foodInspectionPG', {
     method: 'DELETE',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({ establishment_id: id })

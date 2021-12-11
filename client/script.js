@@ -14,15 +14,15 @@ document.
         moveToPrevSlide();
     })
 
-function updateSlidePosition() {
+function updateSlidePosition() {    //Updates the positioning of each slides by removing the previous slide and adding this new one
     for (let slide of slides) {
         slide.classList.remove('carousel_item--visible');
         slide.classList.add('carousel_item--hidden');
     }
     slides[slidePosition].classList.add('carousel_item--visible');
-}
+}   //Will be used in functions to both move to the next and previous slides
 
-function moveToNextSlide() {
+function moveToNextSlide() {    //Allows users to move to the next slide
 
     if (slidePosition === totalSlides - 1) {
         slidePosition = 0;
@@ -33,7 +33,7 @@ function moveToNextSlide() {
     updateSlidePosition();
 }
 
-function moveToPrevSlide() {
+function moveToPrevSlide() {    //Allows users to move to the past slide
 
     if (slidePosition === 0) {
         slidePosition = totalSlides - 1;

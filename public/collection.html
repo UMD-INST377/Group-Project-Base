@@ -43,65 +43,101 @@
     <div class="collection">
       <div class="columns">
         <div class="column is-one-third box">
-          <input type="image" src="./vinyls/tpab.png"/><div class="subtitle is-5">To Pimp a Butterfly</div><div class="subtitle is-7">Kendrick Lamar</div>
+          <input type="image" src="./vinyls/tpab.png"/><div class="text is-size-4">To Pimp a Butterfly</div><div class="text is-size-6">Kendrick Lamar</div>
         </div>
-        <div class="column box vinbox"><input type="image" src="./vinyls/dark_side_of_the_moon.png"/><div class="subtitle is-5">Dark Side of the Moon</div>
-        <div class="subtitle is-7">Pink Floyd</div></div>
-        <div class="column box vinbox"><input type="image" src="./vinyls/purple_rain.jpg"/><div class="subtitle is-5">Purple Rain</div><div class="subtitle is-7">Prince</div></div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/dark_side_of_the_moon.png"/><div class="text is-size-4">Dark Side of the Moon</div>
+        <div class="text is-size-6">Pink Floyd</div></div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/purple_rain.jpg"/><div class="text is-size-4">Purple Rain</div><div class="text is-size-6">Prince</div></div>
       </div>
       <div class="columns">
-        <div class="column is-one-third box"><input type="image" src="./vinyls/ram.jpg"/><div class="subtitle is-5">Random Access Memories</div><div class="subtitle is-7">Daft Punk</div></div>
-        <div class="column box vinbox"><input type="image" src="./vinyls/thriller.png"/><div class="subtitle is-5">Thriller</div><div class="subtitle is-7">Michael Jackson</div></div>
-        <div class="column box vinbox"><input type="image" src="./vinyls/gkmc.jpeg"/><div class="subtitle is-5">Good Kid MAAD City</div><div class="subtitle is-7">Kendrick Lamar</div></div>
+        <div class="column is-one-third box modal-button" data-target="#recordInfoModal"><input type="image" src="./vinyls/ram.jpg"/><div class="text is-size-4">Random Access Memories</div><div class="text is-size-6">Daft Punk</div></div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/thriller.png"/><div class="text is-size-4">Thriller</div><div class="text is-size-6">Michael Jackson</div></div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/gkmc.jpeg"/><div class="text is-size-4">Good Kid MAAD City</div><div class="text is-size-6">Kendrick Lamar</div></div>
       </div>
       
     </div>
-      <!-- add record modal-->
-      <div class="modal" id="addrecordModal">
-        <div class="modal-background">
-          <div class="modal-content">
-            <div class="section modal-wrap">
-              <div class="columns">
-                <div class="column">
-                  <figure class="image is-512x512">
-                    <img id="albumart" src="https://bulma.io/images/placeholders/128x128.png">
-                  </figure>
-                  <button class="button is-danger" onclick="setTimeout(() => {  changeImage(); }, 1000);">Search</button>
-                </div>
-                <div class="column">
-                  <div class="field">
-                    <label class="label">Title</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="Random Access Memories"/>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <label class="label">Artist</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="Daft Punk"/>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <label class="label">Year</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="2013"/>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <div class="control">
-                      <button class="button is-danger" onClick="parent.location='collection.html'">Confirm</button>
-                      <button class="button" id="Cancel">Cancel</button>
-                    </div>
-                  </div>
+  <!-- add record modal-->
+  <div class="modal" id="addrecordModal">
+    <div class="modal-background">
+      <div class="modal-content">
+        <div class="section modal-wrap">
+          <div class="columns">
+            <div class="column">
+              <figure class="image is-512x512">
+                <img id="albumart" src="https://bulma.io/images/placeholders/128x128.png">
+              </figure>
+              <button class="button is-danger" onclick="setTimeout(() => {  changeImage(); }, 1000);">Search</button>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Random Access Memories"/>
                 </div>
               </div>
-              
-              
+              <div class="field">
+                <label class="label">Artist</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Daft Punk"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Year</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="2013"/>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-danger" onClick="parent.location='collection.html'">Confirm</button>
+                  <button class="button" id="Cancel">Cancel</button>
+                </div>
+              </div>
             </div>
           </div>
-          <button class="modal-close is-large" aria-label="close"></button>
+          
+          
         </div>
       </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+  </div>
+  <!-- record info modal-->
+  <div class="modal" id="recordInfoModal">
+    <div class="modal-background">
+      <div class="modal-content">
+        <div class="section modal-wrap">
+          <div class="columns">
+            <div class="column">
+              <figure class="image is-512x512">
+                <img id="albumart" src="./vinyls/ram.jpg">
+              </figure>
+            </div>
+            <div class="column">
+              <div class="field">
+                <div class="title is-3">Random Access Memories</div>
+              </div>
+              <div class="field">
+              <div class="subtitle is-6">by Daft Punk</div>
+              </div>
+              <div class="field">
+                <div class="text is-size-6">2013</div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-danger" onClick="parent.location='collection.html'">Edit</button>
+                  <button class="button" id="Cancel">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+  </div>
   <!-- Optional JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
   <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>

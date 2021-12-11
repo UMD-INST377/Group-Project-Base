@@ -62,7 +62,7 @@ input[type=image]{
  }
 
  .vinbox{
-     justify-items: center;
+     align-content: center;
      margin-left: 1rem;
      margin-right: 1rem;
  }

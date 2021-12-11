@@ -5,12 +5,24 @@
 
 
 .container {
-  background-position: center center;
-  background-size: cover;
+  /* background-position: center; */
+  /* background-color:rgb(213, 213, 213); */
+  justify-items: space-around;
   min-height: 100%;
-  padding-top: 70px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   width: auto;
-  }
+}
+
+h1 {
+  text-align: center;
+}
+
+.col-md-4 {
+  background-color: rgb(213, 213, 213);
+  padding-top: 20px; 
+  padding-bottom: 20px; 
+}
 
 .song-form {
     border-style: solid;
@@ -18,7 +30,14 @@
     margin: auto;
     width: 50%;
     border: 3px solid darkblue;
-    
+  }
+
+  .add-song-form {
+    align-self: center;
+  }
+
+  .form-group {
+    align-content: center;
   }
   
   .song-table {
@@ -91,6 +110,7 @@
   }
   .about {
     height: auto;
+    position: absolute;
     width: 1500px;
   }
   
@@ -124,12 +144,21 @@
   .wrapper {
     display: flex;
   }
+
   .container {
     max-width: 960px;
+    display: block;
+    align-self: center;
     margin-top: 25px;
   }
   
   /* Other styling */ 
+
+  body {
+    background-color: rgb(176, 248, 251);
+    height: 100%;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -186,6 +215,7 @@
   .header-item {
     align-items: center;
     justify-content: space-between;
+    text-align: center;
     max-width: 900px;
     border: 25px solid rgb(0, 0, 0, 0);
   }
@@ -209,6 +239,8 @@
   .subheader-item {
     align-items: center;
     justify-content: space-between;
+    align-items: center;
+    text-align: center;
     max-width: 600px;
     border: 25px solid rgba(0, 0, 0, 0);
   }
@@ -311,7 +343,6 @@
   .about_header {
     display: flex;
     justify-content: center;
-    position: relative;
     z-index: -9;
   }
   
@@ -322,6 +353,7 @@
   .about_section {
     display: flex;
     justify-content: center;
+    position: relative;
     width: 75%;
     margin: -80px auto 0 auto;
     flex-direction: column;

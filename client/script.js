@@ -29,7 +29,7 @@ async function windowActions() {
   data.forEach((song) => {
     // For each song, create a card.
     output += `
-    <div class="card mt-4 col-md-6 bg-ligt">
+    <div class="card mt-4 col-md-4 bg-light">
     <div class="card-body" data-id=${song.song_id}>
     <h5 class="card-title"># ${song.song_id}</h5>
     <h6 class="card-subtitle mb-2 text-italic">"<span class="card-subtitle-song">${song.song_name}</span>" by <span class="card-subtitle-first">${song.first_name}</span> <span class="card-subtitle-last">${song.last_name}</span></h6>

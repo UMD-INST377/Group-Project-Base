@@ -9,7 +9,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send({'message': 'Welcome to the UMD Dining API!'});
+  res.send({message: 'Welcome to the UMD Dining API!'});
 });
 
 /// /////////////////////////////////
@@ -24,7 +24,6 @@ router.route('/foodInspectionPG')
 
       console.log('Touched /foodInspectionPG with GET');
       res.json(reply);
-
     } catch (err) {
       console.error(err);
       // res.error('Server error');
@@ -99,9 +98,9 @@ router.route('/foodInspectionPG')
 
   .delete(async (req, res) => {
     try {
-      await db.Inspections.destroy({
+      await db.Food_Inspection.destroy({
         where: {
-          establishment_id: req.params.entry_id
+          establishment_id: req.body.establishment_id
         }
       });
 

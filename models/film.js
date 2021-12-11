@@ -12,9 +12,6 @@ export default (sequelize, DataTypes) => {
           name: {
             type: DataTypes.STRING
           },
-          actor_id:{
-            type: DataTypes.INTEGER
-          },
           director_id: {
             type: DataTypes.INTEGER
           },

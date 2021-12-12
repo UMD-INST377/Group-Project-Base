@@ -10,7 +10,7 @@ https://inst377-group-project-18.herokuapp.com/
 2. Windows 10
 
 ## Links
-1. [Developer Manual]("README.md#developer-manual")
+1. [Developer Manual](README.md#developer-manual)
 
 # Developer Manual
 

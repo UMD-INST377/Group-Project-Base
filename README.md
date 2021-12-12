@@ -1,3 +1,19 @@
+# NBA Data Website
+## Description
+For our project, we recognized a lack of data visualization when interacting with NBA data. The information in our database can be found in dozens of locations across the internet, but they are all text-heavy tables of data that the user must sort through. We solved these problems by providing a less text-heavy database format for younger fans, focusing more on visuals than tables and data.Our website effectively provides data on teams, arenas, and active players, supplementing user knowledge and establishing a means to gather and analyze data on the NBA.
+
+## Link to our Website
+https://inst377-group-project-18.herokuapp.com/
+
+## Target Browsers
+1. iOS / iPhone 7 and up
+2. Windows 10
+
+## Links
+1. [Developer Manual]("README.md#developer-manual")
+
+# Developer Manual
+
 | Method | Action |
 | ----------- | ----------- |
 | GET | Retrieves resources |
@@ -6,16 +22,13 @@
 | DELETE | Deletes resources |
 
 ## Install Dependencies
-```
-npm install
-```
+1. Clone this repository through Github Desktop or through Terminal.
+2. Open repository in VSCode Terminal or Terminal application.
+3. Type `npm install` into terminal window.
 
 ## Run the Server
-```
-npm start
-```
+1. Type `npm start` into terminal window.
 
-# Basketball
 ## Get list of teams
 ### Request
 ```

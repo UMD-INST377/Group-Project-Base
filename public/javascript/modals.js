@@ -13,6 +13,7 @@ signupClose.addEventListener('click', () => {
   signupModal.classList.remove('is-active');
 });
 
+/*
 // add record modal
 const addrecordButton = document.querySelector('#addrecord');
 const addrecordClose = document.querySelector('#addrecord-close');
@@ -25,6 +26,7 @@ addrecordButton.addEventListener('click', () => {
 addrecordClose.addEventListener('click', () => {
   addrecordModal.classList.remove('is-active');
 });
+*/
 
 // cancel modal
 const cancelButton = document.querySelector('#cancel');

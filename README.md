@@ -37,6 +37,10 @@ DELETE - ** Edits Needed **
 # Known Bugs
 ** Edits needed.
 # Future Development
-In the future, we hope to 
-Additional potential future developments include
-** Edits needed. **
+In the future, we hope to adopt additional features that will better user interactions and experience with the website. One tool we seek to develop is as a booking options where users are able to go a step further and make reservations at the hotel and restaurant listings. Another feature would be a portfolio for each hotel that list the distance from nearby airports, buses that transport visitors, and even nearby attractions. We also hope to develop an API that provides updated weather logs and current events for the region.
+Additional potential future developments include:
+- Expansion on locations beyond Hawaii
+- More reviews, pictures, and tools that aid in user engagement and interaction.
+- Implementation of a booking function beyond restaurants and hotels (possibly transportation vehicles).
+
+Much of our future development, such as booking vehicles, go beyond our capabilities at this time. To achieve this, we would likley seek partnerships with companies like Enterprise and National, and serve listings as a third-party.

@@ -28,7 +28,7 @@ async function pieChartGenrePerc() {
     exportEnabled: true,
     animationEnabled: true,
     title: {
-      text: 'Popular Vinyls By Genre'
+      text: 'Vinyls By Genre'
     },
     data: [{
       type: 'pie',

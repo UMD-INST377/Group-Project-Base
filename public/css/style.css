@@ -1,6 +1,6 @@
 @media screen and (min-width: 990px) {
     .viinyl-navigation{
-        padding: 25px  175px 25px 175px;
+        padding: 0px  175px 25px 175px;
     }
 }
 
@@ -55,4 +55,11 @@ input[type=image]{
     display: flex;
     flex-wrap: wrap;
     margin-top: 40px;
+}
+
+.searchGrid {
+    margin-left: 175px;
+    border-color: black;
+    display: flex;
+    justify-content: space-between;
 }

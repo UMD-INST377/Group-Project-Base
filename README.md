@@ -8,8 +8,7 @@ Using a database of hotels located in Maui, Hawaii, our goal is to create an eas
 https://group4-final-inst377fa2021.herokuapp.com/
 
 ## Target Browsers
-The target browsers will be almost all devices like mobile, laptop, and PC and on all up-to-date operating systems--IOS, Android, Windows, etc. as long as it is version 10 and above.
-** Edits needed. **
+The target browsers will be for almost all devices. Mobile, laptop, and PC devices will have access the website as well as all up-to-date operating systems--IOS, Android, Windows, etc. as long as they have internet access. In addition, because this is a web browser, the version may not matter too much; just need access to Google, Safari, Firefox, and other similar web browsers.
 
 # Developer Manual
 ## How To Install The Application And All Dependencies
@@ -38,4 +37,6 @@ DELETE - ** Edits Needed **
 # Known Bugs
 ** Edits needed.
 # Future Development
+In the future, we hope to 
+Additional potential future developments include
 ** Edits needed. **

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';
-import apiRoutes from './routes/newRoutes.js';
+import apiRoutes from './routes/vinylRoutes.js';
 
 const app = express();
 

@@ -1,0 +1,126 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./css/Glide/glide.core.min.css"/>
+    <link rel="stylesheet" href="./css/Glide/glide.theme.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <title>Viinyl</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon"/>
+  </head>
+  <body>
+    <div class="viinyl-container">
+      <div class="viinyl-navigation">
+        <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand"><a class="navbar-item"><img src="./images/viinyl-logo.png"/></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+          <div class="navbar-menu" id="navbarBasicExample">
+            <div class="navbar-start"><a class="navbar-item"> Collection </a><a class="navbar-item" href="about.html"> About </a>
+              <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link"> More </a>
+                <div class="navbar-dropdown"><a class="navbar-item" href="about.html"> About </a><a class="navbar-item"> Contact </a>
+                  <hr class="navbar-divider"/><a class="navbar-item"> Report an issue </a>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <button class="button is-danger" id="addrecord"><strong>Add Record</strong></button>
+                  <button class="button is-danger" id="signup"><strong>Sign up</strong></button>
+                  <button class="button is-dark">Log in</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- add record modal-->
+      <div class="modal" id="addrecordModal">
+        <div class="modal-background">
+          <div class="modal-content">
+            <div class="section modal-wrap">
+              <div class="columns">
+                <div class="column">
+                  <figure class="image is-512x512">
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  </figure>
+                  <button class="button is-danger">Search</button>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label">Title</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Random Access Memories"/>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Artist</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Daft Punk"/>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Year</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="2013"/>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <button class="button is-danger">Confirm</button>
+                      <button class="button" id="Cancel">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+            </div>
+          </div>
+          <button class="modal-close is-large" id="addrecord-close" aria-label="close"></button>
+        </div>
+      </div>
+      <!-- sign-up modal-->
+      <div class="modal" id="signupModal">
+        <div class="modal-background">
+          <div class="modal-content">
+            <div class="section modal-wrap">
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Username</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="e.g. alexsmith"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                  <input class="input" type="password" placeholder="Password"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Confirm Password</label>
+                <div class="control">
+                  <input class="input" type="password" placeholder="Password"/>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-danger">Sign Up</button>
+                  <button class="button" id="Cancel">Cancel</button>
+                  <p>Account Signup In Devlopment</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <button class="modal-close is-large" id="signup-close" aria-label="close"></button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -26,10 +26,10 @@ router.route('/general')
       const newGames = await db.sequelizeDB.query(
         general.post, {
           replacements: {
-            game_id: req.body.general_id,
-            name: req.body.game_name,
-            free_to_play: req.body.free_play,
-            populaton: req.body.player_pop
+            game_id: req.body.id,
+            name: req.body.name,
+            free_to_play: req.body.free_to_play,
+            population: req.body.population
 
           }
         }

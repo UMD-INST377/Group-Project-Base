@@ -5,6 +5,8 @@ import platformRoutes from './routes/platformRoutes.js';
 import priceRoute from './routes/priceRoute.js';
 import generalRoutes from './routes/generalRoutes.js';
 import salesRoutes from './routes/salesRoutes.js';
+import publisherRoutes from './routes/publisherRoutes.js';
+
 
 const app = express();
 
@@ -20,6 +22,7 @@ app.use('/api', platformRoutes);
 app.use('/api', priceRoute);
 app.use('/api', generalRoutes);
 app.use('/api', salesRoutes);
+app.use('/api', publisherRoutes);
 
 async function bootServer() {
   try {

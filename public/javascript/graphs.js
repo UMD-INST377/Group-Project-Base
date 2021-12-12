@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 // Graphs
 // eslint-disable-next-line func-names
 
@@ -6,6 +7,7 @@ async function pieChartGenrePerc() {
   const vinyls = await response.json();
   const genres = [];
 
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < vinyls.length; i++) {
     genres.push(vinyls[i].Genre);
   }

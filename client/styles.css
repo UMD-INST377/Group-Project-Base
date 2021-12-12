@@ -8,17 +8,26 @@
   /* background-position: center; */
   /* background-color:rgb(213, 213, 213); */
   justify-items: space-around;
+  justify-content: center;
   min-height: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
   width: auto;
 }
 
+.container .h3 {
+  text-align: center;
+}
+
 h1 {
   text-align: center;
 }
 
-.col-md-4 {
+.form-details {
+  margin-left: 35%;
+}
+
+.col-md-6 {
   background-color: rgb(255, 255, 255);
   padding-top: 20px; 
   padding-bottom: 20px; 

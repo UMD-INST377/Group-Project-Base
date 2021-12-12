@@ -1,11 +1,15 @@
-async function fetchRequest(result) {
-  try {
-    const request = await fetch(result);
-    const json = await request.json();
-    return json;
-  } catch (err) {
-    console.error(err);
-    return err;
-  }
+async function test() {
+  const tableTest = document.querySelector('.output')
+  tableTest.pivotUI(
+    [
+      {color: 'blue', shape: 'circle'},
+      {color: 'red', shape: 'triangle'}
+    ],
+    {
+      rows: ['color'],
+      cols: ['shape']
+    }
+  );
 }
 
+window.onload = test;

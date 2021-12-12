@@ -9,6 +9,9 @@ https://volcanic-eruptions-database.herokuapp.com/
 ## Target Browsers
 * Most desktop browsers
 
+## Link to Developer Manual
+https://github.com/vihtle/INST377-Group3-Project#developer-manual
+
 # Developer Manual
 ## How to install application and all dependencies
 1. Clone this repository through Github Desktop or through Terminal.

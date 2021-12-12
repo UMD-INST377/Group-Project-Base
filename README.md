@@ -28,11 +28,11 @@ The target browsers will be for almost all devices. Mobile, laptop, and PC devic
 
 GET - Returns a JSON object containing information about each hotel
 
-POST - Creates an object for a new hotel entry
+POST - Creates a new review based on the user's entry. Takes in their repsonse and saves it in the "Browse Reviews" section under the "Leave a Review" tab. Allows users to leave a review for each hotel.
 
 PUT - Updates the information added for a hotel specifically with the reviews page
 
-DELETE - If used, it would delete a JSON object declared to a hotel.
+DELETE - If used, it would delete information for a hotel or review.
 
 # Known Bugs
 ** Edits needed.

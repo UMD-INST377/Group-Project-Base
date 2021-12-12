@@ -8,6 +8,7 @@ Using a database of hotels located in Maui, Hawaii, our goal is to create an eas
 https://group4-final-inst377fa2021.herokuapp.com/
 
 ## Target Browsers
+The target browsers will be almost all devices like mobile, laptop, and PC and on all up-to-date operating systems--IOS, Android, Windows, etc. as long as it is version 10 and above.
 ** Edits needed. **
 
 # Developer Manual

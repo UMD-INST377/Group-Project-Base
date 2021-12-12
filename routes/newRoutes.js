@@ -49,6 +49,7 @@ router.route('/artists')
   });
 
 // Diego's routes to the songs endpoint which would map to the "songs" table of our SQL DB
+/*
 router.route('/vinyl')
   .get(async(req, res) => {
     try {
@@ -103,6 +104,7 @@ router.route('/vinyl')
       res.json({ error: 'Oops Error' });
     }
   });
+*/
 
 // Minghao's routes to the prices endpoint which would map to the "prices" table of our SQL DB
 /* import prices_table from '../sever/controllers/pricescontroller';

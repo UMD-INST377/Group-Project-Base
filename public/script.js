@@ -47,7 +47,7 @@ async function windowsAction() {
                   <li>
                     <span class='song_name'>
                       ${song.song_name}
-                      <form action="/api/popSongs" method="delete">
+                      <form action="/api/popSongs:"${song.song_id}" method="post">
                         <button class="button is-warning"  type="submit">Delete</button>
                         <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
                       </form>
@@ -66,7 +66,6 @@ async function windowsAction() {
     const endPoint = await fetch('./api/rapSongs');
     const songs = await endPoint.json();
     const songContainer = document.querySelector('#hiphopsongsContainer');
-
     function displayPlaylists() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
@@ -75,9 +74,9 @@ async function windowsAction() {
         <li>
           <span class='song_name'>
             ${song.song_name}
-            <form action="/api/rapSongs" method="delete">
+            <form action="/api/rapSongs/${song.song_id}?_method=DELETE" method="post"> 
               <button class="button is-warning"  type="submit">Delete</button>
-              <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+              <input type="hidden" name="_method" value="DELETE">
             </form>
           </span>
         </li>
@@ -103,9 +102,9 @@ async function windowsAction() {
         <li>
           <span class='song_name'>
             ${song.song_name}
-            <form action="/api/holidaySongs" method="post">
+            <form action="/api/holidaySongs/${song.song_id}?_method=DELETE" method="post"> 
               <button class="button is-warning"  type="submit">Delete</button>
-              <input  type = "hidden" name = "song_id" value = "${song.song_id}" />
+              <input type="hidden" name="_method" value="DELETE">
             </form>
           </span>
         </li>
@@ -127,9 +126,7 @@ async function windowsAction() {
       // eslint-disable-next-line no-template-curly-in-string
       // eslint-disable-next-line arrow-body-style
       // `<ul><li><span class='song_name'>${song.song_name}</span></li></ul>`).join('');
-      const html = songs.map((song) => {
-        return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
-      }).join('');
+      const html = songs.map((song) => `<button class="playlist-button box column" type="button">${song.song_name}</button>`).join('');
       songContainer.innerHTML = html;
     }
 
@@ -255,7 +252,7 @@ async function getSongs() {
     // eslint-disable-next-line no-template-curly-in-string
     // eslint-disable-next-line arrow-body-style
     const html = songs.map((song) => {
-      return `<button class="playlist-button box column" type="button">${song.song_name}</button>`;
+      return `<button class="playlist-button box column" type="button">${song.song_name}<button>delete</button></button>`;
     }).join('');
     songsContainer.innerHTML = html;
   }

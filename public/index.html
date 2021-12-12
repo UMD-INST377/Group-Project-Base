@@ -15,11 +15,11 @@
     <div class="viinyl-container">
       <div class="viinyl-navigation">
         <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-          <div class="navbar-brand"><a class="navbar-item"><img src="./images/viinyl-logo.png"/></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+          <div class="navbar-brand"><a class="navbar-item" href="../index.html"><img src="./images/viinyl-logo.png"/></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
           <div class="navbar-menu" id="navbarBasicExample">
             <div class="navbar-start"><a class="navbar-item" href="../collection.html"> Collection </a><a class="navbar-item" href="../about.html"> About </a>
               <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link"> More </a>
-                <div class="navbar-dropdown"><a class="navbar-item" href="about.html"> About </a><a class="navbar-item"> Contact </a>
+                <div class="navbar-dropdown"><a class="navbar-item"> Contact </a>
                   <hr class="navbar-divider"/><a class="navbar-item"> Report an issue </a>
                 </div>
               </div>
@@ -27,7 +27,6 @@
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="buttons">
-                  <button class="button is-danger" id="addrecord"><strong>Add Record</strong></button>
                   <button class="button is-danger" id="signup"><strong>Sign up</strong></button>
                   <button class="button is-dark">Log in</button>
                 </div>
@@ -35,52 +34,6 @@
             </div>
           </div>
         </nav>
-      </div>
-      <!-- add record modal-->
-      <div class="modal" id="addrecordModal">
-        <div class="modal-background">
-          <div class="modal-content">
-            <div class="section modal-wrap">
-              <div class="columns">
-                <div class="column">
-                  <figure class="image is-512x512">
-                    <img src="https://bulma.io/images/placeholders/128x128.png">
-                  </figure>
-                  <button class="button is-danger">Search</button>
-                </div>
-                <div class="column">
-                  <div class="field">
-                    <label class="label">Title</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="Random Access Memories"/>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <label class="label">Artist</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="Daft Punk"/>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <label class="label">Year</label>
-                    <div class="control">
-                      <input class="input" type="text" placeholder="2013"/>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <div class="control">
-                      <button class="button is-danger">Confirm</button>
-                      <button class="button" id="Cancel">Cancel</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              
-            </div>
-          </div>
-          <button class="modal-close is-large" id="addrecord-close" aria-label="close"></button>
-        </div>
       </div>
       <!-- sign-up modal-->
       <div class="modal" id="signupModal">
@@ -532,7 +485,7 @@
         </div>
       </div>
       <div class="graphs">
-        <div id="pie-graph" style="height: 370px; width: 50%;"></div>
+        <div id="pie-graph" style="height: 370%; width: 50%;"></div>
         <div id="bar-graph" style="height: 370%; width: 50%;"></div>
       </div>
     </div>

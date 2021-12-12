@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express, { response } from 'express';
 import sequelize from 'sequelize';
-import db from '../database/initializeDB.js';
+import db from '../server/database/initializeDB.js';
 
 /* import controllers -- we can use to replace previous import statements below. - Walesia */
 import controllers from '../server/controllers/controls.js';

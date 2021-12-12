@@ -7,5 +7,5 @@ export default {
   get,
   put,
   post,
-  remove,
+  remove
 };

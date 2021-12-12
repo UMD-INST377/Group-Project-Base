@@ -30,45 +30,47 @@
 
             <!-- Another example with a different look -->
             <div class='container'>
-              <h3>Enter the details using this form:</h3>
-              <div class="row mt-3">
-                <div class="col-md-4">
-                  <form class="add-song-form">
-                    <!-- For form fields -->
-                    <div class='form-group'>
-                      <label for="title">Song title:</label>
-                      <input type="text" class="form-control" id="title-value">
-                    </div>
-                    
-                    <div class='form-group'>
-                      <label for="album">Album name:</label>
-                      <input type="text" class="form-control" id="album-value">
-                    </div>
-
-                    <div class='form-group'>
-                      <label for="first_name">Artist first name:</label>
-                      <input type="text" class="form-control" id="first-name-value">
-                    </div>
-
-                    <div class='form-group'>
-                      <label for="last_name">Artist last name:</label>
-                      <input type="text" class="form-control" id="last-name-value">
-                    </div>
-
-                    <div class='form-group'>
-                      <label for="rating">Rating out of 5 stars:</label>
-                      <div class='form-group col-md-2'>
-                        <input type="number" min="0" step="1" max="5" class="form-control" id="rating-value">
+              <div class='form-details'>
+                <h3>Enter the details using this form:</h3>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <form class="add-song-form">
+                      <!-- For form fields -->
+                      <div class='form-group'>
+                        <label for="title">Song title:</label>
+                        <input type="text" class="form-control" id="title-value">
                       </div>
-                    </div>
-                    <br>
+                      
+                      <div class='form-group'>
+                        <label for="album">Album name:</label>
+                        <input type="text" class="form-control" id="album-value">
+                      </div>
 
-                    <!-- Add submit button  -->
-                    <button type = "submit" class="btn btn-primary">Submit</button>
-                  </form>
-                </div>
+                      <div class='form-group'>
+                        <label for="first_name">Artist first name:</label>
+                        <input type="text" class="form-control" id="first-name-value">
+                      </div>
+
+                      <div class='form-group'>
+                        <label for="last_name">Artist last name:</label>
+                        <input type="text" class="form-control" id="last-name-value">
+                      </div>
+
+                      <div class='form-group'>
+                        <label for="rating">Rating out of 5 stars:</label>
+                        <div class='form-group col-md-2'>
+                          <input type="number" min="0" step="1" max="5" class="form-control" id="rating-value">
+                        </div>
+                      </div>
+                      <br>
+
+                      <!-- Add submit button  -->
+                      <button type = "submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
                 </div>
               </div>
+            </div>
 
               <br>
               <div class="is-size-4", style = "height: 650px; padding: 20px; white-space: normal; overflow-y: scroll">

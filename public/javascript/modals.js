@@ -13,21 +13,6 @@ signupClose.addEventListener('click', () => {
   signupModal.classList.remove('is-active');
 });
 
-/*
-// add record modal
-const addrecordButton = document.querySelector('#addrecord');
-const addrecordClose = document.querySelector('#addrecord-close');
-const addrecordModal = document.querySelector('#addrecordModal');
-
-addrecordButton.addEventListener('click', () => {
-  addrecordModal.classList.add('is-active');
-});
-
-addrecordClose.addEventListener('click', () => {
-  addrecordModal.classList.remove('is-active');
-});
-*/
-
 // cancel modal
 const cancelButton = document.querySelector('#cancel');
 
@@ -40,7 +25,6 @@ const triggers = document.querySelectorAll('.trigger');
 const triggerArray = Array.from(triggers);
 const vinylModals = document.querySelectorAll('#vinylmodal');
 const cancelVinyl = document.querySelectorAll('#cancel-vinyl');
-const closeVinyl = document.querySelectorAll('#close-vinyl');
 
 triggerArray.forEach((trigger, index) => {
   const toggleModal = () => {

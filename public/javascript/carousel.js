@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 const config = {
   type: 'carousel',
   perView: 5,

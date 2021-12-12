@@ -93,3 +93,23 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 > Endpoint takes a specfic ID than takes take information from the user to update the database.
 >
 > This endpoint has MYSQL <strong>update</strong> query which lets the user update information into the database.
+
+### /api/vicepresident/:vp_id
+
+>Parameter: vp_id (integer)
+>
+>This endpoint lets the user update existing vice presidents information into our database.
+>
+>Endpoint takes a specific ID then takes information from the user to update the database.
+>
+> This endpoint has MYSQL <strong>update</strong> query which lets the user update information into the database.
+
+### /api/children/:child_id
+
+>Parameter: child_id
+>
+>This endpoint lets the user update existing president childrens information into our database.
+>
+>Endpoint takes a specific ID then takes information from the user to update the database.
+>
+>This endpoint has MYSQL <strong>update</strong> query which lets the user update information into the database.

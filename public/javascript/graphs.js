@@ -1,12 +1,33 @@
 // Graphs
 // eslint-disable-next-line func-names
-window.onload = function() {
+
+async function pieChartGenrePerc() {
+  const response = await fetch('./api/vinyl');
+  const vinyls = await response.json();
+  const genres = [];
+
+  for (let i = 0; i < vinyls.length; i++) {
+    genres.push(vinyls[i].Genre);
+  }
+
+  // eslint-disable-next-line no-return-assign
+  const result = genres.reduce((acc, o) => (acc[o] = (acc[o] || 0) + 1, acc), {});
+
+  const dict = [];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [key, value] of Object.entries(result)) {
+    dict.push({
+      y: (value / genres.length) * 100,
+      label: key
+    });
+  }
+
   const chart = new CanvasJS.Chart('pie-graph', {
     theme: 'light2', // "light1", "light2", "dark1", "dark2"
     exportEnabled: true,
     animationEnabled: true,
     title: {
-      text: 'Desktop Browser Market Share in 2016'
+      text: 'Popular Vinyls By Genre'
     },
     data: [{
       type: 'pie',
@@ -16,15 +37,7 @@ window.onload = function() {
       legendText: '{label}',
       indexLabelFontSize: 16,
       indexLabel: '{label} - {y}%',
-      dataPoints: [
-        { y: 51.08, label: 'Chrome' },
-        { y: 27.34, label: 'Internet Explorer' },
-        { y: 10.62, label: 'Firefox' },
-        { y: 5.02, label: 'Microsoft Edge' },
-        { y: 4.07, label: 'Safari' },
-        { y: 1.22, label: 'Opera' },
-        { y: 0.44, label: 'Others' }
-      ]
+      dataPoints: dict
     }]
   });
 
@@ -60,4 +73,5 @@ window.onload = function() {
   }
   chart.render();
   $.getJSON('https://canvasjs.com/data/gallery/javascript/daily-sales-data.json', addData);
-};
+}
+pieChartGenrePerc();

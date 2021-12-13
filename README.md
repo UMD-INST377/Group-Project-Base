@@ -9,7 +9,7 @@ https://secure-badlands-63929.herokuapp.com
 * MacBook Pro 14"
 * iPhone 11 Pro
 
-## Link to Developer Manual
+## Developer Manual
 * [Developer Manual](https://github.com/skanner1999/Group1-Final-Project-Base##developer-manual
 
 
@@ -49,6 +49,6 @@ https://secure-badlands-63929.herokuapp.com
 `DELETE /api/nba-players/:player_name`
 `curl -X DELETE http://localhost:3000/api/nba-players/X`
 
-##Deveoloper Manual
+## Deveoloper Manual
 * Test
 

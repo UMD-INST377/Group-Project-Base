@@ -7,8 +7,37 @@ import POSTController from '../controllers/POSTController.js';
 import PUTController from '../controllers/PUTController.js';
 
 import db from '../database/initializeDB.js';
-
 const router = express.Router();
+
+
+router.get('/members',async(req, res) => {
+  try {
+    const d = await db.sequelizeDB.query(GETController.membersTest, {
+      type: sequelize.QueryTypes.SELECT
+    });
+
+    // Send data
+    res.json({status: 'success', data: d});
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    response.json({status: 'failure', data: null, message: 'unknown error'});
+  }
+});
+
+router.get('/membersTest',async(req, res) => {
+  try {
+    const cTest = await db.Congress_Members.findall();
+    res.json(cTest);
+  } catch (error) {
+    console.log(error)
+    res.json({message: 'Error222'})
+  }
+})
+
+
 
 /// //////////////////////////////////
 /// ////Congress Profiles Endpoints///
@@ -97,19 +126,7 @@ router.delete(async(req, res) => {
 });
 
   //Jake Stark General Congress Members Table Endpoint
-router.get('/members',async(req, res) => {
-  try {
-    const members = await db.sequelizeDB.query(GETcontroller.members, {
-      type: sequelize.QueryTypes.SELECT
-    });
 
-    
-    
-    } catch (error) {
-    console.log(error)
-    res.json({message: 'Error'})
-  }
-});
 router.put(async(req, res) => {
   try {
     console.log('touched /members endpoint PUT');
@@ -221,5 +238,7 @@ router.delete(async(req, res) => {
     res.json({message: 'Error'})
   }
 })
+
+
 
 export default router;

@@ -40,3 +40,8 @@
   #box2 {
       justify-content: space-between;
   }
+
+  .table {
+      border: 1px solid black;
+      width: 100%;
+  }

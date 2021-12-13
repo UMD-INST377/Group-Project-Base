@@ -148,6 +148,7 @@ router.get('/dining', async (req, res) => {
 //   }
 // });
 
+<<<<<<< Updated upstream
 // /// /////////////////////////////////
 // /// ////////Meals Endpoints//////////
 // /// /////////////////////////////////
@@ -207,6 +208,83 @@ router.get('/dining', async (req, res) => {
 //     res.error('Server error');
 //   }
 // });
+=======
+router.route('/vehicle_data')
+  .get(async(req, res) => {
+    try {
+      const vehicle_data = await db.vehicle_data.findAll();
+      console.log('You touched the vehicle data endpoint!');
+      res.json(vehicle_data);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /vehicle_data');
+    }
+  })
+
+  .put(async(req, res) => {
+    try {
+      await db.vehicle_data.update(
+        {
+          report_id: req.body.report_id,
+          vin_num: req.body.vin_num,
+          harm_event_code: req.body.harm_event_code,
+          harm_event_desc: req.body.harm_event_desc,
+          towed_away: req.body.towed_away,
+          airbag_deployed: req.body.airbag_deployed,
+          hit_and_run: req.body.hit_and_run,
+          speed_limit: req.body.speed_limit
+        },
+        {
+          where: {
+            report_id: req.body.report_id
+          }
+        }
+      );
+      console.log('You touched the /vehicle_data route with PUT');
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /vehicle_data');
+    }
+  })
+
+  .post(async(req, res) => {
+    const vehicle_data = await db.vehicle_data.findAll();
+    try {
+      const newVehicle_data = await db.vehicle_data.create(
+        {
+          report_id: req.body.report_id,
+          vin_num: req.body.vin_num,
+          harm_event_code: req.body.harm_event_code,
+          harm_event_desc: req.body.harm_event_desc,
+          towed_away: req.body.towed_away,
+          airbag_deployed: req.body.airbag_deployed,
+          hit_and_run: req.body.hit_and_run,
+          speed_limit: req.body.speed_limit
+      });
+      console.log('You touched the vehicle_data route with POST');
+      res.json(newVehicle_data);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on vehicle_data');
+    }
+  })
+
+  .delete(async(req, res) => {
+    try {
+      await db.vehicle_data.destroy({
+        where: {
+          report_id: req.params.report_id
+        }
+      });
+      console.log('You touched the vehicle_data route with DELETE');
+      res.send('Successfully deleted');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on vehicle_data');
+    }
+  });
+>>>>>>> Stashed changes
 
 // router.get('/macros/:meal_id', async (req, res) => {
 //   try {

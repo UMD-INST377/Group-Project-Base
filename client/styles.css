@@ -1,0 +1,61 @@
+<<<<<<< Updated upstream
+=======
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  background-color: white;
+}
+/* Page Layout */
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper {
+  display: flex;
+}
+.container {
+  max-width: 960px;
+  margin-top: 25px;
+}
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+.box {
+  padding: 40px;
+  margin: 20px;
+}
+.center {
+  padding: 70px 0;
+  border: 3px solid blue;
+  text-align: center;
+}
+
+.card {
+  width: 400px;
+}
+
+.footnote {
+  padding: 20px;
+}
+>>>>>>> Stashed changes

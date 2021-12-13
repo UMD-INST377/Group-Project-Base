@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Group 20 INST 377</title>
     <link rel="stylesheet" href="styles.css" />
-  </head>
+</head>
 
-  <body>
-      <div class = 'header'>
-        <div class = 'title-head'>Maryland Counties & COVID-19 Database </div>
-        <div class = 'navigation'>
-          <a href='index.html'>Home</a>
-          <a href='input.html'>New Records</a>
-          <a href='about.html'>About</a>
+<body>
+    <div class='header'>
+        <div class='title-head'>Maryland Counties & COVID-19 Database </div>
+        <div class='navigation'>
+            <a href='index.html'>Home</a>
+            <a href='input.html'>New Records</a>
+            <a href='about.html'>About</a>
         </div>
-        </div>
-      </div>
-      <div class = 'container'>
+    </div>
+    </div>
+    <div class='container'>
         <h3>View Data in JSON format</h3>
         <!-- Drop down button-->
         <div class="dropdown">
-          <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
-          <div id="myDropdown" class="dropdown-content">
-            <a href="covid-stats.html">COVID-19 Statistics</a>
-            <a href="/api/county-info">County Stats</a>
-            <a href="vacByCounty.html">Vaccination Data By County</a>
-          </div>
+            <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="covid-stats.html">COVID-19 Statistics</a>
+                <a href="/api/county-info">County Stats</a>
+                <a href="vacByCounty.html">Vaccination Data By County</a>
+            </div>
         </div>
         <br>
         <div>
-          <table id = "tableC">
-            <thead> <em> Covid Statistics </em>
-              <tr>
-                <th>County ID</th>
-                <th>Confirmed Deaths</th>
-                <th>Positive Cases</th>
-                <th>County Death Proportion</th>
-              </tr>
-            </thead>
-            
-            <tbody class = "tbody">
+            <table id="tableC">
+                <thead> <em> Covid Statistics </em>
+                    <tr>
+                        <th>County ID</th>
+                        <th>Confirmed Deaths</th>
+                        <th>Positive Cases</th>
+                        <th>County Death Proportion</th>
+                    </tr>
+                </thead>
 
-            </tbody>
-          </table>
+                <tbody class="tbody">
+
+                </tbody>
+            </table>
         </div>
-      </div>
-      <script src = "script.js"></script>
-  </body>
+    </div>
+    <script src="script.js"></script>
+</body>
+
 </html>

@@ -40,4 +40,7 @@ There are currently no prewritten tests for this application, but you can use Cy
 ## Known Bugs
 As of 12/2/2021, the POST method for the animals API unfortunately does not function due to foreign key constraints in the database that requires each record in the animals table to have values in the foreign key columns (such as extinction_extinction_id, etc).
 ## Future Developments 
-Words
+1. Create a user/login system to allow for proper access. This will allow people with admistrative rights to update and delete records, while also filtering out internet trolls.
+2. The further development of the add and delete feature of the front-end. This will allow full functionality for users with administrative rights as mentioned above.
+3. The development of the search bar; this would allow users to locate extinct animal information by characters and substrings inputted into the search bar.
+4. The switch to a database with prior data on extinct animals to serve as a bigger foundation for the public mutable database,

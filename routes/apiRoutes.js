@@ -12,7 +12,7 @@ import vacByCountydata from '../controllers/vacByCountyController.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the Maryland Counties COVID-19 Database!');
 });
 
 /// /////////////////////////////////
@@ -91,7 +91,7 @@ router.route('/vacByCountyController')
         {
           type: sequelize.QueryTypes.SELECT
         });
-      console.log('Reached /vacByCounty endpoint with GET')
+      console.log('Reached /vacByCounty endpoint with GET');
       res.json(dataResponse);
     } catch (err) {
       console.log(error);

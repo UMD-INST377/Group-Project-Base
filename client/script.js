@@ -15,3 +15,24 @@ window.onclick = function(event) {
     }
   }
 };
+
+//url = 'http://localhost:3000/api/vacByCountyController';
+url = '/api/vacByCountyController'; 
+async function vacData(url, table) {
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data[1]);
+
+  for (var key in data){
+    var row = `<tr>
+                  <td>${data[key].county_ID}</td>
+                  <td>${data[key].first_dose_count}</td>
+                  <td>${data[key].first_dose_prop}</td>
+                  <td>${data[key].second_dose_count}</td>
+                  <td>${data[key].second_dose_prop}</td>
+              </tr>`
+    //table.append(row);
+    table.innerHTML += row
+  }
+}
+vacData(url, document.querySelector('table'));

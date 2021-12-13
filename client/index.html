@@ -18,21 +18,33 @@
         </div>
       </div>
       <div class = 'container'>
-        <h1>View Data</h1>
+        <h3>View Data in JSON format</h3>
         <!-- Drop down button-->
         <div class="dropdown">
           <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
           <div id="myDropdown" class="dropdown-content">
             <a href="/api/covid-stats">COVID-19 Statistics</a>
             <a href="/api/county-info">County Stats</a>
-            <a href="/api/vacByCountyController">Vaccination Data By County</a>
+            <a href="http://localhost:3000/api/vacByCountyController">Vaccination Data By County</a>
           </div>
         </div>
-        <div class = 'table'>
-          <td> 
+        <br>
+        <div>
+          <table id = "table">
+            <thead> <em> Vaccination By County Data </em>
+              <tr>
+                <th>County ID</th>
+                <th>First Dose Count</th>
+                <th>First Dose Prop</th>
+                <th>Second Dose Count</th>
+                <th>Second Dose Prop</th>
+              </tr>
+            </thead>
             
-          </td>
+            <tbody class = "tbody">
 
+            </tbody>
+          </table>
         </div>
       </div>
       <script src = "script.js"></script>

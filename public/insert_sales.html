@@ -3,9 +3,10 @@
     <head>
         <meta charset='UTF-8'/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About Page</title>
-        <link rel='stylesheet' href='casey.css'/>
+        <title>Sales Page</title>
+        <link rel='stylesheet' href='morris_style.css'/>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
+        <script src='insert_sales.js'></script>
     </head>
     <body>
         <nav class="navbar has-shadow is-black" role="navigation" aria-label="main navigation">
@@ -47,7 +48,7 @@
                               Edit Price Table
                             </a>
                             <a href="sales.html" class="dropdown-item">
-                              Edit Sales Table
+                                Edit Sales Table
                             </a>
                           </div>
                         </div>
@@ -55,36 +56,46 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </nav>
-        <div class="section">
-            <h1 class="title has-text-centered is-spaced">
-                About Us
-            </h1>
-            <h2 class="subtitle has-text-centered">
-                This web application was fully developed by a group of five
-                University of Maryland Information Science students with 
-                the goal to bring gamers exactly what they have been looking 
-                for: a constantly expanding database of video games to help 
-                them decide what to play next!
-            </h2>
-            <h2 class="subtitle has-text-centered">
-                We aim to provide gamers with the best information possible to
-                make this decision, so each game within our database is 
-                equipped with a large variety of information such as the
-                free-to-play capabilities, the player population and more!
-            </h2>
-            <h2 class="subtitle has-text-centered">
-                If gamers are stuck between a few of the great options available
-                within our database then they can use the graph feature of 
-                our web application to compare prices and see what game 
-                fits their budget best!
-            </h2>
+            </div>
+        </nav>
+
+        <div class="container">
+            <a class="button is-black" href="sales.html">Get</a>
+            <a class="button is-black" href="update_sales.html">Update</a>
+            <a class="button is-black" href="delete_sales.html">Delete</a>
+            <a class="button is-black" href="insert_sales.html">Insert</a>
         </div>
-        <div class="image-container">
-            <img src="AboutPics/video games 1.jpg">
-            <img src="AboutPics/video games 2.jfif">
-            <img src="AboutPics/video games 3.jfif">
-        </div>
+
+        <h1 class="title is-light">Insert a Game's sales and earnings!</h1>
+
+          
+          <form class="form" id='sales' >
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label class="label" for = 'sales_id'>Sales Id</label>
+                        <div class="control">
+                            <input class="input" type="text" name = 'sales_id'>
+                        </div>
+                    </div>
+
+
+                    <div class="field">
+                        <label class="label" for = 'annual_sales'>Annual Sales</label>
+                        <div class="control">
+                          <input class="input" type="text" name = 'annual_sales'>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for ='earnings'>Earnings</label>
+                        <div class="control">
+                          <input class="input" type="text" name = 'earnings'>
+                        </div>                        
+                    </div>
+                      <button  class="button" id= "submit_button">Insert</button>
+                </div>
+            </div>
+          </form>
     </body>
 </html>

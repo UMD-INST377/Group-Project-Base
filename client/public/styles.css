@@ -113,3 +113,16 @@ p{
   font-family: Serif; 
   font-size: 24px;
 }
+
+.logo {
+  display: flex;
+  width: auto;
+  height: auto;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.logo > img {
+  width: 300px;
+  height: 300px;
+}

@@ -2,6 +2,10 @@
 This is Group 1's final project for INST377. Our group decided to use a database
 containing information about NBA players. The goal of the website is to inform users about different player statistics. There is also opportunities for people to update the information on the website in order to provide more accurate and up to date information
 
+# Link To Site:
+https://secure-badlands-63929.herokuapp.com
+
+
 ## Getting Started
 ### Install Dependencies
 `npm install`

@@ -24,8 +24,8 @@ Macbook Pro
 2. Type npm start within one of the terminals 
 3. Type npm test within the other terminal 
 
-## API Section
-Included in the repository is a list of APIs which correlate to their respective tables in the database. They include:
+## API Information
+Included in the repository is a list of API routes which correlate to their respective tables in the database. They include:
 1. collisionType
 2. crashInformation
 3. driverDemographics

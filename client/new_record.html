@@ -61,10 +61,33 @@
               </nav>
             
             <!--  -->
+            <div class="columns is-vcentered has-text-centered">
+                <div class="column is-full">
+                    <div class="field-body">
+                        <div class="field is-narrow">
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select id="dropDown" onChange="changeEvent()">
+                                        <option value="default" selected="selected"> Please Select Your Entry Type</option>
+                                        <option value="one">Driver Demographics</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <form id="default">
+                    </form>
+                </div>
+            </div>
 
             <div class="columns">
                 <div class="column is-full">
-                    <form class="forms" action="submit.html">
+                    <form class="forms" id="driver_demographics" action="submit.html">
                     <!-- Report ID field -->
                         <div class="field is-horizontal">
                             <div class="field-label is-normal">
@@ -114,7 +137,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            
                             </div>
                         </div>
                     

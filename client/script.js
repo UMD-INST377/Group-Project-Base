@@ -79,7 +79,7 @@ function barChart(labels, data) {
         }
       }
     }
-  }
+  };
 
   // adding the barchart to the div html using getelement
   const ctx = document.getElementById('chart').getContext('2d');
@@ -111,7 +111,7 @@ function donutChart(labels, data) {
   const config = {
     type: 'doughnut',
     data: chartData
-  }
+  };
 
   const ctx = document.getElementById('donut').getContext('2d');
   const chart = new Chart(ctx, config);
@@ -220,7 +220,6 @@ function stackedBar(data) {
   const chart = new Chart(ctx, config);
 }
 
-
 // ------------------------------------------------------------------
 // M/F Functions to extract data from driver demo
 // ------------------------------------------------------------------
@@ -326,7 +325,6 @@ async function mainThread() {
   m_age = binGen(m_drivers_age);
 
   radarChart(f_age, m_age);
-
 }
 
 // New Record Posting to driverDemographics endpoint
@@ -353,7 +351,7 @@ async function postNewRecord() {
   console.log(request.json());
   return request.json();
 
-  location.href='about-us.html' //Navigate to a thanks page
+  location.href = 'about-us.html'; // Navigate to a thanks page
 }
 
 // testing JSON output for new record
@@ -382,5 +380,19 @@ async function logData() {
 }
 
 // document.querySelector('#my_btn').addEventListener('click', logData);
+
+// ------------------------------------------------------------------
+// Drop Down Function
+// ------------------------------------------------------------------
+function changeEvent() {
+  const dropDown = document.getElementById('dropDown').value;
+
+  if (selvalue === 'default') {
+    document.getElementById('default');
+  }
+  if (selvalue === 'one') {
+    document.getElementById('driver_demographics');
+  }
+}
 
 mainThread();

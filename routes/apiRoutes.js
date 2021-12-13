@@ -223,44 +223,44 @@ router.route('/driverDemographics')
 
 // Michael's Endpoint to the vehicleData
 
-router.route('/vehicle_data')
-  .get(async(req, res) => {
-    try {
-      const vehicle_data = await db.driver_demographics.finalAll();
-      console.log('You touched the /vehicle_data endpoint!');
-      res.json({data: data});
-    } catch (err) {
-      console.log(error);
-      res.json({error: 'Something went wrong on /vehicle_data.'});
-    }
-  })
+// router.route('/vehicle_data')
+//   .get(async(req, res) => {
+//     try {
+//       const vehicle_data = await db.driver_demographics.finalAll();
+//       console.log('You touched the /vehicle_data endpoint!');
+//       res.json({data: data});
+//     } catch (err) {
+//       console.log(error);
+//       res.json({error: 'Something went wrong on /vehicle_data.'});
+//     }
+//   })
 
-  .put((req, res) => {
-    try {
-      res.json({message: 'You touched /vehicle_data with PUT'});
-    } catch (err) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  })
+//   .put((req, res) => {
+//     try {
+//       res.json({message: 'You touched /vehicle_data with PUT'});
+//     } catch (err) {
+//       console.log(error);
+//       res.json({error: 'Something went wrong on the server'});
+//     }
+//   })
 
-  .post((req, res) => {
-    try {
-      res.json({message: 'You touched vehicle_data with POST'});
-    } catch (err) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  })
+//   .post((req, res) => {
+//     try {
+//       res.json({message: 'You touched vehicle_data with POST'});
+//     } catch (err) {
+//       console.log(error);
+//       res.json({error: 'Something went wrong on the server'});
+//     }
+//   })
 
-  .delete((req, res) => {
-    try {
-      res.json({message: 'You touched vehicle_data with DELETE'});
-    } catch (err) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  });
+//   .delete((req, res) => {
+//     try {
+//       res.json({message: 'You touched vehicle_data with DELETE'});
+//     } catch (err) {
+//       console.log(error);
+//       res.json({error: 'Something went wrong on the server'});
+//     }
+//   });
 
 
   // Teyojessam's Endpoint to the roadConditions
@@ -335,6 +335,7 @@ router.route('/roadConditions')
     res.send('Something went wrong on /roadConditions');
   }
 });
+
 // driver culpability endpoint
   router.route('/driverCulpability')
   .get(async(req, res) => {

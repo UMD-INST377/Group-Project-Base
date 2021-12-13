@@ -12,6 +12,6 @@ export default {
   crash_information,
   road_conditions,
   driver_demographics,
-  driver_culpability,
+  driver_culpability
   // vehicle_data
 };

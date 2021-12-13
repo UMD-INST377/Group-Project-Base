@@ -29,6 +29,8 @@ Macbook Pro
 ## Development and Bugs Section
 
 ### Future Development
+- Different pages for different submittion forms
+- Code for the different submittion forms
 - Add a way for users to enter location of crashes
 - Create a heatmap to plot crashes 
 - Handle unknown and/or new values that were not part of database 

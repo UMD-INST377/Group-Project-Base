@@ -6,5 +6,5 @@ const profiles ="SELECT 'Internet Profile ID' AS 'profile_ID', 'Twitter' AS 'twi
 
 const membersTest = "SELECT `First Name`, `Last Name`, `Age`, `Gender` FROM Group26_congress_db.`Personal Information`;"
 export default {
-    members,contact, membersTest,
+    members,contact, membersTest, profiles
 }

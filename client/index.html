@@ -2,10 +2,10 @@
 <html lang='en'>
     <head>
         <meta charset='UTF-8'/>
-        <title>Group 7 Project</title>
         <link rel='stylesheet' href='styles.css'/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
         <script src="./lib/d3.js"></script>
+        <script src="https://kit.fontawesome.com/9a0bfbe284.js" crossorigin="anonymous"></script>
     </head>
 
     <body>
@@ -13,26 +13,59 @@
             <div class="container">
                 <div class="columns is-vcentered">
                     <div class="column is-full">
-                      <div class="box title has-background-warning-light">Group 7</div>
-                    </div>
-                    <div class="column is-offset-1 is-full">
-                      <nav class="columns is-full">
-                        <div class="column is-one-third">
-                            <a href="visualizations.html">Data Visualizations</a>
-                        </div>
-                        <div class="column is-one-third">
-                            <a href="new_record.html">New Record</a>
-                        </div>
-                        <div class="column is-one-third">
-                            <a href="about.html">About Page</a>                                
-                        </div>
-                      </nav>
+                      <div class="box title has-background-warning-light">
+                          <p>Maryland Vehicle Crash Data -- An INST377 Project</p>
+
+                      </div>
                     </div>
                 </div>
-                <div class="center">
-                    <img src="https://st.depositphotos.com/1504872/4211/v/600/depositphotos_42112585-stock-illustration-car-crash.jpg">
-                </div>
+
+                <!-- Navigation Bar -->
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="./index.html">
+                            
+                        </a>
+                    </div>
+          
+                    <div id="navbarBasicExample" class="navbar-menu">
+                        <div class="navbar-start">
+                            <a class="navbar-item" href="index.html">
+                                <span class="icon"><i class="fas fa-home"></i></span>
+                                <span>Home</span>
+                            </a>
+                            <a class="navbar-item" href="visualizations.html">Data Graphs</a>
+                            <a class="navbar-item" href="new_record.html">New Record</a>
+                            <a class="navbar-item" href="about.html">About</a>
+                        </div>
+
+                        <div class="navbar-end">
+                            <div class="navbar-item">
+                                <div class="field is-grouped">
+
+                                    <p class="control">
+                                        <a class="button is-light" href="./data/maryland_crash_data.sql">
+                                          <span class="icon"><i class="fas fa-download"></i></span>
+                                          <span>Download SQL Data</span>
+                                        </a>
+                                    </p>
+
+                                    <p class="control">
+                                        <a class="button" href="https://github.com/jremeto/Group7-Final-INST377">
+                                            <span class="icon"><img src="./images/git.png"></span>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!--  -->    
+                    
             </div>
+                <!-- <div class="center">
+                    <img src="https://st.depositphotos.com/1504872/4211/v/600/depositphotos_42112585-stock-illustration-car-crash.jpg">
+                </div> -->
         </div>
         <script src="script.js"></script>
     </body>

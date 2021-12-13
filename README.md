@@ -8,6 +8,7 @@ We attempted to create a website that could show statistics of Maryland based on
 - Firefox, Safari, Google Chrome
 - Google Pixel 2 or greater
 - Samsung Galaxy S20 or greater
-[Developer Manual](https://github.com/Kamglitchd/Group21-Final-INST377SP2021#developer-manual)
+
+### [Developer Manual](https://github.com/Kamglitchd/Group21-Final-INST377SP2021#developer-manual)
 
 # Developer Manual

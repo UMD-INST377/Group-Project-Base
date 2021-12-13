@@ -17,7 +17,7 @@
             <div class="column is-full">
                 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                     <div class="navbar-brand">
-                        <a class="navbar-item active-page" href="index.html">
+                        <a class="navbar-item" href="index.html">
                             <i class="fas fa-home"></i>Home</a>
                         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
                             <span aria-hidden="true"></span>
@@ -31,7 +31,7 @@
                                 <i class="fas fa-plus"></i>New Record Entry</a>
                             <a href="viewDatabase.html" class="navbar-item">
                                 <i class="far fa-eye"></i>View The Database</a>
-                            <a class="navbar-item" href="fighting.html">
+                            <a class="navbar-item active-page" href="fighting.html">
                                 <i class="fas fa-paw"></i>Fighting Style</a>
                             <a class="navbar-item" href="about.html">
                                 <i class="fas fa-info-circle"></i>About Page</a>
@@ -51,31 +51,54 @@
                 </nav>
             </div>
         </div>
-        <div class="boxx">
         <div class="columns">
             <div class="column">
-                <h1 class="title has-text-centered">Welcome to Extinct Animal Records!</h1>
-                <div class="container-p">
-                    <p class="description">
-                        This website is devoted to be an open user-mutable database on extinct animals.
-                        </br>
-                        We have a culmination of extinct animals, and we look forward to further entries in our database.
-                    </p>
-                    <div class="columns is-vcentered">
-                    <img src="images/OrangeMC.jpg" alt="Orange Mud Crab" class="column is-half">
-                    <img src="images/StellarSC.jpg" alt="Stellar's Sea Cow" class="column is-half">
-                    </div>
-                    <p class="description">
-                        We urge you to looks through our database to experience and learn about the animals that have gone extinct, such as the Orange Mud Crab and Stellar's Sea Cow shown above, along with their major traits.
-                        Visit the WorldWildlife Foundation's webpage by clicking the Panda below for more info on endangered animals!
-                    </p>
-                    <a href = "https://www.worldwildlife.org/species/directory?direction=desc&sort=extinction_status" target="_blank" rel="noopener noreferrer">  <img src = "images/WWF_logo.svg" 
-                        alt = "WWF panda logo"> </a>
-                </div>
+                <h1 class="title is-4 has-text-centered">Update An Animal's Fighting Record Record</h1>
             </div>
+        </div>
+        <div class="boxx">
+        <div class="field">
+            <label class="label">Enter Animal ID</label>
+            <div class="control">
+                <input id="id_update" class="input" type="text" placeholder="Enter Animal ID To Update">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Enter Animal Name</label>
+            <div class="control">
+                <input id="name_update" class="input" type="text" placeholder="Animal Name">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Enter Special Skill Name</label>
+            <div class="control">
+                <input id="specskill_update" class="input" type="text" placeholder="Special Skill">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Enter Weapon of Choice</label>
+            <div class="control">
+                <input id="woc_update" class="input" type="text" placeholder="Weapon of Choice">
+            </div>
+        </div>
+        <div class="control" onclick="updatefightRecord()">
+            <button class="button ton">Submit</button>
+        </div>
         </div>
     </div>
     <script src="scripts.js"></script>
+    <script src="editfightrecord.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+

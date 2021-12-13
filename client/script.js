@@ -168,9 +168,8 @@ function radarChart(fdata, mdata) {
 }
 
 // Stacked bar chart.
-function stackedBar(labels, data) {
+function stackedBar(data) {
   const chartData = {
-    labels: labels,
     datasets: [{
       axis: 'y',
       label: 'My First Dataset',
@@ -281,6 +280,7 @@ async function mainThread() {
   const crash_information = await fetchRequest('./api/crashInformation');
   const driver_demographics = await fetchRequest('./api/driverDemographics');
   const driver_culpability = await fetchRequest('./api/driverCulpability');
+  const vehicle_data = await fetchRequest('./api/vehicle_data');
 
   // summing up the number of collision types from the crashInformation
   const numCollType = [];
@@ -326,10 +326,6 @@ async function mainThread() {
   m_age = binGen(m_drivers_age);
 
   radarChart(f_age, m_age);
-
-  // ------------------------------------------------------------------
-  // extracting the road condition data from the crashInformation
-  // ------------------------------------------------------------------
 
 }
 

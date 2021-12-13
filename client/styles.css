@@ -39,11 +39,20 @@ body {
   color: white;
 }
 
-.box title {
-  padding: 20px;
+.box {
+  padding: 40px;
+  margin: 20px;
 }
 .center {
   padding: 70px 0;
   border: 3px solid blue;
   text-align: center;
+}
+
+.card {
+  width: 400px;
+}
+
+.footnote {
+  padding: 20px;
 }

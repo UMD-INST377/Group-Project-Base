@@ -6,7 +6,7 @@ https://dashboard.heroku.com/apps/group7-final-inst377
 ## Target Browsers
 Macbook Pro 
 ## Links
-- [Developer Manual] (
+- [Developer Manual](https://github.com/jremeto/Group7-Final-INST377/blob/main/README.md)
 - [User Manual] (http://localhost:3000/documentation.html)
 # Developer Manual
 ## How to install your application and all dependencies

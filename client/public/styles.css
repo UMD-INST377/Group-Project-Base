@@ -53,12 +53,14 @@ details > summary {
   padding: 0;
   margin: 0;
   width: 15em;
-  background-color: #ff8800;
+  background-color:#ff8800;
   border: none;
   cursor: pointer;
   width: 100%;
   border: 1px solid;
   height: 38px;
+  font-size: large;
+  font-weight: 700;
 }
 
 img {
@@ -67,11 +69,13 @@ img {
   height: 500px;
   width: 93.4%;
 }
+
 .container-p {
   align-items: center;
-} 
+}
+
 .container {
-  background: #f4ecc2;
+  background-color:#f4ecc2;
   align-items: center;
 }
 
@@ -91,4 +95,21 @@ img {
   background-color:#ddd;
   max-width: 700px;
   margin: auto;
+}
+
+.boxx {
+  max-width: fit-content; 
+  background-color: white;
+  border: 10px;
+  border-style: solid;
+  border-color: #ff8800;
+  max-width: 1300px;
+  margin: auto;
+  padding: 15px;
+}
+
+
+p{
+  font-family: Serif; 
+  font-size: 24px;
 }

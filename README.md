@@ -25,6 +25,19 @@ Macbook Pro
 3. Type npm test within the other terminal 
 
 ## API Section
+Included in the repository is a list of APIs which correlate to their respective tables in the database. They include:
+1. collisionType
+2. crashInformation
+3. driverDemographics
+4. roadConditions
+5. culpability
+
+Each endpoint contains GET, POST, PUT, and DELETE methods to allow for data manipulation. The methods and their uses are detailed below.
+
+1. GET - Retrieves data from the server.
+2. POST - Sends data to the server allowing for the creation of new resources.
+3. PUT - Sends data to the server allowing for existing records to be updated.
+4. DELETE - Deletes a resource from the server. 
 
 ## Development and Bugs Section
 
@@ -34,6 +47,7 @@ Macbook Pro
 - Add a way for users to enter location of crashes
 - Create a heatmap to plot crashes 
 - Handle unknown and/or new values that were not part of database 
+- Allow for the insertion of data to tables other than driverDemographics - drop down table selector implemented already
 ### Bugs
 - Could be issues with values that are not specified within database
 

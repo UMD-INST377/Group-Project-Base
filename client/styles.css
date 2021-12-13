@@ -42,6 +42,7 @@ body {
 .box {
   padding: 40px;
   margin: 20px;
+  background-color: aquamarine;
 }
 .center {
   padding: 70px 0;

@@ -42,6 +42,12 @@ There are no prewritten tests in the source repository currently
   * POST - Updates the data based on category_id
   * PUT - Inserts data where id is auto incremented
   
+   ```/api/eruption_info``` - API route for eruption informations
+  * GET - Returns data from a SELECT statement of the eruption_info table as a JSON response along with a message to the console
+  * POST - Updates the data based on eruption_id
+  * PUT - Inserts data where id is auto incremented
+  * DELETE - Deletes data based on eruption_id
+  
   `/api/evidence` - API route for evidence data and methods.
   * GET - Returns the data from the json response with SELECT statements EvidenceController.js
   * POST - Updates the data using the Evidence id through joins.

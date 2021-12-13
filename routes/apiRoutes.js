@@ -36,9 +36,6 @@ router.get('/membersTest',async(req, res) => {
     res.json({message: 'Error222'})
   }
 })
-
-
-
 /// //////////////////////////////////
 /// ////Congress Profiles Endpoints///
 /// //////////////////////////////////

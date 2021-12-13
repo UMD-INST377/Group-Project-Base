@@ -36,4 +36,5 @@ Macbook Pro
 - Handle unknown and/or new values that were not part of database 
 ### Bugs
 - Could be issues with values that are not specified within database
+- Type Error that has an unknown affect
 

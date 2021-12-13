@@ -10,6 +10,7 @@ async function fightList() {
           <div class = 'column is-half'>
             <div class="content listings">
                 <h1>Animal Name: ${fighter.common_name}</h1>
+                <h3>Fight Mode ID: ${fighter.fight_mode_id}</h3>
                 <h3>Special skill: ${fighter.special_skill}</h3>
                 <h3>Weapon Of Choice : ${fighter.weapon_of_choice}</h3>
             </div>

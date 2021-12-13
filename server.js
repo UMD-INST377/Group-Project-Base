@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 
+
 async function bootServer() {
   try {
     // const mysql = await db.sequelizeDB;

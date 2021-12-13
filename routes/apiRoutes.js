@@ -4,270 +4,424 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
+// Import Controllers
+import covidStatsCustom from '../controllers/covid-stats.js';
+import countyInfo from '../controllers/county-info_GET.js';
+import vacByCountydata from '../controllers/vacByCountyController.js';
+import vaccSitesInfo from '../controllers/vaccine-site-info.js';
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+    res.send('Welcome to the Maryland Counties COVID-19 Database!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////COVID Stats Endpoint////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
-  try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/dining/:hall_id', async (req, res) => {
-  try {
-    const hall = await db.DiningHall.findAll({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
-
-    res.json(hall);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
-  try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.delete('/dining/:hall_id', async (req, res) => {
-  try {
-    await db.DiningHall.destroy({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/dining', async (req, res) => {
-  try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
+router.route('/covid-stats')
+    .get(async(req, res) => {
+        try {
+            const databaseResponse = await db.sequelizeDB.query(covidStatsCustom, {
+                type: sequelize.QueryTypes.SELECT
+            });
+            console.log('Touched /covid-stats with GET');
+            res.json(databaseResponse);
+        } catch (err) {
+            console.log(err);
+            res.json({ error: 'Something went wrong' });
         }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/meals/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/meals', async (req, res) => {
-  try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
+    })
+    .put(async(req, res) => {
+        try {
+            await db.covidStatsCustom.update({
+                confirmed_deaths: req.body.confirmed_deaths,
+                positive_cases: req.body.positive_cases,
+                county_death_prop: req.body.county_death_prop
+            }, {
+                where: {
+                    county_ID: req.body.county_ID
+                }
+            });
+            console.log('Successfully Updated with PUT');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
         }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/macros', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
+    })
+    .post(async(req, res) => {
+        const cStatsTable = await db.covidStatsCustom.findAll();
+        const currentId = (await cStatsTable.length) + 1;
+        try {
+            const addCovidStats = await db.covidStatsCustom.create({
+                county_ID: currentId,
+                confirmed_deaths: req.body.confirmed_deaths,
+                positive_cases: req.body.positive_cases,
+                county_death_prop: req.body.county_death_prop
+            });
+            console.log('Touched /covid-stats with POST');
+            res.send('Successfully added with POST');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
         }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
-      where: {
-        restriction_id: req.params.restriction_id
-      }
+    })
+    .delete(async(req, res) => {
+        try {
+            await db.covidStatsCustom.destroy({
+                where: {
+                    county_ID: req.params.county_ID
+                }
+            });
+            console.log('Successfully Deleted with DELETE');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
     });
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
+
+/// /////////////////////////////////
+/// ////Vaccine Stats Endpoint////////
+/// /////////////////////////////////
+router.route('/vacByCountyController')
+    .get(async(req, res) => {
+        try {
+            const dataResponse = await db.sequelizeDB.query(vacByCountydata, {
+                type: sequelize.QueryTypes.SELECT
+            });
+            console.log('Reached /vacByCounty endpoint with GET');
+            res.json(dataResponse);
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    .put(async(req, res) => {
+        try {
+            await db.vacByCountydata.update({
+                first_dose_count: req.body.first_dose_count,
+                first_dose_prop: req.body.first_dose_prop,
+                second_dose_count: req.body.second_dose_count,
+                second_dose_prop: req.body.second_dose_prop,
+            }, {
+                where: {
+                    county_ID: req.body.county_ID
+                }
+            });
+            console.log('Successfully Updated Vaccine County Data with PUT')
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    .post(async(req, res) => {
+        const vacByCountyTable = await db.covidStatsCustom.findAll();
+        const currentID = (await vacByCountyTable.length) + 1;
+        try {
+            const addVacByCountyStats = await db.vacByCountydata.create({
+                county_ID: currentID,
+                first_dose_count: req.body.first_dose_count,
+                first_dose_prop: req.body.first_dose_prop,
+                second_dose_count: req.body.second_dose_count,
+                second_dose_prop: req.body.second_dose_prop,
+            });
+            console.log('Reached /vacByCounty endpoint with POST')
+            res.send('Successfully added to Vaccine Data By County with POST')
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    .delete(async(req, res) => {
+        try {
+            await db.vacByCountydata.destroy({
+                where: {
+                    county_ID: req.params.county_ID
+                }
+            });
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    });
+
+/// /////////////////////////////////
+/// ////Vaccine Sites Endpoint////////
+/// /////////////////////////////////
+router.route('/vaccine-site-info')
+    .get(async(req, res) => {
+        try {
+            const databaseResponse = await db.sequelizeDB.query(vaccSitesInfo, {
+                type: sequelize.QueryTypes.SELECT
+            });
+            res.json(databaseResponse);
+            console.log('Touched /vacc-sites with GET');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    .put(async(req, res) => {
+        try {
+            await db.vaccSitesInfo.update({
+                site_name: req.body.site_name,
+                street_address: req.body.street_address,
+                street_address2: req.body.street_address2,
+                city: req.body.city,
+                zip_code: req.body.zip_code,
+                active: req.body.active,
+                site_type: req.body.site_type,
+                operating_hours: req.body.operating_hours,
+                contact_phone: req.body.contact_phone,
+                website: req.body.website,
+            }, {
+                where: {
+                    site_ID: req.body.site_ID
+                }
+            });
+            console.log('Successfully updated with PUT');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    .post(async(req, res) => {
+        const vaccSitesTable = await db.vaccSitesInfo.findAll();
+        const currentID = (await vaccSitesTable.length) + 1;
+        try {
+            const addVaccSitesStats = await db.vaccSitesInfo.create({
+                site_ID: currentID,
+                site_name: req.body.site_name,
+                street_address: req.body.street_address,
+                street_address2: req.body.street_address2,
+                city: req.body.city,
+                zip_code: req.body.zip_code,
+                active: req.body.active,
+                site_type: req.body.site_type,
+                operating_hours: req.body.operating_hours,
+                contact_phone: req.body.contact_phone,
+                website: req.body.website,
+            });
+            res.send('Successfully added with POST');
+            console.log('Touched /vacc-sites with POST');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    .delete(async(req, res) => {
+        try {
+            await db.vaccSitesInfo.destroy({
+                where: {
+                    site_ID: req.params.site_ID
+                }
+            });
+            console.log('Successfully deleted with DELETE');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    });
+/// /////////////////////////////////
+/// ////County Info Endpoint////////
+/// /////////////////////////////////
+router.route('/county-info')
+    .get(async(req, res) => {
+        try {
+            const dbResponse = await db.sequelizeDB.query(countyInfo, {
+                type: sequelize.QueryTypes.SELECT
+            });
+            res.json(dbResponse);
+            console.log('Touched /county-info with GET');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    // put request
+    .put(async(req, res) => {
+        try {
+            await db.County.update({
+                population_density: req.body.population_density,
+                uninsured: req.body.uninsured,
+                poverty_rate: req.body.poverty_rate
+            }, {
+                where: {
+                    county_ID: req.body.county_ID
+                }
+            });
+            res.send({ message: 'Updated county' });
+            console.log('Touched /county-info with PUT');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+
+// post request
+.post(async(req, res) => {
+    const countyInfoTable = await db.County.findAll();
+    const currentID = await countyInfoTable.length + 1;
+    try {
+        const addCounty = await db.County.create({
+            county_ID: currentID,
+            county: req.body.county,
+            population: req.body.population,
+            population_density: req.body.population_density
+        });
+        res.json(addCounty);
+        console.log('Touched /county-info with POST');
+    } catch (err) {
+        console.log(error);
+        res.json({ error: 'Something went wrong' });
+    }
+})
+
+// delete request
+.delete(async(req, res) => {
+    try {
+        await db.County.destroy({
+            where: {
+                county_ID: req.params.county_ID
+            }
+        });
+        res.json({ message: 'Touched /county-info with DELETE' });
+        console.log('Successfully deleted a county');
+    } catch (err) {
+        console.log(error);
+        res.json({ error: 'Something went wrong' });
+    }
 });
 
+/// /////////////////////////////////
+/// ////Unemployment Endpoint////////
 /// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
+router.route('/unemployment')
+    .get(async(req, res) => {
+        try {
+            res.json({ message: 'Touched /unemployment with GET' });
+            console.log('Touched /unemployment with GET');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    //put request
+    .put(async(req, res) => {
+        try {
+            await db.Unemployment.update({
+                month: req.body.month,
+                rate: req.body.rate
+            }, {
+                where: {
+                    county_ID: req.body.county_ID
+                }
+            });
+            res.json({ message: 'Touched /unemployment with PUT' });
+            console.log('Touched /unemployment with PUT');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    //post request
+    .post(async(req, res) => {
+        const unemploymentTable = await db.Unemployment.findAll();
+        const currentID = await unemploymentTable.length + 1;
+        try {
+            const addMonth = awaitdb.Unemployment.create({
+                county_ID: currentID,
+                unemployment: req.body.unemployment,
+                rate: req.body.rate
+            });
+            res.json({ message: 'Touched /unemployment with POST' });
+            console.log('Touched /unemployment with POST');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    //delete request
+    .delete(async(req, res) => {
+        try {
+            await db.Unemployment.destroy({
+                where: {
+                    county_ID: req.params.county_ID
+                }
+            });
+            res.json({ message: 'Touched /unemployment with DELETE' });
+            console.log('Touched /unemployment with DELETE');
+        } catch (err) {
+            console.log(error);
+            res.json({ error: 'Something went wrong' });
+        }
     });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
 export default router;
+
+/// /////////////////////////////////
+/// ////VacDataAndCounty Endpoint////////
+/// //////////////////////////////////
+router.route('/vacDataAndCounty')
+    .get(async(req, res) => {
+        try {
+            const databaseResponse = await db.sequelizeDB.query(VCdata, {
+                type: sequelize.QueryTypes.SELECT
+            });
+            console.log('Touched /vacDataAndCounty with GET');
+            res.json(databaseResponse);
+        } catch (err) {
+            console.log(err);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    .put(async(req, res) => {
+      try {
+          await db.VCdata.update({
+              population: req.body.population,
+              confirmed_deaths: req.body.confirmed_deaths,
+              positive_cases: req.body.positive_cases, 
+              first_dose_count: req.body.first_dose_count,
+              second_dose_count: req.body.second_dose_count
+          }, {
+              where: {
+                  county_ID: req.body.county_ID
+              }
+          });
+          console.log('Successfully Updated with PUT');
+      } catch (err) {
+          console.log(error);
+          res.json({ error: 'Something went wrong' });
+      }
+  })
+  .post(async(req, res) => {
+      const VCTable = await db.VCdata.findAll();
+      const currentId = (await VCTable.length) + 1;
+      try {
+          const addVCstats = await db.VCdata.create({
+              county_ID: currentId,
+              population: req.body.population,
+              confirmed_deaths: req.body.confirmed_deaths,
+              positive_cases: req.body.positive_cases, 
+              first_dose_count: req.body.first_dose_count,
+              second_dose_count: req.body.second_dose_count
+          });
+          console.log('Touched /VCstats with POST');
+          res.send('Successfully added with POST');
+      } catch (err) {
+          console.log(error);
+          res.json({ error: 'Something went wrong' });
+      }
+  })
+  .delete(async(req, res) => {
+      try {
+          await db.VCdata.destroy({
+              where: {
+                  county_ID: req.params.county_ID
+              }
+          });
+          console.log('Successfully Deleted with DELETE');
+      } catch (err) {
+          console.log(error);
+          res.json({ error: 'Something went wrong' });
+      }
+  });

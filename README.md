@@ -50,5 +50,5 @@ https://secure-badlands-63929.herokuapp.com
 `curl -X DELETE http://localhost:3000/api/nba-players/X`
 
 ##Deveoloper Manual
-*Test
+* Test
 

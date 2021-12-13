@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'/>
+        <title>Group 7 About Page</title>
+        <link rel='stylesheet' href='styles.css'/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"/>
+        <link href="nv.d3.min.css" rel="stylesheet">
+        <script src='./lib/d3.js'></script>
+        <script src="./lib/chart.js"></script>
+        <script src="https://kit.fontawesome.com/9a0bfbe284.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class = 'wrapper'>
+            <div class="container">
+
+              <div class="columns is-vcentered">
+                <div class="column is-full">
+                  <div class="box title has-background-warning-light">
+                      <p>Data Visualizations</p>
+                  </div>
+                </div>
+              </div>
+
+                <!-- Navigation Bar -->
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                  <div class="navbar-brand">
+                      <a class="navbar-item" href="./index.html">
+                          
+                      </a>
+                  </div>
+        
+                  <div id="navbarBasicExample" class="navbar-menu">
+                      <div class="navbar-start">
+                          <a class="navbar-item" href="index.html">
+                              <span class="icon"><i class="fas fa-home"></i></span>
+                              <span>Home</span>
+                          </a>
+                          <a class="navbar-item" href="visualizations.html">Data Graphs</a>
+                          <a class="navbar-item" href="new_record.html">New Record</a>
+                          <a class="navbar-item" href="about.html">About</a>
+                          <a class="navbar-item" href="documentation.html">Documentation</a>
+                      </div>
+
+                      <div class="navbar-end">
+                          <div class="navbar-item">
+                              <div class="field is-grouped">
+
+                                  <p class="control">
+                                      <a class="button is-light" href="./data/maryland_crash_data.sql">
+                                        <span class="icon"><i class="fas fa-download"></i></span>
+                                        <span>Download SQL Data</span>
+                                      </a>
+                                  </p>
+
+                                  <p class="control">
+                                      <a class="button" href="https://github.com/jremeto/Group7-Final-INST377">
+                                          <span class="icon"><img src="./images/git.png"></span>
+                                      </a>
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </nav>
+              <!--  -->
+
+                <div class="columns is-vcentered">
+                  <div class= "column is-half">
+                    <div class="box has-background-danger-light has-text-centered">
+                      <div class="title">Collisions by Type</div>
+                      <canvas id="chart" width="400" height="400"></canvas>
+                    </div>
+                  </div>
+                  <div class= "column is-two-fifths">
+                    <div class="card">
+                      <div class="card-content">
+                        <div class="content">
+                          <p>This box chart shows what type of impact is recorded at the time of the accident. From the data we can see that a vast majority of the accidents are <b>same direction rear-ends</b>.</p>
+                          <p>A report from the National Transportation Safety Board found that <strong>87%</strong> of rear-end collisions happened because of a distracted driver.</p>
+                          <p>Driver distraction is by far the leading cause of this type of crash, as a driver does not notice the vehicle in front of them in time to slow down or stop to avoid a collision.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="columns is-vcentered">
+                  <div class= "column is-two-fifths">
+                    <div class="card">
+                      <div class="card-content">
+                        <div class="content">
+                          <p>The doughnut chart to the right shows <i>driver culpability</i> or responsibility for fault in an accident.</p>
+                          <p>According to National Highway Traffic Safety Administration, for more than two decades, <b>speeding</b> has been involved in approximately one-third of all motor vehicle fatalities. In 2019, speeding was a contributing factor in 26% of all traffic fatalities.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="column is-half">
+                      <div class="box has-background-success-light has-text-centered">
+                        <div class="title">Driver Culpability</div>
+                        <canvas id="donut" width="400" height="400"></canvas>
+                        <div class="footnote is-size-7">Filter the categories by clicking on the labels</div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="columns is-vcentered">
+                  <div class= "column is-half">
+                    <div class="box has-background-warning-light has-text-centered">
+                      <div class="title">Collisions by Age and Sex</div>
+                      <canvas id="radar" width="400" height="400"></canvas>
+                    </div>
+                  </div>
+
+                  <div class= "column is-two-fifths">
+                    <div class="card">
+                      <div class="card-content">
+                        <div class="content">
+                          <p>The radar graph shows the number of collisions separated by both <b>age and sex</b> of the drivers.</p>
+                          <p>While not representative on the graph, The National Highway Traffic Safety Administration reports that <strong>men</strong> cause an average of <i>6.1 million</i> accidents per year in the U.S., and <strong>women</strong> cause <i>4.4 million</i> accidents per year.</p>
+                          <p>Drivers ages <b>16-17</b> continue to have the highest rates of crash involvement, injuries to themselves and others and deaths of others in crashes in which they are involved. Drivers age <b>80 and older</b> have the highest rates of driver deaths.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+            </div>
+        </div>
+        <script src = 'script.js'></script> 
+    </body>
+
+</html>
+

@@ -12,11 +12,11 @@ https://group15videogamesproject.herokuapp.com
 
 https://github.com/Ken2399/Group15-Final-INST377SP2021
 
-#Target Browser
-*Desktop Chrome Version V80+
-*Desktop Browser Version V88+
-*Android Chrome Version V91+
-*IOS Safari Version 13.0+
+# Target Browser
+* Desktop Chrome Version V80+
+* Desktop Browser Version V88+
+* Android Chrome Version V91+
+* IOS Safari Version 13.0+
 
 # Developer Manual
 ## Getting Started
@@ -67,9 +67,9 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 -There are no known bugs at this time.
 
 ### Future Development: 
-*Implement user sign up/sign-in page(also create a table to store users information)
-*Add description pages for each game in the list
-*Explore fancy data visualization techniques to improve the aesthetics of the website
-*Enrich features, such as enabling users to leave comments 
-*Strengthen the linkage between our website and other game platforms(such as Steam and Epic) to improve the reliability of game data
+* Implement user sign up/sign-in page(also create a table to store users information)
+* Add description pages for each game in the list
+* Explore fancy data visualization techniques to improve the aesthetics of the website
+* Enrich features, such as enabling users to leave comments 
+* Strengthen the linkage between our website and other game platforms(such as Steam and Epic) to improve the reliability of game data
 

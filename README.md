@@ -53,6 +53,12 @@ There are no prewritten tests in the source repository currently
   * POST - Updates the data using the Evidence id through joins.
   * PUT - inserts the data into the data columns based on the evidence id given.
   * DELETE - deletes the rows using evidence id as a conditional statement.
+
+  `/api/vei` - API route for vei (Volcanic Explosivity Index).
+  * GET - Returns data from a SELECT statement of the vei table as a JSON response along with a message to the console.
+  * POST - Updates the data based on vei_id.
+  * PUT - inserts the data into the data columns based on the vei_id given.
+  * DELETE - Deletes data based on vei_id.
   
 ## Known Bugs and Future Development
 ### Bugs:

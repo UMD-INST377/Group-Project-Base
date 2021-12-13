@@ -66,7 +66,7 @@ There are no prewritten tests in the source repository currently
   * PUT - Does not work at all due to some foreign key limition.
   * DELETE - Deletes data from the table based on topic id, but is not very useful because adding data via POST is buggy.
   
-  `/api/volcanos` - - API route for volcanos table
+  `/api/volcanos` - API route for volcanos table
   * GET - Returns data from a SELECT statement of the volcanos table as a JSON response along with a message to the console.
   * POST - Updates the data based on volcano_id
   * PUT - Inserts data where id is auto incremented

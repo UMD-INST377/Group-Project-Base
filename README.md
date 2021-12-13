@@ -12,7 +12,7 @@ https://group15videogamesproject.herokuapp.com
 
 https://github.com/Ken2399/Group15-Final-INST377SP2021
 
-# Target Browser
+## Target Browser
 * Desktop Chrome Version V80+
 * Desktop Browser Version V88+
 * Android Chrome Version V91+

@@ -59,10 +59,13 @@ this extension, simply search the name up in the VSCode Extension store and inst
 ### /api/child
 
 ### /api/vpdrop
+> The purpose of this endpoint is to allow user's to select vice presidents from a drop down menu.
 
 ### /api/firstladydrop
+> The purpose of this endpoint is to allow user's to select first lady's from a drop down menu.
 
 ### /api/presidentdrop
+> The purpose of this endpoint is to allow user's to select president's from a drop down menu. 
 
 ### Delete API
 

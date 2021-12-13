@@ -50,4 +50,5 @@ Each endpoint contains GET, POST, PUT, and DELETE methods to allow for data mani
 - Allow for the insertion of data to tables other than driverDemographics - drop down table selector implemented already
 ### Bugs
 - Could be issues with values that are not specified within database
+- Type Error that has an unknown affect
 

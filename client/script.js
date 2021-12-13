@@ -279,7 +279,6 @@ async function mainThread() {
   const crash_information = await fetchRequest('./api/crashInformation');
   const driver_demographics = await fetchRequest('./api/driverDemographics');
   const driver_culpability = await fetchRequest('./api/driverCulpability');
-  const vehicle_data = await fetchRequest('./api/vehicle_data');
 
   // summing up the number of collision types from the crashInformation
   const numCollType = [];

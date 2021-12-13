@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sales Page</title>
+        <link rel='stylesheet' href='casey.css'/>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
+    </head>
+    <body>
+        <nav class="navbar has-shadow is-black" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" >
+                    <img src="logo.jpg" alt='site logo' style='max-height: 70px' class='py-2 py-2' >
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="index.html">
+                        <strong>Home</strong>
+                    </a>
+                    <a class="navbar-item" href="games.html">
+                        <strong>Games</strong>
+                    </a>
+                    <a class="navbar-item" href="about.html">
+                        <strong>About</strong>
+                    </a>
+                </div>
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <div class="buttons">
+                      <div class="dropdown is-hoverable">
+                        <div class="dropdown-trigger">
+                          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                            <span>Edit Table</span>
+                            <span class="icon is-small">
+                              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                          <div class="dropdown-content">
+                            <a href="form_page.html" class="dropdown-item">
+                              Edit General Table
+                            </a>
+                            <a href="get_price.html" class="dropdown-item">
+                              Edit Price Table
+                            </a>
+                            <a href="sales.html" class="dropdown-item">
+                                Edit Sales Table
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </nav>
+        <br><br><br>
+        <h1 class="title is-light">Game Name -- Sales Id Match Table!(Original Data Use Only)</h1>
+
+        <div class='atable'>
+            <table is-bordered is-striped is-narrow is-hoverable is-fullwidth  class="table">
+                <thead>
+                    <tr>
+                        <th><abbr title="Position">Sales ID</abbr></th>
+                        <th>Game Name</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <th>Call of Duty: Black Ops: Cold War </th>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <th>Call of Duty: Modern Warfare </th>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <th>Animal Crossing: New Horizons </th>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <th>Madden NFL 21 </th>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <th>Assassin's Creed: Valhalla </th>
+                    </tr>
+                    <tr>
+                        <th>6</th>
+                        <th>The Last of Us: Part II </th>
+                    </tr>
+                    <tr>
+                        <th>7</th>
+                        <th>Ghost of Tsushima </th>
+                    </tr>
+                    <tr>
+                        <th>8</th>
+                        <th>Mario Kart 8: Deluxe* </th>
+                    </tr>
+                    <tr>
+                        <th>9</th>
+                        <th>Super Mario 3D All-Stars* </th>
+                    </tr>
+                    <tr>
+                        <th>10</th>
+                        <th>Final Fantasy VII: Remake </th>
+                    </tr>
+                    <tr>
+                        <th>11</th>
+                        <th>Marvel's Avengers </th>
+                    </tr>
+                    <tr>
+                        <th>12</th>
+                        <th>Marvel's Spider-Man: Miles Morales </th>
+                    </tr>
+                    <tr>
+                        <th>13</th>
+                        <th>NBA 2K21 </th>
+                    </tr>
+                    <tr>
+                        <th>14</th>
+                        <th>Super Smash Bros. Ultimate </th>
+                    </tr>
+                    <tr>
+                        <th>15</th>
+                        <th>FIFA 21 </th>
+                    </tr>
+                    <tr>
+                        <th>16</th>
+                        <th>Mortal Kombat 11 </th>
+                    </tr>
+                    <tr>
+                        <th>17</th>
+                        <th>Dragon Ball Z: Kakarot </th>
+                    </tr>
+                    <tr>
+                        <th>18</th>
+                        <th>MLB: The Show 20 </th>
+                    </tr>
+                    <tr>
+                        <th>19</th>
+                        <th>Cyberpunk 2077 </th>
+                    </tr>
+                    <tr>
+                        <th>20</th>
+                        <th>Tony Hawk's Pro Skater 1 + 2 </th>
+                    </tr>
+                    <tr>
+                        <th>21</th>
+                        <th>Genshin Impact </th>
+                    </tr>
+                    <tr>
+                        <th>22</th>
+                        <th>The Witcher 3: Wild Hunt </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br><br><br>
+        <table class = "table is-striped is-bordered">
+            <thead>
+                <tr>
+                    <th>Game Id</th>
+                    <th>Annual Sales</th>
+                    <th>Earnings</th>
+                </tr>
+            </thead>
+            <tbody id = 'table'>
+            </tbody>
+
+            <script src='sales_table.js'></script>
+        </table>
+    </body>
+</html>

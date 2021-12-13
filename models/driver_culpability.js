@@ -1,21 +1,18 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    'Meals',
+  const driver_culpability = sequelize.define(
+    'driver_culpability',
     {
-      meal_id: {
+      culpability_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         unique: true,
         primaryKey: true
       },
-      meal_name: {
+      culpability_desc: {
         type: DataTypes.STRING
       },
-      meal_category: {
-        type: DataTypes.STRING
-      }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  return driver_culpability;
 };

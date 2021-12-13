@@ -3,271 +3,396 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import crash_information from '../models/crash_information.js';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the default route!');
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Car Data Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+
+// Jordan's API Routes to Collision Type Endpoint
+// All endpoints should follow the basic outline of this first endpoint.
+// Any instance of "db.XXX" should be your specific table as defined in the models folder.
+// Make sure you add async and check that your 'catch' is formatted correctly to avoid errors.
+
+router.route('/collisionType')
+  .get(async(req, res) => {
+    try {
+      const collision_type = await db.collision_type.findAll();
+      console.log('You touched the /collisionType route with GET');
+      res.json(collision_type);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      await db.collision_type.update(
+        {
+          collision_desc: req.body.collision_desc
+        },
+        {
+          where: {
+            collision_type_id: req.body.collision_type_id
+          }
+        }
+      );
+      console.log('You touched the /collisionType route with PUT');
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
+    }
+  })
+  .post(async(req, res) => {
+    const collision_type = await db.collision_type.findAll();
+    const currentID = (await collision_type.length) + 1;
+    try {
+      const collisionTypeCreate = await db.collision_type.create({
+        collision_type_id: currentID,
+        collision_desc: req.body.collision_desc
+      });
+      console.log('You touched the /collisionType route with POST');
+      res.json(collisionTypeCreate);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      await db.collision_type.destroy({
+        where: {
+          collision_type_id: req.params.collision_type_id
+        }
+      });
+      console.log('You touched the /collisionType route with DELETE');
+      res.send('Successfully deleted');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /collisionType');
+    }
+  });
+
+/// Mark's Endpoint CrashInformation
+
+router.route('/crashInformation')
+  .get(async (req, res) => {
+    try {
+      const crash_information = await db.crash_information.findAll();
+      console.log('You touched the crashInformation endpoint!');
+      res.json(crash_information);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
+    }
+  })
+
+  .put(async(req, res) => {
+    try {
+      await db.crash_information.update(
+        {
+          report_id: req.body.report_id,
+          location_id: req.body.location_id,
+          report_type: req.body.report_type,
+          acc_date: req.body.acc_date,
+          collision_type_id: req.body.collision_type_id
+        },
+        {
+          where: {
+            report_id: req.body.report_id
+          }
+        }
+      );
+      console.log('You touched the /crashInformation route with PUT');
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
+    }
+  })
+
+  .post(async(req, res) => {
+    const crash_information = await db.crash_information.findAll();
+    try {
+      const newCrashInformation = await db.crash_information.create({
+        report_id: req.body.report_id,
+        location_id: req.body.location_id,
+        report_type: req.body.report_type,
+        acc_date: req.body.acc_date,
+        collision_type_id: req.body.collision_type_id
+      });
+      console.log('You touched the /crashInformation route with POST');
+      res.json(newCrashInformation);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
+    }
+  })
+
+  .delete(async(req, res) => {
+    try {
+      await db.crash_information.destroy({
+        where: {
+          report_id: req.params.report_id
+        }
+      });
+      console.log('You touched the /crashInformation route with DELETE');
+      res.send('Successfully deleted');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /crashInformation');
+    }
+  });
+
+/// Matt's endpoint driverDemographics
+
+router.route('/driverDemographics')
+  .get(async(req, res) => {
+    try {
+      const driver_demographics = await db.driver_demographics.findAll();
+      console.log('You touched the driverDemographics endpoint!');
+      res.json(driver_demographics);
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on /driverDemographics'});
+    }
+  })
+
+  .put(async(req, res) => {
+    try {
+      await db.driver_demographics.update(
+        {
+          person_id: req.body.person_id,
+          report_id: req.body.report_id,
+          sex_code: req.body.sex_code,
+          date_of_birth: req.body.date_of_birth,
+          culpability_id: req.body.culpability_id
+        },
+        {
+          where: {
+            person_id: req.body.person_id
+          }
+        }
+      );
+      console.log('You touched the /driverDemographics with PUT');
+      res.send('Successfuly updated');
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on /driverDemographics'});
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      const newDriverDemographics = await db.driver_demographics.create({
+        person_id: req.body.person_id,
+        report_id: req.body.report_id,
+        sex_code: req.body.sex_code,
+        date_of_birth: req.body.date_of_birth,
+        culpability_id: req.body.culpability_id
+      });
+      console.log('You touched the /driverDemographics route with POST');
+      res.json(newDriverDemographics);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /driverDemographics');
+    }
+  })
+
+  .delete(async(req, res) => {
+    try {
+      await db.driver_demographics.destroy({
+        where: {
+          person_id: req.body.person_id
+        }
+      });
+      console.log('You touched the /driverDemographics route with DELETE');
+      res.send('Successfully deleted');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong on /driverDemographics');
+    }
+  });
+
+// Michael's Endpoint to the vehicleData
+
+router.route('/vehicle_data')
+  .get(async(req, res) => {
+    try {
+      console.log('You touched the /vehicle_data endpoint!');
+      res.json({data: data});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .put((req, res) => {
+    try {
+      res.json({message: 'You touched /vehicle_data with PUT'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .post((req, res) => {
+    try {
+      res.json({message: 'You touched vehicle_data with POST'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  })
+
+  .delete((req, res) => {
+    try {
+      res.json({message: 'You touched vehicle_data with DELETE'});
+    } catch (err) {
+      console.log(error);
+      res.json({error: 'Something went wrong on the server'});
+    }
+  });
+
+
+  // Teyojessam's Endpoint to the roadConditions
+
+router.route('/roadConditions')
+.get(async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
+    const road_conditions = await db.road_conditions.findAll();
+    console.log('You touched the /roadConditions endpoint!');
+    res.json(road_conditions);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Something went wrong on /roadConditions');
   }
-});
-
-router.get('/dining/:hall_id', async (req, res) => {
+})
+.put(async(req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
-
-    res.json(hall);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
-  try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.delete('/dining/:hall_id', async (req, res) => {
-  try {
-    await db.DiningHall.destroy({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/dining', async (req, res) => {
-  try {
-    await db.DiningHall.update(
+    await db.road_conditions.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        junction_code: req.body.junction_code,
+        junction_desc: req.body.junction_desc,
+        surf_cond_code: req.body.surf_cond_code,
+        surf_cond_desc: req.body.surf_cond_desc,
+        rd_div_code: req.body.rd_div_code,
+        rd_div_desc: req.body.rd_div_desc
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          junction_code: req.body.junction_code
         }
       }
     );
+    console.log('You touched the /roadConditions route with PUT');
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Something went wrong on /roadConditions');
   }
-});
+})
 
-/// /////////////////////////////////
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+.post(async(req, res) => {
+  const road_conditions = await db.road_conditions.findAll();
+  const currentID = (await road_conditions.length) + 1;
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const newRoadConditions = await db.road_conditions.create({
+      junction_code: currentID,
+      junction_desc: req.body.junction_desc,
+      surf_cond_code: req.body.surf_cond_code,
+      surf_cond_desc: req.body.surf_cond_desc,
+      rd_div_code: req.body.rd_div_code,
+      rd_div_desc: req.body.rd_div_desc
+    });
+    console.log('You touched the /roadConditions route with POST');
+    res.json(newRoadConditions);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Something went wrong on /roadConditions');
   }
-});
+})
 
-router.get('/meals/:meal_id', async (req, res) => {
+.delete(async(req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    await db.road_conditions.destroy({
       where: {
-        meal_id: req.params.meal_id
+        junction_code: req.params.junction_code
       }
     });
-    res.json(meals);
+    console.log('You touched the /roadConditions route with DELETE');
+    res.send('Successfully deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Something went wrong on /roadConditions');
   }
 });
-
-router.put('/meals', async (req, res) => {
-  try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
+// driver culpability endpoint
+  router.route('/driverCulpability')
+  .get(async(req, res) => {
+    try {
+      const driver_culpability = await db.driver_culpability.findAll();
+      console.log('You touched the /driverCulpability route with GET');
+      res.json(driver_culpability);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  })
+  .put(async(req, res) => {
+    try {
+      await db.driver_culpability.update(
+        {
+          culpability_desc: req.body.culpability_desc
+        },
+        {
+          where: {
+            culpability_id: req.body.culpability_id
+          }
         }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/macros', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
+      );
+      console.log('You touched the /driverCulpability route with PUT');
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  })
+  .post(async(req, res) => {
+    const driver_culpability = await db.driver_culpability.findAll();
+    const currentID = (await driver_culpability.length) + 1;
+    try {
+      const collisionTypeCreate = await db.driver_culpability.create({
+        culpability_id: req.body.culpability_id,
+        culpability_desc: req.body.culpability_desc
+      });
+      console.log('You touched the /driverCulpability route with POST');
+      res.json(driverCulpabilityCreate);
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  })
+  .delete(async(req, res) => {
+    try {
+      await db.driver_culpability.destroy({
         where: {
-          meal_id: req.body.meal_id
+          culpability_id: req.params.culpability_id
         }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
-      where: {
-        restriction_id: req.params.restriction_id
-      }
-    });
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+      });
+      console.log('You touched the /driverCulpability route with DELETE');
+      res.send('Successfully deleted');
+    } catch (err) {
+      console.error(err);
+      res.send('Something went wrong');
+    }
+  });
 
 export default router;

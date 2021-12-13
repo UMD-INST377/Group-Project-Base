@@ -59,6 +59,12 @@ There are no prewritten tests in the source repository currently
   * POST - Updates the data based on vei_id.
   * PUT - inserts the data into the data columns based on the vei_id given.
   * DELETE - Deletes data based on vei_id.
+
+  `/api/volcanos_has_references_table` - API route for volcanos_has_references_table
+  * GET - Returns data from a SELECT statement of the volcanos_has_references_table table as a JSON response along with a message to the console.
+  * POST - Works out of order and you have to specifiy topic_id when passing the arguement which should be incremental.
+  * PUT - Does not work at all due to some foreign key limition.
+  * DELETE - Deletes data from the table based on topic id, but is not very useful because adding data via POST is buggy.
   
 ## Known Bugs and Future Development
 ### Bugs:
@@ -66,10 +72,11 @@ There are no prewritten tests in the source repository currently
 - Delete for Edit Volcanoes doesn't work. If you'd like a volcano to not appear on the page, delete all of the eruptions. The volcano itself must be deleted through SQL.
 - Page currently only loads on mouse move
 - Form submission page shows up even if submission failed
+- Find use for all the tables in the database because some are only used to reference other tables and do not have much useful information
 
 ### Future Development: 
 * Add educational information regarding volcanoes.
 * Adding more informational charts.
 * Adding more volcanos and eruptions, goal is to have a complete database
 * Add an advanced search option with filters
-* Paginate the home page
+* Paginate the home page - We had the html working for this using bulma, but could not figure out the javascript to make the buttons work. 

@@ -312,9 +312,11 @@ router.route('/volcanos_has_references_table')
       res.json({error: 'something went wrong!'});
     }
   })
-  /* TO DEBUG 
-     put does not work at all due to some foreign key limition and 
-     post works out of order and u have to specifiy topic_id which shouldnt happen 
+  /* Does not work due to some compatibility issues in SQL, 
+    but not necessary for the project since this table is primarily for references 
+    put does not work at all due to some foreign key limition and 
+    post works out of order and u have to specifiy topic_id which shouldnt happen
+     
   .put(async(req, res) => {
     try {
       const result = await db.sequelizeDB.query(volcanosHasReferencesController.topicPut, {

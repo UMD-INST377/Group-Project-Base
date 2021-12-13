@@ -5,5 +5,5 @@ const addContact = "INSERT INTO ContactInformation('Phone_Number', 'Email_Addres
 const addProfiles = "INSERT INTO InternetProfiles('profile_ID', 'twitter', 'instagram', 'facebook', 'website') VALUES('{$req.body.profile_ID}','{$req.body.twitter}','{$req.body.instagram}', '{$req.body.facebook}', '{$req.body.website}')";
 
 export default {
-    addMember, addContact,
+    addMember, addContact, addProfiles
 }

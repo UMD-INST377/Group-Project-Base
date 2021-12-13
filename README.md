@@ -6,8 +6,8 @@ https://dashboard.heroku.com/apps/group7-final-inst377
 ## Target Browsers
 Macbook Pro 
 ## Links
-- Developer Manual
-- User Manual
+- [Developer Manual] (
+- [User Manual] (http://localhost:3000/documentation.html)
 # Developer Manual
 ## How to install your application and all dependencies
 1. Clone the chose repository through the Terminal or the GitHub Desktop Application

@@ -352,6 +352,8 @@ async function postNewRecord() {
   });
   console.log(request.json());
   return request.json();
+
+  location.href='about-us.html' //Navigate to a thanks page
 }
 
 // testing JSON output for new record

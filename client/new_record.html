@@ -23,9 +23,7 @@
                 <!-- Navigation Bar -->
                 <nav class="navbar" role="navigation" aria-label="main navigation">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="./index.html">
-                            
-                        </a>
+                        <a class="navbar-item" href="./index.html"></a>
                     </div>
         
                   <div id="navbarBasicExample" class="navbar-menu">
@@ -61,29 +59,129 @@
                       </div>
                   </div>
               </nav>
-              <!--  -->
+            
+            <!--  -->
 
-                <div class="column">
-                    <form>
-                        <label for="person_id">Person ID</label>
-                        <input type="text" id="person_id">
+            <div class="columns">
+                <div class="column is-full">
+                    <form class="forms" action="submit.html">
+                    <!-- Report ID field -->
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label" for="Report_ID">Report ID</label>
+                            </div>
+                            <div class="field-body">
+                            <div class="field">
+                                <p class="control is-expanded has-icons-left">
+                                    <input class="input" type="text" id="report_id" placeholder="Ex. 'AE5486002C'">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            </div>
+                        </div> 
+                    <!-- Person ID field -->
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label" for="person_id">Person ID</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field"> 
+                                    <p class="control has-icons-left">
+                                        <input class="input" type="text" id="person_id" placeholder="Ex. 'c106b827-1902-449f-ae8e-1f0c85b6e377'">
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <!-- Sex input dropdown -->
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label" for="sex_code">Sex</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            <select id="sex_code">
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                    
+                    <!-- Date Input -->
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label" for="sex_code">Date of Birth</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control has-icons-left">
+                                        <input class="input" type="date" value="2021-12-13" id="date_of_birth">
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    <!-- Culpability Dropdown -->
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label" for="sex_code">Culpability</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field is-narrow">
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select id="culpability_id">
+                                            <option value="0">None</option>
+                                            <option value="1">DWI</option>
+                                            <option value="2">Using Cell Phone</option>
+                                            <option value="3">DUI</option>
+                                            <option value="4">No Seatbelt</option>
+                                            <option value="5">No Lights On</option>
+                                            <option value="6">Speeding</option>
+                                            <option value="7">Eating</option>
+                                            <option value="8">Distracted</option>
+                                            <option value="9">Swerving</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                        <label for="report_id">Report ID</label>
-                        <input type="text" id="report_id">
+                    <div class="field is-horizontal">
+                        <div class="field-label">
+                          <!-- Left empty for spacing -->
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <div class="control">
+                                <a href="submit.html">
+                                    <button class="button is-primary" id="my_btn" onclick="postNewRecord()" action="submit.html">Submit</button>
+                                </a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
 
-                        <label for="sex_code">Sex</label>
-                        <input type="text" id="sex_code">
-
-                        <label for="date_of_birth">Date of birth</label>
-                        <input type="text" id="date_of_birth">
-
-                        <label for="culpability_id">Culpability ID</label>
-                        <input type="text" id="culpability_id">
-
-                        <button id="my_btn" onclick="postNewRecord()">Submit</button>  
                     </form>
+
                 </div>
-                
+            </div>
+
             </div>
         </div>
         <script src = 'script.js'></script> 

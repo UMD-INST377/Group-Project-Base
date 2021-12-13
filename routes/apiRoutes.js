@@ -50,9 +50,9 @@ router.get('/profiles',async(req, res) => {
 
     // Send data
     res.json({status: 'success', data: prof});
-  } catch (e) {
+  } catch (errorData) {
     // Debug
-    console.error(e);
+    console.error(errorData);
 
     // Send data
     response.json({status: 'failure', data: null, message: 'unknown error'});

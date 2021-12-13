@@ -4,7 +4,7 @@
         <meta charset='UTF-8'/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sales Page</title>
-        <link rel='stylesheet' href='casey.css'/>
+        <link rel='stylesheet' href='casey_2.css'/>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
     </head>
     <body>
@@ -57,7 +57,15 @@
                 </div>
             </div>
         </nav>
-        <br><br><br>
+
+        <div class="container">
+            <a class="button is-black" href="sales.html">Get</a>
+            <a class="button is-black" href="update_sales.html">Update</a>
+            <a class="button is-black" href="delete_sales.html">Delete</a>
+            <a class="button is-black" href="insert_sales.html">Insert</a>
+        </div>
+
+        <br>
         <h1 class="title is-light">Game Name -- Sales Id Match Table!(Original Data Use Only)</h1>
 
         <div class='atable'>
@@ -161,11 +169,26 @@
                 </tbody>
             </table>
         </div>
-        <br><br><br>
+        <br>
+
+        <form>
+            <label class="label">Get a Single Game's Annual Sales and Earnings! Use Game ID to Search!</label> 
+            <input type='text' class='search input'>
+            
+            </form>
+            <ul class='suggestions'>    
+            </ul>
+            <script src='get_sales.js'>   
+            </script>
+                
+        </form>
+
+        <br>
+
         <table class = "table is-striped is-bordered">
             <thead>
                 <tr>
-                    <th>Game Id</th>
+                    <th>Sales Id</th>
                     <th>Annual Sales</th>
                     <th>Earnings</th>
                 </tr>

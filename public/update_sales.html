@@ -4,30 +4,28 @@
         <meta charset='UTF-8'/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sales Page</title>
-        <link rel='stylesheet' href='/public/morris_style.css'/>
+        <link rel='stylesheet' href='morris_style.css'/>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
-        <script src='insert_sales.js'></script>
+        <script src='update_sales.js'></script>
     </head>
     <body>
         <nav class="navbar has-shadow is-black" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" >
-                    <img src="/public/logo.jpg" alt='site logo' style='max-height: 70px' class='py-2 py-2' >
+                    <img src="logo.jpg" alt='site logo' style='max-height: 70px' class='py-2 py-2' >
                 </a>
             </div>
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-end">
-                  <a class="navbar-item" href="/public/index.html">
-                    <strong>Home</strong>
-                  </a>
-            
-                  <a class="navbar-item" href="/public/games.html">
-                      <strong>Games</strong>
-                  </a>
-  
-                     <a class="navbar-item" href="/public/about.html">
-                      <strong>About</strong>
-                     </a>
+                    <a class="navbar-item" href="index.html">
+                        <strong>Home</strong>
+                    </a>
+                    <a class="navbar-item" href="games.html">
+                        <strong>Games</strong>
+                    </a>
+                    <a class="navbar-item" href="about.html">
+                        <strong>About</strong>
+                    </a>
                 </div>
                 <div class="navbar-end">
                   <div class="navbar-item">
@@ -43,14 +41,14 @@
                         </div>
                         <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                           <div class="dropdown-content">
-                            <a href="/public/general/form_page.html" class="dropdown-item">
+                            <a href="form_page.html" class="dropdown-item">
                               Edit General Table
                             </a>
-                            <a href="/public/price/get_price.html" class="dropdown-item">
+                            <a href="get_price.html" class="dropdown-item">
                               Edit Price Table
                             </a>
-                            <a href="/public/sales/sales.html" class="dropdown-item">
-                              Edit Sales Table
+                            <a href="sales.html" class="dropdown-item">
+                                Edit Sales Table
                             </a>
                           </div>
                         </div>
@@ -68,7 +66,7 @@
             <a class="button is-black" href="insert_sales.html">Insert</a>
         </div>
 
-        <h1 class="title is-light">Insert a Game's sales and earnings!</h1>
+        <h1 class="title is-light">Update a Game's sales and earnings!</h1>
 
           
           <form class="form" id='sales' >
@@ -95,7 +93,7 @@
                           <input class="input" type="text" name = 'earnings'>
                         </div>                        
                     </div>
-                      <button  class="button" id= "submit_button">Insert</button>
+                      <button  class="button" id= "submit_button">Update</button>
                 </div>
             </div>
           </form>

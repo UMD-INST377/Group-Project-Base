@@ -4,30 +4,30 @@
         <meta charset='UTF-8'/>
         <title>Insert Game Price</title>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'/>
-        <link rel='stylesheet' href='/public/morris_style.css'/>
-        <script src='insert_game.js'></script>
+        <link rel='stylesheet' href='morris_style.css'/>
+        <script src='Insert_price.js'></script>
         
     </head>
     <body>
       <nav class="navbar has-shadow is-black" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item">
-            <img src="/public/logo.jpg" alt='site logo' style='max-height: 70px' class='py-2 py-2' >
+            <img src="logo.jpg" alt='site logo' style='max-height: 70px' class='py-2 py-2' >
           </a>
 
         </div>
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item" href="/public/index.html">
+            <a class="navbar-item" href="index.html">
               <strong>Home</strong>
             </a>
       
-            <a class="navbar-item" href="/public/games.html">
+            <a class="navbar-item" href="games.html">
                 <strong>Games</strong>
             </a>
 
-               <a class="navbar-item" href="/public/about.html">
+               <a class="navbar-item" href="about.html">
                 <strong>About</strong>
                </a>
       
@@ -48,13 +48,13 @@
                   </div>
                   <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                     <div class="dropdown-content">
-                      <a href="/public/general/form_page.html" class="dropdown-item">
+                      <a href="form_page.html" class="dropdown-item">
                         Edit General Table
                       </a>
-                      <a href="/public/price/get_price.html" class="dropdown-item">
+                      <a href="get_price.html" class="dropdown-item">
                         Edit Price Table
                       </a>
-                      <a href="/public/sales/sales.html" class="dropdown-item">
+                      <a href="sales.html" class="dropdown-item">
                         Edit Sales Table
                       </a>
                     </div>
@@ -68,43 +68,37 @@
         
           
       <div class="container">
-        <a class="button is-black" href="get_general.html">Get</a>
-        <a class="button is-black" href="form_page.html">Update</a>
-        <a class="button is-black" href="delete_general.html">Delete</a>
-        <a class="button is-black" href="insert_general.html">Insert</a>
+        <a class="button is-black" href="get_price.html">Get</a>
+        <a class="button is-black" href="update_price.html">Update</a>
+        <a class="button is-black" href="delete_price.html">Delete</a>
+        <a class="button is-black" href="Insert_price.html">Insert</a>
       </div>
     </br>
-    <h1 class="title is-light">Insert a Game!</h1>
+    <h1 class="title is-light">Insert a Game Price!</h1>
           
-          <form class="form" id='insert_general' >
+          <form class="form" id='price' >
             <div class="columns">
                 <div class="column">
                   <div class="field">
-                    <label class="label" for = 'id'>Game Id</label>
+                    <label class="label" for = 'price_id'>Price Id</label>
                     <div class="control">
-                      <input class="input" type="text" name = 'id'>
+                      <input class="input" type="text" name = 'price_id'>
                     </div>
                   </div>
 
 
                       <div class="field">
-                        <label class="label" for = 'name'>Game Name</label>
+                        <label class="label" for = 'price_website'>price_website</label>
                         <div class="control">
-                          <input class="input" type="text" name = 'name'>
+                          <input class="input" type="text" name = 'price_website'>
                         </div>
                       </div>
 
                       <div class="field">
-                        <label class="label" for ='free_to_play'>Free to Play</label>
+                        <label class="label" for ='listed_price'>listed_price</label>
                         <div class="control">
-                          <input class="input" type="text" name = 'free_to_play'>
+                          <input class="input" type="text" name = 'listed_price'>
                         </div>
-
-                        <div class="field">
-                            <label class="label" for ='population'>Player Population</label>
-                            <div class="control">
-                              <input class="input" type="text" name = 'population'>
-                            </div>
                         
                       </div>
                       <button  class="button" id= "insert_button">Insert</button>

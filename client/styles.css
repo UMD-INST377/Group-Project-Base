@@ -180,11 +180,9 @@ html {
 
 /*css for charts*/
 #chartContainer{
-    width: 900px;
     margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 900px;
+    margin-left: 15%;
 }
 
 
@@ -195,10 +193,7 @@ html {
 }
 
 #category_chart_container{
-    width: 900px;
     margin-top: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    width: 900px;
+    margin-left: 15%;
 }

@@ -1,5 +1,6 @@
 async function fetchRequest(result) {
   try {
+    const endpoint = '../api/mdCensusData'
     const request = await fetch(result);
     const json = await request.json();
     return json;
@@ -33,10 +34,7 @@ function filterFunction(event, data, list, mymap) {
 
 async function mainThread() {
   console.log('loaded main script');
-  const result = await db.sequelizeDB.query(mdCensusData, {
-    replacements: { },
-    type: sequelize.QueryTypes.SELECT
-  });
+  const result = '../api/mdCensusData';
   const inputBox = document.querySelector('#zipcode');
   const listOfFilteredItems = document.querySelector('.append-box');
   const ACCESSTOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';

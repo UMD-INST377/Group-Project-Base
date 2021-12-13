@@ -357,3 +357,71 @@ router.route('/unemployment')
         }
     });
 export default router;
+
+/// /////////////////////////////////
+/// ////VacDataAndCounty Endpoint////////
+/// //////////////////////////////////
+router.route('/vacDataAndCounty')
+    .get(async(req, res) => {
+        try {
+            const databaseResponse = await db.sequelizeDB.query(VCdata, {
+                type: sequelize.QueryTypes.SELECT
+            });
+            console.log('Touched /vacDataAndCounty with GET');
+            res.json(databaseResponse);
+        } catch (err) {
+            console.log(err);
+            res.json({ error: 'Something went wrong' });
+        }
+    })
+    .put(async(req, res) => {
+      try {
+          await db.VCdata.update({
+              population: req.body.population,
+              confirmed_deaths: req.body.confirmed_deaths,
+              positive_cases: req.body.positive_cases, 
+              first_dose_count: req.body.first_dose_count,
+              second_dose_count: req.body.second_dose_count
+          }, {
+              where: {
+                  county_ID: req.body.county_ID
+              }
+          });
+          console.log('Successfully Updated with PUT');
+      } catch (err) {
+          console.log(error);
+          res.json({ error: 'Something went wrong' });
+      }
+  })
+  .post(async(req, res) => {
+      const VCTable = await db.VCdata.findAll();
+      const currentId = (await VCTable.length) + 1;
+      try {
+          const addVCstats = await db.VCdata.create({
+              county_ID: currentId,
+              population: req.body.population,
+              confirmed_deaths: req.body.confirmed_deaths,
+              positive_cases: req.body.positive_cases, 
+              first_dose_count: req.body.first_dose_count,
+              second_dose_count: req.body.second_dose_count
+          });
+          console.log('Touched /VCstats with POST');
+          res.send('Successfully added with POST');
+      } catch (err) {
+          console.log(error);
+          res.json({ error: 'Something went wrong' });
+      }
+  })
+  .delete(async(req, res) => {
+      try {
+          await db.VCdata.destroy({
+              where: {
+                  county_ID: req.params.county_ID
+              }
+          });
+          console.log('Successfully Deleted with DELETE');
+      } catch (err) {
+          console.log(error);
+          res.json({ error: 'Something went wrong' });
+      }
+  });

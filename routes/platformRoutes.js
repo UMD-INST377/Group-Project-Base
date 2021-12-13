@@ -4,7 +4,7 @@ import express from 'express';
 
 import db from '../database/initializeDB.js';
 
-import platforms from '../server/controllers/platforms.js';
+import platforms from '../server/controllers/platformscontrollers.js';
 
 const router = express.Router();
 /// /// Platform Endpoints ///////

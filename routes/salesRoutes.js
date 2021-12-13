@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
 
-import sales from '../server/controllers/sales.js';
+import sales from '../server/controllers/salescontrollers.js';
 
 const router = express.Router();
 

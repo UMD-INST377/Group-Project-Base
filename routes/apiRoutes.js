@@ -44,14 +44,21 @@ router.get('/membersTest',async(req, res) => {
 /// //////////////////////////////////
 router.get('/profiles',async(req, res) => {
   try {
-    const profiles = await db.sequelizeDB.query(GETcontroller.profiles, {
+    const prof = await db.sequelizeDB.query(GETController.profiles, {
       type: sequelize.QueryTypes.SELECT
     });
-    } catch (error) {
-    console.log(error)
-    res.json({message: 'Error'})
+
+    // Send data
+    res.json({status: 'success', data: prof});
+  } catch (e) {
+    // Debug
+    console.error(e);
+
+    // Send data
+    response.json({status: 'failure', data: null, message: 'unknown error'});
   }
 });
+
 router.put(async(req, res) => {
   try {
     console.log('touched /profiles endpoint PUT');

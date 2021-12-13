@@ -2,7 +2,7 @@
 You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
 
 # Link to website
-
+https://evening-mesa-21096.herokuapp.com/restaurant-list.html
 
 ### Food Database 
 ## Description

@@ -12,7 +12,7 @@ https://secure-badlands-63929.herokuapp.com
 * MacBook Pro 14"
 * MacBook Pro 13"
 * iPhone 11 Pro
-* Iphone X
+* iphone X
 
 
 ## Developer Manual

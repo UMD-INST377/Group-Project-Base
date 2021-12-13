@@ -4,7 +4,7 @@ import express from 'express';
 
 import db from '../database/initializeDB.js';
 
-import general from '../server/controllers/general.js';
+import general from '../server/controllers/generalcontrollers.js';
 
 const router = express.Router();
 

@@ -5,7 +5,7 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
-import price from '../server/controllers/price.js';
+import price from '../server/controllers/pricecontrollers.js';
 
 const router = express.Router();
 /// /// price Endpoints ///////

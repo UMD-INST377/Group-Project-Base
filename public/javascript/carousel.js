@@ -1,8 +1,7 @@
 /* eslint-disable no-plusplus */
 const config = {
-  type: 'carousel',
+  type: 'slider',
   perView: 5,
-  autoplay: 3000,
   breakpoints: {
     1024: {
       perView: 2
@@ -11,14 +10,13 @@ const config = {
       perView: 1
     }
   },
-  animationTimingFunc: 'linear',
-  animationDuration: 800,
   peek: {
-    before: 100,
-    after: 100
+    before: 0,
+    after: 225
   },
   hoverpause: false,
-  dragThreshold: false
+  dragThreshold: false,
+  rewind: false
 };
 
 const carousel = document.querySelectorAll('.glide');

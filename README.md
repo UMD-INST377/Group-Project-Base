@@ -6,14 +6,14 @@ containing information about NBA players. The goal of the website is to inform u
 https://secure-badlands-63929.herokuapp.com
 
 ## Link to Developer Manual
-* [Developer Manual](https://github.com/skanner1999/Group1-Final-Project-Base##developer-manual)
+* [Developer Manual](#developer-manual)
 
 ## Target Browsers
 * MacBook Pro 14"
 * iPhone 11 Pro
 
 
-## Deveoloper Manual
+## Developer Manual
 ### Getting Started
 #### Install Dependencies
 `npm install`

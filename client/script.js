@@ -280,6 +280,10 @@ async function mainThread() {
   const driver_demographics = await fetchRequest('./api/driverDemographics');
   const driver_culpability = await fetchRequest('./api/driverCulpability');
 
+
+  // ------------------------------------------------------------------
+  // Data Analysis section within the Main Thread func
+  // ------------------------------------------------------------------
   // summing up the number of collision types from the crashInformation
   const numCollType = [];
   for (let i = 1; i < collision_type.length - 1; i++) {
@@ -383,6 +387,7 @@ async function logData() {
 // ------------------------------------------------------------------
 // Drop Down Function
 // ------------------------------------------------------------------
+// Not working atm but future development
 function changeEvent() {
   const dropDown = document.getElementById('dropDown').value;
 

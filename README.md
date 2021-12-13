@@ -10,7 +10,7 @@ https://secure-badlands-63929.herokuapp.com
 * iPhone 11 Pro
 
 ## Developer Manual
-* [Developer Manual](https://github.com/skanner1999/Group1-Final-Project-Base##developer-manual
+* [Developer Manual](https://github.com/skanner1999/Group1-Final-Project-Base##developer-manual)
 
 
 

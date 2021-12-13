@@ -10,7 +10,9 @@ https://secure-badlands-63929.herokuapp.com
 
 ## Target Browsers
 * MacBook Pro 14"
+* MacBook Pro 13"
 * iPhone 11 Pro
+* Iphone X
 
 
 ## Developer Manual

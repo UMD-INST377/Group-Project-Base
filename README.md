@@ -6,9 +6,31 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 * [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
 
 
-# GET API
 
-## The endpoints in the GET API extract information from the database to be sent on for use on the front-end.
+# Developer Manual
+
+## How to install application and dependencies
+> 1. Clone this repo using either GitHub Desktop or your computer's terminal.
+> 2. Open the repo with VSCode terminal or any other terminal of your choice.
+> 3. Run the command <strong>npm install</strong> using your terminal.
+> 4. Everything should be ready to use. If you run into any errors, please try visiting the following website: https://docs.npmjs.com/common-errors
+
+## How to run application on server:
+> 1. Open the VSCode terminal or any other terminal of your choice.
+> 2. Run the command <strong>npm start</strong> using your terminal.
+> 3. You should then be able to view the application when you visit the web address: http://localhost:3000. If you run into any issues, please try visiting the following website: https://docs.npmjs.com/common-errors
+
+## Application Testing:
+> Although it would have been helpful, we did not create any tests for our application due to time constraints. 
+To help with testing our API, we used ThunderClient, a REST API Client Extension that allows developers to test
+HTTP requests and view response messages with a simple GUI interface in VSCode directly. If you would like to use
+this extension, simply search the name up in the VSCode Extension store and install it onto your VSCode.
+
+## Application APIs
+
+### GET API
+
+#### The endpoints in the GET API extract information from the database to be sent on for use on the front-end.
 
 ### /api/delete_options
 
@@ -31,7 +53,22 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 >
 >This async endpoint points to a SQL controller *timeLine* which queries joins together the necessary tables in the database and provides the president_id, president_name, birth_date, home_state, date_inauguration, party, death_date, vice_president, first_lady, children_name, elected_year from the database. This information is required to populate the TimeLine with the data.
 
-# Delete API
+### /api/presidents
+> The purpose of this endpoint is to allow user's to get the information for all of the presidents within the database. 
+
+### /api/child
+> This async endpoint queries the database for all of the president childrens names and ids and sends a JSON object. This API is used to help populate the dropdown options of the children of all of the presidents.
+
+### /api/vpdrop
+> This async endpoint queries the database for all of the vice presidents names and ids and sends a JSON object. This API is used to help populate the dropdown options of current vice presidents.
+
+### /api/firstladydrop
+> This async endpoint queries the database for all of the first lady's names and ids and sends a JSON object. This API is used to help populate the dropdown options of current first lady's.
+
+### /api/presidentdrop
+> This async endpoint queries the database for all of the presidents names and ids (PK) and and sends a JSON object. This API is used to help populate the dropdown options of current presidents.
+
+### Delete API
 
 ### /api/presidents/:president_id
 
@@ -39,7 +76,7 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 > 
 > This Endpoint has an MYSQL <strong>DELETE</strong> query which takes an input from the user and deletes that ID from the database.
 
-# Post API
+### Post API
 
 ### /api/presidents
 
@@ -73,7 +110,7 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 
 > <strong>P.S.</strong> Initially we started with an endpoint which will have all the post endpoints queries and will only run that query which would the user specify information for, but the that code really complex and was taking a lot more runtime than a single separate endpoint. So, we end up creating a single endpoint for each post request.
 
-# PUT API
+### PUT API
 
 ### /api/presidents/:president_id
 
@@ -94,3 +131,32 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 > Endpoint takes a specfic ID than takes take information from the user to update the database.
 >
 > This endpoint has MYSQL <strong>update</strong> query which lets the user update information into the database.
+
+### /api/vicepresident/:vp_id
+
+>Parameter: vp_id (integer)
+>
+>This endpoint lets the user update existing vice presidents information into our database.
+>
+>Endpoint takes a specific ID then takes information from the user to update the database.
+>
+> This endpoint has MYSQL <strong>update</strong> query which lets the user update information into the database.
+
+### /api/children/:child_id
+
+>Parameter: child_id
+>
+>This endpoint lets the user update existing president childrens information into our database.
+>
+>Endpoint takes a specific ID then takes information from the user to update the database.
+>
+>This endpoint has MYSQL <strong>update</strong> query which lets the user update information into the database.
+
+## Application Bugs and Future Development:
+### Bugs:
+> We are currently not aware of any major bugs within our application. The only real issue that we seem to be running into
+is the data for children, vice presidents, and first lady's not updating correctly on our timeline. 
+
+### Future Development:
+> * Fixing the issue regarding data for children, vps, and first lady's not updating correctly on the timeline.
+> * Adding an extra layer of security by incorporating login credentials before timeline updates can be made.

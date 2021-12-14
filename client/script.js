@@ -56,6 +56,7 @@ async function cStats(urlC, tableC) {
 }
 cStats(urlC, document.querySelector('tableC'));
 
+
 urlVS = '/api/vaccine-site-info';
 async function vsStats(urlVS, tableVS) {
   const responseVS = await fetch(urlVS);

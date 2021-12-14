@@ -7,5 +7,6 @@ const vaccSitesInfo = `SELECT site_name,
     contact_phone,
     website,
 FROM
-    vaccine_site_info`;
+    vaccine_site_info
+LIMIT 50`;
 export default vaccSitesInfo

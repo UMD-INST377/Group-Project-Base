@@ -9,3 +9,12 @@ p{
     margin-left: auto;
     margin-right: auto;
 }
+
+#map{
+    width: 1000px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    outline-style: solid;
+    outline-color: #3E56C4;
+    outline-width: thick;
+}

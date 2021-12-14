@@ -71,6 +71,12 @@ There are no prewritten tests in the source repository currently
   * POST - Updates the data based on volcano_id
   * PUT - Inserts data where id is auto incremented
   * DELETE - Deletes data based on volcano_id
+
+`/api/eruption_freq` - API route for eruptions per year
+  * GET - Returns data from a SELECT statement of the count of eruptions per year
+
+
+
   
 ## Known Bugs and Future Development
 ### Bugs:

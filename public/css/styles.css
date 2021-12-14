@@ -121,7 +121,7 @@ body{
     width: 300px;
 }
 
-/*css for add_a_volcano*/
+/*css for forms*/
 .form-input-container {
     display: flex;
     justify-content: center;  
@@ -133,6 +133,13 @@ body{
 .volcano_form input{
     margin-bottom: 17px;
     border: 0px;
+}
+
+.volcano_form .select{
+    margin-top: 15px;
+    margin-bottom: 8%;
+    border: 0px;
+    font-size: 1em;
 }
 
 #activity-input{

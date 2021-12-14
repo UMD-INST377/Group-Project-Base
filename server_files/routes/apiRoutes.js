@@ -208,7 +208,6 @@ router.route('/evidence')
       });
       res.json(result);
       console.log('you touched the route!');
-      res.json({message: 'touched evidence with GET'});
     } catch (err) {
       res.json({error: 'something went wrong!'});
     }
@@ -223,7 +222,6 @@ router.route('/evidence')
         type: sequelize.QueryTypes.UPDATE
       });
       res.json(result);
-      res.json({message: 'Successfully updated Evidence'});
     } catch (err) {
       console.log(error);
       res.json({error: 'something went wrong!'});
@@ -237,7 +235,6 @@ router.route('/evidence')
         type: sequelize.QueryTypes.INSERT
       });
       res.json(result);
-      res.json({message: 'touched evidence with POST'});
     } catch (err) {
       console.log(error);
       res.json({error: 'something went wrong!'});
@@ -252,7 +249,6 @@ router.route('/evidence')
         type: sequelize.QueryTypes.DELETE
       });
       res.json(result);
-      res.json({message: 'touched evidence with DELETE'});
     } catch (err) {
       console.log(error);
       res.json({error: 'something went wrong!'});

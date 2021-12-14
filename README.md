@@ -48,7 +48,7 @@ There are no prewritten tests within this repository. However, the api endpoints
 ```/inspectiontype``` - API route for inspection type information conducted at the different food sources.
 * GET - Retrieves the type of inspection that was conducted at a given food source through query in inspectionType controller. Logs to console the response 'touched /inspection_type with GET'.
 
-```/differentrestaurant``` - API route for
+```/differentrestaurant``` - API route for updating existing information.
 * PUT - Updates a given food source's inspection result based on user changes. Logs to console the response 'updated /name with PUT'.
 
 ```/newrestaurant``` - API route for new restaurant information.

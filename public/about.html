@@ -1,65 +1,31 @@
-<!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/Glide/glide.core.min.css" />
-    <link rel="stylesheet" href="./css/Glide/glide.theme.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
-    <title>ABOUT</title>
-   </head>
-<body>
-  <div class="viinyl-container">
-    <div class="viinyl-navigation">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./css/Glide/glide.core.min.css"/>
+    <link rel="stylesheet" href="./css/Glide/glide.theme.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <title>Viinyl</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon"/>
+  </head>
+  <body class="viinyl">
+    <div class="viinyl-container">
+      <div class="viinyl-navigation">
         <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="../index.html">
-                    <img src="./images/viinyl-logo.png" />
-                </a>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <a href="index.html"class="navbar-item"> Collection </a>
-                    <a href="about.html" class="navbar-item"> About </a>
-                    
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link"> More </a>
-                        <div class="navbar-dropdown">
-                            <a href="about.html" class="navbar-item"> About </a>
-                            <a href = "about.html" navbar-item" id = "pop"> Contact </a>
-                            <hr class="navbar-divider" />
-                            <a class="navbar-item"> Report an issue </a>
-                        </div>
-                    </div>
+          <div class="navbar-brand"><a class="navbar-item" href="../index.html"><img src="./images/viinyl-logo.png"/></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+          <div class="navbar-menu" id="navbarBasicExample">
+            <div class="navbar-start"><a class="navbar-item" href="./collection.html"> Collection </a><a class="navbar-item is-active" href="./about.html"> About </a>
+              <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link"> More </a>
+                <div class="navbar-dropdown"><a class="navbar-item"> Contact </a>
+                  <hr class="navbar-divider"/><a class="navbar-item"> Report an issue </a>
                 </div>
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <button class="button is-danger" id="signup">
-                                <strong>Sign up</strong>
-                            </button>
-                            <button class="button is-dark">Log in</button>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </nav>
-    </div>
+      </div>
     <div class = "col-4"id="texts">
       <br>
       <br>
@@ -123,21 +89,6 @@
         </div>
       </div>
     </div>
-
-    
-   
-    <div class="bg-modal">
-      <div class="close-button">
-      <div class="modal-content">
-            <div class = 'close'>+</div>
-            <br>
-            Email: Viinyl@gmail.com
-            <br>
-            Phone: 888-888-8888
-            <br>
-            Address: 5555 55th Ave
-      </div>
-    </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -181,13 +132,4 @@
 
   }
 </style>
-<script>
-  document.getElementById('pop').addEventListener('click',function(){
-    document.querySelector('.bg-modal').style.display = 'flex'
-  })
-
-  document.querySelector('.close').addEventListener('click', function() {
-    document.querySelector('.bg-modal').style.display = 'none';
-  })
-</script>
 </html>

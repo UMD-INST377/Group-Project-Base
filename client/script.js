@@ -15,6 +15,7 @@ window.onclick = function(event) {
     }
   }
 };
+
 //Vaccination By County Table 
 //url = 'http://localhost:3000/api/vacByCountyController';
 url = '/api/vacByCountyController'; 
@@ -35,4 +36,4 @@ async function vacData(url, table) {
     table.innerHTML += row
   }
 }
-vacData(url, document.querySelector('table'));
+vacData(url, document.querySelector('#table'));

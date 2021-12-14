@@ -20,7 +20,7 @@ endpoint = '/api/county-info';
 async function countyInfo(endpoint, table) {
   const response = await fetch(endpoint);
   const data = await response.json();
-  console.log(data[1]);
+  console.log(data[0]);
 
   for (var key in data){
     var row = `<tr>
@@ -28,11 +28,10 @@ async function countyInfo(endpoint, table) {
                   <td>${data[key].population}</td>
                   <td>${data[key].population_density}</td>
                   <td>${data[key].uninsured}</td>
-                  <td>${data[key].poverty_rate}</td>
               </tr>`
 
     table.innerHTML += row
   }
 }
-countyInfo(endpoint, document.querySelector('tableCo'));
+countyInfo(endpoint, document.querySelector('#tableCounty'));
 

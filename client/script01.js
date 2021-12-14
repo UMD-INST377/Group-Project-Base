@@ -40,4 +40,4 @@ async function vsStats(urlVS, tableVS) {
     tableVS.innerHTML += rowVS
   }
 }
-vsStats(urlVS, document.querySelector('tableVS'));
+vsStats(urlVS, document.querySelector('#tableVS'));

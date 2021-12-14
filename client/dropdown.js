@@ -34,4 +34,3 @@ async function VCInfo(endpoint, table) {
   }
 }
 VCInfo(endpoint, document.querySelector('VCtable'));
-

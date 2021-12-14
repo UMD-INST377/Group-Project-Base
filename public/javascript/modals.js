@@ -35,6 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <section class="modal-card-body">
                     <!-- Content ...-->
                     <p>Genre: ${row[index].Genre}</p>
+                    <br>
+                    <table style="width:100%">
+                      <tr>
+                        <th>Description</th>
+                      </tr>
+                      <tr>
+                        <td>${row[index].Description}</td>
+                      </tr>
+                    </table>
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button is-danger" id="done-vinyl">Done</button>

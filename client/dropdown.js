@@ -24,12 +24,12 @@ async function VCInfo(endpoint, table) {
 
   for (var key in data){
     var row = `<tr>
-                  <td>${data[key].county}</td>
-                  <td>${data[key].population}</td>
-                  <td>${data[key].confirmed_deaths}</td>
-                  <td>${data[key].positive_cases}</td>
-                  <td>${data[key].first_dose_count}</td>
-                  <td>${data[key].second_dose_count}</td>
+                  <td>${data[key].County}</td>
+                  <td>${data[key].Population}</td>
+                  <td>${data[key].Confirmed_Death}</td>
+                  <td>${data[key].Positive_Cases}</td>
+                  <td>${data[key].First_Dose}</td>
+                  <td>${data[key].Second_Dose}</td>
               </tr>`
 
     table.innerHTML += row

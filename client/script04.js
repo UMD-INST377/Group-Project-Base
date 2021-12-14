@@ -1,6 +1,6 @@
-async function windowFunctions() {
-    const endpoint ='/api/county-info';
+// async function windowFunctions() {
+//     const endpoint ='/api/county-info';
     
-    const request = await fetch(endpoint)
+//     const request = await fetch(endpoint)
   
-    const restaurant = await request.json();
+//     const restaurant = await request.json();

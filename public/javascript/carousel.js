@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 const config = {
   type: 'slider',
+  focusAt: 0,
   perView: 5,
   breakpoints: {
     1024: {
@@ -9,10 +10,6 @@ const config = {
     600: {
       perView: 1
     }
-  },
-  peek: {
-    before: 0,
-    after: 225
   },
   hoverpause: false,
   dragThreshold: false,

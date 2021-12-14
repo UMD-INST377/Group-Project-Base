@@ -11,10 +11,12 @@
 
     <Body>
         <div class = "container">
-            <div class = "column">
+            <div class = "columns">
+                <div class="column is-four-fifths">
                 <h1 class="title">Edit Eruptions</h1>
             </div>
             
+            <div class="column">
                 <nav class="navbar is-light" role="navigation" aria-label="dropdown navigation">
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
@@ -30,10 +32,13 @@
                         </div>
                     </div>
                 </nav>
+            </div>
+            </div>
         </div>
+
     
         <div class="form-input-container">
-            <div class = "columns is-centered" style = "opacity: 0.8;">
+            <div class = "columns is-centered " style = "opacity: 0.8;">
                 <div class = "column">
                     <div class="box" style="width: 300px;">
                         Eruption ID
@@ -51,19 +56,19 @@
                         Day
                     </div>
                     <div class="box" style="width: 300px;">
-                        Volcano ID
+                        Volcano
                     </div>
                     <div class="box" style="width: 300px;">
-                        AOA ID
+                        Area of Activity (AOA)
                     </div>
                     <div class="box" style="width: 300px;">
-                        VEI ID
+                        Volcano Explosivity Index (VEI)
                     </div>
                     <div class="box" style="width: 300px;">
-                        Evidence ID
+                        Evidence
                     </div>
                     <div class="box" style="width: 300px;">
-                        Category ID
+                        Category
                     </div>
                 </div>
                 
@@ -74,11 +79,43 @@
                     <div class = "volcano_form" ><input class="input" type="text" name="year" id="year-input"></div>
                     <div class = "volcano_form" ><input class="input" type="text" name="month" id="month-input"></div>
                     <div class = "volcano_form" ><input class="input" type="text" name="day" id="day-input"></div>
-                    <div class = "volcano_form" ><input class="input" type="text" name="volcano_id" id="volcano-id-input"></div>
-                    <div class = "volcano_form" ><input class="input" type="text" name="aoa_id" id="aoa-id-input"></div>
-                    <div class = "volcano_form" ><input class="input" type="text" name="vei_id" id="vei-id-input"></div>
-                    <div class = "volcano_form" ><input class="input" type="text" name="evidence_id" id="evidence-id-input"></div>
-                    <div class = "volcano_form" ><input class="input" type="text" name="category_id" id="category-id-input"></div>
+                    <div class = "volcano_form" >
+                        <div class="select is-medium" name="volcano_id" id="volcano-id-input">
+                            <select id="volcano-select">
+                            </select>
+                          </div>
+                        </div>
+                    </div>
+                    <div class = "volcano_form" >
+                        <div class="select is-medium" name="aoa_id" id="aoa-id-input">
+                        <select id="aoa-select">
+                        </select>
+                      </div>
+                    </div>
+                    <div class = "volcano_form" >
+                        <div class="select is-medium" name="vei_id" id="vei-id-input">
+                            <select id="vei-select">
+                            </select>
+                          </div>
+                    </div>
+                    <div class = "volcano_form" >
+                        <div class="select is-medium" name="evidence_id" id="evidence-id-input">
+                            <select id="evidence-select">
+                            </select>
+                          </div>
+                    </div>
+                    <div class = "volcano_form" >
+                        <div class="select is-medium" name="category_id" id="category-id-input">
+                            <select id="category-select">
+                            </select>
+                          </div>
+                    </div>
+                    <div class="box">
+                        <p>Insert: Does not require Eruption ID</p>
+                        <p>Update: Requires all fields</p>
+                        <p>Delete: Requires ONLY Eruption ID</p>  
+                     </div>
+
                     <button class="button" type="submit" id="inserterup">Insert</button>
                     <button class="button" type="submit" id="updateerup">Update</button>
                     <button class="button" type="submit" id="deleteerup">Delete</button>

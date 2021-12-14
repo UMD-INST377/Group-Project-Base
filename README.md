@@ -39,4 +39,4 @@ This is the main table of our database. It is a join between COVID-19 statistics
 The following tables can be accessed through the drop-down menu: 
 
 ### Vaccine Sites
-The Vaccine Sites endpoint displays a table including relevant information on all locations where Maryland residents can receive the COVID-19 vaccine in Prince George’s County, Montgomery County and Baltimore County. The following information is recorded on the table: site name, street address(es), city, zip code, active status, site type, operating hours, contract phone and website.
+The Vaccine Sites endpoint displays a table including relevant information on all locations where Maryland residents can receive the COVID-19 vaccine in Prince George’s County, Montgomery County and Baltimore County. The following information is recorded on the table: site name, street address, city, zip code, site type, operating hours, contract phone and website.

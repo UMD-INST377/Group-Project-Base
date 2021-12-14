@@ -96,6 +96,7 @@ router.post('/newrestaurant', async (req, res) => {
     res.json({error: 'Server error'});
   }
 });
+
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////

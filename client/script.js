@@ -35,4 +35,4 @@ async function vacData(url, table) {
     table.innerHTML += row
   }
 }
-vacData(url, document.querySelector('table'));
+vacData(url, document.querySelector('#table'));

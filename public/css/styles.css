@@ -35,6 +35,7 @@ body{
     background-image:url('https://images-ext-2.discordapp.net/external/RvwomGLg9G0ZxVnp-f3TXPrWpWRlWsyGbwkgUosRXKQ/https/upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Eyjafjallaj%25C3%25B6kull_first_crater_20100329.jpg/1200px-Eyjafjallaj%25C3%25B6kull_first_crater_20100329.jpg');
     background-repeat:no-repeat;
     background-size:cover;
+     background-attachment: fixed;
 }
 
 
@@ -155,6 +156,7 @@ html {
     background-image:url('https://cdn-adventures-live.azureedge.net/adventurescache/0/1/0/9/e/b/0109ebe6e25b8c67d497a80cc8a99c0f6d00ce5b.jpg');
     background-repeat:no-repeat;
     background-size:cover;
+    background-attachment: fixed;
 }
 
 .image{

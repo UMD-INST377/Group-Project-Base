@@ -26,5 +26,5 @@ export default (sequelize, DataTypes) => {
       },
       { freezeTableName: true, timestamps: false }
     );
-    return road_conditions;
-  };
+    return road_conditions;  
+  };   

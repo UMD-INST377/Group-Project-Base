@@ -35,6 +35,16 @@ function sumDataCulpa(id, data) {
   return tot;
 }
 
+function sumDataRoadCon(id, data) {
+  let tot = 0;
+  data.forEach((item) => {
+    if (item.junction_code === id) {
+      tot += 1;
+    }
+  });
+  return tot;
+
+
 // ------------------------------------------------------------------
 // Graphing Functions
 // ------------------------------------------------------------------
@@ -281,6 +291,7 @@ async function mainThread() {
   const driver_demographics = await fetchRequest('./api/driverDemographics');
   const driver_culpability = await fetchRequest('./api/driverCulpability');
   const vehicle_data = await fetchRequest('./api/vehicle_data');
+  const road_conditions = await fetchRequest('./api/roadConditions');
 
   // summing up the number of collision types from the crashInformation
   const numCollType = [];
@@ -311,6 +322,24 @@ async function mainThread() {
 
   // graphing a donut chart using for culpability
   donutChart(culpaLabel, culpaData);
+
+  const roadCondData = [];
+for (let i = 0; i < road_conditions.length - 1; i++) {
+  roadCondData.push(sumDataRoadCon(i, crash_information));
+}
+
+// console log checking the data
+console.log(roadCondData);
+
+// extracting the road condition types from the road conditions
+const roadCondType = [];
+for (let i = 0; i < road_conditions.length - 1; i++) {
+  roadCondType.push(road_conditions[i].junction_desc);
+}
+
+// console log to check the road Conditions
+console.log(roadCondType);
+
 
   // ------------------------------------------------------------------
   // Extract two arrays F/M of driver demo and create radar chart

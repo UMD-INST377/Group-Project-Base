@@ -45,7 +45,7 @@ const displayTableData = async () => {
     table.innerHTML = '';
 
     const header = document.createElement('tr');
-    header.classList.add("head");
+    header.classList.add("head2");
     const head = ["Internet Profile ID", "Twitter", "Instagram", "Facebook", "Website"];
   for (var i = 0; i < head.length; i++) {
     const td = document.createElement('td');
@@ -68,12 +68,9 @@ const displayTableData = async () => {
         }
         row.appendChild(td);
       });
-  
       table.appendChild(row);
     }
-    
     );
-    
   };
 
   const displayTableDataThree = async () => {

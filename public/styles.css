@@ -57,6 +57,13 @@
     text-align: center;
     color: white;
   }
+
+  .head2 {
+    background-color: rgb(0, 81, 255);
+    font-weight: bold;
+    text-align: center;
+    color: rgb(134, 120, 120);
+    
   .table4 {
     background-color:aquamarine ;
     font-weight:bold;

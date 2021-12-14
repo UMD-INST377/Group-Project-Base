@@ -68,12 +68,9 @@ const displayTableData = async () => {
         }
         row.appendChild(td);
       });
-  
       table.appendChild(row);
     }
-    
     );
-    
   };
 
  function show(nr) {
@@ -87,3 +84,4 @@ const displayTableData = async () => {
 
 
 displayTableData();
+displayTableDataTwo();

@@ -8,7 +8,7 @@ to get into contact or learn more about congress members.
 
 ## Link to Website
 ---
-https://vast-lake-04060.herokuapp.com/ 
+https://vast-lake-04060.herokuapp.com/
 ## Target Browsers
 ---
 - iPhone 8 and up

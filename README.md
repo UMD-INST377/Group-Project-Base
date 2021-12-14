@@ -21,7 +21,7 @@ Food is one of the basic necessities of life! As a neccessity, it is important t
 1. Clone this project repository through Github Desktop or through command terminal.
 2. Open the repository in VSCode Terminal.
 3. Install node.js on your computer with this [link](https://nodejs.org/en/download/).
-4. Once node is installed, run the following command in VSCode terminal: ==npm install==.
+4. Once node is installed, run the following command in VSCode terminal: **npm install**.
 5. The application is now ready to use.
 
 ## How To Run Application On Server

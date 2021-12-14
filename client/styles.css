@@ -72,6 +72,28 @@ body {
     width: 100%;
 }
 
+.table-wrapper{
+    text-align: center;
+    width: 100%;
+}
+
+.hscroll {
+    background-color: lightblue;
+    border: 1px solid black;
+    height: 700px;
+    width: 100%;
+    overflow-x: scroll;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.tablemargins{
+    margin-right: 50px;
+    align-self: center;
+    max-width: 90%;
+    max-height: 90%;
+}
+
 h1 {
     font-size: 2rem;
     font-weight: bolder;

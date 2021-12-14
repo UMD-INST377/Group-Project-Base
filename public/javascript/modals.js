@@ -19,6 +19,19 @@ cancelButton.addEventListener('click', () => {
   signupModal.classList.remove('is-active');
 });
 
+// Burger Icon
+const burgerIcon = document.querySelector('#burger');
+
+function toggleBurgerMenu(burger) {
+  const dropMenu = document.querySelector('#navbarBasicExample');
+  burger.classList.toggle('is-active');
+  dropMenu.classList.toggle('is-active');
+}
+
+burgerIcon.addEventListener('click', () => {
+  toggleBurgerMenu(burgerIcon);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const test = document.querySelector('.test');
 

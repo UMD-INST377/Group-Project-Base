@@ -82,3 +82,8 @@ function MapInit() {
 
   return mymap;
 }
+
+async function mainThread() {
+    const url = '/api/foodServicePG';
+    const inputBox = document.querySelector();
+}

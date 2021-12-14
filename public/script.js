@@ -142,13 +142,19 @@ const displayTableData = async () => {
         td.innerText = `${element[column]}`;
   
         if (column === 'Party Afilliation') {
-          phonenumber = element[column];
+          party_afilliation = element[column];
         }
         row.appendChild(td);
       });
-  
-      table.appendChild(row);
-      
+        
+        table.appendChild(row);
+    }
+
+    );
+    
+  };
+
+
  function show(nr) {
     document.getElementById("table1").style.display="none";
     document.getElementById("table2").style.display="none";
@@ -162,3 +168,4 @@ const displayTableData = async () => {
 displayTableData();
 displayTableDataTwo();
 displayTableDataThree();
+displayTableDataFour();

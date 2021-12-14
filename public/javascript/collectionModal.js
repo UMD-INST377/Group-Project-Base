@@ -30,16 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <br>
                     <table style="width:100%">
                       <tr>
-                        <th>Title</th>
-                        <th>Time</th>
+                        <th>Description</th>
                       </tr>
                       <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                      </tr>
-                      <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
+                        <td>${row[index].Description}</td>
                       </tr>
                     </table>
                 </section>

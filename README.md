@@ -33,4 +33,5 @@ B:Through GitHub Desktop, see here for download for your OS, see: (https://deskt
 * DELETE information if selected artist is not in collection
 
 
-/api/
+/api/requests
+*PUT Inserts new record request into the db 

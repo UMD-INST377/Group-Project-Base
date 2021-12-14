@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./css/Glide/glide.core.min.css"/>
+    <link rel="stylesheet" href="./css/Glide/glide.theme.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <title>Viinyl</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon"/>
+  </head>
+  <body>
+    <div class="viinyl-container">
+      <div class="viinyl-navigation">
+        <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand"><a class="navbar-item"><img src="./images/viinyl-logo.png"/></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+          <div class="navbar-menu" id="navbarBasicExample">
+            <div class="navbar-start"><a class="navbar-item" href="index.html"> Home </a><a class="navbar-item" href="about.html"> About </a>
+              <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link"> More </a>
+                <div class="navbar-dropdown"><a class="navbar-item" href="about.html"> About </a><a class="navbar-item"> Contact </a>
+                  <hr class="navbar-divider"/><a class="navbar-item"> Report an issue </a>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+
+                    <a class = "button is-danger modal-button" data-target="#addrecordModal">Add Record</a>
+
+                  <button class="button is-danger" id="signup"><strong>Sign up</strong></button>
+                  <button class="button is-dark">Log in</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    <div class="subtitle is-3"><strong>Your Collection</strong></div>
+
+    <div class="collection">
+      <div class="field">
+        <label class="label">Order By</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>Date Added (Oldest First)</option>
+              <option>A-Z</option>
+              <option>Latest Release Year</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-one-third box">
+          <input type="image" src="./vinyls/tpab.png"/><div class="text is-size-4">To Pimp a Butterfly</div><div class="text is-size-6">Kendrick Lamar</div>
+        </div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/dark_side_of_the_moon.png"/><div class="text is-size-4">Dark Side of the Moon</div>
+        <div class="text is-size-6">Pink Floyd</div></div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/purple_rain.jpg"/><div class="text is-size-4">Purple Rain</div><div class="text is-size-6">Prince</div></div>
+      </div>
+      <div class="columns">
+        <div class="column is-one-third box modal-button" data-target="#recordInfoModal"><input type="image" src="./vinyls/ram.jpg"/><div class="text is-size-4">Random Access Memories</div><div class="text is-size-6">Daft Punk</div></div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/thriller.png"/><div class="text is-size-4">Thriller</div><div class="text is-size-6">Michael Jackson</div></div>
+        <div class="column box vinbox"><input type="image" src="./vinyls/gkmc.jpeg"/><div class="text is-size-4">Good Kid MAAD City</div><div class="text is-size-6">Kendrick Lamar</div></div>
+      </div>
+      
+    </div>
+  <!-- add record modal-->
+  <div class="modal" id="addrecordModal">
+    <div class="modal-background">
+      <div class="modal-content">
+        <div class="section modal-wrap">
+          <div class="columns">
+            <div class="column">
+              <figure class="image is-512x512">
+                <img id="albumart" src="https://bulma.io/images/placeholders/128x128.png">
+              </figure>
+              <button class="button is-danger" onclick="setTimeout(() => {  changeImage(); }, 1000);">Search</button>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Random Access Memories"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Artist</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="Daft Punk"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Year</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="2013"/>
+                </div>
+              </div>
+              <label class="label">Genre</label>
+              <div class="control">
+                <div class="select">
+                  <select>
+                    <option>Blues</option>
+                    <option>Country</option>
+                    <option>Electronic</option>
+                    <option>Folk</option>
+                    <option>Hip Hop</option>
+                    <option>Jazz</option>
+                    <option>Metal</option>
+                    <option>Pop</option>
+                    <option>Punk</option>
+                    <option>R&B & Soul</option>
+                    <option>Rock</option>
+
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-danger" onClick="parent.location='collection-i.html'">Confirm</button>
+                  <button class="button" id="Cancel" onClick="parent.location='collection.html'">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+  </div>
+  <!-- record info modal-->
+  <div class="modal" id="recordInfoModal">
+    <div class="modal-background">
+      <div class="modal-content">
+        <div class="section modal-wrap">
+          <div class="columns">
+            <div class="column">
+              <figure class="image is-512x512">
+                <img id="albumart" src="./vinyls/ram.jpg">
+              </figure>
+            </div>
+            <div class="column">
+              <div class="field">
+                <div class="title is-3">Random Access Memories</div>
+              </div>
+              <div class="field">
+              <div class="text is-size-6">by Daft Punk</div>
+              </div>
+              <div class="field">
+                <div class="text is-size-6">2013</div>
+              </div>
+              <div class="text is-size-6"><strong>Electronic</strong></div>
+              <div class="text is-size-6">Random Access Memories is the fourth studio album by French electronic duo Daft Punk, released on 17 May 2013 through Columbia Records.</div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-danger" onClick="parent.location='collection.html'">Edit</button>
+                  <button class="button" id="Cancel" onClick="parent.location='collection.html'">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+  <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="./javascript/graphs.js"></script>
+  <!-- <script src="./javascript/modals.js"></script> -->
+  <script src="./javascript/carousel.js"></script>
+  <script>
+    $(".modal-button").click(function() {
+    var target = $(this).data("target");
+    $("html").addClass("is-clipped");
+    $(target).addClass("is-active");
+    });
+    
+    $(".modal-close").click(function() {
+    $("html").removeClass("is-clipped");
+    $(this).parent().removeClass("is-active");
+    });
+
+    function changeImage(){
+    var img = document.getElementById("albumart");
+    
+
+    img.src="./vinyls/dam.jpg";
+    return false;
+    }
+ </script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+<style>
+  #texts {
+      float: left;
+      margin-left: 15%;
+  }
+</style>
+</html>

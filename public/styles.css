@@ -63,4 +63,10 @@
     font-weight: bold;
     text-align: center;
     color: rgb(134, 120, 120);
+    
+  .table4 {
+    background-color:aquamarine ;
+    font-weight:bold;
+    text-align: center;
+    color:white
   }

@@ -112,6 +112,40 @@ const displayTableData = async () => {
     
   };
 
+  const displayTableDataFour = async () => {
+    const data = await fetch('https://vast-lake-04060.herokuapp.com/api/professional', { mode: 'no-cors' });
+    const res = await data.json();
+  
+    const table = document.getElementById('table4');
+    table.innerHTML = '';
+
+    const header = document.createElement('tr');
+    header.classList.add("head");
+    const head = ["Party Affiliation"," Chamber","Start Year"];
+  for (var i = 0; i < head.length; i++) {
+    const td = document.createElement('td');
+    td.innerText = head[i];
+    header.appendChild(td)
+    }
+    table.appendChild(header);
+
+  
+    res.data.forEach((element) => {
+      const row = document.createElement('tr');
+      let party_affiliation;
+  
+      Object.keys(element).forEach((column) => {
+        const td = document.createElement('td');
+        td.innerText = `${element[column]}`;
+  
+        if (column === 'Party Afilliation') {
+          phonenumber = element[column];
+        }
+        row.appendChild(td);
+      });
+  
+      table.appendChild(row);
+      
  function show(nr) {
     document.getElementById("table1").style.display="none";
     document.getElementById("table2").style.display="none";
@@ -124,3 +158,4 @@ const displayTableData = async () => {
 
 displayTableData();
 displayTableDataTwo();
+displayTableDataThree();

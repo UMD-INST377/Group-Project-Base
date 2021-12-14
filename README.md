@@ -24,3 +24,13 @@ B:Through GitHub Desktop, see here for download for your OS, see: (https://deskt
 ### Future Developments
 1. Updating a collections page to create a system for acrhiving record information.
 2. Automatic updates on graphs depending on variances in sales and popularity frequencies.
+
+### api-routes
+/api/artists
+* GET Statement to return the name of the artists in the collections Page if they exist in the database.
+* PUT Inserts information where artist_id 
+* POST Updates data based on artist_id
+* DELETE information if selected artist is not in collection
+
+
+/api/

@@ -5,7 +5,7 @@ const vaccSitesInfo = `SELECT site_name,
     site_type,
     operating_hours,
     contact_phone,
-    website,
+    website
 FROM
     vaccine_site_info
 LIMIT 50`;

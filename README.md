@@ -7,7 +7,7 @@ Our project is centered around the lack of accessible and effective information 
 This project includes a fully-functional timeline of the Presidents of the United States that can be navigated through to access information about the U.S. Presidents. There is an About Us page that contains information about the site and information about the members of our team. In addition, an Update Page exists that allows users to add, edit, or delete information stored in the database (and by proxy the timeline).
 
 ## Link to the website
--[Presidents Timeline](https://presidents-timeline.herokuapp.com/index.html)
+- [Presidents Timeline](https://presidents-timeline.herokuapp.com/index.html)
 
 ## Target Browsers
 * Safari, Chrome, Firefox

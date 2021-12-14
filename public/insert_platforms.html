@@ -2,17 +2,17 @@
 <html lang='en'>
     <head>
         <meta charset='UTF-8'/>
-        <title>Insert Game Price</title>
+        <title>Insert Platforms</title>
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'/>
-        <link rel='stylesheet' href='CSS/morris_style.css'/>
-        <script src='JS/insert_game.js'></script>
+        <link rel='stylesheet' href='morris_style.css'/>
+        <script src='insert_platforms.js'></script>
         
     </head>
     <body>
       <nav class="navbar has-shadow is-black" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item">
-            <img src="Picture/logo.jpg" alt='site logo' style='max-height: 70px' class='py-2 py-2' >
+            <img src="logo.jpg" alt='site logo' style='max-height: 70px' class='py-2 py-2' >
           </a>
 
         </div>
@@ -71,53 +71,63 @@
         
           
       <div class="container">
-        <a class="button is-black" href="get_general.html">Get</a>
-        <a class="button is-black" href="form_page.html">Update</a>
-        <a class="button is-black" href="delete_general.html">Delete</a>
-        <a class="button is-black" href="insert_general.html">Insert</a>
+        <a class="button is-black" href="get_platforms.html">Get</a>
+        <a class="button is-black" href="update_platforms.html">Update</a>
+        <a class="button is-black" href="delete_platforms.html">Delete</a>
+        <a class="button is-black" href="insert_platforms.html">Insert</a>
       </div>
     </br>
-    <h1 class="title is-light">Insert a Game!</h1>
+    <h1 class="title is-light">Insert Game Platforms</h1>
           
-          <form class="form" id='insert_general' >
+          <form class="form" id='insert_platforms' >
             <div class="columns">
                 <div class="column">
-                  <div class="field">
-                    <label class="label" for = 'id'>Game Id</label>
-                    <div class="control">
-                      <input class="input" type="text" name = 'id'>
-                    </div>
-                  </div>
-
 
                       <div class="field">
-                        <label class="label" for = 'name'>Game Name</label>
+                        <label class="label" for = 'id'>Platform Id</label>
                         <div class="control">
-                          <input class="input" type="text" name = 'name'>
+                          <input class="input" type="text" name = 'id'>
                         </div>
                       </div>
 
                       <div class="field">
-                        <label class="label" for ='free_to_play'>Free to Play</label>
+                        <label class="label" for = ''>PC</label>
                         <div class="control">
-                          <input class="input" type="text" name = 'free_to_play'>
+                          <input class="input" type="text" name = 'PC'>
                         </div>
+                      </div>
 
-                        <div class="field">
-                            <label class="label" for ='population'>Player Population</label>
-                            <div class="control">
-                              <input class="input" type="text" name = 'population'>
-                            </div>
-                        
+                      <div class="field">
+                        <label class="label" for ='Playstation'>Playstation</label>
+                        <div class="control">
+                          <input class="input" type="text" name = 'Playstation'>
+                        </div>
+                      </div>
+
+                      <div class="field">
+                          <label class="label" for ='Xbox'>Xbox</label>
+                          <div class="control">
+                            <input class="input" type="text" name = 'Xbox'>
+                          </div>
+                      </div>
+
+                      <div class="field">
+                          <label class="label" for ='Switch'>Switch</label>
+                          <div class="control">
+                            <input class="input" type="text" name = 'Switch'>
+                          </div>
+                      </div>
+
+                      <div class="field">
+                          <label class="label" for ='Mobile'>Mobile</label>
+                          <div class="control">
+                            <input class="input" type="text" name = 'Mobile'>
+                          </div>
                       </div>
                       <button  class="button" id= "insert_button">Insert</button>
                       
+                </div>  
                 </div>
-                      
-                </div>
-
           </form>
-          
-
     </body>
 </html>

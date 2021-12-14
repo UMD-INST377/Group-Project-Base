@@ -2,30 +2,28 @@
 <html lang='en'>
     <head>
         <meta charset='UTF-8'/>
-        <title>Delete Game Price</title>      
+        <title>Get Platforms</title>      
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'/>
-        <link rel='stylesheet' href='CSS/morris_style.css'/>
-        <script src='JS/delete_general.js'></script>
-        
+        <link rel='stylesheet' href='morris_style.css'/>
     </head>
     <body>
-      <nav class="navbar has-shadow is-black" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item">
-            <img src="Picture/logo.jpg" alt='site logo' style='max-height: 70px' class='py-2 py-2' >
-          </a>
+        <nav class="navbar has-shadow is-black" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <img src="logo.jpg" alt='site logo' style='max-height: 70px' class='py-2 py-2' >
+              </a>
 
-        </div>
-      
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item" href="index.html">
-              <strong>Home</strong>
-            </a>
-      
-            <a class="navbar-item" href="games.html">
-                <strong>Games</strong>
-            </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-end">
+                <a class="navbar-item" href="index.html">
+                  <strong>Home</strong>
+                </a>
+          
+                <a class="navbar-item" href="games.html">
+                    <strong>Games</strong>
+                </a>
 
                    <a class="navbar-item" href="about.html">
                     <strong>About</strong>
@@ -58,47 +56,38 @@
                           <a href="get_platforms.html" class="dropdown-item">
                             Edit Platforms Table
                           </a>
-                        
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </nav>
+          </nav>
         
           <div class="container">
-            <a class="button is-black" href="get_general.html">Get</a>
-            <a class="button is-black" href="form_page.html">Update</a>
-            <a class="button is-black" href="delete_general.html">Delete</a>
-            <a class="button is-black" href="insert_general.html">Insert</a>
+            <a class="button is-black" href="get_platforms.html">Get</a>
+            <a class="button is-black" href="update_platforms.html">Update</a>
+            <a class="button is-black" href="delete_platforms.html">Delete</a>
+            <a class="button is-black" href="insert_platforms.html">Insert</a>
           </div>
         </br>
     
-          <h1 class="title is-light">Delete a Game Price!</h1>
+          <h1 class="title is-light">Find out what platforms a game runs on</h1>
 
           
-          <form class="form" id='general' >
-            <div class="columns">
-                <div class="column">
-                  <div class="field">
-                    <label class="label" for = 'game_id'>Game Id</label>
-                    <div class="control">
-                      <input class="input" type="text" name = 'game_id'>
-                    </div>
-                  </div>
-
-                      
-                      <button  class="button" id= "delete_button">Delete</button>
-                </div>
-                      
-                </div>
-
+        <br>
+          <form>
+            <label class="label">Search for platforms</label> 
+            <input type='text' class='search input'>
+            
+            </form>
+            <ul class='suggestions'>    
+            </ul>
+            <script src='get_platforms.js'>   
+            </script>
+                
           </form>
-
-      
-        
-         
+        <br>
     </body>
 </html>

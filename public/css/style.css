@@ -2,12 +2,26 @@
     .viinyl-navigation{
         padding: 0px  175px 25px 175px;
     }
+
+    .vinyl-slider-2{
+        margin: 0px 200px 0px 200px;
+    }
 }
 
 html, body {
     font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-    height: 100%;
+    height: 100%
 }
+
+.viinyl {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .viinyl-container {
+    flex: 1;
+  }
 
 .navbar{
     padding: .5rem 1rem;
@@ -54,12 +68,5 @@ input[type=image]{
 .graphs{
     display: flex;
     flex-wrap: wrap;
-    margin-top: 40px;
-}
-
-.searchGrid {
-    margin-left: 175px;
-    border-color: black;
-    display: flex;
-    justify-content: space-between;
+    margin-top: 50px;
 }

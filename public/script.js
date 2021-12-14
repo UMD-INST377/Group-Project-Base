@@ -5,7 +5,8 @@ const displayTableData = async () => {
     const table = document.getElementById('table1');
     table.innerHTML = '';
 
-    const header = document.createElement('th');
+    const header = document.createElement('tr');
+    header.classList.add("head");
     const head = ["First Name", "Last Name", "Age", "Gender"];
   for (var i = 0; i < head.length; i++) {
     const td = document.createElement('td');

@@ -32,11 +32,11 @@ No tests have been written for our software. However, to test if our application
 ## Our Endpoints
 Our database consists of a set of tables. The homepage leads to our main table and the drop down menu provides access to our other tables that provide more in-depth details.
 
-# Vaccination & County Data
+### Vaccination & County Data
 This is the main table of our database. It is a join between COVID-19 statistics table, County Info, and Vaccination By County table. For each county in the given set of Maryland Counties the following information is provided: the population, confirmed deaths from COVID-19, positive cases of COVID-19, number of people who have received their first dose of the vaccine and number of people who have received the second dose of the vaccine. 
 
 ## Other Endpoints
 The following tables can be accessed through the drop-down menu: 
 
-# Vaccine Sites
+### Vaccine Sites
 The Vaccine Sites endpoint displays a table including relevant information on all locations where Maryland residents can receive the COVID-19 vaccine in Prince George’s County, Montgomery County and Baltimore County. The following information is recorded on the table: site name, street address(es), city, zip code, active status, site type, operating hours, contract phone and website.

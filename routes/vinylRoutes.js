@@ -4,6 +4,7 @@ import db from '../database/initializeDB.js';
 import getCertifications from '../server/controllers/getCertifications.js';
 import getVinyls from '../server/controllers/getVinyls.js';
 import getVinylInfo from '../server/controllers/getVinylInfo.js';
+import getRequests from '../server/controllers/getRequests.js';
 
 const router = express.Router();
 
@@ -93,5 +94,31 @@ router.route('/vinylinfo')
     }
   })
 
+router.route('/requests')
+  .get(async(req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(getRequests, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (error) {
+      console.log(error);
+      res.json({ error: 'Oops Error' });
+    }
+  })
+
+  .post(async(req, res) => {
+    try {
+      const insertVinylSQL = `INSERT INTO requests (title, artist, vinyl_year)
+      VALUES ("${req.body.title}", "${req.body.artist}", ${req.body.vinyl_year});`;
+
+      await db.sequelizeDB.query(insertVinylSQL, {type: sequelize.QueryTypes.INSERT});
+
+      res.send(`Successfully Inserted ${req.body.title}`);
+    } catch (error) {
+      console.log(error);
+      res.json({ error: 'Oops Error' });
+    }
+  });
 
 export default router;

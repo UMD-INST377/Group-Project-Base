@@ -71,6 +71,3 @@ We need to refer to counties by their full name rather than a number. This could
 We need to make a more enticing webpage. Adding more imagery and styling such as symmetry or more “blocks” to group together different sections of our website 
 We could also try to expand the information we provide by providing information on COVID-19 statistics for the entire DMV area. This would require us to pull data from multiple sources. 
 The Unemployment endpoint could be used in a join with another table that has information for each month of the year as well, such as number of COVID-19 cases per month. This could allow us to compare the number of uninsured residents and positive cases per month. 
-
-
-

@@ -7,6 +7,6 @@ const VCdata = `SELECT county AS County,
                 FROM county_information
                 JOIN covid_statistics_by_county USING (county_ID)
                 JOIN vaccine_data_by_county USING (county_ID)
-                ORDER BY county;`
+                ORDER BY county;`;
 
-export default VCdata
+export default VCdata;

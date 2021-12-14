@@ -1,272 +1,294 @@
-/* eslint-disable no-console */
+/* Group24 */
+// Ali
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
+import controllers from '../controllers/routeControllers.js';
 
 const router = express.Router();
 
+//GET api
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  console.log('Touched / with get');
+  res.json('Success0');
 });
 
-/// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
-/// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+// route GET presidents
+router.get('/presidents', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
+    // message
+    console.log('Touched /presidents with get');
+    res.json('READ1');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/delete_options', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
-      where: {
-        hall_id: req.params.hall_id
-      }
+    const dropDownQuery = `SELECT president_id, CONCAT(first_name, ' ', last_name) as full_name
+    FROM presidents_table;`;
+    const drop_down_info = await db.sequelizeDB.query(dropDownQuery, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(drop_down_info);
+  } catch (err) {
+    console.error(err);
+  }
+});
+router.get('/child', async (req, res) => {
+  try {
+    const dropDownQu = `SELECT child_id, CONCAT(first_name, ' ', last_name) as full_name
+    FROM children_of_presidents;`;
+    const dropDown = await db.sequelizeDB.query(dropDownQu, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(dropDown);
+  } catch (err) {
+    console.error(err);
+  }
+});
+router.get('/vpdrop', async (req, res) => {
+  try {
+    const dropDownQue = `SELECT vp_id, CONCAT(first_name, ' ', last_name) as full_name
+    FROM vice_presidents;`;
+    const dropDownVp = await db.sequelizeDB.query(dropDownQue, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(dropDownVp);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+router.get('/firstladydrop', async (req, res) => {
+  try {
+    const dropDownQuer = `SELECT first_ladies_id, first_ladies_name
+    FROM first_ladies;`;
+    const dropDownlady = await db.sequelizeDB.query(dropDownQuer, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(dropDownlady);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+router.get('/presidentdrop', async (req, res) => {
+  try {
+    const dropDownQi = `SELECT president_id, CONCAT(first_name, ' ', last_name) as full_name
+    FROM presidents_table;`;
+    const dropDownPresident = await db.sequelizeDB.query(dropDownQi, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(dropDownPresident);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+// GET the specific president by id number
+
+router.get('/presidents/:president_id', async (req, res) => {
+  try {
+    // Presidents table query and gets the specific id from the user
+    const presidentInfoQuery = `SELECT concat(first_name, " ",last_name) as "President Name", birth_date as "Birth Date",
+      home_state as "Home State", date_inaurg as "Date Inauguration",party as "Party", president_image as "President Image"
+      FROM presidents_table
+      WHERE president_id = ${req.params.president_id};`;
+    console.log(presidentInfoQuery);
+    // query type and sequelize
+    const presidentInfo = await db.sequelizeDB.query(presidentInfoQuery, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message on console
+    console.log('Touched /presidents/:president_id with get');
+    // json response when the specific id is entered
+    res.json(presidentInfo);
+  } catch (err) {
+    // catch error if any
+    console.error(err);
+  }
+});
+
+// Get timeline of the presidents
+router.get('/time_line', async (req, res) => {
+  try {
+    const pres = await db.sequelizeDB.query(controllers.timeLine, {
+      type: sequelize.QueryTypes.SELECT,
     });
 
-    res.json(hall);
+    // message on the console
+    console.log('Touched /presidents/:president_id with get');
+    // response in json from database
+    res.json(pres);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+// Delete the president by specific id
+router.delete('/presidents/:president_id', async (req, res) => {
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const deletePresidentQuery = `DELETE from presidents_table
+      where concat(first_name, " ",last_name) = '${req.params.president_id}';`;
+    const delPresident = await db.sequelizeDB.query(deletePresidentQuery, {
+      type: sequelize.QueryTypes.DELETE,
     });
-    res.json(newDining);
+    console.log('Touched /presidents/:president_id with Delete');
+    res.json('Row Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+// create new president when provide the information
+router.post('/presidents', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
-      where: {
-        hall_id: req.params.hall_id
-      }
+    const createQuery = `INSERT INTO presidents_table(first_name, last_name, date_inaurg, age_inaurg, 
+      terms_served, birth_date, death_date, home_state, 
+      president_image, party)
+      VALUES('${req.body.first_name}','${req.body.last_name}','${req.body.date_inaurg}','${req.body.age_inaurg}',
+      '${req.body.terms_served}','${req.body.birth_date}','${req.body.death_date}','${req.body.home_state}',
+      '${req.body.president_image}','${req.body.party}');`;
+    const addNewPresident = await db.sequelizeDB.query(createQuery, {
+      type: sequelize.QueryTypes.INSERT,
     });
-    res.send('Successfully Deleted');
+    console.log('Touched /presidents with post/create');
+    res.json(addNewPresident);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
   }
 });
-
-router.put('/dining', async (req, res) => {
+router.post('/firstlady', async (req, res) => {
   try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/meals/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
+    const createQueryLadies = `
+      INSERT INTO Presidents.first_ladies(first_ladies_name)
+      VALUES('${req.body.first_ladies_name}');`;
+    const addNewLady = await db.sequelizeDB.query(createQueryLadies, {
+      type: sequelize.QueryTypes.INSERT,
     });
-    res.json(meals);
+    console.log('Touched /firstlady with post/create');
+    res.json(addNewLady);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
   }
 });
-
-router.put('/meals', async (req, res) => {
+// INSERT INTO presidents_table(first_name, last_name, date_inaurg, age_inaurg, 
+//   terms_served, birth_date, death_date, home_state, 
+//   president_image, party)
+//   VALUES('${req.body.first_name}','${req.body.last_name}','${req.body.date_inaurg}','${req.body.age_inaurg}',
+//   '${req.body.terms_served}','${req.body.birth_date}','${req.body.death_date}','${req.body.home_state}',
+//   '${req.body.president_image}','${req.body.party}');
+//   INSERT INTO first_ladies(first_ladies_name)
+//   VALUES('${req.body.first_ladies_name}');
+// update the information of the existing presidents in the database by specific id
+// if (ladiesQuery !== null)
+// {
+//   const addNewLady = await db.sequelizeDB.query(ladiesQuery, 
+//     {
+//       type: sequelize.QueryTypes.INSERT,
+//     }); 
+// } else {
+//   console.log('no data for ladies')
+// }
+// res.json(addNewLady);
+router.post('/vicepresident', async (req, res) => {
   try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
+    const createQueryVp = `
+      INSERT INTO Presidents.vice_presidents(first_name, last_name)
+      VALUES('${req.body.first_name}','${req.body.last_name}');`;
+    const addNewVp = await db.sequelizeDB.query(createQueryVp, {
+      type: sequelize.QueryTypes.INSERT,
     });
-    res.json(meals);
+    console.log('Touched /vicepresident with post/create');
+    res.json(addNewVp);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
   }
 });
-
-router.put('/macros', async (req, res) => {
+router.post('/children', async (req, res) => {
   try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
-      where: {
-        restriction_id: req.params.restriction_id
-      }
+    const createQueryChild = `
+      INSERT INTO Presidents.children_of_presidents(first_name, last_name)
+      VALUES('${req.body.first_name}','${req.body.last_name}');`;
+    const addNewChild = await db.sequelizeDB.query(createQueryChild, {
+      type: sequelize.QueryTypes.INSERT,
     });
-    res.json(restrictions);
+    console.log('Touched /childrens with post/create');
+    res.json(addNewChild);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
   }
 });
-
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
+router.put('/presidents/:president_id', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
+    const updateQuery = `UPDATE presidents_table SET first_name = '${req.body.first_name}', last_name = '${req.body.last_name}', 
+    date_inaurg = '${req.body.date_inaurg}', age_inaurg = '${req.body.age_inaurg}', 
+    terms_served = '${req.body.terms_served}',
+    birth_date = '${req.body.birth_date}', death_date = '${req.body.death_date}', 
+    home_state = '${req.body.home_state}',
+    president_image = '${req.body.president_image}',  
+    party = '${req.body.party}'
+    WHERE CONCAT(first_name, ' ', last_name) = '${req.params.president_id}';`;
+    const upPres = await db.sequelizeDB.query(updateQuery, {
+      type: sequelize.QueryTypes.UPDATE,
     });
-    res.json(result);
+    console.log('Touched /presidents/:president_id with put/update');
+    res.json(upPres);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
   }
 });
-
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
+router.put('/firstlady/:first_ladies_id', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
+    const updateQueryLady = `UPDATE first_ladies SET first_ladies_name = '${req.body.first_ladies_name}'
+    WHERE first_ladies_name = '${req.params.first_ladies_id}';`;
+    const updateLady = await db.sequelizeDB.query(updateQueryLady, {
+      type: sequelize.QueryTypes.UPDATE,
     });
-    res.json(result);
+    console.log('Touched /firstlady/:first_ladies_id with put/update');
+    res.json(updateLady);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
   }
 });
-router.get('/custom', async (req, res) => {
+router.put('/vicepresident/:vp_id', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
+    const updateQueryVp = `UPDATE vice_presidents SET first_name = '${req.body.first_name}', 
+    last_name = '${req.body.last_name}'
+    WHERE concat(first_name, " ",last_name) = '${req.params.vp_id}';`;
+    const updateVp = await db.sequelizeDB.query(updateQueryVp, {
+      type: sequelize.QueryTypes.UPDATE,
     });
-    res.json(result);
+    console.log('Touched /vicepresident/:vp_id with put/update');
+    res.json(updateVp);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+  }
+});
+router.put('/children/:child_id', async (req, res) => {
+  try {
+    const updateQueryChild = `UPDATE children_of_presidents SET first_name = '${req.body.first_name}', 
+    last_name = '${req.body.last_name}'
+    WHERE concat(first_name, " ",last_name) = '${req.params.child_id}';`;
+    const updateChild = await db.sequelizeDB.query(updateQueryChild, {
+      type: sequelize.QueryTypes.UPDATE,
+    });
+    console.log('Touched /children/:child_id with put/update');
+    res.json(updateChild);
+  } catch (err) {
+    console.error(err);
   }
 });
 

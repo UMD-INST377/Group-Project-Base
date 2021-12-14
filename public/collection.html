@@ -16,7 +16,7 @@
         <nav class="navbar is-light" role="navigation" aria-label="main navigation">
           <div class="navbar-brand"><a class="navbar-item" href="../index.html"><img src="./images/viinyl-logo.png"/></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
           <div class="navbar-menu" id="navbarBasicExample">
-            <div class="navbar-start"><a class="navbar-item is-active"> Collection </a><a class="navbar-item" href="about.html"> About </a>
+            <div class="navbar-start"><a class="navbar-item is-active" id = 'pop'> Collection </a><a class="navbar-item" href="about.html"> About </a>
               <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link"> More </a>
                 <div class="navbar-dropdown"><a class="navbar-item" href="about.html"> About </a><a class="navbar-item"> Contact </a>
                   <hr class="navbar-divider"/><a class="navbar-item"> Report an issue </a>
@@ -122,6 +122,64 @@
       <!-- will add the dropdown, and make search box look prettier -->
       <input class="searchinput" placeholder="Search..."/>
   </div>
+  <div class="bg-modal">
+      <div class="close-button">
+      <div class="modal-content">
+            <div class = 'close'>+</div>
+            <br>
+            Email: Viinyl@gmail.com
+            <br>
+            Phone: 888-888-8888
+            <br>
+            Address: 5555 55th Ave
+      </div>
+  </div>
   </body>
+    <style>
+  #texts {
+      float: left;
+      margin-left: 15%;
+  }
+  .bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.7;
+    position: absolute;
+    top:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+  .modal-content{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    font-size: xx-large;
+    position: relative;
+  }
+  .close {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
+
+  }
+</style>
+<script>
+  document.getElementById('pop').addEventListener('click',function(){
+    document.querySelector('.bg-modal').style.display = 'flex'
+  })
+
+  document.querySelector('.close').addEventListener('click', function() {
+    document.querySelector('.bg-modal').style.display = 'none';
+  })
+</script>
   <script src="./javascript/collectionModal.js"></script>
 </html>

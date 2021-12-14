@@ -5,8 +5,8 @@ In the streaming age, our physical music can be left in the dust. Viinyl aims to
 ### Live Link
 https://viinyl.herokuapp.com
 
-# Developer Manual
-## Application and Note Installation:
+
+## Running Application on OS:
 1. Close your Repository: (https://github.com/suhailxyz/Group27-Viinyl)
 A: Through the terminal of VSCode in your OS
 B:Through GitHub Desktop, see here for download for your OS, see: (https://desktop.github.com
@@ -18,6 +18,9 @@ B:Through GitHub Desktop, see here for download for your OS, see: (https://deskt
 2. Type `npm start` in terminal.
 3. Enter: `http://localhost:3000/` in any Web URL 
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+### Application Bugs 
+1. Currently, our app has no known bugs, however, we are still trying to adjust UI componensts for UI via Flexbox, due to timing constraints we were unable to address some elements of Mobile accessibility. 
+
+### Future Developments
+1. Updating a collections page to create a system for acrhiving record information.
+2. Incorporating a system update, via routing an API to update vinyl sales and popularity by genre. 

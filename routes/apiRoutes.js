@@ -88,18 +88,20 @@ router.delete(async(req, res) => {
 /// /////////////////////////////////
 router.get('/contact',async(req, res) => {
   try {
-    const contact = await db.sequelizeDB.query(GETcontroller.contact, {
+    const contact = await db.sequelizeDB.query(GETController.contact, {
       type: sequelize.QueryTypes.SELECT
-      
     });
 
-  
+    // Send data
+    res.json({status: 'success', data: contact});
+  } catch (errorData) {
+    // Debug
+    console.error(errorData);
 
-  } catch (error) {
-    console.log(error);
-    res.json({message: 'Something went wrong'});
+    // Send data
+    response.json({status: 'failure', data: null, message: 'unknown error'});
   }
-}); 
+});
 router.put(async(req, res) => {
   try {
     console.log('You touched /contact with PUT');

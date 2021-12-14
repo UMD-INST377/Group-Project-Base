@@ -28,16 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title">Modal title</p>
+                    <span>Vinyl<br/><span>
+                    <p class="modal-card-title">${row[index]['Album Name']}</p>
+                    <span>${row[index]['Artist Name']} &middot ${new Date(row[index]['Date when First Available']).getFullYear()} &middot ${row[index]['Number of Songs']} songs, ${row[index].Runtime} runtime</span>
                 </header>
                 <section class="modal-card-body">
                     <!-- Content ...-->
-                    <p>Album Name: ${row[index]['Vinyl Name']}</p>
                     <p>Genre: ${row[index].Genre}</p>
                 </section>
                 <footer class="modal-card-foot">
-                    <button class="button is-danger">Add Record</button>
-                    <button class="button" id="cancel-vinyl">Cancel</button>
+                    <button class="button is-danger" id="done-vinyl">Done</button>
                 </footer>
             </div>
             </div>
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function displayVinylModalTrending() {
-    const response = await fetch('./api/vinyls');
+    const response = await fetch('./api/vinylinfo');
     const vinyls = await response.json();
 
     const triggers = document.querySelectorAll('.trigger');
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const triggerArray = Array.from(triggers);
     const vinylModal = document.querySelectorAll('#vinylmodal');
-    const cancelVinyl = document.querySelectorAll('#cancel-vinyl');
+    const doneVinyl = document.querySelectorAll('#done-vinyl');
 
     triggerArray.forEach((trigger, index) => {
       const toggleModal = () => {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       trigger.addEventListener('click', toggleModal);
-      cancelVinyl[index].addEventListener('click', toggleModal);
+      doneVinyl[index].addEventListener('click', toggleModal);
     });
   }
   displayVinylModalTrending();

@@ -9,21 +9,21 @@ import PUTController from '../controllers/PUTController.js';
 import db from '../database/initializeDB.js';
 const router = express.Router();
 
-
+//Jake Stark Members Route
 router.get('/members',async(req, res) => {
   try {
-    const d = await db.sequelizeDB.query(GETController.membersTest, {
+    const mems = await db.sequelizeDB.query(GETController.membersTest, {
       type: sequelize.QueryTypes.SELECT
     });
 
     // Send data
-    res.json({status: 'success', data: d});
-  } catch (e) {
+    res.json({status: 'success', data: mems});
+  } catch (error) {
     // Debug
-    console.error(e);
+    console.error(error);
 
     // Send data
-    response.json({status: 'failure', data: null, message: 'unknown error'});
+    response.json({status: 'failure',  message: 'unknown error'});
   }
 });
 

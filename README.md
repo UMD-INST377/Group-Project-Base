@@ -52,7 +52,7 @@ There are no prewritten tests within this repository. However, the api endpoints
 * PUT - Updates a given food source's inspection result based on user changes. Logs to console the response 'updated /name with PUT'.
 
 ```/newrestaurant``` - API route for new restaurant information.
-*POST - Adds a new food source entry into the database from request.
+* POST - Adds a new food source entry into the database from request.
 
 ## Known Bugs and Future Development
 

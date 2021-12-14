@@ -32,14 +32,42 @@ router.route('/foodInspectionPG')
 
   .put(async (req, res) => {
     try {
-      await db.Inspections.update(
+      await db.Food_Inspection.update(
         {
+          establishment_id: req.body.establishment_id,
           name: req.body.name,
-          category: req.body.category
+          category: req.body.category,
+          inspection_date: req.body.inspection_date,
+          inspection_results: req.body.inspection_results,
+          city: req.body.city,
+          state: req.body.state,
+          zip: req.body.zip,
+          address_line_1: req.body.address_line_1,
+          address_line_2: req.body.address_line_2,
+          food_from_approved_source: req.body.food_from_approved_source,
+          food_protected_from_contamination: req.body.food_protected_from_contamination,
+          ill_workers_restricted: req.body.ill_workers_restricted,
+          proper_hand_washing: req.body.proper_hand_washing,
+          cooling_time_and_temperature: req.body.cooling_time_and_temperature,
+          cold_holding_temperature: req.body.cold_holding_temperature,
+          hot_holding_temperature: req.body.hot_holding_temperature,
+          cooking_time_and_temperature: req.body.cooking_time_and_temperature,
+          reheating_time_and_temperature: req.body.reheating_time_and_temperature,
+          hot_and_cold_running_water_provided: req.body.hot_and_cold_running_water_provided,
+          proper_sewage_disposal: req.body.proper_sewage_disposal,
+          no_bare_hand_contact: req.body.no_bare_hand_contact,
+          adequate_hand_washing_facilities: req.body.adequate_hand_washing_facilities,
+          rodent_and_insects: req.body.rodent_and_insects,
+          food_contact_surfaces_and_equipment: req.body.food_contact_surfaces_and_equipment,
+          inspection_type: req.body.inspection_type,
+          owner: req.body.owner,
+          type: req.body.type,
+          location: req.body.location
         },
         {
           where: {
-            establishment_id: req.body.entry_id
+            establishment_id: req.body.establishment_id,
+            inspection_date: req.body.inspection_date
           }
         }
       );

@@ -47,12 +47,14 @@ async function windowActions() {
     const delete_box = document.querySelector('.delete');
 
     const modalHtml = matchArray.map((info) => `<center><big><b><div class="name"> ${info.volcano_name}</div></b></big><br>
+    <div class="id"><b>Eruption ID:</b> ${info.eruption_id}</div>
       <div class="num"><b>Eruption Number:</b> ${info.eruption_number} </div>
       <div class="date"><b>Date of Eruption:</b> ${info.year}-${info.month}-${info.day} </div>
       <div class="aoa"><b>Eruption AOA:</b> ${info.aoa}</div>
       <div class="vei"><b>Eruption VEI:</b> ${info.vei}</div>
       <div class="method"><b>Method:</b> ${info.method}</div>
       <div class="category"><b>Eruption Category:</b> ${info.category}</div>
+      
       </center>`);
 
     for (let i = 0; i < elements.length; i++) {

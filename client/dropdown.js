@@ -20,7 +20,7 @@ endpoint = '/api/vacDataAndCounty';
 async function VCInfo(endpoint, table) {
   const response = await fetch(endpoint);
   const data = await response.json();
-  console.log(data[1]);
+  console.log(data);
 
   for (var key in data){
     var row = `<tr>
@@ -33,4 +33,4 @@ async function VCInfo(endpoint, table) {
     table.innerHTML += row
   }
 }
-VCInfo(endpoint, document.querySelector('VCtable'));
+VCInfo(endpoint, document.querySelector('#VCtable'));

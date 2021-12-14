@@ -126,3 +126,5 @@ const displayTableData = async () => {
 
 
 displayTableData();
+displayTableDataTwo();
+displayTableDataThree();

@@ -24,4 +24,14 @@ B:Through GitHub Desktop, see here for download for your OS, see: (https://deskt
 ### Future Developments
 1. Updating the collections page to make sorting through the collection easier.
 2. Adding user accounts, sign ups, and ultimately a way to see other user's collections and offer to buy, sell and trade records
->>>>>>> 476b0410beae2c9b61cbdcec2cf929fe48d45b41
+
+### api-routes
+/api/artists
+* GET Statement to return the name of the artists in the collections Page if they exist in the database.
+* PUT Inserts information where artist_id 
+* POST Updates data based on artist_id
+* DELETE information if selected artist is not in collection
+
+
+/api/requests
+* PUT Inserts new record request into the db 

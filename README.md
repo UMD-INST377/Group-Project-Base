@@ -19,8 +19,8 @@ B:Through GitHub Desktop, see here for download for your OS, see: (https://deskt
 3. Enter: `http://localhost:3000/` in any Web URL 
 
 ### Application Bugs 
-1. Currently, our app has no known bugs, however, we are still trying to adjust UI componensts for UI via Flexbox, due to timing constraints we were unable to address some elements of Mobile accessibility. 
+1. Currently, our app does have a few UI bugs: we are still trying to adjust UI componensts for UI via Flexbox, due to timing constraints we were unable to address some elements of Mobile accessibility. 
 
 ### Future Developments
 1. Updating a collections page to create a system for acrhiving record information.
-2. Incorporating a system update, via routing an API to update vinyl sales and popularity by genre. 
+2. Automatic updates on graphs depending on variances in sales and popularity frequencies.

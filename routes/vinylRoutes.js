@@ -3,6 +3,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import getCertifications from '../server/controllers/getCertifications.js';
 import getVinyls from '../server/controllers/getVinyls.js';
+import getVinylInfo from '../server/controllers/getVinylInfo.js';
 
 const router = express.Router();
 
@@ -78,5 +79,19 @@ router.route('/certifications')
       res.json({ error: 'Oops Error' });
     }
   });
+
+router.route('/vinylinfo')
+  .get(async(req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(getVinylInfo, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (error) {
+      console.log(error);
+      res.json({ error: 'Oops Error' });
+    }
+  })
+
 
 export default router;

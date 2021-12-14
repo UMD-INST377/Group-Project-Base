@@ -22,15 +22,6 @@ B:Through GitHub Desktop, see here for download for your OS, see: (https://deskt
 1. Currently, our app does have a few UI bugs: we are still trying to adjust UI componensts for UI via Flexbox, due to timing constraints we were unable to address some elements of Mobile accessibility. 
 
 ### Future Developments
-1. Updating a collections page to create a system for acrhiving record information.
-2. Automatic updates on graphs depending on variances in sales and popularity frequencies.
-
-### api-routes
-/api/artists
-* GET Statement to return the name of the artists in the collections Page if they exist in the database.
-* PUT Inserts information where artist_id 
-* POST Updates data based on artist_id
-* DELETE information if selected artist is not in collection
-
-
-/api/
+1. Updating the collections page to make sorting through the collection easier.
+2. Adding user accounts, sign ups, and ultimately a way to see other user's collections and offer to buy, sell and trade records
+>>>>>>> 476b0410beae2c9b61cbdcec2cf929fe48d45b41

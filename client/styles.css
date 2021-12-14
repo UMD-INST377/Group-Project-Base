@@ -83,3 +83,9 @@ h1 {
   
   /* Show the dropdown menu */
   .show {display:block;}
+  
+  /* Edit vacc sites table */
+  #tableVS {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }

@@ -30,7 +30,7 @@ async function windowActions() {
           return `
 
           <ul>
-            <li class="game-id">ID: ${result.platform_id}</li>
+            <li class="platform-id">ID: ${result.platform_id}</li>
             <li>PC: ${result.PC}</li>
             <li>Playstation: ${result.Playstation}</li>
             <li>Xbox: ${result.Xbox}</li>

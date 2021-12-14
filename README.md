@@ -26,32 +26,32 @@ Food is one of the basic necessities of life! As a neccessity, it is important t
 
 ## How To Run Application On Server
 1. Open the repository in VSCode.
-2. Run the following command in VSCode terminal: ==npm start==.
-3. Open your web browser, and go to the following url: ==http://localhost:3000/==.
+2. Run the following command in VSCode terminal: ```npm start```.
+3. Open your web browser, and go to the following url: ```http://localhost:3000/```.
 
 ## How to run Software Tests
 There are no prewritten tests within this repository. However, the api endpoints and controllers can be tested within Postman.
 
-1. Open your VSCode terminal and run the following command: ==npm start==.
+1. Open your VSCode terminal and run the following command: ```npm start```.
 2. Open Postman application and click the "+" button in the top right of the program.
 3. Select the endpoint you want to test for(GET, PUT, POST).
-4. Enter the following: ==localhost:3000/api/route==. Replace "route" with the actual route associated with your selected endpoint.
+4. Enter the following: ```localhost:3000/api/route```. Replace "route" with the actual route associated with your selected endpoint.
 5. Click on send to test if the endpoint is returning information from the database.
 
 ## Server Application APIs
-==/restaurants== - API route for location information of food sources.
+```/restaurants``` - API route for location information of food sources.
 * GET - Retrieves identifier information for a given food source. Logs to console the response 'touched /food_inspection with GET'.
 
-==/zipcodes== - API route for Zip Code information of food sources.
+```/zipcodes``` - API route for Zip Code information of food sources.
 * GET - Retrieves the zipcode of a given food source through query in zipcodeController. Logs to console the response 'touched /zipcodes with GET'.
 
-==/inspectiontype== - API route for inspection type information conducted at the different food sources.
+```/inspectiontype``` - API route for inspection type information conducted at the different food sources.
 * GET - Retrieves the type of inspection that was conducted at a given food source through query in inspectionType controller. Logs to console the response 'touched /inspection_type with GET'.
 
-==/differentrestaurant== - API route for
+```/differentrestaurant``` - API route for
 * PUT - Updates a given food source's inspection result based on user changes. Logs to console the response 'updated /name with PUT'.
 
-==/newrestaurant== - API route for new restaurant information.
+```/newrestaurant``` - API route for new restaurant information.
 *POST - Adds a new food source entry into the database from request.
 
 ## Known Bugs and Future Development

@@ -133,4 +133,21 @@ h1 {
   width: 300px;
   }
   */
-  
+
+  thead tr {
+    background-color: #e0e0e0;
+  }
+
+  tr:hover {
+    background-color:#fff7dc;
+  }
+
+  .bottom-wrapper {
+    border: 1px solid black;
+    margin: 5%;
+    padding: 5%;
+  }
+
+  #submit-button {
+    margin-top: 2%;
+  }

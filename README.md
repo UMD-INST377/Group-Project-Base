@@ -26,12 +26,12 @@ B:Through GitHub Desktop, see here for download for your OS, see: (https://deskt
 2. Adding user accounts, sign ups, and ultimately a way to see other user's collections and offer to buy, sell and trade records
 
 ### api-routes
-/api/artists
-* GET Statement to return the name of the artists in the collections Page if they exist in the database.
-* PUT Inserts information where artist_id 
-* POST Updates data based on artist_id
-* DELETE information if selected artist is not in collection
+/api/vinylinfo
+* GET statement to return vinyl information such as vinyl name, artist, description, and etc. in the collection page if they exist in the database.
 
+/api/certifications
+* GET statement to return certification information such as gold, platinum, multi-platinum, and etc. for the canvas graphs.
 
-/api/requests
-* PUT Inserts new record request into the db 
+/api/requests 
+* GET statement to return our equest table with vinyl name, artist, and year for form.
+* POST statement to send data to the vinyl database on table requests.

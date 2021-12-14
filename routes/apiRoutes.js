@@ -1,8 +1,21 @@
 /* eslint-disable no-console */
 import express from 'express';
-import sequelize from 'sequelize';
-
+// import sequelize, { QueryTypes } from 'sequelize';
+import pkg from 'sequelize';
 import db from '../database/initializeDB.js';
+
+import foodInspectionVar from '../contollers/food_inspectionController.js';
+import zipcodeVar from '../contollers/zipcodeController.js';
+import inspectiontypeVar from '../contollers/inspectionType.js';
+import updateVar from '../contollers/putController.js';
+
+const { QueryTypes } = pkg;
+
+/*
+const fetch = require('node-fetch');
+*/
+
+// const {QueryTypes} = pkg;
 
 const router = express.Router();
 
@@ -11,86 +24,78 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////   Food Inspection   ////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+
+router.route('/foodServicePG').get(async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
-    res.json(reply);
+    const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+    res.json(data);
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+  console.log(data);
+  res.json(data);
+});
+
+router.get('/restaurants', async (req, res) => {
+  try {
+    const businesses = await db.sequelizeDB.query(foodInspectionVar);
+    res.json(businesses);
   } catch (err) {
     console.error(err);
     res.error('Server error');
+    console.log('touched /food_inspection with GET');
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/zipcodes', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
-      where: {
-        hall_id: req.params.hall_id
-      }
+    const zip = await db.sequelizeDB.query(zipcodeVar);
+    res.json(zip);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+    console.log('touched /zipcodes with GET');
+  }
+});
+
+router.get('/inspectiontype', async (req, res) => {
+  try {
+    const type = await db.sequelizeDB.query(inspectiontypeVar);
+    res.json(type);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+    console.log('touched /inspection_type with GET');
+  }
+});
+
+router.put('/differentrestaurant', async (req, res) => {
+  try {
+    const update = await db.sequelizeDB.query(updateVar);
+    res.json(update);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+    console.log('updated /name with PUT');
+  }
+});
+router.post('/newrestaurant', async (req, res) => {
+  try {
+    const establishments = await db.sequelizeDB.query(postController.createPost, {
+      type: QueryTypes.SELECT
     });
-
-    res.json(hall);
+    console.log('Touched post endpoint', req.body);
+    console.log(req.body?.resto);
+    res.json({establishments: 'post foodServicePG endpoint'});
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    console.log(err);
+
+    res.json({error: 'Server error'});
   }
 });
-
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
-  try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.delete('/dining/:hall_id', async (req, res) => {
-  try {
-    await db.DiningHall.destroy({
-      where: {
-        hall_id: req.params.hall_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/dining', async (req, res) => {
-  try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////

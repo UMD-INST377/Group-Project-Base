@@ -19,7 +19,7 @@
           <div class="navbar-menu" id="navbarBasicExample">
             <div class="navbar-start"><a class="navbar-item" href="../collection.html"> Collection </a><a class="navbar-item" href="../about.html"> About </a>
               <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link"> More </a>
-                <div class="navbar-dropdown"><a class="navbar-item"> Contact </a>
+                <div class="navbar-dropdown"><a class="navbar-item" id = "pop"> Contact </a>
                   <hr class="navbar-divider"/><a class="navbar-item"> Report an issue </a>
                 </div>
               </div>
@@ -122,7 +122,61 @@
         <div id="pie-graph" style="height: 370%; width: 50%;"></div>
         <div id="bar-graph" style="height: 370%; width: 50%;"></div>
       </div>
+      <div class="bg-modal">
+      <div class="close-button">
+      <div class="modal-content">
+            <div class = 'close'>+</div>
+            <br>
+            Email: Viinyl@gmail.com
+            <br>
+            Phone: 888-888-8888
+            <br>
+            Address: 5555 55th Ave
+      </div>
+    </div>
   </body>
+  <style>
+  .bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.7;
+    position: absolute;
+    top:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+  .modal-content{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    font-size: xx-large;
+    position: relative;
+  }
+  .close {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
+
+  }
+</style>
+<script>
+  document.getElementById('pop').addEventListener('click',function(){
+    document.querySelector('.bg-modal').style.display = 'flex'
+  })
+
+  document.querySelector('.close').addEventListener('click', function() {
+    document.querySelector('.bg-modal').style.display = 'none';
+  })
+</script>
   <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
   <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

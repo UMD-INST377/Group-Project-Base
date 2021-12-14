@@ -1,0 +1,237 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./css/Glide/glide.core.min.css"/>
+    <link rel="stylesheet" href="./css/Glide/glide.theme.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <title>Viinyl</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon"/>
+  </head>
+  <body class="viinyl">
+    <div class="viinyl-container">
+      <div class="viinyl-navigation">
+        <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand"><a class="navbar-item" href="../index.html"><img src="./images/viinyl-logo.png"/></a><a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+          <div class="navbar-menu" id="navbarBasicExample">
+            <div class="navbar-start"><a class="navbar-item is-active" id = 'pop'> Collection </a><a class="navbar-item" href="about.html"> About </a>
+              <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link"> More </a>
+                <div class="navbar-dropdown"><a class="navbar-item" href="about.html"> About </a><a class="navbar-item"> Contact </a>
+                  <hr class="navbar-divider"/><a class="navbar-item"> Report an issue </a>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <button class="button is-danger" id="addrecord"><strong>Request Vinyl</strong></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- add record modal-->
+      <div class="modal" id="addrecordModal">
+        <div class="modal-background">
+          <div class="modal-content">
+            <div class="section modal-wrap">
+              <div class="columns">
+                <div class="column">
+                  <figure class="image is-512x512">
+                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                  </figure>
+                  <button class="button is-danger">Search</button>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label">Title</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Random Access Memories"/>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Artist</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Daft Punk"/>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Year</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="2013"/>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <button class="button is-danger">Confirm</button>
+                      <button class="button" id="Cancel">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="modal-close is-large" id="addrecord-close" aria-label="close"></button>
+        </div>
+      </div>
+      <!-- sign-up modal-->
+      <div class="modal" id="signupModal">
+        <div class="modal-background">
+          <div class="modal-content">
+            <div class="section modal-wrap">
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Username</label>
+                <div class="control">
+                  <input class="input" type="text" placeholder="e.g. alexsmith"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                  <input class="input" type="password" placeholder="Password"/>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Confirm Password</label>
+                <div class="control">
+                  <input class="input" type="password" placeholder="Password"/>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-danger">Sign Up</button>
+                  <button class="button" id="Cancel">Cancel</button>
+                  <p>Account Signup In Devlopment</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <button class="modal-close is-large" id="signup-close" aria-label="close"></button>
+      </div>
+    </div>
+    <div class="test">
+    </div>
+    <div class="subtitle is-3"><strong>Database Collection</strong></div>
+
+    <div class="vinyl-slider-2">
+      <div class="vinyl-grid">
+        <div class="glide">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide">
+                <input class="trigger" type="image" src="./vinyls/ram.jpg"/>
+              </li>
+              <li class="glide__slide">
+                <input class="trigger" type="image" src="./vinyls/gkmc.jpeg"/>
+              </li>
+              <li class="glide__slide">
+                <input class="trigger" type="image" src="./vinyls/born_to_die.png"/>
+              </li>
+              <li class="glide__slide">
+                <input class="trigger" type="image" src="./vinyls/plastic_beach.jpg"/>
+              </li>
+              <li class="glide__slide">
+                <input class="trigger" type="image" src="./vinyls/25.png"/>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vinyl-slider-2">
+      <div class="vinyl-grid">
+        <div class="glide">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide">
+                <input class="trigger" type="image" src="./vinyls/innerspeaker.png"/>
+              </li>
+              <li class="glide__slide">
+                <input class="trigger" type="image" src="./vinyls/tpab.png"/>
+              </li>
+              <li class="glide__slide">
+                <input class="trigger" type="image" src="./vinyls/the_endless_river.jpg"/>
+              </li>
+              <li class="glide__slide">
+                <input class="trigger" type="image" src="./vinyls/morning_phase.jpg"/>
+              </li>
+              <li class="glide__slide">
+                <input class="trigger" type="image" src="./vinyls/am.png"/>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer is-flex-direction-column is-fullheight-100vh">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Viinyl</strong> by <a href="https://github.com/suhailxyz/Group27-Viinyl">Group 27</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
+  </body>
+    <style>
+  #texts {
+      float: left;
+      margin-left: 15%;
+  }
+  .bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.7;
+    position: absolute;
+    top:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+  .modal-content{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    font-size: xx-large;
+    position: relative;
+  }
+  .close {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    font-size: 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
+
+  }
+</style>
+<script>
+  document.getElementById('pop').addEventListener('click',function(){
+    document.querySelector('.bg-modal').style.display = 'flex'
+  })
+
+  document.querySelector('.close').addEventListener('click', function() {
+    document.querySelector('.bg-modal').style.display = 'none';
+  })
+</script>
+  <script src="./javascript/collectionModal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+  <script src="./javascript/modals.js"></script>
+  <script src="./javascript/carousel.js"></script>
+</html>

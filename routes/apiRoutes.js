@@ -2,14 +2,14 @@
 import express from 'express';
 // import sequelize, { QueryTypes } from 'sequelize';
 import pkg from 'sequelize';
+
+const { QueryTypes } = pkg;
 import db from '../database/initializeDB.js';
 
 import foodInspectionVar from '../contollers/food_inspectionController.js';
-import zipcodeVar from '../contollers/zipcodeController.js';
-import inspectiontypeVar from '../contollers/inspectionType.js';
-import updateVar from '../contollers/putController.js';
-
-const { QueryTypes } = pkg;
+import establishmentController from '../contollers/putController.js';
+import inspectionResultsVar from '../contollers/inspection_results_get.js';
+import postController from '../contollers/postController.js';
 
 /*
 const fetch = require('node-fetch');
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////   Food Inspection   ////////
 /// /////////////////////////////////
-
+/*
 router.route('/foodServicePG').get(async (req, res) => {
   try {
     const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
@@ -36,14 +36,16 @@ router.route('/foodServicePG').get(async (req, res) => {
 
     res.json(data);
   } catch (err) {
+    console.log ('error');
     console.error(err);
+    res.error('Server error');
     throw err;
   }
   console.log(data);
   res.json(data);
 });
 
-router.get('/restaurants', async (req, res) => {
+router.get('establishments/establishment_id', async (req, res) => {
   try {
     const businesses = await db.sequelizeDB.query(foodInspectionVar);
     res.json(businesses);
@@ -54,53 +56,68 @@ router.get('/restaurants', async (req, res) => {
   }
 });
 
-router.get('/zipcodes', async (req, res) => {
+router.put('establishments/establishment_id', async (req, res) => {
   try {
-    const zip = await db.sequelizeDB.query(zipcodeVar);
-    res.json(zip);
+    const businesses = await db.sequelizeDB.query(establishmentController.updateVar, {
+      type: QueryTypes.update
+
+    });
+
+    res.json(businesses);
   } catch (err) {
     console.error(err);
     res.error('Server error');
-    console.log('touched /zipcodes with GET');
+    console.log('updated /food_inspection with PUT');
   }
 });
-
-router.get('/inspectiontype', async (req, res) => {
+router.post('establishments/establishment_id', async (req, res) => {
   try {
-    const type = await db.sequelizeDB.query(inspectiontypeVar);
-    res.json(type);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-    console.log('touched /inspection_type with GET');
-  }
-});
-
-router.put('/differentrestaurant', async (req, res) => {
-  try {
-    const update = await db.sequelizeDB.query(updateVar);
-    res.json(update);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-    console.log('updated /name with PUT');
-  }
-});
-
-router.post('/newrestaurant', async (req, res) => {
-  try {
+    // eslint-disable-next-line no-unused-vars
     const establishments = await db.sequelizeDB.query(postController.createPost, {
       type: QueryTypes.SELECT
     });
     console.log('Touched post endpoint', req.body);
     console.log(req.body?.resto);
     res.json({establishments: 'post foodServicePG endpoint'});
+
+    /* res.json(businesses); */
   } catch (err) {
     console.log(err);
 
     res.json({error: 'Server error'});
+    /* res.error('Server error');
+    console.log('touched /food_inspection with GET'); */
   }
 });
+
+router.get('/Inspection_results', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(inspectionResultsVar);
+    console.log(result);
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+    console.log('touched /food_inspection with GET');
+  }
+});
+
+/* router.put('/FOOD_INSPECTION_GROUP8.Food_Inspection/:Establishment_id', async (req, res) => {
+  try {
+    const businesses = await db.FoodInspection.findAll({
+      where: {
+        Establishment_id: req.params.Establishment_id
+      }
+    });
+
+    res.json(businesses);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+    console.log('touched /food_inspection with GET');
+  }
+});
+*/
 
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////

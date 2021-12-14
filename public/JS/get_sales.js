@@ -22,7 +22,7 @@ async function windowActions() {
   }
 
   function displayMatches(event) {
-    const matchArray = findMatches(event.target.value, Sales);
+    const matchArray = findMatches(event.target.value, gameSales);
     console.log(matchArray);
     if (matchArray) {
       const html = matchArray

@@ -26,15 +26,12 @@ async function vsStats(urlVS, tableVS) {
     var rowVS = `<tr>
                   <td>${dataVS[key].site_name}</td>
                   <td>${dataVS[key].street_address}</td>
-                  <td>${dataVS[key].street_address2}</td>
                   <td>${dataVS[key].city}</td>
                   <td>${dataVS[key].zip_code}</td>
-                  <td>${dataVS[key].active}</td>
                   <td>${dataVS[key].site_type}</td>
                   <td>${dataVS[key].operating_hours}</td>
                   <td>${dataVS[key].contact_phone}</td>
                   <td>${dataVS[key].website}</td>
-                  <td>${dataVS[key].site_ID}</td>
               </tr>`
     //table.append(row);
     tableVS.innerHTML += rowVS

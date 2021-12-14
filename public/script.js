@@ -1,11 +1,12 @@
 const displayTableData = async () => {
-    const data = await fetch('http://localhost:3000/api/members', { mode: 'no-cors' });
+    const data = await fetch('https://vast-lake-04060.herokuapp.com/api/members', { mode: 'no-cors' });
     const res = await data.json();
   
     const table = document.getElementById('table1');
     table.innerHTML = '';
 
-    const header = document.createElement('th');
+    const header = document.createElement('tr');
+    header.classList.add("head");
     const head = ["First Name", "Last Name", "Age", "Gender"];
   for (var i = 0; i < head.length; i++) {
     const td = document.createElement('td');

@@ -45,3 +45,15 @@
       border: 1px solid black;
       width: 100%;
   }
+
+  table, tr, td {
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  .head {
+    background-color: rebeccapurple;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }

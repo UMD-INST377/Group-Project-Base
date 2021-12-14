@@ -1,0 +1,5 @@
+const sqlDeleteDuration = 'USE vinyl; DELETE FROM songs WHERE duration > '6:30''
+const sqlGetSongName = 'USE vinyl; SELECT song_name FROM songs'
+export default {
+    sqlDeleteDuration, sqlGetSongName
+}

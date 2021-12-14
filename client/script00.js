@@ -28,7 +28,6 @@ async function countyInfo(endpoint, table) {
                   <td>${data[key].population}</td>
                   <td>${data[key].population_density}</td>
                   <td>${data[key].uninsured}</td>
-                  <td>${data[key].poverty_rate}</td>
               </tr>`
 
     table.innerHTML += row

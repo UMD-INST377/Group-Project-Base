@@ -82,6 +82,7 @@ router.put('/differentrestaurant', async (req, res) => {
     console.log('updated /name with PUT');
   }
 });
+
 router.post('/newrestaurant', async (req, res) => {
   try {
     const establishments = await db.sequelizeDB.query(postController.createPost, {
@@ -96,6 +97,7 @@ router.post('/newrestaurant', async (req, res) => {
     res.json({error: 'Server error'});
   }
 });
+
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////

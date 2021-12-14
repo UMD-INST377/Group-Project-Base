@@ -1,18 +1,32 @@
-<!-- # This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# U.S. Presidents Timeline
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/) -->
+## Description
 
+Our project is centered around the lack of accessible and effective information design for young children wishing to learn about United States presidents.Although this may seem rather benign, a quick Google search to find relevant, easily accessible information about presidents, presented in a kid-friendly way can be difficult. Our final website is intended to contain a cohesive, simple, broad, attractive, and interesting overview of all of the United States presidents in a fashion geared towards children K-8 and their respecive educators.
+
+This project includes a fully-functional timeline of the Presidents of the United States that can be navigated through to access information about the U.S. Presidents. There is an About Us page that contains information about the site and information about the members of our team. In addition, an Update Page exists that allows users to add, edit, or delete information stored in the database (and by proxy the timeline).
+
+## Link to the website
+-[https://presidents-timeline.herokuapp.com/index.html](https://presidents-timeline.herokuapp.com/index.html)
+
+## Target Browsers
+* Safari, Chrome, Firefox
+* iPhone 6/7/8 Plus
+* Pixel 2/2XL
+* Macbook Pro 13/15
+
+## Links
+* [User Manual](https://scheduleofpt.herokuapp.com/documentation.html) 
+* [Developer Manual](#Developer Manual)
 
 # Developer Manual
 
-## How to install application and dependencies
+## How to install application and dependencies:
 > 1. Clone this repo using either GitHub Desktop or your computer's terminal.
 > 2. Open the repo with VSCode terminal or any other terminal of your choice.
 > 3. Run the command <strong>npm install</strong> using your terminal.
 > 4. Everything should be ready to use. If you run into any errors, please try visiting the following website: https://docs.npmjs.com/common-errors
+> 5. Check to make sure that the following TimelineJS links (https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js; https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css) are in the head tag of the index.html
 
 ## How to run application on server:
 > 1. Open the VSCode terminal or any other terminal of your choice.
@@ -154,8 +168,14 @@ this extension, simply search the name up in the VSCode Extension store and inst
 ## Application Bugs and Future Development:
 ### Bugs:
 > We are currently not aware of any major bugs within our application. The only real issue that we seem to be running into
-is the data for children, vice presidents, and first lady's not updating correctly on our timeline. 
+is the data for children, vice presidents, and first lady's not updating correctly on our timeline.
+> We purposefully designed the timeline in a manner that it does not allow for a user to enter a year later than the current year. If someone a date of inauguration greater than the current year, the timeline will display their term as inauguration year to current year.
 
 ### Future Development:
-> * Fixing the issue regarding data for children, vps, and first lady's not updating correctly on the timeline.
+> * Store president object and dependent objects in sessionStorage.  Add the presidents and get back the President-ID to add to the dependents as a foreign key - this should allow children, vice presidents, and first ladies to display on the timeline from new entries.
 > * Adding an extra layer of security by incorporating login credentials before timeline updates can be made.
+> * Populating update fields with information of president once they have been clicked on from the drop downs.
+> * Validating inputted data to ensure that it is formatted correctly.
+> * Change any date inputs to be type date and convert to Month Day, Year form using Moment JS
+> * Clear input boxes upon submission, display message about whether the submission was succesful or not.
+> * Replace null entries on timeline by a word such as "None".

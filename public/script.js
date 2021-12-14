@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   window.timeline = new TL.Timeline('timeline-embed', timelineJson, options);
 });
 
+// navbar script for responsivness
 document.addEventListener('DOMContentLoaded', () => {
 
   // Get all "navbar-burger" elements

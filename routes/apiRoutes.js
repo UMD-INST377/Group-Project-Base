@@ -24,6 +24,79 @@ router.get('/presidents', async (req, res) => {
   }
 });
 
+router.get('/delete_options', async (req, res) => {
+  try {
+    const dropDownQuery = `SELECT president_id, CONCAT(first_name, ' ', last_name) as full_name
+    FROM presidents_table;`;
+    const drop_down_info = await db.sequelizeDB.query(dropDownQuery, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(drop_down_info);
+  } catch (err) {
+    console.error(err);
+  }
+});
+router.get('/child', async (req, res) => {
+  try {
+    const dropDownQu = `SELECT child_id, CONCAT(first_name, ' ', last_name) as full_name
+    FROM children_of_presidents;`;
+    const dropDown = await db.sequelizeDB.query(dropDownQu, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(dropDown);
+  } catch (err) {
+    console.error(err);
+  }
+});
+router.get('/vpdrop', async (req, res) => {
+  try {
+    const dropDownQue = `SELECT vp_id, CONCAT(first_name, ' ', last_name) as full_name
+    FROM vice_presidents;`;
+    const dropDownVp = await db.sequelizeDB.query(dropDownQue, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(dropDownVp);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+router.get('/firstladydrop', async (req, res) => {
+  try {
+    const dropDownQuer = `SELECT first_ladies_id, first_ladies_name
+    FROM first_ladies;`;
+    const dropDownlady = await db.sequelizeDB.query(dropDownQuer, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(dropDownlady);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+router.get('/presidentdrop', async (req, res) => {
+  try {
+    const dropDownQi = `SELECT president_id, CONCAT(first_name, ' ', last_name) as full_name
+    FROM presidents_table;`;
+    const dropDownPresident = await db.sequelizeDB.query(dropDownQi, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+    // message
+    console.log('Touched /presidents with get');
+    res.json(dropDownPresident);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 // GET the specific president by id number
 
 router.get('/presidents/:president_id', async (req, res) => {
@@ -68,7 +141,7 @@ router.get('/time_line', async (req, res) => {
 router.delete('/presidents/:president_id', async (req, res) => {
   try {
     const deletePresidentQuery = `DELETE from presidents_table
-      where president_id = ${req.params.president_id};`;
+      where concat(first_name, " ",last_name) = '${req.params.president_id}';`;
     const delPresident = await db.sequelizeDB.query(deletePresidentQuery, {
       type: sequelize.QueryTypes.DELETE,
     });
@@ -167,7 +240,7 @@ router.put('/presidents/:president_id', async (req, res) => {
     home_state = '${req.body.home_state}',
     president_image = '${req.body.president_image}',  
     party = '${req.body.party}'
-    WHERE president_id = ${req.params.president_id}`;
+    WHERE CONCAT(first_name, ' ', last_name) = '${req.params.president_id}';`;
     const upPres = await db.sequelizeDB.query(updateQuery, {
       type: sequelize.QueryTypes.UPDATE,
     });
@@ -180,7 +253,7 @@ router.put('/presidents/:president_id', async (req, res) => {
 router.put('/firstlady/:first_ladies_id', async (req, res) => {
   try {
     const updateQueryLady = `UPDATE first_ladies SET first_ladies_name = '${req.body.first_ladies_name}'
-    WHERE first_ladies_id = ${req.params.first_ladies_id}`;
+    WHERE first_ladies_name = '${req.params.first_ladies_id}';`;
     const updateLady = await db.sequelizeDB.query(updateQueryLady, {
       type: sequelize.QueryTypes.UPDATE,
     });
@@ -194,7 +267,7 @@ router.put('/vicepresident/:vp_id', async (req, res) => {
   try {
     const updateQueryVp = `UPDATE vice_presidents SET first_name = '${req.body.first_name}', 
     last_name = '${req.body.last_name}'
-    WHERE vp_id = ${req.params.vp_id}`;
+    WHERE concat(first_name, " ",last_name) = '${req.params.vp_id}';`;
     const updateVp = await db.sequelizeDB.query(updateQueryVp, {
       type: sequelize.QueryTypes.UPDATE,
     });
@@ -208,7 +281,7 @@ router.put('/children/:child_id', async (req, res) => {
   try {
     const updateQueryChild = `UPDATE children_of_presidents SET first_name = '${req.body.first_name}', 
     last_name = '${req.body.last_name}'
-    WHERE child_id = ${req.params.child_id}`;
+    WHERE concat(first_name, " ",last_name) = '${req.params.child_id}';`;
     const updateChild = await db.sequelizeDB.query(updateQueryChild, {
       type: sequelize.QueryTypes.UPDATE,
     });

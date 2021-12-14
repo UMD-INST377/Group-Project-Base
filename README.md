@@ -35,7 +35,8 @@ PUT - Updates the information added for a hotel specifically with the reviews pa
 DELETE - If used, it would delete information for a hotel or review.
 
 # Known Bugs
-** Edits needed.
+Currently no known bugs.
+
 # Future Development
 In the future, we hope to adopt additional features that will better user interactions and experience with the website. One tool we seek to develop is as a booking options where users are able to go a step further and make reservations at the hotel and restaurant listings. Another feature would be a portfolio for each hotel that list the distance from nearby airports, buses that transport visitors, and even nearby attractions. We also hope to develop an API that provides updated weather logs and current events for the region.
 Additional potential future developments include:

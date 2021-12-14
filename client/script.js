@@ -55,3 +55,4 @@ async function cStats(urlC, tableC) {
   }
 }
 cStats(urlC, document.querySelector('tableC'));
+

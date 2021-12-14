@@ -38,5 +38,39 @@ This is the main table of our database. It is a join between COVID-19 statistics
 ## Other Endpoints
 The following tables can be accessed through the drop-down menu: 
 
+### COVID-19 Statistics: 
+The COVID-19 statistics table provides information on confirmed deaths, positive cases, and county death proportion 
+
+### County Stats 
+County Stats table provides information on the population of each county and the percentage of residents uninsured. 
+
+### Vaccination By County: 
+The Vaccination By County table displays information on vaccination data for a set of counties in maryland. Users are able to access information on the number of residents who have received their first dose and the number of residents who have received their second dose. The proportion of residents who have received their first dose of the vaccine and the proportion of residents who have received their second dose as well. 
+
 ### Vaccine Sites
 The Vaccine Sites endpoint displays a table including relevant information on all locations where Maryland residents can receive the COVID-19 vaccine in Prince George’s County, Montgomery County and Baltimore County. The following information is recorded on the table: site name, street address, city, zip code, site type, operating hours, contract phone and website.
+
+### Unemployment: 
+This tracks the unemployment rate for the year 2020 in Maryland. The month and the rate at each month is provided in the table. We decided not to include a table of this information because it did not provide enough information on counties; however, it is still an endpoint in our database and has a controller and route as well. 
+
+## File Structure: 
+### Client folder: 
+    holds the HTML and JS files for each table. The HTML file houses the table structure and the JS file uses an async/await function to call our data into display on the frontend 
+### Controller folder:
+    holds the JS files for each endpoint. Each file in this folder stores the SQL command to get data from our database for each endpoint 
+### Database folder:
+    holds the backbone of our database structure 
+### Models folder: 
+    For each endpoint, this folder has a JS file which defines the table, the datatypes in the table, and returns the result 
+### Routes folder: 
+    The apiroutes.js file codes each endpoint. Endpoints are the list of names our application can refer to on request. The routes coded in this file call the controllers to structure our data. 
+
+## Known Bugs & Future development: 
+For future development, we would like to improve a few functionality aspects of our frontend webpage. 
+We need to refer to counties by their full name rather than a number. This could be accomplished by joining county info with each table in order to add the county name column to each of the other tables. 
+We need to make a more enticing webpage. Adding more imagery and styling such as symmetry or more “blocks” to group together different sections of our website 
+We could also try to expand the information we provide by providing information on COVID-19 statistics for the entire DMV area. This would require us to pull data from multiple sources. 
+The Unemployment endpoint could be used in a join with another table that has information for each month of the year as well, such as number of COVID-19 cases per month. This could allow us to compare the number of uninsured residents and positive cases per month. 
+
+
+

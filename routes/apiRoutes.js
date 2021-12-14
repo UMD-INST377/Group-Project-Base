@@ -30,10 +30,6 @@ router.get('/', (req, res) => {
 router.route('/foodServicePG').get(async (req, res) => {
   try {
     const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-    const data = await fetch(url);
-    const json = await data.json();
-    console.log(json);
-
     res.json(data);
   } catch (err) {
     console.error(err);
@@ -86,7 +82,6 @@ router.put('/differentrestaurant', async (req, res) => {
     console.log('updated /name with PUT');
   }
 });
-
 router.post('/newrestaurant', async (req, res) => {
   try {
     const establishments = await db.sequelizeDB.query(postController.createPost, {
@@ -101,7 +96,6 @@ router.post('/newrestaurant', async (req, res) => {
     res.json({error: 'Server error'});
   }
 });
-
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////

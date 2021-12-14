@@ -74,20 +74,24 @@ body {
 
 .table-wrapper{
     text-align: center;
+    width: 100%;
 }
 
 .hscroll {
     background-color: lightblue;
     border: 1px solid black;
-    height: 800px;
-    width: 1800px;
+    height: 700px;
+    width: 100%;
     overflow-x: scroll;
     margin-top: 35px;
+    margin-bottom: 35px;
 }
 
-.tablemargins{
-    /*margin-left: 20px; */
+.table-margins{
+    margin-right: 50px;
     align-self: center;
+    max-width: 90%;
+    max-height: 90%;
 }
 
 h1 {
@@ -129,4 +133,21 @@ h1 {
   width: 300px;
   }
   */
-  
+
+  thead tr {
+    background-color: #e0e0e0;
+  }
+
+  tr:hover {
+    background-color:#fff7dc;
+  }
+
+  .bottom-wrapper {
+    border: 1px solid black;
+    margin: 5%;
+    padding: 5%;
+  }
+
+  #submit-button {
+    margin-top: 2%;
+  }

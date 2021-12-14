@@ -76,14 +76,14 @@ router.get('/inspectiontype', async (req, res) => {
   }
 });
 
-router.put('/differentrestaurant', async (req, res) => {
+router.put('/inspectionresult', async (req, res) => {
   try {
     const update = await db.sequelizeDB.query(updateVar);
     res.json(update);
   } catch (err) {
     console.error(err);
     res.error('Server error');
-    console.log('updated /name with PUT');
+    console.log('updated /inspectionresults with PUT');
   }
 });
 

@@ -24,21 +24,27 @@
           <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
           <div id="myDropdown" class="dropdown-content">
             <a href="covid-stats.html">COVID-19 Statistics</a>
-            <a href="county-info.html">County Stats</a>
+            <a href="/api/county-info">County Stats</a>
             <a href="vacByCounty.html">Vaccination Data By County</a>
             <a href="vacc-sites.html">Vaccine Sites Information</a>
           </div>
         </div>
         <br>
         <div>
-          <table id = "table">
-            <thead> <em> Vaccination By County Data </em>
+          <table id = "tableVS">
+            <thead> <em> Vaccination Site Info</em>
               <tr>
-                <th>County ID</th>
-                <th>First Dose Count</th>
-                <th>First Dose Prop</th>
-                <th>Second Dose Count</th>
-                <th>Second Dose Prop</th>
+                <th>Site Name</th>
+                <th>Street Address</th>
+                <th>Street Address 2</th>
+                <th>City</th>
+                <th>Zip Code</th>
+                <th>Active</th>
+                <th>Site Type</th>
+                <th>Operating Hours</th>
+                <th>Contract Phone</th>
+                <th>Website</th>
+                <th>Site ID</th>
               </tr>
             </thead>
             

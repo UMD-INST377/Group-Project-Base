@@ -1,4 +1,4 @@
-const countyInfo = `SELECT county_ID, county, population
-                    FROM county_information
-                    WHERE population > 500000`;
+const countyInfo = `SELECT county, population,
+                    uninsured, poverty_rate
+                    FROM county_information`;
 export default countyInfo

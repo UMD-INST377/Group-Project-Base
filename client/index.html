@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Group 20 INST 377</title>
+    <!-- Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/>
+    
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -18,18 +21,39 @@
         </div>
       </div>
       <div class = 'container'>
-        <h3>View Data in JSON format</h3>
+        <h3>Click on the Dropdown Menu to View Other Tables</h3>
         <!-- Drop down button-->
         <div class="dropdown">
           <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
           <div id="myDropdown" class="dropdown-content">
             <a href="covid-stats.html">COVID-19 Statistics</a>
-            <a href="/api/county-info">County Stats</a>
+            <a href="county-info.html">County Stats</a>
             <a href="vacByCounty.html">Vaccination Data By County</a>
+            <a href="vacc-sites.html">Vaccine Sites Information</a>
           </div>
         </div>
         <br>
+
+        <div>
+          <table id = "VCtable">
+            <thead> <em> Vaccination & County Data </em>
+              <tr>
+                <th>County</th>
+                <th>Population</th>
+                <th>Confirmed Deaths</th>
+                <th>Positive Cases</th>
+                <th>First Dose Count</th>
+                <th>Second Dose Count</th>
+              </tr>
+            </thead>
+            
+            <tbody class = "tbody">
+
+            </tbody>
+          </table>
+        </div>
       </div>
-      <script src = "script.js"></script>
+      <script src = "dropdown.js"></script>
+
   </body>
 </html>

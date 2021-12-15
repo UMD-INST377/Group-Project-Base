@@ -5,8 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Group 20 INST 377</title>
-    <!-- Bulma -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
     <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -21,7 +19,7 @@
     </div>
     </div>
     <div class='container'>
-        <h3>COVID-19 Stats of Maryland Counties at a Glance</h3>
+        <h3>Vaccine Site Information</h3>
         <!-- Drop down button-->
         <div class="dropdown">
             <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
@@ -35,13 +33,17 @@
         </div>
         <br>
         <div>
-            <table id="tableC">
-                <thead> <em> Covid Statistics </em>
+            <table id="tableVS">
+                <thead> <em> Vaccination Site Info</em>
                     <tr>
-                        <th>County</th>
-                        <th>Confirmed Deaths</th>
-                        <th>Positive Cases</th>
-                        <th>County Death Proportion</th>
+                        <th>Site Name</th>
+                        <th>Street Address</th>
+                        <th>City</th>
+                        <th>Zip Code</th>
+                        <th>Site Type</th>
+                        <th>Operating Hours</th>
+                        <th>Contract Phone</th>
+                        <th>Website</th>
                     </tr>
                 </thead>
 
@@ -51,7 +53,7 @@
             </table>
         </div>
     </div>
-    <script src="script02.js"></script>
+    <script src="script01.js"></script>
 </body>
 
 </html>

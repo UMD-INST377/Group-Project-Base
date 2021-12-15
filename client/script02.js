@@ -24,7 +24,7 @@ async function cStats(urlC, tableC) {
 
   for (var keyC in dataC){
     var rowC = `<tr>
-                  <td>${dataC[keyC].county_ID}</td>
+                  <td>${dataC[keyC].county}</td>
                   <td>${dataC[keyC].confirmed_deaths}</td>
                   <td>${dataC[keyC].positive_cases}</td>
                   <td>${dataC[keyC].county_death_prop}</td>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Group 20 INST 377</title>
+    <!-- Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class='header'>
+        <div class='title-head'>Maryland Counties & COVID-19 Database </div>
+        <div class='navigation'>
+            <a href='index.html'>Home</a>
+            <a href='input.html'>New Records</a>
+            <a href='about.html'>About</a>
+        </div>
+    </div>
+    </div>
+    <div class='container'>
+        <h3>COVID-19 Stats of Maryland Counties at a Glance</h3>
+        <!-- Drop down button-->
+        <div class="dropdown">
+            <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="covid-stats.html">COVID-19 Statistics</a>
+                <a href="county-info.html">County Stats</a>
+                <a href="vacByCounty.html">Vaccination Data By County</a>
+                <a href="vacc-sites.html">Vaccine Sites Information</a>
+                <a href="unemployment.html">Unemployment Rate</a>
+            </div>
+        </div>
+        <br>
+        <div>
+            <table id="tableC">
+                <thead> <em> Covid Statistics </em>
+                    <tr>
+                        <th>County</th>
+                        <th>Confirmed Deaths</th>
+                        <th>Positive Cases</th>
+                        <th>County Death Proportion</th>
+                    </tr>
+                </thead>
+
+                <tbody class="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script02.js"></script>
+</body>
+
+</html>

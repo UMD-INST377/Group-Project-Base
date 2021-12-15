@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Group 20 INST 377</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class='header'>
+        <div class='title-head'>Maryland Counties & COVID-19 Database </div>
+        <div class='navigation'>
+            <a href='index.html'>Home</a>
+            <a href='input.html'>New Records</a>
+            <a href='about.html'>About</a>
+        </div>
+    </div>
+    </div>
+    <div class='container'>
+        <h3>Vaccinations Facts at a Glance</h3>
+        <!-- Drop down button-->
+        <div class="dropdown">
+            <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="covid-stats.html">COVID-19 Statistics</a>
+                <a href="county-info.html">County Stats</a>
+                <a href="vacByCounty.html">Vaccination Data By County</a>
+                <a href="vacc-sites.html">Vaccine Sites Information</a>
+                <a href="unemployment.html">Unemployment Rate</a>
+            </div>
+        </div>
+        <br>
+        <div>
+            <table id="table">
+                <thead> <em> Vaccination By County Data </em>
+                    <tr>
+                        <th>County</th>
+                        <th>First Dose Count</th>
+                        <th>First Dose Prop</th>
+                        <th>Second Dose Count</th>
+                        <th>Second Dose Prop</th>
+                    </tr>
+                </thead>
+
+                <tbody class="tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

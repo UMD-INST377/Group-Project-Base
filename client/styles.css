@@ -88,3 +88,10 @@ h1 {
   #tableVS {
     border-collapse: collapse;
   }
+
+  table, th, td {
+    border: 2px solid;
+    border-color: #183fbe;
+    padding: 10px;
+    border-radius: 5px;
+  }

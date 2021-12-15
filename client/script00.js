@@ -24,10 +24,10 @@ async function countyInfo(endpoint, table) {
 
   for (var key in data){
     var row = `<tr>
-                  <td>${data[key].county_ID}</td>
+                  <td>${data[key].county}</td>
                   <td>${data[key].population}</td>
-                  <td>${data[key].population_density}</td>
                   <td>${data[key].uninsured}</td>
+                  <td>${data[key].poverty_rate}</td>
               </tr>`
 
     table.innerHTML += row

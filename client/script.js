@@ -26,7 +26,7 @@ async function vacData(url, table) {
 
   for (var key in data){
     var row = `<tr>
-                  <td>${data[key].county_ID}</td>
+                  <td>${data[key].county}</td>
                   <td>${data[key].first_dose_count}</td>
                   <td>${data[key].first_dose_prop}</td>
                   <td>${data[key].second_dose_count}</td>

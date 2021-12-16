@@ -16,7 +16,7 @@ window.onclick = function(event) {
     }
 };
 
-urlUnem = '/api/unemploymentRate';
+urlUnem = '/api/unemployment';
 async function UnemStats(urlUnem, UnemTable) {
     const responseUnem = await fetch(urlUnem);
     const dataUnem = await responseUnem.json();
@@ -24,8 +24,8 @@ async function UnemStats(urlUnem, UnemTable) {
 
     for (var key in dataUnem) {
         var rowUnem = `<tr>
-                  <td>${dataUnem[key].month}</td>
-                  <td>${dataUnem[key].rate}</td>
+                  <td>${dataUnem[key].county}</td>
+                  <td>${dataUnem[key].Averege_Unemployment_Rate}</td>
               </tr>`
         UnemTable.innerHTML += rowUnem
     }

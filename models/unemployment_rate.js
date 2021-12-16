@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
     const unemploymentRate = database.define(
-        "unemployment_rate", {
+        "unemployment_rate_2020", {
             county_ID: {
                 type: DataTypes.INTEGER,
                 allowNull: false,

@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entry</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> 
+    <div class="wrapper">
+        <div class="container">    
+            
+            <div class = "columns">
+                <div class = "column">
+                    <div id ="box1" class="box title">Data Entry</div>
+                </div>
+            </div>
+
+            <div class = "columns">
+                <div class = "column">
+                    <div id = "box2" class = "box">
+                        <div class = "nav">
+                            <div class='nav_but'><a href="./index.html">Data Exploration</a></div>
+                            <div class='nav_but'><a href='./dataentry.html'>Data Entry</a></div>      <!-- This is nested now -->
+                            <div class='nav_link'><a href="./about.html">About the Project</a></div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "columns">
+                <div class = "column">
+                    <form class = "box" action = "/api">
+                        <div class = "field">
+                            <label class = "label">First Name</label>
+                            <div class = "control">
+                                <input class = "input" type = "text">
+                            </div>
+                        </div>
+                        <div class = "field">
+                            <label class = "label">Last Name</label>
+                            <div class = "control">
+                                <input class = "input" type = "text">
+                            </div>
+                        </div>
+                        <div class = "field">
+                            <label class = "label">Email</label>
+                            <div class = "control">
+                                <input class = "input" type = "text">
+                            </div>
+                        </div>
+                        <div class = "field">
+                            <label class = "label">Phone Number</label>
+                            <div class = "control">
+                                <input class = "input" type = "text">
+                            </div>
+                        </div>
+                        <div class = "field">
+                            <label class = "label">Address</label>
+                            <div class = "control">
+                                <input class = "input" type = "text">
+                            </div>
+                        </div>
+                        <div class = "field">
+                            <label class = "label">Twitter</label>
+                            <div class = "control">
+                                <input class = "input" type = "text">
+                            </div>
+                        </div>
+                        <div class = "field">
+                            <label class = "label">Instagram</label>
+                            <div class = "control">
+                                <input class = "input" type = "text">
+                            </div>
+                        </div>
+                        <div class = "field">
+                            <label class = "label">Facebook</label>
+                            <div class = "control">
+                                <input class = "input" type = "text">
+                            </div>
+                        </div>
+                        <div class = "field">
+                            <label class = "label">Website</label>
+                            <div class = "control">
+                                <input class = "input" type = "text">
+                            </div>
+                        </div>
+                        <div class = "column">
+                            <input class = "button is-large is-primary" type = "Submit" value = "Enter">
+                            <input class = "button is-large is-danger" type = "Reset" value = "Reset">
+                        </div>
+                    </form>
+                </div>
+            </div>
+           
+
+        </div>    
+    </div>
+   <script src="script.js"></script>
+</body>
+</html>

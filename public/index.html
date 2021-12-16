@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Exploration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> 
+    <div class="wrapper">
+        <div class="container">    
+            
+            <div class = "columns">
+                <div class = "column">
+                    <div id ="box1" class="box title">Group 26: Congress Database Project</div>
+                </div>
+            </div>
+
+            <div class = "columns">
+                <div class = "column">
+                    <div id = "box2" class = "box">
+                        <div class = "nav">
+                            <div class='nav_but'><a href="./index.html">Data Exploration</a></div>
+                            <div class='nav_but'><a href='./dataentry.html'>Data Entry</a></div>      <!-- This is nested now -->
+                            <div class='nav_link'><a href="./about.html">About the Project</a></div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "columns">
+                <div class = "column">
+                    <div class = "box">
+                        <p>Welcome to TBD! Here you can view various information about members of congress. Whether it be contact information or details on the seat they hold we have it all!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "columns">
+                <div class = "column">
+                    <div class = "box">
+                        <p>Data Selection Menu</p>
+                        <a href="#" onclick='show(1);'>General Information on Members</a>
+                        <a href="#" onclick='show(2);'>Internet Profile Information</a>
+                        <a href="#" onclick='show(3);'>Contact Methods</a>
+                        <a href="#" onclick='show(4);'>Professional Information</a>
+            <br />
+                    </div>
+                </div>
+
+                <div class = "column">
+                    <div class = "box">
+                        <p>Selected Data Chart</p>
+                        <table id = "table1" class = "visible">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Age
+                                    </th>
+                                    <th>
+                                        Gender
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                        <table id = "table2" class = "visible">
+                            <thead>
+                                <tr>
+                                </tr>
+                            </thead>
+                        </table>
+
+                        <table id = "table3" class = "visible">
+                            <thead>
+                                <tr>
+                                </tr>
+                            </thead>
+                        </table>
+
+                        <table id = "table4" class = "visible">
+                            <thead>
+                                <tr>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+           
+
+        </div>    
+    </div>
+   <script src="script.js"></script>
+</body>
+</html>

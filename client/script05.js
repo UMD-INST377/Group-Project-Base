@@ -16,7 +16,7 @@ window.onclick = function(event) {
     }
 };
 
-urlUnem = '/api/unemployment';
+urlUnem = '/api/unemployment_rate';
 async function UnemStats(urlUnem, UnemTable) {
     const responseUnem = await fetch(urlUnem);
     const dataUnem = await responseUnem.json();

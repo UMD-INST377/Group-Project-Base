@@ -10,6 +10,7 @@ import countyInfo from '../controllers/county-info_GET.js';
 import vacByCountydata from '../controllers/vacByCountyController.js';
 import vaccSitesInfo from '../controllers/vaccine-site-info.js';
 import VCdata from '../controllers/vacDataAndCounty.js';
+import unemploymentRate from '../controllers/unemployment_rate.js';
 
 const router = express.Router();
 
@@ -298,12 +299,16 @@ router.route('/county-info')
 /// ////Unemployment Endpoint////////
 /// //////////////////////////////////
 router.route('/unemployment')
-    .get(async(req, res) => {
-        try {
-            res.json({ message: 'Touched /unemployment with GET' });
-            console.log('Touched /unemployment with GET');
-        } catch (err) {
-            console.log(error);
+.get(async(req, res) => {
+    try {
+        const dbResponse = await db.sequelizeDB.query(unemploymentRate, {
+            type: sequelize.QueryTypes.SELECT
+        });
+        res.json(dbResponse);
+        console.log('Touched /unemployment with GET');
+    } catch (err) {
+        console.log(error);
+
             res.json({ error: 'Something went wrong' });
         }
     })

@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    margin: 10px;
+}
+
+#myBtn {
+    width: 200px;
+    height: 50px;
+    background-color: #61CFFF;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#myBtn:hover {
+    background-color: #63afff;
+}
+
+#buttonbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.description {
+    display: flex;
+    justify-content: center;
+}
+
+.description p {
+    display: flex;
+    justify-content: center;
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        text-decoration: underline;
+        text-decoration-color: #61CFFF;
+        text-decoration-style: double;
+}
+
+.result {
+    color: black;
+    display: flex;
+    justify-content: center;
+    background-color: #61CFFF;
+    margin: 2px;
+    padding: 6px;
+    text-align: center;
+    border-spacing: 60px 2px;  
+    border-collapse: separate; 
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+}
+
+.input {
+    max-width: 50vw !important;
+    width: 50vw !important;
+}
+.searchbox {
+    width: 210px;
+}
+
+#date, #city, #id, #magnitude {
+    width: 350px;
+}
+.vertical-center-wrapper {
+    margin-top: 30vh;
+    height: 20vh;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#text {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    margin: 10px;
+}
+
+
+#content {
+    display: flex;
+    margin: 20px;
+    background-color: #61CFFF;
+    color: black;
+    border-radius: 15px;
+}
+
+#submit {
+    background-color: #61CFFF;
+    border: none;
+    border-radius: 10px;
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.formWrapper {
+    text-align: center;
+    margin: 25px;
+}

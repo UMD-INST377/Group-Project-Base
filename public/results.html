@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" class="has-background-warning-light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>West Coast Earthquake Results</title>
+</head>
+<body>
+    <nav class="level">
+        <p class="level-item has-text-centered">
+          <a class="link is-info"  onclick="window.location.href = 'index.html'">Home</a>
+        </p>
+        <div><h1 class="title level-item has-text-centered">West Coast Earthquake Search</h1></div>
+        <p class="level-item has-text-centered"  onclick="window.location.href = 'edit.html'">
+          <a class="link is-info">Data Entry</a>
+        </p>
+     </nav>
+
+    <div class='search'>
+        <form class="search-form">
+            <input type="text" class="search-box input is-medium " placeholder="Type in City, Date, or Magnitude">
+            <ul class="suggestions">
+            </ul>
+        </form>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>

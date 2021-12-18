@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" class="has-background-warning-light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>West Coast Earthquakes</title>
+</head>
+
+<body>
+  <nav class="level">
+    <button id="myBtn" onclick="window.location.href='index.html'">Home</button>
+    <div>
+      <h1 class="title level-item has-text-centered">West Coast Earthquake Search By ID</h1>
+    </div>
+    <button id="myBtn" onclick="window.location.href = 'edit.html'">Data Entry</button>
+  </nav>
+
+  <div class="columns is-multiline is-centered is-vcentered">
+    <form id="IDsearch" class="box has-background-warning-light">
+      <div class="formWrapper">
+        <div class="field">
+          <label for='Earthquake ID' class="label">Earthquake ID</label>
+          <input id='earthquakeid' name='earthquakeid' type='text' />
+        </div>
+        <button id="submit" type='button'>Submit</button>
+        <ul id='results'></ul>
+      </form>
+    <script src='./js/script3.js'></script>
+  </div>
+
+</body>
+
+</html>

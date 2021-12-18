@@ -16,12 +16,17 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "canvasjs": "^1.8.3",
     "chalk": "^4.1.0",
+    "chartist": "^0.11.4",
     "express": "^4.17.1",
+    "jQuery": "^1.7.4",
     "mysql2": "^2.2.5",
+    "node-fetch": "^3.0.0",
     "nodemon": "^2.0.7",
-    "sequelize": "^6.5.0",
-    "sequelize-cli": "^6.2.0"
+    "paginationjs": "^2.1.5",
+    "sequelize": "^6.11.0",
+    "sequelize-cli": "^6.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.17",

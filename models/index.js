@@ -1,11 +1,7 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import eruptionAoa from './eruptionAoa.js';
+import eruptionCategory from './eruptionCategory.js';
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+  eruptionAoa,
+  eruptionCategory,
 };

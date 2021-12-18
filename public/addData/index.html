@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group 18 - Add Data</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid container">
+        <a class="navbar-brand" href="/">INST 377 - Team 18</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/addData" aria-current="page"
+                >Add Data</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <form
+          target="_blank"
+          method="post"
+          enctype="application/x-www-form-urlencoded"
+          action="/api/basketball/players"
+        >
+          <legend class="labels">New Player:</legend>
+          <p">
+            <label><input name="first_name" placeholder="First Name" style="color: gray;" /></label>
+            <label><input name="last_name" placeholder="Last Name" style="color: gray;" /></label>
+          </p>
+          <p>
+            <label class="labels">Height:</label>
+            <label> <input name="height" placeholder="Height" style="color: gray;" size="4" /></label>
+          </p>
+          <p>
+            <label><input name="weight" placeholder="Weight" style="color: gray; width: 1.7cm;"  /></label>
+            <label class="labels">lb</label>
+          </p>
+          <p>
+            <label><input name="college" placeholder="College" style="color: gray;"  /></label>
+          </p>
+          <p>
+            <label><input name="year_drafted" placeholder="Year Drafted" style="color: gray;"  /></label>
+          </p>
+          <p>
+            <select class="drop" name="position">
+              <option value="P-G">Point Guard</option>
+              <option value="S-G">Shooting Guard</option>
+              <option value="S-F">Small Forward</option>
+              <option value="P-F">Power Forward</option>
+              <option value="C">Center</option>
+            </select>
+          </p>
+          <p>
+            <select class="drop" name="team_id">
+              <option value="1610612755">76ers</option>
+              <option value="1610612749">Bucks</option>
+              <option value="1610612741">Bulls</option>
+              <option value="1610612739">Cavaliers</option>
+              <option value="1610612738">Celtics</option>
+              <option value="1610612746">Clippers</option>
+              <option value="1610612763">Grizzlies</option>
+              <option value="1610612737">Hawks</option>
+              <option value="1610612748">Heat</option>
+              <option value="1610612766">Hornets</option>
+              <option value="1610612762">Jazz</option>
+              <option value="1610612758">Kings</option>
+              <option value="1610612752">Knicks</option>
+              <option value="1610612747">Lakers</option>
+              <option value="1610612753">Magic</option>
+              <option value="1610612742">Mavericks</option>
+              <option value="1610612751">Nets</option>
+              <option value="1610612743">Nuggets</option>
+              <option value="1610612754">Pacers</option>
+              <option value="1610612740">Pelicans</option>
+              <option value="1610612765">Pistons</option>
+              <option value="1610612761">Raptors</option>
+              <option value="1610612745">Rockets</option>
+              <option value="1610612760">Sonics</option>
+              <option value="1610612759">Spurs</option>
+              <option value="1610612756">Suns</option>
+              <option value="1610612760">Thunder</option>
+              <option value="1610612750">Timberwolves</option>
+              <option value="1610612757">Trail Blazers</option>
+              <option value="1610612744">Warriors</option>
+              <option value="1610612764">Wizards</option>
+            </select>
+          </p>
+          <p><button class="submit" onclick="window.location.href = 'https://inst377-group-project-18.herokuapp.com/;">Submit</button></p>
+          <p>
+            <label class="notice">Will open a new page with the submitted information, feel free to close the new page, your data will be saved</label>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <footer class="bg-black text-center text-lg-start mt-5">
+      <div class="text-end p-5" style="background-color: rgba(0, 0, 0, 0.2)">
+        <img
+          src="../assets/githubIcon.png"
+          width="50px"
+          alt="our github"
+          href="https://github.com/jerrycrews1/Group18-Final-INST377SP2021"
+        />
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src ="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+}
+
+.nba-arena{
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 360px) {
+.arena-pic {
+  margin-top: 10px;
+  max-width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+}
+
+@media only screen and (min-width: 760px) {
+  .arena-pic {
+    margin-top: 10px;
+    max-width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  }
+
+.table{
+  background-color:transparent;
+  font-size:10pt;
+}
+
+.table thead td, .table thead th{
+  color:white;
+}
+/* #arenaResultContainer {
+  color: white;
+} */

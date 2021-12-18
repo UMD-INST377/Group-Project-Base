@@ -1,0 +1,33 @@
+.selectedImage{
+    background-color: green;
+    background-size: cover;
+}
+
+.table{
+    background-color:transparent;
+    font-size:10pt;
+}
+
+.table thead td, .table thead th{
+    color:white;
+}
+
+.editPlayerButton{
+    cursor:pointer;
+}
+
+.deletePlayerButton{
+    cursor:pointer;
+}
+
+#doneEditing{
+    cursor:pointer;
+}
+
+#year_drafted{
+    width:55px;
+}
+
+#playerName{
+    width:100%;
+}

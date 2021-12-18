@@ -8,6 +8,7 @@ const { DataTypes } = Sequelize;
 const env = process.env.NODE_ENV || 'development';
 const config = configOptions[env];
 
+/* Configures username, password, and database */
 let sequelizeDB;
 if (config.use_env_variable) {
   sequelizeDB = new Sequelize(process.env[config.use_env_variable], config);

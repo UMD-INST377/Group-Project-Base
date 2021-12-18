@@ -1,0 +1,30 @@
+#mapid {
+  width: 100%;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+}
+.list-header {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+#wrapper {
+  min-width: 55vw;
+}
+.hero .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #34495e;
+  z-index: 9999;
+}
+.navbar-burger {
+  color: white;
+}
+
+#navbarMenuHeroB {
+  background-color: #34495e;
+}
+
+.wrapper {
+  display: block;
+  margin: 0 auto;
+}

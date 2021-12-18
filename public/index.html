@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Group1 Final Project</title>
+</head>
+
+<body>
+
+    <div class="navbar is-dark">
+        <div class="buttons is-centered">
+            <div class="nav-nba-badge">
+                <div class="nav-nba-badge-text">NBA</div>
+            </div>
+            <div class="button is-dark"><a href="index.html">Home</a></div>
+            <div class="button is-dark"><a href="about.html">About</a></div>
+            <div class="button is-dark"><a href="forms.html">Add Information</a></div>
+            <div class="button is-dark"><a href="update_form.html">Update</a></div>
+            <div class="button is-dark"><a href="delete.html">Delete</a></div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="container">
+            <div class="columns column is-centered">
+                <div class="column is-full">
+                    <div class="box title has-background-info">Welcome to the NBA Database</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="master-Container" style="display: flex; justify-content: space-around;">
+
+        <div>
+            <a href="https://www.nba.com" target="_blank">
+                <img src="NBA_logo.png" alt="NBA Logo" class="wel">
+            </a>
+            <div class="wel">
+                <div class="welc">NBA Teams</div>
+                Welcome to the NBA Teams website!!
+                Please browse through out monumental
+                database of NBA information!
+            </div>
+        </div>
+
+        <div>
+            <div class="wel">Player Info From Records</div>
+            <div class=divScroll>
+                <table id="playertable" class="table" style="width: 490px;"></table>
+            </div>
+        </div>
+
+        <div>
+            <input class="wel" placeholder="Search Player Name" id="PlayerSearchBar" type="text"
+                style="width: 490px; height: 50px;">
+            <div class="wel">Filtered Player Info</div>
+            <div class=divScroll>
+                <table id="playertablefiltered" class="table" style="width: 490px;"></table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" charset="utf-8"></script>
+</body>
+
+</html>

@@ -28,13 +28,13 @@
           <div id="pref-header"><h1 class="title">Set College Preferences</h1></div>
           <hr>
           <div class="metrics-layout">
-            <form class="metrics-form"><strong> Avg. SAT Score <br></strong>
+            <form class="metrics-form" id="sat-score-form"><strong> Avg. SAT Score <br></strong>
               <div>
-                <input type="radio" id="lower-scores" name="sat-scores" value="sat-score">
+                <input type="radio" id="lower-scores" name="sat-scores" value="lower-scores">
                   <label for="lower-scores"> < 1256</label><br>
-                <input type="radio" id="middle-scores" name="sat-scores" value="sat-score">
+                <input type="radio" id="middle-scores" name="sat-scores" value="middle-scores">
                   <label for="middle-scores">1256-1355</label><br>
-                <input type="radio" id="upper-scores" name="sat-scores" value="sat-score">
+                <input type="radio" id="upper-scores" name="sat-scores" value="upper-scores">
                   <label for="upper-scores">1356+</label><br>
 
               </div>
@@ -48,7 +48,7 @@
 
               </div>
             </form>
-            <form class="metrics-form"><strong> Acceptance Rate <br></strong>
+            <form class="metrics-form" id="acceptance-rate-form"><strong> Acceptance Rate <br></strong>
               <div>
                 <input type="radio" id="lower-acceptance-rate" name="acceptance-rate" value="lower">
                   <label for="lower-acceptance-rate"> < 55%</label><br>
@@ -59,6 +59,7 @@
 
               </div>
             </form>
+            <input type="button" value="Search" onclick=displaySuggestions() />
           </div>
         </div>
       </div>

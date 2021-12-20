@@ -1,0 +1,208 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#home_id{
+    background-color:#fa8975;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    }
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    }
+/* #About_id{
+    background-color:yellowgreen;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+} */
+
+#Aboutpage_background_id{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-image:url('https://images-ext-2.discordapp.net/external/RvwomGLg9G0ZxVnp-f3TXPrWpWRlWsyGbwkgUosRXKQ/https/upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Eyjafjallaj%25C3%25B6kull_first_crater_20100329.jpg/1200px-Eyjafjallaj%25C3%25B6kull_first_crater_20100329.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+     background-attachment: fixed;
+}
+
+
+/* home page search bar. */
+.container{
+    display: flex;
+    width: 1200px;
+    justify-content: center; 
+    padding: 10px
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-family: Georgia, Geneva, Helvetica, sans-serif;
+}
+
+
+.links{
+    border: 1px solid #e28f7a;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* featured picture */
+.picture-container{   
+    display: flex;
+    justify-content: center;  
+}
+
+.pic{
+    display: flex;
+ 
+    width: 500px;
+    height: 350px;
+    position: absolute;
+    margin:auto;
+    margin-top: 10px; 
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;  
+    margin:auto;
+    margin-top: 100px; 
+    
+}
+.input{
+    display: flex;
+    width:300px;
+    height:70px;
+    margin:auto;
+    border: 10px solid #fff;
+}
+/* results position */
+.photo-grid-container{
+    display: flex;
+    justify-content: center;  
+    margin:auto;
+    
+}
+
+.photo-grid{
+    width: 900px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+
+.photo-grid-item{
+    display: flex;
+    width: 300px;
+    height: 300px;
+    margin:auto;
+    padding: 10px;
+    background-color:#e28f7a;
+}
+
+#info_box .box{
+    width: 300px;
+}
+
+/*css for forms*/
+.form-input-container {
+    display: flex;
+    justify-content: center;  
+    margin:auto;
+    margin-top: 100px; 
+    align-items: center;
+    
+}
+.volcano_form input{
+    margin-bottom: 17px;
+    border: 0px;
+}
+
+.volcano_form .select{
+    margin-top: 15px;
+    margin-bottom: 8%;
+    border: 0px;
+    font-size: 1em;
+}
+
+#activity-input{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+html {
+    height: 100%;
+}
+
+#wrapper{
+    display: flex;
+    background-image:url('https://cdn-adventures-live.azureedge.net/adventurescache/0/1/0/9/e/b/0109ebe6e25b8c67d497a80cc8a99c0f6d00ce5b.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+.image{
+    width:300px;
+}
+
+#submit{
+    float: right;
+}
+
+
+/*css for formsuccess*/
+#submissiontitle {
+    text-align: center;
+    margin-top: 40%;
+}
+
+#formsuccessbutton{
+    margin-left: 40%;
+}
+
+.page{
+    display: flex;
+    justify-content: center;
+}
+
+#input-container{
+    background: aquamarine"
+}
+
+/*css for charts*/
+#chartContainer{
+    margin-top: 40px;
+    width: 900px;
+    margin-left: 15%;
+}
+
+
+.page{
+    /*background-color:#73a7d6;*/
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+}
+
+#category_chart_container{
+    margin-top: 500px;
+    width: 900px;
+    margin-left: 15%;
+}

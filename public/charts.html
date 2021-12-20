@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html style="background-color:#dfd7d5">
+    <head>
+        <title>Informational Charts</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="./css/styles.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-7">
+                    <h1 class="title is-2">Informational Charts</h1>
+                </div>
+                <div class="column is-5"></div>
+                <div class="column">
+                    <nav class="navbar is-light" role="navigation" aria-label="dropdown navigation">
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                Menu
+                            </a>
+                            <div class="navbar-dropdown">
+                                <a href="index.html" class="navbar-item">Home</a>
+                                <a href="about.html" class="navbar-item">About</a>
+                                <a href="edit_volcanos.html" class="navbar-item">Edit Volcanoes</a>
+                                <a href="edit_eruptions.html" class="navbar-item">Edit Eruptions</a>
+                                <a href="charts.html" class="navbar-item">Informational Charts</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="chart-container">  
+            <div id="chartContainer"></div>  
+        </div>
+
+        <div class = "chart-container">
+            <div id="category_chart_container"></div>
+        </div>
+        
+    
+        <script src="./js/canvasjs.min.js" type="module"></script>
+        <script src='./js/chartscript.js'></script>
+    </body>
+</html>

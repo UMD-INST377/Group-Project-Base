@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" id = "wrapper">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Edit Volcanoes</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="./css/styles.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+
+    <Body>
+        <div class = "container">
+            <div class = "column">
+                <h1 class="title">Edit Volcanoes</h1>
+            </div>
+            
+                <nav class="navbar is-light" role="navigation" aria-label="dropdown navigation">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            Menu
+                        </a>
+                    
+                        <div class="navbar-dropdown">
+                            <a href="index.html" class="navbar-item">Home</a>
+                            <a href="about.html" class="navbar-item">About</a>
+                            <a href="edit_volcanos.html" class="navbar-item">Edit Volcanoes</a>
+                            <a href="edit_eruptions.html" class="navbar-item">Edit Eruptions</a>
+                            <a href="charts.html" class="navbar-item">Informational Charts</a>  
+                        </div>
+                    </div>
+                </nav>
+        </div>
+    
+        <div class="form-input-container">
+            <div class = "columns is-centered" style = "opacity: 0.8;">
+                <div class = "column">
+                    <div class="box" style="width: 300px;">
+                        Volcano ID
+                    </div>
+                    <div class="box" style="width: 300px;">
+                        Volcano Name
+                    </div>
+                    <div class="box" style="width: 300px;">
+                        Latitude
+                    </div>
+                    <div class="box" style="width: 300px;">
+                        Longitude
+                    </div>
+                    <div class="box" style="width: 300px;">
+                        Volcano Number
+                    </div>
+                </div>
+                
+                <form>
+                <div class = "column">
+                    <div class = "volcano_form" ><input class="input" type="text" name="volcano_id" id="id-input"></div>
+                    <div class = "volcano_form" ><input class="input" type="text" name="volcano_name" id="name-input"></div>
+                    <div class = "volcano_form" ><input class="input" type="text" name="latitude" id="lat-input"></div>
+                    <div class = "volcano_form" ><input class="input" type="text" name="longitude" id="long-input"></div>
+                    <div class = "volcano_form" ><input class="input" type="text" name="volcano_number" id="volnum-input"></div>
+                    <button class="button" type="submit" id="insertvol">Insert</button>
+                    <button class="button" type="submit" id="updatevol">Update</button>
+                    <button class="button" type="submit" id="deletevol">Delete</button>
+                </div>
+                </form>
+
+                <div class = "column image">
+                    <div id ="file-example" class="file has-name is-boxed">
+                        <label for="file" class="file-label" style="cursor: pointer;">
+                          <input id = "file" class="file-input" type="file" accept ="image/*" name="resume" onchange="loadFile(event)" style="display: none;">
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                              Choose a file…
+                            </span>
+                          </span>
+                          <span class="file-name">
+                            Image of volcano
+                          </span>
+                        </label>
+                      </div>
+                      <p><img id="output" width="500"/></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/volform.js"></script>
+    </Body>
+</html>

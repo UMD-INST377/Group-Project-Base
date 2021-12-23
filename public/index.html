@@ -39,12 +39,15 @@
 
               </div>
             </form>
-            <form class="metrics-form"><strong> Test Scores Required <br></strong>
+            <form class="metrics-form"><strong> Tuition <br></strong>
               <div>
-                <input type="radio" id="yes" name="score-required" value="yes">
-                  <label for="yes"> yes </label><br>
-                <input type="radio" id="no" name="score-required" value="no">
-                  <label for="no">no</label><br>
+                <input type="radio" id="lower-tuition" name="tuition" value="lower-tuition">
+                  <label for="lower-tuition"> < $33k </label><br>
+                <input type="radio" id="middle-tuition" name="tuition" value="middle-tuition">
+                  <label for="middle-tuition">$33k-$38k</label><br>
+                <input type="radio" id="upper-tuition" name="tuition" value="upper-tuition">
+                  <label for="upper-tuition">$38k+</label><br>
+
 
               </div>
             </form>
@@ -59,7 +62,7 @@
 
               </div>
             </form>
-            <input type="button" value="Search" onclick=displaySuggestions() />
+            <input type="button" id='search-button' value="Search"/>
           </div>
         </div>
       </div>

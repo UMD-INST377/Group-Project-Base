@@ -13,30 +13,61 @@
 
 /*returns array of dictionaries of universities according to user preferences  */
 function getFilteredData(){
-  let filterData;
+  let filterData = fetchedData.data;
   const satSelection = document.querySelector('input[name="sat-scores"]:checked');
   const acceptanceRateSelection = document.querySelector('input[name="acceptance-rate"]:checked');
+  const tuitionSelection = document.querySelector('input[name="tuition"]:checked');
+
 
   if(satSelection != null){
     const satValue = satSelection.value;
-    if (satValue === 'upper-scores'){ /* filter school data according to radio selected */
-      filterData = data.data.filter((item) => item.SAT_average > 1355);
-    } else if (satValue === 'middle-scores'){
-      filterData = data.data.filter((item) => item.SAT_average >= 1256 && item.SAT_average < 1356);
-    } else { // filter data for lower sat scores
-      filterData = data.data.filter((item) => item.SAT_average < 1256);
+    switch(satValue){
+      case 'upper-scores':
+        filterData = filterData.filter((item) => item.SAT_average > 1355);
+        break;
+      case 'middle-scores':
+        filterData = filterData.filter((item) => item.SAT_average >= 1256 && item.SAT_average < 1356);
+        break;
+      case 'lower-scores':
+        filterData = filterData.filter((item) => item.SAT_average < 1256);
+        break;
+      default:
+        break;
     }
   }
   if(acceptanceRateSelection != null){
     const acceptanceRateValue = acceptanceRateSelection.value;
-    if (acceptanceRateValue === 'upper'){ /* filter school data according to radio selected */
-      filterData = filterData.filter((item) => item.admission_rate > 71);
-    } else if (acceptanceRateValue === 'middle'){
-      filterData = filterData.filter((item) => item.admission_rate >= 55 && item.admission_rate <= 71);
-    } else { // filter data for lower acceptance rate
-      filterData = filterData.filter((item) => item.admission_rate < 55);
+    switch(acceptanceRateValue){
+      case 'upper':
+        filterData = filterData.filter((item) => item.admission_rate > 71);
+        break;
+      case 'middle':
+        filterData = filterData.filter((item) => item.admission_rate >= 55 && item.admission_rate <= 71);
+        break;
+      case 'lower':
+        filterData = filterData.filter((item) => item.admission_rate < 55);
+        break;
+      default:
+        break;
     }
   }
+  if(tuitionSelection != null){
+    const tuitionValue = tuitionSelection.value;
+    switch(tuitionValue){
+      case 'upper-tuition':
+        filterData = filterData.filter((item) => item.tuition_outstate >= 38000);
+        break;
+      case 'middle-tuition':
+        filterData = filterData.filter((item) => item.tuition_outstate >= 33000 && item.tuition_outstate < 38000);
+        break;
+      case 'lower-tuition':
+        filterData = filterData.filter((item) => item.tuition_outstate < 33000);
+        break;
+      default:
+        break;
+    }
+  }
+
   return filterData;
 }
 
@@ -75,17 +106,19 @@ function displaySuggestions(){
 /* retrieves college data from database relevant to user preferences, initializes as data array*/
 async function getCollegeData() {
   const url = '/api/test_scores';
-  data = [];
+  fetchedData = [];
 
   const request = await fetch(url);
   if (request.ok) {
-    data = await request.json();
-    console.log('fetched test_scores (data))', data);
+    fetchedData = await request.json();
+    console.log('fetched test_scores (data))', fetchedData);
   } else {
     console.log('messed up');
   }
 }
 
 getCollegeData();
+const searchButton = document.querySelector('#search-button');
+searchButton.addEventListener('click', displaySuggestions);
 
 

@@ -124,3 +124,10 @@ ul {
 .grey {
   color: lightslategray;
 }
+
+.card-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: gray;
+}

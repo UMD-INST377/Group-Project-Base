@@ -76,32 +76,49 @@ SAT radio button */
 function displaySuggestions(){
   // eslint-disable-next-line no-multiple-empty-lines
   let filterData = getFilteredData();
-
+  let moneyFormatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+  
   if(filterData != null){
-    const html = filterData.map((item) => // return filtered school data as list items
+    // return filtered school data as list items
+    const html = filterData.map((item) => 
     `
-   <li>
-     <div class="card">
-       <div class="card-content">
-         <div class="media">
-           <div class="media-content">
-             <p class="title is-4">${item.university_name}</p>
-             <p class="subtitle is-6">${item.univ_location}</p>
-           </div>
-         </div>
-       </div>
-       <footer class="card-footer">
-         <a href="/university/${item.testscore_id}/" class="card-footer-item">Read More</a>
-       </footer>
-     </div>
-   </li>
-   `
+    <li>
+      <div class="card">
+        <div class="card-container">
+          <div class="card-left-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">${item.university_name}</p>
+                <p class="subtitle is-6">${item.univ_location}</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-right-content">
+            <div class="media">
+              <div class="media-content">
+                <p>avg. SAT: ${item.SAT_average}</p>
+                <p>tuition: ${moneyFormatter.format(item.tuition_outstate)}</p>
+                <p>accept. rate: ${item.admission_rate}%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="/university/${item.testscore_id}/" class="card-footer-item">Read More</a>
+        </footer>
+      </div>
+    </li>
+    `
     ).join('');
     const suggestions = document.querySelector('.results');
     suggestions.innerHTML = html;
   }
 
 }
+
 
 /* retrieves college data from database relevant to user preferences, initializes as data array*/
 async function getCollegeData() {
@@ -120,5 +137,6 @@ async function getCollegeData() {
 getCollegeData();
 const searchButton = document.querySelector('#search-button');
 searchButton.addEventListener('click', displaySuggestions);
+
 
 

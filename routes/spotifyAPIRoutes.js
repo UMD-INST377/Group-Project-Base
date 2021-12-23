@@ -12,8 +12,8 @@ router.route('/albumCover/:albumName/:artistName')
       const artistName = req.params.artistName
       const apiEndpoint = `https://api.spotify.com/v1/search?q=${albumName}%20${artistName}&type=album&limit=5`;
       const authEndpoint = 'https://accounts.spotify.com/api/token';
-      const clientId = '10c57e4e295b4de9bb2dc214d6331739';
-      const clientSecret = '9a1ffb36ed9243808d44e88b36764c19';
+      const clientId = '';
+      const clientSecret = '';
 
       const authString = `${clientId}:${clientSecret}`;
       const authorization = Buffer.from(authString).toString('base64');

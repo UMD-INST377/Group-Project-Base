@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-empty */
 /* eslint-disable prefer-const */
@@ -51,6 +52,14 @@ function sortFilterData(filterData){
       break;
   }
   return SUCCESS;
+}
+
+/*enables only 1 checkbox to be checked for each preference group */
+function onlyOneChecked(checkbox) {
+  let checkboxes = document.getElementsByName(checkbox.getAttribute('name'));
+  checkboxes.forEach((item) => {
+      if (item !== checkbox) { item.checked = false; }
+  });
 }
 
 /*returns array of dictionaries of universities according to user preferences after
@@ -126,12 +135,13 @@ function displaySuggestions(event){
   const suggestions = document.querySelector('.results');
   let html = null;
   
-  if(filterData.length === 0){/*if filter empty, display 'no results' */
+  /*if filter empty, display 'no results' */
+  if(filterData.length === 0){
     html = `              
         <li>
         <div class="card">
           <div id="select-criteria" class="card-content">
-            No results; change preferences.
+            No results; use fewer or change preferences.
           </div>
         </div>
       </li>
@@ -206,16 +216,13 @@ function initSortButtons(){
     document.getElementById('myDropdown').classList.toggle('show');
   });
   const tuitionSortButton = document.querySelector('#tuition-sort');
-  tuitionSortButton.addEventListener('click', () => 
-                                  { sortButton.textContent = 'Sort by: tuition'; });
+  tuitionSortButton.addEventListener('click', () => { sortButton.textContent = 'Sort by: tuition'; });
     
   const satSortButton = document.querySelector('#sat-sort');
-  satSortButton.addEventListener('click', () => 
-                                              { sortButton.textContent = 'Sort by: sat'; });
+  satSortButton.addEventListener('click', () => { sortButton.textContent = 'Sort by: sat'; });
 
   const acceptanceSortButton = document.querySelector('#acceptance-sort');
-  acceptanceSortButton.addEventListener('click', () => 
-                                          { sortButton.textContent = 'Sort by: acceptance rate'; });  
+  acceptanceSortButton.addEventListener('click', () => { sortButton.textContent = 'Sort by: acceptance rate'; });  
                                             
                   
         

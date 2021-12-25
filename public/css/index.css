@@ -37,7 +37,7 @@ body {
   height: 30vh;
   background-color: white;
   border-radius: 25px;
-  margin: 50px;
+  margin: 10px;
 }
 
 .suggestions-container {
@@ -174,10 +174,16 @@ ul {
 .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+.dropbtn{
+  margin: 10px;
+}
+
 #search-button {
+  background-color: lightgreen;
   padding: 10px;
 }
 
 #see-all-button{
+  background-color: lightgreen;
   padding: 10px;
 }

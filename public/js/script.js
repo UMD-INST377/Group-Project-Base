@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-empty */
 /* eslint-disable prefer-const */
 /* eslint-disable max-len */
 /* eslint-disable keyword-spacing */
@@ -11,9 +13,55 @@
 /* eslint-disable space-before-blocks */
 /* eslint-disable no-console */
 
-/*returns array of dictionaries of universities according to user preferences  */
-function getFilteredData(){
+const SUCCESS = 1;
+const FAILURE = 0;
+
+/*sorts filterData in suggestions bar according to SAT, tuition, or acceptance rate */
+function sortFilterData(filterData){
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      let dropdowns = document.getElementsByClassName('dropdown-content');
+      let i;
+      for (i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  };
+
+  if(filterData == null){
+    return FAILURE;
+  }
+  const sortButton = document.querySelector('.dropbtn');
+
+  switch(sortButton.textContent){
+    case 'Sort by: tuition':
+      filterData.sort((school1, school2) => school1.tuition_outstate - school2.tuition_outstate);
+      break;
+    case 'Sort by: sat':
+      filterData.sort((school1, school2) => school1.SAT_average - school2.SAT_average);
+      break;
+    case 'Sort by: acceptance rate':
+      filterData.sort((school1, school2) => school1.admission_rate - school2.admission_rate);
+      break;
+    default: 
+      break;
+  }
+  return SUCCESS;
+}
+
+/*returns array of dictionaries of universities according to user preferences after
+pressing search, or returns all colleges if "see all schools" button clicked  */
+function getFilteredData(event){
   let filterData = fetchedData.data;
+  sortFilterData(filterData);
+
+  if(event.target.id === 'see-all-button'){
+    return filterData;
+  }
   const satSelection = document.querySelector('input[name="sat-scores"]:checked');
   const acceptanceRateSelection = document.querySelector('input[name="acceptance-rate"]:checked');
   const tuitionSelection = document.querySelector('input[name="tuition"]:checked');
@@ -71,11 +119,10 @@ function getFilteredData(){
   return filterData;
 }
 
-/* displays school sugestions in suggestions bar according to selected
-SAT radio button */
-function displaySuggestions(){
+/* displays school sugestions in suggestions bar according to user preferences */
+function displaySuggestions(event){
   // eslint-disable-next-line no-multiple-empty-lines
-  let filterData = getFilteredData();
+  let filterData = getFilteredData(event);
   let moneyFormatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
@@ -119,7 +166,6 @@ function displaySuggestions(){
 
 }
 
-
 /* retrieves college data from database relevant to user preferences, initializes as data array*/
 async function getCollegeData() {
   const url = '/api/test_scores';
@@ -134,9 +180,42 @@ async function getCollegeData() {
   }
 }
 
+//initializes onclicklisteners for sorting buttons, updates sort button text
+//accordingly
+function initSortButtons(){
+  const sortButton = document.querySelector('.dropbtn');
+  sortButton.addEventListener('click', () => {
+    document.getElementById('myDropdown').classList.toggle('show');
+  });
+  const tuitionSortButton = document.querySelector('#tuition-sort');
+  tuitionSortButton.addEventListener('click', () => 
+                                  { sortButton.textContent = 'Sort by: tuition'; });
+    
+  const satSortButton = document.querySelector('#sat-sort');
+  satSortButton.addEventListener('click', () => 
+                                              { sortButton.textContent = 'Sort by: sat'; });
+
+  const acceptanceSortButton = document.querySelector('#acceptance-sort');
+  acceptanceSortButton.addEventListener('click', () => 
+                                          { sortButton.textContent = 'Sort by: acceptance rate'; });  
+                                            
+                  
+        
+}
+
 getCollegeData();
+initSortButtons();
+
 const searchButton = document.querySelector('#search-button');
 searchButton.addEventListener('click', displaySuggestions);
+
+const seeAllButton = document.querySelector('#see-all-button');
+seeAllButton.addEventListener('click', displaySuggestions);
+
+
+
+
+
 
 
 

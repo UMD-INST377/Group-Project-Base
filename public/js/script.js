@@ -123,6 +123,22 @@ function getFilteredData(event){
 function displaySuggestions(event){
   // eslint-disable-next-line no-multiple-empty-lines
   let filterData = getFilteredData(event);
+  const suggestions = document.querySelector('.results');
+  let html = null;
+  
+  if(filterData.length === 0){/*if filter empty, display 'no results' */
+    html = `              
+        <li>
+        <div class="card">
+          <div id="select-criteria" class="card-content">
+            No results; change preferences.
+          </div>
+        </div>
+      </li>
+    `;
+    suggestions.innerHTML = html;
+    return null;
+  }
   let moneyFormatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
@@ -130,7 +146,7 @@ function displaySuggestions(event){
   
   if(filterData != null){
     // return filtered school data as list items
-    const html = filterData.map((item) => 
+    html = filterData.map((item) => 
     `
     <li>
       <div class="card">
@@ -160,9 +176,11 @@ function displaySuggestions(event){
     </li>
     `
     ).join('');
-    const suggestions = document.querySelector('.results');
     suggestions.innerHTML = html;
+    
   }
+  
+  return SUCCESS;
 
 }
 

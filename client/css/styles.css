@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  background-color: rgb(25, 168, 168);
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.menu-container a {
+  color: #fff;
+  text-decoration: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  font-family: ‘ "Times New Roman", Times ’, ‘Segoe UI’, Candara,
+    ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’,
+    Verdana, ‘Verdana Ref’, sans-serif;
+  margin: 0;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 8px;
+  color: black;
+  text-decoration: none;
+}
+li a:hover {
+  color: #f1f1f1;
+}

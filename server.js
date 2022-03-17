@@ -14,10 +14,7 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-const staticFolder = 'client';
-let liveReloadServer;
+app.use(express.static(staticFolder));
 
 async function bootServer() {
   try {

@@ -9,13 +9,13 @@
 	height: 125px;
 	display: flex;
 	justify-content: center;
-
+	flex-wrap: nowrap;
 	align-items: center;
 }
 
 .header-text{
 
-width: 509px;
+
 height: 101px;
 left: 225px;
 top: 36px;

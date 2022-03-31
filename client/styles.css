@@ -1,0 +1,20 @@
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	max-width: 960px;
+}
+
+.column {
+	--columns: 12; /* Number of columns in the grid system */
+	--width: 0; /* Default width of the element */
+
+	flex-basis: calc(var(--width) / var(--columns) * 100%);
+}
+
+
+@media (max-width: 960px) {
+	.column {
+		--width: var(--width-tablet, var(--width-mobile, 0));
+    }
+}

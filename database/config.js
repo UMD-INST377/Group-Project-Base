@@ -7,24 +7,27 @@
 
 export default {
   development: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
+    database: 'group10_imdb',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {timestamps: false}
   },
   test: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
+    database: 'group10_imdb',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {timestamps: false}
   },
   production: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
+    database: 'group10_imdb',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {timestamps: false}
   }
 };

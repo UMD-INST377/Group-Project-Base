@@ -1,7 +1,10 @@
+/* Styles by Bryan Pham */
+
 /* Make navbar appear on the bottom */
 .navbar-container {
     display: flex;
-    width: 100vw;
+    width: 98.5vw;
+    margin: 0px;
     bottom: 0px;
     position: fixed;
     justify-content: center;

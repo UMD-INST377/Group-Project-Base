@@ -1,3 +1,5 @@
+<!-- Created by Bryan Pham -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Main Page</title>
 </head>
-<body>
-<<<<<<< HEAD
-<h1>Group 7</h1>
-<p>Devon's RR8 push</p>
-=======
+<body>  
 
     <div class="header">UMD Dineify</div>
 
@@ -72,6 +70,17 @@
     </div>
 
     <div class="cards-container-header">Suggested Dining Areas</div>
+    <div class="stars-key">
+        <div class="key-item">
+            <span class="fa fa-star favorited"></span> 
+            <span>Favorited</span>
+        </div>
+        <div class="key-item">
+            <span class="fa fa-star"></span>
+            <span>Not Favorited</span>
+        </div>
+    </div>
+
     <div class="cards-container">
         <div class="cards-row">
             <div class="card">
@@ -80,32 +89,51 @@
                     <div class="card-header-text">The Diner</div>
                 </div>
                 <div class="card-body">
-                    <div class="card-body-elm"><span> Address: </span> 1234 sample street</div>
-                    <div class="card-body-elm"><span> Distance: </span> 0.5 mi</div>
+                    <div class="card-body-elm">
+                        <span> Address </span> 
+                        <p> 7093 PREINKERT DR</p>    
+                     </div>
+                    <div class="card-body-elm">
+                        <span > Distance </span> 
+                        <p class = 'distance' id = 'distance-card-1' > unknown </p>   
+                    </div>
                 </div>
                 <div class="card-status">Open</div>
            </div>
     
            <div class="card">
                 <div class="card-header">
-                    <span class="fa fa-star favorited"></span>
-                    <div class="card-header-text">The Diner</div>
+                    <span class="fa fa-star"></span>
+                    <div class="card-header-text">South Campus</div>
                 </div>
                 <div class="card-body">
-                    <div class="card-body-elm"><span> Address: </span> 1234 sample street</div>
-                    <div class="card-body-elm"><span> Distance: </span> 0.5 mi</div>
+                    <div class="card-body-elm">
+                        <span> Address </span> 
+                        <p> 4121 FARM DR </p>  
+                    </div>
+                    <div class="card-body-elm">
+                        <span > Distance </span> 
+                        <p class = 'distance' id = 'distance-card-2'> unknown</p>   
+                    </div>
                 </div>
                 <div class="card-status">Open</div>
           </div>
     
           <div class="card">
                 <div class="card-header">
-                    <span class="fa fa-star favorited"></span>
-                    <div class="card-header-text">The Diner</div>
+                    <span class="fa fa-star"></span>
+                    <div class="card-header-text">251 North</div>
                 </div>
                 <div class="card-body">
-                    <div class="card-body-elm"><span> Address: </span> 1234 sample street</div>
-                    <div class="card-body-elm"><span> Distance: </span> 0.5 mi</div>
+                  
+                    <div class="card-body-elm">
+                        <span> Address </span> 
+                        <p> 3951 DENTON SERVICE LANE </p>  
+                    </div>
+                    <div class="card-body-elm">
+                        <span id = 'distance-card-2'> Distance </span> 
+                        <p class = 'distance' id = 'distance-card-3'> unknown</p>   
+                    </div>
                 </div>
                 <div class="card-status">Open</div>
           </div>    
@@ -114,6 +142,7 @@
     </div>
 
 
->>>>>>> 4a87c4b925f133a316749034fc451a1aa6d2c357
+    <script src="scripts/index.js"></script>
+    <script src="scripts/geolocation-script.js"></script>
 </body>
 </html>

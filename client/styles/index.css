@@ -1,3 +1,5 @@
+/* Styles by Bryan Pham */
+
 body {
     background-color: #FFD5A4;
     margin: 0px;
@@ -155,12 +157,13 @@ body {
 }
 
 .card-header {
-    font-size: 30px;
+    font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 25px;
     border-bottom: 2px solid #222;
+    font-weight: bold;
 }
 
 .card-header-text {
@@ -170,27 +173,51 @@ body {
 }
 
 .card-body {
-    margin: 20px;
+    margin-bottom: 15px;
+    
 }
 .card-body-elm span {
     font-weight: 500;
+    font-size: 20px;
 }
 
+.fa-star {
+    color: #474747;
+}
 .favorited {
     color: #EB4949;
 }
-
+ 
 .card-body-elm {
      margin-top: 15px;
+     text-align: center;
+}
+
+.card-body-elm p {
+     font-size: 13px;
 }
 
 .card-status {
-    margin-top: 20px;
+    margin-top: 0px;
     font-weight: bold;
     padding: 15px 30px;
     color: white;
     background-color: #EB4949;
 }
+
+
+.stars-key {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.key-item {
+    font-size: 20px;
+    margin: 0px 20px;
+}
+
 /* Card section end */
  
 @media only screen and (min-width: 960px) {

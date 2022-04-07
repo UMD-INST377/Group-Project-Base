@@ -15,7 +15,7 @@ export default {
   development: {
     username: 'ubuntu',
     password: 'Veracrypt@12!',
-    database: 'DININGHALLDBNAME HERE',
+    database: 'Dining_Hall_tracker',
     host: '174.129.198.86',
     dialect: 'mysql',
   },

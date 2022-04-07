@@ -13,12 +13,13 @@
 
 export default {
   development: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
+    database: 'DININGHALLDBNAME HERE',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
   },
+
   test: {
     username: 'student',
     password: 'INST377@UMD',

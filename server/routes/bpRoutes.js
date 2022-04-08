@@ -5,7 +5,7 @@ import db from '../database/initializeDB.js';
 import sequelize from 'sequelize';
 
 const selectDatabase = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`';
-const foodQuery = `SELECT * FROM Meals m`;
+const foodQuery = `SELECT * FROM meals m`;
 
 const router = express.Router();
 
@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 //get food with specific id
 router.get('/:food_id', async (req, res) => {
 
-    const foodQuery2 = `SELECT * FROM Meals m WHERE meal_id = `+  req.params.food_id;
+    const foodQuery2 = `SELECT * FROM meals m WHERE meal_id = `+  req.params.food_id;
 
     try {
         const result = await db.sequelizeDB.query(foodQuery2, {  

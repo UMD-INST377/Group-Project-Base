@@ -2,6 +2,7 @@
 import express from 'express';
 import sequelize from 'sequelize';
 
+import peopleRoutes from './PeopleRoutes.js';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -9,6 +10,9 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
+
+/// People's Routes ////
+router.use('/', peopleRoutes);
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
@@ -269,5 +273,4 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-
 export default router;

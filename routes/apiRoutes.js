@@ -3,6 +3,8 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import peopleRoutes from './PeopleRoutes.js';
+import ratingRoutes from './RatingsRoutes.js';
+
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -11,9 +13,10 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
-/// People's Routes ////
+///  People's Routes ////
 router.use('/', peopleRoutes);
-
+///  Rating's Routes ////
+router.use('/', ratingRoutes);
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

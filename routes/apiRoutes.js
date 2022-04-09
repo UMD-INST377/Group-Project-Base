@@ -10,6 +10,20 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+router.route("/hurricanes")
+      .get(async(req,res)=>{
+        try {
+          res.send("hurricanes")
+        } catch (error) {
+          res.json({error:error})
+        }
+      })
+
+
+
+
+
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

@@ -21,7 +21,7 @@ router.route('/People.js')
   .get(async (req, res) => {
     try {
       const test = req.body.first_name;
-      const result = await db.People.create({
+      const result = await db.people.create({
         person_id: 1234,
         first_name: 'Steve',
         last_name: 'Johnson'
@@ -34,22 +34,30 @@ router.route('/People.js')
   });
 
 ///  Rating's Routes ////
-router.use('/Ratings.js', ratingRoutes);
-router.route('/Ratings.js')
+router.route('/ratings')
   .get(async (req, res) => {
     try {
-      const test = req.body.rating;
-      const result = await db.Ratings.create({
-        rating_id: 1156,
-        rating: 5,
-        description: 'Great movie!'
-      });
-      res.send('Reached here');
+      const rating = await DataView.Ratings.findAll();
+      const reply = rating.length > 0 ? { data: rating} : { message: 'No results'};
+      res.json(reply);
     } catch (err) {
-      console.log(err);
-      res.send({message: 'Did not reach here'});
+      console.error(err);
+      res.error('Error in Server');
     }
   });
+router.route('/ratings/:rating_id').get(async(req, res) => {
+  try {
+    const rating = await db.Ratings.findAll({
+      where: {
+        rating_id: req.params.rating_id
+      }
+    });
+    res.json(rating);
+  } catch (err) {
+    console.log(err);
+    res.error('Error in server');
+  }
+});
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

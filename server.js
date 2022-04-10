@@ -2,7 +2,7 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
-import cRoute from './chandraRoute/route.js';
+import route from './chandraRoute/route.js';
 
 const app = express();
 

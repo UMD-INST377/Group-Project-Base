@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const Movies = database.define(
-    'Movies',
+    'movies',
     {
       movie_id: {
         type: DataTypes.INTEGER,

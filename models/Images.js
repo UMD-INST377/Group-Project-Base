@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const Images = database.define(
-    'Images',
+    'images',
     {
       image_id: {
         type: DataTypes.INTEGER,

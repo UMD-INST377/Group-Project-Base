@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const CreativeRoles = database.define(
-    'Creative_Roles',
+    'creative_roles',
     {
       role_id: {
         type: DataTypes.INTEGER,

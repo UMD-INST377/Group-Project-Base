@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const Availability = database.define(
-    'Availability',
+    'availability',
     {
       availability_id: {
         type: DataTypes.INTEGER,

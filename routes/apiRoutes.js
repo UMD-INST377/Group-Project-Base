@@ -6,7 +6,7 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/Group22_Dining_Hall_Track', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 

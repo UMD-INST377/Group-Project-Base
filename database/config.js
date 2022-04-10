@@ -7,9 +7,9 @@
 
 export default {
   development: {
-    username: 'ubuntu',
-    password: 'Veracrypt@12!',
-    database: 'Group11_Dining_Hall_Tracker',
+    username: 'student',
+    password: 'INST377@UMD',
+    database: 'Dining_Hall_Tracker',
     host: '174.129.198.86',
     dialect: 'mysql'
   },

@@ -271,5 +271,3 @@ router.get('/custom', async (req, res) => {
 });
 
 export default router;
-
-

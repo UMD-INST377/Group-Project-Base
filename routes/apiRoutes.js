@@ -2,8 +2,8 @@
 import express from 'express';
 import sequelize from 'sequelize';
 
-import artistsRoutes from './artistsRoutes.js'
-import countryRoutes from './countryRoutes.js'
+import artistsRoutes from './artistsRoutes.js';
+import countryRoutes from './countryRoutes.js';
 
 import db from '../database/initializeDB.js';
 
@@ -15,8 +15,8 @@ router.get('/', (req, res) => {
 
 /// artists routes///
 router.use('/artists.js', artistsRoutes);
-router.route('/artists.js').get(async (req, res) =>{
-  try{
+router.route('/artists.js').get(async (req, res) => {
+  try {
     const test = req.body.first_name;
     const result = await db.artist.create({
       artist_id: 1,
@@ -25,18 +25,15 @@ router.route('/artists.js').get(async (req, res) =>{
       country_id: 1
     });
     res.send('Got here');
-
-
-  }catch(err){
+  } catch (err) {
     console.log(err);
     res.send({message: 'Did not get here'});
-
   }
 });
 /// country routes ///
 router.use('/country.js', countryRoutes);
-router.route('/country.js').get(async (req, res) =>{
-  try{
+router.route('/country.js').get(async (req, res) => {
+  try {
     const test = req.body.country_name;
     const result = await db.country.create({
       country_id: 3,
@@ -44,15 +41,11 @@ router.route('/country.js').get(async (req, res) =>{
       country_nationality: 'Danish'
     });
     res.send('Got here');
-
-
-  }catch(err){
+  } catch (err) {
     console.log(err);
     res.send({message: 'Did not get here'});
-
   }
 });
-
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

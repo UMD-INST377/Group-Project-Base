@@ -3,7 +3,6 @@ import express from 'express';
 import sequelize from 'sequelize';
 import chalk from 'chalk';
 import fetch from 'node-fetch';
-import res from 'express/lib/response';
 
 const router = express.Router();
 // eslint-disable-next-line no-shadow

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
-import sequelize from 'sequelize';
+import sequelize, { where } from 'sequelize';
 
 import artistsRoutes from './artistsRoutes.js';
 import countryRoutes from './countryRoutes.js';
@@ -14,36 +14,56 @@ router.get('/', (req, res) => {
 });
 
 /// artists routes///
-router.use('/artists.js', artistsRoutes);
-router.route('/artists.js').get(async (req, res) => {
+router.use('/artists', artistsRoutes);
+router.route('/artists').get(async (req, res) => {
   try {
-    const test = req.body.first_name;
-    const result = await db.artist.create({
-      artist_id: 1,
-      first_name: 'Bill',
-      last_name: 'Arnold',
-      country_id: 1
-    });
-    res.send('Got here');
+    const artistId = await db.artist_id.findAll();
+    const reply = artistId.length > 0 ? {data: artistId} : {message: 'No Result'};
+    res.json(reply);
   } catch (err) {
-    console.log(err);
-    res.send({message: 'Did not get here'});
+    console.error(err);
+    res.send('Did not get here');
   }
 });
-/// country routes ///
-router.use('/country.js', countryRoutes);
-router.route('/country.js').get(async (req, res) => {
+router.route('/artists/:artist_id').get(async(req, res) => {
   try {
-    const test = req.body.country_name;
-    const result = await db.country.create({
-      country_id: 3,
-      country_name: 'Denmark',
-      country_nationality: 'Danish'
+    const artistId = await db.artist_id.findAll({
+      where: {
+        artist_id: req.params.country_id
+      }
+
     });
-    res.send('Got here');
+    res.json(artistId);
   } catch (err) {
-    console.log(err);
-    res.send({message: 'Did not get here'});
+    console.error(err);
+    res.send('Did not get here');
+  }
+});
+
+/// country routes ///
+router.use('/country', countryRoutes);
+router.route('/country').get(async (req, res) => {
+  try {
+    const countryId = await db.country_id.findAll();
+    const reply = countryId.length > 0 ? {data: countryId} : {message: 'No Result'};
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.send('Did not get here');
+  }
+});
+router.route('/country/:country_id').get(async(req, res) => {
+  try {
+    const countryId = await db.country_id.findAll({
+      where: {
+        country_id: req.params.country_id
+      }
+
+    });
+    res.json(countryId);
+  } catch (err) {
+    console.error(err);
+    res.send('Did not get here');
   }
 });
 

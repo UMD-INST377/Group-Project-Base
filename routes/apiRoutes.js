@@ -134,7 +134,7 @@ router.route('/languages'). get(async(req, res) => {
 
 router.route('/languages/:language_id').get(async (req, res) => {
   try {
-    const genres = await db.Languages.findAll({
+    const languages = await db.Languages.findAll({
       where: {
         language_id: req.params.language_id
       }

@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-app.use('./chandra', route);
+app.use('/chandra', route);
 
 async function bootServer() {
   try {

@@ -4,7 +4,7 @@ export default (database, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true, 
-      autoIncrement: TRUE
+      autoIncrement: true
     },
     advisor_initials: {
       type: DataTypes.STRING,

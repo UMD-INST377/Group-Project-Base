@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const Languages = database.define(
-    'Languages',
+    'languages',
     {
       language_id: {
         type: DataTypes.INTEGER,

@@ -17,3 +17,5 @@ router.route('/Group22_Dining_Hall_Tracker')
       console.error(err);
     }
   });
+
+export default router;

@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-  const People = database.define(
+  const people = database.define(
     'people',
     {
       person_id: {
@@ -18,5 +18,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return People;
+  return people;
 };

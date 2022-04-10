@@ -1,7 +1,7 @@
 import DietaryRestrictions from './DietaryRestrictions.js';
 import DiningHall from './DiningHall.js';
 import HallHours from './HallHours.js';
-import HallSchedules from './HallSchedules';
+import HallSchedule from './HallSchedule.js';
 import Macros from './Macros.js';
 import MealRestrictions from './MealRestrictions.js';
 import Meals from './Meals.js';
@@ -11,7 +11,7 @@ export default {
   DietaryRestrictions,
   DiningHall,
   HallHours,
-  HallSchedules,
+  HallSchedule,
   Macros,
   MealRestrictions,
   Meals,

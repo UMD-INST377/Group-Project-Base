@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const Ratings = database.define(
-    'ratings',
+    'Ratings',
     {
       rating_id: {
         type: DataTypes.INTEGER,

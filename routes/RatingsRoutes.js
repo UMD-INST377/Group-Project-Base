@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/ratings', (req, res) => {
   res.send('You touched the Ratings Routes');
   res.json({message: 'Welcome to Ratings API'});
 });

@@ -34,10 +34,11 @@ router.route('/People.js')
   });
 
 ///  Rating's Routes ////
+router.use('/ratings', ratingRoutes);
 router.route('/ratings')
   .get(async (req, res) => {
     try {
-      const rating = await DataView.Ratings.findAll();
+      const rating = await db.Ratings.findAll();
       const reply = rating.length > 0 ? { data: rating} : { message: 'No results'};
       res.json(reply);
     } catch (err) {
@@ -54,7 +55,7 @@ router.route('/ratings/:rating_id').get(async(req, res) => {
     });
     res.json(rating);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.error('Error in server');
   }
 });

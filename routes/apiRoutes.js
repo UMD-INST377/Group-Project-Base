@@ -38,17 +38,17 @@ router.use('/ratings', ratingRoutes);
 router.route('/ratings')
   .get(async (req, res) => {
     try {
-      const rating = await db.Ratings.findAll();
+      const rating = await db.ratings.findAll();
       const reply = rating.length > 0 ? { data: rating} : { message: 'No results'};
       res.json(reply);
     } catch (err) {
       console.error(err);
-      res.error('Error in Server');
+      res.send('Error in Server');
     }
   });
 router.route('/ratings/:rating_id').get(async(req, res) => {
   try {
-    const rating = await db.Ratings.findAll({
+    const rating = await db.ratings.findAll({
       where: {
         rating_id: req.params.rating_id
       }
@@ -56,7 +56,7 @@ router.route('/ratings/:rating_id').get(async(req, res) => {
     res.json(rating);
   } catch (err) {
     console.error(err);
-    res.error('Error in server');
+    res.send('Error in server');
   }
 });
 

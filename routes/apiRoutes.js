@@ -2,6 +2,9 @@
 import express from 'express';
 import sequelize from 'sequelize';
 
+import artworkRoutes from './artworkRoutes.js'
+import galleryRoutes from './galleryRoutes.js'
+
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -9,6 +12,10 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
+
+/// artwork routes///
+router.use('models/artwork.js', artworkRoutes);
+router.route('/artwork.js').get
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

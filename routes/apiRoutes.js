@@ -6,14 +6,15 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.route('/').get((req, res) => {
   res.send('Welcome to the Movies API!');
 });
 
 /// /////////////////////////////////
 /// ////Availability Endpoints////////
 /// /////////////////////////////////
-router.get('/availability', async (req, res) => { // res, req, next
+
+router.route('/availability').get(async (req, res) => { // res, req, next
   try {
     const availability = await db.Availability.findAll();
     const reply = availability.length > 0 ? { data: availability } : { message: 'no results found' };
@@ -24,7 +25,7 @@ router.get('/availability', async (req, res) => { // res, req, next
   }
 });
 
-router.get('/availability/:availability_id', async (req, res) => {
+router.route('/availability/:availability_id').get(async (req, res) => {
   try {
     const availability = await db.Availability.findAll({
       where: {
@@ -198,6 +199,67 @@ router.put('/movies', async (req, res) => {
       }
     );
     res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/genres', async (req, res) => {
+  try {
+    const genres = await db.Genres.findAll();
+    const reply = genres.length > 0 ? { data: genres } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// //////////////////////////////////
+/// ///////Custom SQL Endpoint////////
+/// /////////////////////////////////
+const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
+router.get('/table/data', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(macrosCustom, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+const mealMapCustom = `SELECT hall_name,
+  hall_address,
+  hall_lat,
+  hall_long,
+  meal_name
+FROM
+  Meals m
+INNER JOIN Meals_Locations ml 
+  ON m.meal_id = ml.meal_id
+INNER JOIN Dining_Hall d
+ON d.hall_id = ml.hall_id;`;
+router.get('/map/data', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(mealMapCustom, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.get('/custom', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(req.body.query, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
   } catch (err) {
     console.error(err);
     res.error('Server error');

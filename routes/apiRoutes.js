@@ -148,7 +148,7 @@ router.post('/movies', async (req, res) => {
   const movies = await db.Movies.findAll();
   const currentId = (await movies.length) + 1;
   try {
-    const newmovies = await db.Movies.create({
+    const newMovie = await db.Movies.create({
       movie_id: currentId,
       title: req.title,
       year: req.year,
@@ -159,7 +159,7 @@ router.post('/movies', async (req, res) => {
       tomatometer: req.tomatometer,
       image_id: req.image_id
     });
-    res.json(newmovies);
+    res.json(newMovie);
   } catch (err) {
     console.error(err);
     res.error('Server error');

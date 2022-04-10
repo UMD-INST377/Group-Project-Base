@@ -19,10 +19,10 @@ router.route('/artists.js').get(async (req, res) =>{
   try{
     const test = req.body.first_name;
     const result = await db.artist.create({
-      artist_id = 1,
-      first_name = 'Bill',
-      last_name = 'Arnold',
-      country_id = 1
+      artist_id: 1,
+      first_name: 'Bill',
+      last_name: 'Arnold',
+      country_id: 1
     });
     res.send('Got here');
 
@@ -39,9 +39,9 @@ router.route('/country.js').get(async (req, res) =>{
   try{
     const test = req.body.country_name;
     const result = await db.country.create({
-      country_id = 3,
-      country_name = 'Denmark',
-      country_nationality = 'Danish'
+      country_id: 3,
+      country_name: 'Denmark',
+      country_nationality: 'Danish'
     });
     res.send('Got here');
 

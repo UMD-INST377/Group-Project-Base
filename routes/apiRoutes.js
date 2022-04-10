@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
@@ -14,9 +15,42 @@ router.get('/', (req, res) => {
 });
 
 ///  People's Routes ////
-router.use('/', peopleRoutes);
+router.use('models/People.js', peopleRoutes);
+/// People Endpoints
+router.route('/People.js')
+  .get(async (req, res) => {
+    try {
+      const test = req.body.first_name;
+      const result = await db.People.create({
+        person_id: req.body.person_id,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name
+      });
+      res.send('Reached here');
+    } catch (err) {
+      console.log(err);
+      res.send({message: 'Did not reach here'});
+    }
+  });
+
 ///  Rating's Routes ////
-router.use('/', ratingRoutes);
+router.use('/Ratings.js', ratingRoutes);
+router.route('/Ratings.js')
+  .get(async (req, res) => {
+    try {
+      const test = req.body.rating;
+      const result = await db.Rating.create({
+        rating_id: req.body.rating_id,
+        rating: req.body.rating,
+        description: req.body.description
+      });
+      res.send('Reached here');
+    } catch (err) {
+      console.log(err);
+      res.send({message: 'Did not reach here'});
+    }
+  });
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

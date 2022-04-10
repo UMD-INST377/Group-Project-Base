@@ -15,8 +15,8 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 router.get('/availability', async (req, res) => { // res, req, next
   try {
-    const movies = await db.Availability.findAll();
-    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
+    const availability = await db.Availability.findAll();
+    const reply = availability.length > 0 ? { data: availability } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -43,8 +43,8 @@ router.get('/availability/:availability_id', async (req, res) => {
 /// /////////////////////////////////
 router.get('/images', async (req, res) => {
   try {
-    const movies = await db.Images.findAll();
-    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
+    const images = await db.Images.findAll();
+    const reply = images.length > 0 ? { data: images } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -54,12 +54,12 @@ router.get('/images', async (req, res) => {
 
 router.get('/images/:image_id', async (req, res) => {
   try {
-    const movie = await db.Images.findAll({
+    const image = await db.Images.findAll({
       where: {
         image_id: req.params.image_id
       }
     });
-    res.json(movie);
+    res.json(image);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -67,14 +67,14 @@ router.get('/images/:image_id', async (req, res) => {
 });
 
 router.post('/images', async (req, res) => {
-  const movies = await db.Images.findAll();
-  const currentId = (await movies.length) + 1;
+  const images = await db.Images.findAll();
+  const currentId = (await images.length) + 1;
   try {
-    const newimages = await db.Images.create({
+    const newImage = await db.Images.create({
       image_id: currentId,
       image_url: req.body.image_url
     });
-    res.json(newimages);
+    res.json(newImage);
   } catch (err) {
     console.error(err);
     res.error('Server error');

@@ -4,12 +4,12 @@ import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
-const diningHallQuery = 'SELECT hall_name, hall_address, hall_lat, hall_long FROM Group7_DHT.Dining_Hall.dining_hall';
+const diningHallQuery = 'SELECT SELECT `hall_id`, `hall_name`, `hall_address`, `hall_lat`, `hall_long` FROM `Dining_Hall` AS `Dining_Hall;';
 
 const router = express.Router();
 
 // Get Dining Hall
-router.route('/dining_hall').get(async (req, res) => {
+router.route('/dining').get(async (req, res) => {
   try {
     const halls = await db.sequelizeDB.query(diningHallQuery, {
       type: sequelize.QueryTypes.SELECT
@@ -23,8 +23,8 @@ router.route('/dining_hall').get(async (req, res) => {
 });
 
 // Get Dining Hall with specific id
-router.get('/dining_hall/:hall_id', async (req, res) => {
-  const diningHallIDQuery = `SELECT * FROM Group7_DHT.Dining_Hall.dining_hall WHERE hall_id = ' ${req.params.hall_id}`;
+router.get('/:hall_id', async (req, res) => {
+  const diningHallIDQuery = `SELECT * FROM Dining_Hall; WHERE hall_id =${req.params.hall_id}`;
   try {
     const halls = await db.sequelize.query(diningHallIDQuery, {
       type: sequelize.QueryTypes.SELECT

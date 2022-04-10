@@ -20,8 +20,7 @@ router.route('/availability').get(async (req, res) => { // res, req, next
     const reply = availability.length > 0 ? { data: availability } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
@@ -34,8 +33,7 @@ router.route('/availability/:availability_id').get(async (req, res) => {
     });
     res.json(availability);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
@@ -48,8 +46,7 @@ router.route('/images').get(async (req, res) => {
     const reply = images.length > 0 ? { data: images } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
@@ -62,8 +59,7 @@ router.route('/images/:image_id').get(async (req, res) => {
     });
     res.json(image);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
@@ -76,8 +72,7 @@ router.route('/movies').get(async (req, res) => {
     const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
@@ -90,8 +85,7 @@ router.route('/movies/:movie_id').get(async (req, res) => {
     });
     res.json(movie);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 

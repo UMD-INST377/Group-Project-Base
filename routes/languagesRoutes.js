@@ -6,8 +6,8 @@ const router = express.Router();
 router.route('/')
   .get(async (req, res) => {
     try {
-      const images = await db.Images.findAll();
-      const reply = images.length > 0 ? { data: images } : { message: 'no results found' };
+      const languages = await db.Languages.findAll();
+      const reply = languages.length > 0 ? { data: languages } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {
       res.json('Server error');

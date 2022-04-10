@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 /// artists routes///
-router.use('models/artists.js', artistsRoutes);
+router.use('/artists.js', artistsRoutes);
 router.route('/artists.js').get(async (req, res) =>{
   try{
     const test = req.body.first_name;
@@ -34,7 +34,7 @@ router.route('/artists.js').get(async (req, res) =>{
   }
 });
 /// country routes ///
-router.use('models/country.js', countryRoutes);
+router.use('/country.js', countryRoutes);
 router.route('/country.js').get(async (req, res) =>{
   try{
     const test = req.body.country_name;

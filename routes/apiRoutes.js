@@ -2,8 +2,8 @@
 import express from 'express';
 import sequelize from 'sequelize';
 
-import artworkRoutes from './artworkRoutes.js'
-import galleryRoutes from './galleryRoutes.js'
+import artistsRoutes from './artistsRoutes.js'
+import countryRoutes from './countryRoutes.js'
 
 import db from '../database/initializeDB.js';
 
@@ -14,8 +14,25 @@ router.get('/', (req, res) => {
 });
 
 /// artwork routes///
-router.use('models/artwork.js', artworkRoutes);
-router.route('/artwork.js').get
+router.use('models/artists.js', artistsRoutes);
+router.route('/artists.js').get(async (req, res) =>{
+  try{
+    const test = req.body.artist.first_name;
+    const result = await db.artist.create({
+      artist_id = 1,
+      first_name = 'Bill',
+      last_name = 'Arnold',
+      country_id = 1
+    });
+    res.send('Got here');
+
+
+  }catch(err){
+    console.log(err);
+    res.send({message: 'Did not get here'});
+
+  }
+});
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

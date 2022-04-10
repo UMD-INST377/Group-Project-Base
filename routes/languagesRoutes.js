@@ -17,9 +17,9 @@ router.route('/')
 router.route('/:language_id')
   .get(async (req, res) => {
     try {
-      const languages = await db.Images.findAll({
+      const languages = await db.Languages.findAll({
         where: {
-          language_id: req.params.image_id
+          language_id: req.params.language_id
         }
       });
       res.json(languages);

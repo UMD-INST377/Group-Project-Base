@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 ///  People's Routes ////
-router.use('models/People.js', peopleRoutes);
+router.use('/People.js', peopleRoutes);
 /// People Endpoints
 router.route('/People.js')
   .get(async (req, res) => {
@@ -34,15 +34,15 @@ router.route('/People.js')
   });
 
 ///  Rating's Routes ////
-router.use('models/Ratings.js', ratingRoutes);
+router.use('/Ratings.js', ratingRoutes);
 router.route('/Ratings.js')
   .get(async (req, res) => {
     try {
       const test = req.body.rating;
-      const result = await db.Rating.create({
-        rating_id: req.body.rating_id,
-        rating: req.body.rating,
-        description: req.body.description
+      const result = await db.Ratings.create({
+        rating_id: 1156,
+        rating: 5,
+        description: 'Great movie!'
       });
       res.send('Reached here');
     } catch (err) {

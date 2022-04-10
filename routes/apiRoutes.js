@@ -13,11 +13,11 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
-/// artwork routes///
+/// artists routes///
 router.use('models/artists.js', artistsRoutes);
 router.route('/artists.js').get(async (req, res) =>{
   try{
-    const test = req.body.artist.first_name;
+    const test = req.body.first_name;
     const result = await db.artist.create({
       artist_id = 1,
       first_name = 'Bill',
@@ -33,6 +33,26 @@ router.route('/artists.js').get(async (req, res) =>{
 
   }
 });
+/// country routes ///
+router.use('models/country.js', countryRoutes);
+router.route('/country.js').get(async (req, res) =>{
+  try{
+    const test = req.body.country_name;
+    const result = await db.country.create({
+      country_id = 3,
+      country_name = 'Denmark',
+      country_nationality = 'Danish'
+    });
+    res.send('Got here');
+
+
+  }catch(err){
+    console.log(err);
+    res.send({message: 'Did not get here'});
+
+  }
+});
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

@@ -4,6 +4,7 @@ import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 import danielRoutes from './routes/daniel_routes.js';
 
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;

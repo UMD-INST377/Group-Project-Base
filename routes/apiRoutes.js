@@ -5,7 +5,15 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
-
+router.get('/advisors', async (req, res) => {
+  try {
+    const advisors = await db.advisors.findAll();
+    res.json({ data: advisors });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });

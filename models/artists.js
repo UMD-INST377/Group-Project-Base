@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-shadow */
 import { DataTypes } from 'sequelize/types';
 
 export default (database, DataTypes) => {

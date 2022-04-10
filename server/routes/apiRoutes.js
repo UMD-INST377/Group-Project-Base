@@ -2,9 +2,9 @@
 import express from 'express';
 import sequelize from 'sequelize';
 
-
 import db from '../database/initializeDB.js';
-import bpRoutes from './bpRoutes.js'
+import bpRoutes from './bpRoutes.js';
+import etRoutes from './etRoutes.js';
 
 const router = express.Router();
 
@@ -17,6 +17,10 @@ router.get('/', (req, res) => {
 
 router.use('/food', bpRoutes);
  
+/* ET Routes - Dining Hall */
+
+router.use('/dininghalls', etRoutes);
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 ///  People's Routes ////
 router.use('/People.js', peopleRoutes);
-/// People Endpoints
+/// People Routes
 router.route('/People.js')
   .get(async (req, res) => {
     try {

@@ -117,3 +117,31 @@ router.route('/genres/:genre_id').get(async (req, res) => {
     res.json('Server error');
   }
 });
+
+/////////////////////////////////////
+//////////////Languages Endpoints////////
+/////////////////////////////////////
+
+router.route('/languages'). get(async(req, res) => {
+  try {
+    const languages = await db.Languages.findAll();
+    const reply = languages.length > 0 ? { data: languages } : {message: 'no results found'};
+    res.json(reply);
+  } catch (err) {
+    res.json('Server error');
+  }
+});
+
+router.route('/languages/:language_id').get(async (req, res) => {
+  try {
+    const genres = await db.Languages.findAll({
+      where: {
+        language_id: req.params.language_id
+      }
+    
+  });
+  res.json(languages);
+} catch(err) {
+  res.json('Server error');
+}
+});

@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const Contributions = database.define(
-    'Contributions',
+    'contributions',
     {
       contribution_id: {
         type: DataTypes.INTEGER,

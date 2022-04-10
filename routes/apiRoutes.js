@@ -22,9 +22,9 @@ router.route('/People.js')
     try {
       const test = req.body.first_name;
       const result = await db.People.create({
-        person_id: req.body.person_id,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name
+        person_id: 1234,
+        first_name: 'Steve',
+        last_name: 'Johnson'
       });
       res.send('Reached here');
     } catch (err) {
@@ -34,7 +34,7 @@ router.route('/People.js')
   });
 
 ///  Rating's Routes ////
-router.use('/Ratings.js', ratingRoutes);
+router.use('models/Ratings.js', ratingRoutes);
 router.route('/Ratings.js')
   .get(async (req, res) => {
     try {

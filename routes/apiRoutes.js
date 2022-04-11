@@ -6,7 +6,7 @@ import genres from './genresRoutes.js';
 import images from './imagesRoutes.js';
 import languages from './languagesRoutes.js';
 import movies from './moviesRoutes.js';
-import ratings from './ratingsRoutes.js';
+import ratings from './RatingsRoutes.js';
 
 const router = express.Router();
 

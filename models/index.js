@@ -2,6 +2,7 @@
 // import DiningHall from './DiningHall.js';
 // import Macros from './Macros.js';
 // import Meals from './Meals.js';
+import restaurants from './restaurants.js';
 import address from './address.js';
 import cusine from './cusine.js';
 import customers from './customers.js';
@@ -15,6 +16,7 @@ export default {
   // DiningHall,
   // Macros,
   // Meals
+  restaurants,
   address,
   cusine,
   customers,

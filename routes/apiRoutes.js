@@ -10,8 +10,8 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+router.route('/').get((req, res) => {
+  res.send('Welcome to the Movies API!');
 });
 
 ///  People's Routes ////
@@ -61,206 +61,131 @@ router.route('/ratings/:rating_id').get(async(req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Availability Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+
+router.route('/availability').get(async (req, res) => { // res, req, next
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const availability = await db.Availability.findAll();
+    const reply = availability.length > 0 ? { data: availability } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.route('/availability/:availability_id').get(async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const availability = await db.Availability.findAll({
       where: {
-        hall_id: req.params.hall_id
+        availability_id: req.params.availability_id
       }
     });
-
-    res.json(hall);
+    res.json(availability);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+/// /////////////////////////////////
+/// ////Images Endpoints////////
+/// /////////////////////////////////
+router.route('/images').get(async (req, res) => {
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
+    const images = await db.Images.findAll();
+    const reply = images.length > 0 ? { data: images } : { message: 'no results found' };
+    res.json(reply);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.route('/images/:image_id').get(async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    const image = await db.Images.findAll({
       where: {
-        hall_id: req.params.hall_id
+        image_id: req.params.image_id
       }
     });
-    res.send('Successfully Deleted');
+    res.json(image);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/dining', async (req, res) => {
-  try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
 /// /////////////////////////////////
-/// ////////Meals Endpoints//////////
+/// ////Movies Endpoints////////
 /// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.route('/movies').get(async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
+    const movies = await db.Movies.findAll();
+    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
+    res.json(reply);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
-router.get('/meals/:meal_id', async (req, res) => {
+router.route('/movies/:movie_id').get(async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const movie = await db.Movies.findAll({
       where: {
-        meal_id: req.params.meal_id
+        movie_id: req.params.movie_id
       }
     });
-    res.json(meals);
+    res.json(movie);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
+export default router;
+
+/// //////////////////////////////////
+/// ///////////Genres Endpoints////////
+/// //////////////////////////////////
+router.route('/genres').get(async (req, res) => {
   try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
+    const genres = await db.Genres.findAll();
+    const reply = genres.length > 0 ? { data: genres } : { message: 'no results found' };
+    res.json(reply);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
+router.route('/genres/:genre_id').get(async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
+    const genres = await db.Genres.findAll({
       where: {
-        meal_id: req.params.meal_id
+        genre_id: req.params.genre_id
       }
     });
-    res.json(meals);
+    res.json(genres);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
-router.put('/macros', async (req, res) => {
+/// //////////////////////////////////
+/// ///////////Languages Endpoints////////
+/// //////////////////////////////////
+
+router.route('/languages').get(async(req, res) => {
   try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
+    const languages = await db.Languages.findAll();
+    const reply = languages.length > 0 ? { data: languages } : {message: 'no results found'};
+    res.json(reply);
   } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Server error');
   }
 });
 
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+router.route('/languages/:language_id').get(async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    const languages = await db.Languages.findAll({
       where: {
-        restriction_id: req.params.restriction_id
+        language_id: req.params.language_id
       }
     });
     res.json(restrictions);
@@ -319,4 +244,3 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-export default router;

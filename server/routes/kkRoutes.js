@@ -1,1 +1,1 @@
-// scipt by Krehl Kasayan
+// script by Krehl Kasayan

@@ -275,4 +275,13 @@ export default router;
 /// ////////////////////
 /// Liam's Enpoints///
 /// //////////////////
-
+router.route('/album')
+  .get('/album', async (req, res) => {
+    try {
+      const albumlist = await db.album.findAll({order: [[album_id, release_id, genre_id, price_id, album_name]]})
+      res.json({data: albumlist});
+    } catch (error) {
+      console.error(error);
+      res.send('Something went wrong on /movies end')
+    }
+})

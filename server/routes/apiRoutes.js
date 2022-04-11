@@ -7,13 +7,10 @@ import db from '../../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the Hispanic Restaurants API!');
 });
 
-/// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
-/// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+/* router.get('/dining', async (req, res) => {
   try {
     const halls = await db.DiningHall.findAll();
     const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
@@ -22,9 +19,24 @@ router.get('/dining', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
+}); */
+
+/// /////////////////////////////////
+/// //////// Address Endpoints////////// by Ryan E
+/// /////////////////////////////////
+
+router.get('/address', async (req, res) => {
+  try {
+    const address = await db.address.findAll();
+    const reply = addy.length > 0 ? { data: address } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+/* router.get('/dining/:hall_id', async (req, res) => {
   try {
     const hall = await db.DiningHall.findAll({
       where: {
@@ -37,9 +49,24 @@ router.get('/dining/:hall_id', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
+}); */
+
+router.get('/address/:address_id', async (req, res) => {
+  try {
+    const address = await db.address.findAll({
+      where: {
+        address_id: req.params.address_id
+      }
+    });
+
+    res.json(address);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
 });
 
-router.post('/dining', async (req, res) => {
+/* router.post('/dining', async (req, res) => {
   const halls = await db.DiningHall.findAll();
   const currentId = (await halls.length) + 1;
   try {
@@ -55,9 +82,26 @@ router.post('/dining', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
+}); */
+
+router.post('/address', async (req, res) => {
+  const addy = await db.address.findAll();
+  const currentId = (await addy.length) + 1;
+  try {
+    const newAddress = await db.address.create({
+      address_id: currentId,
+      street: req.body.street,
+      city: req.body.city,
+      zipcode: req.body.zipcode
+    });
+    res.json(newAddress);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+/* router.delete('/dining/:hall_id', async (req, res) => {
   try {
     await db.DiningHall.destroy({
       where: {
@@ -69,18 +113,32 @@ router.delete('/dining/:hall_id', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
+}); */
+
+router.delete('/address/:address_id', async (req, res) => {
+  try {
+    await db.address.destroy({
+      where: {
+        address_id: req.params.address_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/address', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.address.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        street: req.body.street,
+        address: req.body.address
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          address_id: req.body.address_id
         }
       }
     );
@@ -94,6 +152,7 @@ router.put('/dining', async (req, res) => {
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////
+
 router.get('/meals', async (req, res) => {
   try {
     const meals = await db.Meals.findAll();

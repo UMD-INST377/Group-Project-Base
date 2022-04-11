@@ -4,7 +4,11 @@ import sequelize from 'sequelize';
 
 import res from 'express/lib/response';
 import db from '../database/initializeDB.js';
-import artistGetAll from '../controller/artistsController.js';
+import artistsController from '../controller/artistsController.js';
+import artworkController from '../controller/artworkController.js';
+import countryController from '../controller/countryController.js';
+import galleriesController from '../controller/galleriesController.js';
+import resController from '../controller/resController.js';
 
 const router = express.Router();
 

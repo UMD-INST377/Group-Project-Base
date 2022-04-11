@@ -22,3 +22,4 @@ export default (sequelize, DataTypes) => {
     { freezeTableName: true, timestamps: false }
   );
   return artists;
+};

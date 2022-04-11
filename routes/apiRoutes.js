@@ -199,4 +199,57 @@ router.get('/releases/:release_id', async (req, res) => {
   }
 });
 
+router.post('/releases', async (req, res) => {
+  const halls = await db.releases.findAll();
+  const currentId = (await halls.length) + 1;
+  try {
+    const newDining = await db.releases.create({
+      release_id: currentId,
+      release_country: req.body.release_country,
+      release_year: req.body.release_year,
+      release_link: req.body.release_link
+    });
+    res.json(newDining);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/releases', async (req, res) => {
+  try {
+    await db.releases.update(
+      {
+        release_id: req.body.release_id,
+        release_country: req.body.release_country,
+        release_year: req.body.release_year,
+        release_link: req.body.release_link
+      },
+      {
+        where: {
+          release_id: req.body.release_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/releases/:release_id', async (req, res) => {
+  try {
+    await db.releases.destroy({
+      where: {
+        release_id: req.params.release_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

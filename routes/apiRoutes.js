@@ -14,58 +14,8 @@ router.get('/', (req, res) => {
 });
 
 /// artists routes///
-router.use('/artists', artistsRoutes);
-router.route('/artists').get(async (req, res) => {
-  try {
-    const artistId = await db.artist_id.findAll();
-    const reply = artistId.length > 0 ? {data: artistId} : {message: 'No Result'};
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.send('Did not get here');
-  }
-});
-router.route('/artists/:artist_id').get(async(req, res) => {
-  try {
-    const artistId = await db.artist_id.findAll({
-      where: {
-        artist_id: req.params.country_id
-      }
-
-    });
-    res.json(artistId);
-  } catch (err) {
-    console.error(err);
-    res.send('Did not get here');
-  }
-});
 
 /// country routes ///
-router.use('/country', countryRoutes);
-router.route('/country').get(async (req, res) => {
-  try {
-    const countryId = await db.country_id.findAll();
-    const reply = countryId.length > 0 ? {data: countryId} : {message: 'No Result'};
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.send('Did not get here');
-  }
-});
-router.route('/country/:country_id').get(async(req, res) => {
-  try {
-    const countryId = await db.country_id.findAll({
-      where: {
-        country_id: req.params.country_id
-      }
-
-    });
-    res.json(countryId);
-  } catch (err) {
-    console.error(err);
-    res.send('Did not get here');
-  }
-});
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

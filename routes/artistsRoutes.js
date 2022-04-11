@@ -10,4 +10,30 @@ router.get('/', (req, res) => {
   res.send('You touched the artists routes');
   res.json({message: 'Welcome to Artist API'});
 });
+router.use('/artists', artistsRoutes);
+router.route('/artists').get(async (req, res) => {
+  try {
+    const artistId = await db.artist_id.findAll();
+    const reply = artistId.length > 0 ? {data: artistId} : {message: 'No Result'};
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.send('Did not get here');
+  }
+});
+router.route('/artists/:artist_id').get(async(req, res) => {
+  try {
+    const artistId = await db.artist_id.findAll({
+      where: {
+        artist_id: req.params.country_id
+      }
+
+    });
+    res.json(artistId);
+  } catch (err) {
+    console.error(err);
+    res.send('Did not get here');
+  }
+});
+
 export default router;

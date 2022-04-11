@@ -13,7 +13,7 @@ import resController from '../controller/resController.js';
 const router = express.Router();
 
 /* artist endpoint */
-router.route('/designer')
+router.route('/artists')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(artistsController.artistGet,
@@ -21,7 +21,7 @@ router.route('/designer')
           type: sequelize.QueryTypes.SELECT
         });
       console.log('This is the route');
-      res.json(gallery);
+      res.json({data: result});
     } catch (err) {
       res.json({ error: err});
     }
@@ -73,7 +73,7 @@ router.route('/designer')
   });
 
 /* artwork endpoint */
-router.route('/design')
+router.route('/artwork')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(artworkController.artworkGet,
@@ -81,7 +81,7 @@ router.route('/design')
           type: sequelize.QueryTypes.SELECT
         });
       console.log('This is the route');
-      res.json(gallery);
+      res.json({data: result});
     } catch (err) {
       res.json({ error: err});
     }

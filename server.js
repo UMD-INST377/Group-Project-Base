@@ -8,6 +8,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const staticFolder = 'client';
 
+// Add some auto-reloading to our server
+if (process.env.CONTEXT === 'development') {
+  liveReloadServer = reload.createServer();
+  liveReloadServer.watch(path.join(__dirname, staticFolder));
+}
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

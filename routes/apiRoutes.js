@@ -11,12 +11,12 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Artists Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/artists', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const artist = await db.artists.findAll();
+    const reply = artist.length > 0 ? { data: artist } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,31 +24,30 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/artists/:artist_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const artist = await db.artists.findAll({
       where: {
-        hall_id: req.params.hall_id
+        artist_id: req.params.artist_id
       }
     });
 
-    res.json(hall);
+    res.json(artist);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.post('/artists', async (req, res) => {
+  const artists = await db.artists.findAll();
+  const currentId = (await artists.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newDining = await db.DiningArtist.create({
+      artist_id: currentId,
+      artist_name: req.body.artist_name,
+      total_artist_albums: req.body.total_artist_albums,
+      artist_link: req.body.artist_link
     });
     res.json(newDining);
   } catch (err) {
@@ -57,11 +56,11 @@ router.post('/dining', async (req, res) => {
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/artists/:artist_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.artists.destroy({
       where: {
-        hall_id: req.params.hall_id
+        artist_id: req.params.artist_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +70,17 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/artists', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.artists.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        artist_name: req.body.artist_name,
+        total_artist_albums: req.body.total_artist_albums,
+        artist_link: req.body.artist_link
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          artist_id: req.body.artist_id
         }
       }
     );
@@ -223,7 +223,7 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
+const macrosCustom = 'SELECT `Dining_Artist_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Artist_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Artist_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Artist_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Artist_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Artist_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Artist_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Artist_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Artist_Tracker`.`Meals`JOIN `Dining_Artist_Tracker`.`Macros`)WHERE(`Dining_Artist_Tracker`.`Meals`.`meal_id` = `Dining_Artist_Tracker`.`Macros`.`meal_id`)';
 router.get('/table/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {
@@ -236,17 +236,17 @@ router.get('/table/data', async (req, res) => {
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
+const mealMapCustom = `SELECT artist_name,
+  artist_address,
+  artist_lat,
+  artist_long,
   meal_name
 FROM
   Meals m
 INNER JOIN Meals_Locations ml 
   ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
+INNER JOIN Dining_Artist d
+ON d.artist_id = ml.artist_id;`;
 router.get('/map/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(mealMapCustom, {

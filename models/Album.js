@@ -1,7 +1,7 @@
 import { INTEGER } from "sequelize/types"
 
 export default (sequelize, DataTypes) => {
-  const Album = database.define(
+  const album = database.define(
     'album',
     {
       album_id: {
@@ -27,5 +27,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Album;
+  return album;
 };

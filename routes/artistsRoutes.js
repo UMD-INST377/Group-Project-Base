@@ -7,14 +7,10 @@ import fetch from 'node-fetch';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
-// eslint-disable-next-line no-shadow
-router.get('/', (req, res) => {
-  res.send('You touched the artists routes');
-  res.json({message: 'Welcome to Artist API'});
-});
+
 router.route('/artists').get(async (req, res) => {
   try {
-    const artistId = await db.artist_id.findAll();
+    const artistId = await db.artists.findAll();
     const reply = artistId.length > 0 ? {data: artistId} : {message: 'No Result'};
     res.json(reply);
   } catch (err) {
@@ -24,9 +20,9 @@ router.route('/artists').get(async (req, res) => {
 });
 router.route('/artists/:artist_id').get(async(req, res) => {
   try {
-    const artistId = await db.artist_id.findAll({
+    const artistId = await db.artists.findAll({
       where: {
-        artist_id: req.params.country_id
+        artist_id: req.params.artist_id
       }
 
     });

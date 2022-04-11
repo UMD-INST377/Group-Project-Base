@@ -34,8 +34,9 @@ nav ul .active {
     color: red!important;
 }
 
-img {
+.movie img {
     max-width: 100%;
+    /* padding-top:4px; */
 }
 
 .filters {
@@ -56,6 +57,11 @@ img {
 
 .movie {
     margin-top: 20px;
+}
+
+.col-content {
+    padding:10px;
+    border: 1px solid #eee;
 }
 
 .movie-details {
@@ -79,4 +85,11 @@ img {
 input[type=search]:not(.browser-default),
 input[type=text]:not(.browser-default) {
     padding-left:10px;
+}
+
+input[type="search"]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #26a69a;
+    -webkit-box-shadow: 0 1px 0 0 #26a69a;
+    box-shadow: 0 1px 0 0 #26a69a;
 }

@@ -3,7 +3,8 @@ import Genres from './Genres.js';
 import Images from './Images.js';
 import Languages from './Languages.js';
 import Movies from './Movies.js';
-import Ratings from './Ratings.js';
+import people from './people.js';
+import ratings from './ratings.js';
 
 export default {
   Availability,
@@ -11,5 +12,6 @@ export default {
   Images,
   Languages,
   Movies,
-  Ratings
+  people,
+  ratings
 };

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';

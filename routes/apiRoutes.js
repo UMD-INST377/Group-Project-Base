@@ -10,6 +10,33 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+
+/// /////////////////////////////////
+/// ////////Tayo's Endpoints/////////
+/// /////////////////////////////////
+router.route('/genre')
+.get(async (req, res) => {
+    try {
+        const genreList = await db.genre.findAll()
+        res.json({data: genreList});
+    } catch (err) {
+        console.error(err);
+        res.send({message: 'Error!'});
+    }
+})
+
+router.route('/genre/:id')
+.get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const genreList = await db.genre.findAll()
+      res.json({data: genreList[id]});
+    } catch (err) {
+        console.error(err);
+        res.json({message: 'Error!'});
+    }
+})
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

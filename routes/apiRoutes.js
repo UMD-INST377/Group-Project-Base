@@ -168,4 +168,35 @@ router.delete('/genres/:genre_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
+/// /////////////////////////////////
+/// ////Release Endpoints////////
+/// /////////////////////////////////
+
+router.get('/releases', async (req, res) => {
+  try {
+    const halls = await db.releases.findAll(); 
+    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/releases/:release_id', async (req, res) => {
+  try {
+    const hall = await db.releases.findAll({
+      where: {
+        release_id : req.params.genre_id
+      }
+    });
+
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

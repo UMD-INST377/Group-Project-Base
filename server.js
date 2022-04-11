@@ -3,6 +3,7 @@ import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 import danielRoutes from './routes/daniel_routes.js';
+import chrisRoutes from './routes/chris_routes.js';
 
 const app = express();
 
@@ -14,7 +15,8 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-app.use('/api', danielRoutes)
+app.use('/api', danielRoutes);
+app.use('/api', chrisRoutes);
 
 async function bootServer() {
     try {

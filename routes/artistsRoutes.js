@@ -4,6 +4,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 import chalk from 'chalk';
 import fetch from 'node-fetch';
+import db from '../database/initializeDB.js';
 
 const router = express.Router();
 // eslint-disable-next-line no-shadow

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
 import express from 'express';
 import sequelize from 'sequelize';

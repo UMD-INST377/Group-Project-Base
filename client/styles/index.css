@@ -52,22 +52,21 @@ body {
     border-radius: 20px 0px 0px 20px;
     width: 80vw;
     max-width: 600px;
-    margin-top: 30px;
-    height: 40px;
-    padding-left: 20px;
+    height: 45px;
+    padding-left: 25px;
     margin-top: 30px;
     box-shadow: 0px 2px 4px #727272;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .search-button {
-     margin-left: -80px;
+    margin-left: -80px;
     background-color: #EB4949;
     border: none;
     color: white;
-    height: 46px;
-    width: 100px;
-    border-radius: 30px ;
+    height: 50px;
+    width: 120px;
+    border-radius: 0px 18px 18px 0px;
     transition: .5s;
     box-shadow: 0px 2px 4px #727272;
  
@@ -80,22 +79,26 @@ body {
     text-align: center;
     box-shadow: 0px 2px 4px #727272;
     font-size: 15px;
-    padding-bottom: 30px;
+    padding-bottom: 35px;
+    background: #F6FFC2;    
+    border-radius: 15px;
 }
 .search-button:hover {
-    background-color: #222;
+    background-color: rgb(158, 23, 23);
     cursor: pointer;
 }
 
 .search-history-header {
     background-color: #EB4949;
-    padding: 10px 30px;
+    padding: 20px 20px;
     color: white;
     font-size: 20px;
+    box-shadow: 0px 0px 4px #727272;
+    border-radius: 15px 15px 0px 0px;
 }
 
 .search-history-item {
-    padding: 30px;
+    padding: 35px;
 }
 
 .search-dropdown option {
@@ -114,7 +117,7 @@ body {
 
 
 .search-confirmation {
-    margin-top: 15px;
+    margin-top: 35px;
     font-size: 20px;
     display: none;
 }
@@ -220,7 +223,7 @@ body {
 }
 
 .card {
-    padding: 30px 0px;
+    /* padding: 30px 0px;
     margin-top: 50px;
     background-color: #FFD66C;
     width: 270px;
@@ -229,6 +232,17 @@ body {
     flex-direction: column;
     align-items: center;
     box-shadow: 0px 2px 4px #727272;
+    */
+    padding: 30px 0px;
+    margin-top: 50px;
+    width: 271px;
+    height: 299px;
+    flex-direction: column;
+    align-items: center;
+    background: #FFD66C;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 35px;
+    
 }
 
 
@@ -277,10 +291,19 @@ body {
      font-size: 13px;
 }
 
-.card-status {
-    margin-top: 0px;
+.card-status { 
+    width: 126px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+
     font-weight: bold;
-    padding: 15px 30px;
+    padding: 15px 11px;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: 0.08em;
     color: white;
     background-color: #EB4949;
 }

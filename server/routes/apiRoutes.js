@@ -23,6 +23,10 @@ router.use('/food', bpRoutes);
 
 router.use('/dining', etRoutes);
 
+/* KK routes - Restrictions */
+
+router.use();
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

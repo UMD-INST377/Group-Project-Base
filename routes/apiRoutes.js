@@ -46,7 +46,7 @@ router.get('/restaurants/:rest_id', async (req, res) => {
 // Get Endpoint 1: All records of single type
 router.get('/address', async (req, res) => {
   try {
-    const addresses = await db.addresses.findAll();
+    const addresses = await db.address.findAll();
     res.json(addresses);
   } catch (err) {
     console.error(err);
@@ -55,11 +55,11 @@ router.get('/address', async (req, res) => {
 });
 
 // Get Endpoint 2: Specific query, getting the city
-router.get('/address', async (req, res) => {
+router.get('/address/:city', async (req, res) => {
   try {
-    const addresses = await db.addresses.findAll({
+    const addresses = await db.address.findAll({
       where: {
-        city: req.params.address_id
+        city: req.params.city
       }
     });
     res.json(addresses);

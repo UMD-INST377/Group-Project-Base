@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-  const Ratings = database.define(
+  const ratings = database.define(
     'ratings',
     {
       rating_id: {
@@ -18,5 +18,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Ratings;
+  return ratings;
 };

@@ -2,7 +2,7 @@ import express from 'express';
 // import sequelize from 'sequelize';
 
 import availability from './availabilityRoutes.js';
-import genres from './genresRoutes.js';
+import genres from './genreRoutes.js';
 import images from './imagesRoutes.js';
 import languages from './languagesRoutes.js';
 import movies from './moviesRoutes.js';

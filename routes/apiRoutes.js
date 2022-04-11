@@ -6,21 +6,21 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.get('/company', async (req, res) => {
+router.get('/students', async (req, res) => {
   try {
-    const company = await db.company.findAll();
-    res.json({data: company});
+    const students = await db.students.findAll();
+    res.json({data: students});
   } catch (err) {
     console.error(err);
     res.send('Server error');
   }
 });
 
-router.get('/company/:id', async (req, res) => {
+router.get('/students/:id', async (req, res) => {
   try {
     const {id} = req.params;
-    const company = await db.company.findOne({where: {company_id:`${id}`}});
-    res.json({data: company});
+    const students = await db.students.findOne({where: {student_id:`${id}`}});
+    res.json({data: students});
   } catch (err) {
     console.error(err);
     res.send('Server error');

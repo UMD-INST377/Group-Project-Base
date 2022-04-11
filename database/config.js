@@ -12,13 +12,15 @@ export default {
     password: 'Veracrypt@12!',
     database: 'ischool',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {timestamps: false}
   },
   production: {
     username: 'ubuntu',
     password: 'Veracrypt@12!',
     database: 'ischool',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {timestamps: false}
   }
 };

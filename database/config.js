@@ -11,20 +11,20 @@ export default {
     password: 'Veracrypt@12!',
     database: 'pr',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
   },
   test: {
     username: 'ubuntu',
     password: 'Veracrypt@12!',
     database: 'pr',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
   },
   production: {
     username: 'ubuntu',
     password: 'Veracrypt@12!',
     database: 'pr',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
   }
 };

@@ -1,13 +1,17 @@
-import AlbumGenreInfo from './AlbumGenreInfo.js';
-import AlbumStyle from './AlbumStyle.js';
-import albums from './Albums.js';
 import artists from './artists.js';
-import Genres from './Genres.js';
+import albumGenreInfo from './albumsGenreInfo.js';
+import albums from './albums.js';
+import genres from './genres';
+import releases from './releases.js';
+import albumStyleInfo from './albumStyleInfo.js';
+import styles from './styles.js';
 
 export default {
-  AlbumGenreInfo,
-  AlbumStyle,
-  albums,
   artists,
-  Genres
+  albumGenreInfo,
+  albums,
+  genres,
+  releases,
+  albumStyleInfo,
+  styles
 };

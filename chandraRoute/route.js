@@ -8,14 +8,15 @@ router.get('/', (req, res) => {
   res.send('Welcome to the group 22 database');
 });
 
-router.route('/Group22_Dining_Hall_Tracker')
-  .get(async (req, res) => {
-    try {
-      const data = await db.Group22_Dining_Hall_Tracker.findAll();
-      res.json(data);
-    } catch (err) {
-      console.error(err);
-    }
-  });
+router.get('/Group22_Dining_Hall_Tracker', async (req, res) => {
+  try {
+    const halls = await db.DiningHall.findAll();
+    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 export default router;

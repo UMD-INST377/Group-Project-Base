@@ -1,21 +1,18 @@
 export default (sequelize, DataTypes) => {
-  const designerA = sequelize.define(
-    'designer',
+  const genres = sequelize.define(
+    'genres',
     {
-      artist_id: {
+      genre_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
         primaryKey: true
       },
-      first_name: {
-        type: DataTypes.STRING
-      },
-      last_name: {
+      genre_name: {
         type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return designerA;
+  return genres;
 };

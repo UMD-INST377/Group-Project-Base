@@ -13,5 +13,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return DietaryRestrictions;
+  return restrictions;
 };

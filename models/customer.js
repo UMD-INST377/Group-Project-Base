@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const customer = sequelize.define(
-    'customers',
+    'customer',
     {
       customer_id: {
         type: DataTypes.INTEGER,

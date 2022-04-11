@@ -9,10 +9,12 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
-router.get('/genres', (req, res) => {
+router.get('/randomgenres', async(req, res) => {
     try {
-        const genres = await db.genres.findAll();
-        res.json({data:genres});
+        const randomgenres = await db.genres.findAll();
+        //CODE TO PICK X RANDOM GENRES FROM 'genres' array
+        
+        res.json({data:randomgenres});
     } catch (error){
         console.error(error);
         res.send('Something went wrong.');

@@ -3,9 +3,6 @@
 import express from 'express';
 // import sequelize from 'sequelize';
 
-import peopleRoutes from './PeopleRoutes.js';
-import ratingRoutes from './RatingsRoutes.js';
-
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -15,50 +12,10 @@ router.route('/').get((req, res) => {
 });
 
 ///  People's Routes ////
-router.use('/People.js', peopleRoutes);
+
 /// People Routes
-router.route('/People.js')
-  .get(async (req, res) => {
-    try {
-      const test = req.body.first_name;
-      const result = await db.people.create({
-        person_id: 1234,
-        first_name: 'Steve',
-        last_name: 'Johnson'
-      });
-      res.send('Reached here');
-    } catch (err) {
-      console.log(err);
-      res.send({message: 'Did not reach here'});
-    }
-  });
 
 ///  Rating's Routes ////
-router.use('/ratings', ratingRoutes);
-router.route('/ratings')
-  .get(async (req, res) => {
-    try {
-      const rating = await db.ratings.findAll();
-      const reply = rating.length > 0 ? { data: rating} : { message: 'No results'};
-      res.json(reply);
-    } catch (err) {
-      console.error(err);
-      res.send('Error in Server');
-    }
-  });
-router.route('/ratings/:rating_id').get(async(req, res) => {
-  try {
-    const rating = await db.ratings.findAll({
-      where: {
-        rating_id: req.params.rating_id
-      }
-    });
-    res.json(rating);
-  } catch (err) {
-    console.error(err);
-    res.send('Error in server');
-  }
-});
 
 /// /////////////////////////////////
 /// ////Availability Endpoints////////

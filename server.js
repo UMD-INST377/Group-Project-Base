@@ -15,7 +15,6 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-app.use('/people', peopleRoutes);
 app.use('/ratings', ratingsRoutes);
 
 async function bootServer() {

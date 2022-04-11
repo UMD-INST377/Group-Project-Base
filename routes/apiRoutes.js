@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';

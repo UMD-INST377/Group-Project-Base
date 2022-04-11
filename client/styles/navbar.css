@@ -11,6 +11,7 @@
     background-color: #EB4949;
     padding: 20px 0px;
     z-index: 9;
+    border-bottom: 1px solid #EB4949;
 }
 .navbar {
     display: grid;

@@ -1,7 +1,7 @@
 /* eslint-disable radix */
 /* eslint-disable no-console */
 import express from 'express';
-import sequelize from 'sequelize';
+// import sequelize from 'sequelize';
 
 import peopleRoutes from './PeopleRoutes.js';
 import ratingRoutes from './RatingsRoutes.js';

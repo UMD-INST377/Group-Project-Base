@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
   res.send('You touched the artists routes');
   res.json({message: 'Welcome to Artist API'});
 });
-router.use('/artists', artistsRoutes);
 router.route('/artists').get(async (req, res) => {
   try {
     const artistId = await db.artist_id.findAll();

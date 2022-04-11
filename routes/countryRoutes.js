@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
   res.send('You touched the country rotues');
   res.json({message: 'Welcome to Country API'});
 });
-router.use('/country', countryRoutes);
+
 router.route('/country').get(async (req, res) => {
   try {
     const countryId = await db.country_id.findAll();

@@ -2,7 +2,8 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
-import Isaacsroutes from './routes/Isaacsroutes.js';
+import judesRoutes from './routes/judesRoutes.js';
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -13,7 +14,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-app.use('/isaacs', Isaacsroutes);
+app.use('/jude', judesRoutes);
 
 async function bootServer() {
   try {

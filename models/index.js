@@ -1,11 +1,15 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import Availability from './Availability.js';
+import Genres from './Genres.js';
+import Images from './Images.js';
+import Languages from './Languages.js';
+import Movies from './Movies.js';
+import ratings from './ratings.js';
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+  Availability,
+  Genres,
+  Images,
+  Languages,
+  Movies,
+  ratings
 };

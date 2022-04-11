@@ -44,7 +44,7 @@ router.get('/restaurants/:rest_id', async (req, res) => {
 // Ian GET requests
 
 // Get Endpoint 1: All records of single type
-router.route('localhost:3000').get('/address', async (req, res) => {
+router.get('/address', async (req, res) => {
   try {
     const addresses = await db.addresses.findAll();
     res.json(addresses);
@@ -55,7 +55,7 @@ router.route('localhost:3000').get('/address', async (req, res) => {
 });
 
 // Get Endpoint 2: Specific query, getting the city
-router.route('localhost:3000').get('/address', async (req, res) => {
+router.get('/address', async (req, res) => {
   try {
     const addresses = await db.addresses.findAll({
       where: {

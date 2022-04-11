@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
 
@@ -9,6 +10,35 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
+
+
+//Nicholas Urquhart Get controllers
+router.route('/Nicholas/:id')
+  .get(async (req, res) => {
+    try {
+      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const data = await fetch(url);
+      const json = await data.json();
+      res.json({data: json[0]});
+      console.log('success');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+router.route('/Nicholas')
+  .get(async (req, res) => {
+    try {
+      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const data = await fetch(url);
+      const json = await data.json();
+      res.json({data: json[0]});
+      console.log('success');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

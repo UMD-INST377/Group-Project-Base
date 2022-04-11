@@ -96,8 +96,8 @@ router.put('/artists', async (req, res) => {
 /// /////////////////////////////////
 router.get('/genres', async (req, res) => {
   try {
-    const halls = await db.genres.findAll(); 
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const genresItems = await db.genres.findAll(); 
+    const reply = genresItems.length > 0 ? { data: genresItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -107,13 +107,13 @@ router.get('/genres', async (req, res) => {
 
 router.get('/genres/:genre_id', async (req, res) => {
   try {
-    const hall = await db.genres.findAll({
+    const genresItems = await db.genres.findAll({
       where: {
         genre_id: req.params.genre_id
       }
     });
 
-    res.json(hall);
+    res.json(genresItems);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -121,14 +121,14 @@ router.get('/genres/:genre_id', async (req, res) => {
 });
 
 router.post('/genres', async (req, res) => {
-  const halls = await db.genres.findAll();
-  const currentId = (await halls.length) + 1;
+  const genreItems = await db.genres.findAll();
+  const currentId = (await genreItems.length) + 1;
   try {
-    const newDining = await db.genres.create({
+    const newGenre = await db.genres.create({
       genre_id: currentId,
       genre_name: req.body.genre_name
     });
-    res.json(newDining);
+    res.json(newGenre);
   } catch (err) {
     console.error(err);
     res.error('Server error');

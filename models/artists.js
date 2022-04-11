@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const artist = database.define(
-    'artist',
+    'artists',
     {
       artist_id: {
         type: DataTypes.INTEGER,

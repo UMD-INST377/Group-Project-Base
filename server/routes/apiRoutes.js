@@ -7,9 +7,43 @@ import db from '../../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the Trailz API');
 });
-
+// my work
+router.route('/race/')
+  .all((req, res, next) => {
+    // runs for all HTTP verbs first
+    // think of it as route specific middleware!
+    next();
+  })
+  .get(async (req, res) => {
+    try {
+      // const url = 'https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=wTtg4NONAeaOPjBJLxXScObX2sOAit5e2EhKUIXa';
+      //const data = await fetch(url);
+      res.json('my endpoint working');
+    } catch (err) {
+      console.error(err);
+      res.json('Server error');
+    }
+  });
+// router.route('/race/:pname')
+//   .all((req, res, next) => {
+//     // runs for all HTTP verbs first
+//     // think of it as route specific middleware!
+//     next();
+//   })
+//   .get(async (req, res, next) => {
+//     try {
+//       const {pname} = req.params;
+//       const url = '';
+//       const data = await fetch(url);
+//       const json = await data.json();
+//       res.json('my endpoint working');
+//     } catch (err) {
+//       console.error(err);
+//       res.json('Server error');
+//     }
+//   });
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

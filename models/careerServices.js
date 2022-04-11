@@ -1,16 +1,16 @@
 export default (database, DataTypes) => {
-  const advisors = database.define('advisors', {
-    advisor_id: {
+  const careerServices = database.define('career_services', {
+    service_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true, 
       autoIncrement: true
     },
-    advisor_initials: {
+    service_description: {
       type: DataTypes.STRING,
       allowNull: false,
       primaryKey: false
     }
   });
-  return advisors;
+  return careerServices;
 }

@@ -69,4 +69,30 @@ router.get('/address/:city', async (req, res) => {
   }
 });
 
+// Trieuduong GET requests 
+// Endpoint 1
+router.get('/meals', async (req, res) => {
+  try {
+    const meals = await db.Meals.findAll();
+    res.json(meals);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Endpoint 2
+router.get('/meals/:meal_id', async (req, res) => {
+  try {
+    const meals = await db.Meals.findAll({
+      where: {
+        meal_id: req.params.meal_id
+      }
+    });
+    res.json(meals);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 export default router;

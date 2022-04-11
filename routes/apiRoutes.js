@@ -6,6 +6,27 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+router.get('/company', async (req, res) => {
+  try {
+    const company = await db.company.findAll();
+    res.json({data: company});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/company/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const company = await db.company.findOne({where: {company_id:`${id}`}});
+    res.json({data: company});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });

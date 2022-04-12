@@ -5,7 +5,7 @@
 }
 
 nav {
-  background-color: rgb(25, 168, 168);
+  background-color: rgb(115, 194, 251,.5);
   border-radius: 4px;
   padding: 10px;
   display: flex;
@@ -16,6 +16,7 @@ nav {
   text-decoration: none;
 }
 body {
+  background-color: rgb(252, 247, 240);
   margin: 0;
   padding: 0;
 }

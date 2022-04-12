@@ -19,19 +19,30 @@ router.get('/country', async (req, res) => {
   }
 });
 
-router.get('/country/:country_id', async (req, res) => {
+router.get('/country/:countryId', async (req, res) => {
   try {
-    const countryId = await db.country.findAll({
-      where: {
-        country_id: req.params.country_id
-      }
-    });
-
-    res.json(countryId);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    const {countryId} = req.params;
+    const countrylist = await db.country.findOne({where: {country_id: `${countryId}`}});
+    res.json({data: countrylist});
+  } catch (error) {
+    console.error(error);
+    res.send("Something went wrong on /movies end or the country_id isn't valid");
   }
 });
+
+// router.get('/country/:country_id', async (req, res) => {
+//   try {
+//     const countryId = await db.country.findAll({
+//       where: {
+//         country_id: req.params.country_id
+//       }
+//     });
+
+//     res.json(countryId);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 export default router;

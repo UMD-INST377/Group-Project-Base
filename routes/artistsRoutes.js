@@ -30,8 +30,6 @@ router.route('/artists/:artist_id').get(async(req, res) => {
     res.send('Did not get here');
   }
 });
-export default router;
-
 router.post('/artists', async (req, res) => {
   const artistsid = await db.artists.findAll();
   const currentId = (await artistsid.length) + 1;
@@ -49,3 +47,5 @@ router.post('/artists', async (req, res) => {
     res.error('Server error');
   }
 });
+
+export default router;

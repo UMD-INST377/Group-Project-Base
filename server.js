@@ -28,5 +28,3 @@ async function bootServer() {
 }
 
 bootServer();
-© 2022 GitHub, Inc.
-Terms

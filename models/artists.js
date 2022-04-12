@@ -5,7 +5,8 @@ export default (database, DataTypes) => {
       artist_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       first_name: {
         type: DataTypes.STRING,

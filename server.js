@@ -5,7 +5,9 @@ import connectReload from 'connect-livereload';
 import dotenv from 'dotenv';
 import path from 'path';
 import apiRoutes from './server/routes/apiRoutes.js';
-import labRoutes from './server/labRoutes.js';
+import ryanRoutes from './server/routes/ryanRoutes.js';
+
+
 
 dotenv.config();
 const __dirname = path.resolve();
@@ -34,6 +36,7 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 // app.use('/template', labRoutes);
 app.use('/api', apiRoutes);
+app.use('/ryan', ryanRoutes);
 
 async function bootServer() {
   try {

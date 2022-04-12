@@ -11,24 +11,34 @@ router.get('/', (req, res) => {
 router.get('/Group22_Dining_Hall_Tracker', async (req, res) => {
 	try {
 
-		// GET request body
+		const schedule = await db.DiningHall.findAll();
+    	const reply = schedule.length > 0 ? { schedule: halls } : { message: 'no schedule(s) found' };
+		res.json(reply);
 
 	} catch (err) {
+
 		console.error(err);
 		res.error('Server error');
+
 	}
 });
   
 router.get('/Group22_Dining_Hall_Tracker/:schedule_id', async (req, res) => {
 	try {
 
-	  	// GET request body;
-		  
+	  	const hall_schedule = await db.HallHours.findAll({
+      	where: {
+        	schedule_id: req.params.schedule_id
+      	}
+    });
 	res.json(hour);
+
 	} catch (err) {
+
 		console.error(err);
 	  	res.error('Server error');
+
 	}
 });
-  
+
 export default router;

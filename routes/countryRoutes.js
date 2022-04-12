@@ -18,7 +18,7 @@ router.route('/country').get(async (req, res) => {
 });
 router.route('/country/:country_id').get(async(req, res) => {
   try {
-    const countryId = await db.country.findAll({
+    const countryId = await db.country.findOne({
       where: {
         country_id: req.params.country_id
       }

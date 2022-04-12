@@ -44,7 +44,7 @@ router.post('/artists', async (req, res) => {
     res.json(newArtists);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 

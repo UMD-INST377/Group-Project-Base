@@ -5,6 +5,47 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
+router.get('/advisors', async (req, res) => {
+  try {
+    const advisors = await db.advisors.findAll();
+    res.json({ data: advisors });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/advisors/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const advisors = await db.advisors.findOne({where: {advisor_id:`${id}`}});
+    res.json({data: advisors});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/career_services', async (req, res) => {
+  try {
+    const careerServices = await db.careerServices.findAll();
+    res.json({ data: careerServices });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/career_services/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const careerServices = await db.careerServices.findOne({where: {service_id:`${id}`}});
+    res.json({data: careerServices});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
 
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');

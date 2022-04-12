@@ -1,0 +1,59 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Add TV</title>
+    <link rel='stylesheet' href='forms_style.css'/>
+  </head>
+  <body>
+    <header class='speaker-form-header'>
+      <h1>Add New</h1>
+      <p><em>Add tv show information to the shared database.</em></p>
+    </header>
+    <form action='' method='get' class='speaker-form'>
+      <!-- radio button for forms -->
+      <!-- <fieldset class='legacy-form-row'>
+        <legend>Type</legend>
+        <input id='form-type-tv'
+               name='form-type'
+               type='radio'
+               value='tv-form' />
+        <label for='form-type-tv' class='radio-label'>TV Series</label>
+        <input id='form-type-ep'
+               name='form-type'
+               type='radio'
+               value='episode-form'/>
+        <label for='form-type-tv' class='radio-label'>Episode</label>
+        <input id='form-type-film'
+               name='form-type'
+               type='radio'
+               value='film-form'/>
+        <label for='form-type-film' class='radio-label'>Film</label>
+      </fieldset> -->
+
+      <!-- add tv form -->
+      <div class='form-row'>
+        <label for='showTitle'>Title</label>
+        <input id='showTitle' name='showTitle' type='text'/>
+      </div>
+      <div class="form-row">
+        <label for='release'>Release</label>
+        <input id='release' name='release' type='text'/>
+      </div>
+      <div class="form-row">
+        <label for='endD'>End Date</label>
+        <input id='endD' name='endD' type='text'/>
+      </div>
+      <div class="form-row">
+        <label for='rating'>Rating</label>
+        <input id='rating' name='rating' type='text'/>
+      </div>
+      <div class="form-row">
+        <label for='vote'>Vote</label>
+        <input id='vote' name='vote' type='text'/>
+      </div>
+      <div class='form-row'>
+        <button>Submit</button>
+      </div>
+    </form>
+  </body>
+</html>

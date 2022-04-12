@@ -10,6 +10,27 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+router.get('/students', async (req, res) => {
+  try {
+    const students = await db.students.findAll();
+    res.json({data: students});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/students/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const students = await db.students.findOne({where: {student_id:`${id}`}});
+    res.json({data: students});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

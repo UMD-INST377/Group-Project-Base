@@ -8,28 +8,14 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 // eslint-disable-next-line no-shadow
 
-router.route('/country').get(async (req, res) => {
+router.get('/country/:countryId', async (req, res) => {
   try {
-    const countryId = await db.country_id.findAll();
-    const reply = countryId.length > 0 ? {data: countryId} : {message: 'No Result'};
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.send('Did not get here');
-  }
-});
-router.route('/country/:country_id').get(async(req, res) => {
-  try {
-    const countryId = await db.country_id.findAll({
-      where: {
-        country_id: req.params.country_id
-      }
-
-    });
-    res.json(countryId);
-  } catch (err) {
-    console.error(err);
-    res.send('Did not get here');
+    const {countryId} = req.params;
+    const countrylist = await db.artists.findOne({where: {country_id: `${countryId}`}});
+    res.json({data: countrylist});
+  } catch (error) {
+    console.error(error);
+    res.send("Something went wrong on /movies end or the country_id isn't valid");
   }
 });
 

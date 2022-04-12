@@ -4,13 +4,23 @@
   box-sizing: border-box;
 }
 
+.logo img{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
+
 nav {
-  background-color: rgb(25, 168, 168);
+  background-color: rgb(160, 217, 240);
   border-radius: 4px;
   padding: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  margin-top: 20px;
 }
+
 .menu-container a {
   color: #fff;
   text-decoration: none;
@@ -31,6 +41,10 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
+}
+
+ul a {
+  font-size: x-large;
 }
 
 li {

@@ -10,6 +10,51 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+// Created by Viphu Nguyen
+// Access the actors table and receiving the actor's id
+router.get('/actors/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const actorList = await db.Actor.findOne({
+      where: {
+        actor_id: `${id}`
+      }
+    });
+    res.send({
+      actorList
+    });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+// Access the actors table and receiving the actor's first name 
+router.route('/actors')
+  .get(async (req, res) => {
+    try {
+      const actorList = await db.Actor.findAll({
+        order: [['fname', 'DESC']]
+      });
+      res.json({
+        data: actorList
+      });
+    } catch (err) {
+      console.error(err);
+      res.send('Server error');
+    }
+  })
+
+// Access the actors table and create a dummy row in the actors table
+  .post(async (req, res) => {
+    const newActor = await db.Actor.create({
+      fname: 'firstDummy', 
+      lname: 'secondDummy' 
+    });
+    res.send('dummyValue')
+  })
+// End of Viphu Nguyen's Contribution 1
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

@@ -183,19 +183,34 @@ router.get('/dining', async (req, res) => {
 }); */
 
 /// /////////////////////////////////
-/// //////// Address Endpoints////////// by Ryan E
+/// //////// Area Endpoints////////// by Ryan E
 /// /////////////////////////////////
 
-router.get('/address', async (req, res) => {
+router.get('/area', async (req, res) => {
   try {
-    const address = await db.address.findAll();
-    const reply = addy.length > 0 ? { data: address } : { message: 'no results found' };
-    res.json(reply);
+    const result = await db.sequelizeDB.query(
+      'SELECT * FROM Area'
+    );
+    res.json({data: result});
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
+
+router.get('/area/:id', async (req, res) => {
+  try {
+    const {id} = req.params
+    const result = await db.sequelizeDB.query(
+      `SELECT * FROM Area WHERE area_id = ${id}`
+    );
+    res.json({data: result});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 
 /* router.get('/dining/:hall_id', async (req, res) => {
   try {

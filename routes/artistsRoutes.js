@@ -41,7 +41,7 @@ router.post('/artists', async (req, res) => {
       country_id: req.body.country_id
 
     });
-    res.json(newArtists);
+    res.send('artist added');
   } catch (err) {
     console.log(err);
     console.log(req.body.first_name);

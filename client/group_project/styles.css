@@ -35,6 +35,16 @@ a:visited {
   color:rgb(255, 255, 255);
 }
 
+/* Dashboard title*/
+.header{
+  width: 100%;
+  display: inline-block;
+  background-color: rgba(0,139, 139,0.8);
+  padding: 10px 15px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
 /* Navigation Bar*/
 nav {
   background-color: rgba(0,139, 139,0.4);

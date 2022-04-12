@@ -12,7 +12,9 @@ export default {
     database: 'ischool',
     host: '174.129.198.86',
     dialect: 'mysql',
-    define: {timestamps: false}
+    define: {
+      timestamps: false
+    }
   },
   test: {
     username: 'ubuntu',
@@ -20,7 +22,9 @@ export default {
     database: 'ischool',
     host: '174.129.198.86',
     dialect: 'mysql',
-    define: {timestamps: false}
+    define: {
+      timestamps: false
+    }
   },
   production: {
     username: 'ubuntu',
@@ -28,6 +32,8 @@ export default {
     database: 'ischool',
     host: '174.129.198.86',
     dialect: 'mysql',
-    define: {timestamps: false}
+    define: {
+      timestamps: false
+    }
   }
 };

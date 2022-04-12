@@ -1,0 +1,11 @@
+.titile_name {
+    display: flex;
+    background-color: none;
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    justify-content: center;
+    align-content: center;
+    ;
+    
+}

@@ -8,6 +8,16 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 // eslint-disable-next-line no-shadow
+router.get('/country', async (req, res) => {
+  try {
+    const countryId = await db.country.findAll();
+    const reply = countryId.length > 0 ? { data: countryId } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 router.get('/country/:country_id', async (req, res) => {
   try {

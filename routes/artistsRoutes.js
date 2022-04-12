@@ -43,7 +43,7 @@ router.post('/artists', async (req, res) => {
     });
     res.json(newArtists);
   } catch (err) {
-    console.error(err);
+    console.log(err);
     res.send(err);
   }
 });

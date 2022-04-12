@@ -9,7 +9,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 // eslint-disable-next-line no-shadow
 
-router.get('/dining/:country_id', async (req, res) => {
+router.get('/country/:country_id', async (req, res) => {
   try {
     const countryId = await db.country.findAll({
       where: {

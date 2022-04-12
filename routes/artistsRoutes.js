@@ -44,6 +44,7 @@ router.post('/artists', async (req, res) => {
     res.json(newArtists);
   } catch (err) {
     console.log(err);
+    console.log(req.body.first_name);
     res.send(err);
   }
 });

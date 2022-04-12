@@ -6,8 +6,43 @@
 
 .titile_name {
     display: flex;
-    background-color: orange;
     position: absolute;
-    align-content: flex-start;
-    
+    width: 568px;
+    height: 117px;
+    left: 550px;
+    top: 36px;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 100px;
+    gap: 50px;
+}
+
+.location {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 47px;
+    text-decoration-line: underline;
+}
+
+.pages {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #FF4747;
+    width: 350px;
+    height: 300px;
+    padding: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 42px;
 }

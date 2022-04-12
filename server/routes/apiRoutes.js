@@ -1,8 +1,11 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import chalk from 'chalk';
+import fetch from 'node-fetch';
 
-import db from '../../database/initializeDB.js';
+import db from '../database/initializeDB.js';
+import hallIdQuery from '../controllers/diningHall.js';
 
 const router = express.Router();
 

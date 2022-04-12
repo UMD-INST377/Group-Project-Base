@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.route('/country').get(async (req, res) => {
   try {
-    const countryId = await db.country.findAll();
+    const countryId = await db.country.findOne();
     const reply = countryId.length > 0 ? {data: countryId} : {message: 'No Result'};
     res.json(reply);
   } catch (err) {

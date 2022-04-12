@@ -31,29 +31,29 @@ router.route('/ratings/:ratingId').get(async(req, res) => {
     res.send('Error in server');
   }
 });
-// router.post('/ratings', async (req, res) => {
-//   console.info(chalk.bgRedBright.bold('Post request to /ratings'), req.body);
-
-//   const existingRatings = await db.ratings.findAll({
-//     where: {
-//       rating_id: req.body.rating_id
-//     }
-//   });
-//   const ratings = await db.ratings.findAll();
-//   console.log(chalk.bgBlueBright.bold('existingRating'), existingRatings);
-//   const currentRatingId = (await ratings.length) + 1;
-//   try {
-//     const newRating = await db.ratings.create({
-//       rating_id: currentRatingId,
-//       rating: req.body.rating,
-//       description: req.body.description
-//     });
-//     // res.json(newDining);
-//     res.json({message: 'not yet'});
-//   } catch (err) {
-//     console.error(err);
-//     res.json('Server error');
-//   }
-// });
+router.post('/ratings', async (req, res) => {
+  console.info(chalk.bgRedBright.bold('Post request to /ratings'), req.body);
+  console.log('reached here');
+  const existingRatings = await db.ratings.findAll({
+    where: {
+      rating_id: req.body.rating_id
+    }
+  });
+  const ratings = await db.ratings.findAll();
+  console.log('reached here');
+  console.log(chalk.bgBlueBright.bold('existingRating'), existingRatings);
+  const currentRatingId = (await ratings.length) + 1;
+  try {
+    const newRating = await db.ratings.create({
+      rating_id: currentRatingId,
+      rating: req.body.rating,
+      description: req.body.description
+    });
+    res.json({message: 'not yet'});
+  } catch (err) {
+    console.error(err);
+    res.json('Server error');
+  }
+});
 
 export default router;

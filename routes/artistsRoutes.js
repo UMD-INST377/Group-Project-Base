@@ -44,7 +44,7 @@ router.post('/artists', async (req, res) => {
     res.send('artist added');
   } catch (err) {
     console.log(err);
-    console.log(req.body.first_name);
+    console.log(currentId);
     res.send(err);
   }
 });

@@ -2,7 +2,7 @@
 import express from 'express';
 import db from '../database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
-import ryaniRoutes from './routes/ryanRoutes.js';
+import ryanRoutes from './routes/ryanRoutes.js';
 
 const app = express();
 

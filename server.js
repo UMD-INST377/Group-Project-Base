@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
+import bodyParser from 'body-parser';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 import peopleRoutes from './routes/PeopleRoutes.js';
@@ -16,6 +17,8 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 app.use('/ratings', ratingsRoutes);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 async function bootServer() {
   try {

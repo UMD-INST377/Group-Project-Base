@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable import/no-unresolved */
 import express from 'express';
 import sequelize from 'sequelize';
@@ -8,10 +9,10 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 // eslint-disable-next-line no-shadow
 
-router.get('/country/:countryId', async (req, res) => {
+router.get('/country/:country_id', async (req, res) => {
   try {
-    const {countryId} = req.params;
-    const countrylist = await db.artists.findOne({where: {country_id: `${countryId}`}});
+    const {country_id} = req.params;
+    const countrylist = await db.artists.findOne({where: {country_id: `${country_id}`}});
     res.json({data: countrylist});
   } catch (error) {
     console.error(error);

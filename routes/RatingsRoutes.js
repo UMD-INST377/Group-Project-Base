@@ -44,6 +44,7 @@ router.post('/ratings', async (req, res) => {
   console.log(chalk.bgBlueBright.bold('existingRating'), existingRatings);
   const currentRatingId = (await ratings.length) + 1;
   try {
+    console.log('reahed here');
     const newRating = await db.ratings.create({
       rating_id: currentRatingId,
       rating: req.body.rating,

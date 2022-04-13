@@ -47,7 +47,6 @@ export default router;
 /// /////////////////////////////////
 /// //////// Area Endpoints////////// by Mario C
 /// /////////////////////////////////
-
 router.route('/meals')
 .get(async (req , res)=>{
   try{

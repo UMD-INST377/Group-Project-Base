@@ -40,6 +40,33 @@ router.route('/Nicholas')
     }
   });
 
+// David McCoy GET Controllers
+router.route('/dietaryRestrictions')
+  .get(async (req, res) => {
+    try {
+      const restrictions = await db.DietaryRestrictions.findAll();
+      res.json({data: restrictions});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
+router.route('/dietaryRestrictions/:id')
+  .get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const restrictions = await db.DietaryRestrictions.findOne({
+        where: {
+          restriction_id: `${id}`
+        }
+      });
+      res.json({data: restrictions});
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  });
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

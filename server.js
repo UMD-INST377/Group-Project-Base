@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
+// import apiRoutes from './routes/apiRoutes.js';
 import judesRoutes from './routes/judesRoutes.js';
 
 const app = express();
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(staticFolder));
-app.use('/api', apiRoutes);
+// app.use('/api', apiRoutes);
 app.use('/jude', judesRoutes);
 
 async function bootServer() {

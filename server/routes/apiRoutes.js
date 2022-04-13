@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
 import chalk from 'chalk';
@@ -6,6 +5,7 @@ import fetch from 'node-fetch';
 
 import db from '../../database/initializeDB.js';
 import hallIdQuery from '../../models/Reviews.js';
+
 
 const router = express.Router();
 router.get('/review', async(req, res)=>{
@@ -234,7 +234,7 @@ router.post('/dining', async (req, res) => {
     const newDining = await db.DiningHall.create({
       hall_id: currentId,
       hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
+      hall_address: req.body.hall_address, 
       hall_lat: req.body.hall_lat,
       hall_long: req.body.hall_long
     });
@@ -460,4 +460,35 @@ router.get('/custom', async (req, res) => {
   }
 });
 
+
+
 export default router;
+
+/// /////////////////////////////////
+/// //////// Area Endpoints////////// by Mario C
+/// /////////////////////////////////
+router.route('/meals')
+.get(async (req , res)=>{
+  try{
+    const meals = await db.Meals.FindAll();
+    res.json(meals);
+  }
+    catch (err) {
+    console.error(err);
+    res.error('Server Error');  
+    }
+});
+
+router.get('/meals/:id', async (req, res) => {
+  try {
+    const {id} = req.params
+    const result = await db.sequelizeDB.query(
+      `SELECT * FROM Area WHERE meal_id = ${id}`
+    );
+    res.json({data: result});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+}); 
+

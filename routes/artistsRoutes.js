@@ -48,5 +48,24 @@ router.post('/artists', async (req, res) => {
     res.send(err);
   }
 });
+router.put('/artists', async (req, res) => {
+  try {
+    await db.artists.update(
+      {
+        last_name: req.body.last_name,
+        country_id: req.body.hall_country_id
+      },
+      {
+        where: {
+          country_id: req.body.country_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 export default router;

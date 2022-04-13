@@ -4,43 +4,33 @@
   box-sizing: border-box;
 }
 
-.logo img{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
-}
-
-nav {
-  background-color: rgb(160, 217, 240);
-  border-radius: 4px;
-  padding: 10px;
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px;
-}
-
-.menu-container a {
-  color: #fff;
-  text-decoration: none;
-}
-body {
-  margin: 0;
-  padding: 0;
-}
-
 .wrapper {
   font-family: ‘ "Times New Roman", Times ’, ‘Segoe UI’, Candara,
     ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’,
     Verdana, ‘Verdana Ref’, sans-serif;
   margin: 0;
 }
+body {
+  margin: 0;
+  padding: 0;
+}
+
+div.head{
+  display: flex;
+  height: fit-content;
+}
+nav.navbar {
+  position: relative;
+  height: 100%;
+  background-color: #73C2FB50;
+  width:100%;
+}
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  display: flex;
 }
 
 ul a {
@@ -48,15 +38,17 @@ ul a {
 }
 
 li {
-  float: left;
+  float:left;
 }
 
 li a {
   display: block;
-  padding: 8px;
-  color: black;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
 }
+
 li a:hover {
-  color: #f1f1f1;
+  background-color: #73C2FB;
 }
+

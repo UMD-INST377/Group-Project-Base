@@ -2,7 +2,6 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './server/routes/apiRoutes.js';
-import anneRoutes from './routes/anneRoutes.js'; 
 
 const app = express();
 

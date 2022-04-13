@@ -17,13 +17,16 @@ router.route('/')
   .post(async (req, res) => {
     const images = await db.Images.findAll();
     const currentId = (await images.length) + 1;
-    const imageURL = req.body.image_url;
+    let imageURL = req.body.image_url;
     if (validator.isURL(imageURL)
       && ['jpg', 'png', 'jpeg', 'img', 'flixster'].some((str) => imageURL.includes(str))) {
       try {
+        if (!imageURL.includes('http')) {
+          imageURL = `https://${imageURL}`;
+        }
         await db.Images.create({
           image_id: currentId,
-          image_url: req.body.image_url
+          image_url: imageURL
         });
         res.send('Successfully added');
       } catch (err) {
@@ -45,6 +48,32 @@ router.route('/:image_id')
       res.json(image);
     } catch (err) {
       res.json('Server error');
+    }
+  })
+  .put(async (req, res) => {
+    let imageURL = req.body.image_url;
+    if (validator.isURL(imageURL)
+      && ['jpg', 'png', 'jpeg', 'img', 'flixster'].some((str) => imageURL.includes(str))) {
+      try {
+        if (!imageURL.includes('http')) {
+          imageURL = `https://${imageURL}`;
+        }
+        await db.Images.update(
+          {
+            image_url: req.body.image_url
+          },
+          {
+            where: {
+              image_id: req.params.image_id
+            }
+          }
+        );
+        res.send('Successfully updated');
+      } catch (err) {
+        res.send('Record does not exist');
+      }
+    } else {
+      res.send('Please enter a valid image URL ending in .jpg, .png, or .jpeg');
     }
   });
 

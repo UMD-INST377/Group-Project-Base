@@ -52,6 +52,7 @@ router.put('/artists', async (req, res) => {
   try {
     await db.artists.update(
       {
+        first_name: req.body.first_name,
         last_name: req.body.last_name,
         country_id: req.body.hall_country_id
       },

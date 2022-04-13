@@ -93,3 +93,28 @@ textarea.materialize-textarea:focus:not([readonly]) {
     -webkit-box-shadow: 0 1px 0 0 #26a69a;
     box-shadow: 0 1px 0 0 #26a69a;
 }
+
+.wrap_paragraph {
+    padding-left: 20%;
+    padding-right: 20%;
+    font-weight: 700;
+    font-size: 1.15em!important;
+    color: #000!important;
+    width: 100%;
+    margin-top: 1rem; 
+    
+}
+
+.availability_genre_wrap {
+    font-size: 1.5em;
+    font-weight: 700;
+    padding-bottom: 10px;
+    padding-top: 40px;
+}
+
+.text {
+    color: lightgray;
+    padding-top: 10%;
+    padding-left: 1px;
+}
+

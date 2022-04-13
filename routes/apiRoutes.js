@@ -39,7 +39,7 @@ router.get('/disasters/:disaster_id', async (req, res) => {
 router.route("/stateloc")
       .get(async(req,res)=>{
         try {
-          const disas = await db.record_state.findAll();
+          const dt = await db.record_state.findAll();
           const reply = dt.length > 0 ? { data: dt } : { message: 'no results found' };
           res.send (reply)
         } catch (error) {
@@ -49,16 +49,16 @@ router.route("/stateloc")
 
 router.get('/stateloc/:record_id', async (req, res) => {
         try {
-          const disas = await db.record_state.findAll({
+          const dt = await db.record_state.findAll({
             where: {
               record_id: req.params.record_id
             }
           });
   
-          res.json(disas);
+          res.json(dt);
         } catch (err) {
           console.error(err);
-          res.error('Server error');
+          res.send(err);
         }
       });
 

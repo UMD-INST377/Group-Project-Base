@@ -14,5 +14,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return statetype;
+  return statetype; hi
 };

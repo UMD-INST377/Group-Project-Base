@@ -68,5 +68,18 @@ router.put('/artists', async (req, res) => {
     res.error('Server error');
   }
 });
+router.delete('/artists/:artistId', async (req, res) => {
+  try {
+    await db.artists.destroy({
+      where: {
+        artist_id: req.params.artist_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 export default router;

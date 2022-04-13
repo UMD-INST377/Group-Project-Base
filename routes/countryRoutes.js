@@ -29,19 +29,6 @@ router.get('/country/:countryId', async (req, res) => {
     res.send("Something went wrong on /movies end or the country_id isn't valid");
   }
 });
-router.delete('/country/:countryId', async (req, res) => {
-  try {
-    await db.country.destroy({
-      where: {
-        country_id: req.params.country_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
 // router.get('/country/:country_id', async (req, res) => {
 //   try {

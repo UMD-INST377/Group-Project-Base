@@ -6,5 +6,6 @@ import genres from './genres.js';
 import actors from './actors.js';
 
 export default {
-  genres, actors
+  genres,
+  actors
 };

@@ -39,7 +39,7 @@ router.get('/disasters/:disaster_id', async (req, res) => {
 router.route("/stateloc")
       .get(async(req,res)=>{
         try {
-          const dt = await db.record_state.findAll();
+          const disas = await db.record_state.findAll();
           const reply = dt.length > 0 ? { data: dt } : { message: 'no results found' };
           res.send (reply)
         } catch (error) {

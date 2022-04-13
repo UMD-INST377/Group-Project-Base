@@ -1,7 +1,12 @@
 import express from 'express';
 // import sequelize from 'sequelize';
 
-import db from '../database/initializeDB.js';
+import availability from './availabilityRoutes.js';
+import genres from './genreRoutes.js';
+import images from './imagesRoutes.js';
+import languages from './languagesRoutes.js';
+import movies from './moviesRoutes.js';
+import ratings from './RatingsRoutes.js';
 
 const router = express.Router();
 
@@ -9,89 +14,11 @@ router.route('/').get((req, res) => {
   res.send('Welcome to the Movies API!');
 });
 
-///  People's Routes ////
-
-/// People Routes
-
-///  Rating's Routes ////
-
-/// /////////////////////////////////
-/// ////Availability Endpoints////////
-/// /////////////////////////////////
-
-router.route('/availability').get(async (req, res) => { // res, req, next
-  try {
-    const availability = await db.Availability.findAll();
-    const reply = availability.length > 0 ? { data: availability } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    res.json('Server error');
-  }
-});
-
-router.route('/availability/:availability_id').get(async (req, res) => {
-  try {
-    const availability = await db.Availability.findAll({
-      where: {
-        availability_id: req.params.availability_id
-      }
-    });
-    res.json(availability);
-  } catch (err) {
-    res.json('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////Images Endpoints////////
-/// /////////////////////////////////
-router.route('/images').get(async (req, res) => {
-  try {
-    const images = await db.Images.findAll();
-    const reply = images.length > 0 ? { data: images } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    res.json('Server error');
-  }
-});
-
-router.route('/images/:image_id').get(async (req, res) => {
-  try {
-    const image = await db.Images.findAll({
-      where: {
-        image_id: req.params.image_id
-      }
-    });
-    res.json(image);
-  } catch (err) {
-    res.json('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////Movies Endpoints////////
-/// /////////////////////////////////
-router.route('/movies').get(async (req, res) => {
-  try {
-    const movies = await db.Movies.findAll();
-    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    res.json('Server error');
-  }
-});
-
-router.route('/movies/:movie_id').get(async (req, res) => {
-  try {
-    const movie = await db.Movies.findAll({
-      where: {
-        movie_id: req.params.movie_id
-      }
-    });
-    res.json(movie);
-  } catch (err) {
-    res.json('Server error');
-  }
-});
+router.use('/availability', availability);
+router.use('/genres', genres);
+router.use('/images', images);
+router.use('/languages', languages);
+router.use('/movies', movies);
+router.use('/', ratings);
 
 export default router;

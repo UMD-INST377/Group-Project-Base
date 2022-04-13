@@ -7,31 +7,31 @@
 
 export default {
   development: {
-    username: "ubuntu",
-    password: "Veracrypt@12!",
-    database: "group20_oscars",
-    host: "174.129.198.86",
-    dialect: "mysql",
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
+    database: 'group20_movies',
+    host: '174.129.198.86',
+    dialect: 'mysql',
     define: {
       timestamps: false,
     },
   },
   test: {
-    username: "ubuntu",
-    password: "Veracrypt@12!",
-    database: "group20_oscars",
-    host: "174.129.198.86",
-    dialect: "mysql",
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
+    database: 'group20_movies',
+    host: '174.129.198.86',
+    dialect: 'mysql',
     define: {
       timestamps: false,
     },
   },
   production: {
-    username: "ubuntu",
-    password: "Veracrypt@12!",
-    database: "group20_oscars",
-    host: "174.129.198.86",
-    dialect: "mysql",
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
+    database: 'group20_movies',
+    host: '174.129.198.86',
+    dialect: 'mysql',
     define: {
       timestamps: false,
     },

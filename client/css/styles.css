@@ -18,6 +18,7 @@ body {
 div.head {
   display: flex;
   height: fit-content;
+  width: 100%;
 }
 nav.navbar {
   margin: auto;
@@ -42,22 +43,22 @@ li a {
   display: flex;
   text-align: center;
   text-decoration: none;
+
 }
 
 li a:hover {
-  padding: 0px 5px;
   background-color: #73c2fb;
+  padding: 0px 2px;
 }
 img.logo {
   width: 96px;
   height: 96px;
+  min-width: 10px;
 }
 
 div.field#searchbar{
   width: 50%;
   margin: auto;
-}
-div.field {
 }
 .icon {
   display: flex;

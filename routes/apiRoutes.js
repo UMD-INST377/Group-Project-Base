@@ -10,6 +10,58 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+router.route("/disasters")
+      .get(async(req,res)=>{
+        try {
+          const dt = await db.disaster_type.findAll();
+          const reply = dt.length > 0 ? { data: dt } : { message: 'no results found' };
+          res.send (reply)
+        } catch (error) {
+          res.json({error:error})
+        }
+      })
+
+router.get('/disasters/:disaster_id', async (req, res) => {
+        try {
+          const disas = await db.disaster_type.findAll({
+            where: {
+              disaster_id: req.params.disaster_id
+            }
+          });
+  
+          res.json(disas);
+        } catch (err) {
+          console.error(err);
+          res.error('Server error');
+        }
+      });
+
+router.route("/stateloc")
+      .get(async(req,res)=>{
+        try {
+          const dt = await db.record_state.findAll();
+          const reply = dt.length > 0 ? { data: dt } : { message: 'no results found' };
+          res.send (reply)
+        } catch (error) {
+          res.json({error:error})
+        }
+      })
+
+router.get('/stateloc/:record_id', async (req, res) => {
+        try {
+          const dt = await db.record_state.findAll({
+            where: {
+              record_id: req.params.record_id
+            }
+          });
+  
+          res.json(dt);
+        } catch (err) {
+          console.error(err);
+          res.send(err);
+        }
+      });
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

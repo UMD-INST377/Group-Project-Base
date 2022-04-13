@@ -18,7 +18,7 @@ router.get('/advisors', async (req, res) => {
 router.get('/advisors/:id', async (req, res) => {
   try {
     const {id} = req.params;
-    const advisors = await db.advisors.findOne({where: {advisor_id:`${id}`}});
+    const advisors = await db.sequelizeDB.query(`SELECT * from advisors where advisor_id = ${id}`)
     res.json({data: advisors});
   } catch (err) {
     console.error(err);
@@ -53,7 +53,7 @@ router.get('/', (req, res) => {
 
 router.get('/students', async (req, res) => {
   try {
-    const students = await db.students.findAll();
+    const students = await db.sequelizeDB.query(`SELECT * from students`)
     res.json({data: students});
   } catch (err) {
     console.error(err);
@@ -64,7 +64,7 @@ router.get('/students', async (req, res) => {
 router.get('/students/:id', async (req, res) => {
   try {
     const {id} = req.params;
-    const students = await db.students.findOne({where: {student_id:`${id}`}});
+    const students = await db.sequelizeDB.query(`SELECT * from students where student_id = ${id}`)
     res.json({data: students});
   } catch (err) {
     console.error(err);

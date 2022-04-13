@@ -15,15 +15,15 @@ body {
   padding: 0;
 }
 
-div.head{
+div.head {
   display: flex;
   height: fit-content;
 }
 nav.navbar {
   margin: auto;
   position: relative;
-  background-color: #73C2FB50;
-  width:100%;
+  background-color: #73c2fb50;
+  width: 100%;
   display: flex;
 }
 ul {
@@ -35,7 +35,7 @@ ul {
 }
 
 li {
- padding: 0px 10px;
+  padding: 0px 10px;
 }
 
 li a {
@@ -45,9 +45,22 @@ li a {
 }
 
 li a:hover {
-  background-color: #73C2FB;
+  padding: 0px 5px;
+  background-color: #73c2fb;
 }
- img.logo{
-   width: 96px;
-   height: 96px;
- }
+img.logo {
+  width: 96px;
+  height: 96px;
+}
+
+div.field#searchbar{
+  width: 50%;
+  margin: auto;
+}
+div.field {
+}
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

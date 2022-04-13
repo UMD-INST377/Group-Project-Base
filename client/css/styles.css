@@ -20,31 +20,26 @@ div.head{
   height: fit-content;
 }
 nav.navbar {
-  margin-top: 25px;
+  margin: auto;
   position: relative;
-  height: 50px;
   background-color: #73C2FB50;
   width:100%;
   display: flex;
-  justify-content: space-evenly;
 }
 ul {
   list-style-type: none;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  margin: auto;
+  justify-content: space-between;
 }
 
-ul a {
-  font-size: large;
+li {
+ padding: 0px 10px;
 }
-
-/* li {
-  float:left;
-} */
 
 li a {
-  display: block;
+  display: flex;
   text-align: center;
   text-decoration: none;
 }
@@ -52,4 +47,7 @@ li a {
 li a:hover {
   background-color: #73C2FB;
 }
-
+ img.logo{
+   width: 96px;
+   height: 96px;
+ }

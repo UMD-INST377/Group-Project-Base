@@ -5,7 +5,8 @@ export default (database, DataTypes) => {
       rating_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       rating: {
         type: DataTypes.STRING,

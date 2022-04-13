@@ -17,7 +17,7 @@ router.route('/ratings')
       res.send('Error in Server');
     }
   });
-router.route('/ratings/:ratingId').get(async(req, res) => {
+router.route('/ratings/:rating_id').get(async(req, res) => {
   try {
     const {ratingId} = req.params;
     const ratingList = await db.ratings.findOne({
@@ -32,29 +32,52 @@ router.route('/ratings/:ratingId').get(async(req, res) => {
   }
 });
 router.post('/ratings', async (req, res) => {
-  console.info(chalk.bgRedBright.bold('Post request to /ratings'), req.body);
-  console.log('reached here');
-  const existingRatings = await db.ratings.findAll({
-    where: {
-      rating_id: req.body.rating_id
-    }
-  });
-  const ratings = await db.ratings.findAll();
-  console.log('reached here');
-  console.log(chalk.bgBlueBright.bold('existingRating'), existingRatings);
-  const currentRatingId = (await ratings.length) + 1;
+  const ratingsId = await db.ratings.findAll();
+  const current = (await ratingsId.length) + 1;
   try {
-    console.log('reahed here');
-    const newRating = await db.ratings.create({
-      rating_id: currentRatingId,
+    const newRatings = await db.ratings.create({
+      rating_id: current,
       rating: req.body.rating,
       description: req.body.description
+
     });
-    res.json({message: 'not yet'});
+    res.send('rating added');
   } catch (err) {
-    console.error(err);
-    res.json('Server error');
+    console.log(err);
+    console.log(current);
+    res.send(err);
   }
 });
-
+router.put('/ratings', async (req, res) => {
+  try {
+    await db.ratings.update(
+      {
+        rating : req.body.rating,
+        description: req.body.description
+      },
+      {
+        where: {
+          rating_id: req.body.rating_id
+        }
+      }
+    );
+    res.send('Rating Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.send('Rating not found');
+  }
+});
+router.delete('/ratings/:rating_id', async (req, res) => {
+  try {
+    await db.ratings.destroy({
+      where: {
+        rating_id: req.params.rating_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
 export default router;

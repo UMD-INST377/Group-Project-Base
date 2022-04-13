@@ -67,17 +67,18 @@ router.put('/ratings', async (req, res) => {
     res.send('Rating not found');
   }
 });
-router.delete('/ratings/:rating_id', async (req, res) => {
+
+router.delete('ratings/:rating_id', async (req, res) => {
   try {
     await db.ratings.destroy({
       where: {
-        rating_id: req.params.rating_id
+        rating_id : req.params.rating_id
       }
     });
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.send('Server error');
+    res.send('Server Error');
   }
 });
 export default router;

@@ -11,6 +11,88 @@ router.get('/', (req, res) => {
 });
 
 /// /////////////////////////////////
+/// ////Artists Endpoint////////
+/// /////////////////////////////////
+router.get('/artists', async (req, res) => {
+  try {
+    const halls = await db.artists.findAll();
+    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/artists/:artist_id', async (req, res) => {
+  try {
+    const hall = await db.artists.findAll({
+      where: {
+        hall_id: req.params.hall_id
+      }
+    });
+
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/artists', async (req, res) => {
+  const halls = await db.artists.findAll();
+  const currentId = (await halls.length) + 1;
+  try {
+    const newArtist = await db.artists.create({
+      artist_id: currentId,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      country_id: req.body.country_id
+    });
+    res.json(newArtist);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/artists/:artist_id', async (req, res) => {
+  try {
+    await db.artists.destroy({
+      where: {
+        artists_id: req.params.artist_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/artists', async (req, res) => {
+  try {
+    await db.artists.update(
+      {
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        country_id: req.body.country_id
+      },
+      {
+        where: {
+          artist_id: req.body.artist_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+/// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
 router.get('/dining', async (req, res) => {

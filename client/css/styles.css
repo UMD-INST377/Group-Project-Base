@@ -33,6 +33,10 @@ ul {
   display: flex;
 }
 
+ul a {
+  font-size: x-large;
+}
+
 li {
   float:left;
 }

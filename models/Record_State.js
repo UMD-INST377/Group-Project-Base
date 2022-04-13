@@ -7,7 +7,7 @@ export default (sequelize, DataTypes) => {
         allowNull: false,
         primaryKey: true
       },
-      state:{
+      state: {
         type: DataTypes.STRING,
         allowNull: false
       }
@@ -15,4 +15,4 @@ export default (sequelize, DataTypes) => {
     { freezeTableName: true, timestamps: false }
   );
   return statetype;
-}
+};

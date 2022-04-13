@@ -8,10 +8,10 @@ export default (database, DataTypes) => {
         primaryKey: true
       },
       day: {
-        type: DataTypes.VARCHAR
+        type: DataTypes.STRING
       },
       schedule_id: {
-        type: DataTypes.VARCHAR
+        type: DataTypes.STRING
       },
       hall_id: {
         type: DataTypes.INTEGER

@@ -3,12 +3,12 @@ export default (database, DataTypes) => {
     'Hall_Schedule',
     {
       schedule_id: {
-        type: DataTypes.VARCHAR,
+        type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
       },
       hours: {
-        type: DataTypes.VARCHAR
+        type: DataTypes.STRING
       }
     },
     { freezeTableName: true, timestamps: false }

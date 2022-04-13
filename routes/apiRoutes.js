@@ -282,6 +282,6 @@ router.route('/album')
       res.json({data: albumlist});
     } catch (error) {
       console.error(error);
-      res.send('Something went wrong on /movies end')
+      res.send('Something went wrong on /album end')
     }
 })

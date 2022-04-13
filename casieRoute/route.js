@@ -18,3 +18,17 @@ router.get('/Group22_Dining_Hall_Tracker', async (req, res) => {
     res.error('Server error');
   }
 });
+
+router.get('/Group22_Dining_Hall_Tracker/:hall_id', async (req, res) => {
+  try {
+    const hall = await db.DiningHall.findAll({
+      where: {
+        hall_id: req.params.hall_id
+      }
+    });
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});

@@ -75,6 +75,18 @@ router.route('/:image_id')
     } else {
       res.send('Please enter a valid image URL ending in .jpg, .png, or .jpeg');
     }
+  })
+  .delete(async (req, res) => {
+    try {
+      await db.Images.destroy({
+        where: {
+          image_id: req.params.image_id
+        }
+      });
+      res.send('Successfully deleted');
+    } catch (err) {
+      res.error('Could not delete record -- please check ID');
+    }
   });
 
 export default router;

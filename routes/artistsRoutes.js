@@ -72,7 +72,7 @@ router.delete('/artists/:artistId', async (req, res) => {
   try {
     await db.artists.destroy({
       where: {
-        artist_id: req.params.artist_id
+        artist_id: req.params.artistId
       }
     });
     res.send('Successfully Deleted');

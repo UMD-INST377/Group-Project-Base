@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import express from 'express';
+import express from 'express'
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 
@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-
+app.use('/ratings', ratingsRoutes);
 async function bootServer() {
   try {
     // const mysql = await db.sequelizeDB;

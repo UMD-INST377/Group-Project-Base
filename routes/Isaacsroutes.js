@@ -5,18 +5,27 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
-
-router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+router.get('/actors', async (req, res) => {
+  try {
+    const actors = await db.actors.findAll();
+    res.json({ data: actors });
+  } catch (err) {
+    console.error(err);
+    res.send("Error in '/actors'!");
+  }
 });
-router.get('/genres', (req, res) => {
-    try {
-        const genres = await db.genres.findAll();
-        res.json({data:genres});
-    } catch (error){
-        console.error(error);
-        res.send('Something went wrong.');
-    }
-  });
+router.get('/actors/:actor_id', async (req, res) => {
+  try {
+    const actors = await db.actors.findAll({
+      where: {
+        actor_id: req.params.actor_id
+      }
+    });
+    res.json({ data: actors });
+  } catch (err) {
+    console.error(err);
+    res.error("Error in '/actors' or 'actor_id' is invalid!");
+  }
+});
 
-  export default router;
+export default router;

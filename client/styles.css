@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    background-color: darkslategray;
+  }
+  
+  /* Page Layout */
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .wrapper {
+    display: flex;
+  }
+  .container {
+    max-width: 960px;
+    margin-top: 25px;
+  }
+  
+  .header-box {
+    background-color: #47ffd7;
+    border-radius: 3px;
+    
+    margin: 40px 20px;
+    padding: 20px;
+  }
+  
+  .other-box {
+    background-color: #F6F7F8;
+    border-radius: 3px;
+    padding: 10px;
+    position:relative;
+  }
+  
+  .food-form {
+    background-color: #F6F7F8;
+    border: 1px solid #D6D9DC;
+    border-radius: 3px;
+    
+    margin: 0px 20px;
+    padding: 50px;
+    
+  }
+  
+  @media only screen and (min-width: 700px) {
+    .form-row {
+      
+      flex-direction: row;
+      align-items: flex-start; /* To avoid stretching */
+      margin-bottom: 20px;
+    }
+    .form-row input[type='text'] {
+      width: 250px;
+      height: initial;
+    }
+    .form-row label {
+      text-align: right;
+      width: 120px;
+      margin-top: 7px;
+      padding-right: 20px;
+    }
+  }
+  .legacy-form-row {
+    border: none;
+    margin-bottom: 40px;
+  }
+  
+  .legacy-form-row legend {
+    margin-bottom: 15px;
+  }
+  
+  .legacy-form-row .radio-label {
+    display: block;
+    font-size: 14px;
+    padding: 0 20px 0 10px;
+  }
+  
+  .legacy-form-row input[type='radio'] {
+    margin-top: 2px;
+  }
+    
+  .legacy-form-row .radio-label,
+  .legacy-form-row input[type='radio'] {
+    float: left;
+  }
+  
+  .form-row button {
+    font-size: 16px;
+    font-weight: bold;
+  
+    color: #FFFFFF;
+    background-color: #5995DA;
+  
+    border: none;
+    border-radius: 3px;
+  
+    padding: 10px 40px;
+    cursor: pointer;
+  }
+  
+  .form-row button:hover {
+    background-color: #76AEED;
+  }
+  
+  .form-row button:active {
+    background-color: #407FC7;
+  }
+
+  .menu-container {
+    color: #fff;
+    background-color: #5995da; /* Blue */
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .menu {
+    border: 1px solid #fff;
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+  }

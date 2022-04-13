@@ -27,31 +27,6 @@ router.get('/restaurants', async (req, res) => {
   }
 });
 
-// retrieve the restaurants with the specified cuisine using cuisine id
-router.get('/restaurants/cuisine/:cuisine_id', async (req, res) => {
-  try {
-    const { cuisine_id } = req.params;
-    const result = await db.sequelizeDB.query(
-      `SELECT * FROM restaurants where cuisine_id = ${ cuisine_id }`
-    );
-    res.json({ data: result });
-  } catch (err) {
-    console.error(err);
-    res.send('Server error');
-  }
-});
-router.get('/restaurants/:rest_id', async (req, res) => {
-  try {
-    const { rest_id } = req.params;
-    const result = await db.sequelizeDB.query(
-      `SELECT * FROM restaurants where restaurant_id = ${ rest_id }`
-    );
-    res.json({ data: result });
-  } catch (err) {
-    console.error(err);
-    res.send('Server error');
-  }
-});
 
 // Ian GET requests
 

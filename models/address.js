@@ -30,7 +30,7 @@ export default (database, DataTypes) => {
       },
       restaurant_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        // allowNull: false
       }
     },
     { freezeTableName: true, timestamps: false }

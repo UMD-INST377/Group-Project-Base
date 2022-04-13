@@ -43,6 +43,13 @@ router.get('/restaurants/cuisine/:cuisine_id', async (req, res) => {
 router.get('/restaurants/:rest_id', async (req, res) => {
   try {
     const { rest_id } = req.params;
+<<<<<<< Updated upstream
+=======
+    // const hall = await db.restaurants.findAll({
+    //  where: {
+    //    restaurant_id: rest_id
+    //  }});
+>>>>>>> Stashed changes
     const result = await db.sequelizeDB.query(
       `SELECT * FROM restaurants where restaurant_id = ${ rest_id }`
     );

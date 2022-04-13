@@ -60,7 +60,7 @@ router.route('/:image_id')
         }
         await db.Images.update(
           {
-            image_url: req.body.image_url
+            image_url: imageURL
           },
           {
             where: {

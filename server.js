@@ -2,6 +2,7 @@
 import express from 'express'
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import ratingsRoutes from './routes/RatingsRoutes.js';
 
 const app = express();
 

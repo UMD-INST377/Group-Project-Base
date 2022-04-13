@@ -36,7 +36,7 @@ router.post('/ratings', async (req, res) => {
   const current = (await ratingsId.length) + 1;
   try {
     const newRatings = await db.ratings.create({
-      rating_id: current,
+      rating_id: req.body.rating_id,
       rating: req.body.rating,
       description: req.body.description
 

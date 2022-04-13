@@ -1,6 +1,9 @@
 /* eslint-disable no-console */
 import express from 'express';
-import sequelize from 'sequelize';
+import sequelize, { where } from 'sequelize';
+
+import artistsRoutes from './artistsRoutes.js';
+import countryRoutes from './countryRoutes.js';
 
 import db from '../database/initializeDB.js';
 
@@ -9,6 +12,10 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
+
+/// artists routes///
+
+/// country routes ///
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

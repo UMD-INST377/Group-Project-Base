@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import chalk from 'chalk';
+import fetch from 'node-fetch';
 
 import db from '../../database/initializeDB.js';
 
@@ -19,11 +21,12 @@ router.route('/race/')
   .get(async (req, res) => {
     try {
       // const url = 'https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=wTtg4NONAeaOPjBJLxXScObX2sOAit5e2EhKUIXa';
-      //const data = await fetch(url);
-      res.json('my endpoint working');
+      // const data = await fetch(url);
+      console.log('touched races endpoint');
+      res.json({data: []});
     } catch (err) {
-      console.error(err);
-      res.json('Server error');
+      console.log('err');
+      res.json({message: 'Server error'});
     }
   });
 // router.route('/race/:pname')

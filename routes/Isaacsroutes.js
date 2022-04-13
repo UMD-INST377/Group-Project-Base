@@ -3,29 +3,29 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
-import genres from '../models/genres.js';
 
 const router = express.Router();
-
-router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+router.get('/actors', async (req, res) => {
+  try {
+    const actors = await db.actors.findAll();
+    res.json({ data: actors });
+  } catch (err) {
+    console.error(err);
+    res.send("Error in '/actors'!");
+  }
 });
-router.get('/randomgenres', async(req, res) => {
-    try {
-        const genres = await db.genres.findAll();
-        //CODE TO PICK X RANDOM GENRES FROM 'genres' array
-        const num = 2;
-        const range = [...Array(num).keys()];
-        const randomgenres = range.map((item) =>{
-          const choice = Math.floor(Math.random()* genres.length);
-          return genres[choice];
-        })
+router.get('/actors/:actor_id', async (req, res) => {
+  try {
+    const actors = await db.actors.findAll({
+      where: {
+        actor_id: req.params.actor_id
+      }
+    });
+    res.json({ data: actors });
+  } catch (err) {
+    console.error(err);
+    res.error("Error in '/actors' or 'actor_id' is invalid!");
+  }
+});
 
-        res.json({data: randomgenres});
-    } catch (error){
-        console.error(error);
-        res.send('Something went wrong.');
-    }
-  });
-
-  export default router;
+export default router;

@@ -2,6 +2,7 @@
 import express from 'express'
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import RatingsRoutes from './routes/RatingsRoutes.js'
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-app.use('/ratings', ratingsRoutes);
+app.use('/ratings', RatingsRoutes);
 async function bootServer() {
   try {
     // const mysql = await db.sequelizeDB;

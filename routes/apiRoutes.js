@@ -1,6 +1,11 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import chalk from 'chalk';
+import fetch from 'node-fetch'
+
+import songDisplayRoute from './songDisplayRoute.js'
+import sqlDemoRoutes from './sqlDemoRoutes.js'
 
 import db from '../database/initializeDB.js';
 
@@ -9,6 +14,25 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
+
+
+
+/* Gerald Reyes Subrouter */
+router.use('/songDisplay', songDisplayRoute);
+
+router.route('/songDisplay/:id')
+.get(async (req, res) => {
+  try{}
+  catch (err) {
+    console.log(err);
+    res.json({message: "something went wrong"});
+  }
+});
+/* End of Gerald's Subrouter */
+
+router.use('/sqlDemo', sqlDemoRoutes);
+
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

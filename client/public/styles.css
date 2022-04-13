@@ -97,7 +97,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .wrap_paragraph {
     padding-left: 20%;
     padding-right: 20%;
-    font-weight: 700;
+    
     font-size: 1.15em!important;
     color: #000!important;
     width: 100%;

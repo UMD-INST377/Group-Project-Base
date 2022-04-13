@@ -1,18 +1,18 @@
 export default (sequelize, DataTypes) => {
-  const disastertype = sequelize.define(
-    'disaster_type',
+  const statetype = sequelize.define(
+    'record_state',
     {
-      disaster_id: {
+      record_id: {
         type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
       },
-      type:{
+      state:{
         type: DataTypes.STRING,
         allowNull: false
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return disastertype;
+  return statetype;
 };

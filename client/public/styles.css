@@ -118,3 +118,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     padding-left: 1px;
 }
 
+.wrap_paragraph {
+    font-weight: 400;
+}
+

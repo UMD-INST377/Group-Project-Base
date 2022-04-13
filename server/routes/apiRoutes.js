@@ -71,4 +71,4 @@ router.get('/meals/:id', async (req, res) => {
     console.error(err);
     res.send('Server error');
   }
-});
+}); 

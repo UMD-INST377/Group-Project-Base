@@ -10,10 +10,10 @@
  router.route('/artist').get(async (req, res) => {
      try {
        const art = await db.Artist.findAll();
-       res.json(art);
-     } catch (err) {
-       console.error(err);
-       res.error('Server Error');
+       res.json({data: art});
+     } catch (error) {
+       console.error(error);
+       res.send('Server Error');
      }
    });
 
@@ -25,10 +25,10 @@
            artist_id: req.params.artist_id
          }
        });
-       res.json(art);
-     } catch (err) {
-       console.error(err);
-       res.error('Server Error');
+       res.json({data: art});
+     } catch (error) {
+       console.error(error);
+       res.send('Server Error');
      }
    });
 

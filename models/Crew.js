@@ -26,5 +26,5 @@ export default (database, DataTypes) => {
       defaultValue: newDate
     }
   });
-  return crew
+  return crew;
 };

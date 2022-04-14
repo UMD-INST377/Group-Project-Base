@@ -13,5 +13,5 @@ export default {
   // Meals,
   Actor,
   Titles,
-  Crew,
+  Crew
 };

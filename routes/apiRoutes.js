@@ -4,6 +4,7 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -25,7 +26,7 @@ router.get('/mealLocation', async (req, res) => {
     res.json({data: mealLocation});
   } catch (err) {
     console.error(err);
-    res.error('There was an error');
+    res.send('There was an error');
   }
 });
 
@@ -71,7 +72,7 @@ router.get('/schedule', async (req, res) => {
     res.json(re);
   } catch (err) {
     console.error(err);
-    res.error('There was an error');
+    res.send('There was an error');
   }
 });
 
@@ -101,7 +102,7 @@ router.get('/dining', async (req, res) => {
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -181,7 +182,7 @@ router.get('/meals', async (req, res) => {
     res.json(meals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 

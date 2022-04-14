@@ -10,6 +10,10 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+router.get('/client', (req, res) => {
+  res.send('Welcome to Client');
+});
+
 
 /// /////////////////////////////////
 /// ////Meals Locations Endpoints////////
@@ -18,8 +22,7 @@ router.get('/', (req, res) => {
 router.get('/mealLocation', async (req, res) => {
   try {
     const mealLocation = await db.MealsLocations.findAll();
-    const rere = mealLocation.length > 0 ? { data: mealLocation } : { message: 'no results found' };
-    res.json(rere);
+    res.json({data: mealLocation});
   } catch (err) {
     console.error(err);
     res.error('There was an error');

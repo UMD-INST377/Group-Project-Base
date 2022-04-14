@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-image: url("/bg.png");
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin:0;
+}
+
+header {
+    padding: 30px 10%;
+    background-color: #ffcc6a;
+}
+
+footer {
+    position: fixed;
+    padding: 10px;
+    background-color: #ffcc6a;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.nav_menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.nav_menu li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_menu a, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav_menu a:hover {
+    color: white;
+}
+
+.nav_menu input[type=text] {
+    border-radius: 25px;
+    width: 300px;
+    padding: 5px;
+}
+
+.songs_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 50px 10px 50px;
+    flex-direction: row;
+    
+}
+
+
+.artists_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 50px 10px 50px;
+    flex-direction: row;
+}
+
+.genres_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 50px 10px 50px;
+    flex-direction: row;
+}
+
+.carousel_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 50px 50px 50px;
+}
+
+
+.songs_images {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.songs_images li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.artists_images {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.artists_images li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.genres_images {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.genres_images li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+

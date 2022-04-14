@@ -490,6 +490,7 @@ router.route('/bark')
       res.json({error: 'Server error'});
     }
   });
+<<<<<<< Updated upstream
 
   
 
@@ -714,3 +715,6 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
   }
 });
 export default router;
+=======
+export default router;
+>>>>>>> Stashed changes

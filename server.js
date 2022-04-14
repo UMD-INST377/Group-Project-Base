@@ -17,10 +17,9 @@ let liveReloadServer;
 
 // console.log(a);
 // auto reloading
-if (process.env.NODE_ENV === 'development') {
-  liveReloadServer = reload.createServer();
-  liveReloadServer.watch(path.join(__dirname, staticFolder));
-}
+// if (process.env.NODE_ENV === 'development') {
+liveReloadServer = reload.createServer();
+liveReloadServer.watch(path.join(__dirname, staticFolder));
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');

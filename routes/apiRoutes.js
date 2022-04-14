@@ -3,6 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import will from './will.js';
 
 const router = express.Router();
 
@@ -271,3 +272,5 @@ router.get('/custom', async (req, res) => {
 });
 
 export default router;
+
+router.use('/will', will);

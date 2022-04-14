@@ -114,12 +114,11 @@ router.route('/crew')
       res.json({
         data: crewList
       });
-      
     } catch (err) {
       console.error(err);
       res.send('Server error');
     }
-  })
+  });
 //
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

@@ -19,8 +19,6 @@ app.use('/amy', route);
 app.use('/casie', route);
 app.use('/spencer', route);
 
-
-
 async function bootServer() {
   try {
     // const mysql = await db.sequelizeDB;

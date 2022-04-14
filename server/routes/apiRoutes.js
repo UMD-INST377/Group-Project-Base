@@ -6,6 +6,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import bpRoutes from './bpRoutes.js'
 import etRoutes from './etRoutes.js'
+import eeRoutes from './eeRoutes.js'
 
 const router = express.Router();
 
@@ -233,7 +234,7 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
 });
 /* EE Routes - Dining Hall */
 
-router.use('/dining', etRoutes);
+router.use('/hall_schedule', eeRoutes);
 
 /// /////////////////////////////////
 /// ////Hall ScheduleEndpoints////////

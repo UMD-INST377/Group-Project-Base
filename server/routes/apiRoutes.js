@@ -25,7 +25,7 @@ router.use('/dining', etRoutes);
 
 /* KK routes - Restrictions */
 
-router.use();
+router.use('/restrictions', kkRoutes);
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

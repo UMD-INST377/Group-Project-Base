@@ -4,6 +4,8 @@ import sequelize from 'sequelize';
 
 import rickyRoute from './rickyRoute.js';
 
+import will from './will.js';
+
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -13,6 +15,8 @@ router.get('/', (req, res) => {
 });
 
 router.use('/ricky', rickyRoute);
+
+router.use('/will', will);
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

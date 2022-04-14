@@ -1,15 +1,55 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group 23</title>
-    <link rel='stylesheet' href='styles.css'/>
-</head>
-<body>
-    <!--sravya branch-->
-    <h1>INST377 Group 23</h1>
 
-    <script src="scripts.js"></script>
+<head>
+  <title>Group Project - Initial</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="header-box">
+    <p>Group Project - Initial</p>
+  </div>
+  <div class="menu-container">
+    <div class="menu">
+      <div class="signup"><a href="./data.html">Database Demos</a></div>
+      <div class="login"><a href="./index.html">Main Page</a></div>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="columns">
+      <div class="container">
+        <form method='get' class='food-form'>
+          <div class='form-row'>
+            <div><label for='first-name'>First Name</label></div>
+            <div><input id='first-name' name='first-name' type='text' /></div>
+          </div>
+          <div class='form-row'>
+            <div><label for='food-preference'>Food Preference</label></div>
+            <div><input id='food-preference' name='food-preference' type='text' /></div>
+          </div>
+          <fieldset class='legacy-form-row'>
+            <legend>Veggie or Vegan</legend>
+            <input id='food-type-1' name='food-type' type='radio' value='yes' />
+            <label for='food-type-1' class='radio-label'>Yes</label>
+            <input id='food-type-2' name='food-type' type='radio' value='no' checked />
+            <label for='food-type-2' class='radio-label'>No</label>
+          </fieldset>
+          <div class='form-row'>
+            <button type='submit'>Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="container">
+        <div class="other-box">
+            <div><b><u>Restaurant List:</u></b></div>
+            <div id="resto-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>

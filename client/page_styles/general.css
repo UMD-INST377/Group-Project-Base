@@ -1,0 +1,50 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: rgba(219, 198, 179, 1);
+    font-family: 'Roboto';
+    color: black;
+}
+
+.menu-container {
+    background-color: rgba(156, 140, 140, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.link-container {
+    margin-right: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    position: relative;
+    height: 20px;
+    bottom: -20px
+}
+
+header {
+    margin-left: 100px;
+    font-weight: 500;
+    font-size: 36px;
+    
+}
+
+a{
+    margin: 0px 5px;
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color:dimgray
+}
+
+a:active {
+    color: cornflowerblue;
+}

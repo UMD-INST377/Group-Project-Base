@@ -52,3 +52,4 @@ router.put('/restaurant', async (req, res) => {
     res.send('Server error');
   }
 });
+

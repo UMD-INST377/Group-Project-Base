@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-// app.use('/api', anneRoutes);
+app.use('/api', anneRoutes);
 
 async function bootServer() {
   try {

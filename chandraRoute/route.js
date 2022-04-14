@@ -24,7 +24,7 @@ router.get('/Group22_Dining_Hall_Tracker/:hall_hours_id', async (req, res) => {
     const hour = await db.HallHours.findAll({
       where: {
         hall_hours_id: req.params.hall_hours_id
-      	}
+      }
     });
     res.json(hour);
   } catch (err) {

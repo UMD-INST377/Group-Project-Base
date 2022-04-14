@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
-import { home } from 'nodemon/lib/utils';
+// import { home } from 'nodemon/lib/utils';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';

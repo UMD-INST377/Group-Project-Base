@@ -279,7 +279,7 @@ router.post('/hall_schedule', async (req, res) => {
   }
 });
 
-router.delete('/hall_schedule/:schedule_id, async (req, res) => {
+router.delete('/hall_schedule/:schedule_id', async (req, res) => {
   try {
     await db.HallSchedule.destroy({
       where: {

@@ -23,7 +23,9 @@ router.route('/race/')
       // const url = 'https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=wTtg4NONAeaOPjBJLxXScObX2sOAit5e2EhKUIXa';
       // const data = await fetch(url);
       console.log('touched races endpoint');
-      res.json({data: []});
+      const parks = await db.Parks.findAll();
+      const reply = parks.length > 0 ? { data: parks } : { message: 'no results found' };
+      res.json(reply);
     } catch (err) {
       console.log('err');
       res.json({message: 'Server error'});

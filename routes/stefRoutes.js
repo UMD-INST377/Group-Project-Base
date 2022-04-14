@@ -20,18 +20,18 @@ router.get('/movies', async (req, res) => {
     }
 });
 
-router.get('/movies/:movies_id', async(req, res) => {
+router.get('/movies/:movie_id', async(req, res) => {
     try {
         const movies=await db.movies.findAll({
             where:{
-                movies_id:req.params.movies_id
+                movie_id:req.params.movie_id
             }
         });
         res.json({data:movies});
     }
     catch (err){
         cocnsole.error(err);
-        res.error("Error has occurred in '/movies' or in '/movies_id'");
+        res.error("Error has occurred in '/movie' or in '/movie_id'");
     }
 });
 

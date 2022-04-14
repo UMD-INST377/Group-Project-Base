@@ -3,6 +3,7 @@ import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 import route from './chandraRoute/route.js';
+import routes from './spencerRoute/routes.js';
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.use('/api', apiRoutes);
 app.use('/chandra', route);
 app.use('/amy', route);
 app.use('/casie', route);
-app.use('/spencer', route);
+app.use('/spencer', routes);
 
 async function bootServer() {
   try {

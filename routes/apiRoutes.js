@@ -104,6 +104,22 @@ router.route('/titles')
 
 
 
+//
+router.route('/genre')
+  .get(async (req, res) => {
+    try {
+      const genreList = await db.primary_genre.findAll({
+        order: [['title_id', 'genre_id']]
+      });
+      res.json({
+        data: genreList
+      });
+    } catch (err) {
+      console.error(err);
+      res.send('Server error');
+    }
+  })
+//
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

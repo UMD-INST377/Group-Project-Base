@@ -6,6 +6,8 @@ import rickyRoute from './rickyRoute.js';
 
 import will from './will.js';
 
+import vezRoutes from './vezRoutes.js';
+
 import db from '../database/initializeDB.js';
 
 const router = express.Router();

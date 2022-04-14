@@ -7,12 +7,12 @@ import dietaryrestrictionsQuery from '../controller/dietaryrestrictions_query.js
 const router = express.Router();
 
 router.route('/')
-  .get(async(req, res) => {
+  .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(dietaryrestrictionsQuery, {
         type: sequelize.QueryTypes.SELECT
       });
-      res.json({data : result});
+      res.json({ data: result});
     } catch (error) {
       console.log('error', error);
     }

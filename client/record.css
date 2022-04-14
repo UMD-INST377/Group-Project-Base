@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+
+      background-color: #191414;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    height: 100%;
+    min-height: 100%;
+  }
+  
+  html {
+    height: 100%;
+    min-height: 100%;
+  }
+
+
+.top-header {
+    color: white;
+  }
+  
+  .top-header h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .selection-description{
+      font-size: 24px;
+      text-align: left;
+      padding-right: 680px;
+      color: white;
+  }
+
+
+  .selection-box {
+  background-color: #1db954;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  text-align: center;
+
+  width: 60%;
+  margin: 25px 0;
+  padding: 45px;
+  border-radius: 15px;
+
+  font-size: 24px;
+}
+
+.label {
+    color: white;
+}
+
+.field {
+    margin-left: 50px;
+}
+
+.but {
+    margin-left: 10px;
+}
+
+.mid-header-1 {
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+.mid-header-2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.mid-header-3 {
+    display: flex;
+    flex-direction: row;
+}
+
+.bot-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+

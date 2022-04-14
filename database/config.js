@@ -7,6 +7,12 @@
 
 export default {
   development: {
+main
+    username: 'student',
+    password: 'INST377@UMD',
+    database: 'Dining_Hall_Tracker',
+=======
+ main
     username: 'ubuntu',
     password: 'Veracrypt@12!',
     database: 'earthquake',

@@ -7,7 +7,7 @@ import configOptions from './config.js';
 import modelList from '../models/index.js';
 
 const { DataTypes } = Sequelize;
-const env = dotenv.config().parsed?.NODE_ENV || 'production';
+const env = 'development' // 'dotenv.config().parsed?.NODE_ENV || 'production';
 const config = configOptions[env];
 
 /**

@@ -15,6 +15,11 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 app.use('/chandra', route);
+app.use('/amy', route);
+app.use('/casie', route);
+app.use('/spencer', route);
+
+
 
 async function bootServer() {
   try {

@@ -18,6 +18,8 @@ router.use('/ricky', rickyRoute);
 
 router.use('/will', will);
 
+router.use('/vez', vezRoutes);
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

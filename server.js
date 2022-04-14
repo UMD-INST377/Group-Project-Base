@@ -2,7 +2,7 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
-import artistRoutes from './routes/artistRoutes';
+import artistRoutes from './routes/artistRoutes.js';
 
 const app = express();
 

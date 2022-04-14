@@ -63,6 +63,28 @@ router.route('/artist/:id')
     }
 })
 
+router.route('/playlist')
+.get(async (req, res) => {
+   try {
+       const playlistList = await db.playlist.findAll()
+       res.json({data: playlistList});
+   } catch (err) {
+       console.error(err);
+       res.send({message: 'Error!'});
+   }
+})
+ 
+router.route('/playlist/:id')
+.get(async (req, res) => {
+   try {
+     const {id} = req.params;
+     const playlistList = await db.playlist.findAll()
+     res.json({data: playlistList[id]});
+   } catch (err) {
+       console.error(err);
+       res.json({message: 'Error!'});
+   }
+})
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

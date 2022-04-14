@@ -10,10 +10,35 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+/// /////////////////////////////////
+/// ////Hall Schedule Endpoints////////
+/// /////////////////////////////////
 
-/// /////////////////////////////////
-/// ////Hall Hours Endpoints////////
-/// /////////////////////////////////
+router.get('/schedule', async (req, res) => {
+  try {
+    const schedule = await db.DiningHall.findAll();
+    const re = schedule.length > 0 ? { data: schedule } : { message: 'no results found' };
+    res.json(re);
+  } catch (err) {
+    console.error(err);
+    res.error('There was an error');
+  }
+});
+
+router.get('/schedule/:schedule_id', async (req, res) => {
+  try {
+    const sche = await db.DiningHall.findAll({
+      where: {
+        schedule_id: req.params.schedule_id
+      }
+    });
+
+    res.json(sche);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 
 /// /////////////////////////////////

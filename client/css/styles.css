@@ -159,3 +159,11 @@ footer {
     font-size: 15px;
     line-height: 18px;
 }
+
+.chart_page_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 50px 10px 50px;
+    flex-direction: column;
+}

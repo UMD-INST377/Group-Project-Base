@@ -2,14 +2,14 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
-import dietaryrestrictionsQuery from '../controller/dietaryrestrictions_query.js';
+import DietaryRestrictionsQuery from '../controller/dietaryrestrictions_query.js';
 
 const router = express.Router();
 
 router.route('/')
   .get(async (req, res) => {
     try {
-      const result = await db.sequelizeDB.query(dietaryrestrictionsQuery, {
+      const result = await db.sequelizeDB.query(DietaryRestrictionsQuery, {
         type: sequelize.QueryTypes.SELECT
       });
       res.json({ data: result});

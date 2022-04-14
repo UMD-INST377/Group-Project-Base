@@ -1,1 +1,1 @@
-export default 'SELECT * FROM dietaryrestrictions';
+export default 'SELECT * FROM DietaryRestrictions';

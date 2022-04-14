@@ -72,6 +72,27 @@ router.get('/students/:id', async (req, res) => {
   }
 });
 
+router.get('/company', async (req, res) => {
+  try {
+    const company = await db.sequelizeDB.query(`SELECT * from company`)
+    res.json({data: company});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/company/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const company = await db.sequelizeDB.query(`SELECT * from company where company_id = ${id}`)
+    res.json({data: company});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

@@ -72,7 +72,7 @@ router.route('/dietaryRestrictions/:id')
   router.route('/josh')
   .get(async (req, res) => {
     try {
-      const url = 'http://localhost:3000/api/josh';
+      const url = 'https://mysterious-brushlands-64618.herokuapp.com/api/josh';
       const data = await fetch(url);
       const json = await data.json();
       res.json({data: json[0]});

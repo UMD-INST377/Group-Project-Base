@@ -166,4 +166,6 @@ footer {
     align-items: center;
     margin: 50px 50px 10px 50px;
     flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
 }

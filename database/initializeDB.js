@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 import Sequelize from 'sequelize';
@@ -6,7 +7,7 @@ import configOptions from './config.js';
 import modelList from '../models/index.js';
 
 const { DataTypes } = Sequelize;
-const env = dotenv.config().parsed.NODE_ENV || 'development';
+const env = dotenv.config().parsed?.NODE_ENV || 'development';
 const config = configOptions[env];
 
 /**

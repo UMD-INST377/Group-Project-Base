@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
@@ -142,4 +143,18 @@ router.get('/queries/:query_id', async (req, res) => {
   }
 });
 
+router.get('/hominidae/:gbif', async (req, res) => {
+  try {
+    console.log("Using router.get('/hominidae/:gbif')...");
+    const hominidae = await db.sequelizeDB.models.hominidae.findAll({
+      where: {
+        gbif: req.params.gbif
+      }
+    });
+    res.json(hominidae);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 export default router;

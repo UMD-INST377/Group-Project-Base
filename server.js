@@ -1,9 +1,11 @@
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
+// import apiRoutes from './routes/apiRoutes.js';
 import judesRoutes from './routes/judesRoutes.js';
-import stefRoutes from './routes/stefRoutes.js'
+import Isaacsroutes from './routes/Isaacsroutes.js';
+import agyaRoutes from './routes/agyaRoutes.js';
+
 
 const app = express();
 
@@ -14,9 +16,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(staticFolder));
-app.use('/api', apiRoutes);
+// app.use('/api', apiRoutes);
 app.use('/jude', judesRoutes);
-app.use('/stef', stefRoutes)
+app.use('/isaac', Isaacsroutes);
+app.use('/agya', agyaRoutes);
+
 
 async function bootServer() {
   try {

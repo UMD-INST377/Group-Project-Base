@@ -3,25 +3,31 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
+const restaurantQuery = 'SELECT * FROM restaurants';
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the CP Restaurants API!');
-});
-
-router.get('/restaurant', async (req, res) => {
+router.route('/').get(async (req, res) => {
   try {
-    const restaurant = await db.restaurant.findAll();
+    const restaurant = await db.sequelizeDB.query(restaurantQuery, {
+      type: sequelize.QueryTypes.SELECT
+    });
     res.json(restaurant);
   } catch (err) {
     console.error(err);
-    res.send('Server error');
+    res.json({message: 'Server error'});
   }
 });
 
-router.get('/restaurant/:restaurant_id', async (req, res) => {
+// get restaurant with id
+router.get('/:restaurant_id', async (req, res) => {
+  // eslint-disable-next-line no-template-curly-in-string
+  const restaurantIDQuery = 'SELECT * FROM restaurants WHERE restaurant_id = ${req.params.restaurant_id}';
   try {
-    const restaurant = await db.restaurant.findAll({
+    const restaurant = await db.sequelizeDB.query(restaurantIDQuery, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    await db.restaurant.findAll({
       where: {
         meal_id: req.params.restaurant_id
       }
@@ -29,27 +35,8 @@ router.get('/restaurant/:restaurant_id', async (req, res) => {
     res.json(restaurant);
   } catch (err) {
     console.error(err);
-    res.send('Server error');
+    res.json({message: 'Server error'});
   }
 });
 
-router.put('/restaurant', async (req, res) => {
-  try {
-    await db.restaurant.update(
-      {
-        restaurant_name: req.body.restaurant_name,
-        restaurant_category: req.body.meal_category
-      },
-      {
-        where: {
-          restaurant_id: req.body.restaurant_id
-        }
-      }
-    );
-    res.send('restaurant Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.send('Server error');
-  }
-});
-
+export default router;

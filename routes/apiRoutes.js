@@ -10,6 +10,9 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+// Restaurant Route - Jessica //
+router.use('/restaurants', apiRoutesJessica);
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

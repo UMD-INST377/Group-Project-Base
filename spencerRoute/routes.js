@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 router.get('/Group22_Dining_Hall_Tracker', async (req, res) => {
   try {
     const schedule = await db.DiningHall.findAll();
-    const reply = schedule.length > 0 ? { schedule: halls } : { message: 'no schedule(s) found' };
+    const reply = schedule.length > 0 ? { data: schedule } : { message: 'no schedule(s) found' };
     res.json(reply);
   } catch (err) {
     console.error(err);

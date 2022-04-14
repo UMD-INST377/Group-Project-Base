@@ -12,7 +12,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 const staticFolder = 'client';
-const envConfig = 'production';
+const envConfig = 'development';
 let liveReloadServer;
 
 // console.log(a);

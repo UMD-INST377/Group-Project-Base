@@ -2,8 +2,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
-import mealsQuery from '../controllers/meals_query.js';
-
+import mealsQuery from '../controller/meals_query.js';
 
 const router = express.Router();
 

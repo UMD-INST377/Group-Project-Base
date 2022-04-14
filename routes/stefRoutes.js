@@ -20,4 +20,19 @@ router.get('/movies', async (req, res) => {
     }
 });
 
+router.get('/movies/:movies_id', async(req, res) => {
+    try {
+        const movies=await db.movies.findAll({
+            where:{
+                movies_id:req.params.movies_id
+            }
+        });
+        res.json({data:movies});
+    }
+    catch (err){
+        cocnsole.error(err);
+        res.error("Error has occurred in '/movies' or in '/movies_id'");
+    }
+});
+
 export default router;

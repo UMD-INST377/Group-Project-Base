@@ -5,7 +5,7 @@ import db from './database/initializeDB.js';
 import judesRoutes from './routes/judesRoutes.js';
 import Isaacsroutes from './routes/Isaacsroutes.js';
 import agyaRoutes from './routes/agyaRoutes.js';
-
+import stefRoutes from './routes/stefRoutes.js';
 
 const app = express();
 
@@ -20,6 +20,7 @@ app.use(express.static(staticFolder));
 app.use('/jude', judesRoutes);
 app.use('/isaac', Isaacsroutes);
 app.use('/agya', agyaRoutes);
+app.use('/stef', stefRoutes);
 
 
 async function bootServer() {

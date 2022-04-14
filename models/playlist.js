@@ -15,6 +15,7 @@ export default (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             unique: true,
+            foreignKey: true
           }
       },
       { freezeTableName: true, timestamps: false }

@@ -1,0 +1,6 @@
+.header {
+    display: flex;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: hsl(0, 100%, 67%);
+  }

@@ -10,13 +10,60 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+
+/// /////////////////////////////////
+/// ////Meals Locations Endpoints////////
+/// /////////////////////////////////
+
+router.get('/mealLocation', async (req, res) => {
+  try {
+    const mealLocation = await db.MealsLocations.findAll();
+    const rere = mealLocation.length > 0 ? { data: mealLocation } : { message: 'no results found' };
+    res.json(rere);
+  } catch (err) {
+    console.error(err);
+    res.error('There was an error');
+  }
+});
+
+router.get('/mealLocation/:hall_id', async (req, res) => {
+  try {
+    const sche = await db.MealsLocations.findAll({
+      where: {
+        hall_id: req.params.hall_id
+      }
+    });
+
+    res.json(sche);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/mealLocation/:hall_id', async (req, res) => {
+  try {
+    const sche2 = await db.MealsLocations.findAll({
+      where: {
+        meal_id: req.params.meal_id
+      }
+    });
+
+    res.json(sche2);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
 /// /////////////////////////////////
 /// ////Hall Schedule Endpoints////////
 /// /////////////////////////////////
 
 router.get('/schedule', async (req, res) => {
   try {
-    const schedule = await db.DiningHall.findAll();
+    const schedule = await db.HallSchedule.findAll();
     const re = schedule.length > 0 ? { data: schedule } : { message: 'no results found' };
     res.json(re);
   } catch (err) {
@@ -27,7 +74,7 @@ router.get('/schedule', async (req, res) => {
 
 router.get('/schedule/:schedule_id', async (req, res) => {
   try {
-    const sche = await db.DiningHall.findAll({
+    const sche = await db.HallSchedule.findAll({
       where: {
         schedule_id: req.params.schedule_id
       }

@@ -157,4 +157,82 @@ router.get('/hominidae/:gbif', async (req, res) => {
     res.error('Server error');
   }
 });
+
+// GET Assignment
+router.get('/hominidae', async (req, res) => {
+  try {
+    console.log("Using router.get('/hominidae')...");
+    const hominidae = await db.sequelizeDB.models.hominidae.findAll();
+    res.json(hominidae);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/hominidae/:scientific_name', async (req, res) => {
+  try {
+    console.log("Using router.get('/hominidae/:scientific_name')...");
+    const hominidae = await db.sequelizeDB.models.hominidae.findAll({
+      where: {
+        scientific_name: req.params.scientific_name
+      }
+    });
+    res.json(hominidae);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/user', async (req, res) => {
+  try {
+    console.log('Putting user');
+    const user = await sequelizeDB.models.user.data({
+      where: {
+        userid: 1,
+        username: 'user',
+        email: 'email@gmail.com',
+        password: '1234',
+        create_time
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/hominidae', async (req, res) => {
+  try {
+    console.log('Posting hominidae animal');
+    const user = await sequelizeDB.models.hominidae.data({
+      where: {
+        item: 'random_item',
+        GBIF: 'gbif',
+        scientific_name: 'random animal',
+        parent_taxon: 'unknown',
+        common_names: 'random animal'
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/hominidae', async (req, res) => {
+  try {
+    console.log('Deleting hominidae animal');
+    const user = await sequelizeDB.models.hominidae.findAll({
+      where: {
+        item: 'random_item'
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

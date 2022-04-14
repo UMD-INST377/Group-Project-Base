@@ -208,7 +208,7 @@ router.post('/hominidae', async (req, res) => {
     console.log('Posting hominidae animal');
     const user = await sequelizeDB.models.hominidae.data({
       where: {
-        item: 'random_item',
+        item: 'random_items',
         GBIF: 'gbif',
         scientific_name: 'random animal',
         parent_taxon: 'unknown',
@@ -226,7 +226,7 @@ router.delete('/hominidae', async (req, res) => {
     console.log('Deleting hominidae animal');
     const user = await sequelizeDB.models.hominidae.findAll({
       where: {
-        item: 'random_item'
+        item: 'random_items'
       }
     });
   } catch (err) {

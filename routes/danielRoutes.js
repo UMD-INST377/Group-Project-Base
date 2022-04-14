@@ -1,4 +1,9 @@
 import express from 'express'
+import sequelize from 'sequelize';
+import chalk from 'chalk';
+import fetch from 'node-fetch';
+
+import danielRoutes from './danielRoutes'
 
 const router = express.Router()
 

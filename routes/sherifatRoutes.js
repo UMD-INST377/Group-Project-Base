@@ -7,6 +7,7 @@ import db from '../database/initializeDB';
 
 const dbQuery = 'SELECT * FROM weather';
 
+
 const router = express.Router();
 
 router.route('/weather/:weather_id').get(async (req, res) => {

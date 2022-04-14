@@ -29,7 +29,7 @@ router.get('/actors/:id', async (req, res) => {
   }
 });
 
-// Access the actors table and receiving the actor's first name 
+// Access the actors table and receiving the actor's first name
 router.route('/actors')
   .get(async (req, res) => {
     try {
@@ -105,14 +105,14 @@ router.route('/titles')
 
 
 //
-router.route('/genre')
+router.route('/crew')
   .get(async (req, res) => {
     try {
-      const genreList = await db.primary_genre.findAll({
-        order: [['title_id', 'genre_id']]
+      const crewList = await db.Crew.findAll({
+        order: [['fname', 'DESC']]
       });
       res.json({
-        data: genreList
+        data: crewList
       });
     } catch (err) {
       console.error(err);

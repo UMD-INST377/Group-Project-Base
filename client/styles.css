@@ -38,13 +38,12 @@ body {
    color: #0c5400;
    text-align: center;
    border-bottom: 10px;
+   justify-content: center;
  }
 
 .logo{
-  display: flex;
-  justify-content: center;
   max-width: 960px;
-  margin-top: 25px;
+  justify-content: center;
 }
 
  .menu-container {
@@ -134,7 +133,7 @@ body {
    background-color: #9ecc3a;
  }
 
-     /* Mobile Styles */
+    /* Mobile Styles */
      @media only screen and (max-width: 400px) {
       .page {
           width: 100%;

@@ -1,4 +1,6 @@
 let newDate = new Date (2019, 3, 51)
+let film = 'Film'
+
 export default (database, DataTypes) => {
   const title = database.define('title', {
     title_id: {
@@ -9,11 +11,13 @@ export default (database, DataTypes) => {
     },
     primary_title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      defaultValue: film
     },
     title_type: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      defaultValue: film,
     },
     release_year: {
       type: DataTypes.DATE,

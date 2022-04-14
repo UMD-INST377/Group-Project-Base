@@ -55,6 +55,55 @@ router.route('/actors')
   })
 // End of Viphu Nguyen's Contribution 1
 
+// Gerson's contribution 1
+
+router.get('/titles/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const titleList = await db.Title.findOne({
+      where: {
+        actor_id: `${id}`
+      }
+    });
+    res.send({
+      titleList
+    });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+// Access the actors table and receiving the actor's first name 
+router.route('/titles')
+  .get(async (req, res) => {
+    try {
+      const titleList = await db.Title.findAll({
+        order: [['primary_title', 'DESC']]
+      });
+      res.json({
+        data: titleList
+      });
+    } catch (err) {
+      console.error(err);
+      res.send('Server error');
+    }
+  })
+
+// Access the actors table and creates a dummy row in the actors table
+  .post(async (req, res) => {
+    const newTitle = await db.Actor.create({
+      primary_title: '500 Days of Summer', 
+      title_type: 'Movie',
+    });
+    res.send('dummyValue')
+  })
+
+
+
+
+
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

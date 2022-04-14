@@ -67,6 +67,38 @@ router.route('/dietaryRestrictions/:id')
       res.json(err);
     }
   });
+
+  // Josh Mensah GET Controllers
+  router.route('/josh')
+  .get(async (req, res) => {
+    try {
+      const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+      const data = await fetch(url);
+      const json = await data.json();
+      res.json({data: json[0]});
+      console.log('success');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+router.route('/josh')
+  .get(async (req, res) => {
+    try {
+      const url = '';
+      const data = await fetch(url);
+      const json = await data.json();
+      res.json({data: json[0]});
+      console.log('success');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
+
+
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

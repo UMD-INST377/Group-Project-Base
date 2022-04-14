@@ -40,6 +40,13 @@ body {
    border-bottom: 10px;
  }
 
+.logo{
+  display: flex;
+  justify-content: center;
+  max-width: 960px;
+  margin-top: 25px;
+}
+
  .menu-container {
   background-color: #b3e943;  
   padding: 15px;

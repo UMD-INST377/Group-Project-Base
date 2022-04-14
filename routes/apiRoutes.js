@@ -26,7 +26,6 @@ router.get('/restaurants', async (req, res) => {
     res.send('Server error');
   }
 });
-
 // retrieve the restaurants with the specified cuisine using cuisine id
 router.get('/restaurants/cuisine/:cuisine_id', async (req, res) => {
   try {

@@ -55,7 +55,7 @@ router.route('/artist/:id')
 .get(async (req, res) => {
     try {
       const {id} = req.params;
-      const genreList = await db.artist.findAll();
+      const artistList = await db.artist.findAll();
       res.json({data: artistList[id]});
     } catch (err) {
       console.error(err);

@@ -17,7 +17,7 @@ let liveReloadServer;
 
 // console.log(a);
 // auto reloading
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
   liveReloadServer = reload.createServer();
   liveReloadServer.watch(path.join(__dirname, staticFolder));
 }

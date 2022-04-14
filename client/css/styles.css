@@ -137,7 +137,7 @@ footer {
 /*  CHARTS STYLES */
 .charts_subheader {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 }
 

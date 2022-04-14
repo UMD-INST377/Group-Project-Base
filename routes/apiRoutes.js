@@ -72,7 +72,7 @@ router.route('/dietaryRestrictions/:id')
   router.route('/josh')
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+      const url = 'http://localhost:3000/api/josh';
       const data = await fetch(url);
       const json = await data.json();
       res.json({data: json[0]});

@@ -2,17 +2,21 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import macrosQuery from '../controller/macros_query.js';
 
 const router = express.Router();
 
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+router.route('/')
+  .get(async (req, res) => {
+    try {
+      console.log('Touched sqlDemo get');
+      const result = await db.sequelizeDB.query(macrosQuery, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json({ data: result});
+    } catch (error) {
+      console.log('sqlDemo get error', error);
+    }
+  });
 
 export default router;

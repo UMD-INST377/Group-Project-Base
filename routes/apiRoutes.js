@@ -5,7 +5,6 @@ import sequelize from 'sequelize';
 import rickyRoute from './rickyRoute.js';
 
 import db from '../database/initializeDB.js';
-import will from './will.js';
 
 const router = express.Router();
 
@@ -276,5 +275,3 @@ router.get('/custom', async (req, res) => {
 });
 
 export default router;
-
-router.use('/will', will);

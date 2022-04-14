@@ -33,7 +33,7 @@ async function getByID(e, form, table) {
   // const results = await fetch('/canidae/:gbif');
   const arr = await results.json();
   if (arr.length === 0) {
-    console.log('No animals with that GBIF Taxon ID');
+    console.log(`No ${chosenfamily} with that GBIF Taxon ID`);
   }
   clearTable(table);
   appendResults(arr, table);

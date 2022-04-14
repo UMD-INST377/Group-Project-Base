@@ -25,7 +25,7 @@ router.route('/artist/:id')
         const artistList = await db.artist.findAll();
         res.json({data: artistList[id]});
     } catch (err) {
-        console.error(err):
+        console.error(err);
         res.json({message: 'Error!'})
     }
 })

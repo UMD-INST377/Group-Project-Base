@@ -42,7 +42,7 @@ body {
  }
 
 .logo{
-  max-width: 960px;
+  height: 200px;
   justify-content: center;
 }
 
@@ -69,11 +69,11 @@ body {
 
 
 .login {
-   background-color: #000000;
+   background-color: #FFFFFF;
    border-radius: 3px;
    padding: 50px;
    margin: 30px;
-   color: #FFFFFF;
+   color: #000000;
    width: 350px; 
  }
 
@@ -113,8 +113,8 @@ body {
    font-size: 17px;
    text-align: center;
  
-   color: #000000;
-   background-color: #FFFFFF;
+   color: #ffffff;
+   background-color: #000000;
  
    border: none;
    border-radius: 3px;

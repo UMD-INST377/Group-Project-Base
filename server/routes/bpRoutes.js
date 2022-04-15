@@ -40,7 +40,7 @@ router.post('/post', async (req, res) => {
 
     const postQuery = 
     
-           `INSERT INTO meals(meal_name) VALUES ("${req.query['new_food_name']}");`;
+           `INSERT INTO meals(meal_name) VALUES (${req.query['new_food_name']});`;
     try {
          
         const result = await db.sequelizeDB.query(postQuery, {
@@ -59,7 +59,7 @@ router.post('/post', async (req, res) => {
 // delete food entry
 router.delete('/delete', async (req, res) => {
 
-    const postQuery = 
+    const deleteQuery = 
     
            `DELETE FROM meals WHERE meal_id = ${req.query['meal_id']} ;`;
     try {

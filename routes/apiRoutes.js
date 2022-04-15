@@ -70,7 +70,7 @@ router.get('/titles/:id', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.send('Server error Title');
+    res.send('Server error Title get');
   }
 });
 
@@ -86,17 +86,17 @@ router.route('/titles')
       });
     } catch (err) {
       console.error(err);
-      res.send('Server error');
+      res.send('Server error Title route');
     }
   })
 
 // Access the titles table and creates a dummy row in the titles table
   .post(async (req, res) => {
     const newTitle = await db.Title.create({
-      primary_title: '500 Days of Summer', 
-      title_type: 'Movie',
+      primary_title: '500 Days of Summer',
+      title_type: 'Movie'
     });
-    res.send('dummyValue')
+    res.send('dummyValue');
   })
 
 // end of Gerson pt 1
@@ -120,6 +120,47 @@ router.route('/titles')
 //     }
 //   });
 // Gerson pt 2
+router.get('/episodes/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const episodeList = await db.episode_details.findOne({
+      where: {
+        episode_id: `${id}`
+      }
+    });
+    res.send({
+      episodeList
+    });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error Episode get');
+  }
+});
+
+// Access the actors table and receiving the actor's first name
+router.route('/episodes')
+  .get(async (req, res) => {
+    try {
+      const episodeList = await db.episode_details.findAll({
+        order: [['episode_name', 'DESC']]
+      });
+      res.json({
+        data: episodeList
+      });
+    } catch (err) {
+      console.error(err);
+      res.send('Server error episode route');
+    }
+  })
+
+// Access the actors table and create a dummy row in the actors table
+  .post(async (req, res) => {
+    const newEpisode = await db.episode_details.create({
+      episode_name: 'firstDummy', 
+      season_number: 'secondDummy' 
+    });
+    res.send('dummyValue')
+  })
 
 // end of Gerson pt 2
 /// /////////////////////////////////

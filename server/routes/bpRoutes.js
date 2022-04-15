@@ -40,7 +40,7 @@ router.post('/post', async (req, res) => {
 
     const postQuery = 
     
-           `INSERT INTO meals(meal_name) VALUES (${req.query['new_food_name']});`;
+           `INSERT INTO meals(meal_name) VALUES ('${req.query['new_food_name']}');`;
     try {
          
         const result = await db.sequelizeDB.query(postQuery, {
@@ -68,7 +68,7 @@ router.delete('/delete', async (req, res) => {
             type: sequelize.QueryTypes.DELETE
         });
 
-        res.json(`Deleleted the new row entry with meal id:  ${req.query['meal_id']}`);
+        res.json(`Deleted the new row entry with meal id:  ${req.query['meal_id']}`);
         //res.json({message: "The database has received your food request!"})
     } catch(e){
         console.log('The following error has occured ' + e );

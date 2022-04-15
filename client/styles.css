@@ -13,13 +13,24 @@
     cursor: pointer;
 }
 
+.logo_title{
+    display: flex;
+    flex-direction: row;
+}
 .titile_name {
     display: flex;
     position: absolute;
     width: 568px;
     height: 117px;
-    left: 550px;
+    left: 640px;
     top: 30px;
+}
+
+.logos {
+    display: flex;
+    position: absolute;
+    left: 530px;
+    top: 27px;
 }
 
 .about {
@@ -97,3 +108,27 @@
 .image {
     padding-top: 40px;
 }
+
+.dinning {
+    position: absolute;
+    left: 130px;
+    top: 617px;
+}
+
+.feed {
+    position: absolute;
+    width: 305px;
+    height: 44px;
+    left: 70px;
+    top: 770px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+
+    color: #000000;
+}
+

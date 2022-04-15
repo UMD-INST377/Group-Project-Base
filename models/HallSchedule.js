@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
   const HallSchedule = database.define(
-    'Hall_Schedule',
+    'hall_schedule',
     {
       schedule_id: {
         type: DataTypes.STRING,

@@ -31,8 +31,8 @@ router.route('/bark')
 
   .put(async(req, res) => {
     try {
-      const result = await db.sequelizeDB.query(barkcontroller.barkPut),
-      {
+      const result = await db.sequelizeDB.query(barkcontroller.barkPut, 
+        {   
         replacements: {
           bark_id: req.body.bark_id,
           plants: req.body.plant
@@ -48,7 +48,7 @@ router.route('/bark')
 
    .post(async(req, res) => {
     try {
-      const result = await db.sequelizeDB.query(barkcontroller.barkPost),
+      const result = await db.sequelizeDB.query(barkcontroller.barkPost,
       {
         replacements: {plants: req.body.plants},
         type: sequelize.QueryTypes.INSERT

@@ -64,7 +64,7 @@ router.delete('/delete', async (req, res) => {
            `DELETE FROM meals WHERE meal_id = ${req.query['meal_id']} ;`;
     try {
          
-        const result = await db.sequelizeDB.query(postQuery, {
+        const result = await db.sequelizeDB.query(deleteQuery, {
             type: sequelize.QueryTypes.DELETE
         });
 

@@ -13,19 +13,33 @@ import resController from '../controller/resController.js';
 const router = express.Router();
 
 /* artist endpoint */
-router.route('/artists')
-  .get(async (req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(artistsController.artistGet,
-        {
-          type: sequelize.QueryTypes.SELECT
-        });
-      console.log('This is the route');
-      res.json({data: result});
-    } catch (err) {
-      res.json({ error: err});
-    }
-  })
+router.route('/artists');
+router.get(async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(artistsController.artistGet,
+      {
+        type: sequelize.QueryTypes.SELECT
+      });
+    console.log('This is the route');
+    res.json({data: result});
+  } catch (err) {
+    res.json({ error: err});
+  }
+});
+
+router.get('/artists/:artist_id', async (req, res) => {
+  try {
+    const artists = await db.artists.findOne({
+      where: {
+        artist_id: req.params.artist_id
+      }
+    });
+    res.json({data: artists});
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+})
 
   .put(async(req, res) => {
     try {
@@ -56,6 +70,23 @@ router.route('/artists')
       res.json({ error: 'Server error'});
     }
   })
+
+// // Todo:
+// .post(async (req, res) => {
+//   try{
+//     console.log(req.body);
+//     console.log(req.body?.dining);
+//     const hallId = req.body?.dining || 0;
+//     const result = await db.sequelizeDB.query(hallIdQuery, {
+//       replacements: { hall_id: hallId },
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     res.json({ data: result })
+//   } catch (err) {
+//     console.log(err);
+//     res.send({message: "Something went wrong on the SQL request"});
+//   }
+// });
 
   .delete(async(req, res) => {
     try {

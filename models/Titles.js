@@ -1,5 +1,5 @@
-let newDate = new Date (2019, 3, 51)
-let film = 'Film'
+let newDate = new Date (2019, 3, 51);
+let film = 'Film';
 
 export default (database, DataTypes) => {
   const title = database.define('title', {
@@ -30,29 +30,29 @@ export default (database, DataTypes) => {
       defaultValue: newDate
     },
     language: {
-        type: DataTypes.STRING,
-        allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: true
     },
     region: {
-        type: DataTypes.STRING,
-        allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: true
     },
     is_adult: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     },
     title_rating: {
-        type: DataTypes.FLOAT,
-        allowNull: true,
+      type: DataTypes.FLOAT,
+      allowNull: true
     },
     title_votes: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+      type: DataTypes.INTEGER,
+      allowNull: true
     },
     runtime_min: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+      type: DataTypes.INTEGER,
+      allowNull: true
     },
   });
-  return title
+  return title;
 };

@@ -62,7 +62,7 @@ router.get('/titles/:id', async (req, res) => {
     const {id} = req.params;
     const titleList = await db.Title.findOne({
       where: {
-        actor_id: `${id}`
+        title_id: `${id}`
       }
     });
     res.send({
@@ -74,7 +74,7 @@ router.get('/titles/:id', async (req, res) => {
   }
 });
 
-// Access the actors table and receiving the actor's first name 
+// Access the titles table and receiving the title's first name 
 router.route('/titles')
   .get(async (req, res) => {
     try {
@@ -92,14 +92,14 @@ router.route('/titles')
 
 // Access the actors table and creates a dummy row in the actors table
   .post(async (req, res) => {
-    const newTitle = await db.Actor.create({
+    const newTitle = await db.Title.create({
       primary_title: '500 Days of Summer', 
       title_type: 'Movie',
     });
     res.send('dummyValue')
   })
 
-
+// end of Gerson pt 1
 
 
 
@@ -119,7 +119,9 @@ router.route('/crew')
       res.send('Server error');
     }
   });
-//
+// Gerson pt 2
+
+// end of Gerson pt 2
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

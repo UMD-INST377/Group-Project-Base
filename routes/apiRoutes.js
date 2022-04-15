@@ -71,7 +71,7 @@ router.get('/students/:id', async (req, res) => {
     res.send('Server error');
   }
 });
-
+/*
 router.get('/company', async (req, res) => {
   try {
     const company = await db.sequelizeDB.query(`SELECT * from company`)
@@ -92,7 +92,7 @@ router.get('/company/:id', async (req, res) => {
     res.send('Server error');
   }
 });
-
+*/
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

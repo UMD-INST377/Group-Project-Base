@@ -4,8 +4,7 @@
 // import Meals from './Meals.js';
 import Actor from './Actors.js';
 import Titles from './Titles.js';
-import Crew from './Crew.js';
-import Episodes from './Episodes.js';
+
 
 export default {
   // DietaryRestrictions,
@@ -13,7 +12,5 @@ export default {
   // Macros,
   // Meals,
   Actor,
-  Titles,
-  Crew,
-  Episodes
+  Titles
 };

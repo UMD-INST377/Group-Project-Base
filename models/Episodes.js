@@ -5,6 +5,7 @@ export default (database, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true
     },
     title_id: {
       type: DataTypes.INTEGER,

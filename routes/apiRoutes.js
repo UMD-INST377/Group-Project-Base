@@ -70,11 +70,11 @@ router.get('/titles/:id', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.send('Server error');
+    res.send('Server error Title');
   }
 });
 
-// Access the titles table and receiving the title's first name 
+// Access the titles table and receiving the title's name 
 router.route('/titles')
   .get(async (req, res) => {
     try {
@@ -90,7 +90,7 @@ router.route('/titles')
     }
   })
 
-// Access the actors table and creates a dummy row in the actors table
+// Access the titles table and creates a dummy row in the titles table
   .post(async (req, res) => {
     const newTitle = await db.Title.create({
       primary_title: '500 Days of Summer', 
@@ -104,21 +104,21 @@ router.route('/titles')
 
 
 
-//
-router.route('/crew')
-  .get(async (req, res) => {
-    try {
-      const crewList = await db.Crew.findAll({
-        order: [['fname', 'DESC']]
-      });
-      res.json({
-        data: crewList
-      });
-    } catch (err) {
-      console.error(err);
-      res.send('Server error');
-    }
-  });
+// not sure who did this
+// router.route('/crew')
+//   .get(async (req, res) => {
+//     try {
+//       const crewList = await db.Crew.findAll({
+//         order: [['fname', 'DESC']]
+//       });
+//       res.json({
+//         data: crewList
+//       });
+//     } catch (err) {
+//       console.error(err);
+//       res.send('Server error');
+//     }
+//   });
 // Gerson pt 2
 
 // end of Gerson pt 2

@@ -11,5 +11,5 @@ export default {
   // Macros,
   // Meals,
   Actor,
-  Titles,
+  Titles
 };

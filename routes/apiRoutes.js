@@ -7,25 +7,27 @@ import db from '../database/initializeDB.js';
 import artistsController from '../controller/artistsController.js';
 import artworkController from '../controller/artworkController.js';
 import countryController from '../controller/countryController.js';
+import customerController from '../controller/customerController.js';
 import galleriesController from '../controller/galleriesController.js';
+import genresController from '../controller/genresController.js';
 import resController from '../controller/resController.js';
 
 const router = express.Router();
 
 /* artist endpoint */
-router.route('/artists');
-router.get(async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(artistsController.artistGet,
-      {
-        type: sequelize.QueryTypes.SELECT
-      });
-    console.log('This is the route');
-    res.json({data: result});
-  } catch (err) {
-    res.json({ error: err});
-  }
-});
+router.route('/artists')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(artistsController.artistGet,
+        {
+          type: sequelize.QueryTypes.SELECT
+        });
+      console.log('This is the route');
+      res.json({data: result});
+    } catch (err) {
+      res.send({ error: err});
+    }
+  });
 
 router.get('/artists/:artist_id', async (req, res) => {
   try {
@@ -37,7 +39,7 @@ router.get('/artists/:artist_id', async (req, res) => {
     res.json({data: artists});
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 })
 
@@ -64,29 +66,12 @@ router.get('/artists/:artist_id', async (req, res) => {
         replacements: {art: req.body.art},
         type: sequelize.QueryTypes.INSERT
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
     }
   })
-
-// // Todo:
-// .post(async (req, res) => {
-//   try{
-//     console.log(req.body);
-//     console.log(req.body?.dining);
-//     const hallId = req.body?.dining || 0;
-//     const result = await db.sequelizeDB.query(hallIdQuery, {
-//       replacements: { hall_id: hallId },
-//       type: sequelize.QueryTypes.SELECT
-//     });
-//     res.json({ data: result })
-//   } catch (err) {
-//     console.log(err);
-//     res.send({message: "Something went wrong on the SQL request"});
-//   }
-// });
 
   .delete(async(req, res) => {
     try {
@@ -96,7 +81,7 @@ router.get('/artists/:artist_id', async (req, res) => {
         },
         type: sequelize.QueryTypes.DELETE
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Deleted successfully');
     } catch (err) {
       res.json({error: 'Server error'});
@@ -114,9 +99,23 @@ router.route('/artwork')
       console.log('This is the route');
       res.json({data: result});
     } catch (err) {
-      res.json({ error: err});
+      res.send({ error: err});
     }
-  })
+  });
+
+router.get('/artwork/:artwork_id', async (req, res) => {
+  try {
+    const artwork = await db.artwork.findOne({
+      where: {
+        artwork_id: req.params.artwork_id
+      }
+    });
+    res.json({data: artwork});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+})
 
   .put(async(req, res) => {
     try {
@@ -128,7 +127,7 @@ router.route('/artwork')
           },
           type: sequelize.QueryTypes.UPDATE
         });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -141,7 +140,7 @@ router.route('/artwork')
         replacements: {art: req.body.art},
         type: sequelize.QueryTypes.INSERT
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -156,7 +155,7 @@ router.route('/artwork')
         },
         type: sequelize.QueryTypes.DELETE
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Deleted successfully');
     } catch (err) {
       res.json({error: 'Server error'});
@@ -174,9 +173,23 @@ router.route('/country')
       console.log('This is the route');
       res.json({data: result});
     } catch (err) {
-      res.json({ error: err});
+      res.send({ error: err});
     }
-  })
+  });
+
+router.get('/country/:country_id', async (req, res) => {
+  try {
+    const country = await db.country.findOne({
+      where: {
+        country_id: req.params.country_id
+      }
+    });
+    res.json({data: country});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+})
 
   .put(async(req, res) => {
     try {
@@ -188,10 +201,10 @@ router.route('/country')
           },
           type: sequelize.QueryTypes.UPDATE
         });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
-      res.json({ error: 'Server error'});
+      res.send({ error: 'Server error'});
     }
   })
 
@@ -201,7 +214,7 @@ router.route('/country')
         replacements: {art: req.body.art},
         type: sequelize.QueryTypes.INSERT
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -216,7 +229,7 @@ router.route('/country')
         },
         type: sequelize.QueryTypes.DELETE
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Deleted successfully');
     } catch (err) {
       res.json({error: 'Server error'});
@@ -234,9 +247,23 @@ router.route('/customer')
       console.log('This is the route');
       res.json({data: result});
     } catch (err) {
-      res.json({ error: err});
+      res.send({ error: err});
     }
-  })
+  });
+
+router.get('/customer/:customer_id', async (req, res) => {
+  try {
+    const customer = await db.customer.findOne({
+      where: {
+        customer_id: req.params.customer_id
+      }
+    });
+    res.json({data: customer});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+})
 
   .put(async(req, res) => {
     try {
@@ -248,7 +275,7 @@ router.route('/customer')
           },
           type: sequelize.QueryTypes.UPDATE
         });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -261,7 +288,7 @@ router.route('/customer')
         replacements: {art: req.body.art},
         type: sequelize.QueryTypes.INSERT
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -276,14 +303,14 @@ router.route('/customer')
         },
         type: sequelize.QueryTypes.DELETE
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Deleted successfully');
     } catch (err) {
       res.json({error: 'Server error'});
     }
   });
 
-/* gallery endpoint */
+/* galleries endpoint */
 router.route('/galleries')
   .get(async (req, res) => {
     try {
@@ -294,9 +321,23 @@ router.route('/galleries')
       console.log('This is the route');
       res.json({data: result});
     } catch (err) {
-      res.json({ error: err});
+      res.send({ error: err});
     }
-  })
+  });
+
+router.get('/galleries/:gallery_id', async (req, res) => {
+  try {
+    const galleries = await db.galleries.findOne({
+      where: {
+        gallery_id: req.params.gallery_id
+      }
+    });
+    res.json({data: galleries});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+})
 
   .put(async(req, res) => {
     try {
@@ -308,7 +349,7 @@ router.route('/galleries')
           },
           type: sequelize.QueryTypes.UPDATE
         });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -321,7 +362,7 @@ router.route('/galleries')
         replacements: {art: req.body.art},
         type: sequelize.QueryTypes.INSERT
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -336,7 +377,7 @@ router.route('/galleries')
         },
         type: sequelize.QueryTypes.DELETE
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Deleted successfully');
     } catch (err) {
       res.json({error: 'Server error'});
@@ -354,9 +395,23 @@ router.route('/genres')
       console.log('This is the route');
       res.json({data: result});
     } catch (err) {
-      res.json({ error: err});
+      res.send({ error: err});
     }
-  })
+  });
+
+router.get('/genres/:genre_id', async (req, res) => {
+  try {
+    const genres = await db.genres.findOne({
+      where: {
+        genre_id: req.params.genre_id
+      }
+    });
+    res.json({data: genres});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+})
 
   .put(async(req, res) => {
     try {
@@ -368,7 +423,7 @@ router.route('/genres')
           },
           type: sequelize.QueryTypes.UPDATE
         });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -381,7 +436,7 @@ router.route('/genres')
         replacements: {art: req.body.art},
         type: sequelize.QueryTypes.INSERT
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -396,7 +451,7 @@ router.route('/genres')
         },
         type: sequelize.QueryTypes.DELETE
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Deleted successfully');
     } catch (err) {
       res.json({error: 'Server error'});
@@ -414,9 +469,23 @@ router.route('/reservation')
       console.log('This is the route');
       res.json({data: result});
     } catch (err) {
-      res.json({ error: err});
+      res.send({ error: err});
     }
-  })
+  });
+
+router.get('/reservation/:reservation_id', async (req, res) => {
+  try {
+    const reservation = await db.reservation.findOne({
+      where: {
+        reservation_id: req.params.reservation_id
+      }
+    });
+    res.json({data: reservation});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+})
 
   .put(async(req, res) => {
     try {
@@ -428,7 +497,7 @@ router.route('/reservation')
           },
           type: sequelize.QueryTypes.UPDATE
         });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -441,7 +510,7 @@ router.route('/reservation')
         replacements: {art: req.body.art},
         type: sequelize.QueryTypes.INSERT
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -456,7 +525,7 @@ router.route('/reservation')
         },
         type: sequelize.QueryTypes.DELETE
       });
-      res.json(result);
+      res.json({data: result});
       console.log('Deleted successfully');
     } catch (err) {
       res.json({error: 'Server error'});

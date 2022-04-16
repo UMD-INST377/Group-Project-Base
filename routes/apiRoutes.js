@@ -36,6 +36,57 @@ router.route('/genre/:id')
         res.json({message: 'Error!'});
     }
 })
+.put(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.genre.update(
+        {
+          genre_name: req.body.genre_name
+        },
+        {
+          where: {
+            genre_id: id
+          }
+        }
+      );
+      res.send('Genre Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Server error'});
+    }
+})
+.delete(async (req, res) => {
+  try {
+    const {id} = req.params;
+    await db.genre.destroy({
+      where: {
+        genre_id: id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.json({message: 'Server error'});
+  }
+});
+
+
+router.route('/genre')
+.post(async (req, res) => {
+    const genreList = await db.genre.findAll();
+    const currentId = (await genreList.length) + 1;
+    try {
+      const newGenre = await db.genre.create({
+        genre_id: currentId,
+        genre_name: req.body.type,
+      });
+      res.json(newGenre);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
 
 /// /////////////////////////////////
 /// //////\Daniel's Endpoints////////

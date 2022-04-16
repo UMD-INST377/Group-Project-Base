@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    'Meals',
+  const meals = sequelize.define(
+    'meals',
     {
       meal_id: {
         type: DataTypes.INTEGER,
@@ -17,5 +17,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  return meals;
 };

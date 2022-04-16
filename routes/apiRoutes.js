@@ -37,6 +37,21 @@ router.route('/genre/:id')
     }
 })
 
+router.route('/genre')
+.post(async (req, res) => {
+    try {
+        const genreType = req.body?.type || 0;
+        const result = await db.sequelizeDB.query('SELECT * FROM genre WHERE genre_name = :genre_name;', {
+            replacements: { genre_name: genreType },
+            type: sequelize.QueryTypes.SELECT
+        });
+        res.json({data: result});
+    }   catch (err) {
+        console.log(err);
+        res.send({message: 'Error!'});
+    }
+})
+
 /// /////////////////////////////////
 /// //////\Daniel's Endpoints////////
 /// /////////////////////////////////

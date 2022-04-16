@@ -36,6 +36,25 @@ router.route('/genre/:id')
         res.json({message: 'Error!'});
     }
 })
+.put(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.genre.update(
+        {
+          genre_name: req.body.genre_name
+        },
+        {
+          where: {
+            genre_id: id
+          }
+        }
+      );
+      res.send('Genre Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Server error'});
+    }
+});
 
 router.route('/genre')
 .post(async (req, res) => {
@@ -52,6 +71,7 @@ router.route('/genre')
       res.error('Server error');
     }
   });
+
 
 /// /////////////////////////////////
 /// //////\Daniel's Endpoints////////

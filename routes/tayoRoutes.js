@@ -70,5 +70,24 @@ router.route('/genre')
     }
   });
 
+router.route('/genre')
+.put(async (req, res) => {
+    try {
+      await db.genre.update(
+        {
+          genre_name: req.body.genre_name
+        },
+        {
+          where: {
+            genre_id: req.body.genre_id
+          }
+        }
+      );
+      res.send('Genre Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
 
 export default router;

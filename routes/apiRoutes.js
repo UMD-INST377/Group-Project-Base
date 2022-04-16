@@ -54,7 +54,22 @@ router.route('/genre/:id')
       console.error(err);
       res.json({message: 'Server error'});
     }
+})
+.delete(async (req, res) => {
+  try {
+    const {id} = req.params;
+    await db.genre.destroy({
+      where: {
+        genre_id: id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.json({message: 'Server error'});
+  }
 });
+
 
 router.route('/genre')
 .post(async (req, res) => {

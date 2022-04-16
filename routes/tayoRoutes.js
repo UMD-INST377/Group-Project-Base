@@ -41,21 +41,6 @@ router.route('/genre/:id')
 // POST, PUT, Delete: Assignment 2
 router.route('/genre')
 .post(async (req, res) => {
-    try {
-        const genreType = req.body?.type || 0;
-        const result = await db.sequelizeDB.query('SELECT * FROM genre WHERE genre_name = :genre_name;', {
-            replacements: { genre_name: genreType },
-            type: sequelize.QueryTypes.SELECT
-        });
-        res.json({data: result});
-    }   catch (err) {
-        console.log(err);
-        res.send({message: 'Error!'});
-    }
-})
-
-router.route('/genre')
-.post(async (req, res) => {
     const genreList = await db.genre.findAll();
     const currentId = (await genreList.length) + 1;
     try {
@@ -70,20 +55,36 @@ router.route('/genre')
     }
   });
 
-router.route('/genre')
+router.route('/genre/:id')
 .put(async (req, res) => {
     try {
+      const {id} = req.params;
       await db.genre.update(
         {
           genre_name: req.body.genre_name
         },
         {
           where: {
-            genre_id: req.body.genre_id
+            genre_id: id
           }
         }
       );
       res.send('Genre Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Server error'});
+    }
+});
+
+router.route('/genre/:id')
+.delete(async (req, res) => {
+    try {
+      await db.genre.destroy({
+        where: {
+          genre_id: req.params.genre_id
+        }
+      });
+      res.send('Successfully Deleted');
     } catch (err) {
       console.error(err);
       res.error('Server error');

@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 
 /// /////////////////////////////////
-/// ////////Tayo's Endpoints/////////
+/// ////////Tayo's Endpoints /////////
 /// /////////////////////////////////
 router.route('/genre')
 .get(async (req, res) => {

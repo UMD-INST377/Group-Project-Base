@@ -96,7 +96,32 @@ router.route('/josh')
     }
   });
 
-
+// Brian McMahon GET controllers
+router.route('/brian')
+  .get(async (req, res) => {
+    try {
+      const diningHall = await db.DiningHall.findAll();
+      res.json({data: diningHall});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+router.route('/brian/:id')
+  .get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const diningHall = await db.DiningHall.findOne({
+        where: {
+          hall_id: `${id}`
+        }
+      });
+      res.json({data: diningHall});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
 
 
 /// /////////////////////////////////

@@ -134,3 +134,38 @@ footer {
     padding: 0px 20px;
 }
 
+/*  CHARTS STYLES */
+.charts_subheader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.charts_title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 37px;
+    /* identical to box height */
+
+    color: #000000;
+}
+
+.charts_subtitle {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.chart_page_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 50px 10px 50px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+}

@@ -1,4 +1,4 @@
-export default (sequelize, DataTypes) => {
+333export default (sequelize, DataTypes) => {
     const genre = sequelize.define(
       'genre',
       {

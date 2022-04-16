@@ -16,7 +16,7 @@ router.get('/genres', async (req, res) => {
         res.json({ data: genres });
     } catch (err) {
         console.error(err);
-        res.send("Error in '/genres'!");
+        res.send("Error in GET '/genres'!");
     }
 });
 
@@ -30,7 +30,9 @@ router.get('/genres/:genre_id', async (req, res) => {
         res.json({ data: genres });
     } catch (err) {
         console.error(err);
-        res.error("Error in '/genres' or 'genre_id' is invalid!");
+        res.error("Error in GET '/genres' or 'genre_id' is invalid!");
+    }
+});
     }
 });
 

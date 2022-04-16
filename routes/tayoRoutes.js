@@ -36,7 +36,7 @@ router.route('/genre/:id')
         res.json({message: 'Error!'});
     }
 })
-
+.put(async )
 
 // POST, PUT, Delete: Assignment 2
 router.route('/genre')
@@ -53,4 +53,22 @@ router.route('/genre')
         res.send({message: 'Error!'});
     }
 })
+
+router.route('/genre')
+.post(async (req, res) => {
+    const genreList = await db.genre.findAll();
+    const currentId = (await genreList.length) + 1;
+    try {
+      const newGenre = await db.genre.create({
+        genre_id: currentId,
+        genre_name: req.body.genre_name,
+      });
+      res.json(newGenre);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
+
 export default router;

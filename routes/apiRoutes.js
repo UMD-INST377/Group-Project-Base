@@ -39,18 +39,19 @@ router.route('/genre/:id')
 
 router.route('/genre')
 .post(async (req, res) => {
+    const genreList = await db.genre.findAll();
+    const currentId = (await genreList.length) + 1;
     try {
-        const genreType = req.body?.type || 0;
-        const result = await db.sequelizeDB.query('SELECT * FROM genre WHERE genre_name = :genre_name;', {
-            replacements: { genre_name: genreType },
-            type: sequelize.QueryTypes.SELECT
-        });
-        res.json({data: result});
-    }   catch (err) {
-        console.log(err);
-        res.send({message: 'Error!'});
+      const newGenre = await db.genre.create({
+        genre_id: currentId,
+        genre_name: req.body.type,
+      });
+      res.json(newGenre);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
     }
-})
+  });
 
 /// /////////////////////////////////
 /// //////\Daniel's Endpoints////////

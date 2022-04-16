@@ -7,6 +7,7 @@ const router = express.Router();
 
 import db from '../database/initializeDB.js';
 import songDisplayQuery from '../controllers/songDisplay_query.js'
+import songDisplayPostQuery from '../controllers/songDisplay_post_query.js'
 
 router.route('/')
   .get(async (req, res) => {
@@ -21,6 +22,24 @@ router.route('/')
       console.log('Touched sqlDemo get error', error)
       res.json({message: "error in sqlDemo"})
 
+    }
+  })
+
+  .post(async (req, res) => {
+    try {
+      console.dir(req.body, {depth: null});
+      console.log(req.body?.tname);
+      const songName = req.body?.tname || '';
+      const result = await db.sequelizeDB.query(songDisplayPostQuery, {
+        replacements: {track_name: songName},
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json({data: result});
+      
+    } catch (err) {
+      console.log(err);
+      res.send({message: err})
+      
     }
   })
 

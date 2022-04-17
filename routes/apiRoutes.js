@@ -95,6 +95,7 @@ router.route('/josh')
       res.json({message: 'something went wrong'});
     }
   });
+  
 
 // Brian McMahon GET controllers
 router.route('/brian')
@@ -102,6 +103,23 @@ router.route('/brian')
     try {
       const diningHall = await db.DiningHall.findAll();
       res.json({data: diningHall});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .post(async (req, res) => {
+    const allHalls = await db.DiningHall.findAll();
+    const nextHall = (await allHalls.length) + 1;
+    try {
+      const newRecord = await db.DiningHall.create({
+        hall_id: nextHall,
+        hall_name: "Another Dining Hall",
+        hall_address: "589 Baltimore Ave, College Park MD",
+        hall_lat: 45.628942,
+        hall_long: 48.18151
+      });
+      res.json(newRecord);
     } catch (err) {
       console.log(err);
       res.json({message: 'Something went wrong'});
@@ -121,8 +139,44 @@ router.route('/brian/:id')
       console.log(err);
       res.json({message: 'Something went wrong'});
     }
-  });
-
+  })
+  .put(async (req, res) => {
+    try { //Add a way to check if exists
+      const {id} = req.params; 
+      await db.DiningHall.update(
+        {
+          hall_name: "Updated Hall",
+          hall_location: "123 Baltimore Ave, College Park MD",
+          hall_lat: 46.628942,
+          hall_long: 48.18151
+        },
+        {
+          where: {
+            hall_id: `${id}`
+          }
+        }
+      );
+    res.send('Successfully Updated');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const {id} = req.params; 
+      await db.DiningHall.destroy({
+        where: {
+          hall_id: `${id}`
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });;
+  
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

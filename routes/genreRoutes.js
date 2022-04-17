@@ -9,7 +9,7 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.route('/genres').get(async (req, res) => {
+router.route('/').get(async (req, res) => {
   try {
     const genre = await db.Genres.findAll();
     const reply = genre.length > 0 ? { data: genre } : { message: 'No results found' };
@@ -19,7 +19,7 @@ router.route('/genres').get(async (req, res) => {
     res.send('Server error1');
   }
 });
-router.route('/genres/:genre_id').get(async (req, res) => {
+router.route('/:genre_id').get(async (req, res) => {
   try {
     const {genreID} = req.params;
     const genresList = await db.Genres.findOne({
@@ -34,7 +34,7 @@ router.route('/genres/:genre_id').get(async (req, res) => {
   }
 });
 
-router.route('/genres').post(async (req, res) => {
+router.route('/').post(async (req, res) => {
   const genreID = await db.Genres.findAll();
   const current = (await genreID.length) + 1;
   try {
@@ -52,7 +52,7 @@ router.route('/genres').post(async (req, res) => {
   }
 });
 
-router.route('/genres').put(async (req, res) => {
+router.route('/').put(async (req, res) => {
   try {
     await db.Genres.update(
       {
@@ -71,7 +71,7 @@ router.route('/genres').put(async (req, res) => {
     res.send('Genre not found');
   }
 });
-router.route('/genres/:genre_id').delete(async (req, res) => {
+router.route('/:genre_id').delete(async (req, res) => {
   try {
     await db.ratings.destroy({
       where: {

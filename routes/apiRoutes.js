@@ -19,6 +19,6 @@ router.use('/genres', genres);
 router.use('/images', images);
 router.use('/languages', languages);
 router.use('/movies', movies);
-router.use('/', ratings);
+router.use('/ratings', ratings);
 
 export default router;

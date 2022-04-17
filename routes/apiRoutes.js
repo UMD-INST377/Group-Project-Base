@@ -29,6 +29,23 @@ router.get('/actors/:id', async (req, res) => {
   }
 });
 
+// To delete a specific actors
+router.post('/delete_actors', async (req, res) => {
+  try {
+    const actorList = await db.Actor.destroy({
+      where: {
+        actor_id: req.body.actor_id
+      }
+    });
+    res.send(
+      'Sucessfully Deleted'
+    );
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 // Access the actors table and receiving the actor's first name
 router.route('/actors')
   .get(async (req, res) => {
@@ -48,8 +65,10 @@ router.route('/actors')
 // Access the actors table and create a dummy row in the actors table
   .post(async (req, res) => {
     const newActor = await db.Actor.create({
-      fname: 'firstDummy', 
-      lname: 'secondDummy' 
+      fname: req.body.fname, 
+      lname: req.body.lname,
+      deathyear: req.body.deathyear, 
+      birthyear: req.body.birthyear,
     });
     res.send('dummyValue')
   })

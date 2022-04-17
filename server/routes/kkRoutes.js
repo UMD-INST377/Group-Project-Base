@@ -11,7 +11,7 @@ const router = express.Router();
 //get restrictions
 router.route('/').get(async (req, res) => {
   try {
-    const restrictions = await db.sequelizeDB.query(dininghallQuery, {
+    const restrictions = await db.sequelizeDB.query(foodRestrictions, {
       type: sequelize.QueryTypes.SELECT
     })
     res.json(foodRestrictions);

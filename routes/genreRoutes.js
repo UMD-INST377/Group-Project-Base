@@ -6,7 +6,7 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.route('/').get(async (req, res) => {
+router.route('/genre').get(async (req, res) => {
   try {
     const genres = await db.Genres.findAll();
     const reply = genres.length > 0 ? { data: genres } : { message: 'no results found' };
@@ -15,7 +15,7 @@ router.route('/').get(async (req, res) => {
     res.json('Server error');
   }
 });
-router.route('/:genre_id').get(async (req, res) => {
+router.route('/genre/:genre_id').get(async (req, res) => {
   try {
     const genres = await db.Genres.findAll({
       where: {
@@ -28,4 +28,5 @@ router.route('/:genre_id').get(async (req, res) => {
   }
 });
 
+router.route('/').
 export default router;

@@ -1,8 +1,10 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
+import chalk from 'chalk';
+import fetch from 'node-fetch';
 import db from '../database/initializeDB.js';
+import AlbumsQuery from './Albums_query.js';
 
 const router = express.Router();
 
@@ -269,19 +271,21 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-
-export default router;
-
 /// ////////////////////
 /// Liam's Enpoints///
 /// //////////////////
+
+// /GetAlbum
 router.route('/album')
   .get('/album', async (req, res) => {
     try {
-      const albumlist = await db.album.findAll({order: [[album_id, release_id, genre_id, price_id, album_name]]})
+      const albumlist = await db.album.findAll({order: 
+        [[album_id, release_id, genre_id, price_id, album_name]]})
       res.json({data: albumlist});
     } catch (error) {
       console.error(error);
-      res.send('Something went wrong on /album end')
+      res.json({message: 'Something went wrong on /album end'})
     }
 })
+
+export default router;

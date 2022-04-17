@@ -10,6 +10,182 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+<<<<<<< Updated upstream
+=======
+// Created by Viphu Nguyen
+// Access the actors table and receiving the actor's id
+router.get('/actors/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const actorList = await db.Actor.findOne({
+      where: {
+        actor_id: `${id}`
+      }
+    });
+    res.send({
+      actorList
+    });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+// To delete a specific actors
+router.post('/delete_actors', async (req, res) => {
+  try {
+    const actorList = await db.Actor.destroy({
+      where: {
+        actor_id: req.body.actor_id
+      }
+    });
+    res.send(
+      'Sucessfully Deleted'
+    );
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+// Access the actors table and receiving the actor's first name
+router.route('/actors')
+  .get(async (req, res) => {
+    try {
+      const actorList = await db.Actor.findAll({
+        order: [['fname', 'DESC']]
+      });
+      res.json({
+        data: actorList
+      });
+    } catch (err) {
+      console.error(err);
+      res.send('Server error');
+    }
+  })
+
+// Access the actors table and create a dummy row in the actors table
+  .post(async (req, res) => {
+    const newActor = await db.Actor.create({
+      fname: req.body.fname, 
+      lname: req.body.lname,
+      deathyear: req.body.deathyear, 
+      birthyear: req.body.birthyear,
+    });
+    res.send('dummyValue')
+  })
+// End of Viphu Nguyen's Contribution 1
+
+
+
+
+
+// Gerson's contribution 1
+
+router.get('/titles/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const titleList = await db.Title.findOne({
+      where: {
+        title_id: `${id}`
+      }
+    });
+    res.send({
+      titleList
+    });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error Title get');
+  }
+});
+
+// Access the titles table and receiving the title's name 
+router.route('/titles')
+  .get(async (req, res) => {
+    try {
+      const titleList = await db.Title.findAll({
+        order: [['primary_title', 'DESC']]
+      });
+      res.json({
+        data: titleList
+      });
+    } catch (err) {
+      console.error(err);
+      res.send('Server error Title route');
+    }
+  })
+
+// Access the titles table and creates a dummy row in the titles table
+  .post(async (req, res) => {
+    const newTitle = await db.Title.create({
+      primary_title: '500 Days of Summer',
+      title_type: 'Movie'
+    });
+    res.send('dummyValue');
+  })
+
+// end of Gerson pt 1
+
+// not sure who did this
+// router.route('/crew')
+//   .get(async (req, res) => {
+//     try {
+//       const crewList = await db.Crew.findAll({
+//         order: [['fname', 'DESC']]
+//       });
+//       res.json({
+//         data: crewList
+//       });
+//     } catch (err) {
+//       console.error(err);
+//       res.send('Server error');
+//     }
+//   });
+// Gerson pt 2
+router.get('/episodes/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const episodeList = await db.episode_details.findOne({
+      where: {
+        episode_id: `${id}`
+      }
+    });
+    res.send({
+      episodeList
+    });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error Episode get');
+  }
+});
+
+// Access the actors table and receiving the actor's first name
+router.route('/episodes')
+  .get(async (req, res) => {
+    try {
+      const episodeList = await db.episode_details.findAll({
+        order: [['episode_name', 'DESC']]
+      });
+      res.json({
+        data: episodeList
+      });
+    } catch (err) {
+      console.error(err);
+      res.send('Server error episode route');
+    }
+  })
+
+// Access the actors table and create a dummy row in the actors table
+  .post(async (req, res) => {
+    const newEpisode = await db.episode_details.create({
+      episode_name: 'firstDummy', 
+      season_number: 'secondDummy' 
+    });
+    res.send('dummyValue')
+  })
+
+// end of Gerson pt 2
+>>>>>>> Stashed changes
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

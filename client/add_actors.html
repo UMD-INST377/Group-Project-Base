@@ -1,0 +1,50 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Add Episode</title>
+    <link rel='stylesheet' href='forms_style.css'/>
+  </head>
+  <body>
+    
+    <header class='speaker-form-header'>
+      <h1>Add New Actors</h1>
+      <p><em>Add actors to the shared database.</em></p>
+    </header>
+    <form action='/api/actors' method='post' class='speaker-form'>
+      <div class='form-row'>
+        <label for='fname'>First Name</label>
+        <input id='fname' name='fname' type='text'/>
+      </div>
+      <div class="form-row">
+        <label for='lname'>Last Name</label>
+        <input id='lname' name='lname' type='text'/>
+      </div>
+      <div class="form-row">
+        <label for='deathyear'>Death Year</label>
+        <input id='deathyear' name='deathyear' type='date'/>
+      </div>
+      <div class="form-row">
+        <label for='birthyear'>Birth Year</label>
+        <input id='birthyear' name='birthyear' type='date'/>
+      </div>
+      <div class='form-row'>
+        <button>Submit</button>
+      </div>
+    </form>
+
+    <!-- Deleting the actors-->
+    <header class='speaker-form-header'>
+        <h1>Delete Actors</h1>
+        <p><em>Delete actors from the shared database.</em></p>
+      </header>
+    <form action='/api/delete_actors' method='post' class='speaker-form'>
+        <div class='form-row'>
+          <label for='actor_id'>Actor Id</label>
+          <input id='actor_id' name='actor_id' type='text'/>
+        </div>
+        <div class='form-row'>
+          <button>Submit</button>
+        </div>
+      </form>
+  </body>
+</html>

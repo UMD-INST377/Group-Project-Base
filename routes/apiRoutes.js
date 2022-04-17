@@ -120,9 +120,6 @@ router.route('/titles')
 
 // end of Gerson pt 1
 
-
-
-
 // not sure who did this
 // router.route('/crew')
 //   .get(async (req, res) => {

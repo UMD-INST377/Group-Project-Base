@@ -43,13 +43,13 @@ router.post('/artists', async (req, res) => {
   const artists = await db.artists.findAll();
   const currentId = (await artists.length) + 1;
   try {
-    const newDining = await db.DiningArtist.create({
+    const newArtist = await db.artist.create({
       artist_id: currentId,
       artist_name: req.body.artist_name,
       total_artist_albums: req.body.total_artist_albums,
       artist_link: req.body.artist_link
     });
-    res.json(newDining);
+    res.json(newArtist);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -188,7 +188,7 @@ router.get('/releases/:release_id', async (req, res) => {
   try {
     const hall = await db.releases.findAll({
       where: {
-        release_id : req.params.genre_id
+        release_id : req.params.release_id
       }
     });
 
@@ -243,6 +243,85 @@ router.delete('/releases/:release_id', async (req, res) => {
     await db.releases.destroy({
       where: {
         release_id: req.params.release_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////Style Endpoints/////////
+/// /////////////////////////////////
+
+router.get('/styles', async (req, res) => {
+  try {
+    const styleItems = await db.styles.findAll(); 
+    const reply = styleItems.length > 0 ? { data: halls } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/styles/:style_id', async (req, res) => {
+  try {
+    const styleItems = await db.styles.findAll({
+      where: {
+        style_id : req.params.style_id
+      }
+    });
+
+    res.json(styleItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/styles', async (req, res) => {
+  const styleItems = await db.styles.findAll();
+  const currentId = (await styleItems.length) + 1;
+  try {
+    const newStyle = await db.styles.create({
+      style_id: currentId,
+      style_country: req.body.style_country
+    });
+    res.json(newStyle);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/styles', async (req, res) => {
+  try {
+    await db.styles.update(
+      {
+        style_id: req.body.style_id,
+        style_name: req.body.style_name
+      },
+      {
+        where: {
+          style_id: req.body.style_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/styles/:style_id', async (req, res) => {
+  try {
+    await db.styles.destroy({
+      where: {
+        style_id: req.params.style_id
       }
     });
     res.send('Successfully Deleted');

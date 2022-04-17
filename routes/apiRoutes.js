@@ -288,7 +288,7 @@ router.post('/styles', async (req, res) => {
   try {
     const newStyle = await db.styles.create({
       style_id: currentId,
-      style_country: req.body.style_country
+      style_name: req.body.style_name
     });
     res.json(newStyle);
   } catch (err) {

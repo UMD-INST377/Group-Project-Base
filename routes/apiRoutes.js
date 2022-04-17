@@ -223,7 +223,7 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Artist_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Artist_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Artist_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Artist_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Artist_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Artist_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Artist_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Artist_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Artist_Tracker`.`Meals`JOIN `Dining_Artist_Tracker`.`Macros`)WHERE(`Dining_Artist_Tracker`.`Meals`.`meal_id` = `Dining_Artist_Tracker`.`Macros`.`meal_id`)';
+const macrosCustom = 'select `pr`.`albums`.`album_id` AS `album_id`,`pr`.`albums`.`album_name` AS `album_name`,`pr`.`albums`.`number_of_songs` AS `number_of_songs`,`pr`.`albums`.`average_song_length` AS `average_song_length`,`pr`.`albums`.`album_link` AS `album_link`,`pr`.`albums`.`album_versions` AS `album_versions`,`pr`.`albums`.`release_id` AS `release_id`,`pr`.`albums`.`artist_id` AS `artist_id`,`pr`.`album_genre_info`.`genre_id` AS `genre_id` from (`pr`.`albums` join `pr`.`album_genre_info` on((`pr`.`albums`.`album_id` = `pr`.`album_genre_info`.`album_id`)))) select `album_has_info`.`album_name` AS `album_name`,sum((`album_has_info`.`number_of_songs` * `album_has_info`.`average_song_length`)) AS `total_duration`,`pr`.`genres`.`genre_name` AS `genre_name`,count(`album_has_info`.`genre_id`) AS `number_of_genres` from (`album_has_info` join `pr`.`genres` on((`album_has_info`.`genre_id` = `pr`.`genres`.`genre_id`))) where `pr`.`genres`.`genre_name` in (select `pr`.`genres`.`genre_name` from (`pr`.`album_genre_info` join `pr`.`genres` on((`pr`.`album_genre_info`.`genre_id` = `pr`.`genres`.`genre_id`))) where (`pr`.`genres`.`genre_name` = `Rock`)) group by `album_has_info`.`album_id` having (`number_of_genres` = 1) order by `total_duration`'
 router.get('/table/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(macrosCustom, {
@@ -236,38 +236,38 @@ router.get('/table/data', async (req, res) => {
   }
 });
 
-const mealMapCustom = `SELECT artist_name,
-  artist_address,
-  artist_lat,
-  artist_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Artist d
-ON d.artist_id = ml.artist_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// const mealMapCustom = `SELECT artist_name,
+//   artist_address,
+//   artist_lat,
+//   artist_long,
+//   meal_name
+// FROM
+//   Meals m
+// INNER JOIN Meals_Locations ml 
+//   ON m.meal_id = ml.meal_id
+// INNER JOIN Dining_Artist d
+// ON d.artist_id = ml.artist_id;`;
+// router.get('/map/data', async (req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(mealMapCustom, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     res.json(result);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+// router.get('/custom', async (req, res) => {
+//   try {
+//     const result = await db.sequelizeDB.query(req.body.query, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     res.json(result);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 export default router;

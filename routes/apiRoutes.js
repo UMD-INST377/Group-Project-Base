@@ -106,6 +106,23 @@ router.route('/brian')
       console.log(err);
       res.json({message: 'Something went wrong'});
     }
+  })
+  .post(async (req, res) => {
+    const allHalls = await db.DiningHall.findAll();
+    const nextHall = (await allHalls.length) + 1;
+    try {
+      const newRecord = await db.DiningHall.create({
+        hall_id: nextHall,
+        hall_name: "Another Dining Hall",
+        hall_address: "589 Baltimore Ave, College Park MD",
+        hall_lat: 45.628942,
+        hall_long: 48.18151
+      });
+      res.json(newRecord);
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
   });
 router.route('/brian/:id')
   .get(async (req, res) => {
@@ -122,7 +139,7 @@ router.route('/brian/:id')
       res.json({message: 'Something went wrong'});
     }
   });
-
+  
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

@@ -6,6 +6,7 @@ import dietary_restrictionsQuery from '../controller/dietaryrestrictions_query.j
 
 const router = express.Router();
 
+// api/sqlDemo
 router.route('/')
   .get(async (req, res) => {
     try {
@@ -26,9 +27,9 @@ export default router;
   //TODO - Table 'Dining_Hall_Tracker.Meals' doesnt exist
   //TOTO: we need to demonstrate hooking this to a form
   try{
-    console.log(req.body); //checkign that we have a body at all
-    console.log(req.body?.dining); //optionallyc hecking for the dining value on the body object
-    const dietary_restrictionsType = (req.body?.dining) || 0;
+    console.dir((req.body), {depth:null}); //checking that we have a body at all
+    console.log(req.body?.restriction); //optionally checking for the category value on the body object
+    const dietary_restrictionsType = (req.body?.restriction) || 0;
     const result = await db.sequalizeDB.query(dietary_restrictionsQuery, {
       replacements: { restriction_type: dietary_restrictionsType },
       type: sequelize.QueryTypes.SELECT
@@ -36,6 +37,6 @@ export default router;
     res.json({ data: result});
   } catch (err){
     console.log(err);
-    res.send({ message: err})
+    res.send({ message: err});
   }
 })

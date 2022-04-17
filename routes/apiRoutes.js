@@ -10,8 +10,6 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
-<<<<<<< Updated upstream
-=======
 // Created by Viphu Nguyen
 // Access the actors table and receiving the actor's id
 router.get('/actors/:id', async (req, res) => {
@@ -185,7 +183,6 @@ router.route('/episodes')
   })
 
 // end of Gerson pt 2
->>>>>>> Stashed changes
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

@@ -1,0 +1,1 @@
+export default `SELECT * FROM hall_hours WHERE hall_hours_id = :hall_hours_id;`;

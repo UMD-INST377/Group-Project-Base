@@ -23,7 +23,7 @@ router.get('/client', (req, res) => {
 router.get('/mealLocation', async (req, res) => {
   try {
     const mealLocation = await db.MealsLocations.findAll();
-    res.json({data: mealLocation});
+    res.json(mealLocation);
   } catch (err) {
     console.error(err);
     res.send('There was an error');
@@ -32,20 +32,20 @@ router.get('/mealLocation', async (req, res) => {
 
 router.get('/mealLocation/:hall_id', async (req, res) => {
   try {
-    const sche = await db.MealsLocations.findAll({
+    const sche3 = await db.MealsLocations.findAll({
       where: {
         hall_id: req.params.hall_id
       }
     });
 
-    res.json(sche);
+    res.json(sche3);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/mealLocation/:hall_id', async (req, res) => {
+router.get('/mealLocation/:meal_id', async (req, res) => {
   try {
     const sche2 = await db.MealsLocations.findAll({
       where: {
@@ -59,7 +59,6 @@ router.get('/mealLocation/:hall_id', async (req, res) => {
     res.error('Server error');
   }
 });
-
 
 /// /////////////////////////////////
 /// ////Hall Schedule Endpoints////////

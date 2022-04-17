@@ -1,8 +1,7 @@
-const newDate = new Date(2019, 3, 15);
-
+let newDate = new Date (2019, 3, 51)
 export default (database, DataTypes) => {
-  const actor = database.define('actor', {
-    actor_id: {
+  const crew = database.define('crew', {
+    crew_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -27,6 +26,5 @@ export default (database, DataTypes) => {
       defaultValue: newDate
     }
   });
-
-  return actor;
+  return crew;
 };

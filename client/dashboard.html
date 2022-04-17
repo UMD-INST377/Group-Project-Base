@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard Page</title>
+    <link rel='stylesheet' href='styles.css'/>
+  </head>
+
+  <body class='wrapper'>
+    <div class='header'> <!--Header-->
+      <img id="logo" src='images/logo.jpg' alt='Logo Image'/>
+      <h1 class='brand_name'>MyCinema</h1>
+      <nav a class='navbar'> 
+        <a href="index.html">Logout</a> <!--Logout to Index.html-->
+      </nav> 
+    </div> 
+
+    <div class='tv_film_selection'> <!-- Tv and Film Selection Database-->
+        <div class='container image_1'> 
+            <img id='image_1' src='images/tv.jpg' alt = "Tv Image"/>
+            <button class='btn'>TV Database</button> <!-- A button for the TV Section-->
+        </div>
+
+        <div class='container image_1'> <!-- A button for the Film Section-->
+            <img id='image_2' src='images/films.jpg' alt = "Film image"/>
+            <button class='btn'>Film Database</button> <!-- A button for the Film Section-->
+        </div>
+    </div>
+
+    <div class='carousel-content carousel-display-container'> <!--Carousel Slides-->
+      <img class='mySlides' src='images/filler_image.jpg' alt = "Filler image">
+      <button class="carousel-button carousel-display-left" onclick="plusDivs(-1)"></button>
+      <button class="carousel-button carousel-display-right" onclick="plusDivs(+1)">&#10095;</button>
+    </div>
+    <script src="./script.js" charset="utf-8"></script>
+  </body> <!--wrapper-->
+</html>

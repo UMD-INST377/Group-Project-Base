@@ -74,10 +74,6 @@ router.route('/actors')
   })
 // End of Viphu Nguyen's Contribution 1
 
-
-
-
-
 // Gerson's contribution 1
 
 router.get('/titles/:id', async (req, res) => {

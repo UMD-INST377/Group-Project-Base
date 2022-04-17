@@ -4,19 +4,27 @@
     <meta charset='UTF-8'/>
     <meta name='viewport'
       content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
-    <title>Login Page</title>
+    <title>Create Account Page</title>
     <link rel='stylesheet' href='styles.css'/>
   </head>
   <body>
 
     <form action='' method='get' class='speaker-form'> <!-- This is where the input gets collected by the form is sent when the user clicks the Submit button -->
-        <h1>Login Page</h1>
+        <h1>Create Account</h1>
         <div class='form-row'> <!-- Username-->
             <label for='username'>Username</label>
             <input id='username' 
                 name='username' 
                 type='text'
                 placeholder='Username'/>
+        </div>
+
+        <div class='form-row'> <!-- Username-->
+            <label for='username'>Re-enter Username</label>
+            <input id='username' 
+                name='username' 
+                type='text'
+                placeholder='Re-enter Username'/>
         </div>
 
         <div class='form-row'> <!-- Password-->
@@ -27,12 +35,16 @@
                 placeholder='Password'/>
         </div>
 
-        <div class='form-row'> <!-- A login button-->
-            <button> <a href="dashboard.html">Login </a></button> <!-- Dashboard page-->
-        </div> 
+        <div class='form-row'> <!-- Password-->
+            <label for='password'>Re-enter Password</label>
+            <input id='password'
+                name='password'
+                type='text'
+                placeholder='Re-enter Password'/>
+        </div>
 
-        <div class='form-row'> <!-- A create account button-->
-            <button> <a href="create_account.html">Create Account </a></button> <!-- Create account page-->
+        <div class='form-row'> <!-- A login button-->
+            <button> <a href="index.html">Login </a></button> <!-- Dashboard page-->
         </div> 
     </form> <!-- This is where the input gets collected by the form is sent when the user clicks the Submit button -->
   </body>

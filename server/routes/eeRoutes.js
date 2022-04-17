@@ -8,8 +8,8 @@ const hallhoursQuery = 'SELECT `hall_id`, `hall_hours_id`, `day`, `schedule_id` 
 
 const router = express.Router();
 
-// Get Dining Hall
-router.route('/dining').get(async (req, res) => {
+// Get Hall Schedule
+router.route('/').get(async (req, res) => {
   try {
     const halls = await db.sequelizeDB.query(hallhoursQuery, {
       type: sequelize.QueryTypes.SELECT
@@ -23,7 +23,7 @@ router.route('/dining').get(async (req, res) => {
 });
 
 // Get Dining Hall with specific hours
-router.get('dining/:schedule_id', async (req, res) => {
+router.get('/:schedule_id', async (req, res) => {
   const diningHallHoursQuery = `SELECT * FROM Hall_Hours; WHERE schedule_id =${req.params.schedule_id}`;
   try {
     const halls = await db.sequelize.query(diningHallHoursQuery, {

@@ -1,9 +1,8 @@
 // script by Krehl Kasayan
 
-import express from "express";
-import db from '../database/initializeDB.js';
+import express from 'express';
 import sequelize from 'sequelize';
-import DiningHall from "../models/DiningHall.js";
+import db from '../database/initializeDB.js';
 
 const foodRestrictions = 'select * from meal_restrictions;'
 const router = express.Router();

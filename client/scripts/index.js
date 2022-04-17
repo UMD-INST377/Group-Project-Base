@@ -32,6 +32,8 @@ async function searchFood(food){
     }
 }
 
+
+
 //get value of searchbar
 searchBar.addEventListener('input', (e) => {
     inputValue = e.target.value.toLowerCase().trim();

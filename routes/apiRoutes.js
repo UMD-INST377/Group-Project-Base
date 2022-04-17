@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import apiRoutesJessica from './apiRoutesJessica.js';
 
 import db from '../database/initializeDB.js';
 

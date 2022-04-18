@@ -90,6 +90,38 @@ router.get('/schedule/:schedule_id', async (req, res) => {
   }
 });
 
+router.post('/schedule', async (req, res) => {
+  const hours = await db.HallSchedule.findAll();
+  const output = await hours.length;
+  try {
+    const newSchedule = await db.HallSchedule.create({
+      schedule_id: output,
+      hours: req.body.hours
+    });
+    res.json(newSchedule);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/schedule', async (req, res) => {
+  try {
+    await db.HallSchedule.update(
+      {
+        hours: req.body.hours
+      },
+      {
+        where: {
+          schedule_id: req.body.schedule_id
+        }
+      }
+    );
+    res.send('Updated');
+  } catch {
+    res.send('There was an error');
+  }
+});
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

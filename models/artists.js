@@ -13,6 +13,9 @@ export default (sequelize, DataTypes) => {
       },
       last_name: {
         type: DataTypes.STRING
+      },
+      country_id: {
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }

@@ -7,7 +7,6 @@ import luisRoutes from './routes/luisRoutes.js';
 import danielRoutes from './routes/daniel_routes.js';
 import chrisRoutes from './routes/chris_routes.js';
 
-
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -22,17 +21,16 @@ app.use('/api', luisRoutes);
 app.use('/api', danielRoutes);
 app.use('/api', chrisRoutes);
 
-
 async function bootServer() {
-    try {
-        // const mysql = await db.sequelizeDB;
-        // await mysql.sync();
-        app.listen(PORT, () => {
-            console.log(`Listening on: http//localhost:${PORT}`);
-        });
-    } catch (err) {
-        console.error(err);
-    }
+  try {
+    // const mysql = await db.sequelizeDB;
+    // await mysql.sync();
+    app.listen(PORT, () => {
+      console.log(`Listening on: http//localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 bootServer();

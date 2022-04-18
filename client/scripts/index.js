@@ -10,7 +10,6 @@ const searchHistoryDropDown = document.querySelector('.search-dropdown');
 
 let stars = document.querySelectorAll('.fa-star') ;
 let inputValue = '';
-let searchHistory = [];
 let searchResults = [];
 
 //add eventlistener to each star to show favorited
@@ -46,8 +45,6 @@ searchButton.addEventListener('click', (e) => {
     searchFood(inputValue).then(() => {
         addResultsCard();
         addSearchHistory();
-        searchHistory.push(inputValue);
-        console.log('search history is ' + searchHistory);
         resultsHeader.textContent = `There are ${searchResults.length} search result(s) for:  ${inputValue}`;
     });
     searchConfirmation.classList.add('visible');   

@@ -200,6 +200,49 @@ header {
     margin-right: 0px;
 }
 
+}
+
+/* Hero
+================================================================ */
+
+.hero {
+    width: 100%;
+    min-height: 201px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #FFC6C680;
+
+}
+
+.hero div {
+    max-width: 333px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 16px auto 24px auto;
+
+}
+
+.hero h1 {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    text-align: center;
+}
+
+
+
+
+
+
+
 
 
 .formContainer {
@@ -247,4 +290,3 @@ header {
     margin: 20px;
 }
 
-}

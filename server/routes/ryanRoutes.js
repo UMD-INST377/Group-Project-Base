@@ -51,4 +51,30 @@ router.post('/area', async (req, res) => {
   }
 });
 
+// POST TO DELETE!
+
+router.post('/deletearea', async (req, res) => {
+  try {
+    const deletedArea = await db.sequelizeDB.query(`DELETE FROM Area WHERE area_id = ${req.body.area_id}`);
+    res.send(
+      'RECORDS SUCCESSFULLY DELETED AND UPDATED'
+    );
+  } catch (error) {
+    console.error(error);
+    res.send('Server error');
+  }
+});
+
+// PUT TO UPDATE!
+router.put('/updatearea', async (req, res) => {
+  try {
+    const updatedArea = await db.sequelizeDB.query(
+      `UPDATE Area SET neighborhood = '${req.body.neighborhood}', landmarks = '${req.body.landmarks}', description = '${req.body.description}' WHERE area_id = ${req.body.area_id}`
+    );
+    res.send('Successfully Updated');
+  } catch (error) {
+    console.error(error);
+    res.send('Server error');
+  }
+});
 export default router;

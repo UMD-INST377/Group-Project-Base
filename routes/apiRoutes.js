@@ -53,7 +53,7 @@ router.get('/', (req, res) => {
 
 router.get('/students', async (req, res) => {
   try {
-    const students = await db.sequelizeDB.query(`SELECT * from students`)
+    const students = await db.sequelizeDB.query('SELECT * from students')
     res.json({data: students});
   } catch (err) {
     console.error(err);

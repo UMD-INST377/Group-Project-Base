@@ -4,16 +4,32 @@ export default (sequelize, DataTypes) => {
     {
       userid: {
         type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
-        primaryKey: true
+        validate: {
+          isNumeric: {
+            msg: 'Invalid userid.'
+          }
+        }
       },
       username: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          isUnderMaxLen(value) {
+            if (value.length > 45) {
+              throw new Error('Maximum length of username is 45.');
+            }
+          }
+        }
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true,
+        validate: {
+          isEmail: true
+        }
       },
       password: {
         type: DataTypes.STRING,
@@ -26,5 +42,6 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
+
   return User;
 };

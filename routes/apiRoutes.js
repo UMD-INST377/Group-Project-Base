@@ -137,7 +137,7 @@ router.delete('/address/:address_id', async (req, res) => {
   }
 });
 
-// Trieuduong GET requests 
+// Trieuduong IC1 GET requests 
 // Endpoint 1
 router.get('/meals', async (req, res) => {
   try {
@@ -158,6 +158,59 @@ router.get('/meals/:meal_id', async (req, res) => {
       }
     });
     res.json(meals);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// Trieuduong IC2
+// POST
+router.post('/meals', async (req, res) => {
+  const meals = await db.meals.findAll();
+  const currentId = (await meals.length) + 1;
+  try {
+    const newAddress = await db.address.create({
+      meals_id: currentId,
+      restaurant_id: req.body.restaurant_id
+    });
+    res.json(newMeals);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// PUT
+router.put('/meals', async (req, res) => {
+  try {
+    await db.Meals.update(
+      {
+        meal_name: req.body.meal_name,
+        meal_category: req.body.meal_category
+      },
+      {
+        where: {
+          meal_id: req.body.meal_id
+        }
+      }
+    );
+    res.send('Meal Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// DELETE
+router.delete('/meals/:meals_id', async (req, res) => {
+  try {
+    await db.meals.destroy({
+      where: {
+        meals_id: req.params.meals_id
+      }
+    });
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');

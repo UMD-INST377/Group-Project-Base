@@ -78,26 +78,6 @@ router.get("/job_title_company/:id", async (req, res) => {
   }
 });
 
-/* router.get('/job_title_company', async (req, res) => {
-  try {
-    const jobTitleCompany = await db.jobTitleCompany.findAll();
-    res.json({ data: jobTitleCompany });
-  } catch (err) {
-    console.error(err);
-    res.send('Server error');
-  }
-}); 
-
-router.get('/job_title_company/:id', async (req, res) => {
-  try {
-    const {id} = req.params;
-    const jobTitleCompany = await db.jobTitleCompany.findOne({where: {job_title_id:`${id}`}});
-    res.json({data: jobTitleCompany});
-  } catch (err) {
-    console.error(err);
-    res.send('Server error');
-  }
-}); */
 
 router.get("/", (req, res) => {
   res.send("Welcome to the UMD Dining API!");
@@ -149,18 +129,28 @@ router.get("/job_title_info/:id", async (req, res) => {
   }
 });
 
-router.get("/company/:id", async (req, res) => {
+
+router.get('/company', async (req, res) => {
   try {
-    const { id } = req.params;
-    const company = await db.sequelizeDB.query(
-      `SELECT * from company where company_id = ${id}`
-    );
-    res.json({ data: company });
+    const company = await db.sequelizeDB.query(`SELECT * from company`)
+    res.json({data: company});
   } catch (err) {
     console.error(err);
-    res.send("Server error");
+    res.send('Server error');
   }
 });
+
+router.get('/company/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const company = await db.sequelizeDB.query(`SELECT * from company where company_id = ${id}`)
+    res.json({data: company});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

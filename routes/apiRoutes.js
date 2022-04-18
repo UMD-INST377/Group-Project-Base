@@ -6,6 +6,8 @@ import fetch from 'node-fetch'
 
 import songDisplayRoute from './songDisplayRoute.js'
 import sqlDemoRoutes from './sqlDemoRoutes.js'
+import songListRoute from './songListRoute.js'
+import sqlDemoRoutesJacky from './sqlDemoRoutesJacky.js'
 
 import db from '../database/initializeDB.js';
 
@@ -29,6 +31,19 @@ router.route('/songDisplay/:id')
   }
 });
 /* End of Gerald's Subrouter */
+
+/* Jacky Chen Subrouter */
+router.use('/songList', songListRoute);
+
+router.route('/songList/:id')
+.get(async (req, res) => {
+  try{}
+  catch (err) {
+    console.log(err);
+    res.json({message: "something went wrong"});
+  }
+});
+/* End of Jacky's Subrouter */
 
 router.use('/sqlDemo', sqlDemoRoutes);
 

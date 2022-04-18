@@ -16,7 +16,7 @@ router.route('/').get(async (req, res) => {
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.send('Server error1');
+    res.send('Server error in get');
   }
 });
 router.route('/:genre_id').get(async (req, res) => {
@@ -30,7 +30,7 @@ router.route('/:genre_id').get(async (req, res) => {
     res.json({data: genresList});
   } catch (err) {
     console.error(err);
-    res.send('Server error2');
+    res.send('Server error in get id');
   }
 });
 
@@ -73,7 +73,7 @@ router.route('/').put(async (req, res) => {
 });
 router.route('/:genre_id').delete(async (req, res) => {
   try {
-    await db.ratings.destroy({
+    await db.Genres.destroy({
       where: {
         genre_id: req.params.genre_id
       }

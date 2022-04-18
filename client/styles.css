@@ -99,9 +99,18 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 80px 10px 80px;
+
+    background-color: #F2D5D5;
+
+    transition: 0.3s;
 }
 
+/* header.active {
+
+} */
+
 .nav {
+    opacity: 0;
     position: absolute;
     top: 88px;
     right: 0;
@@ -114,17 +123,21 @@ header {
     align-items: center;    
     justify-content: center;
 
-    background-color: #F2D5D5;
+    background-color: #fff;
+
+    transition: 0.3s;
+}
+
+.nav.active {
+    opacity: 1;
 }
 
 .nav-link {
-    
+    margin-bottom: 24px;
 
     text-decoration: none;
     color: #333;
 }
-
-
 
 .hamburger {
     cursor: pointer;

@@ -32,6 +32,41 @@ router.get('/advisors/:id', async (req, res) => {
   }
 });
 
+router.delete('/advisors/:advisor_id', async (req, res) => {
+  try {
+    await db.advisors.destroy({
+      where: {
+        advisor_id: req.params.advisor_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.put('/advisors', async (req, res) => {
+  console.log(chalk.bgCyanBright('touched put endpoint'), req.body);
+  try {
+    await db.advisors.update(
+      {
+        advisor_id: req.body.advisor_id,
+        advisor_initials: req.body.advisor_initials
+      },
+      {
+        where: {
+          advisor_id: req.body.advisor_id
+        }
+      }
+    );
+    res.json({update: req.body.advisor_initials});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 /// ////////////////////////////////////////
 /// //////// Career Service Endpoints //////
 /// ////////////////////////////////////////
@@ -61,6 +96,37 @@ router.get('/career_services/:id', async (req, res) => {
   }
 });
 
+router.delete('/career_services/:service_id', async (req, res) => {
+  try {
+    await db.careerServices.destroy({
+      where: {
+        service_id: req.params.service_id,
+      },
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/career_services', async (req, res) => {
+  const halls = await db.careerServices.findAll();
+  const currentId = (await halls.length) + 1;
+  try {
+    const newDining = await db.DiningHall.create({
+      hall_id: currentId,
+      hall_name: req.body.hall_name,
+      hall_address: req.body.hall_address,
+      hall_lat: req.body.hall_lat,
+      hall_long: req.body.hall_long,
+    });
+    res.json(newDining);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 /// /////////////////////////////////////////////
 /// ///////Job Title Company Endpoint////////////
 /// /////////////////////////////////////////////

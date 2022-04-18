@@ -1,0 +1,85 @@
+
+ 
+
+.restaurant-info-header{
+    font-size: 40px;
+    text-align: center;
+    margin: 60px 0px;
+    font-weight: bold;
+}
+
+.restaurant-menu {
+    height: 600px;
+    width: 500px;
+    background-color: #262626;
+    text-align: center;
+    padding: 30px;
+}
+
+.restaurant-menu-header {
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+     
+}
+.restaurant-menu-container {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-list{
+    overflow-y: scroll;
+    height: 500px;
+    margin-top: 30px;
+    padding: 0px 20px;
+}
+
+ 
+.menu-item {
+    display: grid;
+    justify-content: center;
+    background-color: #FFD66C;
+    padding: 20px;
+    border-radius: 25px;
+    margin: 20px 0px;
+}
+
+.menu-item  li {
+    margin: 0px 10px;
+    font-size: 20px;
+}
+
+.correction-description {
+    font-size: 25px;
+}
+
+.correction-info-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.restaurant-button{
+    margin: 20px 0px;
+    font-size: 20px;
+}
+
+.correction-info{
+    background-color: #262626;
+    padding: 30px;
+    color: white;
+}
+
+.correction-input label{
+    font-size: 20px;
+}
+
+.correction-info input{
+    font-size: 20px;
+}
+
+.correction-info .button{
+    margin-top: 20px;
+    font-size: 25px;
+    padding: 10px  30px;
+}

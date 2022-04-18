@@ -110,6 +110,37 @@ router.get('/', async (req, res) => {
 })
 
 
+// get foods by dining hall
+ 
+router.get('/specific_hall', async (req, res) => {
+
+    const foodQuery = 
+        `SELECT m.meal_id,  m.meal_name, dh.hall_name, dh.hall_address, dh.hall_lat, dh.hall_long  
+              FROM meals_locations ml 
+              INNER JOIN 
+                  meals m ON ml.meal_id = m.meal_id 
+              INNER JOIN 
+                  dining_hall dh ON dh.hall_id = ml.hall_id
+              WHERE dh.hall_name = ${req.query['dining_hall']}
+              ORDER BY dh.hall_id;
+          `;
+    
+    try {
+         
+        const result = await db.sequelizeDB.query(foodQuery, {
+  
+          type: sequelize.QueryTypes.SELECT
+        });
+        res.json(result);
+        //res.json({message: "The database has received your food request!"})
+    } catch(e){
+        console.log('The following error has occured ' + e );
+        res.send('Result could not be furfilled because of ' + e);
+    } 
+  })
+  
+
+
  
 
 // search for specific food

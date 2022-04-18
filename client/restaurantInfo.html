@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/restaurantInfo.css">
+    <title>Restaurant Info</title>
+</head>
+<body>
+
+    <div class="header">UMD Dineify</div>
+    <div class="navbar-container">
+        <div class="navbar">
+            <a href = "index.html" class="navbar-elm">Home</a>
+            <a href = "favorites.html" class="navbar-elm">Favorites</a>
+            <a href = "aboutUs.html" class="navbar-elm">About Us</a>
+            <a href = "restaurants.html" class="navbar-elm">Add Restaurants</a>
+        </div>
+    </div>
+
+    <div class="restaurant-info-header">Restaurants Info</div>
+    <div class="restaurant-menu-container">
+        <div class="restaurant-menu">
+            <div class="restaurant-menu-header">The Diner's menu </div>
+            <div class="menu-list">
+            </div>
+        </div>
+    </div>
+    
+    <div class="restaurant-info-header">Is the menu up to date or accurate?</div>
+
+    <div class="correction-info-container">
+        <form class="correction-info">
+              <div class="correction-description">If not, how should we revise the menu?</div>
+              <div class = 'restaurant-button'>
+                <input type="radio" id="update" name="radio-btn"   value="update"
+                       checked>
+                <label>Update Food</label>
+              </div>
+              
+              <div class = 'restaurant-button'>
+                <input type="radio" id="delete" name="radio-btn"   value="update">
+                <label>Remove Food</label>
+              </div>
+              
+              <div class = 'restaurant-button'>
+                <input type="radio" id="add" name="radio-btn" value="update">
+                <label>Add Food</label>
+              </div>
+
+              <div class="correction-input">
+                <label>Which food?  </label>
+                <input type="text" placeholder="Enter food">
+              </div>
+              <input type="submit" class ='button' value="Submit">
+        </form>
+    </div>
+    
+   
+    <script src="scripts/restaurant-info.js"></script>
+</body>
+</html>

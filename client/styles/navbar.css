@@ -62,6 +62,32 @@ body {
 /* Navbar section end*/
 
 
+/*Custom scrollbar w3 schools*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+    background-color: white;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+     
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(39, 39, 39); 
+    border-radius: 10px;
+    border: 1px solid white;
+  }
+  
+ 
+
+/*Custom scrollbar end */
+
+
 @media only screen and (min-width: 960px) {
     .navbar-container {
         top: 0px;

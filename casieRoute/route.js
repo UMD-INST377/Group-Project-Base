@@ -13,7 +13,8 @@ router.get('/Group22_Dining_Hall_Tracker', async (req, res) => {
     const halls = await db.DiningHall.findAll();
     const reply = halls.length > 0 ? { data: halls } : { message: 'no dining hall found' };
     res.json(reply);
-  } catch (err) {
+  } 
+  catch (err) {
     console.error(err);
     res.error('Server error');
   }
@@ -32,3 +33,39 @@ router.get('/Group22_Dining_Hall_Tracker/:hall_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
+
+
+router.post('/Group22_Dining_Hall_Tracker', async (req, res) => {
+  try {
+    console.dir(req.body, {depth: null});
+    console.log(req.body?.id);
+    const hallId = req.body?.id || 0;
+    const result = await db.sequelizeDB.query(hallQuery, {
+      replacements: { hall_id: hallId},
+      type: Sequelize.QueryTypes.SELECT
+    });
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+    res.send({ message: err});
+  }
+});
+
+router.put('/Group22_Dining_Hall_Tracker', async (req, res) => {
+  try {
+    console.dir(req.body, {depth: null});
+    console.log(req.body?.id);
+    const hallId = req.body?.id || 0;
+    const result = await db.sequelizeDB.query(hallUpdate, {
+      replacements: { hall_id: hallId},
+      type: Sequelize.QueryTypes.UPDATE
+    });
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+    res.send({ message: err});
+  }
+});
+
+export default router;

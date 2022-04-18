@@ -10,6 +10,220 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+
+//Nicholas Urquhart Get controllers
+router.route('/Nicholas/:id')
+  .get(async (req, res) => {
+    try {
+      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const data = await fetch(url);
+      const json = await data.json();
+      res.json({data: json[0]});
+      console.log('success');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+router.route('/Nicholas')
+  .get(async (req, res) => {
+    try {
+      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const data = await fetch(url);
+      const json = await data.json();
+      res.json({data: json[0]});
+      console.log('success');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
+// David McCoy GET Controllers
+router.route('/dietaryRestrictions')
+  .get(async (req, res) => {
+    try {
+      const restrictions = await db.DietaryRestrictions.findAll();
+      res.json({data: restrictions});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  })
+  .post(async (req, res) => {
+    const diets = await db.DietaryRestrictions.findAll();
+    const nextDiet = (await diets.length) + 1;
+    try {
+      const newDiet = await db.DietaryRestrictions.create({
+        restriction_id: nextDiet,
+        restriction_type: 'gluten free'
+      });
+      res.json(newDiet);
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+
+router.route('/dietaryRestrictions/:id')
+  .get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const restrictions = await db.DietaryRestrictions.findOne({
+        where: {
+          restriction_id: `${id}`
+        }
+      });
+      res.json({data: restrictions});
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  })
+  .put(async (req, res) => {
+    try { 
+      const {id} = req.params; 
+      await db.DietaryRestrictions.update(
+        {
+          restriction_type: 'low fat'
+        },
+        {
+          where: {
+            restriction_id: `${id}`
+          }
+        }
+      );
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const {id} = req.params; 
+      await db.DietaryRestrictions.destroy({
+        where: {
+          restriction_id: `${id}`
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+
+  // Josh Mensah GET Controllers
+  router.route('/josh')
+  .get(async (req, res) => {
+    try {
+      const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+      const data = await fetch(url);
+      const json = await data.json();
+      res.json({data: json[0]});
+      console.log('success');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+router.route('/josh')
+  .get(async (req, res) => {
+    try {
+      const url = '';
+      const data = await fetch(url);
+      const json = await data.json();
+      res.json({data: json[0]});
+      console.log('success');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
+
+// Brian McMahon GET controllers
+router.route('/brian')
+  .get(async (req, res) => {
+    try {
+      const diningHall = await db.DiningHall.findAll();
+      res.json({data: diningHall});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .post(async (req, res) => {
+    const allHalls = await db.DiningHall.findAll();
+    const nextHall = (await allHalls.length) + 1;
+    try {
+      const newRecord = await db.DiningHall.create({
+        hall_id: nextHall,
+        hall_name: "Another Dining Hall",
+        hall_address: "589 Baltimore Ave, College Park MD",
+        hall_lat: 45.628942,
+        hall_long: 48.18151
+      });
+      res.json(newRecord);
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+router.route('/brian/:id')
+  .get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const diningHall = await db.DiningHall.findOne({
+        where: {
+          hall_id: `${id}`
+        }
+      });
+      res.json({data: diningHall});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .put(async (req, res) => {
+    try { //Add a way to check if exists
+      const {id} = req.params; 
+      await db.DiningHall.update(
+        {
+          hall_name: "Updated Hall",
+          hall_location: "123 Baltimore Ave, College Park MD",
+          hall_lat: 46.628942,
+          hall_long: 48.18151
+        },
+        {
+          where: {
+            hall_id: `${id}`
+          }
+        }
+      );
+    res.send('Successfully Updated');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const {id} = req.params; 
+      await db.DiningHall.destroy({
+        where: {
+          hall_id: `${id}`
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+  
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
@@ -71,25 +285,7 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
-  try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
-      },
-      {
-        where: {
-          hall_id: req.body.hall_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+
 
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////

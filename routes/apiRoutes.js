@@ -47,7 +47,6 @@ router.delete('/advisors/:advisor_id', async (req, res) => {
 });
 
 router.put('/advisors', async (req, res) => {
-  console.log(chalk.bgCyanBright('touched put endpoint'), req.body);
   try {
     await db.advisors.update(
       {
@@ -60,7 +59,22 @@ router.put('/advisors', async (req, res) => {
         }
       }
     );
-    res.json({update: req.body.advisor_initials});
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.post('/advisors', async (req, res) => {
+  const advisor = await db.advisors.findAll();
+  const currentId = (await advisor.length) + 1;
+  try {
+    const newAdvisor = await db.advisors.create({
+      advisor_id: currentId,
+      advisor_initials: req.body.advisor_initials
+    });
+    res.json(newAdvisor);
   } catch (err) {
     console.error(err);
     res.send('Server error');
@@ -111,17 +125,34 @@ router.delete('/career_services/:service_id', async (req, res) => {
 });
 
 router.post('/career_services', async (req, res) => {
-  const halls = await db.careerServices.findAll();
-  const currentId = (await halls.length) + 1;
+  const careers = await db.careerServices.findAll();
+  const currentId = (await careers.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long,
+    const newCareers = await db.careerServices.create({
+      service_id: currentId,
+      service_description: req.body.service_description,
     });
-    res.json(newDining);
+    res.json(newCareers);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/career_services', async (req, res) => {
+  try {
+    await db.careerServices.update(
+      {
+        service_id: req.body.service_id,
+        service_description: req.body.service_description,
+      },
+      {
+        where: {
+          service_id: req.body.service_id,
+        },
+      }
+    );
+    res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
     res.error('Server error');

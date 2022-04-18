@@ -35,6 +35,47 @@ main > * {
     margin-bottom: 64px;
 }
 
+.arrow_container {
+    position: relative;
+}
+
+.arrow_container_left {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+}
+
+.arrow_left {
+    position: relative;
+    width: 16px;
+    height: 16px;
+
+}
+
+arrow_right {
+    transform: rotate(90deg);
+}
+
+.line_a {
+    height: 16px;
+    width: 2px;
+    
+    position: absolute;
+    left: 0;
+
+    background: #000;
+}
+
+.line_b {
+    height: 2px;
+    width: 16px;
+
+    position: absolute;
+    bottom: 0;
+
+    background: #000;
+}
+
 /* Typography
 ================================================================ */
 h1 {
@@ -109,6 +150,10 @@ Nav a {
     line-height: 36px;
 }
 
+footer p {
+    color: #fff;
+}
+
 @media screen and (min-width: 768px) {
     Nav a {
         font-family: 'Inter';
@@ -133,7 +178,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 80px 10px 80px;
+    padding: 10px 40px 10px 40px;
 
     transition: 0.15s;
 }
@@ -142,12 +187,14 @@ header.active {
     background-color: #F2D5D5;
 }
 
+
+
 .nav {
     opacity: 0;
     position: absolute;
     top: 88px;
     right: 0;
-    width: 211px;
+    width: 100%;
     height: 269px;
     z-index: 999;
 
@@ -323,6 +370,39 @@ header {
     box-shadow: 0px 4px 0px #000000;
     border-radius: 4px;
 }
+
+.tree {
+    min-width: 348px;
+    height: 337px;
+
+    border: 1px solid #66516E;
+    box-shadow: inset 0px 1px 2px #66516E;
+    border-radius: 4px;
+}
+
+footer {
+    width: 100%;
+    height: 145px;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 64px;
+
+    background: #66516E;
+}
+
+footer div {
+
+    margin: auto 40px;
+
+}
+
+
+
+
+
 
 .formContainer {
     display: flex;

@@ -3,6 +3,8 @@ import express from 'express';
 import sequelize from 'sequelize';
 import chalk from 'chalk';
 import fetch from 'node-fetch';
+
+import AlbumsQuery from '../controllers/Albums_query.js';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -10,8 +12,8 @@ const router = express.Router();
 router.route('/')
   .get(async (req, res) => {
     try {
-      console.log('Touched sqlDemo get');
-      const result = await db.sequelizeDB.query(mealsQuery, {
+      console.log('Touched sql get');
+      const result = await db.sequelizeDB.query(AlbumsQuery, {
         type: sequelize.QueryTypes.SELECT
       });
       res.json({ data: result });

@@ -100,20 +100,7 @@ router.route('/dietaryRestrictions/:id')
       res.json({message: 'Something went wrong'});
     }
   })
-  .delete(async (req, res) => {
-    try {
-      const {id} = req.params; 
-      await db.DietaryRestrictions.destroy({
-        where: {
-          restriction_id: `${id}`
-        }
-      });
-      res.send('Successfully Deleted');
-    } catch (err) {
-      console.log(err);
-      res.json({message: 'Something went wrong'});
-    }
-  });
+
 
   // Josh Mensah GET Controllers
   router.route('/josh')

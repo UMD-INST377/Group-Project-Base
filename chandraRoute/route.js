@@ -58,7 +58,7 @@ router.put('/Group22_Dining_Hall_Tracker', async (req, res) => {
     console.log(req.body?.id);
     const hallId = req.body?.id || 0;
     const result = await db.sequelizeDB.query(hallUpdate, {
-      replacements: { hall_hours_id: hallId},
+      replacements: { hall_hours_id: hallId },
       type: Sequelize.QueryTypes.UPDATE
     });
     res.json({ data: result });

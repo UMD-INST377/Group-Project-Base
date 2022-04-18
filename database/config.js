@@ -1,3 +1,10 @@
+/* 
+   don't mess with this file or remove environment entries in the object
+   even for your group project, because it will stop your DB from connecting
+   due to the many loops in the initializeDB file
+   ~ Prof A.
+*/
+
 export default {
   development: {
     username: 'ubuntu',
@@ -5,7 +12,9 @@ export default {
     database: 'ischool',
     host: '174.129.198.86',
     dialect: 'mysql',
-    define: {timestamps: false}
+    define: {
+      timestamps: false
+    }
   },
   test: {
     username: 'ubuntu',
@@ -13,7 +22,9 @@ export default {
     database: 'ischool',
     host: '174.129.198.86',
     dialect: 'mysql',
-    define: {timestamps: false}
+    define: {
+      timestamps: false
+    }
   },
   production: {
     username: 'ubuntu',
@@ -21,6 +32,8 @@ export default {
     database: 'ischool',
     host: '174.129.198.86',
     dialect: 'mysql',
-    define: {timestamps: false}
+    define: {
+      timestamps: false
+    }
   }
 };

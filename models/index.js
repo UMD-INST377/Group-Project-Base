@@ -6,6 +6,7 @@ import careerServices from './careerServices.js';
 import jobTitleCompany from './jobTitleCompany.js';
 import company from './company.js';
 import job from './job_title_info.js';
+import advisors from './advisors.js';
 
 export default {
   DietaryRestrictions,
@@ -15,5 +16,6 @@ export default {
   careerServices,
   jobTitleCompany,
   company,
-  job
+  job,
+  advisors
 };

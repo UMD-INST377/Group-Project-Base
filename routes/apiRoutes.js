@@ -70,9 +70,30 @@ router.route('/actors')
       deathyear: req.body.deathyear, 
       birthyear: req.body.birthyear,
     });
-    res.send('dummyValue')
-  })
-// End of Viphu Nguyen's Contribution 
+    res.send('dummyValue');
+  });
+
+// Chart on top 5 TV ratings
+router.get('/chart', async (req, res) => {
+  const movies = await db.sequelizeDB.query('select * from primary_title order by title_rating DESC limit 5'); // mySQL chart query coding
+  const dataValues = []; // Y-axis for the chart
+  const colNames = []; // X-axis for the chart
+  // console.log('dummy', movies[0][0].primary_title);
+  movies[0].forEach(((item) => {
+    colNames.push(item.primary_title); // From mySQL name
+    dataValues.push(item.title_rating); // From mySQL name
+  }));
+  const chart = new ChartJsImage();
+  chart.setConfig({
+    type: 'bar',
+    data: {labels: colNames, datasets: [{label: 'Average Ratings', data: dataValues}]}
+  });
+  chart.toFile('./Chart.png'); // The image saving file name
+  // console.log(dataValues, colNames);
+  res.send('dummyValue');
+});
+
+// End of Viphu Nguyen's Contribution
 
 // Gerson's contribution 1
 

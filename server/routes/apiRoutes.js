@@ -19,6 +19,7 @@ router.get('/review', async(req, res) => {
     res.send('something went wrong');
   }
 });
+//get statement
 router.get('/review/:id', async(req, res) => {
   try {
     const {id} = req.params;
@@ -31,7 +32,7 @@ router.get('/review/:id', async(req, res) => {
     res.send('something went wrong');
   }
 });
-
+//post statement
 router.post('/review', async (req, res) => {
   console.info(chalk.bgRedBright.bold('Post request to /review'), req.body);
 
@@ -55,7 +56,7 @@ router.post('/review', async (req, res) => {
     res.json('Server error');
   }
 });
-
+//delete statement
 router.delete('/reviews/:review_id', async (req, res) => {
   console.log(req.params.review_id);
   try {
@@ -71,7 +72,7 @@ router.delete('/reviews/:review_id', async (req, res) => {
     res.send('Server error');
   }
 });
-
+//put statement
 router.put('/reviews', async (req, res) => {
   console.log(chalk.bgCyanBright('touched put endpoint'));
   try {

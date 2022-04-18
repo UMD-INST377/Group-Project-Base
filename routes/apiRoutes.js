@@ -120,21 +120,66 @@ router.route('/titles')
 
 // end of Gerson pt 1
 
-// not sure who did this
-// router.route('/crew')
-//   .get(async (req, res) => {
-//     try {
-//       const crewList = await db.Crew.findAll({
-//         order: [['fname', 'DESC']]
-//       });
-//       res.json({
-//         data: crewList
-//       });
-//     } catch (err) {
-//       console.error(err);
-//       res.send('Server error');
-//     }
-//   });
+// Testing for IC#2 - Kevin
+router.get('/crew/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const crewList = await db.Crew.findOne({
+      where: {
+        crew_id: `${id}`
+      }
+    });
+    res.send({
+      crewList
+    });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.post('/delete_crew', async (req, res) => {
+  try {
+    const crewList = await db.Crew.destroy({
+      where: {
+        crew_id: req.body.crew_id
+      }
+    });
+    res.send(
+      'Crew Deleted'
+    );
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.route('/crew')
+  .get(async (req, res) => {
+    try {
+      const crewList = await db.Crew.findAll({
+        order: [['fname', 'DESC']]
+      });
+      res.json({
+        data: crewList
+      });
+    } catch (err) {
+      console.error(err);
+      res.send('Server error');
+    }
+  })
+
+  .post(async (req, res) => {
+    const newCrew = await db.Crew.create({
+      fname: req.body.fname,
+      lname: req.body.lname,
+      deathyear: req.body.deathyear,
+      birthyear: req.body.birthyear,
+    });
+    res.send('dummyValue');
+  })
+// End kevin testing
+
 // Gerson pt 2
 router.get('/episodes/:id', async (req, res) => {
   try {

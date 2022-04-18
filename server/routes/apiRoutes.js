@@ -29,7 +29,6 @@ router.get('/area', async (req, res) => {
   }
 });
 
-<<<<<<< Updated upstream
 router.get('/area/:id', async (req, res) => {
   try {
     const {id} = req.params
@@ -42,12 +41,5 @@ router.get('/area/:id', async (req, res) => {
     res.send('Server error');
   }
 });
-=======
-
-
-export default router;
-
-
->>>>>>> Stashed changes
 
 export default router;

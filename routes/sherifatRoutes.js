@@ -3,7 +3,7 @@
 import express from 'express';
 import sequelize from 'sequelize';
 
-import db from '../database/initializeDB';
+import db from '../database/initializeDB.js';
 
 const dbQuery = 'SELECT * FROM weather';
 

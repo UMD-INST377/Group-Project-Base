@@ -1,0 +1,371 @@
+
+
+/* Global
+================================================================ */
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    
+  }
+
+body {
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main > * {
+    margin-bottom: 64px;
+}
+
+/* Typography
+================================================================ */
+h1 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+}
+
+h2 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+h3 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+h4 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+Nav a {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.form_row input::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.form_row input {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.submit {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+@media screen and (min-width: 768px) {
+    Nav a {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+    
+
+/* Nav
+================================================================ */
+
+    
+header {
+    
+    width: 100%;
+    height: 88px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 80px 10px 80px;
+
+    transition: 0.15s;
+}
+
+header.active {
+    background-color: #F2D5D5;
+}
+
+.nav {
+    opacity: 0;
+    position: absolute;
+    top: 88px;
+    right: 0;
+    width: 211px;
+    height: 269px;
+    z-index: 999;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;    
+    justify-content: center;
+
+    background-color: #fff;
+    border-radius: 0 0 4px 4px;
+
+    transition: 0.15s;
+}
+
+.nav.active {
+    opacity: 1;
+    background-color: #F2D5D5;
+}
+
+.nav-link {
+    margin-bottom: 24px;
+
+    text-decoration: none;
+    color: #333;
+}
+
+.hamburger {
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    background-color: #333;
+}
+
+.hamburger.active .bar:nth-child(2){
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+@media screen and (min-width: 768px) {
+    
+header {
+    
+    width: 100%;
+    height: 88px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 80px 10px 80px;
+}
+
+
+
+.hamburger {
+    display: none;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.nav-link {
+    margin-right: 60px;
+
+}
+
+.nav-link:last-of-type {
+    margin-right: 0px;
+}
+
+}
+
+/* Hero
+================================================================ */
+
+.hero {
+    width: 100%;
+    min-height: 201px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #FFC6C6;
+    background-image: url(assets/hero_background.png);
+    opacity: .8;
+
+}
+
+.hero div {
+    max-width: 333px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 16px auto 24px auto;
+
+}
+
+.hero h1 {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    text-align: center;
+}
+
+/* Species Form
+================================================================ */
+
+.species_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.species_form > .form_row {
+    margin-bottom: 24px;
+}
+
+.species_form:last-child {
+    margin-bottom: 0;
+}
+
+.form_row input {
+    width: 323px;
+    height: 49px;
+
+    display: flex;
+    align-items: center;
+    padding: 0px 0px 0px 16px;
+
+    background: #FFFFFF;
+
+    border: 1px solid #66516E;
+    box-sizing: border-box;
+    box-shadow: inset 0px 1px 2px #66516E;
+    border-radius: 4px;
+}
+
+.submit {
+    width: 323px;
+    height: 49px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px; 
+
+    background: #DBAEEC;
+    border: 1px solid #66516E;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 0px #000000;
+    border-radius: 4px;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.searchForm {
+    text-align: center;
+    margin: 0 10vw 0 10vw;
+}
+.set {
+    color: black;
+    background-color: lightslategray;
+}
+/* Alternating color #2 */
+.name {
+    background-color: white;
+}
+.taxonID {
+    background-color: lightpink;
+}
+.parent {
+    background-color: white;
+}
+.commonName {
+    background-color: lightcoral;
+}
+
+.obj {
+    padding: 20px;
+}
+
+.resultContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.getAllTable {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.listBody {
+    margin: 20px;
+}
+

@@ -1,1 +1,66 @@
-Hello world!
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Group 3</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+
+    <header>
+      <div class="logo">
+        <img src="assets/logo.png" alt="Logo">
+      </div>
+
+      <nav class="nav">
+        <a class="nav-link active" href="/main.html">About</a>
+        <a class="nav-link" href="/families.html">Saved</a>
+        <a class="nav-link" href="/compare.html">Sign Up</a>
+        <a class="nav-link" href="/history.html">Log in</a>
+      </nav>
+      
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+    </header>
+
+    <main>
+
+      <div class="hero">
+        <div>
+          <h1>Learn more about the Tree of Life!</h1>
+          <p>Find the closest common ancestor for any two two species of animal by filling out the form below!</p>
+        </div>
+      </div>
+
+      <form action="" method="get" class="species_form">
+        <div class="form_row">
+          <input id="species_a" name="species_a" placeholder="Species A" type="text"/>
+        </div>
+        
+        <div class="form_row">
+          <input id="species_b" name="species_b" placeholder="Species B" type="text"/>
+        </div>
+        
+        <div class="form_row">
+          <button class="submit">Find Common Ancestor</button>
+        </div>
+        
+      </form>
+        
+
+    </main>
+
+
+    
+  </body>
+  <script src="script.js"></script>
+</html>

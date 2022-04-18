@@ -5,6 +5,10 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
+
+/// //////////////////////////////////////
+/// //////////// Advisors //////////////// 
+/// //////////////////////////////////////
 router.get('/advisors', async (req, res) => {
   try {
     const advisors = await db.sequelizeDB.query('SELECT * from advisors');
@@ -27,6 +31,10 @@ router.get('/advisors/:id', async (req, res) => {
     res.send('Server error');
   }
 });
+
+/// ////////////////////////////////////////
+/// //////// Career Service Endpoints //////
+/// ////////////////////////////////////////
 
 router.get('/career_services', async (req, res) => {
   try {
@@ -53,6 +61,10 @@ router.get('/career_services/:id', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////////////////
+/// ///////Job Title Company Endpoint////////////
+/// /////////////////////////////////////////////
+
 router.get('/job_title_company', async (req, res) => {
   try {
     const jobTitleCompany = await db.sequelizeDB.query(
@@ -78,12 +90,9 @@ router.get('/job_title_company/:id', async (req, res) => {
   }
 });
 
-/* router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
-
-router.get("/", (req, res) => {
-  res.send("Welcome to the UMD Dining API!");
-}); */
+/// ///////////////////////////////////////
+/// /////// Students Endpoints/////////////
+/// ///////////////////////////////////////
 
 router.get('/students', async (req, res) => {
   try {
@@ -108,6 +117,9 @@ router.get('/students/:id', async (req, res) => {
   }
 });
 
+/// //////////////////////////////////////////
+/// //////////Job Title Info Endpoints////////
+/// //////////////////////////////////////////
 router.get('/job_title_info', async (req, res) => {
   try {
     const job = await db.sequelizeDB.query('SELECT * from job_title_info');
@@ -131,6 +143,9 @@ router.get('/job_title_info/:id', async (req, res) => {
   }
 });
 
+/// //////////////////////////////////////
+/// ////////// Company Endpoints//////////
+/// ////////////////////////////////////// 
 router.get('/company', async (req, res) => {
   try {
     const company = await db.sequelizeDB.query('SELECT * from company')

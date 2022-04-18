@@ -135,12 +135,12 @@ header {
     align-items: center;
     padding: 10px 80px 10px 80px;
 
-    transition: 0.3s;
+    transition: 0.15s;
 }
 
-/* header.active {
-
-} */
+header.active {
+    background-color: #F2D5D5;
+}
 
 .nav {
     opacity: 0;
@@ -149,6 +149,7 @@ header {
     right: 0;
     width: 211px;
     height: 269px;
+    z-index: 999;
 
     display: flex;
     flex-direction: column;
@@ -157,12 +158,14 @@ header {
     justify-content: center;
 
     background-color: #fff;
+    border-radius: 0 0 4px 4px;
 
-    transition: 0.3s;
+    transition: 0.15s;
 }
 
 .nav.active {
     opacity: 1;
+    background-color: #F2D5D5;
 }
 
 .nav-link {
@@ -181,8 +184,8 @@ header {
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
     background-color: #333;
 }
 

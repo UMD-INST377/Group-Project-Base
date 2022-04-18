@@ -51,9 +51,9 @@ router.post('/area', async (req, res) => {
   }
 });
 
-// POST TO DELETE!
+// DELETE
 
-router.post('/deletearea', async (req, res) => {
+router.delete('/area', async (req, res) => {
   try {
     const deletedArea = await db.sequelizeDB.query(`DELETE FROM Area WHERE area_id = ${req.body.area_id}`);
     res.send(
@@ -65,8 +65,8 @@ router.post('/deletearea', async (req, res) => {
   }
 });
 
-// PUT TO UPDATE!
-router.put('/updatearea', async (req, res) => {
+// UPDATE!
+router.put('/area', async (req, res) => {
   try {
     const updatedArea = await db.sequelizeDB.query(
       `UPDATE Area SET neighborhood = '${req.body.neighborhood}', landmarks = '${req.body.landmarks}', description = '${req.body.description}' WHERE area_id = ${req.body.area_id}`

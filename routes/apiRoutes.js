@@ -134,7 +134,7 @@ router.get('/crew/:id', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.send('Server error');
+    res.send('Crew ID error');
   }
 });
 
@@ -150,7 +150,7 @@ router.post('/delete_crew', async (req, res) => {
     );
   } catch (err) {
     console.error(err);
-    res.send('Server error');
+    res.send('Delete crew error');
   }
 });
 
@@ -165,7 +165,7 @@ router.route('/crew')
       });
     } catch (err) {
       console.error(err);
-      res.send('Server error');
+      res.send('Crew error');
     }
   })
 

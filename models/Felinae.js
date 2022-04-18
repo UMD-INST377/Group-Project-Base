@@ -8,7 +8,8 @@ export default (sequelize, DataTypes) => {
         primaryKey: true
       },
       GBIF: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
       },
       scientific_name: {
         type: DataTypes.STRING

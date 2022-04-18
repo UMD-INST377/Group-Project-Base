@@ -4,6 +4,10 @@ import Hominidae from './Hominidae.js';
 import Query from './Query.js';
 import User from './User.js';
 
+Query.associate = (models) => {
+  Query.belongsTo(models.users);
+};
+
 export default {
   Canidae,
   Felinae,

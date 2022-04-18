@@ -1,3 +1,5 @@
+// import { DataTypes } from "sequelize/types"
+
 export default (database, DataTypes) => {
     const company = database.define('company', {
       company_id: {
@@ -26,7 +28,6 @@ export default (database, DataTypes) => {
         allowNull: true,
         primaryKey: false
       }
-
     });
     return company;
   }

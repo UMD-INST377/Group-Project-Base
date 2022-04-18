@@ -6,6 +6,8 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import bpRoutes from './bpRoutes.js'
 import etRoutes from './etRoutes.js'
+import kkRoutes from './kkRoutes';
+
 
 const router = express.Router();
 
@@ -21,6 +23,10 @@ router.use('/food', bpRoutes);
 /* ET Routes - Dining Hall */
 
 router.use('/dining', etRoutes);
+
+/* KK routes - Restrictions */
+
+router.use('/restrictions', kkRoutes);
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

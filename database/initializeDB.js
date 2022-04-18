@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 import Sequelize from 'sequelize';
@@ -6,7 +7,7 @@ import configOptions from './config.js';
 import modelList from '../models/index.js';
 
 const { DataTypes } = Sequelize;
-const env = dotenv.config().parsed.NODE_ENV || 'development';
+const env = 'development' // 'dotenv.config().parsed?.NODE_ENV || 'production';
 const config = configOptions[env];
 
 /**
@@ -14,16 +15,12 @@ const config = configOptions[env];
  *  username, password, database, host, dialect
  */
 let sequelizeDB;
-if (env !== 'development') {
-  sequelizeDB = new Sequelize(process.env[env], config);
-} else {
-  sequelizeDB = new Sequelize(
+sequelizeDB = new Sequelize(
     config.database,
     config.username,
     config.password,
     config
   );
-}
 // console.log(configOptions.development);
 
 const db = Object.keys(modelList).reduce((collection, modelName) => {

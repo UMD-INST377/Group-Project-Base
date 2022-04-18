@@ -184,56 +184,63 @@ router.get('/students/:id', async (req, res) => {
 });
 
 router.post('/students', async (req, res) => {
-  const halls = await db.ischool.findAll();
-  const currentId = (await halls.length) + 1;
+  const student = await db.students.findAll();
+  const currentId = (await student.length) + 1;
   try {
-    const newDining = await db.ischool.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long,
+    const newStudent = await db.students.create({
+      student_id: currentId,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      grad_semester: req.body.grad_semester,
+      grad_year: req.body.grad_year,
+      status: req.body.status,
+      infosci_concentration: req.body.infosci_concentration
     });
-    res.json(newDining);
+    res.json(newStudent);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
-/*router.delete('/dining/:hall_id', async (req, res) => {
+router.delete('/students/:student_id', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.students.destroy({
       where: {
-        hall_id: req.params.hall_id,
-      },
+        student_id: req.params.student_id
+      }
     });
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.put('/students', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    await db.students.update(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location,
+        student_id: req.body.student_id,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        grad_semester: req.body.grad_semester,
+        grad_year: req.body.grad_year,
+        status: req.body.status,
+        infosci_concentration: req.body.infosci_concentration
       },
       {
         where: {
-          hall_id: req.body.hall_id,
-        },
+          student_id: req.body.student_id
+        }
       }
     );
-    res.send('Successfully Updated');
+    res.send('Successfully updated')
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
-});*/
+});
 
 /// //////////////////////////////////////////
 /// //////////Job Title Info Endpoints////////

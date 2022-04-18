@@ -11,7 +11,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the Trailz API');
 });
-// my work
+// races work 
 router.route('/race/')
   .all((req, res, next) => {
     // runs for all HTTP verbs first
@@ -31,24 +31,53 @@ router.route('/race/')
       res.json({message: 'Server error'});
     }
   });
-// router.route('/race/:pname')
-//   .all((req, res, next) => {
-//     // runs for all HTTP verbs first
-//     // think of it as route specific middleware!
-//     next();
-//   })
-//   .get(async (req, res, next) => {
-//     try {
-//       const {pname} = req.params;
-//       const url = '';
-//       const data = await fetch(url);
-//       const json = await data.json();
-//       res.json('my endpoint working');
-//     } catch (err) {
-//       console.error(err);
-//       res.json('Server error');
-//     }
-//   });
+router.post('/race/', async (req, res) => {
+  const parks = await db.Parks.findAll();
+  const currentId = (await parks.length) + 1;
+  try {
+    const newPark = await db.Parks.create({
+      park_id: currentId,
+      park_name: 'test',
+      trails: req.body.trails
+    });
+    res.json(newPark);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.put('/race/:id', async (req, res) => {
+  try {
+    await db.Parks.update(
+      {
+        park_name: req.body.park_name,
+        trails: req.body.trails
+      },
+      {
+        where: {
+          park_id: req.params.id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.delete('/race/:id', async (req, res) => {
+  try {
+    await db.Parks.destroy({
+      where: {
+        park_id: req.params.id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

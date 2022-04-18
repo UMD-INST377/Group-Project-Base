@@ -6,7 +6,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import bpRoutes from './bpRoutes.js'
 import etRoutes from './etRoutes.js'
-import kkRoutes from './kkRoutes';
+import kkRoutes from './kkRoutes.js';
 
 
 const router = express.Router();

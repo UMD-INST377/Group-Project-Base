@@ -22,7 +22,7 @@ router.route('/').get(async (req, res) => {
 
 // search for specific allergen
 router.route('/:restriction_id').get(async (req, res) => {
-  const restrictionQuery = `SELECT * FROM meal_restrictions WHERE restriction_id =${req.params.restriction)_id}`;
+  const restrictionQuery = `SELECT * FROM meal_restrictions WHERE restriction_id =${req.params.restriction_id}`;
   try {
     const restrictions = await db.sequelizeDB.query(foodRestrictions, {
       type: sequelize.QueryTypes.SELECT
@@ -53,7 +53,7 @@ router.put('/update', async (req, res) => {
     });
 
     res.json(`Updated the row entry with the new value: ${req.query['new_entry']}`);
-  } catch(err;){
+  } catch(err){
     console.log(' the following has occured' + e);
     res.send('result could not be fulfilled because of' + e);
   }

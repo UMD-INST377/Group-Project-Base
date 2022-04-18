@@ -3,7 +3,7 @@ import DiningHall from './DiningHall.js';
 import Macros from './Macros.js';
 import Meals from './Meals.js';
 import careerServices from './careerServices.js';
-/*import company from './company';*/
+import jobTitleCompany from './jobTitleCompany.js'
 
 export default {
   DietaryRestrictions,
@@ -11,5 +11,5 @@ export default {
   Macros,
   Meals,
   careerServices,
-  /*company*/
+  jobTitleCompany
 };

@@ -79,13 +79,13 @@ router.get("/job_title_company/:id", async (req, res) => {
 });
 
 
-router.get('/', (req, res) => {
+/*router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 
 
 router.get("/", (req, res) => {
   res.send("Welcome to the UMD Dining API!");
-});
+});*/
 
 router.get("/students", async (req, res) => {
   try {

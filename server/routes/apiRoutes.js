@@ -1,15 +1,83 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import chalk from 'chalk';
+// import fetch from 'node-fetch';
 
 import db from '../../database/initializeDB.js';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the Trailz API');
 });
-
+// races work 
+router.route('/race/')
+  .all((req, res, next) => {
+    // runs for all HTTP verbs first
+    // think of it as route specific middleware!
+    next();
+  })
+  .get(async (req, res) => {
+    try {
+      // const url = 'https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=wTtg4NONAeaOPjBJLxXScObX2sOAit5e2EhKUIXa';
+      // const data = await fetch(url);
+      console.log('touched races endpoint');
+      const parks = await db.Parks.findAll();
+      const reply = parks.length > 0 ? { data: parks } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.log('err');
+      res.json({message: 'Server error'});
+    }
+  });
+router.post('/race/', async (req, res) => {
+  const parks = await db.Parks.findAll();
+  const currentId = (await parks.length) + 1;
+  try {
+    const newPark = await db.Parks.create({
+      park_id: currentId,
+      park_name: 'test',
+      trails: req.body.trails
+    });
+    res.json(newPark);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.put('/race/:id', async (req, res) => {
+  try {
+    await db.Parks.update(
+      {
+        park_name: req.body.park_name,
+        trails: req.body.trails
+      },
+      {
+        where: {
+          park_id: req.params.id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.delete('/race/:id', async (req, res) => {
+  try {
+    await db.Parks.destroy({
+      where: {
+        park_id: req.params.id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

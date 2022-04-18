@@ -50,6 +50,20 @@ router.route('/dietaryRestrictions')
       console.log(err);
       res.json({message: 'something went wrong'});
     }
+  })
+  .post(async (req, res) => {
+    const diets = await db.DietaryRestrictions.findAll();
+    const nextDiet = (await diets.length) + 1;
+    try {
+      const newDiet = await db.DietaryRestrictions.create({
+        restriction_id: nextDiet,
+        restriction_type: 'gluten free'
+      });
+      res.json(newDiet);
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
   });
 
 router.route('/dietaryRestrictions/:id')

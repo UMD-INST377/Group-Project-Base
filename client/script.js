@@ -1,5 +1,17 @@
 /* eslint-disable no-console */
 // Canidae 5219243 | Felinae | Hominidae
+
+const header = document.querySelector("Header");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav");
+
+hamburger.addEventListener("click", () => {
+  header.classList.toggle("active");
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
+});
+
+
 async function clearTable(table) {
   while (table.hasChildNodes()) {
     table.removeChild(table.lastChild);

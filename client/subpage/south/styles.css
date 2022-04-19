@@ -1,0 +1,130 @@
+.body{
+    position: relative;
+    width: 1512px;
+    height: 982px;
+    
+    background: #FFFFFF;}
+
+    a{
+        text-decoration: none;
+    }
+    
+.title_name{
+    position: absolute;
+    width: 527px;
+    height: 77px;
+    left: 31px;
+    top: 232px;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+    text-decoration-line: underline;
+    
+    color: #000000;
+
+}
+.main-container{
+    display: flex;
+    flex-direction: row;
+}
+.page-title{
+
+    display: flex;
+    position: absolute;
+    width: 568px;
+    height: 117px;
+    left: 640px;
+    top: 30px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 50px;
+}
+.logos{
+    display: flex;
+    position: absolute;
+    left: 530px;
+    top: 27px;
+}
+    
+
+.line{
+    position: absolute;
+    width: 312px;
+    height: 0px;
+    left: 1145px;
+    top: 169px;
+    
+    border: 3px solid #000000;
+
+}
+
+
+.about{
+    position: absolute;
+    width: 156px;
+    height: 47px;
+    left: 1145px;
+    top: 121px;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 47px;
+    /* identical to box height */
+    
+    text-align: center;
+    
+    color: #000000;
+    
+}
+
+
+
+.data{
+    position: absolute;
+    width: 156px;
+    height: 47px;
+    left: 1301px;
+    top: 121px;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 47px;
+    /* identical to box height */
+    
+    text-align: center;
+    
+    color: #000000;
+    }
+    
+.menu-container{
+    position: absolute;
+width: 210px;
+height: 325px;
+left: 78px;
+top: 309px;
+
+background: rgba(255, 71, 71, 0.9);
+}
+
+
+
+
+.line2{
+    position: absolute;
+    width: 381px;
+    height: 0px;
+    left: 337px;
+    top: 309px;
+    
+    border: 3px solid #000000;
+    transform: rotate(90deg);}

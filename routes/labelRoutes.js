@@ -8,7 +8,7 @@ const router = express.Router();
 router.route('/label').get(async (req, res) => {
   try {
     const art = await db.label.findAll();
-    res.json({data: []]});
+    res.json({data: []});
   } catch (error) {
     console.error(error);
     res.send('Server Error');
@@ -22,7 +22,7 @@ router.get('/label/:label_id', async (req, res) => {
         label_id: req.params.label_id
       }
     });
-    res.json({data: []]});
+    res.json({data: []});
   } catch (error) {
     console.error(error);
     res.send('Server Error');

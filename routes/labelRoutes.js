@@ -5,6 +5,10 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+router.get('/label', (req, res) => {
+  res.send('Welcome to the Label API!');
+});
+
 router.route('/label').get(async (req, res) => {
   try {
     const art = await db.label.findAll();
@@ -73,3 +77,5 @@ router.delete('/label/:label_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
+export default router;

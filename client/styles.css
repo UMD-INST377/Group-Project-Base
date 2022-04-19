@@ -106,8 +106,8 @@ h2 {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 20px;
+    line-height: 30px;
 }
 
 h3 {
@@ -134,7 +134,25 @@ p {
     line-height: 30px;
 }
 
+a {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    /* text-decoration: none; */
+    color: #DBAEEC;
+}
+
 Nav a {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.form_row label {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -158,7 +176,7 @@ Nav a {
     line-height: 36px;
 }
 
-.submit {
+.form_row button{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -175,6 +193,14 @@ footer p {
 }
 
 @media screen and (min-width: 768px) {
+    h2 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 39px;
+    }
+
     Nav a {
         font-family: 'Inter';
         font-style: normal;
@@ -216,7 +242,7 @@ header.active {
     right: 0;
     width: 100%;
     height: 269px;
-    z-index: 999;
+    z-index: 1;
 
     display: flex;
     flex-direction: column;
@@ -347,7 +373,7 @@ header {
     margin-bottom: 24px;
 }
 
-.hero p {
+.hero h2 {
     text-align: center;
 }
 
@@ -364,6 +390,12 @@ header {
     background-color: #FFC6C6;
     background-image: url(assets/hero_background.png);
     opacity: .8;
+}
+
+@media screen and (min-width: 800px){
+    .hero div {
+        max-width: 666px;
+    }
 }
 
 /* Species Form
@@ -392,13 +424,12 @@ header {
 
     background: #FFFFFF;
 
-    border: 1px solid #66516E;
-    box-sizing: border-box;
+    border: 2px solid #66516E;
     box-shadow: inset 0px 1px 2px #66516E;
     border-radius: 4px;
 }
 
-.submit {
+.form_row button {
     width: 323px;
     height: 49px;
 
@@ -409,8 +440,7 @@ header {
     padding: 8px 16px; 
 
     background: #DBAEEC;
-    border: 1px solid #66516E;
-    box-sizing: border-box;
+    border: 2px solid #66516E;
     box-shadow: 0px 4px 0px #000000;
     border-radius: 4px;
 }
@@ -419,7 +449,7 @@ header {
     min-width: 348px;
     height: 337px;
 
-    border: 1px solid #66516E;
+    border: 2px solid #66516E;
     box-shadow: inset 0px 1px 2px #66516E;
     border-radius: 4px;
 }
@@ -528,6 +558,125 @@ footer div {
         justify-content: space-between;
     }  
 }
+
+/* Sign Up Modal
+================================================================ */
+
+.sign_up_modal {
+    position: absolute;
+    width: 434px;
+    height: 524px;
+    z-index: 2;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 54px 0px;
+    
+    
+    background: #FFFFFF;
+    border: 2px solid #66516E;
+    border-radius: 4px; 
+}
+
+.sign_up_form {
+    position: static;
+    width: 323px;
+    height: 299px;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 32px 0px;
+}
+
+.sign_up_form > .form_row {
+    margin-bottom: 16px;
+}
+
+.sign_up_form > .form_row > input {
+    width: 323px;
+    height: 49px;
+
+    display: flex;
+    align-items: center;
+    padding: 0px 0px 0px 16px;
+
+    background: #FFFFFF;
+    
+
+    border: 2px solid #333;
+    box-shadow: none;
+    border-radius: 4px;
+}
+
+.form_row.buttons {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.form_row.buttons button {
+    width: 150px;
+    height: 49px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px; 
+
+    background: #DBAEEC;
+    border: 2px solid #333;
+    box-shadow: none;
+    border-radius: 4px;
+}
+
+#cancel {
+    background: #fff;
+    border: 2px solid #66516E;
+}
+
+.log_in {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    margin-top: 16px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+  }
+
+
+
+
+
+
 
 
 

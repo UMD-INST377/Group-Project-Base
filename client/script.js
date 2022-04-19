@@ -1,30 +1,6 @@
 /* eslint-disable no-console */
 // Canidae 5219243 | Felinae | Hominidae
 
-// mobile nav
-const header = document.querySelector("Header");
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav");
-
-hamburger.addEventListener("click", () => {
-  header.classList.toggle("active");
-  hamburger.classList.toggle("active");
-  navMenu.classList.toggle("active");
-});
-
-// saved results 
-// const savedResults = document.querySelector(".saved_result_card")
-
-// savedText.addEventListener("mouseover", () => {
-//   console.log('moused over');
-//   savedText.classList.toggle("active");
-// });
-
-
-
-
-
-
 async function clearTable(table) {
   while (table.hasChildNodes()) {
     table.removeChild(table.lastChild);
@@ -92,5 +68,41 @@ async function mainEvent() {
   form2.addEventListener('submit', (e) => getByID(e, form2, table2));
   getAll.addEventListener('submit', (e) => getByFamily(e, allTable));
 }
+
+// mobile nav
+const header = document.querySelector("Header");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav");
+
+hamburger.addEventListener("click", () => {
+  header.classList.toggle("active");
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
+});
+
+// saved results 
+// const savedResults = document.querySelector(".saved_result_card")
+
+// savedText.addEventListener("mouseover", () => {
+//   console.log('moused over');
+//   savedText.classList.toggle("active");
+// });
+
+// Sign Up Modal
+const signUpModal = document.querySelector('.sign_up_modal');
+const modal = document.querySelector('.modal');
+const signUpLink = document.querySelector('.sign_up');
+
+signUpLink.addEventListener('click', () => {
+  signUpModal.style.display = 'flex';
+  modal.style.display = 'block';
+});
+
+modal.addEventListener('click', () => {
+  signUpModal.style.display = 'none';
+  modal.style.display = 'none';
+});
+
+
 
 document.addEventListener('DOMContentLoaded', mainEvent);

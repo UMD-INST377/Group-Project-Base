@@ -1,17 +1,19 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    "Meals_Locations",
+  const albumStyleInfo = sequelize.define(
+    'album_style_info',
     {
-      hall_id: {
+      album_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        foreginKey: true
       },
-      meal_id: {
+      style_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        foreginKey: true
       },
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  return albumStyleInfo;
 };

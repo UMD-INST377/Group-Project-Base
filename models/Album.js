@@ -1,6 +1,6 @@
 export default (database, DataTypes) => {
-  const album = database.define(
-    'album',
+  const Album = database.define(
+    'Album',
     {
       album_id: {
         type: DataTypes.INTEGER,
@@ -26,5 +26,5 @@ export default (database, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return album;
+  return Album;
 };

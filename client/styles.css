@@ -451,6 +451,8 @@ footer div {
     margin-bottom: 104px;
 
     position: relative;
+    display: flex;
+    justify-content: center;
 
     padding: 12px 12px;
     border: 2px solid #000;
@@ -460,8 +462,34 @@ footer div {
 
 .result_image {
     height: 210px;
-    
+    width: 324px;
+
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: hidden;
 }
+
+.result_image img {
+    transition: .3s ease-in-out;
+}
+
+.saved_result_card:hover img {
+    transform: scale(1.04);
+
+}
+.saved_result_card:hover .saved_text {
+    bottom: 0;
+}
+
+
+/* .result_image:hover img {
+    transform: scale(1.03);
+    transition: .3s;
+} */
+/* .result_image img.active {
+    width: 110%;
+} */
 
 .saved_text {
     width: 380px;
@@ -480,6 +508,12 @@ footer div {
     border: 2px solid #000;
     border-radius: 4px;
     background: #fff;
+
+    transition: .3s ease-in-out;
+}
+
+.saved_text.active {
+    bottom: 0;
 }
 
 @media screen and (min-width: 800px){

@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 // Canidae 5219243 | Felinae | Hominidae
 
+// mobile nav
 const header = document.querySelector("Header");
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav");
@@ -10,6 +11,18 @@ hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
   navMenu.classList.toggle("active");
 });
+
+// saved results 
+// const savedResults = document.querySelector(".saved_result_card")
+
+// savedText.addEventListener("mouseover", () => {
+//   console.log('moused over');
+//   savedText.classList.toggle("active");
+// });
+
+
+
+
 
 
 async function clearTable(table) {

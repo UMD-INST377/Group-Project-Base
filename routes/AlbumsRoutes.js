@@ -9,6 +9,8 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+router.use('/albums')
+
 router.route('/')
   .get(async (req, res) => {
     try {

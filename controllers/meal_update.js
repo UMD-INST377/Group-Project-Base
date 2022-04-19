@@ -1,0 +1,1 @@
+export default `UPDATE meals SET meal = 'Vegetarian' WHERE meal_id = :meal_id;`;

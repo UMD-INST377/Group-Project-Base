@@ -1,0 +1,1 @@
+export default `SELECT * FROM meals WHERE meal_id = :meal_id;`;

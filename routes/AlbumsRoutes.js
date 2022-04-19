@@ -1,28 +1,32 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-import chalk from 'chalk';
-import fetch from 'node-fetch';
 
-import AlbumsQuery from '../controllers/Albums_query.js';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.use('/albums')
-
-router.route('/')
-  .get(async (req, res) => {
-    try {
-      console.log('Touched sql get');
-      const result = await db.sequelizeDB.query(AlbumsQuery, {
-        type: sequelize.QueryTypes.SELECT
-      });
-      res.json({ data: result });
-    } catch (error) {
-      console.log('sql get error', error);
-      res.json({ message: 'error in sql'});
-    }
-  });
+router.route('/album').get(async (req, res) => {
+  try {
+    const alb = await db.Album.FindAll();
+    res.json({data: alb});
+  } catch (error) {
+    console.error(error);
+    res.send('Server Error');
+  }
+});
+router.get('/album/:album_id', async (req, res) => {
+  try {
+    const art = await db.Album.findAll({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.json({data: alb});
+  } catch (error) {
+    console.error(error);
+    res.send('Server Error');
+  }
+});
 
 export default router;

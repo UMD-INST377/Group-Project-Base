@@ -232,7 +232,7 @@ router.put('/country', async (req, res) => {
   }
 })
 
-  .post(async (req, res) => {
+  .post('/counrty', async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(countryController.countryPost, {
         replacements: {art: req.body.art},

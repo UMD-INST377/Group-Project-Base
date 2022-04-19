@@ -15,7 +15,7 @@
             <div class = submit_button></div>
             <button class = "button" type = "submit">Genre</button>
             <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                <button onclick="DD_Function()" class="dropbtn">Dropdown</button>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="#">Drawing</a>
                     <a href="#">Painting</a>

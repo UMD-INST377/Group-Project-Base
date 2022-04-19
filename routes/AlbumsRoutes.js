@@ -17,6 +17,18 @@ router.route('/Album').get(async (req, res) => {
     res.send('Server Error');
   }
 });
-
+router.get('/album/:album_id', async (req, res) => {
+  try {
+    const art = await db.album.findAll({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.json({data: art});
+  } catch (error) {
+    console.error(error);
+    res.send('Server Error');
+  }
+});
 
 export default router;

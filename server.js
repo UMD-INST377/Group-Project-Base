@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';
+import Album from './models/Album.js';
 import apiRoutes from './routes/apiRoutes.js';
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
+app.use('/api', AlbumsRoutes);
 
 async function bootServer() {
   try {

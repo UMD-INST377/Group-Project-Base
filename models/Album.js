@@ -1,4 +1,3 @@
-
 export default (database, DataTypes) => {
   const album = database.define(
     'album',
@@ -28,3 +27,4 @@ export default (database, DataTypes) => {
     { freezeTableName: true, timestamps: false }
   );
   return album;
+};

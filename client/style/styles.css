@@ -1,5 +1,14 @@
+
+
+h1{
+  font-family: 'Ropa Sans';
+}
+
+.container{
+  text-align: center;
+}
 nav {
-    background-color: rgba(0,139, 139,0.4);
+    background-color: rgba(255, 0, 0);
     display: flex;
     flex-flow: row wrap;
     border-radius: 4px;
@@ -8,9 +17,9 @@ nav {
     margin-bottom: 15px;
   }
   
-  nav a {
-    color: rgba(0,139, 139, 1);
-  }
+nav a {
+    color: rgb(255, 255, 255);
+}
 
   .wrapper {
     display:flex;

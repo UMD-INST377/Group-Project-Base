@@ -35,14 +35,26 @@ main > * {
     margin-bottom: 64px;
 }
 
-.arrow_container {
-    position: relative;
-}
 
 .arrow_container_left {
     position: absolute;
     left: 8px;
     bottom: 8px;
+
+    filter: drop-shadow(-1px 1px 4px rgba(0, 0, 0, 0.25));
+
+
+    /* filter: drop-shadow(-1px 1px 4px); */
+
+}
+
+.arrow_container_right {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+
+    transform: rotate(180deg);
+    filter: drop-shadow(-1px 1px 4px rgba(0, 0, 0, 0.25));
 }
 
 .arrow_left {
@@ -64,6 +76,7 @@ arrow_right {
     left: 0;
 
     background: #000;
+    border-radius: 1px;
 }
 
 .line_b {
@@ -74,6 +87,7 @@ arrow_right {
     bottom: 0;
 
     background: #000;
+    border-radius: 1px;
 }
 
 /* Typography

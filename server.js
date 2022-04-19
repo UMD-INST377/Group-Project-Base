@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';
-import Album from './models/Album.js';
+import album from './models/Album.js';
 import apiRoutes from './routes/apiRoutes.js';
 import AlbumsRoutes from './routes/AlbumsRoutes.js';
 

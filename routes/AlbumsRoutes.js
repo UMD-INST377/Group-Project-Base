@@ -8,27 +8,15 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.route('/album').get(async (req, res) => {
+router.route('/Album').get(async (req, res) => {
   try {
-    const art = await db.Album.findAll();
+    const art = await db.album.findAll();
     res.json({data: art});
   } catch (error) {
     console.error(error);
     res.send('Server Error');
   }
 });
-router.get('/album/:album_id', async (req, res) => {
-  try {
-    const art = await db.Album.findAll({
-      where: {
-        album_id: req.params.album_id
-      }
-    });
-    res.json({data: art});
-  } catch (error) {
-    console.error(error);
-    res.send('Server Error');
-  }
-});
+
 
 export default router;

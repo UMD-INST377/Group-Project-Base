@@ -25,6 +25,8 @@ body {
 }
 
 main {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -439,12 +441,14 @@ footer div {
     margin: auto 40px;
 }
 
-/* Saved Results Card
+/* Saved Results 
 ================================================================ */
+
 
 .saved_result_card {
     width: 348px;
     height: 292px;
+    margin-bottom: 104px;
 
     position: relative;
 
@@ -477,6 +481,20 @@ footer div {
     border-radius: 4px;
     background: #fff;
 }
+
+@media screen and (min-width: 800px){
+    .saved_results_container {
+        max-width: 1200px;
+        padding-right: 80px;
+        padding-left: 80px;
+    
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }  
+}
+
 
 
 

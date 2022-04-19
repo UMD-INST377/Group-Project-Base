@@ -153,20 +153,20 @@ router.put('/artwork', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
-})
+});
 
-  .post(async (req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(artworkController.artworkPost, {
-        replacements: {art: req.body.art},
-        type: sequelize.QueryTypes.INSERT
-      });
-      res.json({data: result});
-      console.log('Successfully Updated');
-    } catch (err) {
-      res.json({ error: 'Server error'});
-    }
-  });
+router.post('/artwork', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(artworkController.artworkPost, {
+      replacements: {art: req.body.art},
+      type: sequelize.QueryTypes.INSERT
+    });
+    res.json({data: result});
+    console.log('Successfully Updated');
+  } catch (err) {
+    res.json({ error: 'Server error'});
+  }
+});
 
 router.delete('/artwork/:artwork_id', async (req, res) => {
   try {

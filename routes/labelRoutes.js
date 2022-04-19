@@ -15,20 +15,16 @@ router.route('/label').get(async (req, res) => {
   }
 });
 
-router.get('/label/:label_id', async (req, res) => {
+router.get('/label', async (req, res) => {
   try {
-    const art = await db.label.findAll({
-      where: {
-        label_id: req.params.label_id
-      }
-    });
-    res.json({data: []});
-  } catch (error) {
-    console.error(error);
-    res.send('Server Error');
+    const labels = await db.label.findAll();
+    const reply = labels.length > 0 ? { data: labels } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
   }
 });
-export default router;
 
 router.post('/label', async (req, res) => {
   const labels = await db.label.findAll();

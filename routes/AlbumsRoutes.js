@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import chalk from 'chalk';
+import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
 
@@ -8,7 +10,7 @@ const router = express.Router();
 
 router.route('/album').get(async (req, res) => {
   try {
-    const art = await db.Album.FindAll();
+    const art = await db.Album.findAll();
     res.json({data: art});
   } catch (error) {
     console.error(error);

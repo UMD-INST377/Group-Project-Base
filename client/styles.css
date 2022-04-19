@@ -31,6 +31,8 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-left: 80px;
+    padding-right: 80px;
 }
 
 main > * {
@@ -346,7 +348,7 @@ header {
 ================================================================ */
 
 .hero {
-    width: 100%;
+    width: 100vw;
     min-height: 201px;
 
     display: flex;
@@ -405,7 +407,9 @@ header {
 
 /* Species Form
 ================================================================ */
-
+.desktops {
+    display: none;
+}
 .species_form {
     display: flex;
     flex-direction: column;
@@ -450,14 +454,47 @@ header {
     border-radius: 4px;
 }
 
-.tree {
-    min-width: 348px;
-    height: 337px;
+@media screen and (min-width: 800px) {
+    .species_form {
+        align-items: center;
+    }
+  
+    .row { 
+    width: 666px;  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }  
+}
 
+/* Tree
+================================================================ */
+
+.tree {
+    min-width: 323px;
+    height: 337px;
+    
     border: 2px solid #66516E;
     box-shadow: inset 0px 1px 2px #66516E;
     border-radius: 4px;
+}   
+
+@media screen and (min-width: 800px){
+    .tree {
+        height: 666px;
+        min-width: 100%;
+/* 
+        margin-right: 80px;
+        margin-left: 80px; */
+        /* height: 337px; */
+/*     
+        border: 2px solid #66516E;
+        box-shadow: inset 0px 1px 2px #66516E;
+        border-radius: 4px; */
+    }   
 }
+
 
 footer {
     width: 100%;

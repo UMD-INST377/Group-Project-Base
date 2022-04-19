@@ -301,8 +301,9 @@ header.active {
 }
     
 header {
-    width: 100%;
+    max-width: 1600px;
     height: 88px;
+    margin: 0 auto;
 
     display: flex;
     flex-direction: row;
@@ -393,6 +394,10 @@ header {
 }
 
 @media screen and (min-width: 800px){
+    .hero {
+        min-height: 344px;
+    }
+
     .hero div {
         max-width: 666px;
     }

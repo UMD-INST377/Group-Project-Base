@@ -18,6 +18,7 @@ export default (database, DataTypes) => {
       },
       price_id: {
         type: DataTypes.INTEGER,
+        allowNull: false
       },
       album_name: {
         type: DataTypes.STRING,

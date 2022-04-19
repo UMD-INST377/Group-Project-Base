@@ -270,8 +270,5 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-/// ////////////////////
-/// Liam's Enpoints///
-/// //////////////////
-// /GetAlbum
+
 export default router;

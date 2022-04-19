@@ -22,6 +22,18 @@
                     <a href="#">Photograph</a>
                 </div>
             </div>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                <input class="input" type="text" id="name">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Country</label>
+                <div class="control">
+                <input class="input" type="text" id="country">
+                </div>
+            </div>
             
         </form>
     </div>

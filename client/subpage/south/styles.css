@@ -117,25 +117,22 @@ background: rgba(255, 71, 71, 0.9);
 }
 
 
-/* Css title hour
-.menu-container hours{
-    position: absolute;
-    width: 186px;
-    height: 61px;
-    left: 88px;
-    top: 322px;
-    
+.menuoptions{
+  
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 35px;
     line-height: 47px;
+    color: #000000;
+}
+
+
+
+.interline{
     
-    color: #000000;}*/
-
-
-
-
+    border: 1px solid rgba(0, 0, 0, 0.7);
+}
 
 
 

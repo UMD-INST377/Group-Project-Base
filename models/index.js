@@ -5,8 +5,9 @@ import Meals from './Meals.js';
 import Album from './Album.js';
 
 export default {
-  // DietaryRestrictions,
-  // DiningHall,
-  // Macros,
-  // Meals
+  DietaryRestrictions,
+  DiningHall,
+  Macros,
+  Meals,
+  Album
 };

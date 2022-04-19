@@ -65,3 +65,22 @@ div.field#searchbar{
   justify-content: center;
   align-items: center;
 }
+
+.about_container {
+  margin: auto;
+  background-color: #73c2fb50;
+  width: 700px;
+  text-align: center;
+  padding: 25px;
+}
+
+img.discog_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 600px;
+  height: 300px;
+}
+
+

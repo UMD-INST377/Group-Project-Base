@@ -37,7 +37,7 @@ router.route('/artists')
           },
           type: sequelize.QueryTypes.UPDATE
         });
-      res.json(result);
+      res.json({data: result});
       console.log('Successfully Updated');
     } catch (err) {
       res.json({ error: 'Server error'});
@@ -133,7 +133,7 @@ router.route('/artwork')
   });
 
 /* country endpoint */
-router.route('/province')
+router.route('/country')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(countryController.countryGet,
@@ -141,7 +141,7 @@ router.route('/province')
           type: sequelize.QueryTypes.SELECT
         });
       console.log('This is the route');
-      res.json(gallery);
+      res.json({data: result});
     } catch (err) {
       res.json({ error: err});
     }
@@ -193,15 +193,15 @@ router.route('/province')
   });
 
 /* customer endpoint */
-router.route('/customers')
+router.route('/customer')
   .get(async (req, res) => {
     try {
-      const gallery = await db.sequelizeDB.query(customerController.custGet,
+      const result = await db.sequelizeDB.query(customerController.custGet,
         {
           type: sequelize.QueryTypes.SELECT
         });
       console.log('This is the route');
-      res.json(gallery);
+      res.json({data: result});
     } catch (err) {
       res.json({ error: err});
     }
@@ -253,7 +253,7 @@ router.route('/customers')
   });
 
 /* gallery endpoint */
-router.route('/gallery')
+router.route('/galleries')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(galleriesController.galGet,
@@ -261,7 +261,7 @@ router.route('/gallery')
           type: sequelize.QueryTypes.SELECT
         });
       console.log('This is the route');
-      res.json(gallery);
+      res.json({data: result});
     } catch (err) {
       res.json({ error: err});
     }
@@ -321,7 +321,7 @@ router.route('/genres')
           type: sequelize.QueryTypes.SELECT
         });
       console.log('This is the route');
-      res.json(gallery);
+      res.json({data: result});
     } catch (err) {
       res.json({ error: err});
     }
@@ -373,7 +373,7 @@ router.route('/genres')
   });
 
 /* reservation endpoint */
-router.route('/reserved')
+router.route('/reservation')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(resController.resGet,
@@ -381,7 +381,7 @@ router.route('/reserved')
           type: sequelize.QueryTypes.SELECT
         });
       console.log('This is the route');
-      res.json(result);
+      res.json({data: result});
     } catch (err) {
       res.json({ error: err});
     }

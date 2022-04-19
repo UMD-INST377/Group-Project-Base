@@ -19,3 +19,4 @@ export default (sequelize, DataTypes) => {
   );
   return artists;
 };
+// not needed

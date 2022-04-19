@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const country = sequelize.define(
-    'province',
+    'country',
     {
       country_id: {
         type: DataTypes.INTEGER,

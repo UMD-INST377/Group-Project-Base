@@ -1,14 +1,14 @@
 const countryGet = `SELECT country_id, country_name, country_nationality
-FROM province`;
+FROM country`;
 
-const countryPut = `UPDATE province
+const countryPut = `UPDATE country
 SET art = :art
 WHERE country_id = :country_id;`;
 
-const countryPost = `INSERT INTO province (country_id, country_name, country_nationality)
+const countryPost = `INSERT INTO country (country_id, country_name, country_nationality)
 VALUES(DEFAULT, :art);`
 
-const countryDelete = `DELETE FROM province
+const countryDelete = `DELETE FROM country
 WHERE country_id = :country_id;`
 
 export default {

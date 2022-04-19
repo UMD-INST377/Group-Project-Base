@@ -164,6 +164,10 @@ Nav a {
     line-height: 36px;
 }
 
+.saved_text p {
+    font-weight: 700;
+}
+
 footer p {
     color: #fff;
 }
@@ -262,10 +266,13 @@ header.active {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-@media screen and (min-width: 768px) {
+/* Nav Desktop */
+@media screen and (min-width: 800px) {
+.mobile {
+    display: none;
+}
     
 header {
-    
     width: 100%;
     height: 88px;
 
@@ -275,13 +282,19 @@ header {
     padding: 10px 80px 10px 80px;
 }
 
-
-
 .hamburger {
     display: none;
 }
 
 .nav {
+    opacity: 1;
+
+    width: auto;
+    height: auto;
+    
+    position: relative;
+    right: auto;
+    top: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -290,6 +303,7 @@ header {
 
 .nav-link {
     margin-right: 60px;
+    margin-bottom: auto;
 
 }
 
@@ -313,7 +327,6 @@ header {
     background-color: #FFC6C6;
     background-image: url(assets/hero_background.png);
     opacity: .8;
-
 }
 
 .hero div {
@@ -334,6 +347,21 @@ header {
 
 .hero p {
     text-align: center;
+}
+
+
+.hero_sub_page {
+    width: 100%;
+    min-height: 84px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 40px;
+
+    background-color: #FFC6C6;
+    background-image: url(assets/hero_background.png);
+    opacity: .8;
 }
 
 /* Species Form
@@ -408,13 +436,47 @@ footer {
 }
 
 footer div {
-
     margin: auto 40px;
-
 }
 
+/* Saved Results Card
+================================================================ */
+
+.saved_result_card {
+    width: 348px;
+    height: 292px;
+
+    position: relative;
+
+    padding: 12px 12px;
+    border: 2px solid #000;
+    border-radius: 4px;
+    box-shadow: inset 0px 1px 2px #66516E;
+}
+
+.result_image {
+    height: 210px;
+    
+}
+
+.saved_text {
+    width: 380px;
+    height: auto;
+
+    position: absolute;
+    bottom: 12px;
+    left: -18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 32px;
 
 
+    border: 2px solid #000;
+    border-radius: 4px;
+    background: #fff;
+}
 
 
 

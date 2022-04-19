@@ -8,7 +8,7 @@ const cuisineQuery = 'SELECT * FROM cuisine';
 const router = express.Router();
 
 router.route('/').get(async (req, res) => {
-  try {
+  try { 
     const cuisine = await db.sequelizeDB.query(cuisineQuery);
    
     res.json(cuisine);

@@ -135,7 +135,7 @@ router.post('/career_services', async (req, res) => {
     res.json(newCareers);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -323,6 +323,59 @@ router.get('/company/:id', async (req, res) => {
   }
 });
 
+router.post('/company', async (req, res) => {
+  const company = await db.company.findAll();
+  const currentId = (await company.length) + 1;
+  try {
+    const newCompnay = await db.company.create({
+      company_id: currentId,
+      compnay_name: req.body.company_name,
+      size: req.body.size,
+      type: req.body.type,
+      city: req.body.city
+    });
+    res.json(newCompnay);
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.delete('/company/:company_id', async (req, res) => {
+  try {
+    await db.company.destroy({
+      where: {
+        company_id: req.params.company_id
+      },
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/company', async (req, res) => {
+  try {
+    await db.company.update(
+      {
+        company_name: req.body.company_name,
+        size: req.body.size,
+        type: req.body.type,
+        city: req.body.city
+      },
+      {
+        where: {
+          comany_id: req.body.company_id
+        },
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

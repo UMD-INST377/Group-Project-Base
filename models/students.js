@@ -41,5 +41,3 @@ export default (database, DataTypes) => {
     });
     return students;
 }
-//test
-//test

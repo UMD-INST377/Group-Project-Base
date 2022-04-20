@@ -19,6 +19,8 @@ router.get('/advisors', async (req, res) => {
   }
 });
 
+//test
+
 router.get('/advisors/:id', async (req, res) => {
   try {
     const { id } = req.params;

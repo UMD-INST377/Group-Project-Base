@@ -5,16 +5,68 @@
 }
 
 body {
-    color: #5D6063;
-    background-color: #EAEDF0;
-    font-family: "Helvetica", "Arial", sans-serif;
-    font-size: 16px;
-    line-height: 1.3;
+  color: #5D6063;
+  background-color: #EAEDF0;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 1.3;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+/* Dropdown Menu*/
+nav.dropdown{
+  text-align: center;
+}
+.menu {
+  display: inline-block;
+}
+.menu>li {
+  float: left;
+  color: #e298e1;
+  width: 140px;
+  height: 40px;
+  line-height: 40px;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  font-size: 17px;
+}
+
+li::marker {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.sub-menu {
+  transform: scale(0);
+  transform-origin: top center;
+  transition: all 300ms ease-in-out;
+}
+.sub-menu li {
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 8px 0;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transform: scale(0);
+  transform-origin: top center;
+  transition: all 300ms ease-in-out;
+}
+.sub-menu li:last-child {
+  border-bottom: 0;
+}
+.sub-menu li:hover {
+  background: black;
+}
+.menu>li:hover .sub-menu li {
+  transform: scale(1);
+}
+.menu>li:hover .sub-menu {
+  transform: scale(1);
+}
+
 /* Button for the login page*/
 button div{
   width: 100%;
@@ -38,7 +90,7 @@ button div a{
 }
 
 img#logo  {
-  width: 20%;
+  width: 10%;
   height: 15%;
 }
 
@@ -90,11 +142,6 @@ nav.dashboard_nav{
   margin-bottom: 15px;
   display: flex;
   justify-content: space-around;
-}
-
-/* This is not doing anything*/
-nav a {
-  color: rgb(145, 219, 188);
 }
 
 /* Carousel Slides*/

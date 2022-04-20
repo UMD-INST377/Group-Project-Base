@@ -10,21 +10,40 @@
   <body class='wrapper'>
     <div class='header'> <!--Header-->
       <img id="logo" src='images/logo.jpg' alt='Logo Image'/>
-      <h1 class='brand_name'>MyCinema</h1>
+      <h1 class='brand_name'>MyCinema</h1> 
+      <nav class="dropdown">
+        <ul class="menu">
+          <li>
+            Edit TV Shows
+            <ul class="sub-menu">
+              <li><a href="add_actors.html">Edit Actors</a></li>
+              <li><a href="add_ep.html">Edit Episodes</a></li>
+              <li><a href="add_tv.html">Add TV Shows</a></li>
+            </ul>
+          </li>
+          <li>
+            Edit Films
+            <ul class="sub-menu">
+              <li><a href="add_actors.html">Edit Actors</a></li>
+              <li><a href="add_film.html">Add Films</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
       <nav a class='navbar'> 
         <a href="index.html">Logout</a> <!--Logout to Index.html-->
-      </nav> 
+      </nav>
     </div> 
 
     <div class='tv_film_selection'> <!-- Tv and Film Selection Database-->
         <div class='container image_1'> 
             <img id='image_1' src='images/tv.jpg' alt = "Tv Image"/>
-            <button class='btn'>TV Database</button> <!-- A button for the TV Section-->
+            <button class='btn'><a href="tv_database.html">TV Database</a></button> <!-- A button for the TV Section-->
         </div>
 
         <div class='container image_1'> <!-- A button for the Film Section-->
             <img id='image_2' src='images/films.jpg' alt = "Film image"/>
-            <button class='btn'>Film Database</button> <!-- A button for the Film Section-->
+            <button class='btn'><a href="film_database.html">Film Database</a></button> <!-- A button for the Film Section-->
         </div>
     </div>
 

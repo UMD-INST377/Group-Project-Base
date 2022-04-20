@@ -29,7 +29,7 @@ router.route('/macros')
       const newMac = await db.Macros.create({
         macro_id: nextMac,
         calories: 400,
-        serving_size: 15, 
+        serving_size: 15,
         cholesterol: 500,
         sodium: 206,
         carbs: 5,
@@ -49,7 +49,7 @@ router.route('/macros/:id')
       const {id} = req.params;
       const result = await db.Macros.findOne({
         where: {
-          result_id: `${id}`
+          macro_id: `${id}`
         }
       });
       res.json({data: result});
@@ -57,8 +57,24 @@ router.route('/macros/:id')
       console.log(err);
       res.json(err);
     }
+  })
+  .put(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.Macros.update(
+        {
+          sodium: 209
+        },
+        {
+          where: {
+            macro_id: `${id}`
+          }
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   });
-
 // David McCoy GET Controllers
 router.route('/dietaryRestrictions')
   .get(async (req, res) => {
@@ -84,7 +100,6 @@ router.route('/dietaryRestrictions')
       res.json({message: 'Something went wrong'});
     }
   });
-
 router.route('/dietaryRestrictions/:id')
   .get(async (req, res) => {
     try {

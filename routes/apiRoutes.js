@@ -78,7 +78,7 @@ router.post('/artists', async (req, res) => {
     console.log(req.body?.artists);
     const artistId = req.body?.artists || 0;
     const result = await db.sequelizeDB.query(artistsController, {
-      replacements: { first_name: artistId },
+      replacements: { artist_id: artistId },
       type: sequelize.QueryTypes.SELECT
     });
     res.json({ data: result });

@@ -214,6 +214,65 @@ router.get('/students/:id', async (req, res) => {
   }
 });
 
+router.post('/students', async (req, res) => {
+  const student = await db.students.findAll();
+  const currentId = (await student.length) + 1;
+  try {
+    const newStudent = await db.students.create({
+      student_id: currentId,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      grad_semester: req.body.grad_semester,
+      grad_year: req.body.grad_year,
+      status: req.body.status,
+      infosci_concentration: req.body.infosci_concentration
+    });
+    res.json(newStudent);
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.delete('/students/:student_id', async (req, res) => {
+  try {
+    await db.students.destroy({
+      where: {
+        student_id: req.params.student_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.put('/students', async (req, res) => {
+  try {
+    await db.students.update(
+      {
+        student_id: req.body.student_id,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        grad_semester: req.body.grad_semester,
+        grad_year: req.body.grad_year,
+        status: req.body.status,
+        infosci_concentration: req.body.infosci_concentration
+      },
+      {
+        where: {
+          student_id: req.body.student_id
+        }
+      }
+    );
+    res.send('Successfully updated')
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 /// //////////////////////////////////////////
 /// //////////Job Title Info Endpoints////////
 /// //////////////////////////////////////////
@@ -264,6 +323,59 @@ router.get('/company/:id', async (req, res) => {
   }
 });
 
+router.post('/company', async (req, res) => {
+  const company = await db.company.findAll();
+  const currentId = (await company.length) + 1;
+  try {
+    const newCompnay = await db.company.create({
+      company_id: currentId,
+      compnay_name: req.body.company_name,
+      size: req.body.size,
+      type: req.body.type,
+      city: req.body.city
+    });
+    res.json(newCompnay);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/company/:company_id', async (req, res) => {
+  try {
+    await db.company.destroy({
+      where: {
+        company_id: req.params.company_id
+      },
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/company', async (req, res) => {
+  try {
+    await db.company.update(
+      {
+        company_name: req.body.company_name,
+        size: req.body.size,
+        type: req.body.type,
+        city: req.body.city
+      },
+      {
+        where: {
+          comany_id: req.body.company_id
+        },
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

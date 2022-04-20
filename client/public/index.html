@@ -62,6 +62,48 @@
           </div> <!-- ratings -->
         </div> <!-- row -->
       </section> <!-- filters -->
+      <div class = 'container'>
+        <form action='/api/ratings' method='get' class='lab-form'>
+            <div class='form-row container'>
+                <div><label for='Movie-Title'><strong>Movie Title</strong></label>
+                <input class= "from-user" id='movie_name' name='movie_name' type='text'/></div>
+
+                <div><label for='ratings'><strong>Ratings</strong></label>
+                    <input class= "from-user" id='ratings' name='ratings' type='text'/></div>
+                
+              </div>
+              <fieldset class='legacy-form-row'>
+                <div><legend><strong>Platforms</strong></legend></div>
+
+                <div><input class= "from-user"  id='talk-type-1'
+                       name='platform-type'
+                       type='radio'
+                       value='Netflix' />
+                <label for='talk-type-1' class='radio-label'>Netflix</label></div>
+
+                <div><input class= "from-user" id='talk-type-2'
+                       name='platform-type'
+                       type='radio'
+                       value='Hulu'
+                       checked />
+               <label for='talk-type-2' class='radio-label'>Hulu</label></div> 
+               <div><input class= "from-user" id='talk-type-3'
+                name='platform-type'
+                type='radio'
+                value='Disney+'
+                checked />
+        <label for='talk-type-3' class='radio-label'>Disney+</label></div> 
+        <div><input class= "from-user" id='talk-type-4'
+          name='platform-type'
+          type='radio'
+          value='Prime'
+          checked />
+  <label for='talk-type-4' class='radio-label'>Prime</label></div> 
+              </fieldset>
+              <div class='btn'>
+                <button><strong>Find Ratings</strong></button>
+              </div>
+        </form>
       <section class="movies">
         <div class="movies-row row">
           

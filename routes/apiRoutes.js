@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -62,6 +61,57 @@ router.get('/stateloc/:record_id', async (req, res) => {
         }
       });
 
+    router.post('/disasters', async (req, res) => {
+      const disasters = await db.record_state.findAll();
+      const currentId = (await disasters.length) + 1 //find last element
+      console.log(currentId,req.body.state)
+        try {
+          const disasters = await db.record_state.create({
+            record_id: currentId,
+            state: req.body.state
+            
+          });
+          res.json(disasters);
+        } catch (err) {
+          console.error(err);
+          res.send('Server error');
+        }
+
+      router.put('/disasters', async (req, res) => {
+          try {
+            await db.record_state.update(
+              {
+                record_id: currentId,
+                state: req.body.state
+              },
+              {
+                where: {
+                  record_id: req.body.state
+                }
+
+        
+              }
+            );
+            res.send('Successfully Updated');
+          } catch (err) {
+            console.error(err);
+            res.send('Server error');
+          }
+        });
+
+      router.delete('/disasters/:record_id', async (req, res) => {
+        try {
+          await db.record_state.destroy({
+            where: {
+              record_id: req.params.record_id
+            }
+          });
+          res.send('Successfully Deleted');
+        } catch (err) {
+          console.error(err);
+          res.send('Server error');
+        }
+      });
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
@@ -322,4 +372,6 @@ router.get('/custom', async (req, res) => {
   }
 });
 
-export default router;
+})
+export default router
+

@@ -36,7 +36,7 @@ router.get('/:restaurant_id', async (req, res) => {
   }
 });
 
-// post method for restaurant
+// post method for restaurant for adding a restaurant
 router.post('/restaurantpost', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(`INSERT INTO restaurants (restaurant_id, 
@@ -52,6 +52,9 @@ router.post('/restaurantpost', async (req, res) => {
   }
 });
 
-// router.put()
+// for updating an entry
+router.put() 
+
+// for deleting an entry
 
 export default router;

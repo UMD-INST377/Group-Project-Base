@@ -74,6 +74,20 @@ router.route('/macros/:id')
     } catch (err) {
       console.log(err);
     }
+  })
+  .delete(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.Macros.destroy({
+        where: {
+          macro_id: `${id}`
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
   });
 // David McCoy GET Controllers
 router.route('/dietaryRestrictions')

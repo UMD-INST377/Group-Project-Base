@@ -53,7 +53,7 @@ router.route('/race/')
       res.json({message: 'Server error'});
     }
   })
-  .post('/race/', async (req, res) => {
+  .post(async (req, res) => {
     const parks = await db.Parks.findAll();
     const currentId = (await parks.length) + 1;
     try {

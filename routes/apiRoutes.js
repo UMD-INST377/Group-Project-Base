@@ -11,32 +11,51 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
-
-//Nicholas Urquhart Get controllers
-router.route('/Nicholas/:id')
+// Nicholas Urquhart GET controllers
+router.route('/macros')
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-      const data = await fetch(url);
-      const json = await data.json();
-      res.json({data: json[0]});
-      console.log('success');
+      const result = await db.Macros.findAll();
+      res.json({data: result});
     } catch (err) {
       console.log(err);
       res.json({message: 'something went wrong'});
     }
-  });
-router.route('/Nicholas')
-  .get(async (req, res) => {
+  })
+  .post(async (req, res) => {
+    const macros = await db.Macros.findAll();
+    const nextMac = (await macros.length) + 1;
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-      const data = await fetch(url);
-      const json = await data.json();
-      res.json({data: json[0]});
-      console.log('success');
+      const newMac = await db.Macros.create({
+        macro_id: nextMac,
+        calories: 400,
+        serving_size: 15, 
+        cholesterol: 500,
+        sodium: 206,
+        carbs: 5,
+        protein: 15,
+        meal_id: 15,
+        fat: 18
+      });
+      res.json(newMac);
     } catch (err) {
       console.log(err);
-      res.json({message: 'something went wrong'});
+      res.json({message: 'Something went wrong'});
+    }
+  });
+router.route('/macros/:id')
+  .get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const result = await db.Macros.findOne({
+        where: {
+          result_id: `${id}`
+        }
+      });
+      res.json({data: result});
+    } catch (err) {
+      console.log(err);
+      res.json(err);
     }
   });
 
@@ -82,8 +101,8 @@ router.route('/dietaryRestrictions/:id')
     }
   })
   .put(async (req, res) => {
-    try { 
-      const {id} = req.params; 
+    try {
+      const {id} = req.params;
       await db.DietaryRestrictions.update(
         {
           restriction_type: 'low fat'
@@ -102,7 +121,7 @@ router.route('/dietaryRestrictions/:id')
   })
   .delete(async (req, res) => {
     try {
-      const {id} = req.params; 
+      const {id} = req.params;
       await db.DietaryRestrictions.destroy({
         where: {
           restriction_id: `${id}`
@@ -115,8 +134,8 @@ router.route('/dietaryRestrictions/:id')
     }
   });
 
-  // Josh Mensah GET Controllers
-  router.route('/josh')
+// Josh Mensah GET Controllers
+router.route('/josh')
   .get(async (req, res) => {
     try {
       const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
@@ -142,7 +161,6 @@ router.route('/josh')
       res.json({message: 'something went wrong'});
     }
   });
-  
 
 // Brian McMahon GET controllers
 router.route('/brian')
@@ -161,8 +179,8 @@ router.route('/brian')
     try {
       const newRecord = await db.DiningHall.create({
         hall_id: nextHall,
-        hall_name: "Another Dining Hall",
-        hall_address: "589 Baltimore Ave, College Park MD",
+        hall_name: 'Another Dining Hall',
+        hall_address: '589 Baltimore Ave, College Park MD',
         hall_lat: 45.628942,
         hall_long: 48.18151
       });
@@ -188,12 +206,12 @@ router.route('/brian/:id')
     }
   })
   .put(async (req, res) => {
-    try { //Add a way to check if exists
-      const {id} = req.params; 
+    try { // Add a way to check if exists
+      const {id} = req.params;
       await db.DiningHall.update(
         {
-          hall_name: "Updated Hall",
-          hall_location: "123 Baltimore Ave, College Park MD",
+          hall_name: 'Updated Hall',
+          hall_location: '123 Baltimore Ave, College Park MD',
           hall_lat: 46.628942,
           hall_long: 48.18151
         },
@@ -203,7 +221,7 @@ router.route('/brian/:id')
           }
         }
       );
-    res.send('Successfully Updated');
+      res.send('Successfully Updated');
     } catch (err) {
       console.log(err);
       res.json({message: 'Something went wrong'});
@@ -211,7 +229,7 @@ router.route('/brian/:id')
   })
   .delete(async (req, res) => {
     try {
-      const {id} = req.params; 
+      const {id} = req.params;
       await db.DiningHall.destroy({
         where: {
           hall_id: `${id}`
@@ -222,8 +240,7 @@ router.route('/brian/:id')
       console.log(err);
       res.json({message: 'Something went wrong'});
     }
-  });;
-  
+  });
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
@@ -487,7 +504,4 @@ router.get('/custom', async (req, res) => {
 
 export default router;
 
-
-///JOSH MENSAH///
-
-POST REQUEST
+/// JOSH MENSAH///

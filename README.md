@@ -1,7 +1,7 @@
 # TV and Films Cinema
 
 ## Description
-
+The information problem we are trying to solve is an archival one. Prior to streaming services, people often kept a collection of VCRs, DVDs and Blu Ray discs as part of their TV and/ or movie collections. If the person only watched movies at the theater and/ or didn’t keep track of what television shows they’ve watched, they would be hard pressed to remember all that they had seen. While people could keep track of their tv show and movie consumption on something like a notebook, this method is antiquated and could lead to data loss should they misplace their notebook (or any other number of reasons). People who care about this problem are those who wish to keep track of all the tv shows and movies they’ve watched in one convenient location. Our system solves this problem by using a database that stores information about movie/ tv shows and information about what our users have seen (self input).
 
 ## Link to Website
 Insert the heroku link here

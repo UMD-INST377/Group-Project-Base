@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Group 24 Project</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+    <h2>Artist Details</h2>
+    <div class = "grid">
+        <img src = 'images/bill_arnold.jpg' alt = 'dog sitting on a seat'/>
+    </div>
+    <div class="columns">
+        <form id="form" method = "GET" class = 'sub_text'>
+            <div class = submit_button></div>
+            <button class = "button" type = "submit">Genre</button>
+            <div class="dropdown">
+                <button onclick="DD_Function()" class="dropbtn">Dropdown</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">Drawing</a>
+                    <a href="#">Painting</a>
+                    <a href="#">Photograph</a>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                <input class="input" type="text" id="name">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Country</label>
+                <div class="control">
+                <input class="input" type="text" id="country">
+                </div>
+            </div>
+            
+        </form>
+    </div>

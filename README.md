@@ -1,5 +1,4 @@
 # TV and Films Cinema
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
 
 ## Description
 
@@ -13,7 +12,7 @@ Insert the heroku link here
 * iPad Air
 
 ## Links
-* [User Manual]
+* [User Manual] Insert the heroku link for the user manual
 
 # Developer Manual
 ## How to install application and all dependencies

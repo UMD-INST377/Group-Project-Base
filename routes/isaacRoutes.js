@@ -40,7 +40,7 @@ router.post('/actors', async (req, res) => {
 });
 
 router.put('/actors', async (req, res) => {
- try {
+  try {
     const actors = await db.sequelizeDB.query(
       `SELECT * FROM actors WHERE age_of_person <= ${req.body.age}`
     );

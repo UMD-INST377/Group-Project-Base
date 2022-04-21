@@ -603,6 +603,10 @@ footer div {
 
 /* Sign Up Modal
 ================================================================ */
+/* TODO:
+- make the cancel button work
+*/
+
 
 .sign_up_modal {
     position: absolute;
@@ -768,3 +772,20 @@ footer div {
     margin: 20px;
 }
 
+
+/* About
+================================================================ */
+
+.section {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    width: 893px;
+    
+}
+
+.section img {
+    flex: none;
+    margin-left: 24px;
+
+    border-radius: 4px;
+}

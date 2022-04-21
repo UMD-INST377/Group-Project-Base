@@ -62,17 +62,18 @@ router.put("/roles", async (req, res) => {
     }
 });
 
-// Using GET for required DELETE request so it can be used from HTML 5 forms
-router.get('/delete_roles/:role_id', async (req, res) => {
+// Delete roles record with specific role id
+router.delete('/roles', async (req, res) => {
     try {
+        const role_id = req.body.role_id;
         const roles = await db.roles.destroy({
             where: {
-                role_id: req.params.role_id
+                role_id: role_id
             }
-        });
-        res.send('Successfully deleted!');
+        })
+        res.send(`Successfully deleted records with 'role_id = ${role_id}'!`);
     } catch (err) {
         console.error(err);
-        res.error("Error in GET '/roles' or 'roles_id' is invalid!");
+        res.error("Error in DELETE '/roles' or 'role_id' is invalid!");
     }
 });

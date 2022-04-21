@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 import express from 'express';
-import db from './database/initializeDB.js';
+// import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import RatingsRoutes from './routes/RatingsRoutes.js'
 
 const app = express();
 

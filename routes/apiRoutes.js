@@ -19,11 +19,8 @@ router.use('/genres', genres);
 router.use('/images', images);
 router.use('/languages', languages);
 router.use('/movies', movies);
-router.use('/', ratings);
+router.use('/ratings', ratings);
 
-<<<<<<< Updated upstream
-export default router;
-=======
 const tableQuery = `select movie_id, title, year, genre, language as 'lang', 
 rating, image_url, is_on_netflix, is_on_hulu, is_on_prime, is_on_disney from movies
   left join images using(image_id)
@@ -67,4 +64,3 @@ router.route('/custom').get(async (req, res) => {
 });
 
 export default router;
->>>>>>> Stashed changes

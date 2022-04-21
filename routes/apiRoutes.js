@@ -3,6 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import styles from '../models/styles.js';
 
 const router = express.Router();
 
@@ -259,7 +260,7 @@ router.delete('/releases/:release_id', async (req, res) => {
 router.get('/styles', async (req, res) => {
   try {
     const styleItems = await db.styles.findAll(); 
-    const reply = styleItems.length > 0 ? { data: halls } : { message: 'no results found' };
+    const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);

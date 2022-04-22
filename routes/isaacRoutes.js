@@ -50,7 +50,6 @@ router.put('/actors', async (req, res) => {
     res.send('Server error');
   }
 });
-
 // Using GET for required DELETE request so it can be used from HTML 5 forms
 router.delete('/actors', async (req, res) => {
   try {

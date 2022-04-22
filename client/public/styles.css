@@ -7,6 +7,7 @@
 .wrapper {
     max-width: 960px;
     margin:0 auto;
+    padding:10px;
     padding-bottom: 50px;
 }
 
@@ -138,7 +139,7 @@ td, th {
 }
 
 .material-icons {
-    font-size: 18px!important; 
+    font-size: 1em!important; 
     opacity: .7;
     padding: 7px;
 }

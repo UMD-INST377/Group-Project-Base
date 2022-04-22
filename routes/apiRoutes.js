@@ -71,22 +71,31 @@ router.put('/artists', async (req, res) => {
   }
 });
 
-// Todo:
 router.post('/artists', async (req, res) => {
   try {
-    console.log(req.body);
-    console.log(req.body?.artists);
-    const artistId = req.body?.artists || 0;
-    const result = await db.sequelizeDB.query(artistsController, {
-      replacements: { first_name: artistId },
-      type: sequelize.QueryTypes.SELECT
+    const addArtist = await db.sequelizeDB.query(createQuery, {
+      type: sequelize.QueryTypes.INSERT,
     });
-    res.json({ data: result });
+    res.json(addArtist);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.send({message: 'Something went wrong on the SQL request'});
   }
 });
+
+// router.post('/artists', async (req, res) => {
+//   try {
+//     const createQuery = `INSERT INTO artists (artist_id, first_name, last_name, country_id)
+//       VALUES('${req.body.artist_id}','${req.body.first_name}','${req.body.last_name}','${req.body.country_id}')`;
+//     const addArtist = await db.sequelizeDB.query(createQuery, {
+//       type: sequelize.QueryTypes.INSERT,
+//     });
+//     res.json(addArtist);
+//   } catch (err) {
+//     console.error(err);
+//     res.send({message: 'Something went wrong on the SQL request'});
+//   }
+// });
 
 router.delete('/artists/:artist_id', async (req, res) => {
   try {

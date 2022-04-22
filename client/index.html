@@ -7,14 +7,41 @@
     <script src="./scripts.js"></script>
   </head>
   <body>
-    <h1>hello world</h1>
-    <div class = "wrapper">
-      <div class = "column has-background-link">
-          <div class = "title has-text-white is-1 has-text-centered">Home (WIP)</div>
-                <button class="button"><a href = "info.html">Information Problem</a></button>
-            </div>
-          </div>
+    <div class="columns">
+      <div class="column sides is-1">
+        <aside class="menu">
+          <p class="menu-label">GROUP 14</p>
+          <ul class="menu-list">
+            <li><a href = "index.html">HOME</a></li>
+            <li><a class="is-active">INFO</a>
+              <ul>
+                <li><a href = "info.html">info.html</a></li>
+              </ul>
+            </li>
+            <hr style="width:97%;text-align:left;margin-left:5px">
+          </ul>
+        </aside>
       </div>
-  </div>
+      <div class="column">
+        <div class = "title has-text-white is-1 has-text-centered">Home (WIP)</div>
+      </div>
+      <div class="column sides is-1">
+        <figure class="image is-128x128 is-centered"><a href = "">
+          <img src="img/account.png">
+        </a></figure>
+        <div class = "content has-text-centered">
+          <P>Account</p>
+          <hr style="width:97%;text-align:left;margin-left:0">
+          <p>Friends</p>
+        </div>
+        <div class = "content">
+          <ul>
+            <li>Friend #1.</li>
+            <li>Friend #2.</li>
+            <li>Friend #3.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

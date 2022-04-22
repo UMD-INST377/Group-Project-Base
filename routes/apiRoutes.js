@@ -60,7 +60,6 @@ router.put('/artists', async (req, res) => {
       {
         where: {
           artist_id: req.body.artist_id
-          // updated
         }
       }
     );
@@ -73,6 +72,8 @@ router.put('/artists', async (req, res) => {
 
 router.post('/artists', async (req, res) => {
   try {
+    const createQuery = `INSERT INTO artists (artist_id, first_name, last_name, country_id)
+      VALUES('${req.body.artist_id}','${req.body.first_name}','${req.body.last_name}','${req.body.country_id}')`;
     const addArtist = await db.sequelizeDB.query(createQuery, {
       type: sequelize.QueryTypes.INSERT,
     });
@@ -82,20 +83,6 @@ router.post('/artists', async (req, res) => {
     res.send({message: 'Something went wrong on the SQL request'});
   }
 });
-
-// router.post('/artists', async (req, res) => {
-//   try {
-//     const createQuery = `INSERT INTO artists (artist_id, first_name, last_name, country_id)
-//       VALUES('${req.body.artist_id}','${req.body.first_name}','${req.body.last_name}','${req.body.country_id}')`;
-//     const addArtist = await db.sequelizeDB.query(createQuery, {
-//       type: sequelize.QueryTypes.INSERT,
-//     });
-//     res.json(addArtist);
-//   } catch (err) {
-//     console.error(err);
-//     res.send({message: 'Something went wrong on the SQL request'});
-//   }
-// });
 
 router.delete('/artists/:artist_id', async (req, res) => {
   try {

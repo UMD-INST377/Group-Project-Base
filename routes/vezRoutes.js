@@ -19,11 +19,8 @@ router.route('/')
       console.log('Touched sqlDemo get', error);
       res.json({message: 'error in sqlDemo'});
     }
-  });
-
-export default router;
-
-.post(async (req, res) => {
+  })
+  .post(async (req, res) => {
   //TODO - Table 'Dining_Hall_Tracker.Meals' doesnt exist
   //TOTO: we need to demonstrate hooking this to a form
   try{
@@ -40,3 +37,5 @@ export default router;
     res.send({ message: err});
   }
 })
+
+export default router;

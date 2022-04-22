@@ -51,7 +51,7 @@ router.post('/movies', async (req, res) => {
 router.put('/movies', async (req, res) => {
   try {
     const movies = await db.sequelizeDB.query(
-      `SELECT * FROM genres WHERE movie_id = ${req.body.movie_id}`
+      `SELECT * FROM movies WHERE movie_id = ${req.body.movie_id}`
     );
     res.send({ data: movies[0] });
   } catch (error) {
@@ -63,13 +63,13 @@ router.put('/movies', async (req, res) => {
 // Delete genre record with specific integer id
 router.delete('/movies', async (req, res) => {
   try {
-    const movie_id = req.body.genre_id;
+    const movie_id = req.body.movie_id;
     const movies = await db.movies.destroy({
       where: {
         movie_id: movie_id
       }
     });
-    res.send(`Successfully deleted records with 'genre_id = ${movie_id}'!`);
+    res.send(`Successfully deleted records with 'movie_id = ${movie_id}'!`);
   } catch (err) {
     console.error(err);
     res.error("Error in DELETE '/movies' or 'movie_id' is invalid!");

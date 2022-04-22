@@ -38,7 +38,7 @@ router.get('/movies/:movie_id', async (req, res) => {
 router.post('/movies', async (req, res) => {
   try {
     const movies = await db.sequelizeDB.query(
-      `SELECT * FROM genres WHERE genre LIKE '%${req.body.movie_name}%'`
+      `SELECT * FROM movies WHERE movie LIKE '%${req.body.movie_name}%'`
     );
     res.send({ data: movies[0] });
   } catch (error) {

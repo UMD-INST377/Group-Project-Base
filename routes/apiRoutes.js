@@ -30,7 +30,7 @@ rating, image_url, is_on_netflix, is_on_hulu, is_on_prime, is_on_disney from mov
   left join languages using(language_id)
 order by movie_id`;
 
-router.route('/table/data').get(async (req, res) => {
+router.route('/table/data/').get(async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(`${tableQuery};`, {
       type: sequelize.QueryTypes.SELECT
@@ -41,9 +41,9 @@ router.route('/table/data').get(async (req, res) => {
   }
 });
 
-router.route('/display').get(async (req, res) => {
+router.route('/table/data/:limit').get(async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(`${tableQuery} limit 8;`, {
+    const result = await db.sequelizeDB.query(`${tableQuery} limit ${req.params.limit};`, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json(result);
@@ -52,15 +52,26 @@ router.route('/display').get(async (req, res) => {
   }
 });
 
-router.route('/custom').get(async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    res.send('Error');
-  }
-});
+router.route('/custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(req.body.query, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      res.send('Error');
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(req.body.query, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      res.send('Error');
+    }
+  });
 
 export default router;

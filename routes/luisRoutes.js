@@ -28,7 +28,7 @@ router.route('/building/:building_id').get(async (req, res) => {
       type: sequelize.QueryTypes.SELECT
     });
     const specificId = result.filter((obj) => {
-      return obj.building_id == req.params.building_id;
+      return obj.building_id === req.params.building_id;
     });
     res.send(specificId);
   } catch (err) {

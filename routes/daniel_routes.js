@@ -29,7 +29,7 @@ router.get("/earth_info/:id", async(req, res) => {
         });
         console.log(result)
         let filt = result.filter((obj) => {
-            return obj.earthquake_id == req.params.id
+            return obj.earthquake_id === req.params.id
         })
         res.send(filt)
     } catch (err) {

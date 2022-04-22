@@ -3,6 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import styles from '../models/styles.js';
 
 const router = express.Router();
 
@@ -175,8 +176,8 @@ router.delete('/genres/:genre_id', async (req, res) => {
 
 router.get('/releases', async (req, res) => {
   try {
-    const halls = await db.releases.findAll(); 
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const releaseItems = await db.releases.findAll(); 
+    const reply = releaseItems.length > 0 ? { data: releaseItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -200,8 +201,8 @@ router.get('/releases/:release_id', async (req, res) => {
 });
 
 router.post('/releases', async (req, res) => {
-  const halls = await db.releases.findAll();
-  const currentId = (await halls.length) + 1;
+  const releaseItems = await db.releases.findAll();
+  const currentId = (await releaseItems.length) + 1;
   try {
     const newDining = await db.releases.create({
       release_id: currentId,
@@ -259,7 +260,7 @@ router.delete('/releases/:release_id', async (req, res) => {
 router.get('/styles', async (req, res) => {
   try {
     const styleItems = await db.styles.findAll(); 
-    const reply = styleItems.length > 0 ? { data: halls } : { message: 'no results found' };
+    const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);

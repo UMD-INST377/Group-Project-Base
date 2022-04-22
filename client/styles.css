@@ -77,7 +77,8 @@ body {
    width: 350px; 
  }
 
- .diet-request { /*practicing with this for now ~VEZ*/
+ .dietrequest { /*practicing with this for now ~VEZ*/
+  color: white;
   background-color: #FFFFFF;
   border-radius: 3px;
   padding: 50px;

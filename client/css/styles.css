@@ -72,7 +72,7 @@ div.field#searchbar{
   width: 700px;
   text-align: center;
   padding: 25px;
- /* dkdj */
+ 
 }
 
 img.discog_logo {
@@ -84,4 +84,8 @@ img.discog_logo {
   height: 300px;
 }
 
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+}
 

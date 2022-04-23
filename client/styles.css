@@ -71,7 +71,8 @@
 
 .container {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: center;
     padding-top: 100px;
     gap: 200px;
 }
@@ -105,8 +106,13 @@
     text-decoration: none;
 }
 
-.image {
-    padding-top: 40px;
+.chart {
+    display: flex;
+    background-color: #FF4747;
+    height: 500px;
+    width: 700px;
+    align-self: center;
+    margin-top: 130px;
 }
 
 .dinning {
@@ -128,7 +134,6 @@
     font-size: 40px;
     line-height: 47px;
     text-align: center;
-
     color: #000000;
 }
 

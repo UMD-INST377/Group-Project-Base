@@ -3,6 +3,7 @@ import Sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import hallQuery from '../controllers/halls_query.js';
 import hallUpdate from '../controllers/halls_update.js';
+import breakfastQuery from '../controllers/breakfast_query.js';
 // import { UPDATE } from 'sequelize/types/query-types';
 
 const router = express.Router();
@@ -60,6 +61,18 @@ router.put('/Group22_Dining_Hall_Tracker', async (req, res) => {
     const result = await db.sequelizeDB.query(hallUpdate, {
       replacements: { hall_hours_id: hallId},
       type: Sequelize.QueryTypes.UPDATE
+    });
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+    res.send({ message: err});
+  }
+});
+
+router.get('/meals', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(breakfastQuery, {
+      type: Sequelize.QueryTypes.SELECT
     });
     res.json({ data: result });
   } catch (err) {

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <title>inTune | Charts</title>
+        <title>inTune | Contribute</title>
         <link rel="stylesheet", href="css/styles.css">
     </head>
     <body>
@@ -20,21 +20,31 @@
                 </ul>
             </nav>
         </header>
-        <div class="charts_subheader">
-            <h2 class="charts_title">Charts</h2>
-            <h1 class="chartts_subtitle">Top Songs | Top Genres | Top Artists</h1>
+        <div class="page_title">
+            <h1>Contribute</h1>
         </div>
-        <div class="carousel_title">
-            <h1>Top Songs</h1>
-        </div>
+        <div>
+            <form method="get" class="form_block">
+                <div class="form_row">
+                    <label for="first_name"><b>Artist's First Name</b></label>
+                </div>
 
-        <div class="chart_page_carousel">
-            <ul class ="songs_images">
-                <li><img class="placeholder" src="placeholder.png" alt="Placeholder Image"></li>
-                <li><img class="placeholder" src="placeholder.png" alt="Placeholder Image"></li>
-                <li><img class="placeholder" src="placeholder.png" alt="Placeholder Image"></li>
-            </ul>
-            
+                <div class="form_row">
+                    <input id="first_name" name="first_name" type="text" placeholder="First Name"/>
+                </div>
+
+                <div class="form_row">
+                    <label for="last_name"><b>Artist's Last Name</b></label>
+                </div>
+
+                <div class="form_row">
+                    <input id="last_name" name="last_name" type="text" placeholder="Last Name"/>
+                </div>
+                
+                <div class="form_row">
+                    <button type="submit">Contribute</button>
+                </div>
+            </form>
         </div>
 
         <footer>

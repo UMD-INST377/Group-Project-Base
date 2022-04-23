@@ -94,6 +94,13 @@ footer {
     margin: 0px 50px 50px 50px;
 }
 
+.page_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 50px 50px 50px;
+}
+
 
 .songs_images {
     list-style: none;
@@ -168,4 +175,46 @@ footer {
     flex-direction: column;
     flex-wrap: nowrap;
     width: 100%;
+}
+
+/* CONTRIBUTE STYLES */
+
+
+.form_block {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    margin: 0px 800px 0px 800px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+}
+
+.form_row {
+margin-bottom: 20px;
+margin-top: 20px;
+
+}
+
+.form_row input[type=text] {
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.form_row button {
+    border: none;
+    border-radius: 25px;
+    padding: 10px 40px;
+    cursor: pointer;
+    background-color: #ffcc6a;
+}
+  
+.form_row button:hover {
+    background-color: #c79e53;
+}
+
+.form_row button:active {
+    background-color: lightgray;
 }

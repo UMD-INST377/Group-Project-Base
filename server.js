@@ -5,7 +5,6 @@ import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 
 import sherifatRoutes from './routes/sherifatRoutes.js';
-
 import luisRoutes from './routes/luisRoutes.js';
 import danielRoutes from './routes/daniel_routes.js';
 import chrisRoutes from './routes/chris_routes.js';
@@ -26,15 +25,15 @@ app.use('/api', danielRoutes);
 app.use('/api', chrisRoutes);
 
 async function bootServer() {
-  try {
-    // const mysql = await db.sequelizeDB;
-    // await mysql.sync();
-    app.listen(PORT, () => {
-      console.log(`Listening on: http//localhost:${PORT}`);
-    });
-  } catch (err) {
-    console.error(err);
-  }
+    try {
+        // const mysql = await db.sequelizeDB;
+        // await mysql.sync();
+        app.listen(PORT, () => {
+            console.log(`Listening on: http//localhost:${PORT}`);
+        });
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 bootServer();

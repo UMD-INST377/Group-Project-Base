@@ -3,14 +3,12 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
- main
+
 import sherifatRoutes from './routes/sherifatRoutes.js';
-=======
+
 import luisRoutes from './routes/luisRoutes.js';
 import danielRoutes from './routes/daniel_routes.js';
 import chrisRoutes from './routes/chris_routes.js';
-
- main
 
 const app = express();
 
@@ -22,13 +20,10 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-main
 app.use('/api', sherifatRoutes)
-=======
 app.use('/api', luisRoutes);
 app.use('/api', danielRoutes);
 app.use('/api', chrisRoutes);
- main
 
 async function bootServer() {
   try {

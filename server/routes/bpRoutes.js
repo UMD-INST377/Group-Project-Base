@@ -77,16 +77,12 @@ router.delete('/delete', async (req, res) => {
 })
 
 
-
-
-
-
 // get all foods
  
 router.get('/', async (req, res) => {
 
   const foodQuery = 
-      `SELECT m.meal_name, dh.hall_name, dh.hall_address, dh.hall_lat, dh.hall_long  
+      `SELECT m.meal_id, m.meal_name, dh.hall_name, dh.hall_address, dh.hall_lat, dh.hall_long  
             FROM meals_locations ml 
             INNER JOIN 
                 meals m ON ml.meal_id = m.meal_id 

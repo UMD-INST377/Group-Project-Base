@@ -53,8 +53,32 @@ router.post('/restaurantpost', async (req, res) => {
 });
 
 // for updating an entry
-router.put() 
+router.put('/restaurantput', async (req, res) => {
+  try {
+    const put = await db.sequelizeDB.query(`UDPATE restaurants (SET restaurant_name = '${req.body.restaurant_name}', 
+    phone_number = '${req.body.phone_number}', price = '${req.body.price}',
+    description = '${req.body.description}', website = '${req.body.website}', cuisine_id = ${req.body.cuisine_id},
+    rating_id = ${req.body.rating_id}, description_id = ${req.body.description_id}) WHERE restaurant_id = ${req.body.id},`
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 // for deleting an entry
+router.delete('/restaurantdelete/:restaurant_id', async (req, res) => {
+  const restaurantIDQuery = `DELETE FROM restaurants WHERE restaurant_id = ${req.params.restaurant_id}`;
+  try {
+    const restaurant = await db.sequelizeDB.query(restaurantIDQuery, {
+      type: sequelize.QueryTypes.DELETE
+    });
+    res.json(restaurant);
+  } catch (err) {
+    console.error(err);
+    res.json({message: 'Server error'});
+  }
+});
 
 export default router;

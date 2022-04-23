@@ -421,4 +421,160 @@ router.put('/albums', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// ////AlbumGenreInfo Endpoints////////
+/// /////////////////////////////////
+router.get('/album_genre_info', async (req, res) => {
+  try {
+    const genreInfo = await db.album_genre_info.findAll();
+    const reply = genreInfo.length > 0 ? { data: genreInfo } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/album_genre_info/:album_id', async (req, res) => {
+  try {
+    const hall = await db.album_genre_info.findAll({
+      where: {
+        album_id : req.params.album_id
+      }
+    });
+
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/album_genre_info', async (req, res) => {
+  const genreInfo = await db.album_genre_info.findAll();
+  const currentId = (await genreInfo.length) + 1;
+  try {
+    const newGenre = await db.album_genre_info.create({
+      album_id: currentId,
+      genre_id: req.body.genre_id
+
+    });
+    res.json(newGenre);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/album_genre_info/:album_id', async (req, res) => {
+  try {
+    await db.album_genre_info.destroy({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/album_genre_info', async (req, res) => {
+  try {
+    await db.album_genre_info.update(
+      {
+        genre_id: req.body.genre_id
+      },
+      {
+        where: {
+          album_id: req.body.album_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////AlbumStyleInfo Endpoints////////
+/// /////////////////////////////////
+router.get('/album_style_info', async (req, res) => {
+  try {
+    const styleInfo = await db.album_style_info.findAll();
+    const reply = styleInfo.length > 0 ? { data: styleInfo } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/album_style_info/:album_id', async (req, res) => {
+  try {
+    const hall = await db.album_style_info.findAll({
+      where: {
+        album_id : req.params.album_id
+      }
+    });
+
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/album_style_info', async (req, res) => {
+  const styleInfo = await db.album_style_info.findAll();
+  const currentId = (await styleInfo.length) + 1;
+  try {
+    const newStyle = await db.album_style_info.create({
+      album_id: currentId,
+      style_id: req.body.style_id
+
+    });
+    res.json(newStyle);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/album_style_info/:album_id', async (req, res) => {
+  try {
+    await db.album_style_info.destroy({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/album_style_info', async (req, res) => {
+  try {
+    await db.album_style_info.update(
+      {
+        style_id: req.body.style_id
+      },
+      {
+        where: {
+          album_id: req.body.album_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

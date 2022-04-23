@@ -114,6 +114,68 @@ router.route('/artist/:id')
     }
 })
 
+// artist POST/PUT/DELETE
+// POST
+router.route('/artist')
+.post(async (req, res) => {
+    const artistList = await db.artist.findAll();
+    const currentId = (await artistList.length) + 1;
+    try {
+      const newArtist = await db.artist.create({
+        artist_id: currentId,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+      });
+      res.json(newArtist);
+    } catch (err) {
+      console.error(err);
+      res.error('Servor error')
+    }
+});
+
+// PUT
+router.route('/artist/:id')
+.put(async (req, res) => {
+    try {
+      const {id} =  req.params;
+      await db.aritst.update(
+        {
+          first_name: req.body.first_name
+        },
+        {
+          last_name: req.body.last_name
+        },
+        {
+          where: {
+            artist_id: id
+          }
+        }
+      );
+      res.send('Artist Successfully Updated')
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Servor error'})
+    }
+});
+
+// DELETE
+router.route('/artist/:id')
+.delete(async (req, res) => {
+    try {
+      await db.artist.destroy({
+        where: {
+          artist_id: req.params.artist_id
+        }
+      });
+      res.send("Sucessfully Deleted")
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+});
+
+
+///////
 router.route('/playlist')
 .get(async (req, res) => {
    try {

@@ -6,10 +6,12 @@ import genres from './genres.js';
 import actors from './actors.js';
 import roles from './roles.js';
 import movies from './movies.js';
+import directors from './directors.js';
 
 export default {
   genres,
   actors,
   roles,
-  movies
+  movies,
+  directors
 };

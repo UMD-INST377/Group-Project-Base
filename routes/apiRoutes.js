@@ -106,6 +106,31 @@ router.delete('/hours/:hours_id', async (req, res) => {
   }
 });
 
+// Sana Hassan GET requests
+router.get('/name', async (req, res) => {
+  try {
+    const name = await db.restaurants.findAll();
+    res.json(name);
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/name/:name_id', async (req, res) => {
+  try {
+    const { name_id } = req.params;
+    const result = await db.sequelizeDB.query(
+      `SELECT * FROM restaurants where restaurant_id = ${ name_id }`
+    );
+    res.json({ data: result });
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+
 // Ian GET requests
 
 // Get Endpoint 1: All records of single type

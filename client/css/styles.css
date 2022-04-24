@@ -86,6 +86,7 @@ div.middle{
   width: 700px;
   text-align: center;
   padding: 25px;
+ /* dkdj */
 }
 
 img.discog_logo {
@@ -95,6 +96,15 @@ img.discog_logo {
   margin: auto;
   width: 600px;
   height: 300px;
+}
+.sidenav {
+  width: 160px; 
+  position: fixed
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color: #fbec5d; 
+  padding-top: 10px;
 }
 
 

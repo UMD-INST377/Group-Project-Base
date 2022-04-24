@@ -56,7 +56,7 @@
 .correction-info-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 600px;
+    margin-bottom: 100px;
 }
 
 .restaurant-button{
@@ -122,4 +122,23 @@
 
 #restaurant-dropdown option {
     font-size: 15px;
+}
+
+.specific-food-id-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+#specificInput {
+    width: 400px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+#specificFoodSearch {
+    font-size: 25px;
+    padding: 15px 30px;
 }

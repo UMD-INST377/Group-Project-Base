@@ -88,22 +88,46 @@ router.post('/post2', async (req, res) => {
 })
 
 
-// delete food entry
+// delete food entry in meals locations
 router.delete('/delete', async (req, res) => {
 
+  
     const deleteQuery = 
-    
-           `DELETE FROM meals WHERE meal_id = ${req.query['meal_id']} ;`;
+        
+         // DELETE FROM meals_locations WHERE meal_id = 8061693;
+         //${req.query['meal_id']};
+         `DELETE FROM meals_locations WHERE meal_id = ${req.query['meal_id']};`;
     try {
          
         const result = await db.sequelizeDB.query(deleteQuery, {
             type: sequelize.QueryTypes.DELETE
         });
 
-        res.json(`Deleted the new row entry with meal id:  ${req.query['meal_id']}`);
+        res.json(`Deleted row entry with meal_id:  ${req.query['meal_id']};`);
+
         //res.json({message: "The database has received your food request!"})
     } catch(e){
-        console.log('The following error has occured ' + e );
+        console.log('The following error has occured in /delete ' + e );
+        res.send('Result could not be furfilled because of ' + e);
+    } 
+})
+
+// delete food entry in meals 
+router.delete('/delete2', async (req, res) => {
+
+    const deleteQuery = 
+    
+           `DELETE FROM meals WHERE meal_id = ${req.query['meal_id']};`;
+    try {
+         
+        const result = await db.sequelizeDB.query(deleteQuery, {
+            type: sequelize.QueryTypes.DELETE
+        });
+
+        res.json(`Deleted row entry with meal id:  ${req.query['meal_id']}`);
+        //res.json({message: "The database has received your food request!"})
+    } catch(e){
+        console.log('The following error has occured in /delete2' + e );
         res.send('Result could not be furfilled because of ' + e);
     } 
 })

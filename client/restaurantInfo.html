@@ -36,16 +36,17 @@
 
     <div class="correction-info-container">
         <form class="correction-info">
+
               <div class="correction-description">If not, how should we revise the menu?</div>
+
               <div class = 'restaurant-button'>
-                <input type="radio" id="update" name="radio-btn"   value="update"
-                       checked>
+                <input type="radio" id="update" name="radio-btn"   value="update" checked>
                 <label>Update Food</label>
               </div>
               
               <div class = 'restaurant-button'>
                 <input type="radio" id="delete" name="radio-btn" value="update">
-                <label>Delete Food</label>
+                <label>Delete Food </label>
               </div>
               
               <div class = 'restaurant-button'>
@@ -53,38 +54,44 @@
                 <label>Add Food</label>
               </div>
 
-              <div class="correction-input food-question">
+              <div class="correction-input food-question visible">
                 <div class="spacer">
                    <label>Food  </label>
                 </div>
-                <input type="text" id = "foodChoice" placeholder="Enter food">
+                <input type="text" id = "foodChoice" placeholder="Enter food"  />
               </div>
 
-              <div class="correction-input food-question">
+              <div class="correction-input food-question visible">
                 <div class="spacer">
                     <label>New Food </label>
                 </div>
-                <input type="text" id = "newFoodName" placeholder="Enter food">
+                <input type="text" id = "newFoodName" placeholder="Enter food"   />
               </div>
 
-              <div class="correction-input food-question">
+              <div class="correction-input food-question invisible">
                 <div class="spacer">
                     <label> Location  </label>
                 </div>
                 <select id="restaurant-dropdown">
                   <option value="The Diner">The Diner</option>
-                  <option value="South Campus Dining">South Campus</option>
-                  <option value="251 North Dining">North Dining</option>
+                  <option value="South Campus">South Campus</option>
+                  <option value="251 North">North Dining</option>
                 </select>
               </div>
 
-              
-              
               <input type="submit" id = "submit-btn" class ='button' value="Submit">
               <small class = "form-small"> Updated database!</small>
         </form>
     </div>
-    
+
+
+    <div class="restaurant-info-header">Search for specific food by id </div>
+
+    <div class="specific-food-id-search">
+       <input type="text" id="specificInput" />
+       <button id ="specificFoodSearch">Search</button>
+    </div>
+
    
     <script src="scripts/restaurant-info.js"></script>
 </body>

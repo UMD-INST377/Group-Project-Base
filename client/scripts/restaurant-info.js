@@ -8,12 +8,12 @@ const small = document.querySelector('.form-small');
 const restaurantButtons = document.querySelectorAll('.restaurant-button');
 const restaurantInputs = document.querySelectorAll('.correction-input');
 const restaurantDropdown = document.querySelector('#restaurant-dropdown');
+const specificIdSearch = document.querySelector('#specificFoodSearch') 
+const specificInput = document.querySelector('#specificInput');
  
 
 let searchResults = [];
-
 let diningHall = 'The Diner';
-
 let serverResponse = '';
 
 //get results from users request
@@ -24,7 +24,7 @@ async function getMenu(){
         const formattedResponse = await response.json();
         searchResults = formattedResponse;
         
-        console.log(formattedResponse);
+        // console.log(formattedResponse);
     } catch (e){
         console.log('Error - ' + e)
     }
@@ -33,8 +33,10 @@ async function getMenu(){
 //update menu 
 async function updateMenu(newFood, foodId){
     try {
-        console.log('Function called')
-        const response = await fetch(`/api/food/update?new_food_name=${newFood}&meal_id=${foodId}`,{
+         
+        let [foodId2, diningIdExisting] = await getFoodId(foodChoice.value);
+
+        const response = await fetch(`/api/food/update?new_food_name=${newFood}&meal_id=${foodId2}`,{
             method: 'PUT', // or 'PUT'
         })
         const formattedResponse = await response.json();
@@ -47,16 +49,26 @@ async function updateMenu(newFood, foodId){
 }
 
 //delete menu item 
-async function deleteMenuItem(foodId){
+async function deleteMenuItem(foodName ='', foodId){
+    
+    console.log(foodId);
+
+    //solve bug where it took 2 clicks to delete
+    let [foodId2, diningIdExisting] = await getFoodId(foodChoice.value);
+
     try {
-        console.log('Function called')
-        const response = await fetch(`/api/food/delete?meal_id=${foodId}`,{
-            method: 'DELETE', // or 'PUT'
+         
+        const query1 = await fetch(`/api/food/delete?meal_id=${foodId2}`,{
+            method: 'DELETE',  
         })
-        const formattedResponse = await response.json();
-        serverResponse = formattedResponse;
-        
-        console.log(formattedResponse);
+
+        const formattedResponse1 = await query1.json();
+        serverResponse = formattedResponse1;
+
+        const query2 = await fetch(`/api/food/delete2?meal_id=${foodId2}`,{
+            method: 'DELETE',  
+        })
+
     } catch (e){
         console.log('Error - ' + e)
     }
@@ -68,7 +80,7 @@ async function addMenuItem(foodName, foodId = 0, diningHallId){
     let newGeneratedId = Math.round(Math.random() * 10000000);
 
     try {
-        console.log('Function called')
+         
         const query1 = await fetch(`/api/food/post?new_food_name=${foodName}&meal_id=${newGeneratedId}`,{
             method: 'POST',  
         })
@@ -90,14 +102,13 @@ async function addMenuItem(foodName, foodId = 0, diningHallId){
 function displayMenu(){
     // show only 7 choices so page does not become too l
     searchResults.map(meal => {
-        const newEntry = document.createElement('div')
+        const newEntry = document.createElement('div');
         newEntry.classList.add('menu-item');
         newEntry.textContent = `${meal['meal_name']} (${meal['hall_name']})`
         menuList.appendChild(newEntry);
         //console.log(meal);
     })
 
-    getFoodId('scrambled eggs')
 }
 
 
@@ -118,8 +129,26 @@ function getFoodId(foodName){
 }
 
 
+function getFoodName(foodId){
+    
+    let foodName = 'Food for specified id not found!';
+   
+    searchResults.map(result => {
+         
+         if(result['meal_id'] === +foodId){
+             console.log("Food id found " + result['meal_id'])
+             foodName = "Food for id " + foodId + " is " + result['meal_name'];
+             return;
+         }
+    })
+
+    alert(foodName);
+}
+
+
+
 function getDiningHallIdNewElement(diningHallName){
-    let diningHalls = {'The Diner': 1, 'South Campus': 2,'251 North Dining': 2}
+    let diningHalls = {'The Diner': 1, 'South Campus': 2,'251 North': 2}
     let diningHallId = 4;
     for(const [key, value] of Object.entries(diningHalls)){
         if(diningHallName === key) {diningHallId= value;}       
@@ -130,17 +159,17 @@ function getDiningHallIdNewElement(diningHallName){
  
 function addEventListenersToRadioButtons(){
 
-    // convert HTMLCollection to array
-    let buttonsArr = [...restaurantButtons]
-    console.log(buttonsArr)
+    // convert HTMLCollection to array to use map function
+    let buttonsArr = [...restaurantButtons];
+    console.log(buttonsArr);
 
     //addevent listeners to each radio button
 
     buttonsArr.map(button => {
-        let childArr = [...button.children]
+        let childArr = [...button.children];
         childArr[0].addEventListener('click', e =>{
-            console.log(childArr[0].id)
-            hideInputs(childArr[0].id)
+            console.log(childArr[0].id);
+            hideInputs(childArr[0].id);
         })
 
     })
@@ -195,40 +224,46 @@ function hideInputs(inputId){
 }
 
 
-function executeFetchRequest(foodName, httpFunction, foodId, diningIdInserted){
+function executeHttpRequest(foodName, httpFunction, foodId, diningIdInserted){
+
+
+    //object stores functions that will be used 
     let httpMethodsObj = {'update': updateMenu, 'delete': deleteMenuItem, 'add': addMenuItem}
     let httpMethod =  '';
 
     for(const [key, value] of Object.entries(httpMethodsObj)){
          if(httpFunction === key) {httpMethod = value;}       
     }
-     
+    
     httpMethod(foodName, foodId, diningIdInserted).then(() => {
         small.textContent = serverResponse;
-        small.classList.add('visible');;
+        small.classList.add('visible');
     });
-    
+ 
 }
+
+
+specificIdSearch.addEventListener('click', e =>{
+    e.preventDefault();
+    getFoodName(specificInput.value)
+})
+
+
+ 
 
 submitBtn.addEventListener("click", e => {
     e.preventDefault();
-    console.log('btn clicked!')
+   
+
+    //get all needed values for functions
     let foodName = newFoodName.value;
-
-
-
-    //get ids for previous added values
-
-
-    let visibleInput = foodChoice.classList.contains('visible') ? foodChoice.value: foodName;
-    
+    let visibleInput = foodChoice.parentElement.classList.contains('visible') ? foodChoice.value: foodName;
     let [foodId, diningIdExisting] = getFoodId(visibleInput);
+   
 
-    console.log(diningIdExisting);
 
     //get diningHallId for soon to be inserted value
     let diningIdInserted = getDiningHallIdNewElement(restaurantDropdown.value)
-
     let restBtnArray = [ ...restaurantButtons];
     
     // get id of checked radio button 
@@ -239,13 +274,40 @@ submitBtn.addEventListener("click", e => {
             childIdParam =  childArr[0].id
         }
     })
+ 
 
-    console.log(foodName );
+    let restrArray = [...restaurantInputs];
+    let validInput = true;
 
-    executeFetchRequest(foodName, childIdParam, foodId, diningIdInserted);
 
+    // make sure all inputs are filled
+    restrArray.map(input => {
+
+        let inputValue = input.children[1].value;
+        if(input.classList.contains('visible') && inputValue){
+            console.log('this element has a valid value!')
+        } else if(input.classList.contains('visible') && !inputValue){
+            validInput = false;
+        }
+
+    });
+
+
+    if(validInput){
+
+        //Update and redisplay menu after request
+        menuList.textContent = '';
+        getMenu().then(() => {
+            displayMenu();
+            executeHttpRequest(foodName, childIdParam, foodId, diningIdInserted);
+        });
+
+    }  else {
+        alert ('PLEASE FILL IN ALL FIELDS')
+    }
+  
 }) 
 
 
-addEventListenersToRadioButtons()
-getMenu().then(() => displayMenu())
+addEventListenersToRadioButtons();
+getMenu().then(() => displayMenu());

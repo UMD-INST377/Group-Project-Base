@@ -228,7 +228,7 @@ router.put('/country', async (req, res) => {
   }
 })
 
-  .post('/counrty', async (req, res) => {
+  .post('/country', async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(countryController.countryPost, {
         replacements: {art: req.body.art},
@@ -296,7 +296,7 @@ router.put('/customer', async (req, res) => {
         street_address: req.body.street_address,
         city: req.body.city,
         state: req.body.state,
-        zipcode: req.body.zipcode,
+        zip_code: req.body.zip_code,
         payment_date: req.body.payment_date
       },
       {
@@ -376,10 +376,10 @@ router.put('/galleries', async (req, res) => {
         capacity: req.body.capacity,
         gallery_name: req.body.gallery_name,
         email: req.body.email,
-        street_address: req.body.street_address,
+        street: req.body.street,
         city: req.body.city,
         state: req.body.state,
-        zipcode: req.body.zipcode
+        zip_code: req.body.zip_code
       },
       {
         where: {

@@ -577,6 +577,83 @@ router.delete('/album_style_info/:album_id', async (req, res) => {
     res.error('Server error');
   }
 });
+/// /////////////////////////////////
+/// ////AlbumStyle Endpoints////////
+/// /////////////////////////////////
+router.get('/AlbumStyle', async (req, res) => {
+  try {
+    const halls = await db.releases.findAll(); 
+    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
+router.get('/AlbumStyle/:album_id', async (req, res) => {
+  try {
+    const hall = await db.AlbumStyle.findAll({
+      where: {
+        album_id : req.params.genre_id
+      }
+    });
+
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/AlbumStyle', async (req, res) => {
+  const halls = await db.AlbumStyle.findAll();
+  const currentId = (await halls.length) + 1;
+  try {
+    const newDining = await db.releases.create({
+      release_id: currentId,
+      release_country: req.body.release_country,
+      release_year: req.body.release_year,
+      release_link: req.body.release_link
+    });
+    res.json(newDining);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/AlbumStyle', async (req, res) => {
+  try {
+    await db.AlbumStyle.update(
+      {
+        album_id: req.body.album_id,
+      },
+      {
+        where: {
+          album_id: req.body.album_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/AlbumStyle/:album_id', async (req, res) => {
+  try {
+    await db.genres.destroy({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 export default router;

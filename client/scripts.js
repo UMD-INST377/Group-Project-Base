@@ -1,9 +1,35 @@
+/* eslint-disable implicit-arrow-linebreak */
 async function loadData (url) {
   const response = await fetch(url);
   const arrayFromJson = await response.json();
-  data = await arrayFromJson.data;
+  const company = document.querySelector('#label');
+  const industry = document.querySelector('#label1');
+  const size = document.querySelector('#label2');
+  const city = document.querySelector('#label3');
+
+  const filterArray = [];
+  filterArray.push(company.value);
+  filterArray.push(industry.value);
+  filterArray.push(size.value);
+  filterArray.push(city.value);
+  console.log(filterArray, 'array');
+  const filterName = ['company_name', 'type', 'size', 'city'];
+  data = await arrayFromJson.data[0];
   console.log(arrayFromJson);
-  data[0].forEach((element) => {
+
+  filterName.forEach((filter, index) => {
+    const filterData = data.filter((item) => 
+      item[filter].toLowerCase().includes(filterArray[index].toLowerCase()));
+    data = filterData;
+  });
+  /* if (company.value) {
+    const filterData = data.filter((item) =>
+    item.company_name.toLowerCase().includes(company.value.toLowerCase()))
+    data = filterData;
+    console.log(company.value);
+  } */
+
+  data.forEach((element) => {
     const tableFinder = document.querySelector('.table');
     const row = document.createElement('tr');
     const rowCompanyId = document.createElement('td');
@@ -26,4 +52,15 @@ async function loadData (url) {
     tableFinder.appendChild(row);
   });
 }
-loadData('/api/company');
+
+async function mainEvent() {
+  const form = document.querySelector('#form');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const tableFinder = document.querySelector('.table');
+    tableFinder.innerHTML = '';
+    await loadData('/api/company');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

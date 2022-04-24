@@ -2,7 +2,7 @@ async function populateGenres(currentPage) {
   const dropdown = document.querySelector('#genre-input');
   const results = await fetch('/api/genres');
   const genres = await results.json();
-  if (currentPage === '/form.html') {
+  if (currentPage === '/form.html' || currentPage === '/records.html') {
     dropdown.innerHTML += '<option value="" disabled selected>Choose your option</option>';
   }
   genres.data.forEach((item) => {

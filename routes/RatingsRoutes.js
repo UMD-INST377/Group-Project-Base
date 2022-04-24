@@ -6,7 +6,7 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.route('/ratings')
+router.route('/')
   .get(async (req, res) => {
     try {
       const rating = await db.ratings.findAll();
@@ -17,7 +17,7 @@ router.route('/ratings')
       res.send('Error in Server');
     }
   });
-router.route('/ratings/:rating_id').get(async(req, res) => {
+router.route('/:rating_id').get(async(req, res) => {
   try {
     const {ratingId} = req.params;
     const ratingList = await db.ratings.findOne({
@@ -31,12 +31,12 @@ router.route('/ratings/:rating_id').get(async(req, res) => {
     res.send('Error in server');
   }
 });
-router.post('/ratings', async (req, res) => {
+router.post('/', async (req, res) => {
   const ratingsId = await db.ratings.findAll();
   const current = (await ratingsId.length) + 1;
   try {
     const newRatings = await db.ratings.create({
-      rating_id: current,
+      rating_id: req.body.rating_id,
       rating: req.body.rating,
       description: req.body.description
 
@@ -48,7 +48,7 @@ router.post('/ratings', async (req, res) => {
     res.send(err);
   }
 });
-router.put('/ratings', async (req, res) => {
+router.put('/', async (req, res) => {
   try {
     await db.ratings.update(
       {
@@ -67,17 +67,19 @@ router.put('/ratings', async (req, res) => {
     res.send('Rating not found');
   }
 });
+
 router.delete('/ratings/:rating_id', async (req, res) => {
   try {
+    console.log(req.params.rating_id);
     await db.ratings.destroy({
       where: {
-        rating_id: req.params.rating_id
+        rating_id : req.params.rating_id
       }
     });
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.send('Server error');
+    res.send('Server Error');
   }
 });
 export default router;

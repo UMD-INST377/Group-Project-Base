@@ -7,41 +7,53 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href = "styles.css">
-    <!-- <link rel="stylesheet" href="//brick.freetls.fastly.net/Montserrat:300/400/500/600/700"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i">
-    <script src = "script.js"></script>
+    <script type="module"  src = "script.js"></script>
   </head>
   <body> 
     <div class="wrapper">
-        <nav>
+      <!-- navigation -->
+      <nav>
           <div class="nav-wrapper">
-            <ul class="left">
-              <li><a href="/about.html">About</a></li>
-              <li><a href="/index.html">Main</a></li>
-              <li><a class="active" href="/">Movie Availability</a></li>
-            </ul>
+              <ul>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="/">Main</a></li>
+                  <li><a class="active" href="availability.html">Movie Availability</a></li>
+                  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Tables<i class="material-icons right">arrow_drop_down</i></a></li>
+              </ul>
           </div>
         </nav>
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="records.html">Records</a></li>
+          <li><a href="ratings.html">Ratings</a></li>
+          <li class="divider"></li>
+          <li><a href="form.html">Add new record</a></li>
+        </ul>
         <div class="availability_wrapper">
             <h1>
                 <div class="availability_genre_wrap"> By Genre</div>
             </h1>
             <div class="select is-link is-medium">
-                <select>
+                <select class="genre_selector">
                 <option>All</option>
-                <option>Action</option>
-                <option>Comedy</option>
-                <option>Sci-Fi</option>
                 </select>
             </div>
             <div class="column is-one-quarter">
                 <div class="text">
                     <h3>Availability details</h3>
+                    <!-- <img src="images/PNG.png">   -->
                 </div>
             </div>
+            <!-- Graph -->
+            <div class="barGraph">
+              <canvas id="MyChart"></canvas>
+            </div>
         </div>
-        <br>
-        <img src="images/PNG.png">  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+      </body>
+      </html>
 
 
         

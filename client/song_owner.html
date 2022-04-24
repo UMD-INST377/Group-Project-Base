@@ -1,76 +1,79 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel = "stylesheet" href = "record.css">
+    <link rel="stylesheet" href="record.css">
+    <link rel="stylesheet" href="styles2.css">
     <title>INST377 Group 4 - Spotify Dataset</title>
 </head>
+
 <body>
 
     <header class='top-header'>
         <h1>Search for Songs</h1>
     </header>
-    
+
     <header class='mid-header-1'>
-        <div class = "song"></div>
-            <div class="field">
-                <label class="label">Song Name</label>
-                <div class="control">
-                    <input class="input" type="text" name="first-name">
-                </div>
+        <div class="song"></div>
+        <div class="field">
+            <label class="label">Song Name</label>
+            <div class="control">
+                <input class="input" type="text" name="first-name">
             </div>
         </div>
-        <div class = "playlist"></div>
-            <div class="field">
-                <label class="label">Playlist Name</label>
-                <div class="control">
-                    <input class="input" type="text" name="first-name">
-                </div>
+        </div>
+        <div class="playlist"></div>
+        <div class="field">
+            <label class="label">Playlist Name</label>
+            <div class="control">
+                <input class="input" type="text" name="first-name">
             </div>
+        </div>
         </div>
     </header>
 
     <header class='mid-header-2'>
-        <div class = "artist"></div>
-            <div class="field">
-                <label class="label">Artist Name</label>
-                <div class="control">
-                    <input class="input" type="text" name="first-name">
-                </div>
+        <div class="artist"></div>
+        <div class="field">
+            <label class="label">Artist Name</label>
+            <div class="control">
+                <input class="input" type="text" name="first-name">
             </div>
         </div>
-        <div class = "station"></div>
-            <div class="field">
-                <label class="label">Station Name</label>
-                <div class="control">
-                    <input class="input" type="text" name="first-name">
-                </div>
+        </div>
+        <div class="station"></div>
+        <div class="field">
+            <label class="label">Station Name</label>
+            <div class="control">
+                <input class="input" type="text" name="first-name">
             </div>
+        </div>
         </div>
     </header>
 
     <header class='mid-header-3'>
-        <div class = "pop"></div>
-            <div class="field">
-                <label class="label">Popularity</label>
-                <div class="control">
-                    <input class="input" type="text" name="first-name">
-                </div>
+        <div class="pop"></div>
+        <div class="field">
+            <label class="label">Popularity</label>
+            <div class="control">
+                <input class="input" type="text" name="first-name">
             </div>
         </div>
-        <div class = "date"></div>
-            <div class="field">
-                <label class="label">Published Date</label>
-                <div class="control">
-                    <input class="input" type="text" name="first-name">
-                </div>
+        </div>
+        <div class="date"></div>
+        <div class="field">
+            <label class="label">Published Date</label>
+            <div class="control">
+                <input class="input" type="text" name="first-name">
             </div>
+        </div>
         </div>
     </header>
 
-    <div class = "bot-header">
+    <div class="bot-header">
         <div class="but">
             <div class="control">
                 <button class="button">Submit</button>
@@ -78,9 +81,28 @@
         </div>
         <div class="but">
             <div class="control">
-                <button class="button"><a href = 'station-library.html'>Cancel</a></button>
+                <button class="button"><a href='station-library.html'>Cancel</a></button>
             </div>
         </div>
+    </div>
+
+    <br>
+    <header class='mid-header-1'>
+        <form class="submit_song" id = "submit_song">
+            <div class="song"></div>
+            <div class="field">
+                <label class="label">Song Name</label>
+                <div class="control">
+                    <input class="input" type="text" name="tname" id="tname">
+                </div>
+            </div>
+            </div>
+            <button class="button submit_button">Submit Search With Song Name</button>
+        </form>
+    </header>
+
+    <div class="result_display">
+
     </div>
 
     <script src="scripts.js"></script>

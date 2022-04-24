@@ -1,24 +1,96 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Group 13 Final Project</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href = "styles.css">
-    <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i">
-    <script type="module" src = "script.js"></script>
-  </head>
-  <body>
+    <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+</head>
+
+<body>
     <div class="wrapper">
+<<<<<<< Updated upstream
       <nav>
         <div class="nav-wrapper">
           <ul class="left">
             <li><a href="about.html">About</a></li>
             <li><a class="active" href="/">Main</a></li>
             <li><a href="availability.html">Movie Availability</a></li>
+=======
+        <!-- navigation -->
+        <nav>
+            <div class="nav-wrapper">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a class="active" href="/">Main</a></li>
+                    <li><a href="availability.html">Movie Availability</a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Tables<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+          </nav>
+          <ul id="dropdown1" class="dropdown-content">
+            <li><a href="records.html">Records</a></li>
+            <li><a href="ratings.html">Ratings</a></li>
+            <li class="divider"></li>
+            <li><a href="form.html">Add new record</a></li>
+>>>>>>> Stashed changes
           </ul>
+        <!-- content -->
+        <div class="content row">
+            <!-- filters column -->
+            <div class="col s12 l3">
+                <div class="filters row">
+                    <!-- search -->
+                    <div class="search col">
+                        <form>
+                            <div class="input-field">
+                                <span class="filter-label">Search</span>
+                                <input id="search" placeholder="Movie title" type="search">
+                            </div>
+                        </form>
+                    </div>
+                    <!-- platforms -->
+                    <div class="platforms col">
+                        <div class="input-field">
+                            <span class="filter-label">Platforms</span>
+                            <select  multiple>
+                                <option value="netflix">Netflix</option>
+                                <option value="hulu">Hulu</option> 
+                                <option value="prime">Prime</option>
+                                <option value="disney">Disney+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- genres -->
+                    <div class="genres col">
+                        <div class="input-field">
+                            <span class="filter-label">Genres</span>
+                            <select multiple id="genre-input"></select>
+                        </div>
+                    </div>
+                    <!-- ratings -->
+                    <!-- <div class="ratings col">
+                        <div class="input-field">
+                            <span class="filter-label">Ratings</span>
+                            <select multiple id="rating-input"></select>
+                        </div>
+                    </div> -->
+                    <div class="submit col s12 l12">
+                        <button id="submit-filters" class="btn waves-effect waves-light" type="submit" name="action">Apply</button>
+                    </div>
+                </div>
+            </div>
+            <!-- movies column -->
+            <div class="col s12 l9">
+                <div class="movies row" id="movies"></div>
+            </div>
         </div>
+<<<<<<< Updated upstream
       </nav>
       <section class="filters">
         <div class="row">
@@ -57,3 +129,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
   </html>
+=======
+    </div> <!-- end of wrapper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
+>>>>>>> Stashed changes

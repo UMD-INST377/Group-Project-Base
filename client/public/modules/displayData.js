@@ -18,10 +18,10 @@ function displayMovie(container, item) {
       availability += `<data value="${platform}">${platform}</data>`;
     }
   });
-
-  movies.innerHTML += `<div class="movie col s6 m4 l3">
+//  col s6 l4
+  movies.innerHTML += `<div class="movie">
       <div class="col-content">
-        <img src="${item.image_url}">
+        <img loading="lazy" src="${item.image_url}">
         <div class="movie-details">
           <span class="title">${item.title}</span>
           <div class="details">

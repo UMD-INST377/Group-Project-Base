@@ -2,20 +2,19 @@
 <html>
  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width/ initial-scale=1">
-    <title>Group 13 Final Project Database</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Group 13 Final Project</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href = "styles.css">
-    <!-- <link rel="stylesheet" href="//brick.freetls.fastly.net/Montserrat:300/400/500/600/700"> -->
     <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i">
-    <script src = "script.js"></script>
+    <script type="module" src = "script.js"></script>
   </head>
   <body>
     <div class="wrapper">
       <nav>
         <div class="nav-wrapper">
           <ul class="left">
-            <li><a href="/about.html">About</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a class="active" href="/">Main</a></li>
             <li><a href="/availability.html">Movie Availability</a></li>
             <li><a href="/ratings.html">Ratings</a></li>
@@ -36,17 +35,17 @@
             <div class="input-field col s12">
               <span class="filter-label">Platforms</span>
               <select multiple>
-                <option value="1">Netflix</option>
-                <option value="2">Hulu</option> 
-                <option value="3">Disney+</option>
-                <option value="4">Prime</option>
+                <option value="netflix">Netflix</option>
+                <option value="hulu">Hulu</option> 
+                <option value="prime">Prime</option>
+                <option value="disney">Disney+</option>
               </select>
             </div> <!-- input-field -->
           </div> <!-- platforms -->
           <div class="genres col s6 l4">
             <div class="input-field col s12">
               <span class="filter-label">Genres</span>
-              <select multiple id="genres-input"></select>
+              <select multiple id="genre-input"></select>
             </div> <!-- input-field -->
           </div> <!-- genres -->
           <div class="ratings col s6 l4">
@@ -64,25 +63,7 @@
         </div> <!-- row -->
       </section> <!-- filters -->  
       <section class="movies">
-        <div class="movies-row row">
-          
-          <!-- for demo purposes; to be deleted -->
-          <div class="movie col s6 m4 l3">
-            <div class="col-content">
-              <img src="https://resizing.flixster.com/CO1ICuTrpFQeGbPC9rxyH46mxvM=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzA3ZjU2MGU1LWMxODItNDlkMC1hYzJhLTY2YzMwOGZkMDhiZi5qcGc=">
-              <div class="movie-details">
-                <span class="title">This is a really long title that must be truncated</span>
-                <div class="details">
-                  <span class="genre">Family</span>  ·  
-                  <span class="year">2020</span>  ·  
-                  <span class="rating">PG</span>  ·  
-                  <span class="lang">English</span></br>
-                  <span class="platform-details">Netflix / Disney+ / Hulu / Prime</span>
-                </div> <!-- details -->
-              </div>  <!-- movie-details -->
-            </div> <!-- col-content -->
-          </div> <!-- for demo purposes; to be deleted -->
-
+        <div class="row" id="movies">
         </div> 
       </section> <!-- movies -->
     </div> <!-- wrapper -->

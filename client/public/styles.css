@@ -7,6 +7,7 @@
 .wrapper {
     max-width: 960px;
     margin:0 auto;
+    padding:10px;
     padding-bottom: 50px;
 }
 
@@ -48,11 +49,6 @@ nav ul .active {
     font-size: .7em;
     /* font-weight: 400!important; */
     text-transform: uppercase;
-}
-
-.movies {
-    /* margin-top: -20px; */
-    /* border: 1px solid #eee; */
 }
 
 .movie {
@@ -100,4 +96,66 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .th, td{
     padding: 10px 20px;
     border: 1px solid #000;
+}
+
+.wrap_paragraph {
+    padding-left: 20%;
+    padding-right: 20%;
+    
+    font-size: 1.15em!important;
+    color: #000!important;
+    width: 100%;
+    margin-top: 1rem; 
+    
+}
+
+.availability_genre_wrap {
+    font-size: 1.5em;
+    font-weight: 700;
+    padding-bottom: 10px;
+    padding-top: 40px;
+}
+
+.text {
+    color: lightgray;
+    padding-top: 10%;
+    padding-left: 1px;
+}
+
+.wrap_paragraph {
+    font-weight: 400;
+}
+
+.platform-details data:not(:last-child):after {
+    content: ' / ';
+}
+
+/* ////////////////////////////// */
+/* //////// RECORDS PAGE //////// */
+/* ////////////////////////////// */
+body {
+    font-size: .9em;
+}
+
+th {
+    text-transform: uppercase;
+}
+
+td, th {
+    margin-left: 7px!important;
+    margin-right: 7px!important;
+}
+
+.material-icons {
+    font-size: 1em!important; 
+    opacity: .7;
+    padding: 7px;
+}
+
+.modal {
+    max-width: 400px!important;
+}
+
+.modal h4 {
+    font-size: 1.5em;
 }

@@ -6,7 +6,7 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-router.route('/ratings')
+router.route('/')
   .get(async (req, res) => {
     try {
       const rating = await db.ratings.findAll();
@@ -17,7 +17,7 @@ router.route('/ratings')
       res.send('Error in Server');
     }
   });
-router.route('/ratings/:rating_id').get(async(req, res) => {
+router.route('/:rating_id').get(async(req, res) => {
   try {
     const {ratingId} = req.params;
     const ratingList = await db.ratings.findOne({
@@ -31,7 +31,7 @@ router.route('/ratings/:rating_id').get(async(req, res) => {
     res.send('Error in server');
   }
 });
-router.post('/ratings', async (req, res) => {
+router.post('/', async (req, res) => {
   const ratingsId = await db.ratings.findAll();
   const current = (await ratingsId.length) + 1;
   try {
@@ -48,7 +48,7 @@ router.post('/ratings', async (req, res) => {
     res.send(err);
   }
 });
-router.put('/ratings', async (req, res) => {
+router.put('/', async (req, res) => {
   try {
     await db.ratings.update(
       {

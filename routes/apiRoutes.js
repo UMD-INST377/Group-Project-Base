@@ -1,7 +1,12 @@
 import express from 'express';
-// import sequelize from 'sequelize';
-
+import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
+import availability from './availabilityRoutes.js';
+import genres from './genreRoutes.js';
+import images from './imagesRoutes.js';
+import languages from './languagesRoutes.js';
+import movies from './moviesRoutes.js';
+import ratings from './RatingsRoutes.js';
 
 const router = express.Router();
 
@@ -9,89 +14,64 @@ router.route('/').get((req, res) => {
   res.send('Welcome to the Movies API!');
 });
 
-///  People's Routes ////
+router.use('/availability', availability);
+router.use('/genres', genres);
+router.use('/images', images);
+router.use('/languages', languages);
+router.use('/movies', movies);
+router.use('/ratings', ratings);
 
-/// People Routes
+const tableQuery = `select movie_id, title, year, genre, language as 'lang', 
+rating, image_url, is_on_netflix, is_on_hulu, is_on_prime, is_on_disney from movies
+  left join images using(image_id)
+  left join availability using(availability_id)
+  left join genres using(genre_id)
+  left join ratings using(rating_id)
+  left join languages using(language_id)
+order by movie_id`;
 
-///  Rating's Routes ////
-
-/// /////////////////////////////////
-/// ////Availability Endpoints////////
-/// /////////////////////////////////
-
-router.route('/availability').get(async (req, res) => { // res, req, next
+router.route('/table/data/').get(async (req, res) => {
   try {
-    const availability = await db.Availability.findAll();
-    const reply = availability.length > 0 ? { data: availability } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    res.json('Server error');
-  }
-});
-
-router.route('/availability/:availability_id').get(async (req, res) => {
-  try {
-    const availability = await db.Availability.findAll({
-      where: {
-        availability_id: req.params.availability_id
-      }
+    const result = await db.sequelizeDB.query(`${tableQuery};`, {
+      type: sequelize.QueryTypes.SELECT
     });
-    res.json(availability);
+    res.json(result);
   } catch (err) {
-    res.json('Server error');
+    res.send('Error');
   }
 });
 
-/// /////////////////////////////////
-/// ////Images Endpoints////////
-/// /////////////////////////////////
-router.route('/images').get(async (req, res) => {
+router.route('/table/data/:limit').get(async (req, res) => {
   try {
-    const images = await db.Images.findAll();
-    const reply = images.length > 0 ? { data: images } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    res.json('Server error');
-  }
-});
-
-router.route('/images/:image_id').get(async (req, res) => {
-  try {
-    const image = await db.Images.findAll({
-      where: {
-        image_id: req.params.image_id
-      }
+    const result = await db.sequelizeDB.query(`${tableQuery} limit ${req.params.limit};`, {
+      type: sequelize.QueryTypes.SELECT
     });
-    res.json(image);
+    res.json(result);
   } catch (err) {
-    res.json('Server error');
+    res.send('Error');
   }
 });
 
-/// /////////////////////////////////
-/// ////Movies Endpoints////////
-/// /////////////////////////////////
-router.route('/movies').get(async (req, res) => {
-  try {
-    const movies = await db.Movies.findAll();
-    const reply = movies.length > 0 ? { data: movies } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    res.json('Server error');
-  }
-});
-
-router.route('/movies/:movie_id').get(async (req, res) => {
-  try {
-    const movie = await db.Movies.findAll({
-      where: {
-        movie_id: req.params.movie_id
-      }
-    });
-    res.json(movie);
-  } catch (err) {
-    res.json('Server error');
-  }
-});
+router.route('/custom')
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(req.body.query, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      res.send('Error');
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(req.body.query, {
+        type: sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      res.send('Error');
+    }
+  });
 
 export default router;

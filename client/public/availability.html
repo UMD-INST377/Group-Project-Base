@@ -1,1 +1,50 @@
-availability
+<!DOCTYPE html>
+<html>
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width/ initial-scale=1">
+    <title>Group 13 Final Project Database</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href = "styles.css">
+    <!-- <link rel="stylesheet" href="//brick.freetls.fastly.net/Montserrat:300/400/500/600/700"> -->
+    <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i">
+    <script type="module"  src = "script.js"></script>
+  </head>
+  <body> 
+    <div class="wrapper">
+        <nav>
+          <div class="nav-wrapper">
+            <ul class="left">
+              <li><a href="/about.html">About</a></li>
+              <li><a href="/index.html">Main</a></li>
+              <li><a class="active" href="/">Movie Availability</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="availability_wrapper">
+            <h1>
+                <div class="availability_genre_wrap"> By Genre</div>
+            </h1>
+            <div class="select is-link is-medium">
+                <select class="genre_selector">
+                <option>All</option>
+                </select>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="text">
+                    <h3>Availability details</h3>
+                    <!-- <img src="images/PNG.png">   -->
+                </div>
+            </div>
+            <!-- Graph -->
+            <div class="barGraph">
+              <canvas id="MyChart"></canvas>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+      </body>
+        
+
+
+        

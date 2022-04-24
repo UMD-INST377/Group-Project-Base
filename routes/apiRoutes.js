@@ -270,14 +270,15 @@ router.route('/felinae')
   .put(async (req, res) => {
     try {
       console.log('PUT to router.route("/felinae")..');
-      const felinae = await db.sequelizeDB.models.felinae.update({
+      const felinae = await db.sequelizeDB.models.felinae.upsert({
         item: req.body.item,
+        GBIF: req.body.GBIF,
         scientific_name: req.body.scientific_name,
         parent_taxon: req.body.parent_taxon
       },
       {
         where: {
-          GBIF: req.body.gbif
+          GBIF: req.body.GBIF
         }
       })
       res.status(200).send(`SUCCESS: Item(s) with GBIF ID: ${req.body.gbif} updated.`);

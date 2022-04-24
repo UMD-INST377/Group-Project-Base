@@ -329,7 +329,7 @@ router.post('/company', async (req, res) => {
   try {
     const newCompnay = await db.company.create({
       company_id: currentId,
-      compnay_name: req.body.company_name,
+      company_name: req.body.company_name,
       size: req.body.size,
       type: req.body.type,
       city: req.body.city

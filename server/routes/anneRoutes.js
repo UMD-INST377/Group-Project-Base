@@ -34,4 +34,51 @@ router.get('/park_admission/:id', async (req, res) => {
   }
 });
 
+router.post('/park_admission', async (req, res) => {
+  try {
+    const newParks = await db.park_admission.create({
+      park_id: req.body.park_id,
+      park_name: req.body.park_name,
+      price_per_person: req.body.price_per_person
+    });
+    res.send('Park Added');
+  } catch (err) {
+    console.error(err);
+  }
+});
+router.put('/park_admission', async (req, res) => {
+  try {
+    await db.park_admission.update(
+      {
+        park_name: req.body.park_name,
+        price_per_person: req.body.price_per_person
+      },
+      {
+        where: {
+          park_id: req.body.park_id
+        }
+      }
+    );
+    res.send('Rating Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.send('Rating not found');
+  }
+});
+
+router.delete('/park_admission/:park_id', async (req, res) => {
+  try {
+    console.log(req.params.park_id);
+    await db.park_admission.destroy({
+      where: {
+        park_id: req.params.park_id
+      }
+    });
+    res.send('Sucessfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server Error');
+  }
+});
+
 export default router;

@@ -109,10 +109,6 @@ router.delete('/restaurant/:rest_id', async (req, res) => {
     res.send('Server error');
   }
 });
-
-
-
-
 // Sana Hassan GET requests
 // endpoint 1
 

@@ -73,7 +73,7 @@ router.delete('/artists/:artist_id', async (req, res) => {
 
 router.put('/artists', async (req, res) => {
   try {
-    await db.artists.update(
+    await db.artists.upsert(
       {
         artist_name: req.body.artist_name,
         total_artist_albums: req.body.total_artist_albums,
@@ -138,7 +138,7 @@ router.post('/genres', async (req, res) => {
 
 router.put('/genres', async (req, res) => {
   try {
-    await db.genres.update(
+    await db.genres.upsert(
       {
         genre_id: req.body.genre_id,
         genre_name: req.body.genre_name
@@ -300,7 +300,7 @@ router.post('/styles', async (req, res) => {
 
 router.put('/styles', async (req, res) => {
   try {
-    await db.styles.update(
+    await db.styles.upsert(
       {
         style_id: req.body.style_id,
         style_name: req.body.style_name
@@ -469,7 +469,7 @@ router.post('/album_genre_info', async (req, res) => {
 
 router.put('/album_genre_info', async (req, res) => {
   try {
-    await db.album_genre_info.update(
+    await db.album_genre_info.upsert(
       {
         genre_id: req.body.genre_id
       },
@@ -547,7 +547,7 @@ router.post('/album_style_info', async (req, res) => {
 
 router.put('/album_style_info', async (req, res) => {
   try {
-    await db.album_style_info.update(
+    await db.album_style_info.upsert(
       {
         style_id: req.body.style_id
       },
@@ -625,7 +625,7 @@ router.post('/AlbumStyle', async (req, res) => {
 
 router.put('/AlbumStyle', async (req, res) => {
   try {
-    await db.AlbumStyle.update(
+    await db.AlbumStyle.upsert(
       {
         album_id: req.body.album_id,
       },

@@ -44,7 +44,7 @@
               </div>
               
               <div class = 'restaurant-button'>
-                <input type="radio" id="delete" name="radio-btn"   value="update">
+                <input type="radio" id="delete" name="radio-btn" value="update">
                 <label>Delete Food</label>
               </div>
               
@@ -55,17 +55,30 @@
 
               <div class="correction-input food-question">
                 <div class="spacer">
-                   <label>Which food?  </label>
+                   <label>Food  </label>
                 </div>
                 <input type="text" id = "foodChoice" placeholder="Enter food">
               </div>
 
               <div class="correction-input food-question">
                 <div class="spacer">
-                    <label>New food Value?  </label>
+                    <label>New Food </label>
                 </div>
                 <input type="text" id = "newFoodName" placeholder="Enter food">
               </div>
+
+              <div class="correction-input food-question">
+                <div class="spacer">
+                    <label> Location  </label>
+                </div>
+                <select id="restaurant-dropdown">
+                  <option value="The Diner">The Diner</option>
+                  <option value="South Campus Dining">South Campus</option>
+                  <option value="251 North Dining">North Dining</option>
+                </select>
+              </div>
+
+              
               
               <input type="submit" id = "submit-btn" class ='button' value="Submit">
               <small class = "form-small"> Updated database!</small>

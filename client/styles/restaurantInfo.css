@@ -113,3 +113,13 @@
  
 }
 
+
+#restaurant-dropdown {
+    width: 250px;
+    font-size: 25px;
+    padding: 5px 10px;
+}
+
+#restaurant-dropdown option {
+    font-size: 15px;
+}

@@ -13,6 +13,8 @@ const router = express.Router();
 // update food
 router.put('/update', async (req, res) => {
 
+    
+
     const updateQuery = 
     
         `   UPDATE meals
@@ -35,19 +37,49 @@ router.put('/update', async (req, res) => {
   })
 
 
-// post new food
+// post new food entry in meal location
 router.post('/post', async (req, res) => {
 
     const postQuery = 
     
-           `INSERT INTO meals(meal_name) VALUES ('${req.query['new_food_name']}');`;
+        `
+            INSERT INTO meals(meal_name, meal_id) VALUES ('${req.query['new_food_name']}', ${req.query['meal_id']} ); 
+        `;
+        // 
     try {
          
         const result = await db.sequelizeDB.query(postQuery, {
-          type: sequelize.QueryTypes.POST
+          type: sequelize.QueryTypes.POST 
+          
         });
 
-        res.json(`Posted a new row entry with new value:  ${req.query['new_food_name']}`);
+        res.json(`Posted a new row entry with new food name:  ${req.query['new_food_name']}`);
+        //res.json({message: "The database has received your food request!"})
+    } catch(e){
+        console.log('The following error has occured ' + e );
+        res.send('Result could not be furfilled because of ' + e);
+    } 
+})
+
+
+// post new food entry in meals location
+router.post('/post2', async (req, res) => {
+
+   
+    const postQuery = 
+    
+        `
+            INSERT INTO meals_locations(hall_id, meal_id) VALUES (${req.query['hall_id']}, ${req.query['meal_id']});
+        `;
+        // 
+    try {
+         
+        const result = await db.sequelizeDB.query(postQuery, {
+          type: sequelize.QueryTypes.POST 
+          
+        });
+
+        res.json(`Posted a new row entry with new food name:  ${req.query['hall_id']}, ${req.query['meal_id']}`);
         //res.json({message: "The database has received your food request!"})
     } catch(e){
         console.log('The following error has occured ' + e );
@@ -82,14 +114,17 @@ router.delete('/delete', async (req, res) => {
 router.get('/', async (req, res) => {
 
   const foodQuery = 
-      `SELECT m.meal_id, m.meal_name, dh.hall_name, dh.hall_address, dh.hall_lat, dh.hall_long  
-            FROM meals_locations ml 
-            INNER JOIN 
-                meals m ON ml.meal_id = m.meal_id 
-            INNER JOIN 
-                dining_hall dh ON dh.hall_id = ml.hall_id
-            ORDER BY dh.hall_id;
+        `
+        SELECT m.meal_id, m.meal_name, dh.hall_name, dh.hall_address, dh.hall_lat, dh.hall_long, dh.hall_id
+        FROM meals_locations ml 
+        INNER JOIN 
+            meals m ON ml.meal_id = m.meal_id 
+        INNER JOIN 
+            dining_hall dh ON dh.hall_id = ml.hall_id
+        ORDER BY dh.hall_id;
         `;
+
+      
   
   try {
        

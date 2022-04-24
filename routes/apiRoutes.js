@@ -332,4 +332,94 @@ router.delete('/styles/:style_id', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// ////Album Endpoints/////////
+/// /////////////////////////////////
+
+router.get('/albums', async (req, res) => {
+  try {
+    const albumItems = await db.albums.findAll(); 
+    const reply = albumItems.length > 0 ? { data: albumItems } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/albums/:album_id', async (req, res) => {
+  try {
+    const albumItems = await db.albums.findAll({
+      where: {
+        album_id : req.params.album_id
+      }
+    });
+
+    res.json(albumItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/albums', async (req, res) => {
+  const albumItems = await db.albums.findAll();
+  const currentId = (await albumItems.length) + 1;
+  try {
+    const newStyle = await db.albums.create({
+      album_id: currentId,
+      album_name: req.body.album_name,
+      number_of_songs: req.body.number_of_songs,
+      average_song_length: req.body.average_song_length,
+      album_link: req.body.album_link,
+      album_versions: req.body.album_versions,
+      release_id: req.body.release_id,
+      artist_id: req.body.artist_id
+    });
+    res.json(newStyle);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/albums', async (req, res) => {
+  try {
+    await db.albums.update(
+      {
+        album_name: req.body.album_name,
+        number_of_songs: req.body.number_of_songs,
+        average_song_length: req.body.average_song_length,
+        album_link: req.body.album_link,
+        album_versions: req.body.album_versions,
+        release_id: req.body.release_id,
+        artist_id: req.body.artist_id
+      },
+      {
+        where: {
+          album_id: req.body.album_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/albums/:album_id', async (req, res) => {
+  try {
+    await db.styles.destroy({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 export default router;

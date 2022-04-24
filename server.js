@@ -2,7 +2,10 @@
 import express from 'express';
 // import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+<<<<<<< Updated upstream
 import RatingsRoutes from './routes/RatingsRoutes.js'
+=======
+>>>>>>> Stashed changes
 
 const app = express();
 

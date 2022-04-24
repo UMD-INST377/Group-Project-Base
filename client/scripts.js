@@ -26,5 +26,3 @@ async function loadIntoTable(url) {
   });
 }
 loadIntoTable('/api/artists');
-
-

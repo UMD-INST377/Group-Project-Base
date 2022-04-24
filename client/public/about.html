@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width/ initial-scale=1">
-    <title>Group 13 Final Project Database</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href = "styles.css">
-    <!-- <link rel="stylesheet" href="//brick.freetls.fastly.net/Montserrat:300/400/500/600/700"> -->
-    <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i">
-    <script src = "script.js"></script>
-  </head>
-  <body> 
-    <div class="wrapper">
-        <nav>
-          <div class="nav-wrapper">
-            <ul class="left">
-              <li><a class="active" href="/about.html">About</a></li>
-              <li><a href="/index.html">Main</a></li>
-              <li><a href="/availability.html">Movie Availability</a></li>
-            </ul>
-          </div>
-        </nav>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width/ initial-scale=1">
+  <title>Group 13 Final Project: About</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="module" src="script.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- navigation -->
+    <nav>
+      <div class="nav-wrapper">
+        <ul>
+          <li><a class="active" href="about.html">About</a></li>
+          <li><a href="/">Main</a></li>
+          <li><a href="availability.html">Movie Availability</a></li>
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Tables<i
+                class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+      </div>
+    </nav>
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="records.html">Records</a></li>
+      <li><a href="ratings.html">Ratings</a></li>
+      <li class="divider"></li>
+      <li><a href="form.html">Add new record</a></li>
+    </ul>
     <div class="wrap_paragraph">
-        <p>The main information problem we are hoping to solve is allowing users to find movie recommendations based on what they like. We will be using
-            Netfilx's movie collection as a basis for this. Our main target audience is those who like using movies and streaming services who want to be able 
-            to watch movies they might enjoy. We also believe those who work in said services might care about thos problem, i.e. Netflix and Hulu. It can also
-            benefit those who want to learn more about machine learning.
-        </p>
+      <p>The main information problem we are hoping to solve is allowing users to find movie recommendations based on
+        what they like. We will be using
+        Netfilx's movie collection as a basis for this. Our main target audience is those who like using movies and
+        streaming services who want to be able
+        to watch movies they might enjoy. We also believe those who work in said services might care about thos problem,
+        i.e. Netflix and Hulu. It can also
+        benefit those who want to learn more about machine learning.
+      </p>
     </div>
-  </body>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

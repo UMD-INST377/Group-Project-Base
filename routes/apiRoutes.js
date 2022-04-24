@@ -201,7 +201,7 @@ router.get('/hominidae/:scientific_name', async (req, res) => {
   }
 });
 
-router.put('/users', async (req, res) => {
+router.post('/users', async (req, res) => {
   try {
     console.log('PUT to router.route("/user")..');
     const newUser = await db.sequelizeDB.models.users.upsert({

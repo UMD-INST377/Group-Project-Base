@@ -1,18 +1,3 @@
-function getRandomIntInclusive(min, max) {
-  const newMin = Math.ceil(min);
-  const newMax = Math.floor(max);
-  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
-}
-
-function restArrayMake(dataArray) {
-  const range = [...Array(15).keys()];
-  const listItems = range.map((item, index) => {
-    const restNum = getRandomIntInclusive(0, dataArray.length - 1);
-    return dataArray[restNum];
-  });
-  return listItems;
-}
-
 function createHtmlList(collection) {
   const targetList = document.querySelector('.result_list');
   targetList.innerHTML = '';
@@ -21,8 +6,8 @@ function createHtmlList(collection) {
     const { artist_id } = item;
     const displayName = album_name.toLowerCase();
     const displayCity = artist_id;
-    const injectThis = `<li>Album Name: ${displayName}</li>`;
-    const injectThisCity = `<li>Album Artist: ${displayCity}</li>`;
+    const injectThis = `<th>${displayName}</th>`;
+    const injectThisCity = ` <td>${displayCity}</td>`;
     targetList.innerHTML += injectThis;
     targetList.innerHTML += injectThisCity;
   });
@@ -54,14 +39,14 @@ async function mainEvent() {
         return lowerName.includes(lowerValue);
       });
       console.log(selectRest);
-      createHtmlList(restArrayMake(selectRest));
+      createHtmlList(selectRest);
     });
 
     form.addEventListener('submit', async (submitEvent) => {
       // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       console.log('form submission'); // this is substituting for a 'breakpoint'
-      currentArray = restArrayMake(arrayFromJson.data);
+      currentArray = (arrayFromJson.data);
       createHtmlList(currentArray);
     });
   }

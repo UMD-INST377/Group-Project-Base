@@ -116,22 +116,19 @@ router.get('/address/:city', async (req, res) => {
 
 // POST 
 router.post('/address', async (req, res) => {
-  const addresses = await db.address.findAll();
-  const currentId = (await addresses.length) + 1;
   try {
     const newAddress = await db.address.create({
-      address_id: currentId,
       address_1: req.body.address_1,
       address_2: req.body.address_2,
       city: req.body.city,
       state: req.body.state,
-      zipe_code_id: req.body.zipe_code_id, 
+      zip_code: req.body.zip_code, 
       restaurant_id: req.body.restaurant_id
     });
     res.json(newAddress);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -152,7 +149,7 @@ router.put('/address', async (req, res) => {
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 

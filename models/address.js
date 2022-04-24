@@ -6,7 +6,8 @@ export default (database, DataTypes) => {
       address_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       address_1: {
         type: DataTypes.STRING,

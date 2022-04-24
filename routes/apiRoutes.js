@@ -219,7 +219,7 @@ router.post('/releases', async (req, res) => {
 
 router.put('/releases', async (req, res) => {
   try {
-    await db.releases.update(
+    await db.releases.upsert(
       {
         release_id: req.body.release_id,
         release_country: req.body.release_country,
@@ -385,7 +385,7 @@ router.post('/albums', async (req, res) => {
 
 router.put('/albums', async (req, res) => {
   try {
-    await db.albums.update(
+    await db.albums.upsert(
       {
         album_name: req.body.album_name,
         number_of_songs: req.body.number_of_songs,

@@ -17,12 +17,25 @@
   }
 
   /* Page Layout */
-  .form-header {
+  .logo_title{
+    display: flex;
+    flex-direction: row;
+}
+
+.title_name {
+    display: flex;
+    position: absolute;
+    width: 568px;
+    height: 117px;
+    left: 640px;
+    top: 30px;
+}
+
+.form-header {
 	text-align: center;
 	background-color: #aed6ff;
 	border: 1px solid #FF4747;
 	border-radius: 3px;
-	
 	width: 80%;
 	margin: 40px 0;
 	padding: 50px;

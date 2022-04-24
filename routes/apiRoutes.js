@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/users', async (req, res) => {
   try {
     console.log("Using router.get('/users')...");
-    const user = await db.sequelizeDB.models.user.findAll();
+    const user = await db.sequelizeDB.models.users.findAll();
     const reply = user.length > 0 ? { data: user } : { message: 'no results found' };
     res.json(reply);
     res.end();
@@ -31,6 +31,8 @@ router.get('/users', async (req, res) => {
     res.error('Server error');
   }
 });
+
+
 router.get('/users/:username', async (req, res) => {
   try {
     console.log(`* Using router.get('/users/:username') to query (USER INPUT): ${req.body.gbif}\n`);
@@ -199,23 +201,41 @@ router.get('/hominidae/:scientific_name', async (req, res) => {
   }
 });
 
-router.put('/user', async (req, res) => {
+router.put('/users', async (req, res) => {
   try {
-    console.log('Putting user');
-    const user = await sequelizeDB.models.user.data({
+    console.log('PUT to router.route("/user")..');
+    const newUser = await db.sequelizeDB.models.users.upsert({
+      username: req.body.username,
+      password: req.body.password
+    },
+    {
       where: {
-        userid: 1,
-        username: 'user',
-        email: 'email@gmail.com',
-        password: '1234',
-        create_time
+        userid: req.body.userid
       }
-    });
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    })
+    res.status(200).send(`SUCCESS: New user: ${req.body.username} updated.`);
+    res.end();
+  } catch (e) {
+    res.send(`ERROR: ${e.name}`);
   }
 });
+// router.put('/user', async (req, res) => {
+//   try {
+//     console.log('Putting user');
+//     const user = await db.sequelizeDB.models.users.upsert({
+//       where: {
+//         userid: req.body.userid,
+//         username: req.body.username,
+//         email: req.body.email,
+//         password: req.body.password,
+//         create_time
+//       }
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 router.post('/hominidae', async (req, res) => {
   try {
@@ -304,3 +324,4 @@ router.route('/felinae')
   });
 
 export default router;
+

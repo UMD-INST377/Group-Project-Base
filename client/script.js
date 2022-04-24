@@ -103,6 +103,11 @@ modal.addEventListener('click', () => {
   modal.style.display = 'none';
 });
 
+// User Sign Up
+// 18 mins https://umd.zoom.us/rec/play/rOLy7S2bMVLqqQvCT4MafItbyal9mR0je208TXcKdYNg_60oQh4PUme9okMLZiuWGNZeuLKFPY7YvB8G.MwoLwbThRsi8-LiG
+form.addEventListener('submit', () => {
+  SubmitEvent.preventDefault();
+})
 
 
 document.addEventListener('DOMContentLoaded', mainEvent);

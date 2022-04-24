@@ -37,7 +37,8 @@ export default (sequelize, DataTypes) => {
       },
       create_time: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW
+        defaultValue: DataTypes.NOW,
+        allowNull: true
       }
     },
     { freezeTableName: true, timestamps: false }

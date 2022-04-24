@@ -15,37 +15,6 @@ router.route('/')
       res.json('Server error');
     }
   })
-
-  .post(async (req, res) => {
-    // try {
-    //   const languageId = req.body.Languages || 0;
-    //   const result = await db.sequelizeDB.query(Languages, {
-    //     replacements: { language_id: languageId},
-    //     type: sequelize.QueryTypes.SELECT
-    //   });
-    //   res.json({data: result});
-    // } catch (err) {
-    //   console.log(err);
-    //   res.send({message: err});
-    // }
-    const languageId = await db.Languages.findAll();
-    const current = (await languageId.length) + 1;
-    try {
-    const newLanguage = await db.Languages.create({
-      language_id: current,
-      language: req.body.language,
-      description: req.body.description
-
-    });
-    res.send('languages added');
-    } catch (err) {
-    console.log(err);
-    console.log(current);
-    res.send(err);
-  }
-});
-  
-
 router.route('/:language_id')
   .get(async (req, res) => {
     try {
@@ -59,5 +28,56 @@ router.route('/:language_id')
       res.json('Server error');
     }
   });
+router.route('/').post(async (req, res) => {
+  const languageId = await db.Languages.findAll();
+  const current = (await languageId.length) + 1;
+  try {
+  const newLanguage = await db.Languages.create({
+    language_id: current,
+    language: req.body.language,
+    description: req.body.description
+
+    });
+    res.send('languages added');
+    } catch (err) {
+    console.log(err);
+    console.log(current);
+    res.send(err);
+  }
+});
+  
+router.route('/').put(async (req, res) => {
+  try {
+    await db.Languages.update(
+      {
+        language : req.body.genre,
+        description: req.body.description
+      },
+      {
+        where: {
+          language_id: req.body.language_id
+        }
+      }
+    );
+    res.send('Language Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.send('Language not found');
+  }
+});
+router.route('/:language_id').delete(async (req, res) => {
+  try {
+    await db.Languages.destroy({
+      where: {
+        language_id: req.params.language_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 
 export default router;

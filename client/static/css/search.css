@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form {
+    padding: 6px;
+    background-color: lightgray;
+    width: 400px;
+    height: 600px;
+    min-width: 200px;
+}
+
+input {
+    display: inline-block;
+    padding: 4px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom: solid black 2px;
+    outline: none;
+    width: 50%;
+    background-color: transparent;
+}
+
+#btn {
+    padding: 6px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+.success {
+    background-color: rgb(77, 224, 77);
+}
+
+.failure {
+    background-color: rgb(232, 74, 74);
+}
+
+#msg-container {
+    text-align: center;
+    padding: 4px;
+}

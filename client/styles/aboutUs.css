@@ -1,0 +1,31 @@
+body {
+    background-color: #EB4949;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-items: end;
+    position: relative;
+}
+
+
+
+/* Navbar section start*/
+
+.header {
+    padding: 30px;
+    color: #FFE6A5;
+    text-align: center;
+    font-size: 55px;
+}
+
+.about-header{
+    color: #FFE6A5;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 30px;
+}
+
+.meet{
+    color: #FFE6A5;
+}

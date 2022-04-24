@@ -43,7 +43,6 @@ li a {
   display: flex;
   text-align: center;
   text-decoration: none;
-
 }
 
 li a:hover {
@@ -55,25 +54,26 @@ img.logo {
   height: 96px;
   min-width: 10px;
 }
-.search_container{
+.search_container {
   display: flex;
   justify-content: space-between;
 }
-div.field#searchbar{
+div.field#searchbar {
   width: 50%;
   margin: auto;
 }
 
-div.middle{
+div.middle {
   display: flex;
   justify-content: center;
 }
-#middle{
-    margin-top: 5%;
-    margin-left: 10%;
-    margin-right: 10%;
+#middle {
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
-
+#results {
+}
 .icon {
   display: flex;
   justify-content: center;
@@ -96,5 +96,3 @@ img.discog_logo {
   width: 600px;
   height: 300px;
 }
-
-

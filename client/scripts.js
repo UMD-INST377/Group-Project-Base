@@ -7,6 +7,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   const breakfastItems = await results.json();
   console.log(breakfastItems);
 
+  // format data to look nicer on homepage
   const dataJson = JSON.stringify(breakfastItems.data);
   targetList.innerHTML = dataJson;
 }

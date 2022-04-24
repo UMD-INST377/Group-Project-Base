@@ -89,6 +89,14 @@ textarea.materialize-textarea:focus:not([readonly]) {
     -webkit-box-shadow: 0 1px 0 0 #26a69a;
     box-shadow: 0 1px 0 0 #26a69a;
 }
+.table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.th, td{
+    padding: 10px 20px;
+    border: 1px solid #000;
+}
 
 .wrap_paragraph {
     padding-left: 20%;

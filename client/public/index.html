@@ -16,7 +16,8 @@
           <ul class="left">
             <li><a href="about.html">About</a></li>
             <li><a class="active" href="/">Main</a></li>
-            <li><a href="availability.html">Movie Availability</a></li>
+            <li><a href="/availability.html">Movie Availability</a></li>
+            <li><a href="/ratings.html">Ratings</a></li>
           </ul>
         </div>
       </nav>
@@ -47,13 +48,26 @@
               <select multiple id="genre-input"></select>
             </div> <!-- input-field -->
           </div> <!-- genres -->
+          <div class="ratings col s6 l4">
+            <div class="input-field col s12">
+              <span class="filter-label">Ratings</span>
+              <select multiple id = "ratings-input">
+                <option value="1">1-star</option>
+                <option value="2">2-star</option> 
+                <option value="3">3-star</option>
+                <option value="4">4-star</option>
+                <option value ="5">5-star</option>
+              </select>
+            </div> <!-- input-field -->
+          </div> <!-- ratings -->
         </div> <!-- row -->
-      </section> <!-- filters -->
+      </section> <!-- filters -->  
       <section class="movies">
         <div class="row" id="movies">
         </div> 
       </section> <!-- movies -->
     </div> <!-- wrapper -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="script.js"></script>
   </body>
   </html>

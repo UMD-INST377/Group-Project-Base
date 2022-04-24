@@ -10,7 +10,6 @@ async function loadAvail() {
   items.forEach((item) => {
     if (genreArray.includes(item.genre) === false) {
       genreArray.push(item.genre);
-      console.log(genreArray);
       genreType.innerHTML += `
       <option>${item.genre}</option>`;
     }

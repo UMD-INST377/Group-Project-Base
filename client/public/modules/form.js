@@ -3,7 +3,7 @@ import { populateGenres, populateLanguages, populateRatings } from './populate.j
 
 async function loadForm() {
   // populate dropdowns
-  await populateGenres();
+  await populateGenres(window.location.pathname);
   await populateLanguages();
   await populateRatings();
 
@@ -115,7 +115,7 @@ async function loadForm() {
         image_id: JSONimages.data.length
       })
     });
-    // window.location = '/records.html';
+    window.location = '/records.html';
   });
 }
 

@@ -366,7 +366,7 @@ router.post('/albums', async (req, res) => {
   const albumItems = await db.albums.findAll();
   const currentId = (await albumItems.length) + 1;
   try {
-    const newStyle = await db.albums.create({
+    const newAlbum = await db.albums.create({
       album_id: currentId,
       album_name: req.body.album_name,
       number_of_songs: req.body.number_of_songs,
@@ -376,7 +376,7 @@ router.post('/albums', async (req, res) => {
       release_id: req.body.release_id,
       artist_id: req.body.artist_id
     });
-    res.json(newStyle);
+    res.json(newAlbum);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -410,7 +410,7 @@ router.put('/albums', async (req, res) => {
 
 router.delete('/albums/:album_id', async (req, res) => {
   try {
-    await db.styles.destroy({
+    await db.albums.destroy({
       where: {
         album_id: req.params.album_id
       }

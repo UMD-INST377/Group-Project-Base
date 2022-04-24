@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
   res.send('Welcome to the group 22 database');
 });
 
+//TODO: call route /"Schedule" because its clearer to the user. Use hyphens for route names instead of underscores or camelCase
 router.get('/Group22_Dining_Hall_Tracker', async (req, res) => {
   try {
     const schedule = await db.DiningHall.findAll();

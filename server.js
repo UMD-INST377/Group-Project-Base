@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+
+//TODO: import all routes, can be simple names like nameRoute
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
@@ -13,6 +15,7 @@ const staticFolder = 'client';
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//TODO: first should be /API
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 app.use('/chandra', route);

@@ -137,7 +137,7 @@ router.post('/career_services', async (req, res) => {
     res.json(newCareers);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -339,7 +339,7 @@ router.post('/company', async (req, res) => {
     res.json(newCompnay);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 

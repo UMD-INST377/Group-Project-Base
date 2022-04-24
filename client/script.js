@@ -67,17 +67,17 @@ async function mainEvent() {
   form1.addEventListener('submit', (e) => getByID(e, form1, table1));
   form2.addEventListener('submit', (e) => getByID(e, form2, table2));
   getAll.addEventListener('submit', (e) => getByFamily(e, allTable));
+
 }
-
 // mobile nav
-const header = document.querySelector("Header");
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav");
+const header = document.querySelector('Header');
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav');
 
-hamburger.addEventListener("click", () => {
-  header.classList.toggle("active");
-  hamburger.classList.toggle("active");
-  navMenu.classList.toggle("active");
+hamburger.addEventListener('click', () => {
+  header.classList.toggle('active');
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('active');
 });
 
 // saved results 
@@ -104,11 +104,17 @@ modal.addEventListener('click', () => {
 });
 
 // User Sign Up
+const signUpSubmit = document.querySelector('#sign_up');
+
 // 18 mins https://umd.zoom.us/rec/play/rOLy7S2bMVLqqQvCT4MafItbyal9mR0je208TXcKdYNg_60oQh4PUme9okMLZiuWGNZeuLKFPY7YvB8G.MwoLwbThRsi8-LiG
-form.addEventListener('.submit', async (submitEvent) => {
-  SubmitEvent.preventDefault();
-  // const form
-})
+// const signUpForm = document.querySelector('sign_up_form')
+
+signUpSubmit.addEventListener('click', (submitEvent) => {
+  submitEvent.preventDefault();
+  window.location.href="/index.html";
+});
+
+
 
 
 document.addEventListener('DOMContentLoaded', mainEvent);

@@ -52,59 +52,7 @@ router.get('/restaurants/:rest_id', async (req, res) => {
   }
 });
 
-// POST request
-router.post('/hours', async (req, res) => {
-  const hours = await db.hours.findAll();
-  const currentId = (await hours.length) + 1;
-  try {
-    const newHours = await db.hours.create({
-      hours_id: currentId,
-      opening_time: req.body.opening_time,
-      closing_time: req.body.closing_time, 
-      restaurant_id: req.body.restaurant_id
-    });
-    res.json(newHours);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
-// PUT request REVIS
-router.put('/hours', async (req, res) => {
-  try {
-    await db.hours.update(
-      {
-        opening_time: req.body.opening_time,
-        closing_time: req.body.closing_time
-      },
-      {
-        where: {
-          hours_id: req.body.hours_id
-        }
-      }
-    );
-    res.send('Successfully Updated Hours');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-// DELETE REVIS
-router.delete('/hours/:hours_id', async (req, res) => {
-  try {
-    await db.hours.destroy({
-      where: {
-        hours_id: req.params.hours_id
-      }
-    });
-    res.send('Successfully Deleted Hours');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
 // Sana Hassan GET requests
 // endpoint 1

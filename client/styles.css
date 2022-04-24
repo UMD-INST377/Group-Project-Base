@@ -9,13 +9,15 @@
     padding: 0;
     font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
       ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
-    background-color: darkslategray;
+    background-color: rgb(56, 56, 56);
   }
   
   /* Page Layout */
   .columns {
     display: flex;
     flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .wrapper {
@@ -24,21 +26,25 @@
   .container {
     max-width: 960px;
     margin-top: 25px;
+    padding: 10px;
   }
   
   .header-box {
-    background-color: #47ffd7;
-    border-radius: 3px;
-    
-    margin: 40px 20px;
-    padding: 20px;
+    background-color: #ff4766;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px 20px;
+    padding: 40px;
+    font-size: 30px;
   }
   
   .other-box {
     background-color: #F6F7F8;
     border-radius: 3px;
     padding: 10px;
-    position:relative;
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
   
   .food-form {
@@ -53,7 +59,7 @@
   
   @media only screen and (min-width: 700px) {
     .form-row {
-      
+      text-align: center;
       flex-direction: row;
       align-items: flex-start; /* To avoid stretching */
       margin-bottom: 20px;
@@ -117,14 +123,15 @@
 
   .menu-container {
     color: #fff;
-    background-color: #5995da; /* Blue */
-    padding: 20px 0;
+    border-radius: 5px;
+    background-color: #c29b9b; /* Blue */
+    padding: 20px;
     display: flex;
     justify-content: center;
+    margin: 20px 20px;
   }
   
   .menu {
-    border: 1px solid #fff;
     width: 900px;
     display: flex;
     justify-content: space-between;

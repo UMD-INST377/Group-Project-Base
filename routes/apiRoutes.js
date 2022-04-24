@@ -6,6 +6,7 @@ import genres from './genreRoutes.js';
 import images from './imagesRoutes.js';
 import languages from './languagesRoutes.js';
 import movies from './moviesRoutes.js';
+// eslint-disable-next-line import/no-named-as-default
 import ratings from './RatingsRoutes.js';
 
 const router = express.Router();

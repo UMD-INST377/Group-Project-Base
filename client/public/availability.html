@@ -9,7 +9,7 @@
     <link rel="stylesheet" href = "styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i">
-    <script src = "script.js"></script>
+    <script type="module"  src = "script.js"></script>
   </head>
   <body> 
     <div class="wrapper">
@@ -35,29 +35,25 @@
                 <div class="availability_genre_wrap"> By Genre</div>
             </h1>
             <div class="select is-link is-medium">
-                <select>
+                <select class="genre_selector">
                 <option>All</option>
-                <option>Action</option>
-                <option>Comedy</option>
-                <option>Sci-Fi</option>
                 </select>
             </div>
             <div class="column is-one-quarter">
                 <div class="text">
                     <h3>Availability details</h3>
+                    <!-- <img src="images/PNG.png">   -->
                 </div>
             </div>
+            <!-- Graph -->
+            <div class="barGraph">
+              <canvas id="MyChart"></canvas>
+            </div>
         </div>
-<<<<<<< Updated upstream
-        <br>
-        <img src="images/PNG.png">  
-=======
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
       </body>
       </html>
-        
->>>>>>> Stashed changes
 
 
         

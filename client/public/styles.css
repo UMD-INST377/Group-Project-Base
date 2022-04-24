@@ -118,8 +118,6 @@ textarea.materialize-textarea:focus:not([readonly]) {
     -webkit-box-shadow: 0 1px 0 0 #26a69a;
     box-shadow: 0 1px 0 0 #26a69a;
 }
-<<<<<<< Updated upstream
-=======
 
 .col .row {
     max-width: 100%;
@@ -129,6 +127,14 @@ textarea.materialize-textarea:focus:not([readonly]) {
     justify-content: right;
     margin-top: 10px;
     margin-bottom: 10px;
+.table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.th, td{
+    padding: 10px 20px;
+    border: 1px solid #000;
+
 }
 
 table .material-icons {
@@ -140,7 +146,7 @@ table .material-icons {
 table {
     font-size: .85em!important;
 }
->>>>>>> Stashed changes
+
 
 #delete {
     max-width: 400px!important;

@@ -108,7 +108,7 @@
 
 .chart {
     display: flex;
-    background-color: #FF4747;
+    background-color: none;
     height: 500px;
     width: 700px;
     align-self: center;

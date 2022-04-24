@@ -504,9 +504,9 @@ router.delete('/album_genre_info/:album_id', async (req, res) => {
 /// ////AlbumStyleInfo Endpoints/////////
 /// /////////////////////////////////
 
-router.get('/styles', async (req, res) => {
+router.get('/album_style_info', async (req, res) => {
   try {
-    const styleItems = await db.styles.findAll(); 
+    const styleItems = await db.album_style_info.findAll(); 
     const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -515,11 +515,11 @@ router.get('/styles', async (req, res) => {
   }
 });
 
-router.get('/styles/:style_id', async (req, res) => {
+router.get('/album_style_info/:album_id', async (req, res) => {
   try {
-    const styleItems = await db.styles.findAll({
+    const styleItems = await db.album_style_info.findAll({
       where: {
-        style_id : req.params.style_id
+        album_id : req.params.album_id
       }
     });
 
@@ -530,13 +530,13 @@ router.get('/styles/:style_id', async (req, res) => {
   }
 });
 
-router.post('/styles', async (req, res) => {
-  const styleItems = await db.styles.findAll();
+router.post('/album_style_info', async (req, res) => {
+  const styleItems = await db.album_style_info.findAll();
   const currentId = (await styleItems.length) + 1;
   try {
-    const newStyle = await db.styles.create({
-      style_id: currentId,
-      style_name: req.body.style_name
+    const newStyle = await db.album_style_info.create({
+      album_id: currentId,
+      style_id: req.body.style_id
     });
     res.json(newStyle);
   } catch (err) {
@@ -545,16 +545,15 @@ router.post('/styles', async (req, res) => {
   }
 });
 
-router.put('/styles', async (req, res) => {
+router.put('/album_style_info', async (req, res) => {
   try {
-    await db.styles.update(
+    await db.album_style_info.update(
       {
-        style_id: req.body.style_id,
-        style_name: req.body.style_name
+        style_id: req.body.style_id
       },
       {
         where: {
-          style_id: req.body.style_id
+          album_id: req.body.album_id
         }
       }
     );
@@ -565,11 +564,11 @@ router.put('/styles', async (req, res) => {
   }
 });
 
-router.delete('/styles/:style_id', async (req, res) => {
+router.delete('/album_style_info/:album_id', async (req, res) => {
   try {
-    await db.styles.destroy({
+    await db.album_style_info.destroy({
       where: {
-        style_id: req.params.style_id
+        album_id: req.params.album_id
       }
     });
     res.send('Successfully Deleted');

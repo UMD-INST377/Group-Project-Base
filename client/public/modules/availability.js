@@ -3,30 +3,62 @@ async function loadAvail() {
   const results = await fetch('/api/table/data');
   const items = await results.json();
   const genreType = document.querySelector('.genre_selector');
-  const canvas = document.getElementById('MyChart');
   const ctx = document.getElementById('MyChart').getContext('2d');
+  let genreCurrentValue = 'All';
+  let myChart = null;
+  const genreArray = ['All'];
+  items.forEach((item) => {
+    if (genreArray.includes(item.genre) === false) {
+      genreArray.push(item.genre);
+      console.log(genreArray);
+      genreType.innerHTML += `
+      <option>${item.genre}</option>`;
+    }
+  });
   function genreAll() {
+    // if a chart exists, destroy it.
+    if (myChart != null) {
+      myChart.destroy();
+    }
     let netflix = 0;
     let hulu = 0;
     let prime = 0;
     let disney = 0;
-    items.forEach((item) => {
-      if (item.is_on_netflix === 1) {
-        netflix += 1;
-      } else if (item.is_on_hulu === 1) {
-        hulu += 1;
-      } else if (item.is_on_prime === 1) {
-        prime += 1;
-      } else if (item.is_on_hulu === 1) {
-        disney += 1;
-      }
-    });
-    const myChart = new Chart(ctx, {
+    // Default OR if ALL is selected
+    if (genreCurrentValue === 'All') {
+      items.forEach((item) => {
+        if (item.is_on_netflix === 1) {
+          netflix += 1;
+        } if (item.is_on_hulu === 1) {
+          hulu += 1;
+        } if (item.is_on_prime === 1) {
+          prime += 1;
+        } if (item.is_on_disney === 1) {
+          disney += 1;
+        }
+      });
+    }
+    // Check if is in a genre:
+    else {
+      items.forEach((item) => {
+        if (item.is_on_netflix === 1 && item.genre === genreCurrentValue) {
+          netflix += 1;
+        } if (item.is_on_hulu === 1 && item.genre === genreCurrentValue) {
+          hulu += 1;
+        } if (item.is_on_prime === 1 && item.genre === genreCurrentValue) {
+          prime += 1;
+        } if (item.is_on_disney === 1 && item.genre === genreCurrentValue) {
+          disney += 1;
+        }
+      });
+    }
+    // make that chart!
+    myChart = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: ['Netflix', 'Hulu', 'Prime', 'Disney'],
         datasets: [{
-          label: '# of Votes',
+          label: '# of Movies',
           data: [netflix, hulu, prime, disney],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -54,13 +86,17 @@ async function loadAvail() {
           }
         }
       }
-    });
+    }); 
   }
+  // Start it in All:
   genreAll();
+
+  // Using the Dropdown:
   genreType.onclick = (e) => {
-    myChart.destroy();
-    console.log(genreType.value)
-    if (genreType.value === 'All') {
+    if (genreType.value === genreCurrentValue) {
+      console.log('Nothing Changed!');
+    } else {
+      genreCurrentValue = genreType.value;
       genreAll();
     }
   };

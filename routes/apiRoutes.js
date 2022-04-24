@@ -107,23 +107,30 @@ router.delete('/hours/:hours_id', async (req, res) => {
 });
 
 // Sana Hassan GET requests
-router.get('/name', async (req, res) => {
+// endpoint 1
+
+// make sure to make pull request
+
+router.get('/macros', async (req, res) => {
   try {
-    const name = await db.restaurants.findAll();
-    res.json(name);
+    const macros = await db.Macros.findAll();
+    res.json(macros);
   } catch (err) {
     console.error(err);
     res.send('Server error');
   }
 });
 
-router.get('/name/:name_id', async (req, res) => {
+// endpoint 2
+
+router.get('/macros/:macro_id', async (req, res) => {
   try {
-    const { name_id } = req.params;
-    const result = await db.sequelizeDB.query(
-      `SELECT * FROM restaurants where restaurant_id = ${ name_id }`
-    );
-    res.json({ data: result });
+    const macros = await db.Macros.findAll({
+      where: {
+        macro_id: req.params.macro_id
+      }
+    });
+    res.json(macros);
   } catch (err) {
     console.error(err);
     res.send('Server error');

@@ -9,3 +9,50 @@ body {
     justify-items: end;
     position: relative;
 }
+
+.fav-header-text {
+    width:600px;
+    height: 100px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #EB4949;
+    color: #FFD5A4;
+    font-size: 50px;
+    font-weight:bold;
+    box-shadow: 0px 0px 4px #727272;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+}
+.dining-hall-banner {
+    width:800px;
+    height: 75px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #EB4949;
+    color: #FFD5A4;
+    font-size: 30px;
+    font-weight:bold;
+    box-shadow: 0px 0px 4px #727272;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+ hr {
+     height: 3px;
+     background-color: #EB4949;
+     color: #EB4949;
+     margin-left: 15px;
+     margin-right: 15px;
+    border-radius: 10px;
+ }

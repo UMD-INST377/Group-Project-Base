@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+/* 
+This is for the header of the website 
+*/
+.menu-container{
+    color: #fff;
+    background-color: #E81B1B; /* Red */
+    padding: 20px 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+.menuDining {
+    border: 1px solid #fff; /* White border */
+    width: 100px;
+    display: flex;
+    margin-left: 20px;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.home {
+    margin-left: 900px;
+    color: white;
+}
+
+.home:link {
+    color: white;
+}
+
+.home:visited {
+    color: #E81B1B;
+}
+
+.home:hover {
+    color: blue;
+}
+
+.about {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.location {
+    margin-right: 40px;
+}
+
+/* 
+UMD Dining picture part 
+*/
+.header-container {
+    
+    background-color: yellow;
+    position: relative;
+    justify-content: center;
+    display: flex;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.caption {
+    text-align: center;
+    font-size: 100px;
+    font-weight: bolder;
+    color: white;
+}
+
+.heading {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+}

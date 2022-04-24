@@ -6,7 +6,8 @@ export default (database, DataTypes) => {
       restaurant_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       restaurant_name: {
         type: DataTypes.STRING,

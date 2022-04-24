@@ -87,6 +87,23 @@ router.route('/genre')
     }
   });
 
+  /// For Contribute ///
+router.route('/artist')
+.post(async (req, res) => {
+    const artistList = await db.artist.findAll();
+    const currentId = (await artistList.length) + 1;
+    try {
+      const newArtist = await db.artist.create({
+        artist_id: currentId,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name
+      });
+      res.json(newArtist);
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Server error'});
+    }
+  });
 
 /// /////////////////////////////////
 /// //////\Daniel's Endpoints////////

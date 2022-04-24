@@ -1,0 +1,1 @@
+export default `SELECT meal_name FROM meals WHERE meal_category = 'B';`;

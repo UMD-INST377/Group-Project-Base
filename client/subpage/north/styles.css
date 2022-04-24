@@ -76,6 +76,17 @@
     gap: 200px;
 }
 
+.results {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding-top: 100px;
+    gap: 200px;
+    height: 100%;
+    width: 100%;
+}
+
+
 .location {
     display: flex;
     flex-direction: column;

@@ -33,3 +33,16 @@ router.get('/Group22_Dining_Hall_Tracker/:hall_id', async (req, res) => {
     res.error('Server error');
   }
 });
+<<<<<<< HEAD
+=======
+
+router.get('/Group22_Dining_Hall_Tracker/meals', async (req, res) => {
+  try {
+    const meals = await db.Meals.findAll();
+    res.json(meals);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+>>>>>>> cc705bd155069cd5fc04526136afeb42605444df

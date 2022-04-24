@@ -55,11 +55,25 @@ img.logo {
   height: 96px;
   min-width: 10px;
 }
-
+.search_container{
+  display: flex;
+  justify-content: space-between;
+}
 div.field#searchbar{
   width: 50%;
   margin: auto;
 }
+
+div.middle{
+  display: flex;
+  justify-content: center;
+}
+#middle{
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .icon {
   display: flex;
   justify-content: center;

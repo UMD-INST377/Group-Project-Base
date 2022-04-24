@@ -12,8 +12,7 @@
     <div class="head is-flex">
         <figure class="image is 96x96">
             <a href="index.html">
-                <img src="./images/logo.jpeg" class="logo" 
-                alt="Click to go back to the homescreen">
+                <img src="./images/logo.jpeg" class="logo" alt="Click to go back to the homescreen">
             </a>
         </figure>
         <nav class="navbar">
@@ -41,15 +40,39 @@
             </ul>
         </nav>
     </div>
-    
-    <div class="field" id="searchbar">
-        <div class="control has-icons-left">
-          <input class="input" type="text" placeholder="Search by Title, Artist, Album">
-          <span class="icon is-small is-right">
-            <ion-icon name="search-outline"></ion-icon>
-          </span>
+    <div class="search_container">
+        <div class="field" id="searchbar">
+            <div class="control has-icons-left">
+                <input class="input" type="text" placeholder="Search by Title, Artist, Album">
+                <span class="icon is-small is-right">
+                    <ion-icon name="search-outline"></ion-icon>
+                </span>
+            </div>
+            <div class="buttons field">
+                <p class="control">
+                    <button class="button is-primary is-fullwidth" id="submit_button">Search</button>
+                </p>
+            </div>
         </div>
-      </div>
+    </div>
+
+    <div id="middle">
+        <div class="columns is-multiline is-mobile">
+            <div class="column">
+                <div class="box" id="results">
+                    Results
+                </div>
+            </div>
+            <div class="column is-one-quarter">
+                <div class="box" id="filters">
+                    Filters
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
     <script src="script.js"></script>
     <!-- icon library script -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

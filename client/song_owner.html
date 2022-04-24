@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel = "stylesheet" href = "record.css">
+    <link rel = "stylesheet" href = "styles2.css">
     <title>INST377 Group 4 - Spotify Dataset</title>
 </head>
 <body>
@@ -81,6 +82,39 @@
                 <button class="button"><a href = 'station-library.html'>Cancel</a></button>
             </div>
         </div>
+    </div>
+
+    <header class='mid-header-1'>
+        <form class = 'submit_song frontend_1'>
+        <div class = "song"></div>
+            <div class="field">
+                <label class="label">Song Name</label>
+                <div class="control">
+                    <input class="input" type="text" name="song_name" id = "song_name">
+                </div>
+            </div>
+        </div>
+        <div class = "playlist"></div>
+            <div class="field">
+                <label class="label">Artist Name</label>
+                <div class="control">
+                    <input class="input" type="text" name="artist_name" id = "artist_name">
+                </div>
+            </div>
+        </div>
+    </form>
+    </header>
+
+    <div class = "bot-header">
+        <div class="but">
+            <div class="control">
+                <button class="button">Submit Search For Song Name or Artist Name</button>
+            </div>
+        </div>
+    </div>
+
+    <div class = "result_display">
+
     </div>
 
     <script src="scripts.js"></script>

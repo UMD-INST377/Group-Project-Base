@@ -1,0 +1,39 @@
+.body-container {
+    height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-container {
+    background-color: blanchedalmond;
+    width: 50%;
+    margin-left: 170px;
+}
+
+.text {
+    height: 500px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px ;
+    margin-right: 150px;
+    margin-left: 50px;
+}
+
+.text h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 25px;
+
+}
+
+.text p {
+    line-height: 30px;
+}
+
+#map { 
+    height: 500px;
+    
+    
+}

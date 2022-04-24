@@ -190,6 +190,24 @@ router.put('/macros', async (req, res) => {
   }
 });
 
+// delete
+
+router.delete('/macros/:macros_id', async (req, res) => {
+  try {
+    await db.Macros.destroy({
+      where: {
+        macros_id: req.params.macros_id
+      }
+    });
+    res.send('Successfully Deleted Macros');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+
 // Ian GET requests
 
 // Get Endpoint 1: All records of single type

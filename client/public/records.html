@@ -12,6 +12,23 @@
   </head>
   <body>
     <div class="wrapper">
+      <!-- navigation -->
+      <nav>
+          <div class="nav-wrapper">
+              <ul>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="/">Main</a></li>
+                  <li><a href="availability.html">Movie Availability</a></li>
+                  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Tables<i class="material-icons right">arrow_drop_down</i></a></li>
+              </ul>
+          </div>
+        </nav>
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a class="active" href="records.html">Records</a></li>
+          <li><a href="ratings.html">Ratings</a></li>
+          <li class="divider"></li>
+          <li><a href="form.html">Add new record</a></li>
+        </ul>
       <table class="striped responsive-table">
           <thead id="table-head">
             <tr>
@@ -45,6 +62,8 @@
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
         <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="confirm-delete">Delete</a>
       </div>
+    </div>
+    <div id="edit" class="modal">
     </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>

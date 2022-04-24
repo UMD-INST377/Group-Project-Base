@@ -134,7 +134,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     border-spacing: 0;
 }
 
-#ratings .th, td{
+#ratings .th, #ratings td {
     padding: 10px 20px;
     border: 1px solid #000;
 
@@ -194,7 +194,7 @@ input {
 
 /* ////////////////////////////// */
 .wrap_paragraph {
-    padding-left: 40%;
+    padding-left: 20%;
     padding-right: 20%;
     font-size: 1.15em!important;
     color: #000!important;

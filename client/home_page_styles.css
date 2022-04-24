@@ -81,3 +81,28 @@ body {
     overflow-wrap: normal;
     text-align: center;
 }
+
+.button {
+    
+    width: 150px;
+    height: 50px;
+    background-color: red;
+}
+
+.button2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+} 
+
+#button {
+    background-color: red;
+}

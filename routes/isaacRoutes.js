@@ -13,6 +13,10 @@ router.get('/actors', async (req, res) => {
     res.send("Error in '/actors'!");
   }
 });
+
+router.get('/', (req, res) => {
+  res.send("Welcome to Isaac's portion of Group 20's project API!");
+});
 router.get('/actors/:actor_id', async (req, res) => {
   try {
     const actors = await db.actors.findAll({

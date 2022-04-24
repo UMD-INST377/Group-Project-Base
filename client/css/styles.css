@@ -73,6 +73,9 @@ div.middle {
   margin-right: 10%;
 }
 #results {
+  display: flex;
+  max-height:50%;
+  overflow-y:auto;
 }
 .icon {
   display: flex;

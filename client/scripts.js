@@ -10,21 +10,26 @@ function formToObject(htmlFormElement) {
   return formObject;
 }
 
-const form = document.querySelector('submit_song');
-const submit = document.querySelector('submit_button');
+async function mainEvent() {
 
-form.addEventListner('submit', async (submitEvent) => {
-  submitEvent.preventDefault();
-  const formObj = formToObject(form);
-  console.log('check the form for filters', formObj);
-  const postResult = await fetch('/api/sqlDemo', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formObj)
+  const form = document.querySelector('.submit_song');
+  const submit = document.querySelector('.submit_button');
+
+  form.addEventListener('submit', async (submitEvent) => {
+    submitEvent.preventDefault();
+    const formObj = formToObject(form);
+    console.log('check the form for filters', formObj);
+    const postResult = await fetch('http://localhost:3000/api/songDisplay/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formObj)
+    });
+    const postResultJSON = await postResult.json();
+    console.log('return from Post', postResult);
+    console.log('return from Post JSON', postResultJSON);
   });
-  const postResultJSON = await postResult.json();
-  console.log('return from Post', postResult);
-  console.log('return from Post JSON', postResultJSON);
-});
+}
+
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -7,9 +7,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     </head>
     <body>
-        <!-- <h1><a href = './index.html'>Home Page</a></h1>
-        <h1><a href = './about.html'>Information page</a></h1> -->
-
         <div class = "menu-container">
             <div class = "menuDining">
                 <div class = "leftLogo">UMD DINING</div>
@@ -28,10 +25,40 @@
             </div>
         </div>
 
-        <div class = "hall-container">
+        <div class = 'photo-grid-container'>
             <div class = 'hall'>
-                
+                <div class = "titleDining"><strong>DINING HALLS</strong></div>
+                <div class = "titleDining">&#10148 Today's Date</div>
+                <hr size="50px" width="95%" color="black">
+                <div class = "diningName">South Campus</div>
+                <div>time</div>
+                <div class = "diningName">The Diner</div>
+                <div>time</div>
+                <div class = "diningName">North Dining</div>
+                <div>time</div>
             </div>
+            <div class = 'carousel_actions'>
+                <button id = 'carousel_button-prev' aria-label="Previous slide"><</button>
+            </div>
+            <div class = 'carousel'>
+                <div class = 'carousel_item carousel_item-visible'>
+                    <img src = './images/south_campus.jpeg'/>
+                </div>
+                <div class = 'carousel_item'>
+                    <img src = './images/diner.jpeg'/>
+                </div>
+                <div class = 'carousel_item'>
+                    <img src = './images/251north.jpeg'/>
+                </div>
+            </div>
+            <div class = 'carousel_actions'>
+                <button id = 'carousel_button-next' aria-label="Next slide">></button>
+            </div>
+        </div>
+        <script src = 'scripts.js'></script>
+
+        <div class="">
+            
         </div>
     </body>
 </html>

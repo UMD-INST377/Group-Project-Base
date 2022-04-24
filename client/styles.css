@@ -57,7 +57,6 @@ This is for the header of the website
 UMD Dining picture part 
 */
 .header-container {
-    
     background-color: yellow;
     position: relative;
     justify-content: center;
@@ -82,3 +81,93 @@ UMD Dining picture part
     top: 50%;
     right: 50%;
 }
+
+/*
+Dining Halls part
+*/
+.hall {
+    width: 1000px;
+    margin-left: 35px;
+    
+}
+
+.titleDining {
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+.diningName {
+    color: #E81B1B;
+    font-weight: bolder;
+    font-size: 50;
+}
+
+/*
+Carosel for Dining Halls Part
+*/
+.photo-grid-container{
+    display: flex;
+    justify-content: center;
+    height: 450px;
+}
+
+.carousel {
+    overflow: hidden;
+    max-width: 900px;
+    position: relative;
+}
+
+.carousel .carousel_item,
+.carousel .carousel_item-hidden {
+    display: none;
+}
+
+.carousel .carousel_item img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+}
+
+.carousel .carousel_item-visible {
+    display: block;
+}
+
+.carousel .carousel_actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%);
+}
+
+.carousel_actions button {
+    color: white;
+    background-color: black;
+    border-radius: 50px;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.carousel_actions button#carousel_button-prev {
+    margin-top: 138px;
+    margin-left: -5px;
+}
+
+.carousel_actions button#carousel_button-prev:focus {
+    background-color: orange;
+    border: 1.5px solid black;
+}
+
+.carousel_actions button#carousel_button-next {
+    margin-top: 138px;
+}
+
+.carousel_actions button#carousel_button-next:focus {
+    background-color: orange;
+    border: 1.5px solid black;
+}
+

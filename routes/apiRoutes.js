@@ -106,6 +106,38 @@ router.delete('/hours/:hours_id', async (req, res) => {
   }
 });
 
+// Sana Hassan GET requests
+// endpoint 1
+
+// make sure to make pull request
+
+router.get('/macros', async (req, res) => {
+  try {
+    const macros = await db.Macros.findAll();
+    res.json(macros);
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+// endpoint 2
+
+router.get('/macros/:macro_id', async (req, res) => {
+  try {
+    const macros = await db.Macros.findAll({
+      where: {
+        macro_id: req.params.macro_id
+      }
+    });
+    res.json(macros);
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+
 // Ian GET requests
 
 // Get Endpoint 1: All records of single type

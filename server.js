@@ -3,7 +3,7 @@ import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 import artistRoutes from './routes/artistRoutes.js';
-import AlbumsRoutes from './routes/AlbumsRoutes';
+import AlbumsRoutes from './routes/AlbumsRoutes.js';
 
 const app = express();
 

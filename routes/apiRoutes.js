@@ -162,6 +162,34 @@ router.post('/macros', async (req, res) => {
 });
 
 
+//Put
+
+router.put('/macros', async (req, res) => {
+  try {
+    await db.Macros.update(
+      {
+        calories: req.body.calories,
+        serving_size: req.body.serving_size, 
+        cholesterol: req.body.cholesterol,
+        sodium: req.body.sodium,
+        carbs: req.body.carbs,
+        protein: req.body.protein,
+        meal_id: req.body.meal_id,
+        fat: req.body.fat
+      },
+      {
+        where: {
+          macros_id: currentId
+        }
+      }
+    );
+    res.send('Successfully Updated Macros');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 // Ian GET requests
 
 // Get Endpoint 1: All records of single type

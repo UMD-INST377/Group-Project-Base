@@ -6,6 +6,7 @@ import judeRoutes from './routes/judeRoutes.js';
 import isaacRoutes from './routes/isaacRoutes.js';
 import agyaRoutes from './routes/agyaRoutes.js';
 import stefRoutes from './routes/stefRoutes.js';
+import owenRoutes from './routes/owenRoutes.js';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/jude', judeRoutes);
 app.use('/isaac', isaacRoutes);
 app.use('/agya', agyaRoutes);
 app.use('/stef', stefRoutes);
+app.use('/owen', owenRoutes);
 
 
 async function bootServer() {

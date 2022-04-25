@@ -64,9 +64,9 @@ async function mainEvent() {
     createHtmlList(returnArray);
   });
 
-  const form2 = document.querySelector('.submit_list')
+  const form2 = document.querySelector('.submit_list');
 
-  form2.addEventListner('submit', async (submitEvent) => {
+  form2.addEventListener('submit', async (submitEvent) => {
     submitEvent.preventDefault();
     const formObj = formToObject(form);
     console.log('check the form for filters', formObj);
@@ -77,9 +77,12 @@ async function mainEvent() {
         },
         body: JSON.stringify(formObj)
     });
+
     const postResultJSON = await postResult.json()
     console.log('return from Post', postResult)
     console.log('return from Post JSON', postResultJSON)
+    const returnArray = dataHandler(postResultJSON.data);
+    createHtmlList(returnArray);
 }) 
 }
 

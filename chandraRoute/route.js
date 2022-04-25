@@ -5,8 +5,7 @@ import hallQuery from '../controllers/halls_query.js';
 import hallUpdate from '../controllers/halls_update.js';
 import breakfastQuery from '../controllers/breakfast_query.js';
 import launchQuery from '../controllers/launch_query.js';
-
-// import { UPDATE } from 'sequelize/types/query-types';
+import dinnerQuery from '../controllers/dinner_query.js';
 
 const router = express.Router();
 
@@ -83,9 +82,21 @@ router.get('/meals', async (req, res) => {
   }
 });
 
-router.get('/meals/launch', async (req, res) => {
+router.get('/launch', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(launchQuery, {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+    res.send({ message: err});
+  }
+});
+
+router.get('/dinner', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(dinnerQuery, {
       type: Sequelize.QueryTypes.SELECT
     });
     res.json({ data: result });

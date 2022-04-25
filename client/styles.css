@@ -116,6 +116,12 @@
     margin-top: 130px;
 }
 
+.foodLists {
+    display: flex;
+    flex-direction: row;
+    row-gap: 100px;
+}
+
 .dining {
     position: absolute;
     left: 130px;

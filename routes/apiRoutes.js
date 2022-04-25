@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 router.use('/restaurants', apiRoutesJessica);
 
 
-router.use('/cuisine',apiRoutesNick)
+router.use('/cuisine', apiRoutesNick);
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

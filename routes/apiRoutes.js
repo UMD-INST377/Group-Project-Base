@@ -57,7 +57,6 @@ router.get('/restaurants/:rest_id', async (req, res) => {
 router.post('/restaurants', async (req, res) => {
   try {
     const newRest = await db.restaurants.create({
-      restaurant_id: currentId,
       restaurant_name: req.body.restaurant_name,
       phone_number: req.body.phone_number,
       price: req.body.price,

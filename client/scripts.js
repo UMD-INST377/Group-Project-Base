@@ -19,11 +19,11 @@ function createBreakfast(collection) {
   });
 }
 
-// create launch list
-function createLaunch(collection) {
+// create lunch list
+function createLunch(collection) {
   console.log('fired HTML creator');
   console.log(collection);
-  const targetList = document.querySelector('.launch');
+  const targetList = document.querySelector('.lunch');
   targetList.innerHTML = '';
   collection.forEach((item) => {
     const {meal_name} = item;
@@ -57,12 +57,12 @@ async function mainEvent() {
   const foodNames = dataHandler(breakfastItems.data);
   createBreakfast(foodNames);
 
-  // launch
-  const resultLaunch = await fetch('/chandra/launch');
-  const launchItems = await resultLaunch.json();
-  console.log(launchItems);
-  const launches = dataHandler(launchItems.data);
-  createLaunch(launches);
+  // lunch
+  const resultLunch = await fetch('/chandra/lunch');
+  const lunchItems = await resultLunch.json();
+  console.log(lunchItems);
+  const lunches = dataHandler(lunchItems.data);
+  createLunch(lunches);
 
   // dinner
   const resultDinner = await fetch('/chandra/dinner');

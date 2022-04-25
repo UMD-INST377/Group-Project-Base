@@ -39,7 +39,7 @@ async function mainEvent() {
   const add = document.querySelector('#add');
   const del = document.querySelector('#delete');
 
-  const results = await fetch('/api/albums'); // This accesses some data from our API
+  const results = await fetch('/api/main'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
 
   if (arrayFromJson.data.length > 0) {
@@ -72,7 +72,7 @@ async function mainEvent() {
     });
   //   add.addEventListener('input', albumAdd);
   //   del.addEventListener('input', albumDelete);
-  // }
+  }
 }
 // this actually runs first! It's calling the function above
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

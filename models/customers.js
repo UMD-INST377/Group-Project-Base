@@ -6,7 +6,8 @@ export default (database, DataTypes) => {
       customer_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       last_name: {
         type: DataTypes.STRING,

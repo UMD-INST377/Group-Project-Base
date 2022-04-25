@@ -59,11 +59,12 @@ router.route('/macros/:id')
     }
   })
   .put(async (req, res) => {
+    console.log(req.body)
     try {
       const {id} = req.params;
       await db.Macros.update(
         {
-          sodium: 209
+          sodium: req.body.sodium
         },
         {
           where: {
@@ -71,6 +72,7 @@ router.route('/macros/:id')
           }
         }
       );
+      res.send("success");
     } catch (err) {
       console.log(err);
     }

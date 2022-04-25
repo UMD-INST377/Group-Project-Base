@@ -60,46 +60,8 @@ router.get('/stateloc/:record_id', async (req, res) => {
           res.send(err);
         }
       });
-
-    router.post('/disasters', async (req, res) => {
-      const disasters = await db.record_state.findAll();
-      const currentId = (await disasters.length) + 1 //find last element
-      console.log(currentId,req.body.state)
-        try {
-          const disasters = await db.record_state.create({
-            record_id: currentId,
-            state: req.body.state
-            
-          });
-          res.json(disasters);
-        } catch (err) {
-          console.error(err);
-          res.send('Server error');
-        }
-
-      router.put('/disasters', async (req, res) => {
-          try {
-            await db.record_state.update(
-              {
-                record_id: currentId,
-                state: req.body.state
-              },
-              {
-                where: {
-                  record_id: req.body.state
-                }
-
-        
-              }
-            );
-            res.send('Successfully Updated');
-          } catch (err) {
-            console.error(err);
-            res.send('Server error');
-          }
-        });
-
-      router.delete('/disasters/:record_id', async (req, res) => {
+      
+      router.delete('/stateloc/:record_id', async (req, res) => {
         try {
           await db.record_state.destroy({
             where: {
@@ -109,9 +71,57 @@ router.get('/stateloc/:record_id', async (req, res) => {
           res.send('Successfully Deleted');
         } catch (err) {
           console.error(err);
-          res.send('Server error');
+          res.error('Server error');
         }
       });
+
+      router.put('/stateloc/:record_id', async (req, res) => {
+        try {
+          await db.record_state.update(
+            {
+              record_id: req.body.record_id,
+              state: req.body.state
+            },
+            {
+              where: {
+                record_id: req.body.record_id
+              }
+            }
+          );
+          console.log(req.body)
+          res.send('Successfully Updated');
+        } catch (err) {
+          console.error(err);
+         
+          res.error('Server error');
+        }
+      });//Not taking the input but saying its update
+      
+
+      router.post('/stateloc/:record_id', async (req, res) => {
+        const halls = await db.record_state.findAll();
+        const currentId = (await halls.length) + 1;
+        try {
+          const newState = await db.record_state.create({
+            record_id: currentId,
+            state: req.body.state,
+            record_id: req.body.record_id
+            
+          });
+          res.json(newState);
+        } catch (err) {
+          console.error(err);
+          res.send('Already Exist');
+        }
+      });
+
+
+ 
+    
+     
+
+        
+      
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
@@ -371,7 +381,7 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
-
-})
+{
+}
 export default router
 

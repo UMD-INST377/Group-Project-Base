@@ -12,8 +12,7 @@
     <div class="head is-flex">
         <figure class="image is 96x96">
             <a href="index.html">
-                <img src="./images/logo.jpeg" class="logo" 
-                alt="Click to go back to the homescreen">
+                <img src="./images/logo.jpeg" class="logo" alt="Click to go back to the homescreen">
             </a>
         </figure>
         <nav class="navbar">
@@ -41,20 +40,64 @@
             </ul>
         </nav>
     </div>
-    
-    <div class="field" id="searchbar">
-        <div class="control has-icons-left">
-          <input class="input" type="text" placeholder="Search by Title, Artist, Album">
-          <span class="icon is-small is-right">
-            <ion-icon name="search-outline"></ion-icon>
-          </span>
+    <div class="search_container">
+        <div class="field" id="searchbar">
+            <div class="control has-icons-left">
+                <input class="input" type="text" placeholder="Search by Title, Artist, Album" id="init_search">
+                <span class="icon is-small is-right">
+                    <ion-icon name="search-outline"></ion-icon>
+                </span>
+            </div>
+            <div class="buttons field">
+                <p class="control">
+                    <button class="button is-primary is-fullwidth" id="submit_button">Search</button>
+                    <button class="button is-primary is-fullwidth" id="refresh_button">S</button>
+                </p>
+            </div>
         </div>
-      </div>
-    <script src="script.js"></script>
+    </div>
+
+    <div id="middle">
+        <div class="column is-one-quarter">
+            <div class="box" id="filters">
+                Filters
+            </div>
+        </div>
+        <div class="column is-">
+            <strong>Results</strong>
+            <div class="box" id="results">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Album Name</th>
+                            <th>Artist</th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody class="result_list">
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+    <script src="./js/script.js"></script>
     <!-- icon library script -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- end of icon library script -->
+    <div class="sidenav">
+        <a href="#">Description</a>
+        <a href="#">Genres</a>
+        <a href="#">Albums</a>
+        <a href="#">Artists</a>
+    </div>
 </body>
 
 </html>

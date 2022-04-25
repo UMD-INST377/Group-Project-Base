@@ -43,7 +43,6 @@ li a {
   display: flex;
   text-align: center;
   text-decoration: none;
-
 }
 
 li a:hover {
@@ -55,13 +54,57 @@ img.logo {
   height: 96px;
   min-width: 10px;
 }
-
-div.field#searchbar{
+.search_container {
+  display: flex;
+  justify-content: space-between;
+}
+div.field#searchbar {
   width: 50%;
   margin: auto;
 }
+
+div.middle {
+  display: flex;
+  justify-content: center;
+}
+#middle {
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+#results {
+  display: flex;
+  max-height: 480px;
+  overflow-y: auto;
+  justify-content: center;
+}
+
 .icon {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.about_container {
+  margin: auto;
+  background-color: #73c2fb50;
+  width: 700px;
+  text-align: center;
+  padding: 25px;
+ 
+}
+
+img.discog_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 600px;
+  height: 300px;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+

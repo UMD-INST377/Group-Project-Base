@@ -9,6 +9,7 @@ export default (database, DataTypes) => {
       },
       release_id: {
         type: DataTypes.INTEGER,
+        allowNull: false
       },
       genre_id: {
         type: DataTypes.INTEGER,

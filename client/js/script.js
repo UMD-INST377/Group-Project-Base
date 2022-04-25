@@ -27,12 +27,24 @@ async function albumDelete() {
     alert('Not_Found');
   }
 }
+async function albumAdd() {
+  console.log('hello from add');
+  const request = `api/albums/${formbox.value}`;
+  const resp = await fetch(request, {method: 'ADD'});
+  console.log(resp);
+  if (resp.status === 200) {alert(`${formbox.value}.added`)}
+  else {
+    alert('Not_Found')
+  }
+}
 async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('#results');
   const submitButton = document.querySelector('#submit_button');
   const restName = document.querySelector('#init_search');
+  const add = document.querySelector('#add');
   const del = document.querySelector('#delete');
+
   const results = await fetch('/api/albums'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
 
@@ -65,7 +77,7 @@ async function mainEvent() {
       currentArray = arrayFromJson.data;
       createHtmlList(currentArray);
     });
-
+    add.addEventListener('input', albumAdd);
     del.addEventListener('input', albumDelete);
   }
 }

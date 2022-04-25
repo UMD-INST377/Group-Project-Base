@@ -70,7 +70,7 @@ async function mainEvent() {
     submitEvent.preventDefault();
     const formObj = formToObject(form);
     console.log('check the form for filters', formObj);
-    const postResult = await fetch('https://group4-final-inst377sp2022.herokuapp.com/api/songList', {
+    const postResult = await fetch('https://group4-final-inst377sp2022.herokuapp.com/api/songList/', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

@@ -5,8 +5,7 @@ function createHtmlList(collection) {
     const { albums } = item;
     const { artists } = item;
     const displayName = albums.toLowerCase();
-    const displayArtist = artists;
-     main
+    const displayArtist = artists.toLowerCase();
     const injectThis = `<th>${displayName}</th>`;
     const injectThisCity = ` <td>${displayArtist}</td>`;
     targetList.innerHTML += injectThis + injectThisCity;
@@ -14,7 +13,7 @@ function createHtmlList(collection) {
 }
 async function albumDelete() {
   console.log('hello from delete');
-  const request = `api/main/${formbox.value}`;
+  const request = `api/albums/${formbox.value}`;
   const resp = await fetch(request, {method: 'DELETE'});
   console.log(resp);
   if (resp.status === 200) {alert(`${formbox.value}.deleted`)}
@@ -34,7 +33,6 @@ async function mainEvent() {
   if (arrayFromJson.data.length > 0) {
     submitButton.style.display = 'block';
     console.log('start');
-
     let currentArray = [];
     restName.addEventListener('input', async (event) => {
       console.log(event.target.value);
@@ -44,7 +42,7 @@ async function mainEvent() {
       }
       // change arrayFromJson.data to currentArray if needed
       const dataArray = arrayFromJson.data.filter((item) => {
-        const lowerName = item.album_name.toLowerCase();
+        const lowerName = item.albums.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
       });
@@ -61,7 +59,7 @@ async function mainEvent() {
       createHtmlList(currentArray);
     });
 
-    del.addEventListener('input', albumDelete);
+    // del.addEventListener('input', albumDelete);
   }
 }
 // this actually runs first! It's calling the function above

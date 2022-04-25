@@ -661,7 +661,7 @@ router.delete('/AlbumStyle/:album_id', async (req, res) => {
 /// /////////////////////////////////
 router.get('/main', async (req, res) => {
   try {
-    const main = await db.genres.findAll(); 
+    const main = await db.maintable.findAll(); 
     const reply = main.length > 0 ? { data: main } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {

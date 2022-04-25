@@ -5,6 +5,7 @@ import genres from './genres.js';
 import releases from './releases.js';
 import albumStyleInfo from './albumStyleInfo.js';
 import styles from './styles.js';
+import maintable from './maintable.js';
 
 export default {
   artists,
@@ -13,5 +14,6 @@ export default {
   genres,
   releases,
   albumStyleInfo,
-  styles
+  styles,
+  maintable
 };

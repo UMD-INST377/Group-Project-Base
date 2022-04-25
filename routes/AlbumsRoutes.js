@@ -36,8 +36,14 @@ router.post('/album/', async (req, res) => {
       release_id: 4,
       genre_id: 4,
       price_id: 4,
-      album_name: 'Parrish',
+      album_name: 'It Was Good Until it Wasnt',
     });
+    res.json(newAlbum)
+  } catch (error) {
+    console.log(error);
+    res.send('Server Error')
+  }
+});
 router.put('/album/', async (req, res) => {
   try {
     const albumUpdate = await db.album.upsert(

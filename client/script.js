@@ -54,20 +54,7 @@ async function getByFamily(e, table) {
 }
 
 async function mainEvent() {
-  // all form elements
-  const form1 = document.querySelector('#form1'); // species 1
-  const form2 = document.querySelector('#form2'); // species 2
-  const getAll = document.querySelector('.getAll'); // see ALL species
-
-  // tables for appending
-  const table1 = document.querySelector('.species1Table');
-  const table2 = document.querySelector('.species2Table');
-  const allTable = document.querySelector('.getAllTable');
-  // all form listeners
-  form1.addEventListener('submit', (e) => getByID(e, form1, table1));
-  form2.addEventListener('submit', (e) => getByID(e, form2, table2));
-  getAll.addEventListener('submit', (e) => getByFamily(e, allTable));
-
+  console.log('script loaded');
 }
 // mobile nav
 const header = document.querySelector('Header');
@@ -80,7 +67,7 @@ hamburger.addEventListener('click', () => {
   navMenu.classList.toggle('active');
 });
 
-// saved results 
+// saved results
 // const savedResults = document.querySelector(".saved_result_card")
 
 // savedText.addEventListener("mouseover", () => {
@@ -103,6 +90,20 @@ modal.addEventListener('click', () => {
   modal.style.display = 'none';
 });
 
+// Login Modal
+const loginModal = document.querySelector('.login_modal');
+const loginLink = document.querySelector('.login');
+
+loginLink.addEventListener('click', () => {
+  loginModal.style.display = 'flex';
+  modal.style.display = 'block';
+});
+
+modal.addEventListener('click', () => {
+  loginModal.style.display = 'none';
+  modal.style.display = 'none';
+});
+
 // User Sign Up
 const signUpSubmit = document.querySelector('#sign_up');
 
@@ -111,10 +112,7 @@ const signUpSubmit = document.querySelector('#sign_up');
 
 signUpSubmit.addEventListener('click', (submitEvent) => {
   submitEvent.preventDefault();
-  window.location.href="/index.html";
+  window.location.href = '/index.html';
 });
-
-
-
 
 document.addEventListener('DOMContentLoaded', mainEvent);

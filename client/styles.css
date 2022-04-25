@@ -768,3 +768,64 @@ footer div {
     margin: 20px;
 }
 
+
+/* Login Modal
+================================================================ */
+
+.login_modal {
+    position: absolute;
+    width: 434px;
+    height: 524px;
+    z-index: 2;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 54px 0px;
+    
+    
+    background: #FFFFFF;
+    border: 2px solid #66516E;
+    border-radius: 4px; 
+}
+
+.login_form {
+    position: static;
+    width: 323px;
+    height: 299px;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 32px 0px;
+}
+
+.login_form > .form_row {
+    margin-bottom: 16px;
+}
+
+.login_form > .form_row > input {
+    width: 323px;
+    height: 49px;
+
+    display: flex;
+    align-items: center;
+    padding: 0px 0px 0px 16px;
+
+    background: #FFFFFF;
+    
+
+    border: 2px solid #333;
+    box-shadow: none;
+    border-radius: 4px;
+}

@@ -3,7 +3,7 @@ export default (sequelize, DataTypes) => {
     'record_state',
     {
       record_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
       },

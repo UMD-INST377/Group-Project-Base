@@ -49,11 +49,16 @@ router.put('/album/', async (req, res) => {
     const albumUpdate = await db.album.upsert(
       {
         album_id: req.body.album_id,
+        release_id: req.body.release_id,
+        genre_id: req.body.genre_id,
         album_name: req.body.album_name
       },
       {
         where: {
-          album_id: req.body.album_id
+          album_id: req.body.album_id,
+          release_id: req.body.release_id,
+          genre_id: req.body.genre_id,
+          album_name: req.body.album_name
         }
       });
     res.json('Success. Record Updated')

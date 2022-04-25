@@ -40,6 +40,12 @@ router.route('/Nicholas')
     }
   });
 
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
 // David McCoy GET Controllers
 router.route('/dietaryRestrictions')
   .get(async (req, res) => {
@@ -68,8 +74,17 @@ router.route('/dietaryRestrictions/:id')
     }
   });
 
+<<<<<<< Updated upstream
   // Josh Mensah GET Controllers
   router.route('/josh')
+=======
+
+
+
+
+// Josh Mensah GET Controllers
+router.route('/josh')
+>>>>>>> Stashed changes
   .get(async (req, res) => {
     try {
       const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
@@ -97,6 +112,10 @@ router.route('/josh')
   });
   
 
+
+
+
+  
 // Brian McMahon GET controllers
 router.route('/brian')
   .get(async (req, res) => {

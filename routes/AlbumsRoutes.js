@@ -2,8 +2,10 @@
 import express from 'express';
 import sequelize from 'sequelize';
 import chalk from 'chalk';
+import util from 'util';
 
 import db from '../database/initializeDB.js';
+import album from '../models/album.js';
 
 const router = express.Router();
 
@@ -46,15 +48,16 @@ router.post('/album/', async (req, res) => {
 });
 router.put('/album/', async (req, res) => {
   try {
-    const release = req.body.release_id || 1;
-    const genre = req.body.genre_id || 1;
-    const albux = req.body.album_id || ('Graduation');
+    //console.dir(album, { depth: null })
+    //const release = req.body.release_id || 1;
+    //const genre = req.body.genre_id || 1;
+    //const albux = req.body.album_id || ('Graduation');
     const albumUpdate = await db.album.upsert(
       {
         album_id: req.body.album_id,
-        release_id: release,
-        genre_id: genre,
-        album_name: albux
+        release_id: req.body.release_id,
+        genre_id: req.body.genre_id,
+        album_name: req.body.album_name,
       },
       {
         where: {

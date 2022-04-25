@@ -26,26 +26,3 @@ async function loadIntoTable(url) {
   });
 }
 loadIntoTable('/api/artists');
-
-async function loadGenreTable(url) {
-  const reponse = await fetch(url);
-  const arrayFromJson = await reponse.json(); // This changes it into data we can use - an object
-  data = await arrayFromJson.data;
-  const tableFinder = document.querySelector('.table');
-  // creating the rows
-
-  data.forEach((input) => {
-    const line = document.createElement('tr');
-    const row_genre_id = document.createElement('td');
-    const row_genre_name = document.createElement('td');
-
-    row_genre_id.innerHTML = input.genre_id;
-    row_genre_name.innerHTML = input.genre_name;
-
-    line.appendChild(row_genre_id);
-    line.appendChild(row_genre_name);
-
-    tableFinder.appendChild(line);
-  });
-}
-loadGenreTable('/api/genres');

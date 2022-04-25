@@ -29,6 +29,15 @@ router.get('/album/:album_id', async (req, res) => {
     res.send('Server Error');
   }
 });
+router.post('/album/', async (req, res) => {
+  try {
+    const newAlbum = await db.album.create({
+      album_id: 19,
+      release_id: 4,
+      genre_id: 4,
+      price_id: 4,
+      album_name: 'Parrish',
+    });
 router.put('/album/', async (req, res) => {
   try {
     const albumUpdate = await db.album.upsert(

@@ -13,7 +13,8 @@ export default {
     host: '174.129.198.86',
     dialect: 'mysql',
     define: {
-      timestamps: false
+      timestamps: false,
+      freezeTableName: true
     }
   },
   test: {
@@ -23,7 +24,8 @@ export default {
     host: '174.129.198.86',
     dialect: 'mysql',
     define: {
-      timestamps: false
+      timestamps: false,
+      freezeTableName: true
     }
   },
   production: {
@@ -33,7 +35,8 @@ export default {
     host: '174.129.198.86',
     dialect: 'mysql',
     define: {
-      timestamps: false
+      timestamps: false,
+      freezeTableName: true
     }
   }
 };

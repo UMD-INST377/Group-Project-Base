@@ -3,20 +3,21 @@ import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
+import styles from '../models/styles.js';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send("Welcome to group 15's Song API!");
 });
 
 /// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
+/// ////Artists Endpoints////////
 /// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/artists', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const artist = await db.artists.findAll();
+    const reply = artist.length > 0 ? { data: artist } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -24,11 +25,171 @@ router.get('/dining', async (req, res) => {
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/artists/:artist_id', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    const artist = await db.artists.findAll({
       where: {
-        hall_id: req.params.hall_id
+        artist_id: req.params.artist_id
+      }
+    });
+
+    res.json(artist);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/artists', async (req, res) => {
+  const artists = await db.artists.findAll();
+  const currentId = (await artists.length) + 1;
+  try {
+    const newArtist = await db.artist.create({
+      artist_id: currentId,
+      artist_name: req.body.artist_name,
+      total_artist_albums: req.body.total_artist_albums,
+      artist_link: req.body.artist_link
+    });
+    res.json(newArtist);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/artists/:artist_id', async (req, res) => {
+  try {
+    await db.artists.destroy({
+      where: {
+        artist_id: req.params.artist_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/artists', async (req, res) => {
+  try {
+    await db.artists.upsert(
+      {
+        artist_name: req.body.artist_name,
+        total_artist_albums: req.body.total_artist_albums,
+        artist_link: req.body.artist_link
+      },
+      {
+        where: {
+          artist_id: req.body.artist_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////AlbumGenre Endpoints////////
+/// /////////////////////////////////
+router.get('/genres', async (req, res) => {
+  try {
+    const genresItems = await db.genres.findAll(); 
+    const reply = genresItems.length > 0 ? { data: genresItems } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/genres/:genre_id', async (req, res) => {
+  try {
+    const genresItems = await db.genres.findAll({
+      where: {
+        genre_id: req.params.genre_id
+      }
+    });
+
+    res.json(genresItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/genres', async (req, res) => {
+  const genreItems = await db.genres.findAll();
+  const currentId = (await genreItems.length) + 1;
+  try {
+    const newGenre = await db.genres.create({
+      genre_id: currentId,
+      genre_name: req.body.genre_name
+    });
+    res.json(newGenre);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/genres', async (req, res) => {
+  try {
+    await db.genres.upsert(
+      {
+        genre_id: req.body.genre_id,
+        genre_name: req.body.genre_name
+      },
+      {
+        where: {
+          genre_id: req.body.genre_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/genres/:genre_id', async (req, res) => {
+  try {
+    await db.genres.destroy({
+      where: {
+        genre_id: req.params.genre_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////Release Endpoints////////
+/// /////////////////////////////////
+
+router.get('/releases', async (req, res) => {
+  try {
+    const releaseItems = await db.releases.findAll(); 
+    const reply = releaseItems.length > 0 ? { data: releaseItems } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/releases/:release_id', async (req, res) => {
+  try {
+    const hall = await db.releases.findAll({
+      where: {
+        release_id : req.params.release_id
       }
     });
 
@@ -39,16 +200,15 @@ router.get('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.post('/releases', async (req, res) => {
+  const releaseItems = await db.releases.findAll();
+  const currentId = (await releaseItems.length) + 1;
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
+    const newDining = await db.releases.create({
+      release_id: currentId,
+      release_country: req.body.release_country,
+      release_year: req.body.release_year,
+      release_link: req.body.release_link
     });
     res.json(newDining);
   } catch (err) {
@@ -57,11 +217,33 @@ router.post('/dining', async (req, res) => {
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.put('/releases', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    await db.releases.upsert(
+      {
+        release_id: req.body.release_id,
+        release_country: req.body.release_country,
+        release_year: req.body.release_year,
+        release_link: req.body.release_link
+      },
+      {
+        where: {
+          release_id: req.body.release_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/releases/:release_id', async (req, res) => {
+  try {
+    await db.releases.destroy({
       where: {
-        hall_id: req.params.hall_id
+        release_id: req.params.release_id
       }
     });
     res.send('Successfully Deleted');
@@ -71,16 +253,61 @@ router.delete('/dining/:hall_id', async (req, res) => {
   }
 });
 
-router.put('/dining', async (req, res) => {
+/// /////////////////////////////////
+/// ////Style Endpoints/////////
+/// /////////////////////////////////
+
+router.get('/styles', async (req, res) => {
   try {
-    await db.DiningHall.update(
+    const styleItems = await db.styles.findAll(); 
+    const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/styles/:style_id', async (req, res) => {
+  try {
+    const styleItems = await db.styles.findAll({
+      where: {
+        style_id : req.params.style_id
+      }
+    });
+
+    res.json(styleItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/styles', async (req, res) => {
+  const styleItems = await db.styles.findAll();
+  const currentId = (await styleItems.length) + 1;
+  try {
+    const newStyle = await db.styles.create({
+      style_id: currentId,
+      style_name: req.body.style_name
+    });
+    res.json(newStyle);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/styles', async (req, res) => {
+  try {
+    await db.styles.upsert(
       {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+        style_id: req.body.style_id,
+        style_name: req.body.style_name
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          style_id: req.body.style_id
         }
       }
     );
@@ -91,98 +318,86 @@ router.put('/dining', async (req, res) => {
   }
 });
 
-/// /////////////////////////////////
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
+router.delete('/styles/:style_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/meals/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll({
+    await db.styles.destroy({
       where: {
-        meal_id: req.params.meal_id
+        style_id: req.params.style_id
       }
     });
-    res.json(meals);
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/meals', async (req, res) => {
+/// /////////////////////////////////
+/// ////Album Endpoints/////////
+/// /////////////////////////////////
+
+router.get('/albums', async (req, res) => {
   try {
-    await db.Meals.update(
+    const albumItems = await db.albums.findAll(); 
+    const reply = albumItems.length > 0 ? { data: albumItems } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/albums/:album_id', async (req, res) => {
+  try {
+    const albumItems = await db.albums.findAll({
+      where: {
+        album_id : req.params.album_id
+      }
+    });
+
+    res.json(albumItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/albums', async (req, res) => {
+  const albumItems = await db.albums.findAll();
+  const currentId = (await albumItems.length) + 1;
+  try {
+    const newAlbum = await db.albums.create({
+      album_id: currentId,
+      album_name: req.body.album_name,
+      number_of_songs: req.body.number_of_songs,
+      average_song_length: req.body.average_song_length,
+      album_link: req.body.album_link,
+      album_versions: req.body.album_versions,
+      release_id: req.body.release_id,
+      artist_id: req.body.artist_id
+    });
+    res.json(newAlbum);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/albums', async (req, res) => {
+  try {
+    await db.albums.upsert(
       {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
+        album_name: req.body.album_name,
+        number_of_songs: req.body.number_of_songs,
+        average_song_length: req.body.average_song_length,
+        album_link: req.body.album_link,
+        album_versions: req.body.album_versions,
+        release_id: req.body.release_id,
+        artist_id: req.body.artist_id
       },
       {
         where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/macros', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
+          album_id: req.body.album_id
         }
       }
     );
@@ -193,77 +408,248 @@ router.put('/macros', async (req, res) => {
   }
 });
 
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
+router.delete('/albums/:album_id', async (req, res) => {
   try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
+    await db.albums.destroy({
       where: {
-        restriction_id: req.params.restriction_id
+        album_id: req.params.album_id
       }
     });
-    res.json(restrictions);
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
+/// ////AlbumGenreInfo Endpoints/////////
+/// /////////////////////////////////
+
+router.get('/album_genre_info', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
+    const genreItems = await db.album_genre_info.findAll(); 
+    const reply = genreItems.length > 0 ? { data: genreItems } : { message: 'no results found' };
+    res.json(reply);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
+router.get('/album_genre_info/:album_id', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
+    const genreItems = await db.album_genre_info.findAll({
+      where: {
+        album_id : req.params.album_id
+      }
     });
-    res.json(result);
+
+    res.json(genreItems);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
-router.get('/custom', async (req, res) => {
+
+router.post('/album_genre_info', async (req, res) => {
+  const genreItems = await db.album_genre_info.findAll();
+  const currentId = (await genreItems.length) + 1;
   try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
+    const newGenreInfo = await db.album_genre_info.create({
+      album_id: currentId,
+      genre_id: req.body.genre_id
     });
-    res.json(result);
+    res.json(newGenreInfo);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/album_genre_info', async (req, res) => {
+  try {
+    await db.album_genre_info.upsert(
+      {
+        genre_id: req.body.genre_id
+      },
+      {
+        where: {
+          album_id: req.body.album_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/album_genre_info/:album_id', async (req, res) => {
+  try {
+    await db.album_genre_info.destroy({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////AlbumStyleInfo Endpoints/////////
+/// /////////////////////////////////
+
+router.get('/album_style_info', async (req, res) => {
+  try {
+    const styleItems = await db.album_style_info.findAll(); 
+    const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/album_style_info/:album_id', async (req, res) => {
+  try {
+    const styleItems = await db.album_style_info.findAll({
+      where: {
+        album_id : req.params.album_id
+      }
+    });
+
+    res.json(styleItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/album_style_info', async (req, res) => {
+  const styleItems = await db.album_style_info.findAll();
+  const currentId = (await styleItems.length) + 1;
+  try {
+    const newStyle = await db.album_style_info.create({
+      album_id: currentId,
+      style_id: req.body.style_id
+    });
+    res.json(newStyle);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/album_style_info', async (req, res) => {
+  try {
+    await db.album_style_info.upsert(
+      {
+        style_id: req.body.style_id
+      },
+      {
+        where: {
+          album_id: req.body.album_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/album_style_info/:album_id', async (req, res) => {
+  try {
+    await db.album_style_info.destroy({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+/// /////////////////////////////////
+/// ////AlbumStyle Endpoints////////
+/// /////////////////////////////////
+router.get('/AlbumStyle', async (req, res) => {
+  try {
+    const halls = await db.releases.findAll(); 
+    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/AlbumStyle/:album_id', async (req, res) => {
+  try {
+    const hall = await db.AlbumStyle.findAll({
+      where: {
+        album_id : req.params.genre_id
+      }
+    });
+
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/AlbumStyle', async (req, res) => {
+  const halls = await db.AlbumStyle.findAll();
+  const currentId = (await halls.length) + 1;
+  try {
+    const newDining = await db.releases.create({
+      release_id: currentId,
+      release_country: req.body.release_country,
+      release_year: req.body.release_year,
+      release_link: req.body.release_link
+    });
+    res.json(newDining);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/AlbumStyle', async (req, res) => {
+  try {
+    await db.AlbumStyle.upsert(
+      {
+        album_id: req.body.album_id,
+      },
+      {
+        where: {
+          album_id: req.body.album_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/AlbumStyle/:album_id', async (req, res) => {
+  try {
+    await db.genres.destroy({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
     res.error('Server error');

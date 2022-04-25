@@ -2,7 +2,6 @@
 import express from 'express';
 import sequelize from 'sequelize';
 import chalk from 'chalk';
-import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
 
@@ -27,6 +26,25 @@ router.get('/album/:album_id', async (req, res) => {
     res.json({data: art});
   } catch (error) {
     console.error(error);
+    res.send('Server Error');
+  }
+});
+router.put('/album/', async (req, res) => {
+  try {
+    const albumUpdate = await db.album.upsert(
+      {
+        album_id: req.body.album_id,
+        label_id: req.body.label_id,
+        album_name: req.body.stage_name
+      },
+      {
+        where: {
+          album_id: req.body.album_id
+        }
+      });
+    res.json('Success. Record Updated')
+  } catch (error) {
+    console.log(error);
     res.send('Server Error');
   }
 });

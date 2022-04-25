@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
@@ -259,7 +260,7 @@ router.delete('/releases/:release_id', async (req, res) => {
 
 router.get('/styles', async (req, res) => {
   try {
-    const styleItems = await db.styles.findAll(); 
+    const styleItems = await db.styles.findAll();
     const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {

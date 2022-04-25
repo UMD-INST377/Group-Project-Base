@@ -5,6 +5,19 @@ function getRandomIntInclusive(min, max) {
   // The maximum is inclusive and the minimum is inclusive
 }
 
+function formToObject(htmlFormElement) {
+  const formItem = new FormData(htmlFormElement).entries();
+  const formArray = Array.from(formItem)
+  console.log(formArray);
+  const formObject = formArray.reduce((collection, item, index) => {
+    if (!collection[item[0]]) {
+      collection[item[0]] = item[1];
+    }
+    return collection;
+  }, {});
+  return formObject;
+}
+
 function restoArrayMake(dataArray) {
   // console.log('fired datahandler');
   // console.table(dataArray); // this is called "dot notation"
@@ -33,9 +46,12 @@ async function mainEvent() { // the async keyword means we can make API requests
   console.log('script loaded');
   const form = document.querySelector('.food-form');
   const submit = document.querySelector('#search_button');
-  const resto = document.querySelector('#cuisine');
+  const addRestoButton = document.querySelector('#add_button');
+  const restoName = document.querySelector('#restoname');
+  const cuisine = document.querySelector('#cuisine');
+  const price = document.querySelector('#price');
   const zipcode = document.querySelector('#zipcode');
-  const retVar = 'restaurants'; // from lab 8
+  const retVar = 'restaurants';
   submit.style.display = 'none';
 
 /// start of lab 8 section (modified lab 7 code)
@@ -54,7 +70,7 @@ async function mainEvent() { // the async keyword means we can make API requests
 
     // allows us to change the var to anything, but pre-sets as array
     let currentArray = [];
-    resto.addEventListener('input', async (event) => {
+    cuisine.addEventListener('input', async (event) => {
       console.log(event.target.value);
 
       if (currentArray.length < 1) {
@@ -85,6 +101,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       createHtmlList(selectZip);
     });
 
+    // SEARCHING FOR RESTAURANTS
     submit.addEventListener('click', async (submitEvent) => { // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       console.log('submitted');
@@ -93,6 +110,23 @@ async function mainEvent() { // the async keyword means we can make API requests
       // it contains all 1,000 records we need
       currentArray = restoArrayMake(storedDataArray);
       createHtmlList(currentArray);
+    });
+
+    // ADDING A RESTAURANT
+    addRestoButton.addEventListener('click', async (submitEvent) => { // async has to be declared all the way to get an await
+      submitEvent.preventDefault(); // This prevents your page from refreshing!
+      console.log('adding...');
+      const formObj = formToObject(form);
+      const postResult = await fetch('/api/restaurants', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formObj)
+      });
+      const postResultJSON = await postResult.json();
+      console.log('return from Post', postResult);
+      console.log('return from Post JSON', postResultJSON);
     });
   }
 }

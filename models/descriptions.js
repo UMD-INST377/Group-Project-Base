@@ -5,7 +5,8 @@ export default (database, DataTypes) => {
       description_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       parking: {
         type: DataTypes.INTEGER,

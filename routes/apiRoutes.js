@@ -206,7 +206,11 @@ router.get('/releases/:release_id', async (req, res) => {
   try {
     const hall = await db.releases.findAll({
       where: {
+<<<<<<< HEAD
+        release_id : req.params.release_id
+=======
         release_id: req.params.genre_id
+>>>>>>> main
       }
     });
 

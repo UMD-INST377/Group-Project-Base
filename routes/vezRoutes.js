@@ -33,6 +33,7 @@ router.route('/')
         replacements: { restriction_type: dietary_restrictionsType },
         type: sequelize.QueryTypes.SELECT
       });*/
+      //const results = await db.sequelizeDB.query(`SELECT * FROM dietary_restrictions WHERE restriction_type != ${req.body.restriction_type}`)
       const results = await db.sequelizeDB.query(`SELECT * FROM dietary_restrictions WHERE restriction_id != ${req.body.restriction_id}`)
       res.json({ data: results[0]});
     } catch (err){

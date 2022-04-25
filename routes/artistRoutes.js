@@ -51,10 +51,11 @@ router.post('/artist', async (req, res) => {
 
 router.put('/artist/', async (req, res) => {
   try {
-    const artistUpdate = await db.Artist.update(
+    const artistUpdate = await db.Artist.upsert(
       {
         artist_id: req.body.artist_id,
-        stage_name: req.stage_name
+        label_id: req.body.label_id,
+        stage_name: req.body.stage_name
       },
       {
         where: {

@@ -1,21 +1,23 @@
-export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    'meals',
+export default (database, DataTypes) => {
+  const HallHours = database.define(
+    'hall_hours',
     {
-      meal_id: {
+      hall_hours_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
         primaryKey: true
       },
-      meal_name: {
+      day: {
         type: DataTypes.STRING
       },
-      meal_category: {
+      schedule_id: {
         type: DataTypes.STRING
+      },
+      hall_id: {
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  return HallHours;
 };

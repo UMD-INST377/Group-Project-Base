@@ -1,6 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+/* 
+This is for the header of the website 
+*/
+.menu-container{
+    color: #fff;
+    background-color: #E81B1B; /* Red */
+    padding: 20px 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+.menuDining {
+    border: 1px solid #fff; /* White border */
+    width: 100px;
+    display: flex;
+    margin-left: 20px;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.home {
+    margin-left: 900px;
+    color: white;
+}
+
+.home:link {
+    color: white;
+}
+
+.home:visited {
+    color: #E81B1B;
+}
+
+.home:hover {
+    color: blue;
+}
+
+.about {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.location {
+    margin-right: 40px;
+}
+
+/* 
+UMD Dining picture part 
+*/
+.header-container {
+    background-color: yellow;
+    position: relative;
+    justify-content: center;
+    display: flex;
+}
+
 .header {
     display: flex;
-    padding: 15px;
-    border-radius: 4px;
-    background-color: hsl(0, 100%, 67%);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.caption {
+    text-align: center;
+    font-size: 100px;
+    font-weight: bolder;
+    color: white;
+}
+
+.heading {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+}
+
+/*
+Dining Halls part
+*/
+.hall {
+    width: 1000px;
+    margin-left: 35px;
+    
+}
+
+.titleDining {
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+.diningName {
+    color: #E81B1B;
+    font-weight: bolder;
+    font-size: 50;
+}
+
+/*
+Carosel for Dining Halls Part
+*/
+.photo-grid-container{
+    display: flex;
+    justify-content: center;
+    height: 450px;
+}
+
+.carousel {
+    overflow: hidden;
+    max-width: 900px;
+    position: relative;
+}
+
+.carousel .carousel_item,
+.carousel .carousel_item-hidden {
+    display: none;
+}
+
+.carousel .carousel_item img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+}
+
+.carousel .carousel_item-visible {
+    display: block;
+}
+
+.carousel .carousel_actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%);
+}
+
+.carousel_actions button {
+    color: white;
+    background-color: black;
+    border-radius: 50px;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.carousel_actions button#carousel_button-prev {
+    margin-top: 138px;
+    margin-left: -5px;
+}
+
+.carousel_actions button#carousel_button-prev:focus {
+    background-color: orange;
+    border: 1.5px solid black;
+}
+
+.carousel_actions button#carousel_button-next {
+    margin-top: 138px;
+}
+
+.carousel_actions button#carousel_button-next:focus {
+    background-color: orange;
+    border: 1.5px solid black;
+}
+
+/*
+Last part of the page
+*/
+.form-row {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+.legacy-row {
+    border: none;
+    margin-bottom: 40px;
+  }
+  
+.legacy-row legend {
+    margin-bottom: 15px;
+  }
+
+.submit_button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    margin-left: 25%;
+    display: block;
   }

@@ -111,10 +111,10 @@ router.delete('/hours/:hours_id', async (req, res) => {
 
 // make sure to make pull request
 
-router.get('/macros', async (req, res) => {
+router.get('/rating', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.json(macros);
+    const rating = await db.rating.findAll();
+    res.json(rating);
   } catch (err) {
     console.error(err);
     res.send('Server error');
@@ -123,88 +123,20 @@ router.get('/macros', async (req, res) => {
 
 // endpoint 2
 
-router.get('/macros/:macro_id', async (req, res) => {
+router.get('/rating/:rating_id', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll({
+    const rating = await db.rating.findAll({
       where: {
-        macro_id: req.params.macro_id
+        rating_id: req.params.rating_id
       }
     });
-    res.json(macros);
+    res.json(rating);
   } catch (err) {
     console.error(err);
     res.send('Server error');
   }
 });
 
-// POST
-router.post('/macros', async (req, res) => {
-  const macros = await db.Macros.findAll();
-  const currentId = (await macros.length) + 1;
-  try {
-    const newMacros = await db.Macros.create({
-      macros_id: currentId,
-      calories: req.body.calories,
-      serving_size: req.body.serving_size, 
-      cholesterol: req.body.cholesterol,
-      sodium: req.body.sodium,
-      carbs: req.body.carbs,
-      protein: req.body.protein,
-      meal_id: req.body.meal_id,
-      fat: req.body.fat
-
-    });
-    res.json(newMacros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-
-//Put
-
-router.put('/macros', async (req, res) => {
-  try {
-    await db.Macros.update(
-      {
-        calories: req.body.calories,
-        serving_size: req.body.serving_size, 
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        meal_id: req.body.meal_id,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          macros_id: currentId
-        }
-      }
-    );
-    res.send('Successfully Updated Macros');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-// delete
-
-router.delete('/macros/:macros_id', async (req, res) => {
-  try {
-    await db.Macros.destroy({
-      where: {
-        macros_id: req.params.macros_id
-      }
-    });
-    res.send('Successfully Deleted Macros');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
 
 
 

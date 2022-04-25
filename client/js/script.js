@@ -2,22 +2,32 @@ function createHtmlList(collection) {
   const targetList = document.querySelector('.result_list');
   targetList.innerHTML = '';
   collection.forEach((item) => {
-    const { album_name } = item;
-    const { artist_id } = item;
+    const { albumName } = item;
+    const { artistId } = item;
     const displayName = album_name.toLowerCase();
-    const displayCity = artist_id;
+    const displayArtist = artistId;
+     main
     const injectThis = `<th>${displayName}</th>`;
-    const injectThisCity = ` <td>${displayCity}</td>`;
-    targetList.innerHTML += injectThis;
-    targetList.innerHTML += injectThisCity;
+    const injectThisCity = ` <td>${displayArtist}</td>`;
+    targetList.innerHTML += injectThis + injectThisCity;
   });
+}
+async function albumDelete() {
+  console.log('hello from delete');
+  const request = `api/albums/${formbox.value}`;
+  const resp = await fetch(request, {method: 'DELETE'});
+  console.log(resp);
+  if (resp.status === 200) {alert(`${formbox.value}.deleted`)}
+  else {
+    alert('Not_Found')
+  }
 }
 async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('#results');
   const submitButton = document.querySelector('#submit_button');
   const restName = document.querySelector('#init_search');
-
+  const del = document.querySelector('#delete');
   const results = await fetch('/api/albums'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
 
@@ -33,22 +43,25 @@ async function mainEvent() {
         return;
       }
       // change arrayFromJson.data to currentArray if needed
-      const selectRest = arrayFromJson.data.filter((item) => {
+      const dataArray = arrayFromJson.data.filter((item) => {
         const lowerName = item.album_name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
       });
-      console.log(selectRest);
-      createHtmlList(selectRest);
+      console.log(dataArray);
+
+      createHtmlList(dataArray);
     });
 
     form.addEventListener('submit', async (submitEvent) => {
       // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       console.log('form submission'); // this is substituting for a 'breakpoint'
-      currentArray = (arrayFromJson.data);
+      currentArray = arrayFromJson.data;
       createHtmlList(currentArray);
     });
+
+    del.addEventListener('input', albumDelete);
   }
 }
 // this actually runs first! It's calling the function above

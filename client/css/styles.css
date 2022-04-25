@@ -74,9 +74,11 @@ div.middle {
 }
 #results {
   display: flex;
-  max-height:50%;
-  overflow-y:auto;
+  max-height: 480px;
+  overflow-y: auto;
+  justify-content: center;
 }
+
 .icon {
   display: flex;
   justify-content: center;
@@ -89,7 +91,11 @@ div.middle {
   width: 700px;
   text-align: center;
   padding: 25px;
+<<<<<<< HEAD
  
+=======
+  /* dkdj */
+>>>>>>> e75c9c91335e53a49830bf82f0064e85b7d007b2
 }
 
 img.discog_logo {
@@ -101,17 +107,20 @@ img.discog_logo {
   height: 300px;
 }
 .sidenav {
-  width: 160px; 
-  position: fixed
-  z-index: 1; 
-  top: 0; 
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
   left: 0;
-  background-color: #fbec5d; 
+  background-color: #fbec5d;
   padding-top: 10px;
 }
+<<<<<<< HEAD
 
 .columns {
   display: flex;
   flex-wrap: wrap;
 }
 
+=======
+>>>>>>> e75c9c91335e53a49830bf82f0064e85b7d007b2

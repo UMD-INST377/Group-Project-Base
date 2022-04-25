@@ -46,18 +46,22 @@ router.post('/album/', async (req, res) => {
 });
 router.put('/album/', async (req, res) => {
   try {
+    const release = req.body.release_id || 1;
+    const genre = req.body.genre_id || 1;
+    const albux = req.body.album_id || ('Graduation');
     const albumUpdate = await db.album.upsert(
       {
         album_id: req.body.album_id,
-        release_id: req.body.release_id,
-        genre_id: req.body.genre_id,
-        album_name: req.body.album_name
+        release_id: release,
+        genre_id: genre,
+        album_name: albux
       },
       {
         where: {
           album_id: req.body.album_id,
         }
-      });
+      }
+    );
     res.json('Success. Record Updated')
   } catch (error) {
     console.log(error);

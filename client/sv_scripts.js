@@ -7,14 +7,14 @@ function getRandomIntInclusive(min, max) {
 
 function formToObject(htmlFormElement) {
   const formItem = new FormData(htmlFormElement).entries();
-  const formArray = Array.from(formItem)
-  console.log(formArray);
+  const formArray = Array.from(formItem);
   const formObject = formArray.reduce((collection, item, index) => {
     if (!collection[item[0]]) {
       collection[item[0]] = item[1];
     }
     return collection;
   }, {});
+  console.log(formObject);
   return formObject;
 }
 
@@ -51,6 +51,9 @@ async function mainEvent() { // the async keyword means we can make API requests
   const cuisine = document.querySelector('#cuisine');
   const price = document.querySelector('#price');
   const zipcode = document.querySelector('#zipcode');
+  const address = document.querySelector('#address');
+  const city = document.querySelector('#city');
+  const state = document.querySelector('#state');
   const retVar = 'restaurants';
   submit.style.display = 'none';
 

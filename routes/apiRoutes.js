@@ -141,7 +141,18 @@ router.get('/macros/:macro_id', async (req, res) => {
 
 
 // Ian GET requests
+// CUISINE
+router.get('/restaurants/cuisine', async (req, res) => {
+  try {
+    const cuisines = await db.cuisine.findAll();
+    res.json(cuisines);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
+// ADDRESS
 // Get Endpoint 1: All records of single type
 router.get('/address', async (req, res) => {
   try {

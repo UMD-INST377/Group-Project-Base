@@ -1,54 +1,79 @@
-/*
-function getRandomIntInclusive(min, max) {
-  const newMin = Math.ceil(min);
-  const newMax = Math.floor(max);
-  return Math.floor(
-    Math.random() * (newMax - newMin + 1) + newMin
-  );
-}
-
+// Data Handler
 function dataHandler(dataArray) {
-  console.log('fired dataHandler');
-  const range = [...Array(15).keys()];
-  const listItems = range.map((item, index) => {
-    const restNum = getRandomIntInclusive(0, dataArray.length - 1);
-    return dataArray[restNum];
-  });
+  console.log('dataHandler');
+  const range = [...Array(10).keys()];
+  const listItems = range.map((item, index) => dataArray[index]);
   return listItems;
 }
-*/
 
-function createHtmlList(collection) {
+// create breakfast list
+function createBreakfast(collection) {
   console.log('fired HTML creator');
   console.log(collection);
-  const targetList = document.querySelector('.monday');
-  // console.log(targetList)
+  const targetList = document.querySelector('.breakfast');
   targetList.innerHTML = '';
   collection.forEach((item) => {
-    const {name} = item;
-    const displayName = name;
-    targetList.innerHTML += displayName;
+    const {meal_name} = item;
+    const injectThisItem = `<li>${meal_name}</li>`;
+    targetList.innerHTML += injectThisItem;
+  });
+}
+
+// create launch list
+function createLaunch(collection) {
+  console.log('fired HTML creator');
+  console.log(collection);
+  const targetList = document.querySelector('.launch');
+  targetList.innerHTML = '';
+  collection.forEach((item) => {
+    const {meal_name} = item;
+    const injectThisItem = `<li>${meal_name}</li>`;
+    targetList.innerHTML += injectThisItem;
+  });
+}
+
+// Create dinner list
+function createDinner(collection) {
+  console.log('fired HTML creator');
+  console.log(collection);
+  const targetList = document.querySelector('.dinner');
+  targetList.innerHTML = '';
+  collection.forEach((item) => {
+    const {meal_name} = item;
+    const injectThisItem = `<li>${meal_name}</li>`;
+    targetList.innerHTML += injectThisItem;
   });
 }
 
 // Main function
-async function mainEvent() { // the async keyword means we can make API requests
+async function mainEvent() {
   console.log('script loaded');
-  const targetList = document.querySelector('.monday');
 
+  // breakfast
   const results = await fetch('chandra/meals');
   const breakfastItems = await results.json();
   console.log(breakfastItems);
-  
-  breakfastItems.forEach((item) => {
-    // const {name} = item;
-    // const displayName = name;
-    targetList.innerHTML += item;
-  });
-  
-  if (breakfastItems.length > 0) {
-    createHtmlList(breakfastItems);
-  }
+  // const dataJson = JSON.stringify(breakfastItems.data);
+  const foodNames = dataHandler(breakfastItems.data);
+  createBreakfast(foodNames);
+
+  // launch
+  const resultLaunch = await fetch('/chandra/launch');
+  const launchItems = await resultLaunch.json();
+  console.log(launchItems);
+  const launches = dataHandler(launchItems.data);
+  createLaunch(launches);
+
+  // dinner
+  const resultDinner = await fetch('/chandra/dinner');
+  const dinnerItems = await resultDinner.json();
+  console.log(dinnerItems);
+  const dinners = dataHandler(dinnerItems.data);
+  createDinner(dinners);
+
+  // format data to look nicer on homepage
+  // const dataJson = JSON.stringify(breakfastItems.data);
+  // targetList.innerHTML = dataJson;
 }
 
 // this actually runs first! It's calling the function above

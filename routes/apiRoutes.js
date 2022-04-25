@@ -12,6 +12,53 @@ router.get('/', (req, res) => {
 
 
 /// /////////////////////////////////
+/// ////////Nana's Endpoints /////////
+/// /////////////////////////////////
+router.route('/songs')
+.get(async (req, res) => {
+    try {
+        const songList = await db.song.findAll()
+        res.json({data: songList});
+    } catch (err) {
+        console.error(err);
+        res.send({message: 'Error!'});
+    }
+})
+
+router.route('/songs/:song_id')
+.get(async (req, res) => {
+    try {
+      const {song_id} = req.params;
+      const song = await db.song.findAll({
+        where: {
+          song_id: song_id
+        }
+      });
+      res.json({data: song})
+    } catch (err) {
+        console.error(err);
+        res.json({message: 'Error!'});
+    }
+});
+
+router.route('/songs').post( async (req, res) => {
+  const songList = await db.song.findAll();
+  const currentId = (await songList.length) + 1;
+  try {
+    const newSong = await db.song.create({
+      song_id: currentId,
+      title: req.body.title,
+      artist_id: req.body.artist_id,
+    });
+    res.json({ data: newSong});
+  } catch (err) {
+    console.error(err);
+    res.json({message: 'Server error'});
+  }
+});
+
+
+/// /////////////////////////////////
 /// ////////Tayo's Endpoints /////////
 /// /////////////////////////////////
 router.route('/genre')

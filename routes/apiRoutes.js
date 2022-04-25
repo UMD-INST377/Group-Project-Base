@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import validator from 'validator';
 
 import db from '../database/initializeDB.js';
 import styles from '../models/styles.js';
@@ -97,7 +98,7 @@ router.put('/artists', async (req, res) => {
 /// /////////////////////////////////
 router.get('/genres', async (req, res) => {
   try {
-    const genresItems = await db.genres.findAll(); 
+    const genresItems = await db.genres.findAll();
     const reply = genresItems.length > 0 ? { data: genresItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -122,6 +123,7 @@ router.get('/genres/:genre_id', async (req, res) => {
 });
 
 router.post('/genres', async (req, res) => {
+  const isNum = /^\d+$/.test(req.body.genre_name);
   const genreItems = await db.genres.findAll();
   const currentId = (await genreItems.length) + 1;
   try {
@@ -129,7 +131,9 @@ router.post('/genres', async (req, res) => {
       genre_id: currentId,
       genre_name: req.body.genre_name
     });
-    res.json(newGenre);
+    if (!isNum) {
+      res.json(newGenre);
+    } else { res.send('not valid genre name'); }
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -169,6 +173,19 @@ router.delete('/genres/:genre_id', async (req, res) => {
     res.error('Server error');
   }
 });
+router.delete('/genres/:genre_name', async (req, res) => {
+  try {
+    await db.genres.destroy({
+      where: {
+        genre_name: req.params.genre_name
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 
 /// /////////////////////////////////
 /// ////Release Endpoints////////
@@ -176,8 +193,8 @@ router.delete('/genres/:genre_id', async (req, res) => {
 
 router.get('/releases', async (req, res) => {
   try {
-    const releaseItems = await db.releases.findAll(); 
-    const reply = releaseItems.length > 0 ? { data: releaseItems } : { message: 'no results found' };
+    const halls = await db.releases.findAll();
+    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -189,7 +206,7 @@ router.get('/releases/:release_id', async (req, res) => {
   try {
     const hall = await db.releases.findAll({
       where: {
-        release_id : req.params.release_id
+        release_id: req.params.genre_id
       }
     });
 

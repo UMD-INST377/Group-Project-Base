@@ -1,7 +1,7 @@
 import express from 'express';
+import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import Languages from '../models/Languages.js';
-import sequelize from 'sequelize';
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.route('/')
     } catch (err) {
       res.json('Server error');
     }
-  })
+  });
 router.route('/:language_id')
   .get(async (req, res) => {
     try {
@@ -32,25 +32,25 @@ router.route('/').post(async (req, res) => {
   const languageId = await db.Languages.findAll();
   const current = (await languageId.length) + 1;
   try {
-  const newLanguage = await db.Languages.create({
-    language_id: current,
-    language: req.body.language,
-    description: req.body.description
+    const newLanguage = await db.Languages.create({
+      language_id: current,
+      language: req.body.language,
+      description: req.body.description
 
     });
     res.send('languages added');
-    } catch (err) {
+  } catch (err) {
     console.log(err);
     console.log(current);
     res.send(err);
   }
 });
-  
+
 router.route('/').put(async (req, res) => {
   try {
     await db.Languages.update(
       {
-        language : req.body.genre,
+        language: req.body.genre,
         description: req.body.description
       },
       {
@@ -65,6 +65,7 @@ router.route('/').put(async (req, res) => {
     res.send('Language not found');
   }
 });
+
 router.route('/:language_id').delete(async (req, res) => {
   try {
     await db.Languages.destroy({
@@ -78,6 +79,5 @@ router.route('/:language_id').delete(async (req, res) => {
     res.send('Server error');
   }
 });
-
 
 export default router;

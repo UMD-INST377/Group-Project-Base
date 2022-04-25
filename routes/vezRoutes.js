@@ -26,14 +26,32 @@ router.route('/')
     //TODO - Table 'Dining_Hall_Tracker.Meals' doesnt exist
     //TOTO: we need to demonstrate hooking this to a form
     try{
-      console.dir((req.body), {depth:null}); //checking that we have a body at all
+      /*console.dir((req.body), {depth:null}); //checking that we have a body at all
       console.log(req.body?.restriction); //optionally checking for the category value on the body object
       const dietary_restrictionsType = (req.body?.restriction) || 0;
-      const result = await db.sequalizeDB.query(dietary_restrictionsQuery, {
+      const result = await db.sequelizeDB.query(dietary_restrictionsQuery, {
         replacements: { restriction_type: dietary_restrictionsType },
         type: sequelize.QueryTypes.SELECT
-      });
-      res.json({ data: result});
+      });*/
+      const results = await db.sequelizeDB.query(`SELECT * FROM dietary_restrictions WHERE restriction_id != ${req.body.restriction_id}`)
+      res.json({ data: results[0]});
+    } catch (err){
+      console.log(err);
+      res.send({ message: err});
+    }
+  })
+
+  router.put('/mealChange', async (req, res) => {
+    try{
+      /*console.dir((req.body), {depth:null}); //checking that we have a body at all
+      console.log(req.body?.restriction); //optionally checking for the category value on the body object
+      const dietary_restrictionsType = (req.body?.restriction) || 0;
+      const result = await db.sequelizeDB.query(dietary_restrictionsQuery, {
+        replacements: { restriction_type: dietary_restrictionsType },
+        type: sequelize.QueryTypes.SELECT
+      });*/
+      const results = await db.sequelizeDB.query(`UPDATE  meals SET meal_name = '${req.body.meal_name}', meal_category = '${req.body.meal_category}' WHERE meal_id = ${req.body.meal_id}`)
+      res.json({ data: results[0]});
     } catch (err){
       console.log(err);
       res.send({ message: err});

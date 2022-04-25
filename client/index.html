@@ -29,6 +29,10 @@
             <div><input id='price' name='price' type='text' /></div>
           </div>
           <div class='form-row'>
+            <div><label for='ZipCode'>Zip Code</label></div>
+            <div><input id='zipcode' name='zipcode' type='text' /></div>
+          </div>
+          <div class='form-row'>
             <div><label for='Rating'>Rating</label></div>
             <div><input id='rating' name='rating' type='text' /></div>
           </div>
@@ -39,13 +43,13 @@
           <p>Enter the restaurant information in the form and then choose your action!</p>
         </div>
         <div class='form-row'>
-          <button type='submit'>Search Restaurants</button>
+          <button type='button' id="search_button">Search Restaurants</button>
         </div>
         <div class='form-row'>
-          <button type='Add'>Add Restaurant</button>
+          <button type='button' id="add_button">Add Restaurant</button>
         </div>
         <div class='form-row'>
-          <button type='remove'>Remove Restaurant</button>
+          <button type='button' id="remove_button">Remove Restaurant</button>
         </div>
       </div>
       <div class="container">
@@ -56,7 +60,7 @@
       </div>
     </div>
   </div>
-  <script src="scripts.js"></script>
+  <script src="sv_scripts.js"></script>
 </body>
 
 </html>

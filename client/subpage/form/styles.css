@@ -17,7 +17,7 @@
   }
 
   /* Page Layout */
-  .logo_title{
+.logo_title{
     display: flex;
     flex-direction: row;
 }

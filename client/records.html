@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./scripts.js"></script>
+    <script src="./rec.js"></script>
   </head>
   <body>
     <div class="columns">
@@ -21,21 +21,21 @@
       </div>
       <div class="column">
         <div class = "title has-text-white is-1 has-text-centered">Add Record</div>
-        <form method="GET" id="record_form">
+        <form method="POST" id="record_form">
           <div class = header>Enter Artist</div>
-          <input class="input is-hovered" type="text" placeholder="Stage Name">
-          <input class="input is-hovered" type="text" placeholder="First Name">
-          <input class="input is-hovered" type="text" placeholder="Last Name">
-          <input class="input is-hovered" type="text" placeholder="Gender">
-          <input class="input is-hovered" type="text" placeholder="Age">
-          <button class = "button" type="submit" id="add_entry">Add Entry</button>
-          <button class = "button" type="submit" id="remove_entry">Remove Entry</button>
+          <input class="input is-hovered" id = "stage_name" type="text" placeholder="Stage Name">
+          <input class="input is-hovered" id = "gender" type="text" placeholder="Gender">
+          <button class = "button" type="submit">Add Entry</button>
         </form>
         <hr style="width:100%;text-align:left;margin-left:0px">
         <div class = "title has-text-white is-1 has-text-centered">Search</div>
         <div class="control">
           <input class="input is-hovered" type="text" placeholder="Hovered input">
         </div>
+        <div class = "column">
+          <div class = "artist_list">
+        </div>
+      </div>
       </div>
       <div class="column sides is-1">
         <figure class="image is-128x128 is-centered"><a href = "">

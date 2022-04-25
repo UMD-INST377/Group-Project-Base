@@ -32,7 +32,6 @@ router.get('/users', async (req, res) => {
   }
 });
 
-
 router.get('/users/:username', async (req, res) => {
   try {
     console.log(`* Using router.get('/users/:username') to query (USER INPUT): ${req.body.gbif}\n`);
@@ -324,4 +323,3 @@ router.route('/felinae')
   });
 
 export default router;
-

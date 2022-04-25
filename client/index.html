@@ -55,11 +55,55 @@
                 <button id = 'carousel_button-next' aria-label="Next slide">></button>
             </div>
         </div>
-        <script src = 'scripts.js'></script>
 
-        <div class="">
-            
+
+        <div class="photo-grid-container">
+            <div class="hall">
+                <div class ="titleDining">MENU OF THE DAY</div>
+                <div class = "titleDining">&#10148 Today's Date</div>  <!-- date object-->
+                <hr size="50px" width="95%" color="black">
+                
+        <form class = 'reader-form' id = "form-id">
+               <div><strong>Select a Diner</strong></div>
+               <div class = 'form-row'>
+                <select name = "dropdown">
+                    <option value = 'south' selected>South Campus</option>
+                    <option value = 'diner' selected>The Diner</option>
+                    <option value = '251north' selected>251 North Dining</option>
+                </select>
+            </div>
+
+            <div><strong>Select Meal</strong></div>
+            <div class = 'form-row'>
+                <select name = "dropdown">
+                    <option value = 'breakfast' selected>Breakfast</option>
+                    <option value = 'lunch' selected>Lunch</option>
+                    <option value = 'dinner' selected>Dinner</option>
+                </select>
+            </div>
+
+            <fieldset class = 'legacy-row'>
+                <legend><strong>Filters:</strong></legend>
+                <label for = 'filter-type-1' class = 'radio-label'>Vegan</label>
+                <input id = 'filter-type-1' name = 'filter-type' type = 'radio' value = 'vegan'/>
+
+                <label for = 'filter-type-2' class = 'radio-label'>Vegetarian</label>
+                <input id = 'filter-type-2' name = 'filter-type' type = 'radio' value = 'vegetarian'/>
+
+                <label for = 'filter-type-3' class = 'radio-label'>Halal</label>
+                <input id = 'filter-type-3' name = 'filter-type' type = 'radio' value = 'halal'/>
+            </fieldset>
+
+            <div class = 'form-row'>
+                <button class = "submit_button" id = "submit-button" type = "submit">Submit</button>
+            </div>
+        </form>
+            </div>
+            <div class ="titleDining">MENU OUTPUT</div>
+            <ul class = "food-list"></ul>
         </div>
+
+        <script async defer src = 'scripts.js'></script>
     </body>
 </html>
 

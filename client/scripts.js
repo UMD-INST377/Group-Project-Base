@@ -1,10 +1,23 @@
 let slidePostition = 0;
 const slides = document.querySelectorAll('.carousel_item');
+const meals = document.querySelector('#form-id');
 const totalSlides = slides.length;
 // eslint-disable-next-line prefer-const
 let nextSlide = document.querySelector('#carousel_button-next');
 const prevSlide = document.querySelector('#carousel_button-prev');
 
+meals.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const results = await fetch('./api/meals');
+  const arrayFromJson = await results.json();
+  console.log(arrayFromJson);
+  const targetList = document.querySelector('.food-list');
+  targetList.innerHTML = '';
+});
+
+/*
+For Carousel
+*/
 nextSlide.addEventListener('click', () => {
   // eslint-disable-next-line no-use-before-define
   moveToNextSlide();

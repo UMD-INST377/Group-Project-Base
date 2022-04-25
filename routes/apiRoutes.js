@@ -95,7 +95,7 @@ router.post('/schedule', async (req, res) => {
   const output = await hours.length;
   try {
     const newSchedule = await db.HallSchedule.create({
-      schedule_id: output,
+      schedule_id: output + 1,
       hours: req.body.hours
     });
     res.json(newSchedule);

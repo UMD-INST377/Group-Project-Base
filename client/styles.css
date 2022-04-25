@@ -171,3 +171,28 @@ Carosel for Dining Halls Part
     border: 1.5px solid black;
 }
 
+/*
+Last part of the page
+*/
+.form-row {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+.legacy-row {
+    border: none;
+    margin-bottom: 40px;
+  }
+  
+.legacy-row legend {
+    margin-bottom: 15px;
+  }
+
+.submit_button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    margin-left: 25%;
+    display: block;
+  }

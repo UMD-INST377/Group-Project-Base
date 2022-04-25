@@ -8,16 +8,18 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.0",
     "chalk": "^4.1.0",
+    "connect-livereload": "^0.6.1",
+    "dotenv": "^16.0.0",
     "express": "^4.17.1",
+    "livereload": "^0.9.3",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
     "sequelize": "^6.5.0",

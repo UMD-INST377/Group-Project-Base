@@ -1,11 +1,17 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import Canidae from './Canidae.js';
+import Felinae from './Felinae.js';
+import Hominidae from './Hominidae.js';
+import Query from './Query.js';
+import User from './User.js';
+
+Query.associate = (models) => {
+  Query.belongsTo(models.users);
+};
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+  Canidae,
+  Felinae,
+  Hominidae,
+  Query,
+  User
 };

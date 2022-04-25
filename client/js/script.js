@@ -1,55 +1,55 @@
 function createHtmlList(collection) {
-  const targetList = document.querySelector('.result_list');
-  targetList.innerHTML = '';
+  const targetList = document.querySelector(".result_list");
+  targetList.innerHTML = "";
   collection.forEach((item) => {
     const { album_name } = item;
     const { artist_id } = item;
     const displayName = album_name.toLowerCase();
-    const displayCity = artist_id;
+    const displayArtist = artist_id;
     const injectThis = `<th>${displayName}</th>`;
-    const injectThisCity = ` <td>${displayCity}</td>`;
-    targetList.innerHTML += injectThis;
-    targetList.innerHTML += injectThisCity;
+    const injectThisCity = ` <td>${displayArtist}</td>`;
+    targetList.innerHTML += injectThis + injectThisCity;
   });
 }
 async function mainEvent() {
   // the async keyword means we can make API requests
-  const form = document.querySelector('#results');
-  const submitButton = document.querySelector('#submit_button');
-  const restName = document.querySelector('#init_search');
+  const form = document.querySelector("#results");
+  const submitButton = document.querySelector("#submit_button");
+  const restName = document.querySelector("#init_search");
 
-  const results = await fetch('/api/albums'); // This accesses some data from our API
+  const results = await fetch("/api/albums"); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
 
   if (arrayFromJson.data.length > 0) {
-    submitButton.style.display = 'block';
-    console.log('start');
+    submitButton.style.display = "block";
+    console.log("start");
 
     let currentArray = [];
-    restName.addEventListener('input', async (event) => {
+    restName.addEventListener("input", async (event) => {
       console.log(event.target.value);
       if (event.length < 1) {
-        console.log('caught');
+        console.log("caught");
         return;
       }
       // change arrayFromJson.data to currentArray if needed
-      const selectRest = arrayFromJson.data.filter((item) => {
+      const dataArray = arrayFromJson.data.filter((item) => {
         const lowerName = item.album_name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
       });
-      console.log(selectRest);
-      createHtmlList(selectRest);
+      console.log(dataArray);
+
+      createHtmlList(dataArray);
     });
 
-    form.addEventListener('submit', async (submitEvent) => {
+    form.addEventListener("submit", async (submitEvent) => {
       // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
-      console.log('form submission'); // this is substituting for a 'breakpoint'
-      currentArray = (arrayFromJson.data);
+      console.log("form submission"); // this is substituting for a 'breakpoint'
+      currentArray = arrayFromJson.data;
       createHtmlList(currentArray);
     });
   }
 }
 // this actually runs first! It's calling the function above
-document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
+document.addEventListener("DOMContentLoaded", async () => mainEvent()); // the async keyword means we can make API requests

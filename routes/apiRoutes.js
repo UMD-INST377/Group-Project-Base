@@ -656,4 +656,20 @@ router.delete('/AlbumStyle/:album_id', async (req, res) => {
   }
 });
 
+/// /////////////////////////////////
+/// ////Maintable Endpoints////////
+/// /////////////////////////////////
+router.get('/main', async (req, res) => {
+  try {
+    const main = await db.genres.findAll(); 
+    const reply = main.length > 0 ? { data: main } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+
 export default router;

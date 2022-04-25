@@ -108,6 +108,7 @@
 
 .chart {
     display: flex;
+    flex-direction: column;
     background-color: none;
     height: 500px;
     width: 700px;

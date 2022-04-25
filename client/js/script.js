@@ -5,11 +5,10 @@ function createHtmlList(collection) {
     const { album_name } = item;
     const { artist_id } = item;
     const displayName = album_name.toLowerCase();
-    const displayCity = artist_id;
+    const displayArtist = artist_id;
     const injectThis = `<th>${displayName}</th>`;
-    const injectThisCity = ` <td>${displayCity}</td>`;
-    targetList.innerHTML += injectThis;
-    targetList.innerHTML += injectThisCity;
+    const injectThisCity = ` <td>${displayArtist}</td>`;
+    targetList.innerHTML += injectThis + injectThisCity;
   });
 }
 async function mainEvent() {
@@ -33,20 +32,21 @@ async function mainEvent() {
         return;
       }
       // change arrayFromJson.data to currentArray if needed
-      const selectRest = arrayFromJson.data.filter((item) => {
+      const dataArray = arrayFromJson.data.filter((item) => {
         const lowerName = item.album_name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
       });
-      console.log(selectRest);
-      createHtmlList(selectRest);
+      console.log(dataArray);
+
+      createHtmlList(dataArray);
     });
 
     form.addEventListener('submit', async (submitEvent) => {
       // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       console.log('form submission'); // this is substituting for a 'breakpoint'
-      currentArray = (arrayFromJson.data);
+      currentArray = arrayFromJson.data;
       createHtmlList(currentArray);
     });
   }

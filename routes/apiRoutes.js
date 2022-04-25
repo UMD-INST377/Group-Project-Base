@@ -268,6 +268,22 @@ router.delete('/hominidae', async (req, res) => {
   }
 });
 
+router.delete('/queries/:query_id', async (req, res) => {
+  try {
+    console.log("Using router.get('/queries/:query_id')...");
+    const query = await db.sequelizeDB.models.queries.destroy({
+      where: {
+        query_id: req.body.query_id
+      }
+    });
+    res.status(200).send(`SUCCESS: Querie(s) with QUERY ID: ${req.body.query_id} deleted.`);
+    res.end();
+  } catch (e) {
+    console.error(e);
+    res.send(`ERROR: ${e.userid}`);
+  }
+});
+
 // NEW ROUTES for '/felinae'
 router.route('/felinae')
   .post(async (req, res) => {

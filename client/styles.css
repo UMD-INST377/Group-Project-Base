@@ -195,3 +195,8 @@ Last part of the page
     padding: 10px;
     margin-left: 25%;
   }
+
+.outputFood {
+    font-weight: bolder;
+    font-size: 30px;
+}

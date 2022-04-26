@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import validator from 'validator';
 
 import db from '../database/initializeDB.js';
 
@@ -70,7 +71,7 @@ router.delete('/artists/:artist_id', async (req, res) => {
 
 router.put('/artists', async (req, res) => {
   try {
-    await db.artists.upsert(
+    await db.artists.update(
       {
         artist_name: req.body.artist_name,
       },
@@ -92,7 +93,7 @@ router.put('/artists', async (req, res) => {
 /// /////////////////////////////////
 router.get('/genres', async (req, res) => {
   try {
-    const genresItems = await db.genres.findAll(); 
+    const genresItems = await db.genres.findAll();
     const reply = genresItems.length > 0 ? { data: genresItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -117,6 +118,7 @@ router.get('/genres/:genre_id', async (req, res) => {
 });
 
 router.post('/genres', async (req, res) => {
+  const isNum = /^\d+$/.test(req.body.genre_name);
   const genreItems = await db.genres.findAll();
   const currentId = (await genreItems.length) + 1;
   try {
@@ -124,7 +126,9 @@ router.post('/genres', async (req, res) => {
       genre_id: currentId,
       genre: req.body.genre
     });
-    res.json(newGenre);
+    if (!isNum) {
+      res.json(newGenre);
+    } else { res.send('not valid genre name'); }
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -133,7 +137,7 @@ router.post('/genres', async (req, res) => {
 
 router.put('/genres', async (req, res) => {
   try {
-    await db.genres.upsert(
+    await db.genres.update(
       {
         genre_id: req.body.genre_id,
         genre: req.body.genre
@@ -156,6 +160,19 @@ router.delete('/genres/:genre_id', async (req, res) => {
     await db.genres.destroy({
       where: {
         genre_id: req.params.genre_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.delete('/genres/:genre_name', async (req, res) => {
+  try {
+    await db.genres.destroy({
+      where: {
+        genre_name: req.params.genre_name
       }
     });
     res.send('Successfully Deleted');
@@ -217,6 +234,7 @@ router.post('/playlists', async (req, res) => {
 router.put('/playlists', async (req, res) => {
   try {
     await db.playlists.upsert(
+
       {
         playlist_id: req.body.playlist_id,
         owner: req.body.owner,
@@ -299,7 +317,7 @@ router.post('/styles', async (req, res) => {
 
 router.put('/styles', async (req, res) => {
   try {
-    await db.styles.upsert(
+    await db.styles.update(
       {
         style_id: req.body.style_id,
         style_name: req.body.style_name
@@ -384,7 +402,7 @@ router.post('/albums', async (req, res) => {
 
 router.put('/albums', async (req, res) => {
   try {
-    await db.albums.upsert(
+    await db.albums.update(
       {
         album_name: req.body.album_name,
         number_of_songs: req.body.number_of_songs,
@@ -546,7 +564,7 @@ router.post('/album_style_info', async (req, res) => {
 
 router.put('/album_style_info', async (req, res) => {
   try {
-    await db.album_style_info.upsert(
+    await db.album_style_info.update(
       {
         style_id: req.body.style_id
       },
@@ -624,7 +642,7 @@ router.post('/AlbumStyle', async (req, res) => {
 
 router.put('/AlbumStyle', async (req, res) => {
   try {
-    await db.AlbumStyle.upsert(
+    await db.AlbumStyle.update(
       {
         album_id: req.body.album_id,
       },
@@ -654,5 +672,21 @@ router.delete('/AlbumStyle/:album_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
+/// /////////////////////////////////
+/// ////Maintable Endpoints////////
+/// /////////////////////////////////
+router.get('/main', async (req, res) => {
+  try {
+    const main = await db.maintable.findAll(); 
+    const reply = main.length > 0 ? { data: main } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
 
 export default router;

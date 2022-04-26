@@ -131,3 +131,12 @@
 
     color: #000000;
 }
+
+.chart {
+    display: flex;
+    background-color: #FF4747;
+    height: 500px;
+    width: 700px;
+    align-self: center;
+    margin-top: 130px;
+}

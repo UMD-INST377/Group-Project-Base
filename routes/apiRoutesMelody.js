@@ -3,40 +3,35 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
+const descriptionQuery = 'SELECT * FROM descriptions'
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+router.route('/').get(async (req, res) => {
+    try {
+    const description = await db.sequelizeDB.query(descriptionQuery, {
+        type: sequelize.QueryTypes.SELECT
+        });
+        res.json(description);
+    } catch (err) {
+        console.error(err);
+        res.json({message: 'Server error'});
+    }
 });
 
-router.route('/food_type')
-    .get(async (req, res) => {
 
-    })
-
-    router.get('/food_type', async (req, res) => {
-        try {
-          const food_type = await db.food_type.findAll();
-          res.json(food_type);
-        } catch (err) {
-          console.error(err);
-          res.error('Server error');
-        }
+router.get('/:description_id', async (req, res) => {
+    // eslint-disable-next-line no-template-curly-in-string
+    const descriptionIDQuery = `SELECT * FROM descriptions WHERE description_id = ${req.params.description_id}`;
+    try {
+      const description = await db.sequelizeDB.query(descriptionIDQuery, {
+        type: sequelize.QueryTypes.SELECT
       });
-      
-      router.get('/food_type/:food_type_id', async (req, res) => {
-        try {
-          const food_type = await db.food_type.findAll({
-            where: {
-              type_id: req.params.type_id
-            }
-          });
-          res.json(food_type);
-        } catch (err) {
-          console.error(err);
-          res.error('Server error');
-        }
-      });
+      res.json(description);
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Server error'});
+    }
+  });  
       
       router.put('/food_type', async (req, res) => {
         try {

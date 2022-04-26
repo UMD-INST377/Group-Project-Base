@@ -1,6 +1,7 @@
 img {
   border-radius: 100px;
-  max-width: 100%;
+  max-width: 70%;
+  max-height: 50%;
   height: auto;
 }
 
@@ -31,3 +32,7 @@ img {
     background-color: #000000;
     color: white;
   }
+  .image-container {
+    justify-content: center;
+    display: flex;
+}

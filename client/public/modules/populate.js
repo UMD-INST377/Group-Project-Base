@@ -4,6 +4,8 @@ async function populateGenres(currentPage) {
   const genres = await results.json();
   if (currentPage === '/form.html' || currentPage === '/records.html') {
     dropdown.innerHTML += '<option value="" disabled selected>Choose your option</option>';
+  } else {
+    dropdown.innerHTML += '<option value="" selected>All</option>';
   }
   genres.data.forEach((item) => {
     if (item.genre !== 'Other') {

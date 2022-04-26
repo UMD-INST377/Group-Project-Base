@@ -5,6 +5,7 @@ import validator from 'validator';
 
 import db from '../database/initializeDB.js';
 import styles from '../models/styles.js';
+import rawqueries from './rawqueries.js';
 
 const router = express.Router();
 
@@ -675,18 +676,18 @@ router.delete('/AlbumStyle/:album_id', async (req, res) => {
 
 /// /////////////////////////////////
 /// ////Maintable Endpoints////////
-/// /////////////////////////////////
+/// ////////////////////////////////
+const macrosCustom = rawqueries
 router.get('/main', async (req, res) => {
   try {
-    const main = await db.maintable.findAll(); 
-    const reply = main.length > 0 ? { data: main } : { message: 'no results found' };
-    res.json(reply);
+    const result = await db.sequelizeDB.query(macrosCustom, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json({data:result});
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
-
-
 
 export default router;

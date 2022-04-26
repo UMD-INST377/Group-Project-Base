@@ -8,8 +8,8 @@ export default (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true
       },
-      album_name: {
-        type: DataTypes.CHAR(80),
+      release_date: {
+        type: DataTypes.DATE,
         allowNull: false
       },
       number_of_songs: {

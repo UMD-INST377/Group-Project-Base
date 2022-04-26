@@ -20,12 +20,12 @@
                 <ul>
                     <li><a href="about.html">About</a></li>
                     <li><a class="active" href="/">Main</a></li>
-                    <li><a href="availability.html">Movie Availability</a></li>
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Tables<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Data<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
             </div>
           </nav>
           <ul id="dropdown1" class="dropdown-content">
+            <li><a href="availability.html">Availability</a></li>
             <li><a href="records.html">Records</a></li>
             <li><a href="ratings.html">Ratings</a></li>
             <li class="divider"></li>
@@ -37,7 +37,7 @@
             <div class="col s12 l3">
                 <div class="filters row">
                     <!-- search -->
-                    <div class="search col">
+                    <div class="search col s12 l12">
                         <form>
                             <div class="input-field">
                                 <span class="filter-label">Search</span>
@@ -46,22 +46,59 @@
                         </form>
                     </div>
                     <!-- platforms -->
-                    <div class="platforms col">
-                        <div class="input-field">
+                    <div class="platforms col s12 l12">
+                        <!-- <div class="input-field">
                             <span class="filter-label">Platforms</span>
-                            <select  multiple>
-                                <option value="netflix">Netflix</option>
-                                <option value="hulu">Hulu</option> 
-                                <option value="prime">Prime</option>
-                                <option value="disney">Disney+</option>
+                            <select multiple name="availability_id">
+                                <option value="netflix" name="netflix">Netflix</option>
+                                <option value="hulu" name="hulu">Hulu</option> 
+                                <option value="prime" name="prime">Prime</option>
+                                <option value="disney" name="disney">Disney+</option>
                             </select>
+                        </div> -->
+                        <div class="input-field">
+                            <span class="filter-label">Platform</span>
+                            <div class="row px">
+                          <form action="#">
+<div class="col s5 l5 p1">
+  <p>
+    <label>
+      <input type="checkbox" id="netflix"/>
+      <span>Netflix</span>
+    </label>
+  </p>
+  <p>
+    <label>
+      <input type="checkbox" id="prime"/>
+      <span>Prime</span>
+    </label>
+  </p>
+</div>
+<div class="col s5 l5">
+  <p>
+    <label>
+      <input type="checkbox" id="hulu"/>
+      <span>Hulu</span>
+    </label>
+  </p>
+  <p>
+    <label>
+      <input type="checkbox" id="disney"/>
+      <span>Disney</span>
+    </label>
+  </p>
+</div>
+                          </form></div>
+                          <span id="platform-error">Please select at least one platform</span>
                         </div>
                     </div>
                     <!-- genres -->
-                    <div class="genres col">
+                    <div class="genres col s12 l12">
                         <div class="input-field">
-                            <span class="filter-label">Genres</span>
-                            <select multiple id="genre-input"></select>
+                            <span class="filter-label">Genre</span>
+                            <!-- <span class="filter-label">Genres</span>
+                            <select multiple id="genre-input" name="genre_id"></select> -->
+                            <select id="genre-input" name="genre_id" required="required"></select>
                         </div>
                     </div>
                     <!-- ratings -->
@@ -75,6 +112,7 @@
                         <button id="submit-filters" class="btn waves-effect waves-light" type="submit" name="action">Apply</button>
                     </div>
                 </div>
+                <div id="num-results"></div>
             </div>
             <!-- movies column -->
             <div class="col s12 l9">

@@ -20,11 +20,11 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.CHAR(200)
       },
       is_public: {
-        type: DataTypes.TINYINT(1),
+        type: DataTypes.INTEGER(1),
         allowNull: false
       },
       is_collaborative: {
-        type: DataTypes.TINYINT(1),
+        type: Datatype.INTEGER(1),
         allowNull: false
       }
     },

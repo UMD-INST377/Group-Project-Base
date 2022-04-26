@@ -7,6 +7,7 @@ import breakfastQuery from '../controllers/breakfast_query.js';
 import launchQuery from '../controllers/launch_query.js';
 import dinnerQuery from '../controllers/dinner_query.js';
 import mealQuery from '../controllers/meals.js';
+import macroQuery from '../controllers/macro.js';
 
 const router = express.Router();
 
@@ -98,6 +99,18 @@ router.get('/meals', async (req, res) => {
 router.get('/launch', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(launchQuery, {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+    res.send({ message: err});
+  }
+});
+
+router.get('/macro', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(macroQuery, {
       type: Sequelize.QueryTypes.SELECT
     });
     res.json({ data: result });

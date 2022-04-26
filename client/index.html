@@ -6,35 +6,126 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/a707d2257c.js" crossorigin="anonymous"></script>
   <title>District of Columbia Hispanic Restaurants Blog Site </title>
   <link rel="stylesheet" href="styles.css" />
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> -->
-  <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
 </head>
+
 <body>
 
-<header class="header">
-  <img src="logo.jpg" alt="">
-  <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="login.html">Log in</a>
-    <a href="signup.html">Sign Up</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <div class="icons">
-    <div id="menu-bar" class="fas fa-bars"></div>
-    <div id="userlog" class="fas fa-users"></div>
+  <header>
+    <div class="header-1">
+      <a href="#" class="logo"> <i class="fas fa-utensils"></i> HispanicDC </a>
+
+      <!--search bar-->
+        
+  <form action="" id="search-form">
+  <input type="search" placeholder="search here..." name="" id="search-box">
+  <label for="search-box" class="fas fa-search"></label>
+  <i class="fas fa-times" id="close"></i>
+  </form>
+
+      <h3 class="email"> <i class="fas fa-envelope"></i> email now : BIZOUTREACH@HISPANICDC.COM</h3>
+
+    </div>
+
+    <div class="header-2">
+
+      <nav class="navbar">
+        <ul>
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-twitter"></a>
+      </div>
+
+    </div>
+  </header>
+<!-- header finished-->
+
+
+<!-- home section-->
+
+<section class="home" id="home">
+
+  <div class="content">
+      <h1>welcome <span>food</span> lovers</h1>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio eum explicabo voluptatum amet rerum dolorum placeat nisi dolore enim harum!</p>
+      <a href="#"><button class="btn">get started</button></a>
   </div>
 
+  <div class="shape"></div>
+
+  </section>
+
+<!-- home sect finished-->
+
+<!-- about us-->
+
+<section class="about" id="about">
+
+  <h1 class="heading"> <span> about us </span> </h1>
+  
+  <div class="row">
+
+    <div class="content">
+      <h3>lets satisfy your hunger with our tasty dishes</h3>
+      <p>At HispanicDC, we believe accurate, up-to-date information on restaurants is important. We are objectively passionate in helping people who seek to dine
+        at one of the many Hispanic restaurants in Washington,DC by providing the information needed to achieve that goal. <br>
+      Our mission is to help people satisfy their craving for Hispanic food by providing information that will allow them to do so.</p>
+
+      <a href="#"><button class="btn">learn more</button></a>
+  </div>
+
+    <div class="image">
+        <img src="food2.png" alt="taco">
+    </div>
 </div>
-</header>
 
+</section>
+  <!-- about end-->
 
+  <!-- restaurants-->
+
+  <section class="resto" id="resto">
+
+    <h1 class="heading"> <span> Highest Visited Restaurants </span> </h1>
+    
+    <div class="image-container">
+
+      <div class="image place">
+          <img src="oya.png" alt="oyamel">
+          <a href="#">Oyamel Cocina Mexicana</a>
+      </div>
+
+      <div class="image place">
+          <img src="Taq.jpeg" alt="taqueria">
+          <a href="#">Taqueria Habanero</a>
+      </div>
+
+      <div class="image place">
+          <img src="el sol.jpeg" alt="el sol restaurante">
+          <a href="#">El Sol Restaurante & Tequileria</a>
+      </div>
+</div>
+
+</section>
+
+  <!-- jquery cdn-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- custom js file link  -->
+  <script src="script.js"></script>
 
 </body>
+
 </html>
 
 <!-- initial start, will continue ryan e -->

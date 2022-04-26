@@ -1,17 +1,16 @@
 export default (database, DataTypes) => {
-  const Owner = database.define('Owner', {
-    restaurant_id: {
+  const Restaurant_Food = database.define('Restaurant_Food', {
+    type_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    owner_id: {
+    restaurant_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
     }
   });
-  return Owner;
+  return Restaurant_Food;
 };

@@ -32,8 +32,8 @@ router.get('/album/:album_id', async (req, res) => {
   }
 });
 router.post('/album/', async (req, res) => {
-  const arts = db.album.findAll();
-  const currentId = (await arts.length) + 1;
+  const art = db.album.findAll();
+  const currentId = (await art.length) + 1;
   try {
     const newAlbum = await db.label.create({
       album_id: currentId,

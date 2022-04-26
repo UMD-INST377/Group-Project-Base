@@ -77,6 +77,48 @@ router.get('/canidae/:gbif', async (req, res) => {
   }
 });
 
+router.post('/canidae_by_common_names', async (req, res) => {
+  try {
+    const canidae = await db.sequelizeDB.models.canidae.findAll({
+      where: {
+        common_names: req.body.common_name
+      }
+    });
+    res.json({data:canidae});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.post('/felinae_by_common_names', async (req, res) => {
+  try {
+    const felinae = await db.sequelizeDB.models.felinae.findAll({
+      where: {
+        common_names: req.body.common_name
+      }
+    });
+    res.json({data:felinae});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.post('/hominidae_by_common_names', async (req, res) => {
+  try {
+    const hominidae = await db.sequelizeDB.models.hominidae.findAll({
+      where: {
+        common_names: req.body.common_name
+      }
+    });
+    res.json({data:hominidae});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 router.get('/felinae', async (req, res) => {
   try {
     console.log("Using router.get('/felinae')...");

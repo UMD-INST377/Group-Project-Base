@@ -9,11 +9,11 @@ export default (sequelize, DataTypes) => {
         unique: true
       },
       release_date: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.DATE,
         allowNull: false
       },
       label: {
-        type: DataTypes.CHAR(400),
+        type: DataTypes.TEXT,
         allowNull: false
       },
       cover_url: {

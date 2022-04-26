@@ -14,7 +14,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.CHAR(50)
       },
       date_added: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.DATE,
         allowNull: false
       }
     },

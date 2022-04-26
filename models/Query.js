@@ -21,6 +21,12 @@ export default (sequelize, DataTypes) => {
     },
     input_string_2: {
       type: DataTypes.STRING
+    },
+    query_match: {
+      type: DataTypes.STRING
+    },
+    match_url: {
+      type: DataTypes.STRING
     }
   },
   { freezeTableName: true, timestamps: false });

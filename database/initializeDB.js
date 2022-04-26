@@ -16,11 +16,11 @@ const config = configOptions[env];
  */
 let sequelizeDB;
 sequelizeDB = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
+  config.database,
+  config.username,
+  config.password,
+  config
+);
 // console.log(configOptions.development);
 
 const db = Object.keys(modelList).reduce((collection, modelName) => {

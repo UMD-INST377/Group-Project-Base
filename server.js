@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import { userSearch } from './helpers/wikidata.js';
 
 const __dirname = path.resolve();
 
@@ -31,7 +32,6 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 // handles JSON recieved by API
 app.use(express.json());
-
 //  serves static files to express
 app.use(express.static(staticFolder));
 app.use('/', apiRoutes); // hooks app to all of our routes

@@ -4,6 +4,7 @@ import express from 'express';
 import sequelize, { Sequelize } from 'sequelize';
 import db from '../database/initializeDB.js';
 import User from '../models/User.js';
+import { userSearch, toD3 } from '../helpers/wikidata.js';
 
 // const { body, validationResult } = require('express-validator');
 
@@ -461,4 +462,23 @@ router.route('/felinae')
     }
   });
 
+<<<<<<< HEAD
+=======
+router.route('/search')
+  .post(async (req, res) => {
+    try {
+      console.log('POST to wikidata : route("/search")...');
+      const query = await userSearch(req.body.species_a, req.body.species_b);
+      const data = await toD3(query.query1, query.query2, query.match);
+      res.status(200).send(data);
+      res.end();
+      return data;
+    } catch (e) {
+      console.error(e);
+      res.send(`ERROR: ${e.name}`);
+      res.end();
+    }
+  });
+
+>>>>>>> wikidata
 export default router;

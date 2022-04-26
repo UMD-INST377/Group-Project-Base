@@ -5,7 +5,6 @@ import chalk from 'chalk';
 import util from 'util';
 import db from '../database/initializeDB.js';
 import album from '../models/album.js';
-import res from 'express/lib/response';
 
 const router = express.Router();
 
@@ -46,28 +45,28 @@ router.post('/album/', async (req, res) => {
     res.send('Server Error')
   }
 });
+router.route('/album/').put((req,res) => {
+  console.log(util.inspect(req.body, {showHidden: false, depth: null, colors: true}))
+})
 router.put('/album/', async (req, res) => {
-  const albumUpdate = await db.album.upsert(
-    {
-      album_id: req.body.album_id,
-      release_id: req.body.release_id,
-      genre_id: req.body.genre_id,
-      album_name: req.body.album_name
-    },
-    {
-      where: {
+  try {
+    const albumUpdate = await db.album.upsert(
+      {
         album_id: req.body.album_id,
-      }
-    });
+        release_id: req.body.release_id,
+        genre_id: req.body.genre_id,
+        album_name: req.body.album_name
+      },
+      {
+        where: {
+          album_id: req.body.album_id,
+        }
+      });
     res.json('Success. Record Updated')
-  } catch(error) {
+  } catch (error) {
     console.log(error);
     res.send('Server Error')
   }
-});
-
-router.route('/album/').put((req,res) => {
-console.log(util.inspect(req.body, {showHidden: false, depth: null, colors: true}))
 });
 
 export default router;

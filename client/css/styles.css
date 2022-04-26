@@ -63,6 +63,9 @@ img.logo {
   justify-content: space-between;
 }
 
+.buttons{
+  margin-top: 2%;
+}
 div.field#searchbar {
   width: 50%;
   margin: auto;

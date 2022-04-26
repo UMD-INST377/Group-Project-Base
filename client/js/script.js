@@ -61,15 +61,20 @@ async function mainEvent() {
         console.log('caught');
         return;
       }
+      if (event.target.value.trim().length) {
       // change arrayFromJson.data to currentArray if needed
       const dataArray = arrayFromJson.data.filter((item) => {
         const lowerName = item.album_name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
-        return lowerName.includes(lowerValue);
+        return lowerName.startsWith(lowerValue);
       });
       console.log(dataArray);
+      console.log(event.target.value);
 
       createHtmlList(restArrayMake(dataArray));
+    } else {
+      document.querySelector('.result_list').innerHTML = '';
+    }
     });
 
     form.addEventListener('submit', async (submitEvent) => {

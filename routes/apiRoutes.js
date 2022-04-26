@@ -462,8 +462,6 @@ router.route('/felinae')
     }
   });
 
-<<<<<<< HEAD
-=======
 router.route('/search')
   .post(async (req, res) => {
     try {
@@ -480,5 +478,4 @@ router.route('/search')
     }
   });
 
->>>>>>> wikidata
 export default router;

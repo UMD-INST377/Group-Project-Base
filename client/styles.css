@@ -87,8 +87,7 @@ a {
   
   .section_2 .text {
     font-weight: lighter;
-    
-    
+  
   }
   
   .section_2 div.text{
@@ -112,5 +111,19 @@ a {
     
     padding: 10px;
     max-width: 300px;
+  }
+
+  .nav_2{
+    background-color: rgb(117, 157, 117);
+    border-radius: 40px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-top: 0px;
+    
+    
   }
   

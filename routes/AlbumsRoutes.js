@@ -32,15 +32,16 @@ router.get('/album/:album_id', async (req, res) => {
   }
 });
 router.post('/album/', async (req, res) => {
+  const arts = db.album.findAll();
+  const currentId = (await arts.length) + 1;
   try {
-    const newAlbum = await db.album.create({
-      album_id: 19,
-      release_id: 4,
-      genre_id: 4,
-      price_id: 4,
-      album_name: 'It Was Good Until it Wasnt',
+    const newAlbum = await db.label.create({
+      album_id: currentId,
+      release_id: req.body.release_id,
+      genre_id: req.body.genre_id,
+      album_name: req.body.album_name
     });
-    res.json(newAlbum)
+    res.json(newAlbum);
   } catch (error) {
     console.log(error);
     res.send('Server Error')

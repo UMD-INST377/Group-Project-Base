@@ -29,8 +29,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./updatePlaylist.html" class="is-size-6-touch is-size-5-desktop">
-                        <strong>Update Playlist</strong> 
+                    <a href="./updateData.html" class="is-size-6-touch is-size-5-desktop">
+                        <strong>Update Data</strong> 
                     </a>
                 </li>
                 <li>
@@ -58,9 +58,9 @@
             <div class="column">
                 <form class="box" method="GET">
                     <div class="field">
-                      <label for="resto_name">Update PlayList</label>
+                      <label for="resto_name">Update</label>
                       <div class="control">
-                        <input id="resto_name" class="input" type="text">
+                        <input id="update" class="input" type="text">
                       </div>
                     </div>
                 </form>
@@ -90,7 +90,25 @@
                   </div>
                 </div>
             </div>
-    <script src="script.js"></script>
+    <div id="middle">
+        <div class="column is-one-quarter">
+            <div class="box">
+                <div class="added">
+                    <label for="add">Add Album<br></label>
+                    <input id="add" name="category" type="text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="middle">
+        <div class="column is-one-quarter">
+            <div class="box">
+                <label for="delete">Delete Album<br></label>
+                <input id="delete" name="category" type="text"/>
+            </div>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>

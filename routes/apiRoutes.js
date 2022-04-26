@@ -1,9 +1,12 @@
+/* eslint-disable camelcase */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 import rawqueries from './rawqueries.js';
+
 
 const router = express.Router();
 
@@ -46,9 +49,7 @@ router.post('/artists', async (req, res) => {
   try {
     const newArtist = await db.artist.create({
       artist_id: currentId,
-      artist_name: req.body.artist_name,
-      total_artist_albums: req.body.total_artist_albums,
-      artist_link: req.body.artist_link
+      name: req.body.name,
     });
     res.json(newArtist);
   } catch (err) {
@@ -75,9 +76,7 @@ router.put('/artists', async (req, res) => {
   try {
     await db.artists.update(
       {
-        artist_name: req.body.artist_name,
-        total_artist_albums: req.body.total_artist_albums,
-        artist_link: req.body.artist_link
+        name: req.body.name,
       },
       {
         where: {
@@ -93,7 +92,7 @@ router.put('/artists', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////AlbumGenre Endpoints////////
+/// ////Genre Endpoints////////
 /// /////////////////////////////////
 router.get('/genres', async (req, res) => {
   try {
@@ -128,7 +127,7 @@ router.post('/genres', async (req, res) => {
   try {
     const newGenre = await db.genres.create({
       genre_id: currentId,
-      genre_name: req.body.genre_name
+      genre: req.body.genre
     });
     if (!isNum) {
       res.json(newGenre);
@@ -144,7 +143,7 @@ router.put('/genres', async (req, res) => {
     await db.genres.update(
       {
         genre_id: req.body.genre_id,
-        genre_name: req.body.genre_name
+        genre: req.body.genre
       },
       {
         where: {
@@ -187,13 +186,13 @@ router.delete('/genres/:genre_name', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Release Endpoints////////
+/// ////Playlists Endpoints////////
 /// /////////////////////////////////
 
-router.get('/releases', async (req, res) => {
+router.get('/playlists', async (req, res) => {
   try {
-    const halls = await db.releases.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const playlistItems = await db.playlists.findAll(); 
+    const reply = playlistItems.length > 0 ? { data: playlistItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -201,11 +200,11 @@ router.get('/releases', async (req, res) => {
   }
 });
 
-router.get('/releases/:release_id', async (req, res) => {
+router.get('/playlists/:playlist_id', async (req, res) => {
   try {
-    const hall = await db.releases.findAll({
+    const hall = await db.playlists.findAll({
       where: {
-        release_id: req.params.genre_id
+        playlist_id : req.params.playlist_id
       }
     });
 
@@ -216,35 +215,40 @@ router.get('/releases/:release_id', async (req, res) => {
   }
 });
 
-router.post('/releases', async (req, res) => {
-  const releaseItems = await db.releases.findAll();
-  const currentId = (await releaseItems.length) + 1;
+router.post('/playlists', async (req, res) => {
+  const playlistItems = await db.playlists.findAll();
+  const currentId = (await playlistItems.length) + 1;
   try {
-    const newDining = await db.releases.create({
-      release_id: currentId,
-      release_country: req.body.release_country,
-      release_year: req.body.release_year,
-      release_link: req.body.release_link
+    const newPlay = await db.playlists.create({
+      playlist_id: currentId,
+      owner: req.body.owner,
+      name: req.body.name,
+      description: req.body.description,
+      is_public: req.body.is_public,
+      is_collaborative: req.body.is_collaborative
     });
-    res.json(newDining);
+    res.json(newPlay);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/releases', async (req, res) => {
+router.put('/playlists', async (req, res) => {
   try {
-    await db.releases.update(
+    await db.playlists.upsert(
+
       {
-        release_id: req.body.release_id,
-        release_country: req.body.release_country,
-        release_year: req.body.release_year,
-        release_link: req.body.release_link
+        playlist_id: req.body.playlist_id,
+        owner: req.body.owner,
+        name: req.body.name,
+        description: req.body.description,
+        is_public: req.body.is_public,
+        is_collaborative: req.body.is_collaborative
       },
       {
         where: {
-          release_id: req.body.release_id
+          playlist_id: req.body.playlist_id
         }
       }
     );
@@ -255,11 +259,11 @@ router.put('/releases', async (req, res) => {
   }
 });
 
-router.delete('/releases/:release_id', async (req, res) => {
+router.delete('/playlists/:playlist_id', async (req, res) => {
   try {
-    await db.releases.destroy({
+    await db.playlists.destroy({
       where: {
-        release_id: req.params.release_id
+        playlist_id: req.params.playlist_id
       }
     });
     res.send('Successfully Deleted');
@@ -270,13 +274,13 @@ router.delete('/releases/:release_id', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Style Endpoints/////////
+/// ////artist_albums Endpoints/////////
 /// /////////////////////////////////
 
-router.get('/styles', async (req, res) => {
+router.get('/artist_albums', async (req, res) => {
   try {
-    const styleItems = await db.styles.findAll(); 
-    const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
+    const artist_albums_items = await db.artistAlbums.findAll();
+    const reply = artist_albums_items.length > 0 ? { data: artist_albums_items } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -284,46 +288,46 @@ router.get('/styles', async (req, res) => {
   }
 });
 
-router.get('/styles/:style_id', async (req, res) => {
+router.get('/artist_albums/:artist_id', async (req, res) => {
   try {
-    const styleItems = await db.styles.findAll({
+    const artist_albums_items = await db.artistAlbums.findAll({
       where: {
-        style_id : req.params.style_id
+        artist_id : req.params.artist_id
       }
     });
 
-    res.json(styleItems);
+    res.json(artist_albums_items);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/styles', async (req, res) => {
-  const styleItems = await db.styles.findAll();
-  const currentId = (await styleItems.length) + 1;
+router.post('/artist_albums', async (req, res) => {
+  const artist_albums_items = await db.artistAlbums.findAll();
+  const currentId = (await artist_albums_items.length) + 1;
   try {
-    const newStyle = await db.styles.create({
-      style_id: currentId,
-      style_name: req.body.style_name
+    const newArtist_Album = await db.artist_albums.create({
+      artist_id: currentId,
+      album_id: req.body.album_id
     });
-    res.json(newStyle);
+    res.json(newArtist_Album);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/styles', async (req, res) => {
+router.put('/artist_albums', async (req, res) => {
   try {
-    await db.styles.update(
+    await db.artistAlbums.update(
       {
-        style_id: req.body.style_id,
-        style_name: req.body.style_name
+        artist_id: req.body.artist_id,
+        album_id: req.body.album_id
       },
       {
         where: {
-          style_id: req.body.style_id
+          artist_id: req.body.artist_id
         }
       }
     );
@@ -334,11 +338,11 @@ router.put('/styles', async (req, res) => {
   }
 });
 
-router.delete('/styles/:style_id', async (req, res) => {
+router.delete('/artist_albums/:artist_id', async (req, res) => {
   try {
-    await db.styles.destroy({
+    await db.artistAlbums.destroy({
       where: {
-        style_id: req.params.style_id
+        artist_id: req.params.artist_id
       }
     });
     res.send('Successfully Deleted');
@@ -384,13 +388,10 @@ router.post('/albums', async (req, res) => {
   try {
     const newAlbum = await db.albums.create({
       album_id: currentId,
-      album_name: req.body.album_name,
-      number_of_songs: req.body.number_of_songs,
-      average_song_length: req.body.average_song_length,
-      album_link: req.body.album_link,
-      album_versions: req.body.album_versions,
-      release_id: req.body.release_id,
-      artist_id: req.body.artist_id
+      release_date: req.body.release_date,
+      label: req.body.label,
+      cover_url: req.body.cover_url,
+      album_name: req.body.album_name
     });
     res.json(newAlbum);
   } catch (err) {
@@ -403,13 +404,10 @@ router.put('/albums', async (req, res) => {
   try {
     await db.albums.update(
       {
-        album_name: req.body.album_name,
-        number_of_songs: req.body.number_of_songs,
-        average_song_length: req.body.average_song_length,
-        album_link: req.body.album_link,
-        album_versions: req.body.album_versions,
-        release_id: req.body.release_id,
-        artist_id: req.body.artist_id
+        release_date: req.body.release_date,
+        label: req.body.label,
+        cover_url: req.body.cover_url,
+        album_name: req.body.album_name
       },
       {
         where: {
@@ -439,12 +437,12 @@ router.delete('/albums/:album_id', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////AlbumGenreInfo Endpoints/////////
+/// ////AlbumSongs Endpoints/////////
 /// /////////////////////////////////
 
-router.get('/album_genre_info', async (req, res) => {
+router.get('/album_songs', async (req, res) => {
   try {
-    const genreItems = await db.album_genre_info.findAll(); 
+    const genreItems = await db.albumSongs.findAll(); 
     const reply = genreItems.length > 0 ? { data: genreItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -453,9 +451,9 @@ router.get('/album_genre_info', async (req, res) => {
   }
 });
 
-router.get('/album_genre_info/:album_id', async (req, res) => {
+router.get('/album_songs/:album_id', async (req, res) => {
   try {
-    const genreItems = await db.album_genre_info.findAll({
+    const genreItems = await db.albumSongs.findAll({
       where: {
         album_id : req.params.album_id
       }
@@ -468,13 +466,13 @@ router.get('/album_genre_info/:album_id', async (req, res) => {
   }
 });
 
-router.post('/album_genre_info', async (req, res) => {
-  const genreItems = await db.album_genre_info.findAll();
+router.post('/album_songs', async (req, res) => {
+  const genreItems = await db.albumSongs.findAll();
   const currentId = (await genreItems.length) + 1;
   try {
-    const newGenreInfo = await db.album_genre_info.create({
+    const newGenreInfo = await db.album_songs.create({
       album_id: currentId,
-      genre_id: req.body.genre_id
+      song_id: req.body.song_id
     });
     res.json(newGenreInfo);
   } catch (err) {
@@ -483,11 +481,11 @@ router.post('/album_genre_info', async (req, res) => {
   }
 });
 
-router.put('/album_genre_info', async (req, res) => {
+router.put('/album_songs', async (req, res) => {
   try {
-    await db.album_genre_info.update(
+    await db.albumSongs.upsert(
       {
-        genre_id: req.body.genre_id
+        song_id: req.body.song_id
       },
       {
         where: {
@@ -502,9 +500,9 @@ router.put('/album_genre_info', async (req, res) => {
   }
 });
 
-router.delete('/album_genre_info/:album_id', async (req, res) => {
+router.delete('/album_songs/:album_id', async (req, res) => {
   try {
-    await db.album_genre_info.destroy({
+    await db.albumSongs.destroy({
       where: {
         album_id: req.params.album_id
       }
@@ -517,12 +515,12 @@ router.delete('/album_genre_info/:album_id', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////AlbumStyleInfo Endpoints/////////
+/// ////ArtistSongs Endpoints/////////
 /// /////////////////////////////////
 
-router.get('/album_style_info', async (req, res) => {
+router.get('/artist_songs', async (req, res) => {
   try {
-    const styleItems = await db.album_style_info.findAll(); 
+    const styleItems = await db.artistSongs.findAll(); 
     const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -531,11 +529,11 @@ router.get('/album_style_info', async (req, res) => {
   }
 });
 
-router.get('/album_style_info/:album_id', async (req, res) => {
+router.get('/artist_songs/:artist_id', async (req, res) => {
   try {
-    const styleItems = await db.album_style_info.findAll({
+    const styleItems = await db.artistSongs.findAll({
       where: {
-        album_id : req.params.album_id
+        artist_id : req.params.artist_id
       }
     });
 
@@ -546,13 +544,13 @@ router.get('/album_style_info/:album_id', async (req, res) => {
   }
 });
 
-router.post('/album_style_info', async (req, res) => {
-  const styleItems = await db.album_style_info.findAll();
+router.post('/artist_songs', async (req, res) => {
+  const styleItems = await db.artistSongs.findAll();
   const currentId = (await styleItems.length) + 1;
   try {
-    const newStyle = await db.album_style_info.create({
-      album_id: currentId,
-      style_id: req.body.style_id
+    const newStyle = await db.artistSongs.create({
+      artist_id: currentId,
+      song_id: req.body.song_id
     });
     res.json(newStyle);
   } catch (err) {
@@ -561,15 +559,15 @@ router.post('/album_style_info', async (req, res) => {
   }
 });
 
-router.put('/album_style_info', async (req, res) => {
+router.put('/artist_songs', async (req, res) => {
   try {
-    await db.album_style_info.update(
+    await db.artistSongs.update(
       {
-        style_id: req.body.style_id
+        song_id: req.body.song_id
       },
       {
         where: {
-          album_id: req.body.album_id
+          artist_id: req.body.artist_id
         }
       }
     );
@@ -580,11 +578,11 @@ router.put('/album_style_info', async (req, res) => {
   }
 });
 
-router.delete('/album_style_info/:album_id', async (req, res) => {
+router.delete('/artist_songs/:artist_id', async (req, res) => {
   try {
     await db.album_style_info.destroy({
       where: {
-        album_id: req.params.album_id
+        artist_id: req.params.artist_id
       }
     });
     res.send('Successfully Deleted');
@@ -594,11 +592,11 @@ router.delete('/album_style_info/:album_id', async (req, res) => {
   }
 });
 /// /////////////////////////////////
-/// ////AlbumStyle Endpoints////////
+/// ////SongGenre Endpoints////////
 /// /////////////////////////////////
-router.get('/AlbumStyle', async (req, res) => {
+router.get('/song_genres', async (req, res) => {
   try {
-    const halls = await db.releases.findAll(); 
+    const halls = await db.songGenres.findAll(); 
     const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -607,11 +605,11 @@ router.get('/AlbumStyle', async (req, res) => {
   }
 });
 
-router.get('/AlbumStyle/:album_id', async (req, res) => {
+router.get('/song_genres/:song_id', async (req, res) => {
   try {
-    const hall = await db.AlbumStyle.findAll({
+    const hall = await db.songGenres.findAll({
       where: {
-        album_id : req.params.genre_id
+        song_id : req.params.song_id
       }
     });
 
@@ -622,15 +620,13 @@ router.get('/AlbumStyle/:album_id', async (req, res) => {
   }
 });
 
-router.post('/AlbumStyle', async (req, res) => {
-  const halls = await db.AlbumStyle.findAll();
+router.post('/song_genres', async (req, res) => {
+  const halls = await db.songGenres.findAll();
   const currentId = (await halls.length) + 1;
   try {
-    const newDining = await db.releases.create({
-      release_id: currentId,
-      release_country: req.body.release_country,
-      release_year: req.body.release_year,
-      release_link: req.body.release_link
+    const newDining = await db.playlists.create({
+      song_id: currentId,
+      genre_id: req.body.genre_id,
     });
     res.json(newDining);
   } catch (err) {
@@ -639,15 +635,15 @@ router.post('/AlbumStyle', async (req, res) => {
   }
 });
 
-router.put('/AlbumStyle', async (req, res) => {
+router.put('/song_genres', async (req, res) => {
   try {
-    await db.AlbumStyle.update(
+    await db.songGenres.update(
       {
-        album_id: req.body.album_id,
+        genre_id: req.body.genre_id,
       },
       {
         where: {
-          album_id: req.body.album_id
+          song_id: req.body.song_id
         }
       }
     );
@@ -658,11 +654,193 @@ router.put('/AlbumStyle', async (req, res) => {
   }
 });
 
-router.delete('/AlbumStyle/:album_id', async (req, res) => {
+router.delete('/song_genres/:song_id', async (req, res) => {
   try {
-    await db.genres.destroy({
+    await db.songGenres.destroy({
       where: {
-        album_id: req.params.album_id
+        song_id: req.params.song_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////PlayListSongs Endpoints/////////
+/// /////////////////////////////////
+
+router.get('/playlist_songs', async (req, res) => {
+  try {
+    const styleItems = await db.playlistSongs.findAll(); 
+    const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/playlist_songs/:playlist_id', async (req, res) => {
+  try {
+    const styleItems = await db.playlistSongs.findAll({
+      where: {
+        playlist_id : req.params.playlist_id
+      }
+    });
+
+    res.json(styleItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/playlist_songs', async (req, res) => {
+  const styleItems = await db.playlistSongs.findAll();
+  const currentId = (await styleItems.length) + 1;
+  try {
+    const newStyle = await db.playlistSongs.create({
+      playlist_id: currentId,
+      song_id: req.body.song_id,
+      added_by: req.body.added_by,
+      date_added: req.body.date_added
+    });
+    res.json(newStyle);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/playlist_songs', async (req, res) => {
+  try {
+    await db.playlistSongs.update(
+      {
+        song_id: req.body.song_id,
+        added_by: req.body.added_by,
+        date_added: req.body.date_added
+      },
+      {
+        where: {
+          playlist_id: req.body.playlist_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/playlist_songs/:playlist_id', async (req, res) => {
+  try {
+    await db.playlistSongs.destroy({
+      where: {
+        playlist_id: req.params.playlist_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////Songs Endpoints/////////
+/// /////////////////////////////////
+
+router.get('/songs', async (req, res) => {
+  try {
+    const styleItems = await db.songs.findAll(); 
+    const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/songs/:song_id', async (req, res) => {
+  try {
+    const styleItems = await db.songs.findAll({
+      where: {
+        song_id : req.params.song_id
+      }
+    });
+
+    res.json(styleItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/songs', async (req, res) => {
+  const styleItems = await db.songs.findAll();
+  const currentId = (await styleItems.length) + 1;
+  try {
+    const newStyle = await db.songs.create({
+      song_id: currentId,
+      name: req.body.name,
+      duration: req.body.duration,
+      is_explicit: req.body.is_explicit,
+      danceability: req.body.danceability,
+      energy: req.body.energy,
+      loudness: req.body.loudness,
+      speechiness: req.body.speechiness,
+      acousticness: req.body.acousticness,
+      instrumentalness: req.body.instrumentalness,
+      liveness: req.body.liveness,
+      valence: req.body.valence,
+      tempo: req.body.tempo
+    });
+    res.json(newStyle);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/songs', async (req, res) => {
+  try {
+    await db.songs.update(
+      {
+        name: req.body.name,
+        duration: req.body.duration,
+        is_explicit: req.body.is_explicit,
+        danceability: req.body.danceability,
+        energy: req.body.energy,
+        loudness: req.body.loudness,
+        speechiness: req.body.speechiness,
+        acousticness: req.body.acousticness,
+        instrumentalness: req.body.instrumentalness,
+        liveness: req.body.liveness,
+        valence: req.body.valence,
+        tempo: req.body.tempo
+      },
+      {
+        where: {
+          song_id: req.body.song_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/songs/:song_id', async (req, res) => {
+  try {
+    await db.songs.destroy({
+      where: {
+        song_id: req.params.song_id
       }
     });
     res.send('Successfully Deleted');
@@ -674,18 +852,18 @@ router.delete('/AlbumStyle/:album_id', async (req, res) => {
 
 /// /////////////////////////////////
 /// ////Maintable Endpoints////////
-/// ////////////////////////////////
-const macrosCustom = rawqueries
+/// /////////////////////////////////
 router.get('/main', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json({data:result});
+    const main = await db.maintable.findAll(); 
+    const reply = main.length > 0 ? { data: main } : { message: 'no results found' };
+    res.json(reply);
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
+
+
 
 export default router;

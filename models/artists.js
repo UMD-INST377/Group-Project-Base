@@ -3,20 +3,14 @@ export default (sequelize, DataTypes) => {
     'artists',
     {
       artist_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.CHAR(22),
         allowNull: false,
-        autoIncrement: true,
-        primaryKey: true
+        unique: true,
+        primaryKey: true,
       },
       artist_name: {
-        type: DataTypes.CHAR(45),
+        type: DataTypes.CHAR(50),
         allowNull: false,
-      },
-      total_artist_albums: {
-        type: DataTypes.DECIMAL(5, 1),
-      },
-      artist_link: {
-        type: DataTypes.BLOB
       }
     },
     { freezeTableName: true, timestamps: false }

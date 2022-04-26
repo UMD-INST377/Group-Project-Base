@@ -3,19 +3,15 @@
 /* eslint-disable no-console */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-alert */
-
-function restArrayMake(dataArray) {
-  const listItems = dataArray.slice(0, 50);
-  return listItems;
-}
 function createHtmlList(collection) {
   const targetList = document.querySelector('.result_list');
   targetList.innerHTML = '';
   collection.forEach((item) => {
-    const { name } = item;
-    const { album_name } = item;
+    const { albumName } = item;
+    const { artistId } = item;
     const displayName = album_name.toLowerCase();
-    const displayArtist = name.toLowerCase();
+    const displayArtist = artistId;
+     main;
     const injectThis = `<th>${displayName}</th>`;
     const injectThisCity = ` <td>${displayArtist}</td>`;
     targetList.innerHTML += injectThis + injectThisCity;
@@ -49,7 +45,7 @@ async function mainEvent() {
   const add = document.querySelector('#add');
   const del = document.querySelector('#delete');
 
-  const results = await fetch('/api/main'); // This accesses some data from our API
+  const results = await fetch('/api/albums'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
 
   if (arrayFromJson.data.length > 0) {
@@ -71,7 +67,7 @@ async function mainEvent() {
       });
       console.log(dataArray);
 
-      createHtmlList(restArrayMake(dataArray));
+      createHtmlList(dataArray);
     });
 
     form.addEventListener('submit', async (submitEvent) => {
@@ -79,10 +75,10 @@ async function mainEvent() {
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       console.log('form submission'); // this is substituting for a 'breakpoint'
       currentArray = arrayFromJson.data;
-      createHtmlList(restArrayMake(currentArray));
+      createHtmlList(currentArray);
     });
-    // add.addEventListener('input', albumAdd);
-    // del.addEventListener('input', albumDelete);
+    add.addEventListener('input', albumAdd);
+    del.addEventListener('input', albumDelete);
   }
 }
 // this actually runs first! It's calling the function above

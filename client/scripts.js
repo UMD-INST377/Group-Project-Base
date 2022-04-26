@@ -6,6 +6,10 @@ const totalSlides = slides.length;
 let nextSlide = document.querySelector('#carousel_button-next');
 const prevSlide = document.querySelector('#carousel_button-prev');
 
+
+/*
+Shows Ouput for front page
+*/
 meals.addEventListener('submit', async (e) => {
   e.preventDefault();
   const results = await fetch('/api/meals');

@@ -12,7 +12,7 @@ Shows Ouput for front page
 */
 meals.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const results = await fetch('/api/meals');
+  const results = await fetch('api/meals');
   const arrayFromJson = await results.json();
   console.log(arrayFromJson);
   const targetList = document.querySelector('.food-list');

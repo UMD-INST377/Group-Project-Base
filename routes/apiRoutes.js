@@ -169,7 +169,25 @@ router.delete('/felinae_by_common_names', async (req, res) => {
     res.send('Server error');
   }
 });
-
+router.put('/canidae_common_names', async (req, res) => {
+  try {
+    console.log('PUT to router.route("/canidae_by_common_names")..');
+    const canidae_by_common_names = await db.sequelizeDB.models.canidae.update({
+      item: req.body.item,
+      scientific_name: req.body.scientific_name,
+      parent_taxon: req.body.parent_taxon
+    },
+    {
+      where: {
+        GBIF: req.body.gbif
+      }
+    });
+    res.status(200).send(`SUCCESS: Item(s) with GBIF ID: ${req.body.gbif} updated.`);
+    res.end();
+  } catch (e) {
+    res.send(`ERROR: ${e.name}`);
+  }
+})
 router.post('/felinae_by_common_names', async (req, res) => {
   try {
     const felinae = await db.sequelizeDB.models.felinae.findAll({

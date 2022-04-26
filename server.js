@@ -2,6 +2,8 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import apiRoutesJessica from './routes/apiRoutesJessica.js';
+import apiRoutesMelody from './routes/apiRoutesMelody.js';
 
 const app = express();
 

@@ -1,3 +1,9 @@
+img {
+  border-radius: 100px;
+  max-width: 100%;
+  height: auto;
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #3E4F36;

@@ -46,30 +46,33 @@ router.post('/album/', async (req, res) => {
     res.send('Server Error')
   }
 });
-router.put('/album/', async (req, res) => {
-  try {
-    //console.dir(album, { depth: null })
-    //const release = req.body.release_id || 1;
-    //const genre = req.body.genre_id || 1;
-    //const albux = req.body.album_id || ('Graduation');
-    const albumUpdate = await db.album.upsert(
-      {
-        album_id: req.body.album_id,
-        release_id: req.body.release_id,
-        genre_id: req.body.genre_id,
-        album_name: req.body.album_name,
-      },
-      {
-        where: {
-          album_id: req.body.album_id,
-        }
-      }
-    );
-    res.json('Success. Record Updated')
-  } catch (error) {
-    console.log(error);
-    res.send('Server Error');
-  }
-});
+
+router.route('/album').put(async, (req, res) => {
+    console.dir(album, { depth: null })
+    console.log(util.inspect(req.body, {showHidden: false, depth: null, colors: true}))
+try {
+  const albumUpdate = await db.album.upsert(
+
+
+}
+    ///
+    ///{
+    ///    album_id: req.body.album_id,
+    ///    release_id: req.body.release_id,
+    ///    genre_id: req.body.genre_id,
+    ///    album_name: req.body.album_name,
+    ///  },
+    ///  {
+    ///    where: {
+    ///     album_id: req.body.album_id,
+    ///    }
+    ///  }
+    ///);
+    ///res.json('Success. Record Updated')
+  ///} catch (error) {
+  ///  console.log(error);
+  ///  res.send('Server Error');
+  ///}
+///});
 
 export default router;

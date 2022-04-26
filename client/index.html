@@ -5,41 +5,33 @@
     <meta name='viewport'
       content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <title>Login Page</title>
-    <link rel='stylesheet' href='styles.css'/>
+    <link rel='stylesheet' href='css/login.css'/>
   </head>
   <body>
-    <div class='login_container'>
-      <form action='' method='get' class='speaker-form'> <!-- This is where the input gets collected by the form is sent when the user clicks the Submit button -->
-          <img id="icon" src='images/film_icon.jpg' alt='Icon Image' class='center'/>
-          <h1>Login Page</h1>
-          <div class='form-row'> <!-- Username-->
-              <label for='username'>Username</label>
-              <input id='username' 
-                  name='username' 
-                  type='text'
-                  placeholder='Username'/>
-          </div>
-
-          <div class='form-row'> <!-- Password-->
-              <label for='password'>Password</label>
-              <input id='password'
-                  name='password'
-                  type='text'
-                  placeholder='Password'/>
-          </div>
-
-          <div class='form-row'> <!-- A login button-->
-              <button>
-                <div class = "login_btn"> 
-                  <a href="dashboard.html">Login </a>
-                </div>
-              </button> <!-- Dashboard page-->
-          </div> 
-
-          <div class='form-row'> <!-- A create account button-->
-              <button> <a href="create_account.html">Create Account </a></button> <!-- Create account page-->
-          </div> 
-      </form> <!-- This is where the input gets collected by the form is sent when the user clicks the Submit button -->
-    </div>
+    <div class="container">
+      <img id="icon" src='images/film_icon.jpg' alt='Icon Image' class='center'/>
+      <h1 class="label">Login Page</h1>
+      <form class="login_form" action="dashboard.html" method="GET" name="form" onsubmit="return validated()">
+        <div class="font">
+          Email Address
+        </div>
+        <input autocomplete="off" type="text" name="email" placeholder="abcd@gmail.com">
+        <div id="email_error">
+          Please enter your Email Address
+        </div>
+        <div class="font font2">
+          Password
+        </div>
+        <input type="password" name="password" placeholder="abcdefgh">
+        <div id="pass_error">
+          Please enter your Password
+        </div>
+        <button type="submit">Login</button>
+        <button type="submit"><a href="create_account.html">Create Account</a></button>
+      </form>
+    </div>	
+    <script src="script.js"></script>
   </body>
+  </html>
+</body>
 </html>

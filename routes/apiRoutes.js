@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
+import ChartJsImage from "chartjs-to-image";
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -88,7 +88,7 @@ router.get('/chart', async (req, res) => {
     type: 'bar',
     data: {labels: colNames, datasets: [{label: 'Average Ratings', data: dataValues}]}
   });
-  chart.toFile('./Chart.png'); // The image saving file name
+  chart.toFile('./client/images/Chart.jpg'); // The image saving file name
   // console.log(dataValues, colNames);
   res.send('dummyValue');
 });

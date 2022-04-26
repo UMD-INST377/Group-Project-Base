@@ -15,7 +15,20 @@
     flex-direction: column;
     align-items: center;
   }
-  
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
   .speaker-form-header {
     text-align: center;
     background-color: #F6F7F8;

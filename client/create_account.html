@@ -5,26 +5,26 @@
     <meta name='viewport'
       content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <title>Create Account Page</title>
-    <link rel='stylesheet' href='styles.css'/>
+    <link rel='stylesheet' href='css/create_account.css'/>
   </head>
   <body>
 
-    <form action='' method='get' class='speaker-form'> <!-- This is where the input gets collected by the form is sent when the user clicks the Submit button -->
+    <form action='' method='get' name='form' class='speaker-form' onsubmit="return validated()"> <!-- This is where the input gets collected by the form is sent when the user clicks the Submit button -->
         <h1>Create Account</h1>
         <div class='form-row'> <!-- Username-->
-            <label for='username'>Username</label>
-            <input id='username' 
-                name='username' 
+            <label for='email_address'>Email Address</label>
+            <input id='email_address' 
+                name='email_address' 
                 type='text'
-                placeholder='Username'/>
+                placeholder='Email Address'/>
         </div>
 
         <div class='form-row'> <!-- Username-->
-            <label for='username'>Re-enter Username</label>
-            <input id='username' 
-                name='username' 
+            <label for='email_address'>Re-enter Email Address</label>
+            <input id='email_address' 
+                name='email_address' 
                 type='text'
-                placeholder='Re-enter Username'/>
+                placeholder='Re-enter Email Address'/>
         </div>
 
         <div class='form-row'> <!-- Password-->

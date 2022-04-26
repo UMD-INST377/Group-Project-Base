@@ -4,16 +4,6 @@
     box-sizing: border-box;
 }
 
-/* Login Page */
-img#icon {
-  width: 20%;
-} 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
 body {
   color: #5D6063;
   background-color: #3059e234;
@@ -24,87 +14,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* Dropdown Menu*/
-nav.dropdown{
-  text-align: center;
-}
-
-.menu {
-  display: inline-block;
-  z-index:1;
-} 
-
-.menu>li {
-  float: left;
-  color: #e298e1;
-  width: 140px;
-  height: 40px;
-  line-height: 40px;
-  background: rgba(0, 0, 0, 0.7);
-  cursor: pointer;
-  font-size: 17px;
-}
-
-li::marker {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.sub-menu {
-  transform: scale(0);
-  transform-origin: top center;
-  transition: all 300ms ease-in-out;
-}
-.sub-menu li {
-  font-size: 14px;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 8px 0;
-  color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  transform: scale(0);
-  transform-origin: top center;
-  transition: all 300ms ease-in-out;
-}
-.sub-menu li:last-child {
-  border-bottom: 0;
-}
-.sub-menu li:hover {
-  background: black;
-}
-.menu>li:hover .sub-menu li {
-  transform: scale(1);
-}
-.menu>li:hover .sub-menu {
-  transform: scale(1);
-}
-
-/* Button for the login page*/
-button div{
-  width: 100%;
-  height: 100%;
-}
-
-button div a{
-  width: 100%;
-  height: 100%;
-  padding: 2rem;
-}
-
-/* Heading for the dashboard*/
-.header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 100px;
-  background-color: gainsboro;
-}
-
-img#logo  {
-  width: 10%;
-  height: 15%;
 }
 
 h1 {
@@ -126,44 +35,6 @@ a:visited {
   color:rgb(255, 255, 255);
 }
 
-
-/* Dashboard title  --The new name is now header*/
-.section_1{
-  width: 100%;
-  display: inline-block;
-  background-color: rgba(31, 122, 175, 0.61);
-  padding: 10px 15px;
-  margin: 0;
-  margin-bottom: 10px;
-}
-
-/* Navigation Bar*/
-nav {
-  background-color: rgba(0,139, 139,0.4);
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-around;
-}
-
-
-nav.dashboard_nav{
-  background-color: rgba(0,139, 139,0.4);
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-around;
-}
-
-/* Carousel Slides*/
-.carousel-display-left{
-  color: #999999;
-}
-.carousel-display-right{
-  color: #999999;
-}
 /* Speaker Form*/
 .speaker-form {
     background-color: #F6F7F8;
@@ -196,7 +67,6 @@ nav.dashboard_nav{
   .form-row label {
     margin-bottom: 15px;
   }
-
 
 /* Change this rule */
     .form-row input[type='text'] {
@@ -269,16 +139,6 @@ nav.dashboard_nav{
     margin-bottom: 30px;
 }
 
-
-/* Styling the images*/
-.tv_film_selection{
-  display: flex;
-}
-
-img#image_1 {
-  margin-right: 75px;
-}
-
 /* Styling the button from the images*/
 .container{
   position: relative;
@@ -303,7 +163,6 @@ img#image_1 {
 .container .btn:hover {
   background-color: rgba(136, 128, 128, 0.842);
 }
-
 
 /* Styling the submit button*/
 .form-row button {

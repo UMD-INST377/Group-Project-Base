@@ -86,6 +86,13 @@ div.middle {
   justify-content: center;
 }
 
+#chart{
+  margin: auto;
+  display: flex;
+  max-width: 480px;
+  justify-content: center;
+}
+
 .icon {
   display: flex;
   justify-content: center;

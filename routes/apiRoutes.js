@@ -3,9 +3,10 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-import validator from 'validator';
 
 import db from '../database/initializeDB.js';
+import rawqueries from './rawqueries.js';
+
 
 const router = express.Router();
 

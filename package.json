@@ -17,6 +17,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
+    "chartjs-to-image": "^1.0.5",
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",

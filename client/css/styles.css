@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  color: #5D6063;
+  background-color: #3059e234;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 1.3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/***
+*       ____                          _              
+*      / __ \                        (_)             
+*     | |  | |  _   _    ___   _ __   _    ___   ___ 
+*     | |  | | | | | |  / _ \ | '__| | |  / _ \ / __|
+*     | |__| | | |_| | |  __/ | |    | | |  __/ \__ \
+*      \___\_\  \__,_|  \___| |_|    |_|  \___| |___/
+*                                                                                                      
+*/
+
+
+
+@media only screen and (min-width: 700px) {
+  
+}

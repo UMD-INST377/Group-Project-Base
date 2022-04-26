@@ -1,1 +1,37 @@
-Hello world!
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <meta name='viewport'
+      content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <title>Login Page</title>
+    <link rel='stylesheet' href='css/login.css'/>
+  </head>
+  <body>
+    <div class="container">
+      <img id="icon" src='images/film_icon.jpg' alt='Icon Image' class='center'/>
+      <h1 class="label">Login Page</h1>
+      <form class="login_form" action="dashboard.html" method="GET" name="form" onsubmit="return validated()">
+        <div class="font">
+          Email Address
+        </div>
+        <input autocomplete="off" type="text" name="email" placeholder="abcd@gmail.com">
+        <div id="email_error">
+          Please enter your Email Address
+        </div>
+        <div class="font font2">
+          Password
+        </div>
+        <input type="password" name="password" placeholder="abcdefgh">
+        <div id="pass_error">
+          Please enter your Password
+        </div>
+        <button type="submit">Login</button>
+        <button type="submit"><a href="create_account.html">Create Account</a></button>
+      </form>
+    </div>	
+    <script src="script.js"></script>
+  </body>
+  </html>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <meta name='viewport'
+      content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <title>Create Account Page</title>
+    <link rel='stylesheet' href='css/create_account.css'/>
+  </head>
+  <body>
+
+    <form action='' method='get' name='form' class='speaker-form' onsubmit="return validated()"> <!-- This is where the input gets collected by the form is sent when the user clicks the Submit button -->
+        <h1>Create Account</h1>
+        <div class='form-row'> <!-- Username-->
+            <label for='email_address'>Email Address</label>
+            <input id='email_address' 
+                name='email_address' 
+                type='text'
+                placeholder='Email Address'/>
+        </div>
+
+        <div class='form-row'> <!-- Username-->
+            <label for='email_address'>Re-enter Email Address</label>
+            <input id='email_address' 
+                name='email_address' 
+                type='text'
+                placeholder='Re-enter Email Address'/>
+        </div>
+
+        <div class='form-row'> <!-- Password-->
+            <label for='password'>Password</label>
+            <input id='password'
+                name='password'
+                type='text'
+                placeholder='Password'/>
+        </div>
+
+        <div class='form-row'> <!-- Password-->
+            <label for='password'>Re-enter Password</label>
+            <input id='password'
+                name='password'
+                type='text'
+                placeholder='Re-enter Password'/>
+        </div>
+
+        <div class='form-row'> <!-- A login button-->
+            <button> <a href="index.html">Login </a></button> <!-- Dashboard page-->
+        </div> 
+    </form> <!-- This is where the input gets collected by the form is sent when the user clicks the Submit button -->
+  </body>
+</html>

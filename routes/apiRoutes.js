@@ -79,12 +79,91 @@ router.get('/canidae/:gbif', async (req, res) => {
 
 router.post('/canidae_by_common_names', async (req, res) => {
   try {
-    const canidae = await db.sequelizeDB.models.canidae.findAll({
+    const newCanidaeCommon = await db.Canidae.create({
+      item: req.body.item,
+      GBIF: req.body.gbif,
+      scientific_name: req.body.scientific_name,
+      parent_taxon: req.body.parent_taxon,
+      common_names: req.body.common_names
+    });
+    res.json({data: newCanidaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.delete('/canidae_by_common_names', async (req, res) => {
+  try {
+    await db.Canidae.destroy({
       where: {
-        common_names: req.body.common_name
+        GBIF: req.body.gbif
       }
     });
-    res.json({data:canidae});
+    res.send('Successfully Deleted');
+    res.json({data: newCanidaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.post('/hominidae_by_common_names', async (req, res) => {
+  try {
+    const newHominidaeCommon = await db.Hominidae.create({
+      item: req.body.item,
+      GBIF: req.body.gbif,
+      scientific_name: req.body.scientific_name,
+      parent_taxon: req.body.parent_taxon,
+      common_names: req.body.common_names
+    });
+    res.json({data: newHominidaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.delete('/hominidae_by_common_names', async (req, res) => {
+  try {
+    await db.Hominidae.destroy({
+      where: {
+        GBIF: req.body.gbif
+      }
+    });
+    res.send('Successfully Deleted');
+    res.json({data: newHominidaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.post('/felinae_by_common_names', async (req, res) => {
+  try {
+    const newFelinaeCommon = await db.Felinae.create({
+      item: req.body.item,
+      GBIF: req.body.gbif,
+      scientific_name: req.body.scientific_name,
+      parent_taxon: req.body.parent_taxon,
+      common_names: req.body.common_names
+    });
+    res.json({data: newFelinaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.delete('/felinae_by_common_names', async (req, res) => {
+  try {
+    await db.Felinae.destroy({
+      where: {
+        GBIF: req.body.gbif
+      }
+    });
+    res.send('Successfully Deleted');
+    res.json({data: newFelinaeCommon});
   } catch (err) {
     console.error(err);
     res.send('Server error');
@@ -98,7 +177,7 @@ router.post('/felinae_by_common_names', async (req, res) => {
         common_names: req.body.common_name
       }
     });
-    res.json({data:felinae});
+    res.json({data: felinae});
   } catch (err) {
     console.error(err);
     res.send('Server error');
@@ -112,7 +191,7 @@ router.post('/hominidae_by_common_names', async (req, res) => {
         common_names: req.body.common_name
       }
     });
-    res.json({data:hominidae});
+    res.json({data: hominidae});
   } catch (err) {
     console.error(err);
     res.send('Server error');
@@ -341,7 +420,7 @@ router.route('/felinae')
         where: {
           GBIF: req.body.GBIF
         }
-      })
+      });
       res.status(200).send(`SUCCESS: Item(s) with GBIF ID: ${req.body.gbif} updated.`);
       res.end();
     } catch (e) {

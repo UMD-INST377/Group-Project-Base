@@ -5,7 +5,7 @@ import sequelize from 'sequelize';
 import chalk from 'chalk';
 import util from 'util';
 import db from '../database/initializeDB.js';
-import album from '../models/album.js';
+import album from '../models/Album.js';
 
 const router = express.Router();
 
@@ -70,5 +70,17 @@ router.put('/album/', async (req, res) => {
   }
 });
 
-
+router.delete('/album/:album_id', async (req, res) => {
+  try {
+    const albumDelete = await db.album.destroy({
+      where: {
+        album_id: req.params.album_id
+      }
+    });
+    res.json('Success. Record Deleted')
+  } catch (error) {
+    console.log(error);
+    res.send('Server Error');
+  }
+});
 export default router;

@@ -98,7 +98,15 @@ div.middle {
   width: 700px;
   text-align: center;
   padding: 25px;
+<<<<<<< HEAD
+<<<<<<< HEAD
  
+=======
+  /* dkdj */
+>>>>>>> e75c9c91335e53a49830bf82f0064e85b7d007b2
+=======
+ 
+>>>>>>> d320756108efd4176896b1ebb5cc38a02906091b
 }
 
 img.discog_logo {
@@ -109,9 +117,27 @@ img.discog_logo {
   width: 600px;
   height: 300px;
 }
+<<<<<<< HEAD
+.sidenav {
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fbec5d;
+  padding-top: 10px;
+}
+<<<<<<< HEAD
+=======
+>>>>>>> d320756108efd4176896b1ebb5cc38a02906091b
 
 .columns {
   display: flex;
   flex-wrap: wrap;
 }
 
+<<<<<<< HEAD
+=======
+>>>>>>> e75c9c91335e53a49830bf82f0064e85b7d007b2
+=======
+>>>>>>> d320756108efd4176896b1ebb5cc38a02906091b

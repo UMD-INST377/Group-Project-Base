@@ -6,11 +6,13 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        unique: true
       },
-      genre_name: {
-        type: DataTypes.CHAR(45),
-        allowNull: false
+      genre: {
+        type: DataTypes.CHAR(50),
+        allowNull: false,
+        unique: true
       }
     },
     { freezeTableName: true, timestamps: false }

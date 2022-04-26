@@ -853,17 +853,16 @@ router.delete('/songs/:song_id', async (req, res) => {
 /// /////////////////////////////////
 /// ////Maintable Endpoints////////
 /// /////////////////////////////////
+const results = rawqueries
 router.get('/main', async (req, res) => {
   try {
-    const main = await db.maintable.findAll(); 
-    const reply = main.length > 0 ? { data: main } : { message: 'no results found' };
-    res.json(reply);
+    const result = await db.sequelizeDB.query(results, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json({data:result});
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
-
-
-
 export default router;

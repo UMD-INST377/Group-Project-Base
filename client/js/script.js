@@ -25,8 +25,7 @@ async function albumDelete() {
   const request = `api/albums/${formbox.value}`;
   const resp = await fetch(request, {method: 'DELETE'});
   console.log(resp);
-  if (resp.status === 200) { alert(`${formbox.value}.deleted`); }
-  else {
+  if (resp.status === 200) { alert(`${formbox.value}.deleted`); } else {
     alert('Not_Found');
   }
 }
@@ -35,15 +34,15 @@ async function albumAdd() {
   const request = `api/albums/${formbox.value}`;
   const resp = await fetch(request, {method: 'ADD'});
   console.log(resp);
-  if (resp.status === 200) { alert(`${formbox.value}.added`) }
-  else {
-    alert('Not_Found')
+  if (resp.status === 200) { alert(`${formbox.value}.added`); } else {
+    alert('Not_Found');
   }
 }
 async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('#results');
-  const submitButton = document.querySelector('#submit_button');
+  // not needed since result is limited to 50
+  // const submitButton = document.querySelector('#submit_button');
   const restName = document.querySelector('#init_search');
   const add = document.querySelector('#add');
   const del = document.querySelector('#delete');
@@ -52,7 +51,7 @@ async function mainEvent() {
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
 
   if (arrayFromJson.data.length > 0) {
-    submitButton.style.display = 'block';
+    // submitButton.style.display = 'block';
     console.log('start');
 
     let currentArray = [];

@@ -1,19 +1,19 @@
 export default (sequelize, DataTypes) => {
-  const artists = sequelize.define(
-    'artists',
+  const songGenres = sequelize.define(
+    'song_genres',
     {
-      artist_id: {
+      song_id: {
         type: DataTypes.CHAR(22),
         allowNull: false,
-        unique: true,
-        primaryKey: true,
       },
-      artist_name: {
-        type: DataTypes.CHAR(50),
+      genre_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
+        autoIncrement: true
       }
+      
     },
     { freezeTableName: true, timestamps: false }
   );
-  return artists;
-};
+  return songGenres;
+}

@@ -6,9 +6,11 @@
  *
  *  This page contains all the functions that are used to resolve user searches and return the data needed for visualizing the result.
  *
- * The functions required in page script:
+ * The functions required script to fulfill a user query:
  *      - mainSearch() : for querying all the data from wikipedia/wikidata
  *      - toD3() : for displaying the tree
+ *
+ * They are used in apiRoutes.js @ route('/search')
  */
 
 /**

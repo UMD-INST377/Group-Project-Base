@@ -52,10 +52,6 @@ async function getByFamily(e, table) {
   appendResults(arr, table);
 }
 
-
-async function mainEvent() {
-  console.log('script loaded');
-}
 // mobile nav
 const header = document.querySelector('Header');
 const hamburger = document.querySelector('.hamburger');
@@ -189,34 +185,30 @@ async function mainEvent() {
   signUpModal.style.display = 'none';
   modal.style.display = 'none';
 
-});
+  // Login Modal
+  const loginModal = document.querySelector('.login_modal');
+  const loginLink = document.querySelector('.login');
 
-// Login Modal
-const loginModal = document.querySelector('.login_modal');
-const loginLink = document.querySelector('.login');
+  loginLink.addEventListener('click', () => {
+    loginModal.style.display = 'flex';
+    modal.style.display = 'block';
+  });
 
-loginLink.addEventListener('click', () => {
-  loginModal.style.display = 'flex';
-  modal.style.display = 'block';
-});
+  modal.addEventListener('click', () => {
+    loginModal.style.display = 'none';
+    modal.style.display = 'none';
+  });
 
-modal.addEventListener('click', () => {
-  loginModal.style.display = 'none';
-  modal.style.display = 'none';
-});
+  // User Sign Up
+  const signUpSubmit = document.querySelector('#sign_up');
 
-// User Sign Up
-const signUpSubmit = document.querySelector('#sign_up');
+  // 18 mins https://umd.zoom.us/rec/play/rOLy7S2bMVLqqQvCT4MafItbyal9mR0je208TXcKdYNg_60oQh4PUme9okMLZiuWGNZeuLKFPY7YvB8G.MwoLwbThRsi8-LiG
+  // const signUpForm = document.querySelector('sign_up_form')
 
-// 18 mins https://umd.zoom.us/rec/play/rOLy7S2bMVLqqQvCT4MafItbyal9mR0je208TXcKdYNg_60oQh4PUme9okMLZiuWGNZeuLKFPY7YvB8G.MwoLwbThRsi8-LiG
-// const signUpForm = document.querySelector('sign_up_form')
-
-signUpSubmit.addEventListener('click', (submitEvent) => {
-  submitEvent.preventDefault();
-  window.location.href = '/index.html';
-});
-
-document.addEventListener('DOMContentLoaded', mainEvent);
+  signUpSubmit.addEventListener('click', (submitEvent) => {
+    submitEvent.preventDefault();
+    window.location.href = '/index.html';
+  });
 
   signUpLink.addEventListener('click', () => {
     signUpModal.style.display = 'flex';
@@ -252,5 +244,5 @@ document.addEventListener('DOMContentLoaded', mainEvent);
     editorModal.style.display = 'none';
   });
 }
-document.addEventListener('DOMContentLoaded', mainEvent);
 
+document.addEventListener('DOMContentLoaded', mainEvent);

@@ -1,19 +1,19 @@
 export default (database, DataTypes) => {
-  const albumGenreInfo = database.define(
-    'album_genre_info',
+  const albumSongs = database.define(
+    'album_songs',
     {
       album_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.CHAR(22),
         allowNull: false,
         foreignKey: true,
       },
-      genre_id: {
-        type: DataTypes.INTEGER,
+      song_id: {
+        type: DataTypes.CHAR(22),
         allowNull: false,
         foreignKey: true
       },
     },
     { freezeTableName: true, timestamps: false }
   );
-  return albumGenreInfo;
+  return albumSongs;
 };

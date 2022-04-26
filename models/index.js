@@ -6,8 +6,9 @@ import playlists from './playlists.js';
 import artistAlbums from './artist_albums.js';
 import artistSongs from './artist_songs.js';
 import songGenres from './song_genres.js';
-import playlistSongs from './playlist_songs';
-import songs from './songs';
+import playlistSongs from './playlist_songs.js';
+import songs from './songs.js';
+
 
 export default {
   artists,
@@ -20,4 +21,5 @@ export default {
   songGenres,
   playlistSongs,
   songs
+ 
 };

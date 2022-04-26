@@ -1,3 +1,8 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable indent */
+/* eslint-disable no-console */
+/* eslint-disable linebreak-style */
+/* eslint-disable no-alert */
 function createHtmlList(collection) {
   const targetList = document.querySelector('.result_list');
   targetList.innerHTML = '';
@@ -6,7 +11,7 @@ function createHtmlList(collection) {
     const { artistId } = item;
     const displayName = album_name.toLowerCase();
     const displayArtist = artistId;
-     main
+     main;
     const injectThis = `<th>${displayName}</th>`;
     const injectThisCity = ` <td>${displayArtist}</td>`;
     targetList.innerHTML += injectThis + injectThisCity;
@@ -17,7 +22,17 @@ async function albumDelete() {
   const request = `api/albums/${formbox.value}`;
   const resp = await fetch(request, {method: 'DELETE'});
   console.log(resp);
-  if (resp.status === 200) {alert(`${formbox.value}.deleted`)}
+  if (resp.status === 200) { alert(`${formbox.value}.deleted`); }
+  else {
+    alert('Not_Found');
+  }
+}
+async function albumAdd() {
+  console.log('hello from add');
+  const request = `api/albums/${formbox.value}`;
+  const resp = await fetch(request, {method: 'ADD'});
+  console.log(resp);
+  if (resp.status === 200) { alert(`${formbox.value}.added`) }
   else {
     alert('Not_Found')
   }
@@ -27,7 +42,9 @@ async function mainEvent() {
   const form = document.querySelector('#results');
   const submitButton = document.querySelector('#submit_button');
   const restName = document.querySelector('#init_search');
+  const add = document.querySelector('#add');
   const del = document.querySelector('#delete');
+
   const results = await fetch('/api/albums'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
 
@@ -60,7 +77,7 @@ async function mainEvent() {
       currentArray = arrayFromJson.data;
       createHtmlList(currentArray);
     });
-
+    add.addEventListener('input', albumAdd);
     del.addEventListener('input', albumDelete);
   }
 }

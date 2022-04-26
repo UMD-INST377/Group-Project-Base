@@ -52,7 +52,7 @@ async function getByFamily(e, table) {
   appendResults(arr, table);
 }
 
-<<<<<<< HEAD
+
 async function mainEvent() {
   console.log('script loaded');
 }
@@ -67,7 +67,7 @@ hamburger.addEventListener('click', () => {
   navMenu.classList.toggle('active');
 });
 
-=======
+
 function createResultCard(queryArr) {
   const container = document.querySelector('.saved_results_container');
   const card = document.createElement('div');
@@ -142,7 +142,7 @@ async function oldEvent() { // old mainEvent()
   form2.addEventListener('submit', (e) => getByID(e, form2, table2));
   getAll.addEventListener('submit', (e) => getByFamily(e, allTable));
 }
->>>>>>> wikidata
+
 // saved results
 // const savedResults = document.querySelector(".saved_result_card")
 
@@ -188,7 +188,7 @@ async function mainEvent() {
   const signUpLink = document.querySelector('#sign_up');
   signUpModal.style.display = 'none';
   modal.style.display = 'none';
-<<<<<<< HEAD
+
 });
 
 // Login Modal
@@ -217,7 +217,7 @@ signUpSubmit.addEventListener('click', (submitEvent) => {
 });
 
 document.addEventListener('DOMContentLoaded', mainEvent);
-=======
+
   signUpLink.addEventListener('click', () => {
     signUpModal.style.display = 'flex';
     modal.style.display = 'block';
@@ -253,4 +253,4 @@ document.addEventListener('DOMContentLoaded', mainEvent);
   });
 }
 document.addEventListener('DOMContentLoaded', mainEvent);
->>>>>>> wikidata
+

@@ -1,0 +1,56 @@
+
+
+h1{
+  font-family: 'Ropa Sans';
+}
+
+.container{
+  text-align: center;
+}
+
+nav {
+    background-color: rgba(255, 0, 0);
+    display: flex;
+    flex-flow: row wrap;
+    border-radius: 4px;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+nav a {
+    color: rgb(255, 255, 255);
+}
+
+  .wrapper {
+    display:flex;
+    flex-direction: column;
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    margin:10px;
+  }
+  
+  .title{
+    display: inline-block;
+    background-color: rgba(0,139, 139,0.8);
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 0;
+    margin-bottom: 5px;
+  }
+  
+  .default{
+    margin-bottom: 5px;
+  }
+
+  .about_section {
+    background-color: skyblue;
+    border: 1px dashed #000;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 20px 25px;
+  }
+  
+
+  .swiper{
+    padding: 20%;
+  }

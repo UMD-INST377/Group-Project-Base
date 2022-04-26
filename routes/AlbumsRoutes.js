@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
@@ -45,11 +46,10 @@ router.post('/album/', async (req, res) => {
     res.send('Server Error')
   }
 });
-router.route('/album/').put((req,res) => {
-  console.log(util.inspect(req.body, {showHidden: false, depth: null, colors: true}))
-})
+
 router.put('/album/', async (req, res) => {
   try {
+    console.log(util.inspect(req.body, {showHidden: false, depth: null, colors: true}))
     const albumUpdate = await db.album.upsert(
       {
         album_id: req.body.album_id,
@@ -61,12 +61,14 @@ router.put('/album/', async (req, res) => {
         where: {
           album_id: req.body.album_id,
         }
-      });
+      }
+    );
     res.json('Success. Record Updated')
   } catch (error) {
     console.log(error);
     res.send('Server Error')
   }
 });
+
 
 export default router;

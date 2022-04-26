@@ -8,11 +8,23 @@ const prevSlide = document.querySelector('#carousel_button-prev');
 
 meals.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const results = await fetch('./api/meals');
+  const results = await fetch('/api/meals');
   const arrayFromJson = await results.json();
   console.log(arrayFromJson);
   const targetList = document.querySelector('.food-list');
-  targetList.innerHTML = '';
+  arrayFromJson.forEach((item) => {
+    const rows = document.createElement('tr');
+    const meal_id = document.createElement('td');
+    const mealName = document.createElement('td');
+    const mealCat = document.createElement('td');
+    meal_id.innerHTML = item.meal_id;
+    mealName.innerHTML = item.meal_name;
+    mealCat.innerHTML = item.meal_category;
+    rows.appendChild(meal_id);
+    rows.appendChild(mealName);
+    rows.appendChild(mealCat);
+    targetList.appendChild(rows);
+  });
 });
 
 /*

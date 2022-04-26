@@ -8,7 +8,8 @@ https://inst377group15.herokuapp.com/
 
 ## Target Browsers
 Description of target browsers (iOS? Android? Which ones? Which versions?)
-
+## Endpoint Doc
+```/api/genres``` 
 ## Developer Manual
 link or in github similar to example
 https://github.com/Berniez88/finalproject377:

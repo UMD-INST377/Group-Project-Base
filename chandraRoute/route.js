@@ -6,6 +6,7 @@ import hallUpdate from '../controllers/halls_update.js';
 import breakfastQuery from '../controllers/breakfast_query.js';
 import launchQuery from '../controllers/launch_query.js';
 import dinnerQuery from '../controllers/dinner_query.js';
+import mealQuery from '../controllers/meals.js';
 
 const router = express.Router();
 
@@ -62,6 +63,18 @@ router.put('/Group22_Dining_Hall_Tracker', async (req, res) => {
     const result = await db.sequelizeDB.query(hallUpdate, {
       replacements: { hall_hours_id: hallId },
       type: Sequelize.QueryTypes.UPDATE
+    });
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+    res.send({ message: err});
+  }
+});
+
+router.get('/allmeals', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(mealQuery, {
+      type: Sequelize.QueryTypes.SELECT
     });
     res.json({ data: result });
   } catch (err) {

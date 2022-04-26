@@ -16,8 +16,8 @@ router.route('/genre').get(async (req, res) => {
 });
 
 router.get('/genre', (req, res) => {
-    res.send('Welcome to the Genre API!');
-  });
+  res.send('Welcome to the Genre API!');
+});
 
 router.get('/genre/:genre_id', async (req, res) => {
   try {
@@ -39,7 +39,7 @@ router.post('/genre', async (req, res) => {
       genre_id: 19,
       genre_name: 'Rap'
     });
-    res.json(newgenre)
+    res.json(newgenre);
   } catch (error) {
     console.log(error);
     res.send('Server Error');
@@ -57,8 +57,9 @@ router.put('/genre/', async (req, res) => {
         where: {
           genre_id: req.body.genre_id
         }
-      });
-    res.json('Success. Record Updated')
+      }
+    );
+    res.json('Success. Record Updated');
   } catch (error) {
     console.log(error);
     res.send('Server Error');
@@ -72,7 +73,7 @@ router.delete('/genre/:genre_id', async (req, res) => {
         genre_id: req.params.genre_id
       }
     });
-    res.json('Success. Record Deleted')
+    res.json('Success. Record Deleted');
   } catch (error) {
     console.log(error);
     res.send('Server Error');

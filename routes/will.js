@@ -21,15 +21,18 @@ router.route('/meals')
     }
   });
 
-router.route('/meals/:meal_id')
-  .get(async (req, res) => { 
-    try {
-      const mealResult = await db.Meals.findAll( { where: {meal_id: req.params.meal_id}});
-      res.json({ data: mealResult });
-    } catch (error) {
-      console.log(error);
-      res.json({ message: 'Something went wrong on /meals end or the meal_id is invalid.' });
-    }
-  });
+router.get('/meals/:meal_id', async (req, res) => {
+  try {
+    const meal = await db.Meals.findAll({
+      where: {
+        meal_id: req.params.meal_id
+      }
+    });
+    res.json(meal);
+  } catch (error) {
+    console.log(error);
+    res.json({ message: 'Server error' });
+  }
+});
 
 export default router;

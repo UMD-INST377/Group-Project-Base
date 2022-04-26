@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UMD Plants: Search Plants</title>
+    <link rel='stylesheet' href='styles.css'>
+  </head>
+  <body>
+    <header class='wrapper'>
+      <h1>Search Plants</h1>
+    </header>
+    <div class="box">
+      <form method="get" class="main_form container column" >
+            <div class='form_row'>
+              <label for='resto_name'>Restaurant Name</label>
+              <input id='resto_name' name='resto_name' type='text'/>
+            </div>
+            <div class='form_row'>
+              <label for='zipcode'>Zipcode</label>
+              <input id='zipcode' name='zipcode' type='text'/>
+            </div>
+            <fieldset class='legacy_form_row'>
+              <legend>Flower Color</legend>
+              
+              <div>
+              <input type='checkbox' id='red' name='red'>
+              <label for='red'>Red</label>
+              
+              <input type='checkbox' id='orange' name='orange'>
+              <label for='orange'>Orange</label>
+              
+              <input type='checkbox' id='yellow' name='yellow'>
+              <label for='yellow'>Yellow</label>
+              </div>
+
+              <div>
+              <input type='checkbox' id='pink' name='pink'>
+              <label for='pink'>Pink</label>
+              
+              <input type='checkbox' id='purple' name='purple'>
+              <label for='purple'>Purple</label>
+              
+              <input type='checkbox' id='blue' name='blue'>
+              <label for='blue'>Blue</label>
+              </div>
+
+              <div>
+              <input type='checkbox' id='green' name='green'>
+              <label for='green'>Green</label>
+              
+              <input type='checkbox' id='white' name='white'>
+              <label for='white'>White</label>
+              
+              <input type='checkbox' id='gray' name='gray'>
+              <label for='gray'>Gray</label>
+              </div>
+              
+              <input type='checkbox' id='brown' name='brown'>
+              <label for='brown'>Brown</label>
+              
+              <input type='checkbox' id='black' name='black'>
+              <label for='black'>Black</label>
+
+            </fieldset>
+            <div class='form_row'>
+              <button class='submit_button'>Find Plants</button>
+            </div>
+      </form>
+      <div class="container column">
+        <h2>Plants Found:</h2>
+        <br>
+        <ul class="plants_list"></ul>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+
+  </body>
+</html>

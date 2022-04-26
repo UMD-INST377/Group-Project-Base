@@ -29,72 +29,74 @@
           <li class="divider"></li>
           <li><a class="active" href="form.html">Add new record</a></li>
         </ul>
-      <div class="row">
-        <form class="col s12">
+        <div id="form-wrapper">
           <div class="row">
-            <div class="input-field col l6">
-              <input id="title" type="text" name="title" required="required"/>
-              <label>Title</label>
-            </div>
-            <div class="input-field col l6">
-              <input id="year" type="text" name="year" required="required"/>
-              <label>Release Year</label>
-            </div>
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col l6">
+                  <input id="title" type="text" name="title" required="required"/>
+                  <label>Title</label>
+                </div>
+                <div class="input-field col l6">
+                  <input id="year" type="text" name="year" required="required"/>
+                  <label>Release Year</label>
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="input-field col l6">
+                  <select id="language-input" name="language_id" required="required"></select>
+                  <label>Language</label>
+                </div>
+                <div class="input-field col l6">
+                  <select id="rating-input" name="rating_id" required="required"></select>
+                  <label>Rating</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col l6">
+                  <select id="genre-input" name="genre_id" required="required"></select>
+                  <label>Genre</label>
+                </div>
+                <div class="input-field col l6">
+                  <input id="imageURL" type="text" name="image_url" required="required"/>
+                  <label>Image URL</label>
+                </div>
+                <div class="input-field col">
+                  Availability
+                  <form action="#">
+                    <p>
+                      <label>
+                        <input type="checkbox" id="netflix"/>
+                        <span>Netflix</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input type="checkbox" id="hulu"/>
+                        <span>Hulu</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input type="checkbox" id="prime"/>
+                        <span>Prime</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input type="checkbox" id="disney"/>
+                        <span>Disney</span>
+                      </label>
+                    </p>
+                  </form>
+                </div>
+            </form>
           </div>
-
-          <div class="row">
-            <div class="input-field col l6">
-              <select id="language-input" name="language_id" required="required"></select>
-              <label>Language</label>
-            </div>
-            <div class="input-field col l6">
-              <select id="rating-input" name="rating_id" required="required"></select>
-              <label>Rating</label>
-            </div>
+            <!-- <input type="submit" id="save-button"></input> -->
+            <a class="waves-effect waves-light btn-large" id="save-button">Save</a>
           </div>
-          <div class="row">
-            <div class="input-field col l6">
-              <select id="genre-input" name="genre_id" required="required"></select>
-              <label>Genre</label>
-            </div>
-            <div class="input-field col l6">
-              <input id="imageURL" type="text" name="image_url" required="required"/>
-              <label>Image URL</label>
-            </div>
-            <div class="input-field col">
-              Availability
-              <form action="#">
-                <p>
-                  <label>
-                    <input type="checkbox" id="netflix"/>
-                    <span>Netflix</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" id="hulu"/>
-                    <span>Hulu</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" id="prime"/>
-                    <span>Prime</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" id="disney"/>
-                    <span>Disney</span>
-                  </label>
-                </p>
-              </form>
-            </div>
-        </form>
-      </div>
-        <!-- <input type="submit" id="save-button"></input> -->
-        <a class="waves-effect waves-light btn-large" id="save-button">Save</a>
-      </div>
+        </div>
     </div>
     <!-- wrapper -->
 

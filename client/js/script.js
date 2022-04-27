@@ -22,10 +22,25 @@ function createHtmlList(collection) {
     const displayArtist = name.toLowerCase();
     const displaySong = songName.toLowerCase();
     const displayAlbum = album_name.toLowerCase();
-    const injectThisArtist = `<td>${displayArtist}</td>`;
-    const injectThisSong = `<td>${displaySong}</td>`;
-    const injectThisAlbum = ` <th>${displayAlbum}</th>`;
-    targetList.innerHTML += injectThisArtist + injectThisSong + injectThisAlbum;
+    let injectThisArtist;
+    let injectThisSong;
+    let injectThisAlbum;
+    if (document.getElementById('song').checked) {
+      injectThisArtist = `<td>${displayArtist}</td>`;
+      injectThisSong = `<th>${displaySong}</th>`;
+      injectThisAlbum = ` <td>${displayAlbum}</td>`;
+    }
+    if (document.getElementById('album').checked) {
+      injectThisArtist = `<td>${displayArtist}</td>`;
+      injectThisSong = `<td>${displaySong}</td>`;
+      injectThisAlbum = ` <th>${displayAlbum}</th>`;
+    }
+    if (document.getElementById('artist').checked) {
+      injectThisArtist = `<th>${displayArtist}</th>`;
+      injectThisSong = `<td>${displaySong}</td>`;
+      injectThisAlbum = ` <td>${displayAlbum}</td>`;
+    }
+    targetList.innerHTML += injectThisArtist + injectThisAlbum + injectThisSong;
   });
 }
 async function mainEvent() {
@@ -46,26 +61,24 @@ async function mainEvent() {
         return;
       }
       if (event.target.value.trim().length) {
-
-      // change arrayFromJson.data to currentArray if needed
-        const dataArray = arrayFromJson.data.filter((item) => { 
+        // change arrayFromJson.data to currentArray if needed
+        const dataArray = arrayFromJson.data.filter((item) => {
           // Changes the way the results are ordered based on which button is pressed
           if (document.getElementById('song').checked) {
-            console.log('Song is checked');
             const lowerName = item.songName.toLowerCase();
             const lowerValue = event.target.value.toLowerCase();
             return lowerName.startsWith(lowerValue);
           }
           if (document.getElementById('album').checked) {
-            console.log('Album is checked');
             const lowerName = item.album_name.toLowerCase();
             const lowerValue = event.target.value.toLowerCase();
             return lowerName.startsWith(lowerValue);
           }
-          console.log('Artist is checked');
-          const lowerName = item.name.toLowerCase();
-          const lowerValue = event.target.value.toLowerCase();
-          return lowerName.startsWith(lowerValue);
+          if (document.getElementById('artist').checked) {
+            const lowerName = item.name.toLowerCase();
+            const lowerValue = event.target.value.toLowerCase();
+            return lowerName.startsWith(lowerValue);
+          }
         });
         console.log(dataArray);
         console.log(event.target.value);

@@ -30,3 +30,8 @@ $(document).ready(function(){
 
         });
  });
+
+
+ // updated
+ // may need to expand on this more for website functionality
+

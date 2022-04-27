@@ -190,7 +190,7 @@ header .header-2.header-active{
 .about .row{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:center;
   padding:0 2rem;
   overflow-x: hidden;
 }
@@ -255,3 +255,50 @@ header .header-2.header-active{
   color:#333;
   padding:.5rem;
 }
+
+.resto .image-container .image p{
+  font-size: 2.5rem;
+  color:darkgreen;
+  margin:1rem;
+}
+
+
+.resto .btn{
+  color:var(--main-bg-color);
+  border-color: darkgreen;
+  outline-color: darkgreen;
+}
+
+.resto .btn:hover{
+  color:#fff;
+}
+.footer{
+  background:darkred;
+}
+
+.footer .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer .box-container .box{
+  flex:1 1 23rem;
+  margin:2rem;
+}
+
+.footer .box-container .box .heading span{
+  font-size: 2.5rem;
+  color:#fff;
+}
+
+.footer .box-container .box p{
+  font-size: 1.7rem;
+  color:#fff;
+  padding:1rem 0;
+}
+
+
+/* additional updates need to be made *\
+
+

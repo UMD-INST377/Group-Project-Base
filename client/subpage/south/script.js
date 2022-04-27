@@ -36,18 +36,14 @@ function createMeals(collection) {
 async function mainEvent() {
   console.log('script loaded');
 
-  // breakfast
+  // data
   const ans = await fetch('/chandra/allmeals');
   const entireMeal = await ans.json();
   console.log(entireMeal);
-  // const dataJson = JSON.stringify(breakfastItems.data);
+  
   const inputMeal = dataHandler(entireMeal.data);
   createCategory(inputMeal);
   createMeals(inputMeal);
-
-  // format data to look nicer on homepage
-  // const dataJson = JSON.stringify(breakfastItems.data);
-  // targetList.innerHTML = dataJson;
 }
 
 // this actually runs first! It's calling the function above

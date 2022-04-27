@@ -8,18 +8,17 @@ import mealsQuery from '../controller/meals_query.js';
 const router = express.Router();
 
 // /will
-router.route('/meals')
-  .get(async (req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(mealsQuery, {
-        type: sequelize.QueryTypes.SELECT
-      });
-      res.json({ data: result });
-    } catch (error) {
-      console.log(error);
-      res.json({ message: 'Server error' });
-    }
-  });
+router.get('/meals', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(mealsQuery, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json({ data: result });
+  } catch (error) {
+    console.log(error);
+    res.json({ message: 'Server error' });
+  }
+});
 
 router.get('/meals/:meal_id', async (req, res) => {
   try {
@@ -34,5 +33,6 @@ router.get('/meals/:meal_id', async (req, res) => {
     res.json({ message: 'Server error' });
   }
 });
+
 
 export default router;

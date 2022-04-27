@@ -54,11 +54,17 @@ body {
     font-size: 30px;
 }
 
-#label {
+#label, #label1, #label2, #label3, #label4 {
     width: 50%;
     background-color: lightgrey;
 }
 
-#button {
+#button1 {
+    background-color: red;
+}
+#button2 {
+    background-color: red;
+}
+#button3 {
     background-color: red;
 }

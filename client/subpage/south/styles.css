@@ -68,9 +68,11 @@
 
 .container {
     display: flex;
-    justify-content: flex-start;
-    padding-top: 100px;
-    gap: 200px;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 150px;
+    gap: 300px;
+    /*gap center*/
 }
 
 .location {
@@ -136,4 +138,8 @@
     width: 700px;
     align-self: center;
     margin-top: 130px;
+}
+
+#map {
+    height: 180px;
 }

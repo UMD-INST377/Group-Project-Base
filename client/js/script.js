@@ -1,8 +1,3 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable indent */
-/* eslint-disable no-console */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-alert */
 function restArrayMake(dataArray) {
   const listItems = dataArray.slice(0, 50);
   return listItems;
@@ -20,32 +15,12 @@ function createHtmlList(collection) {
     targetList.innerHTML += injectThisArtist + injectThisAlbum;
   });
 }
-async function albumDelete() {
-  console.log('hello from delete');
-  const request = `api/albums/${formbox.value}`;
-  const resp = await fetch(request, {method: 'DELETE'});
-  console.log(resp);
-  if (resp.status === 200) { alert(`${formbox.value}.deleted`); } else {
-    alert('Not_Found');
-  }
-}
-async function albumAdd() {
-  console.log('hello from add');
-  const request = `api/albums/${formbox.value}`;
-  const resp = await fetch(request, {method: 'ADD'});
-  console.log(resp);
-  if (resp.status === 200) { alert(`${formbox.value}.added`); } else {
-    alert('Not_Found');
-  }
-}
 async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('#results');
   // not needed since result is limited to 50
   // const submitButton = document.querySelector('#submit_button');
   const restName = document.querySelector('#init_search');
-  const add = document.querySelector('#add');
-  const del = document.querySelector('#delete');
 
   const results = await fetch('/api/main'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
@@ -84,8 +59,6 @@ async function mainEvent() {
       currentArray = arrayFromJson.data;
       createHtmlList(restArrayMake(currentArray));
     });
-    // add.addEventListener('input', albumAdd);
-    // del.addEventListener('input', albumDelete);
   }
 }
 // this actually runs first! It's calling the function above

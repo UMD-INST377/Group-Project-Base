@@ -11,20 +11,35 @@ export default {
     password: 'INST377@UMD',
     database: 'Dining_Hall_Tracker',
     host: '174.129.198.86',
+<<<<<<< Updated upstream
     dialect: 'mysql'
+=======
+    dialect: 'mysql',
+    define: {timestamps: false, freezeTableName: true}
+>>>>>>> Stashed changes
   },
   test: {
     username: 'student',
     password: 'INST377@UMD',
     database: 'Dining_Hall_Tracker',
     host: '174.129.198.86',
+<<<<<<< Updated upstream
     dialect: 'mysql'
+=======
+    dialect: 'mysql',
+    define: {timestamps: false, freezeTableName: true}
+>>>>>>> Stashed changes
   },
   production: {
     username: 'student',
     password: 'INST377@UMD',
     database: 'Dining_Hall_Tracker',
     host: '174.129.198.86',
+<<<<<<< Updated upstream
     dialect: 'mysql'
+=======
+    dialect: 'mysql',
+    define: {timestamps: false, freezeTableName: true}
+>>>>>>> Stashed changes
   }
 };

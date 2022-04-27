@@ -15,7 +15,12 @@ export default {
 // import Macros from './Macros.js';
 // import Meals from './Meals.js';
 import Actor from './Actors.js';
+<<<<<<< Updated upstream
 import Title from './Title.js';
+=======
+import Title from './Titles.js';
+import Episodes from './Episodes.js';
+>>>>>>> Stashed changes
 
 export default {
   // DietaryRestrictions,
@@ -23,6 +28,11 @@ export default {
   // Macros,
   // Meals,
   Actor,
+<<<<<<< Updated upstream
   Title
+>>>>>>> Stashed changes
+=======
+  Title,
+  Episodes
 >>>>>>> Stashed changes
 };

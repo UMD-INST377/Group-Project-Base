@@ -1,6 +1,6 @@
 let newDate = new Date (2019, 3, 51)
 export default (database, DataTypes) => {
-  const title = database.define('title', {
+  const title = database.define('primary_title', {
     title_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -46,9 +46,15 @@ export default (database, DataTypes) => {
         allowNull: true,
     },
     runtime_min: {
+<<<<<<< Updated upstream:models/Title.js
         type: DataTypes.INTEGER,
         allowNull: true,
     },
+=======
+      type: DataTypes.INTEGER,
+      allowNull: true
+    }
+>>>>>>> Stashed changes:models/Titles.js
   });
   return title
 };

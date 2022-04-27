@@ -310,4 +310,4 @@ submitBtn.addEventListener("click", e => {
 
 
 addEventListenersToRadioButtons();
-//getMenu().then(() => displayMenu());
+getMenu().then(() => displayMenu());

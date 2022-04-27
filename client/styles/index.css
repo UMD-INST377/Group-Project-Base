@@ -311,19 +311,7 @@ body {
 /* Card section end */
  
 @media only screen and (min-width: 960px) {
-    .navbar-container {
-        top: 0px;
-        position: relative;
-        background-color: #FFD66C !important;
-    }
-    .navbar {
-        grid-template-columns: repeat(4, 1fr);
-        font-size: 15px;
-    }
-    .navbar-elm{
-        width: 150px;
-    }
-
+   
 
     .search-bar-container {
         margin-top: 140px;

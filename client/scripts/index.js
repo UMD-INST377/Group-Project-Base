@@ -8,16 +8,10 @@ const resultsHeader = document.querySelector('.results-header');
 const searchHistoryDropDown = document.querySelector('.search-dropdown');
  
 
-let stars = document.querySelectorAll('.fa-star') ;
+ 
 let inputValue = '';
 let searchResults = [];
 
-//add eventlistener to each star to show favorited
-for (const star of stars) {
-    star.addEventListener('click', (e)=> {
-        star.classList.toggle('favorited');
-    })
-}
 
 //get results from users request
 async function searchFood(food){
@@ -32,7 +26,6 @@ async function searchFood(food){
         console.log('Error - ' + e)
     }
 }
-
 
 
 //get value of searchbar
@@ -82,7 +75,6 @@ function addResultsCard(){
 
         // fill each entry card with info
         [food,location,address].map((elm, index)=> { 
-
             const resultFoodHeader = document.createElement('div');
             resultFoodHeader.textContent = entryLabelsArr[index % 3];
             resultFoodHeader.classList.add('entry-header') ;

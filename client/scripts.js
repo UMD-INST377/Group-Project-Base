@@ -31,6 +31,16 @@ function showResults(collection) {
     });
 }
 
+function initGenreSelect(collection) {
+    console.log('initGenreSelect()')
+    const genreSelect = document.querySelector('#movie-genre');
+    collection.forEach((item) => {
+        const text = item.genre;
+        const value = text.toLowerCase();
+        genreSelect.innerHTML += `<option value="${value}">${text}</option>`;
+    });
+}
+
 async function getData(endpoint) {
     console.log('getData()');
     const raw = await fetch(endpoint);
@@ -85,6 +95,7 @@ async function mainEvent() {
     console.log(movieJson);
     console.log(genreJson);
 
+    initGenreSelect(genreJson);
     showResults(movieJson);
 }
 

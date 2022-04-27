@@ -1,7 +1,8 @@
 function sortArray(arr, key) {
   return arr.sort((a, b) => {
-    const x = a[key]; const y = b[key];
-    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    const x = a[key];
+    const y = b[key];
+    return x < y ? -1 : x > y ? 1 : 0;
   });
 }
 
@@ -25,17 +26,14 @@ function createHtmlList(collection) {
 async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('#results');
-  // not needed since result is limited to 50
-  // const submitButton = document.querySelector('#submit_button');
   const restName = document.querySelector('#init_search');
+  const ArtistRadio = document.getElementById('Artist');
+  const AlbumRadio = document.getElementById('Album');
 
   const results = await fetch('/api/main'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-
   if (arrayFromJson.data.length > 0) {
-    // submitButton.style.display = 'block';
     console.log('start');
-
     let currentArray = [];
     restName.addEventListener('input', async (event) => {
       console.log(event.target.value);
@@ -44,16 +42,32 @@ async function mainEvent() {
         return;
       }
       if (event.target.value.trim().length) {
-      // change arrayFromJson.data to currentArray if needed
+        // change arrayFromJson.data to currentArray if needed
         const dataArray = arrayFromJson.data.filter((item) => {
-          const lowerName = item.album_name.toLowerCase();
+          const lowerAlbumName = item.album_name.toLowerCase();
+          const lowerArtistName = item.name.toLowerCase();
           const lowerValue = event.target.value.toLowerCase();
-          return lowerName.startsWith(lowerValue);
+          if (ArtistRadio.checked) {
+            return lowerArtistName.startsWith(lowerValue);
+          }
+          if (AlbumRadio.checked) {
+            return lowerAlbumName.startsWith(lowerValue);
+          }
+          return 'no results';
         });
+
         console.log(dataArray);
         console.log(event.target.value);
-        const sortedArray = sortArray(dataArray, "album_name");
-        console.log(sortedArray)
+        const sortedArray = (() => {
+          if (ArtistRadio.checked) {
+            return sortArray(dataArray, 'name');
+          }
+          if (AlbumRadio.checked) {
+            return sortArray(dataArray, 'album_name');
+          }
+        })();
+
+        console.log(sortedArray);
         createHtmlList(restArrayMake(sortedArray));
       } else {
         document.querySelector('.result_list').innerHTML = '';

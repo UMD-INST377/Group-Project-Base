@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 });
 
 /// /////////////////////////////////
-/// //////// Area Endpoints////////// by Ryan E
+/// //////// Area Endpoints by Ryan Essem //////////
 /// /////////////////////////////////
 
 router.get("/area", async (req, res) => {

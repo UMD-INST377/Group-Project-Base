@@ -25,8 +25,7 @@ async function albumDelete() {
   const request = `api/albums/${formbox.value}`;
   const resp = await fetch(request, {method: 'DELETE'});
   console.log(resp);
-  if (resp.status === 200) { alert(`${formbox.value}.deleted`); }
-  else {
+  if (resp.status === 200) { alert(`${formbox.value}.deleted`); } else {
     alert('Not_Found');
   }
 }
@@ -35,9 +34,8 @@ async function albumAdd() {
   const request = `api/albums/${formbox.value}`;
   const resp = await fetch(request, {method: 'ADD'});
   console.log(resp);
-  if (resp.status === 200) { alert(`${formbox.value}.added`) }
-  else {
-    alert('Not_Found')
+  if (resp.status === 200) { alert(`${formbox.value}.added`); } else {
+    alert('Not_Found');
   }
 }
 async function mainEvent() {
@@ -62,17 +60,21 @@ async function mainEvent() {
         console.log('caught');
         return;
       }
-      // change arrayFromJson.data to currentArray if needed
-      const dataArray = arrayFromJson.data.filter((item) => {
-        const lowerName = item.album_name.toLowerCase();
-        const lowerValue = event.target.value.toLowerCase();
-        return lowerName.includes(lowerValue);
+      if (event.target.value.trim().length) {
+        // change arrayFromJson.data to currentArray if needed
+        const dataArray = arrayFromJson.data.filter((item) => {
+          const lowerName = item.album_name.toLowerCase();
+          const lowerValue = event.target.value.toLowerCase();
+          return lowerName.startsWith(lowerValue);
+        });
+        console.log(dataArray);
+        console.log(event.target.value);
+
+        createHtmlList(restArrayMake(dataArray));
+      } else {
+        document.querySelector('.result_list').innerHTML = '';
+      }
       });
-      console.log(dataArray);
-
-      createHtmlList(restArrayMake(dataArray));
-    });
-
     form.addEventListener('submit', async (submitEvent) => {
       // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!

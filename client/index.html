@@ -42,24 +42,25 @@
     </div>
     <div class="search_container">
         <div class="field" id="searchbar">
+            <div class="buttons field">
+                <!-- <button class="button is-primary is-fullwidth" id="submit_button">Search</button> -->
+                <label class="radio">
+                    <strong>Search By: </strong>
+                    <input type="radio" name="filter" id="Album" checked>
+                    Album
+                </label>
+                <label class="radio">
+                    <input type="radio" name="filter" id="Artist">
+                    Artist
+                </label>
+            </div>
             <div class="control has-icons-left">
                 <input class="input" type="text" placeholder="Search" id="init_search">
                 <span class="icon is-small is-right">
                     <ion-icon name="search-outline"></ion-icon>
                 </span>
             </div>
-            <div class="buttons field">
-                    <!-- <button class="button is-primary is-fullwidth" id="submit_button">Search</button> -->
-                    <label class="radio">
-                        Search By:  
-                        <input type="radio" name="filter" id="Album" checked>
-                        Album
-                      </label>
-                      <label class="radio">
-                        <input type="radio" name="filter" id="Artist">
-                        Artist
-                      </label>
-            </div>
+
         </div>
     </div>
 
@@ -86,17 +87,17 @@
     </div>
 
     <div id="chart">
-    <canvas id="myChart" width="400px" height="400px"></canvas>
+        <canvas id="myChart" width="400px" height="400px"></canvas>
     </div>
 
 
     <script src="./js/script.js"></script>
-   
+
     <!-- chart scripts -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="./js/chart.js"></script>
     <!-- end of chart scripts -->
-   
+
     <!-- icon library script -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

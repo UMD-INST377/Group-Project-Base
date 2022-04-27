@@ -3,6 +3,7 @@ import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './server/routes/apiRoutes.js';
 import ryanRoutes from './server/routes/ryanRoutes.js';
+import nnamdiRoutes from './server/routes/nnamdiRoutes.js';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 app.use('/ryan', ryanRoutes);
+app.use('/nnamdi', nnamdiRoutes);
 
 async function bootServer() {
   try {

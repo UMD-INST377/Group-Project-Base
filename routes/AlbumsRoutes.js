@@ -31,11 +31,12 @@ router.get('/album/:album_id', async (req, res) => {
     res.send('Server Error');
   }
 });
-router.post('/album/', async (req, res) => {
+router.post('/album', async (req, res) => {
   const art = db.album.findAll();
   const currentId = (await art.length) + 1;
   try {
-    const newAlbum = await db.label.create({
+    console.log(util.inspect(req.body, {showHidden: false, depth: null, colors: true}));
+    const newAlbum = await db.album.create({
       album_id: currentId,
       release_id: req.body.release_id,
       genre_id: req.body.genre_id,

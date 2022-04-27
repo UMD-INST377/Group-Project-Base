@@ -59,7 +59,7 @@ router.route('/macros/:id')
     }
   })
   .put(async (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     try {
       const {id} = req.params;
       await db.Macros.update(
@@ -72,7 +72,7 @@ router.route('/macros/:id')
           }
         }
       );
-      res.send("success");
+      res.send('success');
     } catch (err) {
       console.log(err);
     }

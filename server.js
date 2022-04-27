@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 import express from 'express';
 import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
+import apiRoutes from './server/routes/apiRoutes.js';
+import ryanRoutes from './server/routes/ryanRoutes.js';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
+app.use('/ryan', ryanRoutes);
 
 async function bootServer() {
   try {

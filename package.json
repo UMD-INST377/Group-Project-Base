@@ -4,9 +4,6 @@
   "description": "",
   "main": "server.js",
   "type": "module",
-  "engines": {
-    "node": ">=14.0.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
@@ -17,8 +14,13 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
+    "connect": "^3.7.0",
+    "connect-livereload": "^0.6.1",
     "express": "^4.17.1",
+    "express-load": "^1.1.7",
+    "livereload": "^0.9.3",
     "mysql2": "^2.2.5",
+    "node-fetch": "^3.2.3",
     "nodemon": "^2.0.7",
     "sequelize": "^6.5.0",
     "sequelize-cli": "^6.2.0"

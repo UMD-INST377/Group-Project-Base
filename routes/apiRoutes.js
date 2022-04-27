@@ -851,6 +851,85 @@ router.delete('/songs/:song_id', async (req, res) => {
 });
 
 /// /////////////////////////////////
+/// ////Genres Endpoints/////////
+/// /////////////////////////////////
+
+router.get('/genres', async (req, res) => {
+  try {
+    const genresItems = await db.genres.findAll();
+    const reply = genresItems.length > 0 ? { data: genresItems } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/genres/:genres_id', async (req, res) => {
+  try {
+    const genresItems = await db.genres.findAll({
+      where: {
+        genres_id: req.params.genres_id
+      }
+    });
+
+    res.json(genresItems);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/genres', async (req, res) => {
+  const genresItems = await db.genres.findAll();
+  const currentId = (await genresItems.length) + 1;
+  try {
+    const newStyle = await db.genres.create({
+      genre_id: currentId,
+      genre: req.body.genre
+    });
+    res.json(newStyle);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/genres', async (req, res) => {
+  try {
+    await db.genres.update(
+      {
+        genre_id: req.body.genre_id,
+        genre: req.body.genre
+      },
+      {
+        where: {
+          genre_id: req.body.genre_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/genres/:genre_id', async (req, res) => {
+  try {
+    await db.genres.destroy({
+      where: {
+        genre_id: req.params.genre_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
 /// ////Supportint Endpoints////////
 /// /////////////////////////////////
 

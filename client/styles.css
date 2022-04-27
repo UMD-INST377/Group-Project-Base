@@ -835,7 +835,7 @@ footer div {
     align-items: flex-start;    
 }
 .darwin{
-    width: 750px;
-    height: 350px;
+    max-height: 350px;
+    max-width: 740;
     padding-left: 50px
 }

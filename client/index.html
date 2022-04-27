@@ -42,17 +42,24 @@
     </div>
     <div class="search_container">
         <div class="field" id="searchbar">
+
             <div class="buttons field">
-                <!-- <button class="button is-primary is-fullwidth" id="submit_button">Search</button> -->
-                <label class="radio">
-                    <strong>Search By: </strong>
-                    <input type="radio" name="filter" id="Album" checked>
-                    Album
-                </label>
-                <label class="radio">
-                    <input type="radio" name="filter" id="Artist">
-                    Artist
-                </label>
+                <div class="control">
+                    <strong>Search By:</strong>
+                    <!-- <button class="button is-primary is-fullwidth" id="submit_button">Search</button> -->
+                    <label class="radio">
+                        <input type="radio" name="filter" id="artist" checked>
+                        Artist
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="filter" id="album">
+                        Album
+                    </label>
+                    <label class="radio"></label>
+                    <input type="radio" name="filter" id="song">
+                    Song
+                    </label>
+                </div>
             </div>
             <div class="control has-icons-left">
                 <input class="input" type="text" placeholder="Search" id="init_search">
@@ -74,6 +81,8 @@
                         <tr>
                             <th>Artist</th>
                             <th>Album Name</th>
+                            <th>Song</th>
+
                         </tr>
 
                     </thead>

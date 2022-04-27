@@ -54,6 +54,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   const address = document.querySelector('#address');
   const city = document.querySelector('#city');
   const state = document.querySelector('#state');
+  const rating = document.querySelector('#rating');
   const retVar = 'restaurants';
   submit.style.display = 'none';
 

@@ -1,6 +1,9 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# Trailz App
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+## Project Description
+Our website will help anyone who is traveling to National parks and is looking for a guide to help plan their trips. In particular, those with accessibility needs such as ramp accessible visitor centers or campsites will greatly benefit as well.
+
+## Link
+https://group2-project377.herokuapp.com/
+
+## Endpoint Doc

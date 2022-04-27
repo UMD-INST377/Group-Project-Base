@@ -67,6 +67,8 @@ UMD Dining picture part
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-height: 324;
+    max-width: fit-content;
 }
 
 .caption {
@@ -195,3 +197,8 @@ Last part of the page
     padding: 10px;
     margin-left: 25%;
   }
+
+.foor-list {
+    width: 1000px;
+    margin-left: 35px;
+}

@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { populateGenres, populateLanguages, populateRatings } from './modules/populate.js';
+import { populateGenres, populateLanguages, populateRatings } from './populate.js';
 
 async function populateEditGenres(genre) {
   const dropdown = document.querySelector('#genre-input');
@@ -89,36 +89,36 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="row">
       <form class="col s12">
         <div class="row">
-          <div class="input-field col l6">
+          <div class="input-field col s6 l6">
             <input id="title" type="text" name="title" required="required" value="${movie.title}"/>
             <label class="active">Title</label>
           </div>
-          <div class="input-field col l6">
+          <div class="input-field col s6 l6">
             <input id="year" type="text" name="year" required="required" value="${movie.year}"/>
             <label class="active">Release Year</label>
           </div>
         </div>
 
         <div class="row">
-          <div class="input-field col l6">
+          <div class="input-field col s6 l6">
             <select id="language-input" name="language_id" required="required"></select>
             <label>Language</label>
           </div>
-          <div class="input-field col l6">
+          <div class="input-field col s6 l6">
             <select id="rating-input" name="rating_id" required="required"></select>
             <label>Rating</label>
           </div>
         </div>
         <div class="row">
-          <div class="input-field col l6">
+          <div class="input-field col s6 l6">
             <select id="genre-input" name="genre_id" required="required"></select>
             <label>Genre</label>
           </div>
-          <div class="input-field col l6">
+          <div class="input-field col s6 l6">
             <input id="imageURL" type="text" name="image_url" required="required" value="${movie.image_url}"/>
             <label class="active">Image URL</label>
           </div>
-          <div class="input-field col s12 l12">
+          <div class="input-field col s6 l6">
             Availability
             <form action="#">
               <p>

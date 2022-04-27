@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-console */
 // Canidae 5219243 | Felinae | Hominidae
 
@@ -47,7 +48,7 @@ async function getByFamily(e, table) {
   const family = familyList.options[familyList.selectedIndex].text;
   const results = await fetch(`/${family}`);
   const arr = await results.json();
-  console.log(arr)
+  console.log(arr);
   clearTable(table);
   appendResults(arr, table);
 }
@@ -62,7 +63,6 @@ hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
   navMenu.classList.toggle('active');
 });
-
 
 function createResultCard(queryArr) {
   const container = document.querySelector('.saved_results_container');

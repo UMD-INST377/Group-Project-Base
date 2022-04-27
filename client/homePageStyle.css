@@ -24,8 +24,11 @@ nav {
 }
 
 .container,
+/* .used_email,
+.curr_password, */
 .input_text,
-.form_button {
+.form_button,
+.formButton {
     font: 500 1rem 'Quicksand', sans-serif;
 }
 

@@ -20,11 +20,11 @@
         <form class="client_form" id="login">
             <div class="form_message input_error"></div>
             <div class="form_input">
-                <input type="text" class="input_text" autofocus placeholder="Enter your email address">
+                <input type="text" id="used_email" class="input_text" autofocus placeholder="Enter your email address">
                 <div class="error_message"></div>
             </div>
             <div class="form_input">
-                <input type="password" class="input_text" autofocus placeholder="Enter your password">
+                <input type="password" id="curr_password" class="input_text" autofocus placeholder="Enter your password">
                 <div class="error_message"></div>
             </div>
             <button class="form_button" type="submit">Sign in</button>
@@ -57,7 +57,7 @@
             </div>
 
             <div class="form_input">
-                <input type="text" id="email" class="input_text" autofocus placeholder="Email address">
+                <input type="text" id="new_email" class="input_text" autofocus placeholder="Email address">
                 <div class="error_message"></div>
             </div>
 
@@ -66,7 +66,7 @@
                 <div class="error_message"></div>
             </div>
 
-            <button class="form_button" type="submit">Submit</button>
+            <button class="formButton" type="submit">Submit</button>
             <p class="form_text"> Already have an account?
                 <a href="#" class="form_link" id="loginLink"> Sign in</a>
             </p>

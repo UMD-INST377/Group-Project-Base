@@ -38,20 +38,25 @@ async function mainEvent() {
     setFormMessage(loginForm, 'error', 'Invalid email or password');
   });
 
+  const oldEmail = document.querySelector('#used_email');
+  const newEmail = document.querySelector('#new_email');
+  const password = document.querySelector('#password');
+
   // TODO: if the email is in the database, show error message "exist"
   document.querySelectorAll('.input_text').forEach((inputElement) => {
     inputElement.addEventListener('blur', (userForm) => {
-      if (userForm.target.id === 'email') {
+      if (newEmail.value === newEmail) {
         setInputError(inputElement, 'Email already exists');
       }
-      const passcode = userForm.target.id === 'password';
-      if (passcode.length < 6) {
+
+      if (password.length < 6) {
         setInputError(inputElement, 'Password should be at least 6 characters');
       }
-    });
+      userForm.preventDefault();
 
-    inputElement.addEventListener('input', (userForm) => {
-      clearInputError(inputElement);
+      inputElement.addEventListener('input', (userForm) => {
+        clearInputError(inputElement);
+      });
     });
   });
 }

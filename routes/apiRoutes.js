@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
+import chalk from 'chalk';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();

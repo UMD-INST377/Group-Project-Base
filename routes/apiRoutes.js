@@ -854,7 +854,7 @@ router.delete('/songs/:song_id', async (req, res) => {
 /// ////Genres Endpoints/////////
 /// /////////////////////////////////
 
-router.get('/genres', async (req, res) => {
+router.get('/Genres', async (req, res) => {
   try {
     const genresItems = await db.genres.findAll();
     const reply = genresItems.length > 0 ? { data: genresItems } : { message: 'no results found' };
@@ -865,7 +865,7 @@ router.get('/genres', async (req, res) => {
   }
 });
 
-router.get('/genres/:genres_id', async (req, res) => {
+router.get('/Genres/:genres_id', async (req, res) => {
   try {
     const genresItems = await db.genres.findAll({
       where: {
@@ -880,7 +880,7 @@ router.get('/genres/:genres_id', async (req, res) => {
   }
 });
 
-router.post('/genres', async (req, res) => {
+router.post('/Genres', async (req, res) => {
   const genresItems = await db.genres.findAll();
   const currentId = (await genresItems.length) + 1;
   try {
@@ -895,7 +895,7 @@ router.post('/genres', async (req, res) => {
   }
 });
 
-router.put('/genres', async (req, res) => {
+router.put('/Genres', async (req, res) => {
   try {
     await db.genres.update(
       {
@@ -915,7 +915,7 @@ router.put('/genres', async (req, res) => {
   }
 });
 
-router.delete('/genres/:genre_id', async (req, res) => {
+router.delete('/Genres/:genre_id', async (req, res) => {
   try {
     await db.genres.destroy({
       where: {

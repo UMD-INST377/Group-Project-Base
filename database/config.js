@@ -16,14 +16,14 @@ export default {
   test: {
     username: 'student',
     password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    database: 'Group12_Dining_Hall_Tracker',
     host: '174.129.198.86',
     dialect: 'mysql'
   },
   production: {
     username: 'student',
     password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    database: 'Group12_Dining_Hall_Tracker',
     host: '174.129.198.86',
     dialect: 'mysql'
   }

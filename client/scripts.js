@@ -40,10 +40,10 @@ async function getData(endpoint) {
 async function mainEvent() {
     console.log("mainEvent()");
 
-    const form = document.querySelector('#main-form');
-    const titleField = document.querySelector('#movie-title')
-    const ratingSelect = document.querySelector('#movie-rating')
-    const genreSelect = document.querySelector('#movie-genre')
+    const form = document.querySelector('#filter-form');
+    const titleField = document.querySelector('#movie-title');
+    const ratingSelect = document.querySelector('#movie-rating');
+    const genreSelect = document.querySelector('#movie-genre');
 
     const movieJson = await getData('/stef/movies');
     const genreJson = await getData('/jude/genres');
@@ -52,7 +52,7 @@ async function mainEvent() {
         let results = movieJson;
 
         titleField.addEventListener('input', async (InputEvent) => {
-            console.log('titleField inputEvent');
+            console.log('titleField InputEvent');
             let subResults = results;
             let search = InputEvent.target.value;
             if (search !== '') {
@@ -61,6 +61,14 @@ async function mainEvent() {
             console.log(subResults);
             showResults(subResults);
         });
+
+        ratingSelect.addEventListener('change', async (InputEvent) => {
+            console.log('ratingSelect InputEvent')
+        })
+
+        genreSelect.addEventListener('change', async (InputEvent) => {
+            console.log('genreSelect InputEvent')
+        })
     }
 
     console.log(movieJson);

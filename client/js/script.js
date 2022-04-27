@@ -41,7 +41,6 @@ async function mainEvent() {
       }
       if (event.target.value.trim().length) {
       // change arrayFromJson.data to currentArray if needed
-        
         const dataArray = arrayFromJson.data.filter((item) => { 
           // Changes the way the results are ordered based on which button is pressed
           if (document.getElementById('song').checked) {

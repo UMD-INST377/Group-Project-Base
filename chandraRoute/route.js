@@ -6,6 +6,8 @@ import hallUpdate from '../controllers/halls_update.js';
 import breakfastQuery from '../controllers/breakfast_query.js';
 import lunchQuery from '../controllers/lunch_query.js';
 import dinnerQuery from '../controllers/dinner_query.js';
+import mealQuery from '../controllers/meals.js';
+import macroQuery from '../controllers/macro.js';
 
 const router = express.Router();
 
@@ -70,6 +72,18 @@ router.put('/Group22_Dining_Hall_Tracker', async (req, res) => {
   }
 });
 
+router.get('/allmeals', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(mealQuery, {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+    res.send({ message: err});
+  }
+});
+
 router.get('/meals', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(breakfastQuery, {
@@ -85,6 +99,18 @@ router.get('/meals', async (req, res) => {
 router.get('/lunch', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(lunchQuery, {
+      type: Sequelize.QueryTypes.SELECT
+    });
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+    res.send({ message: err});
+  }
+});
+
+router.get('/macro', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(macroQuery, {
       type: Sequelize.QueryTypes.SELECT
     });
     res.json({ data: result });

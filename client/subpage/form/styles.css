@@ -1,27 +1,14 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-  }
-  
-  body {
-	  color: #5D6063;
-	  background-color: #EAEDF0;
-	  font-family: "Roboto";
-	  font-size: 16px;
-	  line-height: 1.3;
-	
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-  }
+.body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
   /* Page Layout */
 .logo_title{
     display: flex;
     flex-direction: row;
 }
-
 .title_name {
     display: flex;
     position: absolute;

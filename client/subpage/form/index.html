@@ -1,19 +1,64 @@
 <!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <meta charset='UTF-8'/>
-        <title>Spencer's Lab 5</title>
-        <link rel='stylesheet' href='styles.css'/>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  
   </head>
-
   <body>
-	<div class="logo_title">
-		<img class="logos" src='/client/images/umd.png' alt = "Logo Title" width="140px" height="85px"></img>
-		<h1 class="title_name">UMD Food Services</h1>
-	</div>
+    <body>
+      <div class="logo_title">
+              <img class="logos" src='images/umd.png' alt = "Logo Title" width="140px" height="85px"></img>
+              <h1 class="title_name">UMD Food Services</h1>
+          </div>
+          <div class="about_section">
+              <a class='about' href='/subpage/about/index.html'>About</a>
+              <a class='data' href='/subpage/data/index.html'>Data</a>
+          </div>
+      
+  </div>
+  
+  <form class="box">
+    <div class="field">
+      <label class="label">Meal Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Text input">
+      </div>
+    </div>
+
+    
+    <div class="field">
+      <label class="label">Meal Category</label>
+      <div class="control">
+        <div class="select">
+          <select>
+            <option>Select category</option>
+            <option>B</option>
+            <option>L</option>
+            <option>D</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+
+    
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link has-background-danger-dark">Submit</button>
+      </div>
+      <div class="control">
+        <button class="button is-link has-background-danger-dark">Cancel</button>
+      </div>
+    </div>
+  </form>
 
 	//TODO: add something to autogenerate a meal_id (the next available number). allow users to input 1 meal name into text box, and the meal type through a dropdown menu (options: B,L,D)
 	//This input will be inserted into the database as a meal item.
 
 
+
   </body>
+</html>

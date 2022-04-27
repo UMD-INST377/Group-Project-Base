@@ -72,8 +72,8 @@
 .container {
     display: flex;
     justify-content: flex-start;
-    padding-top: 100px;
-    gap: 200px;
+    padding-top: 150px;
+    gap: 150px;
 }
 
 .location {
@@ -132,11 +132,25 @@
     color: #000000;
 }
 
-.chart {
+.diner_schedule {
     display: flex;
-    background-color: #FF4747;
-    height: 500px;
-    width: 700px;
-    align-self: center;
-    margin-top: 130px;
+    flex-direction: row;
+    margin-top: 80px;
+}
+.weekdays {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 35px;
+    color: #000000;
+    padding-left: 20px;
+}
+
+.weekdays, h4 {
+    width: 90px;
+    height: 100px;
+    background-color: #C4C4C4;
 }

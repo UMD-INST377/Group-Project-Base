@@ -37,13 +37,30 @@
     position: absolute;
     width: 156px;
     height: 47px;
-    left: 1145px;
-    top: 121px;
+    left: 1210px;
+    top: 85px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 47px;
+    /* identical to box height */
+    text-align: center;
+    color: #000000;
+}
+
+.data {
+    position: absolute;
+    width: 156px;
+    height: 47px;
+    left: 1274px;
+    top: 85px;
     
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 25px;
     line-height: 47px;
     text-align: center;
     color: #000000;

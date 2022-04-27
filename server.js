@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
-import apiRoutes from './routes/apiRoutes.js';
+import apiRoutes from './server/routes/apiRoutes.js';
 
 const app = express();
 

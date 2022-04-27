@@ -12,5 +12,7 @@ const locationDelete = `DELETE FROM location
 WHERE location_code = :location_code;`
 
 export default {
-    locationGet, locationPut, locationPost, locationDelete
+
+  locationGet, locationPut, locationPost, locationDelete
+
 };

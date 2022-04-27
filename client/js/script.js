@@ -15,7 +15,6 @@ function createHtmlList(collection) {
     targetList.innerHTML += injectThisArtist + injectThisAlbum;
   });
 }
-
 async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('#results');
@@ -38,19 +37,19 @@ async function mainEvent() {
         return;
       }
       if (event.target.value.trim().length) {
-        // change arrayFromJson.data to currentArray if needed
-        const dataArray = arrayFromJson.data.filter((item) => {
-          const lowerName = item.album_name.toLowerCase();
-          const lowerValue = event.target.value.toLowerCase();
-          return lowerName.startsWith(lowerValue);
-        });
-        console.log(dataArray);
-        console.log(event.target.value);
+      // change arrayFromJson.data to currentArray if needed
+      const dataArray = arrayFromJson.data.filter((item) => {
+        const lowerName = item.album_name.toLowerCase();
+        const lowerValue = event.target.value.toLowerCase();
+        return lowerName.startsWith(lowerValue);
+      });
+      console.log(dataArray);
+      console.log(event.target.value);
 
-        createHtmlList(restArrayMake(dataArray));
-      } else {
-        document.querySelector('.result_list').innerHTML = '';
-      }
+      createHtmlList(restArrayMake(dataArray));
+    } else {
+      document.querySelector('.result_list').innerHTML = '';
+    }
     });
 
     form.addEventListener('submit', async (submitEvent) => {

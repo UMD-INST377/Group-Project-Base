@@ -3,6 +3,11 @@ import express from 'express';
 import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
+/// /////////////////////////////////
+/// //////// Review Endpoints////////// by Ryan E
+/// /////////////////////////////////
+
+
 const router = express.Router();
 router.get('/review', async(req, res) => {
   try {

@@ -86,3 +86,5 @@ async function createTable() {
 document.addEventListener("DOMContentLoaded", async () => {
   await createTable();
 });
+
+// updates

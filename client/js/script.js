@@ -11,6 +11,8 @@ function restArrayMake(dataArray) {
   return listItems;
 }
 function createHtmlList(collection) {
+  const ArtistRadio = document.getElementById('Artist');
+  const AlbumRadio = document.getElementById('Album');
   const targetList = document.querySelector('.result_list');
   targetList.innerHTML = '';
   collection.forEach((item) => {
@@ -18,9 +20,16 @@ function createHtmlList(collection) {
     const { album_name } = item;
     const displayArtist = name.toLowerCase();
     const displayAlbum = album_name.toLowerCase();
-    const injectThisArtist = `<td>${displayArtist}</td>`;
-    const injectThisAlbum = ` <th>${displayAlbum}</th>`;
-    targetList.innerHTML += injectThisArtist + injectThisAlbum;
+    if (ArtistRadio.checked) {
+      const injectThisArtist = `<th>${displayArtist}</th>`;
+      const injectThisAlbum = ` <td>${displayAlbum}</td>`;
+      targetList.innerHTML += injectThisArtist + injectThisAlbum;
+    }
+    if (AlbumRadio.checked) {
+      const injectThisArtist = `<td>${displayArtist}</td>`;
+      const injectThisAlbum = ` <th>${displayAlbum}</th>`;
+      targetList.innerHTML += injectThisArtist + injectThisAlbum;
+    }
   });
 }
 async function mainEvent() {
@@ -53,7 +62,7 @@ async function mainEvent() {
           if (AlbumRadio.checked) {
             return lowerAlbumName.startsWith(lowerValue);
           }
-          return 'no results';
+          return 'no results filter';
         });
 
         console.log(dataArray);
@@ -65,6 +74,7 @@ async function mainEvent() {
           if (AlbumRadio.checked) {
             return sortArray(dataArray, 'album_name');
           }
+          return 'no results sortflter';
         })();
 
         console.log(sortedArray);

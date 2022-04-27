@@ -24,8 +24,9 @@ function showResults(collection) {
         rowContents += `<td>${item.movie_id}</td>`;
         rowContents += `<td>${item.movie_name}</td>`;
         rowContents += `<td>${item.movie_year}</td>`;
-        rowContents += `<td>${item.rating}</td>`;
         rowContents += `<td>${item.duration_of_movie}</td>`;
+        rowContents += `<td>GENRE HERE</td>`;
+        rowContents += `<td>${item.rating}</td>`;
         resultTable.innerHTML += `<tr>${rowContents}</tr>`;
     });
 }
@@ -58,17 +59,27 @@ async function mainEvent() {
             if (search !== '') {
                 subResults = filterResults(results, 'movie_name', search);
             }
-            console.log(subResults);
             showResults(subResults);
         });
 
         ratingSelect.addEventListener('change', async (InputEvent) => {
             console.log('ratingSelect InputEvent')
-        })
+            let subResults = results;
+            const range = InputEvent.target.value;
+            if (range !== 'none') {
+                [min, max] = range.split('-');
+                subResults = results.filter((item) => {
+                    if (min <= item.rating && item.rating <= max) {
+                        return item;
+                    }
+                });
+            }
+            showResults(subResults);
+        });
 
         genreSelect.addEventListener('change', async (InputEvent) => {
             console.log('genreSelect InputEvent')
-        })
+        });
     }
 
     console.log(movieJson);

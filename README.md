@@ -18,3 +18,32 @@ Movies are an amazing way to pass the time, entertain yourself, or connect with 
 * [Developer Manual](https://github.com/varanika-sharma/Group13-Final-INST377SP2022#developer-manual)
 
 # Developer Manual
+## How to install application and all dependencies
+1. Clone this repository through Github Desktop or through Terminal.
+2. Open repository in VSCode Terminal or Terminal application.
+3. type ```npm install``` into terminal window and run.
+4. The application should now be set to use.
+
+## How to run application on a server
+1. Open repository in VSCode terminal or Terminal application.
+2. Run ```npm start```. There should be no errors.
+3. In a web browser, go to url: ```http://localhost:3000/```.
+
+## To run tests for software
+The are no prewritten tests in the source repository, but you can use Cypress to run your own written tests.
+1. Open two terminals and make sure you are in the main project directory
+2. In the first terminal, run ```npm start```.
+3. In the second terminal run ```npm test```.
+
+## Server application APIs (look over pls)
+```/api``` - API route for movie information and which subscription they are in.
+* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
+* POST - obtains movie name from request body to fetch url. fetch data json from Movies API and returns JSON response. 
+* PUT - returns response 'Got a PUT request at /api'.
+
+## Known Bugs and Future Development
+### Bugs:
+
+
+
+### Future Development: 

@@ -2,7 +2,7 @@ let newDate = new Date (2019, 3, 51);
 let film = 'Film';
 
 export default (database, DataTypes) => {
-  const title = database.define('title', {
+  const title = database.define('primary_title', {
     title_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

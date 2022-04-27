@@ -8,42 +8,6 @@ const diningHallQuery = 'SELECT * FROM dining_hall';
 
 const router = express.Router();
 
-// update dining hall
-router.put('/update', async (req, res) => {
-  const updateQuery = `UPDATE dining_hall 
-    SET hall_name ='${req.query.new_dining_hall}
-    WHERE hall_id ='${req.query.hall_id};
-    `;
-
-  try {
-    const result = await db.sequelizeDB.query(updateQuery, {
-      type: sequelize.QueryTypes.UPDATE
-    });
-
-    res.json(`Updated row entry with new value: ${req.query.new_dining_hall}`);
-  } catch (err) {
-    console.error(err);
-    res.json({message: 'Error has occured'});
-  }
-});
-
-
-// post new dining hall entry in dining
-router.post('/diningpost', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(`INSERT INTO dining_hall (hall_id, hall_name, hall_address, hall_lat, hall_long)
-    VALUES (${req.body.hall_id}, '${req.body.hall_name}', '${req.body.hall_address}', ${req.body.hall_lat}, ${req.body.hall_long})`);
-  } catch (err) {
-    console.error(err);
-    res.json({message: 'Error has occured'});
-  }
-});
-
-// delete dining hall entry in dining
-// router.delete()
-
-
-
 // get dining halls
 router.route('/').get(async (req, res) => {
   try {
@@ -63,6 +27,47 @@ router.get('/:hall_id', async (req, res) => {
   try {
     const halls = await db.sequelizeDB.query(diningHallIDQuery, {
       type: sequelize.QueryTypes.SELECT
+    });
+    res.json(halls);
+  } catch (err) {
+    console.error(err);
+    res.json({message: 'Error has occured'});
+  }
+});
+
+// post new dining hall entry in dining
+router.post('/diningpost', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(`INSERT INTO dining_hall (hall_id, hall_name, hall_address, hall_lat, hall_long)
+    VALUES (${req.body.hall_id}, '${req.body.hall_name}', '${req.body.hall_address}', '${req.body.hall_lat}', '${req.body.hall_long}')`
+    );
+    res.json(result)
+  } catch (err) {
+    console.error(err);
+    res.json({message: 'Error has occured'});
+  }
+});
+
+// update dining hall entry
+router.put('/diningput', async (req, res) => {
+  try {
+    const put = await db.sequelizeDB.query(`UPDATE dining_hall SET hall_name = '${req.body.hall_name}', hall_address = '${req.body.hall_address}',
+    hall_lat = '${req.body.hall_lat}', hall_long = '${req.body.hall_long}' WHERE hall_id = ${req.body.hall_id}`
+    );
+    res.json(put);
+  } catch (err) {
+    console.error(err);
+    res.json({message: 'Error has occured'});
+  }
+});
+
+// delete dining hall entry in dining
+router.delete('/diningdelete/:hall_id', async (req, res) => {
+  const {hall_id} = req.params
+  const diningHallIDQuery = `DELETE FROM dining_hall WHERE hall_id = ${hall_id}`;
+  try {
+    const halls = await db.sequelizeDB.query(diningHallIDQuery, {
+      type: sequelize.QueryTypes.DELETE
     });
     res.json(halls);
   } catch (err) {

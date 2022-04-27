@@ -297,7 +297,7 @@ header.active {
 }
 
 /* Nav Desktop */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
 .mobile {
     display: none;
 }
@@ -769,12 +769,6 @@ footer div {
 }
 
 
-<<<<<<< HEAD
-/* Login Modal
-================================================================ */
-
-.login_modal {
-=======
 .post-options {
     padding: 4px;
     flex-direction: row;
@@ -782,7 +776,6 @@ footer div {
 
 
 .edit_modal {
->>>>>>> wikidata
     position: absolute;
     width: 434px;
     height: 524px;
@@ -802,11 +795,7 @@ footer div {
     border-radius: 4px; 
 }
 
-<<<<<<< HEAD
-.login_form {
-=======
 .edit_form {
->>>>>>> wikidata
     position: static;
     width: 323px;
     height: 299px;
@@ -824,19 +813,11 @@ footer div {
     margin: 32px 0px;
 }
 
-<<<<<<< HEAD
-.login_form > .form_row {
-    margin-bottom: 16px;
-}
-
-.login_form > .form_row > input {
-=======
 .edit_form > .form_row {
     margin-bottom: 16px;
 }
 
 .edit_form > .form_row > input {
->>>>>>> wikidata
     width: 323px;
     height: 49px;
 
@@ -851,8 +832,6 @@ footer div {
     box-shadow: none;
     border-radius: 4px;
 }
-<<<<<<< HEAD
-=======
 
 .form_row.buttons {
     width: 100%;
@@ -905,4 +884,3 @@ footer div {
     background-color: rgba(0, 0, 0, 0.4);
     padding-top: 60px;
   }
->>>>>>> wikidata

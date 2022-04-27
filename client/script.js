@@ -139,14 +139,6 @@ async function oldEvent() { // old mainEvent()
   getAll.addEventListener('submit', (e) => getByFamily(e, allTable));
 }
 
-// saved results
-// const savedResults = document.querySelector(".saved_result_card")
-
-// savedText.addEventListener("mouseover", () => {
-//   console.log('moused over');
-//   savedText.classList.toggle("active");
-// });
-
 async function mainEvent() {
   // await fetchQueries();
   // mobile nav

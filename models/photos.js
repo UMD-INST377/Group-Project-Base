@@ -1,28 +1,26 @@
 export default (database, DataTypes) => {
-    const plants = database.define(
-      'plants',
+    const photos = database.define(
+      'photos',
       {
-        plants_id: {
+        photos_id: {
           type: DataTypes.INTEGER,
           allowNull: false,
           primaryKey: true
         },
-        plants_name: {
+        photos_name: {
           type: DataTypes.STRING
         },
-        plants_address: {
+        photos_address: {
           type: DataTypes.STRING
         },
-        plants_lat: {
+        photos_lat: {
           type: DataTypes.DECIMAL
         },
-        plants_long: {
+        photos_long: {
           type: DataTypes.DECIMAL
         }
       },
       { freezeTableName: true, timestamps: false }
     );
-    return plants;
-
+    return photos;
   };
-

@@ -12,5 +12,9 @@ const flowersDelete = `DELETE FROM flowers
 WHERE flower_id = :flower_id;`
 
 export default {
+
   flowersGet, flowersPut, flowersPost, flowersDelete
+
+    flowersGet, flowersPut, flowersPost, flowersDelete
+
 };

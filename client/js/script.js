@@ -15,9 +15,9 @@ function createHtmlList(collection) {
     const { album_name } = item;
     const displayArtist = name.toLowerCase();
     const displayAlbum = album_name.toLowerCase();
-    const injectThis = `<th>${displayArtist}</th>`;
-    const injectThisAlbum = ` <td>${displayAlbum}</td>`;
-    targetList.innerHTML += injectThisAlbum + injectThis;
+    const injectThisArtist = `<td>${displayArtist}</td>`;
+    const injectThisAlbum = ` <th>${displayAlbum}</th>`;
+    targetList.innerHTML += injectThisArtist + injectThisAlbum;
   });
 }
 async function albumDelete() {

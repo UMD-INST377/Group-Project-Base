@@ -1,8 +1,18 @@
+function sortArray(arr, key) {
+  return arr.sort((a, b) => {
+    const x = a[key];
+    const y = b[key];
+    return x < y ? -1 : x > y ? 1 : 0;
+  });
+}
+
 function restArrayMake(dataArray) {
   const listItems = dataArray.slice(0, 50);
   return listItems;
 }
 function createHtmlList(collection) {
+  const ArtistRadio = document.getElementById('Artist');
+  const AlbumRadio = document.getElementById('Album');
   const targetList = document.querySelector('.result_list');
   targetList.innerHTML = '';
   collection.forEach((item) => {
@@ -24,14 +34,10 @@ async function mainEvent() {
   // not needed since result is limited to 50
   // const submitButton = document.querySelector('#submit_button');
   const searchbar = document.querySelector('#init_search');
-
   const results = await fetch('/api/main'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-
   if (arrayFromJson.data.length > 0) {
-    // submitButton.style.display = 'block';
     console.log('start');
-
     let currentArray = [];
     searchbar.addEventListener('input', async (event) => {
       console.log(event.target.value);
@@ -40,6 +46,7 @@ async function mainEvent() {
         return;
       }
       if (event.target.value.trim().length) {
+
       // change arrayFromJson.data to currentArray if needed
         
         const dataArray = arrayFromJson.data.filter((item) => { 

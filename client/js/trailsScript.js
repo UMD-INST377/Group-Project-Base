@@ -43,41 +43,42 @@ function addMapMarkers(map, collection) {
     }
   });
   collection.forEach((item) => {
+    console.log(item.park_name);
     const point = item.geocoded_column_1?.coordinates;
-    console.log(item.geocoded_column_1?.coordinates);
-    L.marker([point[1], point[0]]).addTo(map);
+    // console.log(item.geocoded_column_1?.coordinates);
+    // L.marker([point[1], point[0]]).addTo(map);
   });
 }
 
-function refreshList (target, storage) {
-  target.addEventListener('click', async (event) => {
-    event.preventDefault();
-    localStorage.clear();
-    const parks = await fetch('/api/race/parks');
-    const parksArray = await parks.json();
-    console.log(typeof parksArray);
-    localStorage.setItem(storage, parksArray);
-    // location.reload();
-  });
-}
-function inputListener(target) {
-  target.addEventListener('input', async (event) => {
-    console.log(event.target.value);
-    const selectResto = storedDataArray.filter((item) => {
-      const lowerName = item.name.toLowerCase();
-      const lowerValue = event.target.value.toLowerCase();
-      return lowerName.includes(lowerValue);
-    });
-    console.log(selectResto);
-    updateParks(selectResto);
-  });
-}
+// function refreshList (target, storage) {
+//   target.addEventListener('click', async (event) => {
+//     event.preventDefault();
+//     localStorage.clear();
+//     const parks = await fetch('/api/race/parks');
+//     const parksArray = await parks.json();
+//     console.log(typeof parksArray);
+//     localStorage.setItem(storage, parksArray);
+//     // location.reload();
+//   });
+// }
+// function inputListener(target) {
+//   target.addEventListener('input', async (event) => {
+//     console.log(event.target.value);
+//     const selectResto = storedDataArray.filter((item) => {
+//       const lowerName = item.name.toLowerCase();
+//       const lowerValue = event.target.value.toLowerCase();
+//       return lowerName.includes(lowerValue);
+//     });
+//     console.log(selectResto);
+//     updateParks(selectResto);
+//   });
+// }
 async function mainEvent() { // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // change this selector to match the id or classname of your actual form
   const submit = document.querySelector('.submit_button');
 
   const parks = document.querySelector('#park');
-  const refresh = document.querySelector('#refresh_list');
+  const refresh = document.querySelector('.refresh_list');
 
   const map = initMap('map');
   const retrievalVar = 'parks';
@@ -85,10 +86,13 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   // refreshList(refresh, retrievalVar);
 
-  const parksapi = await fetch('/api/race/parks');
-  const parksArray = await parksapi.json();
+  const parksapi = await fetch('/api/race/');
+  const parksjson = await parksapi.json();
+  const parksArray = parksjson.parks;
   // const storedDataArray = JSON.parse(parksArray);
   console.log(parksArray);
+  // console.log(storedDataArray);
+
   updateParks(parksArray);
   if (parksArray?.length > 0) {
     // this statement is to prevent a race condition on data load
@@ -101,6 +105,11 @@ async function mainEvent() { // the async keyword means we can make API requests
     });
 
     form.addEventListener('submit', async (submitEvent) => {
+      // async has to be declared all the way to get an await
+      submitEvent.preventDefault(); // This prevents your page from refreshing!
+      // console.log('form submission'); // this is substituting for a "breakpoint"
+    });
+    refresh.addEventListener('click', async (submitEvent) => {
       // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       // console.log('form submission'); // this is substituting for a "breakpoint"

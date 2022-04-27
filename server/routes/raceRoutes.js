@@ -46,7 +46,7 @@ router.route('/race/')
     try {
       console.log('touched races endpoint');
       const parks = await db.Parks.findAll();
-      const reply = parks.length > 0 ? { data: parks } : { message: 'no results found' };
+      const reply = parks.length > 0 ? { parks } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {
       console.log('err');

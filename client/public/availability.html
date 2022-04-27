@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width/ initial-scale=1">
-    <title>Group 13 Final Project Database</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href = "styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i">
-    <script type="module"  src = "script.js"></script>
-  </head>
-  <body> 
-    <div class="wrapper">
-      <!-- navigation -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Group 13 Final Project: Availability</title>
+  <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="module" src="js/availability.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- navigation -->
+    <section class="navigation">
       <nav>
-          <div class="nav-wrapper">
-              <ul>
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="/">Main</a></li>
-                  <li><a class="active" href="availability.html">Movie Availability</a></li>
-                  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Tables<i class="material-icons right">arrow_drop_down</i></a></li>
-              </ul>
-          </div>
-        </nav>
-        <ul id="dropdown1" class="dropdown-content">
-          <li><a href="records.html">Records</a></li>
-          <li><a href="ratings.html">Ratings</a></li>
-          <li class="divider"></li>
-          <li><a href="form.html">Add new record</a></li>
-        </ul>
-        <div class="availability_wrapper">
-            <h1>
-                <div class="availability_genre_wrap"> By Genre</div>
-            </h1>
-            <div class="select is-link is-medium">
-                <select class="genre_selector">
-                <option>All</option>
-                </select>
-            </div>
-            <div class="column is-one-quarter">
-                <div class="text">
-                    <h3>Availability details</h3>
-                    <!-- <img src="images/PNG.png">   -->
-                </div>
-            </div>
-            <!-- Graph -->
-            <div class="barGraph">
-              <canvas id="MyChart"></canvas>
-            </div>
+        <div class="nav-wrapper">
+          <ul>
+            <li><a href="/"><img src="/images/movie-slate.png"></a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a class="active short" href="availability.html">Availability</a></li>
+            <li class="hide-mobile"><a class="dropdown-trigger short" href="#!" data-target="dropdown2">Data<i
+                  class="material-icons right">arrow_drop_down</i></a></li>
+          </ul>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-      </body>
-      </html>
+      </nav>
+      <ul id="dropdown2" class="dropdown-content">
+        <li><a href="records.html">Records</a></li>
+        <li><a href="ratings.html">Ratings</a></li>
+        <li class="divider"></li>
+        <li><a href="form.html">Add new record</a></li>
+      </ul>
+    </section>
+    <!-- content -->
+    <section class="content box">
+      <div class="row">
+        <div class="col s12 m3 l3 availability-filters">
+          <div class="input-field">
+            <span class="filter-label">By genre</span>
+            <select class="genre_selector">
+              <option>All</option>
+            </select>
+          </div>
+        </div>
+        <!-- Graph -->
+        <div class="barGraph col s12 l12">
+          <canvas id="MyChart"></canvas>
+        </div>
+      </div>
+    </section>
+  </div> <!-- end of wrapper-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+</body>
 
-
-        
+</html>

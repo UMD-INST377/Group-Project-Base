@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
 import barkcontroller from '../controller/barkcontroller.js';
 import classificationcontroller from '../controller/classificationcontroller.js';
@@ -10,18 +9,26 @@ import foliagecontroller from '../controller/foliagecontroller.js';
 import fruitscontroller from '../controller/fruitscontroller.js';
 import locationcontroller from '../controller/locationcontroller.js';
 
+
 import plantLocationcontroller from '../controller/plant_locationcontroller.js';
 import plantscontroller from '../controller/plantscontroller.js';
 
 const router = express.Router();
 /* bark endpoint */
 
+
+// eslint-disable-next-line camelcase
+
 import plant_locationcontroller from '../controller/plant_locationcontroller.js';
 import plantscontroller from '../controller/plantscontroller.js';
 
-
 const router = express.Router();
+
 /*bark endpoint*/
+
+
+
+/* bark endpoint */
 
 router.route('/bark')
   .get(async(req, res) => {
@@ -30,10 +37,14 @@ router.route('/bark')
         {
 
 
+
           type:sequelize.QueryTypes.SELECT
+
+          type: sequelize.QueryTypes.SELECT
+
         });
-        console.log('This is the route');
-        res.json({data: result});
+      console.log('This is the route');
+      res.json({data: result});
     } catch (err) {
       res.json({ error: err});
     }
@@ -42,33 +53,33 @@ router.route('/bark')
   .put(async(req, res) => {
     try {
       const result = await db.sequelizeDB.query(barkcontroller.barkPut,
-      {
-        replacements: {
-          bark_id: req.body.bark_id,
-          plants: req.body.plant
-        },
-        type: sequelize.QueryTypes.UPDATE
-      });
-    res.json({data: result});
-    console.log('Successfully Updated');
+        {
+          replacements: {
+            bark_id: req.body.bark_id,
+            plants: req.body.plant
+          },
+          type: sequelize.QueryTypes.UPDATE
+        });
+      res.json({data: result});
+      console.log('Successfully Updated');
     } catch (err) {
-      res.json({error:'Server error'});
+      res.json({error: 'Server error'});
     }
-   })
+  })
 
-   .post(async(req, res) => {
+  .post(async(req, res) => {
     try {
       const result = await db.sequelizeDB.query(barkcontroller.barkPost,
-      {
-        replacements: {
-          plants: req.body.plants,
-          new_color: req.body.new_color,
-          new_texture: req.body.new_texture,
-          mature_color: req.body.mature_color,
-          mature_texture: req.body.mature_texture
-        },
-        type: sequelize.QueryTypes.INSERT
-      });
+        {
+          replacements: {
+            plants: req.body.plants,
+            new_color: req.body.new_color,
+            new_texture: req.body.new_texture,
+            mature_color: req.body.mature_color,
+            mature_texture: req.body.mature_texture
+          },
+          type: sequelize.QueryTypes.INSERT
+        });
       res.json(result);
       console.log('Successfully Updated');
     } catch (err) {
@@ -91,8 +102,8 @@ router.route('/bark')
     }
   });
 
-  /* classification endpoint */
-  router.route('/classification')
+/* classification endpoint */
+router.route('/classification')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(classificationcontroller.classificationGet,
@@ -149,8 +160,8 @@ router.route('/bark')
     }
   });
 
-  /* flowers endpoint*/
-  router.route('/flowers')
+/* flowers endpoint */
+router.route('/flowers')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(flowerscontroller.flowersGet,
@@ -208,8 +219,8 @@ router.route('/bark')
     }
   });
 
-  /* foliage endpoint */
-  router.route('/foliage')
+/* foliage endpoint */
+router.route('/foliage')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(foliagecontroller.foliageGet,
@@ -267,8 +278,8 @@ router.route('/bark')
     }
   });
 
-  /* fruits endpoint */
-  router.route('/fruits')
+/* fruits endpoint */
+router.route('/fruits')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(fruitscontroller.fruitsGet,
@@ -327,8 +338,8 @@ router.route('/bark')
     }
   });
 
-  /* location endpoint */
-  router.route('/location')
+/* location endpoint */
+router.route('/location')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(locationcontroller.locationGet,
@@ -387,8 +398,8 @@ router.route('/bark')
     }
   });
 
-  /* plant_location */
-  router.route('/plant_location')
+/* plant_location */
+router.route('/plant_location')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(plant_locationcontroller.plant_locationGet,
@@ -447,8 +458,8 @@ router.route('/bark')
     }
   });
 
-  /* plants endpoint */
-  router.route('/plants')
+/* plants endpoint */
+router.route('/plants')
   .get(async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(plantscontroller.plantsGet,
@@ -509,14 +520,7 @@ router.route('/bark')
     }
   });
 
-  
-
-
-
-
-
-
-/////////////////////////////////////////////
+/// //////////////////////////////////////////
 
 
   .put(async(req, res) => {

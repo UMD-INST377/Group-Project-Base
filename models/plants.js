@@ -23,4 +23,6 @@ export default (database, DataTypes) => {
       { freezeTableName: true, timestamps: false }
     );
     return plants;
+
   };
+

@@ -17,7 +17,11 @@
     "connect-livereload": "^0.6.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+
+    "heroku": "^7.2.0",
+
     "livereload": "^0.9.3",
+
     "mysql2": "^2.2.5",
     "node-fetch": "^3.2.0",
     "nodemon": "^2.0.7",

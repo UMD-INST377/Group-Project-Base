@@ -1,70 +1,89 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Group 13 Final Project: Records</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href = "styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
-    <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i">
-    <script type="module" src = "script.js"></script>
-  </head>
-  <body>
-    <div class="wrapper">
-      <!-- navigation -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Group 13 Final Project</title>
+  <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="module" src="js/records.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- navigation -->
+    <section class="navigation">
       <nav>
-          <div class="nav-wrapper">
-              <ul>
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="/">Main</a></li>
-                  <li><a href="availability.html">Movie Availability</a></li>
-                  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Tables<i class="material-icons right">arrow_drop_down</i></a></li>
-              </ul>
-          </div>
-        </nav>
-        <ul id="dropdown1" class="dropdown-content">
-          <li><a class="active" href="records.html">Records</a></li>
-          <li><a href="ratings.html">Ratings</a></li>
-          <li class="divider"></li>
-          <li><a href="form.html">Add new record</a></li>
-        </ul>
-      <table class="striped responsive-table">
-          <thead id="table-head">
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Year</th>
-                <th>Genre</th>
-                <th>Language</th>
-                <th>Rating</th>
-                <th>Image</th>
-                <th>Netflix</th>
-                <th>Hulu</th>
-                <th>Prime</th>
-                <th>Disney</th>
-                <th></th>
-                <th></th>
-            </tr>
-          </thead>
-      
-          <tbody id="table-content">
-          </tbody>
-        </table>
-        <div id="end"></div>
-    </div> <!-- wrapper -->
-    <div id="delete" class="modal">
-      <div class="modal-content">
-        <h4>Delete <span id="delete-title"></span>?</h4>
-        <p>Item cannot be recovered.</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="confirm-delete">Delete</a>
-      </div>
+        <div class="nav-wrapper">
+          <ul>
+            <li><a href="/"><img src="/images/movie-slate.png"></a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="availability.html">Availability</a></li>
+            <li class="hide-mobile"><a class="active dropdown-trigger short" href="#!" data-target="dropdown2">Data<i
+                  class="material-icons right">arrow_drop_down</i></a></li>
+          </ul>
+        </div>
+      </nav>
+      <ul id="dropdown2" class="dropdown-content">
+        <li><a href="records.html" class="data-active">Records</a></li>
+        <li><a href="ratings.html">Ratings</a></li>
+        <li class="divider"></li>
+        <li><a href="form.html">Add new record</a></li>
+      </ul>
+    </section>
+    <!-- content -->
+    <section class="content records">
+      <table class="highlight responsive-table">
+        <thead id="table-head">
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Language</th>
+            <th>Rating</th>
+            <th>Image</th>
+            <th>Netflix</th>
+            <th>Hulu</th>
+            <th>Prime</th>
+            <th>Disney</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody id="table-content">
+        </tbody>
+      </table>
+      <div id="end"></div>
+  </div> <!-- wrapper -->
+  <div id="delete" class="modal">
+    <div class="modal-content">
+      <h4>Delete <span id="delete-title"></span>?</h4>
+      <p>Item cannot be recovered.</p>
     </div>
-    <div id="edit" class="modal">
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="confirm-delete">Delete</a>
     </div>
+    </section>
+  </div> <!-- end of wrapper-->
+  <div id="delete" class="modal">
+    <div class="modal-content">
+      <h4>Delete <span id="delete-title"></span>?</h4>
+      <p>Item cannot be recovered.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="confirm-delete">Delete</a>
+    </div>
+  </div>
+  <div id="edit" class="modal">
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
-  </html>
+</body>
+
+</html>

@@ -2,6 +2,10 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import artistRoutes from './routes/artistRoutes.js';
+import AlbumsRoutes from './routes/AlbumsRoutes.js';
+import genreRoutes from './routes/genreRoutes.js';
+import labelRoutes from './routes/labelRoutes.js';
 
 const app = express();
 
@@ -13,6 +17,10 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
+app.use('/api', artistRoutes);
+app.use('/api', AlbumsRoutes);
+app.use('/api', genreRoutes);
+app.use('/api', labelRoutes);
 
 async function bootServer() {
   try {

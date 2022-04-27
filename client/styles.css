@@ -1,0 +1,82 @@
+<<<<<<< HEAD
+/* USING BULMA AS A START BUT CAN/WILL CHANGE*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    background-color: #3C5A88;
+  }
+  
+  html {
+    background-color: #3C5A88;
+  }
+  
+  /* Page Layout */
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  .column.sides {
+    background-color: #5A7DD8;
+    color: #fff;
+  }
+
+  .menu-container {
+    color: #fff;
+    background-color: #5A7DD8;
+    padding: 20px 0;
+    display: flex;
+    justify-content:flex-start;
+    padding: 15px;
+  }
+
+  .menu-label {
+    color: #fff;
+  }
+  
+  .wrapper {
+    display: flex;
+  }
+  .container {
+    max-width: 960px;
+    margin-top: 25px;
+  }
+  
+  /* Mobile Styles */
+  @media only screen and (max-width: 400px) {
+    .columns {
+      width: 100%;
+    }
+  }
+=======
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	max-width: 960px;
+}
+
+.column {
+	--columns: 12; /* Number of columns in the grid system */
+	--width: 0; /* Default width of the element */
+
+	flex-basis: calc(var(--width) / var(--columns) * 100%);
+}
+
+
+@media (max-width: 960px) {
+	.column {
+		--width: var(--width-tablet, var(--width-mobile, 0));
+    }
+}
+>>>>>>> 187052b52ad130ac0069cc84d723a443a07f4664

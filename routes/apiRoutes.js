@@ -113,10 +113,10 @@ router.delete('/restaurant/:rest_id', async (req, res) => {
 
 // make sure to make pull request
 
-router.get('/macros', async (req, res) => {
+router.get('/rating', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll();
-    res.json(macros);
+    const rating = await db.rating.findAll();
+    res.json(rating);
   } catch (err) {
     console.error(err);
     res.send('Server error');
@@ -125,19 +125,73 @@ router.get('/macros', async (req, res) => {
 
 // endpoint 2
 
-router.get('/macros/:macro_id', async (req, res) => {
+router.get('/rating/:rating_id', async (req, res) => {
   try {
-    const macros = await db.Macros.findAll({
+    const rating = await db.rating.findAll({
       where: {
-        macro_id: req.params.macro_id
+        rating_id: req.params.rating_id
       }
     });
-    res.json(macros);
+    res.json(rating);
   } catch (err) {
     console.error(err);
     res.send('Server error');
   }
 });
+
+// POST
+router.post('/rating', async (req, res) => {
+  const rating = await db.rating.findAll();
+  const currentId = (await rating.length) + 1;
+  try {
+    const newrating = await db.rating.create({
+      rating_id: currentId
+    });
+    res.json(newrating);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+//Put
+
+router.put('/rating', async (req, res) => {
+  try {
+    await db.rating.update(
+      {
+        rating: req.body.rating 
+      },
+      {
+        where: {
+          rating_id: req.body.rating_id
+        }
+      }
+    );
+    res.send('Successfully Updated rating');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// delete
+
+router.delete('/rating/:rating_id', async (req, res) => {
+  try {
+    await db.rating.destroy({
+      where: {
+        rating_id: req.params.rating_id
+      }
+    });
+    res.send('Successfully Deleted rating');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 
 
 // Ian GET requests

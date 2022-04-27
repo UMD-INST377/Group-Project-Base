@@ -12,7 +12,7 @@ export default {
     database: 'group10_imdb',
     host: '174.129.198.86',
     dialect: 'mysql',
-    define: {timestamps: false}
+    define: {timestamps: false, freezeTableName: true}
   },
   test: {
     username: 'ubuntu',
@@ -20,7 +20,7 @@ export default {
     database: 'group10_imdb',
     host: '174.129.198.86',
     dialect: 'mysql',
-    define: {timestamps: false}
+    define: {timestamps: false, freezeTableName: true}
   },
   production: {
     username: 'ubuntu',
@@ -28,6 +28,6 @@ export default {
     database: 'group10_imdb',
     host: '174.129.198.86',
     dialect: 'mysql',
-    define: {timestamps: false}
+    define: {timestamps: false, freezeTableName: true}
   }
 };

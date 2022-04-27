@@ -1,6 +1,6 @@
 import express from 'express';
 import sequelize from 'sequelize';
-
+import label from '../models/label.js';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -8,7 +8,7 @@ const router = express.Router();
 router.route('/label').get(async (req, res) => {
   try {
     const art = await db.label.findAll();
-    res.json({data: []});
+    res.json({data: art});
   } catch (error) {
     console.error(error);
     res.send('Server Error');

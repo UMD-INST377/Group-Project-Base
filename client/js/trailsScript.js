@@ -16,14 +16,15 @@ function updateParks(collection) {
   targetList.innerHTML = '';
   collection.forEach((item) => {
     const {park_name} = item;
-    const displayName = park_name.toLowerCase();
+    const displayName = park_name;
     const injectThisItem = `<option>${displayName}</option>`;
     targetList.innerHTML += injectThisItem;
   });
 }
 
 function initMap(targetID) {
-  const latLong = [38.784, -76.872];
+  const latLong = [37.901984, -75.3526373]; // assateague island start
+ 
   const map = L.map(targetID).setView(latLong, 13); // lat long zoom
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -100,8 +101,9 @@ async function mainEvent() { // the async keyword means we can make API requests
     // this statement is to prevent a race condition on data load
     submit.style.display = 'block';
 
-    let currentArray = [];
+    let currentArray = parksArray;
     // inputListener(parks);
+    addMapMarkers(map, currentArray);
     parks.addEventListener('change', async (event) => {
       console.log(event.target.value);
     });

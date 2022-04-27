@@ -14,7 +14,6 @@ const router = express.Router();
 router.put('/update', async (req, res) => {
 
     
-
     const updateQuery = 
     
         `   UPDATE meals

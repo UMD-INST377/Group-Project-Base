@@ -96,10 +96,10 @@ body {
         background-color: #FFD66C !important;
     }
     .navbar {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         font-size: 15px;
     }
     .navbar-elm{
-        width: 150px;
+        width: 250px;
     }
 }

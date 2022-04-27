@@ -1,3 +1,10 @@
+function sortArray(arr, key) {
+  return arr.sort((a, b) => {
+    const x = a[key]; const y = b[key];
+    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+  });
+}
+
 function restArrayMake(dataArray) {
   const listItems = dataArray.slice(0, 50);
   return listItems;
@@ -15,7 +22,6 @@ function createHtmlList(collection) {
     targetList.innerHTML += injectThisArtist + injectThisAlbum;
   });
 }
-
 async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('#results');
@@ -38,7 +44,7 @@ async function mainEvent() {
         return;
       }
       if (event.target.value.trim().length) {
-        // change arrayFromJson.data to currentArray if needed
+      // change arrayFromJson.data to currentArray if needed
         const dataArray = arrayFromJson.data.filter((item) => {
           const lowerName = item.album_name.toLowerCase();
           const lowerValue = event.target.value.toLowerCase();
@@ -46,8 +52,9 @@ async function mainEvent() {
         });
         console.log(dataArray);
         console.log(event.target.value);
-
-        createHtmlList(restArrayMake(dataArray));
+        const sortedArray = sortArray(dataArray, "album_name");
+        console.log(sortedArray)
+        createHtmlList(restArrayMake(sortedArray));
       } else {
         document.querySelector('.result_list').innerHTML = '';
       }

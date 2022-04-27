@@ -33,12 +33,12 @@
                                         <input class="input" id="movie-title" type="text">
                                     </div>
                                 </div>
-                                <div class="field">
+                                <!-- <div class="field">
                                     <label class="label">Release Year</label>
                                     <div class="control">
                                         <input class="input" id="movie-year" type="text">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="field">
                                     <label class="label" for="rating-select">Rating</label>
                                     <div class="select">
@@ -51,20 +51,52 @@
                                         </select>
                                     </div>
                                 </div>
-                                <button id="main-form__submit" class="button" type="submit">Load List</button>
+                                <div class="field">
+                                    <label class="label" for="genre-select">Genre</label>
+                                    <div class="select">
+                                        <select name="genre" id="genre-select">
+                                            <option value="none" selected>Select One</option>
+                                            <option value="action">Action</option>
+                                            <option value="animation">Animation</option>
+                                            <option value="comedy">Comedy</option>
+                                            <option value="crime">Crime</option>
+                                            <option value="documentary">Documentary</option>
+                                            <option value="family">Family</option>
+                                            <option value="fantasy">Fantasy</option>
+                                            <option value="history">History</option>
+                                            <option value="horror">Horror</option>
+                                            <option value="musical">Musical</option>
+                                            <option value="narrative">Narrative</option>
+                                            <option value="romance">Romance</option>
+                                            <option value="short">Short</option>
+                                            <option value="thriller">Thriller</option>
+                                            <option value="war">War</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- <button id="main-form__submit" class="button" type="submit">Load List</button> -->
                             </form>
                         </div>
                     </div>
                     <div class="column">
                         <div class="box">
-                            <ul id="movie-list"></ul>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Year</th>
+                                        <th>Rating</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="search-results"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"
-            integrity="sha256-ErZ09KkZnzjpqcane4SCyyHsKAXMvID9/xwbl/Aq1pc=" crossorigin="anonymous"></script> -->
         <script src="scripts.js"></script>
     </body>
 </html>

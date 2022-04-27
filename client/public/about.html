@@ -2,47 +2,51 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Group 13 Final Project: About</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i">
+  <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script type="module" src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="module" src="js/script.js"></script>
 </head>
 
 <body>
   <div class="wrapper">
     <!-- navigation -->
-    <nav>
-      <div class="nav-wrapper">
-        <ul>
-          <li><a class="active" href="about.html">About</a></li>
-          <li><a href="/">Main</a></li>
-          <li><a href="availability.html">Movie Availability</a></li>
-          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Tables<i
-                class="material-icons right">arrow_drop_down</i></a></li>
-        </ul>
-      </div>
-    </nav>
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="records.html">Records</a></li>
-      <li><a href="ratings.html">Ratings</a></li>
-      <li class="divider"></li>
-      <li><a href="form.html">Add new record</a></li>
-    </ul>
-    <div class="wrap_paragraph">
+    <section class="navigation">
+      <nav class="">
+        <div class="nav-wrapper">
+          <ul>
+            <li><a href="/"><img src="/images/movie-slate.png"></a></li>
+            <li><a class="active short" href="about.html">About</a></li>
+            <li><a href="availability.html">Availability</a></li>
+            <li class="hide-mobile"><a class="dropdown-trigger short" href="#!" data-target="dropdown2">Data<i
+                  class="material-icons right">arrow_drop_down</i></a></li>
+          </ul>
+        </div>
+      </nav>
+      <ul id="dropdown2" class="dropdown-content">
+        <li><a href="records.html">Records</a></li>
+        <li><a href="ratings.html">Ratings</a></li>
+        <li class="divider"></li>
+        <li><a href="form.html">Add new record</a></li>
+      </ul>
+    </section>
+    <!-- content -->
+    <section class="content box about">
       <p>The main information problem we are hoping to solve is allowing users to find movie recommendations based on
         what they like. We will be using
         Netfilx's movie collection as a basis for this. Our main target audience is those who like using movies and
         streaming services who want to be able
-        to watch movies they might enjoy. We also believe those who work in said services might care about thos problem,
+        to watch movies they might enjoy. We also believe those who work in said services might care about thos
+        problem,
         i.e. Netflix and Hulu. It can also
         benefit those who want to learn more about machine learning.
       </p>
-    </div>
-  </div>
+    </section>
+  </div> <!-- end of wrapper-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 

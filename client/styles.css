@@ -1,4 +1,4 @@
-/* Mobile Formatting */
+/* Desktop Formatting */
 
 * {
   margin: 100;
@@ -17,6 +17,27 @@ body {
   justify-content: center;
 }
 
+img {
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 
+.menu_container {
+  max-width: 960px;
+  width: 100%;
+  background-color: #219653;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
 

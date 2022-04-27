@@ -7,23 +7,58 @@
     <link rel='stylesheet' href='styles.css'>
   </head>
   <body>
-    <header class='wrapper'>
-      <h1>Search Plants</h1>
+
+    <header class='menu_container'>
+      <div class='menu'>
+        <div class="menu_item"><a href="index.html" >About</a></div>
+        <div class="menu_item"><a href="map.html" >Map</a></div>
+        <div class="menu_item"><a href="search.html">Search Plants</a></div>
+        <div class="menu_item"><a href="new.html">New Entry</a></div>
+      </div>
     </header>
+
+    <div class='wrapper'>
+      <h1>Search Plants</h1>
+    </div>
+    
     <div class="box">
-      <form method="get" class="main_form container column" >
+      <form method="get">
+            
             <div class='form_row'>
-              <label for='resto_name'>Restaurant Name</label>
-              <input id='resto_name' name='resto_name' type='text'/>
+              <label for='common_name'>Plant Common Name</label>
+              <input id='common_name' name='common_name' type='text'/>
             </div>
+
             <div class='form_row'>
-              <label for='zipcode'>Zipcode</label>
-              <input id='zipcode' name='zipcode' type='text'/>
+              <label for='latin_name'>Latin Name</label>
+              <input id='latin_name' name='latin_name' type='text'/>
             </div>
+
+            <fieldset class='legacy_form_row'>
+              <legend>Plant Type</legend>
+              
+              <input type='radio' id='tree' name='tree'>
+              <label for='tree'>Tree</label>
+
+              <input type='radio' id='herb' name='herb'>
+              <label for='herb'>Herb</label>
+
+              <input type='radio' id='creeper' name='creeper'>
+              <label for='creeper'>Creeper</label>
+              
+              <br>
+
+              <input type='radio' id='shrub' name='shrub'>
+              <label for='shrub'>Shrub</label>
+
+              <input type='radio' id='climber' name='climber'>
+              <label for='climber'>Climber</label>
+            </fieldset>
+
             <fieldset class='legacy_form_row'>
               <legend>Flower Color</legend>
               
-              <div>
+              
               <input type='checkbox' id='red' name='red'>
               <label for='red'>Red</label>
               
@@ -32,9 +67,9 @@
               
               <input type='checkbox' id='yellow' name='yellow'>
               <label for='yellow'>Yellow</label>
-              </div>
 
-              <div>
+              <br>
+              
               <input type='checkbox' id='pink' name='pink'>
               <label for='pink'>Pink</label>
               
@@ -43,9 +78,9 @@
               
               <input type='checkbox' id='blue' name='blue'>
               <label for='blue'>Blue</label>
-              </div>
+              
+              <br>
 
-              <div>
               <input type='checkbox' id='green' name='green'>
               <label for='green'>Green</label>
               
@@ -54,7 +89,8 @@
               
               <input type='checkbox' id='gray' name='gray'>
               <label for='gray'>Gray</label>
-              </div>
+              
+              <br>
               
               <input type='checkbox' id='brown' name='brown'>
               <label for='brown'>Brown</label>
@@ -67,7 +103,7 @@
               <button class='submit_button'>Find Plants</button>
             </div>
       </form>
-      <div class="container column">
+      <div>
         <h2>Plants Found:</h2>
         <br>
         <ul class="plants_list"></ul>

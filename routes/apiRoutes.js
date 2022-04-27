@@ -83,8 +83,64 @@ router.route('/playlist/:id')
        res.json({message: 'Error2!'});
    }
 })
-//// PUT 
+//// POST 
 
+
+router.route('/playlist')
+.post(async (req, res) => {
+    const playlistList = await db.playlist.findAll();
+    const currentId = (await playlistList.length) + 1;
+    try {
+      const newGenre = await db.playlist.create({
+        playlist_id: currentId,
+        playlist_title: req.body.playlist_name,
+        song_id: req.body.song_id,
+      });
+      res.json(newPlaylist);
+    } catch (err) {
+      console.error(err);
+      res.error('Playlist Post Error!');
+    }
+  });
+//PUT
+router.route('/playlist/:id')
+.put(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.genre.update(
+        {
+          playlist_title: req.body.playlist_title
+        },
+        {
+          song_id: req.body.song_id
+        },
+        {
+          where: {
+            playlist_id: id
+          }
+        }
+      );
+      res.send('Playlist Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Playlist Put Error!'});
+    }
+});
+//Delete
+router.route('/playlist/:id')
+.delete(async (req, res) => {
+    try {
+      await db.playlist.destroy({
+        where: {
+          playlist_id: req.params.playlist_id
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.error(err);
+      res.error('Playlist Delete Error!');
+    }
+  });
 
 
 

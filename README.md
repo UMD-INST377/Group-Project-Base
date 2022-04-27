@@ -43,7 +43,4 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 
 ## Known Bugs and Future Development
 ### Bugs:
-
-
-
 ### Future Development: 

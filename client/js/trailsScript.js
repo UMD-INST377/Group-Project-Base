@@ -9,6 +9,9 @@ function formToObject(htmlFormElement) {
   }, {});
   return formObject;
 }
+// to-do write function to retrive park info from park name
+
+// to-do hook up review form 
 
 function updateParks(collection) {
   // console.table(collection);

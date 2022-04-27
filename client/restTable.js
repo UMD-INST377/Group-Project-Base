@@ -1,6 +1,6 @@
-console.log("gang");
+console.log("message");
 async function createTable() {
-  console.log("yo");
+  console.log("hello");
   let currentData = [];
   const data = [];
   const form = document.querySelector(".main-form");
@@ -87,4 +87,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   await createTable();
 });
 
+
 // updates may need to add more to this
+

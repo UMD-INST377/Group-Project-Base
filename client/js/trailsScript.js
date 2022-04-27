@@ -1,24 +1,3 @@
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-// As the last step of your lab, hook this up to index.html
-function restoArrayMake(dataArray) {
-  // console.log('fired datahandler');
-  // console.table(dataArray);
-  const range = [...Array(15).keys()];
-  const listItems = range.map((item, index) => {
-    const restNum = getRandomIntInclusive(0, dataArray.length - 1);
-    return dataArray[restNum];
-  });
-  return listItems;
-  /* range.forEach((item) => {
-    console.log('range item', item);
-  }); */
-}
-
 function formToObject(htmlFormElement) {
   const formItem = new FormData(htmlFormElement).entries();
   const formArray = Array.from(formItem);
@@ -31,14 +10,14 @@ function formToObject(htmlFormElement) {
   return formObject;
 }
 
-function createHtmlList(collection) {
+function updateParks(collection) {
   // console.table(collection);
-  const targetList = document.querySelector('.parks-list');
+  const targetList = document.querySelector('#park');
   targetList.innerHTML = '';
   collection.forEach((item) => {
     const {park_name} = item;
     const displayName = park_name.toLowerCase();
-    const injectThisItem = `<li>${displayName}</li>`;
+    const injectThisItem = `<option>${displayName}</option>`;
     targetList.innerHTML += injectThisItem;
   });
 }
@@ -90,7 +69,7 @@ function inputListener(target) {
       return lowerName.includes(lowerValue);
     });
     console.log(selectResto);
-    createHtmlList(selectResto);
+    updateParks(selectResto);
   });
 }
 async function mainEvent() { // the async keyword means we can make API requests
@@ -110,6 +89,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   const parksArray = await parksapi.json();
   // const storedDataArray = JSON.parse(parksArray);
   console.log(parksArray);
+  updateParks(parksArray);
   if (parksArray?.length > 0) {
     // this statement is to prevent a race condition on data load
     submit.style.display = 'block';
@@ -118,26 +98,15 @@ async function mainEvent() { // the async keyword means we can make API requests
     // inputListener(parks);
     parks.addEventListener('change', async (event) => {
       console.log(event.target.value);
-
-      if (currentArray.length < 1) {
-        return;
-      }
-      const selectResto = currentArray.filter((item) => {
-        const lowerName = item.name.toLowerCase();
-        const lowerValue = event.target.value.toLowerCase();
-        return lowerName.includes(lowerValue);
-      });
-      console.log(selectResto);
-      createHtmlList(selectResto);
     });
 
     form.addEventListener('submit', async (submitEvent) => {
       // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       // console.log('form submission'); // this is substituting for a "breakpoint"
-      currentArray = restoArrayMake(parksArray);
+      currentArray = parksArray;
       console.log(currentArray);
-      createHtmlList(currentArray);
+      updateParks(currentArray);
       addMapMarkers(map, currentArray);
     });
   }

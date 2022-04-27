@@ -90,100 +90,100 @@ router.put('/artists', async (req, res) => {
     res.error('Server error');
   }
 });
+///EXTRA
+// /// /////////////////////////////////
+// /// ////Genre Endpoints////////
+// /// /////////////////////////////////
+// router.get('/genres', async (req, res) => {
+//   try {
+//     const genresItems = await db.genres.findAll();
+//     const reply = genresItems.length > 0 ? { data: genresItems } : { message: 'no results found' };
+//     res.json(reply);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-/// /////////////////////////////////
-/// ////Genre Endpoints////////
-/// /////////////////////////////////
-router.get('/genres', async (req, res) => {
-  try {
-    const genresItems = await db.genres.findAll();
-    const reply = genresItems.length > 0 ? { data: genresItems } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.get('/genres/:genre_id', async (req, res) => {
+//   try {
+//     const genresItems = await db.genres.findAll({
+//       where: {
+//         genre_id: req.params.genre_id
+//       }
+//     });
 
-router.get('/genres/:genre_id', async (req, res) => {
-  try {
-    const genresItems = await db.genres.findAll({
-      where: {
-        genre_id: req.params.genre_id
-      }
-    });
+//     res.json(genresItems);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-    res.json(genresItems);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.post('/genres', async (req, res) => {
+//   const isNum = /^\d+$/.test(req.body.genre_name);
+//   const genreItems = await db.genres.findAll();
+//   const currentId = (await genreItems.length) + 1;
+//   try {
+//     const newGenre = await db.genres.create({
+//       genre_id: currentId,
+//       genre: req.body.genre
+//     });
+//     if (!isNum) {
+//       res.json(newGenre);
+//     } else { res.send('not valid genre name'); }
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-router.post('/genres', async (req, res) => {
-  const isNum = /^\d+$/.test(req.body.genre_name);
-  const genreItems = await db.genres.findAll();
-  const currentId = (await genreItems.length) + 1;
-  try {
-    const newGenre = await db.genres.create({
-      genre_id: currentId,
-      genre: req.body.genre
-    });
-    if (!isNum) {
-      res.json(newGenre);
-    } else { res.send('not valid genre name'); }
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.put('/genres', async (req, res) => {
+//   try {
+//     await db.genres.update(
+//       {
+//         genre_id: req.body.genre_id,
+//         genre: req.body.genre
+//       },
+//       {
+//         where: {
+//           genre_id: req.body.genre_id
+//         }
+//       }
+//     );
+//     res.send('Successfully Updated');
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
-router.put('/genres', async (req, res) => {
-  try {
-    await db.genres.update(
-      {
-        genre_id: req.body.genre_id,
-        genre: req.body.genre
-      },
-      {
-        where: {
-          genre_id: req.body.genre_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.delete('/genres/:genre_id', async (req, res) => {
-  try {
-    await db.genres.destroy({
-      where: {
-        genre_id: req.params.genre_id
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.delete('/genres/:genre_name', async (req, res) => {
-  try {
-    await db.genres.destroy({
-      where: {
-        genre_name: req.params.genre_name
-      }
-    });
-    res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+// router.delete('/genres/:genre_id', async (req, res) => {
+//   try {
+//     await db.genres.destroy({
+//       where: {
+//         genre_id: req.params.genre_id
+//       }
+//     });
+//     res.send('Successfully Deleted');
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+// router.delete('/genres/:genre_name', async (req, res) => {
+//   try {
+//     await db.genres.destroy({
+//       where: {
+//         genre_name: req.params.genre_name
+//       }
+//     });
+//     res.send('Successfully Deleted');
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
 
 /// /////////////////////////////////
 /// ////Playlists Endpoints////////
@@ -930,7 +930,7 @@ router.delete('/genres/:genre_id', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// ////Supportint Endpoints////////
+/// ////Supporting Endpoints////////
 /// /////////////////////////////////
 
 /// Results of Search///

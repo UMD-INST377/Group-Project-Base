@@ -40,7 +40,14 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 * GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
 * POST - obtains movie name from request body to fetch url. fetch data json from Movies API and returns JSON response. 
 * PUT - returns response 'Got a PUT request at /api'.
+* DELETE - gets rid of a movie record depending on the value passed in. Returns response of 'Successfully deleted.' if done properly
 
 ## Known Bugs and Future Development
 ### Bugs:
+1. Adding a new movie record and making sure that the ratings table and records table both get updated. Right now, when a movie record is added, it is being added to the records table but not to the ratings table
+2. Making sure that the main database of movies gets updated with the new record
+3. Making sure that the information is being inputted and parsed correctly through to put the right information forth
 ### Future Development: 
+1. Expanding the movie database to have it become more of a recommender system (Adding some algorithms)
+2. Adding more models regarding movies to better represent the films that we currently have 
+3. Expanding the database to make it more of a media database (adding both movies and tv)

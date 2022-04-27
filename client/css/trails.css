@@ -25,6 +25,12 @@
   
   .wrapper {
     display: flex;
+    padding-top: 50px;
+  }
+  .wrapper2 {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
   }
   .container {
     max-width: 100%;

@@ -13,6 +13,12 @@ export default (sequelize, DataTypes) => {
       },
       trails: {
         type: DataTypes.STRING
+      },
+      park_lat: {
+        type: DataTypes.DECIMAL
+      },
+      park_long: {
+        type: DataTypes.DECIMAL
       }
     },
     { freezeTableName: true, timestamps: false }

@@ -29,7 +29,9 @@
                            <div class="field">
                                <label for="park_name" class="label">Park Name</label>
                                <div class="control">
-                                   <input type="text" name="park_name" id="park_name">
+                                  <select id="park" name="park">
+                                    <option value="default">default</option>
+                                  </select>
                                </div>
 
 
@@ -54,6 +56,33 @@
            </div>
        </div>
    </div>
+   
+   <div class="wrapper2">
+    <div class = "columns is-mobile is-centered is-vcentered">
+        <div class = "column is-narrow">
+            <div class = "box">
+                <form class="main_form" >
+                    <div class="field">
+                        <label for="review_title" class="label">Title</label>
+                        <div class="control">
+                            <input type="text" name="review_title" id="review_title">
+                        </div>
+                        <label for="review_author" class="label">Author</label>
+                        <div class="control">
+                            <input type="text" name="review_author" id="review_author">
+                        </div>
+                    </div>
+                    <button class="button submit_button is-success" type ="submit">
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+
     <script src="js/trailsScript.js"></script>
 </body>
 </html>

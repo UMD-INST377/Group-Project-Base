@@ -97,7 +97,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // change this selector to match the id or classname of your actual form
   const submit = document.querySelector('.submit_button');
 
-  const parks = document.querySelector('#park_name');
+  const parks = document.querySelector('#park');
   const refresh = document.querySelector('#refresh_list');
 
   const map = initMap('map');
@@ -116,7 +116,7 @@ async function mainEvent() { // the async keyword means we can make API requests
 
     let currentArray = [];
     // inputListener(parks);
-    parks.addEventListener('input', async (event) => {
+    parks.addEventListener('change', async (event) => {
       console.log(event.target.value);
 
       if (currentArray.length < 1) {

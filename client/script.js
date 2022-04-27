@@ -31,4 +31,5 @@ $(document).ready(function(){
         });
  });
 
- // updates
+ // updated
+ // may need to expand on this more for website functionality

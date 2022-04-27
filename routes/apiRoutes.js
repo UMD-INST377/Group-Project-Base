@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 // Access the actors table and receiving the actor's id
 router.get('/actors/:id', async (req, res) => {
   try {
-    const {id} = req.params.id;
+    const {id} = req.params;
     const actorList = await db.Actor.findOne({
       where: {
         actor_id: `${id}`

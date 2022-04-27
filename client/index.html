@@ -52,13 +52,17 @@
                     <!-- <button class="button is-primary is-fullwidth" id="submit_button">Search</button> -->
                     <label class="radio">
                         Search By:  
-                        <input type="radio" name="filter" checked>
+                        <input type="radio" name="filter" id="song">
+                        Song
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="filter" id="album">
                         Album
-                      </label>
-                      <label class="radio">
-                        <input type="radio" name="filter">
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="filter" id="artist">
                         Artist
-                      </label>
+                    </label>
             </div>
         </div>
     </div>
@@ -72,6 +76,7 @@
                     <thead>
                         <tr>
                             <th>Artist</th>
+                            <th>Song</th>
                             <th>Album Name</th>
                         </tr>
 

@@ -520,8 +520,8 @@ router.delete('/album_songs/:album_id', async (req, res) => {
 
 router.get('/artist_songs', async (req, res) => {
   try {
-    const styleItems = await db.artistSongs.findAll();
-    const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
+    const artSongItems = await db.artistSongs.findAll();
+    const reply = artSongItems.length > 0 ? { data: artSongItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -531,13 +531,13 @@ router.get('/artist_songs', async (req, res) => {
 
 router.get('/artist_songs/:artist_id', async (req, res) => {
   try {
-    const styleItems = await db.artistSongs.findAll({
+    const artSongItems = await db.artistSongs.findAll({
       where: {
         artist_id: req.params.artist_id
       }
     });
 
-    res.json(styleItems);
+    res.json(artSongItems);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -545,8 +545,8 @@ router.get('/artist_songs/:artist_id', async (req, res) => {
 });
 
 router.post('/artist_songs', async (req, res) => {
-  const styleItems = await db.artistSongs.findAll();
-  const currentId = (await styleItems.length) + 1;
+  const artSongItems = await db.artistSongs.findAll();
+  const currentId = (await artSongItems.length) + 1;
   try {
     const newStyle = await db.artistSongs.create({
       artist_id: currentId,
@@ -674,8 +674,8 @@ router.delete('/song_genres/:song_id', async (req, res) => {
 
 router.get('/playlist_songs', async (req, res) => {
   try {
-    const styleItems = await db.playlistSongs.findAll();
-    const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
+    const playSongItems = await db.playlistSongs.findAll();
+    const reply = playSongItems.length > 0 ? { data: playSongItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -685,13 +685,13 @@ router.get('/playlist_songs', async (req, res) => {
 
 router.get('/playlist_songs/:playlist_id', async (req, res) => {
   try {
-    const styleItems = await db.playlistSongs.findAll({
+    const playSongItems = await db.playlistSongs.findAll({
       where: {
         playlist_id: req.params.playlist_id
       }
     });
 
-    res.json(styleItems);
+    res.json(playSongItems);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -699,8 +699,8 @@ router.get('/playlist_songs/:playlist_id', async (req, res) => {
 });
 
 router.post('/playlist_songs', async (req, res) => {
-  const styleItems = await db.playlistSongs.findAll();
-  const currentId = (await styleItems.length) + 1;
+  const playSongItems = await db.playlistSongs.findAll();
+  const currentId = (await playSongItems.length) + 1;
   try {
     const newStyle = await db.playlistSongs.create({
       playlist_id: currentId,
@@ -756,8 +756,8 @@ router.delete('/playlist_songs/:playlist_id', async (req, res) => {
 
 router.get('/songs', async (req, res) => {
   try {
-    const styleItems = await db.songs.findAll();
-    const reply = styleItems.length > 0 ? { data: styleItems } : { message: 'no results found' };
+    const songItems = await db.songs.findAll();
+    const reply = songItems.length > 0 ? { data: songItems } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -767,13 +767,13 @@ router.get('/songs', async (req, res) => {
 
 router.get('/songs/:song_id', async (req, res) => {
   try {
-    const styleItems = await db.songs.findAll({
+    const songItems = await db.songs.findAll({
       where: {
         song_id: req.params.song_id
       }
     });
 
-    res.json(styleItems);
+    res.json(songItems);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -781,8 +781,8 @@ router.get('/songs/:song_id', async (req, res) => {
 });
 
 router.post('/songs', async (req, res) => {
-  const styleItems = await db.songs.findAll();
-  const currentId = (await styleItems.length) + 1;
+  const songItems = await db.songs.findAll();
+  const currentId = (await songItems.length) + 1;
   try {
     const newStyle = await db.songs.create({
       song_id: currentId,

@@ -3,16 +3,12 @@ export default (sequelize, DataTypes) => {
     'genres',
     {
       genre_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        unique: true
+        type: DataTypes.int(11),
+        allowNull: false
       },
       genre: {
         type: DataTypes.CHAR(50),
-        allowNull: false,
-        unique: true
+        allowNull: false
       }
     },
     { freezeTableName: true, timestamps: false }

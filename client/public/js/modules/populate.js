@@ -8,12 +8,12 @@ async function populateGenres(currentPage) {
     dropdown.innerHTML += '<option value="" selected>All</option>';
   }
   genres.data.forEach((item) => {
-    if (item.genre !== 'Other') {
-      const option = document.createElement('option');
-      option.text = item.genre;
-      option.value = item.genre_id;
-      dropdown.appendChild(option);
-    }
+    // if (item.genre !== 'Other') {
+    const option = document.createElement('option');
+    option.text = item.genre;
+    option.value = item.genre_id;
+    dropdown.appendChild(option);
+    // }
   });
 }
 

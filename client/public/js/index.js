@@ -1,20 +1,18 @@
 /* eslint-disable import/prefer-default-export */
-import { populateGenres } from './populate.js';
-import { displayResults } from './displayData.js';
+import { populateGenres } from './modules/populate.js';
+import { displayResults } from './modules/display.js';
 
-async function loadIndex() {
-  // initialize dropdowns
+document.addEventListener('DOMContentLoaded', async () => {
+  // initialize dropdown
   await populateGenres();
-  // M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
+  M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
   M.FormSelect.init(document.querySelectorAll('select'));
-  // document.querySelector('.dropdown-trigger').dropdown();
 
   // load initial movies
   const results = await fetch('/api/table/data/9');
   const data = await results.json();
   displayResults(data);
 
-  // filters
   const dict = {
     genre_id: null,
     netflix: null,
@@ -23,6 +21,7 @@ async function loadIndex() {
     disney: null
   };
   const search = document.querySelector('#search');
+
   search.addEventListener('keypress', async (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -67,25 +66,11 @@ async function loadIndex() {
           dict[key] = document.querySelector(`#${key}`).checked ? 1 : 0;
         }
       }
-      // console.log(key, dict[key]);
     });
 
     const exclude = [];
     const include = [];
     let platformsQuery = 'WHERE ';
-
-    // Object.keys(dict).forEach((item) => {
-    //   if (item !== 'genre_id') {
-    //     if (dict[item] === 1) {
-    //       query += `is_on_${item} = 1 `;
-    //       if (item !== 'netflix') {
-    //         query += 'AND ';
-    //       }
-    //     } else {
-          
-    //     }
-    //   }
-    // });
 
     Object.keys(dict).forEach((item) => {
       if (item !== 'genre_id') {
@@ -108,17 +93,6 @@ async function loadIndex() {
       platformsQuery += ') ';
     }
 
-    // if (exclude.length > 0) {
-    //   platformsQuery += 'AND '
-    // }
-
-    // exclude.forEach((item) => {
-    //   platformsQuery += `is_on_${item} = 0 `;
-    //   if (exclude.slice(exclude.indexOf(item) + 1).length > 0) {
-    //     platformsQuery += 'AND ';
-    //   }
-    // });
-    // platformsQuery += ' ';
     const platformError = document.querySelector('#platform-error');
     if (exclude.length === 4) {
       platformError.style.setProperty('display', 'block');
@@ -127,16 +101,6 @@ async function loadIndex() {
       if (dict.genre_id !== '') {
         genreQuery = `AND genre_id = ${dict.genre_id} `;
       }
-      // console.log(`select movie_id, title, year, genre, genre_id, language as 'lang', 
-      // rating, image_url, is_on_netflix, is_on_hulu, is_on_prime, is_on_disney from movies
-      //   left join images using(image_id)
-      //   left join availability using(availability_id)
-      //   left join genres using(genre_id)
-      //   left join ratings using(rating_id)
-      //   left join languages using(language_id)
-      //   ${platformsQuery}
-      //   ${genreQuery}
-      // order by movie_id`)
 
       const newResults = await fetch('/api/custom', {
         method: 'POST',
@@ -166,6 +130,4 @@ async function loadIndex() {
       document.querySelector('#num-results').innerHTML = numResults;
     }
   });
-}
-
-export { loadIndex };
+});

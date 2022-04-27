@@ -1,5 +1,5 @@
-/* eslint-disable import/prefer-default-export */
-async function loadAvail() {
+/* eslint-disable brace-style */
+document.addEventListener('DOMContentLoaded', async () => {
   const results = await fetch('/api/table/data');
   const items = await results.json();
   const genreType = document.querySelector('.genre_selector');
@@ -11,9 +11,13 @@ async function loadAvail() {
     if (genreArray.includes(item.genre) === false) {
       genreArray.push(item.genre);
       genreType.innerHTML += `
-      <option>${item.genre}</option>`;
+      <option value="${item.genre}">${item.genre}</option>`;
     }
   });
+
+  M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'));
+  M.FormSelect.init(document.querySelectorAll('select'));
+
   function genreAll() {
     // if a chart exists, destroy it.
     if (myChart != null) {
@@ -90,14 +94,12 @@ async function loadAvail() {
   // Start it in All:
   genreAll();
 
-  // Using the Dropdown:
-  genreType.onclick = (e) => {
+  genreType.addEventListener('change', () => {
     if (genreType.value === genreCurrentValue) {
       console.log('Nothing Changed!');
     } else {
       genreCurrentValue = genreType.value;
       genreAll();
     }
-  };
-}
-export { loadAvail };
+  });
+});

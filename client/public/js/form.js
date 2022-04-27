@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-import { populateGenres, populateLanguages, populateRatings } from './populate.js';
+import { populateGenres, populateLanguages, populateRatings } from './modules/populate.js';
+
 async function populateEditGenres(genre) {
   const dropdown = document.querySelector('#genre-input');
   const results = await fetch('/api/genres');
@@ -44,8 +45,7 @@ async function populateEditRatings(rating) {
     dropdown.innerHTML += option;
   });
 }
-
-async function loadForm() {
+document.addEventListener('DOMContentLoaded', async () => {
   const editMovieID = window.location.search.split('=')[1];
   const form = document.querySelector('#form-wrapper');
   if (editMovieID !== undefined) {
@@ -118,7 +118,7 @@ async function loadForm() {
             <input id="imageURL" type="text" name="image_url" required="required" value="${movie.image_url}"/>
             <label class="active">Image URL</label>
           </div>
-          <div class="input-field col">
+          <div class="input-field col s12 l12">
             Availability
             <form action="#">
               <p>
@@ -236,7 +236,7 @@ async function loadForm() {
           image_id: initialImage
         })
       });
-      window.location = '/records.html';
+      window.location = '/records.html?end';
     });
   } else {
     // populate dropdowns
@@ -327,9 +327,7 @@ async function loadForm() {
           image_id: JSONimages.data.length
         })
       });
-      window.location = '/records.html';
+      window.location = '/records.html?end';
     });
   }
-}
-
-export { loadForm };
+});

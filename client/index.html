@@ -60,7 +60,22 @@
                     <ion-icon name="search-outline"></ion-icon>
                 </span>
             </div>
-
+            <div class="buttons field">
+                    <!-- <button class="button is-primary is-fullwidth" id="submit_button">Search</button> -->
+                    <label class="radio">
+                        Search By:  
+                        <input type="radio" name="filter" id="song">
+                        Song
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="filter" id="album">
+                        Album
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="filter" id="artist">
+                        Artist
+                    </label>
+            </div>
         </div>
     </div>
 
@@ -73,6 +88,7 @@
                     <thead>
                         <tr>
                             <th>Artist</th>
+                            <th>Song</th>
                             <th>Album Name</th>
                         </tr>
 

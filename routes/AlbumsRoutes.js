@@ -34,7 +34,6 @@ router.post('/album', async (req, res) => {
   const art = db.album.findAll();
   const currentId = (await art.length) + 1;
   try {
-    console.log(util.inspect(req.body, {showHidden: false, depth: null, colors: true}));
     const newAlbum = await db.album.create({
       album_id: currentId,
       release_id: req.body.release_id,
@@ -50,7 +49,6 @@ router.post('/album', async (req, res) => {
 
 router.put('/album/', async (req, res) => {
   try {
-    console.log(util.inspect(req.body, {showHidden: false, depth: null, colors: true}))
     const albumUpdate = await db.album.upsert(
       {
         album_id: req.body.album_id,

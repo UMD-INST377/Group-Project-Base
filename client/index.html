@@ -42,27 +42,36 @@
     </div>
     <div class="search_container">
         <div class="field" id="searchbar">
+           
+           <div class="buttons field">
+               <div class="control">
+            <strong>Search By:</strong>
+                    <!-- <button class="button is-primary is-fullwidth" id="submit_button">Search</button> -->
+                        <label class="radio"> 
+                            <input type="radio" name="filter" id="artist" checked>
+                            Artist
+                        </label> 
+                        <label class="radio">
+                            <input type="radio" name="filter" id="album">
+                            Album
+                        </label>
+                        <label class="radio"></label>
+                            <input type="radio" name="filter" id="song">
+                            Song
+                        </label>
+               </div>  
+            </div>
             <div class="control has-icons-left">
-                <input class="input" type="text" placeholder="Search by Title, Artist, Album" id="init_search">
+                <input class="input" type="text" placeholder="Search" id="init_search">
                 <span class="icon is-small is-right">
                     <ion-icon name="search-outline"></ion-icon>
                 </span>
             </div>
-            <div class="buttons field">
-                <p class="control">
-                    <button class="button is-primary is-fullwidth" id="submit_button">Search</button>
-                    <button class="button is-primary is-fullwidth" id="refresh_button">S</button>
-                </p>
-            </div>
+            
         </div>
     </div>
 
     <div id="middle">
-        <div class="column is-one-quarter">
-            <div class="box" id="filters">
-                Filters
-            </div>
-        </div>
         <div class="column is-">
             <strong>Results</strong>
             <div class="box" id="results">
@@ -70,9 +79,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Album Name</th>
                             <th>Artist</th>
-
+                            <th>Album Name</th>
+                            <th>Song</th>
+                           
                         </tr>
 
                     </thead>
@@ -85,19 +95,28 @@
         </div>
     </div>
 
-
+    <div id="chart">
+        <canvas id="myChart" width="400px" height="400px"></canvas>
     </div>
+
+
     <script src="./js/script.js"></script>
+
+    <!-- chart scripts -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="./js/chart.js"></script>
+    <!-- end of chart scripts -->
+
     <!-- icon library script -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- end of icon library script -->
-    <div class="sidenav">
+    <!-- <div class="sidenav">
         <a href="#">Description</a>
         <a href="#">Genres</a>
         <a href="#">Albums</a>
         <a href="#">Artists</a>
-    </div>
+    </div> -->
 </body>
 
 </html>

@@ -1,31 +1,29 @@
-export default (sequelize, DataTypes) => {
-  const albums = sequelize.define(
+export default (database, DataTypes) => {
+  const albumSongs = database.define(
     'albums',
     {
       album_id: {
         type: DataTypes.CHAR(22),
         allowNull: false,
-        primaryKey: true,
-        unique: true
+        primaryKey: true
       },
       release_date: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.DATE,
         allowNull: false
       },
       label: {
-        type: DataTypes.CHAR(400),
+        type: DataTypes.STRING(400),
         allowNull: false
       },
       cover_url: {
-        type: DataTypes.CHAR(100)
+        type: DataTypes.STRING(100),
+        allowNull: true
       },
       album_name: {
-        type: DataTypes.CHAR(80),
+        type: DataTypes.STRING(100),
         allowNull: false
       }
-      
-    },
-    { freezeTableName: true, timestamps: false }
+    }, { freezeTableName: true, timestamps: false }
   );
-  return albums;
+  return albumSongs;
 };

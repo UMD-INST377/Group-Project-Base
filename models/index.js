@@ -9,7 +9,6 @@ import songGenres from './song_genres.js';
 import playlistSongs from './playlist_songs.js';
 import songs from './songs.js';
 
-
 export default {
   artists,
   albumSongs,
@@ -21,5 +20,4 @@ export default {
   songGenres,
   playlistSongs,
   songs
- 
 };

@@ -17,12 +17,10 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
-    "chart.js": "^3.7.1",
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
     "sequelize": "^6.5.0",
-    "sequelize-auto": "^0.8.8",
     "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
@@ -32,5 +30,5 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-cypress": "^2.11.1",
     "eslint-plugin-import": "^2.22.1"
-}
+  }
 }

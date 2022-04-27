@@ -77,6 +77,14 @@
     gap: 300px;
 }
 
+.hourContainers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 150px;
+    gap: 80px;
+}
+
 .meal_page {
     display: flex;
     flex-direction: column;
@@ -118,7 +126,7 @@
 .foodLists {
     display: flex;
     flex-direction: row;
-    gap: none;
+    gap: 100px
 }
 
 .sub_headers {
@@ -132,13 +140,21 @@
 .columns {
     display: flex;
     flex-direction: row;
-    gap: 100px;
+    gap: 15px;
+}
+
+.column_detail, h3{
+    margin-left: 15px;
 }
 
 .column_one, .column_two {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.one, h2 {
+    margin-left: 15px;
 }
 
 .diet_types {
@@ -169,4 +185,27 @@
     line-height: 47px;
     text-align: center;
     color: #000000;
+}
+
+.schedule {
+    display: flex;
+    flex-direction: row;
+    margin-top: 80px;
+}
+.weekdays {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 35px;
+    color: #000000;
+    padding-left: 20px;
+}
+
+.weekdays, h4 {
+    width: 90px;
+    height: 100px;
+    background-color: #C4C4C4;
 }

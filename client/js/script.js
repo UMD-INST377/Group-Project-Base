@@ -17,34 +17,44 @@ function createHtmlList(collection) {
   targetList.innerHTML = '';
   collection.forEach((item) => {
     const { name } = item;
+    const { songName } = item;
     const { album_name } = item;
     const displayArtist = name.toLowerCase();
+    const displaySong = songName.toLowerCase();
     const displayAlbum = album_name.toLowerCase();
-    if (ArtistRadio.checked) {
-      const injectThisArtist = `<th>${displayArtist}</th>`;
-      const injectThisAlbum = ` <td>${displayAlbum}</td>`;
-      targetList.innerHTML += injectThisArtist + injectThisAlbum;
+    let injectThisArtist;
+    let injectThisSong;
+    let injectThisAlbum;
+    if (document.getElementById('song').checked) {
+      injectThisArtist = `<td>${displayArtist}</td>`;
+      injectThisSong = `<th>${displaySong}</th>`;
+      injectThisAlbum = ` <td>${displayAlbum}</td>`;
     }
-    if (AlbumRadio.checked) {
-      const injectThisArtist = `<td>${displayArtist}</td>`;
-      const injectThisAlbum = ` <th>${displayAlbum}</th>`;
-      targetList.innerHTML += injectThisArtist + injectThisAlbum;
+    if (document.getElementById('album').checked) {
+      injectThisArtist = `<td>${displayArtist}</td>`;
+      injectThisSong = `<td>${displaySong}</td>`;
+      injectThisAlbum = ` <th>${displayAlbum}</th>`;
     }
+    if (document.getElementById('artist').checked) {
+      injectThisArtist = `<th>${displayArtist}</th>`;
+      injectThisSong = `<td>${displaySong}</td>`;
+      injectThisAlbum = ` <td>${displayAlbum}</td>`;
+    }
+    targetList.innerHTML += injectThisArtist + injectThisAlbum + injectThisSong;
   });
 }
 async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('#results');
-  const restName = document.querySelector('#init_search');
-  const ArtistRadio = document.getElementById('Artist');
-  const AlbumRadio = document.getElementById('Album');
-
+  // not needed since result is limited to 50
+  // const submitButton = document.querySelector('#submit_button');
+  const searchbar = document.querySelector('#init_search');
   const results = await fetch('/api/main'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
   if (arrayFromJson.data.length > 0) {
     console.log('start');
     let currentArray = [];
-    restName.addEventListener('input', async (event) => {
+    searchbar.addEventListener('input', async (event) => {
       console.log(event.target.value);
       if (event.length < 1) {
         console.log('caught');
@@ -53,32 +63,27 @@ async function mainEvent() {
       if (event.target.value.trim().length) {
         // change arrayFromJson.data to currentArray if needed
         const dataArray = arrayFromJson.data.filter((item) => {
-          const lowerAlbumName = item.album_name.toLowerCase();
-          const lowerArtistName = item.name.toLowerCase();
-          const lowerValue = event.target.value.toLowerCase();
-          if (ArtistRadio.checked) {
-            return lowerArtistName.startsWith(lowerValue);
+          // Changes the way the results are ordered based on which button is pressed
+          if (document.getElementById('song').checked) {
+            const lowerName = item.songName.toLowerCase();
+            const lowerValue = event.target.value.toLowerCase();
+            return lowerName.startsWith(lowerValue);
           }
-          if (AlbumRadio.checked) {
-            return lowerAlbumName.startsWith(lowerValue);
+          if (document.getElementById('album').checked) {
+            const lowerName = item.album_name.toLowerCase();
+            const lowerValue = event.target.value.toLowerCase();
+            return lowerName.startsWith(lowerValue);
           }
-          return 'no results filter';
+          if (document.getElementById('artist').checked) {
+            const lowerName = item.name.toLowerCase();
+            const lowerValue = event.target.value.toLowerCase();
+            return lowerName.startsWith(lowerValue);
+          }
         });
-
         console.log(dataArray);
         console.log(event.target.value);
-        const sortedArray = (() => {
-          if (ArtistRadio.checked) {
-            return sortArray(dataArray, 'name');
-          }
-          if (AlbumRadio.checked) {
-            return sortArray(dataArray, 'album_name');
-          }
-          return 'no results sortflter';
-        })();
 
-        console.log(sortedArray);
-        createHtmlList(restArrayMake(sortedArray));
+        createHtmlList(restArrayMake(dataArray));
       } else {
         document.querySelector('.result_list').innerHTML = '';
       }

@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 /*
    don't mess with this file or remove environment entries in the object
    even for your group project, because it will stop your DB from connecting

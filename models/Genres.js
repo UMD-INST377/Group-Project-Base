@@ -3,7 +3,7 @@ export default (sequelize, DataTypes) => {
     'genres',
     {
       genre_id: {
-        type: DataTypes.int(11),
+        type: DataTypes.INTEGER,
         allowNull: false
       },
       genre: {

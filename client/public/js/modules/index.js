@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-import { populateGenres } from './modules/populate.js';
-import { displayResults } from './modules/display.js';
+import { populateGenres } from './populate.js';
+import { displayResults } from './display.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // initialize dropdown

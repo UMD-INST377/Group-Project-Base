@@ -1,0 +1,17 @@
+.container{
+    width:500px;
+    height:500px;
+    overflow: scroll;
+}
+
+tr:nth-child(odd){
+    background-color: rgba(0, 100, 0, 0.213);
+}
+
+table{
+    border-spacing: 0px;
+}
+
+td{
+    margin: 2px;
+}

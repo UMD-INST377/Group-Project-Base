@@ -5,36 +5,6 @@ import sequelize from 'sequelize';
 import db from '../../database/initializeDB.js';
 
 const router = express.Router();
-// races work
-const dbQuery = 'SELECT * FROM mydb1.parks;';
-router.route('/race/parks').get(async (req, res) => {
-  let result;
-  try {
-    result = await db.sequelizeDB.query(dbQuery, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.log(err);
-  }
-});
-// router.get('/parks/:id', async (req, res) => {
-//   let result;
-//   try {
-//     result = await db.sequelizeDB.query(dbQuery, {
-//       type: sequelize.QueryTypes.SELECT
-//     });
-//     console.log(req.params.id);
-//     const filt = result.filter((obj) => {
-//       console.log(obj.park_id);
-//       obj.park_id == req.params.id;
-//     });
-
-//     res.send(filt);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
 
 router.route('/race/')
   .all((req, res, next) => {
@@ -59,13 +29,16 @@ router.route('/race/')
     try {
       const newPark = await db.Parks.create({
         park_id: currentId,
-        park_name: 'test',
-        trails: req.body.trails
+        park_name: req.body.park_name,
+        trails: req.body.trails,
+        park_lat: req.body.lat,
+        park_long: req.body.long,
+
       });
       res.json(newPark);
     } catch (err) {
       console.error(err);
-      res.error('Server error');
+      res.json('Server error');
     }
   });
 router.put('/race/:id', async (req, res) => {
@@ -101,5 +74,35 @@ router.delete('/race/:id', async (req, res) => {
     res.error('Server error');
   }
 });
+// races work
+// const dbQuery = 'SELECT * FROM mydb1.parks;';
+// router.route('/race/parks').get(async (req, res) => {
+//   let result;
+//   try {
+//     result = await db.sequelizeDB.query(dbQuery, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     res.json(result);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
+// router.get('/parks/:id', async (req, res) => {
+//   let result;
+//   try {
+//     result = await db.sequelizeDB.query(dbQuery, {
+//       type: sequelize.QueryTypes.SELECT
+//     });
+//     console.log(req.params.id);
+//     const filt = result.filter((obj) => {
+//       console.log(obj.park_id);
+//       obj.park_id == req.params.id;
+//     });
+
+//     res.send(filt);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 export default router;

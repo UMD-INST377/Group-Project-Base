@@ -43,10 +43,12 @@ function addMapMarkers(map, collection) {
     }
   });
   collection.forEach((item) => {
-    console.log(item.park_name);
-    const point = item.geocoded_column_1?.coordinates;
+    console.log(item.park_lat);
+    console.log(item.park_long);
+
+    const point = [item.park_lat , -item.park_long];
     // console.log(item.geocoded_column_1?.coordinates);
-    // L.marker([point[1], point[0]]).addTo(map);
+    L.marker([item.park_lat , -item.park_long]).addTo(map);
   });
 }
 

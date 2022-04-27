@@ -15,10 +15,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       park_lat: {
-        type: DataTypes.DECIMAL
+        type: DataTypes.DOUBLE
       },
       park_long: {
-        type: DataTypes.DECIMAL
+        type: DataTypes.DOUBLE
       }
     },
     { freezeTableName: true, timestamps: false }

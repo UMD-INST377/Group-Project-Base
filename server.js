@@ -3,7 +3,7 @@ import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './server/routes/apiRoutes.js';
 import ryanRoutes from './server/routes/ryanRoutes.js';
-import  nnamdiRoutes from './server/routes/nnamdiRoutes.js';
+import nnamdiRoutes from './server/routes/nnamdiRoutes.js';
 
 const app = express();
 

@@ -25,6 +25,7 @@ router.get('/actors/:id', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
+    console.log(err)
     res.send('Server error');
   }
 });

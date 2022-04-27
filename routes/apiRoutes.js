@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-empty */
 /* eslint-disable no-console */
 import express from 'express';

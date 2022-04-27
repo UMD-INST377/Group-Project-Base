@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             image_id: initialImage
           })
         });
-        window.location = '/records.html?end';
+        window.location = '/records.html';
       }
     });
   } else {

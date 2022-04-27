@@ -19,8 +19,6 @@ router.get('/advisors', async (req, res) => {
   }
 });
 
-//test
-
 router.get('/advisors/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -328,6 +326,7 @@ router.get('/company/:id', async (req, res) => {
 router.post('/company', async (req, res) => {
   const company = await db.company.findAll();
   const currentId = (await company.length) + 1;
+  console.log(req.body)
   try {
     const newCompnay = await db.company.create({
       company_id: currentId,
@@ -343,11 +342,11 @@ router.post('/company', async (req, res) => {
   }
 });
 
-router.delete('/company/:company_id', async (req, res) => {
+router.delete('/company/:company_name', async (req, res) => {
   try {
     await db.company.destroy({
       where: {
-        company_id: req.params.company_id
+        company_name: req.params.company_name
       },
     });
     res.send('Successfully Deleted');
@@ -368,7 +367,7 @@ router.put('/company', async (req, res) => {
       },
       {
         where: {
-          comany_id: req.body.company_id
+          company_id: req.body.company_id
         },
       }
     );

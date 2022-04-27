@@ -87,4 +87,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   await createTable();
 });
 
-// updated
+
+// updates may need to add more to this
+

@@ -63,6 +63,9 @@ img.logo {
   justify-content: space-between;
 }
 
+.buttons{
+  margin-top: 2%;
+}
 div.field#searchbar {
   width: 50%;
   margin: auto;
@@ -105,17 +108,8 @@ div.middle {
   width: 700px;
   text-align: center;
   padding: 25px;
-<<<<<<< HEAD
-<<<<<<< HEAD
- 
-=======
-  /* dkdj */
->>>>>>> e75c9c91335e53a49830bf82f0064e85b7d007b2
-=======
- 
->>>>>>> d320756108efd4176896b1ebb5cc38a02906091b
-}
 
+}
 img.discog_logo {
   display: flex;
   justify-content: center;
@@ -134,17 +128,9 @@ img.discog_logo {
   background-color: #fbec5d;
   padding-top: 10px;
 }
-<<<<<<< HEAD
-=======
->>>>>>> d320756108efd4176896b1ebb5cc38a02906091b
 
 .columns {
   display: flex;
   flex-wrap: wrap;
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> e75c9c91335e53a49830bf82f0064e85b7d007b2
-=======
->>>>>>> d320756108efd4176896b1ebb5cc38a02906091b

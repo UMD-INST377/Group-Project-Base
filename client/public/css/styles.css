@@ -27,10 +27,6 @@ body {
     margin-top: 10px;
 }
 
-img {
-    max-width: 100%;
-}
-
 nav {
     display: flex;
     justify-content: space-around;
@@ -146,17 +142,24 @@ textarea.materialize-textarea:focus:not([readonly]) {
     padding: 10px;
 }
 
+
+img {
+    max-width: 100%;
+}
+
 .img-wrapper {
-    max-height: 17rem!important;
+    height: 17rem !important;
     overflow: hidden;
     border-radius: 5px;
     border: 1px solid rgb(248, 243, 243);
     margin: 0;
     padding: 0;
     margin-bottom: 5px;
-    /* padding-top: 56.25%;
-    background-image: linear-gradient(45deg, #7f14c1, #80fbfb); */
-  }
+}
+
+.movie img {
+    object-fit: scale-down !important;
+}
 
 .col-content {
     border: 1px solid #eee;
@@ -206,6 +209,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .filters .platforms {
     margin-bottom: -17px;
 }
+
 /* label span {
     font-size: 1.2em !important;
 } */
@@ -226,7 +230,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
     box-shadow: 4px 4px 4px #eee;
 }
 
-.records, .ratings, .box {
+.records,
+.ratings,
+.box {
     background-color: white;
     border: 1px solid #eee;
     border-radius: 5px;
@@ -267,7 +273,7 @@ table a:hover {
 } */
 
 #delete {
-    max-width: 400px!important;
+    max-width: 400px !important;
     font-size: .85em !important;
 }
 
@@ -318,18 +324,18 @@ table a:hover {
 }
 
 body::-webkit-scrollbar {
-    width: 8px!important;
+    width: 8px !important;
 }
 
 *::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px #ddd;
-    border-radius: 10px!important;
+    border-radius: 10px !important;
 }
 
 *::-webkit-scrollbar-thumb {
     background-color: darkgray;
     outline: 1px solid #eee;
-    border-radius: 5px!important;
+    border-radius: 5px !important;
 }
 
 body::-webkit-scrollbar-thumb {
@@ -358,9 +364,11 @@ body::-webkit-scrollbar-thumb {
     .about {
         width: 95%;
     }
+
     .img-wrapper {
-        max-height: 10.5rem!important;
+        max-height: 10.5rem !important;
     }
+
     /* .wrap_paragraph {
         font-size: 1em !important;
         width: 100%;

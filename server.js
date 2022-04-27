@@ -4,6 +4,7 @@ import db from './database/initializeDB.js';
 import apiRoutes from './server/routes/apiRoutes.js';
 // eslint-disable-next-line import/no-unresolved
 import anneRoutes from './server/routes/anneRoutes.js';
+import mercyRoutes from './server/routes/mercyRoutes.js';
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use(express.json());
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 app.use('/api', anneRoutes);
+app.use('/mercy', anneRoutes);
+
 
 async function bootServer() {
   try {

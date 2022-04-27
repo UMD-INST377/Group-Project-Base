@@ -11,7 +11,7 @@ function formToObject(htmlFormElement) {
 }
 // to-do write function to retrive park info from park name
 
-// to-do hook up review form 
+// to-do hook up review form
 
 function updateParks(collection) {
   // console.table(collection);
@@ -27,7 +27,7 @@ function updateParks(collection) {
 
 function initMap(targetID) {
   const latLong = [37.901984, -75.3526373]; // assateague island start
- 
+
   const map = L.map(targetID).setView(latLong, 13); // lat long zoom
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -50,9 +50,9 @@ function addMapMarkers(map, collection) {
     console.log(item.park_lat);
     console.log(item.park_long);
 
-    const point = [item.park_lat , -item.park_long];
+    const point = [item.park_lat, -item.park_long];
     // console.log(item.geocoded_column_1?.coordinates);
-    L.marker([item.park_lat , -item.park_long]).addTo(map);
+    L.marker([item.park_lat, -item.park_long]).addTo(map);
   });
 }
 
@@ -81,6 +81,8 @@ function addMapMarkers(map, collection) {
 // }
 async function mainEvent() { // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // change this selector to match the id or classname of your actual form
+  const reviewForm = document.querySelector('.review_form');
+
   const submit = document.querySelector('.submit_button');
 
   const parks = document.querySelector('#park');
@@ -115,6 +117,33 @@ async function mainEvent() { // the async keyword means we can make API requests
       // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       // console.log('form submission'); // this is substituting for a "breakpoint"
+    });
+    reviewForm.addEventListener('submit', async (submitEvent) => {
+      // async has to be declared all the way to get an await
+      submitEvent.preventDefault(); // This prevents your page from refreshing!
+      // console.log('form submission'); // this is substituting for a "breakpoint"
+      const rev = formToObject(reviewForm);
+      // console.log(rev);
+      const reviewJson = {
+        park_id: 1,
+        title: rev.review_title,
+        author: rev.review_author,
+        description: rev.review
+      };
+
+      fetch('/api/race/reviews', {
+        method: 'post',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+
+        // make sure to serialize your JSON body
+        body: JSON.stringify(reviewJson)
+      })
+        .then((response) => {
+          console.log(response);
+        });
     });
     refresh.addEventListener('click', async (submitEvent) => {
       // async has to be declared all the way to get an await

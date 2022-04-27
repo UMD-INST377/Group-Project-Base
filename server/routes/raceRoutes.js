@@ -74,6 +74,41 @@ router.delete('/race/:id', async (req, res) => {
     res.error('Server error');
   }
 });
+router.route('/race/reviews')
+  .all((req, res, next) => {
+    // runs for all HTTP verbs first
+    // think of it as route specific middleware!
+    next();
+  })
+  .get(async (req, res) => {
+    try {
+      console.log('touched reviews endpoint');
+      const reviews = await db.Reviews.findAll();
+      const reply = reviews.length > 0 ? { reviews } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.log('err');
+      res.json({message: 'Server error'});
+    }
+  })
+  .post(async (req, res) => {
+    const reviews = await db.Reviews.findAll();
+    const currentId = (await reviews.length) + 1;
+    try {
+      const newReview = await db.Reviews.create({
+        review_id: currentId,
+        park_id: req.body.park_id,
+        title: req.body.title,
+        author: req.body.author,
+        description: req.body.description,
+      });
+      res.json(newReview);
+    } catch (err) {
+      console.error(err);
+      res.json('Server error');
+    }
+  });
+
 // races work
 // const dbQuery = 'SELECT * FROM mydb1.parks;';
 // router.route('/race/parks').get(async (req, res) => {

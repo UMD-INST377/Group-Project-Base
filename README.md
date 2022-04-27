@@ -16,7 +16,7 @@ Movies are an amazing way to pass the time, entertain yourself, or connect with 
 * Windows 10/11
 
 ## Links
-* [User Manual]() 
+<!-- * [User Manual]()  -->
 * [Developer Manual](https://github.com/varanika-sharma/Group13-Final-INST377SP2022#developer-manual)
 
 # Developer Manual

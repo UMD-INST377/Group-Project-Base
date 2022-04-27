@@ -25,7 +25,7 @@ body {
 /* Make navbar appear on the bottom */
 .navbar-container {
     display: flex;
-    width: 98.5vw;
+    width: 99.2vw;
     margin: 0px;
     bottom: 0px;
     position: fixed;

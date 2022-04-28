@@ -43,7 +43,7 @@
                     <!-- i am just practicing with this form here for now ~VEZ -->
                         <form action='' method='get' class='form'>
 
-                        <div class='form-row'>
+                        <!--div class='form-row'>
                             <label for='restriction'>Do you have dietary restrictions? Yes or No</label>
                             <input id='restriction' name='restriction' type='text'/>
                         </div>
@@ -57,8 +57,29 @@
                             <button class="button" type="restr_submit_button">Specify Restrictions</button>
                             <br>
                             <button class="button submit_button" type="submit">Submit</button>
+                        </div-->
+                        
+                        <div class='form-row'>
+                            <label title>Meal ID</label>
+                            <input name='meal_id' class='meal_id' type='number'/>
                         </div>
-                    
+
+                        <div class='form-row'>
+                            <label title>Meal</label>
+                            <input name='meal_name' class='meal_name' type='text'/>
+                        </div>
+
+                        <div class='form-row'>
+                            <label title>Meal Type</label>
+                            <input name='meal_category' class='meal_category' type='text'/>
+                        </div>
+
+                        <div class='form-row'>
+                            <button class="button" type="restr_submit_button">Specify Restrictions</button>
+                            <br>
+                            <button class="button submit_button" type="submit">Submit</button>
+                        </div>
+
                         <table style= "margin: 100px; background-color: aliceblue" class="table">
                             <!--First tr is the column headers-->
                             <tr>

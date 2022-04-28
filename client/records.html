@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+  </head>
+  <body>
+    <div class="columns">
+      <div class="column sides is-1">
+        <aside class="menu">
+          <p class="menu-label">GROUP 14</p>
+          <ul class="menu-list">
+            <li><a href = "index.html">HOME</a></li>
+            <li><a href = "info.html">INFO</a></li>
+            <li><a class="is-active" href = "records.html">SEARCH</a></li>
+            <hr style="width:97%;text-align:left;margin-left:5px">
+          </ul>
+        </aside>
+      </div>
+      <div class="column">
+        <div class = "title has-text-white is-1 has-text-centered">SEARCH ARTISTS</div>
+        <hr style="width: 100%;text-align:left;margin-left:0">
+        <input class = "input" type="text" id="artInput" onkeyup='tableSearch()' placeholder="Name">
+        <hr style="width:100%;text-align:left;margin-left:0">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Artist ID</th>
+              <th scope="col">Label ID</th>
+              <th scope="col">Stage Name</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Age</th>
+            </tr>
+          </thead>
+          <tbody id = "table_body">
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="column sides is-1">
+        <figure class="image is-128x128 is-centered"><a href = "teaminfo.html">
+          <img src="img/account.png">
+        </a></figure>
+        <div class = "content has-text-centered">
+          <p>OUR TEAM</p>
+          <hr style="width:97%;text-align:left;margin-left:0">
+          <p>Friends</p>
+        </div>
+        <div class = "content">
+          <ul>
+            <li>Friend #1.</li>
+            <li>Friend #2.</li>
+            <li>Friend #3.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="./rec.js"></script>
+  </body>
+</html>

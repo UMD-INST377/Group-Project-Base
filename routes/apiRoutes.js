@@ -109,10 +109,12 @@ router.put('/dining', async (req, res) => {
 router.get('/meals', async (req, res) => {
   try {
     const meals = await db.Meals.findAll();
-    res.json(meals);
+    res.json({data: meals})
+    //res.json(meals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    //res.error('Server error');
+    res.send('Server error');
   }
 });
 

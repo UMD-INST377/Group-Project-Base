@@ -108,13 +108,10 @@ router.route('/macros/:id')
       res.json({message: 'Something went wrong'});
     }
   });
-<<<<<<< Updated upstream
-=======
 
 
 
 
->>>>>>> Stashed changes
 // David McCoy GET Controllers
 router.route('/dietaryRestrictions')
   .get(async (req, res) => {
@@ -200,13 +197,10 @@ router.route('/mealRestrictions')
       res.json({message: 'something went wrong'});
     }
   });
-<<<<<<< Updated upstream
-=======
 
 
 
 
->>>>>>> Stashed changes
 
 // Josh Mensah GET Controllers
 router.route('/josh')

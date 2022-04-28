@@ -35,8 +35,8 @@ function createHTMLtable(currentArray) {
   result += '</table>';
   //close table
 
-  const targetList = document.querySelector('.macro_table');
-  //get div class macro table
+  const targetList = document.querySelector('.meal_table');
+  //get div class meal table
 
   //inject the table
   targetList.innerHTML = '';
@@ -49,14 +49,13 @@ function dataHandler(arr) {
 }
 
 async function mainEvent() { //mainEvent refers to page loading
-  const macroTable = document.querySelector('.macro_table'); //get macro_table div class
-  const results = await fetch('/api/allmeals'); //call get function from api routes for macros
-  console.log(results)
-  const macroArrayFromJson = await results.json(); //convert to array
-  //get first 10 head of macros table
+  const mealTable = document.querySelector('.meal_table'); //get meal_table div class
+  const results = await fetch('/api/allmeals'); //call get function from api routes for meals
+  const mealArrayFromJson = await results.json(); //convert to array
+  //get first 10 head of meals table
   let currentArray = []; 
-  if (macroArrayFromJson.data.length > 0) {
-    currentArray = dataHandler(macroArrayFromJson.data);
+  if (mealArrayFromJson.data.length > 0) {
+    currentArray = dataHandler(mealArrayFromJson.data);
   }
   //create the table
   createHTMLtable(currentArray);

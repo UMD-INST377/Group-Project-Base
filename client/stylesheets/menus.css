@@ -1,4 +1,4 @@
-.macro_table{
+.meal_table{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,7 +6,7 @@
     color: white;
 }
 
-.macro_table table{
+.meal_table table{
     background-color: black;
     min-width: 100vh;
     min-height: 100%;

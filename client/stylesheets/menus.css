@@ -1,0 +1,15 @@
+.meal_table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    color: white;
+}
+
+.meal_table table{
+    background-color: black;
+    min-width: 100vh;
+    min-height: 100%;
+    max-height: 100%;
+    
+}

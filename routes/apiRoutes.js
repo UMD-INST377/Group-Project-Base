@@ -8,8 +8,6 @@ import flowerscontroller from '../controller/flowerscontroller.js';
 import foliagecontroller from '../controller/foliagecontroller.js';
 import fruitscontroller from '../controller/fruitscontroller.js';
 import locationcontroller from '../controller/locationcontroller.js';
-
-
 import plantLocationcontroller from '../controller/plant_locationcontroller.js';
 import plantscontroller from '../controller/plantscontroller.js';
 

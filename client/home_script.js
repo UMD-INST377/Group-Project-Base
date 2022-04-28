@@ -1,31 +1,17 @@
 function createHTMLtable(currentArray) {
-    //takes in array, prints html table
-    //create table
-    let result = '<table border=1>';
-    //create table headers
-    result += `
-    <tr>
-      <th>hall_id</th>
-      <th>hall_name</th>
-      <th>hall_address</th>
-      <th>hall_lat</th>
-      <th>hall_long</th>
-    </tr>`;
-    //loop through each object in array, print cell values
+    //takes in array, prints html list
+    //create list
+    let result = '<ul>';
+
+    //loop through each object in array, add hall names to a list
     for (let i = 0; i < currentArray.length; i++) {
-      result += '<tr>';
       result += `
-        <td>${currentArray[i].hall_id}</td>
-        <td>${currentArray[i].hall_name}</td>
-        <td>${currentArray[i].hall_address}</td>
-        <td>${currentArray[i].hall_lat}</td>
-        <td>${currentArray[i].hall_long}</td>`;
-      result += '</tr>';
+        <li> <a href="/menus/index.html">${currentArray[i].hall_name}</a></li>`;
     }
-    result += '</table>';
-    //close table
+    result += '</ul>';
+
+    
     const targetList = document.querySelector('.hall_list');
-    //get div class meal table
   
     //inject the table
     targetList.innerHTML = '';
@@ -35,8 +21,8 @@ function createHTMLtable(currentArray) {
   
 
 async function mainEvent() { //mainEvent refers to page loading
-    const mealTable = document.querySelector('.hall_list'); //get meal_table div class
-    const results = await fetch('/api/dining'); //call get function from api routes for meals
+    const mealTable = document.querySelector('.hall_list'); //get hall_list div class
+    const results = await fetch('/api/dining'); //call get function from api routes for dining
     const mealArrayFromJson = await results.json(); //convert to array 
     
     //create the table

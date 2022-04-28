@@ -26,7 +26,15 @@ function updateParks(collection) {
 }
 
 function findPark(park, parkArray) {
-
+  let match;
+  parkArray.forEach((item) => {
+    // console.log(item);
+    if (item.park_name === park) {
+      console.log('park found');
+      match=item;
+    }
+  });
+  return match;
 }
 // function refreshList (target, storage) {
 //   target.addEventListener('click', async (event) => {
@@ -51,6 +59,7 @@ function findPark(park, parkArray) {
 //     updateParks(selectResto);
 //   });
 // }
+
 async function mainEvent() { // the async keyword means we can make API requests
   const reviewForm = document.querySelector('.review_form');
 
@@ -76,11 +85,14 @@ async function mainEvent() { // the async keyword means we can make API requests
     submit.style.display = 'block';
 
     let currentArray = parksArray;
+    let currentPark = parksArray[0];
     // inputListener(parks);
     parks.addEventListener('change', async (event) => {
       console.log(event.target.value);
       console.log(parksArray);
       matchingPark = findPark(event.target.value, parksArray);
+      currentPark = matchingPark;
+      // console.log(currentPark);
     });
 
     reviewForm.addEventListener('submit', async (submitEvent) => {
@@ -90,7 +102,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       const rev = formToObject(reviewForm);
       // console.log(rev);
       const reviewJson = {
-        park_id: 1,
+        park_id: currentPark.park_id,
         title: rev.review_title,
         author: rev.review_author,
         description: rev.review

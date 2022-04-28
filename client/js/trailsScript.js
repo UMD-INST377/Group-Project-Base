@@ -65,8 +65,8 @@ function addMapMarkers(map, collection) {
     }
   });
   collection.forEach((item) => {
-    console.log(item.park_lat);
-    console.log(item.park_long);
+    // console.log(item.park_lat);
+    // console.log(item.park_long);
 
     const point = [item.park_lat, item.park_long];
     // console.log(item.geocoded_column_1?.coordinates);
@@ -78,31 +78,16 @@ function addMapMarkers(map, collection) {
 
 function findPark(park, parkArray) {
   let match;
+  parkArray.forEach((item) => {
+    // console.log(item);
+    if (item.park_name === park) {
+      console.log('park found');
+      match=item;
+    }
+  });
   return match;
 }
-// function refreshList (target, storage) {
-//   target.addEventListener('click', async (event) => {
-//     event.preventDefault();
-//     localStorage.clear();
-//     const parks = await fetch('/api/race/parks');
-//     const parksArray = await parks.json();
-//     console.log(typeof parksArray);
-//     localStorage.setItem(storage, parksArray);
-//     // location.reload();
-//   });
-// }
-// function inputListener(target) {
-//   target.addEventListener('input', async (event) => {
-//     console.log(event.target.value);
-//     const selectResto = storedDataArray.filter((item) => {
-//       const lowerName = item.name.toLowerCase();
-//       const lowerValue = event.target.value.toLowerCase();
-//       return lowerName.includes(lowerValue);
-//     });
-//     console.log(selectResto);
-//     updateParks(selectResto);
-//   });
-// }
+
 async function mainEvent() { // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // change this selector to match the id or classname of your actual form
 
@@ -134,9 +119,10 @@ async function mainEvent() { // the async keyword means we can make API requests
     // inputListener(parks);
     addMapMarkers(map, currentArray);
     parks.addEventListener('change', async (event) => {
-      console.log(event.target.value);
-      console.log(parksArray);
+      // console.log(event.target.value);
+      // console.log(parksArray);
       matchingPark = findPark(event.target.value, parksArray);
+      console.log(matchingPark);
       currentPark = matchingPark;
     });
 

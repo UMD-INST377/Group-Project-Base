@@ -16,10 +16,12 @@ body{
 }
 .navi{
     display: flex;
+    align-items: center;
     justify-content: space-evenly;
-    background-color: black;
+    background-color: #E03A3E;
     height: 50px;
     color: white;
+    
     
 
 }
@@ -43,4 +45,26 @@ body{
     color: white;
     text-decoration: none;
     
+}
+.navi p{
+    font-size: 15pt;
+
+}
+.wrapper{
+
+}
+.text_block{
+    background-color: white;
+    display: table;
+    margin: auto;
+    margin-top: 100px;
+    padding: 10px;
+    max-width: 700px;
+}
+.text_block h1, h3{
+    text-align: center;
+}
+.text_block p{
+    font-size: 15pt;
+    text-overflow: clip;
 }

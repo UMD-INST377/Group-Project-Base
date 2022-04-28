@@ -10,6 +10,23 @@ async function createTable() {
   const description = document.querySelector(".description");
   const table = document.querySelector(".table");
 
+  const identifyarea = document.getElementById(".areaid");
+  const neighborhoodname = document.getElementById(".name");
+  const landgeo = document.getElementById(".landmarks");
+  const describe = document.getElementById(".description");
+  const errorElement = document.getElementById("error");
+
+  form.addEventListener("submit", (e) => {
+    let messages = [];
+    if (neighborhoodname.value === "" || neighborhoodname.value == null) {
+      messages.push("Neighborhood Name is required");
+    }
+    if (messages.length > 0) {
+      e.preventDefault();
+      errorElement.innerText = messages.join(", ");
+    }
+  });
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (currentData.length === 0) {
@@ -87,6 +104,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   await createTable();
 });
 
-
 // updates may need to add more to this
-

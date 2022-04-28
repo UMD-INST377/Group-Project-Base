@@ -2,8 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
     <link rel="stylesheet" href="./styles.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
   </head>
   <body>
     <div class="columns">
@@ -19,36 +26,41 @@
         </aside>
       </div>
       <div class="column">
-        <div class = "box">
-          <form class = "page_form">
-            <div class = "form_item">
-              <label for="resto_name" class = "label">Restaurant Name</label>
-              <div class = "control">
-                  <input id = "resto_name" name = "resto_name" type = "text"/>
-              </div>
-            </div>
-
-            <div class = "form_item">
-              <label for = "category" class = "label">Category</label>
-              <div class = "control">
-                  <input id = "category" name = "category" type = "text"/>
-              </div>
-            </div>
-            <button type = "submit" class = "button has-red-white is-info is-outlined">Restaurant Change</button>
-          </form>
-          <div class = "page_item">
-            <div id = "map"></div>
-            <h1 class="has-text-weight-bold is-size-5">Restaurant List</h1>
-            <ul class = "resto-list"></ul>
-        </div>
-      </div>
+        <div class = "title has-text-white is-1 has-text-centered">SEARCH ARTISTS</div>
+        <hr style="width: 100%;text-align:left;margin-left:0">
+        <input class = "input" type="text" id="artInput" onkeyup='tableSearch()' placeholder="Name">
+        <hr style="width:100%;text-align:left;margin-left:0">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Artist ID</th>
+              <th scope="col">Label ID</th>
+              <th scope="col">Stage Name</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Age</th>
+            </tr>
+          </thead>
+          <tbody id = "table_body">
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="column sides is-1">
-        <figure class="image is-128x128 is-centered"><a href = "">
+        <figure class="image is-128x128 is-centered"><a href = "teaminfo.html">
           <img src="img/account.png">
         </a></figure>
         <div class = "content has-text-centered">
-          <p>Account</p>
+          <p>OUR TEAM</p>
           <hr style="width:97%;text-align:left;margin-left:0">
           <p>Friends</p>
         </div>

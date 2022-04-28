@@ -1,90 +1,46 @@
-function createHtmlList(collection) {
-    // console.log('fired HTML creator');
-    // console.log(collection);
-    const targetList = document.querySelector('.resto-list');
-    targetList.innerHTML = '';
-    collection.forEach((item) => {
-      const { name } = item;
-      const nameDisplay = name.toLowerCase();
-      const injectThisItem = `<li>${nameDisplay}</li>`;
-      // const injectThisItem = `<li>${item.name}</li>`;
-      targetList.innerHTML += injectThisItem;
-    });
-  }
+fetch('http://localhost:3000/api/artist').then((data) => {
+  console.log(data);
+  return data.json();
+}).then((objectData) => {
+  console.log(objectData);
+  let tableData = '';
+  objectData.map((values) => {
+    tableData+= `<tr>
+    <td>${values.artist_id}</td>
+    <td>${values.label_id}</td>
+    <td>${values.stage_name}</td>
+    <td>${values.first_name}</td>
+    <td>${values.last_name}</td>
+    <td>${values.gender}</td>
+    <td>${values.age}</td>
+  </tr>`;
+  });
+  document.getElementById('table_body').innerHTML = tableData;
+}).catch((err) => {
+  console.log(err);
+});
 
-  function formToObject(htmlFormElement) {
-    const formItem = new FormData(htmlFormElement).entries();
-    const formArray = Array.from(formItem);
-    const formObject = formArray.reduce((collection, item, index) => {
-      if (!collection[item[0]]) {
-        collection[item[0]] = item[1];
-      }
-      return collection;
-    }, {});
-    return formObject;
-  }
-  
-  async function mainEvent() {
-    console.log('script loaded');
-    const form = document.querySelector('.page_form');
-    const but = document.querySelector('.button');
-    const resto = document.querySelector('#resto_name');
-    const category = document.querySelector('#category');
-    but.style.display = 'none';
-  
-    const results = await fetch(
-      "http://localhost:3000/api/artist"
-    );
-    const arrayFromJson = await results.json();
-    console.log(arrayFromJson);
-  
-    if (arrayFromJson.length > 0) { // prevents race condition
-      but.style.display = 'block';
-  
-      let currentArray = [];
-      resto.addEventListener('input', async (event) => { // for restaurant
-        console.log(event.target.value);
-        // if (currentArray.length < 1) {
-        //   return;
-        // }
-        // const selectResto = currentArray.filter((item) => {
-        const selectResto = arrayFromJson.filter((item) => { // filter entire list
-          const lowerName = item.name.toLowerCase();
-          const lowerValue = event.target.value.toLowerCase();
-          return lowerName.includes(lowerValue);
-        });
-        createHtmlList(selectResto);
-      });
-  
-      category.addEventListener('input', async (event) => { // For category
-        console.log(event.target.value);
-        // const selectCat = currentArray.filter((item) => {
-        const selectCat = arrayFromJson.filter((item) => { // filter entire list
-          const lowerCat = item.name.toLowerCase();
-          const lowerCatValue = event.target.value.toLowerCase();
-          return lowerCat.includes(lowerCatValue);
-        });
-        createHtmlList(selectCat);
-      });
-  
-      form.addEventListener('submit', async (submitEvent) => {
-        submitEvent.preventDefault();
-        // console.log('form submission');
-        // currentArray = restoArrayMake(arrayFromJson);
-        // createHtmlList(currentArray);
-        const formObj = formToObject(form);
-        console.log('Check form for filters', formObj);
-        const postResult = await fetch("http://localhost:3000/api/artist", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formObj)
-        });
-        const postResultJSON = await postResult.json();
-        console.log('return from POST', postResult)
-        console.log('return from POST JSON', postResultJSON)
-      });
+function tableSearch() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("artInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td") ; 
+    for(j=0 ; j<td.length ; j++)
+    {
+      let tdata = td[j] ;
+      if (tdata) {
+        if (tdata.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+          break ; 
+        } else {
+          tr[i].style.display = "none";
+        }
+      } 
     }
   }
-  document.addEventListener('DOMContentLoaded', async () => mainEvent());
+}

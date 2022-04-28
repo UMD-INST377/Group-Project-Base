@@ -181,7 +181,8 @@ router.route('/dietaryRestrictions/:id')
       res.json({message: 'Something went wrong'});
     }
   });
-
+// Josh Mensah GET Controllers
+router.route('/josh')
 router.route('/mealRestrictions')
   .get(async (req, res) => {
     try {

@@ -897,8 +897,9 @@ footer div {
 }
 img.darwin {
     height: 100%;
-    max-width: 428px;
+    width: 100%;
     border-radius: 4px;
+    margin-bottom: 24px;
 }
 
 

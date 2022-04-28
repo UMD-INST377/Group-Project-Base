@@ -51,51 +51,82 @@
 
         </div>
     </header>
+    <!-- header finished-->
 
-    <h1>Locations</h1>
-    <section class="resto" id="resto">
+
+    <div class="wrapper">
+        <h2>Locations</h2>
+        <div id="error"></div>
+
         <form class="main-form">
             <div class="field">
                 <label>Area ID</label>
                 <div class="control">
-                    <input name="areaid" class="areaid" type="number">
+                    <input name="areaid" class="areaid" type="number" placeholder="Enter area ID">
                 </div>
                 <label>Neighborhood Name</label>
                 <div class="control">
-                    <input name="name" class="name" type="text">
+                    <input name="name" class="name" type="text" required placeholder="Enter neighborhood">
                 </div>
                 <label>Landmarks</label>
                 <div class="control">
-                    <input name="landmarks" class="landmarks" type="text">
+                    <input name="landmarks" class="landmarks" type="text" placeholder="Enter landmarks">
                 </div>
                 <label>Description</label>
                 <div class="control">
-                    <input name="description" class="description" type="text">
+                    <input name="description" class="description" type="text" placeholder="Enter description">
                 </div>
                 <div class="control"> <button class="btn">Submit</button></div>
             </div>
         </form>
-        </div>
-    </section>
-
-    <div class="container">
-
-        <table class="table">
-            <tr>
-                <th>Area ID</th>
-                <th>Neighborhood Name</th>
-                <th>Landmarks</th>
-                <th>Description</th>
-            </tr>
-        </table>
     </div>
-    <script src="./restTable.js"></script>
+</body>
 
 
 
-    </form>
+
+<div class="container">
+
+    <table class="table">
+        <tr>
+            <th>Area ID</th>
+            <th>Neighborhood Name</th>
+            <th>Landmarks</th>
+            <th>Description</th>
+        </tr>
+    </table>
+</div>
+</section>
+
+<!-- <section class="footer2">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3 class="heading"> <span>Why Choose Us?</span> </h3>
+            <p>At HispanicDC, we seek to provide potential consumers accurate information on hispanic restaurants in
+                the DC
+                area
+                so that they can cater to their needs and experience a good time. We take pride in battling against
+                misinformation by
+                providing accurate information that is verified by our team, not robots. </p>
+        </div>
+
+        <div class="box">
+            <h3 class="heading"> <span>Contact Us</span> </h3>
+            <p> <i class="fas fa-map-marker-alt"></i> College Park, Maryland 20742 </p>
+            <p> <i class="fas fa-envelope"></i> BIZOUTREACH@HISPANICDC.COM </p>
+            <p> <i class="fas fa-globe"></i> WWW.HISPANICDC.BLOG.COM</p>
+            <p>© INST377 2022 | Website Design and Construction done by Group 6 2022</p>
+        </div>
+
+    </div>
+</section> -->
+
+<!-- HAVE TO FIGURE OUT HOW TO COMBAT POSITION:ABSOLUTE PROBLEM WITH FOOTER ON THIS PAGE, AND STILL HAVE MY FORM CENTERED  -->
+<script src="./restTable.js"></script>
+</form>
 
 
-    <!-- added more-->
-    <!-- added more stuff-->
-
+<!-- added more-->
+<!-- added more stuff-->

@@ -1,23 +1,32 @@
 export default (database, DataTypes) => {
-  const Reviews = database.define('Reviews', {
-    review_id: {
+  const Restauraunt = database.define('Restaurant', {
+    restaurant_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    review_desc: {
+    restaurant_name: {
       type: DataTypes.STRING,
       allowNull: true
     },
-    avg_star_rating: {
+    area_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    phone_number: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    restaurant_id: {
+    address_id: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
+
   });
-  return Reviews;
+  return Restauraunt;
 };

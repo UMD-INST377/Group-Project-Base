@@ -1,56 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Labs Index</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-      crossorigin=""
-    />
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script
-      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-      crossorigin=""
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
-    />
-    <script
-      src="https://kit.fontawesome.com/978cb43e08.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
 
-  <body>
-    <section id="home" class="mb-3">
-        <nav class="navbar has-background-info-dark">
-          <div class="container">
-            <div class="navbar-brand">
-              <a href="#home" class="navbar-item">
-                <h2 class="subtitle has-text-light">Group 6 - Project Files</h2>
-              </a>
-            </div>
-          </div>
-        </nav>
-    </section>
-    <section>
-      <div class="container">
-        <div class="columns">
-          <div class="column">
-            <!-- Main -->
-            <div class="block">
-              <aside class="menu ml-1">
-                <!-- Menu -->
-                <div class="menu-label">Project Submissions for Group 6 INST 377</div>
-                <ul class="menu-list is-active">
-                  <li><a href="./group_project">Group 6 Project</a></li>
-                </ul>
-              </aside>
-            </div>
-            
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>District of Columbia Hispanic Restaurants Blog Site </title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+</head>
+
+<body>
+
+  <header>
+    <div class="header-1">
+      <a href="index.html" class="logo"> <i class="fas fa-utensils"></i> HispanicDC </a>
+
+      <!--search bar-->
+
+      <!--  <form action="" id="search-form">
+  <input type="search" placeholder="search here..." name="" id="search-box">
+  <label for="search-box" class="fas fa-search"></label>
+  <i class="fas fa-times" id="close"></i>
+  </form> -->
+
+      <h3 class="email"> <i class="fas fa-envelope"></i> email now : BIZOUTREACH@HISPANICDC.COM</h3>
+
+    </div>
+
+    <div class="header-2">
+
+      <nav class="navbar">
+        <ul>
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="restTable.html">Locations</a></li>
+          <li><a href="restaurants.html">Restaurants</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-twitter"></a>
+      </div>
+
+    </div>
+  </header>
+  <!-- header finished-->
+
+
+  <!-- home section-->
+
+  <section class="home" id="home">
+
+    <div class="content">
+      <h1>welcome <span>food</span> lovers</h1>
+      <p>Find the best Hispanic restaurant for you using HispanicDC! With a few clicks of a button, checkout reviews of
+        restaurants
+        in the DC area as well as view what services they have to offer! </p>
+      <a href="#"><button class="btn">get started</button></a>
+    </div>
+
+    <div class="shape"></div>
+
+  </section>
+
+  <!-- home sect finished-->
+
+
+  <!-- restaurants-->
+
+  <section class="resto" id="resto">
+
+    <h1 class="heading"> <span> Highest Visited Restaurants </span> </h1>
+
+    <div class="image-container">
+
+      <div class="image place">
+        <img src="oya.png" alt="oyamel">
+        <a href="#">Oyamel Cocina Mexicana</a>
+        <p>4/5 Stars</p>
+        <p>Oyamel never disappoints! I have eaten here several times now: the service is excellent and the food is very
+          good. They have some very creative Mexican dishes; the tortillas are wonderful, as is the guacamole. There is
+          a great selection of small dishes, so you get a chance to try a lot of different food. Our service has always
+          been attentive and friendly. Make a reservation; it is a popular place!</p>
+      </div>
+
+      <div class="image place">
+        <img src="Taq.jpeg" alt="taqueria">
+        <a href="#">Taqueria Habanero</a>
+        <p>4.5/5 Stars</p>
+        <p>This spot is BOMB.COM!!!! I'll be coming back AGAIN & AGAIN & AGAIN!! Not sure what you're waiting for if you
+          haven't tried this spot. You need to drop everything you're doing and go get some Tacos NOW!!!</p>
+      </div>
+
+      <div class="image place">
+        <img src="el sol.jpeg" alt="el sol restaurante">
+        <a href="#">El Sol Restaurante & Tequileria</a>
+        <p>4.4/5 Stars</p>
+        <p>Best Mexican place in DC so far and that alone can grant a 5-star rating. Worth noting that outdoor sitting
+          has a nice view but indoors could use some music to create a more pleasant experience. Other than that, food
+          and drinks are good and authentic!</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- restaurant ends-->
+
+  <!-- footer-->
+
+  <section class="footer">
+
+    <div class="box-container">
+
+      <div class="box">
+        <h3 class="heading"> <span>Why Choose Us?</span> </h3>
+        <p>At HispanicDC, we seek to provide potential consumers accurate information on hispanic restaurants in the DC
+          area
+          so that they can cater to their needs and experience a good time. We take pride in battling against
+          misinformation by
+          providing accurate information that is verified by our team, not robots. </p>
+      </div>
+
+      <div class="box">
+        <h3 class="heading"> <span>Contact Us</span> </h3>
+        <p> <i class="fas fa-map-marker-alt"></i> College Park, Maryland 20742 </p>
+        <p> <i class="fas fa-envelope"></i> BIZOUTREACH@HISPANICDC.COM </p>
+        <p> <i class="fas fa-globe"></i> WWW.HISPANICDC.BLOG.COM</p>
+        <p>© INST377 2022 | Website Design and Construction done by Group 6 2022</p>
+      </div>
+
+
+    </div>
+  </section>
+
+
+  <!-- jquery cdn-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- custom js file link  -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
+
+<!-- initial start, will continue ryan e -->
+
+<!-- added more stuff-->

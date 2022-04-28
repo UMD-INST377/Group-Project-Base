@@ -15,6 +15,7 @@ function createHTMLtable(currentArray) {
     <th>protein</th>
     <th>meal_id</th>
     <th>fat</th>
+    <th>location</th>
   </tr>`;
   //loop through each object in array, print cell values
   for (let i = 0; i < currentArray.length; i++) {
@@ -29,7 +30,8 @@ function createHTMLtable(currentArray) {
       <td>${currentArray[i].carbs}</td>
       <td>${currentArray[i].protein}</td>
       <td>${currentArray[i].meal_id}</td>
-      <td>${currentArray[i].fat}</td>`;
+      <td>${currentArray[i].fat}</td>
+      <td>${currentArray[i].location}</td>`;
     result += '</tr>';
   }
   result += '</table>';

@@ -78,7 +78,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   // const storedDataArray = JSON.parse(parksArray);
   console.log(parksArray);
   // console.log(storedDataArray);
-
+ // test 
   updateParks(parksArray);
   if (parksArray?.length > 0) {
     // this statement is to prevent a race condition on data load

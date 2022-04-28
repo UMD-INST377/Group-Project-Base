@@ -35,7 +35,53 @@ body {
     background-color: #000000;
     color: white;
   }
-  .image-container {
-    justify-content: center;
-    display: flex;
+
+.container {
+  padding-top: 80px;
+  padding-left: 10px;
+}
+/*Adjusts the title so that it only takes up half of screen*/
+.title-container {
+  display: flex;
+  padding-bottom: 100px;
+}
+.site-title {
+  font-family: 'Times New Roman';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 85px;
+}
+
+.intro-container {
+  display: flex;
+  padding: 10px;
+  align-items:flex-start;
+  justify-content: center;
+  flex-direction: row;
+}
+/*ensures subtitle and button are in column direction*/
+.text-button-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-text {
+  padding-bottom: 50px;
+  font-family: 'Times New Roman';
+  font-style: italic;
+  font-weight: 400;
+  color: #000000;
+  font-size: 30px;
+  line-height: 46px;
+}
+
+.image-container {
+  width: 800;
+  height: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content:right;
 }

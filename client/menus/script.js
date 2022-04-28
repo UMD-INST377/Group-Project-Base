@@ -2,16 +2,15 @@ function createHTMLtable(currentArray) {
   let result = '<table border=1>';
   result += `
   <tr>
-  <th>macro_id</th>
-  <th>calories</th>
-      <th>serving_size</th>
-      <th>cholesterol</th>
-      <th>sodium</th>
-      <th>carbs</th>
-      <th>protein</th>
-      <th>meal_id</th>
-      <th>fat</th>
-  
+    <th>macro_id</th>
+    <th>calories</th>
+    <th>serving_size</th>
+    <th>cholesterol</th>
+    <th>sodium</th>
+    <th>carbs</th>
+    <th>protein</th>
+    <th>meal_id</th>
+    <th>fat</th>
   </tr>`;
   for (let i = 0; i < currentArray.length; i++) {
     result += '<tr>';

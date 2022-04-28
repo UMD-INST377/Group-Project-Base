@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
+import fetch from 'node-fetch';
 
 import db from '../database/initializeDB.js';
 
@@ -9,6 +10,268 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
+
+// Nicholas Urquhart GET controllers
+router.route('/macros')
+  .get(async (req, res) => {
+    try {
+      const result = await db.Macros.findAll();
+      res.json({data: result});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  })
+  .post(async (req, res) => {
+    const macros = await db.Macros.findAll();
+    const nextMac = (await macros.length) + 1;
+    try {
+      const newMac = await db.Macros.create({
+        macro_id: nextMac,
+        calories: 400,
+        serving_size: 15,
+        cholesterol: 500,
+        sodium: 206,
+        carbs: 5,
+        protein: 15,
+        meal_id: 15,
+        fat: 18
+      });
+      res.json(newMac);
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+router.route('/macros/:id')
+  .get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const result = await db.Macros.findOne({
+        where: {
+          macro_id: `${id}`
+        }
+      });
+      res.json({data: result});
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  })
+  .put(async (req, res) => {
+    console.log(req.body);
+    try {
+      const {id} = req.params;
+      await db.Macros.update(
+        {
+          sodium: req.body.sodium
+        },
+        {
+          where: {
+            macro_id: `${id}`
+          }
+        }
+      );
+      res.send('success');
+    } catch (err) {
+      console.log(err);
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.Macros.destroy({
+        where: {
+          macro_id: `${id}`
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+// David McCoy GET Controllers
+router.route('/dietaryRestrictions')
+  .get(async (req, res) => {
+    try {
+      const restrictions = await db.DietaryRestrictions.findAll();
+      res.json({data: restrictions});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  })
+  .post(async (req, res) => {
+    const diets = await db.DietaryRestrictions.findAll();
+    const nextDiet = (await diets.length) + 1;
+    try {
+      const newDiet = await db.DietaryRestrictions.create({
+        restriction_id: nextDiet,
+        restriction_type: 'gluten free'
+      });
+      res.json(newDiet);
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+router.route('/dietaryRestrictions/:id')
+  .get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const restrictions = await db.DietaryRestrictions.findOne({
+        where: {
+          restriction_id: `${id}`
+        }
+      });
+      res.json({data: restrictions});
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  })
+  .put(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.DietaryRestrictions.update(
+        {
+          restriction_type: 'low fat'
+        },
+        {
+          where: {
+            restriction_id: `${id}`
+          }
+        }
+      );
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.DietaryRestrictions.destroy({
+        where: {
+          restriction_id: `${id}`
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+
+// Josh Mensah GET Controllers
+router.route('/josh')
+  .get(async (req, res) => {
+    try {
+      const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+      const data = await fetch(url);
+      const json = await data.json();
+      res.json({data: json[0]});
+      console.log('success');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+router.route('/josh')
+  .get(async (req, res) => {
+    try {
+      const url = '';
+      const data = await fetch(url);
+      const json = await data.json();
+      res.json({data: json[0]});
+      console.log('success');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
+// Brian McMahon GET controllers
+router.route('/brian')
+  .get(async (req, res) => {
+    try {
+      const diningHall = await db.DiningHall.findAll();
+      res.json({data: diningHall});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .post(async (req, res) => {
+    const allHalls = await db.DiningHall.findAll();
+    const nextHall = (await allHalls.length) + 1;
+    try {
+      const newRecord = await db.DiningHall.create({
+        hall_id: nextHall,
+        hall_name: 'Another Dining Hall',
+        hall_address: '589 Baltimore Ave, College Park MD',
+        hall_lat: 45.628942,
+        hall_long: 48.18151
+      });
+      res.json(newRecord);
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+router.route('/brian/:id')
+  .get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const diningHall = await db.DiningHall.findOne({
+        where: {
+          hall_id: `${id}`
+        }
+      });
+      res.json({data: diningHall});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .put(async (req, res) => {
+    try { // Add a way to check if exists
+      const {id} = req.params;
+      await db.DiningHall.update(
+        {
+          hall_name: 'Updated Hall',
+          hall_location: '123 Baltimore Ave, College Park MD',
+          hall_lat: 46.628942,
+          hall_long: 48.18151
+        },
+        {
+          where: {
+            hall_id: `${id}`
+          }
+        }
+      );
+      res.send('Successfully Updated');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.DiningHall.destroy({
+        where: {
+          hall_id: `${id}`
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
@@ -271,3 +534,5 @@ router.get('/custom', async (req, res) => {
 });
 
 export default router;
+
+/// JOSH MENSAH///

@@ -6,6 +6,8 @@ import apiRoutes from './server/routes/apiRoutes.js';
 import anneRoutes from './server/routes/anneRoutes.js';
 import raceRoutes from './server/routes/raceRoutes.js';
 
+
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -18,6 +20,8 @@ app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
 app.use('/api', anneRoutes);
 app.use('/api', raceRoutes);
+
+
 
 async function bootServer() {
   try {

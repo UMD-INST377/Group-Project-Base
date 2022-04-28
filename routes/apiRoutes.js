@@ -182,6 +182,17 @@ router.route('/dietaryRestrictions/:id')
     }
   });
 
+router.route('/mealRestrictions')
+  .get(async (req, res) => {
+    try {
+      const result = await db.MealRestrictions.findAll();
+      res.json({data: result});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
 // Josh Mensah GET Controllers
 router.route('/josh')
   .get(async (req, res) => {

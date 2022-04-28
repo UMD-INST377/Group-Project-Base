@@ -2,14 +2,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 90vh;
-    color: white;
+    text-shadow: 2px 2px #000000;
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+
+}
+.hall_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px #000000;
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    margin-top: 80px;
+    margin-bottom: 5px;
+
 }
 
-.hall_list table{
-    background-color: black;
-    min-width: 100vh;
-    min-height: 100%;
-    max-height: 100%;
-    
+/* unvisited link */
+a:link {
+    color: rgb(255, 255, 255);
+}
+  
+/* visited link */
+a:visited {
+    color: rgb(255, 255, 255);
+}
+  
+  /* mouse over link */
+a:hover {
+    color: rgb(138, 138, 138);
+}
+  
+  /* selected link */
+a:active {
+    color: blue;
 }

@@ -18,10 +18,11 @@
 }
 
 .restaurant-info-header{
+    color: #EB4949;
     font-size: 40px;
     text-align: center;
-    margin: 50px 0px;
-    font-weight: bold;
+    margin: 60px 0px;
+    font-weight: 600;
 }
 
 .restaurant-menu {

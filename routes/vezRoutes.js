@@ -21,7 +21,7 @@ router.route('/')
 
 
 
-  .post(async (req, res) => {
+router.post(async (req, res) => {
     //TODO - Table 'Dining_Hall_Tracker.Meals' doesnt exist
     //TOTO: we need to demonstrate hooking this to a form
     try{

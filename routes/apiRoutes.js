@@ -90,100 +90,6 @@ router.put('/artists', async (req, res) => {
     res.error('Server error');
   }
 });
-///EXTRA
-// /// /////////////////////////////////
-// /// ////Genre Endpoints////////
-// /// /////////////////////////////////
-// router.get('/genres', async (req, res) => {
-//   try {
-//     const genresItems = await db.genres.findAll();
-//     const reply = genresItems.length > 0 ? { data: genresItems } : { message: 'no results found' };
-//     res.json(reply);
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
-
-// router.get('/genres/:genre_id', async (req, res) => {
-//   try {
-//     const genresItems = await db.genres.findAll({
-//       where: {
-//         genre_id: req.params.genre_id
-//       }
-//     });
-
-//     res.json(genresItems);
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
-
-// router.post('/genres', async (req, res) => {
-//   const isNum = /^\d+$/.test(req.body.genre_name);
-//   const genreItems = await db.genres.findAll();
-//   const currentId = (await genreItems.length) + 1;
-//   try {
-//     const newGenre = await db.genres.create({
-//       genre_id: currentId,
-//       genre: req.body.genre
-//     });
-//     if (!isNum) {
-//       res.json(newGenre);
-//     } else { res.send('not valid genre name'); }
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
-
-// router.put('/genres', async (req, res) => {
-//   try {
-//     await db.genres.update(
-//       {
-//         genre_id: req.body.genre_id,
-//         genre: req.body.genre
-//       },
-//       {
-//         where: {
-//           genre_id: req.body.genre_id
-//         }
-//       }
-//     );
-//     res.send('Successfully Updated');
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
-
-// router.delete('/genres/:genre_id', async (req, res) => {
-//   try {
-//     await db.genres.destroy({
-//       where: {
-//         genre_id: req.params.genre_id
-//       }
-//     });
-//     res.send('Successfully Deleted');
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
-// router.delete('/genres/:genre_name', async (req, res) => {
-//   try {
-//     await db.genres.destroy({
-//       where: {
-//         genre_name: req.params.genre_name
-//       }
-//     });
-//     res.send('Successfully Deleted');
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
 
 /// /////////////////////////////////
 /// ////Playlists Endpoints////////
@@ -192,7 +98,9 @@ router.put('/artists', async (req, res) => {
 router.get('/playlists', async (req, res) => {
   try {
     const playlistItems = await db.playlists.findAll();
-    const reply = playlistItems.length > 0 ? { data: playlistItems } : { message: 'no results found' };
+    const reply = playlistItems.length > 0
+      ? { data: playlistItems }
+      : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -237,7 +145,6 @@ router.post('/playlists', async (req, res) => {
 router.put('/playlists', async (req, res) => {
   try {
     await db.playlists.upsert(
-
       {
         playlist_id: req.body.playlist_id,
         owner: req.body.owner,
@@ -280,7 +187,9 @@ router.delete('/playlists/:playlist_id', async (req, res) => {
 router.get('/artist_albums', async (req, res) => {
   try {
     const artist_albums_items = await db.artistAlbums.findAll();
-    const reply = artist_albums_items.length > 0 ? { data: artist_albums_items } : { message: 'no results found' };
+    const reply = artist_albums_items.length > 0
+      ? { data: artist_albums_items }
+      : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -359,7 +268,9 @@ router.delete('/artist_albums/:artist_id', async (req, res) => {
 router.get('/albums', async (req, res) => {
   try {
     const albumItems = await db.albums.findAll();
-    const reply = albumItems.length > 0 ? { data: albumItems } : { message: 'no results found' };
+    const reply = albumItems.length > 0
+      ? { data: albumItems }
+      : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -443,7 +354,9 @@ router.delete('/albums/:album_id', async (req, res) => {
 router.get('/album_songs', async (req, res) => {
   try {
     const genreItems = await db.albumSongs.findAll();
-    const reply = genreItems.length > 0 ? { data: genreItems } : { message: 'no results found' };
+    const reply = genreItems.length > 0
+      ? { data: genreItems }
+      : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -521,7 +434,9 @@ router.delete('/album_songs/:album_id', async (req, res) => {
 router.get('/artist_songs', async (req, res) => {
   try {
     const artSongItems = await db.artistSongs.findAll();
-    const reply = artSongItems.length > 0 ? { data: artSongItems } : { message: 'no results found' };
+    const reply = artSongItems.length > 0
+      ? { data: artSongItems }
+      : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -675,7 +590,9 @@ router.delete('/song_genres/:song_id', async (req, res) => {
 router.get('/playlist_songs', async (req, res) => {
   try {
     const playSongItems = await db.playlistSongs.findAll();
-    const reply = playSongItems.length > 0 ? { data: playSongItems } : { message: 'no results found' };
+    const reply = playSongItems.length > 0
+      ? { data: playSongItems }
+      : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -757,7 +674,9 @@ router.delete('/playlist_songs/:playlist_id', async (req, res) => {
 router.get('/songs', async (req, res) => {
   try {
     const songItems = await db.songs.findAll();
-    const reply = songItems.length > 0 ? { data: songItems } : { message: 'no results found' };
+    const reply = songItems.length > 0
+      ? { data: songItems }
+      : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -857,7 +776,9 @@ router.delete('/songs/:song_id', async (req, res) => {
 router.get('/genres', async (req, res) => {
   try {
     const genresItems = await db.genres.findAll();
-    const reply = genresItems.length > 0 ? { data: genresItems } : { message: 'no results found' };
+    const reply = genresItems.length > 0
+      ? { data: genresItems }
+      : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -934,13 +855,13 @@ router.delete('/genres/:genre_id', async (req, res) => {
 /// /////////////////////////////////
 
 /// Results of Search///
-const results = rawqueries;
 router.get('/main', async (req, res) => {
   try {
+    const results = rawqueries;
     const result = await db.sequelizeDB.query(results, {
       type: sequelize.QueryTypes.SELECT
     });
-    res.json({data: result});
+    res.json({ data: result });
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -948,13 +869,13 @@ router.get('/main', async (req, res) => {
 });
 
 /// Num of Genres Graph///
-const graphgen = graphquery;
 router.get('/graphgenres', async (req, res) => {
   try {
+    const graphgen = graphquery;
     const result = await db.sequelizeDB.query(graphgen, {
       type: sequelize.QueryTypes.SELECT
     });
-    res.json({data: result});
+    res.json({ data: result });
   } catch (err) {
     console.error(err);
     res.error('Server error');

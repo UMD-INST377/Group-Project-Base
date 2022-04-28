@@ -2,6 +2,12 @@
 import express from 'express';
 import sequelize from 'sequelize';
 
+import rickyRoute from './rickyRoute.js';
+
+import will from './will.js';
+
+import vezRoutes from './vezRoutes.js';
+
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -9,6 +15,12 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
+
+router.use('/ricky', rickyRoute);
+
+router.use('/will', will);
+
+router.use('/vez', vezRoutes);
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

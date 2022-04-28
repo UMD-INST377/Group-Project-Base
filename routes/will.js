@@ -7,29 +7,31 @@ import mealsQuery from '../controller/meals_query.js';
 
 const router = express.Router();
 
-// /will
-router.route('/meals')
-  .get(async (req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(mealsQuery, {
-        type: sequelize.QueryTypes.SELECT
-      });
-      res.json({ data: result });
-    } catch (error) {
-      console.log(error);
-      res.json({ message: 'Server error' });
-    }
-  });
+// api/will/meals
+router.get('/meals', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(mealsQuery, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json({ data: result });
+  } catch (error) {
+    console.log(error);
+    res.json({ message: 'Server error' });
+  }
+});
 
-router.route('/meals/:meal_id')
-  .get(async (req, res) => { 
-    try {
-      const mealResult = await db.Meals.findAll( { where: {meal_id: req.params.meal_id}});
-      res.json({ data: mealResult });
-    } catch (error) {
-      console.log(error);
-      res.json({ message: 'Something went wrong on /meals end or the meal_id is invalid.' });
-    }
-  });
+// api/will/meals/:meal_id
+router.get('/meals/:meal_id', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query('SELECT * FROM meals WHERE meal_id = (:meal_id)', {
+      replacements: {meal_id: req.params.meal_id},
+      type: sequelize.QueryTypes.SELECT
+    }); 
+    res.json({ data: result});
+  } catch (error) {
+    console.log(error);
+    res.json({ message: 'Server error' });
+  }
+});
 
 export default router;

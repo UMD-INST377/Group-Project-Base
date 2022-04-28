@@ -126,13 +126,14 @@ Below are details of the API contained within this piece of labwork.
         "author": "Race",
         "description": "super fun "
     }
-]
+   ]
 
 ## Create a new Review
 
 #### Request
 
 `POST /api/race/reviews`
+
     curl -d "park_id=1&title=Great Trails&author=Race&description=Trails were fun" -X POST http://localhost:3000/api/race/reviews
 
 

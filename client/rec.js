@@ -1,78 +1,46 @@
-function getRandomIntInclusive(min, max) {
-  const newMin = Math.ceil(min);
-  const newMax = Math.floor(max);
-  return Math.floor(Math.random() * (newMax - newMin + 1)) + newMin;
-}
-
-function restoArrayMake(dataArray) {
-  console.log("fired dataHandler");
-  console.table(dataArray);
-  const range = [...Array(15).keys()];
-  const listItems = range.map((item, index) => {
-    const restNum = getRandomIntInclusive(0, dataArray.length - 1);
-    return dataArray[restNum];
+fetch('http://localhost:3000/api/artist').then((data) => {
+  console.log(data);
+  return data.json();
+}).then((objectData) => {
+  console.log(objectData);
+  let tableData = '';
+  objectData.map((values) => {
+    tableData+= `<tr>
+    <td>${values.artist_id}</td>
+    <td>${values.label_id}</td>
+    <td>${values.stage_name}</td>
+    <td>${values.first_name}</td>
+    <td>${values.last_name}</td>
+    <td>${values.gender}</td>
+    <td>${values.age}</td>
+  </tr>`;
   });
-  console.log(listItems);
-  return listItems;
-}
+  document.getElementById('table_body').innerHTML = tableData;
+}).catch((err) => {
+  console.log(err);
+});
 
-function createHtmlList(collection) {
-  const targetList = document.querySelector("artist_list");
-  targetList.innerHTML = "";
-  collection.forEach((item) => {
-    const { name } = item;
-    const nameDisplay = name.toLowerCase();
-    const injectThisItem = `<li>${nameDisplay}</li>`;
-    targetList.innerHTML += injectThisItem;
-  });
-}
+function tableSearch() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("artInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table");
+  tr = table.getElementsByTagName("tr");
 
-async function mainEvent() {
-  console.log("script loaded");
-  const form = document.querySelector("#record_form");
-  const but = document.querySelector("#button");
-  const stagename = document.querySelector("#stage_name");
-  const gender = document.querySelector("#gender");
-  but.style.display = "none";
-
-  const results = await fetch('/artist');
-  const arrayFromJson = await results.json();
-  console.log(arrayFromJson);
-
-  if (arrayFromJson.length > 0) {
-    // prevents race condition
-    but.style.display = "block";
-
-    let currentArray = [];
-    stagename.addEventListener("input", async (event) => {
-      // for stage name
-      console.log(event.target.value);
-      const selectResto = arrayFromJson.filter((item) => {
-        // filter entire list
-        const lowerName = item.name.toLowerCase();
-        const lowerValue = event.target.value.toLowerCase();
-        return lowerName.includes(lowerValue);
-      });
-      createHtmlList(selectResto);
-    });
-
-    gender.addEventListener("input", async (event) => {
-      // For gender
-      console.log(event.target.value);
-      const selectCat = arrayFromJson.filter((item) => {
-        // filter entire list
-        const lowerCat = item.name.toLowerCase();
-        const lowerCatValue = event.target.value.toLowerCase();
-        return lowerCat.includes(lowerCatValue);
-      });
-      createHtmlList(selectCat);
-    });
-
-    form.addEventListener("submit", async (submitEvent) => {
-      submitEvent.preventDefault();
-      currentArray = restoArrayMake(arrayFromJson);
-      createHtmlList(currentArray);
-    });
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td") ; 
+    for(j=0 ; j<td.length ; j++)
+    {
+      let tdata = td[j] ;
+      if (tdata) {
+        if (tdata.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+          break ; 
+        } else {
+          tr[i].style.display = "none";
+        }
+      } 
+    }
   }
 }
-document.addEventListener("DOMContentLoaded", async () => mainEvent());

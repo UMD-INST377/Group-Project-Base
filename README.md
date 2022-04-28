@@ -108,3 +108,41 @@ Below are details of the API contained within this piece of labwork.
         }
     ]
 }
+
+## Get Reviews of a Park
+
+#### Request
+
+`GET /api/race/reviews/:park_id`
+
+    curl http://localhost:3000/api/race/reviews/1
+
+#### Response
+   [
+    {
+        "review_id": 1,
+        "park_id": 1,
+        "title": "Great trails",
+        "author": "Race",
+        "description": "super fun "
+    }
+]
+
+## Create a new Review
+
+#### Request
+
+`POST /api/race/reviews`
+    curl -d "park_id=1&title=Great Trails&author=Race&description=Trails were fun" -X POST http://localhost:3000/api/race/reviews
+
+
+#### Response
+   [
+    {
+        "review_id": 1,
+        "park_id": 1,
+        "title": "Great trails",
+        "author": "Race",
+        "description": "Trails were fun"
+    }
+]

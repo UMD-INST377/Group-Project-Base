@@ -179,17 +179,20 @@ footer {
 
 /* CONTRIBUTE STYLES */
 
-
+/* This part looked really funky on my page, trying some changes to the 
+css. I will leave comments, feel free to change back - Maxim*/
 .form_block {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
     background-color: white;
-    margin: 0px 800px 0px 800px;
+    margin: 0px 800px 0px 800px; 
+    padding: 100px;/*added padding*/
     border-radius: 10px;
-    border-style: solid;
+    border-style: solid; 
     border-color: black;
+    margin-bottom: 100px;/*Added this*/
 }
 
 .form_row {
@@ -219,6 +222,7 @@ margin-top: 20px;
     background-color: lightgray;
 }
 
+/* minor changes here as well*/
 .thankyou {
     display: flex;
     flex-wrap: nowrap;
@@ -226,10 +230,11 @@ margin-top: 20px;
     align-items: center;
     background-color: white;
     margin: 0px 700px 0px 700px;
-    padding: 20px;
+    padding: 70px; /*changed from 20 to 70px*/
     border-radius: 10px;
     border-style: solid;
     border-color: black;
+    margin-bottom:100px; /*added this*/ 
 }
 
 .checkmark {

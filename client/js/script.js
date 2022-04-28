@@ -1,3 +1,4 @@
+// Contribute Page 
 const contributeForm = document.querySelector('#contribute_form');
 
 function formToObject(htmlFormElement) {
@@ -38,5 +39,10 @@ contributeForm.addEventListener('submit', async (submitEvent) => {
 
 });
 
-
+// Search Bar
+const searchBar = document.querySelector("#index_search_bar")
+searchBar.onkeyup = inTuneSearch()
+function inTuneSearch() {
+    console.log()
+} 
 

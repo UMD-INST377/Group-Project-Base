@@ -116,7 +116,7 @@ router.get('/primary_title/:id', async (req, res) => {
 });
 
 // Access the titles table and receiving the title's name 
-router.route('/primary_title.json')
+router.route('/primary_title')
   .get(async (req, res) => {
     try {
       const titleList = await db.Title.findAll({

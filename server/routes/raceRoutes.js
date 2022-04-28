@@ -108,7 +108,20 @@ router.route('/race/reviews')
       res.json('Server error');
     }
   });
+router.get('/race/reviews/:park_id', async (req, res) => {
+  try {
+    const reviews = await db.Reviews.findAll({
+      where: {
+        park_id: req.params.park_id
+      }
+    });
 
+    res.json(reviews);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 // races work
 // const dbQuery = 'SELECT * FROM mydb1.parks;';
 // router.route('/race/parks').get(async (req, res) => {

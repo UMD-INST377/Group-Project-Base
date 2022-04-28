@@ -1,3 +1,5 @@
+let currentPark;
+
 function formToObject(htmlFormElement) {
   const formItem = new FormData(htmlFormElement).entries();
   const formArray = Array.from(formItem);
@@ -22,6 +24,22 @@ function updateParks(collection) {
     const displayName = park_name;
     const injectThisItem = `<option>${displayName}</option>`;
     targetList.innerHTML += injectThisItem;
+  });
+}
+
+async function displayReviews(parkId) {
+  // console.table(collection);
+  const url = `/api/race/reviews/${parkId}`;
+  const reviews = await fetch(url);
+  const reviewsJson = await reviews.json();
+  console.log(reviewsJson);
+  const targetList = document.querySelector('.reviews');
+  targetList.innerHTML = '';
+
+  reviewsJson.forEach((item) => {
+    targetList.innerHTML += `Title: ${item.title}<br>`;
+    targetList.innerHTML += `Author: ${item.author}<br>`;
+    targetList.innerHTML += `Description: ${item.description}<hr>`;
   });
 }
 
@@ -50,14 +68,17 @@ function addMapMarkers(map, collection) {
     console.log(item.park_lat);
     console.log(item.park_long);
 
-    const point = [item.park_lat, -item.park_long];
+    const point = [item.park_lat, item.park_long];
     // console.log(item.geocoded_column_1?.coordinates);
-    L.marker([item.park_lat, -item.park_long]).addTo(map);
+    if (item.park_lat) {
+      L.marker([item.park_lat, -item.park_long]).addTo(map);
+    }
   });
 }
 
-function findPark(park, parkArray){
-
+function findPark(park, parkArray) {
+  let match;
+  return match;
 }
 // function refreshList (target, storage) {
 //   target.addEventListener('click', async (event) => {
@@ -85,14 +106,14 @@ function findPark(park, parkArray){
 async function mainEvent() { // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // change this selector to match the id or classname of your actual form
 
-  const submit = document.querySelector('.submit_button');
+  const selectPark = document.querySelector('.select_park');
 
   const parks = document.querySelector('#park');
   const refresh = document.querySelector('.refresh_list');
 
   const map = initMap('map');
   const retrievalVar = 'parks';
-  submit.style.display = 'none';
+  selectPark.style.display = 'none';
 
   // refreshList(refresh, retrievalVar);
 
@@ -105,8 +126,9 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   updateParks(parksArray);
   if (parksArray?.length > 0) {
+    currentPark = parksArray[0];
     // this statement is to prevent a race condition on data load
-    submit.style.display = 'block';
+    selectPark.style.display = 'block';
 
     let currentArray = parksArray;
     // inputListener(parks);
@@ -114,13 +136,22 @@ async function mainEvent() { // the async keyword means we can make API requests
     parks.addEventListener('change', async (event) => {
       console.log(event.target.value);
       console.log(parksArray);
-      matchingPark = findPark(event.target.value,parksArray)
+      matchingPark = findPark(event.target.value, parksArray);
+      currentPark = matchingPark;
     });
 
     form.addEventListener('submit', async (submitEvent) => {
       // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       // console.log('form submission'); // this is substituting for a "breakpoint"
+    });
+    selectPark.addEventListener('click', async (submitEvent) => {
+      // async has to be declared all the way to get an await
+      submitEvent.preventDefault(); // This prevents your page from refreshing!
+      // console.log('form submission'); // this is substituting for a "breakpoint"
+      console.log('park selected');
+      console.log(currentPark.park_id);
+      displayReviews(currentPark.park_id);
     });
     refresh.addEventListener('click', async (submitEvent) => {
       // async has to be declared all the way to get an await

@@ -23,7 +23,7 @@ router.get('/macros/:macro_id', async (req, res) => {
     const result = await db.sequelizeDB.query('SELECT * FROM macros WHERE macro_id = (:macro_id)', {
       replacements: {macro_id: req.params.macro_id},
       type: sequelize.QueryTypes.SELECT
-    }); 
+    });
     res.json({ data: result});
   } catch (error) {
     console.log(error);

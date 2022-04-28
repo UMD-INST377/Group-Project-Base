@@ -1,8 +1,4 @@
-
-
-
 async function mainEvent() {
- 
   // Hamburger Menu
   const header = document.querySelector('Header');
   const hamburger = document.querySelector('.hamburger');
@@ -12,12 +8,13 @@ async function mainEvent() {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
   });
-  
+
   // Sign Up Modal
   const signUpModal = document.querySelector('.sign_up_modal');
   const modal = document.querySelector('.modal');
   const signUpLink = document.querySelector('.sign_up');
   signUpLink.addEventListener('click', () => {
+    console.log('direct hit');
     signUpModal.style.display = 'flex';
     modal.style.display = 'block';
   });
@@ -69,6 +66,5 @@ async function mainEvent() {
     editorModal.style.display = 'none';
   });
 }
-
 
 document.addEventListener('DOMContentLoaded', mainEvent);

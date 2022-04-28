@@ -22,11 +22,11 @@
                   <div class="line_b"></div>
                 </div>
               </div>
-              <a class="nav-link" href="../index.html">Home</a>
+              <a class="nav-link" href="/.">Home</a>
               <a class="nav-link active" href="../about.html">About</a>
-              <a class="nav-link" href="/.">Saved</a>
-              <a class="nav-link" id="sign_up" href="#">Sign Up</a>
-              <a class="nav-link" href="/history.html">Log in</a>
+              <a class="nav-link" href="../saved.html">Saved</a>
+              <a class="nav-link sign_up" href="../saved.html#sign_up_modal">Sign Up</a>
+              <a class="nav-link login" href="../saved.html#login_modal">Log in</a>
              
               <div class="arrow_container_right">
                 <div class="arrow_left mobile">
@@ -55,6 +55,7 @@
         <div class="saved_results_container">
           
         </div>
+
 <!-- Edit Search Modal -->
 <div class="edit_modal">
   <img src="assets/logo.png" alt="Logo">
@@ -83,40 +84,127 @@
 
   <div class="editor_modal"></div>
 
-  <!-- Sign Up Modal -->
-  <div class="sign_up_modal">
-    <img src="assets/logo.png" alt="Logo">
-    
-    <form action="/users" method="post" class="sign_up_form">
-      <div class="form_row">
-        <label for="username">Username</label>
-        <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
-      </div>
+<!-- Sign Up Modal -->
+<div class="sign_up_modal">
+  <img src="assets/logo.png" alt="Logo">
+  
+  <form action="/users" method="post" class="sign_up_form">
+    <div class="form_row">
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+    </div>
 
-      <div class="form_row">
-        <label for="password">Password</label>
-        <input id="password" name="password" placeholder="****" type="text"/>
-      </div>
+    <div class="form_row">
+      <label for="password">Password</label>
+      <input id="password" name="password" placeholder="****" type="text"/>
+    </div>
 
-      <div class="form_row buttons">
-        <button id="cancel">Cancel</button>
-        <button class="submit" id="sign_up" type="submit">Sign Up</button>
-      </div>
+    <div class="form_row buttons">
+      <button id="cancel">Cancel</button>
+      <button class="submit" id="sign_up" type="submit">Sign Up</button>
+    </div>
 
-      <div class="form_row log_in">
-        <p>or <a href="#">Log in</a> </p>
-      </div>
+    <div class="form_row log_in">
+      <p>or <a href="#login_modal">Log in</a> </p>
+    </div>
 
-    </form>
+  </form>
 
 </div>
+
+<!-- Login Modal -->
+<div class="login_modal">
+  <img src="assets/logo.png" alt="Logo">
+  
+  <form action="/users" method="get" class="login_form">
+    <div class="form_row">
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+    </div>
+
+    <div class="form_row">
+      <label for="password">Password</label>
+      <input id="password" name="password" placeholder="****" type="text"/>
+    </div>
+
+    <div class="form_row buttons">
+      <button id="cancel">Cancel</button>
+      <button class="submit" id="login" type="submit">Login</button>
+    </div>
+
+    <div class="form_row log_in">
+      <p>or <a href="#sign_up_modal">Sign Up</a> </p>
+    </div>
+
+  </form>
+
+</div>
+
+
 <div class="modal"></div>
 
 
 
 
       </main>
+<!-- Sign Up Modal -->
+<div class="sign_up_modal">
+  <img src="assets/logo.png" alt="Logo">
+  
+  <form action="/users" method="post" class="sign_up_form">
+    <div class="form_row">
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+    </div>
 
+    <div class="form_row">
+      <label for="password">Password</label>
+      <input id="password" name="password" placeholder="****" type="text"/>
+    </div>
+
+    <div class="form_row buttons">
+      <button id="cancel">Cancel</button>
+      <button class="submit" id="sign_up" type="submit">Sign Up</button>
+    </div>
+
+    <div class="form_row log_in">
+      <p>or <a href="#login_modal">Log in</a> </p>
+    </div>
+
+  </form>
+
+</div>
+
+<!-- Login Modal -->
+<div class="login_modal">
+  <img src="assets/logo.png" alt="Logo">
+  
+  <form action="/users" method="get" class="login_form">
+    <div class="form_row">
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+    </div>
+
+    <div class="form_row">
+      <label for="password">Password</label>
+      <input id="password" name="password" placeholder="****" type="text"/>
+    </div>
+
+    <div class="form_row buttons">
+      <button id="cancel">Cancel</button>
+      <button class="submit" id="login" type="submit">Login</button>
+    </div>
+
+    <div class="form_row log_in">
+      <p>or <a href="#sign_up_modal">Sign Up</a> </p>
+    </div>
+
+  </form>
+
+</div>
+
+
+<div class="modal"></div>
       <footer>
         <div>
           <p>Clato was created by Nour Ali Ahmed, Taoheed King, Gabriel Rodriguez, and Sean Simmons.</p>
@@ -124,5 +212,5 @@
       </footer>
       
   </body>
-  <script src="script.js"></script>
+  <script src="saved.js"></script>
 </html>

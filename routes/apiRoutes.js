@@ -25,6 +25,7 @@ router.get('/actors/:id', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
+    console.log(err)
     res.send('Server error');
   }
 });
@@ -97,7 +98,7 @@ router.get('/chart', async (req, res) => {
 
 // Gerson's contribution 1
 
-router.get('/titles/:id', async (req, res) => {
+router.get('/primary_title/:id', async (req, res) => {
   try {
     const {id} = req.params;
     const titleList = await db.Title.findOne({
@@ -115,7 +116,7 @@ router.get('/titles/:id', async (req, res) => {
 });
 
 // Access the titles table and receiving the title's name 
-router.route('/titles')
+router.route('/primary_title')
   .get(async (req, res) => {
     try {
       const titleList = await db.Title.findAll({
@@ -133,8 +134,8 @@ router.route('/titles')
 // Access the titles table and creates a dummy row in the titles table
   .post(async (req, res) => {
     const newTitle = await db.Title.create({
-      primary_title: '500 Days of Summer',
-      title_type: 'Movie'
+      primary_title: req.body.primary_title,
+      title_type: req.body.title_type,
     });
     res.send('dummyValue');
   })

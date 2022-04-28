@@ -53,7 +53,6 @@ body {
   font-size: 80px;
   line-height: 85px;
 }
-
 .intro-container {
   display: flex;
   padding: 10px;
@@ -68,7 +67,6 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
 .header-text {
   padding-bottom: 50px;
   font-family: 'Times New Roman';
@@ -78,7 +76,6 @@ body {
   font-size: 30px;
   line-height: 46px;
 }
-
 .image-container {
   width: 800;
   height: 1000;
@@ -86,7 +83,6 @@ body {
   align-items: flex-start;
   justify-content:right;
 }
-
 .text-container {
   font-family: 'Times New Roman';
   font-style: normal;

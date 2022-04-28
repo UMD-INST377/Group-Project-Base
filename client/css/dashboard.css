@@ -16,7 +16,7 @@ nav{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-top: 45px;
+	/* padding-top: 45px; */
 	padding-left: 8%;
 	padding-right: 8%;
   background-color: beige;

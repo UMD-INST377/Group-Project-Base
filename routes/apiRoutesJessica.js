@@ -48,7 +48,7 @@ router.post('/restaurantpost', async (req, res) => {
     res.send('Something was added.');
   } catch (err) {
     console.log(err);
-    res.send({message: 'Something went wrong on the SQL request.'})
+    res.send({message: err})
   }
 });
 
@@ -79,7 +79,7 @@ router.delete('/restaurantdelete/:restaurant_id', async (req, res) => {
     res.send('Deleted Successfully');
   } catch (err) {
     console.error(err);
-    res.json({message: 'Server error'});
+    res.json({message: err});
   }
 });
 

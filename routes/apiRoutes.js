@@ -9,11 +9,18 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
-// Nicholas Urquhart GET controllers
+
+// GET controller for front-end menu table
 router.route('/allmeals')
   .get(async (req, res) => {
     try {
-      const results = await db.sequelizeDB.query(`SELECT meal_name, meals.meal_id, calories, cholesterol, serving_size, sodium, carbs, protein, fat FROM meals LEFT JOIN macros mac ON meals.meal_id=mac.meal_id`);
+      const results = await db.sequelizeDB.query(`
+      SELECT meal_name, meals.meal_id, calories, cholesterol, serving_size, sodium, carbs, protein, fat, hall_name AS 'location' 
+      FROM meals 
+      LEFT JOIN macros mac ON meals.meal_id=mac.meal_id
+      JOIN meals_locations ml ON meals.meal_id=ml.meal_id
+      JOIN dining_hall dh ON ml.hall_id=dh.hall_id
+      `);
       res.json({data: results[0]});
     } catch (err) {
       console.log(err);
@@ -21,6 +28,7 @@ router.route('/allmeals')
     }
   });
 
+// Nicholas Urquhart GET controllers
 router.route('/macros')
   .get(async (req, res) => {
     try {

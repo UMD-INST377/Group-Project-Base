@@ -3,20 +3,29 @@ const header = document.querySelector('Header');
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav');
 
+const signUpModal = document.querySelector('.sign_up_modal');
+const modal = document.querySelector('.modal');
+const signUpLink = document.querySelector('.sign_up');
+
 async function mainEvent() {
+  
+  // NAV
+
   // Hamburger Menu
   hamburger.addEventListener('click', () => {
-    console.log('hamburger clicked');
     header.classList.toggle('active');
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
   });
 
+  // Sign Up Modal
+  signUpLink.addEventListener('click', () => {
+    signUpModal.style.display = 'flex';
+    modal.style.display = 'block';
+  });
+
   // User Sign Up
   // const signUpSubmit = document.querySelector('#sign_up');
-  const signUpModal = document.querySelector('.sign_up_modal');
-  const modal = document.querySelector('.modal');
-  const signUpLink = document.querySelector('#sign_up');
   signUpModal.style.display = 'none';
   modal.style.display = 'none';
 
@@ -45,10 +54,7 @@ async function mainEvent() {
     window.location.href = '/index.html';
   });
 
-  signUpLink.addEventListener('click', () => {
-    signUpModal.style.display = 'flex';
-    modal.style.display = 'block';
-  });
+
 
   modal.addEventListener('click', () => {
     signUpModal.style.display = 'none';
@@ -79,6 +85,6 @@ async function mainEvent() {
     editorModal.style.display = 'none';
   });
 }
-}
+
 
 document.addEventListener('DOMContentLoaded', mainEvent);

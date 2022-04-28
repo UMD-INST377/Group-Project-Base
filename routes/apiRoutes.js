@@ -1,8 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
-import sequelize from 'sequelize';
 import fetch from 'node-fetch';
-
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -12,6 +10,17 @@ router.get('/', (req, res) => {
 });
 
 // Nicholas Urquhart GET controllers
+router.route('/allmeals')
+  .get(async (req, res) => {
+    try {
+      const results = await db.sequelizeDB.query(`SELECT meal_name, meals.meal_id, calories, cholesterol, serving_size, sodium, carbs, protein, fat FROM meals LEFT JOIN macros mac ON meals.meal_id=mac.meal_id`);
+      res.json({data: results[0]});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
 router.route('/macros')
   .get(async (req, res) => {
     try {

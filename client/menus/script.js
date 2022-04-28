@@ -35,6 +35,28 @@ function createHTMLtable(currentArray) {
 
 }
 
+function createHTMLtable2(currentArray) {
+  let result = '<table border=1>';
+  result += `
+  <tr>
+  <th>restriction_id</th>
+  <th>restriction_type</th>
+  
+  </tr>`;
+  for (let i = 0; i < currentArray.length; i++) {
+    result += '<tr>';
+    result += `
+      <td>${currentArray[i].restriction_id}</td>
+      <td>${currentArray[i].restriction_type}</td>`;
+    result += '</tr>';
+  }
+  result += '</table>';
+
+  const targetList = document.querySelector('.diet_table');
+  targetList.innerHTML = '';
+  targetList.innerHTML += result;
+}
+
 function dataHandler(arr) {
   return arr.slice(0, 10);
 }
@@ -50,6 +72,15 @@ async function mainEvent() {
   console.log(currentArray)
   createHTMLtable(currentArray);
   
+  const dietTable = document.querySelector('.diet_table');
+  const results2 = await fetch('/api/dietaryRestrictions');
+  const dietArrayFromJson = await results2.json();
+  let currentArray2 = [];
+  if (dietArrayFromJson.data.length > 0) {
+    currentArray2 = dataHandler(dietArrayFromJson.data);
+  }
+
+  createHTMLtable2(currentArray2);
 }
 
 document.addEventListener('DOMContentLoaded', async() => mainEvent());

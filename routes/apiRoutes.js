@@ -91,7 +91,7 @@ router.route('/playlist')
     const playlistList = await db.playlist.findAll();
     const currentId = (await playlistList.length) + 1;
     try {
-      const newGenre = await db.playlist.create({
+      const newPlaylist = await db.playlist.create({
         playlist_id: currentId,
         playlist_title: req.body.playlist_name,
         song_id: req.body.song_id,
@@ -107,7 +107,7 @@ router.route('/playlist/:id')
 .put(async (req, res) => {
     try {
       const {id} = req.params;
-      await db.genre.update(
+      await db.playlist.update(
         {
           playlist_title: req.body.playlist_title
         },

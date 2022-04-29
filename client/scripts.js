@@ -61,13 +61,13 @@ async function mainEvent() {
     if (movieJson.length > 0 && genreJson.length > 0) {
         let results = movieJson;
 
-        // Filter results when title search field changes
+        // Filter results when title field changes
         titleField.addEventListener('input', async (InputEvent) => {
             console.log('titleField InputEvent');
             let subResults = results;
-            let search = InputEvent.target.value;
-            if (search !== '') {
-                subResults = filterResults(results, 'movie_name', search);
+            let title = InputEvent.target.value;
+            if (title !== '') {
+                subResults = filterResults(results, 'movie_name', title);
             }
             showResults(subResults);
         });

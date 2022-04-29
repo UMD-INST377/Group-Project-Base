@@ -1,8 +1,10 @@
+// Get first 'limit' elements from collection
 function getDisplayArray(collection, limit) {
     console.log('getDisplayArray()');
     return collection.slice(0, limit);
 }
 
+// Filter collection by items with 'key' that contain 'search'
 function filterResults(collection, key, search) {
     console.log('filterResults()');
     if (collection.length < 1) { return; }
@@ -14,6 +16,7 @@ function filterResults(collection, key, search) {
     return matches;
 }
 
+// Update table HTML to display search results
 function showResults(collection, limit = 25) {
     console.log('showResults()');
     const resultTable = document.querySelector('#search-results')
@@ -30,6 +33,7 @@ function showResults(collection, limit = 25) {
     });
 }
 
+// Populate genre filter with contents of database
 function initGenreSelect(collection) {
     console.log('initGenreSelect()')
     const genreSelect = document.querySelector('#movie-genre');
@@ -40,6 +44,7 @@ function initGenreSelect(collection) {
     });
 }
 
+// Fetch data from database
 async function getData(endpoint, options = {}) {
     console.log('getData()');
     const raw = await fetch(endpoint, options);

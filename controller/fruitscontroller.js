@@ -12,7 +12,5 @@ const fruitsDelete = `DELETE FROM fruits
 WHERE fruit_id = :fruit_id;`
 
 export default {
-
   fruitsGet, fruitsPut, fruitsPost, fruitsDelete
-
 };

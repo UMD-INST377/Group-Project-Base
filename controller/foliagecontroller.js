@@ -12,8 +12,5 @@ const foliageDelete = `DELETE FROM foliage
 WHERE foliage_id = :foliage_id;`
 
 export default {
-
   foliageGet, foliagePut, foliagePost, foliageDelete
-
-
 };

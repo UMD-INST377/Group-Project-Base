@@ -12,8 +12,5 @@ const plantsDelete = `DELETE FROM plants
 WHERE plant_id = :plant_id;`
 
 export default {
-
   plantsGet, plantsPut, plantsPost, plantsDelete
-
-
 };

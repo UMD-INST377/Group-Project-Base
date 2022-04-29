@@ -1,4 +1,4 @@
-# This is your readme
+# INST 377 GROUP 14 REPOSITORY
 You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
 
 ### How to use Markdown

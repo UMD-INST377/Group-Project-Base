@@ -25,7 +25,7 @@ function showResults(collection) {
         rowContents += `<td>${item.movie_name}</td>`;
         rowContents += `<td>${item.movie_year}</td>`;
         rowContents += `<td>${item.duration_of_movie}</td>`;
-        rowContents += `<td>GENRE HERE</td>`;
+        // rowContents += `<td>GENRE HERE</td>`;
         rowContents += `<td>${item.rating}</td>`;
         resultTable.innerHTML += `<tr>${rowContents}</tr>`;
     });
@@ -36,12 +36,12 @@ function initGenreSelect(collection) {
     const genreSelect = document.querySelector('#movie-genre');
     collection.forEach((item) => {
         const text = item.genre;
-        const value = text.toLowerCase();
+        const value = item.genre_id;
         genreSelect.innerHTML += `<option value="${value}">${text}</option>`;
     });
 }
 
-async function getData(endpoint) {
+async function getData(endpoint, options = {}) {
     console.log('getData()');
     const raw = await fetch(endpoint);
     const json = await raw.json();
@@ -58,6 +58,7 @@ async function mainEvent() {
 
     const movieJson = await getData('/stef/movies');
     const genreJson = await getData('/jude/genres');
+    const movieGenresJson = await getData('/jude/movie_genres');
 
     if (movieJson.length > 0 && genreJson.length > 0) {
         let results = movieJson;
@@ -89,11 +90,29 @@ async function mainEvent() {
 
         genreSelect.addEventListener('change', async (InputEvent) => {
             console.log('genreSelect InputEvent')
+            let subResults = results;
+            const genre_id = InputEvent.target.value;
+            if (genre_id !== 'none') {
+                let movies = [];
+                movieGenresJson.forEach((item) => {
+                    if (item.genre_id.toString() === genre_id) {
+                        movies.push(item.movie_id);
+                    }
+                });
+                console.log(movies);
+                subResults = results.filter((item) => {
+                    if (movies.includes(item.movie_id)) {
+                        return item;
+                    }
+                });
+            }
+            showResults(subResults);
         });
     }
 
     console.log(movieJson);
     console.log(genreJson);
+    console.log(movieGenresJson);
 
     initGenreSelect(genreJson);
     showResults(movieJson);

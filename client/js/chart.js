@@ -6,19 +6,21 @@ function dynamicColors() {
 }
 function poolColors(a) {
   const pool = [];
-  for (i = 0; i < a; i = +1) {
+  for (i = 0; i < a; i++) {
     pool.push(dynamicColors());
   }
   return pool;
 }
 
 async function getData() {
-  const response = await fetch('/api/graphgenres');
+  const response = await fetch(
+    '/api/graphgenres'
+  );
   console.log(response);
   const data = await response.json();
   console.log(data);
-  readlength = data.data.length;
-  console.log(readlength);
+  length = data.data.length;
+  console.log(length);
 
   NumOfDataShown = 10;
   GenreName = [];
@@ -28,7 +30,7 @@ async function getData() {
     values.push(data.data[i]['song amount']);
   }
 
-  chart = new Chart(document.getElementById('myChart'), {
+  const chart = new Chart(document.getElementById('myChart'), {
     type: 'bar',
     data: {
       labels: GenreName,

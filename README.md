@@ -10,58 +10,28 @@ https://inst377group15.herokuapp.com/
 Description of target browsers (iOS? Android? Which ones? Which versions?)
 ## Endpoint Doc 
 ### Server application APIs
-```/artist``` - API route for course grades and GPA data.
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains course name from request body to fetch url. fetch data json from PlanetTerp grades API and returns JSON response. 
-* PUT - returns response 'Got a PUT request at /api'.
+```/artist``` - API route for artist data.
 
-```/genres``` - API route for professor reviews data.
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains professor name from request body to fetch url. fetch data json from PlanetTerp professors API and returns JSON response. 
-* PUT - returns response 'Got a PUT request at /api'.
+```/genres``` - API route for genres data.
 
-```/playlists``` - API route for professor reviews data.
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains professor name from request body to fetch url. fetch data json from PlanetTerp professors API and returns JSON response. 
-* PUT - returns response 'Got a PUT request at /api'.
+```/playlists``` - API route for playlists data.
 
-```/artist_albums``` - API route for professor reviews data.
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains professor name from request body to fetch url. fetch data json from PlanetTerp professors API and returns JSON response. 
-* PUT - returns response 'Got a PUT request at /api'.
+```/artist_albums``` - API route for artist_albums data.
 
-```/albums``` - API route for professor reviews data.
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains professor name from request body to fetch url. fetch data json from PlanetTerp professors API and returns JSON response. 
-* PUT - returns response 'Got a PUT request at /api'.
+```/albums``` - API route for albums data.
 
 
-```/album_songs``` - API route for professor reviews data.
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains professor name from request body to fetch url. fetch data json from PlanetTerp professors API and returns JSON response. 
-* PUT - returns response 'Got a PUT request at /api'.
+```/album_songs``` - API route for album songs data.
 
-```/artist_songs``` - API route for professor reviews data.
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains professor name from request body to fetch url. fetch data json from PlanetTerp professors API and returns JSON response. 
-* PUT - returns response 'Got a PUT request at /api'.
+```/artist_songs``` - API route for artist ssongs data.
 
 
-```/song_genres``` - API route for professor reviews data.
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains professor name from request body to fetch url. fetch data json from PlanetTerp professors API and returns JSON response. 
-* PUT - returns response 'Got a PUT request at /api'.
+```/song_genres``` - API route for song genres data.
 
 
-```/playlist_songs``` - API route for professor reviews data.
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains professor name from request body to fetch url. fetch data json from PlanetTerp professors API and returns JSON response. 
-* PUT - returns response 'Got a PUT request at /api'.
+```/playlist_songs``` - API route for playlist songs data.
 
-```/songs``` - API route for course grades and GPA data.
-* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-* POST - obtains course name from request body to fetch url. fetch data json from PlanetTerp grades API and returns JSON response. 
-* PUT - returns response 'Got a PUT request at /api'.
+```/songs``` - API route for songs data.
 
 
 ## Developer Manual

@@ -11,6 +11,16 @@ router.get('/', (req, res) => {
     res.send("Welcome to Jude's portion of Group 20's project API!");
 });
 
+router.get('/movie_genres', async (req, res) => {
+    try {
+        const movie_genres = await db.movie_genre_linking.findAll();
+        res.send({ data: movie_genres });
+    } catch (err) {
+        console.error(err);
+        res.error("Error in GET '/movie_genres'!");
+    }
+})
+
 // Get list of all genres
 router.get('/genres', async (req, res) => {
     try {
@@ -18,7 +28,7 @@ router.get('/genres', async (req, res) => {
         res.json({ data: genres });
     } catch (err) {
         console.error(err);
-        res.send("Error in GET ' / genres'!");
+        res.send("Error in GET '/genres'!");
     }
 });
 

@@ -42,7 +42,7 @@ function initGenreSelect(collection) {
 
 async function getData(endpoint, options = {}) {
     console.log('getData()');
-    const raw = await fetch(endpoint);
+    const raw = await fetch(endpoint, options);
     const json = await raw.json();
     return json.data;
 }

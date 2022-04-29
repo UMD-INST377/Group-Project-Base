@@ -41,8 +41,8 @@ async function createFilteredTable() {
             data = await data.data;
 
             currentData = filterCheck(data);
-            loadTable(currentData);
-            else {
+            await loadTable(currentData);
+        } else {
 
                 currentData = filterCheck(data);
                 await loadTable(currentData);
@@ -63,43 +63,46 @@ async function createFilteredTable() {
                     await loadTable(currentData);
                 });
             }
-        }
         createFilteredTable();
     });
 }
 
 async function loadTable(array) {
+    //reset to table to header only
+    table.innerHTML = `<tbody><tr>
+            <th>Film ID</th>
+            <th>Film Title</th>
+            <th>Genre</th>
+            <th>Runtime</th>
+            <th>Score</th>
+        </tr>
+    </tbody>`;
+    array.forEach((item) => {
+      // console.log(item) if you need to use console to see properties
+      // create a new row element
+      const row = document.createElement("tr");
 
-    const arrayFromJson = await fetch('/api/meals');
-    let data = await arrayFromJson.json();
-    data = data.data;
+      // create new column element this will be repeated
+      const meal_id = document.createElement("td");
+      // set each column to be respective property
+      meal_id.innerHTML = item.meal_id;
+      row.appendChild(meal_id);
 
-    const form = document.querySelector('.form');
-    const table = document.querySelector('.table');
+      // repeat this for all the columns you want in the table
+      const meal_name = document.createElement("td");
+      // set each column to be respective property
+      meal_name.innerHTML = item.meal_name;
+      row.appendChild(meal_name);
 
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        console.log(data);
-        data.forEach((item) => {
-            const row = document.createElement('tr');
+      const meal_category = document.createElement("td");
+      // set each column to be respective property
+      meal_category.innerHTML = item.meal_category;
+      row.appendChild(meal_category);
 
-            const meal_id = document.createElement('td');
-            meal_id.innerHTML = item.meal_id;
-            row.appendChild(meal_id);
-
-            const meal_name = document.createElement('td');
-            meal_name.innerHTML = item.meal_name;
-            row.appendChild(meal_name);
-
-            const meal_category = document.createElement('td');
-            meal_category.innerHTML = item.meal_category;
-            row.appendChild(meal_category);
-
-            table.appendChild(row);
-        });
+      // append this record to the table
+      table.appendChild(row);
     });
-}
-
+  }
 
 document.addEventListener('DOMContentLoaded', async () => {
     await createFilteredTable();

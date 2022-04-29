@@ -50,7 +50,6 @@ async function getData(endpoint, options = {}) {
 async function mainEvent() {
     console.log("mainEvent()");
 
-    // const filterForm = document.querySelector('#filter-form');
     const titleField = document.querySelector('#movie-title');
     const ratingSelect = document.querySelector('#movie-rating');
     const genreSelect = document.querySelector('#movie-genre');
@@ -62,6 +61,7 @@ async function mainEvent() {
     if (movieJson.length > 0 && genreJson.length > 0) {
         let results = movieJson;
 
+        // Filter results when title search field changes
         titleField.addEventListener('input', async (InputEvent) => {
             console.log('titleField InputEvent');
             let subResults = results;
@@ -72,6 +72,7 @@ async function mainEvent() {
             showResults(subResults);
         });
 
+        // Filter results when ratings dropdown changes
         ratingSelect.addEventListener('change', async (InputEvent) => {
             console.log('ratingSelect InputEvent')
             let subResults = results;
@@ -87,6 +88,7 @@ async function mainEvent() {
             showResults(subResults);
         });
 
+        // Filter results when genre dropdown changes
         genreSelect.addEventListener('change', async (InputEvent) => {
             console.log('genreSelect InputEvent')
             let subResults = results;
@@ -98,7 +100,6 @@ async function mainEvent() {
                         movies.push(item.movie_id);
                     }
                 });
-                console.log(movies);
                 subResults = results.filter((item) => {
                     if (movies.includes(item.movie_id)) {
                         return item;

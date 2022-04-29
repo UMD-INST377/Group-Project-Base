@@ -1,6 +1,5 @@
-function getDisplayArray(collection) {
+function getDisplayArray(collection, limit) {
     console.log('getDisplayArray()');
-    const limit = 25;
     return collection.slice(0, limit);
 }
 
@@ -15,11 +14,11 @@ function filterResults(collection, key, search) {
     return matches;
 }
 
-function showResults(collection) {
+function showResults(collection, limit = 25) {
     console.log('showResults()');
     const resultTable = document.querySelector('#search-results')
     resultTable.innerHTML = '';
-    getDisplayArray(collection).forEach((item) => {
+    getDisplayArray(collection, limit).forEach((item) => {
         let rowContents = '';
         rowContents += `<td>${item.movie_id}</td>`;
         rowContents += `<td>${item.movie_name}</td>`;
@@ -51,7 +50,7 @@ async function getData(endpoint, options = {}) {
 async function mainEvent() {
     console.log("mainEvent()");
 
-    const form = document.querySelector('#filter-form');
+    // const filterForm = document.querySelector('#filter-form');
     const titleField = document.querySelector('#movie-title');
     const ratingSelect = document.querySelector('#movie-rating');
     const genreSelect = document.querySelector('#movie-genre');

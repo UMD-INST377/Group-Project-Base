@@ -47,7 +47,7 @@ const form3 = document.querySelector('.add_outlet')
     submitEvent.preventDefault();
     const formObj = formToObject(form3);
     console.log('check the form for filters', formObj);
-    const postResult = await fetch('http://localhost:3000/api/outletPath/', {
+    const postResult = await fetch('https://group4-final-inst377sp2022.herokuapp.com/api/outletPath/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

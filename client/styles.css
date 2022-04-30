@@ -1,30 +1,364 @@
-#mapid {
-    width: 100%;
-    padding-top: 100%; /* 1:1 Aspect Ratio */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+:root{
+  --main-bg-color: darkred;
+  --sec-bg-color: darkgreen;
+}
+
+*{
+  font-family: 'Montserrat', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  text-transform: capitalize;
+  transition: all .2s cubic-bezier(.37,1.14,.26,1.24);
+};
+
+*::selection{
+  background:var(--red);
+  color:#fff;
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+.content .btn{
+  height:5rem;
+  width: 18rem;
+  color:white;
+  border:.2rem solid #fff;
+  outline:.2rem solid #fff;
+  outline-offset: -.8rem;
+  font-size: 2rem;
+  margin:1.5rem 0;
+  cursor: pointer;
+  background:none;
+}
+
+.btn:hover{
+  outline-offset: .4rem;
+  background-color:green;
+}
+
+.heading{
+  text-align: center;
+  width: 90%;
+  margin:0 auto;
+  padding:0 .5rem;
+  padding-top: 6rem;
+  box-shadow: 0 .2rem .05rem rgba(0,0,0,.3);
+}
+
+.heading span{
+  display: inline-block;
+  font-size: 3.5rem;
+  color:var(--sec-bg-color);
+  padding:1rem 0;
+  box-shadow: 0 .2rem .05rem var(--sec-bg-color);
+}
+
+header .header-1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #fff;
+  padding:1rem 2rem;
+}
+
+header .header-1 .logo{
+ font-size: 2.5rem;
+ color: darkred;
+}
+
+header .header-1 .email{
+  font-size: 2rem;
+  color:darkred;
+}
+
+header .header-2{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--main-bg-color);
+  padding:.5rem;
+  position: relative;
+  z-index: 1000;
+}
+
+header .header-2 .navbar ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+header .header-2 .navbar ul li{
+  margin:1rem;
+}
+
+header .header-2 .navbar ul li a{
+  font-size: 2.5rem;
+  color:white;
+}
+
+header .header-2 .navbar ul li a:hover{
+    color:yellow;
+}
+
+header .header-2 .share a:hover{
+  color:darkgreen;
+}
+
+header .header-2 #menu{
+  font-size: 3rem;
+  color:#fff;
+  cursor: pointer;
+  display: none;
+  margin:1rem;
+}
+
+header .header-2 .share a{
+  font-size: 2.5rem;
+  color:#fff;
+  margin:1rem;
+}
+
+header .header-2.header-active{
+  position: fixed;
+  top:0; left: 0;
+  box-shadow: 0 .1rem .3rem rgba(0,0,0,.3);
+}
+
+
+.home{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url("pexels-los-muertos-crew-8448331.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.home .content{
+  text-align: center;
+  padding:1rem;
+}
+
+.home .content h1{
+  font-size: 6rem;
+  color:#fff;
+}
+
+.home .content p{
+  font-size: 3rem;
+  color:#fff;
+  width: 68rem;
+  padding:1rem 0;
+}
+
+.shape{
+  position: absolute;
+  bottom:-.5rem; left: 0;
+  height: 13rem;
+  background-image:url("shape-bottom.png");
+  background-size: 350rem 13rem;
+  width: 100%;
+  animation: animate 25s linear infinite;
+}
+
+@keyframes animate{
+  0%{
+      background-position-x: 0;
   }
-  .list-header {
-    font-weight: 600;
-    font-size: 1.25rem;
+  100%{
+      background-position-x: 350rem;
   }
-  #wrapper {
-    min-width: 55vw;
-  }
-  .hero .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #34495e;
-    z-index: 9999;
-  }
-  .navbar-burger {
-    color: white;
-  }
-  
-  #navbarMenuHeroB {
-    background-color: #34495e;
-  }
-  
-  .wrapper {
-    display: block;
-    margin: 0 auto;
-  }
+}
+
+.about{
+  min-height: 100vh;
+}
+
+.about .row{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  padding:0 2rem;
+  overflow-x: hidden;
+}
+
+.about .row .image img{
+  width: 45rem;
+  filter: drop-shadow(.5rem .5rem .5rem rgba(0,0,0,.3));
+}
+
+.about .row .content{
+  padding:1rem;
+}
+
+.about .row .content h3{
+  font-size: 3.5rem;
+  color:var(--sec-bg-color);
+}
+
+.about .row .content p{
+  font-size: 3rem;
+  color:black;
+  padding:1rem 0;
+}
+
+.about .row .content .btn{
+  color:var(--main-bg-color);
+  border-color: darkgreen;
+  outline-color: darkgreen;
+}
+
+.about .row .content .btn:hover{
+  color:#fff;
+}
+
+.resto{
+  min-height: 20vh;
+}
+
+.resto .image-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
+}
+
+.resto .image-container .image{
+  width: 70rem;
+  margin:2rem;
+  border:1rem solid #fff;
+  box-shadow: 0 .5rem .5rem rgba(0,0,0,.3);
+}
+
+.resto .image-container .image img{
+  height: 20rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.resto .image-container .image a{
+  font-size: 2rem;
+  color:#333;
+  padding:.5rem;
+}
+
+.resto .image-container .image p{
+  font-size: 2.5rem;
+  color:darkgreen;
+  margin:1rem;
+}
+
+
+.resto .btn{
+  color:var(--main-bg-color);
+  border-color: darkgreen;
+  outline-color: darkgreen;
+}
+
+.resto .btn:hover{
+  color:#fff;
+}
+.footer{
+  background:darkred;
+}
+
+.footer .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer .box-container .box{
+  flex:1 1 23rem;
+  margin:2rem;
+}
+
+.footer .box-container .box .heading span{
+  font-size: 2.5rem;
+  color:#fff;
+}
+
+.footer .box-container .box p{
+  font-size: 1.7rem;
+  color:#fff;
+  padding:1rem 0;
+}
+
+
+
+.newsletter{
+  padding:2rem 1rem;
+  min-height: 100vh;
+  background: linear-gradient(rgba(255,255,255,.5),#fff), url("pexels-mart-production-7709235.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.newsletter h1{
+  font-size: 4rem;
+  color:darkred;
+}
+
+.newsletter p{
+  font-size: 2rem;
+  color:black
+}
+
+.newsletter form{
+  margin:1rem auto;
+  padding:.5rem 1rem;
+  max-width: 60rem;
+  border-radius: 5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+  display: flex;
+  align-items: center;
+  background:#fff;
+}
+
+.newsletter form input[type="email"]{
+  height:4rem;
+  padding:0 1rem;
+  width:100%;
+  font-size: 1.7rem;
+  background:none;
+  border:none;
+  color:black;
+}
+
+.newsletter form input[type="submit"]{
+  height:3.8rem;
+  width:17rem;
+  font-size: 1.7rem;
+  background:var(--sec-bg-color);
+  border:none;
+  outline: none;
+  color:white;
+  cursor: pointer;
+  border-radius: 5rem;
+}
+
+.newsletter form input[type="submit"]:hover{
+  letter-spacing: .1rem;
+  color:green;
+  opacity: .8;
+}
+
+
+/* additional updates need to be made *\
+
+/* contact page needs work additional updates need to be made *\
+

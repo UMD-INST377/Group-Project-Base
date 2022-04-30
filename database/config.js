@@ -7,7 +7,8 @@ export default {
     dialect: 'mysql',
     define: {
       timestamps: false,
-      freezeTableName: true
+      freezeTableName: true,
+      underscored: true,
     },
   },
   test: {

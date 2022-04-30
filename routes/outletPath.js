@@ -1,3 +1,4 @@
+//comment to fix problem
 import express from 'express';
 import sequelize from 'sequelize';
 import chalk from 'chalk';

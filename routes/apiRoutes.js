@@ -8,6 +8,7 @@ import songDisplayRoute from './songDisplayRoute.js'
 import sqlDemoRoutes from './sqlDemoRoutes.js'
 import songListRoute from './songListRoute.js'
 import sqlDemoRoutesJacky from './sqlDemoRoutesJacky.js'
+import outletPath from './outletPath.js'
 
 import db from '../database/initializeDB.js';
 
@@ -21,6 +22,9 @@ router.get('/', (req, res) => {
 
 /* Gerald Reyes Subrouter */
 router.use('/songDisplay', songDisplayRoute);
+router.use('/outletPath', outletPath);
+
+
 
 router.route('/songDisplay/:id')
 .get(async (req, res) => {

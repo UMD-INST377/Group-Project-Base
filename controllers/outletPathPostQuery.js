@@ -1,0 +1,1 @@
+export default 'INSERT INTO outlet VALUES (:out_id, :out_id, :out_street, :out_city, :out_state, :out_zip)';

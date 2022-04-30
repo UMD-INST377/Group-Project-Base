@@ -4,13 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" 
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
     <link rel="stylesheet" href="./styles.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
   </head>
   <body>
     <div class="columns">
@@ -28,8 +22,12 @@
       <div class="column">
         <div class = "title has-text-white is-1 has-text-centered">SEARCH ARTISTS</div>
         <hr style="width: 100%;text-align:left;margin-left:0">
-        <input class = "input" type="text" id="artInput" onkeyup='tableSearch()' placeholder="Name">
+        <div class = "content has-text-white">
+          <input class = "input" id="searchbar" onkeyup="searchArtist()" type="text" name="search" placeholder="Search for Artist">
+          <ul id="list-holder"></ul>
+        </div>
         <hr style="width:100%;text-align:left;margin-left:0">
+        <button class = "button" onclick="showTable()">CLICK TO VIEW FULL DETAILS ON ARTISTS</button>
         <table class="table">
           <thead>
             <tr>
@@ -54,6 +52,7 @@
             </tr>
           </tbody>
         </table>
+        <hr style="width:100%;text-align:left;margin-left:0">
       </div>
       <div class="column sides is-1">
         <figure class="image is-128x128 is-centered"><a href = "teaminfo.html">

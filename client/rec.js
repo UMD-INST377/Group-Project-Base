@@ -20,27 +20,35 @@ fetch('http://localhost:3000/api/artist').then((data) => {
   console.log(err);
 });
 
-function tableSearch() {
-  // Declare variables 
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("artInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("table");
-  tr = table.getElementsByTagName("tr");
+async function searchArtist() {
+  const results = await fetch('http://localhost:3000/api/artist');
+  const arrayFromJson = await results.json();
+  console.log(arrayFromJson.data);
 
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td") ; 
-    for(j=0 ; j<td.length ; j++)
-    {
-      let tdata = td[j] ;
-      if (tdata) {
-        if (tdata.innerHTML.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-          break ; 
-        } else {
-          tr[i].style.display = "none";
-        }
-      } 
+  let input = document.getElementById('searchbar').value
+  input = input.toLowerCase();
+  let x = document.querySelector('#list-holder');
+  x.innerHTML = ''
+
+  for (i = 0; i < arrayFromJson.length; i++) {
+    let obj = arrayFromJson[i];
+
+    if (obj.stage_name.toLowerCase().includes(input)) {
+      const elem = document.createElement('li')
+      elem.innerHTML = `${obj.stage_name} - ${obj.age}`
+      x.appendChild(elem)
     }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => searchArtist());
+
+const x = document.querySelector('.table');
+x.style.display = 'none';
+function showTable() {
+  if (x.style.display === 'none') {
+    x.style.display = 'block';
+  } else {
+    x.style.display = 'none';
   }
 }

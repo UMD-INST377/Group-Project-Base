@@ -64,18 +64,20 @@ async function mainEvent() {
     createHtmlList(returnArray);
   });
 
+
+
   const form2 = document.querySelector('.submit_list');
 
   form2.addEventListener('submit', async (submitEvent) => {
     submitEvent.preventDefault();
-    const formObj = formToObject(form);
+    const formObj = formToObject(form2);
     console.log('check the form for filters', formObj);
     const postResult = await fetch('https://group4-final-inst377sp2022.herokuapp.com/api/songList/', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formObj)
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formObj)
     });
 
     const postResultJSON = await postResult.json()
@@ -83,7 +85,7 @@ async function mainEvent() {
     console.log('return from Post JSON', postResultJSON)
     const returnArray = dataHandler(postResultJSON.data);
     createHtmlList(returnArray);
-}) 
+  }) 
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

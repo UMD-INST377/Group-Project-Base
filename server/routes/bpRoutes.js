@@ -93,9 +93,8 @@ router.delete('/delete', async (req, res) => {
   
     const deleteQuery = 
         
-         // DELETE FROM meals_locations WHERE meal_id = 8061693;
-         //${req.query['meal_id']};
          `DELETE FROM meals_locations WHERE meal_id = ${req.query['meal_id']};`;
+         
     try {
          
         const result = await db.sequelizeDB.query(deleteQuery, {
@@ -193,9 +192,6 @@ router.get('/specific_hall', async (req, res) => {
     } 
   })
   
-
-
- 
 
 // search for specific food
 router.get('/search', async (req, res) => {

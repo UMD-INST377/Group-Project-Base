@@ -10,6 +10,8 @@ const restaurantInputs = document.querySelectorAll('.correction-input');
 const restaurantDropdown = document.querySelector('#restaurant-dropdown');
 const specificIdSearch = document.querySelector('#specificFoodSearch') 
 const specificInput = document.querySelector('#specificInput');
+const specificResult = document.querySelector('.specific-search-output');
+
  
 
 let searchResults = [];
@@ -98,9 +100,40 @@ async function addMenuItem(foodName, foodId = 0, diningHallId){
     }
 }
 
- 
+// display specific result for food
+function displaySpecificResult(food, id){
+
+    const newResult = document.createElement('div');
+    newResult.classList.add('specific-food-result');
+    let notFound = 'Food for specified id not found!';
+    newResult.textContent = food !== notFound ? `The food for id ${id} is: ${food}`: notFound;
+    specificResult.textContent = '';
+    specificResult.appendChild(newResult);
+
+}
+
+//get food name
+function getFoodName(foodId){
+    
+    let foodName = 'Food for specified id not found!';
+   
+    searchResults.map(result => {
+         
+         if(result['meal_id'] === +foodId){
+             console.log("Food id found " + result['meal_id'])
+             foodName = result['meal_name'];
+             return;
+         }
+    })
+
+    //console.log(foodName);
+    
+    displaySpecificResult(foodName, foodId);
+}
+
+//display entire menu
 function displayMenu(){
-    // show only 7 choices so page does not become too l
+    
     searchResults.map(meal => {
         const newEntry = document.createElement('div');
         newEntry.classList.add('menu-item');
@@ -111,7 +144,7 @@ function displayMenu(){
 
 }
 
-
+//get specific food id
 function getFoodId(foodName){
     foodName = foodName.toLowerCase();
     console.log(foodName);
@@ -129,24 +162,7 @@ function getFoodId(foodName){
 }
 
 
-function getFoodName(foodId){
-    
-    let foodName = 'Food for specified id not found!';
-   
-    searchResults.map(result => {
-         
-         if(result['meal_id'] === +foodId){
-             console.log("Food id found " + result['meal_id'])
-             foodName = "Food for id " + foodId + " is " + result['meal_name'];
-             return;
-         }
-    })
-
-    alert(foodName);
-}
-
-
-
+// get diningHallId from diningHallName
 function getDiningHallIdNewElement(diningHallName){
     let diningHalls = {'The Diner': 1, 'South Campus': 2,'251 North': 2}
     let diningHallId = 4;
@@ -223,7 +239,7 @@ function hideInputs(inputId){
     }
 }
 
-
+// make http request
 function executeHttpRequest(foodName, httpFunction, foodId, diningIdInserted){
 
 
@@ -248,8 +264,6 @@ specificIdSearch.addEventListener('click', e =>{
     getFoodName(specificInput.value)
 })
 
-
- 
 
 submitBtn.addEventListener("click", e => {
     e.preventDefault();

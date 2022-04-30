@@ -150,12 +150,32 @@
 }
 
 #specificInput {
-    width: 400px;
+    width: 33vw;
     height: 30px;
     margin-bottom: 20px;
+    font-size: 20px;
 }
 
 #specificFoodSearch {
     font-size: 25px;
     padding: 15px 30px;
+    background-color: #262626;
+    border: none;
+    color: white;
+    transition: .5s;
 }
+
+#specificFoodSearch:hover {
+    background-color: #EB4949;
+}
+
+.specific-food-result {
+    margin-top: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #EB4949;
+    padding: 20px 40px;
+    color: white;
+}
+
+ 

@@ -80,12 +80,12 @@ async function mainEvent() {
       body: JSON.stringify(formObj)
     });
 
-    const postResultJSON = await postResult.json()
-    console.log('return from Post', postResult)
-    console.log('return from Post JSON', postResultJSON)
+    const postResultJSON = await postResult.json();
+    console.log('return from Post', postResult);
+    console.log('return from Post JSON', postResultJSON);
     const returnArray = dataHandler(postResultJSON.data);
     createHtmlList(returnArray);
-  }) 
+  });
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

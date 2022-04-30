@@ -1,0 +1,100 @@
+body{
+    background-image: url("pexels-los-muertos-crew-8230030.jpg");
+    background-position: center;
+    min-height:100vh;
+}
+
+
+tr:nth-child(odd){
+    background-color: rgba(0, 100, 0, 0.213);
+}
+
+.container{
+    max-width: 300px;
+    width:100%;
+    background: yellowgreen;
+    padding: 25px 30px;
+    border-radius: 5px;
+   
+}
+
+table{
+    border-spacing: 0px;
+    background:white;
+}
+
+td{
+    margin: 2px;
+}
+
+
+.wrapper{
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    max-width: 350px;
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgb(222, 220, 220);
+}
+
+.wrapper h2{
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.wrapper .field{
+    margin-bottom:10px;
+}
+
+.wrapper .control input[type="text"],
+.wrapper .control input[type="number"]{
+    width:100%;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+}
+
+.wrapper .btn{
+    border:0;
+    margin-top:15px;
+    padding:10px;
+    width:100%;
+    color:darkred;
+    border:.2rem solid red;
+    outline:.2rem solid black;
+    font-weight: bold;
+}
+
+/* 
+.footer2{
+    background:darkred;
+  }
+  
+  .footer2 .box-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer2 .box-container .box{
+    flex:1 1 23rem;
+    margin:2rem;
+  }
+  
+  .footer2 .box-container .box .heading span{
+    font-size: 2.5rem;
+    color:#fff;
+  }
+  
+  .footer2 .box-container .box p{
+    font-size: 1.7rem;
+    color:#fff;
+    padding:1rem 0;
+  }
+ */
+
+/* NEED TO FIX FOOTER ISSUE */

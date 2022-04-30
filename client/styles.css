@@ -15,6 +15,12 @@ nav a {
   display: flex;
 }
 
-.charts-container {
+.chart-wrapper {
   justify-content: space-around;
+}
+
+.chart-container {
+  position: relative;
+  width: 50%;
+  margin: auto;
 }

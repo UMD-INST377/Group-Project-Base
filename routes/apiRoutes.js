@@ -68,7 +68,7 @@ router.route('/actors')
     const newActor = await db.Actor.create({
       fname: req.body.fname, 
       lname: req.body.lname,
-      deathyear: req.body.deathyear, 
+      deathyear: req.body.deathyear !== "" ? req.body.deathyear : null, //conditional for null if no death year!!
       birthyear: req.body.birthyear,
     });
     res.send('dummyValue');
@@ -96,7 +96,7 @@ router.get('/chart', async (req, res) => {
 
 // End of Viphu Nguyen's Contribution
 
-// Gerson's contribution 1
+// Gerson's contribution
 
 router.get('/primary_title/:id', async (req, res) => {
   try {
@@ -112,6 +112,24 @@ router.get('/primary_title/:id', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.send('Server error Title get');
+  }
+});
+
+// To delete a specific titles
+// need to fix !! see actors for bug
+router.delete('/delete_title', async (req, res) => {
+  try {
+    const actorList = await db.Title.destroy({
+      where: {
+        actor_id: req.body.title_id
+      }
+    });
+    res.send(
+      'Sucessfully Deleted'
+    );
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
   }
 });
 

@@ -11,7 +11,7 @@
         <h2 class="logo"><a class = link href="dashboard.html">MyCinema</a></h2>
           <ul class="menu">
             <li>
-              Edit Shows
+              <!-- Edit Shows -->
               <ul class="sub-menu">
                 <li><a href="add_actors.html">Edit Actors</a></li>
                 <li><a href="add_ep.html">Edit Episodes</a></li>
@@ -19,7 +19,7 @@
               </ul>
             </li>
             <li>
-              Edit Films
+              <!-- Edit Films -->
               <ul class="sub-menu">
                 <li><a href="add_actors.html">Edit Actors</a></li>
                 <li><a href="add_film.html">Add Films</a></li>
@@ -38,7 +38,7 @@
       <h1>Add New Film</h1>
       <p><em>Add film information to the shared database.</em></p>
     </header>
-    <form action='' method='get' class='speaker-form'>
+    <form action='/api/primary_title' method='post' class='speaker-form'>
       <div class='form-row'>
         <label for='filmName'>Film Name</label>
         <input id='filmName' name='filmName' type='text'/>
@@ -58,6 +58,22 @@
       <div class="form-row">
         <label for='Runtime'>Runtime</label>
         <input id='Runtime' name='Runtime' type='text'/>
+      </div>
+      <div class='form-row'>
+        <button>Submit</button>
+      </div>
+    </form>
+
+    <!-- Deleting the titles-->
+    <!-- edit this -->
+    <header class='speaker-form-header'>
+      <h1>Delete Title</h1>
+      <p><em>Delete titles from the shared database.</em></p>
+    </header>
+  <form action='/api/delete_title' method='post' class='speaker-form'>
+      <div class='form-row'>
+        <label for='title_id'>Title Id</label>
+        <input id='title_id' name='title_id' type='text'/>
       </div>
       <div class='form-row'>
         <button>Submit</button>

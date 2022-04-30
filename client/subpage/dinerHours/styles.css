@@ -154,3 +154,14 @@
     height: 100px;
     background-color: #C4C4C4;
 }
+
+.a:link { text-decoration: none; }
+
+
+.a:visited { text-decoration: none; }
+
+
+.a:hover { text-decoration: none; }
+
+
+.a:active { text-decoration: none; }

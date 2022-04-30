@@ -21,7 +21,7 @@ export default {
     dialect: 'mysql'
   },
   production: {
-    username: 'ubuntut',
+    username: 'ubuntu',
     password: 'Veracrypt@12!',
     database: 'Group22_Dining_Hall_Tracker',
     host: '174.129.198.86',

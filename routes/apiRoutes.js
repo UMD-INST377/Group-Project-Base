@@ -50,8 +50,6 @@ router.route('/songList/:id')
 /* End of Jacky's Subrouter */
 
 /* Do Yun Kim's Subrouter */
-router.use('/tracks', tracks);
-
 router.route('/tracks/:id')
 .get(async (req, res) => {
   try{}

@@ -12,7 +12,7 @@ export default (database, DataTypes) => {
         allowNull: false,
       },
       published_date: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       genre: {

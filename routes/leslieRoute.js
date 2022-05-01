@@ -9,7 +9,6 @@ const router = express.Router();
 router.route('/')
   .get(async (req, res) => {
     try {
-      console.log('Touched sqlDemo get');
       const result  = await db.sequelizeDB.query(macros_query, {
           type: sequelize.QueryTypes.SELECT
         });
@@ -20,7 +19,7 @@ router.route('/')
     }
   });
 
-.post(async (req, res) => {
+router.post(async (req, res) => {
     try {
         console.dir((req.body), {depth:null});
         console.log(req.body?.macros);

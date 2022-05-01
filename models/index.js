@@ -4,6 +4,7 @@ import Outlet from './outlet.js';
 import Playlist from './playlist.js';
 import Station from './station.js';
 import Track from './tracks.js';
+import Playlistledger from './playlistledger.js';
 
 export default {
   Music,
@@ -11,5 +12,6 @@ export default {
   Outlet,
   Playlist,
   Station,
-  Track
+  Track,
+  Playlistledger
 };

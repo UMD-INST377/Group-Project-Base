@@ -24,7 +24,7 @@ export default (database, DataTypes) => {
     deathyear: {
       type: DataTypes.DATE,
       allowNull: true,
-      defaultValue: newDate
+      defaultValue: null
     }
   });
 

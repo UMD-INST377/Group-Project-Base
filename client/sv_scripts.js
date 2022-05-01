@@ -28,7 +28,62 @@ function restoArrayMake(dataArray) {
   });
   return listItems;
 }
+// eslint-disable-next-line camelcase
+async function updateRestaurantRating(restuarant_id, rating_id) {
+  // find the restaurant's current name and description
+  // so we can keep those the same
+  // and only update the rating_id for this restaurant
+  // eslint-disable-next-line camelcase
+  const request_url = `/api/restaurants/${restaurant_id}`;
+  console.log('request url =');
+  console.log(request_url);
+  // eslint-disable-next-line no-use-before-define
+  
+  // eslint-disable-next-line camelcase
+  const results = await fetch(`/api/restaurants/${restaurant_id}`);
+  console.log(results);
+  const arrayFromJson = await results.json();
+  const restaurant = arrayFromJson[0];
+  const name = restaurant.restaurant_name;
+  const {description} = restaurant;
 
+  // eslint-disable-next-line camelcase
+  const new_restaurant = {
+    restaurant_name: name, 
+    description: description, 
+    rating_id: rating_id
+  }
+  fetch('/api/restaurants', {
+    method: 'PUT',
+    headers: { 
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify(new_restaurant)
+  });
+
+
+
+}
+function updateRestaurants(collection) {
+  // console.log('fired HTML creator');
+  // console.table(collection);
+  const targetList = document.querySelector('#resto-list');
+  targetList.innerHTML = '';
+  collection.forEach(async(item) => {
+    const { name } = item;
+    // eslint-disable-next-line camelcase
+    const {rating_id} = item;
+    const displayName = name.toLowerCase();
+    // eslint-disable-next-line camelcase
+    const results = await fetch(`/api/rating/${rating_id}`); // This accesses some data from our API
+    const arrayFromJson = await results.json();
+    const displayRating = arrayFromJson[0].rating;
+    // eslint-disable-next-line camelcase
+    const rating_prompt = 'new rating = [<input type="number" value="2.5">]';
+    const injectThisItem = `<li>${displayName} ${displayRating} out of 5 stars. ${rating_prompt}</li>`;
+    targetList.innerHTML += injectThisItem;
+  });
+}
 function createHtmlList(collection) {
   // console.log('fired HTML creator');
   // console.table(collection);
@@ -36,7 +91,9 @@ function createHtmlList(collection) {
   targetList.innerHTML = '';
   collection.forEach((item) => {
     const { name } = item;
+    // eslint-disable-next-line camelcase
     const displayName = name.toLowerCase();
+    const displayRating = rating_id.toLowerCase();
     const injectThisItem = `<li>${displayName}</li>`;
     targetList.innerHTML += injectThisItem;
   });
@@ -87,7 +144,7 @@ async function mainEvent() { // the async keyword means we can make API requests
         return lowerName.includes(lowerValue);
       });
       console.log(selectResto);
-      createHtmlList(selectResto);
+      updateRestaurants(selectResto);
     });
 
     // TODO: filter for zipcode
@@ -113,7 +170,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       // arrayFromJson.data - we're accessing a key called 'data' on the returned object
       // it contains all 1,000 records we need
       currentArray = restoArrayMake(storedDataArray);
-      createHtmlList(currentArray);
+      updateRestaurants(RestaurantArray);
     });
 
     // ADDING A RESTAURANT
@@ -136,3 +193,6 @@ async function mainEvent() { // the async keyword means we can make API requests
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
+
+
+//Adding A 2-Column Table for Restaurant name and Ratings of Restaurants

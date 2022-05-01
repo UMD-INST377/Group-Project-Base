@@ -79,11 +79,13 @@ router.put('/restaurants', async (req, res) => {
     await db.restaurants.update(
       {
         restaurant_name: req.body.restaurant_name,
-        description: req.body.description
+        description: req.body.description,
+        rating_id: req.body.rating_id
       },
       {
         where: {
-          restaurant_id: req.body.restaurant_id
+          restaurant_id: req.body.restaurant_id,
+          rating_id: req.body.rating_id
         }
       }
     );

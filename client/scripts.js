@@ -1,19 +1,19 @@
 // Get first 'limit' elements from collection
 function getDisplayArray(collection, limit) {
-    console.log('getDisplayArray()');
-    return collection.slice(0, limit);
+  console.log('getDisplayArray()');
+  return collection.slice(0, limit);
 }
 
 // Filter collection by items with 'key' that contain 'search'
 function filterResults(collection, key, search) {
-    console.log('filterResults()');
-    if (collection.length < 1) { return; }
-    const matches = collection.filter((item) => {
-        const value = item[key].toLowerCase();
-        const term = search.toLowerCase();
-        return value.includes(term);
-    });
-    return matches;
+  console.log('filterResults()');
+  if (collection.length < 1) { return; }
+  const matches = collection.filter((item) => {
+    const value = item[key].toLowerCase();
+    const term = search.toLowerCase();
+    return value.includes(term);
+  });
+  return matches;
 }
 
 // Update table HTML to display search results

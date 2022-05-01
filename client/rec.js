@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/api/artist').then((data) => {
+tableMake = fetch('/api/artist').then((data) => {
   console.log(data);
   return data.json();
 }).then((objectData) => {
@@ -21,7 +21,7 @@ fetch('http://localhost:3000/api/artist').then((data) => {
 });
 
 async function searchArtist() {
-  const results = await fetch('http://localhost:3000/api/artist');
+  const results = await fetch('/api/artist');
   const arrayFromJson = await results.json();
   console.log(arrayFromJson.data);
 

@@ -1,11 +1,17 @@
-import DietaryRestrictions from './DietaryRestrictions.js';
-import DiningHall from './DiningHall.js';
-import Macros from './Macros.js';
-import Meals from './Meals.js';
+import Music from './music.js';
+import Album from './album.js';
+import Outlet from './outlet.js';
+import Playlist from './playlist.js';
+import Station from './station.js';
+import Track from './tracks.js';
+import Playlistledger from './playlistledger.js';
 
 export default {
-  DietaryRestrictions,
-  DiningHall,
-  Macros,
-  Meals
+  Music,
+  Album,
+  Outlet,
+  Playlist,
+  Station,
+  Track,
+  Playlistledger
 };

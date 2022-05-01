@@ -1,34 +1,30 @@
 export default (database, DataTypes) => {
-  const Outlet = database.define(
-    'outlets',
+  const Playlistledger = database.define(
+    'playlistledger',
     {
-      outlet_id: {
+      playlist_track_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
       },
-      company_name: {
+      creator_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      street_address: {
-        type: DataTypes.STRING,
+      duration: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
-      city: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      state: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      zipcode: {
-        type: DataTypes.STRING,
+      likes: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Outlet;
+  return Playlistledger;
 };

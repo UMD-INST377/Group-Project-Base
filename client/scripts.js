@@ -26,8 +26,7 @@ function showResults(collection, limit = 25) {
         rowContents += `<td>${item.movie_id}</td>`;
         rowContents += `<td>${item.movie_name}</td>`;
         rowContents += `<td>${item.movie_year}</td>`;
-        rowContents += `<td>${item.duration_of_movie}</td>`;
-        // rowContents += `<td>GENRE HERE</td>`;
+        rowContents += `<td>${item.duration_of_movie}m</td>`;
         rowContents += `<td>${item.rating}</td>`;
         resultTable.innerHTML += `<tr>${rowContents}</tr>`;
     });
@@ -38,19 +37,9 @@ function initGenreSelect(collection) {
     console.log('initGenreSelect()')
     const genreSelect = document.querySelector('#movie-genre');
     collection.forEach((item) => {
-        const text = item.genre;
-        const value = item.genre_id;
-        genreSelect.innerHTML += `<option value="${value}">${text}</option>`;
+        genreSelect.innerHTML += `<option value="${item.genre_id}">${item.genre}</option>`;
     });
 }
-
-// // Fetch data from database
-// async function getData(endpoint, options = {}) {
-//     console.log('getData()');
-//     const raw = await fetch(endpoint, options);
-//     const json = await raw.json();
-//     return json.data;
-// }
 
 async function mainEvent() {
     console.log("mainEvent()");

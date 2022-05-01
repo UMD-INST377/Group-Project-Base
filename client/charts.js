@@ -52,43 +52,60 @@ function loadJudeChart(movieData, directorData) {
     // Create the chart
     const judeChart = new Chart(chartElement, chartConfig);
 }
-function loadIsaacChart(collection) {
+function loadIsaacChart(actorData) {
     console.log('loadIsaacChart()');
     const chartElement = document.querySelector('#isaacChart');
-    const myChart = new Chart(chartElement, {
+    
+    const title = 'Age of Actors';
+    const colors = getColors(actorData.length);
+    let data = {
+        "0-20": 0,
+        "21-40": 0,
+        "41-60": 0,
+        "61-80": 0,
+        "81-100": 0
+    };
+    actorData.forEach((dirItem) => {
+        if (0 <= dirItem.age_of_person && dirItem.age_of_person <= 20) {
+            data['0-20'] += 1;
+        }
+        else if (21 <= dirItem.age_of_person && dirItem.age_of_person <= 40) {
+            data['21-40'] += 1;
+        }
+        else if (41 <= dirItem.age_of_person && dirItem.age_of_person <= 60) {
+            data['41-60'] += 1;
+        }
+        else if (61 <= dirItem.age_of_person && dirItem.age_of_person <= 80) {
+            data['61-80'] += 1;
+        }
+        else if (81 <= dirItem.age_of_person && dirItem.age_of_person <= 100){
+            data['81-100'] += 1;
+        }
+    });
+    const chartData = {
+        labels: Object.keys(data),
+        datasets: [{
+            label: title,
+            data: Object.values(data),
+            backgroundColor: colors,
+            borderWidth: 1
+        }]
+    };
+    const chartConfig = {
         type: 'bar',
-        data: {
-            labels: ['0-10', 'Bl', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
+        data: chartData,
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+            plugins: {
+                legend: false,
+                // Force the chart title to display
+                title: {
+                    display: true,
+                    text: title
                 }
             }
         }
-    });
+    };
+    const isaacChart = new Chart(chartElement, chartConfig);
 }
 
 
@@ -96,8 +113,10 @@ async function loadCharts() {
     console.log('loadCharts()');
     const directors = await getData('/owen/directors');
     const movies = await getData('/stef/movies');
+    const actors = await getData('/isaac/actors');
 
     loadJudeChart(movies, directors);
+    loadIsaacChart(actors);
 }
 
 document.addEventListener('DOMContentLoaded', async () => loadCharts());

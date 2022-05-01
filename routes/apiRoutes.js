@@ -9,7 +9,7 @@ import sqlDemoRoutes from './sqlDemoRoutes.js'
 import songListRoute from './songListRoute.js'
 import sqlDemoRoutesJacky from './sqlDemoRoutesJacky.js'
 import outletPath from './outletPath.js'
-
+import tracks from '../controllers/trackList_query.js';
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -49,6 +49,18 @@ router.route('/songList/:id')
 });
 /* End of Jacky's Subrouter */
 
+/* Do Yun Kim's Subrouter */
+router.use('/tracks', tracks);
+
+router.route('/tracks/:id')
+.get(async (req, res) => {
+  try{}
+  catch (err) {
+    console.log(err);
+    res.json({message: "something went wrong"});
+  }
+});
+/* End of Do Yun Kim's Subrouter */
 router.use('/sqlDemo', sqlDemoRoutes);
 
 

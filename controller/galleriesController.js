@@ -1,5 +1,5 @@
 const galGet = `SELECT gallery_id, capacity, gallery_name,          
-                email_address, street_address, city, state, zipcode
+                email, street, city, state, zip_code
                 FROM galleries`;
 
 const galPut = `UPDATE galleriers
@@ -7,7 +7,7 @@ const galPut = `UPDATE galleriers
                     WHERE gallery_id = :gallery_id;`;
 
 const galPost = `INSERT INTO galleries (gallery_id, capacity, gallery_name,     
-                email_address, street_address, city, state, zipcode)
+                email, street, city, state, zip_code)
                 VALUES(DEFAULT, :art);`;
 
 const galDelete = `DELETE FROM galleries

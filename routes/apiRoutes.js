@@ -155,6 +155,18 @@ router.get('/dining', async (req, res) => {
             artwork_id: req.body.artwork_id
           }
         }
+
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+})
+
+  .post('/country', async (req, res) => {
+
       );
       res.send('Successfully Updated');
     } catch (err) {
@@ -164,6 +176,7 @@ router.get('/dining', async (req, res) => {
   });
 
   router.post('/artwork', async (req, res) => {
+
     try {
       const result = await db.sequelizeDB.query(artworkController.artworkPost, {
         replacements: {art: req.body.art},
@@ -253,9 +266,28 @@ router.get('/dining', async (req, res) => {
       }
     });
 
+
+router.put('/customer', async (req, res) => {
+  try {
+    await db.customer.update(
+      {
+        customer_id: req.body.customer_id,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        credit_info: req.body.credit_info,
+        email: req.body.email,
+        street_address: req.body.street_address,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zip_code,
+        payment_date: req.body.payment_date
+      },
+      {
+
   router.delete('/country/:country_id', async (req, res) => {
     try {
       await db.country.destroy({
+
         where: {
           country_id: req.params.country_id
         }
@@ -337,9 +369,26 @@ router.get('/dining', async (req, res) => {
       }
     });
 
+
+router.put('/galleries', async (req, res) => {
+  try {
+    await db.galleries.update(
+      {
+        gallery_id: req.body.gallery_id,
+        capacity: req.body.capacity,
+        gallery_name: req.body.gallery_name,
+        email: req.body.email,
+        street: req.body.street,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zip_code
+      },
+      {
+
   router.delete('/artwork/:artwork_id', async (req, res) => {
     try {
       await db.artwork.destroy({
+
         where: {
           artwork_id: req.params.artwork_id
         }

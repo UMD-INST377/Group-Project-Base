@@ -29,7 +29,7 @@ export default (sequelize, DataTypes) => {
       state: {
         type: DataTypes.STRING
       },
-      zipcode: {
+      zip_code: {
         type: DataTypes.INTEGER
       },
       payment_date: {

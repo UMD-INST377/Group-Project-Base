@@ -1,1 +1,78 @@
-Hello world!
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'/>
+        <title>My Personal Dietary Assistant - Main</title>
+        <link rel='stylesheet' href='styles.css'/>
+    </head>
+    <body>
+
+
+    <header class='header'>
+        <img class ="logo" src=  alt="Green robot sitting on a food tree"/>
+    </header>
+
+    <div class='menu-container'>
+
+        <div class='menu'>
+            <div><a href="index.html">Main</a></div>
+        </div>
+        <div class='menu'>
+            <div><a href="dietplan.html">Diet Plan</a></div>
+        </div>
+        <div class='menu'>
+            <div><a href="login.html">Login</a></div>
+        </div>
+
+    </div>
+
+      <div class='wrapper'>
+        <div class='container'>
+        <!--will-->
+        <div class='columns'>
+
+        <div class='content'>
+        <h1>Main Page</h1>
+        </div>
+        <!--will-->
+            <div class='columns'>
+
+                <div class='content'>
+
+                    <h1>Main</h1>
+                    <!-- i am just practicing with this form here for now ~VEZ -->
+                        <form action='' method='get' class='form'>
+
+                        <div class='form-row'>
+                            <label for='restriction'>Do you have dietary restrictions? Yes or No</label>
+                            <input id='restriction' name='restriction' type='text'/>
+                        </div>
+
+                        <div class='form-row'>
+                            <label for='veganorveg'>Vegan or Veggie?</label>
+                            <input id='veganorveg' name='veganorveg' type='text'/>
+                        </div>
+
+                        <div class='form-row'>
+                            <button class="button" type="restr_submit_button">Specify Restrictions</button>
+                            <br>
+                            <button class="button submit_button" type="submit">Submit</button>
+                        </div>
+                    
+                        <table style= "margin: 100px; background-color: aliceblue" class="table">
+                            <!--First tr is the column headers-->
+                            <tr>
+                            <th>meal_id</th>
+                            <th>meal_name</th>
+                            <th>meal_category</th>
+                            </tr>
+                        </table>
+                        
+    
+            </div>
+          </div>
+    
+    <script src="tableCreate.js"></script>
+    <script src="script.js"></script>
+    </body>
+</html>

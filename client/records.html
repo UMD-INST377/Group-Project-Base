@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./rec.js"></script>
   </head>
   <body>
     <div class="columns">
@@ -20,29 +20,46 @@
         </aside>
       </div>
       <div class="column">
-        <div class = "title has-text-white is-1 has-text-centered">Add Record</div>
-        <form method="POST" id="record_form">
-          <div class = header>Enter Artist</div>
-          <input class="input is-hovered" id = "stage_name" type="text" placeholder="Stage Name">
-          <input class="input is-hovered" id = "gender" type="text" placeholder="Gender">
-          <button class = "button" type="submit">Add Entry</button>
-        </form>
-        <hr style="width:100%;text-align:left;margin-left:0px">
-        <div class = "title has-text-white is-1 has-text-centered">Search</div>
-        <div class="control">
-          <input class="input is-hovered" type="text" placeholder="Hovered input">
+        <div class = "title has-text-white is-1 has-text-centered">SEARCH ARTISTS</div>
+        <hr style="width: 100%;text-align:left;margin-left:0">
+        <div class = "content has-text-white">
+          <input class = "input" id="searchbar" onkeyup="searchArtist()" type="text" name="search" placeholder="Search for Artist">
+          <ul id="list-holder"></ul>
         </div>
-        <div class = "column">
-          <div class = "artist_list">
-        </div>
-      </div>
+        <hr style="width:100%;text-align:left;margin-left:0">
+        <button class = "button" onclick="showTable()">CLICK TO VIEW FULL DETAILS ON ARTISTS</button>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Artist ID</th>
+              <th scope="col">Label ID</th>
+              <th scope="col">Stage Name</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Age</th>
+            </tr>
+          </thead>
+          <tbody id = "table_body">
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <hr style="width:100%;text-align:left;margin-left:0">
       </div>
       <div class="column sides is-1">
-        <figure class="image is-128x128 is-centered"><a href = "">
+        <figure class="image is-128x128 is-centered"><a href = "teaminfo.html">
           <img src="img/account.png">
         </a></figure>
         <div class = "content has-text-centered">
-          <P>Account</p>
+          <p>OUR TEAM</p>
           <hr style="width:97%;text-align:left;margin-left:0">
           <p>Friends</p>
         </div>
@@ -55,5 +72,6 @@
         </div>
       </div>
     </div>
+    <script src="./rec.js"></script>
   </body>
 </html>

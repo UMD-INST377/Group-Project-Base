@@ -44,14 +44,16 @@
     color: #fff;
   }
   
-  .wrapper {
-    display: flex;
+  #slides{
+    color: grey;
+    background-color: grey !important;
   }
-  .container {
-    max-width: 960px;
-    margin-top: 25px;
+
+  .carousel .carousel-indicators li {background-color: rgb(0, 0, 0);
   }
-  
+  .carousel .carousel-indicators li.active {background-color: rgb(0, 195, 255);
+  }
+
   /* Mobile Styles */
   @media only screen and (max-width: 400px) {
     .columns {

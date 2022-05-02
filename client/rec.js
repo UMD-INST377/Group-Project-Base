@@ -1,78 +1,54 @@
-function getRandomIntInclusive(min, max) {
-  const newMin = Math.ceil(min);
-  const newMax = Math.floor(max);
-  return Math.floor(Math.random() * (newMax - newMin + 1)) + newMin;
-}
-
-function restoArrayMake(dataArray) {
-  console.log("fired dataHandler");
-  console.table(dataArray);
-  const range = [...Array(15).keys()];
-  const listItems = range.map((item, index) => {
-    const restNum = getRandomIntInclusive(0, dataArray.length - 1);
-    return dataArray[restNum];
+tableMake = fetch('/api/artist').then((data) => {
+  console.log(data);
+  return data.json();
+}).then((objectData) => {
+  console.log(objectData);
+  let tableData = '';
+  objectData.map((values) => {
+    tableData+= `<tr>
+    <td>${values.artist_id}</td>
+    <td>${values.label_id}</td>
+    <td>${values.stage_name}</td>
+    <td>${values.first_name}</td>
+    <td>${values.last_name}</td>
+    <td>${values.gender}</td>
+    <td>${values.age}</td>
+  </tr>`;
   });
-  console.log(listItems);
-  return listItems;
-}
+  document.getElementById('table_body').innerHTML = tableData;
+}).catch((err) => {
+  console.log(err);
+});
 
-function createHtmlList(collection) {
-  const targetList = document.querySelector("artist_list");
-  targetList.innerHTML = "";
-  collection.forEach((item) => {
-    const { name } = item;
-    const nameDisplay = name.toLowerCase();
-    const injectThisItem = `<li>${nameDisplay}</li>`;
-    targetList.innerHTML += injectThisItem;
-  });
-}
-
-async function mainEvent() {
-  console.log("script loaded");
-  const form = document.querySelector("#record_form");
-  const but = document.querySelector("#button");
-  const stagename = document.querySelector("#stage_name");
-  const gender = document.querySelector("#gender");
-  but.style.display = "none";
-
-  const results = await fetch('/artist');
+async function searchArtist() {
+  const results = await fetch('/api/artist');
   const arrayFromJson = await results.json();
-  console.log(arrayFromJson);
+  console.log(arrayFromJson.data);
 
-  if (arrayFromJson.length > 0) {
-    // prevents race condition
-    but.style.display = "block";
+  let input = document.getElementById('searchbar').value
+  input = input.toLowerCase();
+  let x = document.querySelector('#list-holder');
+  x.innerHTML = ''
 
-    let currentArray = [];
-    stagename.addEventListener("input", async (event) => {
-      // for stage name
-      console.log(event.target.value);
-      const selectResto = arrayFromJson.filter((item) => {
-        // filter entire list
-        const lowerName = item.name.toLowerCase();
-        const lowerValue = event.target.value.toLowerCase();
-        return lowerName.includes(lowerValue);
-      });
-      createHtmlList(selectResto);
-    });
+  for (i = 0; i < arrayFromJson.length; i++) {
+    let obj = arrayFromJson[i];
 
-    gender.addEventListener("input", async (event) => {
-      // For gender
-      console.log(event.target.value);
-      const selectCat = arrayFromJson.filter((item) => {
-        // filter entire list
-        const lowerCat = item.name.toLowerCase();
-        const lowerCatValue = event.target.value.toLowerCase();
-        return lowerCat.includes(lowerCatValue);
-      });
-      createHtmlList(selectCat);
-    });
-
-    form.addEventListener("submit", async (submitEvent) => {
-      submitEvent.preventDefault();
-      currentArray = restoArrayMake(arrayFromJson);
-      createHtmlList(currentArray);
-    });
+    if (obj.stage_name.toLowerCase().includes(input)) {
+      const elem = document.createElement('li')
+      elem.innerHTML = `${obj.stage_name} - ${obj.age}`
+      x.appendChild(elem)
+    }
   }
 }
-document.addEventListener("DOMContentLoaded", async () => mainEvent());
+
+document.addEventListener('DOMContentLoaded', async () => searchArtist());
+
+const x = document.querySelector('.table');
+x.style.display = 'none';
+function showTable() {
+  if (x.style.display === 'none') {
+    x.style.display = 'block';
+  } else {
+    x.style.display = 'none';
+  }
+}

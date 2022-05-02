@@ -10,7 +10,7 @@ const router = express.Router();
 router.route('/artist').get(async (req, res) => {
   try {
     const art = await db.Artist.findAll();
-    res.json({ data: art });
+    res.json(art);
   } catch (error) {
     console.error(error);
     res.send('Server Error');
@@ -24,7 +24,7 @@ router.get('/artist/:artist_id', async (req, res) => {
         artist_id: req.params.artist_id,
       },
     });
-    res.json({ data: art });
+    res.json(art);
   } catch (error) {
     console.error(error);
     res.send('Server Error');

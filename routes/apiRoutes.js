@@ -15,23 +15,34 @@ router.get('/', (req, res) => {
 /// ////////Nana's Endpoints /////////
 /// /////////////////////////////////
 router.route('/songs')
+// .get(async (req, res) => {
+//     try {
+//         const songList = await db.song.findAll({})
+//         console.log(songlist);
+//         res.json({data: songList});
+//     } catch (err) {
+//         console.error('LINe 24');
+//         res.send({message: 'Error!'});
+//     }
+// })
+
 .get(async (req, res) => {
-    try {
-        const songList = await db.song.findAll()
-        res.json({data: songList});
-    } catch (err) {
-        console.error(err);
-        res.send({message: 'Error!'});
-    }
+  try {
+      const playlistList = await db.song.findAll()
+      res.json({data: playlistList});
+  } catch (err) {
+      console.error(err);
+      res.send({message: 'Error1!'});
+  }
 })
 
-router.route('/songs/:song_id')
+router.route('/songs/:id') 
 .get(async (req, res) => {
     try {
-      const {song_id} = req.params;
+      const {id} = req.params;
       const song = await db.song.findAll({
         where: {
-          song_id: song_id
+          id: id
         }
       });
       res.json({data: song})
@@ -46,7 +57,7 @@ router.route('/songs').post( async (req, res) => {
   const currentId = (await songList.length) + 1;
   try {
     const newSong = await db.song.create({
-      song_id: currentId,
+      id: currentId,
       title: req.body.title,
       artist_id: req.body.artist_id,
     });

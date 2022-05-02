@@ -1,6 +1,6 @@
 //Charts Maxim
 async function mainChart() {
-    const genres = await fetch('api/genre'); // This accesses some data from our API
+    const genres = await fetch('api/songs'); // This accesses some data from our API
       const genreArray = await genres.json(); // This changes it into data we can use - an object
       console.log('Charts fetch');
       console.log(genreArray);
@@ -17,7 +17,8 @@ async function mainChart() {
         // console.log(entries);
 
        collection.data.forEach((item) => {
-          const injectThisItem = `<li>${item.genre_name}</li>`;
+          const injectThisItem = `<li>${item.title}</li>`;
+          console.log(item.title);
           targetList.innerHTML += injectThisItem;
         });
         console.log(Object.values(collection));

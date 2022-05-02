@@ -109,7 +109,6 @@ function loadIsaacChart(actorData) {
     const isaacChart = new Chart(chartElement, chartConfig);
 }
 
-
 async function loadCharts() {
     console.log('loadCharts()');
     const directors = await getData('/owen/directors');

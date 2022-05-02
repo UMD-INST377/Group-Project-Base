@@ -19,7 +19,7 @@ function createBreakfast(collection) {
   });
 }
 
-// create launch list
+// create lunch list
 function createLaunch(collection) {
   console.log('fired HTML creator');
   console.log(collection);

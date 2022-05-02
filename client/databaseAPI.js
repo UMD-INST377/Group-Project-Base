@@ -45,7 +45,7 @@ getShow()
 //displays show list
 //insert similar code here for title
 //add conditional to filter out film titles
-let actorList = document.querySelector(".actor-list")
+let actorList = document.querySelector(".actors-list")
 async function getActor() {
     const results = await fetch("/api/actors")
     const json = await results.json()

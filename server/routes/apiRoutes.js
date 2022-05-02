@@ -55,6 +55,22 @@ router.get('/mealLocation/:meal_id', async(req,res)=>{
   }
 });
 
+router.post('mealLocation', async(req,res)=>{
+  const meals = await db.mealLocation.findAll();
+  const currentId = (await meals.length) + 1;
+  try{
+    const newDining = await db.mealLocation.create({
+      meal_id : currentId,
+      meal_name : req.body.meal_name,
+      meal_category: req.body.meal_category,
+    });
+    res.json(newDining);
+  }catch(err){
+    console.error(err)
+    res.error('Server error');
+  }
+});
+
 router.delete('/mealLocation/:meal_id', async(req,res) =>{
   try{
     await db.mealLocation.destroy({

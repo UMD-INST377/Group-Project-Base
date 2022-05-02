@@ -52,10 +52,9 @@ async function getActor() {
     console.log(json)
     const newArray = json.data.map((actor)=> {
         return `<h2>Actor Database ID: ${actor.actor_id}</h2>
-        <h3>Release Date: ${actor.fname}</h3>
-        <h3>Rating: ${actor.lname}</h3>
-        <h3>Vote Count: ${actor.birthyear}</h3>
-        <h3>Movie Runtime - min: ${actor.deathyear}</h3>
+        <h3>Full Name: ${actor.fname} ${actor.lname} </h3>
+        <h3>Birthday: ${actor.birthyear}</h3>
+        <h3>Death day: ${actor.deathyear}</h3>
         `
     }
     )

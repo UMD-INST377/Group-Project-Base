@@ -40,23 +40,24 @@ contributeForm.addEventListener('submit', async (submitEvent) => {
 });
 //CHarts Maxim Galkin
 
-async function mainChart() {
-const genres = await fetch('api/genre'); // This accesses some data from our API
-  const genreArray = await results.json(); // This changes it into data we can use - an object
-  console.log(genreArray);
-  createGenreList(genreArray);
-}
+// async function mainChart() {
+// const genres = await fetch('api/genre'); // This accesses some data from our API
+//   const genreArray = await results.json(); // This changes it into data we can use - an object
+//   console.log('Charts fetch');
+//   console.log(genreArray);
+//   createGenreList(genreArray);
+// }
 
 
-  function createGenreList(collection) {
-    console.log(collection);
-    const targetList = document.querySelector('#songs-images');
-    targetList.innerHTML = '';
-    collection.forEach((item) => {
-      const injectThisItem = `<li>${item.name}</li>`;
-      targetList.innerHTML += injectThisItem;
-    });
-  }
+//   function createGenreList(collection) {
+//     console.log(collection);
+//     const targetList = document.querySelector('#songs-images');
+//     targetList.innerHTML = '';
+//     collection.forEach((item) => {
+//       const injectThisItem = `<li>${item.name}</li>`;
+//       targetList.innerHTML += injectThisItem;
+//     });
+//   }
 // Search Bar
 const searchBar = document.querySelector("#index_search_bar")
 searchBar.onkeyup = inTuneSearch()

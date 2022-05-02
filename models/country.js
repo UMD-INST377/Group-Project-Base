@@ -1,21 +1,24 @@
-export default (sequelize, DataTypes) => {
-  const country = sequelize.define(
+export default (database, DataTypes) => {
+  const country = database.define(
+
     'country',
     {
       country_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
         primaryKey: true
       },
       country_name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
       },
       country_nationality: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
       }
+
     },
-    { freezeTableName: true, timestamps: false }
+    {freezeTableName: true, timestamps: false}
   );
   return country;
 };

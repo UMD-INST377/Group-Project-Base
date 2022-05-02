@@ -158,6 +158,16 @@
     background-color: #C4C4C4;
 }
 
+.columns {
+	display: flex;
+	background-color: #979797;
+	min-width: 0;
+	font-family: 'Roboto';
+	font-weight: 600;
+    font-size: 20px;
+	text-align: center;
+}
+
 .a:link { text-decoration: none; }
 
 

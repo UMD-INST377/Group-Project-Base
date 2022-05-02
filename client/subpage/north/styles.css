@@ -143,6 +143,16 @@
     margin-top: 130px;
 }
 
+.columns {
+	display: flex;
+	background-color: #979797;
+	min-width: 0;
+	font-family: 'Roboto';
+	font-weight: 600;
+    font-size: 20px;
+	text-align: center;
+}
+
 .north_schedule {
     display: flex;
     flex-direction: row;

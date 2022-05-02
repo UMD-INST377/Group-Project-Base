@@ -32,6 +32,42 @@ async function createFilteredTable() {
         return filterArray;
 }
 
+async function loadTable(array) {
+    //reset to table to header only
+    table.innerHTML = `<tbody><tr>
+            <th>Meal ID</th>
+            <th>Meal Name</th>
+            <th>Meal Category</th>
+        </tr>
+    </tbody>`;
+    array.forEach((item) => {
+      // console.log(item) if you need to use console to see properties
+      // create a new row element
+      const row = document.createElement("tr");
+
+      // create new column element this will be repeated
+      const meal_id = document.createElement("td");
+      // set each column to be respective property
+      meal_id.innerHTML = item.meal_id;
+      row.appendChild(meal_id);
+
+      // repeat this for all the columns you want in the table
+      const meal_name = document.createElement("td");
+      // set each column to be respective property
+      meal_name.innerHTML = item.meal_name;
+      row.appendChild(meal_name);
+
+      const meal_category = document.createElement("td");
+      // set each column to be respective property
+      meal_category.innerHTML = item.meal_category;
+      row.appendChild(meal_category);
+
+      // append this record to the table
+      table.appendChild(row);
+    });
+  }
+
+
     document.addEventListener("submit", async (event) => {
         event.preventDefault();
         if (currentData.length === 0) {
@@ -63,46 +99,9 @@ async function createFilteredTable() {
                     await loadTable(currentData);
                 });
             }
-        createFilteredTable();
+        //createFilteredTable();
     });
 }
-
-async function loadTable(array) {
-    //reset to table to header only
-    table.innerHTML = `<tbody><tr>
-            <th>Film ID</th>
-            <th>Film Title</th>
-            <th>Genre</th>
-            <th>Runtime</th>
-            <th>Score</th>
-        </tr>
-    </tbody>`;
-    array.forEach((item) => {
-      // console.log(item) if you need to use console to see properties
-      // create a new row element
-      const row = document.createElement("tr");
-
-      // create new column element this will be repeated
-      const meal_id = document.createElement("td");
-      // set each column to be respective property
-      meal_id.innerHTML = item.meal_id;
-      row.appendChild(meal_id);
-
-      // repeat this for all the columns you want in the table
-      const meal_name = document.createElement("td");
-      // set each column to be respective property
-      meal_name.innerHTML = item.meal_name;
-      row.appendChild(meal_name);
-
-      const meal_category = document.createElement("td");
-      // set each column to be respective property
-      meal_category.innerHTML = item.meal_category;
-      row.appendChild(meal_category);
-
-      // append this record to the table
-      table.appendChild(row);
-    });
-  }
 
 document.addEventListener('DOMContentLoaded', async () => {
     await createFilteredTable();

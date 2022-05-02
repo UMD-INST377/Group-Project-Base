@@ -88,6 +88,7 @@
     line-height: 40px;
     cursor: pointer;
     font-size: 17px;
+    font-weight: bold;
   }
   
   li::marker {

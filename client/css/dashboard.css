@@ -112,6 +112,10 @@ img#image_1 {
   margin-right: 75px;
 }
 
+img#image_3 {
+  margin-left: 60px;
+}
+
 /* Styling the button from the images*/
 .container{
   position: relative;
@@ -122,6 +126,21 @@ img#image_1 {
   position: absolute;
   top: 87%;
   left: 47%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 47px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.container .button2 {
+  position: absolute;
+  top: 87%;
+  left: 55%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;

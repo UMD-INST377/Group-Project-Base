@@ -1,5 +1,6 @@
 export default (database, DataTypes) => {
   const country = database.define(
+
     'country',
     {
       country_id: {

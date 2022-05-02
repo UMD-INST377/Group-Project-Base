@@ -26,5 +26,5 @@ export default {
     database: 'art_gallery_management',
     host: '174.129.198.86',
     dialect: 'mysql'
-  }
-};
+}
+}

@@ -19,6 +19,7 @@ async function getTitles() {
 
 getTitles()
 
+//displays show list
 //insert similar code here for title
 //add conditional to filter out film titles
 let showList = document.querySelector(".show-list")
@@ -31,7 +32,7 @@ async function getShow() {
         <h3>Release Date: ${show.release_year}</h3>
         <h3>Rating: ${show.title_rating}</h3>
         <h3>Vote Count: ${show.title_votes}</h3>
-        <h3>Movie Runtime - min: ${show.runtime_min}</h3>
+        <h3>End year: ${show.end_year}</h3>
         `
     }
     )
@@ -39,3 +40,26 @@ async function getShow() {
 }
 
 getShow()
+
+// display actors
+//displays show list
+//insert similar code here for title
+//add conditional to filter out film titles
+let actorList = document.querySelector(".actor-list")
+async function getActor() {
+    const results = await fetch("/api/actors")
+    const json = await results.json()
+    console.log(json)
+    const newArray = json.data.map((actor)=> {
+        return `<h2>${actor.actor_id}</h2>
+        <h3>Release Date: ${actor.fname}</h3>
+        <h3>Rating: ${actor.lname}</h3>
+        <h3>Vote Count: ${actor.birthyear}</h3>
+        <h3>Movie Runtime - min: ${actor.deathyear}</h3>
+        `
+    }
+    )
+    actorList.innerHTML = newArray
+}
+
+getActor()

@@ -35,7 +35,7 @@ async function getShow() {
         `
     }
     )
-    movieList.innerHTML = newArray
+    showList.innerHTML = newArray
 }
 
 getShow()

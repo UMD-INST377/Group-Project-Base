@@ -16,6 +16,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 300px;
+  }
+
+  /* Scroll Bar*/
+  div.scroll {
+    background-color: azure;
+    width: 600px;
+    height: 600px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
   }
 
   /* Submit button */
@@ -144,6 +156,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width: 50%;
   }
 
   .center {

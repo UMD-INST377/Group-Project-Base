@@ -18,6 +18,22 @@
     align-items: center;
   }
 
+  /* Submit button */
+  button#delete_id{
+    font-size: 16px;
+    font-weight: bold;
+  
+    color: #FFFFFF;
+    background-color: #5995DA;
+  
+    border: none;
+    border-radius: 3px;
+  
+    padding: 10px 40px;
+    cursor: pointer;
+    margin-top: -102px;
+  }
+
   .link:visited { 
     text-decoration: none; 
     color:rgb(0, 0, 0);
@@ -33,6 +49,7 @@
     background-size: cover;
     background-position: center;
   }
+
   nav{
     display: flex;
     align-items: center;

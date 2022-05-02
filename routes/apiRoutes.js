@@ -31,11 +31,13 @@ router.get('/actors/:id', async (req, res) => {
 });
 
 // To delete a specific actors
-router.delete('/delete_actors', async (req, res) => {
+router.delete('/delete_actors/:id', async (req, res) => {
   try {
-    const actorList = await db.Actor.destroy({
+    const {id} = req.params
+    console.log(id)
+    const result = await db.Actor.destroy({
       where: {
-        actor_id: req.body.actor_id
+        actor_id: id
       }
     });
     res.send(

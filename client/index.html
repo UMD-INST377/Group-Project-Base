@@ -1,77 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Group 24 Project</title>
-
-    <link rel="stylesheet" href="homePageStyle.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Layout</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
     <nav>
-        <a href="about.html">About</a> 
         <a href = "artwork_details.html">Artwork Details></a>
         <a href="exhibit.html">Exhibit Details</a>
+        <div class="right"><a href="country_details.html">Country Details</a></div>
+        <div class="right"><a href="artwork_details.html">Artwork Details</a></div>
+        
     </nav>
     
-    <h1><strong> Welcome to Art Gallery a place where art is inspired! </strong></h1>
+    <h1>About</h1>
     
     
 
-    
-    <div class="container">
-        <form class="client_form" id="login">
-            <div class="form_message input_error"></div>
-            <div class="form_input">
-                <input type="text" id="used_email" class="input_text" autofocus placeholder="Enter your email address">
-                <div class="error_message"></div>
-            </div>
-            <div class="form_input">
-                <input type="password" id="curr_password" class="input_text" autofocus placeholder="Enter your password">
-                <div class="error_message"></div>
-            </div>
-            <button class="form_button" type="submit">Sign in</button>
-            <p class="form_text">
-                <a href="#" class="form_link">Forgot your password?</a>
-            </p>
-            <p class="form_text"> Don't have an account?
-                <a href="#" class="form_link"  id="new_account"> Sign Up</a>
-            </p>
-            <p> or</p>
+    <div class="text"><strong>This website provides users the ability to surf through art transactions. <br/> Making it easy to organize and monitor their inventory</strong></div>
 
-            <div class="submit_button">
-                <button class="email" type="submit"><img src='images/mail.jpg' alt='Email'/>Sign in with Email </button>
-                <button class="google" type="submit"><img src='images/google.jpg' alt='Google'/>Sign in with Google</button>
-                <button class="facebook" type="submit"><img src='images/facebook.jpg' alt='Facebook'/>Sign in with Facebook</button>
-            </div>
-            
-        </form>
+    <div class="grid">
+        <img src='images/image1.jpg' alt='Arts on the wall in closed room'/>
+        <img src='images/image2.jpg' alt='Art displayed on the wall'/>
+        <img src='images/image3.jpg' alt='Art displayed at the main lobby'/>
         
-        
-        <form class="client_form createNewUser" id="createAccount">
-            <div class="form_message input_error"></div>
-            
-            <div class="form_input">
-                <input type="text" id="f_name" class="input_text" autofocus placeholder="First Name">
-            </div>
-            
-            <div class="form_input">
-                <input type="text" id="l_name" class="input_text" autofocus placeholder="Last Name">
-            </div>
+        <br/>
+</div>
 
-            <div class="form_input">
-                <input type="text" id="new_email" class="input_text" autofocus placeholder="Email address">
-                <div class="error_message"></div>
-            </div>
-
-            <div class="form_input">
-                <input type="password" id="password" class="input_text" autofocus placeholder="Password">
-                <div class="error_message"></div>
-            </div>
-
-            <button class="formButton" type="submit">Submit</button>
-            <p class="form_text"> Already have an account?
-                <a href="#" class="form_link" id="loginLink"> Sign in</a>
-            </p>
-        </form>
-    </div>
-    <script src="homePageScript.js"></script>
 </body>
+</html>

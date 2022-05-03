@@ -59,6 +59,26 @@ async function mainEvent() { //mainEvent refers to page loading
   if (mealArrayFromJson.data.length > 0) {
     currentArray = dataHandler(mealArrayFromJson.data);
   }
+
+  
+  //This is for adding the accordion menu to the menu page
+  const accordion = document.getElementsByClassName("accordion");
+
+  for (i = 0; i < accordion.length; i++) {
+    accordion[i].addEventListener("click", function() { //For changing which button is active
+      this.classList.toggle("active");
+
+      const drop = this.nextElementSibling;
+      if (drop.style.display === "block") { //Toggles the dropdown open and close
+        drop.style.display = "none";
+      } else {
+        drop.style.display = "block";
+      }
+    });
+  }
+
+
+
   //create the table
   createHTMLtable(currentArray);
   

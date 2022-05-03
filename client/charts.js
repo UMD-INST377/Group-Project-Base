@@ -109,54 +109,6 @@ function loadIsaacChart(actorData) {
     };
     const isaacChart = new Chart(chartElement, chartConfig);
 }
-// roles per actor chart
-function loadAgyaChart(roleData, actorData) {
-    /// console.log is to make sure page is running, not needed but helpful to have
-    console.log('loadAgyaChart()');
-    /// chartElement to be standardized but since in function, ok to change
-    /// PATH: creating chart area, in index.html, const chartelement = directions for .js to get there
-    const chartElement = document.querySelector('agyaChart');
-    
-    const title = 'Roles per Actor';
-    const colors = getColors(actorData.length);
-    /// DIRECTION: new Chart is actual directions
-    let data = {};
-    actorData.forEach((actorItem) => {
-        const fullName = `${actorItem.first_fname} ${actorItem.actor_lname}`
-        data[fullName] = 0;
-        roleData.forEach((roleItem) => {
-            if (roleItem.actor_id === actorItem.actor_id) {
-                data[fullName] += 1;
-            }
-        });
-    });
-
-    const chartData = {
-        labels: Object.keys(data),
-        datasets: [{
-            label: title,
-            data: Object.values(data),
-            bacgroundColor: colors,
-            borderWidth: 1
-        }]
-    };
-    
-    const chartConfig = {
-        type: 'pie',
-        labels: chartData,
-        options: {
-            plugins: {
-                legend: false,
-                title: {
-                    display: true,
-                    text: title
-                }
-            }
-        }
-    };
-}
-
-    const myChart = new Chart(chartElement, chartData);
 
 function loadAgyaChart(roleData, actorData) {
     console.log('loadAgyaChart()');

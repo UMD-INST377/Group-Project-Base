@@ -62,6 +62,7 @@ async function mainEvent() { //mainEvent refers to page loading
   }
 
 
+
   //This chunk of code is for adding the names to the buttons on the accordion
   const api_results = await fetch('/api/dining'); //call get function from api routes for dining
   const hallArray = await api_results.json(); //convert to array
@@ -118,8 +119,6 @@ async function mainEvent() { //mainEvent refers to page loading
 
 
 
-
-  
   //This block of code turns the buttons into working accordions
   const accordion = document.getElementsByClassName("accordion"); //Grabs the button's class
   for (i = 0; i < accordion.length; i++) {

@@ -41,6 +41,15 @@ body {
    justify-content: center;
  }
 
+.header2 {
+   background-color: #c3f951;
+   padding: 50px;
+   color: #0c5400;
+   text-align: center;
+   border-bottom: 10px;
+   justify-content: left;
+}
+
 .logo{
   height: 200px;
   justify-content: center;
@@ -171,5 +180,37 @@ body {
           width: 100%;
           margin: 0 auto;
         }
+
+      .header2{
+          top: 0;
+          left: 0;
+          width: 300px;
+          height: 100%;
+          position: absolute;
+      }
+   
+      .body{
+          border-left: 250px ;
+      }
+
+      .menu-container2 {
+        background-color: #b3e943;  
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        top: 250px;
+        left: 0;
+        width: 250px;
+        margin: 30px;
+        height: 50%;
+        position: absolute;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row wrap;
+        justify-content: space-evenly;
+        align-items: center;
+      
+      }
   
     }

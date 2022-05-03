@@ -153,7 +153,7 @@ function loadAgyaChart(roleData, actorData) {
             }
         }
     };
-    const myChart = new Chart(chartElement, chartConfig);
+    const agyaChart = new Chart(chartElement, chartConfig);
 }
 
 async function loadCharts() {

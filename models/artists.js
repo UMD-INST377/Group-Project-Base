@@ -1,25 +1,28 @@
-export default (sequelize, DataTypes) => {
-  const artists = sequelize.define(
+export default (database, DataTypes) => {
+  const artist = database.define(
     'artists',
     {
       artist_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       },
       first_name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
       },
       last_name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
       },
       country_id: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: false
       }
+
     },
-    { freezeTableName: true, timestamps: false }
+    {freezeTableName: true, timestamps: false}
   );
-  return artists;
+  return artist;
 };
-// not needed

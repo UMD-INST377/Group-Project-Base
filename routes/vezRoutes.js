@@ -31,9 +31,11 @@ router.get('/restriction', async (req, res) => {
   }
 });
 
-router.get('/mealswithrestrictions', async (req, res) => {
+router.get('/mealsinfo', async (req, res) => {
   try {
-    const results = await db.sequelizeDB.query(`SELECT meal_id, meal_name, restriction_type, meal_category, restriction_id FROM meals INNER JOIN meal_restrictions on(meal_id) left join dietary_restrictions using(restriction_id)`);
+    /*const results = await db.sequelizeDB.query(`SELECT meal_id, meal_name, restriction_type, meal_category, restriction_id FROM meals INNER JOIN meal_restrictions on(meal_id) left join dietary_restrictions using(restriction_id)`);
+    const results = await db.sequelizeDB.query(`SELECT meal_name, restriction_type, calories FROM meal_restriction_names INNER JOIN macros on(meal_id)`);*/
+    const results = await db.sequelizeDB.query(`SELECT distinct hall_name, restriction_type, meal_name, calories from meals inner join macros using(meal_id)  left join meal_restrictions  on(meal_id) left join dietary_restrictions using (restriction_id) left join dining_hall on(hall_id)`);
     res.json({ data: results[0]});
   } catch (error) {
     console.log(error);

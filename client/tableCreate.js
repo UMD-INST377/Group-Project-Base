@@ -5,29 +5,49 @@ async function createFilteredTable() {
     const form = document.querySelector(".form");
     const table = document.querySelector(".table");
 
-    const mealidSelector = document.querySelector(".meal_id");
+    const restrictionTypeSelector = document.querySelector(".restriction_type");
     const mealnameSelector = document.querySelector(".meal_name");
-    const mealcategorySelector = document.querySelector(".meal_category");
+    const hallnameSelector = document.querySelector(".hall_name");
+    const caloriesSelector = document.querySelector(".calories");
 
     function filterCheck (array) {
         let filterArray = array;
-        if (mealidSelector.value !== "") {
-            const mealId = filterArray.filter(
-                (item) => item.meal_id === parseInt(mealidSelector.value)
+
+        //put the meals into a unique array
+        /*let uniqueArray = {};
+        array.forEach((item) => {
+            if (!uniqueArray.hasOwnProperty(item.meal_name)) {
+                uniqueArray[item.meal_name] = item.restriction_type
+            } else {
+                uniqueArray[item.meal_name] += ',' + item.restriction_type 
+            }
+        })
+
+        console.log(uniqueArray)*/
+
+        if (restrictionTypeSelector.value !== "") {
+            restrictionType = filterArray.filter(
+                (item) => item.restriction_type.toLowerCase().includes(restrictionTypeSelector.value.toLowerCase())
             );
-            filterArray = mealId;
-        }
+            filterArray = restrictionType;
+        }/*
         if (mealnameSelector.value !== "") {
             const nameFilter = filterArray.filter((item) =>
                 item.meal_name.toLowerCase().includes(mealnameSelector.value.toLowerCase())
             );
             filterArray = nameFilter;
-        }
-        if (mealcategorySelector.value !== "") {
-            const categoryFilter = filterArray.filter((item) =>
-                item.meal_category.toLowerCase().includes(mealcategorySelector.value.toLowerCase())
+        }*/
+        if (hallnameSelector.value !== "") {
+            const hallnameFilter = filterArray.filter((item) =>
+                item.hall_name.toLowerCase().includes(hallnameSelector.value.toLowerCase())
             );
-            filterArray = categoryFilter;
+            filterArray = hallnameFilter;
+        }
+        if (caloriesSelector.value !== "") {
+            const caloriesFilter = filterArray.filter((item) =>
+                item.calories.toLowerCase().includes(caloriesSelector.value.toLowerCase())
+            );
+            filterArray = caloriesFilter;
         }
         return filterArray;
 }
@@ -35,9 +55,9 @@ async function createFilteredTable() {
 async function loadTable(array) {
     //reset to table to header only
     table.innerHTML = `<tbody><tr>
-            <th>Meal ID</th>
             <th>Meal Name</th>
-            <th>Meal Category</th>
+            <th>Hall Name</th>
+            <th>Calories</th>
         </tr>
     </tbody>`;
     array.forEach((item) => {
@@ -46,10 +66,10 @@ async function loadTable(array) {
       const row = document.createElement("tr");
 
       // create new column element this will be repeated
-      const meal_id = document.createElement("td");
+      /*const restriction_type = document.createElement("td");
       // set each column to be respective property
-      meal_id.innerHTML = item.meal_id;
-      row.appendChild(meal_id);
+      restriction_type.innerHTML = item.restriction_type;
+      row.appendChild(restriction_type);*/
 
       // repeat this for all the columns you want in the table
       const meal_name = document.createElement("td");
@@ -57,10 +77,15 @@ async function loadTable(array) {
       meal_name.innerHTML = item.meal_name;
       row.appendChild(meal_name);
 
-      const meal_category = document.createElement("td");
+      const hall_name = document.createElement("td");
       // set each column to be respective property
-      meal_category.innerHTML = item.meal_category;
-      row.appendChild(meal_category);
+      hall_name.innerHTML = item.hall_name;
+      row.appendChild(hall_name);
+
+      const calories = document.createElement("td");
+      // set each column to be respective property
+      calories.innerHTML = item.calories;
+      row.appendChild(calories);
 
       // append this record to the table
       table.appendChild(row);
@@ -71,7 +96,7 @@ async function loadTable(array) {
     document.addEventListener("submit", async (event) => {
         event.preventDefault();
         if (currentData.length === 0) {
-            const arrayFromJson = await fetch("/api/meals"); //("/api/mealswithrestrictions") and go through and update table name in routes
+            const arrayFromJson = await fetch("/vez/mealsinfo"); //("/api/meals") and go through and update table name in routes
             data = await arrayFromJson.json();
 
             data = await data.data;
@@ -82,19 +107,25 @@ async function loadTable(array) {
 
                 currentData = filterCheck(data);
                 await loadTable(currentData);
+                restrictionTypeSelector.addEventListener("change", async () => {
+                    currentData = filterCheck(data);
+                    await loadTable(currentData);
+                });
+                /*currentData = filterCheck(data);
+                await loadTable(currentData);
                 mealnameSelector.addEventListener("change", async () => {
                     currentData = filterCheck(data);
                     await loadTable(currentData);
-                });
+                });*/
                 currentData = filterCheck(data);
                 await loadTable(currentData);
-                mealidSelector.addEventListener("change", async () => {
+                hallnameSelector.addEventListener("change", async () => {
                     currentData = filterCheck(data);
                     await loadTable(currentData);
                 });
                 currentData = filterCheck(data);
                 await loadTable(currentData);
-                mealcategorySelector.addEventListener("change", async () => {
+                caloriesSelector.addEventListener("change", async () => {
                     currentData = filterCheck(data);
                     await loadTable(currentData);
                 });

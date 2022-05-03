@@ -8,7 +8,7 @@ body {
    margin: 0;
    padding: 0;
    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
-     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, 'Courier New (monospace)', sans-serif;
    background-color: black;
  }
  
@@ -88,12 +88,14 @@ body {
 }
 
 .content {
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   border-radius: 3px;
   padding: 50px;
   margin: 30px;
-  color: #000000;
+  color: #ffffff;
   width: 650px; 
+  text-align: center;
+  font-family: 'Courier New';
 }
 
 
@@ -126,7 +128,7 @@ body {
    color: #ffffff;
    background-color: #000000;
  
-   border: none;
+   border-color: #b3e943;
    border-radius: 3px;
  
    margin-top: 15px;

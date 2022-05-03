@@ -15,8 +15,8 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-app.use('/ryan', ryanRoutes);
-app.use('/nnamdi', nnamdiRoutes);
+app.use('/api', ryanRoutes);
+app.use('/api', nnamdiRoutes);
 
 async function bootServer() {
   try {

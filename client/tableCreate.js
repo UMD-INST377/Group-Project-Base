@@ -71,7 +71,7 @@ async function loadTable(array) {
     document.addEventListener("submit", async (event) => {
         event.preventDefault();
         if (currentData.length === 0) {
-            const arrayFromJson = await fetch("/api/meals");
+            const arrayFromJson = await fetch("/api/mealswithrestrictions");
             data = await arrayFromJson.json();
 
             data = await data.data;

@@ -2,6 +2,9 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
+import apiRoutesJessica from './routes/apiRoutesJessica.js';
+import apiRoutesMelody from './routes/apiRoutesMelody.js';
+
 
 const app = express();
 
@@ -13,6 +16,10 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
+app.use('/jess', apiRoutesJessica);
+
+app.use('/melody', apiRoutesMelody);
+
 
 async function bootServer() {
   try {

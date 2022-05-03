@@ -43,7 +43,7 @@ router.post('/album', async (req, res) => {
     res.json(newAlbum);
   } catch (error) {
     console.log(error);
-    res.send('Server Error')
+    res.send('Server Error');
   }
 });
 
@@ -58,14 +58,14 @@ router.put('/album/', async (req, res) => {
       },
       {
         where: {
-          album_id: req.body.album_id,
+          album_id: req.body.album_id
         }
       }
     );
-    res.json('Success. Record Updated')
+    res.json('Success. Record Updated');
   } catch (error) {
     console.log(error);
-    res.send('Server Error')
+    res.send('Server Error');
   }
 });
 
@@ -76,7 +76,7 @@ router.delete('/album/:album_id', async (req, res) => {
         album_id: req.params.album_id
       }
     });
-    res.json('Success. Record Deleted')
+    res.json('Success. Record Deleted');
   } catch (error) {
     console.log(error);
     res.send('Server Error');

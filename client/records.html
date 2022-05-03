@@ -54,6 +54,31 @@
         </table>
         <hr style="width:100%;text-align:left;margin-left:0">
       </div>
+      <div class="column">
+        <div class = "title has-text-white is-1 has-text-centered">SEARCH Genres</div>
+        <hr style="width: 100%;text-align:left;margin-left:0">
+        <div class = "content has-text-white">
+          <input class = "input" id="searchbar" onkeyup="searchGenre()" type="text" name="search" placeholder="Search for Genres">
+          <ul id="list-holder"></ul>
+        </div>
+        <hr style="width:100%;text-align:left;margin-left:0">
+        <button class = "button" onclick="showTable()">CLICK TO VIEW FULL DETAILS ON Genres</button>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Genre ID</th>
+              <th scope="col">Genre Name</th>
+            </tr>
+          </thead>
+          <tbody id = "table_body">
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <hr style="width:100%;text-align:left;margin-left:0">
+      </div>
       <div class="column sides is-1">
         <figure class="image is-128x128 is-centered"><a href = "teaminfo.html">
           <img src="img/account.png">
@@ -73,5 +98,6 @@
       </div>
     </div>
     <script src="./rec.js"></script>
+    <scritp src="./genreRecords.js"></script>
   </body>
 </html>

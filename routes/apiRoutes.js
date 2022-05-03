@@ -28,6 +28,24 @@ router.route('/allmeals')
     }
   });
 
+router.route('/mealsByHall')
+  .get(async (req, res)=>{
+  try{
+    const mealQuery = await db.sequelizeDB.query(`
+    SELECT hall_name, meal_name
+    FROM dining_hall 
+    JOIN meals_locations USING (hall_id)
+    JOIN meals USING (meal_id);
+    `);
+    res.json({data: mealQuery[0]});
+  }catch (err) {
+    console.log(err);
+    res.json({message: 'something went wrong in mealsByHall'});
+  }
+});
+
+
+
 // Nicholas Urquhart GET controllers
 router.route('/macros')
   .get(async (req, res) => {

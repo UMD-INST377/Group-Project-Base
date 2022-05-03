@@ -67,22 +67,53 @@ async function mainEvent() { //mainEvent refers to page loading
   const hallArray = await api_results.json(); //convert to array
 
   //The Dinner
-  let hall0String = `${hallArray.data[0].hall_name}`; //Indexes the hall's name
-  const hall0Table = document.querySelector('.the_diner'); //Selects the element to insert name
-  hall0Table.innerHTML = '';
-  hall0Table.innerHTML+=hall0String; //inserts it
+  const hall0Button = document.querySelector('.the_diner'); //Selects the element to insert the name
+  hall0Button.innerHTML = '';
+  hall0Button.innerHTML+=`${hallArray.data[0].hall_name}`; //inserts the hall name into the html
 
   //South Campus Dinning Hall
-  let hall1String = `${hallArray.data[1].hall_name}`;
-  const hall1Table = document.querySelector('.sc_diner');
-  hall1Table.innerHTML = '';
-  hall1Table.innerHTML+=hall1String;
+  const hall1Button = document.querySelector('.sc_diner');
+  hall1Button.innerHTML = '';
+  hall1Button.innerHTML+=`${hallArray.data[1].hall_name}`;
 
   //North Campus Dinning Hall
-  let hall2String = `${hallArray.data[2].hall_name}`;
-  const hall2Table = document.querySelector('.nc_diner');
-  hall2Table.innerHTML = '';
-  hall2Table.innerHTML+=hall2String;
+  const hall2Button = document.querySelector('.nc_diner');
+  hall2Button.innerHTML = '';
+  hall2Button.innerHTML+=`${hallArray.data[2].hall_name}`;
+
+
+
+
+  const loc = await fetch('/api/mealsByHall');
+  const locArray = await loc.json();
+  locData = locArray.data
+  let hall0Meals = '<ul>'
+  let hall1Meals = '<ul>'
+  let hall2Meals = '<ul>'
+  for(i=0; i<locData.length; i++){
+    if(locData[i]['hall_name'] == 'The Diner'){
+      hall0Meals += `<li> ${locData[i].meal_name} </li>`
+    }else if(locData[i]['hall_name'] == 'South Campus Dining Hall'){
+      hall1Meals += `<li> ${locData[i].meal_name} </li>`
+    }else if(locData[i]['hall_name'] == '251 North Dining Hall'){
+      hall2Meals += `<li> ${locData[i].meal_name} </li>`
+    }
+  }
+  hall0Meals += '<ul>'
+  hall0Meals += '<ul>'
+  hall0Meals += '<ul>'
+  const target0 = document.querySelector('.the_diner_menu');
+  target0.innerHTML = '';
+  target0.innerHTML += hall0Meals;
+
+  const target1 = document.querySelector('.sc_diner_menu');
+  target1.innerHTML = '';
+  target1.innerHTML += hall0Meals;
+
+  const target2 = document.querySelector('.nc_diner_menu');
+  target2.innerHTML = '';
+  target2.innerHTML += hall0Meals;
+
 
 
 

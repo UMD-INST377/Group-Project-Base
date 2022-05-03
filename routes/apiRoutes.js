@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 /// /////////////////////////////////
 /// ////Hall Hours Endpoints////////
 /// /////////////////////////////////
-/* router.get('/hallHours', async (req, res) => {
+router.get('/hallHours', async (req, res) => {
   try {
     const hallHours = await db.HallHours.findAll();
     res.json(hallHours);
@@ -38,7 +38,7 @@ router.get('/hallHours/:hall_hours_id', async (req, res) => {
   }
 });
 
-router.post('/hallHours', async (req, res) => {
+/* router.post('/hallHours', async (req, res) => {
   const hours = await db.HallHours.findAll();
   try {
     const newHallHours = await db.HallHours.create({

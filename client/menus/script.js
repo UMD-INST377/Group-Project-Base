@@ -110,11 +110,11 @@ async function mainEvent() { //mainEvent refers to page loading
 
   const target1 = document.querySelector('.sc_diner_menu');
   target1.innerHTML = '';
-  target1.innerHTML += hall0Meals;
+  target1.innerHTML += hall1Meals;
 
   const target2 = document.querySelector('.nc_diner_menu');
   target2.innerHTML = '';
-  target2.innerHTML += hall0Meals;
+  target2.innerHTML += hall2Meals;
 
 
 

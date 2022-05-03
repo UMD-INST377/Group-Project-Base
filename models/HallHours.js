@@ -12,11 +12,9 @@ export default (sequelize, DataTypes) => {
         },
         schedule_id: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
         hall_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
           },
       },
       { freezeTableName: true, timestamps: false }

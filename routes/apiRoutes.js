@@ -34,11 +34,11 @@ router.get('/hallHours/:hall_hours_id', async (req, res) => {
     res.json(hours);
   } catch (err) {
     console.error(err);
-    res.error('Error');
+    res.send('Error');
   }
 });
 
-/* router.post('/hallHours', async (req, res) => {
+router.post('/hallHours', async (req, res) => {
   const hours = await db.HallHours.findAll();
   try {
     const newHallHours = await db.HallHours.create({
@@ -50,7 +50,7 @@ router.get('/hallHours/:hall_hours_id', async (req, res) => {
     res.json(newHallHours);
   } catch (err) {
     console.error(err);
-    res.error('Error');
+    res.send('Error');
   }
 });
 
@@ -58,13 +58,13 @@ router.delete('/hallHours/:hall_hours_id', async (req, res) => {
   try {
     await db.HallHours.destroy({
       where: {
-        hall_hours_id: req.body.hall_hours_id
+        hall_hours_id: req.params.hall_hours_id
       }
     });
     res.send('Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Error');
+    res.send('Error');
   }
 });
 
@@ -85,9 +85,9 @@ router.put('/hallHours', async (req, res) => {
     res.send('Updated');
   } catch (err) {
     console.error(err);
-    res.error('Error');
+    res.send('Error');
   }
-}); */
+});
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

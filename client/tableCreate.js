@@ -71,7 +71,7 @@ async function loadTable(array) {
     document.addEventListener("submit", async (event) => {
         event.preventDefault();
         if (currentData.length === 0) {
-            const arrayFromJson = await fetch("/api/mealswithrestrictions");
+            const arrayFromJson = await fetch("/api/meals"); //("/api/mealswithrestrictions") and go through and update table name in routes
             data = await arrayFromJson.json();
 
             data = await data.data;

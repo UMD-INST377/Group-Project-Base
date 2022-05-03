@@ -14,17 +14,35 @@
     
 }
 
+.button_wrap{ /*For centering the buttons*/
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
 
 .accordion { /*Top part of the accordion*/
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
+
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     padding: 18px;
-    width: 100%;
-    text-align: left;
+    width: 50%;
+    margin-top: 15px;
+    font-weight: bold;
+
+    
+
+
+
+    /* 
+    cursor: pointer;
+    transition: 0.2s;
     border: none;
     outline: none;
-    transition: 0.4s;
+    transition: 0.2s;
+    margin: auto;
+    margin-top: 10px; */
 }
   
 .active, .accordion:hover { /*Changing color when hovering*/
@@ -32,8 +50,9 @@
 }
   
 .dropdown { /*Styles the dropped panel*/
-    padding: 0 18px;
-    background-color: white;
     display: none;
+    /* padding: 0 18px;
     overflow: hidden;
+    text-align: center; */
+
 }

@@ -21,12 +21,12 @@ function createHTMLtable(currentArray) {
   
 
 async function mainEvent() { //mainEvent refers to page loading
-    const mealTable = document.querySelector('.hall_list'); //get hall_list div class
+    const hallTable = document.querySelector('.hall_list'); //get hall_list div class
     const results = await fetch('/api/dining'); //call get function from api routes for dining
-    const mealArrayFromJson = await results.json(); //convert to array 
+    const hallArrayFromJson = await results.json(); //convert to array 
     
     //create the table
-    createHTMLtable(mealArrayFromJson.data);
+    createHTMLtable(hallArrayFromJson.data);
     
   }
   

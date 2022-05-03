@@ -64,6 +64,7 @@ async function mainEvent() { //mainEvent refers to page loading
   //This is for adding the accordion menu to the menu page
   const accordion = document.getElementsByClassName("accordion");
 
+
   for (i = 0; i < accordion.length; i++) {
     accordion[i].addEventListener("click", function() { //For changing which button is active
       this.classList.toggle("active");
@@ -75,8 +76,8 @@ async function mainEvent() { //mainEvent refers to page loading
         drop.style.display = "block";
       }
     });
+    
   }
-
 
 
   //create the table

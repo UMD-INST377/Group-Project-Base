@@ -4,7 +4,6 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
-
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -14,7 +13,6 @@ router.get('/', (req, res) => {
 router.get('/client', (req, res) => {
   res.send('Welcome to Client');
 });
-
 
 /// /////////////////////////////////
 /// ////Meals Locations Endpoints////////
@@ -344,7 +342,7 @@ router.get('/hallHours', async (req, res) => {
     console.error(err);
     res.send('Error');
   }
-})
+});
 
 router.get('/hallHours/:hall_hours_id', async (req, res) => {
   try {
@@ -368,7 +366,7 @@ router.post('/hallHours', async (req, res) => {
       hall_hours_id: (await hours.length) + 1,
       day: req.body.day,
       schedule_id: req.body.schedule_id,
-      hall_id: req.body.hall_id,
+      hall_id: req.body.hall_id
     });
     res.json(newHallHours);
   } catch (err) {
@@ -397,7 +395,7 @@ router.put('/hallHours', async (req, res) => {
       {
         day: req.body.day,
         schedule_id: req.body.schedule_id,
-        hall_id: req.body.hall_id,
+        hall_id: req.body.hall_id
       },
       {
         where: {

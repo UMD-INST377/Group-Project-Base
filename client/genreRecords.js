@@ -1,16 +1,16 @@
-tableCreate = fetch('/api/genre').then((data) => {
-  console.log(data);
-  return data.json();
-}).then((objectData) => {
-  console.log(objectData);
-  let tableData = '';
-  objectData.map((values) => {
-    tableData += `<tr>
+tableCreate = fetch('/api/genre').then((genreData) => {
+  console.log(genreData);
+  return genreData.json();
+}).then((object) => {
+  console.log(object);
+  let tableValues = '';
+  object.map((values) => {
+    tableValues += `<tr>
       <td>${values.genre_id}</td>
       <td>${values.genre_name}</td>
     </tr>`;
   });
-  document.getElementById('table_body').innerHTML = tableData;
+  document.getElementById('table_body').innerHTML = tableValues;
 }).catch((err) => {
   console.log(err);
 });
@@ -18,7 +18,7 @@ tableCreate = fetch('/api/genre').then((data) => {
 async function searchGenre() {
   const results = await fetch('/api/genre');
   const arrayFromJson = await results.json();
-  // console.log(arrayFromJson.data);
+  console.log(arrayFromJson.genreData);
 
   let input = document.getElementById('searchbar').value;
   input = input.toLowerCase();

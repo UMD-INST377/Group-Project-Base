@@ -58,7 +58,6 @@ function loadIsaacChart(actorData) {
     const chartElement = document.querySelector('#isaacChart');
 
     const title = 'Age of Actors';
-    const colors = getColors(actorData.length);
     let data = {
         "1-20": 0,
         "21-40": 0,
@@ -83,6 +82,8 @@ function loadIsaacChart(actorData) {
             data['81-100'] += 1;
         }
     });
+    const colors = getColors(Object.keys(data).length);
+
     const chartData = {
         labels: Object.keys(data),
         datasets: [{
@@ -109,14 +110,62 @@ function loadIsaacChart(actorData) {
     const isaacChart = new Chart(chartElement, chartConfig);
 }
 
+function loadAgyaChart(roleData, actorData) {
+    console.log('loadAgyaChart()');
+    const chartElement = document.querySelector('#agyaChart');
+
+    const title = 'Roles per Actor';
+    let data = {};
+    actorData.forEach((actorItem) => {
+        const fullName = `${actorItem.first_name} ${actorItem.last_name}`
+        data[fullName] = 0;
+        roleData.forEach((roleItem) => {
+            if (roleItem.actor_id === actorItem.actor_id) {
+                data[fullName] += 1;
+            }
+        });
+    });
+    const colors = getColors(Object.keys(data).length);
+
+    console.table(data);
+    console.log(colors);
+    const chartData = {
+        labels: Object.keys(data),
+        datasets: [{
+            label: title,
+            data: Object.values(data),
+            backgroundColor: colors,
+            borderWidth: 1
+        }]
+    };
+
+    const chartConfig = {
+        type: 'pie',
+        data: chartData,
+        options: {
+            plugins: {
+                legend: false,
+                // Force the chart title to display
+                title: {
+                    display: true,
+                    text: title
+                }
+            }
+        }
+    };
+    const myChart = new Chart(chartElement, chartConfig);
+}
+
 async function loadCharts() {
     console.log('loadCharts()');
     const directors = await getData('/owen/directors');
     const movies = await getData('/stef/movies');
     const actors = await getData('/isaac/actors');
+    const role = await getData('/agya/roles');
 
     loadJudeChart(movies, directors);
     loadIsaacChart(actors);
+    loadAgyaChart(role, actors);
 }
 
 document.addEventListener('DOMContentLoaded', async () => loadCharts());

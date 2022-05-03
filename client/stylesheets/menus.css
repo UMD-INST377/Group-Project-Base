@@ -30,19 +30,9 @@
     width: 50%;
     margin-top: 15px;
     font-weight: bold;
-
-    
-
-
-
-    /* 
     cursor: pointer;
     transition: 0.2s;
-    border: none;
-    outline: none;
-    transition: 0.2s;
-    margin: auto;
-    margin-top: 10px; */
+
 }
   
 .active, .accordion:hover { /*Changing color when hovering*/
@@ -51,8 +41,5 @@
   
 .dropdown { /*Styles the dropped panel*/
     display: none;
-    /* padding: 0 18px;
-    overflow: hidden;
-    text-align: center; */
-
+    color: #ccc;
 }

@@ -50,6 +50,7 @@ function dataHandler(arr) {
   return arr.slice(0, 10); //get first 10 rows from array
 }
 
+
 async function mainEvent() { //mainEvent refers to page loading
   const mealTable = document.querySelector('.meal_table'); //get meal_table div class
   const results = await fetch('/api/allmeals'); //call get function from api routes for meals
@@ -60,11 +61,34 @@ async function mainEvent() { //mainEvent refers to page loading
     currentArray = dataHandler(mealArrayFromJson.data);
   }
 
+
+  //This chunk of code is for adding the names to the buttons on the accordion
+  const api_results = await fetch('/api/dining'); //call get function from api routes for dining
+  const hallArray = await api_results.json(); //convert to array
+
+  //The Dinner
+  let hall0String = `${hallArray.data[0].hall_name}`; //Indexes the hall's name
+  const hall0Table = document.querySelector('.the_diner'); //Selects the element to insert name
+  hall0Table.innerHTML = '';
+  hall0Table.innerHTML+=hall0String; //inserts it
+
+  //South Campus Dinning Hall
+  let hall1String = `${hallArray.data[1].hall_name}`;
+  const hall1Table = document.querySelector('.sc_diner');
+  hall1Table.innerHTML = '';
+  hall1Table.innerHTML+=hall1String;
+
+  //North Campus Dinning Hall
+  let hall2String = `${hallArray.data[2].hall_name}`;
+  const hall2Table = document.querySelector('.nc_diner');
+  hall2Table.innerHTML = '';
+  hall2Table.innerHTML+=hall2String;
+
+
+
   
-  //This is for adding the accordion menu to the menu page
-  const accordion = document.getElementsByClassName("accordion");
-
-
+  //This block of code turns the buttons into working accordions
+  const accordion = document.getElementsByClassName("accordion"); //Grabs the button's class
   for (i = 0; i < accordion.length; i++) {
     accordion[i].addEventListener("click", function() { //For changing which button is active
       this.classList.toggle("active");

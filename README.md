@@ -184,6 +184,166 @@ GET /ryan/area
     }
 ]
   
+  ###Review
+  
+  ### Get a list of Reviews from people who have been to restaurants 
+   GET /api/review/
+   
+   cURL http://localhost:3000/api/review/
+   
+   #Response 
+   {
+    "data": [
+        {
+            "review_id": 20,
+            "review_desc": "nice place",
+            "avg_star_rating": "5",
+            "restaurant_id": 9
+        },
+        {
+            "review_id": 21,
+            "review_desc": "Nice Food",
+            "avg_star_rating": "4",
+            "restaurant_id": 1
+        },
+      
+            "review_id": 770,
+            "review_desc": "'I like their food if you're willing to eat heavy food once in a while. Their food tastes great. Don't go if you're vegetarian or like to eat salads. And their chicken sandwiches are so good, a little bit pricey but good. But they are not what you expect from a traditional sandwich.'",
+            "avg_star_rating": "4",
+            "restaurant_id": 1
+        },
+        {
+            "review_id": 771,
+            "review_desc": "We made reservations for a Friday night, glad we did- as the place was packed! It was busy for good reason, the food and drinks were delicious. We ordered a pisco sour flight and were then offered a tasting menu. The amount of food was surprisingly abundant given the cost. It was a fun experience and highly recommend.",
+            "avg_star_rating": "4.5",
+            "restaurant_id": 2
+        },
+        {
+            "review_id": 772,
+            "review_desc": "'If you want 100% authentic Mexican food, this is the place to go! The food is amazing, the service is great, and the environment feels like you were in Mexico. I ordered enchiladas verdes and my husband had tacos and we both were very pleased with the flavor and the presentation of the plates. We love this place so much that we'll be back next week with family. 100% recommended.'",
+            "avg_star_rating": "4.6",
+            "restaurant_id": 3
+        },
+        {
+            "review_id": 773,
+            "review_desc": "Oyamel never disappoints! I have eaten here several times now: the service is excellent and the food is very good. They have some very creative Mexican dishes; the tortillas are wonderful, as is the guacamole. There is a great selection of small dishes, so you get a chance to try a lot of different food. Our service has always been attentive and friendly. Make a reservation; it is a popular place!",
+            "avg_star_rating": "4",
+            "restaurant_id": 4
+        },
+        {
+            "review_id": 774,
+            "review_desc": "I loved this place. It was something that I will continue to come back to and the food was amazing! Great community space.",
+            "avg_star_rating": "4.6",
+            "restaurant_id": 5
+        },
+        {
+            "review_id": 775,
+            "review_desc": "Best Mexican place in DC so far and that alone can grant a 5-star rating. Worth noting that outdoor sitting has a nice view but indoors could use some music to create a more pleasant experience. Other than that, food and drinks are good and authentic!",
+            "avg_star_rating": "4.4",
+            "restaurant_id": 6
+        },
+        {
+            "review_id": 776,
+            "review_desc": "Stopped here for lunch after seeing Google reviews. It was ah-maz-ing! The staff were so nice and helpful to me and my kids and the food was just phenomenal. Try it‚ you wont be disappointed.",
+            "avg_star_rating": "4.6",
+            "restaurant_id": 7
+        },
+        {
+            "review_id": 777,
+            "review_desc": "Great service, cocktails, and overall menu. A pisco sour and the yucca fries are a must when stopping by here. Tuna donburi and the very creative ponderaciones de kiwicha will make you leave with a happy belly.",
+            "avg_star_rating": "4.4",
+            "restaurant_id": 8
+        },
+        {
+            "review_id": 778,
+            "review_desc": "First time here and couldnt have enjoyed my experience better! From the service, the music and the amazing food!! Totally recommend this place!",
+            "avg_star_rating": "4.6",
+            "restaurant_id": 9
+        },
+        {
+            "review_id": 779,
+            "review_desc": "I loved this place! Yesterday was my first time going back out since the pandemic started, not only that they have HAPPY HOUR UNTIL 9 the food tastes so good and they have a very friendly environment. The waitresses are so nice and funny. My waitress made me feel so comfortable, she suggested a few of their best dishes and drinks and she did not disappointed me. Looking forward to go back real soon!",
+            "avg_star_rating": "4.4",
+            "restaurant_id": 10
+        },
+        {
+            "review_id": 780,
+            "review_desc": "Nice food. Crazy and wild patrons/customers.",
+            "avg_star_rating": "3.8",
+            "restaurant_id": 11
+        },
+        {
+            "review_id": 781,
+            "review_desc": "Good food but need to be a little more cleaner and too many dirty people in the front of the place.",
+            "avg_star_rating": "4.2",
+            "restaurant_id": 12
+        },
+        {
+            "review_id": 782,
+            "review_desc": "'Solid brunch spot. They do offer a bottomless brunch special. The food was really good. Our waiter was nice, this place gets packed for brunch, they do have lots of seating though. It's well decorated and gives off very chill vibes.'",
+            "avg_star_rating": "4.2",
+            "restaurant_id": 13
+        },
+        {
+            "review_id": 783,
+            "review_desc": "'Love the place, the owners are there greeting you and making sure you're having a good time. Music is terrific. Salsa lessons and ladies night are the best.'",
+            "avg_star_rating": "4.3",
+            "restaurant_id": 14
+        },
+        {
+            "review_id": 784,
+            "review_desc": "Great Mexican food!  They have a large menu with many good options. Classics like tacos, enchiladas and fajitas are sure to please. I found that they are very fast bringing the food out too which is really nice.  Plenty of indoor and some outdoor seating as well. Excellent service rounds it all out!",
+            "avg_star_rating": "4.4",
+            "restaurant_id": 15
+        },
+        {
+            "review_id": 785,
+            "review_desc": "Excellent customer service,very good food. I visited this place many times. Fresh food.",
+            "avg_star_rating": "4",
+            "restaurant_id": 16
+        },
+        {
+            "review_id": 786,
+            "review_desc": "Great food and great service! Tilapia was amazing, cooked and seasoned to perfection, also large portions!",
+            "avg_star_rating": "4.4",
+            "restaurant_id": 17
+        },
+        {
+            "review_id": 787,
+            "review_desc": "It a quaint little hole in the wall with fantastic food quality service and very reasonable prices. From the outside you would ride right pass it but as the old saying says ‚dont ever judge a book by its cover. My family and I will definitely be returning soon.",
+            "avg_star_rating": "4.3",
+            "restaurant_id": 18
+        },
+        {
+            "review_id": 788,
+            "review_desc": "Nice Food",
+            "avg_star_rating": "4",
+            "restaurant_id": 1
+        },
+        {
+            "review_id": 789,
+            "review_desc": "Nice Views",
+            "avg_star_rating": "3",
+            "restaurant_id": 1
+        }
+    ]
+}
+## Post a new area entry
+
+#### Request
+  POST /api/reviews
+  
+### Response
+
+    {
+            "review_id": 23,
+            "review_desc": "Cool meals",
+            "avg_star_rating": "4",
+            "restaurant_id": 1
+        },
+        {
+  
+  
   
 
 

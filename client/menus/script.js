@@ -83,14 +83,15 @@ async function mainEvent() { //mainEvent refers to page loading
 
 
 
-
+  //This chunk is for adding each dining hall's list of meals to their dropdown
   const loc = await fetch('/api/mealsByHall');
   const locArray = await loc.json();
   locData = locArray.data
-  let hall0Meals = '<ul>'
-  let hall1Meals = '<ul>'
-  let hall2Meals = '<ul>'
-  for(i=0; i<locData.length; i++){
+  //Each hall has their own seperate list for the dropdowns
+  let hall0Meals = '<ul>' //The Diner
+  let hall1Meals = '<ul>' //South Campus
+  let hall2Meals = '<ul>' // North Campus
+  for(i=0; i<locData.length; i++){ //This creates a list of each hall's menu items
     if(locData[i]['hall_name'] == 'The Diner'){
       hall0Meals += `<li> ${locData[i].meal_name} </li>`
     }else if(locData[i]['hall_name'] == 'South Campus Dining Hall'){
@@ -102,6 +103,7 @@ async function mainEvent() { //mainEvent refers to page loading
   hall0Meals += '<ul>'
   hall0Meals += '<ul>'
   hall0Meals += '<ul>'
+  //The lists are then inserted into the dropdowns
   const target0 = document.querySelector('.the_diner_menu');
   target0.innerHTML = '';
   target0.innerHTML += hall0Meals;

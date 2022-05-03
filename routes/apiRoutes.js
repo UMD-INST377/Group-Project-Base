@@ -28,6 +28,7 @@ router.route('/allmeals')
     }
   });
 
+// Runs a query for just the dining hall name and their food items - hall_name, meal_name
 router.route('/mealsByHall')
   .get(async (req, res)=>{
   try{

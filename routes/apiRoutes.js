@@ -38,7 +38,7 @@ router.get('/hallHours/:hall_hours_id', async (req, res) => {
   }
 });
 
-router.post('/hallHours', async (req, res) => {
+/* router.post('/hallHours', async (req, res) => {
   const hours = await db.HallHours.findAll();
   try {
     const newHallHours = await db.HallHours.create({
@@ -87,7 +87,7 @@ router.put('/hallHours', async (req, res) => {
     console.error(err);
     res.error('Error');
   }
-});
+}); */
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

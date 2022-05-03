@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -10,6 +9,119 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+router.route("/disasters")
+      .get(async(req,res)=>{
+        try {
+          const dt = await db.disaster_type.findAll();
+          const reply = dt.length > 0 ? { data: dt } : { message: 'no results found' };
+          res.send (reply)
+        } catch (error) {
+          res.json({error:error})
+        }
+      })
+
+router.get('/disasters/:disaster_id', async (req, res) => {
+        try {
+          const disas = await db.disaster_type.findAll({
+            where: {
+              disaster_id: req.params.disaster_id
+            }
+          });
+  
+          res.json(disas);
+        } catch (err) {
+          console.error(err);
+          res.error('Server error');
+        }
+      });
+
+router.route("/stateloc")
+      .get(async(req,res)=>{
+        try {
+          const dt = await db.record_state.findAll();
+          const reply = dt.length > 0 ? { data: dt } : { message: 'no results found' };
+          res.send (reply)
+        } catch (error) {
+          res.json({error:error})
+        }
+      })
+
+router.get('/stateloc/:record_id', async (req, res) => {
+        try {
+          const dt = await db.record_state.findAll({
+            where: {
+              record_id: req.params.record_id
+            }
+          });
+  
+          res.json(dt);
+        } catch (err) {
+          console.error(err);
+          res.send(err);
+        }
+      });
+      
+      router.delete('/stateloc/:record_id', async (req, res) => {
+        try {
+          await db.record_state.destroy({
+            where: {
+              record_id: req.params.record_id
+            }
+          });
+          res.send('Successfully Deleted');
+        } catch (err) {
+          console.error(err);
+          res.error('Server error');
+        }
+      });
+
+      router.put('/stateloc/:record_id', async (req, res) => {
+        try {
+          await db.record_state.update(
+            {
+              record_id: req.body.record_id,
+              state: req.body.state
+            },
+            {
+              where: {
+                record_id: req.body.record_id
+              }
+            }
+          );
+          console.log(req.body)
+          res.send('Successfully Updated');
+        } catch (err) {
+          console.error(err);
+         
+          res.error('Server error');
+        }
+      });//Not taking the input but saying its update
+      
+
+      router.post('/stateloc/:record_id', async (req, res) => {
+        const halls = await db.record_state.findAll();
+        const currentId = (await halls.length) + 1;
+        try {
+          const newState = await db.record_state.create({
+            record_id: currentId,
+            state: req.body.state,
+            record_id: req.body.record_id
+            
+          });
+          res.json(newState);
+        } catch (err) {
+          console.error(err);
+          res.send('Already Exist');
+        }
+      });
+
+
+ 
+    
+     
+
+        
+      
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
@@ -269,5 +381,7 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
+{
+}
+export default router
 
-export default router;

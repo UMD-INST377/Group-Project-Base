@@ -21,6 +21,7 @@ router.get("/:cuisine_id", async (req, res) => {
   // eslint-disable-next-line no-template-curly-in-string
 
   try {
+    
     const cuisineQuery = `SELECT * FROM cuisine WHERE cuisine_id = ${req.params.cuisine_id}`;
     const cuisine = await db.sequelizeDB.query(cuisineQuery);
     res.json(cuisine);
@@ -31,6 +32,9 @@ router.get("/:cuisine_id", async (req, res) => {
 
 router.post("/cuisinepost", async (req, res) => {
   try {
+    if (req.params.cuisine_name == null || req.params.cuisine_name == '') {
+      throw 'wrong input data';
+    }
     const cuisinePost = `INSERT INTO cuisine (cuisine_id, cuisine_name)values(${req.params.cuisine_id}, '${req.body.cuisine_name}')`;
     const cuisine = await db.sequelizeDB.query(cuisinePost);
     res.send("added");
@@ -43,6 +47,9 @@ router.post("/cuisinepost", async (req, res) => {
 // for updating an entry
 router.put("/cuisineput", async (req, res) => {
   try {
+    if (req.body.cuisine_name == null || req.body.cuisine_name == '') {
+      throw 'wrong input data';
+    }
     const put = await db.sequelizeDB
       .query(`UPDATE cuisine SET cuisine_name = '${req.body.cuisine_name}' WHERE cuisine_id = ${req.body.cuisine_id}`);
     res.send("Updated");
@@ -53,7 +60,7 @@ router.put("/cuisineput", async (req, res) => {
 
 // for deleting an entry
 router.delete("/cuisinedelete/:cuisine_id", async (req, res) => {
-
+  
   const cuisineQuery = `DELETE FROM cuisine WHERE cuisine_id = ${req.params.cuisine_id}`;
   try {
     const cuisine = await db.sequelizeDB.query(cuisineQuery, {

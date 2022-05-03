@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>District of Columbia Hispanic Restaurants Blog Site </title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles2.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
 </head>
@@ -17,7 +18,6 @@
     <header>
         <div class="header-1">
             <a href="index.html" class="logo"> <i class="fas fa-utensils"></i> HispanicDC </a>
-
 
             <!--search bar-->
 
@@ -53,42 +53,53 @@
         </div>
     </header>
 
-
-    <section class="newsletter">
-
-        <h1>newsletter</h1>
-        <p>subscribe for latest updates</p>
-        <form action="">
-            <input type="email" placeholder="enter your email">
-            <input type="submit" value="subscribe">
+    <h1>Reviews</h1>
+    <section class="resto" id="resto">
+        <form class="main-form">
+            <div class="field">
+                <label>Review ID</label>
+                <div class="control">
+                    <input name="review_id" class="reviewid" type="number">
+                </div>
+                <label>Review Description</label>
+                <div class="control">
+                    <input name="review_desc" class="review_description" type="text">
+                </div>
+                <label>Average Star Rating</label>
+                <div class="control">
+                    <input name="avg_star_rating" class="avg_star_rating" type="text">
+                </div>
+                <label>Restaurant ID</label>
+                <div class="control">
+                    <input name="restaurant_id" class="restaurantid" type="text">
+                </div>
+                <div class="control"> <button class="btn">Submit</button></div>
+            </div>
         </form>
-
-    </section>
-
-
-
-    <section class="footer">
-
-        <div class="box-container">
-
-            <div class="box">
-                <h3 class="heading"> <span>Why Choose Us?</span> </h3>
-                <p>At HispanicDC, we seek to provide potential consumers accurate information on hispanic restaurants in
-                    the DC
-                    area
-                    so that they can cater to their needs and experience a good time. We take pride in battling against
-                    misinformation by
-                    providing accurate information that is verified by our team, not robots. </p>
-            </div>
-
-            <div class="box">
-                <h3 class="heading"> <span>Contact Us</span> </h3>
-                <p> <i class="fas fa-map-marker-alt"></i> College Park, Maryland 20742 </p>
-                <p> <i class="fas fa-envelope"></i> BIZOUTREACH@HISPANICDC.COM </p>
-                <p> <i class="fas fa-globe"></i> WWW.HISPANICDC.BLOG.COM</p>
-                <p>© INST377 2022 | Website Design and Construction done by Group 6 2022</p>
-            </div>
-
-
+        <button class="btn" id="loadtable">Load Table</button>
         </div>
     </section>
+
+    <div class="container">
+
+        <table class="table">
+            <tr>
+                <th>Review ID</th>
+                <th>Review Description</th>
+                <th>Average Star Rating</th>
+                <th>Restaurant ID</th>
+            </tr>
+        </table>
+    </div>
+    
+
+
+
+    </form>
+<script src="./reviewTable.js"></script>
+<script src="./loadreviews.js"></script>
+</body>
+</html>
+
+    <!-- added more-->
+    <!-- added more stuff-->

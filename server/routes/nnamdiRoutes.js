@@ -35,17 +35,17 @@ router.get('/review/:id', async(req, res) => {
 });
 //post statement
 router.post('/review', async (req, res) => {
-  console.info(chalk.bgRedBright.bold('Post request to /review'), req.body);
- 
-  const review = await db.Reviews.findAll();
+  // console.info(chalk.bgRedBright.bold('Post request to /review'), req.body);
  
   // const review = await db.Reviews.findAll();
  
-  const currentId = (await review.length) + 1;
+  // const review = await db.Reviews.findAll();
+ 
+  // const currentId = (await review.length) + 1;
  
   try {
     const newReview = await db.Reviews.create({
-      review_id: currentId,
+      review_id: req.body.review_id,
       review_desc: req.body.review_desc,
       avg_star_rating: req.body.avg_star_rating,
       restaurant_id: req.body.restaurant_id

@@ -20,7 +20,7 @@ router.get('/dining', async (req, res) => {
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -35,7 +35,7 @@ router.get('/dining/:hall_id', async (req, res) => {
     res.json(hall);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -53,7 +53,7 @@ router.post('/dining', async (req, res) => {
     res.json(newDining);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -67,7 +67,7 @@ router.delete('/dining/:hall_id', async (req, res) => {
     res.send('Successfully Deleted');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -87,7 +87,7 @@ router.put('/dining', async (req, res) => {
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -100,7 +100,7 @@ router.get('/meals', async (req, res) => {
     res.json(meals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -114,7 +114,7 @@ router.get('/meals/:meal_id', async (req, res) => {
     res.json(meals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -134,7 +134,7 @@ router.put('/meals', async (req, res) => {
     res.send('Meal Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -147,7 +147,7 @@ router.get('/macros', async (req, res) => {
     res.send(macros);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -161,7 +161,7 @@ router.get('/macros/:meal_id', async (req, res) => {
     res.json(meals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -189,7 +189,7 @@ router.put('/macros', async (req, res) => {
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -202,7 +202,7 @@ router.get('/restrictions', async (req, res) => {
     res.json(restrictions);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -216,9 +216,57 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
     res.json(restrictions);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
+
+/// /////////////////////////////////
+//////// Location Endpoints//////////
+/// /////////////////////////////////
+router.get('/location', async (req, res) => {
+  try {
+    const location = await db.Meals_Locations.findAll();
+    res.json(location);
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/locations/:location_id', async (req, res) => {
+  try {
+    const locations = await db.Meals_Locations.findAll({
+      where: {
+        location_id: req.params.location_id
+      }
+    });
+    res.json(locations);
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.put('/locations', async (req, res) => {
+  try {
+    await db.Meals_Locations.update(
+      {
+        location_name: req.body.location_name,
+        location_category: req.body.location_category
+      },
+      {
+        where: {
+          location_id: req.body.location_id
+        }
+      }
+    );
+    res.send('Location Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
 
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
@@ -232,7 +280,7 @@ router.get('/table/data', async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -255,7 +303,7 @@ router.get('/map/data', async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 router.get('/custom', async (req, res) => {
@@ -266,7 +314,7 @@ router.get('/custom', async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 

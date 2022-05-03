@@ -76,6 +76,29 @@ body {
   width: 100px;
 }
 
+a{
+  color: green;
+  font-family: 'Courier New';
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: lightgreen;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: green;
+  text-decoration: none;
+}
 
 .login {
    background-color: #FFFFFF;
@@ -144,6 +167,8 @@ body {
    padding: 10px;
    width: 100%;
    cursor: pointer;
+
+   font-family: 'Courier New';
  }
  
  .form-row button:hover {
@@ -194,11 +219,11 @@ body {
       }
 
       .menu-container2 {
-        background-color: #b3e943;  
+          
         padding: 15px;
         display: flex;
         justify-content: center;
-        top: 250px;
+        top: 150px;
         left: 0;
         width: 250px;
         margin: 30px;
@@ -212,5 +237,18 @@ body {
         align-items: center;
       
       }
+      .menu2 {
+        text-align: center;
+        color: #000000;
+        background-color: #b3e943;
+        border: none;
+        border-radius: 3px;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 12px;
+        cursor: pointer;
+        width: 250px;
+      }
+      
   
     }

@@ -5,7 +5,7 @@ tableMake = fetch('/api/artist').then((data) => {
   console.log(objectData);
   let tableData = '';
   objectData.map((values) => {
-    tableData+= `<tr>
+    tableData += `<tr>
     <td>${values.artist_id}</td>
     <td>${values.label_id}</td>
     <td>${values.stage_name}</td>

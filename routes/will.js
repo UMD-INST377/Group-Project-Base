@@ -8,6 +8,7 @@ import locationsQuery from '../controller/locations_query.js';
 const router = express.Router();
 
 // api/will/meals
+// selects all meals 
 router.get('/meals', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(mealsQuery, {
@@ -21,6 +22,7 @@ router.get('/meals', async (req, res) => {
 });
 
 // api/will/meals/:meal_id
+// selects a single meal based on id
 router.get('/meals/:meal_id', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(`SELECT * FROM meals WHERE meal_id = (:meal_id)`, {
@@ -34,6 +36,7 @@ router.get('/meals/:meal_id', async (req, res) => {
   }
 });
 
+// api/will/meals
 // adds a new meal for the next id
 router.post('/meals', async (req, res) => {
   const meals = await db.Meals.findAll();
@@ -51,6 +54,7 @@ router.post('/meals', async (req, res) => {
   }
 });
 
+// api/will/meals
 // updates meal based on body input
 router.put('/meals', async (req, res) => {
   try {
@@ -72,6 +76,7 @@ router.put('/meals', async (req, res) => {
   }
 });
 
+// api/will/meals
 // deletes meal based on body input 
 router.delete('/meals', async (req, res) => {
   try {

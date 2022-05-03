@@ -10,7 +10,7 @@ tableCreate = fetch('/api/genre').then((genreData) => {
       <td>${values.genre_name}</td>
     </tr>`;
   });
-  document.getElementById('table_body').innerHTML = tableValues;
+  document.getElementById('tableOutline').innerHTML = tableValues;
 }).catch((err) => {
   console.log(err);
 });

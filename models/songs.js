@@ -7,7 +7,6 @@ export default (sequelize, DataTypes) => {
         allowNull: false,
         primary_key: true,
         unique: true,
-        autoIncrement: true
       },
       name: {
         type: DataTypes.CHAR(80),

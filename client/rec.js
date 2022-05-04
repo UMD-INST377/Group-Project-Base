@@ -1,4 +1,5 @@
-tableMake = fetch('/api/artist').then((data) => {
+// CREATES TABLE FOR ARTISTS USING JSON DATA FROM DATABASE
+tableMakeArtist = fetch('/api/artist').then((data) => {
   console.log(data);
   return data.json();
 }).then((objectData) => {
@@ -15,40 +16,91 @@ tableMake = fetch('/api/artist').then((data) => {
     <td>${values.age}</td>
   </tr>`;
   });
-  document.getElementById('table_body').innerHTML = tableData;
+  document.getElementById('table_body_artist').innerHTML = tableData;
 }).catch((err) => {
   console.log(err);
 });
 
-async function searchArtist() {
-  const results = await fetch('/api/artist');
-  const arrayFromJson = await results.json();
-  console.log(arrayFromJson.data);
+// CREATES TABLE FOR ALBUM USING JSON DATA FROM DATABASE
+tableMakeAlbum = fetch('/api/album').then((data) => {
+  console.log(data);
+  return data.json();
+}).then((objectData) => {
+  console.log(objectData);
+  let tableData = '';
+  objectData.map((values) => {
+    tableData += `<tr>
+    <td>${values.album_id}</td>
+    <td>${values.album_name}</td>
+  </tr>`;
+  });
+  document.getElementById('table_body_album').innerHTML = tableData;
+}).catch((err) => {
+  console.log(err);
+});
 
-  let input = document.getElementById('searchbar').value
-  input = input.toLowerCase();
-  let x = document.querySelector('#list-holder');
-  x.innerHTML = ''
 
-  for (i = 0; i < arrayFromJson.length; i++) {
-    let obj = arrayFromJson[i];
-
-    if (obj.stage_name.toLowerCase().includes(input)) {
-      const elem = document.createElement('li')
-      elem.innerHTML = `${obj.stage_name} - ${obj.age}`
-      x.appendChild(elem)
-    }
-  }
-}
-
-document.addEventListener('DOMContentLoaded', async () => searchArtist());
-
-const x = document.querySelector('.table');
+// FUNCTION TO SHOW/HIDE FULL TABLE CONTENTS FOR ARTISTS
+const x = document.getElementById('artist');
 x.style.display = 'none';
-function showTable() {
+
+function showTableArtist() {
   if (x.style.display === 'none') {
     x.style.display = 'block';
   } else {
     x.style.display = 'none';
   }
 }
+
+// FUNCTION TO SHOW/HIDE FULL TABLE CONTENTS FOR ALBUM
+const y = document.getElementById('album');
+y.style.display = 'none';
+
+function showTableAlbum() {
+  if (y.style.display === 'none') {
+    y.style.display = 'block';
+  } else {
+    y.style.display = 'none';
+  }
+}
+
+// FUNCTION TO SEARCH IN OUR DATBASE
+async function searchAlbum() {
+  const results = await fetch('/api/album');
+  const arrayFromJson = await results.json();
+  const resultsTwo = await fetch('/api/artist');
+  const arrayFromJsonTwo = await resultsTwo.json();
+  console.log(arrayFromJson.data);
+
+  let input = document.getElementById('searchbar').value
+  input = input.toLowerCase();
+  let y = document.querySelector('#list-holder');
+  y.innerHTML = ''
+
+  if (input === "") {
+    y.style.display = "none";
+  } else {
+    y.style.display = "block"
+  }
+
+  for (i = 0; i < arrayFromJson.length; i++) {
+    let objAlbum = arrayFromJson[i];
+
+    if (objAlbum.album_name.toLowerCase().includes(input)) {
+      const elem = document.createElement('tr')
+      elem.innerHTML = `[ALBUM] ${objAlbum.album_name}`
+      y.appendChild(elem)
+    }
+  }
+  for (i = 0; i < arrayFromJsonTwo.length; i++) {
+    let objArtist = arrayFromJsonTwo[i];
+
+    if (objArtist.stage_name.toLowerCase().includes(input)) {
+      const elem = document.createElement('tr')
+      elem.innerHTML = `[ARTIST] ${objArtist.stage_name}  (${objArtist.first_name} ${objArtist.last_name})`
+      y.appendChild(elem)
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => searchAlbum());

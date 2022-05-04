@@ -21,15 +21,30 @@
         </aside>
       </div>
       <div class="column">
-        <div class = "title has-text-white is-1 has-text-centered">SEARCH ARTISTS</div>
+        <div class = "title has-text-white is-1 has-text-centered">SEARCH ALL</div>
         <hr style="width: 100%;text-align:left;margin-left:0">
         <div class = "content has-text-white">
-          <input class = "input" id="searchbar" onkeyup="searchArtist()" type="text" name="search" placeholder="Search for Artist">
+          <input class = "input" id="searchbar" onkeyup="searchAlbum()" type="text" name="search" placeholder="Search for Albums">
           <ul id="list-holder"></ul>
         </div>
         <hr style="width:100%;text-align:left;margin-left:0">
-        <button class = "button" onclick="showTable()">CLICK TO VIEW FULL DETAILS ON ARTISTS</button>
-        <table class="table">
+        <button class = "button" onclick="showTableAlbum()">CLICK TO VIEW FULL DETAILS ON ALBUM</button>
+        <table class="table" id = "album">
+          <thead>
+            <tr>
+              <th scope="col">Album ID</th>
+              <th scope="col">Album Name</th>
+            </tr>
+          </thead>
+          <tbody id = "table_body_album">
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <button class = "button" onclick="showTableArtist()">CLICK TO VIEW FULL DETAILS ON ARTISTS</button>
+        <table class="table" id = "artist">
           <thead>
             <tr>
               <th scope="col">Artist ID</th>
@@ -41,38 +56,13 @@
               <th scope="col">Age</th>
             </tr>
           </thead>
-          <tbody id = "table_body">
+          <tbody id = "table_body_artist">
             <tr>
               <td></td>
               <td></td>
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-        <hr style="width:100%;text-align:left;margin-left:0">
-      </div>
-      <div class="column">
-        <div class = "title has-text-white is-1 has-text-centered">SEARCH Genres</div>
-        <hr style="width: 100%;text-align:left;margin-left:0">
-        <div class = "content has-text-white">
-          <input class = "input" id="searchbar" onkeyup="searchGenre()" type="text" name="search" placeholder="Search for Genres">
-          <ul id="list-holder"></ul>
-        </div>
-        <hr style="width:100%;text-align:left;margin-left:0">
-        <button class = "button" onclick="showTable()">CLICK TO VIEW FULL DETAILS ON Genres</button>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Genre ID</th>
-              <th scope="col">Genre Name</th>
-            </tr>
-          </thead>
-          <tbody id = "table_body">
-            <tr>
               <td></td>
               <td></td>
             </tr>

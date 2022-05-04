@@ -5,6 +5,8 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: grey;
+    min-height:100vh;
 }
 
 .head {
@@ -17,6 +19,7 @@ body {
     padding: 10px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .container {
@@ -33,6 +36,7 @@ body {
     margin-left: 100px;
     color:rgb(42, 105, 105);
     font-size: 250%;
+    flex-wrap: wrap;
 }
 
 .link {
@@ -49,7 +53,7 @@ body {
 .box-1 {
     display: flex;
     align-items: center;
-    background-color: lightgrey;
+    background-color: rgb(17, 237, 237);
     height: 200px;
     max-height: 400px;
     width: 100%;
@@ -57,6 +61,7 @@ body {
     margin-bottom: 50px;
     overflow-wrap: normal;
     text-align: center;
+    color:rgb(42, 105, 105)
 }
 
 .section-2 {
@@ -68,7 +73,7 @@ body {
 .box-2 {
     display: flex;
     align-items: center;
-    background-color: lightgrey;
+    background-color: rgb(17, 237, 237);
     height: 200px;
     max-height: 400px;
     width: 100%;
@@ -76,4 +81,5 @@ body {
     margin-bottom: 50px;
     overflow-wrap: normal;
     text-align: center;
+    color:rgb(42, 105, 105)
 }

@@ -5,6 +5,8 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: grey;
+    height: 100vh;
 }
 
 .head {
@@ -38,6 +40,7 @@ body {
 .link {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 }
 
 #form {
@@ -65,8 +68,23 @@ body {
     background-color: rgb(26, 222, 222);
 }
 
+.form {
+    display: flex;
+    justify-content: center;
+    min-height: fit-content;
+    margin-top: 100px;
+}
+
 #edit_record {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+    width: 50%;
+    align-content: center;
+}
+
+.box {
+    display: flex;
+    justify-items: center;
 }

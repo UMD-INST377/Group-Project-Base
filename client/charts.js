@@ -128,8 +128,6 @@ function loadAgyaChart(roleData, actorData) {
     });
     const colors = getColors(Object.keys(data).length);
 
-    // console.table(data);
-    // console.log(colors);
     const chartData = {
         labels: Object.keys(data),
         datasets: [{
@@ -158,6 +156,7 @@ function loadAgyaChart(roleData, actorData) {
 }
 
 function loadStefChart(movieData) {
+    // console.log('loadStefChart()');
     const chartElement = document.querySelector('#stefChart');
 
     const title = 'Movies by Release Year';
@@ -202,7 +201,7 @@ function loadStefChart(movieData) {
 }
 
 async function loadCharts() {
-    console.log('loadCharts()');
+    // console.log('loadCharts()');
     const directors = await getData('/owen/directors');
     const movies = await getData('/stef/movies');
     const actors = await getData('/isaac/actors');

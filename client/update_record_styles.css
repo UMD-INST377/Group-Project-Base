@@ -5,6 +5,8 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: gray;
+    height: 100vh;
 }
 
 .head {
@@ -12,11 +14,12 @@ body {
     align-items: flex-start;
     height: auto;
     width: 100%;
-    background-color: rgb(17, 237, 237);
+    background-color:red;
     border-radius: 4px;
     padding: 10px;
     display: flex;
     justify-content: left;
+    background-color: rgb(17, 237, 237);
 }
 
 .container {
@@ -31,8 +34,8 @@ body {
     align-items: center;
     justify-content: center;
     margin-left: 100px;
-    color:rgb(42, 105, 105);
-    font-size: 250%;
+    color:rgb(42, 105, 105);  
+    font-size: 250%;  
 }
 
 .link {
@@ -42,10 +45,17 @@ body {
 
 #form {
     width: 120%;
-    height: 300px;
+    height: 360px;
     display: flex;
     flex-wrap: column;
     flex-direction: column;
+}
+
+.form {
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .field {
@@ -60,13 +70,7 @@ body {
     background-color: lightgrey;
 }
 
-#button1 {
+#button2 {
     color: rgb(42, 105, 105);
-    background-color: rgb(26, 222, 222);
-}
-
-#edit_record {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    background-color: rgb(17, 237, 237);
 }

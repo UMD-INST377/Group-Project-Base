@@ -5,6 +5,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: grey;
 }
 
 .head {
@@ -41,9 +42,9 @@ body {
 
 #form {
     width: 120%;
-    height: 300px;
+    height: 130px;
     display: flex;
-    flex-wrap: column;
+    /* flex-wrap: column; */
     flex-direction: column;
 }
 
@@ -54,12 +55,12 @@ body {
     font-size: 30px;
 }
 
-#label, #label1, #label2, #label3, #label4 {
+#label1 {
     width: 50%;
     background-color: lightgrey;
 }
 
-#button1 {
+#button3 {
     color: rgb(42, 105, 105);
     background-color: rgb(26, 222, 222);
 }

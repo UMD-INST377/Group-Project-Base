@@ -6,10 +6,10 @@ SET plants = :plants
 WHERE fruit_id = :fruit_id;`;
 
 const fruitsPost = `INSERT INTO fruits (fruit_id, plant_id, type, color, season, size)
-VALUES(DEFAULT, :plants);`
+VALUES(DEFAULT, :plants);`;
 
 const fruitsDelete = `DELETE FROM fruits
-WHERE fruit_id = :fruit_id;`
+WHERE fruit_id = :fruit_id;`;
 
 export default {
   fruitsGet, fruitsPut, fruitsPost, fruitsDelete

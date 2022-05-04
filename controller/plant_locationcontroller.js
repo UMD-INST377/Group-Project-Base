@@ -6,11 +6,11 @@ SET plants = :plants
 WHERE plant_id = :plant_id;`;
 
 const plantLocationPost = `INSERT INTO plantLocation (plant_id, plant_id, type, color, season, size)
-VALUES(DEFAULT, :plants);`
+VALUES(DEFAULT, :plants);`;
 
 const plantLocationDelete = `DELETE FROM plantLocation
-WHERE plant_id = :plant_id;`
+WHERE plant_id = :plant_id;`;
 
 export default {
   plantLocationGet, plantLocationPut, plantLocationPost, plantLocationDelete
-}
+};

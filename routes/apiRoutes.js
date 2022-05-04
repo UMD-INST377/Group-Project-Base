@@ -381,7 +381,7 @@ router.route('/location')
 router.route('/plant_location')
   .get(async (req, res) => {
     try {
-      const result = await db.sequelizeDB.query(plant_locationcontroller.plant_locationGet,
+      const result = await db.sequelizeDB.query(plantLocationcontroller.plant_locationGet,
         {
           type: sequelize.QueryTypes.SELECT
         });
@@ -394,7 +394,7 @@ router.route('/plant_location')
 
   .put(async(req, res) => {
     try {
-      const result = await db.sequelizeDB.query(plant_locationcontroller.plant_locationPut,
+      const result = await db.sequelizeDB.query(plantLocationcontroller.plant_locationPut,
         {
           replacements: {
             plant_id: req.body.plant_id,
@@ -411,7 +411,7 @@ router.route('/plant_location')
 
   .post(async (req, res) => {
     try {
-      const result = await db.sequelizeDB.query(plant_locationcontroller.plant_locationPost, {
+      const result = await db.sequelizeDB.query(plantLocationcontroller.plant_locationPost, {
         replacements: {art: req.body.art},
         type: sequelize.QueryTypes.INSERT
       });
@@ -424,7 +424,7 @@ router.route('/plant_location')
 
   .delete(async(req, res) => {
     try {
-      const result = await db.sequelizeDB.query(plant_locationcontroller.plant_locationDelete, {
+      const result = await db.sequelizeDB.query(plantLocationcontroller.plant_locationDelete, {
         replacements: {
           plant_id: req.body.plant_id
         },

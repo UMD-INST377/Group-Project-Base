@@ -141,6 +141,7 @@ header .header-2.header-active{
   justify-content: center;
   min-height: 100vh;
   background-image: url("pexels-los-muertos-crew-8448331.jpg");
+  background-attachment: fixed; /*fixed issue with background image moving */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -182,8 +183,15 @@ header .header-2.header-active{
   }
 }
 
+
 .about{
+  padding:2rem 1rem;
   min-height: 100vh;
+  background: linear-gradient(rgba(255,255,255,.5),#fff), url("pexels-fauxels-3184306.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
 }
 
 .about .row{

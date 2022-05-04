@@ -30,7 +30,7 @@ async function createTable() {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (currentData.length === 0) {
-      const arrayFromJson = await fetch("/ryan/area");
+      const arrayFromJson = await fetch("/api/area");
       let data = await arrayFromJson.json();
       data = data.data;
       console.log(data);

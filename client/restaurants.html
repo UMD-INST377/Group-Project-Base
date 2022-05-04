@@ -8,24 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>District of Columbia Hispanic Restaurants Blog Site </title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles3.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
 </head>
 
-<body>
+
+<style>
+    .dropdown .scroll-bar {
+        overflow: auto;
+    }
+</style>
+
+<body a link="black">
 
     <header>
-        <div class="header-1">
+        <div class=" header-1">
             <a href="index.html" class="logo"> <i class="fas fa-utensils"></i> HispanicDC </a>
 
 
-            <!--search bar-->
 
-            <!--  <form action="" id="search-form">
-  <input type="search" placeholder="search here..." name="" id="search-box">
-  <label for="search-box" class="fas fa-search"></label>
-  <i class="fas fa-times" id="close"></i>
-  </form> -->
 
             <h3 class="email"> <i class="fas fa-envelope"></i> email now : BIZOUTREACH@HISPANICDC.COM</h3>
 
@@ -38,9 +40,9 @@
                     <li><a class="active" href="index.html">Home</a></li>
                     <li><a href="restTable.html">Locations</a></li>
                     <li><a href="restaurants.html">Restaurants</a></li>
+                    <li><a href="Reviews.html">Reviews</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="Reviews.html">Reviews</a></li>
                 </ul>
             </nav>
 
@@ -53,4 +55,63 @@
         </div>
     </header>
 
-    <p>Restaurants</p>
+    <section class="restaurants" id="restaurants">
+
+        <div class="dropdown">
+            <input type="text" class="textBox" placeholder="Restaurants" readonly>
+            <div class="scroll-bar">
+                <div class="option">
+                    <div onclick="show('Anejo Bar and Grill')"><i class="fas fa-utensils"></i><a
+                            href="https://www.yelp.com/biz/anejo-bar-and-grill-washington-2"> Anejo Bar and Grill</a>
+                    </div>
+                    <div onclick="show('Centeno\'s Restaurant')"><i class="fas fa-utensils"></i><a
+                            href="http://www.ordercentenosrestaurant.com/"> Centeno's Restaurant </a></div>
+                    <div onclick="show('China Chilcano')"><i class="fas fa-utensils"></i><a
+                            href="https://www.chinachilcano.com/menus/"> China Chilcano</a></div>
+                    <div onclick="show('DC Corazon Fonda & Tequileria')"><i class="fas fa-utensils"></i><a
+                            href="http://www.dccorazon.com"> DC Corazon Fonda & Tequileria</a></div>
+                    <div onclick="show('El Amigo')"><i class="fas fa-utensils"></i><a
+                            href="http://places.singleplatform.com/el-amigo-deli/menu?ref=google"> El Amigo</a></div>
+                    <div onclick="show('El Dorado Bread')"><i class="fas fa-utensils"></i><a
+                            href="https://www.yelp.com/biz/el-dorado-bread-restaurant-washington"> El Dorado Bread</a>
+                    </div>
+                    <div onclick="show('El Pulgarcito Restaurant and Bar')"><i class="fas fa-utensils"></i><a
+                            href="https://www.yelp.com/biz/el-pulgarcito-restaurant-and-bar-washington"> El
+                            Pulgarcito Restaurant and Bar</a></div>
+                    <div onclick="show('El Sol Restaurante & Tequileria')"><i class="fas fa-utensils"></i><a
+                            href="http://www.elsol-dc.com/food-menu/"> El Sol
+                            Restaurante & Tequileria</a></div>
+                    <div onclick="show('Guapo\'s Restaurant')"><i class="fas fa-utensils"></i><a
+                            href="https://www.guaposrestaurant.com/"> Guapo's Restaurant</a></div>
+                    <div onclick="show('Habana Village')"><i class="fas fa-utensils"></i><a
+                            href="http://www.habanavillage.com/main-menu/"> Habana Village</a></div>
+                    <div onclick="show('Huacatay Peruvian Chicken')"><i class="fas fa-utensils"></i><a
+                            href="http://places.singleplatform.com/huacatay-peruvian-chicken/menu?ref=google"> Huacatay
+                            Peruvian
+                            Chicken </a></div>
+                    <div onclick="show('La Cosecha')"><i class="fas fa-utensils"></i><a href="https://lacosechadc.com/">
+                            La
+                            Cosecha</a></div>
+                    <div onclick="show('Laredo DC Restaurant')"><i class="fas fa-utensils"></i><a
+                            href="https://www.laredodcrestaurant.com/">Laredo DC Restaurant</a>
+                    </div>
+                    <div onclick="show('Las Placitas')"><i class="fas fa-utensils"></i><a
+                            href="https://www.lasplacitasrestaurant.com/">Las Placitas <a></div>
+                    <div onclick="show('Mi Cuba Café')"><i class="fas fa-utensils"></i><a
+                            href="http://places.singleplatform.com/mi-cuba-cafe-0/menu?ref=google"> Mi Cuba Café </a>
+                    </div>
+                    <div onclick="show('Oyamel Cocina Mexicana')"><i class="fas fa-utensils"></i><a
+                            href="https://www.oyamel.com/menus/"> Oyamel Cocina Mexicana</a> </div>
+                    <div onclick="show('Pisco y Nazca Ceviche Gastrobar DC')"><i class="fas fa-utensils"></i><a
+                            href="https://piscoynazca.com/washington-dc/menus/"> Pisco y
+                            Nazca Ceviche Gastrobar DC</a></div>
+                    <div onclick="show('Toro Toro')"><i class="fas fa-utensils"></i><a
+                            href="https://www.eattorotoro.com/lunch"> Toro Toro </a></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="./restaurantList.js"></script>
+</body>
+
+</html>

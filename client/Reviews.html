@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>District of Columbia Hispanic Restaurants Blog Site </title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="styles2.css" />
+    <link rel="stylesheet" href="styles3.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
 </head>
@@ -38,9 +38,9 @@
                     <li><a class="active" href="index.html">Home</a></li>
                     <li><a href="restTable.html">Locations</a></li>
                     <li><a href="restaurants.html">Restaurants</a></li>
+                    <li><a href="Reviews.html">Reviews</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="Reviews.html">Reviews</a></li>
                 </ul>
             </nav>
 
@@ -53,31 +53,34 @@
         </div>
     </header>
 
-    <h1>Reviews</h1>
-    <section class="resto" id="resto">
-        <form class="main-form">
-            <div class="field">
-                <label>Review ID</label>
-                <div class="control">
-                    <input name="review_id" class="reviewid" type="number">
+
+    <div class="wrapper">
+        <h2>Reviews</h2>
+        <section class="resto" id="resto">
+            <form class="main-form">
+                <div class="field">
+                    <label>Review ID</label>
+                    <div class="control">
+                        <input name="review_id" class="reviewid" type="number" placeholder="Enter review ID">
+                    </div>
+                    <label>Review Description</label>
+                    <div class="control">
+                        <input name="review_desc" class="review_description" type="text"
+                            placeholder="Enter description">
+                    </div>
+                    <label>Average Star Rating</label>
+                    <div class="control">
+                        <input name="avg_star_rating" class="avg_star_rating" type="text" placeholder="Enter rating">
+                    </div>
+                    <label>Restaurant ID</label>
+                    <div class="control">
+                        <input name="restaurant_id" class="restaurantid" type="text" placeholder="Enter restaurant ID">
+                    </div>
+                    <div class="control"> <button class="btn">Submit</button></div>
                 </div>
-                <label>Review Description</label>
-                <div class="control">
-                    <input name="review_desc" class="review_description" type="text">
-                </div>
-                <label>Average Star Rating</label>
-                <div class="control">
-                    <input name="avg_star_rating" class="avg_star_rating" type="text">
-                </div>
-                <label>Restaurant ID</label>
-                <div class="control">
-                    <input name="restaurant_id" class="restaurantid" type="text">
-                </div>
-                <div class="control"> <button class="btn">Submit</button></div>
-            </div>
-        </form>
-        <button class="btn" id="loadtable">Load Table</button>
-        </div>
+            </form>
+            <button class="btn" id="loadtable">Load Table</button>
+    </div>
     </section>
 
     <div class="container">
@@ -91,15 +94,16 @@
             </tr>
         </table>
     </div>
-    
+
 
 
 
     </form>
-<script src="./reviewTable.js"></script>
-<script src="./loadreviews.js"></script>
+    <script src="./reviewTable.js"></script>
+    <script src="./loadreviews.js"></script>
 </body>
+
 </html>
 
-    <!-- added more-->
-    <!-- added more stuff-->
+<!-- added more-->
+<!-- added more stuff-->

@@ -1,5 +1,6 @@
 body{
     background-image: url("pexels-los-muertos-crew-8230030.jpg");
+    background-attachment: fixed; /*fixed issue with background image moving */
     background-position: center;
     min-height:100vh;
 }
@@ -67,6 +68,10 @@ td{
     border:.2rem solid red;
     outline:.2rem solid black;
     font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
 }
 
 /* 

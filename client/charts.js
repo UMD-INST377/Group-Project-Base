@@ -212,6 +212,7 @@ async function loadCharts() {
   loadJudeChart(movies, directors);
   loadIsaacChart(actors);
   loadAgyaChart(role, actors);
+  loadStefChart(movies);
 }
 
 document.addEventListener('DOMContentLoaded', async () => loadCharts());

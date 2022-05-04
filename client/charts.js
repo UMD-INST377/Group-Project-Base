@@ -1,12 +1,13 @@
 // Get a standard color palette of size 'num'
 function getColors(num) {
+    // console.log('getColors()');
     const colorStops = ['red', 'purple', 'blue', 'green', 'yellow', 'orange'];
     return chroma.scale(colorStops).colors(num);
 }
 
 // Create and populate 'Movies per Director' chart
 function loadJudeChart(movieData, directorData) {
-    console.log('loadJudeChart()');
+    // console.log('loadJudeChart()');
     const chartElement = document.querySelector('#judeChart');
 
     // Process and combine data collected from API
@@ -54,7 +55,7 @@ function loadJudeChart(movieData, directorData) {
 }
 
 function loadIsaacChart(actorData) {
-    console.log('loadIsaacChart()');
+    // console.log('loadIsaacChart()');
     const chartElement = document.querySelector('#isaacChart');
 
     const title = 'Age of Actors';
@@ -111,7 +112,7 @@ function loadIsaacChart(actorData) {
 }
 
 function loadAgyaChart(roleData, actorData) {
-    console.log('loadAgyaChart()');
+    // console.log('loadAgyaChart()');
     const chartElement = document.querySelector('#agyaChart');
 
     const title = 'Roles per Actor';
@@ -127,8 +128,8 @@ function loadAgyaChart(roleData, actorData) {
     });
     const colors = getColors(Object.keys(data).length);
 
-    console.table(data);
-    console.log(colors);
+    // console.table(data);
+    // console.log(colors);
     const chartData = {
         labels: Object.keys(data),
         datasets: [{
@@ -157,7 +158,7 @@ function loadAgyaChart(roleData, actorData) {
 }
 
 async function loadCharts() {
-    console.log('loadCharts()');
+    // console.log('loadCharts()');
     const directors = await getData('/owen/directors');
     const movies = await getData('/stef/movies');
     const actors = await getData('/isaac/actors');

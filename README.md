@@ -343,6 +343,8 @@ GET /ryan/area
             "restaurant_id": 1
         },
         {
+        
+ ### To filter through the reviews to find a specific review or rating just input your search in the field and press load table to see your filter results
   
   
   

@@ -25,11 +25,12 @@ body {
 .wrapper {
    display: flex;
    justify-content: center;
+   
  }
 
 .container {
    max-width: 960px;
-   margin-top: 25px;
+   margin-top: px;
  }
  
 .header {
@@ -37,7 +38,7 @@ body {
    padding: 50px;
    color: #0c5400;
    text-align: center;
-   border-bottom: 10px;
+   border-bottom: 0px;
    justify-content: center;
  }
 
@@ -50,10 +51,17 @@ body {
    justify-content: left;
 }
 
-.logo{
+.logo0{
   height: 200px;
   justify-content: center;
 }
+
+.logo{
+  padding:10px;
+  height: 180px;
+  justify-content: center;
+}
+
 
  .menu-container {
   background-color: #b3e943;  
@@ -123,7 +131,7 @@ a:active {
   /*background-color: #ffffff;*/
   border-radius: 3px;
   padding: 50px;
-  margin: 30px;
+  margin: px;
   color: #ffffff;
   width: 650px; 
   text-align: center;
@@ -213,20 +221,30 @@ a:active {
           height: 100%;
           position: absolute;
       }
+      
+      .header3 {
+          
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          
+          align-content: space-between;
+          justify-content: space-between;
+      }
    
       .body{
           border-left: 250px ;
       }
 
       .menu-container2 {
-          
-        padding: 15px;
+        
+        padding: 30px;
         display: flex;
         justify-content: center;
-        top: 150px;
+        top: 250px;
         left: 0;
-        width: 250px;
-        margin: 30px;
+        width: 320px;
+        margin: ;
         height: 50%;
         position: absolute;
         justify-content: center;
@@ -235,6 +253,7 @@ a:active {
         flex-direction: row wrap;
         justify-content: space-evenly;
         align-items: center;
+        font-size: 17px;
       
       }
       .menu2 {
@@ -243,11 +262,11 @@ a:active {
         background-color: #b3e943;
         border: none;
         border-radius: 3px;
-        margin-left: 15px;
+        margin-left: ;
         margin-right: 15px;
-        padding: 12px;
+        padding: 20px;
         cursor: pointer;
-        width: 250px;
+        width: 320px;
       }
       
   

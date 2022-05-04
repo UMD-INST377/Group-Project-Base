@@ -6,16 +6,30 @@ function dataHandler(dataArray) {
   return listItems;
 }
 
-// from Chandra's
-// create breakfast list
-// function createBreakfast(collection) {
-//   console.log('fired HTML creator');
-//   console.log(collection);
-//   const targetList = document.querySelector('.breakfast');
-//   targetList.innerHTML = '';
-//   collection.forEach((item) => {
-//     const {meal_name} = item;
-//     const injectThisItem = `<li>${meal_name}</li>`;
-//     targetList.innerHTML += injectThisItem;
-//   });
-// }
+
+async function mainEvent() {
+
+  const results = await fetch('/api/meals');
+  const mealJson = await results.json();
+
+  let mealCat = '<ul>';
+  let northMeals = '<ul>';
+  for (i = 0; i < mealJson.length; i++){
+     northMeals += `<li> ${mealJson[i].meal_name} </li>`;
+     mealCat += `<li> ${mealJson[i].meal_category} </li>`;
+  } 
+  northMeals += '</ul>';
+  mealCat += '</ul>';
+
+
+  const nameList = document.querySelector(".meal_names");
+  nameList.innerHTML = '';
+  nameList.innerHTML += northMeals;
+
+  const catList = document.querySelector(".category");
+  catList.innerHTML = '';
+  catList.innerHTML += mealCat;
+}
+
+
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

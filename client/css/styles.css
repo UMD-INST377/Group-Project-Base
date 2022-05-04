@@ -293,5 +293,29 @@ div .account_label {
 }
 
 .account_buttons {
-    padding-top: 2%;
+    display: flex;
+    padding: 5%;
+    flex-direction: row;
+}
+
+.account_buttons button {
+    border: none;
+    border-radius: 25px;
+    padding: 10px 40px;
+    cursor: pointer;
+    background-color: #ffcc6a;
+}
+
+.form_block {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    margin: 0px 800px 0px 800px; 
+    padding: 100px;/*added padding*/
+    border-radius: 10px;
+    border-style: solid; 
+    border-color: black;
+    margin-bottom: 100px;/*Added this*/
 }

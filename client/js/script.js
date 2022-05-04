@@ -1,5 +1,17 @@
 // Contribute Page 
 const contributeForm = document.querySelector('#contribute_form');
+const topSongList = document.querySelector('.song_carousel');
+
+// TODO
+// Dictionary with {song_id : cover art URL} ??
+const coverArt = 
+{1:
+    'httpshttps://upload.wikimedia.org/wikipedia/en/e/e7/Moneybagg_Yo_-_A_Gangsta%27s_Pain.png://m.media-amazon.com/images/I/819Yr1zpyEL._SS500_.jpg',
+2: 
+    'https://upload.wikimedia.org/wikipedia/en/8/8d/Holy_-_Justin_Bieber.png'
+}
+
+
 
 function formToObject(htmlFormElement) {
     const formItem = new FormData(htmlFormElement).entries();
@@ -38,6 +50,19 @@ contributeForm.addEventListener('submit', async (submitEvent) => {
     
 
 });
+
+// Cover Art //
+function addSongs() {
+    n = coverArt.length;
+    var artList = "";
+
+    for(i=0; i < n - 1; i++) {
+        var cover = coverArt[i];
+        console.log(cover);
+    }
+}
+
+addSongs();
 
 // Search Bar
 // I say we just make the search bar change what is on the page just like in the labs

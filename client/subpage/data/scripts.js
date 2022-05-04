@@ -8,8 +8,13 @@ async function mainEvent() {
     console.log(event.target.value);
   });
 
+  newName.addEventListener('input', async (event) => {
+    console.log(event.target.value);
+  });
+
   form.addEventListener('submit', async (submitEvent) => {
     submitEvent.preventDefault();
+    console.log("Form Submitted");
   });
 }
 

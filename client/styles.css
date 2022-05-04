@@ -202,3 +202,116 @@ Last part of the page
     width: 1000px;
     margin-left: 35px;
 }
+
+.locTitle {
+    position: absolute;
+    width: 861px;
+    height: 121px;
+    left: 50px;
+    top: 103px;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 121px;
+    /* identical to box height */
+    text-align: center;
+    color: #000000;
+}
+
+.map_item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    position: absolute;
+    height: 634px;
+    width: 1290px;
+    left: 100px;
+    top: 220px;
+    margin: 20px;
+    border: 4px solid #000000;
+    box-sizing: border-box;
+}
+
+.dinerBox {
+    display: flex;
+    position: absolute;
+    width: 1290px;
+    height: 541px;
+    left: 120px;
+    top: 870px;
+    border: 4px solid #000000;
+    box-sizing: border-box;
+    justify-content: space-evenly;
+}
+
+.box-item {
+    padding-left: 20px;
+    padding-top: 15px;
+    border: 1px solid #000000;
+    height: 535px;
+    flex: 1;
+}
+
+.boxTitle {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 36px;
+    line-height: 45px;
+    text-align: left;
+    color: #E81B1B;
+}
+
+.locations {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: bold;
+    text-align: left;
+    color: #000000;
+}
+
+.address {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.hours {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: left;
+    color: #000000;
+}
+
+.day {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #000000;
+}
+
+.time {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.day-box {
+    display: inline-block;
+    width: 80px;
+}
+
+.time-box {
+    display: inline-block;
+}

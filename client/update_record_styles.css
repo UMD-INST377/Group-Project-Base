@@ -5,7 +5,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: grey;
+    background-color: gray;
     height: 100vh;
 }
 
@@ -14,11 +14,12 @@ body {
     align-items: flex-start;
     height: auto;
     width: 100%;
-    background-color: rgb(17, 237, 237);
+    background-color:red;
     border-radius: 4px;
     padding: 10px;
     display: flex;
     justify-content: left;
+    background-color: rgb(17, 237, 237);
 }
 
 .container {
@@ -33,8 +34,8 @@ body {
     align-items: center;
     justify-content: center;
     margin-left: 100px;
-    color:rgb(42, 105, 105);
-    font-size: 250%;
+    color:rgb(42, 105, 105);  
+    font-size: 250%;  
 }
 
 .link {
@@ -44,7 +45,7 @@ body {
 
 #form {
     width: 120%;
-    height: 300px;
+    height: 360px;
     display: flex;
     flex-wrap: column;
     flex-direction: column;
@@ -69,7 +70,7 @@ body {
     background-color: lightgrey;
 }
 
-#button1 {
+#button2 {
     color: rgb(42, 105, 105);
     background-color: rgb(17, 237, 237);
 }

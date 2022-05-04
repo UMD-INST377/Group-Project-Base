@@ -12,43 +12,36 @@ async function loadData (url) {
   filterArray.push(industry.value);
   filterArray.push(size.value);
   filterArray.push(city.value);
-  console.log(filterArray, 'array');
+  // console.log(filterArray, 'array');
   const filterName = ['company_name', 'type', 'size', 'city'];
   data = await arrayFromJson.data[0];
-  console.log(arrayFromJson);
+  // console.log(arrayFromJson);
 
   filterName.forEach((filter, index) => {
     const filterData = data.filter((item) => 
       item[filter].toLowerCase().includes(filterArray[index].toLowerCase()));
     data = filterData;
   });
-  /* if (company.value) {
-    const filterData = data.filter((item) =>
-    item.company_name.toLowerCase().includes(company.value.toLowerCase()))
-    data = filterData;
-    console.log(company.value);
-  } */
 
   data.forEach((element) => {
     const tableFinder = document.querySelector('.table');
     const row = document.createElement('tr');
     const rowCompanyId = document.createElement('td');
-    const rowCompanyName = document.createElement('td');
-    const rowSize = document.createElement('td');
-    const rowType = document.createElement('td');
-    const rowCity = document.createElement('td');
-
     rowCompanyId.innerHTML = element.company_id;
-    rowCompanyName.innerHTML = element.company_name;
-    rowSize.innerHTML = element.size;
-    rowType.innerHTML = element.type;
-    rowCity.innerHTML = element.city;
-
     row.appendChild(rowCompanyId);
+    const rowCompanyName = document.createElement('td');
+    rowCompanyName.innerHTML = element.company_name;
     row.appendChild(rowCompanyName);
+    const rowSize = document.createElement('td');
+    rowSize.innerHTML = element.size;
     row.appendChild(rowSize);
+    const rowType = document.createElement('td');
+    rowType.innerHTML = element.type;
     row.appendChild(rowType);
+    const rowCity = document.createElement('td');
+    rowCity.innerHTML = element.city;
     row.appendChild(rowCity);
+
     tableFinder.appendChild(row);
   });
 }

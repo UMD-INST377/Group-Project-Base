@@ -3,7 +3,7 @@
   const data = [];
   const form = document.querySelector(".main-form");
   const review_id = document.querySelector(".reviewid");
-  const neighborhood = document.querySelector(".review_description");
+  const review_description = document.querySelector(".review_description");
   const avg_star_rating = document.querySelector(".avg_star_rating");
   const restaurant_id = document.querySelector(".restaurantid");
   const table = document.querySelector(".table");
@@ -31,8 +31,9 @@
      },
      body: JSON.stringify(formlisten)
    })
-location.reload()
+  location.reload()
   })
+
 
 
 

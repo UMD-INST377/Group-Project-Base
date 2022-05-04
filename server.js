@@ -2,8 +2,8 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
-import countryRoutes from './routes/countryRoutes.js';
-import artistsRoutes from './routes/artistsRoutes.js';
+// import countryRoutes from './routes/countryRoutes.js';
+// import artistsRoutes from './routes/artistsRoutes.js';
 
 const app = express();
 
@@ -15,8 +15,8 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-app.use('/country', countryRoutes);
-app.use('/artists', artistsRoutes);
+// app.use('/country', countryRoutes);
+// app.use('/artists', artistsRoutes);
 
 async function bootServer() {
   try {

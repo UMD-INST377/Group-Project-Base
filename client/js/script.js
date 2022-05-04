@@ -11,8 +11,9 @@ function restArrayMake(dataArray) {
   return listItems;
 }
 function createHtmlList(collection) {
-  const ArtistRadio = document.getElementById('Artist');
-  const AlbumRadio = document.getElementById('Album');
+  const ArtistRadio = document.getElementById('artist');
+  const AlbumRadio = document.getElementById('album');
+  const Song = document.getElementById('song');
   const targetList = document.querySelector('.result_list');
   targetList.innerHTML = '';
   collection.forEach((item) => {
@@ -25,17 +26,17 @@ function createHtmlList(collection) {
     let injectThisArtist;
     let injectThisSong;
     let injectThisAlbum;
-    if (document.getElementById('song').checked) {
+    if (Song.checked) {
       injectThisArtist = `<td>${displayArtist}</td>`;
       injectThisSong = `<th>${displaySong}</th>`;
       injectThisAlbum = ` <td>${displayAlbum}</td>`;
     }
-    if (document.getElementById('album').checked) {
+    if (AlbumRadio.checked) {
       injectThisArtist = `<td>${displayArtist}</td>`;
       injectThisSong = `<td>${displaySong}</td>`;
       injectThisAlbum = ` <th>${displayAlbum}</th>`;
     }
-    if (document.getElementById('artist').checked) {
+    if (ArtistRadio.checked) {
       injectThisArtist = `<th>${displayArtist}</th>`;
       injectThisSong = `<td>${displaySong}</td>`;
       injectThisAlbum = ` <td>${displayAlbum}</td>`;
@@ -45,15 +46,12 @@ function createHtmlList(collection) {
 }
 async function mainEvent() {
   // the async keyword means we can make API requests
-  const form = document.querySelector('#results');
   // not needed since result is limited to 50
-  // const submitButton = document.querySelector('#submit_button');
   const searchbar = document.querySelector('#init_search');
   const results = await fetch('/api/main'); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
   if (arrayFromJson.data.length > 0) {
     console.log('start');
-    let currentArray = [];
     searchbar.addEventListener('input', async (event) => {
       console.log(event.target.value);
       if (event.length < 1) {
@@ -82,19 +80,10 @@ async function mainEvent() {
         });
         console.log(dataArray);
         console.log(event.target.value);
-
         createHtmlList(restArrayMake(dataArray));
       } else {
         document.querySelector('.result_list').innerHTML = '';
       }
-    });
-
-    form.addEventListener('submit', async (submitEvent) => {
-      // async has to be declared all the way to get an await
-      submitEvent.preventDefault(); // This prevents your page from refreshing!
-      console.log('form submission'); // this is substituting for a 'breakpoint'
-      currentArray = arrayFromJson.data;
-      createHtmlList(restArrayMake(currentArray));
     });
   }
 }

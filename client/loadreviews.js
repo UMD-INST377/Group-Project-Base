@@ -9,7 +9,7 @@ async function createTable() {
   const avg_star_rating = document.querySelector(".avg_star_rating");
   const restaurant_id = document.querySelector(".restaurantid");
   const table = document.querySelector(".table");
-  const loadtablebutton = document.querySelector( "#loadtable");
+  const loadtablebutton = document.querySelector("#loadtable");
 
   async function loadtable(array) {
     table.innerHTML = `<tbody><tr>
@@ -44,12 +44,12 @@ async function createTable() {
       const arrayFromJson = await fetch("/api/review");
       let data = await arrayFromJson.json();
       data = data.data;
-      currentData = data
+      currentData = data;
       console.log(data);
-       currentData = filtercheck(data);
+      currentData = filtercheck(data);
       await loadtable(currentData);
     } else {
-       currentData = filtercheck(data);
+      currentData = filtercheck(data);
       await loadtable(currentData);
     }
   });
@@ -65,14 +65,16 @@ async function createTable() {
     }
     if (avg_star_rating.value !== "") {
       const avg_star_ratingfilter = filterData.filter((item) =>
-        item.avg_star_rating.toLowerCase().includes(avg_star_rating.value.toLowerCase())
+        item.avg_star_rating
+          .toLowerCase()
+          .includes(avg_star_rating.value.toLowerCase())
       );
       filterData = avg_star_ratingfilter;
     }
     if (restaurant_id.value !== "") {
-      const restaurant_idfilter = filterData.filter((item) =>
-      item.restaurant_id === parseInt(restaurant_id.value))
-      ;
+      const restaurant_idfilter = filterData.filter(
+        (item) => item.restaurant_id === parseInt(restaurant_id.value)
+      );
       filterData = restaurant_idfilter;
     }
     if (review_id.value !== "") {
@@ -83,25 +85,24 @@ async function createTable() {
     }
     return filterData;
   }
- review_description.addEventListener("change", async (event) => { 
-  if (currentData.length === 0) {
-    const arrayFromJson = await fetch("/api/review");
-    let data = await arrayFromJson.json();
-    data = data.data;
-    currentData = data
-    console.log(data);
-     currentData = filtercheck(data);
-    await loadtable(currentData);
-  } else {
-     currentData = filtercheck(data);
-    await loadtable(currentData);
-  }
- })}
+  review_description.addEventListener("change", async (event) => {
+    if (currentData.length === 0) {
+      const arrayFromJson = await fetch("/api/review");
+      let data = await arrayFromJson.json();
+      data = data.data;
+      currentData = data;
+      console.log(data);
+      currentData = filtercheck(data);
+      await loadtable(currentData);
+    } else {
+      currentData = filtercheck(data);
+      await loadtable(currentData);
+    }
+  });
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
   await createTable();
 });
 
-
 // updates may need to add more to this
-

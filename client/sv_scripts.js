@@ -29,21 +29,19 @@ function restoArrayMake(dataArray) {
   return listItems;
 }
 // eslint-disable-next-line camelcase
-async function updateRestaurantRating(restuarant_id, rating_id) {
+async function updateRestaurantRating(restaurant_id, rating_id) {
   // find the restaurant's current name and description
   // so we can keep those the same
   // and only update the rating_id for this restaurant
   // eslint-disable-next-line camelcase
-  const request_url = `/api/restaurants/${restaurant_id}`;
-  console.log('request url =');
-  console.log(request_url);
+ 
   // eslint-disable-next-line no-use-before-define
   
   // eslint-disable-next-line camelcase
   const results = await fetch(`/api/restaurants/${restaurant_id}`);
   console.log(results);
   const arrayFromJson = await results.json();
-  const restaurant = arrayFromJson[0];
+  const restaurant = arrayFromJson.data[0];
   const name = restaurant.restaurant_name;
   const {description} = restaurant;
 
@@ -51,18 +49,17 @@ async function updateRestaurantRating(restuarant_id, rating_id) {
   const new_restaurant = {
     restaurant_name: name, 
     description: description, 
-    rating_id: rating_id
-  }
-  fetch('/api/restaurants', {
+    rating_id: rating_id,
+    restaurant_id: restaurant_id
+  };
+  await fetch('/api/restaurants', {
     method: 'PUT',
     headers: { 
-      'Content-Type':'application/json'
+      'Content-Type': 'application/json'
     },
-    body:JSON.stringify(new_restaurant)
+    body: JSON.stringify(new_restaurant)
   });
-
-
-
+  // console.log(b)
 }
 function updateRestaurants(collection) {
   // console.log('fired HTML creator');

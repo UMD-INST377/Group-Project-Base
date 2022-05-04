@@ -275,3 +275,23 @@ margin-top: 20px;
 .home_btn a {
     text-decoration: none;
 }
+
+.account_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10%;
+}
+
+div .account_text {
+    display: flex;
+    justify-content: center;
+}
+
+div .account_label {
+    justify-content: right;
+}
+
+.account_buttons {
+    padding-top: 2%;
+}

@@ -43,6 +43,7 @@ async function createTable() {
     if (currentData.length === 0) {
       const arrayFromJson = await fetch("/api/review");
       let data = await arrayFromJson.json();
+      console.log(data);
       data = data.data;
       currentData = data;
       console.log(data);
@@ -55,19 +56,21 @@ async function createTable() {
   });
   function filtercheck(array) {
     let filterData = array;
+    console.log(review_description.value);
     if (review_description.value !== "") {
       const review_descriptionfilter = filterData.filter((item) =>
-        item.review_description
-          .toLowerCase()
+        item.review_desc
+           .toLowerCase()
           .includes(review_description.value.toLowerCase())
       );
       filterData = review_descriptionfilter;
+      console.log(filterData);
     }
     if (avg_star_rating.value !== "") {
       const avg_star_ratingfilter = filterData.filter((item) =>
         item.avg_star_rating
-          .toLowerCase()
-          .includes(avg_star_rating.value.toLowerCase())
+      
+          .includes(avg_star_rating.value)
       );
       filterData = avg_star_ratingfilter;
     }

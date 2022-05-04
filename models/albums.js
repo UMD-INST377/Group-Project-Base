@@ -3,12 +3,13 @@ export default (database, DataTypes) => {
     'albums',
     {
       album_id: {
-        type: DataTypes.CHAR(22),
+        type: DataTypes.INTEGER,
         allowNull: false,
+        autoIncriment: true,
         primaryKey: true
       },
       release_date: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING(400),
         allowNull: false
       },
       label: {

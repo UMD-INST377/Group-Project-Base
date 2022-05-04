@@ -6,6 +6,7 @@ export default (sequelize, DataTypes) => {
         autoIncrement: true,
         type: DataTypes.INTEGER,
         allowNull: false,
+        autoIncriment: true,
         primaryKey: true
       },
       genre: {

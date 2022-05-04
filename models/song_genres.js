@@ -3,14 +3,13 @@ export default (sequelize, DataTypes) => {
     'song_genres',
     {
       song_id: {
-        type: DataTypes.CHAR(22),
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       genre_id: {
         type: DataTypes.INTEGER,
         allowNull: false
       }
-      
     },
     { freezeTableName: true, timestamps: false }
   );

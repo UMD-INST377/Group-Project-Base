@@ -33,81 +33,109 @@
                         <strong>Update Data</strong> 
                     </a>
                 </li>
-                <li>
-                    <a href="./updatePlaylistPrivate.html" class="is-size-6-touch is-size-5-desktop">
-                        Personal Playlist
-                    </a>
-                </li>
             </ul>
         </nav>
     </div>
-    <h1 class="title is-3 is-flex is-justify-content-center">
-        PlayList
-    </h1>
+    
     <div class="columns is-centered">
+        
         <div class="column is-one-third">
             <form class="box" method="GET">
                 <div class="field">
-                  <label for="resto_name">Add to PlayList</label>
-                  <div class="control">
-                    <input id="resto_name" class="input" type="text">
-                  </div>
-                </div>
-              </form>  
-          <div class="columns">
-            <div class="column">
-                <form class="box" method="GET">
-                    <div class="field">
-                      <label for="resto_name">Update</label>
-                      <div class="control">
-                        <input id="update" class="input" type="text">
-                      </div>
+                    <strong>Create New Playlist<br/><br/></strong> 
+                    <label for="playlist_owner">Username</label>
+                    <div class="control">
+                        <input id="playlist_name" class="input" type="text">
                     </div>
-                </form>
-                <div class="columns">
-                    <div class="column">
-                        <form class="box" method="GET">
-                            <div class="field">
-                                <label for="resto_name">Update PlayList</label>
-                                <div class="control">
-                                  <input id="resto_name" class="input" type="text">
-                                </div>
-                              </div> 
-                        </form>
+                    <label for="playlist_name">Playlist Name</label>
+                    <div class="control">
+                        <input id="playlist_owner" class="input" type="text">
                     </div>
+                    <label for="description">Description</label>
+                    <div class="control">
+                        <input id="description" class="input" type="text">
+                    </div>
+                    <label class="radio">
+                        Public
+                        <input type="radio" name="filter" id="public" checked>
+                        Private
+                        <input type="radio" name="filter" id="private">
+                    </label><br>
+                    <label for="coll">
+                        Collaborative
+                        <input type="radio" name="filter" id="coll">
+                    </label><br><br>
+                    <button class="button is-primary is-centered">Submit</button>
                 </div>
-                <button class="button is-primary is-centered">Submit</button>       
-            </div>
-          </div>
+            </form>  
         </div>
-        <div class="column is-one-third is-centered">
-            <div class="card">
-                <div class="card-content">
-                  <div class="content">
-                    <h2>PlayList</h2>
-                    <ul class="resto-list"></ul>
+        <div class="column is-one-third">
+            <form class="box" method="GET">
+                <div class="field">
+                    <strong>Add to Existing Playlist<br/><br/></strong> 
+                    <label for="playlist_owner">Username</label>
+                    <div class="control">
+                        <input id="playlist_name" class="input" type="text">
                     </div>
-                  </div>
+                    <label for="playlist_name">Playlist Name</label>
+                    <div class="control">
+                        <input id="playlist_owner" class="input" type="text">
+                    </div>
+                    <label for="song_name">Song Name</label>
+                    <div class="control">
+                        <input id="song_name" class="input" type="text">
+                    </div>
+                    <label for="artist_name">Artist Name</label>
+                    <div class="control">
+                        <input id="artist_name" class="input" type="text">
+                    </div>
+                    <label for="album_name">Album Name</label>
+                    <div class="control">
+                        <input id="album_name" class="input" type="text">
+                    </div>
+                    <label for="explic">
+                        Explicit?
+                        <input type="radio" name="filter" id="explic">
+                    </label><br><br>
+                    <button class="button is-primary is-centered">Submit</button>
+                
                 </div>
-            </div>
-    <div id="middle">
-        <div class="column is-one-quarter">
-            <div class="box">
-                <div class="added">
-                    <label for="add">Add Album<br></label>
-                    <input id="add" name="category" type="text"/>
-                </div>
-            </div>
+            </form>
         </div>
+        <div class="column is-one-third">
+            <form class="box" method="GET">
+                <div class="field">
+                    <strong>Delete from Existing Playlist<br/><br/></strong> 
+                    <label for="playlist_owner">Username</label>
+                    <div class="control">
+                        <input id="playlist_name" class="input" type="text">
+                    </div>
+                    <label for="playlist_name">Playlist Name</label>
+                    <div class="control">
+                        <input id="playlist_owner" class="input" type="text">
+                    </div>
+                    <label for="song_name">Song Name</label>
+                    <div class="control">
+                        <input id="song_name" class="input" type="text">
+                    </div>
+                    <label for="artist_name">Artist Name</label>
+                    <div class="control">
+                        <input id="artist_name" class="input" type="text">
+                    </div>
+                    <label for="album_name">Album Name</label>
+                    <div class="control">
+                        <input id="album_name" class="input" type="text">
+                    </div>
+                    <br><br>
+                    <button class="button is-primary is-centered">Submit</button>
+                
+                </div>
+            </form>
+        </div>
+        
     </div>
-    <div id="middle">
-        <div class="column is-one-quarter">
-            <div class="box">
-                <label for="delete">Delete Album<br></label>
-                <input id="delete" name="category" type="text"/>
-            </div>
-        </div>
-    </div>
+    
+    
     <script src="./js/UpdatePage.js"></script>
 </body>
 

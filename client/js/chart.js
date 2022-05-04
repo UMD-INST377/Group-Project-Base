@@ -12,33 +12,17 @@ function poolColors(a) {
   return pool;
 }
 
-async function getData() {
-  const response = await fetch(
-    '/api/graphgenres'
-  );
-  console.log(response);
-  const data = await response.json();
-  console.log(data);
-  length = data.data.length;
-  console.log(length);
-
-  NumOfDataShown = 10;
-  GenreName = [];
-  values = [];
-  for (i = 0; i < NumOfDataShown; i += 1) {
-    GenreName.push(data.data[i].genre);
-    values.push(data.data[i]['song amount']);
-  }
-
+function runGraph(counts, days) {
+  const NumOfDataShown = 10;
   const chart = new Chart(document.getElementById('myChart'), {
     type: 'bar',
     data: {
-      labels: GenreName,
+      labels: counts,
       datasets: [
         {
           label: 'Song Counts',
           backgroundColor: poolColors(NumOfDataShown),
-          data: values
+          data: days
         }
       ]
     },
@@ -47,7 +31,59 @@ async function getData() {
       title: {
         display: true,
         text: 'Top 10 Genres'
+      },
+      ticks: {
+        autoSkip: false
       }
+    }
+  });
+  return chart; // return chart object
+}
+
+function newGraph(label, values) {
+  chart.data.labels = label;
+  chart.data.datasets.data = values;
+  console.log(label, values);
+  chart.update();
+}
+async function getData() {
+  const genreResponse = await fetch('/api/graphgenres');
+  const artistResponse = await fetch('/api/artistGraph');
+  const albumresponse = 'a';
+  const dropdown = document.getElementById('graphDropdown');
+  const NumOfDataShown = 10;
+  let GenreName = [];
+  let values = [];
+
+  const genresData = await genreResponse.json();
+  const artistsData = await artistResponse.json();
+
+  for (i = 0; i < NumOfDataShown; i += 1) {
+    GenreName.push(genresData.data[i].genre);
+    values.push(genresData.data[i]['song amount']);
+  }
+  chart = runGraph(GenreName, values);
+  GenreName = [];
+  values = [];
+
+  dropdown.addEventListener('change', async (event) => {
+    if (event.target.value === 'artists') {
+      GenreName = [];
+      values = [];
+      for (i = 0; i < NumOfDataShown; i += 1) {
+        GenreName.push(artistsData.data[i].name);
+        values.push(artistsData.data[i].album_count);
+      }
+      chart = newGraph(GenreName, values);
+    }
+    if (event.target.value === 'albums') {
+      GenreName = [];
+      values = [];
+      for (i = 0; i < NumOfDataShown; i += 1) {
+        GenreName.push(genresData.data[i].genre);
+        values.push(genresData.data[i]['song amount']);
+      }
+      newGraph(GenreName, values);
     }
   });
 }

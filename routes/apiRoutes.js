@@ -7,6 +7,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 import graphquery from './graphquery.js';
 import rawqueries from './rawqueries.js';
+import artistGraphQuery from './artistGraphQuery.js';
 
 const router = express.Router();
 
@@ -868,7 +869,7 @@ router.get('/main', async (req, res) => {
   }
 });
 
-/// Num of Genres Graph///
+/// Top Genres Graph///
 router.get('/graphgenres', async (req, res) => {
   try {
     const graphgen = graphquery;
@@ -879,6 +880,20 @@ router.get('/graphgenres', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.error('Server error');
+  }
+});
+
+/// Artist with Most Albums Graph///
+router.get('/artistGraph', async (req, res) => {
+  try {
+    const artgraph = artistGraphQuery;
+    const result = await db.sequelizeDB.query(artgraph, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json({data: result});
+  } catch (err) {
+    console.error(err);
+    res.error('Sever error');
   }
 });
 

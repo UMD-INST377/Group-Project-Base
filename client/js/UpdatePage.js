@@ -1,6 +1,6 @@
-async function albumAdd() {
+async function songAdd() {
   console.log('hello from add');
-  const request = `api/albums/${formbox.value}`;
+  const request = `api/songs/${formbox.value}`;
   const resp = await fetch(request, { method: 'ADD' });
   console.log(resp);
   if (resp.status === 200) {
@@ -10,9 +10,9 @@ async function albumAdd() {
   }
 }
 
-async function albumDelete() {
+async function songDelete() {
   console.log('hello from delete');
-  const request = `api/albums/${formbox.value}`;
+  const request = `api/songs/${formbox.value}`;
   const resp = await fetch(request, { method: 'DELETE' });
   console.log(resp);
   if (resp.status === 200) {
@@ -24,8 +24,8 @@ async function albumDelete() {
 async function mainEvent() {
   const add = document.querySelector('#add');
   const del = document.querySelector('#delete');
-  add.addEventListener('input', albumAdd);
-  del.addEventListener('input', albumDelete);
+  add.addEventListener('input', songAdd);
+  del.addEventListener('input', songDelete);
 }
 // this actually runs first! It's calling the function above
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

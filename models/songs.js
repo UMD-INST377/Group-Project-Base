@@ -3,58 +3,58 @@ export default (sequelize, DataTypes) => {
     'songs',
     {
       song_id: {
-        type: DataTypes.CHAR(22),
+        type: DataTypes.INTEGER,
         allowNull: false,
         primary_key: true,
-        unique: true
+        unique: true,
+        autoIncrement: true
       },
       name: {
-        type: DataTypes.CHAR(22),
+        type: DataTypes.CHAR(80),
         allowNull: false
       },
       duration: {
         type: DataTypes.DECIMAL(7, 3),
-        allowNull: false
+        
       },
       is_explicit: {
         type: DataTypes.TINYINT(1),
         allowNull: false
       },
       danceability: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
+        type: DataTypes.DOUBLE
+        
       },
       energy: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
+        type: DataTypes.DOUBLE
+        
       },
       loudness: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
+        type: DataTypes.DOUBLE
+        
       },
       speechiness: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
+        type: DataTypes.DOUBLE
+        
       },
       acousticness: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
+        type: DataTypes.DOUBLE
+        
       },
       instrumentalness: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
+        type: DataTypes.DOUBLE
+        
       },
       liveness: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
+        type: DataTypes.DOUBLE
+        
       },
       valence: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
+        type: DataTypes.DOUBLE
+        
       },
       tempo: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
+        type: DataTypes.DOUBLE
       }
     },
     { freezeTableName: true, timestamps: false }

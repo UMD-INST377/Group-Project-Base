@@ -10,6 +10,117 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+router.get('/client', (req, res) => {
+  res.send('Welcome to Client');
+});
+
+/// /////////////////////////////////
+/// ////Meals Locations Endpoints////////
+/// /////////////////////////////////
+
+router.get('/mealLocation', async (req, res) => {
+  try {
+    const mealLocation = await db.MealsLocations.findAll();
+    res.json(mealLocation);
+  } catch (err) {
+    console.error(err);
+    res.send('There was an error');
+  }
+});
+
+router.get('/mealLocation/:hall_id', async (req, res) => {
+  try {
+    const sche3 = await db.MealsLocations.findAll({
+      where: {
+        hall_id: req.params.hall_id
+      }
+    });
+
+    res.json(sche3);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/mealLocation/:meal_id', async (req, res) => {
+  try {
+    const sche2 = await db.MealsLocations.findAll({
+      where: {
+        meal_id: req.params.meal_id
+      }
+    });
+
+    res.json(sche2);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////Hall Schedule Endpoints////////
+/// /////////////////////////////////
+
+router.get('/schedule', async (req, res) => {
+  try {
+    const schedule = await db.HallSchedule.findAll();
+    const re = schedule.length > 0 ? { data: schedule } : { message: 'no results found' };
+    res.json(re);
+  } catch (err) {
+    console.error(err);
+    res.send('There was an error');
+  }
+});
+
+router.get('/schedule/:schedule_id', async (req, res) => {
+  try {
+    const sche = await db.HallSchedule.findAll({
+      where: {
+        schedule_id: req.params.schedule_id
+      }
+    });
+
+    res.json(sche);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/schedule', async (req, res) => {
+  const hours = await db.HallSchedule.findAll();
+  const output = await hours.length;
+  try {
+    const newSchedule = await db.HallSchedule.create({
+      schedule_id: output + 1,
+      hours: req.body.hours
+    });
+    res.json(newSchedule);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.put('/schedule', async (req, res) => {
+  try {
+    await db.HallSchedule.update(
+      {
+        hours: req.body.hours
+      },
+      {
+        where: {
+          schedule_id: req.body.schedule_id
+        }
+      }
+    );
+    res.send('Updated');
+  } catch {
+    res.send('There was an error');
+  }
+});
+
 /// /////////////////////////////////
 /// ////Hall Hours Endpoints////////
 /// /////////////////////////////////
@@ -99,7 +210,7 @@ router.get('/dining', async (req, res) => {
     res.json(reply);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -179,7 +290,7 @@ router.get('/meals', async (req, res) => {
     res.json(meals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -193,7 +304,7 @@ router.get('/meals/:meal_id', async (req, res) => {
     res.json(meals);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -213,7 +324,7 @@ router.put('/meals', async (req, res) => {
     res.send('Meal Successfully Updated');
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -296,6 +407,85 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////Hall Hours Endpoints////////
+/// /////////////////////////////////
+router.get('/hallHours', async (req, res) => {
+  try {
+    const hallHours = await db.HallHours.findAll();
+    res.json(hallHours);
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.get('/hallHours/:hall_hours_id', async (req, res) => {
+  try {
+    const hours = await db.HallHours.findAll({
+      where: {
+        hall_hours_id: req.params.hall_hours_id
+      }
+    });
+
+    res.json(hours);
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.post('/hallHours', async (req, res) => {
+  const hours = await db.HallHours.findAll();
+  try {
+    const newHallHours = await db.HallHours.create({
+      hall_hours_id: (await hours.length) + 1,
+      day: req.body.day,
+      schedule_id: req.body.schedule_id,
+      hall_id: req.body.hall_id
+    });
+    res.json(newHallHours);
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.delete('/hallHours/:hall_hours_id', async (req, res) => {
+  try {
+    await db.HallHours.destroy({
+      where: {
+        hall_hours_id: req.params.hall_hours_id
+      }
+    });
+    res.send('Deleted');
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.put('/hallHours', async (req, res) => {
+  try {
+    await db.HallHours.update(
+      {
+        day: req.body.day,
+        schedule_id: req.body.schedule_id,
+        hall_id: req.body.hall_id
+      },
+      {
+        where: {
+          hall_hours_id: req.body.hall_hours_id
+        }
+      }
+    );
+    res.send('Updated');
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
   }
 });
 

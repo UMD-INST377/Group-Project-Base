@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 export default (sequelize, DataTypes) => {
   const HallHours = sequelize.define(
+=======
+export default (database, DataTypes) => {
+  const HallHours = database.define(
+>>>>>>> main
     'hall_hours',
     {
       hall_hours_id: {

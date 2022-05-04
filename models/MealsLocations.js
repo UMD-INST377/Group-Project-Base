@@ -1,10 +1,20 @@
 export default (sequelize, DataTypes) => {
+<<<<<<< HEAD
   const Meals = sequelize.define(
     'Meals_Locations',
     {
       hall_id: {
         type: DataTypes.INTEGER,
         allowNull: false
+=======
+  const MealsLocations = sequelize.define(
+    'meals_locations',
+    {
+      hall_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true
+>>>>>>> main
       },
       meal_id: {
         type: DataTypes.INTEGER,
@@ -13,5 +23,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  return MealsLocations;
 };

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => searchGenre());
 
 const x = document.querySelector('.table');
 x.style.display = 'none';
-function showTable() {
+function createTable() {
   if (x.style.display === 'none') {
     x.style.display = 'block';
   } else {

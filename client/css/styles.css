@@ -132,5 +132,8 @@ img.discog_logo {
 .columns {
   display: flex;
   flex-wrap: wrap;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2%;
 }
 

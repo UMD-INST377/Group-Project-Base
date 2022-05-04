@@ -33,11 +33,6 @@
                         <strong>Update Data</strong> 
                     </a>
                 </li>
-                <li>
-                    <a href="./updatePlaylistPrivate.html" class="is-size-6-touch is-size-5-desktop">
-                        Personal Playlist
-                    </a>
-                </li>
             </ul>
         </nav>
     </div>
@@ -71,9 +66,7 @@
                         <input type="radio" name="filter" id="coll">
                     </label><br><br>
                     <button class="button is-primary is-centered">Submit</button>
-                  </div>
                 </div>
-                
             </form>  
         </div>
         <div class="column is-one-third">
@@ -88,39 +81,60 @@
                     <div class="control">
                         <input id="playlist_owner" class="input" type="text">
                     </div>
-                    <label for="description">Description</label>
+                    <label for="song_name">Song Name</label>
                     <div class="control">
-                        <input id="description" class="input" type="text">
+                        <input id="song_name" class="input" type="text">
                     </div>
-                    <label class="radio">
-                        Public
-                        <input type="radio" name="filter" id="public" checked>
-                        Private
-                        <input type="radio" name="filter" id="private">
-                    </label><br>
-                    <label for="coll">
-                        Collaborative
-                        <input type="radio" name="filter" id="coll">
+                    <label for="artist_name">Artist Name</label>
+                    <div class="control">
+                        <input id="artist_name" class="input" type="text">
+                    </div>
+                    <label for="album_name">Album Name</label>
+                    <div class="control">
+                        <input id="album_name" class="input" type="text">
+                    </div>
+                    <label for="explic">
+                        Explicit?
+                        <input type="radio" name="filter" id="explic">
                     </label><br><br>
                     <button class="button is-primary is-centered">Submit</button>
-                  </div>
+                
+                </div>
+            </form>
+        </div>
+        <div class="column is-one-third">
+            <form class="box" method="GET">
+                <div class="field">
+                    <strong>Delete from Existing Playlist<br/><br/></strong> 
+                    <label for="playlist_owner">Username</label>
+                    <div class="control">
+                        <input id="playlist_name" class="input" type="text">
+                    </div>
+                    <label for="playlist_name">Playlist Name</label>
+                    <div class="control">
+                        <input id="playlist_owner" class="input" type="text">
+                    </div>
+                    <label for="song_name">Song Name</label>
+                    <div class="control">
+                        <input id="song_name" class="input" type="text">
+                    </div>
+                    <label for="artist_name">Artist Name</label>
+                    <div class="control">
+                        <input id="artist_name" class="input" type="text">
+                    </div>
+                    <label for="album_name">Album Name</label>
+                    <div class="control">
+                        <input id="album_name" class="input" type="text">
+                    </div>
+                    <br><br>
+                    <button class="button is-primary is-centered">Submit</button>
+                
                 </div>
             </form>
         </div>
         
     </div>
-    <div class="column is-one-quarter">
-        <form class="box" method="GET">
-            <div class="added">
-                <label for="add">Add Song<br></label>
-                <input id="add" name="category" type="text"/>
-            </div>
-        </form>
-        <form class="box">
-            <label for="delete">Delete Song<br></label>
-            <input id="delete" name="category" type="text"/>
-        </form>
-    </div>
+    
     
     <script src="./js/UpdatePage.js"></script>
 </body>

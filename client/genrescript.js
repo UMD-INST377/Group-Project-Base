@@ -4,7 +4,7 @@ async function loadGenreTable(url) {
   const reponse = await fetch(url);
   const arrayFromJson = await reponse.json(); // This changes it into data we can use - an object
   data = await arrayFromJson.data;
-  console.log(arrayFromJson);
+  // console.log(arrayFromJson);
   const tableFinder = document.querySelector('.table');
   // creating the rows
 

@@ -17,11 +17,22 @@ nav a {
 
 .chart-wrapper {
   justify-content: space-around;
-  padding: 1em;
+  /* padding: 1em; */
 }
 
 .chart-container {
   position: relative;
-  width: 30%;
   margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .chart-container {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chart-container {
+    width: 50%;
+  }
 }

@@ -21,6 +21,10 @@ nav {
 nav a {
     color: rgb(255, 255, 255);
 }
+.squareImg {
+  width:200px;
+  height:200px
+}
 
   .wrapper {
     display:flex;

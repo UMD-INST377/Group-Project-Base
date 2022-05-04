@@ -16,6 +16,17 @@ router.route("/").get(async (req, res) => {
   }
 });
 
+router.route("/testing").get(async (req, res) => {
+  try {
+    const testQuery = "SELECT * FROM address";
+    const test = await db.sequelizeDB.query(testQuery);
+
+    res.json(test);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 // get restaurant with id
 router.get("/:cuisine_id", async (req, res) => {
   // eslint-disable-next-line no-template-curly-in-string

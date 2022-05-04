@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
-  const song = sequelize.define(
-    "song",
+  const songs = sequelize.define(
+    "songs",
     {
       song_id: {
         type: DataTypes.INTEGER,
@@ -8,17 +8,22 @@ export default (sequelize, DataTypes) => {
         unique: true,
         primaryKey: true,
       },
-      title: {
+      song_name: {
         type: DataTypes.STRING,
       },
 
-      artist_id: {
-        type: DataTypes.INTEGER,
+      duration: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
+      
+      genre_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      }
     },
     { freezeTableName: true, timestamps: false }
   );
   
-  return song;
+  return songs;
 };

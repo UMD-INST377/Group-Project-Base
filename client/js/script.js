@@ -40,9 +40,11 @@ contributeForm.addEventListener('submit', async (submitEvent) => {
 });
 
 // Search Bar
-const searchBar = document.querySelector("#index_search_bar")
-searchBar.onkeyup = inTuneSearch()
+// I say we just make the search bar change what is on the page just like in the labs
 function inTuneSearch() {
-    console.log()
+    const searchBar = document.querySelector("#search_bar")
+    console.log(searchBar.textContent)
 } 
+
+export function inTuneSearch();
 

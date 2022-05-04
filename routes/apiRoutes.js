@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.route('/songs')
 .get(async (req, res) => {
     try {
-        const songList = await db.song.findAll()
+        const songList = await db.songs.findAll()
         res.json({data: songList});
     } catch (err) {
         console.error(err);
@@ -29,7 +29,7 @@ router.route('/songs/:song_id')
 .get(async (req, res) => {
     try {
       const {song_id} = req.params;
-      const song = await db.song.findAll({
+      const song = await db.songs.findAll({
         where: {
           song_id: song_id
         }
@@ -42,13 +42,14 @@ router.route('/songs/:song_id')
 });
 
 router.route('/songs').post( async (req, res) => {
-  const songList = await db.song.findAll();
+  const songList = await db.songs.findAll();
   const currentId = (await songList.length) + 1;
   try {
-    const newSong = await db.song.create({
+    const newSong = await db.songs.create({
       song_id: currentId,
-      title: req.body.title,
-      artist_id: req.body.artist_id,
+      song_name: req.body.song_name,
+      duration: req.body.duration,
+      genre_id: req.body.genre_id,
     });
     res.json({ data: newSong});
   } catch (err) {

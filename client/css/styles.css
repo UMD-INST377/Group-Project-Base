@@ -92,7 +92,9 @@ footer {
     justify-content: center;
     align-items: center;
     margin: 0px 50px 50px 50px;
+    flex-direction: row;
 }
+
 
 .page_title {
     display: flex;
@@ -142,10 +144,10 @@ footer {
 }
 
 /*  CHARTS STYLES */
-.charts_subheader {
+.charts_header {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 .charts_title {
@@ -159,20 +161,28 @@ footer {
     color: #000000;
 }
 
-.charts_subtitle {
+.charts_categories h1 {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 25px;
+    line-height: normal;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
-.chart_page_carousel {
+.charts_categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.chart_carousel {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 50px 50px 10px 50px;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
 }

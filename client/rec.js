@@ -102,7 +102,7 @@ async function searchAlbum() {
   const resultsTwo = await fetch('/api/artist');
   const arrayFromJsonTwo = await resultsTwo.json();
 
-  const resultsThree = await fetch('/api/artist');
+  const resultsThree = await fetch('/api/genre');
   const arrayFromJsonThree = await resultsThree.json();
   console.log(arrayFromJson.data);
 

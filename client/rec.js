@@ -39,6 +39,24 @@ tableMakeAlbum = fetch('/api/album').then((data) => {
   console.log(err);
 });
 
+// CREATES TABLE FOR GENRE USING JSON DATA FROM DATABASE
+tableMakeGenre = fetch('/api/genre').then((data) => {
+  console.log(data);
+  return data.json();
+}).then((objectData) => {
+  console.log(objectData);
+  let tableData = '';
+  objectData.map((values) => {
+    tableData += `<tr>
+    <td>${values.genre_id}</td>
+    <td>${values.genre_name}</td>
+  </tr>`;
+  });
+  document.getElementById('table_body_genre').innerHTML = tableData;
+}).catch((err) => {
+  console.log(err);
+});
+
 
 // FUNCTION TO SHOW/HIDE FULL TABLE CONTENTS FOR ARTISTS
 const x = document.getElementById('artist');
@@ -64,12 +82,28 @@ function showTableAlbum() {
   }
 }
 
+// FUNCTION TO SHOW/HIDE FULL TABLE CONTENTS FOR GENRE
+const z = document.getElementById('genre');
+z.style.display = 'none';
+
+function showTableGenre() {
+  if (z.style.display === 'none') {
+    z.style.display = 'block';
+  } else {
+    z.style.display = 'none';
+  }
+}
+
 // FUNCTION TO SEARCH IN OUR DATBASE
 async function searchAlbum() {
   const results = await fetch('/api/album');
   const arrayFromJson = await results.json();
+
   const resultsTwo = await fetch('/api/artist');
   const arrayFromJsonTwo = await resultsTwo.json();
+
+  const resultsThree = await fetch('/api/artist');
+  const arrayFromJsonThree = await resultsThree.json();
   console.log(arrayFromJson.data);
 
   let input = document.getElementById('searchbar').value
@@ -98,6 +132,15 @@ async function searchAlbum() {
     if (objArtist.stage_name.toLowerCase().includes(input)) {
       const elem = document.createElement('tr')
       elem.innerHTML = `[ARTIST] ${objArtist.stage_name}  (${objArtist.first_name} ${objArtist.last_name})`
+      y.appendChild(elem)
+    }
+  }
+  for (i = 0; i < arrayFromJsonThree.length; i++) {
+    let objGenre = arrayFromJsonThree[i];
+
+    if (objGenre.genre_name.toLowerCase().includes(input)) {
+      const elem = document.createElement('tr')
+      elem.innerHTML = `[GENRE] ${objGenre.genre_name}`
       y.appendChild(elem)
     }
   }

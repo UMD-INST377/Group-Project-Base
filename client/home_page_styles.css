@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: grey;
+    height: 120%;
 }
 
 .head {
@@ -18,8 +19,9 @@ body {
     padding: 10px;
     display: flex;
     justify-content: left;
-
+    flex-wrap: wrap;
 }
+
 
 .container {
     display: flex;
@@ -35,6 +37,7 @@ body {
     margin-left: 100px;
     color:rgb(42, 105, 105);
     font-size: 250%;
+    flex-wrap: wrap;
 }
 
 .link {
@@ -74,14 +77,8 @@ body {
 
 .visualization {
     display: flex;
-    align-items: center;
-    background-color: lightgrey;
-    height: 175px;
-    width: 100%;
-    /* margin-top: 30px; */
-    margin-bottom: 30px;
-    overflow-wrap: normal;
-    text-align: center;
+    justify-content: center;
+    height: 300px;
 }
 
 .button2 {

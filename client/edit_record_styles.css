@@ -5,6 +5,8 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: grey;
+    height: 100vh;
 }
 
 .head {
@@ -67,6 +69,10 @@ body {
 
 #edit_record {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    justify-items: center;
     align-items: center;
+    flex-direction: column;
+    width: 55%;
+
 }

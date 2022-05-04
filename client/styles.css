@@ -297,7 +297,7 @@ header.active {
 }
 
 /* Nav Desktop */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
 .mobile {
     display: none;
 }
@@ -601,10 +601,68 @@ footer div {
     }  
 }
 
-/* Sign Up Modal
+/* Account Modals
 ================================================================ */
 
 .sign_up_modal {
+    position: absolute;
+    width: 434px;
+    height: 524px;
+    z-index: 2;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 54px 0px;
+    
+    
+    background: #FFFFFF;
+    border: 2px solid #66516E;
+    border-radius: 4px; 
+}
+
+.sign_up_form {
+    position: static;
+    width: 323px;
+    height: 299px;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 32px 0px;
+}
+
+.sign_up_form > .form_row {
+    margin-bottom: 16px;
+}
+
+.sign_up_form > .form_row > input {
+    width: 323px;
+    height: 49px;
+
+    display: flex;
+    align-items: center;
+    padding: 0px 0px 0px 16px;
+
+    background: #FFFFFF;
+    
+
+    border: 2px solid #333;
+    box-shadow: none;
+    border-radius: 4px;
+}
+
+.edit_modal {
     position: absolute;
     width: 434px;
     height: 524px;
@@ -662,6 +720,20 @@ footer div {
     border-radius: 4px;
 }
 
+
+#cancel {
+    background: #fff;
+    border: 2px solid #66516E;
+}
+
+.log_in {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    margin-top: 16px;
+}
+
 .form_row.buttons {
     width: 100%;
 
@@ -686,20 +758,6 @@ footer div {
     box-shadow: none;
     border-radius: 4px;
 }
-
-#cancel {
-    background: #fff;
-    border: 2px solid #66516E;
-}
-
-.log_in {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    
-    margin-top: 16px;
-}
-
 .modal {
     display: none;
     position: fixed;
@@ -715,14 +773,7 @@ footer div {
   }
 
 
-
-
-
-
-
-
-
-
+  
 .formContainer {
     display: flex;
     flex-direction: row;
@@ -829,13 +880,50 @@ footer div {
     box-shadow: none;
     border-radius: 4px;
 }
+
+/* About
+================================================================ */
 .section {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;    
+    /* align-items: flex-start;     */
 }
-.darwin{
-    max-height: 350px;
-    max-width: 740;
-    padding-left: 50px
+.content {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+}
+img.darwin {
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
+
+@media screen and (min-width: 800px) {
+    .section {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        /* align-items: flex-start;     */
+    }
+
+    .content {
+        width: 100%;
+        height: 100%;
+
+        position: relative;
+    }
+    img.darwin {
+        height: 100%;
+        width: 428px;
+        margin-left: 24px;
+        margin-bottom: 24px;
+        float: right;
+
+        border-radius: 4px;
+    }
 }

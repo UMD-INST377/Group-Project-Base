@@ -108,3 +108,13 @@ body {
     color: rgb(42, 105, 105);
     background-color: rgb(17, 237, 237);
 }
+
+.table {
+    background-color: #fff;
+    color: #363636;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 6px;
+}

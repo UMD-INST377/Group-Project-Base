@@ -4,7 +4,9 @@ import Macros from './Macros.js';
 import Meals from './Meals.js';
 import genre from './genre.js';
 import artist from './artist.js'
-import song from './song.js'
+import songs from './songs.js'
+import playlist from './playlist.js';
+import ratings from './ratings.js';
 
 export default {
   DietaryRestrictions,
@@ -13,5 +15,7 @@ export default {
   Meals,
   genre,
   artist,
-  song
+  songs,
+  playlist,
+  ratings
 };

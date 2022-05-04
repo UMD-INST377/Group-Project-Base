@@ -4,7 +4,7 @@ export default (sequelize, DataTypes) => {
       {
         rating_id: {
           type: DataTypes.INTEGER,
-          allowNull: true,
+          allowNull: false,
           unique: true,
           primaryKey: true
         },  
@@ -12,13 +12,15 @@ export default (sequelize, DataTypes) => {
           type: DataTypes.INTEGER
         },
         description: {
-          type: DataTypes.TEXT
+          type: DataTypes.STRING
         },
         song_id: {
             type: DataTypes.INTEGER,
+            allowNull: false
         },
         chart_id: {
             type: DataTypes.INTEGER,
+            allowNull: false
         }
       },
       {freezeTableName: true, timestamps: false}  

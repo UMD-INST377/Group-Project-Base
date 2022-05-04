@@ -327,8 +327,8 @@ router.route('/rating/:id')
 .get(async (req, res) => {
     try {
         const {id} = req.params;
-        const artistList = await db.artist.findAll();
-        res.json({data: artistList[id]});
+        const ratingsList = await db.ratings.findAll();
+        res.json({data: ratings[id]});
     } catch (err) {
         console.error(err);
         res.json({message: 'Error!'})

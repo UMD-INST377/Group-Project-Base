@@ -40,6 +40,7 @@ body {
 .link {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 }
 
 #form {
@@ -67,12 +68,23 @@ body {
     background-color: rgb(26, 222, 222);
 }
 
+.form {
+    display: flex;
+    justify-content: center;
+    min-height: fit-content;
+    margin-top: 100px;
+}
+
 #edit_record {
     display: flex;
     justify-content: center;
     justify-items: center;
-    align-items: center;
     flex-direction: column;
-    width: 55%;
+    width: 50%;
+    align-content: center;
+}
 
+.box {
+    display: flex;
+    justify-items: center;
 }

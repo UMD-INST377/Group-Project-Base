@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: grey;
-    height: 120%;
+    min-height:100vh;
 }
 
 .head {
@@ -45,35 +45,18 @@ body {
     align-items: center;
 }
 
-.section {
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
 .website_name {
     display: flex;
     align-items: center;
-    background-color: lightgrey;
-    height: 125px;
+    justify-content: center;
+    height: 70px;
     width: 100%;
-    margin-top: 30px;
-    /* margin-bottom: 30px; */
+    margin-top: 100px;
+    margin-bottom: 100px;
     overflow-wrap: normal;
     text-align: center;
 }
 
-.search_bar {
-    display: flex;
-    align-items: center;
-    background-color: lightgrey;
-    height: 100px;
-    width: 100%;
-    /* margin-top: 300px; */
-    /* margin-bottom: 300px; */
-    overflow-wrap: normal;
-    text-align: center;
-}
 
 .visualization {
     display: flex;
@@ -117,4 +100,15 @@ body {
     margin-right: auto;
     margin-left: auto;
     border-radius: 6px;
+}
+
+.company_size {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 9%;
+}
+
+#label2 {
+    width: 150%;
 }

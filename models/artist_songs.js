@@ -3,11 +3,11 @@ export default (sequelize, DataTypes) => {
     'artist_songs',
     {
       album_id: {
-        type: DataTypes.CHAR(22),
+        type: DataTypes.INTEGER,
         allowNull: false
       },
       song_id: {
-        type: DataTypes.CHAR(22),
+        type: DataTypes.INTEGER,
         allowNull: false
       }
     },

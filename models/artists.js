@@ -3,9 +3,10 @@ export default (sequelize, DataTypes) => {
     'artists',
     {
       artist_id: {
-        type: DataTypes.CHAR(22),
+        type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
+        autoIncriment: true,
         primaryKey: true,
       },
       artist_name: {

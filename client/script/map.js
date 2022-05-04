@@ -1,4 +1,7 @@
 let map;
+let json_obj;
+let cleanJson;
+
 function Get(yourUrl){
   var Httpreq = new XMLHttpRequest(); // a new request
   Httpreq.open("GET",yourUrl,false);
@@ -12,14 +15,27 @@ function initMap() {
     center: new google.maps.LatLng(2.8, -187.3),
     mapTypeId: "terrain",
   });
-  console.log("test");
   const script = document.createElement("script");
   // const obj = JSON.parse(text);
-  var json_obj = JSON.parse(Get('http://127.0.0.1:3000/api/cuisine/testing'));
-  console.log(json_obj);
+  json_obj = JSON.parse(Get('http://127.0.0.1:3000/api/cuisine/testing'));
+  cleanUpData()
+  // console.log(json_obj);
+}
+
+
+
+async function cleanUpData() {
+
+  const geocoder = new google.maps.Geocoder();
+
+  let address = "Plaza de Bolívar de Bogotá";
+
+  console.log(await geocoder.geocode({ address: address }));
+      
 }
 
 const eqfeed_callback = function (results) {
+
   for (let i = 0; i < results.features.length; i++) {
     const coords = results.features[i].geometry.coordinates;
     const latLng = new google.maps.LatLng(coords[1], coords[0]);

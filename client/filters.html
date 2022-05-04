@@ -10,13 +10,49 @@
 <body>
     <h1 class="header1">College Park Food Finder</h1>
     <nav>
-        <a href="/home.html">Home</a>
+        <a href="/index.html">Home</a>
         <a href="/about.html">About</a>
-        <a href="/addRestaurant.html">Add Restuarant</a>
+        <a href="/addRestaurant.html">Add Restaurant</a>
         <a href="/filters.html">Filters</a>
         <a href="/restaurants.html">Restaurants</a>
-        <a href="/home.html">Home</a>
-    </nav>
-</body>
 
-</html>
+    </nav>
+    <div>
+        <form class ="mainform">
+            <div class = "field">
+                <label>
+                    Takeout 
+                </label>
+                <input type="checkbox" name="takeout" id="takeout">
+            </div>
+            <div class = "field">
+                <label>
+                    Delivery 
+                </label>
+                <input type="checkbox" name="delivery" id="delivery">
+            </div>
+            <div class = "field">
+                <label>
+                    Parking
+                </label>
+                <input type="checkbox" name="parking" id="parking">
+            </div>
+            <div class = "control">
+                <button class = "button">
+                    submit
+                </button>
+            </div>
+        </form>
+        <table style="margin: 100px;background-color: aliceblue" class="table">
+            <!--First tr is the column headers-->
+            <tr>
+                <th>Restaurant Name</th>
+                <th>Description</th>
+            
+            </tr>
+        </table>
+    </div>
+    <script src = "loadtable.js">
+
+    </script>
+</body>

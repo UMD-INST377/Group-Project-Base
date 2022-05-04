@@ -3,7 +3,7 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
-const descriptionQuery = 'SELECT * FROM descriptions'
+const descriptionQuery = 'SELECT * FROM restaurants left join descriptions using(description_id)'
 const router = express.Router();
 
 router.route('/description').get(async (req, res) => {
@@ -32,6 +32,7 @@ router.get('/:description_id', async (req, res) => {
       res.json({message: 'Server error'});
     }
   });  
+
 router.post('/descriptionpost', async (req, res) => {
     try {
       const result = await db.sequelizeDB.query(`INSERT INTO descriptions (description_id, parking, takeout, delivery)

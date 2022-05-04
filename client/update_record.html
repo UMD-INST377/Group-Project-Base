@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <link rel='stylesheet' href='./update_record_styles.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    
+    <div class='head'>
+        <div class='container'>
+            <div class="link"><a href= './index.html' class="home">Home</a></div>
+            <div class="link"><a href= './about_us.html' class="home">About </a></div>
+            <div class="link"><a href= './edit_record.html' class="home">Edit Record </a></div>
+        </div>
+    </div>
+   <div class="form">
+    <div class="columns is-centered is-vcentered">
+        <div class ='column is-narrow'>
+            <form method = 'GET' class = 'box' id="form">
+                <div class='field'>
+                    <label for='label' class = ''><strong>Company Id</strong></label>
+                    <input id='label' name='company_id' type='text'/>
+                </div>
+                <div class='field'>
+                    <label for='label1' class = ''><strong>Company Name</strong></label>
+                    <input id='label1' name='company_name' type='text'/>
+                </div>
+                <div class='field'>
+                    <label for='label2'><strong>Size</strong></label>
+                    <input id='label2' name='industry' type='text'/>
+                </div>
+                <div class='field'>
+                    <label for='label3'><strong>Industry type</strong></label>
+                    <input id='label3' name='city' type='text'/>
+                </div>
+                <div class='field'>
+                    <label for='label4'><strong>City</strong></label>
+                    <input id='label4' name='type' type='text'/>
+                </div>
+                <button class="button" id="button2">Update Record</button>
+            </form>
+        </div>
+    </div>
+   </div>
+
+    <script src="./update_record.js"></script>
+</body>
+</html>

@@ -36,7 +36,6 @@ span{
 nav ul li{
 	list-style-type: none;
 	display: inline-block;
-	padding: 10px  25px;
 }
 nav ul li a{
 	color: rgb(7, 7, 7);
@@ -61,6 +60,7 @@ nav.dropdown{
 }
 
 .menu {
+  display: inline-block;
   z-index:1;
 } 
 

@@ -8,7 +8,7 @@ body {
    margin: 0;
    padding: 0;
    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
-     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, 'Courier New (monospace)', sans-serif;
    background-color: black;
  }
  
@@ -25,11 +25,12 @@ body {
 .wrapper {
    display: flex;
    justify-content: center;
+   
  }
 
 .container {
    max-width: 960px;
-   margin-top: 25px;
+   margin-top: px;
  }
  
 .header {
@@ -37,14 +38,30 @@ body {
    padding: 50px;
    color: #0c5400;
    text-align: center;
-   border-bottom: 10px;
+   border-bottom: 0px;
    justify-content: center;
  }
 
-.logo{
+.header2 {
+   background-color: #c3f951;
+   padding: 50px;
+   color: #0c5400;
+   text-align: center;
+   border-bottom: 10px;
+   justify-content: left;
+}
+
+.logo0{
   height: 200px;
   justify-content: center;
 }
+
+.logo{
+  padding:10px;
+  height: 180px;
+  justify-content: center;
+}
+
 
  .menu-container {
   background-color: #b3e943;  
@@ -67,6 +84,29 @@ body {
   width: 100px;
 }
 
+a{
+  color: green;
+  font-family: 'Courier New';
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: green;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: lightgreen;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: green;
+  text-decoration: none;
+}
 
 .login {
    background-color: #FFFFFF;
@@ -88,12 +128,14 @@ body {
 }
 
 .content {
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   border-radius: 3px;
   padding: 50px;
-  margin: 30px;
-  color: #000000;
+  margin: px;
+  color: #ffffff;
   width: 650px; 
+  text-align: center;
+  font-family: 'Courier New';
 }
 
 
@@ -126,13 +168,15 @@ body {
    color: #ffffff;
    background-color: #000000;
  
-   border: none;
+   border-color: #b3e943;
    border-radius: 3px;
  
    margin-top: 15px;
    padding: 10px;
    width: 100%;
    cursor: pointer;
+
+   font-family: 'Courier New';
  }
  
  .form-row button:hover {
@@ -169,5 +213,61 @@ body {
           width: 100%;
           margin: 0 auto;
         }
+
+      .header2{
+          top: 0;
+          left: 0;
+          width: 300px;
+          height: 100%;
+          position: absolute;
+      }
+      
+      .header3 {
+          
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          
+          align-content: space-between;
+          justify-content: space-between;
+      }
+   
+      .body{
+          border-left: 250px ;
+      }
+
+      .menu-container2 {
+        
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        top: 250px;
+        left: 0;
+        width: 320px;
+        margin: ;
+        height: 50%;
+        position: absolute;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 17px;
+      
+      }
+      .menu2 {
+        text-align: center;
+        color: #000000;
+        background-color: #b3e943;
+        border: none;
+        border-radius: 3px;
+        margin-left: ;
+        margin-right: 15px;
+        padding: 20px;
+        cursor: pointer;
+        width: 320px;
+      }
+      
   
     }

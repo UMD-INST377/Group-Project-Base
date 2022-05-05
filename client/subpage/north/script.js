@@ -34,14 +34,14 @@ async function createMacroTable(){
   const macros = await fetchMacros.json();
   let table = `<table border = 1>
   <tr>
-    <th>macro_id</th>
-    <th>calories</th>
-    <th>serving_size</th>
-    <th>cholesterol</th>
-    <th>sodium</th>
-    <th>carbs</th>
-    <th>protein</th>
-    <th>fat</th>
+    <th>macro_id(needs to be food)</th>
+    <th>Calories</th>
+    <th>Serving Size</th>
+    <th>Cholesterol</th>
+    <th>Sodium</th>
+    <th>Carbs</th>
+    <th>Protein</th>
+    <th>Fat</th>
   </tr>`;
 
   for (i = 0 ; i < macros.length; i++) {

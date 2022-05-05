@@ -11,15 +11,21 @@ import fruitscontroller from '../controller/fruitscontroller.js';
 import locationcontroller from '../controller/locationcontroller.js';
 import plantLocationcontroller from '../controller/plant_locationcontroller.js';
 import plantscontroller from '../controller/plantscontroller.js';
-
+import mapcontroller from '../controller';
 
 const router = express.Router();
 
 /* endpoint for map */
 router.route('/map')
   .get(async (req, res) => { // all entries
-    try {}
-    catch (err) {
+    try {
+      const result = await db.sequelizeDB.query(mapcontroller.mapGet,
+        {
+          type: sequelize.QueryTypes.SELECT
+        });
+      console.log('data loaded');
+      res.json({data: result});
+    } catch (err) {
       console.log(err);
       res.json({message: 'something went wrong'});
     }

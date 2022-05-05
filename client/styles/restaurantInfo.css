@@ -1,0 +1,181 @@
+/*Restaurant Info */
+
+.body {
+    background-color: #FFD5A4;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-items: end;
+    position: relative;
+  }
+
+.header {
+    padding: 40px;
+    color: #FFE6A5;
+    text-align: center;
+    font-size: 55px;
+}
+
+.restaurant-info-header{
+    color: #EB4949;
+    font-size: 40px;
+    text-align: center;
+    margin: 60px 0px;
+    font-weight: 600;
+}
+
+.restaurant-menu {
+    height: 600px;
+    width: 500px;
+    background-color: #262626;
+    text-align: center;
+    padding: 30px;
+}
+
+.restaurant-menu-header {
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+     
+}
+.restaurant-menu-container {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-list{
+    overflow-y: scroll;
+    height: 500px;
+    margin-top: 30px;
+    padding: 0px 20px;
+}
+
+ 
+.menu-item {
+    display: grid;
+    justify-content: center;
+    background-color: #FFD66C;
+    padding: 20px;
+    border-radius: 25px;
+    margin: 20px 0px;
+}
+
+.menu-item  li {
+    margin: 0px 10px;
+    font-size: 20px;
+}
+
+.correction-description {
+    font-size: 25px;
+}
+
+.correction-info-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.restaurant-button{
+    margin: 20px 0px;
+    font-size: 20px;
+}
+
+.correction-info{
+    background-color: #262626;
+    padding: 60px;
+    color: white;
+}
+
+.correction-input  {
+    margin-bottom: 30px;
+}
+
+.food-question input{
+     width: 100%;
+}
+
+.correction-input .spacer {
+    margin-bottom: 20px;
+}
+
+
+.correction-input label{
+    font-size: 20px;
+     
+}
+
+.correction-info input{
+    font-size: 20px;
+     
+}
+
+.correction-info .button{
+    margin-top: 20px;
+    font-size: 25px;
+    padding: 10px  30px;
+}
+
+.correction-info small {
+    display: none;
+    margin-top: 20px;
+}
+.correction-info .visible {
+    display: block;
+ 
+}
+
+.correction-info .invisible {
+    display: none;
+ 
+}
+
+
+#restaurant-dropdown {
+    width: 250px;
+    font-size: 25px;
+    padding: 5px 10px;
+}
+
+#restaurant-dropdown option {
+    font-size: 15px;
+}
+
+.specific-food-id-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+#specificInput {
+    width: 33vw;
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+#specificFoodSearch {
+    font-size: 25px;
+    padding: 15px 30px;
+    background-color: #262626;
+    border: none;
+    color: white;
+    transition: .5s;
+}
+
+#specificFoodSearch:hover {
+    background-color: #EB4949;
+}
+
+.specific-food-result {
+    margin-top: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #EB4949;
+    padding: 20px 40px;
+    color: white;
+}
+
+ 

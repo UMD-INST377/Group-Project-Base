@@ -1,1 +1,132 @@
-Hello world!
+<!-- Created by Bryan Pham -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Main Page</title>
+</head>
+<body>  
+
+    <div class="header">UMD Dineify</div>
+
+    <div class="navbar-container">
+        <div class="navbar">
+            <a href = "index.html" class="navbar-elm">Home</a>
+            <a href = "restaurantInfo.html" class="navbar-elm">Restaurant Info</a>
+            <a href = "aboutUs.html" class="navbar-elm">About Us</a>
+          
+        </div>
+    </div>
+
+    <div class="search-bar-container">
+        <div class="search-bar-header"> Search Food In Dining Halls</div>
+        <div class="input-container">
+            <input class="search-bar-input" type="text" placeholder="Pizza">
+            <button class ='search-button'>Search</button>
+        </div>
+        <small class="search-confirmation">Search Results below!</small>
+        <div class="search-history">
+            <div class="search-history-header">Search History</div>
+            <div class = 'search-history-item'>Your search history appears on dropdown below</div>
+            
+            <select class="search-dropdown" name="search" >
+                <option class = 'search-option'  value="entry1">Search History</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="results-container">
+        <div class="results-header">Search Results For </div>
+        <div class="results-row"></div>
+    </div>
+
+
+    <div class="cards-container-header"> Popular Dining Areas</div>
+
+    <!---
+    
+        <div class="stars-key">
+            <div class="key-item">
+                <span class="fa fa-star favorited"></span> 
+                <span>Favorited</span>
+            </div>
+            <div class="key-item">
+                <span class="fa fa-star"></span>
+                <span>Not Favorited</span>
+            </div>
+        </div>
+    
+    
+    -->
+    
+    <div class="cards-container">
+        
+        <div class="cards-row">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-text">The Diner</div>
+                </div>
+                <div class="card-body">
+                    <div class="card-body-elm">
+                        <span> Address </span> 
+                        <p> 7093 PREINKERT DR</p>    
+                     </div>
+                    <div class="card-body-elm">
+                        <span > Distance </span> 
+                        <p class = 'distance' id = 'distance-card-1' > unknown </p>   
+                    </div>
+                </div>
+                <div class="card-status">Open</div>
+           </div>
+    
+           <div class="card">
+                <div class="card-header">
+                    <div class="card-header-text">South Campus</div>
+                </div>
+                <div class="card-body">
+                    <div class="card-body-elm">
+                        <span> Address </span> 
+                        <p> 4121 FARM DR </p>  
+                    </div>
+                    <div class="card-body-elm">
+                        <span > Distance </span> 
+                        <p class = 'distance' id = 'distance-card-2'> unknown</p>   
+                    </div>
+                </div>
+                <div class="card-status">Open</div>
+          </div>
+    
+          <div class="card">
+                <div class="card-header">
+                    <div class="card-header-text">251 North</div>
+                </div>
+                <div class="card-body">
+                  
+                    <div class="card-body-elm">
+                        <span> Address </span> 
+                        <p> 3951 DENTON SERVICE LANE </p>  
+                    </div>
+                    <div class="card-body-elm">
+                        <span id = 'distance-card-2'> Distance </span> 
+                        <p class = 'distance' id = 'distance-card-3'> unknown</p>   
+                    </div>
+                </div>
+                <div class="card-status">Open</div>
+          </div>    
+          
+        </div>
+    </div>
+
+    <script src="scripts/geolocation-script.js"></script>
+    <script src="scripts/index.js"></script>
+    
+</body>
+</html>

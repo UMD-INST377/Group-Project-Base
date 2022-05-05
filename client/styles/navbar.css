@@ -1,0 +1,104 @@
+/*Navigation Bar */
+
+body {
+    background-color: #FFD5A4;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-items: end;
+    position: relative;
+}
+
+/* Navbar section start*/
+
+.header {
+    background-color: #EB4949;
+    padding: 30px;
+    color: #FFE6A5;
+    text-align: center;
+    font-size: 55px;
+}
+
+
+/* Make navbar appear on the bottom */
+.navbar-container {
+    display: flex;
+    width: 98.7vw;
+    margin: 0px;
+    bottom: 0px;
+    position: fixed;
+    justify-content: center;
+    background-color: #EB4949;
+    padding: 20px 0px;
+    z-index: 9;
+    border-bottom: 1px solid #EB4949;
+}
+.navbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  
+    font-size: 12px;
+}
+.navbar-elm {
+    margin: 10px 2vw;
+    text-decoration: none;
+    padding: 15px 0px;
+    border-radius: 30px;
+    background-color: #F6FFC2;
+    color: #EB4949;
+    width: 130px;
+    text-align: center;
+    transition: .5s;
+    overflow: wrap;
+    font-weight: 600;
+    border: 1px solid #EB4949;
+}
+
+.navbar-elm:hover {
+    background-color: #EB4949;
+    color: #F6FFC2
+}
+
+/* Navbar section end*/
+
+
+/*Custom scrollbar w3 schools*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+    background-color: white;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+     
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(39, 39, 39); 
+    border-radius: 10px;
+    border: 1px solid white;
+  }
+  
+ 
+
+/*Custom scrollbar end */
+
+
+@media only screen and (min-width: 960px) {
+    .navbar-container {
+        top: 0px;
+        position: relative;
+        background-color: #FFD66C !important;
+    }
+    .navbar {
+        grid-template-columns: repeat(3, 1fr);
+        font-size: 15px;
+    }
+    .navbar-elm{
+        width: 250px;
+    }
+}

@@ -31,6 +31,9 @@ tableMakeAlbum = fetch('/api/album').then((data) => {
   objectData.map((values) => {
     tableData += `<tr>
     <td>${values.album_id}</td>
+    <td>${values.release_id}</td>
+    <td>${values.genre_id}</td>
+    <td>${values.price_id}</td>
     <td>${values.album_name}</td>
   </tr>`;
   });

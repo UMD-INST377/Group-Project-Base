@@ -12,7 +12,38 @@ import locationcontroller from '../controller/locationcontroller.js';
 import plantLocationcontroller from '../controller/plant_locationcontroller.js';
 import plantscontroller from '../controller/plantscontroller.js';
 
+
 const router = express.Router();
+
+/* endpoint for map */
+router.route('/map')
+  .get(async (req, res) => { // all entries
+    try {}
+    catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  })
+  .put(async (req, res) => {
+
+  })
+  .post(async (req, res) => {
+
+  })
+  .delete(async (req, res) => {
+
+  });
+
+router.route('/map')
+  .get(async (req, res) => { // entries only based on given code and plant id?
+    try {}
+    catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
+/// // /
 
 /* bark endpoint */
 router.route('/bark')

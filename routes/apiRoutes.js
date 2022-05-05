@@ -5,6 +5,7 @@ import apiRoutesJessica from './apiRoutesJessica.js';
 import apiRoutesMelody from './apiRoutesMelody.js';
 // import apiRoutesEthan from './apiRoutesEthan';
 import apiRoutesNick from './apiRoutesNick.js';
+import apiRoutesMap from './apiRoutesMap.js';
 
 import db from '../database/initializeDB.js';
 
@@ -18,8 +19,9 @@ router.get('/', (req, res) => {
 router.use('/restaurant', apiRoutesJessica);
 // router.use('/address', apiRoutesEthan);
 router.use('/services', apiRoutesMelody);
-router.use('/location', apiRoutesEthan);
+// router.use('/location', apiRoutesEthan);
 router.use('/cuisine', apiRoutesNick);
+router.use('/map',apiRoutesMap);
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

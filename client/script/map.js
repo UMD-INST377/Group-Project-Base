@@ -1,95 +1,68 @@
-/* eslint-disable prefer-const */
-/* eslint-disable camelcase */
 let map;
-let json_obj;
+let json_obj1;
+let json_obj2;
 
-function Get(yourUrl) {
-  const Httpreq = new XMLHttpRequest(); // a new request
-  // eslint-disable-next-line quotes
-  Httpreq.open("GET", yourUrl, false);
+function Get(yourUrl){
+  var Httpreq = new XMLHttpRequest(); // a new request
+  Httpreq.open("GET",yourUrl,false);
   Httpreq.send(null);
-  return Httpreq.responseText;
+  return Httpreq.responseText;          
 }
 
 function initMap() {
-<<<<<<< HEAD
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: new google.maps.LatLng(38.98599466996687, -76.94228154317243),
-    mapTypeId: 'terrain'
-  });
-  const script = document.createElement('script');
-  json_obj = JSON.parse(Get('http://localhost:3000/api/cuisine/testing'));
-  // eslint-disable-next-line no-use-before-define
-  cleanUpData();
-}
-
-async function cleanUpData() {
-  const geocoder = new google.maps.Geocoder();
-
-  for (let i = 0; i < json_obj[0].length; i++) {
-    let address = String(json_obj[0][i].address_1);
-
-    // eslint-disable-next-line no-await-in-loop
-    await new Promise((resolve) => setTimeout(resolve, 700));
-
-    // eslint-disable-next-line no-loop-func
-    geocoder.geocode({ address: address }, (results, status) => {
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-
-        let marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
-      } else {
-        // eslint-disable-next-line no-console
-        console.log(
-          `Geocode was not successful for the following reason: ${status}`
-        );
-        // eslint-disable-next-line no-console
-        console.log(json_obj[0][i]);
-      }
-    });
-
-    map.setCenter(
-      new google.maps.LatLng(38.98599466996687, -76.94228154317243)
-    );
-  }
-=======
   map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 12,
+    zoom: 15,
     center: new google.maps.LatLng(38.98599466996687, -76.94228154317243),
     mapTypeId: "terrain",
   });
   const script = document.createElement("script");
-  json_obj = JSON.parse(Get('http://127.0.0.1:3000/api/cuisine/testing'));
+  json_obj1 = JSON.parse(Get('http://127.0.0.1:3000/api/map/address'));
+  json_obj2 = JSON.parse(Get('http://127.0.0.1:3000/api/map/restaurant'));
   cleanUpData()
+
+
+
 }
 
 async function cleanUpData() {
 
   const geocoder = new google.maps.Geocoder();
   
-  for (let i = 0; i < json_obj[0].length; i++) {
-    let address = String(json_obj[0][i].address_1);
+  for (let i = 0; i < json_obj1[0].length; i++) {
+    let address = String(json_obj1[0][i].street_address);
+    let location;
+    for (let j = 0; j < json_obj1[0].length;j++) {
+      if(parseInt(json_obj1[0][i].location_id) == parseInt(json_obj2[0][j].location_id)){
+        location = json_obj2[0][j].restaurant_name;
+      }
+    }
+    await new Promise(resolve => setTimeout(resolve, 500));
 
-    await new Promise(resolve => setTimeout(resolve, 700));
 
     geocoder.geocode( {address:address}, function(results, status) 
     {
       if (status == google.maps.GeocoderStatus.OK) 
       {
-        map.setCenter(results[0].geometry.location);
+        // map.setCenter(results[0].geometry.location);
 
         var marker = new google.maps.Marker(
         {
             map: map,
             position: results[0].geometry.location
         });
+
+        var infowindow = new google.maps.InfoWindow();
+          
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(location);
+              infowindow.open(map, marker);
+            }
+          })(marker, location));
+
       } else {
         console.log('Geocode was not successful for the following reason: ' + status);
-        console.log(json_obj[0][i]);
+        console.log(json_obj1[0][i]);
     }
     });
     
@@ -100,20 +73,17 @@ async function cleanUpData() {
   }
  
 
-      
->>>>>>> main
 }
 
 const eqfeed_callback = function (results) {
-  // eslint-disable-next-line no-plusplus
+
   for (let i = 0; i < results.features.length; i++) {
     const coords = results.features[i].geometry.coordinates;
     const latLng = new google.maps.LatLng(coords[1], coords[0]);
 
-    // eslint-disable-next-line no-new
-    new googsle.maps.Marker({
+    new google.maps.Marker({
       position: latLng,
-      map: map
+      map: map,
     });
   }
 };

@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.route("/").get(async (req, res) => {
   try {
-    const cuisineQuery = "SELECT * FROM cuisine";
+    const cuisineQuery = "SELECT * FROM food_type";
     const cuisine = await db.sequelizeDB.query(cuisineQuery);
 
     res.json(cuisine);
@@ -16,16 +16,6 @@ router.route("/").get(async (req, res) => {
   }
 });
 
-router.route("/testing").get(async (req, res) => {
-  try {
-    const testQuery = "SELECT * FROM address";
-    const test = await db.sequelizeDB.query(testQuery);
-
-    res.json(test);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
 
 // get restaurant with id
 router.get("/:cuisine_id", async (req, res) => {

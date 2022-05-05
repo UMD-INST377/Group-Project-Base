@@ -29,7 +29,7 @@
                 </li>
                 <li>
                     <a href="./updateData.html" class="is-size-6-touch is-size-5-desktop">
-                        Update Data
+                        Update Playlist
                     </a>
                 </li>
             </ul>
@@ -61,7 +61,7 @@
                     <ion-icon name="search-outline"></ion-icon>
                 </span>
             </div>
-            
+
         </div>
     </div>
 
@@ -87,12 +87,19 @@
             </div>
         </div>
     </div>
-
     <div id="chart">
         <canvas id="myChart" width="400px" height="400px"></canvas>
+        <div class="select" id="graphChoice">
+            <select id="graphDropdown">
+                <option>Choose A Graph To Display</option>
+                <option value = "albums">Top 10 Albums</option>
+                <option value = "artists">Top 10 Artists With The Most Albums</option>
+                <option value = "songs">Top 10 Songs</option>
+            </select>
+        </div>
+    
     </div>
-
-
+   
     <script src="./js/script.js"></script>
 
     <!-- chart scripts -->

@@ -61,14 +61,16 @@ async function updateRestaurantRating(restaurant_id, rating_id) {
   });
   // console.log(b)
 }
-function updateRestaurants(collection) {
+async function updateRestaurants(collection) {
   // console.log('fired HTML creator');
   // console.table(collection);
+  let table = '<table>';
+  // eslint-disable-next-line no-const-assign
+  table += '<thead><tr><th>rating</th><th>restaurant</th></tr></thead>';
+  table += '<tbody>';
   const targetList = document.querySelector('#resto-list');
-  targetList.innerHTML = '';
-  collection.forEach(async(item) => {
-    console.log('item=');
-    console.log(item);
+ // await collection.forEach(async(item) => {
+  for (const item of collection) {
     const { restaurant_name } = item;
     // eslint-disable-next-line camelcase
     const {rating_id} = item;
@@ -78,10 +80,25 @@ function updateRestaurants(collection) {
     const arrayFromJson = await results.json();
     const displayRating = arrayFromJson[0].rating;
     // eslint-disable-next-line camelcase
-    const rating_prompt = 'new rating = [<input type="number" value="2.5">]';
-    const injectThisItem = `<li>${displayName} ${displayRating} out of 5 stars. ${rating_prompt}</li>`;
-    targetList.innerHTML += injectThisItem;
-  });
+    const { restaurant_id } = item;
+    const ratingSlider = `[<input type="range" min="1" max="11"  value="${rating_id}" onchange="updateRestaurantRating(${restaurant_id}, this.value)">]`;
+    let injectThisItem = '<tr>';
+    // eslint-disable-next-line no-template-curly-in-string
+    injectThisItem += `<td>${ratingSlider}</td>`;
+    // eslint-disable-next-line no-const-assign
+    injectThisItem += `<td>${displayName}</td>`;
+    injectThisItem += '</tr>';
+    // eslint-disable-next-line no-const-assign
+    table += injectThisItem;
+    console.log('injectThisItem =');
+    console.log(injectThisItem);
+    console.log('table =');
+    console.log(table);
+  }
+  // eslint-disable-next-line no-const-assign
+  table += '</tbody>';
+  table += '</table>';
+  targetList.innerHTML = table;
 }
 function createHtmlList(collection) {
   // console.log('fired HTML creator');

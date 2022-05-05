@@ -23,7 +23,6 @@ async function cleanUpData() {
 
   const geocoder = new google.maps.Geocoder();
   
-
   for (let i = 0; i < json_obj[0].length; i++) {
     let address = String(json_obj[0][i].address_1);
 

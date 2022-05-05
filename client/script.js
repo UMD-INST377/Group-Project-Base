@@ -147,6 +147,5 @@ async function mainEvent() {
   const speciesForm = document.querySelector('.species_form');
 
   speciesButton.addEventListener('submit', (e) => newQuery(e, speciesForm));
-
 }
 document.addEventListener('DOMContentLoaded', mainEvent);

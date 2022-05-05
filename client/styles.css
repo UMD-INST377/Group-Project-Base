@@ -1,0 +1,26 @@
+nav {
+  background-color: rgb(95, 212, 212);
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  text-decoration: none;
+  color: rgb(31, 31, 31);
+}
+
+.wrapper {
+  display: flex;
+}
+
+.chart-wrapper {
+  justify-content: space-around;
+}
+
+.chart-container {
+  position: relative;
+  width: 50%;
+  margin: auto;
+}

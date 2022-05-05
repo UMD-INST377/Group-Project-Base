@@ -1,1 +1,62 @@
-Hello world!
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="styles.css" />
+        <title>Group 20 - Home</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column">
+                        <div class="title-bar box">
+                            <h1 class="title">Home</h1>
+                            <nav>
+                                <a href="index.html">Home</a>
+                                <a href="movies.html">Movies</a>
+                                <a href="about.html">About</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns chart-wrapper">
+                    <div class="is-one-fourth chart-container">
+                        <!-- Agya -->
+                        <div>
+                            <canvas id="agyaChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="is-one-fourth chart-container">
+                        <!-- Isaac -->
+                        <div>
+                            <canvas id="isaacChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="is-one-fourth chart-container">
+                        <!-- Jude -->
+                        <div>
+                            <canvas id="judeChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="is-one-fourth chart-container">
+                        <!-- Stefan -->
+                        <div>
+                            <canvas id="stefChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"
+            integrity="sha256-ErZ09KkZnzjpqcane4SCyyHsKAXMvID9/xwbl/Aq1pc=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"
+            integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="common.js"></script>
+        <script src="charts.js"></script>
+    </body>
+</html>

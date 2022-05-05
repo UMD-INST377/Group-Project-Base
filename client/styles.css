@@ -49,7 +49,7 @@ nav {
   display: inline;
   flex-direction: row wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .text{
@@ -57,6 +57,7 @@ nav {
   border-radius: 4px;
   padding: 50px;
   margin: 20px 25px;
+  margin-top: -50px;
   /* float: right; */
 }
 
@@ -99,39 +100,42 @@ justify-content: flex-start;
 .signup {
   margin-top: 40px;  
 }
+
 .table{
 border-collapse: collapse;
 border-spacing: 0;
 }
+
 .th, td{
 padding: 10px 20px;
 border: 1px solid #000;
 }
 
+h1{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color:rgb(11, 140, 187);
+  align-items: center;
+}
+
+.section{
+  /* display: block; */
+  justify-content: center;
+  font-style: italic;
+  font-size: 2em;
+  margin-top: -55px;
+  margin-right: 50%;
+}
+
 .center{
-  margin-left: 39%;
+  margin-left: 40%;
   margin-top: -28%;
 }
 
 .right_end{
-  margin-left: 75%;
-  margin-top: -28%;
+  margin-left: 80%;
+  margin-top: -28.2%;
 }
 
 h3{
   color: #cc3333;
-  margin-top: 1%;
-}
-
-.lst{
-  margin-left: 28.8%;
-  margin-top: -68.6%;
-}
-
-.cover_image{
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  /* background: url(../images/image3.jpg);
-  background-size: cover; */
 }

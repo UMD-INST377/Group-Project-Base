@@ -169,24 +169,8 @@ router.route('/dietaryRestrictions/:id')
 router.route('/josh')
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
-      const data = await fetch(url);
-      const json = await data.json();
-      res.json({data: json[0]});
-      console.log('success');
-    } catch (err) {
-      console.log(err);
-      res.json({message: 'something went wrong'});
-    }
-  });
-router.route('/josh')
-  .get(async (req, res) => {
-    try {
-      const url = '';
-      const data = await fetch(url);
-      const json = await data.json();
-      res.json({data: json[0]});
-      console.log('success');
+      const result = await db.MealsLocations.findAll();
+      res.json({data: result});
     } catch (err) {
       console.log(err);
       res.json({message: 'something went wrong'});
@@ -483,6 +467,36 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
   }
 });
 
+//////////////////////////////////////////
+/// ///// Meals Locations Endpoints //////
+/////////////////////////////////////////
+router.get('/mealslocations', async (req, res) => {
+  try {
+    const mealsLocations = await db.MealsLocations.findAll();
+    res.send(mealsLocations);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/mealslocations/:hall_id', async (req, res) => {
+  try {
+    const mealsLocations = await db.MealsLocations.findAll({
+      where: {
+        hall_id: req.params.hall_id
+      }
+    });
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+
+
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////
@@ -535,4 +549,4 @@ router.get('/custom', async (req, res) => {
 
 export default router;
 
-/// JOSH MENSAH///
+

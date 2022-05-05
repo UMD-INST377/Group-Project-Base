@@ -43,7 +43,7 @@ tableMakeAlbum = fetch('/api/album').then((data) => {
 });
 
 // CREATES TABLE FOR GENRE USING JSON DATA FROM DATABASE (NEED TO FIX)
-/*tableMakeGenre = fetch('/api/genre').then((data) => {
+tableMakeGenre = fetch('/api/genre').then((data) => {
   console.log(data);
   return data.json();
 }).then((objectData) => {
@@ -58,8 +58,7 @@ tableMakeAlbum = fetch('/api/album').then((data) => {
   document.getElementById('table_body_genre').innerHTML = tableData;
 }).catch((err) => {
   console.log(err);
-});*/
-
+});
 
 // FUNCTION TO SHOW/HIDE FULL TABLE CONTENTS FOR ARTISTS
 const x = document.getElementById('artist');
@@ -105,8 +104,8 @@ async function searchAlbum() {
   const resultsTwo = await fetch('/api/artist');
   const arrayFromJsonTwo = await resultsTwo.json();
 
-  /*const resultsThree = await fetch('/api/genre');
-  const arrayFromJsonThree = await resultsThree.json();*/
+  const resultsThree = await fetch('/api/genre');
+  const arrayFromJsonThree = await resultsThree.json();
   console.log(arrayFromJson.data);
 
   let input = document.getElementById('searchbar').value
@@ -138,7 +137,7 @@ async function searchAlbum() {
       y.appendChild(elem)
     }
   }
-  /*for (i = 0; i < arrayFromJsonThree.length; i++) {
+  for (i = 0; i < arrayFromJsonThree.length; i++) {
     let objGenre = arrayFromJsonThree[i];
 
     if (objGenre.genre_name.toLowerCase().includes(input)) {
@@ -146,7 +145,7 @@ async function searchAlbum() {
       elem.innerHTML = `[GENRE] ${objGenre.genre_name}`
       y.appendChild(elem)
     }
-  }*/
+  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => searchAlbum());

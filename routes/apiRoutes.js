@@ -11,13 +11,13 @@ import fruitscontroller from '../controller/fruitscontroller.js';
 import locationcontroller from '../controller/locationcontroller.js';
 import plantLocationcontroller from '../controller/plant_locationcontroller.js';
 import plantscontroller from '../controller/plantscontroller.js';
-import mapcontroller from '../controller';
+import mapcontroller from '../controller/mapcontroller.js';
 
 const router = express.Router();
 
 /* endpoint for map */
-router.route('/map')
-  .get(async (req, res) => { // all entries
+router.route('/map') // http://localhost:3000/api/map
+  .get(async (req, res) => { // all entries in joined table
     try {
       const result = await db.sequelizeDB.query(mapcontroller.mapGet,
         {
@@ -30,7 +30,7 @@ router.route('/map')
       res.json({message: 'something went wrong'});
     }
   })
-  .put(async (req, res) => {
+  /* .put(async (req, res) => {
 
   })
   .post(async (req, res) => {
@@ -38,12 +38,13 @@ router.route('/map')
   })
   .delete(async (req, res) => {
 
-  });
+  }); */
 
 router.route('/map')
   .get(async (req, res) => { // entries only based on given code and plant id?
-    try {}
-    catch (err) {
+    try {
+
+    } catch (err) {
       console.log(err);
       res.json({message: 'something went wrong'});
     }

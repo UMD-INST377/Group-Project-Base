@@ -51,6 +51,12 @@ function dataHandler(arr) {
 }
 
 
+
+
+
+
+
+
 async function mainEvent() { //mainEvent refers to page loading
   const mealTable = document.querySelector('.meal_table'); //get meal_table div class
   const results = await fetch('/api/allmeals'); //call get function from api routes for meals
@@ -67,7 +73,7 @@ async function mainEvent() { //mainEvent refers to page loading
   const api_results = await fetch('/api/dining'); //call get function from api routes for dining
   const hallArray = await api_results.json(); //convert to array
 
-  //The Dinner
+  //The Diner
   const hall0Button = document.querySelector('.the_diner'); //Selects the element to insert the name
   hall0Button.innerHTML = '';
   hall0Button.innerHTML+=`${hallArray.data[0].hall_name}`; //inserts the hall name into the html
@@ -88,6 +94,7 @@ async function mainEvent() { //mainEvent refers to page loading
   const loc = await fetch('/api/mealsByHall');
   const locArray = await loc.json();
   locData = locArray.data
+
   //Each hall has their own seperate list for the dropdowns
   let hall0Meals = '<ul>' //The Diner
   let hall1Meals = '<ul>' //South Campus
@@ -126,10 +133,10 @@ async function mainEvent() { //mainEvent refers to page loading
       this.classList.toggle("active");
 
       const drop = this.nextElementSibling;
-      if (drop.style.display === "block") { //Toggles the dropdown open and close
+      if (drop.style.display === "flex") { //Toggles the dropdown open and close
         drop.style.display = "none";
       } else {
-        drop.style.display = "block";
+        drop.style.display = "flex";
       }
     });
     
@@ -137,7 +144,6 @@ async function mainEvent() { //mainEvent refers to page loading
 
 
   //create the table
-  createHTMLtable(currentArray);
   
 }
 

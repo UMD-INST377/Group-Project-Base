@@ -4,7 +4,8 @@ export default (database, DataTypes) => {
     {
       genre_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
       },
       genre_name: {
         type: DataTypes.STRING,

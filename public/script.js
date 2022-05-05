@@ -467,11 +467,11 @@ function main() {
     // search bar
     document.querySelector('.species_form').addEventListener('submit', async (e) => {
         wikiSearch(e)
-        saveQuery.style.display = 'flex';
+        saveQuery1.style.display = 'flex';
     })
-    const saveQuery = document.querySelector('.save-query')
-    saveQuery.style.display = 'none'
-   saveQuery.addEventListener('click', async (e) => {
+    const saveQuery1 = document.querySelector('.save-query')
+    saveQuery1.style.display = 'none'
+   saveQuery1.addEventListener('click', async (e) => {
         // if there are currently elements inside the query container
         if (document.querySelector('.query').firstChild) {
             saveQuery(e);

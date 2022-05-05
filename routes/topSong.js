@@ -1,0 +1,1 @@
+export default 'select `Group15_Spotify`.`songs`.`name` as `song name`,  `Group15_Spotify`.`songs`.`duration` from `Group15_Spotify`.`songs` order by `Group15_Spotify`.`songs`.`duration` desc ';

@@ -8,6 +8,8 @@ import db from '../database/initializeDB.js';
 import graphquery from './graphquery.js';
 import rawqueries from './rawqueries.js';
 import artistGraphQuery from './artistGraphQuery.js';
+import topSong from './topSong.js';
+import topalbum from './topalbum.js';
 
 const router = express.Router();
 
@@ -888,6 +890,32 @@ router.get('/artistGraph', async (req, res) => {
   try {
     const artgraph = artistGraphQuery;
     const result = await db.sequelizeDB.query(artgraph, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json({data: result});
+  } catch (err) {
+    console.error(err);
+    res.error('Sever error');
+  }
+});
+
+router.get('/songGraph', async (req, res) => {
+  try {
+    const songGraph = topSong;
+    const result = await db.sequelizeDB.query(songGraph, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json({data: result});
+  } catch (err) {
+    console.error(err);
+    res.error('Sever error');
+  }
+});
+
+router.get('/albumGraph', async (req, res) => {
+  try {
+    const albgraph = topalbum;
+    const result = await db.sequelizeDB.query(albgraph, {
       type: sequelize.QueryTypes.SELECT
     });
     res.json({data: result});

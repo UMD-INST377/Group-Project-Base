@@ -10,7 +10,7 @@
         <div class="left"><a href="artist_details.html">Back to Artwork Details</a></div>
         <!-- <div class="left"><a href="genre_info.html">Artwork Genre</a></div> -->
     </nav>
-    <table class="table">
+    <table id="table">
         
         <th>"Artists Id"</th>
         <th>"First Name"</th>
@@ -22,6 +22,12 @@
     <div class="submit_button"></div>
     <form action = "adding_artist.html">
         <button class="add_artist" type="submit">Click here to add an artist</button>
+    </form>
+    <h3>Delete a artist</h3>
+    <div class="submit_button"></div>
+    <button class="delete_artist">Click here to delete an artist</button>
+    <input required type="number" name = "artist_id" id = "artist_id">
+    
     <script src="artists_script.js"></script>
 
 </body>

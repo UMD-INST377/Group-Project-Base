@@ -40,10 +40,16 @@ router.route('/map') // http://localhost:3000/api/map
 
   }); */
 
-router.route('/map')
-  .get(async (req, res) => { // entries only based on given code and plant id?
+router.route('/map/:id')
+  .get(async (req, res) => { // one entry
     try {
-
+      const {id} = req.params;
+      const result = await db.sequelizeDB.query(mapcontroller.mapGet,
+        {
+          type: sequelize.QueryTypes.SELECT
+        });
+      console.log('data loaded');
+      res.json({data: result[id]});
     } catch (err) {
       console.log(err);
       res.json({message: 'something went wrong'});

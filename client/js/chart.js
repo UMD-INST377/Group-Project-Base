@@ -86,33 +86,105 @@ function artistsGraph(xAxis, yAxis) {
   });
   return chart; // return chart object
 }
-
-function newGraph(label, values) {
-  chart.data.labels = label;
-  chart.data.datasets.data = values;
-  chart.update();
+function songsGraph(xAxis, yAxis) {
+  const NumOfDataShown = 10;
+  const chart = new Chart(document.getElementById('myChart'), {
+    type: 'bar',
+    data: {
+      labels: xAxis,
+      datasets: [
+        {
+          label: 'Song Counts',
+          backgroundColor: poolColors(NumOfDataShown),
+          data: yAxis
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Top 10 Longest Songs'
+      },
+      scaleShowValues: true,
+      scales: {
+        xAxes: [{
+          ticks: {
+            autoSkip: false
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+  return chart; // return chart object
 }
+
+function albumGraph(xAxis, yAxis) {
+  const NumOfDataShown = 10;
+  const chart = new Chart(document.getElementById('myChart'), {
+    type: 'bar',
+    data: {
+      labels: xAxis,
+      datasets: [
+        {
+          label: 'number of songs in album',
+          backgroundColor: poolColors(NumOfDataShown),
+          data: yAxis
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Top 10 Albums with The Most Songs'
+      },
+      scaleShowValues: true,
+      scales: {
+        xAxes: [{
+          ticks: {
+            autoSkip: false
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+  return chart; // return chart object
+}
+
+
+
+
 async function getData() {
   const genreResponse = await fetch('/api/graphgenres');
   const artistResponse = await fetch('/api/artistGraph');
-  const albumresponse = 'a';
+  const albumresponse = await fetch('/api/albumGraph');
+  const songResponse = await fetch('/api/songGraph');
   const dropdown = document.getElementById('graphDropdown');
   const NumOfDataShown = 10;
   let GenreName = [];
   let values = [];
-  // const d = document.getElementById('chart');
-  // const d_nested = document.getElementById('myChart');
-  // const throwawayNode = d.removeChild(d_nested);
+
   const genresData = await genreResponse.json();
   const artistsData = await artistResponse.json();
+  const songsData = await songResponse.json();
+  const albumData = await albumresponse.json();
 
   for (i = 0; i < NumOfDataShown; i += 1) {
     GenreName.push(genresData.data[i].genre);
     values.push(genresData.data[i]['song amount']);
   }
   chart = genresGraph(GenreName, values);
-  GenreName = [];
-  values = [];
 
   dropdown.addEventListener('change', async (event) => {
     if (event.target.value === 'artists') {
@@ -127,6 +199,28 @@ async function getData() {
       chart = artistsGraph(GenreName, values);
     }
     if (event.target.value === 'albums') {
+      GenreName = [];
+      values = [];
+      for (i = 0; i < NumOfDataShown; i += 1) {
+        GenreName.push(albumData.data[i].name);
+        values.push(albumData.data[i]['numnber of songs']);
+      }
+      console.log(event.target.value, GenreName, values);
+      chart.destroy();
+      chart = albumGraph(GenreName, values);
+    }
+    if (event.target.value === 'songs') {
+      GenreName = [];
+      values = [];
+      for (i = 0; i < NumOfDataShown; i += 1) {
+        GenreName.push(songsData.data[i]['song name']);
+        values.push(songsData.data[i].duration);
+      }
+      console.log(event.target.value, GenreName, values);
+      chart.destroy();
+      chart = songsGraph(GenreName, values);
+    }
+    if (event.target.value === 'default') {
       GenreName = [];
       values = [];
       for (i = 0; i < NumOfDataShown; i += 1) {

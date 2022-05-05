@@ -2,6 +2,8 @@
 import express from 'express';
 import sequelize from 'sequelize';
 import apiRoutesJessica from './apiRoutesJessica.js';
+import apiRoutesMelody from './apiRoutesMelody.js';
+import apiRoutesEthan from './apiRoutesEthan.js';
 import apiRoutesNick from './apiRoutesNick.js';
 
 import db from '../database/initializeDB.js';
@@ -14,8 +16,8 @@ router.get('/', (req, res) => {
 
 // Restaurant Route - Jessica 
 router.use('/restaurants', apiRoutesJessica);
-
-
+router.use('/descriptions', apiRoutesMelody);
+router.use('/address', apiRoutesEthan);
 router.use('/cuisine', apiRoutesNick);
 
 /// /////////////////////////////////

@@ -1,0 +1,77 @@
+*{
+
+}
+html {
+    background-image: url('images/p3949664573-6.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+body{
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4)
+}
+.navi{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    height: 50px;
+    color: white;
+    
+
+}
+.navi ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    
+  }
+.navi ul li{
+    display: inline;
+    color: white;
+    list-style: none;
+    
+
+}
+.navi a{
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    
+}
+.macro_table{
+    display: inline-block;
+    
+    margin: 30px;
+    
+
+}
+.macro_list{
+    display: inline-flex;
+    list-style-type: none;
+    
+
+}
+.macro_list_style{
+    background-color: white;
+}
+.macro_list ul{
+    display: inline-flex;
+    list-style: none;
+    background-color: white;
+}
+.macro_list li{
+    display: inline-flex;
+    float: left;
+    list-style-type: none;
+    text-align: center;
+   
+}
+.macroColumnLabels{
+    display: inline-flex;
+    list-style-type: disc;
+    color: white;
+    background-color: black;
+}

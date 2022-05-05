@@ -3,10 +3,9 @@ import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
 import apiRoutesJessica from './routes/apiRoutesJessica.js';
-import apiRoutesMelody from './routes/apiRoutesMelody.js';
 import apiRoutesEthan from './routes/apiRoutesEthan.js';
-import apiRoutesNick from './routes/apiRoutesNick.js';
-
+import apiRoutesMelody from './routes/apiRoutesMelody.js';
+// import apiRoutesNick from './routes/apiRoutesNick.js';
 
 const app = express();
 
@@ -21,7 +20,6 @@ app.use('/api', apiRoutes);
 app.use('/jess', apiRoutesJessica);
 app.use('/ethan', apiRoutesEthan);
 app.use('/melody', apiRoutesMelody);
-
 
 async function bootServer() {
   try {

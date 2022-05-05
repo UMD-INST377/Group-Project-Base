@@ -15,9 +15,10 @@ router.get('/', (req, res) => {
 });
 
 // Restaurant Route - Jessica 
-router.use('/restaurants', apiRoutesJessica);
+router.use('/restaurant', apiRoutesJessica);
 // router.use('/address', apiRoutesEthan);
-router.use('/descriptions', apiRoutesMelody);
+router.use('/services', apiRoutesMelody);
+router.use('/location', apiRoutesEthan);
 router.use('/cuisine', apiRoutesNick);
 
 /// /////////////////////////////////

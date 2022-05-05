@@ -11,7 +11,7 @@ https://morning-depths-05988.herokuapp.com/
 * Laptop
 * iPad Air
 
-## Links
+## Link
 * [Developer Manual] (https://github.com/ViphuKN/Group10-Final-INST377SP2021#developer-manual)
 
 # Developer Manual
@@ -31,12 +31,21 @@ https://morning-depths-05988.herokuapp.com/
 2. In the first terminal, run ```npm start```.
 3. In the second terminal run ```npm test```.
 
-## Known bugs and Future Development
-### Bugs: 
-- 
+## Server Application APIs
+```/actors``` - API route to display actors ID, first & last name, birth date, and death year
+* GET - Logs to console response query from URL. Returns response 'Actor_Id'
+* GET - Display a chart of the top 5 TV ratings
+* POST -  Access the actors table and create a editing row in the actors table for the user's input
+* DELETE - Access the actors table to allow the user to delete info of an actor from their id
+
+```/primary_title``` API route to display information on the film and TV shows
+* GET - 
+* DELETE - 
+* POST 
 
 ### Future Developement:
-* 
+* We could add more graphs that show information about the users database such as amount of movies per genre
+* Clean up background design to make it more visually appealing
 
 ### How to use Markdown
 Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.

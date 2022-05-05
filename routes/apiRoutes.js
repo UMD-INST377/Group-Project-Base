@@ -31,12 +31,25 @@ router.route('/map') // http://localhost:3000/api/map
       res.json({message: 'something went wrong'});
     }
   })
+  .post(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(mapcontroller.mapPost,
+        {
+          replacements: {
+            plant_id: req.body.plant_id,
+            location_code: req.body.location_code
+          },
+          type: sequelize.QueryTypes.INSERT
+        });
+      console.log('data updated');
+      res.json({data: result});
+    } catch (err) {
+      res.json({ error: 'something went wrong inserting new entry'});
+    }
+  })
   /* .put(async (req, res) => {
 
-  })
-  .post(async (req, res) => {
-
-  })
+  }) 
   .delete(async (req, res) => {
 
   }); */

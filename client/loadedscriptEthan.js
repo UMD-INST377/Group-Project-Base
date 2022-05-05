@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable camelcase */
 // ethan ic3
 function getRandomIntInclusive(min, max) {
@@ -20,8 +21,8 @@ function restoArrayMake(dataArray) {
 function createHtmlList(collection) {
   // console.log('fired HTML creator');
   console.log(collection);
-  const targetList = document.querySelector('.resto-list');
-  targetList.innerHTML = '';
+  const targetList = document.querySelector(".resto-list");
+  targetList.innerHTML = "";
   collection.forEach((item) => {
     const { restaurant_name } = item;
     const displayName = restaurant_name.toLowerCase();
@@ -31,37 +32,37 @@ function createHtmlList(collection) {
 }
 async function mainEvent() {
   // the async keyword means we can make API requests
-  console.log(document.querySelector('.mainform'));
-  const form = document.querySelector('.mainform');
-  const submit = document.querySelector('.button');
-  // eslint-disable-next-line camelcase
-  const address_1 = document.querySelector('#NewAddress');
+  console.log(document.querySelector(".mainform"));
+  const form = document.querySelector(".mainform");
+  const submit = document.querySelector(".button");
+  const street_address = document.querySelector("#Street_Address");
   // const zipcode = document.querySelector('#zipcode');
-  submit.style.display = 'none';
-  const results = await fetch('/ethan/address'); // This accesses some data from our API
+  submit.style.display = "none";
+
+  const results = await fetch("/ethan/location"); // This accesses some data from our API
   const arrayFromJson = await results.json(); // This changes it into data we can use - an object
   console.log(arrayFromJson);
   if (arrayFromJson.length > 0) {
-    submit.style.display = 'block';
+    submit.style.display = "block";
     // let currentArray = [];
     let currentArray = arrayFromJson;
     console.log(currentArray.length);
-    address_1.addEventListener('input', async (event) => {
+    street_address.addEventListener("input", async (event) => {
       console.log(currentArray.length);
       if (currentArray.length === 0) {
         return;
       }
       console.log(event.target.value.toLowerCase());
       const selectResto = currentArray.filter((item) => {
-        console.log(item.address_1);
-        const lowerName = item.address_1.toLowerCase();
+        console.log(item.street_address);
+        const lowerName = item.street_address.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
       });
       console.log(selectResto);
       createHtmlList(selectResto);
     });
-    form.addEventListener('submit', async (submitEvent) => {
+    form.addEventListener("submit", async (submitEvent) => {
       // async has to be declared all the way to get an await
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       // console.log('form submission'); // this is substituting for a "breakpoint"
@@ -74,4 +75,5 @@ async function mainEvent() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', async () => mainEvent());
+// this actually runs first! It's calling the function above
+document.addEventListener("DOMContentLoaded", async () => mainEvent());

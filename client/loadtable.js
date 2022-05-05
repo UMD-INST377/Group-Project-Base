@@ -5,7 +5,7 @@ async function createtable() {
   const table = document.querySelector('.table');
   const takeoutcheckbox = document.querySelector('#takeout');
   const deliverycheckbox = document.querySelector('#delivery');
-  const parkingcheckbox = document.querySelector('#parking');
+  const drivethrucheckbox = document.querySelector('#drive_thru');
 
   function filtercheck(array) {
     let filterarray = array;
@@ -18,8 +18,8 @@ async function createtable() {
       const newfilter = filterarray.filter((item) => item.delivery === 1);
       filterarray = newfilter;
     }
-    if (parkingcheckbox.checked) {
-      const newfilter = filterarray.filter((item) => item.parking === 1);
+    if (drivethrucheckbox.checked) {
+      const newfilter = filterarray.filter((item) => item.drivethru === 1);
       filterarray = newfilter;
     }
 
@@ -29,7 +29,6 @@ async function createtable() {
   async function loadtable(array) {
     table.innerHTML = `<tbody><tr>
             <th>Restaurant Name</th>
-            <th>Description</th>
         
             </tr>
             </tbody>`;
@@ -40,7 +39,7 @@ async function createtable() {
 
       row.appendChild(restaurantname);
       const desc = document.createElement('td');
-      desc.innerHTML = item.description;
+      // desc.innerHTML = item.description;
       row.appendChild(desc);
 
       // const tk = document.createElement("td")
@@ -53,7 +52,7 @@ async function createtable() {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (currentdata.length === 0) {
-      const arrayFromJson = await fetch('/melody/description');
+      const arrayFromJson = await fetch('/melody/service');
       data = await arrayFromJson.json();
       console.log(data);
       currentdata = data;

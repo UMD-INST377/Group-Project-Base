@@ -8,6 +8,7 @@ import launchQuery from '../controllers/launch_query.js';
 import dinnerQuery from '../controllers/dinner_query.js';
 import mealQuery from '../controllers/meals.js';
 import macroQuery from '../controllers/macro.js';
+import updateMeals from '../controllers/updateMeal.js';
 
 const router = express.Router();
 
@@ -48,6 +49,23 @@ router.post('/Group22_Dining_Hall_Tracker', async (req, res) => {
     const result = await db.sequelizeDB.query(hallQuery, {
       replacements: { hall_hours_id: hallId},
       type: Sequelize.QueryTypes.INSERT
+    });
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+    res.send({ message: err});
+  }
+});
+
+router.post('/mealUpdate', async (req, res) => {
+  try {
+    console.dir(req.body, {depth: null});
+    console.log(req.body?.id);
+    const mealId = req.body?.original_name || 0;
+    const mealName = req.body?.new_name;
+    const result = await db.sequelizeDB.query(updateMeals, {
+      replacements: {meal_id: mealId, meal_name: mealName},
+      type: Sequelize.QueryTypes.UPDATE
     });
     res.json({ data: result });
   } catch (err) {

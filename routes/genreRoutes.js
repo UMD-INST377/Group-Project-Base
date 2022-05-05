@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.route('/genre').get(async (req, res) => {
   try {
-    const genre = await db.genre.findAll();
-    res.json({ data: genre });
+    const art = await db.genre.findAll();
+    res.json(art);
   } catch (error) {
     console.error(error);
     res.send('Server Error');

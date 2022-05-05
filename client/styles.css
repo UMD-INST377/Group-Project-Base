@@ -15,6 +15,10 @@ nav a {
   display: flex;
 }
 
+.title-image {
+  max-width: 40%;
+}
+
 .chart-wrapper {
   justify-content: space-around;
   /* padding: 1em; */

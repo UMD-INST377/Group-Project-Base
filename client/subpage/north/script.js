@@ -6,9 +6,7 @@ function dataHandler(dataArray) {
   return listItems;
 }
 
-
-async function mainEvent() {
-
+async function createMealTable(){
   const results = await fetch('/api/meals');
   const mealJson = await results.json();
 
@@ -23,12 +21,52 @@ async function mainEvent() {
 
 
   const nameList = document.querySelector(".meal_names");
-  nameList.innerHTML = '';
+  nameList.innerHTML = "";
   nameList.innerHTML += northMeals;
 
   const catList = document.querySelector(".category");
-  catList.innerHTML = '';
+  catList.innerHTML = "";
   catList.innerHTML += mealCat;
+}
+
+async function createMacroTable(){
+  const fetchMacros = await fetch("/api/macros");
+  const macros = await fetchMacros.json();
+  let table = `<table border = 1>
+  <tr>
+    <th>macro_id</th>
+    <th>calories</th>
+    <th>serving_size</th>
+    <th>cholesterol</th>
+    <th>sodium</th>
+    <th>carbs</th>
+    <th>protein</th>
+    <th>fat</th>
+  </tr>`;
+
+  for (i = 0 ; i < macros.length; i++) {
+    table += `<tr>
+      <td>${macros[i].macro_id}</td>
+      <td>${macros[i].calories}</td>
+      <td>${macros[i].serving_size}</td>
+      <td>${macros[i].cholesterol}</td>
+      <td>${macros[i].sodium}</td>
+      <td>${macros[i].carbs}</td>
+      <td>${macros[i].protein}</td>
+      <td>${macros[i].fat}</td>
+    </tr>`
+  }
+  table += '</table>'
+  const macroQuery = document.querySelector(".macro_table");
+  macroQuery.innerHTML = "";
+  macroQuery.innerHTML += table
+  
+}
+
+
+async function mainEvent() {
+  createMealTable();
+  createMacroTable();
 }
 
 

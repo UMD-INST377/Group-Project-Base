@@ -78,3 +78,17 @@ router.get('/dining', async (req, res) => {
       res.error('Server error');
     }
   });
+
+  router.delete('/dining/:hall_id', async (req, res) => {
+    try {
+      await db.DiningHall.destroy({
+        where: {
+          hall_id: req.params.hall_id
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });

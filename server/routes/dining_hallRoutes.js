@@ -59,3 +59,4 @@ router.get('/dining/:hall_id', async (req, res) => {
     res.error('Server error');
   }
 });
+

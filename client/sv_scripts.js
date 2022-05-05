@@ -67,10 +67,12 @@ function updateRestaurants(collection) {
   const targetList = document.querySelector('#resto-list');
   targetList.innerHTML = '';
   collection.forEach(async(item) => {
-    const { name } = item;
+    console.log('item=');
+    console.log(item);
+    const { restaurant_name } = item;
     // eslint-disable-next-line camelcase
     const {rating_id} = item;
-    const displayName = name.toLowerCase();
+    const displayName = restaurant_name.toLowerCase();
     // eslint-disable-next-line camelcase
     const results = await fetch(`/api/rating/${rating_id}`); // This accesses some data from our API
     const arrayFromJson = await results.json();
@@ -113,16 +115,20 @@ async function mainEvent() { // the async keyword means we can make API requests
   submit.style.display = 'none';
 
 /// start of lab 8 section (modified lab 7 code)
-  if (!localStorage.getItem(retVar)) {
+  restaurants = localStorage.getItem(retVar);
+ 
+
+  //if (!localStorage.getItem(retVar)) 
+  if (typeof restaurants === 'undefined'
+  || restaurants === 'undefined') {
     const results = await fetch('/api/restaurants'); // This accesses some data from our API
     const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-    console.log(arrayFromJson);
-    localStorage.setItem(retVar, JSON.stringify(arrayFromJson.data));
+    restaurants = JSON.stringify(arrayFromJson)
+    localStorage.setItem(retVar, restaurants);
   }
 
-  const storedDataString = localStorage.getItem(retVar);
+  const storedDataString = restaurants;
   const storedDataArray = JSON.parse(storedDataString);
-  console.log(storedDataArray);
   if (storedDataArray.length > 0) {
     submit.style.display = 'block';
 
@@ -140,6 +146,7 @@ async function mainEvent() { // the async keyword means we can make API requests
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
       });
+      console.log("Reebok")
       console.log(selectResto);
       updateRestaurants(selectResto);
     });
@@ -167,7 +174,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       // arrayFromJson.data - we're accessing a key called 'data' on the returned object
       // it contains all 1,000 records we need
       currentArray = restoArrayMake(storedDataArray);
-      updateRestaurants(RestaurantArray);
+      updateRestaurants(currentArray);
     });
 
     // ADDING A RESTAURANT

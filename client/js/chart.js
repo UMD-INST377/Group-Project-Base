@@ -12,17 +12,17 @@ function poolColors(a) {
   return pool;
 }
 
-function runGraph(counts, days) {
+function genresGraph(xAxis, yAxis) {
   const NumOfDataShown = 10;
   const chart = new Chart(document.getElementById('myChart'), {
     type: 'bar',
     data: {
-      labels: counts,
+      labels: xAxis,
       datasets: [
         {
           label: 'Song Counts',
           backgroundColor: poolColors(NumOfDataShown),
-          data: days
+          data: yAxis
         }
       ]
     },
@@ -32,8 +32,55 @@ function runGraph(counts, days) {
         display: true,
         text: 'Top 10 Genres'
       },
-      ticks: {
-        autoSkip: false
+      scaleShowValues: true,
+      scales: {
+        xAxes: [{
+          ticks: {
+            autoSkip: false
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+  return chart; // return chart object
+}
+function artistsGraph(xAxis, yAxis) {
+  const NumOfDataShown = 10;
+  const chart = new Chart(document.getElementById('myChart'), {
+    type: 'bar',
+    data: {
+      labels: xAxis,
+      datasets: [
+        {
+          label: 'Album Counts',
+          backgroundColor: poolColors(NumOfDataShown),
+          data: yAxis
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Top 10 Artists With The Most Albums'
+      },
+      scaleShowValues: true,
+      scales: {
+        xAxes: [{
+          ticks: {
+            autoSkip: false
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
       }
     }
   });
@@ -43,7 +90,6 @@ function runGraph(counts, days) {
 function newGraph(label, values) {
   chart.data.labels = label;
   chart.data.datasets.data = values;
-  console.log(label, values);
   chart.update();
 }
 async function getData() {
@@ -54,7 +100,9 @@ async function getData() {
   const NumOfDataShown = 10;
   let GenreName = [];
   let values = [];
-
+  // const d = document.getElementById('chart');
+  // const d_nested = document.getElementById('myChart');
+  // const throwawayNode = d.removeChild(d_nested);
   const genresData = await genreResponse.json();
   const artistsData = await artistResponse.json();
 
@@ -62,7 +110,7 @@ async function getData() {
     GenreName.push(genresData.data[i].genre);
     values.push(genresData.data[i]['song amount']);
   }
-  chart = runGraph(GenreName, values);
+  chart = genresGraph(GenreName, values);
   GenreName = [];
   values = [];
 
@@ -74,7 +122,9 @@ async function getData() {
         GenreName.push(artistsData.data[i].name);
         values.push(artistsData.data[i].album_count);
       }
-      chart = newGraph(GenreName, values);
+      console.log(event.target.value, GenreName, values);
+      chart.destroy();
+      chart = artistsGraph(GenreName, values);
     }
     if (event.target.value === 'albums') {
       GenreName = [];
@@ -83,7 +133,9 @@ async function getData() {
         GenreName.push(genresData.data[i].genre);
         values.push(genresData.data[i]['song amount']);
       }
-      newGraph(GenreName, values);
+      console.log(event.target.value, GenreName, values);
+      chart.destroy();
+      chart = genresGraph(GenreName, values);
     }
   });
 }

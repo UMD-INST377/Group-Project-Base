@@ -76,6 +76,14 @@ function addMapMarkers(map, collection) {
   });
 }
 
+function updateMap(map, lat, long) {
+  console.log(lat);
+  console.log(long);
+  const latLong = [lat,-long]; // assateague island start
+  map.setView(latLong,13);
+
+}
+
 function findPark(park, parkArray) {
   let match;
   parkArray.forEach((item) => {
@@ -106,7 +114,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   const parksjson = await parksapi.json();
   const parksArray = parksjson.parks;
   // const storedDataArray = JSON.parse(parksArray);
-  console.log(parksArray);
+  // console.log(parksArray);
   // console.log(storedDataArray);
 
   updateParks(parksArray);
@@ -122,8 +130,9 @@ async function mainEvent() { // the async keyword means we can make API requests
       // console.log(event.target.value);
       // console.log(parksArray);
       matchingPark = findPark(event.target.value, parksArray);
-      console.log(matchingPark);
+      // console.log(matchingPark.park_lat, matchingPark.park_long );
       currentPark = matchingPark;
+      updateMap(map, matchingPark.park_lat, matchingPark.park_long);
     });
 
     form.addEventListener('submit', async (submitEvent) => {

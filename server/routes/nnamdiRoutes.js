@@ -4,7 +4,7 @@ import sequelize from 'sequelize';
 import db from '../database/initializeDB.js';
 
 /// /////////////////////////////////
-/// //////// Review Endpoints////////// by Ryan E
+/// //////// Review Endpoints////////// by Nnamdi Ede
 /// /////////////////////////////////
 
 
@@ -94,4 +94,22 @@ router.put('/reviews', async (req, res) => {
     res.send('Error');
   }
 });
+
+/// /////////////////////////////////
+/// //////// Restaurant Endpoints////////// By Nnamdi Ede
+/// /////////////////////////////////
+router.get("/restaurant/", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await db.sequelizeDB.query(
+      `SELECT * FROM Restaurant`
+    );
+    res.json({ data: result });
+  } catch (err) {
+    console.error(err);
+    res.send("Server error");
+  }
+});
+ 
+
 export default router;

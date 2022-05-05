@@ -96,7 +96,7 @@ router.put('/reviews', async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// //////// Restaurant Endpoints////////// by Nnamdi Ede
+/// //////// Restaurant Endpoints////////// By Nnamdi Ede
 /// /////////////////////////////////
 router.get("/restaurant/", async (req, res) => {
   try {

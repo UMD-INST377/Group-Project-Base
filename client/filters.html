@@ -1,3 +1,4 @@
+<!-- melody ic3 html-->
 <html>
 
 <head>
@@ -5,22 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CP Restaurant Database</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/styles.css"/>
 </head>
 <body>
-    <div class="container">
-        <h1 class="header1">College Park Food Finder</h1>
-    </div>
+    <h1 class="header1">College Park Food Finder</h1>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="addRestaurant.html">Add Restaurant</a>
-        <a href="filters.html">Filters</a>
-        <a href="restaurants.html">Restaurants</a>
-    </nav>
-</body>
+        <a href="/index.html">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/addRestaurant.html">Add Restaurant</a>
+        <a href="/filters.html">Filters</a>
+        <a href="/restaurants.html">Restaurants</a>
 
+    </nav>
+    <div>
+        <form class ="mainform">
+            <div class = "field">
+                <label>
+                    Takeout 
+                </label>
+                <input type="checkbox" name="takeout" id="takeout">
+            </div>
+            <div class = "field">
+                <label>
+                    Delivery 
+                </label>
+                <input type="checkbox" name="delivery" id="delivery">
+            </div>
+            <div class = "field">
+                <label>
+                    Parking
+                </label>
+                <input type="checkbox" name="parking" id="parking">
+            </div>
+            <div class = "control">
+                <button class = "button">
+                    submit
+                </button>
+            </div>
+        </form>
+        <table style="margin: 100px;background-color: aliceblue" class="table">
+            <!--First tr is the column headers-->
+            <tr>
+                <th>Restaurant Name</th>
+                <th>Description</th>
+            
+            </tr>
+        </table>
+    </div>
+    <script src = "loadtable.js">
+
+    </script>
+</body>
 </html>

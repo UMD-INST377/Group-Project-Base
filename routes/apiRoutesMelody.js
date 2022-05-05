@@ -3,7 +3,7 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
-const descriptionQuery = 'SELECT * FROM descriptions'
+const descriptionQuery = 'SELECT * FROM restaurants LEFT JOIN descriptions using (description_id)'
 const router = express.Router();
 
 router.route('/description').get(async (req, res) => {

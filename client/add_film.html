@@ -34,24 +34,24 @@
     </header>
     <form action='/api/primary_title' method='post' class='speaker-form'>
       <div class='form-row'>
-        <label for='primary_title'>Film Name</label>
-        <input id='primary_title' name='primary_title' type='text'/>
+        <label for='filmName'>Film Name</label>
+        <input id='filmName' name='filmName' type='text'/>
       </div>
       <div class="form-row">
-        <label for='release_year'>Release Date</label>
-        <input id='release_year' name='release_year' type='Date'/>
+        <label for='release'>Release Date</label>
+        <input id='release' name='release' type='text'/>
       </div>
       <div class="form-row">
-        <label for='title_rating'>Rating</label>
-        <input id='title_rating' name='title_rating' type='text'/>
+        <label for='rating'>Rating</label>
+        <input id='rating' name='rating' type='text'/>
       </div>
       <div class="form-row">
-        <label for='titel_votes'>Number of Votes</label>
-        <input id='title_votes' name='title_votes' type='text'/>
+        <label for='votes'>Number of Votes</label>
+        <input id='votes' name='votes' type='text'/>
       </div>
       <div class="form-row">
-        <label for='runtime_min'>Runtime</label>
-        <input id='runtime_min' name='runtime_min' type='text'/>
+        <label for='Runtime'>Runtime</label>
+        <input id='Runtime' name='Runtime' type='text'/>
       </div>
       <div class='form-row'>
         <button>Submit</button>
@@ -64,13 +64,13 @@
       <h1>Delete Title</h1>
       <p><em>Delete titles from the shared database.</em></p>
     </header>
-  <form id = delete_title class='speaker-form'>
+  <form class='speaker-form' id = 'delete_title' >
       <div class='form-row'>
         <label for='title_id'>Title Id</label>
         <input id='title_id' name='title_id' type='text'/>
       </div>
     </form>
-    <button id = "delete_film">Submit</button>
+    <button id = "delete_submit">Submit</button>
     <script src = "./js/delete_title.js"></script>
     
   </body>

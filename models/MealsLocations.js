@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
+  const MealsLocations = sequelize.define(
     'meals_locations',
     {
       hall_id: {
@@ -13,5 +13,5 @@ export default (sequelize, DataTypes) => {
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  return MealsLocations;
 };

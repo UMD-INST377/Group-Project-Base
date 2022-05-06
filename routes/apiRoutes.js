@@ -9,15 +9,14 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
-
 // GET controller for front-end menu table
 router.route('/allmeals')
   .get(async (req, res) => {
     try {
       const results = await db.sequelizeDB.query(`
-      SELECT meal_name, meals.meal_id, calories, cholesterol, serving_size, sodium, carbs, protein, fat, hall_name AS 'location' 
-      FROM meals 
-      LEFT JOIN macros mac ON meals.meal_id=mac.meal_id
+      SELECT meal_name, meals.meal_id, calories, cholesterol, serving_size, sodium, carbs, protein, fat, hall_name AS 'location'
+      FROM meals
+      JOIN macros mac ON meals.meal_id=mac.meal_id
       JOIN meals_locations ml ON meals.meal_id=ml.meal_id
       JOIN dining_hall dh ON ml.hall_id=dh.hall_id
       `);
@@ -27,25 +26,36 @@ router.route('/allmeals')
       res.json({message: 'something went wrong'});
     }
   });
-
 // Runs a query for just the dining hall name and their food items - hall_name, meal_name
 router.route('/mealsByHall')
-  .get(async (req, res)=>{
-  try{
-    const mealQuery = await db.sequelizeDB.query(`
+  .get(async (req, res) => {
+    try {
+      const mealQuery = await db.sequelizeDB.query(`
     SELECT hall_name, meal_name
     FROM dining_hall 
     JOIN meals_locations USING (hall_id)
     JOIN meals USING (meal_id);
     `);
-    res.json({data: mealQuery[0]});
-  }catch (err) {
-    console.log(err);
-    res.json({message: 'something went wrong in mealsByHall'});
-  }
-});
-
-
+      res.json({data: mealQuery[0]});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong in mealsByHall'});
+    }
+  });
+  router.route('/test')
+  .get(async (req, res) => {
+    try {
+      const mealQuery = await db.sequelizeDB.query(`
+    SELECT meal_restrictions.meal_id, restriction_type
+    FROM meal_restrictions
+    JOIN dietary_restrictions USING(restriction_id);
+    `);
+      res.json({data: mealQuery[0]});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
 
 // Nicholas Urquhart GET controllers
 router.route('/macros')
@@ -128,9 +138,6 @@ router.route('/macros/:id')
     }
   });
 
-
-
-
 // David McCoy GET Controllers
 router.route('/dietaryRestrictions')
   .get(async (req, res) => {
@@ -205,7 +212,7 @@ router.route('/dietaryRestrictions/:id')
     }
   });
 // Josh Mensah GET Controllers
-router.route('/josh')
+router.route('/josh');
 router.route('/mealRestrictions')
   .get(async (req, res) => {
     try {
@@ -216,10 +223,6 @@ router.route('/mealRestrictions')
       res.json({message: 'something went wrong'});
     }
   });
-
-
-
-
 
 // Josh Mensah GET Controllers
 router.route('/josh')
@@ -232,7 +235,6 @@ router.route('/josh')
       res.json({message: 'something went wrong'});
     }
   });
-
 
 // Brian McMahon GET controllers
 router.route('/brian')

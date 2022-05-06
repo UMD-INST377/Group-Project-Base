@@ -14,9 +14,6 @@ h2{
     min-height: 80vh;
     margin-top: 100px;
     margin-left: -100px;
-    
-    
-    
 }
 .diner_wrap{
     flex-direction: column;
@@ -43,12 +40,12 @@ h2{
 
 .dropdown { /*Styles the dropped panel*/
     display: none;
-    margin-top: 50px;
+    margin-top: 10px;
     color: rgb(0, 0, 0);
     max-height: 70vh;
     transition: 10s;
     width: 20em;
-
+    
 }
 
 .accordion{
@@ -59,17 +56,16 @@ h2{
     width: 100%;
     text-align: left;
     outline: none;
-    transform: scaleY(1);
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    
+
 }
 
 li{
     list-style: none;
-    margin-left: -25px;
+    margin-left: -15px;
     border:rgb(0, 0, 0);
-    
-    
-    
 }
 .active, .accordion :hover{
     background-color: #ccc;
@@ -80,6 +76,6 @@ li{
     display: none;
     background-color: white;
     overflow: hidden;
-    
+    justify-content: center;
 }
 

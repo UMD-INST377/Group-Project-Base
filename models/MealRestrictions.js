@@ -4,7 +4,7 @@ export default (sequelize, DataTypes) => {
     {
       meal_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
       restriction_id: {
         type: DataTypes.INTEGER,

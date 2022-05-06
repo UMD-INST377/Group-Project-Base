@@ -19,7 +19,6 @@ This would be useful to anyone living in or visiting the campus in the College P
 * [Database Demo](https://aqueous-reef-41843.herokuapp.com/data.html)
 * [Developer Manual](https://github.com/sravvel/Group23-Final-INST377SP2021#developer-manual)
 
-
 # Database Manual
 1. Clone this repository via Github
 2. Open repository using VSCode

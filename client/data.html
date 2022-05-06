@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Database Demos</title>
+    <title>About & Database Demos</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="header-box">
-      <p>TERP TASTES</p>
+      <div class="logo">
+        <a href="https://github.com/sravvel/Group23-Final-INST377SP2021">
+        <img src='images/TT_Logo.png' width='300' alt='github'/>
+      </a>
+      </div>
     </div>
     <div class="menu-container">
       <div class="menu">
         <div class="login"><a href="./index.html">Main Page</a></div>
         <div class="signup"><a href="./data.html">Database Demos</a></div>
       </div>
-    </div>
-    <div class="logo">
-      <a href="https://github.com/sravvel/Group23-Final-INST377SP2021">
-      <img src='images/TT_Logo.png' width='200' alt='github'/>
-    </a>
     </div>
 
     <div class="menu-container">
@@ -40,7 +39,42 @@
     <h1>User Manual</h1>
     </div>
     <div class="other-box food-form">
-    <h3> content here </h3>
+    <h3> Database Manual </h3>
+    <ol>
+      <li>Clone this repository via Github</li>
+      <li>Open repository using VSCode</li>
+      <li>Open the terminal window on VSCode and type ` npm install ` to install dependencies</li>
+      <li>You are now ready to use the application!</li>
+    </ol>
+      
+      <h3> Running the Application on a Server </h3>
+      <ol>
+      <li>Open repository using VSCode</li>
+        <li>Open the terminal window on VSCode and type ` npm start `. Make sure there are 0 vulnerabilites and no errors</li>
+        <li>To view the webpage in a web browser, go to http://localhost:3000/ </li>
+      </ol>
+
+      <h3> Running Tests </h3>
+      <p>There are no tests written for this application however, Cypress can be used to run tests.</p>
+      
+      <h3> API for Server Application </h3>
+        <p>
+      ` /api ` API route for UMD Restaurants data </br>
+      ` /restaurants ` – API route to obtain the restaurants table
+      <ol>
+      <li>GET: Logs to console response query from URL. Returns the the restaurants table.</li>
+      <li>PUT: returns 'Successfully Updated Restaurant'.</li>
+      <li>POST: Returns the new restaurant data in JSON format.</li>
+      </ol>
+    </p>
+    <hr/>
+      <h3>Bugs & Road-map for Future Development</h3>
+      - Unable to update tables due to unsupported null values </br>
+      - Repetition in data through user inputs </br>
+    
+      - Handle null values with table interdependencies </br>
+      - Adding more restaurant suggestions and data </br>
+      - Adding a map to help user locate the locations of restaurants </br>
   </div>
 
   </body>

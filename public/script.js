@@ -144,7 +144,13 @@ export function clearTree(){
         displayArea.removeChild(displayArea.firstChild)
     }
 }
-// d3.js code in here:
+
+
+
+////////////////////////////////////////////////////////////////
+///// d3.js code in here: //////////////////////////////////////
+////////////////////////////////////////////////////////////////
+// Species Query
 export function displayTree() {
     if (sessionStorage.getItem('query') === null) {
       console.log('No tree data, waiting..')
@@ -159,9 +165,9 @@ export function displayTree() {
         // gets data from session storage
         const treeData = JSON.parse(sessionStorage.getItem('query'))
         // set the dimensions and margins of the diagram
-        var margin = {top: 40, right: 20, bottom: 80, left: 20},
-            width = 600 - margin.left - margin.right,
-            height = 600 - margin.top - margin.bottom;
+        var margin = {top: 80, right: 20, bottom: 80, left: 20},
+            width = 1000 - margin.left - margin.right,
+            height = 1000 - margin.top - margin.bottom;
 
         // declares a tree layout and assigns the size
         var treemap = d3.tree()
@@ -192,6 +198,11 @@ export function displayTree() {
                 + " " + d.parent.x + "," +  (d.y + d.parent.y) / 2
                 + " " + d.parent.x + "," + d.parent.y;
                 });
+
+
+
+
+
 
         // adds each node as a group
         var node = g.selectAll(".node")
@@ -224,12 +235,29 @@ export function displayTree() {
         // appending image url to the node
         node.append('image')
             .attr("href", function (d) { return d.data.image + '?width=300px' })
-            .attr('x', '-20')
-            .attr('y', '-60')
+            .attr('x', '0')
+            .attr('y', '0')
             //.attr('transform', 'rotate(90)')
         // rotates elements horizontally
         //svg.attr('transform', 'rotate(-90)')
+
+
+        // TODO: 
+        // - insert a parent div on each node
+
+        // This is only wraps the first node
+        // also makes the node disappear
+
+        // let newNode = document.createElement("div");
+        // newNode.classList.add('p_node');
+        // let parentDiv = document.querySelector(".node image").parentNode;
+        // let c_node = document.querySelector(".node image");
+        // parentDiv.insertBefore(newNode, c_node);
+        // newNode.appendChild(c_node);
+
             return;
+
+            
 }
 
 async function saveQuery(e) {
@@ -298,6 +326,9 @@ async function retrieveHistory() {
         ).then(console.log('retrieveHistory() complete.')).catch((e) => console.log(e))
     }
 }
+
+
+// Search 
 async function displayEach(searchItem, index) {
     if (document.querySelector('.saved').children.length > index) {
         return;
@@ -376,9 +407,9 @@ async function displayEach(searchItem, index) {
         // appending image url to the node
         node.append('image')
             .attr("href", function (d) { return d.data.image + '?width=300px' })
-            .attr('x', '-20')
-            .attr('y', '-60')
-            //.attr('transform', 'rotate(90)')
+            // .attr('x', '-20')
+            // .attr('y', '-60')
+            // .attr('transform', 'rotate(90)')
         // rotates elements horizontally
         //svg.attr('transform', 'rotate(-90)')
             return;
@@ -456,22 +487,24 @@ function main() {
         e.preventDefault();
     })
     // logout button clears session
-    document.querySelector('.logout').addEventListener('click', async (e) => {
-        e.preventDefault();
-        // clear session storage
-        logOut()
-        console.log('Successfully logged out.')
-        // back to main()
-        return;
-    })
+    // This chunk breaks things
+    // document.querySelector('.logout').addEventListener('click', async (e) => {
+    //     e.preventDefault();
+    //     // clear session storage
+    //     logOut()
+    //     console.log('Successfully logged out.')
+    //     // back to main()
+    //     return;
+    // })
     // search bar
+    // saveQuery keyword was already being used 
     document.querySelector('.species_form').addEventListener('submit', async (e) => {
         wikiSearch(e)
         saveQuery1.style.display = 'flex';
     })
     const saveQuery1 = document.querySelector('.save-query')
     saveQuery1.style.display = 'none'
-   saveQuery1.addEventListener('click', async (e) => {
+    saveQuery1.addEventListener('click', async (e) => {
         // if there are currently elements inside the query container
         if (document.querySelector('.query').firstChild) {
             saveQuery(e);
@@ -479,6 +512,17 @@ function main() {
         }
         e.preventDefault()
     })
+    const header = document.querySelector("Header");
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav");
+    
+    hamburger.addEventListener("click", () => {
+        console.log("hamburger")
+    header.classList.toggle("active");
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    });
+
 }
 
 document.addEventListener('DOMContentLoaded', main);

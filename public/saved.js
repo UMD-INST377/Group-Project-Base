@@ -468,6 +468,7 @@ function main() {
         // back to main()
         return;
     })
+
     logOutButton.style.display = 'none';
     document.querySelector('.saved').addEventListener('click', async (e) => {
         // if there are currently elements inside the query container
@@ -478,6 +479,16 @@ function main() {
             displayPastSearches()
         })
     })
+    const header = document.querySelector("Header");
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav");
+    
+    hamburger.addEventListener("click", () => {
+    console.log("hamburger");
+    header.classList.toggle("active");
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    });
 }
 
 document.addEventListener('DOMContentLoaded', await main);

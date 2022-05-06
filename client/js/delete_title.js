@@ -1,5 +1,5 @@
 // delete film
-const film_delete = document.querySelector('#delete_film');
+const film_delete = document.querySelector('#delete_submit');
 const value = document.querySelector('#title_id');
 const form = document.querySelector('#delete_title');
 

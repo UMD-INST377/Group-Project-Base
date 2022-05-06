@@ -1,21 +1,19 @@
-# Schedule of Planet Terps
+# College Park Restaurants
 
 ## Description
 Most students are not from College Park or are new to the area, and, consequently, struggle to find food options that are appealing to them. In relation, there could be parents of those students or other new residents visiting. Our database makes it easy and efficient for students to see what food is available and
 sort their options by genre, restaurant type, and location among other identifiers. To address this issue, we created a website that uses information on the restaurants: services, food items, locations, etc. This application will make it more convenient for students to educate themselves on the various restaurants in the area and look for restaurants based on the criteria they are looking for. We hope that it would be easier for students/residents to find College Park restaurants more efficiently. 
 
-![image](https://user-images.githubusercontent.com/58304673/111857924-4dedae80-890b-11eb-8443-cdf84f008491.png)
 
 ## Link to Website
 [https://group5inst377.herokuapp.com](https://group5inst377.herokuapp.com)
 
 ## Target Browsers
 * iPhone SE/XR/12 Pro
-* 
+* Surface Pro 7
 * Macbook Pro 13/15
 
 ## Links
-* [User Manual](https://scheduleofpt.herokuapp.com/documentation.html) 
 * [Developer Manual](#Developer-Manual)
 
 # Developer Manual
@@ -36,10 +34,8 @@ sort their options by genre, restaurant type, and location among other identifie
 3. Go to this url: ```http://localhost:3000/``` in your browser.
 
 ## To run tests for software
-The are no prewritten tests in the source repository, but you can use Cypress to run your own written tests.
-1. Open two terminals and make sure you are in the main project directory
-2. In the first terminal, run ```npm start```.
-3. In the second terminal run ```npm test```.
+1. Open up a terminal and make sure you are in the main project directory
+2. In the terminal, run ```npm start```.
 
 ## Server application API example using Restaurant API in Postman
 ### Get list of all restaurants
@@ -121,9 +117,9 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 
 #### Request
 
-`POST /restaurantpost`
+`POST /restaurant/restaurantpost`
 
-    * api_url http://localhost:3000/jess/restaurantpost
+    * api_url http://localhost:3000/jess/restaurant/restaurantpost
     * select POST
     * under the BODY tab, select x-www-form-urlencoded
     * Click send
@@ -163,9 +159,9 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 
 #### Request
 
-`PUT /restaurantput/`
+`PUT /restaurant/restaurantput/`
 
-    * api_url http://localhost:3000/jess/restaurantput/26
+    * api_url http://localhost:3000/jess/restaurant/restaurantput/26
     * select PUT
     * under the BODY tab, select the x-www-form-urlencoded
     * Click send
@@ -193,15 +189,15 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 
 #### Request
 
-`DELETE /restaurantdelete/:restaurant_id`
+`DELETE /restaurant/restaurantdelete/:restaurant_id`
 
-    * api_url http://localhost:3000/jess/restaurantdelete/26
+    * api_url http://localhost:3000/jess/restaurant/restaurantdelete/26
     * select DELETE
     * click SEND
 
 ##### Example input: 
 
-  `DELETE: localhost:3000/jess/restaurant/26`
+  `DELETE: localhost:3000/jess/restaurant/restaurantdelete/26`
 
 #### Response
 
@@ -210,10 +206,11 @@ The are no prewritten tests in the source repository, but you can use Cypress to
 
 ## Known Bugs and Future Development
 ### Bugs:
-- There may be null values in the course and professor reviews data that may need to be handled. 
-
+* Not all the restaurant markers show up on the map, this is a data cleaning issue
+* Submit button on Search Restaurant and Contact doesn't really do anything, it filters as you type in the 
+the text box, but without the button, the filter doesn't work. 
 
 ### Future Development: 
 * Adding data for new restaurants that open since the database was created.
-* Displaying average professor rating in professor reviews search.
-* Adding more ways to filter courses.
+* Include more ways to filter restaurants.
+* Add more page styling features. 

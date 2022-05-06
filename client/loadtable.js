@@ -67,7 +67,6 @@ async function createtable() {
       .then((data) => filtercheck(data))
       .then((filtered)=> loadtable(filtered));
 
-
     } else {
       currentdata = filtercheck(data);
       loadtable(currentdata);

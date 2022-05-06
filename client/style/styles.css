@@ -94,11 +94,17 @@ nav a {
 .left {
   width: 50%;
   float:left;
+  text-align: center;
 }
 
 .right{
   width:50%;
   float:right;
+  text-align: center;
+}
+
+.center{
+  text-align: center;
 }
 
 table, th, td {

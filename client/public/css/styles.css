@@ -27,10 +27,6 @@ body {
     margin-top: 10px;
 }
 
-img {
-    max-width: 100%;
-}
-
 nav {
     display: flex;
     justify-content: space-around;
@@ -146,13 +142,25 @@ textarea.materialize-textarea:focus:not([readonly]) {
     padding: 10px;
 }
 
-.movie img {
+
+img {
+    max-width: 100%;
+}
+
+/* .img-wrapper {
+    height: 17rem !important;
+    overflow: hidden;
     border-radius: 5px;
     border: 1px solid rgb(248, 243, 243);
-    /* height: 260px;
-    object-fit: cover!important; */
-    /* height: 270px;
-    object-fit: cover!important; */
+    margin: 0;
+    padding: 0;
+    margin-bottom: 3px;
+} */
+
+.movie img {
+    /* object-fit: scale-down !important; */
+    border-radius: 5px;
+    border: 1px solid rgb(248, 243, 243);
 }
 
 .col-content {
@@ -172,7 +180,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .movie-details .title {
     font-weight: 700;
-    font-size: 1.4em;
+    font-size: 1.3em;
+    /* text-transform: capitalize; */
 }
 
 .genre,
@@ -211,7 +220,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     margin-right: 20px;
 }
 
-#save-button {
+.short-btn {
     margin-top: -15px;
 }
 
@@ -223,7 +232,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
     box-shadow: 4px 4px 4px #eee;
 }
 
-.records, .ratings, .box {
+.records,
+.ratings,
+.box {
     background-color: white;
     border: 1px solid #eee;
     border-radius: 5px;
@@ -264,7 +275,7 @@ table a:hover {
 } */
 
 #delete {
-    max-width: 400px!important;
+    max-width: 400px !important;
     font-size: .85em !important;
 }
 
@@ -302,18 +313,40 @@ table a:hover {
     margin: 0 auto;
 }
 
+/* .avl {
+    margin-top: 20px;
+} */
+
+.validation {
+    display: none;
+}
 
 *::-webkit-scrollbar {
-    width: 1px;
+    width: 3px;
+}
+
+body::-webkit-scrollbar {
+    width: 8px !important;
 }
 
 *::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 2px #ddd;
+    box-shadow: inset 0 0 5px #ddd;
+    border-radius: 10px !important;
 }
 
 *::-webkit-scrollbar-thumb {
     background-color: darkgray;
     outline: 1px solid #eee;
+    border-radius: 5px !important;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--green);
+}
+
+.validation {
+    font-size: .85em;
+    color: var(--red);
 }
 
 /* breakpoint */
@@ -334,12 +367,7 @@ table a:hover {
         width: 95%;
     }
 
-    /* .wrap_paragraph {
-        font-size: 1em !important;
-        width: 100%;
-    } */
-
-    /* .movie img {
-        height: 250px;
-    } */
+    .col-content {
+        padding: 8px;
+    }
 }

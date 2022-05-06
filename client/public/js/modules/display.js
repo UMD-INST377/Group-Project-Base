@@ -21,9 +21,9 @@ function displayMovie(container, item) {
 //  col s6 l4
   movies.innerHTML += `<div class="movie">
       <div class="col-content">
-        <img loading="lazy" src="${item.image_url}">
+        <div class="img-wrapper"><img loading="lazy" src="${item.image_url}"></div>
         <div class="movie-details">
-          <span class="title">${item.title}</span>
+          <span class="title" title="${item.title}">${item.title}</span>
           <div class="details">
             <span class="genre">${item.genre}</span>  ·  
             <span class="year">${item.year}</span>  ·  

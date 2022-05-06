@@ -85,11 +85,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       options: {
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            max: 80
           }
         }
       }
-    }); 
+    });
   }
   // Start it in All:
   genreAll();

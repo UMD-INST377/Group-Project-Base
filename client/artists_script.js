@@ -30,7 +30,7 @@ loadIntoTable('/api/artists');
 const delete_button = document.querySelector('.delete_artist');
 const input = document.querySelector('#artist_id');
 async function deleteArtist() {
-  const request = `/artists/artists/${input.value}`;
+  const request = `/apix/artists/${input.value}`;
   const response = await fetch(request, {method: 'DELETE'});
   if (response.status === 200) {
     alert('artist deleted');

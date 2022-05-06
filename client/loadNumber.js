@@ -24,9 +24,10 @@ function getRandomIntInclusive(min, max) {
     const targetList = document.querySelector(".phone_num");
     targetList.innerHTML = "";
     collection.forEach((item) => {
+      console.log(item);
       const { number } = item;
       // const displayName = number.toLowerCase();
-      const displayName = number;
+      const displayName = item.phone_number;
       const injectThisItem = `<li>${displayName}</li>`;
       targetList.innerHTML += injectThisItem;
     });
@@ -54,14 +55,9 @@ function getRandomIntInclusive(min, max) {
         }
         console.log(event.target.value);
         const selectResto = currentArray.filter((item) => {
-          console.log(item.resto_name);
-          // const lowerName = item.resto_name.toLowerCase();
-          const lowerName = item.resto_name;
-          // const lowerValue = event.target.value.toLowerCase();
-          const lowerValue = event.target.value;
-          return lowerName.includes(lowerValue);
+          // console.log(item.phone_number);
+          return String(item.phone_number);
         });
-        console.log(selectResto);
         createHtmlList(selectResto);
       });
       form.addEventListener("submit", async (submitEvent) => {

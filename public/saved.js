@@ -469,7 +469,7 @@ function main() {
         return;
     })
 
-    logOutButton.style.display = 'none';
+    // logOutButton.style.display = 'none';
     document.querySelector('.saved').addEventListener('click', async (e) => {
         // if there are currently elements inside the query container
         //if (document.querySelector('.query').firstChild) {

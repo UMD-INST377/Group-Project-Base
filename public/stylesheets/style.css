@@ -194,7 +194,7 @@ footer p {
   color: #fff;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   h2 {
       font-family: 'Inter';
       font-style: normal;
@@ -297,7 +297,7 @@ header.active {
 }
 
 /* Nav Desktop */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
 .mobile {
   display: none;
 }
@@ -395,7 +395,7 @@ header {
   opacity: .8;
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 900px){
   .hero {
       min-height: 344px;
   }
@@ -455,7 +455,7 @@ header {
   border-radius: 4px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .species_form {
       align-items: center;
   }
@@ -481,7 +481,7 @@ header {
   border-radius: 4px;
 }   
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 900px){
   .tree {
       height: 666px;
       min-width: 100%;
@@ -589,7 +589,7 @@ footer div {
   bottom: 0;
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 900px){
   .saved_results_container {
       max-width: 1200px;
       padding-right: 80px;
@@ -997,7 +997,7 @@ g image {
 
 
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 900px){
   .result-container {
 
     width: 100%;
@@ -1125,4 +1125,51 @@ g image {
   }
 
 
+}
+
+/* About
+================================================================ */
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* align-items: flex-start;     */
+}
+.content {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+}
+img.darwin {
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+
+
+@media screen and (min-width: 900px) {
+  .section {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      /* align-items: flex-start;     */
+  }
+
+  .content {
+      width: 100%;
+      height: 100%;
+
+      position: relative;
+  }
+  img.darwin {
+      height: 100%;
+      width: 428px;
+      margin-left: 24px;
+      margin-bottom: 24px;
+      float: right;
+
+      border-radius: 4px;
+  }
 }

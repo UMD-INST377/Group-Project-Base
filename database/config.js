@@ -1,4 +1,4 @@
-/* 
+/*
    don't mess with this file or remove environment entries in the object
    even for your group project, because it will stop your DB from connecting
    due to the many loops in the initializeDB file
@@ -26,5 +26,5 @@ export default {
     database: 'art_gallery_management',
     host: '174.129.198.86',
     dialect: 'mysql'
-}
-}
+  }
+};

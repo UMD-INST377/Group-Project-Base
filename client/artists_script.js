@@ -5,7 +5,7 @@ async function loadIntoTable(url) {
   const arrayFromJson = await reponse.json(); // This changes it into data we can use - an object
   data = await arrayFromJson.data;
   console.log(arrayFromJson);
-  const tableFinder = document.querySelector('.table');
+  const tableFinder = document.querySelector('table');
   // creating the rows
 
   data.forEach((element) => {
@@ -32,7 +32,7 @@ async function searchArtists(url) {
   const reponse = await fetch(url);
   const arrayFromJson = await reponse.json(); // This changes it into data we can use - an object
   data = await arrayFromJson.data;
-  
+
   const tableFinder = document.querySelector('.lists');
   // creating the rows
 
@@ -90,14 +90,27 @@ async function genreTable(url) {
     const row = document.createElement('tr');
     const genre_id = document.createElement('td');
     const genreName = document.createElement('td');
-    
+
     genre_id.innerHTML = element.genre_id;
     genreName.innerHTML = element.genre_name;
-    
+
     row.appendChild(genre_id);
     row.appendChild(genreName);
-    
+
     tableFinder.appendChild(row);
   });
 }
 genreTable('/api/genres');
+
+const delete_button = document.querySelector('.delete_artist');
+const input = document.querySelector('#artist_id');
+async function deleteArtist() {
+  const request = `/artists/artists/${input.value}`;
+  const response = await fetch(request, {method: 'DELETE'});
+  if (response.status === 200) {
+    alert('artist deleted');
+  } else {
+    alert('artists not found');
+  }
+}
+delete_button.addEventListener('click', deleteArtist);

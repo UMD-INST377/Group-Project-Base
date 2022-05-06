@@ -19,11 +19,11 @@ router.route('/allmeals')
       JOIN macros mac ON meals.meal_id=mac.meal_id
       JOIN meals_locations ml ON meals.meal_id=ml.meal_id
       JOIN dining_hall dh ON ml.hall_id=dh.hall_id
-      JOIN(SELECT meal_id, GROUP_CONCAT(restriction_type SEPARATOR ", ") AS restriction_list
+      JOIN(SELECT meal_id, GROUP_CONCAT(restriction_type) AS restriction_list
           FROM meal_restrictions
           JOIN dietary_restrictions dr USING(restriction_id)
           GROUP BY meal_id
-          ) mr;
+          ) mr ON meals.meal_id = mr.meal_id;
       `);
       res.json({data: results[0]});
     } catch (err) {

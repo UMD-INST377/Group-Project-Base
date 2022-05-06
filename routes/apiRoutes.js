@@ -508,6 +508,34 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
   }
 });
 
+//////////////////////////////////////////
+/// ///// Meals Locations Endpoints //////
+/////////////////////////////////////////
+router.get('/mealslocations', async (req, res) => {
+  try {
+    const mealsLocations = await db.MealsLocations.findAll();
+    res.send(mealsLocations);
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/mealslocations/:hall_id', async (req, res) => {
+  try {
+    const mealsLocations = await db.MealsLocations.findAll({
+      where: {
+        hall_id: req.params.hall_id
+      }
+    });
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+
 /// //////////////////////////////////
 /// ///////Custom SQL Endpoint////////
 /// /////////////////////////////////

@@ -157,7 +157,12 @@ router.route('/primary_title')
   .post(async (req, res) => {
     const newTitle = await db.Title.create({
       primary_title: req.body.primary_title,
-      title_type: req.body.title_type,
+      release: req.body.release_year,
+      rating: req.body.rating,
+      votes: req.body.votes,
+      runtime: req.body.runtime,
+      title_type: req.body.title_type !== null ? req.body.title_type : 'movie',
+      is_adult: req.body.is_adult !== null ? req.body.is_adult : '0',
     });
     res.send('dummyValue');
   })

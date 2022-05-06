@@ -5,8 +5,7 @@ Clato is a site designed to explore common ansestory between species by being ab
 ## Link to Website
 https://clato.herokuapp.com/
 ## Target Browsers
-* iPhone X/11/12 
-* Macbook 13/15 
+* IOS/Android
 * Google Chrome/Apple Safari
 ## Links
 * [Developer Manual](https://github.com/inst377-group3/Final-Project-Base/blob/main/README.md#developer-manual)

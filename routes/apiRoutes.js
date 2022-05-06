@@ -6,6 +6,7 @@ import apiRoutesMelody from './apiRoutesMelody.js';
 // import apiRoutesEthan from './apiRoutesEthan';
 import apiRoutesNick from './apiRoutesNick.js';
 import apiRoutesMap from './apiRoutesMap.js';
+import apiRoutesUtil from './apiRoutesUtil.js'
 
 import db from '../database/initializeDB.js';
 
@@ -22,6 +23,7 @@ router.use('/services', apiRoutesMelody);
 // router.use('/location', apiRoutesEthan);
 router.use('/cuisine', apiRoutesNick);
 router.use('/map',apiRoutesMap);
+router.use('/util',apiRoutesUtil);
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

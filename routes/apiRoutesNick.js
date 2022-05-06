@@ -74,4 +74,15 @@ router.delete("/cuisinedelete/:cuisine_id", async (req, res) => {
   }
 });
 
+router.route("/type/").get(async (req, res) => {
+  try {
+    const cuisineQuery = "SELECT * FROM restaurant_type";
+    const cuisine = await db.sequelizeDB.query(cuisineQuery);
+
+    res.json(cuisine);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 export default router;

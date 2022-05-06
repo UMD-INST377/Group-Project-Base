@@ -9,6 +9,9 @@
     <title>District of Columbia Hispanic Restaurants Blog Site </title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="styles2.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
 </head>
@@ -94,29 +97,36 @@
                     <li>Noma</li>
                     <li>Penn Quarter</li>
                     <li>Petworth</li>
+                    <li>Tenleytown</li>
 
                 </ul>
                 <div class="control"> <button class="btn">Submit</button></div>
             </div>
         </form>
     </div>
+
+
+
+
+
+    <div class="container">
+
+        <table class="table">
+            <tr>
+                <th>Area ID</th>
+                <th>Neighborhood Name</th>
+                <th>Landmarks</th>
+                <th>Description</th>
+            </tr>
+        </table>
+    </div>
+    </section>
+
+    <div class="box">
+        <div id="map"></div>
+    </div>
+
 </body>
-
-
-
-
-<div class="container">
-
-    <table class="table">
-        <tr>
-            <th>Area ID</th>
-            <th>Neighborhood Name</th>
-            <th>Landmarks</th>
-            <th>Description</th>
-        </tr>
-    </table>
-</div>
-</section>
 
 <!-- <section class="footer2">
 
@@ -143,8 +153,14 @@
     </div>
 </section> -->
 
+
 <!-- HAVE TO FIGURE OUT HOW TO COMBAT POSITION:ABSOLUTE PROBLEM WITH FOOTER ON THIS PAGE, AND STILL HAVE MY FORM CENTERED  -->
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
 <script src="./restTable.js"></script>
+<script src="./map.js"></script>
+
 </form>
 
 

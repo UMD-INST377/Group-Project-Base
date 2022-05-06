@@ -74,6 +74,27 @@ ul {
     list-style-type: none;
 }
 
+#map { 
+height: 400px;
+width: 400px;
+}
+
+
+.box{
+    position:fixed;
+    display:flex;
+    top:50%;
+    right: 10%;
+    transform:translate(-50%, -50%);
+    bottom: 0;
+    max-width: 350px;
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgb(222, 220, 220);
+}
+
 /* 
 .footer2{
     background:darkred;

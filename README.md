@@ -46,7 +46,3 @@ https://morning-depths-05988.herokuapp.com/
 ### Future Developement:
 * We could add more graphs that show information about the users database such as amount of movies per genre
 * Clean up background design to make it more visually appealing
-
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)

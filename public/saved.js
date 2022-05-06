@@ -39,6 +39,8 @@ function loadUser() {
         document.querySelector('p.logged_in').innerText = `Welcome, ${sessionStorage.getItem('plainUser')}!`;
         let logOutButton =  document.querySelector('.log_out')
         logOutButton.style.display = 'flex';
+        document.querySelector('.login').style.display = 'none';
+        document.querySelector('.sign_up').style.display = 'none';
     }
 
 }

@@ -37,6 +37,8 @@ function emptyResponse() {
 function loadUser() {
     if (sessionStorage.getItem('plainUser') !== null) {
         document.querySelector('.logged_in').innerText = `Welcome, ${sessionStorage.getItem('plainUser')}!`;
+        document.querySelector('.login').style.display = 'none';
+        document.querySelector('.sign_up').style.display = 'none';
     }
 }
 // stores data to session

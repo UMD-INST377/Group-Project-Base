@@ -200,6 +200,55 @@ function loadStefChart(movieData) {
     const stefChart = new Chart(chartElement, chartConfig);
 }
 
+function loadOwenChart(directorData) {
+    console.log('loadOwenChart()');
+    const chartElement = document.querySelector('#owenChart');
+
+    const title = 'Directors per State';
+
+    let data = {};
+    directorData.forEach((dirItem) => {
+        const state = dirItem.home_state;
+        data[state] = 0;
+        directorData.forEach((direItem) => {
+            if (direItem.home_state === dirItem.home_state) {
+                data[state] += 1;
+            }
+        });
+    });
+
+    const colors = getColors(Object.keys(data).length);
+
+    const chartData = {
+        labels: Object.keys(data),
+        datasets: [
+            {
+                label: title,
+                data: Object.values(data),
+                backgroundColor: colors,
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const chartConfig = {
+        type: 'pie',
+        data: chartData,
+        options: {
+            plugins: {
+                legend: false,
+                title: {
+                    display: true,
+                    text: title,
+                },
+            },
+        },
+    };
+
+    const owenChart = new Chart(chartElement, chartConfig);
+}
+
+
 async function loadCharts() {
     // console.log('loadCharts()');
     const directors = await getData('/owen/directors');
@@ -211,6 +260,7 @@ async function loadCharts() {
     loadIsaacChart(actors);
     loadAgyaChart(role, actors);
     loadStefChart(movies);
+    loadOwenChart(directors);
 }
 
 document.addEventListener('DOMContentLoaded', async () => loadCharts());

@@ -4,7 +4,7 @@
 
 When looking for a good place to eat, people oftentimes end up needing to do a search on the internet to view a restaurant's menu, reviews, ratings ur website will help anyone who is looking to satisify their craving for hispanic foods within the D.C. area. This website serves to provide tourists, D.C residents and citizens within the Washington Metropolitian area accurate, up-to-date information on hispanic restaurants established in D.C. The website's mission is to steer consumers away from misinformation  and down the path of helpful information that can allow them to achieve their goal.
 
-
+![](images/Screen%20Shot%202022-05-06%20at%206.58.14%20PM.png)
 
 
 ## Link to Website

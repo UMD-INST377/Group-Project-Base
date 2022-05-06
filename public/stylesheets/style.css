@@ -1149,6 +1149,10 @@ img.darwin {
   margin-bottom: 24px;
 }
 
+p {
+  margin-bottom: 1em;
+}
+
 
 @media screen and (min-width: 900px) {
   .section {
@@ -1161,9 +1165,13 @@ img.darwin {
   .content {
       width: 100%;
       height: 100%;
-
       position: relative;
   }
+
+  p {
+    margin-bottom: 1em;
+  }
+
   img.darwin {
       height: 100%;
       width: 428px;

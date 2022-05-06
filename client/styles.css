@@ -37,6 +37,14 @@
     padding: 40px;
     font-size: 30px;
   }
+
+  .logo {
+    text-align: center;
+  }
+
+  .logo:hover {
+    background-color: #ff4766;
+  }
   
   .other-box {
     background-color: #F6F7F8;

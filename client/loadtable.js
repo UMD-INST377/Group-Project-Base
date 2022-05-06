@@ -1,25 +1,29 @@
+
+
 async function createtable() {
+  let arrayFromJson;
   let currentdata = [];
   let data = [];
   const form = document.querySelector('.mainform');
   const table = document.querySelector('.table');
-  const takeoutcheckbox = document.querySelector('#takeout');
-  const deliverycheckbox = document.querySelector('#delivery');
-  const drivethrucheckbox = document.querySelector('#drive_thru');
 
   function filtercheck(array) {
-    let filterarray = array;
 
-    if (takeoutcheckbox.checked) {
-      const newfilter = filterarray.filter((item) => item.takeout === 1);
+    let filterarray = array;
+    
+    if (document.getElementById('takeout').checked) {
+      console.log("1");
+      const newfilter = filterarray.filter(item => item.takeout === 1);
       filterarray = newfilter;
     }
-    if (deliverycheckbox.checked) {
-      const newfilter = filterarray.filter((item) => item.delivery === 1);
+    if (document.getElementById('delivery').checked) {
+      console.log("2");
+      const newfilter = filterarray.filter(item => item.delivery === 1);
       filterarray = newfilter;
     }
-    if (drivethrucheckbox.checked) {
-      const newfilter = filterarray.filter((item) => item.drivethru === 1);
+    if (document.getElementById('drive_thru').checked) {
+      console.log("3");
+      const newfilter = filterarray.filter(item => item.drive_thru === 1);
       filterarray = newfilter;
     }
 
@@ -49,16 +53,21 @@ async function createtable() {
       table.appendChild(row);
     });
   }
+
+  async function setter(data){
+    arrayFromJson = data;
+  }
+
+  
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (currentdata.length === 0) {
-      const arrayFromJson = await fetch('/melody/service');
-      data = await arrayFromJson.json();
-      console.log(data);
-      currentdata = data;
-      currentdata = filtercheck(data);
-      console.log(currentdata, 'filter');
-      loadtable(currentdata);
+      fetch('melody/services')
+      .then((response) => response.json())
+      .then((data) => filtercheck(data))
+      .then((filtered)=> loadtable(filtered));
+
+
     } else {
       currentdata = filtercheck(data);
       loadtable(currentdata);

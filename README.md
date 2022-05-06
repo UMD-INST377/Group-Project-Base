@@ -10,8 +10,8 @@ sort their options by genre, restaurant type, and location among other identifie
 [https://group5inst377.herokuapp.com](https://group5inst377.herokuapp.com)
 
 ## Target Browsers
-* iPhone 6/7/8 Plus
-* Pixel 2/2XL
+* iPhone SE/XR/12 Pro
+* 
 * Macbook Pro 13/15
 
 ## Links

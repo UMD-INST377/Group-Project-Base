@@ -548,20 +548,7 @@ router.put('/reservation', async (req, res) => {
       res.json({ error: 'Server error'});
     }
   });
-// router.delete('/reservation', async(req, res) => {
-//   try {
-//     const result = await db.sequelizeDB.query(resController.resDelete, {
-//       replacements: {
-//         reservation_id: req.body.reservation_id
-//       },
-//       type: sequelize.QueryTypes.DELETE
-//     });
-//     res.json({data: result});
-//     console.log('Deleted successfully');
-//   } catch (err) {
-//     res.json({error: 'Server error'});
-//   }
-// });
+
 router.delete('/reservation/:reservation_id', async (req, res) => {
   try {
     await db.reservation.destroy({

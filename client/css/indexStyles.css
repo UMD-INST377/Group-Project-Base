@@ -5,8 +5,12 @@ img {
   height: auto;
 }
 
+html {
+  height: max-content;
+}
 body {
   background-color:#F2F0E4;
+  height: 150vh;
 }
 
 /* Add a black background color to the top navigation */

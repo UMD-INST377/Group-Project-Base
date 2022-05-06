@@ -37,7 +37,7 @@ function emptyResponse() {
 function loadUser() {
     if (sessionStorage.getItem('plainUser') !== null) {
         document.querySelector('p.logged_in').innerText = `Welcome, ${sessionStorage.getItem('plainUser')}!`;
-        document.querySelector('.log_out').style.display = 'flex';
+        logOutButton.style.display = 'flex';
     }
 
 }
@@ -469,7 +469,7 @@ function main() {
         return;
     })
 
-    document.querySelector('.log_out').style.display = 'none';
+    logOutButton.style.display = 'none';
     document.querySelector('.saved').addEventListener('click', async (e) => {
         // if there are currently elements inside the query container
         //if (document.querySelector('.query').firstChild) {

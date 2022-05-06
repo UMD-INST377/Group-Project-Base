@@ -952,14 +952,14 @@ svg {
 
 /* select the image within every other g */
 /* TODO:
-- figure out why even is working and odd is not */
+- figure out why odd is working and even is not */
 
 .node.node--internal:nth-child(odd):hover image {
   x: -300px;
 }
 
 .node.node--internal:nth-child(even):hover image {
-  x: 300%;
+  x: 300px;
 }
 
 
@@ -1085,12 +1085,18 @@ g image {
   }
 
   /* select the image within every other g */
-  .node:nth-child(odd):hover image {
-    x: 10%;
+
+  .node.node--internal-root:hover image {
+    y: 10%;
+    x: -10%;
+  }
+
+  .node.node--internal:nth-child(odd):hover image {
+    x: -30%;
   }
 
   .node.node--internal:nth-child(even):hover image {
-    x: -30%;
+    x: 10%;
   }
 
 

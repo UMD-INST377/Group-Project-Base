@@ -13,8 +13,8 @@
             </div>
             <div class = "menu">
                 <div class = "home"><a href = './index.html'>HOME</a></div>
-                <div class = "about"><a href = './about.html'>ABOUT</a></div>
                 <div class = "location"><a href = './location.html'>LOCATIONS/HOURS</a></div>
+                <div class = "about"><a href = './about.html'>ABOUT</a></div>
             </div>
         </div>
 
@@ -28,7 +28,7 @@
         <div class = 'photo-grid-container'>
             <div class = 'hall'>
                 <div class = "titleDining"><strong>DINING HALLS</strong></div>
-                <div class = "titleDining">&#10148 Today's Date</div>
+                <div class = "titleDining">&#10148 <script> document.write(new Date().toLocaleDateString()); </script></div>
                 <hr size="50px" width="95%" color="black">
                 <div class = "diningName">South Campus</div>
                 <div>time</div>
@@ -60,39 +60,24 @@
         <div class="photo-grid-container">
             <div class="hall">
                 <div class ="titleDining">MENU OF THE DAY</div>
-                <div class = "titleDining">&#10148 Today's Date</div>  <!-- date object-->
+                <div class = "titleDining">&#10148 <script> document.write(new Date().toLocaleDateString()); </script></div>  <!-- date object-->
                 <hr size="50px" width="95%" color="black">
                 
         <form class = 'reader-form' id = "form-id">
                <div><strong>Select a Diner</strong></div>
                <div class = 'form-row'>
-                <select name = "dropdown">
-                    <option value = 'south' selected>South Campus</option>
-                    <option value = 'diner' selected>The Diner</option>
-                    <option value = '251north' selected>251 North Dining</option>
-                </select>
+                <input id = 'dinerInput' name = 'dinerInput' type = 'text' placeholder="South Campus"></textarea>
             </div>
 
-            <div><strong>Select Meal</strong></div>
+            <div><strong>Select Time</strong></div>
             <div class = 'form-row'>
-                <select name = "dropdown">
-                    <option value = 'breakfast' selected>Breakfast</option>
-                    <option value = 'lunch' selected>Lunch</option>
-                    <option value = 'dinner' selected>Dinner</option>
-                </select>
+                <input id = 'timeInput' name = 'timeInput' type = 'text' placeholder="'B' for Breakfast"></textarea>
             </div>
 
-            <fieldset class = 'legacy-row'>
-                <legend><strong>Filters:</strong></legend>
-                <label for = 'filter-type-1' class = 'radio-label'>Vegan</label>
-                <input id = 'filter-type-1' name = 'filter-type' type = 'radio' value = 'vegan'/>
-
-                <label for = 'filter-type-2' class = 'radio-label'>Vegetarian</label>
-                <input id = 'filter-type-2' name = 'filter-type' type = 'radio' value = 'vegetarian'/>
-
-                <label for = 'filter-type-3' class = 'radio-label'>Halal</label>
-                <input id = 'filter-type-3' name = 'filter-type' type = 'radio' value = 'halal'/>
-            </fieldset>
+            <div><strong>Dietary Restrictions</strong></div>
+            <div class = 'form-row'>
+                <input id = 'dietInput' name = 'dietInput' type = 'text' placeholder="Vegan"></textarea>
+            </div>
 
             <div class = 'form-row'>
                 <button class = "submit_button" id = "submit-button" type = "submit">Submit</button>
@@ -102,9 +87,10 @@
             <!-- <div class ="titleDining">MENU OUTPUT</div> -->
             <div class="photo-grid-container">
             <table class = "food-list"><tr>
-                <th>Meal ID</th> 
-                <th>Meal Name </th> 
-                <th>Category</th>
+                <th>Diner</th> 
+                <th>Meal Name</th> 
+                <th>Meal Category</th>
+                <th>Filter</th>
             </tr> </table></div>
             </div>
         </div>

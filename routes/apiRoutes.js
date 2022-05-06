@@ -58,6 +58,23 @@ router.get('/mealLocation/:meal_id', async (req, res) => {
   }
 });
 
+
+/// /////////////////////////////////
+/// ////Query diner and restrictions ////////
+/// /////////////////////////////////
+
+router.route('/dining').get(async (req, res) => {
+  try {
+    const query = await db.sequelizeDB.query(
+      `SELECT hall_name AS "Diner", meal_name AS "Meal", meal_category, restriction_type AS "Filter" FROM dining_hall JOIN meals_locations USING(hall_id) JOIN meals USING(meal_id) JOIN meal_restrictions USING(meal_id) JOIN dietary_restrictions USING(restriction_id)`
+    );
+    res.json({data: query[0]});
+  } catch (err) {
+    console.error(err);
+    res.send('There was an error');
+  }
+});
+
 /// /////////////////////////////////
 /// ////Hall Schedule Endpoints////////
 /// /////////////////////////////////

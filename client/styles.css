@@ -44,12 +44,12 @@ This is for the header of the website
     color: blue;
 }
 
-.about {
+.location {
     margin-left: 40px;
     margin-right: 40px;
 }
 
-.location {
+.about {
     margin-right: 40px;
 }
 
@@ -201,6 +201,33 @@ Last part of the page
 .foor-list {
     width: 1000px;
     margin-left: 35px;
+}
+
+/*
+About Page 
+*/
+.mission-container {
+    width: 10px;
+    border: 10px solid #E81B1B;
+    padding: 650px;
+    margin: 40px;
+}
+
+.about-title {
+    width: 1000px;
+    margin-left: -500px;
+    margin-top: -600px;
+}
+
+.about-header {
+    font-size: 35px;
+    color: #E81B1B;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.about-sub {
+    font-size: 20px;
 }
 
 .locTitle {

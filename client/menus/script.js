@@ -1,34 +1,36 @@
 function createHTMLtable(entry) {
   // takes in array, prints html table
   // create table
-  let result = '<table border=1>';
+  let result = '<table>';
   // create table headers
   result += `
   <tr>
-    <th>calories</th>
+    <th>Calories</th>
     <td>${entry.calories}</td>
     </tr>
-    <th>serving_size</th>
+    <th>Serving size</th>
     <td>${entry.serving_size}</td>
     </tr>
-    <th>cholesterol</th>
+    <th>Cholesterol</th>
     <td>${entry.cholesterol}</td>
     </tr>
-    <th>sodium</th>
+    <th>Sodium</th>
     <td>${entry.sodium}</td>
     </tr>
-    <th>carbs</th>
+    <th>Carbs</th>
     <td>${entry.carbs}</td>
     </tr>
-    <th>protein</th>
+    <th>Protein</th>
     <td>${entry.protein}</td>
     </tr>
-    <th>fat</th>
+    <th>Fat</th>
     <td>${entry.fat}</td>
   </tr></table>
   <table border=1>
    <tr>
-   <th>restriction</th>
+   <th>Restrictions</th>
+   </tr>
+   <tr>
    <td>${entry.restriction}</td>
    </tr></table>`;
   // loop through each object in array, print cell values
@@ -39,7 +41,7 @@ function addNames(hallArray) {
   const hall0Button = document.querySelector('.the_diner'); // Selects the element to insert the name
   hall0Button.innerHTML = '';
   hall0Button.innerHTML += `${hallArray.data[0].hall_name}`; // inserts the hall name into the html
-
+  hall0Button.innerHTML += ''
   // South Campus Dinning Hall
   const hall1Button = document.querySelector('.sc_diner');
   hall1Button.innerHTML = '';
@@ -47,13 +49,13 @@ function addNames(hallArray) {
 
   // North Campus Dinning Hall
   const hall2Button = document.querySelector('.nc_diner');
-  hall2Button.innerHTML = '';
+  hall2Button.innerHTML = ''
   hall2Button.innerHTML += `${hallArray.data[2].hall_name}`;
 }
 
 function addMeals(locData) {
   // Each hall has their own seperate list for the dropdowns
-  let hall0Meals = '<ul>'; // The Diner
+  let hall0Meals = '<div class = "meal_list_wrap"><ul>'; // The Diner
   let hall1Meals = '<ul>'; // South Campus
   let hall2Meals = '<ul>'; // North Campus
   for (i = 0; i < locData.length; i++) { // This creates a list of each hall's menu items
@@ -68,6 +70,7 @@ function addMeals(locData) {
       hall2Meals += `<li><button class = "accordion">${locData[i].meal_name}</button><div class = "panel">${panelInfo}</div></li>`;
     }
   }
+  hall0Meals += '</ul></div>'
   // The lists are then inserted into the dropdowns
   const target0 = document.querySelector('.the_diner_menu');
   target0.innerHTML = '';

@@ -75,6 +75,8 @@ router.post('/restaurants', async (req, res) => {
 
 // PUT request
 router.put('/restaurants', async (req, res) => {
+  console.log('req=');
+  console.log(req);
   try {
     await db.restaurants.update(
       {
@@ -85,7 +87,6 @@ router.put('/restaurants', async (req, res) => {
       {
         where: {
           restaurant_id: req.body.restaurant_id,
-          rating_id: req.body.rating_id
         }
       }
     );
@@ -97,7 +98,7 @@ router.put('/restaurants', async (req, res) => {
 });
 
 // DELETE request
-router.delete('/restaurant/:rest_id', async (req, res) => {
+router.delete('/restaurants/:rest_id', async (req, res) => {
   try {
     await db.restaurants.destroy({
       where: {

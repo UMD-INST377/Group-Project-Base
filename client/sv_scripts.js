@@ -28,22 +28,49 @@ function restoArrayMake(dataArray) {
   });
   return listItems;
 }
+
+function makeRestaurantRating(restaurant_id, rating_id ) {
+  let result = '';
+  result += '[';
+  result += '<input';
+  result += ' type="range"';
+  result += ' min="1"';
+  result += ' max="11"';
+  result += ` value="${rating_id}"`;
+  result += ' onchange="updateRestaurantRatingAndDisplay(';
+  result +=`this,${restaurant_id}, this.value)"`;
+  result += '>';
+  result += ']';
+  result += ` ${(rating_id-1)/2} / 5 stars`;
+  return result;
+}
+async function updateRestaurantRatingAndDisplay(target,
+                                                restaurant_id, 
+                                                rating_id) {
+console.log('target =');
+console.log(target);
+let parent = target.parentNode;
+let restaurantRating = makeRestaurantRating(restaurant_id, rating_id);
+parent.innerHTML = restaurantRating;
+  // eslint-disable-next-line no-use-before-define
+  updateRestaurantRating(restaurant_id, rating_id);
+  console.log(target.parentNode);
+}
+
 // eslint-disable-next-line camelcase
-async function updateRestaurantRating(restuarant_id, rating_id) {
+async function updateRestaurantRating(restaurant_id, rating_id) {
   // find the restaurant's current name and description
   // so we can keep those the same
   // and only update the rating_id for this restaurant
   // eslint-disable-next-line camelcase
-  const request_url = `/api/restaurants/${restaurant_id}`;
-  console.log('request url =');
-  console.log(request_url);
+ 
   // eslint-disable-next-line no-use-before-define
   
   // eslint-disable-next-line camelcase
   const results = await fetch(`/api/restaurants/${restaurant_id}`);
   console.log(results);
   const arrayFromJson = await results.json();
-  const restaurant = arrayFromJson[0];
+  const restaurant = arrayFromJson.data[0];
   const name = restaurant.restaurant_name;
   const {description} = restaurant;
 
@@ -51,38 +78,54 @@ async function updateRestaurantRating(restuarant_id, rating_id) {
   const new_restaurant = {
     restaurant_name: name, 
     description: description, 
-    rating_id: rating_id
-  }
-  fetch('/api/restaurants', {
+    rating_id: rating_id,
+    restaurant_id: restaurant_id
+  };
+  await fetch('/api/restaurants', {
     method: 'PUT',
     headers: { 
-      'Content-Type':'application/json'
+      'Content-Type': 'application/json'
     },
-    body:JSON.stringify(new_restaurant)
+    body: JSON.stringify(new_restaurant)
   });
-
-
-
+  // console.log(b)
 }
-function updateRestaurants(collection) {
+async function updateRestaurants(collection) {
   // console.log('fired HTML creator');
   // console.table(collection);
+  let table = '<table>';
+  // eslint-disable-next-line no-const-assign
+  table += '<thead><tr><th>rating</th><th>restaurant</th></tr></thead>';
+  table += '<tbody>';
   const targetList = document.querySelector('#resto-list');
-  targetList.innerHTML = '';
-  collection.forEach(async(item) => {
-    const { name } = item;
+ // await collection.forEach(async(item) => {
+  for (const item of collection) {
+    const { restaurant_name } = item;
     // eslint-disable-next-line camelcase
     const {rating_id} = item;
-    const displayName = name.toLowerCase();
+    const displayName = restaurant_name.toLowerCase();
     // eslint-disable-next-line camelcase
     const results = await fetch(`/api/rating/${rating_id}`); // This accesses some data from our API
     const arrayFromJson = await results.json();
     const displayRating = arrayFromJson[0].rating;
     // eslint-disable-next-line camelcase
-    const rating_prompt = 'new rating = [<input type="number" value="2.5">]';
-    const injectThisItem = `<li>${displayName} ${displayRating} out of 5 stars. ${rating_prompt}</li>`;
-    targetList.innerHTML += injectThisItem;
-  });
+    const { restaurant_id } = item;
+    //const ratingSlider = `[<input type="range" min="1" max="11"  value="${rating_id}" onchange="updateRestaurantRatingAndDisplay(this,${restaurant_id}, this.value)">]`;
+    const ratingSlider = 
+      makeRestaurantRating(restaurant_id, rating_id);
+    let injectThisItem = '<tr>';
+    // eslint-disable-next-line no-template-curly-in-string
+    injectThisItem += `<td>${ratingSlider}</td>`;
+    // eslint-disable-next-line no-const-assign
+    injectThisItem += `<td>${displayName}</td>`;
+    injectThisItem += '</tr>';
+    // eslint-disable-next-line no-const-assign
+    table += injectThisItem;
+  }
+  // eslint-disable-next-line no-const-assign
+  table += '</tbody>';
+  table += '</table>';
+  targetList.innerHTML = table;
 }
 function createHtmlList(collection) {
   // console.log('fired HTML creator');
@@ -116,16 +159,20 @@ async function mainEvent() { // the async keyword means we can make API requests
   submit.style.display = 'none';
 
 /// start of lab 8 section (modified lab 7 code)
-  if (!localStorage.getItem(retVar)) {
+  restaurants = localStorage.getItem(retVar);
+ 
+
+  //if (!localStorage.getItem(retVar)) 
+  if (typeof restaurants === 'undefined'
+  || restaurants === 'undefined') {
     const results = await fetch('/api/restaurants'); // This accesses some data from our API
     const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-    console.log(arrayFromJson);
-    localStorage.setItem(retVar, JSON.stringify(arrayFromJson.data));
+    restaurants = JSON.stringify(arrayFromJson)
+    localStorage.setItem(retVar, restaurants);
   }
 
-  const storedDataString = localStorage.getItem(retVar);
+  const storedDataString = restaurants;
   const storedDataArray = JSON.parse(storedDataString);
-  console.log(storedDataArray);
   if (storedDataArray.length > 0) {
     submit.style.display = 'block';
 
@@ -143,6 +190,7 @@ async function mainEvent() { // the async keyword means we can make API requests
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
       });
+      console.log("Reebok")
       console.log(selectResto);
       updateRestaurants(selectResto);
     });
@@ -170,7 +218,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       // arrayFromJson.data - we're accessing a key called 'data' on the returned object
       // it contains all 1,000 records we need
       currentArray = restoArrayMake(storedDataArray);
-      updateRestaurants(RestaurantArray);
+      updateRestaurants(currentArray);
     });
 
     // ADDING A RESTAURANT

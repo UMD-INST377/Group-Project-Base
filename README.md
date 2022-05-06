@@ -11,6 +11,8 @@ https://group-project-6.herokuapp.com/index.html
 ## Target Browsers
 * MacBook Pro 13 inch
 * MacBook Pro 15 inch
+* Dell XPS 13
+* Google Nest Hub Max
 
 ## Links
 * [User Manual](https://github.com/ryessem7/Group6-Final-INST377SP2022/#user-manual)

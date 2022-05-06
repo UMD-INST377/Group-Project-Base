@@ -260,6 +260,10 @@ header.active {
   transition: 0.15s;
 }
 
+.saved {
+  display: none;
+}
+
 .nav.active {
  visibility: visible;
   background-color: #F2D5D5;

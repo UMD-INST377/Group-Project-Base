@@ -40,6 +40,8 @@ function loadUser() {
         document.querySelector('.logged_in').style.fontWeight = 'bold';
         document.querySelector('.login').style.display = 'none';
         document.querySelector('.sign_up').style.display = 'none';
+        document.querySelector('.saved').style.display = 'block';
+        
     }
 }
 // stores data to session

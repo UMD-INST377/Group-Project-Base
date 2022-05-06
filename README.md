@@ -27,7 +27,8 @@ https://clato.herokuapp.com/
 
 # Known Bugs and Future Development
 ### Bugs: 
-* 
+* About Page: Forms dont recoginze previous inputs
+* Saved Page: Previously saved queries are only shown when the user saves a query during that session. 
 ### Future Development:
 * Increase data avilable in the database
 * Improvement on Tree Visualizations 

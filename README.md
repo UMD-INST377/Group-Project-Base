@@ -1,4 +1,5 @@
-# INST377 Group23 UMD College Park Restaurants
+# INST377 Group23
+# UMD College Park Restaurants
 
 This repository is a INST377 Web Applications group project for the development of our UMD Restuarants web application for INST377. It represents a working "server" and "client" package for HTTP requests with our own custom APIs. The code here helps interact with Sravya's prior INST327 MySQL project database. 
 

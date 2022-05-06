@@ -195,7 +195,7 @@ footer p {
   color: #fff;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   h2 {
       font-family: 'Inter';
       font-style: normal;
@@ -239,7 +239,7 @@ header.active {
 
 
 .nav {
-  opacity: 0;
+  visibility: hidden;
   position: absolute;
   top: 88px;
   right: 0;
@@ -260,7 +260,7 @@ header.active {
 }
 
 .nav.active {
-  opacity: 1;
+ visibility: visible;
   background-color: #F2D5D5;
 }
 
@@ -298,7 +298,7 @@ header.active {
 }
 
 /* Nav Desktop */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
 .mobile {
   display: none;
 }
@@ -319,7 +319,7 @@ header {
 }
 
 .nav {
-  opacity: 1;
+  visibility: visible;
 
   width: auto;
   height: auto;
@@ -396,7 +396,7 @@ header {
   opacity: .8;
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 900px){
   .hero {
       min-height: 344px;
   }
@@ -431,6 +431,7 @@ header {
   display: flex;
   align-items: center;
   padding: 0px 0px 0px 16px;
+  margin-bottom: 24px;
 
   background: #FFFFFF;
 
@@ -455,7 +456,7 @@ header {
   border-radius: 4px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .species_form {
       align-items: center;
   }
@@ -481,7 +482,7 @@ header {
   border-radius: 4px;
 }   
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 900px){
   .tree {
       height: 666px;
       min-width: 100%;
@@ -589,7 +590,7 @@ footer div {
   bottom: 0;
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 900px){
   .saved_results_container {
       max-width: 1200px;
       padding-right: 80px;
@@ -885,29 +886,60 @@ footer div {
   background-color: rgba(0, 0, 0, 0.4);
   padding-top: 60px;
 }
-/* D3.js */
+/* D3.js
+================================================================ */
+.query {
+  display: block;
+  position: relative;
+  max-width: 323px;
+  height: 337px;
+  
+  border: 2px solid #66516E;
+  box-shadow: inset 0px 1px 2px #66516E;
+  border-radius: 4px;
+  overflow: scroll;  
+}
+
+svg {
+
+  margin: .4rem;
+  border: #fff;
+  border-radius: 24px;
+  background-color: #fff;
+  overflow: visible;
+}
+
 .node circle {
   fill: #fff;
-  stroke: steelblue;
+  stroke: #66516E;
   stroke-width: 3px;
 }
+
 .node image {
   opacity: 0;
+
+  border: 1px solid #000;
+  border-radius: 4px;
 }
+
 .node:hover image {
   height: auto;
   width: 250px;
   z-index: 10;
-  opacity: 1;
+  opacity: 1; 
+
+
 }
 
 .node.node--internal text { 
-  color: lightgrey;
-  opacity: 0;
+  color: #DBAEEC;
+  opacity: 1;
 }
+
 .node.node--internal circle { 
   r: 4px;
 }
+
 .node.node--internal:hover text {
   color: black;
   opacity: 1;
@@ -919,35 +951,182 @@ footer div {
   opacity: 1;
 }
 
+/* select the image within every other g */
+/* TODO:
+- figure out why odd is working and even is not */
+
+.node.node--internal:nth-child(odd):hover image {
+  x: -300px;
+}
+
+.node.node--internal:nth-child(even):hover image {
+  x: 300px;
+}
+
+
 .link {
   fill: none;
-  stroke: #ccc;
+  stroke: #DBAEEC;
   stroke-width: 2px;
 }
-.query {
-  display: block;
-}
-svg {
-  margin: .4rem;
-  border: #fff;
-  border-radius: 24px;
-  background-color: #fff;
-  overflow: visible;
-}
+
+
 g image {
+  /* relative to the node */
+
+  position: absolute;
+  top: 0;
   height: auto;
   width: 40px;
+
+  border-radius: 4px;
 }
+
+
 .delete {
   background-color: maroon;
   color: #fff;
 }
+
 .result-container {
+
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+
+
+@media screen and (min-width: 900px){
+  .result-container {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+  .query {
+      height: 1000px;
+      max-width: none;
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+      overflow: auto;
+  } 
+
+  svg {
+    margin: .4rem;
+    border: #fff;
+    border-radius: 24px;
+    background-color: #fff;
+    overflow: visible;
+  }
+
+  .node {
+    width: 32px;
+  }
+
+  g {
+    width: 16px;
+    height: 16px;
+    border: solid 1px #000;
+  }
+
+  /* .p_node {
+    display: block;
+    opacity: 1;
+    width: 100%;
+  } */
+
+  .node circle {
+    fill: #fff;
+    stroke: #66516E;
+    stroke-width: 3px;
+  }
+
+  .node image {
+    opacity: 1;
+
+    border: 1px solid #000;
+    border-radius: 4px;
+  }
+
+  .node:hover image {
+    height: auto;
+    width: 250px;
+    z-index: 10;
+    opacity: 1; 
+
+
+  }
+
+  .node.node--internal text { 
+    color: #DBAEEC;
+    opacity: 1;
+  }
+
+  .node.node--internal circle { 
+    r: 4px;
+  }
+
+  .node.node--internal:hover text {
+    color: black;
+    opacity: 1;
+    z-index: 999; /* wont work until positioned */
+  }
+
+  .node.node--leaf text, .node.node--internal-root text {
+    color: red;
+    opacity: 1;
+  }
+
+  /* select the image within every other g */
+
+  .node.node--internal-root:hover image {
+    y: 10%;
+    x: -10%;
+  }
+
+  .node.node--internal:nth-child(odd):hover image {
+    x: -30%;
+  }
+
+  .node.node--internal:nth-child(even):hover image {
+    x: 10%;
+  }
+
+
+  .link {
+    fill: none;
+    stroke: #DBAEEC;
+    stroke-width: 2px;
+  }
+
+
+  g image {
+    /* relative to the node */
+
+    position: absolute;
+    top: 0;
+    height: auto;
+    width: 40px;
+
+    border-radius: 4px;
+  }
+
+
+  .delete {
+    background-color: maroon;
+    color: #fff;
+  }
+
+
+}
 
 /* About
 ================================================================ */
@@ -971,7 +1150,7 @@ img.darwin {
 }
 
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .section {
       width: 100%;
       display: flex;

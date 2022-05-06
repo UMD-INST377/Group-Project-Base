@@ -13,10 +13,11 @@ router.get('/actors', async (req, res) => {
     res.send("Error in '/actors'!");
   }
 });
-
+// API route hello 
 router.get('/', (req, res) => {
   res.send("Welcome to Isaac's portion of Group 20's project API!");
 });
+// Get list of actors
 router.get('/actors/:actor_id', async (req, res) => {
   try {
     const actors = await db.actors.findAll({
@@ -31,6 +32,7 @@ router.get('/actors/:actor_id', async (req, res) => {
   }
 });
 
+// Select names of actors
 router.post('/actors', async (req, res) => {
   try {
     const actors = await db.sequelizeDB.query(
@@ -42,7 +44,7 @@ router.post('/actors', async (req, res) => {
     res.send('Server error');
   }
 });
-
+// Get age of actor
 router.put('/actors', async (req, res) => {
   try {
     const actors = await db.sequelizeDB.query(

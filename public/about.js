@@ -36,15 +36,11 @@ function emptyResponse() {
 // displays username from local storage
 function loadUser() {
     if (sessionStorage.getItem('plainUser') !== null) {
-        document.querySelector('p.logged_in').innerText = `Welcome, ${sessionStorage.getItem('plainUser')}!`;
-        let logOutButton =  document.querySelector('.log_out')
-        logOutButton.style.display = 'flex';
+        document.querySelector('.logged_in').innerText = `${sessionStorage.getItem('plainUser')}!`;
+        document.querySelector('.logged_in').style.fontWeight = 'bold';
         document.querySelector('.login').style.display = 'none';
-        document.querySelector('.sign_up').style.display = 
-        'none';
+        document.querySelector('.sign_up').style.display = 'none';
     }
-
-
 }
 // stores data to session
 async function storeSession(userData) {
@@ -119,7 +115,9 @@ async function userLogin(e){
 // API call
 
 
+function main() {
 
+    loadUser();
     // User Sign Up
   // const signUpSubmit = document.querySelector('#sign_up');
   const signUpModal = document.querySelector('.sign_up_modal');
@@ -149,7 +147,7 @@ async function userLogin(e){
     signUpModal.style.display = 'flex';
   })
     // if user account already stored..
-    loadUser();
+    // loadUser();
     // "create account" form
     document.querySelector('.sign_up_form').addEventListener('submit', async (e) => {
         // sessionStorage not found
@@ -210,6 +208,6 @@ async function userLogin(e){
     hamburger.classList.toggle("active");
     navMenu.classList.toggle("active");
     });
-
+}
 
 document.addEventListener('DOMContentLoaded', main);

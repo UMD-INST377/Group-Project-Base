@@ -36,7 +36,8 @@ function emptyResponse() {
 // displays username from local storage
 function loadUser() {
     if (sessionStorage.getItem('plainUser') !== null) {
-        document.querySelector('p.logged_in').innerText = `Welcome, ${sessionStorage.getItem('plainUser')}!`;
+        document.querySelector('.logged_in').innerText = `${sessionStorage.getItem('plainUser')}!`;
+        document.querySelector('.logged_in').style.fontWeight = 'bold';
         document.querySelector('.login').style.display = 'none';
         document.querySelector('.sign_up').style.display = 'none';
     }

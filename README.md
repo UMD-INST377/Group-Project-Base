@@ -16,7 +16,7 @@ sort their options by genre, restaurant type, and location among other identifie
 
 ## Links
 * [User Manual](https://scheduleofpt.herokuapp.com/documentation.html) 
-* [Developer Manual](https://github.com/jhersh4/finalproject377#developer-manual)
+* [Developer Manual](#Developer-Manual)
 
 # Developer Manual
 ## REST API Example with Sequelize Methods

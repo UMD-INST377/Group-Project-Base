@@ -56,10 +56,11 @@ function getRandomIntInclusive(min, max) {
         console.log(event.target.value);
         const selectResto = currentArray.filter((item) => {
           // console.log(item.phone_number);
-          return String(item.phone_number);
+          return item.restaurant_name.toLowerCase().includes(event.target.value.toLowerCase());
         });
         createHtmlList(selectResto);
       });
+
       form.addEventListener("submit", async (submitEvent) => {
         // async has to be declared all the way to get an await
         submitEvent.preventDefault(); // This prevents your page from refreshing!

@@ -22,7 +22,7 @@ router.route('/restaurant').get(async (req, res) => {
 });
 
 // get restaurant with id, /api/restaurantid#
-router.get('/:restaurant_id', async (req, res) => {
+router.get('/restaurant/:restaurant_id', async (req, res) => {
   // eslint-disable-next-line no-template-curly-in-string
   const restaurantIDQuery = `SELECT * FROM restaurant LEFT JOIN restaurant_info USING(restaurant_id)
   WHERE restaurant_id = ${req.params.restaurant_id}`;
@@ -38,7 +38,7 @@ router.get('/:restaurant_id', async (req, res) => {
 });
 
 // post method for restaurant for adding a restaurant
-router.post('/restaurantpost', async (req, res) => {
+router.post('/restaurant/restaurantpost', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(`INSERT INTO restaurant (restaurant_id, 
       restaurant_info_id, restaurant_name, location_id, open_time, close_time, reservation, phonne_number,
@@ -55,7 +55,7 @@ router.post('/restaurantpost', async (req, res) => {
 });
 
 // for updating an entry
-router.put('/restaurantput', async (req, res) => {
+router.put('/restaurant/restaurantput', async (req, res) => {
   try {
     const put = await db.sequelizeDB.query(`UPDATE restaurant SET restaurant_info_id = ${restaurant_info_id}, 
     restaurant_name = '${req.body.restaurant_name}', 
@@ -71,7 +71,7 @@ router.put('/restaurantput', async (req, res) => {
 });
 
 // for deleting an entry
-router.delete('/restaurantdelete/:restaurant_id', async (req, res) => {
+router.delete('/restaurant/restaurantdelete/:restaurant_id', async (req, res) => {
   const {restaurant_id } = req.params
   console.log(restaurant_id);
   const restaurantIDQuery = `DELETE FROM restaurant LEFT JOIN restaurant_info USING(restaurant_id)

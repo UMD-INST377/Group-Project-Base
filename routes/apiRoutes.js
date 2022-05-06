@@ -7,7 +7,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD film API!');
+  res.send('Welcome to the UMD Dining API!');
 });
 
 // Created by Viphu Nguyen
@@ -119,13 +119,11 @@ router.get('/primary_title/:id', async (req, res) => {
 
 // To delete a specific titles
 // need to fix !! see actors for bug
-router.delete('/delete_title/:id', async (req, res) => {
+router.delete('/delete_title', async (req, res) => {
   try {
-    const {id} = req.params
-    console.log(id)
-    const result = await db.Title.destroy({
+    const actorList = await db.Title.destroy({
       where: {
-        title_id: id
+        actor_id: req.body.title_id
       }
     });
     res.send(

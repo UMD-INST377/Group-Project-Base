@@ -1,5 +1,5 @@
-
-const form_delete = document.querySelector('#delete_id');
+// delete actor
+const form_delete = document.querySelector('#delete_submit');
 const value = document.querySelector('#actor_id');
 const form = document.querySelector('#delete_actor');
 

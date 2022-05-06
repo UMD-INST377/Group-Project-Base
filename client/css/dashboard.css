@@ -1,12 +1,48 @@
 *{
-	padding: 0;
 	margin: 0;
 	font-family: 'Josefin Sans', sans-serif;
 	box-sizing: border-box;
 }
 
+.main_body{
+  padding: 50px;
+  line-height: 1.5;
+}
+
+.container{
+  display: flex;
+}
+
 body {
   background-color: rgb(212, 212, 199);
+}
+
+h1 {
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+h6 {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+}
+
+.left, .header {
+  -webkit-text-stroke-width: .25px;
+  -webkit-text-stroke-color: black;
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
 }
 
 /* Dashboard Navbar*/

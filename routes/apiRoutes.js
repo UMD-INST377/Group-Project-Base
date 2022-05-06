@@ -7,7 +7,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the UMD Film API!');
 });
 
 // Created by Viphu Nguyen
@@ -119,13 +119,15 @@ router.get('/primary_title/:id', async (req, res) => {
 
 // To delete a specific titles
 // need to fix !! see actors for bug
-router.delete('/delete_title', async (req, res) => {
+router.delete('/delete_title/:id', async (req, res) => {
   try {
-    const actorList = await db.Title.destroy({
+    const {id} = req.params
+    console.log(id)
+    const result = await db.Titles.destroy({
       where: {
-        actor_id: req.body.title_id
+        title_id: id
       }
-    });
+    })
     res.send(
       'Sucessfully Deleted'
     );
@@ -155,7 +157,12 @@ router.route('/primary_title')
   .post(async (req, res) => {
     const newTitle = await db.Title.create({
       primary_title: req.body.primary_title,
-      title_type: req.body.title_type,
+      release: req.body.release_year,
+      rating: req.body.rating,
+      votes: req.body.votes,
+      runtime: req.body.runtime,
+      title_type: 'movie',
+      is_adult: '0',
     });
     res.send('dummyValue');
   })

@@ -300,7 +300,100 @@ async function retrieveHistory() {
         ).then(console.log('retrieveHistory() complete.')).catch((e) => console.log(e))
     }
 }
+async function displayEach(searchItem, index) {
+    if (document.querySelector('.saved').children.length > index) {
+        return;
+    }
+    console.log(index)
+    let searchTree = JSON.parse(searchItem).search
+    let container = document.querySelector('.saved')
+    let newNode = document.createElement('div')
+    newNode.className = 'past-search'
+    newNode.id = `x${index}` // x + index = name in session storage
+    let editBtn = document.createElement('button')
+    editBtn.className = 'delete'
+    editBtn.innerText = 'Delete'
+    // editBtn.style.transform = 'translate(70px, -30px)'
+    
+    newNode.appendChild(editBtn)
+    //editBtn.id = searchTree.
+    container.appendChild(newNode)
+    var margin = {top: 40, right: 20, bottom: 80, left: 20},
+            width = 200 - margin.left - margin.right,
+            height = 400 - margin.top - margin.bottom;
+        // declares a tree layout and assigns the size
+        var treemap = d3.tree()
+            .size([width, height]);
+        //  assigns the data to a hierarchy using parent-child relationships
+        var nodes = d3.hierarchy(searchTree);
 
+        // maps the node data to the tree layout
+        nodes = treemap(nodes);
+
+        // append the svg obgect to the body of the page
+        // appends a 'group' element to 'svg'
+        // moves the 'group' element to the top left margin
+        var svg = d3.select(newNode).append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom),
+            g = svg.append("g")
+                .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+        // adds the links between the nodes
+        var link = g.selectAll(".link")
+            .data( nodes.descendants().slice(1))
+            .enter().append("path")
+            .attr("class", "link")
+            .attr("d", function(d) {
+                return "M" + d.x + "," + d.y
+                + "C" + d.x + "," + (d.y + d.parent.y) / 2
+                + " " + d.parent.x + "," +  (d.y + d.parent.y) / 2
+                + " " + d.parent.x + "," + d.parent.y;
+                });
+
+        // adds each node as a group
+        var node = g.selectAll(".node")
+            .data(nodes.descendants())
+            .enter().append("g")
+            .attr("class", function(d) { 
+                //console.log(d);
+                return "node" + 
+                (d.children ? " node--internal" : " node--leaf") +
+                (d.parent ? "" : "-root");
+            })
+            .attr("transform", function(d) { 
+                return "translate(" + d.x + "," + d.y + ")"; });
+        // adds the circle to the node
+        node.append("circle")
+            .attr("r", 10) // radius
+            .style("stroke-width", 2); // border
+        // adds the text to the node
+        node.append("text")
+            .attr("dy", ".35em")
+            .attr("y", function(d) { return d.children ? -20 : 20; })
+            .style("text-anchor", "middle")
+            .text(function(d) { return d.data.name; })
+            //.attr('transform', 'rotate(90)')
+            .attr('opacity', 0)
+        // appending image url to the node
+        node.append('image')
+            .attr("href", function (d) { return d.data.image + '?width=300px' })
+            .attr('x', '-20')
+            .attr('y', '-60')
+            //.attr('transform', 'rotate(90)')
+        // rotates elements horizontally
+        //svg.attr('transform', 'rotate(-90)')
+            return;
+        }
+
+async function displayPastSearches() {
+    console.log('Retrieving past searches.')
+    let searches = Object.keys(sessionStorage)
+        .filter(key => key.startsWith('x')).sort()
+        .map(key => sessionStorage.getItem(key))
+        .forEach((search, index) => {
+            displayEach(search, index)});
+}
 
 function main() {
   retrieveHistory().then(() => {

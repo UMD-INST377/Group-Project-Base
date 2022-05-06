@@ -119,11 +119,13 @@ router.get('/primary_title/:id', async (req, res) => {
 
 // To delete a specific titles
 // need to fix !! see actors for bug
-router.delete('/delete_title', async (req, res) => {
+router.delete('/delete_title/:id', async (req, res) => {
   try {
-    const actorList = await db.Title.destroy({
+    const {id} = req.params
+    console.log(id)
+    const result = await db.Title.destroy({
       where: {
-        actor_id: req.body.title_id
+        title_id: id
       }
     });
     res.send(

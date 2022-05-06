@@ -39,9 +39,9 @@ https://morning-depths-05988.herokuapp.com/
 * DELETE - Access the actors table to allow the user to delete info of an actor from their id
 
 ```/primary_title``` API route to display information on the film and TV shows
-* GET - 
-* DELETE - 
-* POST 
+* GET - Logs to console response query from URL. Restors response 'primary_title'
+* DELETE - Deletes specific ID's based on user input.
+* POST - 
 
 ### Future Developement:
 * We could add more graphs that show information about the users database such as amount of movies per genre

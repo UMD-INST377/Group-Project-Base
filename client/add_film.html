@@ -64,14 +64,14 @@
       <h1>Delete Title</h1>
       <p><em>Delete titles from the shared database.</em></p>
     </header>
-  <form action='/api/delete_title' method='post' class='speaker-form'>
+  <form id = delete_title class='speaker-form'>
       <div class='form-row'>
         <label for='title_id'>Title Id</label>
         <input id='title_id' name='title_id' type='text'/>
       </div>
-      <div class='form-row'>
-        <button>Submit</button>
-      </div>
     </form>
+    <button id = "delete_film">Submit</button>
+    <script src = "./js/delete_title.js"></script>
+    
   </body>
 </html>

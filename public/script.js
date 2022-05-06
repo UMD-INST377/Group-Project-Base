@@ -488,7 +488,7 @@ function main() {
     })
     // logout button clears session
     // This chunk breaks things
-    // document.querySelector('.logout').addEventListener('click', async (e) => {
+    // document.querySelector('.log_out').addEventListener('click', async (e) => {
     //     e.preventDefault();
     //     // clear session storage
     //     logOut()

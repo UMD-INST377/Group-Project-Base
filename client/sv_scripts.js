@@ -28,6 +28,35 @@ function restoArrayMake(dataArray) {
   });
   return listItems;
 }
+
+function makeRestaurantRating(restaurant_id, rating_id ) {
+  let result = '';
+  result += '[';
+  result += '<input';
+  result += ' type="range"';
+  result += ' min="1"';
+  result += ' max="11"';
+  result += ` value="${rating_id}"`;
+  result += ' onchange="updateRestaurantRatingAndDisplay(';
+  result +=`this,${restaurant_id}, this.value)"`;
+  result += '>';
+  result += ']';
+  result += ` ${(rating_id-1)/2} / 5 stars`;
+  return result;
+}
+async function updateRestaurantRatingAndDisplay(target,
+                                                restaurant_id, 
+                                                rating_id) {
+console.log('target =');
+console.log(target);
+let parent = target.parentNode;
+let restaurantRating = makeRestaurantRating(restaurant_id, rating_id);
+parent.innerHTML = restaurantRating;
+  // eslint-disable-next-line no-use-before-define
+  updateRestaurantRating(restaurant_id, rating_id);
+  console.log(target.parentNode);
+}
+
 // eslint-disable-next-line camelcase
 async function updateRestaurantRating(restaurant_id, rating_id) {
   // find the restaurant's current name and description
@@ -81,7 +110,9 @@ async function updateRestaurants(collection) {
     const displayRating = arrayFromJson[0].rating;
     // eslint-disable-next-line camelcase
     const { restaurant_id } = item;
-    const ratingSlider = `[<input type="range" min="1" max="11"  value="${rating_id}" onchange="updateRestaurantRating(${restaurant_id}, this.value)">]`;
+    //const ratingSlider = `[<input type="range" min="1" max="11"  value="${rating_id}" onchange="updateRestaurantRatingAndDisplay(this,${restaurant_id}, this.value)">]`;
+    const ratingSlider = 
+      makeRestaurantRating(restaurant_id, rating_id);
     let injectThisItem = '<tr>';
     // eslint-disable-next-line no-template-curly-in-string
     injectThisItem += `<td>${ratingSlider}</td>`;
@@ -90,10 +121,6 @@ async function updateRestaurants(collection) {
     injectThisItem += '</tr>';
     // eslint-disable-next-line no-const-assign
     table += injectThisItem;
-    console.log('injectThisItem =');
-    console.log(injectThisItem);
-    console.log('table =');
-    console.log(table);
   }
   // eslint-disable-next-line no-const-assign
   table += '</tbody>';

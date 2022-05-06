@@ -1,4 +1,12 @@
 export default (sequelize, DataTypes) => {
+<<<<<<< HEAD
+  const Meals = sequelize.define(
+    'Meals_Locations',
+    {
+      hall_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+=======
   const MealsLocations = sequelize.define(
     'meals_locations',
     {
@@ -6,6 +14,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
+>>>>>>> main
       },
       meal_id: {
         type: DataTypes.INTEGER,

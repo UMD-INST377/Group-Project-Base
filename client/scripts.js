@@ -11,7 +11,6 @@ const totalSlides = slides.length;
 let nextSlide = document.querySelector('#carousel_button-next');
 const prevSlide = document.querySelector('#carousel_button-prev');
 
-
 /*
 Shows Ouput for front page
 */
@@ -78,7 +77,7 @@ prevSlide.addEventListener('click', () => {
 
 function updateSlidePosition() {
   // eslint-disable-next-line no-restricted-syntax
-  for (let slide of slides) {
+  for (const slide of slides) {
     slide.classList.remove('carousel_item-visible');
     slide.classList.add('carousel_item-hidden');
   }

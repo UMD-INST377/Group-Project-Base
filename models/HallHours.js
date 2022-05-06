@@ -1,5 +1,5 @@
-export default (database, DataTypes) => {
-  const HallHours = database.define(
+export default (sequelize, DataTypes) => {
+  const HallHours = sequelize.define(
     'hall_hours',
     {
       hall_hours_id: {

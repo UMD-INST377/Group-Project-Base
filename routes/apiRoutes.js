@@ -4,7 +4,6 @@ import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
-
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -14,7 +13,6 @@ router.get('/', (req, res) => {
 router.get('/client', (req, res) => {
   res.send('Welcome to Client');
 });
-
 
 /// /////////////////////////////////
 /// ////Meals Locations Endpoints////////
@@ -137,6 +135,85 @@ router.put('/schedule', async (req, res) => {
     res.send('Updated');
   } catch {
     res.send('There was an error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////Hall Hours Endpoints////////
+/// /////////////////////////////////
+router.get('/hallHours', async (req, res) => {
+  try {
+    const hallHours = await db.HallHours.findAll();
+    res.json(hallHours);
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+})
+
+router.get('/hallHours/:hall_hours_id', async (req, res) => {
+  try {
+    const hours = await db.HallHours.findAll({
+      where: {
+        hall_hours_id: req.params.hall_hours_id
+      }
+    });
+
+    res.json(hours);
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.post('/hallHours', async (req, res) => {
+  const hours = await db.HallHours.findAll();
+  try {
+    const newHallHours = await db.HallHours.create({
+      hall_hours_id: (await hours.length) + 1,
+      day: req.body.day,
+      schedule_id: req.body.schedule_id,
+      hall_id: req.body.hall_id,
+    });
+    res.json(newHallHours);
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.delete('/hallHours/:hall_hours_id', async (req, res) => {
+  try {
+    await db.HallHours.destroy({
+      where: {
+        hall_hours_id: req.params.hall_hours_id
+      }
+    });
+    res.send('Deleted');
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.put('/hallHours', async (req, res) => {
+  try {
+    await db.HallHours.update(
+      {
+        day: req.body.day,
+        schedule_id: req.body.schedule_id,
+        hall_id: req.body.hall_id,
+      },
+      {
+        where: {
+          hall_hours_id: req.body.hall_hours_id
+        }
+      }
+    );
+    res.send('Updated');
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
   }
 });
 
@@ -347,6 +424,85 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.error('Server error');
+  }
+});
+
+/// /////////////////////////////////
+/// ////Hall Hours Endpoints////////
+/// /////////////////////////////////
+router.get('/hallHours', async (req, res) => {
+  try {
+    const hallHours = await db.HallHours.findAll();
+    res.json(hallHours);
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.get('/hallHours/:hall_hours_id', async (req, res) => {
+  try {
+    const hours = await db.HallHours.findAll({
+      where: {
+        hall_hours_id: req.params.hall_hours_id
+      }
+    });
+
+    res.json(hours);
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.post('/hallHours', async (req, res) => {
+  const hours = await db.HallHours.findAll();
+  try {
+    const newHallHours = await db.HallHours.create({
+      hall_hours_id: (await hours.length) + 1,
+      day: req.body.day,
+      schedule_id: req.body.schedule_id,
+      hall_id: req.body.hall_id
+    });
+    res.json(newHallHours);
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.delete('/hallHours/:hall_hours_id', async (req, res) => {
+  try {
+    await db.HallHours.destroy({
+      where: {
+        hall_hours_id: req.params.hall_hours_id
+      }
+    });
+    res.send('Deleted');
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
+  }
+});
+
+router.put('/hallHours', async (req, res) => {
+  try {
+    await db.HallHours.update(
+      {
+        day: req.body.day,
+        schedule_id: req.body.schedule_id,
+        hall_id: req.body.hall_id
+      },
+      {
+        where: {
+          hall_hours_id: req.body.hall_hours_id
+        }
+      }
+    );
+    res.send('Updated');
+  } catch (err) {
+    console.error(err);
+    res.send('Error');
   }
 });
 

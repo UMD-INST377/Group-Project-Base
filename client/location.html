@@ -2,9 +2,14 @@
 <html lang = "en">
     <head>
         <meta charset = "UTF-8"/>
-        <title>About Page</title>
+        <title>Hours/Locations Page</title>
         <link rel = "stylesheet" href = "styles.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin=""/>
+         <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+         crossorigin=""></script>
     </head>
     <body>
         <div class = "menu-container">
@@ -17,6 +22,88 @@
                 <div class = "about"><a href = './about.html'>ABOUT</a></div>
             </div>
         </div>
+                <div class = "about"><a href = './about.html'>ABOUT</a></div>
+                <div class = "location"><a href = './location.html'>LOCATIONS/HOURS</a></div>
+            </div>
+        </div>
+        <div class="locTitle">Hours and Locations</div>
+        <div class="map_item">
+            <div id="map"></div>
+        </div>
+        <div class="dinerBox">
+            <div class="box-item">
+                <div class="boxTitle">SOUTH CAMPUS</div>
+                <div class="locations"><br>Location:</div>
+                <div class="address">7093 PREINKERT DR, COLLEGE PARK, MD 20740</div>
+                <div class="hours"><br>Hours:</div>
+                <div class="day-box">
+                    <div class="day">MON</div>
+                    <div class="day">TUE</div>
+                    <div class="day">WED</div>
+                    <div class="day">THU</div>
+                    <div class="day">FRI</div>
+                    <div class="day">SAT</div>
+                    <div class="day">SUN</div>
+                </div>
+                <div class="time-box">
+                    <div class="time">7:00 AM - 9:00 PM </div>
+                    <div class="time">7:00 AM - 9:00 PM </div>
+                    <div class="time">7:00 AM - 9:00 PM </div>
+                    <div class="time">7:00 AM - 9:00 PM </div>
+                    <div class="time">7:00 AM - 9:00 PM </div>
+                    <div class="time">10:00 AM - 9:00 PM </div>
+                    <div class="time">10:00 AM - 9:00 PM </div>
+                </div>
+            </div>
+            <div class="box-item">
+                <div class="boxTitle">THE DINER</div>
+                <div class="locations"><br>Location:</div>
+                <div class="address">4121 FARM DR, COLLEGE PARK, MD 20742</div>
+                <div class="hours"><br>Hours:</div>
+                <div class="day-box">
+                    <div class="day">MON</div>
+                    <div class="day">TUE</div>
+                    <div class="day">WED</div>
+                    <div class="day">THU</div>
+                    <div class="day">FRI</div>
+                    <div class="day">SAT</div>
+                    <div class="day">SUN</div>
+                </div>
+                <div class="time-box">
+                    <div class="time">7:00 AM - 9:00 PM </div>
+                    <div class="time">7:00 AM - 9:00 PM </div>
+                    <div class="time">7:00 AM - 9:00 PM </div>
+                    <div class="time">7:00 AM - 9:00 PM </div>
+                    <div class="time">7:00 AM - 9:00 PM </div>
+                    <div class="time">10:00 AM - 9:00 PM </div>
+                    <div class="time">10:00 AM - 9:00 PM </div>
+                </div>
+            </div>
+            <div class="box-item">
+                <div class="boxTitle">251 NORTH DINING</div>
+                <div class="locations"><br>Location:</div>
+                <div class="address">3951 DENTON SERVICE LN, COLLEGE PARK, MD 20742</div>
+                <div class="hours"><br>Hours:</div>
+                <div class="day-box">
+                    <div class="day">MON</div>
+                    <div class="day">TUE</div>
+                    <div class="day">WED</div>
+                    <div class="day">THU</div>
+                    <div class="day">FRI</div>
+                    <div class="day">SAT</div>
+                    <div class="day">SUN</div>
+                </div>
+                <div class="time-box">
+                    <div class="time">8:00 AM - 8:00 PM </div>
+                    <div class="time">8:00 AM - 8:00 PM </div>
+                    <div class="time">8:00 AM - 8:00 PM </div>
+                    <div class="time">8:00 AM - 8:00 PM </div>
+                    <div class="time">8:00 AM - 8:00 PM </div>
+                    <div class="time">8:00 AM - 8:00 PM </div>
+                    <div class="time">8:00 AM - 8:00 PM </div>
+                </div>
+            </div>
+        </div>
+        <script src="./mapScript.js"></script>
     </body>
 </html>
-

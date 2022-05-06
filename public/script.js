@@ -456,14 +456,15 @@ function main() {
         e.preventDefault();
     })
     // logout button clears session
-    document.querySelector('.logout').addEventListener('click', async (e) => {
+   /* document.querySelector('.logout').addEventListener('click', async (e) => {
         e.preventDefault();
         // clear session storage
         logOut()
         console.log('Successfully logged out.')
         // back to main()
         return;
-    })
+    })*/
+    
     // search bar
     document.querySelector('.species_form').addEventListener('submit', async (e) => {
         wikiSearch(e)

@@ -4,7 +4,7 @@
 This repository is a INST377 Web Applications group project for the development of our UMD Restuarants web application for INST377. It represents a working "server" and "client" package for HTTP requests with our own custom APIs. The code here helps interact with Sravya's prior INST327 MySQL project database. 
 
 ### Description
-We want to help people find restaurants in the College Park area that fit the criteria that they want. For instance, how expensive a place is, or how large the place is. This would help not only people who are new to the area, but also people who are living in the area, and either want to try something new, or be reminded of the various available options.
+We want to help people find restaurants in the College Park area that fit the criteria that they want. For instance, how expensive a place is, or its rating. This would help not only people who are new to the area, but also people who are living in the area, and either want to try something new, or be reminded of the various available options.
 This would be useful to anyone living in or visiting the campus in the College Park area and UMD students. This could also be especially helpful for prospective students whether they are in-state or out-of-state since food options are important considerations. It is also useful for those who aren’t necessarily in College Park but in neighboring cities as well.  
 
 ### Link to Webpage

@@ -1186,7 +1186,7 @@ p {
 
 /* Notifs
 ================================== */
-.acct_notif {
+.acct_notif, .notifs {
   font-size: 12px;
   color: maroon;
 }

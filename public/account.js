@@ -1,37 +1,37 @@
-// errors & notifications
+// notifs & notifications
 function accountExists() {
-    let errors = document.querySelector('.errors')
-    errors.innerText = 'Existing account. Try again.'
+    let notifs = document.querySelector('.notifs')
+    notifs.innerText = 'Existing account. Try again.'
     setInterval(() => {
-        errors.innerText = ''}, 2500);
+        notifs.innerText = ''}, 2500);
 }
 // confirms account creation
 function accountCreated() {
-    let errors = document.querySelector('.errors')
-    errors.innerText = 'Account created. Welcome!'
+    let notifs = document.querySelector('.notifs')
+    notifs.innerText = 'Account created. Welcome!'
     setInterval(() => {
-        errors.innerText = ''}, 2500);    
+        notifs.innerText = ''}, 2500);    
 }
 // confirms log out
 function loggedOut() {
-    let errors = document.querySelector('.errors')
-    errors.innerText = 'Successfully logged out.'
+    let notifs = document.querySelector('.notifs')
+    notifs.innerText = 'Successfully logged out.'
     setInterval(() => {
-        errors.innerText = ''}, 2500);   
+        notifs.innerText = ''}, 2500);   
 }
 // generic error
 function somethingWrong() {
-    let errors = document.querySelector('.errors')
-    errors.innerText = 'Something went wrong. Please try again.'
+    let notifs = document.querySelector('.notifs')
+    notifs.innerText = 'Something went wrong. Please try again.'
     setInterval(() => {
-        errors.innerText = ''}, 2500);
+        notifs.innerText = ''}, 2500);
 }
 // empty species query
 function emptyResponse() {
-    let errors = document.querySelector('#search-errors')
-    errors.innerText = 'One of these is not a species. Try again?'
+    let notifs = document.querySelector('#search_notifs')
+    notifs.innerText = 'One of these is not a species. Try again?'
     setInterval(() => {
-        errors.innerText = ''}, 2500);
+        notifs.innerText = ''}, 2500);
 }
 // displays username from local storage
 function loadUser() {

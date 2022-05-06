@@ -16,6 +16,7 @@ async function createMealTable(){
      northMeals += `<li> ${mealJson[i].meal_name} </li>`;
      mealCat += `<li> ${mealJson[i].meal_category} </li>`;
   } 
+
   northMeals += '</ul>';
   mealCat += '</ul>';
 
@@ -28,6 +29,8 @@ async function createMealTable(){
   catList.innerHTML = "";
   catList.innerHTML += mealCat;
 }
+
+
 
 async function createMacroTable(){
   const fetchMacros = await fetch("/api/macros");
@@ -62,6 +65,7 @@ async function createMacroTable(){
   macroQuery.innerHTML += table
   
 }
+
 
 
 async function mainEvent() {

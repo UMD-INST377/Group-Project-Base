@@ -11,120 +11,40 @@ This would be useful to anyone living in or visiting the campus in the College P
 * [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
 
 ### Target Browser
-MacBook Pro 13-inch
-iPhone 12 Pro
+1. MacBook Pro 13/15
+2. iPhone 11/12
 
 ### Links
 * [Home](https://aqueous-reef-41843.herokuapp.com/)
 * [Database Demo](https://aqueous-reef-41843.herokuapp.com/data.html)
+* [Developer Manual](https://github.com/sravvel/Group23-Final-INST377SP2021#developer-manual)
 
 
-<hr>
+# Database Manual
+1. Clone this repository via Github
+2. Open repository using VSCode
+3. Open the terminal window on VSCode and type ` npm install ` to install dependencies 
+4. You are now ready to use the application!
 
-Below are details of the API contained within this group project.
+### Running the Application on a Server
+1. Open repository using VSCode
+2. Open the terminal window on VSCode and type ` npm start `. Make sure there are 0 vulnerabilites and no errors
+3. To view the webpage in a web browser, go to http://localhost:3000/ 
 
-<hr>
+### Running Tests
+There are no tests written for this application however, Cypress can be used to run tests.
 
-## Get list of Restaurants around UMD and College Park
+### API for Server Application
+` /api ` API route for UMD Restaurants data
+` /restaurants ` – API route to obtain the restaurants table
+- GET: Logs to console response query from URL. Returns the the restaurants table.
+- PUT: returns 'Successfully Updated Restaurant'.
+- POST: Returns the new restaurant data in JSON format.
 
-#### Request
+### Bugs & Road-map for Future Development
+- Unable to update tables due to unsupported null values
+- Repetition in data through user inputs
 
-`GET /api/restaurants`
-
-    curl http://localhost:3000/api/restaurants
-
-#### Response
-    [{
-        "restaurant_id":1,
-        "restaurant_name":"College Park Grill",
-        "phone_number":"3014744745","price":"$$",
-        "description":"Grill",
-        "website":"https://www.collegeparkgrill.com/",
-        "cuisine_id":2,
-        "rating_id":9,
-        "description_id":1
-    },
-    {
-        "restaurant_id":2,
-        "restaurant_name":"Old Maryland Grill",
-        "phone_number":"3019553413",
-        "price":"$$$",
-        "description":"Grill, Bar",
-        "website":"https://oldmarylandgrill.com",
-        "cuisine_id":2,
-        "rating_id":9,
-        "description_id":2
-    },
-    {
-        "restaurant_id":3,
-        "restaurant_name":"The Board and Brew",
-        "phone_number":"2405424613",
-        "price":"$$",
-        "description":"Breakfast, Brunch",
-        "website":"https://www.theboardandbrew.com/",
-        "cuisine_id":2,
-        "rating_id":10,
-        "description_id":1
-    }]
-
-## Get a Specific Dining Hall
-
-#### Request for a restaurant using restaurant id
-
-`GET /api/restaurants/:rest_id`
-
-    curl http://localhost:3000/api/restaurants/1
-
-#### Response
-
-    [{
-        "restaurant_id":3,
-        "restaurant_name":"The Board and Brew","phone_number":"2405424613",
-        "price":"$$",
-        "description":"Breakfast, Brunch",
-        "website":"https://www.theboardandbrew.com/",
-        "cuisine_id":2,
-        "rating_id":10,
-        "description_id":1
-    }]
-    
-## Create a new Dining Hall TODO 
-
-#### Request TODO
-
-`POST /api/restaurants`
-
-    curl -d "hall_id=4&hall_name=Example&hall_location=Hornbake" -X POST http://localhost:3000/api/restaurants
-
-#### Response TODO
-
-    {
-        "hall_id":"4",
-        "hall_name":"Example",
-        "hall_location":"Hornbake"
-    }
-
-## Updating an Existing Restaurant
-
-#### Request TODO
-
-`PUT /api/restaurants`
-
-    curl -d "hall_id=4&hall_name=Example1&hall_location=Stamp" -X PUT http://localhost:3000/api/restaurants
-
-#### Response
-
-    Successfully Updated
-
-## Delete an Existing Restaurant
-
-#### Request
-
-`DELETE /api/restaurants/:rest_id`
-
-    curl -X DELETE http://localhost:3000/api/restaurants/4
-
-#### Response
-
-    Successfully Deleted
-<hr>
+- Handle null values with table interdependencies
+- Adding more restaurant suggestions and data
+- Adding a map to help user locate the locations of restaurants

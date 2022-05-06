@@ -108,6 +108,7 @@ li::marker {
 /* Styling the images*/
 /* img#image_1 {
   margin-right: auto;
+  width: auto;
 }
 
 img#image_3 {
@@ -117,25 +118,36 @@ img#image_3 {
 /* Styling the button from the images*/
 .container{
   position: relative;
-  width: auto;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.container img{
+  max-width: 100%;
+  width: 80%;
+  height: auto;
 }
 
 .container .btn {
   position: absolute;
   top: 87%;
-  left: 47%;
+  left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;
-  color: white;
-  font-size: 16px;
   padding: 12px 47px;
+  color: white;
+  font-size: auto;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  height: 20%;
+  width: auto;
+  
 }
 
-.container .button2 {
+/* .container .button2 {
   position: absolute;
   top: 87%;
   left: 55%;
@@ -148,7 +160,7 @@ img#image_3 {
   border: none;
   cursor: pointer;
   border-radius: 5px;
-}
+} */
 
 .btn:hover{
   background-color: beige;
@@ -161,7 +173,8 @@ img#image_3 {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  text-align: center;
 }
 .visualization {
   display: block;
@@ -174,4 +187,16 @@ img#image_3 {
 a {
 	text-decoration:none;
   color: black;
+}
+@media only screen and (max-width: 700px) {
+    
+  .tv_film_selection {
+    flex-wrap: wrap;
+  }
+  .visualization{
+    width: 80%;
+  }
+
+
+
 }

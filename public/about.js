@@ -492,4 +492,4 @@ function main() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', await main);
+document.addEventListener('DOMContentLoaded', main);

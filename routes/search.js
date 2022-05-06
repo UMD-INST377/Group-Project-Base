@@ -1,6 +1,6 @@
 import express from 'express';
 import connection from '../config.js'
-import { userSearch, toD3 } from '../wikidata.js'
+import { userSearch, toD3 } from '../helpers/wikidata.js'
 
 var searchRouter = express.Router();
 

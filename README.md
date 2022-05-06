@@ -41,7 +41,7 @@ https://morning-depths-05988.herokuapp.com/
 ```/primary_title``` API route to display information on the film and TV shows
 * GET - Logs to console response query from URL. Restors response 'primary_title'
 * DELETE - Deletes specific ID's based on user input.
-* POST - 
+* POST - Allows access to primary_table to add film and tv shows
 
 ### Future Developement:
 * We could add more graphs that show information about the users database such as amount of movies per genre

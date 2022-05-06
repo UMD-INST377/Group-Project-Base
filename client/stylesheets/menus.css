@@ -1,9 +1,17 @@
+h1{
+    color: white;
+    text-align: center;
+}
+h2{
+    color: white;
+    text-align: center;
+}
 
 .button_wrap{ /*For centering the buttons*/
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    min-height: 100vh;
+    min-height: 80vh;
     margin-top: 100px;
     margin-left: -100px;
     
@@ -14,9 +22,8 @@
     flex-direction: column;
     max-width: 12%;
 }
-.accordion { /*Top part of the accordion*/
+.button_block { /*Top part of the button_block*/
     background-color: rgb(255, 255, 255);
-    
     color: rgb(0, 0, 0);
     padding: 18px;
     width: 35%;
@@ -29,17 +36,45 @@
     min-width: 30vh;
     overflow: hidden;
 }
-  
-.active, .accordion:hover { /*Changing color when hovering*/
+
+.active, .button_block :hover { /*Changing color when hovering*/
     background-color: #ccc;
 }
-  
+
 .dropdown { /*Styles the dropped panel*/
     display: none;
     margin-top: 50px;
     color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255, 0.7);
     max-height: 70vh;
     transition: 10s;
-    width: 25em;
+    width: 20em;
 }
+
+.accordion{
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+.accordion li{
+    list-style: none
+    
+}
+.active, .accordion :hover{
+    background-color: #ccc;
+
+}
+.panel{
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+

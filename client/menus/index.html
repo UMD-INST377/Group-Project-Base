@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
-    <meta charset='UTF-8'/>
-    <title>Menus</title>
-    <link rel='stylesheet' href='../stylesheets/base.css'/>
-    <link rel='stylesheet' href='../stylesheets/menus.css'/>
-    <script src = "script.js"></script>
-    <div class = 'navi'>
-      <p>UMD Dining Database</p>
-      <a href="../">Home</a>
-      <a href="../menus/">Menus</a>
-      <a href="../about">About Us</a>
-    </div>
-  </head>
-  <body>
+<head>
+  <meta charset='UTF-8'/>
+  <title>Menus</title>
+  <link rel='stylesheet' href='../stylesheets/base.css'/>
+  <link rel='stylesheet' href='../stylesheets/menus.css'/>
+  <script src = "script.js"></script>
+  <div class = 'navi'>
+    <p>UMD Dining Database</p>
+    <a href="../">Home</a>
+    <a href="../menus/">Menus</a>
+    <a href="../about">About Us</a>
+  </div>
+</head>
+<body>
+  
+  <h1>Menu for each diner</h1>
+  <h2><i>Click the dining hall for full menu. Click the menu item for macros and dietary restrictions</i></h2>
   <div class = "wrapper">
-  <div class="button_wrap"> <!--Each diner name is inserted from the script.js-->
-    <div class = 'diner_wrap'>
-      <button class="accordion"><div class="the_diner"></div></button>
-      <div class="dropdown">
-        <div class="the_diner_menu"></div>
-      </div>
-    </div>
-    <div class = 'diner_wrap'>
-        <button class="accordion"><div class="sc_diner"></div></button>
+    <div class="button_wrap"> <!--Each diner name is inserted from the script.js-->
+      <div class = 'diner_wrap'>
+        <button class="button_block "><div class="the_diner"></div></button>
         <div class="dropdown">
-          <div class="sc_diner_menu"></div>
+            <div class="the_diner_menu"></div>
+        </div>
       </div>
-    </div>
-    <div class = 'diner_wrap'>
-      <button class="accordion"><div class="nc_diner"></div></button>
-      <div class="dropdown">
-        <div class="nc_diner_menu"></div>
+      <div class = 'diner_wrap'>
+        <button class="button_block "><div class="sc_diner"></div></button>
+        <div class="dropdown">
+            <div class="sc_diner_menu"></div>
+        </div>
+      </div>
+      <div class = 'diner_wrap'>
+        <button class="button_block "><div class="nc_diner"></div></button>
+        <div class="dropdown">
+            <div class="nc_diner_menu"></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-  </body>
+</body>
 </html>

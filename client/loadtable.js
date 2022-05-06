@@ -46,7 +46,6 @@ async function createtable() {
       // tk.innerHTML = item.takeout
       // row.appendChild(tk)
 
-<<<<<<< HEAD
       table.appendChild(row);
     });
   }
@@ -70,28 +69,3 @@ async function createtable() {
 document.addEventListener('DOMContentLoaded', async () => {
   await createtable();
 });
-=======
-      table.appendChild(row)
-    })
-  }
-  form.addEventListener('submit', async(event)=>{
-    event.preventDefault()
-    if (currentdata.length === 0) {
-      const arrayFromJson = await fetch('/melody/description')
-      data = await arrayFromJson.json()
-      console.log(data)
-      currentdata=data
-      currentdata = filtercheck(data)
-      console.log(currentdata, 'filter')
-      loadtable(currentdata)
-    } else {
-      currentdata = filtercheck(data)
-      loadtable(currentdata)
-    }
-  })
-}
-
-document.addEventListener('DOMContentLoaded', async() => {
-  await createtable()
-})
->>>>>>> main

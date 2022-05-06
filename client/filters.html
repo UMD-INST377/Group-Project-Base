@@ -25,7 +25,7 @@
         <a href="addressfilter.html">Search Restaurant</a>
 
     </nav>
-    <div>
+    <div class="left">
         <form class ="mainform">
             <div class = "field">
                 <label>
@@ -60,11 +60,22 @@
             </tr>
         </table>
     </div>
-    
-    <script src = "loadtable.js">
 
-    <sript src="script/nickLoadScript.js"></sript>
+    <div class="right">
+        <table id="cuisineTable">
+            <tr>
+              <th>cuisine_id</th><th>cuisine</th><th>Checkbox</th>
+            </tr>
+        </table >
+        <br>
+        <div>
+            <button class = "submit" onclick="cuisineSubmit()">
+                submit
+            </button>
+        </div>
+    </div>
 
-    </script>
+    <script src="script/nickLoadScript.js"></script>
+    <script src = "loadtable.js"> </script>
 </body>
 </html>

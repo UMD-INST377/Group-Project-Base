@@ -94,25 +94,18 @@ router.put("/reviews", async (req, res) => {
   }
 });
 
-export default router;
-
-
 /// /////////////////////////////////
 /// //////// Restaurant Endpoints////////// By Nnamdi Ede
 /// /////////////////////////////////
 router.get("/restaurant/", async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await db.sequelizeDB.query(
-      `SELECT * FROM Restaurant`
-    );
+    const result = await db.sequelizeDB.query(`SELECT * FROM Restaurant`);
     res.json({ data: result });
   } catch (err) {
     console.error(err);
     res.send("Server error");
   }
 });
- 
 
 export default router;
-

@@ -1,0 +1,96 @@
+img {
+  border-radius: 100px;
+  max-width: 70%;
+  max-height: 50%;
+  height: auto;
+}
+
+html {
+  height: max-content;
+}
+body {
+  background-color:#F2F0E4;
+  height: 150vh;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #3E4F36;
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #000000;
+    color: white;
+  }
+
+.container {
+  padding-top: 80px;
+  padding-left: 10px;
+}
+/*Adjusts the title so that it only takes up half of screen*/
+.title-container {
+  display: flex;
+  padding-bottom: 100px;
+}
+.page-title {
+  font-family: 'Times New Roman';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 85px;
+}
+.intro-container {
+  display: flex;
+  padding: 10px;
+  align-items:flex-start;
+  justify-content: center;
+  flex-direction: row;
+}
+/*ensures subtitle and button are in column direction*/
+.text-button-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+}
+.header-text {
+  padding-bottom: 50px;
+  font-family: 'Times New Roman';
+  font-style: italic;
+  font-weight: 400;
+  color: #000000;
+  font-size: 30px;
+  line-height: 46px;
+}
+.image-container {
+  width: 800;
+  height: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content:right;
+}
+.text-container {
+  font-family: 'Times New Roman';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 134.77%;
+}

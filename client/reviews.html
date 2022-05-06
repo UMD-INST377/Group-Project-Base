@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trails</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <link rel="stylesheet" href="css/trails.css" />
+
+</head>
+<body>
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="trails-page.html">Parks</a>
+        <a href="about-page.html">About</a>
+        <a class="active" href="reviews.html">Submit Reviews</a>
+
+        </div>
+   
+   <div class="wrapper2">
+    <div class = "columns is-mobile is-centered is-vcentered">
+        <div class = "column is-narrow">
+            <div class = "box">
+                <form class="review_form" >
+                    <div class="field">
+                        <label for="park_name" class="label">Park Name</label>
+                            <div class="control">
+                               <select id="park" name="park">
+                                 <option value="default">default</option>
+                               </select>
+                        <label for="review_title" class="label">Review Title</label>
+                        <div class="control">
+                            <input type="text" name="review_title" id="review_title">
+                        </div>
+                        <label for="review_author" class="label">Author</label>
+                        <div class="control">
+                            <input type="text" name="review_author" id="review_author">
+                        </div>
+                        <label for="review" class="label">Review</label>
+                        <div class="control">
+                            <input type="text" name="review" id="review">
+                        </div>  
+                            
+                    </div>
+                    <button class="button submit_button is-success" type ="submit">
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+
+    <script src="js/reviewScript.js"></script>
+</body>
+</html>

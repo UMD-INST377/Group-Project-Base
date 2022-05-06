@@ -5,13 +5,15 @@ import chalk from 'chalk';
 // import fetch from 'node-fetch';
 
 import db from '../../database/initializeDB.js';
+import mercyRoutes from './mercyRoutes.js';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the Trailz API');
+
 });
 
+router.use('/mercyRoutes', mercyRoutes);
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

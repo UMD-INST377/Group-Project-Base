@@ -6,6 +6,8 @@ import apiRoutes from './server/routes/apiRoutes.js';
 import anneRoutes from './server/routes/anneRoutes.js';
 import raceRoutes from './server/routes/raceRoutes.js';
 
+
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -19,10 +21,12 @@ app.use('/api', apiRoutes);
 app.use('/api', anneRoutes);
 app.use('/api', raceRoutes);
 
+
+
 async function bootServer() {
   try {
     const mysql = await db.sequelizeDB;
-    // await mysql.sync();
+    await mysql.sync({alter : true});
     app.listen(PORT, () => {
       console.log(`Listening on: http//localhost:${PORT}`);
     });

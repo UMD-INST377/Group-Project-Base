@@ -27,7 +27,7 @@ https://morning-depths-05988.herokuapp.com/
 3. In a web browser, go to url: ```http://localhost:3000/```.
 
 ## How to run tests for the software
-1. Open two terminals and make sure you are in the main project directory
+1. Open one terminal and make sure you are in the main project directory
 2. In the first terminal, run ```npm start```.
 
 ## Server Application APIs

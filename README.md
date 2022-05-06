@@ -29,7 +29,6 @@ https://morning-depths-05988.herokuapp.com/
 ## How to run tests for the software
 1. Open two terminals and make sure you are in the main project directory
 2. In the first terminal, run ```npm start```.
-3. In the second terminal run ```npm test```.
 
 ## Server Application APIs
 ```/actors``` - API route to display actors ID, first & last name, birth date, and death year

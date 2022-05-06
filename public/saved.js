@@ -37,7 +37,7 @@ function emptyResponse() {
 function loadUser() {
     if (sessionStorage.getItem('plainUser') !== null) {
         document.querySelector('p.logged_in').innerText = `Welcome, ${sessionStorage.getItem('plainUser')}!`;
-        logOutButton.style.display = 'flex';
+        document.querySelector('.log_out').style.display = 'flex';
     }
 
 }
@@ -383,7 +383,7 @@ async function displayEach(searchItem, index) {
         // rotates elements horizontally
         //svg.attr('transform', 'rotate(-90)')
             return;
-        }
+}
 
 async function displayPastSearches() {
     console.log('Retrieving past searches.')
@@ -468,7 +468,7 @@ function main() {
         // back to main()
         return;
     })
-    logOutButton.style.display = 'none';
+    document.querySelector('.log_out').style.display = 'none';
     document.querySelector('.saved').addEventListener('click', async (e) => {
         // if there are currently elements inside the query container
         //if (document.querySelector('.query').firstChild) {

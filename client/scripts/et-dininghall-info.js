@@ -1,6 +1,6 @@
 // Script by Elaine Tse
 
-const diningResult = document.querySelector('#dining-results');
+const diningResult = document.querySelector('#dining-list');
 
 let searchResults = [];
 // get dining hall results from user request
@@ -17,12 +17,13 @@ async function getHalls() {
 }
 
 function displayResults() {
-  searchResults.map((elm, i) => {
+  searchResults.map((dininghall => {
     const newResult = document.createElement('div');
-    newResult.textContent = elm;
-    newResult.classList.add('result');
+    newResult.textContent = `${[dininghall.hall_name]}`
+    newResult.classList.add('dining-list');
     diningResult.appendChild(newResult);
   });
 }
 
 displayResults();
+getMenu().then(() => displayResults());

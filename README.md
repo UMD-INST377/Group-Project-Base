@@ -2,14 +2,69 @@
 
 ## Project Description
 
-Our website will help anyone who is looking to satisify their craving for hispanic foods within the D.C. Area. This website serves to provide tourists, D.C residents and citizens within the Washington Metropolitian area accurate, up-to-date information on hispanic restaurants established in D.C. The website's mission is to steer consumers away from misinformation  and down the path of helpful information that can allow them to achieve their goal.
+When looking for a good place to eat, people oftentimes end up needing to do a search on the internet to view a restaurant's menu, reviews, ratings ur website will help anyone who is looking to satisify their craving for hispanic foods within the D.C. area. This website serves to provide tourists, D.C residents and citizens within the Washington Metropolitian area accurate, up-to-date information on hispanic restaurants established in D.C. The website's mission is to steer consumers away from misinformation  and down the path of helpful information that can allow them to achieve their goal.
 
 
-## Link
+## Link to Website
 https://group-project-6.herokuapp.com/index.html
 
+## Target Browsers
+* MacBook Pro 13 inch
+* MacBook Pro 15 inch
 
-## Endpoint Document
+## Links
+* [User Manual](https://github.com/ryessem7/Group6-Final-INST377SP2022/#user-manual)
+* [Developer Manual](https://github.com/ryessem7/Group6-Final-INST377SP2022/#developer-manual) 
+
+# User Manual
+
+Use the navigation bar to access different parts of our web application. The main navigation consists of home, locations, restaurants, reviews, about us, and contact. 
+
+## Locations
+
+Search for a restaurant's geographical location using identifers (neighborhood, landmarks, descriptions) that will help you pinpoint it's location locations. A user must input a neighborhood name with the list of DC neighborhoods provided on the form and hit submit. The user will get results of "X" number of restaurants that happen to be in that specifed area, as well as helpful information to find its location.
+
+The map on the right of the page will have all the restaurants present in the database represented by map markers, set by longitude and latitude coordinates. There the user can get a better idea of how many restaurants are within an area.
+
+## Restaurants
+
+Access a restaurants menu, contact information, restaurant hours and other services by accessing the drop down presented on the page. The drop down will present users with all the restaurants present in the database with a hyperlink that will redirect the user from the HispanicDC website to the specified restaurant. 
+
+(Note: next to the restaurants name, their restaurant id is present which will be helpful when posting a review for the specified restaurant).
+
+## Reviews
+
+Post a review for a specified restaurant or view other customer reviews on a restaurant as well with the reviews page. To filter through the reviews to find a specific review or rating just input your search in the field and press load table to see your filter results. To submit your own review, fill in the blank entries on the form, hit submit and then hit load table to view your review as well as other reviews. 
+
+## About Us
+
+View HispanicDC's mission statement, the website's purpose, services HispanicDC provide the user, how website entries are conducted and the brains behind the website.
+
+## Contact Page
+
+Field entry to subscribe and recieve newsletter content. Input a valid email and hit subscribe. (NOTE: This feature is not functional).
+
+# Developer Manual
+
+## How to install application and all dependencies
+1. Clone this repository through Github Desktop or through Terminal.
+2. Open repository in VSCode Terminal or Terminal application.
+3. type ```npm install``` into terminal window and run.
+4. The application should now be set to use.
+
+## How to run application on a server
+1. Open repository in VSCode terminal or Terminal application.
+2. Run ```npm start```. There should be no errors.
+3. In a web browser, go to url: ```http://localhost:3000/```.
+
+## To run tests for software
+The are no prewritten tests in the source repository, but you can use Postman to run your own written tests.
+1. Open VSCode and Postman make sure you are in the main project directory
+2. In the first terminal, run ```npm start```, make sure there is no errors and you receive a "listening on  ```http://localhost:3000/``` message. 
+3. In Postman, test out routes effectiveness by testing out the GET, POST, PUT, UPDATE, DELETE routes by following the endpoints/routes presented in ./server/routes.
+4. After running tests in Postman, view your terminal in VSCode for console messages for successful inserts, updates, deletes, and retrievals (or failures). 
+
+# Endpoint Document
 
 <hr>
 
@@ -346,7 +401,20 @@ GET /ryan/area
         
  ### To filter through the reviews to find a specific review or rating just input your search in the field and press load table to see your filter results
   
-  
+  # Known Bugs and Future Development
+  ## Bugs:
+  - "Load Table" button in reviews must be hit twice to successfully show requested results (one time click does not generate the table on the side)
+  - The map in the "locations" page will cover up the form in views that don't have large resolutions (very sorry).
+  - Upon loading the restaurants page, you may see a different style as the background for a couple of seconds before it subsquently reveals proper background styling.
+
+## Future Development:
+* Add more restaurants to the database/website, preferably make it more inclusive to other ethnic cuisines rather than just hispanic cuisines.
+* Find a way to implement a login page, store user login information and make a legit, multi-functional website (implementing a cache).
+* Enhancing the user experience by using friendlier colors for colorblind audiences (inclusivity is important!), perhaps also trying to implement text to speech for enchanced accessibility. 
+* Adding restaurant names or addresses when user click on a map marker on the location page. In addition, perhaps turning the raw day into a json file so it can be hooked up to an api for fetching results. 
+
+NOTE: These suggestions would be amazing to implement, some are too complicated beyond our capabilities this semester & with the knowledge learned in this course. We would love to see someone expand on this project and enhance it. 
+
   
 
 

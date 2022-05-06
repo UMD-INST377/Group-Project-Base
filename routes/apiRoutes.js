@@ -64,6 +64,7 @@ router.put('/artists', async (req, res) => {
     res.error('Server error');
   }
 });
+
 router.post('/artists', async (req, res) => {
   try {
     const createQuery = `INSERT INTO artists (artist_id, first_name, last_name, country_id)
@@ -77,6 +78,24 @@ router.post('/artists', async (req, res) => {
     res.send({message: 'Something went wrong on the SQL request'});
   }
 });
+
+// router.post('/artists', async (req, res) => {
+//   const art = await db.artists.findAll();
+//   const currentId = (await art.length) + 1;
+//   try {
+//     const newArt = await db.artists.create({
+//       artist_id: currentId,
+//       first_name: req.body.first_name,
+//       last_name: req.body.last_name,
+//       country_id: req.body.country_id
+//     });
+//     res.json(newArt);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
 router.delete('/artists/:artist_id', async (req, res) => {
   try {
     await db.artists.destroy({
@@ -529,20 +548,7 @@ router.put('/reservation', async (req, res) => {
       res.json({ error: 'Server error'});
     }
   });
-// router.delete('/reservation', async(req, res) => {
-//   try {
-//     const result = await db.sequelizeDB.query(resController.resDelete, {
-//       replacements: {
-//         reservation_id: req.body.reservation_id
-//       },
-//       type: sequelize.QueryTypes.DELETE
-//     });
-//     res.json({data: result});
-//     console.log('Deleted successfully');
-//   } catch (err) {
-//     res.json({error: 'Server error'});
-//   }
-// });
+
 router.delete('/reservation/:reservation_id', async (req, res) => {
   try {
     await db.reservation.destroy({

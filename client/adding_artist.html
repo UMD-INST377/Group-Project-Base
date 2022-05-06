@@ -9,13 +9,18 @@
 
     </head>
     <body>
+
         <form method="post" class = 'artists_added' action='/api/artists'>
+
+        <form method="post" action='/api/artists'>
+            <div class="field1">
+
             <div class="field">
                 <label for = 'artist_id' class="label">Artist Id</label>
                 <div class="control">
                   <input required type="text" name = "artist_id"  id = "artist_id">
                 </div>
-              </div>
+              </div> -->
               <div class="field">
                 <label for = 'first_name' class="label">First Name</label>
                 <div class="control">
@@ -34,6 +39,7 @@
                   <input required type="text" name = "country_id" id = "country_id">
                 </div>
               </div>
+            </div>
               <button class="add_artist" type="submit">Submit Input</button>
         </form>
         

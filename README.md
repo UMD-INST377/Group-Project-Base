@@ -184,14 +184,14 @@ GET /ryan/area
     }
 ]
   
-  ###Review
+  # Review
   
   ### Get a list of Reviews from people who have been to restaurants 
    GET /api/review/
    
    cURL http://localhost:3000/api/review/
    
-   #Response 
+   ## Response 
    
    {
     "data": [
@@ -331,7 +331,7 @@ GET /ryan/area
 }
 ## Post a new area entry
 
-#### Request
+## Request
   POST /api/reviews
   
 ### Response

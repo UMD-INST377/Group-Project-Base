@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="dashboard">
+		<nav>
+			<img id="logo" src='images/film_icon.jpg' alt='Logo Image'/> 
+      <h2 class="logo"><a class = link href="dashboard.html">MyCinema</a></h2>
+        <ul class="menu">
+          <li>
+            Edit Database
+            <ul class="sub-menu">
+              <li><a href="add_actors.html">Edit Actors</a></li>
+              <li><a href="add_ep.html">Edit Episodes</a></li>
+              <li><a href="add_tv.html">Add TV Shows</a></li>
+              <li><a href="add_film.html">Add Films</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="menu">
+          <li>
+            Documentation
+            <ul class="sub-menu">
+              <li><a href="documentation.html">Developer Manual</a></li>
+            </ul>
+          </li>
+        </ul>
+      
+        <ul>
+          <li>
+            <a href="index.html">Logout</a> <!--Logout to Index.html-->
+          </li>
+        </ul>
+		</nav>
+  </div>
+
+  <div class = 'main_body'>
+    <div>
+      <h4>Introduction</h4>  
+        <p>The information problem we are trying to solve is an archival one. 
+            Prior to streaming services, people often kept a collection of VCRs, DVDs and Blu Ray discs as part of their TV and/ or movie collections. 
+            If the person only watched movies at the theater and/ or didn’t keep track of what television shows they’ve watched, they would be hard pressed to remember all that they had seen. 
+            While people could keep track of their tv show and movie consumption on something like a notebook, this method is antiquated and could lead to data loss should they misplace their notebook (or any other number of reasons). 
+            People who care about this problem are those who wish to keep track of all the tv shows and movies they’ve watched in one convenient location. 
+            Our system solves this problem by using a database that stores information about movie/ tv shows and information about what our users have seen (self input).</p>
+    </div>
+    <div>
+      <h4>Developer Manual</h4>
+      <h6>How to install application and all dependencies</h6>
+        <p>
+           1. Clone this repository through Github Desktop or through Terminal.
+        </p>
+        <p>
+          2. Open repository in VSCode Terminal or Terminal application.
+        </p>
+        <p>
+          3. Type npm install into terminal window and run.
+        </p>
+        <p>
+          4. The application should now be set to run.
+        </p>
+
+      <h6>How to run application on a server</h6>
+        <p>
+           1. Open repository in VSCode terminal or Terminal application.
+        </p>
+        <p>
+          2. Run npm start. There should be no errors.
+        </p>
+        <p>
+          3. In a web browser, go to url: http://localhost:3000/.
+        </p>
+
+      <h6>To run tests for software</h6>
+        <p>
+          1. Open one terminal and make sure you are in the main project directory
+        </p>
+        <p>
+          2. In the first terminal, run npm start
+        </p>
+      <h6>Server application APIs</h6>
+        <p> /actors - API route to display actors ID, first & last name, birth date, and death year</p>
+        <p> GET - Logs to console response query from URL. Returns response 'Actor_Id'</p>
+        <p>GET - Display a chart of the top 5 TV ratings</p>
+        <p>POST - Access the actors table and create a editing row in the actors table for the user's input</p>
+        <p>DELETE - Access the actors table to allow the user to delete info of an actor from their id</p>
+        <p>/primary_title API route to display information on the film and TV shows</p>
+        <p>GET - Logs to console response query from URL. Restors response 'primary_title'</p>
+        <p>DELETE - Deletes specific ID's based on user input.</p>
+        <p>POST - Allows access to primary_table to add film and tv shows</p>
+        
+      <h6>Future Development:</h6>
+        <p>
+          - We could add more graphs that show information about the users database such as amount of movies per genre
+        </p>
+        <p>
+          - Clean up background design to make it more visually appealing
+        </p>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

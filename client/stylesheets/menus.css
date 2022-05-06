@@ -45,36 +45,41 @@ h2{
     display: none;
     margin-top: 50px;
     color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255, 0.7);
     max-height: 70vh;
     transition: 10s;
     width: 20em;
+
 }
 
 .accordion{
-    background-color: #eee;
+    background-color: white;
     color: #444;
     cursor: pointer;
     padding: 18px;
     width: 100%;
     text-align: left;
-    border: none;
     outline: none;
-    transition: 0.4s;
+    transform: scaleY(1);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.accordion li{
-    list-style: none
+li{
+    list-style: none;
+    margin-left: -25px;
+    border:rgb(0, 0, 0);
+    
+    
     
 }
 .active, .accordion :hover{
     background-color: #ccc;
-
+    
 }
 .panel{
     padding: 0 18px;
     display: none;
     background-color: white;
     overflow: hidden;
+    
 }
 

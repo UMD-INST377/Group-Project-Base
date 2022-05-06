@@ -6,25 +6,27 @@ function createHTMLtable(entry) {
   result += `
   <tr>
     <th>calories</th>
+    <td>${entry.calories}</td>
+    </tr>
     <th>serving_size</th>
+    <td>${entry.serving_size}</td>
+    </tr>
     <th>cholesterol</th>
+    <td>${entry.cholesterol}</td>
+    </tr>
     <th>sodium</th>
+    <td>${entry.sodium}</td>
+    </tr>
     <th>carbs</th>
+    <td>${entry.carbs}</td>
+    </tr>
     <th>protein</th>
+    <td>${entry.protein}</td>
+    </tr>
     <th>fat</th>
-  </tr>`;
+    <td>${entry.fat}</td>
+  </tr></table>`;
   // loop through each object in array, print cell values
-  result += '<tr>';
-  result += `
-      <td>${entry.calories}</td>
-      <td>${entry.serving_size}</td>
-      <td>${entry.cholesterol}</td>
-      <td>${entry.sodium}</td>
-      <td>${entry.carbs}</td>
-      <td>${entry.protein}</td>
-      <td>${entry.fat}</td>`;
-  result += '</tr>';
-  result += '</table>';
   return result;
 }
 function addNames(hallArray) {
@@ -97,22 +99,23 @@ async function mainEvent() { // mainEvent refers to page loading
       this.classList.toggle('active');
 
       const drop = this.nextElementSibling;
+      
       if (drop.style.display === 'flex') { // Toggles the dropdown open and close
         drop.style.display = 'none';
       } else {
         drop.style.display = 'flex';
-        const acc = drop.getElementsByClassName('accordion'); // Grabs the button's class
-        for (j = 0; j < acc.length; j++) {
-          acc[j].addEventListener('click', function() { // For changing which button is active
-            this.classList.toggle('active');
-            const panel = this.nextElementSibling;
-            if (panel.style.display === 'flex') { // Toggles the dropdown open and close
-              panel.style.display = 'none';
-            } else {
-              panel.style.display = 'flex';
-            }
-          });
-        }
+      }
+    });
+  }
+  const acc = document.getElementsByClassName('accordion'); // Grabs the button's class
+  for (j = 0; j < acc.length; j++) {
+    acc[j].addEventListener('click', function() { // For changing which button is active
+      this.classList.toggle('active');
+      const panel = this.nextElementSibling;
+      if (panel.style.display === 'flex') { // Toggles the dropdown open and close
+        panel.style.display = 'none';
+      } else {
+        panel.style.display = 'flex';
       }
     });
   }

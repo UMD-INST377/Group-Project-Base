@@ -1,14 +1,15 @@
+/* eslint-disable camelcase */
 import express from 'express';
 // import { restart } from 'nodemon';
 import sequelize from 'sequelize';
 
 import db from '../database/initializeDB.js';
 
-const restaurantQuery = 'SELECT * FROM restaurant';
+const restaurantQuery = 'SELECT * FROM restaurant LEFT JOIN restaurant_info USING(restaurant_id)';
 
 const router = express.Router();
 
-router.route('/').get(async (req, res) => {
+router.route('/restaurant').get(async (req, res) => {
   try {
     const restaurant = await db.sequelizeDB.query(restaurantQuery, {
       type: sequelize.QueryTypes.SELECT

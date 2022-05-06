@@ -18,7 +18,7 @@ https://morning-depths-05988.herokuapp.com/
 ## How to install application and all dependencies
 1. Clone this repository through Github Desktop or through Terminal.
 2. Open repository in VSCode Terminal or Terminal application.
-3. type ```npm install``` into terminal window and run.
+3. Type ```npm install``` into terminal window and run.
 4. The application should now be set to use.
 
 ## How to run application on a a server
@@ -27,9 +27,8 @@ https://morning-depths-05988.herokuapp.com/
 3. In a web browser, go to url: ```http://localhost:3000/```.
 
 ## How to run tests for the software
-1. Open two terminals and make sure you are in the main project directory
+1. Open one terminal and make sure you are in the main project directory
 2. In the first terminal, run ```npm start```.
-3. In the second terminal run ```npm test```.
 
 ## Server Application APIs
 ```/actors``` - API route to display actors ID, first & last name, birth date, and death year
@@ -41,12 +40,8 @@ https://morning-depths-05988.herokuapp.com/
 ```/primary_title``` API route to display information on the film and TV shows
 * GET - Logs to console response query from URL. Restors response 'primary_title'
 * DELETE - Deletes specific ID's based on user input.
-* POST - 
+* POST - Allows access to primary_table to add film and tv shows
 
 ### Future Developement:
 * We could add more graphs that show information about the users database such as amount of movies per genre
 * Clean up background design to make it more visually appealing
-
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)

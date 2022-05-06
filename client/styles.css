@@ -230,6 +230,14 @@ About Page
     font-size: 20px;
 }
 
+.about-bold {
+    font-size: 18px;
+    align-items: center;
+    margin-left: 40%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
 .locTitle {
     position: absolute;
     width: 861px;

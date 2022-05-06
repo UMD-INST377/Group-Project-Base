@@ -225,29 +225,14 @@ router.route('/mealRestrictions')
 router.route('/josh')
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
-      const data = await fetch(url);
-      const json = await data.json();
-      res.json({data: json[0]});
-      console.log('success');
+      const result = await db.MealsLocations.findAll();
+      res.json({data: result});
     } catch (err) {
       console.log(err);
       res.json({message: 'something went wrong'});
     }
   });
-router.route('/josh')
-  .get(async (req, res) => {
-    try {
-      const url = '';
-      const data = await fetch(url);
-      const json = await data.json();
-      res.json({data: json[0]});
-      console.log('success');
-    } catch (err) {
-      console.log(err);
-      res.json({message: 'something went wrong'});
-    }
-  });
+
 
 // Brian McMahon GET controllers
 router.route('/brian')

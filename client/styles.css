@@ -315,3 +315,11 @@ Last part of the page
 .time-box {
     display: inline-block;
 }
+
+.picture {
+    height: auto;
+}
+
+#map {
+    height: 634px;
+}

@@ -37,6 +37,8 @@ function emptyResponse() {
 function loadUser() {
     if (sessionStorage.getItem('plainUser') !== null) {
         document.querySelector('p.logged_in').innerText = `Welcome, ${sessionStorage.getItem('plainUser')}!`;
+        document.querySelector('.login').style.display = 'none';
+        document.querySelector('.sign_up').style.display = 'none';
     }
 }
 // stores data to session
@@ -53,6 +55,7 @@ function logOut() {
     sessionStorage.clear();
     clearTree();
     document.querySelector('p.logged_in').innerText = '';
+    document.querySelector('.account').style.display = 'none';
 }
 // API call
 async function createAccount(e) {

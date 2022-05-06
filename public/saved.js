@@ -304,7 +304,6 @@ async function displayEach(searchItem, index) {
     if (document.querySelector('.saved').children.length > index) {
         return;
     }
-    console.log(index)
     let searchTree = JSON.parse(searchItem).search
     let container = document.querySelector('.saved')
     let newNode = document.createElement('div')
@@ -314,8 +313,9 @@ async function displayEach(searchItem, index) {
     editBtn.className = 'delete'
     editBtn.innerText = 'Delete'
     // editBtn.style.transform = 'translate(70px, -30px)'
-    
+
     newNode.appendChild(editBtn)
+
     //editBtn.id = searchTree.
     container.appendChild(newNode)
     var margin = {top: 40, right: 20, bottom: 80, left: 20},
@@ -385,6 +385,8 @@ async function displayEach(searchItem, index) {
         //svg.attr('transform', 'rotate(-90)')
             return;
 }
+
+
 
 async function displayPastSearches() {
     console.log('Retrieving past searches.')

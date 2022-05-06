@@ -45,16 +45,11 @@ The are no prewritten tests in the source repository
 /api/reservation - API route for reservation
 
 ## Known Bugs and Future Development
+### Bugs:
 
 
-## Future Development:
 
-### How to Install Application and Dependencies
 
-### How to Run Tests
+### Future Development:
 
-### API For Application
 
-### Bugs
-
-### Future Development

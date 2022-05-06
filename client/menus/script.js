@@ -25,7 +25,12 @@ function createHTMLtable(entry) {
     </tr>
     <th>fat</th>
     <td>${entry.fat}</td>
-  </tr></table>`;
+  </tr></table>
+  <table border=1>
+   <tr>
+   <th>restriction</th>
+   <td>${entry.restriction}</td>
+   </tr></table>`;
   // loop through each object in array, print cell values
   return result;
 }

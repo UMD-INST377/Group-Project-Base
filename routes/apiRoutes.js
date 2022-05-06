@@ -14,11 +14,16 @@ router.route('/allmeals')
   .get(async (req, res) => {
     try {
       const results = await db.sequelizeDB.query(`
-      SELECT meal_name, meals.meal_id, calories, cholesterol, serving_size, sodium, carbs, protein, fat, hall_name AS 'location'
+      SELECT meals.meal_name, meals.meal_id, calories, cholesterol, serving_size, sodium, carbs, protein, fat, hall_name AS 'location', mr.restriction_list AS 'restriction'
       FROM meals
       JOIN macros mac ON meals.meal_id=mac.meal_id
       JOIN meals_locations ml ON meals.meal_id=ml.meal_id
       JOIN dining_hall dh ON ml.hall_id=dh.hall_id
+      JOIN(SELECT meal_id, GROUP_CONCAT(restriction_type SEPARATOR ", ") AS restriction_list
+          FROM meal_restrictions
+          JOIN dietary_restrictions dr USING(restriction_id)
+          GROUP BY meal_id
+          ) mr;
       `);
       res.json({data: results[0]});
     } catch (err) {
@@ -42,7 +47,7 @@ router.route('/mealsByHall')
       res.json({message: 'something went wrong in mealsByHall'});
     }
   });
-  router.route('/test')
+router.route('/test')
   .get(async (req, res) => {
     try {
       const mealQuery = await db.sequelizeDB.query(`

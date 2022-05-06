@@ -37,6 +37,7 @@ function emptyResponse() {
 function loadUser() {
     if (sessionStorage.getItem('plainUser') !== null) {
         document.querySelector('p.logged_in').innerText = `Welcome, ${sessionStorage.getItem('plainUser')}!`;
+        let logOutButton =  document.querySelector('.log_out')
         logOutButton.style.display = 'flex';
     }
 

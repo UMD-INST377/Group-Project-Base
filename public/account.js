@@ -54,7 +54,7 @@ async function storeSession(userData) {
 // clears all session data
 function logOut() {
     sessionStorage.clear();
-    clearTree();
+    // clearTree();
     document.querySelector('p.logged_in').innerText = '';
 }
 // API call
@@ -227,6 +227,14 @@ async function main() {
         e.preventDefault()
         updatePw()
     })
+    document.querySelector('.log_out').addEventListener('click', () => {
+        logOut();
+        window.location.href = "/index.html";
+
+    });
+
+
+
     const header = document.querySelector("Header");
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav");

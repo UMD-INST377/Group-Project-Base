@@ -55,7 +55,7 @@ async function storeSession(userData) {
 function logOut() {
     sessionStorage.clear();
     clearTree();
-    document.querySelector('p.logged_in').innerText = '';
+    document.querySelector('logged_in').innerText = '';
     document.querySelector('.account').style.display = 'none';
 }
 // API call

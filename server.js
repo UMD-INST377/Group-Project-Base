@@ -5,7 +5,7 @@ import apiRoutes from './routes/apiRoutes.js';
 import apiRoutesJessica from './routes/apiRoutesJessica.js';
 import apiRoutesEthan from './routes/apiRoutesEthan.js';
 import apiRoutesMelody from './routes/apiRoutesMelody.js';
-// import apiRoutesNick from './routes/apiRoutesNick.js';
+import apiRoutesNick from './routes/apiRoutesNick.js';
 
 const app = express();
 

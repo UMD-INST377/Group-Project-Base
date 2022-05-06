@@ -7,7 +7,7 @@ import db from '../database/initializeDB.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the UMD film API!');
 });
 
 // Created by Viphu Nguyen

@@ -82,3 +82,16 @@ nav a {
     margin: 20px auto;
 }
 
+.left {
+  width: 50%;
+  float:left;
+}
+
+.right{
+  width:50%;
+  float:right;
+}
+
+table, th, td {
+  border: 1px solid;
+}

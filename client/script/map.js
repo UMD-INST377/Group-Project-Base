@@ -16,12 +16,9 @@ function initMap() {
     mapTypeId: "terrain",
   });
   const script = document.createElement("script");
-  json_obj1 = JSON.parse(Get('http://127.0.0.1:3000/api/map/address'));
-  json_obj2 = JSON.parse(Get('http://127.0.0.1:3000/api/map/restaurant'));
+  json_obj1 = JSON.parse(Get('api/map/address'));
+  json_obj2 = JSON.parse(Get('api/map/restaurant'));
   cleanUpData()
-
-
-
 }
 
 async function cleanUpData() {

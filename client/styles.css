@@ -127,15 +127,21 @@ h1{
 }
 
 .center{
-  margin-left: 40%;
+  margin-left: 39%;
   margin-top: -28%;
 }
 
 .right_end{
-  margin-left: 80%;
-  margin-top: -28.2%;
+  margin-left: 75%;
+  margin-top: -28%;
 }
 
 h3{
   color: #cc3333;
+  margin-top: 1%;
+}
+
+.lst{
+  margin-left: 28.8%;
+  margin-top: -75.26%;
 }

@@ -15,12 +15,28 @@ nav a {
   display: flex;
 }
 
+.title-image {
+  max-width: 40%;
+}
+
 .chart-wrapper {
   justify-content: space-around;
+  /* padding: 1em; */
 }
 
 .chart-container {
   position: relative;
-  width: 50%;
   margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .chart-container {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chart-container {
+    width: 50%;
+  }
 }

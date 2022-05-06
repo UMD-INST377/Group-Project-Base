@@ -3,7 +3,7 @@ import express from 'express';
 import sequelize from 'sequelize';
 import apiRoutesJessica from './apiRoutesJessica.js';
 import apiRoutesMelody from './apiRoutesMelody.js';
-// import apiRoutesEthan from './apiRoutesEthan';
+import apiRoutesEthan from './apiRoutesEthan.js';
 import apiRoutesNick from './apiRoutesNick.js';
 import apiRoutesMap from './apiRoutesMap.js';
 import apiRoutesUtil from './apiRoutesUtil.js'
@@ -18,12 +18,12 @@ router.get('/', (req, res) => {
 
 // Restaurant Route - Jessica 
 router.use('/restaurant', apiRoutesJessica);
-// router.use('/address', apiRoutesEthan);
 router.use('/services', apiRoutesMelody);
-// router.use('/location', apiRoutesEthan);
+router.use('/location', apiRoutesEthan);
 router.use('/cuisine', apiRoutesNick);
 router.use('/map',apiRoutesMap);
 router.use('/util',apiRoutesUtil);
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////

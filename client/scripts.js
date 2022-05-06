@@ -2,9 +2,9 @@ let slidePostition = 0;
 const slides = document.querySelectorAll('.carousel_item');
 const meals = document.querySelector('#form-id');
 
-const vegan = document.querySelector('#filter-type-1');
-const veget = document.querySelector('#filter-type-2');
-const halal = document.querySelector('#filter-type-3');
+const diner = document.querySelector('#dinerInput');
+const time = document.querySelector('#timeInput');
+const diet = document.querySelector('#dietInput');
 let currentData = [];
 const totalSlides = slides.length;
 // eslint-disable-next-line prefer-const
@@ -21,18 +21,18 @@ meals.addEventListener('submit', async (e) => {
   const arrayFromJson = await results.json();
   console.log(arrayFromJson);
   const targetList = document.querySelector('.food-list');
-  const filterData = filterCheck(arrayFromJson);
+  const filterData = filterCheck(arrayFromJson.data);
   console.log(filterData);
   filterData.forEach((item) => {
     const rows = document.createElement('tr');
     const mealId = document.createElement('td');
+    const mealFilter = document.createElement('td');
     const mealName = document.createElement('td');
     const mealCat = document.createElement('td');
-    const mealFilter = document.createElement('td');
-    mealId.innerHTML = item.hall_address;
-    mealName.innerHTML = item.meal_name;
+    mealId.innerHTML = item.Diner;
+    mealFilter.innerHTML = item.Filter;
+    mealName.innerHTML = item.Meal;
     mealCat.innerHTML = item.meal_category;
-    mealFilter.innerHTML = item.restriction_type;
     rows.appendChild(mealId);
     rows.appendChild(mealName);
     rows.appendChild(mealCat);
@@ -43,21 +43,21 @@ meals.addEventListener('submit', async (e) => {
 
 function filterCheck(array) {
   let filterArray = array;
-  if (vegan.checked) {
+  if (diner.value !== "") {
     const filterOne = filterArray.filter(
-      (item) => item.meal_category === parseInt(vegan.value)
+      (item) => item.Diner.toLowerCase().includes(diner.value.toLowerCase())
     );
     filterArray = filterOne;
   }
-  if (veget.checked) {
+  if (time.value !== "") {
     const filterTwo = filterArray.filter(
-      (item) => item.meal_category === parseInt(veget.value)
+      (item) => item.meal_category.toLowerCase().includes(time.value.toLowerCase())
     );
     filterArray = filterTwo;
   }
-  if (halal.checked) {
+  if (diet.value !== "") {
     const filterThree = filterArray.filter(
-      (item) => item.meal_category === parseInt(halal.value)
+      (item) => item.Filter.toLowerCase().includes(diet.value.toLowerCase())
     );
     filterArray = filterThree;
   }

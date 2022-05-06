@@ -238,7 +238,7 @@ header.active {
 
 
 .nav {
-  opacity: 0;
+  visibility: hidden;
   position: absolute;
   top: 88px;
   right: 0;
@@ -259,7 +259,7 @@ header.active {
 }
 
 .nav.active {
-  opacity: 1;
+ visibility: visible;
   background-color: #F2D5D5;
 }
 

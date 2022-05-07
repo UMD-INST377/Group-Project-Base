@@ -56,8 +56,8 @@ function addNames(hallArray) {
 function addMeals(locData) {
   // Each hall has their own seperate list for the dropdowns
   let hall0Meals = '<div class = "meal_list_wrap"><ul>'; // The Diner
-  let hall1Meals = '<ul>'; // South Campus
-  let hall2Meals = '<ul>'; // North Campus
+  let hall1Meals = '<div class = "meal_list_wrap"><ul>'; // South Campus
+  let hall2Meals = '<div class = "meal_list_wrap"><ul>'; // North Campus
   for (i = 0; i < locData.length; i++) { // This creates a list of each hall's menu items
     if (locData[i].location == 'The Diner') {
       panelInfo = createHTMLtable(locData[i]);
@@ -71,6 +71,8 @@ function addMeals(locData) {
     }
   }
   hall0Meals += '</ul></div>'
+  hall1Meals += '</ul></div>'
+  hall2Meals += '</ul></div>'
   // The lists are then inserted into the dropdowns
   const target0 = document.querySelector('.the_diner_menu');
   target0.innerHTML = '';

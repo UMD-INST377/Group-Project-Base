@@ -91,44 +91,48 @@ usersRouter.post('/login', async (req, res, next) => {
 })
 
 // UPDATE PASSWORD
-usersRouter.post('/update/:id', (req, res, next) => {
+usersRouter.post('/password', (req, res, next) => {
   const formParams = JSON.parse(req.body.form)
   // needed for second query
   const user = req.body.username
-  console.log('usersRouter.post("/")...')
+  console.log('usersRouter.post("/password")...')
   try {
     // check for null values
     for (let i in formParams) {
       let child = formParams[i]
-      if (child === null) {
+      if (child === "") {
         res.status(403).send('Missing value. Try again.')
+        return
       }
     }
     // check for incorrect match
     if (formParams.new_pw !== formParams.confirm_pw) {
       res.status(403).send('Passwords do NOT match. Try again.')
+      return
     } else {
       
-      const query = `UPDATE users SET password = SHA2("${formParams.new_pw}", 256) WHERE username = SHA2("${req.body.username}", 256);`
+      const query = `UPDATE users as u, (SELECT * FROM users WHERE username = SHA2("${user}", 256) AND password = SHA2("${formParams.old_pw}", 256)) as temp SET u.password = SHA2("${formParams.new_pw}", 256) WHERE temp.id = u.id;`
       connection.query(query, async (error, response) => {
         if (error === null) {
-          console.log('\nUser data updated. No errors detected.')
+          console.log('\nPassword updated. No errors detected.')
       } else {
       if (!error.errno === "") {
         console.log('connection.query() Error:', error.errno);
         res.sendStatus(404);
+        return
       }
       }})
 
-      // now, fetch new hash
+      // now, fetch password hash
       connection.query(`SELECT password FROM users WHERE username = SHA2("${user}", 256) and password = SHA2("${formParams.new_pw}", 256);`, async (error, response) => {
         if (error === null) {
-          console.log('\nUser data updated. No errors detected.')
+          console.log('\nFetching user data. No errors detected.')
           res.status(200).send(JSON.stringify({ password: response[0].password}))
       } else {
       if (!error.errno === "") {
         console.log('connection.query() Error:', error.errno);
         res.sendStatus(404);
+        return
       }
     }})
     }
@@ -138,5 +142,64 @@ usersRouter.post('/update/:id', (req, res, next) => {
     }
   })
 
+
+
+// UPDATE USERNAME
+usersRouter.post('/username', (req, res, next) => {
+  const formParams = JSON.parse(req.body.form)
+  console.log(formParams)
+  // needed for second query
+  const user = req.body.username
+  console.log('usersRouter.post("/username")...')
+  try {
+    // check for null values
+    for (let i in formParams) {
+      let child = formParams[i]
+      if (child === '') {
+        res.status(403).send('Missing value. Try again.')
+        return
+      }
+    }
+    // check for incorrect match
+    if (formParams.pw !== formParams.confirm_pw) {
+      res.status(403).send('Passwords do NOT match. Try again.')
+      return
+    } else {
+      
+      const query = `UPDATE users as u, (SELECT * FROM users WHERE username = SHA2("${user}", 256) AND password = SHA2("${formParams.pw}", 256)) as temp SET u.username = SHA2("${formParams.new_username}", 256) WHERE temp.id = u.id;`
+      connection.query(query, async (error, response) => {
+        if (error === null) {
+          console.log('\nUsername updated. No errors detected.')
+      } else {
+      if (!error.errno === "") {
+        console.log('connection.query() Error:', error.errno);
+        res.sendStatus(404);
+        return
+      }
+      }})
+
+      // now, fetch new username hash
+      connection.query(`SELECT username FROM users WHERE username = SHA2("${formParams.new_username}", 256) and password = SHA2("${formParams.pw}", 256);`, async (error, response) => {
+        if (error === null) {
+          if (response.length) {
+            console.log('\nUsername updated. No errors detected.')
+            }          
+          res.status(200).send(JSON.stringify({
+            username: response[0].username,
+            plainUser: formParams.new_username
+          }))
+      } else {
+      if (!error.errno === "") {
+        console.log('connection.query() Error:', error.errno);
+        res.sendStatus(404);
+        return
+      }
+    }})
+    }
+    } catch (e) {
+      console.log(`ERROR: ${e.message}\n`);
+      res.sendStatus(400);
+    }
+  })
 
 export default usersRouter;

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Personal Dietary Assistant - Diet Plan</title>
-    <link rel="stylesheet" href="newstyles.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
 
@@ -16,10 +16,9 @@
             <img class ="logo1" src="./images/top_left_logo.png" alt="Green robot sitting on a food tree"/>
         </div>
 
-        <a href="newindex.html">Home</a>
-        <a href="newdiet_plan.html">Diet Plan</a>
-        <a href="newmeal_request.html">Meal Requests</a>
-        <a href="meal_search.html">Meal Search</a>
+        <a href="index.html">Home</a>
+        <a href="dietplan.html">Calorie Count</a>
+        <a href="mealrequest.html">Meal Requests</a>
         
 
         <div class="bottomleftlogo">
@@ -37,15 +36,20 @@
 
         <div class="contentbox">
             
-            <div class="content2">
+            <div class="content">
 
                 <div class="formbox">
                 <form action='route' method='get' class='form'>
 
-                    <div class='form-row'>
+                    <!--div class='form-row'>
                         <label title>Restriction Type</label>
                         <input name='restriction_type' class='restriction_type' type='text'/>
-                    </div>
+                    </div-->
+
+                    <!--div class='form-row'>
+                        <label title>Meal Name</label>
+                        <input name='meal_name' class='meal_name' type='text'/>
+                    </div-->
 
                     <div class='form-row'>
                         <label title>Hall Name</label>
@@ -65,9 +69,10 @@
 
                     <table class="table">
                         <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>Restriction Type</th>
+                        <th>Meal Name</th>
+                        <th>Hall Name</th>
+                        <th>Calories</th>
                         </tr>
                     </table>
                 
@@ -81,6 +86,6 @@
     </div>
 
     <script src="tableCreate.js"></script>
-    <script src="script.js"></script>
+    <!--script src="script.js"></script-->
   </body>
 </html>

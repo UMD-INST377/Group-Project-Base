@@ -195,6 +195,15 @@ body {
     height: 650px;
     display: flex;
     display: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.content2 {
+    height: 650px;
+    display: flex;
+    display: row;
     justify-content: space-evenly;
     align-items: center;
     margin: 10px;
@@ -263,7 +272,7 @@ body {
     height: 80%;
     border-radius: 10px;
     color: darkgreen; 
-    font-size: 14px;"
+    font-size: 14px;
 }
 
 .table2 {

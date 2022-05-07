@@ -225,3 +225,48 @@
 
 
 .a:active { text-decoration: none; }
+
+.update_form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 5px;
+    height: fit-content;
+    background-color: #efefef;
+    align-self: center;
+    width: 300px;
+    margin-left: 30px;
+}
+
+.main_form {
+    display: flex;
+    flex-direction: column;
+}
+  
+.form_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 5px;
+    gap: 10px;
+}
+  
+.main_form .button {
+    padding-top: 10px;
+}
+
+.main_form {
+    padding: 10px;
+    width: 250px;
+    height: 300px;
+    gap: 15px;
+}
+
+.button {
+    background-color: #48c78e;
+    justify-content: center;
+    width: 115px;
+    color: white;
+    margin-left: 6px;
+}
+

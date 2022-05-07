@@ -47,11 +47,12 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: #E1F0DA;
+    background-color: black;
     padding-top: 20px;
     padding-bottom: 20px;
     border-bottom-left-radius: 55px;
     border-bottom-right-radius: 55px;
+    color: white;
 }
 
 .indextext {
@@ -159,13 +160,14 @@ body {
 }
 
 .robospeech {
-    width: 80%;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     margin-bottom: 10px;
 }
 
 .speechbubble {
+    left: 0;
     width: 80%;
 }
 

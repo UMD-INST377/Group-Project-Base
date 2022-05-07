@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Personal Dietary Assistant - Diet Plan</title>
+    <title>My Personal Dietary Assistant - Meal Editor</title>
     <link rel="stylesheet" href="newstyles.css">
   </head>
   <body>
@@ -43,24 +43,28 @@
                 <form action='route' method='get' class='form'>
 
                     <div class='form-row'>
-                        <label title>Restriction Type</label>
-                        <input name='restriction_type' class='restriction_type' type='text'/>
+                        <label title>Meal ID</label>
+                        <input name='meal_id' class='meal_id' type='number'/>
                     </div>
 
                     <div class='form-row'>
-                        <label title>Hall Name</label>
-                        <input name='hall_name' class='hall_name' type='text'/>
+                        <label title>Meal Name</label>
+                        <input name='meal_name' class='meal_name' type='text'/>
                     </div>
 
                     <div class='form-row'>
-                        <label title>Calories</label>
-                        <input name='calories' class='calories' type='number'/>
+                        <label title>Meal Category</label>
+                        <input name='meal_category' class='meal_category' type='text'/>
                     </div>
 
                     <div class='form-row'>
                         <button class="button submit_button" type="submit">Submit</button>
                     </div>
                     </form>
+
+                    <div class='form-row'>
+                        <button class="button submit_button" onclick="window.location.href = 'meal_editor.html';">Edit Meals</button>
+                    </div>
                 </div>
 
                     <table class="table">
@@ -80,7 +84,8 @@
 
     </div>
 
-    <script src="tableCreate.js"></script>
+    <script src="mealSearch.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
+

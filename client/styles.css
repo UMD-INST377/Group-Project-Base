@@ -1,37 +1,55 @@
+
+
+/* SCSS HEX */
+cg-blue: #227c9dff;
+tiffany-blue: #17c3b2ff;
+maximum-yellow-red: #ffcb77ff;
+floral-white: #fef9efff;
+light-coral: #fe6d73ff;
+
 * {
     box-sizing: border-box;
   }
-  body {
-    margin: 0;
-    padding: 0;
-  }
   
-  /* p {
-    padding:0;
-    margin:0;
-  } */
+  body {
+    margin: 20;
+    padding: 5px 10px 15px; 
+    text-align: center;
+    background-color: #fef9efff;
+  }
   
   a {
     display: inline-block;
     text-decoration: none;
     padding: 5px;
   }
+
+  p {
+
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    padding: 5px; 
+    text-align: left;
+     
+  }
   
   a:hover {
-    background-color: rgb(212, 230, 110);
+    background-color: #fe6d73ff;
     color: white;
   }
   
   nav {
-    background-color: rgba(204, 57, 57, 0.8);
+    background-color: #17c3b2ff;
     border-radius: 4px;
     padding: 10px;
     margin-bottom: 15px;
     display: flex;
     justify-content: space-around;
   }
-  
 
+  ul {
+    text-align: left;
+    font-size:16px; 
+  }
   
   /* Page styles */
   .wrapper {
@@ -39,14 +57,37 @@
     margin:0;
   }
   
+  .maintext {
+    padding: 10px;
+    border: 1px solid #ffcb77ff;
+  }
+
+  .subheader {
+    font-weight: bold;
+  }
   .container {
     margin: 0 20px;
   }
-  
+
+  .dining_hall_form {
+    border: 1px solid #ffcb77ff;  
+    width: 100%;
+    padding: 5px;
+  }
+ 
+  .label {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .radio {
+    margin: 5px;
+    margin-bottom: 15px;
+  }
   .header{
     width: 100%;
     display: inline-block;
-    background-color: rgba(204, 57, 57, 0.8);
+    background-color: #227c9dff;
     padding: 30px 15px;
     margin: 0;
     margin-bottom: 50px;
@@ -58,21 +99,17 @@
   .footer {
     width: 100%;
     display: inline-block;
-    background-color: rgba(0,139, 139,0.8);
-    padding: 10px 15px;
+    background-color: #17c3b2ff;
+    padding: 30px 15px;
     margin: 0;
-    margin-top: 10px;
+    margin-bottom: 50px;
+    text-align: center;
+    color: black;
   }
   
-  .footer a {
-    color: rgba(0,110, 110, 1);
-  }
-  
-
   .default{
     margin-bottom: 5px;
   }
-  
   
   .subtitle {
     color: rgba(0,0,0,0.8);

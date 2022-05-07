@@ -260,7 +260,7 @@ header.active {
   transition: 0.15s;
 }
 
-.saved {
+#saved {
   display: none;
 }
 

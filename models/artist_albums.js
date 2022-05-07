@@ -5,7 +5,7 @@ export default (sequelize, DataTypes) => {
       album_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        foreginKey: true
+        primaryKey: true
       },
       style_id: {
         type: DataTypes.INTEGER,

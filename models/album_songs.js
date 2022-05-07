@@ -5,7 +5,7 @@ export default (database, DataTypes) => {
       album_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        foreignKey: true,
+        primaryKey: true,
       },
       song_id: {
         type: DataTypes.INTEGER,

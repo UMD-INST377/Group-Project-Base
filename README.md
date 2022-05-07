@@ -50,6 +50,14 @@ No tests have been written for this software. You can, however, write your own t
 
 #### Actors
 
+| Method   | Route                     | Description                                                  |
+| -------- | ------------------------- | ------------------------------------------------------------ |
+| `GET`    | `/isaac/actors`           | Get data on all actors.                                      |
+| `GET`    | `/isaac/actors/:actor_id` | Get data for genre with matching `actor_id`.                 |
+| `PUT`    | `/isaac/actors`           | Get age of actors.                                           |
+| `POST`   | `/isaac/actors`           | Select name of actors                                        |
+| `DELETE` | `/isaac/actors`           | Delete record for genre whose ID matches actor_id parameter. |
+
 #### Genres
 
 | Method   | Route                    | Description                                                              |
@@ -60,14 +68,6 @@ No tests have been written for this software. You can, however, write your own t
 | `PUT`    | `/jude/genres`           | Get data for all genres whose name contains string parameter `genre_id`. |
 | `POST`   | `/jude/genres`           | Get data for genre whose ID matches `genre_id` parameter.                |
 | `DELETE` | `/jude/genres`           | Delete record for genre whose ID matches `genre_id` parameter.           |
-
-| Method   | Route                    | Description                                                              |
-| -------- | ------------------------ | ------------------------------------------------------------------------ |
-| `GET`    | `/isaac/actors`          | Get data on all actors.                                                  |
-| `GET`    | `/isaac/actors/:actor_id`| Get data for genre with matching `actor_id`.                             |
-| `PUT`    | `/isaac/actors`          | Get age of actors.                                                       |
-| `POST`   | `/isaac/actors`          | Select name of actors                                                    |
-| `DELETE` | `/isaac/actors`          | Delete record for genre whose ID matches actor_id parameter.             |
 
 #### Directors
 

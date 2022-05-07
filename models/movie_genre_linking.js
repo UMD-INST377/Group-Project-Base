@@ -1,17 +1,18 @@
 export default (sequelize, DataTypes) => {
-  const DietaryRestrictions = sequelize.define(
-    'Dietary_Restrictions',
+  const movie_genre_linking = sequelize.define(
+    'movie_genre_linking',
     {
-      restriction_id: {
+      movie_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        unique: false,
         primaryKey: true
       },
-      restriction_type: {
-        type: DataTypes.STRING
+      genre_id: {
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return DietaryRestrictions;
+  return movie_genre_linking;
 };

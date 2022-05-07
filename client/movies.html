@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="css/styles.css" />
+        <title>Group 20 - Movies</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column">
+                        <div class="title-bar box">
+                            <h1 class="title">Movies</h1>
+                            <nav>
+                                <a href="index.html">Home</a>
+                                <a href="movies.html">Movies</a>
+                                <a href="about.html">About</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-one-quarter">
+                        <div class="box">
+                            <form id="filter-form">
+                                <div class="field">
+                                    <label class="label">Movie Title</label>
+                                    <div class="control">
+                                        <input class="input" id="movie-title" type="text">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label" for="movie-rating">Rating</label>
+                                    <div class="select">
+                                        <select name="rating" id="movie-rating">
+                                            <option value="none" selected>Select One</option>
+                                            <option value="0-25">&#60;25</option>
+                                            <option value="26-50">26-50</option>
+                                            <option value="51-75">51-75</option>
+                                            <option value="76-100">76-100</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label" for="movie-genre">Genre</label>
+                                    <div class="select">
+                                        <select name="genre" id="movie-genre">
+                                            <option value="none" selected>Select One</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Year</th>
+                                        <th>Duration</th>
+                                        <th>Rating</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="search-results"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/common.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

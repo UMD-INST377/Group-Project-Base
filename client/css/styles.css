@@ -1,0 +1,42 @@
+nav {
+  background-color: rgb(95, 212, 212);
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  text-decoration: none;
+  color: rgb(31, 31, 31);
+}
+
+.wrapper {
+  display: flex;
+}
+
+.title-image {
+  max-width: 40%;
+}
+
+.chart-wrapper {
+  justify-content: space-around;
+  /* padding: 1em; */
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .chart-container {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chart-container {
+    width: 50%;
+  }
+}

@@ -17,7 +17,7 @@ router.get('/actors', async (req, res) => {
 router.get('/', (req, res) => {
   res.send("Welcome to Isaac's portion of Group 20's project API!");
 });
-// Get list of actors
+// Get list of actors by specific actor id
 router.get('/actors/:actor_id', async (req, res) => {
   try {
     const actors = await db.actors.findAll({

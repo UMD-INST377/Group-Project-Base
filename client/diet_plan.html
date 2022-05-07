@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Personal Dietary Assistant - Meal Request</title>
+    <title>My Personal Dietary Assistant - Diet Plan</title>
     <link rel="stylesheet" href="newstyles.css">
   </head>
   <body>
@@ -19,6 +19,7 @@
         <a href="newindex.html">Home</a>
         <a href="newdiet_plan.html">Diet Plan</a>
         <a href="newmeal_request.html">Meal Requests</a>
+        <a href="meal_search.html">Meal Search</a>
         
 
         <div class="bottomleftlogo">
@@ -31,35 +32,44 @@
     <div class="main">
 
         <div class="robospeech">
-            <img class="speechbubble" src="./images/robo_speaking3.png" alt="Would you like to request a personalized meal?">
+            <img class="speechbubble" src="./images/robo_speaking1.png" alt="Enter info about your dietary needs below!">
         </div>
 
         <div class="contentbox">
             
-            <div class="content">
+            <div class="content2">
 
-                <form action='route' method='post' class='form'>
-                        
+                <div class="formbox">
+                <form action='route' method='get' class='form'>
+
                     <div class='form-row'>
-                        <label title>Meal ID</label>
-                        <input name='meal_id' class='meal_id' type='number'/>
+                        <label title>Restriction Type</label>
+                        <input name='restriction_type' class='restriction_type' type='text'/>
                     </div>
 
                     <div class='form-row'>
-                        <label title>Meal Name</label>
-                        <input name='meal_name' class='meal_name' type='text'/>
+                        <label title>Hall Name</label>
+                        <input name='hall_name' class='hall_name' type='text'/>
                     </div>
 
                     <div class='form-row'>
-                        <label title>Meal Category</label>
-                        <em>(B for Breakfast, L for Lunch, D for Dinner)</em>
-                        <input name='meal_category' class='meal_category' type='text'/>
+                        <label title>Calories</label>
+                        <input name='calories' class='calories' type='number'/>
                     </div>
 
                     <div class='form-row'>
-                        <br>
-                        <button class="button submit_button" onclick="window.location.href = 'newsubmission.html';">ENTER</button>
+                        <button class="button submit_button" type="submit">Submit</button>
                     </div>
+                    </form>
+                </div>
+
+                    <table class="table">
+                        <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        </tr>
+                    </table>
                 
 
         </div>

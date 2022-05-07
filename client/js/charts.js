@@ -201,7 +201,7 @@ function loadStefChart(movieData) {
 }
 
 function loadOwenChart(directorData) {
-    console.log('loadOwenChart()');
+    // console.log('loadOwenChart()');
     const chartElement = document.querySelector('#owenChart');
 
     const title = 'Directors per State';

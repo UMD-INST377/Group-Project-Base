@@ -1,24 +1,24 @@
 // Get first 'limit' elements from collection
 function getDisplayArray(collection, limit) {
-  console.log('getDisplayArray()');
-  return collection.slice(0, limit);
+    //   console.log('getDisplayArray()');
+    return collection.slice(0, limit);
 }
 
 // Filter collection by items with 'key' that contain 'search'
 function filterResults(collection, key, search) {
-  console.log('filterResults()');
-  if (collection.length < 1) { return; }
-  const matches = collection.filter((item) => {
-    const value = item[key].toLowerCase();
-    const term = search.toLowerCase();
-    return value.includes(term);
-  });
-  return matches;
+    //   console.log('filterResults()');
+    if (collection.length < 1) { return; }
+    const matches = collection.filter((item) => {
+        const value = item[key].toLowerCase();
+        const term = search.toLowerCase();
+        return value.includes(term);
+    });
+    return matches;
 }
 
 // Update table HTML to display search results
 function showResults(collection, limit = 25) {
-    console.log('showResults()');
+    // console.log('showResults()');
     const resultTable = document.querySelector('#search-results')
     resultTable.innerHTML = '';
     getDisplayArray(collection, limit).forEach((item) => {
@@ -34,7 +34,7 @@ function showResults(collection, limit = 25) {
 
 // Populate genre filter with contents of database
 function initGenreSelect(collection) {
-    console.log('initGenreSelect()')
+    // console.log('initGenreSelect()')
     const genreSelect = document.querySelector('#movie-genre');
     collection.forEach((item) => {
         genreSelect.innerHTML += `<option value="${item.genre_id}">${item.genre}</option>`;
@@ -42,7 +42,7 @@ function initGenreSelect(collection) {
 }
 
 async function mainEvent() {
-    console.log("mainEvent()");
+    // console.log("mainEvent()");
 
     const titleField = document.querySelector('#movie-title');
     const ratingSelect = document.querySelector('#movie-rating');
@@ -57,7 +57,7 @@ async function mainEvent() {
 
         // Filter results when title field changes
         titleField.addEventListener('input', async (InputEvent) => {
-            console.log('titleField InputEvent');
+            // console.log('titleField InputEvent');
             let subResults = results;
             let title = InputEvent.target.value;
             if (title !== '') {
@@ -68,7 +68,7 @@ async function mainEvent() {
 
         // Filter results when ratings dropdown changes
         ratingSelect.addEventListener('change', async (InputEvent) => {
-            console.log('ratingSelect InputEvent')
+            // console.log('ratingSelect InputEvent')
             let subResults = results;
             const range = InputEvent.target.value;
             if (range !== 'none') {
@@ -84,7 +84,7 @@ async function mainEvent() {
 
         // Filter results when genre dropdown changes
         genreSelect.addEventListener('change', async (InputEvent) => {
-            console.log('genreSelect InputEvent')
+            // console.log('genreSelect InputEvent')
             let subResults = results;
             const genre_id = InputEvent.target.value;
             if (genre_id !== 'none') {
@@ -104,9 +104,9 @@ async function mainEvent() {
         });
     }
 
-    console.log(movieJson);
-    console.log(genreJson);
-    console.log(movieGenresJson);
+    // console.log(movieJson);
+    // console.log(genreJson);
+    // console.log(movieGenresJson);
 
     initGenreSelect(genreJson);
     showResults(movieJson);

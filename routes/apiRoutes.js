@@ -216,12 +216,14 @@ router.get('/artist_albums/:artist_id', async (req, res) => {
 });
 
 router.post('/artist_albums', async (req, res) => {
-  const artist_albums_items = await db.artistAlbums.findAll();
-  const currentId = (await artist_albums_items.length) + 1;
+  const artist_items = await db.artists.findAll();
+  const album_items = await db.albums.findAll()
+  const currentArtId = (await artist_items.length) + 1;
+  const currentAlbId = (await album_items.length) + 1;
   try {
     const newArtist_Album = await db.artist_albums.create({
-      artist_id: currentId,
-      album_id: req.body.album_id
+      artist_id: currentArtId,
+      album_id: currentAlbId
     });
     res.json(newArtist_Album);
   } catch (err) {
@@ -463,12 +465,14 @@ router.get('/artist_songs/:artist_id', async (req, res) => {
 });
 
 router.post('/artist_songs', async (req, res) => {
-  const artSongItems = await db.artistSongs.findAll();
-  const currentId = (await artSongItems.length) + 1;
+  const artistItems = await db.artists.findAll();
+  const songItems = await db.songs.findAll();
+  const currentArtId = (await artistItems.length) + 1;
+  const currentSngId = (await songItems.length) + 1;
   try {
     const newStyle = await db.artistSongs.create({
-      artist_id: currentId,
-      song_id: req.body.song_id
+      artist_id: currentArtId,
+      song_id: currentSngId
     });
     res.json(newStyle);
   } catch (err) {
@@ -514,8 +518,8 @@ router.delete('/artist_songs/:artist_id', async (req, res) => {
 /// /////////////////////////////////
 router.get('/song_genres', async (req, res) => {
   try {
-    const halls = await db.songGenres.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const songGenres = await db.songGenres.findAll();
+    const reply = songGenres.length > 0 ? { data: songGenres } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -525,13 +529,13 @@ router.get('/song_genres', async (req, res) => {
 
 router.get('/song_genres/:song_id', async (req, res) => {
   try {
-    const hall = await db.songGenres.findAll({
+    const songGenres = await db.songGenres.findAll({
       where: {
         song_id: req.params.song_id
       }
     });
 
-    res.json(hall);
+    res.json(songGenres);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -539,12 +543,14 @@ router.get('/song_genres/:song_id', async (req, res) => {
 });
 
 router.post('/song_genres', async (req, res) => {
-  const halls = await db.songGenres.findAll();
-  const currentId = (await halls.length) + 1;
+  const songItems = await db.songs.findAll();
+  const genreItems = await db.genres.findAll();
+  const currentSngId = (await songItems.length) + 1;
+  const currentGnrId = (await genreItems.length) + 1;
   try {
     const newDining = await db.playlists.create({
-      song_id: currentId,
-      genre_id: req.body.genre_id
+      song_id: currentSngId,
+      genre_id: currentGnrId
     });
     res.json(newDining);
   } catch (err) {
@@ -619,12 +625,14 @@ router.get('/playlist_songs/:playlist_id', async (req, res) => {
 });
 
 router.post('/playlist_songs', async (req, res) => {
-  const playSongItems = await db.playlistSongs.findAll();
-  const currentId = (await playSongItems.length) + 1;
+  const playItems = await db.playlists.findAll();
+  const songItems = await db.songs.findAll();
+  const currentSngId = (await songItems) + 1;
+  const currentPlyId = (await playItems.length) + 1;
   try {
     const newStyle = await db.playlistSongs.create({
-      playlist_id: currentId,
-      song_id: req.body.song_id,
+      playlist_id: currentPlyId,
+      song_id: currentSngId,
       added_by: req.body.added_by,
       date_added: req.body.date_added
     });
@@ -705,6 +713,7 @@ router.get('/songs/:song_id', async (req, res) => {
 router.post('/songs', async (req, res) => {
   const songItems = await db.songs.findAll();
   const currentId = (await songItems.length) + 1;
+  console.log(req.body);
   try {
     const newStyle = await db.songs.create({
       song_id: currentId,
@@ -724,7 +733,7 @@ router.post('/songs', async (req, res) => {
     res.json(newStyle);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 

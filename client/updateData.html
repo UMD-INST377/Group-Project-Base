@@ -40,7 +40,7 @@
     <div class="columns is-centered">
         
         <div class="column is-one-third">
-            <form class="box" method="GET">
+            <form class="box" method="POST">
                 <div class="field">
                     <strong>Create New Playlist<br/><br/></strong> 
                     <label for="playlist_owner_add">Username</label>
@@ -70,7 +70,7 @@
             </form>  
         </div>
         <div class="column is-one-third">
-            <form class="box" method="GET">
+            <form class="box" method="POST">
                 <div class="field">
                     <strong>Add to Existing Playlist<br/><br/></strong> 
                     <label for="playlist_owner_get">Username</label>
@@ -93,17 +93,21 @@
                     <div class="control">
                         <input id="album_name_add" class="input" type="text">
                     </div>
+                    <label for="genre_add">Genre</label>
+                    <div class="control">
+                        <input id="gemre_add" class="input" type="text">
+                    </div>
                     <label for="explic">
                         Explicit?
                         <input type="radio" name="filter" id="explic">
                     </label><br><br>
-                    <button class="button is-primary is-centered">Submit</button>
+                    <button class="button is-primary is-centered" id="sub_add">Submit</button>
                 
                 </div>
             </form>
         </div>
         <div class="column is-one-third">
-            <form class="box" method="GET">
+            <form class="box" method="DELETE">
                 <div class="field">
                     <strong>Delete from Existing Playlist<br/><br/></strong> 
                     <label for="playlist_owner_get">Username</label>
@@ -125,6 +129,10 @@
                     <label for="album_name_delete">Album Name</label>
                     <div class="control">
                         <input id="album_name_delete" class="input" type="text">
+                    </div>
+                    <label for="genre_del">Genre</label>
+                    <div class="control">
+                        <input id="gemre_del" class="input" type="text">
                     </div>
                     <br><br>
                     <button class="button is-primary is-centered">Submit</button>

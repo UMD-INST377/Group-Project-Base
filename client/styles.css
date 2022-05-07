@@ -137,7 +137,6 @@ body {
     height: 650px;
     display: flex;
     justify-content: center;
-    background-color: #E1F0DA;
 }
 
 .divider {
@@ -263,6 +262,8 @@ body {
     table-layout: fixed;
     height: 80%;
     border-radius: 10px;
+    color: darkgreen; 
+    font-size: 14px;"
 }
 
 .table2 {

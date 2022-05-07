@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Personal Dietary Assistant - Meal Editor</title>
-    <link rel="stylesheet" href="newstyles.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
 
@@ -40,7 +40,7 @@
             <div class="content2">
 
                 <div class="col">
-                    <form action='/api/wills/meal' method='put' class='form'>
+                    <form action='/api/wills/meal' method='put' class='form' onsubmit="return false">
 
                     <br>
 
@@ -71,7 +71,7 @@
                     </div>
                 
                 <div class="col">
-                    <form action='/api/wills/meal' method='delete' class='form'>
+                    <form action='/api/wills/meal' method='delete' class='form' onsubmit="return false">
 
                         <br>
 

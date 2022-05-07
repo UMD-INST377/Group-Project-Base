@@ -1,13 +1,20 @@
-async function songAdd() {
+async function addPlaylist() {
+
+}
+
+async function iAdd(array) {// TODO get this to work
   console.log('hello from add');
-  const request = `api/songs/${formbox.value}`;
-  const resp = await fetch(request, { method: 'ADD' });
-  console.log(resp);
-  if (resp.status === 200) {
-    alert(`${formbox.value}.added`);
-  } else {
-    alert('Not_Found');
-  }
+  const results = await fetch('api/main');
+  const addedFromJson = await results.json()
+  array[0].addEventListener('input', async (songEvent) => {
+    console.log(songEvent.target.value);
+    if (songEvent.length < 1) {
+      console.log('caught');
+      return;
+    }
+    const add = await fetch('api/songs/', { method: 'POST' });
+    console.log(add);
+  })
 }
 
 async function songDelete() {
@@ -22,8 +29,9 @@ async function songDelete() {
   }
 }
 async function mainEvent() {
-  const add = document.querySelector('#add');
-  const del = document.querySelector('#delete');
+  const infoAdd = [document.querySelector('#song_name_add'), document.querySelector('#artist_name_add'), document.querySelector('#album_name_add')]
+  iAdd(infoAdd)
+  
   add.addEventListener('input', songAdd);
   del.addEventListener('input', songDelete);
 }

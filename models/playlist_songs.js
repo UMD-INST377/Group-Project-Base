@@ -4,7 +4,8 @@ export default (sequelize, DataTypes) => {
     {
       playlist_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
       },
       song_id: {
         type: DataTypes.INTEGER,

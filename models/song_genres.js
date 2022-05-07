@@ -5,6 +5,7 @@ export default (sequelize, DataTypes) => {
       song_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        primaryKey: true
       },
       genre_id: {
         type: DataTypes.INTEGER,

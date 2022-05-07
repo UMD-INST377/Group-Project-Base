@@ -276,7 +276,8 @@ router.route("/macroNames")
       const casieQuery = await db.sequelizeDB.query(
         `SELECT meals.meal_name, meals.meal_id,  macros.calories, macros.serving_size, macros.cholesterol, macros.sodium, macros.carbs, macros.protein, macros.fat
         FROM meals
-        JOIN macros ON macros.meal_id = meals.meal_id;`);
+        JOIN macros ON macros.meal_id = meals.meal_id
+        ORDER BY meal_name;`);
         res.json({data:casieQuery[0]});
     }
     catch (err){

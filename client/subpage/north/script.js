@@ -33,11 +33,12 @@ async function createMealTable(){
 
 
 async function createMacroTable(){
-  const fetchMacros = await fetch("/api/macros");
-  const macros = await fetchMacros.json();
+  const fetchMacros = await fetch("/api/macroNames");
+  const macrosJ = await fetchMacros.json();
+  const macros = macrosJ.data
   let table = `<table border = 1>
   <tr>
-    <th>macro_id(needs to be food)</th>
+    <th>Food Name</th>
     <th>Calories</th>
     <th>Serving Size</th>
     <th>Cholesterol</th>
@@ -46,10 +47,10 @@ async function createMacroTable(){
     <th>Protein</th>
     <th>Fat</th>
   </tr>`;
-
+  console.log(macros)
   for (i = 0 ; i < macros.length; i++) {
     table += `<tr>
-      <td>${macros[i].macro_id}</td>
+      <td>${macros[i].meal_name}</td>
       <td>${macros[i].calories}</td>
       <td>${macros[i].serving_size}</td>
       <td>${macros[i].cholesterol}</td>
@@ -59,10 +60,11 @@ async function createMacroTable(){
       <td>${macros[i].fat}</td>
     </tr>`
   }
-  table += '</table>'
+  table += '</table>';
+  console.log(table);
   const macroQuery = document.querySelector(".macro_table");
-  macroQuery.innerHTML = "";
-  macroQuery.innerHTML += table
+  macroQuery.innerHTML = '';
+  macroQuery.innerHTML += table;
   
 }
 

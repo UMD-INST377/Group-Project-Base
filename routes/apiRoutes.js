@@ -269,4 +269,20 @@ router.get('/custom', async (req, res) => {
   }
 });
 
+//Casie's route
+router.route("/macroNames")
+  .get (async(req,res)=>{
+    try{
+      const casieQuery = await db.sequelizeDB.query(
+        `SELECT meals.meal_name, meals.meal_id,  macros.calories, macros.serving_size, macros.cholesterol, macros.sodium, macros.carbs, macros.protein, macros.fat
+        FROM meals
+        JOIN macros ON macros.meal_id = meals.meal_id;`);
+        res.json({data:casieQuery[0]});
+    }
+    catch (err){
+      console.log(err);
+      res.json({message:"Something went wrong with macro names"})
+    }
+  });
+
 export default router;

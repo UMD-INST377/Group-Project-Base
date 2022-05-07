@@ -1,111 +1,77 @@
 <!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <meta charset='UTF-8'/>
-        <title>PDA - Meal Request Form</title>
-        <link rel='stylesheet' href='styles.css'/>
-    </head>
-    <body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Personal Dietary Assistant - Meal Request</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
 
-<!--*******************************************************************-->
-<!--CREATING AND EDITING NEW TABLE WITH THIS FILE (FOR "MEAL REQUESTS")-->
-<!--*******************************************************************-->
+    <div class="container">
 
-    <header class='header2'>
-        <div class= "header3">
-            <div>
-                <img class ="logo0" src="./images/top_left_logo.png"  alt="Green robot standing next to a food tree"/>
-            </div>
-            <div>
-                <img style= "width: 200px; height: 70px; " class ="logo0" src="./images/bottom_left_logo.png"  alt="Green robot standing next to a food tree"/>
-            </div>
-        </div>
-    </header>
-    </header>
-        <img style="margin: 0px 300px;"class ="logo" src="./images/robo_speaking3.png"  alt="Green robot standing next to a food tree"/>
-    <header>
+    <div class="sidenav">
 
-    <div class='menu-container2'>
-        <div class='menu2'>
-            <div><a href="index.html"><strong>Home</strong></a></div>
+        <div class="topleftlogo">
+            <img class ="logo1" src="./images/top_left_logo.png" alt="Green robot sitting on a food tree"/>
         </div>
-        <div class='menu2'>
-            <div><a href="dietplan.html"><strong>Diet Plan</strong></a></div>
-        </div>
-        <div class='menu2'>
-            <div><a href="mealrequest.html"><strong>Meal Request</strong></a></div>
+
+        <a href="index.html">Home</a>
+        <a href="dietplan.html">Calorie Count</a>
+        <a href="mealrequest.html">Meal Requests</a>
+        
+
+        <div class="bottomleftlogo">
+            <img class="logo2" src="./images/bottom_left_logo.png" alt="My Personal Dietary Assistant Inc.">
         </div>
     </div>
 
-      <div class='wrapper'>
-        <div class='container'>
-        
-            <div class='columns'>
+    <div class="divider"></div>
 
-                <div class='content'>
+    <div class="main">
 
-                    <!--h1>Meal Request Form</h1-->
+        <div class="robospeech">
+            <img class="speechbubble" src="./images/robo_speaking3.png" alt="Would you like to request a personalized meal?">
+        </div>
 
-            <!--*******************************************-->
-            <!--TABLE IS EDITED HERE USING THE *POST* ROUTE-->
-            <!--*******************************************-->
+        <div class="contentbox">
+            
+            <div class="content">
 
-                <form action='route' method='post' class='form'>
+                <form action='api/will/meals' method='post' class='form' onsubmit= 'return false'>
                         
-                        <div class='form-row'>
-                            <label title>Meal ID</label>
-                            <input name='meal_id' class='meal_id' type='number'/>
-                        </div>
+                    <div class='form-row'>
+                        <label title>Meal ID</label>
+                        <input name='meal_id' class='meal_id' type='number'/>
+                    </div>
 
-                        <div class='form-row'>
-                            <label title>Meal Name</label>
-                            <input name='meal_name' class='meal_name' type='text'/>
-                        </div>
+                    <div class='form-row'>
+                        <label title>Meal Name</label>
+                        <input name='meal_name' class='meal_name' type='text'/>
+                    </div>
 
-                        <div class='form-row'>
-                            <label title>Meal Category</label>
-                            <em>(B for Breakfast, L for Lunch, D for Dinner)</em>
-                            <br>
-                            <input name='meal_category' class='meal_category' type='text'/>
-                        </div>
+                    <div class='form-row'>
+                        <label title>Meal Category</label>
+                        <em>(B for Breakfast, L for Lunch, D for Dinner)</em>
+                        <input name='meal_category' class='meal_category' type='text'/>
+                    </div>
 
-                        <!--div class='form-row'>
-                            <label title>Restriction Type</label>
-                            <input name='meal_id' class='meal_id' type='number'/>
-                        </div>
-                        
-                        <div class='form-row'>
-                            <label title>Meal Type</label>
-                            <input name='meal_category' class='meal_category' type='text'/>
-                        </div>
+                    <div class='form-row'>
+                        <br>
+                        <button class="button submit_button" onclick="window.location.href = 'mealsubmission.html';">ENTER</button>
+                    </div>
 
-                        <div class='form-row'>
-                            <label title>Hall Name</label>
-                            <input name='hall_name' class='hall_name' type='text'/>
-                        </div-->
+                
 
-                        <div class='form-row'>
-                            <br>
-                            <!--button class="button" type="submit">Submit</button-->
-                            <button class="button submit_button" onclick="window.location.href = 'submission_image.html';">ENTER</button>
-                        </div>
+        </div>
 
-                        <!--table style= "width: 100%; background-color: white; color: black; text-align: left; opacity: 0.5;" class="table">
-                            <First tr is the column headers>
-                            <tr>
-                            <th>Meal ID</th>
-                            <th>Meal Name</th>
-                            <--th>Restriction Type</th->
-                            <th>Meal Category</th>
-                            <--th>Hall Name</th->
-                            </tr>
-                        </table-->
-                        
-    
-            </div>
-          </div>
-    
-    <script src="tableCreate.js"></script>
-    <script src="script.js"></script>
-    </body>
+    </div>
+
+    </div>
+
+    </div>
+
+    <!--script src="tableCreate.js"></script-->
+    <!--script src="script.js"></script-->
+  </body>
 </html>

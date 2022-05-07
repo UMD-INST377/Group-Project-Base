@@ -22,7 +22,7 @@
         </div>
     </header>
     </header>
-        <img style="margin: 0px 300px;"class ="logo" src="./images/robo_speaking4.png"  alt="Green robot standing next to a food tree"/>
+        <img style="margin: 0px 300px;"class ="logo" src="./images/robo_speaking3.png"  alt="Green robot standing next to a food tree"/>
     <header>
 
     <div class='menu-container2'>
@@ -30,7 +30,7 @@
             <div><a href="index.html"><strong>Home</strong></a></div>
         </div>
         <div class='menu2'>
-            <div><a href="dietplan.html"><strong>Diet Plan</strong></a></div>
+            <div><a href="dietplan.html"><strong>Dietary Needs</strong></a></div>
         </div>
         <div class='menu2'>
             <div><a href="mealrequest.html"><strong>Meal Request</strong></a></div>
@@ -50,10 +50,23 @@
             <!--TABLE IS EDITED HERE USING THE *POST* ROUTE-->
             <!--*******************************************-->
 
-                
+                <form action='route' method='post' class='form'>
                         
                         <div class='form-row'>
-                            <img style="margin: 0px 60px; width:650px; height: 550px;"class ="logo" src="./images/thank_you_bg.png"  alt="Green robot standing next to a food tree"/>
+                            <label title>Meal ID</label>
+                            <input name='meal_id' class='meal_id' type='number'/>
+                        </div>
+
+                        <div class='form-row'>
+                            <label title>Meal Name</label>
+                            <input name='meal_name' class='meal_name' type='text'/>
+                        </div>
+
+                        <div class='form-row'>
+                            <label title>Meal Category</label>
+                            <em>(B for Breakfast, L for Lunch, D for Dinner)</em>
+                            <br>
+                            <input name='meal_category' class='meal_category' type='text'/>
                         </div>
 
                         <!--div class='form-row'>
@@ -71,7 +84,11 @@
                             <input name='hall_name' class='hall_name' type='text'/>
                         </div-->
 
-                        
+                        <div class='form-row'>
+                            <br>
+                            <!--button class="button" type="submit">Submit</button-->
+                            <button class="button submit_button" onclick="window.location.href = 'submission_image.html';">ENTER</button>
+                        </div>
 
                         <!--table style= "width: 100%; background-color: white; color: black; text-align: left; opacity: 0.5;" class="table">
                             <First tr is the column headers>

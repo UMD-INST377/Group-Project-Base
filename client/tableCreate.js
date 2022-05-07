@@ -13,40 +13,46 @@ async function createFilteredTable() {
     function filterCheck (array) {
         let filterArray = array;
 
-        //put the meals into a unique array
-        /*let uniqueArray = {};
+        /*/put the meals into a unique array
+        let uniqueArray = {};
         array.forEach((item) => {
             if (!uniqueArray.hasOwnProperty(item.meal_name)) {
-                uniqueArray[item.meal_name] = item.restriction_type
+                uniqueArray[item.meal_name] = item.restriction_type;
             } else {
-                uniqueArray[item.meal_name] += ',' + item.restriction_type 
+                uniqueArray[item.meal_name] += ',' + item.restriction_type;
             }
         })
 
         console.log(uniqueArray)*/
 
-        if (restrictionTypeSelector.value !== "") {
-            restrictionType = filterArray.filter(
-                (item) => item.restriction_type.toLowerCase().includes(restrictionTypeSelector.value.toLowerCase())
+        /*if (restrictionTypeSelector.value !== "") {
+            const restrictionType = filterArray.filter((item) =>
+                item.restriction_type.toLowerCase().includes(restrictionTypeSelector.value.toLowerCase())
+                /*(item) => item.meal_name.toLowerCase().includes(mealnameSelector.value.toLowerCase())*
             );
             filterArray = restrictionType;
-        }/*
-        if (mealnameSelector.value !== "") {
+        }*/
+
+        /*if (mealnameSelector.value !== "") {
             const nameFilter = filterArray.filter((item) =>
                 item.meal_name.toLowerCase().includes(mealnameSelector.value.toLowerCase())
+                /*(item) => item.meal_name.toLowerCase().includes(mealnameSelector.value.toLowerCase())*
             );
             filterArray = nameFilter;
         }*/
+
         if (hallnameSelector.value !== "") {
             const hallnameFilter = filterArray.filter((item) =>
                 item.hall_name.toLowerCase().includes(hallnameSelector.value.toLowerCase())
+                /*(item) => item.meal_name.toLowerCase().includes(mealnameSelector.value.toLowerCase())*/
             );
             filterArray = hallnameFilter;
         }
         if (caloriesSelector.value !== "") {
-            const caloriesFilter = filterArray.filter((item) =>
-                item.calories.toLowerCase().includes(caloriesSelector.value.toLowerCase())
-            );
+            const caloriesFilter = filterArray.filter((item) => item.calories <= parseInt(caloriesSelector.value));
+                /*item.calories.toLowerCase().includes(caloriesSelector.value.toLowerCase())*/
+                /*(item) => item.calories > caloriesSelector.value*/
+            
             filterArray = caloriesFilter;
         }
         return filterArray;
@@ -55,6 +61,7 @@ async function createFilteredTable() {
 async function loadTable(array) {
     //reset to table to header only
     table.innerHTML = `<tbody><tr>
+            <th>Restriction Type</th>
             <th>Meal Name</th>
             <th>Hall Name</th>
             <th>Calories</th>
@@ -66,10 +73,10 @@ async function loadTable(array) {
       const row = document.createElement("tr");
 
       // create new column element this will be repeated
-      /*const restriction_type = document.createElement("td");
+      const restriction_type = document.createElement("td");
       // set each column to be respective property
       restriction_type.innerHTML = item.restriction_type;
-      row.appendChild(restriction_type);*/
+      row.appendChild(restriction_type);
 
       // repeat this for all the columns you want in the table
       const meal_name = document.createElement("td");
@@ -100,18 +107,18 @@ async function loadTable(array) {
             data = await arrayFromJson.json();
 
             data = await data.data;
-
+            console.log(data);
             currentData = filterCheck(data);
             await loadTable(currentData);
         } else {
 
-                currentData = filterCheck(data);
+                /*currentData = filterCheck(data);
                 await loadTable(currentData);
                 restrictionTypeSelector.addEventListener("change", async () => {
                     currentData = filterCheck(data);
                     await loadTable(currentData);
                 });
-                /*currentData = filterCheck(data);
+                currentData = filterCheck(data);
                 await loadTable(currentData);
                 mealnameSelector.addEventListener("change", async () => {
                     currentData = filterCheck(data);

@@ -126,24 +126,40 @@ async function mainEvent() {
     const tableFinder = document.querySelector('.table');
     tableFinder.innerHTML = '';
     await loadData('/api/company');
+    document.querySelector('.table1').style.display = 'none'
+    document.querySelector('.table2').style.display = 'none'
+    document.querySelector('.table3').style.display = 'none'
+    document.querySelector('.table').style.display = 'inline-block-center'
   });
   button2.addEventListener('click', async (event) => {
     event.preventDefault();
     const tableFinder = document.querySelector('.table2');
     tableFinder.innerHTML = '';
     await loadData2('/api/students');
+    document.querySelector('.table').style.display = 'none'
+    document.querySelector('.table1').style.display = 'none'
+    document.querySelector('.table3').style.display = 'none'
+    document.querySelector('.table2').style.display = 'inline-block-center'
   });
   button3.addEventListener('click', async (event) => {
     event.preventDefault();
     const tableFinder = document.querySelector('.table1');
     tableFinder.innerHTML = '';
     await loadData1('/api/advisors');
+    document.querySelector('.table').style.display = 'none'
+    document.querySelector('.table2').style.display = 'none'
+    document.querySelector('.table3').style.display = 'none'
+    document.querySelector('.table1').style.display = 'inline-block-center'
   });
   button4.addEventListener('click', async (event) => {
     event.preventDefault();
     const tableFinder = document.querySelector('.table3');
     tableFinder.innerHTML = '';
     await loadData3('/api/career_services');
+    document.querySelector('.table').style.display = 'none'
+    document.querySelector('.table1').style.display = 'none'
+    document.querySelector('.table2').style.display = 'none'
+    document.querySelector('.table3').style.display = 'inline-block-center'
   });
 }
 

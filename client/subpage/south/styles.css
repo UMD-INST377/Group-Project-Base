@@ -13,6 +13,10 @@
     cursor: pointer;
 }
 
+.imag {
+    padding-top: 40px;
+}
+
 .logo_title{
     display: flex;
     flex-direction: row;
@@ -72,10 +76,23 @@
 .containers {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    padding-top: 150px;
-    gap: 300px;
+    justify-content: flex-start;
+    padding-top: 160px;
+    gap: 200px;
     /*gap center*/
+}
+
+.locations {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 47px;
+    text-decoration-line: underline;
 }
 
 .hourContainers {
@@ -84,6 +101,19 @@
     justify-content: center;
     padding-top: 150px;
     gap: 80px;
+}
+
+.hourContainers .locat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 47px;
+    text-decoration-line: underline;
 }
 
 .meal_page {
@@ -104,7 +134,7 @@
     flex-direction: column;
     gap: 15px;
     background-color: #FF4747;
-    width: 250px;
+    width: 350px;
     height: 300px;
     padding: 10px;
     font-family: 'Roboto';

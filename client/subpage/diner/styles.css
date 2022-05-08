@@ -72,7 +72,7 @@
 .container {
     display: flex;
     justify-content: flex-start;
-    padding-top: 100px;
+    padding-top: 150px;
     gap: 200px;
 }
 

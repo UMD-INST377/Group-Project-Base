@@ -69,50 +69,22 @@
     color: #000000;
 }
 
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding-top: 100px;
-    gap: 200px;
-}
-
-.location {
+.contain {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding-left: 40px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 35px;
-    line-height: 47px;
-    text-decoration-line: underline;
+    justify-content: flex-start;
+    margin-top: 200px;
+    margin-left: 100px;
 }
 
-.pages {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: #FF4747;
-    width: 350px;
-    height: 300px;
-    padding: 10px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 42px;
-    text-decoration: none;
+.contain p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
 }
 
-.chart {
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-    width: 700px;
-    align-self: center;
-    margin-top: 115px;
+.contain ul {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
 }
 
 .a:link { text-decoration: none; }

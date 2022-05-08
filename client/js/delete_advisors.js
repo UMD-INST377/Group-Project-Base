@@ -1,4 +1,4 @@
-async function deleteCompany() {
+async function deleteAdvisor() {
     await fetch(`/api/advisors/${document.getElementById('label1').value}`, {
       method: 'DELETE',
       headers: {
@@ -8,5 +8,5 @@ async function deleteCompany() {
   }
     
   document.querySelector('#button3').addEventListener('click', (event) => {
-    deleteCompany();
+    deleteAdvisor();
   });

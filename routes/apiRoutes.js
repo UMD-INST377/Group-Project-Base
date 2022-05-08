@@ -218,8 +218,8 @@ router.get('/artist_albums/:artist_id', async (req, res) => {
 router.post('/artist_albums', async (req, res) => {
   const artist_items = await db.artists.findAll();
   const album_items = await db.albums.findAll()
-  const currentArtId = (await artist_items.length) + 1;
-  const currentAlbId = (await album_items.length) + 1;
+  const currentArtId = (await artist_items.length);
+  const currentAlbId = (await album_items.length);
   try {
     const newArtist_Album = await db.artist_albums.create({
       artist_id: currentArtId,
@@ -358,9 +358,9 @@ router.delete('/albums/:album_id', async (req, res) => {
 
 router.get('/album_songs', async (req, res) => {
   try {
-    const genreItems = await db.albumSongs.findAll();
-    const reply = genreItems.length > 0
-      ? { data: genreItems }
+    const albumSongsItems = await db.albumSongs.findAll();
+    const reply = albumSongsItems.length > 0
+      ? { data: albumSongsItems }
       : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -371,13 +371,13 @@ router.get('/album_songs', async (req, res) => {
 
 router.get('/album_songs/:album_id', async (req, res) => {
   try {
-    const genreItems = await db.albumSongs.findAll({
+    const albumSongsItems = await db.albumSongs.findAll({
       where: {
         album_id: req.params.album_id
       }
     });
 
-    res.json(genreItems);
+    res.json(albumSongsItems);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -385,14 +385,16 @@ router.get('/album_songs/:album_id', async (req, res) => {
 });
 
 router.post('/album_songs', async (req, res) => {
-  const genreItems = await db.albumSongs.findAll();
-  const currentId = (await genreItems.length) + 1;
+  const albumItems = await db.albums.findAll();
+  const songItems = await db.songs.findAll();
+  const currentAlbId = (await albumItems.length);
+  const currentSngId = (await songItems.length);
   try {
-    const newGenreInfo = await db.album_songs.create({
-      album_id: currentId,
-      song_id: req.body.song_id
+    const newAlbumSongsInfo = await db.album_songs.create({
+      album_id: currentAlbId,
+      song_id: currentSngId
     });
-    res.json(newGenreInfo);
+    res.json(newAlbumSongsInfo);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -467,8 +469,8 @@ router.get('/artist_songs/:artist_id', async (req, res) => {
 router.post('/artist_songs', async (req, res) => {
   const artistItems = await db.artists.findAll();
   const songItems = await db.songs.findAll();
-  const currentArtId = (await artistItems.length) + 1;
-  const currentSngId = (await songItems.length) + 1;
+  const currentArtId = (await artistItems.length);
+  const currentSngId = (await songItems.length);
   try {
     const newStyle = await db.artistSongs.create({
       artist_id: currentArtId,
@@ -545,8 +547,8 @@ router.get('/song_genres/:song_id', async (req, res) => {
 router.post('/song_genres', async (req, res) => {
   const songItems = await db.songs.findAll();
   const genreItems = await db.genres.findAll();
-  const currentSngId = (await songItems.length) + 1;
-  const currentGnrId = (await genreItems.length) + 1;
+  const currentSngId = (await songItems.length);
+  const currentGnrId = (await genreItems.length);
   try {
     const newDining = await db.playlists.create({
       song_id: currentSngId,
@@ -625,10 +627,8 @@ router.get('/playlist_songs/:playlist_id', async (req, res) => {
 });
 
 router.post('/playlist_songs', async (req, res) => {
-  const playItems = await db.playlists.findAll();
   const songItems = await db.songs.findAll();
-  const currentSngId = (await songItems) + 1;
-  const currentPlyId = (await playItems.length) + 1;
+  const currentSngId = (await songItems.length);
   try {
     const newStyle = await db.playlistSongs.create({
       playlist_id: currentPlyId,

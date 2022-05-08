@@ -19,24 +19,24 @@ async function popLinkingTables() { // Populates linking tables
   console.log(songGen, songArt, songAlb, artAlb);
 }
 
-async function iAdd(array) {
+async function iAdd(songInfo, userInfo) {
   // console.log('hello from add');
-  array[0].addEventListener('input', async (songEvent) => {
+  songInfo[0].addEventListener('input', async (songEvent) => {
     console.log(songEvent.target.value);
     if (songEvent.length < 1) {
       console.log('caught');
       return;
     }
-    // console.log(array[3].checked);
+    // console.log(songInfo[3].checked);
     // console.log(JSON.stringify({
     //   name: songEvent.target.value,
-    //   is_explicit: array[3].checked ? 1 : 0,
+    //   is_explicit: songInfo[3].checked ? 1 : 0,
     // }),);
     const addSong = await fetch('api/songs/', { 
       method: 'POST',
       body: JSON.stringify({
         name: songEvent.target.value,
-        is_explicit: array[4].checked ? 1 : 0,
+        is_explicit: songInfo[4].checked ? 1 : 0,
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ async function iAdd(array) {
     });
     console.log(addSong);
   });
-  array[1].addEventListener('input', async (artistEvent) => {
+  songInfo[1].addEventListener('input', async (artistEvent) => {
     console.log(artistEvent.target.value);
     if (artistEvent.length < 1) {
       console.log('caught');
@@ -61,7 +61,7 @@ async function iAdd(array) {
     });
     console.log(addArtist);
   });
-  array[2].addEventListener('input', async (albumEvent) => {
+  songInfo[2].addEventListener('input', async (albumEvent) => {
     console.log(albumEvent.target.value);
     if (albumEvent.length < 1) {
       console.log('caught');
@@ -78,7 +78,7 @@ async function iAdd(array) {
     });
     console.log(addAlbum);
   });
-  array[3].addEventListener('input', async (genreEvent) => {
+  songInfo[3].addEventListener('input', async (genreEvent) => {
     console.log(genreEvent.target.value);
     if (genreEvent.length < 1) {
       console.log('caught');
@@ -98,6 +98,8 @@ async function iAdd(array) {
   popLinkingTables();
 }
 
+async function getUserAndPlaylist(array)
+
 async function songDelete() {
   console.log('hello from delete');
   
@@ -111,17 +113,21 @@ async function songDelete() {
   }
 }
 async function mainEvent() {
-  const form = document.querySelector('.box'); 
+  const forms = [document.querySelector('.form1'), document.querySelector('.form2'), document.querySelector('.form3')]; 
+  const userInfo = [document.querySelector('#playlist_owner_get'), document.querySelector('#playlist_name_get')];
   const infoAdd = [document.querySelector('#song_name_add'), document.querySelector('#artist_name_add'), document.querySelector('#album_name_add'),document.querySelector('#genre_add'), document.getElementById('explic')]
-  const subAdd = document.querySelector('#sub_add');
-  subAdd.style.display = 'block';
-  form.addEventListener('submit', async (event) => {
-    iAdd(infoAdd);
+  forms[0].addEventListener('submit', async (event) => {
+    newPlaylist();
+  });
+  forms[1].addEventListener('submit', async (event) => {
+    iAdd(infoAdd, userInfo);
     console.log(event.target.value)
     event.preventDefault();
     console.log('form submission');
+  });
+  forms[2].addEventListener('submit', async (event) => {
+
   })
-  
   add.addEventListener('input', songAdd);
   del.addEventListener('input', songDelete);
 }

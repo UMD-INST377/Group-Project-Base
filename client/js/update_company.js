@@ -7,7 +7,7 @@ async function updateCompany() {
     city: document.getElementById('label4').value
   };
   console.log(companyUpdate);
-  await fetch('/api/company', {
+  await fetch('/api/advisors', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

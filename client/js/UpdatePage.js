@@ -120,7 +120,7 @@ async function mainEvent() {
     console.log(event.target.value)
     event.preventDefault();
     console.log('form submission');
-  })
+  });
   
   add.addEventListener('input', songAdd);
   del.addEventListener('input', songDelete);

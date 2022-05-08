@@ -10,7 +10,6 @@ import rawqueries from './rawqueries.js';
 import artistGraphQuery from './artistGraphQuery.js';
 import topSong from './topSong.js';
 import topalbum from './topalbum.js';
-import songs from '../models/songs.js';
 
 const router = express.Router();
 
@@ -628,10 +627,8 @@ router.get('/playlist_songs/:playlist_id', async (req, res) => {
 });
 
 router.post('/playlist_songs', async (req, res) => {
-  const playItems = await db.playlists.findAll();
   const songItems = await db.songs.findAll();
-  const currentSngId = (await songItems);
-  const currentPlyId = (await playItems.length);
+  const currentSngId = (await songItems.length);
   try {
     const newStyle = await db.playlistSongs.create({
       playlist_id: currentPlyId,

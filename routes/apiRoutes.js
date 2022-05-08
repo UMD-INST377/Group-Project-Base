@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 import express from 'express';
 import fetch from 'node-fetch';
@@ -321,6 +322,80 @@ router.route('/brian/:id')
     }
   });
 
+// Randall Mentzos endpoints
+const dietJoined = `SELECT meal_name, restriction_type, mr.restriction_id 
+FROM meals m
+LEFT JOIN meal_restrictions mr
+ON m.meal_id = mr.meal_id
+LEFT JOIN dietary_restrictions dr 
+ON mr.restriction_id = dr.restriction_id`;
+// ^ the above joins the 'meals', 'meal restriction' & 'dietary restriction' tables
+// essentailly puts the name of the restriction with the name of the meal for display
+// meals without dietary restrictions are found by "WHERE id IS null"
+
+//
+router.route('/allergies') // returns full list of all food items & their restrictions
+  .get(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(dietJoined, {
+        type: db.Sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch (err) {
+      console.error(err);
+      res.json({ message: 'Server error'});
+    }
+  });
+
+router.route('/allergies/:id') // returns list of all food items with an (id) allergy (ex: id = soy)
+  .get(async (req, res) => {
+    try {
+      const regex = /^[A-Za-z_]+$/;
+      const regex2 = /^[0-9]+$/;
+      const nodata = 'there are no menu items with that allergen.';
+      const {id} = req.params;
+
+      // this is for filtering menu items by the name of the allergen / restriction
+      if (regex.test(id)) {
+        const dietFiltered = `SELECT meal_name, restriction_type FROM (${dietJoined}) AS T
+        WHERE restriction_type LIKE '%${id}%'`; // filter: where restriction = :id
+
+        const result = await db.sequelizeDB.query(dietFiltered, {
+          type: db.Sequelize.QueryTypes.SELECT
+        });
+
+        // only return results if there are any, helpful message if not;
+        if (result.length > 0) {
+          res.json(result);
+        } else {
+          res.send(nodata);
+        }
+
+      // this is for filtering menu items by restriction ID number rather than restriction name
+      } else if (regex2.test(id)) {
+        const dietByNumber = `SELECT meal_name, restriction_type FROM (${dietJoined}) AS T
+        WHERE restriction_id = '${id}'`;
+
+        const result = await db.sequelizeDB.query(dietByNumber, {
+          type: db.Sequelize.QueryTypes.SELECT
+        });
+
+        if (result.length > 0) {
+          res.json(result);
+        } else {
+          res.send(nodata);
+        }
+
+      // error handling (invalid characters)
+      } else { res.send('invalid URL, please enter an allergen'); }
+
+    // error handling (SQL query failed)
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});
+    }
+  });
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
@@ -561,12 +636,12 @@ ON d.hall_id = ml.hall_id;`;
 router.get('/map/data', async (req, res) => {
   try {
     const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
+      type: db.Sequelize.QueryTypes.SELECT
     });
     res.json(result);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.json({ message: 'Server error' });
   }
 });
 router.get('/custom', async (req, res) => {

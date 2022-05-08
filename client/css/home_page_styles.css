@@ -1,0 +1,114 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: grey;
+    min-height:100vh;
+}
+
+.head {
+    max-height: 100px;
+    align-items: flex-start;
+    height: auto;
+    width: 100%;
+    background-color: rgb(17, 237, 237);
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+}
+    
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 100px;
+    color:rgb(42, 105, 105);
+    font-size: 250%;
+    flex-wrap: wrap;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+}
+
+.website_name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    overflow-wrap: normal;
+    text-align: center;
+}
+
+
+.visualization {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+}
+
+.button2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+#form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    width: 50%;
+    align-content: center;
+} 
+
+.button {
+    width: 150px;
+    height: 50px;
+    color: rgb(42, 105, 105);
+    background-color: rgb(17, 237, 237);
+}
+
+.table {
+    background-color: #fff;
+    color: #363636;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 6px;
+}
+
+.company_size {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 9%;
+}
+
+#label2 {
+    width: 150%;
+}

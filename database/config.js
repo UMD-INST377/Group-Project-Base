@@ -7,24 +7,36 @@
 
 export default {
   development: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
+    database: 'ischool',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {
+      timestamps: false,
+      freezeTableName: true
+    }
   },
   test: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
+    database: 'ischool',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {
+      timestamps: false,
+      freezeTableName: true
+    }
   },
   production: {
-    username: 'student',
-    password: 'INST377@UMD',
-    database: 'Dining_Hall_Tracker',
+    username: 'ubuntu',
+    password: 'Veracrypt@12!',
+    database: 'ischool',
     host: '174.129.198.86',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {
+      timestamps: false,
+      freezeTableName: true
+    }
   }
 };

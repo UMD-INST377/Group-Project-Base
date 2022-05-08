@@ -1,5 +1,5 @@
 export default (database, DataTypes) => {
-  const job = database.define("job_title_info", {
+  const job = database.define('job_title_info', {
     job_title_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

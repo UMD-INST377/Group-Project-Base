@@ -8,6 +8,5 @@ async function deleteCompany() {
 }
   
 document.querySelector('#button3').addEventListener('click', (event) => {
-  event.preventDefault();
   deleteCompany();
 });

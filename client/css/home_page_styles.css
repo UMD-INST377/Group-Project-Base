@@ -64,7 +64,7 @@ body {
     height: 300px;
 }
 
-.button2 {
+.button1, .button2, .button3, .button4 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,13 +86,14 @@ body {
 } 
 
 .button {
-    width: 150px;
+    width: 170px;
     height: 50px;
     color: rgb(42, 105, 105);
     background-color: rgb(17, 237, 237);
+    margin-top: 5px;
 }
 
-.table {
+.table, .table1, .table2, .table3 {
     background-color: #fff;
     color: #363636;
     margin-bottom: 1.5rem;

@@ -1,7 +1,7 @@
 export default (sequelize, DataTypes) => {
   const MealRestrictions = sequelize.define(
     'meal_restrictions',
-    {
+    { 
       meal_id: {
         type: DataTypes.INTEGER,
         allowNull: false

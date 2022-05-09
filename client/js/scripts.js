@@ -4,25 +4,41 @@ async function loadData (url) {
   const response = await fetch(url);
   const arrayFromJson = await response.json();
   data = await arrayFromJson.data[0];
-  /* const company = document.querySelector('#label');
+  const company = document.querySelector('#label');
   const industry = document.querySelector('#label1');
   const size = document.querySelector('#label2');
   const city = document.querySelector('#label3');
 
+  const tableFinder1 = document.querySelector('.table');
+  const title1 = document.createElement('th');
+  title1.innerHTML = 'Company ID';
+  tableFinder1.appendChild(title1);
+  const title2 = document.createElement('th');
+  title2.innerHTML = 'Company';
+  tableFinder1.appendChild(title2);
+  const title3 = document.createElement('th');
+  title3.innerHTML = 'Industry';
+  tableFinder1.appendChild(title3);
+  const title4 = document.createElement('th');
+  title4.innerHTML = 'Size';
+  tableFinder1.appendChild(title4);
+  const title5 = document.createElement('th');
+  title5.innerHTML = 'City';
+  tableFinder1.appendChild(title5);
   const filterArray = [];
   filterArray.push(company.value);
   filterArray.push(industry.value);
   filterArray.push(size.value);
   filterArray.push(city.value);
   // console.log(filterArray, 'array');
-  const filterName = ['company_name', 'type', 'size', 'city']; */
+  const filterName = ['company_name', 'type', 'size', 'city'];
   // console.log(arrayFromJson);
 
-  /* filterName.forEach((filter, index) => {
+  filterName.forEach((filter, index) => {
     const filterData = data.filter((item) =>
       item[filter].toLowerCase().includes(filterArray[index].toLowerCase()));
     data = filterData;
-  }); */
+  }); 
 
   data.forEach((element) => {
     const tableFinder = document.querySelector('.table');
@@ -51,7 +67,13 @@ async function loadData1 (url) {
   const response = await fetch(url);
   const arrayFromJson = await response.json();
   data = await arrayFromJson.data[0];
-
+  const tableFinder1 = document.querySelector('.table1');
+  const title1 = document.createElement('th');
+  title1.innerHTML = '"Advisor ID"';
+  tableFinder1.appendChild(title1);
+  const title2 = document.createElement('th');
+  title2.innerHTML = '"Advisor Initials"';
+  tableFinder1.appendChild(title2);
   data.forEach((element) => {
     const tableFinder = document.querySelector('.table1');
     const row = document.createElement('tr');
@@ -69,7 +91,28 @@ async function loadData2 (url) {
   const response = await fetch(url);
   const arrayFromJson = await response.json();
   data = await arrayFromJson.data[0];
-
+  const tableFinder1 = document.querySelector('.table2');
+  const title1 = document.createElement('th');
+  title1.innerHTML = 'Student ID';
+  tableFinder1.appendChild(title1);
+  const title2 = document.createElement('th');
+  title2.innerHTML = 'First Name';
+  tableFinder1.appendChild(title2);
+  const title3 = document.createElement('th');
+  title3.innerHTML = 'Last Name';
+  tableFinder1.appendChild(title3);
+  const title4 = document.createElement('th');
+  title4.innerHTML = 'Grad Semester';
+  tableFinder1.appendChild(title4);
+  const title5 = document.createElement('th');
+  title5.innerHTML = 'Grad Year';
+  tableFinder1.appendChild(title5);
+  const title6 = document.createElement('th');
+  title6.innerHTML = 'Status';
+  tableFinder1.appendChild(title6);
+  const title7 = document.createElement('th');
+  title7.innerHTML = 'Concentration';
+  tableFinder1.appendChild(title7);
   data.forEach((element) => {
     const tableFinder = document.querySelector('.table2');
     const row = document.createElement('tr');
@@ -102,7 +145,13 @@ async function loadData3 (url) {
   const response = await fetch(url);
   const arrayFromJson = await response.json();
   data = await arrayFromJson.data[0];
-
+  const tableFinder1 = document.querySelector('.table3');
+  const title1 = document.createElement('th');
+  title1.innerHTML = '"ID"';
+  tableFinder1.appendChild(title1);
+  const title2 = document.createElement('th');
+  title2.innerHTML = '"Service Description"';
+  tableFinder1.appendChild(title2);
   data.forEach((element) => {
     const tableFinder = document.querySelector('.table3');
     const row = document.createElement('tr');
@@ -122,44 +171,44 @@ async function mainEvent() {
   const button3 = document.querySelector('.button3');
   const button4 = document.querySelector('.button4');
   button1.addEventListener('click', async (event) => {
+    document.querySelector('.table1').style.display = 'none'
+    document.querySelector('.table2').style.display = 'none'
+    document.querySelector('.table3').style.display = 'none'
+    document.querySelector('.table').style.display = 'table'
     event.preventDefault();
     const tableFinder = document.querySelector('.table');
     tableFinder.innerHTML = '';
     await loadData('/api/company');
-    document.querySelector('.table1').style.display = 'none'
-    document.querySelector('.table2').style.display = 'none'
-    document.querySelector('.table3').style.display = 'none'
-    document.querySelector('.table').style.display = 'inline-block-center'
   });
   button2.addEventListener('click', async (event) => {
+    document.querySelector('.table').style.display = 'none'
+    document.querySelector('.table1').style.display = 'none'
+    document.querySelector('.table3').style.display = 'none'
+    document.querySelector('.table2').style.display = 'table'
     event.preventDefault();
     const tableFinder = document.querySelector('.table2');
     tableFinder.innerHTML = '';
     await loadData2('/api/students');
-    document.querySelector('.table').style.display = 'none'
-    document.querySelector('.table1').style.display = 'none'
-    document.querySelector('.table3').style.display = 'none'
-    document.querySelector('.table2').style.display = 'inline-block-center'
   });
   button3.addEventListener('click', async (event) => {
+    document.querySelector('.table').style.display = 'none'
+    document.querySelector('.table2').style.display = 'none'
+    document.querySelector('.table3').style.display = 'none'
+    document.querySelector('.table1').style.display = 'table'
     event.preventDefault();
     const tableFinder = document.querySelector('.table1');
     tableFinder.innerHTML = '';
     await loadData1('/api/advisors');
-    document.querySelector('.table').style.display = 'none'
-    document.querySelector('.table2').style.display = 'none'
-    document.querySelector('.table3').style.display = 'none'
-    document.querySelector('.table1').style.display = 'inline-block-center'
   });
   button4.addEventListener('click', async (event) => {
+    document.querySelector('.table').style.display = 'none'
+    document.querySelector('.table1').style.display = 'none'
+    document.querySelector('.table2').style.display = 'none'
+    document.querySelector('.table3').style.display = 'table'
     event.preventDefault();
     const tableFinder = document.querySelector('.table3');
     tableFinder.innerHTML = '';
     await loadData3('/api/career_services');
-    document.querySelector('.table').style.display = 'none'
-    document.querySelector('.table1').style.display = 'none'
-    document.querySelector('.table2').style.display = 'none'
-    document.querySelector('.table3').style.display = 'inline-block-center'
   });
 }
 

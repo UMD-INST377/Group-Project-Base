@@ -1,7 +1,34 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
 
+// how to access object in returned query array: console.log(arrayFromJson.data[0]);
+
+function generateTableHead(table, data) {
+  const thead = table.createTHead();
+  const row = thead.insertRow();
+  for (const key of data) {
+    const th = document.createElement('th');
+    const text = document.createTextNode(key);
+    th.appendChild(text);
+    row.appendChild(th);
+  }
+}
+
+function generateTable(table, data) {
+  for (const element of data) {
+    const row = table.insertRow();
+    // eslint-disable-next-line guard-for-in
+    for (key in element) {
+      const cell = row.insertCell();
+      const text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+  }
+}
+
+/// // /
 function createHtmlList(collection) {
   const targetList = document.querySelector('.plants_list');
   targetList.innerHTML = '';
@@ -18,6 +45,12 @@ async function mainEvent() {
   const results = await fetch('/api/map');
   const arrayFromJson = await results.json();
   console.log(arrayFromJson);
+
+  // generate table
+  const table = document.querySelector('table');
+  const data = Object.keys(arrayFromJson.data[0]);
+  generateTableHead(table, data);
+  generateTable(table, arrayFromJson.data);
 
   // const form = document.querySelector('.map_form');
   const location = document.querySelector('#location');

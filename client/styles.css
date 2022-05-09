@@ -40,3 +40,30 @@ p, img {
   display: flex;
   justify-content: space-around;
 }
+
+th {
+  border-bottom: #868ca0;
+  border-width: 1px;
+  border-bottom-style: solid;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: "Segoe UI Regular", SegoeUI, "Segoe UI";
+  padding: 9px;
+  color: grey;
+}
+td {
+  padding: 6px;
+  border-bottom: #868ca036;
+  border-width: 1px;
+  border-bottom-style: solid;
+  text-align: left;
+  font-size: 0.8rem;
+  font-family: "Segoe UI Regular", SegoeUI, "Segoe UI";
+  color: rgb(4, 89, 153);
+}
+
+table {
+  max-width: 960px;
+  width: 100%;
+}

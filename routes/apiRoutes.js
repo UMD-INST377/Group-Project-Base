@@ -41,18 +41,15 @@ router.route('/map') // http://localhost:3000/api/map
           },
           type: sequelize.QueryTypes.INSERT
         });
-      console.log('data updated');
+      console.log('data entry added');
       res.json({data: result});
     } catch (err) {
       res.json({ error: 'something went wrong inserting new entry'});
     }
   })
-  /* .put(async (req, res) => {
-
-  }) 
   .delete(async (req, res) => {
 
-  }); */
+  });
 
 router.route('/map/:id')
   .get(async (req, res) => { // one entry
@@ -64,6 +61,27 @@ router.route('/map/:id')
         });
       console.log('data loaded');
       res.json({data: result[id]});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
+router.route('/map/:id/:code')
+  .put(async(req, res) => { // update entry on plant_id and location_code
+    try {
+      const result = await db.sequelizeDB.query(mapcontroller.mapPut,
+        {
+          replacements: {
+            id: req.params.id,
+            code: req.params.code,
+            plant_id: req.body.plant_id,
+            location_code: req.body.location_code
+          },
+          type: sequelize.QueryTypes.UPDATE
+        });
+      res.json({data: result});
+      console.log('data updated');
     } catch (err) {
       console.log(err);
       res.json({message: 'something went wrong'});

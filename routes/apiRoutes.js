@@ -111,18 +111,35 @@ router.get('/playlists', async (req, res) => {
   }
 });
 
-router.get('/playlists/:playlist_id', async (req, res) => {
+// router.get('/playlists/:playlist_id', async (req, res) => {
+//   try {
+//     const playlistItem = await db.playlists.findAll({
+//       where: {
+//         playlist_id: req.params.playlist_id
+//       }
+//     });
+
+//     res.json(playlistItem);
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+router.get('/playlists/:owner/:name', async (req, res) => {
+  // Gets the username and playlist name out of playlists
   try {
-    const hall = await db.playlists.findAll({
+    const playlistItem = await db.playlists.findAll({
       where: {
-        playlist_id: req.params.playlist_id
+        owner: req.params.owner,
+        name: req.params.name
       }
     });
-
-    res.json(hall);
+    console.log(playlistItem.length === 0);
+    res.json(playlistItem);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -631,7 +648,7 @@ router.post('/playlist_songs', async (req, res) => {
   const currentSngId = (await songItems.length);
   try {
     const newStyle = await db.playlistSongs.create({
-      playlist_id: currentPlyId,
+      playlist_id: req.body.playlist_id,
       song_id: currentSngId,
       added_by: req.body.added_by,
       date_added: req.body.date_added

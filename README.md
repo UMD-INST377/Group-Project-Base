@@ -4,18 +4,46 @@ UMD Food Service is a website developed by Chandra Tamang, Spencer VarZandeh, Am
 ### Heroku Link
 
 # Developer Manual
-- How to install your application and all dependencies
-- How to run your application on a server
-- How to run any tests you have written for your software
-- The API for your server application - all GET, POST, PUT, etc endpoints, and what they each do
+1. How to install your application and all dependencies
+  - To work on Group22-Project
+    - Fork the repository and the Clone the repository on your local folders
+  - npm Installion
+    - Type npm install in terminal
+  - Git Installtion
+    - macOS
+      - Install brew if you do not have it
+      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - Then type "brew install git" on terminal
+    - Window
+      - [Choose compatible option from the list](https://git-scm.com/download/win)
+  - Postman
+    - Use browser or indtall the application
+    - [Choose appropriate option for your device from this website](https://www.postman.com/downloads/)
+2. How to run your application on a server
+  - Run website on local server
+    - Type "npm start" and copy/paste the link on browser
+  - Heroku automatically delpoy the program so click on open app after commiting code
+  - If automatic deployment fail
+    - [Follow the instruction on this website](https://devcenter.heroku.com/articles/heroku-cli)
+4. How to run any tests you have written for your software
+  - To test api routes
+    - Open postmen
+    - Choose GET, PUT, POST, or DELETE from dropdown menu
+    - Type the link, for example http://localhost:3000/chandra/mealUpdate/
+    - Click send
+6. The API for your server application - all GET, POST, PUT, etc endpoints, and what they each do
   - GET
     - gets data from database "Group22_Dining_Hall_Tracker".
   - POST
     - Create new items on database.
   - PUT
     - Update existing items on database.
-- A clear set of expectations around known bugs and a road-map for future development.
-
+7. A clear set of expectations around known bugs and a road-map for future development.
+  - Expectations
+    - CSS style might not be 100% consistent throughout the website.
+  - Future Development
+    - Add interactive map
+    - Make interface minimal
 
 ### How to use Markdown
 Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.

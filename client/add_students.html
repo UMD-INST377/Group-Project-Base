@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <link rel='stylesheet' href='./css/add_students_styles.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    
+    <div class='head'>
+        <div class='container'>
+            <div class="link"><a href= './index.html' class="home">Home</a></div>
+            <div class="link"><a href= './about_us.html' class="home">About </a></div>
+            <div class="link"><a href= './edit_record.html' class="home">Edit Record </a></div>
+        </div>
+    </div>
+
+<div class="form">
+    <div class="columns is-centered is-vcentered">
+        <div class ='column is-narrow'>
+            <form method = 'GET' class = 'box' id="form">
+                <div class='field'>
+                    <label for='label1' class = ''><strong>First Name</strong></label>
+                    <input id='label1' name='first_name' type='text'/>
+                </div>
+                <div class='field'>
+                    <label for='label2'><strong>Last Name</strong></label>
+                    <input id='label2' name='last_name' type='text'/>
+                </div>
+                <div class='field'>
+                    <label for='label3'><strong>Graduation Semester</strong></label>
+                    <input id='label3' name='grad_semester' type='text'/>
+                </div>
+                <div class='field'>
+                    <label for='label4'><strong>Graduation Year</strong></label>
+                    <input id='label4' name='grad_year' type='text'/>
+                </div>
+                <div class='field'>
+                    <label for='label5'><strong>Status</strong></label>
+                    <input id='label5' name='status' type='text'/>
+                </div>
+                <div class='field'>
+                    <label for='label6'><strong>Information Science Concentration</strong></label>
+                    <input id='label6' name='infosci_concentration' type='text'/>
+                </div>
+                <button class="button" id="button1">Add Record</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <script src="./js/add_students.js"></script>
+</body>
+</html>

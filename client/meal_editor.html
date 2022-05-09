@@ -39,8 +39,8 @@
             
             <div class="content2">
 
-                <div class="col">
-                    <form action='/api/wills/meal' method='put' class='form' onsubmit="return false">
+                <div class="col update">
+                    <form action='/api/wills/meal' method='put' class='form' id="update">
 
                     <br>
 
@@ -50,7 +50,7 @@
 
                     <div class='form-row'>
                         <label title>Existing Meal ID</label>
-                        <input name='meal_name' class='meal_name' type='number'/>
+                        <input name='meal_id' class='meal_id' type='number'/>
                     </div>
 
                     <div class='form-row'>
@@ -60,18 +60,18 @@
 
                     <div class='form-row'>
                         <label title>New Meal Category</label>
-                        <input name='hall_name' class='hall_name' type='text'/>
+                        <input name='meal_category' class='meal_category' type='text'/>
                     </div>
 
 
                     <div class='form-row'>
-                        <button class="button submit_button" type="submit">Update</button>
+                        <button class="button submit_button" type="submit" id="updatesubmit">Update</button>
                     </div>
                     </form>
                     </div>
                 
-                <div class="col">
-                    <form action='/api/wills/meal' method='delete' class='form' onsubmit="return false">
+                <div class="col delete">
+                    <form class='form' onsubmit="return false">
 
                         <br>
 
@@ -85,7 +85,7 @@
                         </div>
     
                         <div class='form-row'>
-                            <button class="button submit_button" type="submit">Delete</button>
+                            <button class="button submit_button" id="delete" type="submit">Delete</button>
                         </div>
                         
                         </form>
@@ -99,7 +99,7 @@
     </div>
 
     </div>
-    <script src="script.js"></script>
+    <script src="mealEdit.js"></script>
   </body>
 </html>
 

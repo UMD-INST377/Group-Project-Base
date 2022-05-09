@@ -18,13 +18,12 @@ body {
   justify-content: center;
 }
 
-img {
+p, img {
   max-width: 960px;
   width: 100%;
   display: flex;
   justify-content: center;
 }
-
 
 .menu_container {
   max-width: 960px;

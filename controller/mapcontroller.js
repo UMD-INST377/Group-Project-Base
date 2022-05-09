@@ -10,8 +10,9 @@ WHERE plant_id = :id AND location_code = :code
 LIMIT 1;`;
 
 const mapDelete = `DELETE FROM plants.plant_locations
-WHERE `;
+WHERE plant_id = :plant_id AND location_code = :location_code
+LIMIT 1;`;
 
 export default {
-  mapGet, mapPost, mapPut
+  mapGet, mapPost, mapPut, mapDelete
 };

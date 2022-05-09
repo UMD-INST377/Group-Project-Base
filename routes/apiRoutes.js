@@ -44,11 +44,44 @@ router.route('/map') // http://localhost:3000/api/map
       console.log('data entry added');
       res.json({data: result});
     } catch (err) {
-      res.json({ error: 'something went wrong inserting new entry'});
+      console.log(err);
+      res.json({message: 'something went wrong'});
     }
   })
-  .delete(async (req, res) => {
-
+  .put(async(req, res) => { // update entry on plant_id and location_code (must be valid code)
+    try {
+      const result = await db.sequelizeDB.query(mapcontroller.mapPut,
+        {
+          replacements: {
+            id: req.body.id, // original to be changed
+            code: req.body.code, // original to be changed
+            plant_id: req.body.plant_id, // new updated value
+            location_code: req.body.location_code // new updated value
+          },
+          type: sequelize.QueryTypes.UPDATE
+        });
+      res.json({data: result});
+      console.log('data updated');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  })
+  .delete(async(req, res) => { // delete on plant_id and location_code
+    try {
+      const result = await db.sequelizeDB.query(mapcontroller.mapDelete, {
+        replacements: {
+          plant_id: req.body.plant_id,
+          location_code: req.body.location_code
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+      console.log('data deleted successfully');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
   });
 
 router.route('/map/:id')
@@ -68,15 +101,15 @@ router.route('/map/:id')
   });
 
 router.route('/map/:id/:code')
-  .put(async(req, res) => { // update entry on plant_id and location_code
+  .put(async(req, res) => { // update entry on plant_id and location_code (must be valid code)
     try {
       const result = await db.sequelizeDB.query(mapcontroller.mapPut,
         {
           replacements: {
-            id: req.params.id,
-            code: req.params.code,
-            plant_id: req.body.plant_id,
-            location_code: req.body.location_code
+            id: req.params.id, // original to be changed
+            code: req.params.code, // original to be changed
+            plant_id: req.body.plant_id, // new updated value
+            location_code: req.body.location_code // new updated value
           },
           type: sequelize.QueryTypes.UPDATE
         });

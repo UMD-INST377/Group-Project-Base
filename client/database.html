@@ -14,22 +14,44 @@
           <ul class="menu-list">
             <li><a href = "index.html">HOME</a></li>
             <li><a href = "info.html">INFO</a></li>
-            <li><a href = "records.html">SEARCH</a></li>
-            <li><a class="is-active" href = "database.html">MY DATABASE</a></li>
+            <li><a class="is-active" href = "records.html">SEARCH</a></li>
+            <li><a href = "database.html">MY DATABASE</a></li>
             <hr style="width:97%;text-align:left;margin-left:5px">
           </ul>
         </aside>
       </div>
       <div class="column">
-        <div class = "title has-text-white is-1 has-text-centered">MY DATABASE</div>
+        <div class = "title has-text-white is-1 has-text-centered">UPDATE A DATABASE</div>
         <hr style="width: 100%;text-align:left;margin-left:0">
         <div class = "content has-text-white">
-          <input class = "input" id="searchbar" onkeyup="searchArtist()" type="text" name="search" placeholder="Search for Artist">
+          <input class = "input" id="searchbar" onkeyup="searchData()" type="text" name="search" placeholder="Choose A Database">
           <ul id="list-holder"></ul>
         </div>
+        <select class = "select" id="selectBox" onchange="changeTable();">
+          <option value="0">Select Table To View</option>
+          <option value="1">Artist</option>
+          <option value="2">Album</option>
+          <option value="3">Genres</option>
+         </select>
         <hr style="width:100%;text-align:left;margin-left:0">
-        <button class = "button" onclick="showTable()">CLICK TO VIEW FULL DETAILS ON ARTISTS</button>
-        <table class="table">
+        <table class="table" id = "album">
+          <thead>
+            <tr>
+              <th scope="col">Album ID</th>
+              <th scope="col">Release ID</th>
+              <th scope="col">Genre ID</th>
+              <th scope="col">Price ID</th>
+              <th scope="col">Album Name</th>
+            </tr>
+          </thead>
+          <tbody id = "table_body_album">
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table" id = "artist">
           <thead>
             <tr>
               <th scope="col">Artist ID</th>
@@ -41,7 +63,7 @@
               <th scope="col">Age</th>
             </tr>
           </thead>
-          <tbody id = "tableOutline">
+          <tbody id = "table_body_artist">
             <tr>
               <td></td>
               <td></td>
@@ -53,32 +75,23 @@
             </tr>
           </tbody>
         </table>
-        <hr style="width:100%;text-align:left;margin-left:0">
-      </div>
-      <div class="column">
-        <div class = "title has-text-white is-1 has-text-centered">SEARCH Genres</div>
-        <hr style="width: 100%;text-align:left;margin-left:0">
-        <div class = "content has-text-white">
-          <input class = "input" id="searchbar" onkeyup="searchGenre()" type="text" name="search" placeholder="Search for Genres">
-          <ul id="list-holder"></ul>
-        </div>
-        <hr style="width:100%;text-align:left;margin-left:0">
-        <button class = "button" onclick="genreTable()">CLICK TO VIEW FULL DETAILS ON Genres</button>
-        <table class="table">
+        <table class="table" id = "genre">
           <thead>
             <tr>
               <th scope="col">Genre ID</th>
               <th scope="col">Genre Name</th>
             </tr>
           </thead>
-          <tbody id = "tableOutline">
+          <tbody id = "table_body_genre">
             <tr>
               <td></td>
               <td></td>
             </tr>
           </tbody>
         </table>
-        <hr style="width:100%;text-align:left;margin-left:0">
+        <figure class="image is-centered">
+          <img src="img/albums/banner.jpg">
+        </figure>
       </div>
       <div class="column sides is-1">
         <figure class="image is-128x128 is-centered"><a href = "teaminfo.html">
@@ -99,6 +112,6 @@
       </div>
     </div>
     <script src="./rec.js"></script>
-    <script src="./genreRecords.js"></script>
+    <scritp src="./genreRecords.js"></script>
   </body>
 </html>

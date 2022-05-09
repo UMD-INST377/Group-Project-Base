@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
 import label from '../models/label.js';
@@ -7,22 +8,24 @@ const router = express.Router();
 
 router.route('/label').get(async (req, res) => {
   try {
-    const art = await db.label.findAll();
-    res.json({data: art});
+    const art = await db.Label.findAll();
+    res.json(art);
   } catch (error) {
     console.error(error);
     res.send('Server Error');
   }
 });
-
-router.get('/label', async (req, res) => {
+router.get('/label/:label_id', async (req, res) => {
   try {
-    const labels = await db.label.findAll();
-    const reply = labels.length > 0 ? { data: labels } : { message: 'no results found' };
-    res.json(reply);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    const art = await db.label.findAll({
+      where: {
+        label_id: req.params.label_id,
+      },
+    });
+    res.json(art);
+  } catch (error) {
+    console.error(error);
+    res.send('Server error');
   }
 });
 

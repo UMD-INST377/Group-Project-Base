@@ -283,13 +283,14 @@ margin-top: 20px;
     padding-top: 10%;
 }
 
-div .account_text {
+.account_text {
     display: flex;
-    justify-content: center;
+    justify-content: right;
 }
 
-div .account_label {
-    justify-content: right;
+.account_label {
+    align-self: center;
+    text-align: center;
 }
 
 .account_buttons {

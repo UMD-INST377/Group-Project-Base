@@ -14,12 +14,11 @@ body {
     align-items: flex-start;
     height: auto;
     width: 100%;
-    background-color:red;
     border-radius: 4px;
     padding: 10px;
     display: flex;
     justify-content: left;
-    background-color: rgb(17, 237, 237);
+    background-color: rgb(105, 228, 224);
 }
 
 .container {
@@ -72,5 +71,5 @@ body {
 
 #button2 {
     color: rgb(42, 105, 105);
-    background-color: rgb(17, 237, 237);
+    background-color: rgb(105, 228, 224);
 }

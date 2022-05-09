@@ -29,7 +29,7 @@
 
 ## API 
 
-```/artists``` - Relates to All Artists in Database
+```/artist``` - Relates to All Artists in Database
 - GET - Logs all Artists
 - POST - Creates new Artist and adds it to Database, takes ```first_name``` and ```last_name```, returns ```Artist Successfully Uploaded```.
 - DELETE - Takes specific Artist ID and removes it from Database.

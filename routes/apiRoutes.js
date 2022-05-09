@@ -26,16 +26,24 @@ router.route('/songs')
 //     }
 // })
 
+// .get(async (req, res) => {
+//     try {
+//         const songList = await db.songs.findAll()
+//         res.json({data: songList});
+//     } catch (err) {
+//         console.error(err);
+//         res.send({message: 'Error!'});
+//     }
+// })
 .get(async (req, res) => {
-    try {
-        const songList = await db.songs.findAll()
-        res.json({data: songList});
-    } catch (err) {
-        console.error(err);
-        res.send({message: 'Error!'});
-    }
+  try {
+      const playlistList = await db.sequelizeDB.query('select * from songs');
+      res.json({data: playlistList[0]});
+  } catch (err) {
+      console.error(err);
+      res.send({message: 'Error1!'});
+  }
 })
-
 router.route('/songs/:id') 
 .get(async (req, res) => {
     try {

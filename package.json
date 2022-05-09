@@ -1,12 +1,9 @@
 {
-  "name": "inst377-group-project-base",
+  "name": "node-sequelize",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "type": "module",
-  "engines": {
-    "node": ">=14.0.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
@@ -16,12 +13,20 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.1",
+    "connect-livereload": "^0.6.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+
+    "heroku": "^7.2.0",
+
+    "livereload": "^0.9.3",
+
     "mysql2": "^2.2.5",
+    "node-fetch": "^3.2.0",
     "nodemon": "^2.0.7",
-    "sequelize": "^6.5.0",
-    "sequelize-cli": "^6.2.0"
+    "sequelize": "^6.16.2",
+    "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.17",

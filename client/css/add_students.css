@@ -14,7 +14,7 @@ body {
     align-items: flex-start;
     height: auto;
     width: 100%;
-    background-color: rgb(17, 237, 237);
+    background-color: rgb(105, 228, 224);
     border-radius: 4px;
     padding: 10px;
     display: flex;
@@ -77,5 +77,5 @@ body {
 
 #button1 {
     color: rgb(42, 105, 105);
-    background-color: rgb(17, 237, 237);
+    background-color: rgb(105, 228, 224);
 }

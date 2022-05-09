@@ -60,6 +60,24 @@ tableMakeGenre = fetch('/api/genre').then((data) => {
   console.log(err);
 });
 
+// CREATES TABLE FOR LABEL USING JSON DATA FROM DATABASE
+tableMakeGenre = fetch('/api/label').then((data) => {
+  console.log(data);
+  return data.json();
+}).then((objectData) => {
+  console.log(objectData);
+  let tableData = '';
+  objectData.map((values) => {
+    tableData += `<tr>
+    <td>${values.label_id}</td>
+    <td>${values.label_name}</td>
+  </tr>`;
+  });
+  document.getElementById('table_body_label').innerHTML = tableData;
+}).catch((err) => {
+  console.log(err);
+});
+
 // Selectors for different tables within our application/database
 const x = document.getElementById('artist');
 x.style.display = 'none';
@@ -70,6 +88,9 @@ y.style.display = 'none';
 const z = document.getElementById('genre');
 z.style.display = 'none';
 
+const a = document.getElementById('label');
+a.style.display = 'none';
+
 // Function to display full details for records
 function changeTable() {
   let dropdown = document.getElementById('selectBox')
@@ -78,23 +99,34 @@ function changeTable() {
     x.style.display = 'block';
     y.style.display = 'none';
     z.style.display = 'none';
+    a.style.display = 'none';
   }
 
   else if (index === 2) {
     y.style.display = 'block';
     x.style.display = 'none';
     z.style.display = 'none';
+    a.style.display = 'none';
   }
 
   else if (index === 3) {
     z.style.display = 'block';
     x.style.display = 'none';
     y.style.display = 'none';
-  } 
-  else if (index !== 1 || index !== 2 || index !== 3) {
+    a.style.display = 'none';
+  }
+
+  else if (index === 4) {
+    a.style.display = 'block';
+    x.style.display = 'none';
+    y.style.display = 'none';
+    z.style.display = 'none'
+  }
+  else if (index !== 1 || index !== 2 || index !== 3 || index !== 4) {
     x.style.display = 'none';
     y.style.display = 'none';
     z.style.display = 'none';
+    a.style.display = 'none';
   }
 }
 
@@ -108,6 +140,9 @@ async function searchData() {
 
   const resultsThree = await fetch('/api/genre');
   const arrayFromJsonThree = await resultsThree.json();
+
+  const resultsFour = await fetch('/api/label');
+  const arrayFromJsonFour = await resultsFour.json();
   console.log(arrayFromJson.data);
 
   let input = document.getElementById('searchbar').value
@@ -145,6 +180,15 @@ async function searchData() {
     if (objGenre.genre_name.toLowerCase().includes(input)) {
       const elem = document.createElement('tr')
       elem.innerHTML = `[GENRE] ${objGenre.genre_name}`
+      y.appendChild(elem)
+    }
+  }
+  for (i = 0; i < arrayFromJsonFour.length; i++) {
+    let objLabel = arrayFromJsonFour[i];
+
+    if (objLabel.label_name.toLowerCase().includes(input)) {
+      const elem = document.createElement('tr')
+      elem.innerHTML = `[LABEL] ${objLabel.label_name}`
       y.appendChild(elem)
     }
   }

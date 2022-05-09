@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
@@ -11,8 +12,116 @@ import fruitscontroller from '../controller/fruitscontroller.js';
 import locationcontroller from '../controller/locationcontroller.js';
 import plantLocationcontroller from '../controller/plant_locationcontroller.js';
 import plantscontroller from '../controller/plantscontroller.js';
+import mapcontroller from '../controller/mapcontroller.js';
 
 const router = express.Router();
+
+/* endpoint for map */
+router.route('/map') // http://localhost:3000/api/map
+  .get(async (req, res) => { // all entries in joined table
+    try {
+      const result = await db.sequelizeDB.query(mapcontroller.mapGet,
+        {
+          type: sequelize.QueryTypes.SELECT
+        });
+      console.log('data loaded');
+      res.json({data: result});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(mapcontroller.mapPost,
+        {
+          replacements: {
+            plant_id: req.body.plant_id,
+            location_code: req.body.location_code
+          },
+          type: sequelize.QueryTypes.INSERT
+        });
+      console.log('data entry added');
+      res.json({data: result});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  })
+  .put(async(req, res) => { // update entry on plant_id and location_code (must be valid code)
+    try {
+      const result = await db.sequelizeDB.query(mapcontroller.mapPut,
+        {
+          replacements: {
+            id: req.body.id, // original to be changed
+            code: req.body.code, // original to be changed
+            plant_id: req.body.plant_id, // new updated value
+            location_code: req.body.location_code // new updated value
+          },
+          type: sequelize.QueryTypes.UPDATE
+        });
+      res.json({data: result});
+      console.log('data updated');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  })
+  .delete(async(req, res) => { // delete on plant_id and location_code
+    try {
+      const result = await db.sequelizeDB.query(mapcontroller.mapDelete, {
+        replacements: {
+          plant_id: req.body.plant_id,
+          location_code: req.body.location_code
+        },
+        type: sequelize.QueryTypes.DELETE
+      });
+      res.json(result);
+      console.log('data deleted successfully');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
+router.route('/map/:id')
+  .get(async (req, res) => { // one entry
+    try {
+      const {id} = req.params;
+      const result = await db.sequelizeDB.query(mapcontroller.mapGet,
+        {
+          type: sequelize.QueryTypes.SELECT
+        });
+      console.log('data loaded');
+      res.json({data: result[id]});
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
+router.route('/map/:id/:code')
+  .put(async(req, res) => { // update entry on plant_id and location_code (must be valid code)
+    try {
+      const result = await db.sequelizeDB.query(mapcontroller.mapPut,
+        {
+          replacements: {
+            id: req.params.id, // original to be changed
+            code: req.params.code, // original to be changed
+            plant_id: req.body.plant_id, // new updated value
+            location_code: req.body.location_code // new updated value
+          },
+          type: sequelize.QueryTypes.UPDATE
+        });
+      res.json({data: result});
+      console.log('data updated');
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'something went wrong'});
+    }
+  });
+
+/// // /
 
 /* bark endpoint */
 router.route('/bark')

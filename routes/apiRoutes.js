@@ -934,4 +934,22 @@ router.get('/albumGraph', async (req, res) => {
   }
 });
 
+// router.post('/playlists', async (req, res) => {
+//   const playlistItems = await db.playlists.findAll();
+//   const currentId = (await playlistItems.length) + 1;
+//   console.log(req.body);
+//   try {
+//     const newStyle = await db.playlists.create({
+//       playlist_id: currentId,
+//       owner: req.body.owner,
+//       name: req.body.name,
+//       description: req.body.description
+//     });
+//     console.log(newStyle);
+//   } catch (err) {
+//     console.log(err);
+//     res.send('Server error');
+//   }
+// });
+
 export default router;

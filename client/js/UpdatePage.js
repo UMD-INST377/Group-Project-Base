@@ -19,10 +19,6 @@ async function popLinkingTables() { // Populates linking tables
   console.log(songGen, songArt, songAlb, artAlb);
 }
 
-async function newPlaylist(userPlaylist) {
-
-}
-
 async function iAdd(songInfo, userInfo) {
   // console.log('hello from add');
   songInfo[0].addEventListener('input', async (songEvent) => {
@@ -116,24 +112,116 @@ async function songDelete() {
     alert('Not_Found');
   }
 }
+
+async function newPlaylist(userArray) {
+  userArray[0].addEventListener('input', async (userEvent) => {
+    console.log(userEvent.target.value);
+    if (userEvent.length < 1) {
+      console.log('caught');
+      return;
+    }
+    const addUsername = await fetch('api/playlists/', {
+      method: 'POST',
+      body: JSON.stringify(userEvent.target.value),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+    console.log(addUsername);
+  });
+
+  userArray[1].addEventListener('input', async (playlistEvent) => {
+    console.log(playlistEvent.target.value);
+    if (playlistEvent.length < 1) {
+      console.log('caught');
+      return;
+    }
+    const addPlaylist = await fetch('api/playlists/', {
+      method: 'POST',
+      body: JSON.stringify(playlistEvent.target.value),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+    console.log(addPlaylist);
+  });
+
+  userArray[2].addEventListener('input', async (descriptionEvent) => {
+    console.log(descriptionEvent.target.value);
+    if (descriptionEvent.length < 1) {
+      console.log('caught');
+      return;
+    }
+    const addDescription = await fetch('api/playlists/', {
+      method: 'POST',
+      body: JSON.stringify(descriptionEvent.target.value),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+    console.log(addDescription);
+  });
+
+  if (userArray[3].checked) {
+    const publicChecked = await fetch('api/playlists/', {
+      method: 'POST',
+      body: JSON.stringify('1'),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    console.log(publicChecked);
+  } else {
+    const publicChecked = await fetch('api/playlists/', {
+      method: 'POST',
+      body: JSON.stringify('1'),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (userArray[6].checked) {
+      const collChecked = await fetch('api/playlists/', {
+        method: 'POST',
+        body: JSON.stringify('1'),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      console.log(collChecked);
+    } else {
+      const collChecked = await fetch('api/playlists/', {
+        method: 'POST',
+        body: JSON.stringify('0'),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+    }
+  }
+}
+
 async function mainEvent() {
   const forms = [document.querySelector('.form1'), document.querySelector('.form2'), document.querySelector('.form3')];
   const userInfo = [document.querySelector('#playlist_owner_get'), document.querySelector('#playlist_name_get')];
+  const newPlaylistInfo = [document.querySelector('#playlist_owner_add'), document.querySelector('#playlist_name_add'), document.querySelector('#description'), document.querySelector('#public'), document.querySelector('#private'), document.querySelector('#coll')];
   const infoAdd = [document.querySelector('#song_name_add'), document.querySelector('#artist_name_add'), document.querySelector('#album_name_add'),document.querySelector('#genre_add'), document.getElementById('explic')]
   forms[0].addEventListener('submit', async (event) => {
-    newPlaylist();
+    newPlaylist(newPlaylistInfo);
+    console.log(event.target.value);
+    event.preventDefault();
   });
   forms[1].addEventListener('submit', async (event) => {
     iAdd(infoAdd, userInfo);
-    console.log(event.target.value)
+    console.log(event.target.value);
     event.preventDefault();
     console.log('form submission');
   });
   forms[2].addEventListener('submit', async (event) => {
 
   })
-  add.addEventListener('input', songAdd);
-  del.addEventListener('input', songDelete);
+  // add.addEventListener('input', songAdd);
+  // del.addEventListener('input', songDelete);
 }
 // this actually runs first! It's calling the function above
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

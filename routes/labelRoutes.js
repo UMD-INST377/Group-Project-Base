@@ -31,25 +31,24 @@ router.get('/label/:label_id', async (req, res) => {
 });
 
 router.post('/label', async (req, res) => {
-  const labels = await db.label.findAll();
-  const currentId = (await labels.length) + 1;
   try {
-    const newLabels = await db.label.create({
-      label_id: currentId,
-      label_name: req.body.label_name,
+    const newlabel = await db.label.create({
+      label_id: 14,
+      label_name: 'Roc-A-Fella'
     });
-    res.json(newLabels);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json(newlabel);
+  } catch (error) {
+    console.log(error);
+    res.send('Server Error');
   }
 });
 
 router.put('/label', async (req, res) => {
   try {
-    await db.label.update(
+    const labelUpdate = await db.label.update(
       {
-        label_name: req.body.label_name,
+        label_id: req.body.label_id,
+        label_name: req.label_name
       },
       {
         where: {
@@ -57,23 +56,23 @@ router.put('/label', async (req, res) => {
         }
       }
     );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
+    res.json('Success. Record Updated');
+  } catch (error) {
+    console.log(error);
+    res.send('Server Error');
   }
 });
 
 router.delete('/label/:label_id', async (req, res) => {
   try {
-    await db.label.destroy({
+    const labelDelete = await db.label.destroy({
       where: {
         label_id: req.params.label_id
       }
     });
     res.send('Successfully Deleted');
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
     res.error('Server error');
   }
 });

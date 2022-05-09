@@ -4,7 +4,7 @@ UMD Food Service is a website developed by Chandra Tamang, Spencer VarZandeh, Am
 ### Heroku Link
 
 # Developer Manual
-1. How to install your application and all dependencies
+1. **How to install your application and all dependencies**
   - To work on Group22-Project
     - Fork the repository and clone it on your local folders
   - npm Installion
@@ -19,26 +19,26 @@ UMD Food Service is a website developed by Chandra Tamang, Spencer VarZandeh, Am
   - Postman
     - Use browser or indtall the application
     - [Choose appropriate option for your device from this website](https://www.postman.com/downloads/)
-2. How to run your application on a server
+2. **How to run your application on a server**
   - Run website on local server
     - Type "npm start" and copy/paste the link on browser
   - Heroku automatically deploy the program so click on "Open app" after commiting your work
   - If automatic deployment fail
     - [Follow the instruction on this website](https://devcenter.heroku.com/articles/heroku-cli)
-4. How to run any tests you have written for your software
+3. **How to run any tests you have written for your software**
   - To test api routes
     - Open postmen
     - Choose GET, PUT, POST, or DELETE from dropdown menu
     - Type the link, for example http://localhost:3000/chandra/mealUpdate/
     - Click send
-6. The API for your server application - all GET, POST, PUT, etc endpoints, and what they each do
+4. **The API for your server application - all GET, POST, PUT, etc endpoints, and what they each do**
   - GET
     - gets data from database "Group22_Dining_Hall_Tracker".
   - POST
     - Create new items on database.
   - PUT
     - Update existing items on database.
-7. A clear set of expectations around known bugs and a road-map for future development.
+5. **A clear set of expectations around known bugs and a road-map for future development.**
   - Expectations
     - CSS style might not be 100% consistent throughout the website.
   - Future Development

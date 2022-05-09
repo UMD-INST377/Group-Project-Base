@@ -712,11 +712,11 @@ router.get('/songs', async (req, res) => {
   }
 });
 
-router.get('/songs/:song_id', async (req, res) => {
+router.get('/songs/:name', async (req, res) => {
   try {
     const songItems = await db.songs.findAll({
       where: {
-        song_id: req.params.song_id
+        name: req.params.name
       }
     });
 

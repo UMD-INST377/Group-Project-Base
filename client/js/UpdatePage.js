@@ -25,7 +25,7 @@ async function popLinkingTables(user) { // Populates linking tables
   console.log(songGen, songArt, songAlb, artAlb, songPlay);
 }
 
-async function getUserAndPlaylist(array) {
+async function getUserAndPlaylist(array) { // Gets Username and Playlist name
   const getInfo = [];
   for (let i = 0; i < array.length; i += 1) {
     array[i].addEventListener('input', async (event) => {
@@ -40,7 +40,7 @@ async function getUserAndPlaylist(array) {
   return info;
 }
 
-async function iAdd(songInfo, userInfo) {
+async function iAdd(songInfo, userInfo) { // Adds info into the database
   // console.log('hello from add');
   const user = getUserAndPlaylist(userInfo)
   if (user === 0) {
@@ -125,22 +125,42 @@ async function iAdd(songInfo, userInfo) {
   popLinkingTables();
 }
 
-async function songDelete() {
-  console.log('hello from delete');
-
-  const request = `api/songs/${formbox.value}`;
-  const resp = await fetch(request, { method: 'DELETE' });
-  console.log(resp);
-  if (resp.status === 200) {
-    alert(`${formbox.value}.deleted`);
-  } else {
-    alert('Not_Found');
+async function iDel(songInfo, userInfo) { // TODO get this to work 
+  const user = getUserAndPlaylist(userInfo)
+  if (user === 0) {
+    // This checks to see if the username has the specified playlist, if it doesnt then it does not
+    // add any value to the database.
+    return;
   }
+  songInfo[0].addEventListener('input', async (songEvent) => {
+    console.log(songEvent.target.value);
+    if (songEvent.length < 1) {
+      console.log('caught');
+      return;
+    }
+    // console.log(songInfo[3].checked);
+    // console.log(JSON.stringify({
+    //   name: songEvent.target.value,
+    //   is_explicit: songInfo[3].checked ? 1 : 0,
+    // }),);
+    const delSong = await fetch('api/songs/', {
+      method: 'DELTE',
+      body: JSON.stringify({
+        name: songEvent.target.value,
+        is_explicit: songInfo[4].checked ? 1 : 0
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log(delSong);
+  });
 }
 async function mainEvent() {
   const forms = [document.querySelector('.form1'), document.querySelector('.form2'), document.querySelector('.form3')];
   const userInfo = [document.querySelector('#playlist_owner_get'), document.querySelector('#playlist_name_get')];
   const infoAdd = [document.querySelector('#song_name_add'), document.querySelector('#artist_name_add'), document.querySelector('#album_name_add'), document.querySelector('#genre_add'), document.getElementById('explic')];
+  const infoDel = [document.querySelector('#song_name_delete'), document.querySelector('#artist_name_delete'), document.querySelector('#album_name_delete'), document.querySelector('#genre_del')];
   forms[0].addEventListener('submit', async (event) => {
     newPlaylist();
   });
@@ -151,10 +171,9 @@ async function mainEvent() {
     console.log('form submission');
   });
   forms[2].addEventListener('submit', async (event) => {
-
+    iDel(infoDel, userInfo);
+    event.preventDefault();
   });
-  add.addEventListener('input', songAdd);
-  del.addEventListener('input', songDelete);
 }
 // this actually runs first! It's calling the function above
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

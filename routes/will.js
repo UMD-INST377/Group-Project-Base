@@ -47,7 +47,7 @@ router.post('/meals', async (req, res) => {
       meal_name: req.body.meal_name,
       meal_category: req.body.meal_category
     });
-    res.json(newMeal);
+    res.redirect('/mealsubmission.html');
   } catch (error) {
     console.log(error);
     res.json({ message: 'Server error' });
@@ -58,17 +58,11 @@ router.post('/meals', async (req, res) => {
 // updates meal based on body input
 router.put('/meals', async (req, res) => {
   try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
+    console.log(req.body);
+    const parsed = JSON.parse(JSON.stringify(req.body));
+    console.log(parsed.meal_id);
+    await db.sequelizeDB.query(
+      `UPDATE meals SET meal_name = "${parsed.meal_name}", meal_category =  "${parsed.meal_category}" WHERE meal_id = ${parsed.meal_id}`);
     res.send('Meal Successfully Updated');
   } catch (error) {
     console.log(error);

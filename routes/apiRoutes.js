@@ -346,10 +346,14 @@ function dietFiltered(id) { return `SELECT meal_name, restriction_type FROM (${d
 function dietByNumber(id) { return `SELECT * FROM (${dietJoined}) AS T
   WHERE restriction_id = '${id}'`; } // filter: where restriction number = :id
 
-function mealByNumber(id) { return `SELECT * FROM (${dietJoined}) AS T
-  WHERE restriction_id = '${id}'`; } // filter: where restriction number = :id
+function dietNull() { return `SELECT * FROM (${dietJoined}) AS T
+  WHERE restriction_id IS null`; } // filter: where meal number = :id
 
-// Randall Mentzos endpoints
+function deleteOne(id, num) { return `DELETE FROM meal_restrictions
+  WHERE meal_id = '${id}'
+  LIMIT ${num}`; } // filter: where meal number = :id
+
+////// RANDALL MENTZOS endpoints /////
 router.route('/allergies') // returns full list of all food items & their restrictions
   .get(async (req, res) => {
     try {
@@ -358,6 +362,17 @@ router.route('/allergies') // returns full list of all food items & their restri
       });
       res.json(result);
     } catch (err) {
+      console.error(err);
+      res.json({ message: 'Server error'});
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const result = await db.sequelizeDB.query(dietNull(), {
+        type: db.Sequelize.QueryTypes.SELECT
+      });
+      res.json(result);
+    } catch {
       console.error(err);
       res.json({ message: 'Server error'});
     }
@@ -371,24 +386,16 @@ router.route('/allergies') // returns full list of all food items & their restri
         type: db.Sequelize.QueryTypes.SELECT  // first, SQL function filters the list to the chosen allergy
       });                                     // allergen. Only dishes with that allergen are stored in "r"
       
-      console.log("item: ", item)
       let x = 0;
       for (let i = 0; i < r.length; i++) {  // then, for every menu item in the "r" list,
         const innerdata = r[i];             // "innerdata" = the nested Objects themsleves (nonreadable)
         const data = innerdata['meal_id'];  // this "data" grabs the actual meal ID attributes (readable)
-        
-      console.log("useritem = ", parseInt(item), "innerdata = ", data);
-
         if (data === parseInt(item)) {    // if a meal ID from the filtered list matches the user request, 
           x++;                            // allergies have already been listed in the system
           console.log('That item is already listed with that allergy.')
           break; 
         } else { continue } 
-      }
-
-      console.log("x = ", x);
-      
-      
+      }      
       if (x < 1) {            // if not, insert the new dietary restriction into the table. 
         const insertIntoPut = `INSERT INTO meal_restrictions (meal_id, restriction_id) 
         VALUES ('${item}', '${restrict}')`
@@ -403,22 +410,23 @@ router.route('/allergies') // returns full list of all food items & their restri
       }
       const t = await db.sequelizeDB.query(unfiltered, {
         type: db.Sequelize.QueryTypes.SELECT  
-    })
-
-      console.log(t)
+      });
       res.json(r);
     } catch (err) {
       console.log(err);
       res.send({ message: err });
-    }
-  });
+      }
+    } 
+  );
 
-router.route('/allergies/:id.') // returns list of all food items with an (id) allergy (ex: id = soy)
+
+const regex = /^[A-Za-z_]+$/;
+const regex2 = /^[0-9]+$/;
+const nodata = 'there are no menu items with that allergen.';
+  
+router.route('/allergies/:id') // returns list of all food items with an (id) allergy (ex: id = soy)
   .get(async (req, res) => {
     try {
-      const regex = /^[A-Za-z_]+$/;
-      const regex2 = /^[0-9]+$/;
-      const nodata = 'there are no menu items with that allergen.';
       const {id} = req.params;
 
       // this is for filtering menu items by the name of the allergen / restriction
@@ -455,10 +463,56 @@ router.route('/allergies/:id.') // returns list of all food items with an (id) a
       res.json({message: 'Something went wrong'});
     }
   })
+  .delete(async (req, res) => {
+    try {
+      const {id} = req.params;
+      let q; 
 
-/// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
-/// /////////////////////////////////
+      if (regex2.test(id)) {
+        q = await db.sequelizeDB.query(dietByNumber(id), {
+          type: db.Sequelize.QueryTypes.SELECT
+        });
+      }  
+        
+      let storeUnique = [];
+      let storeDuplicates = [];
+
+      const len = await q.length;
+      
+      console.log(len);
+      for (let i = 0; i < len; i++) {  // then, for every menu item in the "r" list,
+        const innerdata = q[i];             // "innerdata" = the nested Objects themsleves (nonreadable)
+        const data = Object.values(innerdata);  
+        let thisMeal = data[1];
+        console.log("thisMeal: ", thisMeal);
+
+        if (storeUnique.includes(thisMeal)) {
+          storeDuplicates.push(thisMeal);
+          continue;
+        } else {
+          storeUnique.push(thisMeal);
+        }
+      }
+      const deleteNum = storeDuplicates.length;
+          
+      if (storeDuplicates.length > 0) {
+        storeDuplicates
+          .forEach(thing => db.sequelizeDB.query(deleteOne(thing, deleteNum), {
+          type: db.Sequelize.QueryTypes.DELETE
+        }));
+        res.send('duplicates deleted.')
+      } else {
+        res.send('no duplicates found!')
+      }
+    } catch (err) {
+      console.log(err);
+      res.json({message: 'Something went wrong'});  
+    }
+  }
+);
+////////////////////////////////////
+///////Dining Hall Endpoints////////
+////////////////////////////////////
 router.get('/dining', async (req, res) => {
   try {
     const halls = await db.DiningHall.findAll();
@@ -477,7 +531,6 @@ router.get('/dining/:hall_id', async (req, res) => {
         hall_id: req.params.hall_id
       }
     });
-
     res.json(hall);
   } catch (err) {
     console.error(err);
@@ -718,4 +771,4 @@ router.get('/custom', async (req, res) => {
 
 export default router;
 
-/// JOSH MENSAH///
+/// JOSH MENSAH

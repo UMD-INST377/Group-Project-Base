@@ -94,6 +94,7 @@ body {
 }
 
 .table, .table1, .table2, .table3 {
+    display: flex;
     background-color: #fff;
     color: #363636;
     margin-bottom: 1.5rem;
@@ -101,8 +102,14 @@ body {
     margin-right: auto;
     margin-left: auto;
     border-radius: 6px;
+    width: 100%;
+    justify-content: center;
 }
 
+.table1, .table3 {
+    display: flex;
+    width: 17%;
+}
 .company_size {
     display: flex;
     flex-direction: column;

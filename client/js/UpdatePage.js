@@ -9,7 +9,7 @@ async function popLinkingTables() { // Populates linking tables
     method: 'POST'
   })
   // Uncomment this after you make the get username and playlist function
-  // const songPlay = await fetch('api/playlist_songs/', { 
+  // const songPlay = await fetch('api/playlist_songs/', {
   //   method: 'POST'
   // })
   const artAlb = await fetch('api/artist_albums/', {
@@ -17,6 +17,10 @@ async function popLinkingTables() { // Populates linking tables
   })
   // add songPlay to this when you complete the above comment
   console.log(songGen, songArt, songAlb, artAlb);
+}
+
+async function newPlaylist(userPlaylist) {
+
 }
 
 async function iAdd(songInfo, userInfo) {
@@ -32,7 +36,7 @@ async function iAdd(songInfo, userInfo) {
     //   name: songEvent.target.value,
     //   is_explicit: songInfo[3].checked ? 1 : 0,
     // }),);
-    const addSong = await fetch('api/songs/', { 
+    const addSong = await fetch('api/songs/', {
       method: 'POST',
       body: JSON.stringify({
         name: songEvent.target.value,
@@ -98,11 +102,11 @@ async function iAdd(songInfo, userInfo) {
   popLinkingTables();
 }
 
-async function getUserAndPlaylist(array)
+// async function getUserAndPlaylist(array)
 
 async function songDelete() {
   console.log('hello from delete');
-  
+
   const request = `api/songs/${formbox.value}`;
   const resp = await fetch(request, { method: 'DELETE' });
   console.log(resp);
@@ -113,7 +117,7 @@ async function songDelete() {
   }
 }
 async function mainEvent() {
-  const forms = [document.querySelector('.form1'), document.querySelector('.form2'), document.querySelector('.form3')]; 
+  const forms = [document.querySelector('.form1'), document.querySelector('.form2'), document.querySelector('.form3')];
   const userInfo = [document.querySelector('#playlist_owner_get'), document.querySelector('#playlist_name_get')];
   const infoAdd = [document.querySelector('#song_name_add'), document.querySelector('#artist_name_add'), document.querySelector('#album_name_add'),document.querySelector('#genre_add'), document.getElementById('explic')]
   forms[0].addEventListener('submit', async (event) => {

@@ -40,7 +40,8 @@ The are no prewritten tests in our application, though other methods can be used
 - GET - Gets records from database and returns JSON response.
 - POST - Creates new record in the database and sends back "Successful. Record Updated" if valid.
 
-`/api/album/:artist_id` - API route for specific artist.
+`/api/artist/:artist_id` - API route for specific artist.
+> Example: "/api/artist/1" will display the artist with the artist_id "1"
 
 - GET - Gets record from database and returns JSON response.
 - DELETE - Deletes record from the database and sends back "Success. Record Deleted" if valid

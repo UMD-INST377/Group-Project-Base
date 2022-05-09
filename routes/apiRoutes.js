@@ -27,20 +27,20 @@ router.route('/songs')
 // })
 
 .get(async (req, res) => {
-  try {
-      const playlistList = await db.song.findAll()
-      res.json({data: playlistList});
-  } catch (err) {
-      console.error(err);
-      res.send({message: 'Error1!'});
-  }
+    try {
+        const songList = await db.songs.findAll()
+        res.json({data: songList});
+    } catch (err) {
+        console.error(err);
+        res.send({message: 'Error!'});
+    }
 })
 
 router.route('/songs/:id') 
 .get(async (req, res) => {
     try {
-      const {id} = req.params;
-      const song = await db.song.findAll({
+      const {song_id} = req.params;
+      const song = await db.songs.findAll({
         where: {
           id: id
         }
@@ -53,13 +53,14 @@ router.route('/songs/:id')
 });
 
 router.route('/songs').post( async (req, res) => {
-  const songList = await db.song.findAll();
+  const songList = await db.songs.findAll();
   const currentId = (await songList.length) + 1;
   try {
-    const newSong = await db.song.create({
-      id: currentId,
-      title: req.body.title,
-      artist_id: req.body.artist_id,
+    const newSong = await db.songs.create({
+      song_id: currentId,
+      song_name: req.body.song_name,
+      duration: req.body.duration,
+      genre_id: req.body.genre_id,
     });
     res.json({ data: newSong});
   } catch (err) {
@@ -318,6 +319,99 @@ router.route('/artist/:id')
     }
 });
 
+///********//
+// RATINGS //
+///********//
+
+router.route('/ratings')
+.get(async (req, res) => {
+    try {
+        const ratingsList = await db.ratings.findAll()
+        res.json({data: ratingsList});
+    } catch (err) {
+        console.error(err);
+        res.send({message: 'Error!'})
+    }
+})
+
+router.route('/rating/:id')
+.get(async (req, res) => {
+    try {
+        const {id} = req.params;
+        const ratingsList = await db.ratings.findAll();
+        res.json({data: ratings[id]});
+    } catch (err) {
+        console.error(err);
+        res.json({message: 'Error!'})
+    }
+})
+// ratings POST/PUT/DELETE
+// POST
+router.route('/ratings')
+.post(async (req, res) => {
+    const ratingsList = await db.ratings.findAll();
+    const currentId = (await ratingsList.length) + 1;
+    try {
+      const newRating = await db.ratings.create({
+        rating_id: currentId,
+        ratings: req.body.ratings,
+        description: req.body.description,
+        song_id: req.body.song_id,
+        chart_id: req.body.chart_id,
+      });
+      res.json(newRating);
+    } catch (err) {
+      console.error(err);
+      res.error('Servor error')
+    }
+});
+
+// PUT
+router.route('/rating/:id')
+.put(async (req, res) => {
+    try {
+      const {id} =  req.params;
+      await db.ratings.update(
+        {
+          ratings: req.body.ratings
+        },
+        {
+          description: req.body.description
+        },
+        {
+          song_id: req.body.song_id
+        },
+        {
+          chart_id: req.body.chart_id
+        },
+        {
+          where: {
+            rating_id: id
+          }
+        }
+      );
+      res.send('Rating Successfully Updated')
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Servor error'})
+    }
+});
+
+// DELETE
+router.route('/ratings/:id')
+.delete(async (req, res) => {
+    try {
+      await db.ratings.destroy({
+        where: {
+          rating_id: req.params.rating_id
+        }
+      });
+      res.send("Sucessfully Deleted")
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+});
 
 ///////
 router.route('/playlist')
@@ -342,6 +436,61 @@ router.route('/playlist/:id')
        res.json({message: 'Error!'});
    }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

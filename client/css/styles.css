@@ -92,7 +92,9 @@ footer {
     justify-content: center;
     align-items: center;
     margin: 0px 50px 50px 50px;
+    flex-direction: row;
 }
+
 
 .page_title {
     display: flex;
@@ -142,10 +144,10 @@ footer {
 }
 
 /*  CHARTS STYLES */
-.charts_subheader {
+.charts_header {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 .charts_title {
@@ -159,20 +161,28 @@ footer {
     color: #000000;
 }
 
-.charts_subtitle {
+.charts_categories h1 {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 25px;
+    line-height: normal;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
-.chart_page_carousel {
+.charts_categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.chart_carousel {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 50px 50px 10px 50px;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
 }
@@ -264,4 +274,48 @@ margin-top: 20px;
 
 .home_btn a {
     text-decoration: none;
+}
+
+.account_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10%;
+}
+
+div .account_text {
+    display: flex;
+    justify-content: center;
+}
+
+div .account_label {
+    justify-content: right;
+}
+
+.account_buttons {
+    display: flex;
+    padding: 5%;
+    flex-direction: row;
+}
+
+.account_buttons button {
+    border: none;
+    border-radius: 25px;
+    padding: 10px 40px;
+    cursor: pointer;
+    background-color: #ffcc6a;
+}
+
+.form_block {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    margin: 0px 800px 0px 800px; 
+    padding: 100px;/*added padding*/
+    border-radius: 10px;
+    border-style: solid; 
+    border-color: black;
+    margin-bottom: 100px;/*Added this*/
 }

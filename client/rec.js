@@ -42,7 +42,7 @@ tableMakeAlbum = fetch('/api/album').then((data) => {
   console.log(err);
 });
 
-// CREATES TABLE FOR GENRE USING JSON DATA FROM DATABASE (NEED TO FIX)
+// CREATES TABLE FOR GENRE USING JSON DATA FROM DATABASE
 tableMakeGenre = fetch('/api/genre').then((data) => {
   console.log(data);
   return data.json();
@@ -60,44 +60,46 @@ tableMakeGenre = fetch('/api/genre').then((data) => {
   console.log(err);
 });
 
-// FUNCTION TO SHOW/HIDE FULL TABLE CONTENTS FOR ARTISTS
+// Selectors for different tables within our application/database
 const x = document.getElementById('artist');
 x.style.display = 'none';
 
-function showTableArtist() {
-  if (x.style.display === 'none') {
-    x.style.display = 'block';
-  } else {
-    x.style.display = 'none';
-  }
-}
-
-// FUNCTION TO SHOW/HIDE FULL TABLE CONTENTS FOR ALBUM
 const y = document.getElementById('album');
 y.style.display = 'none';
 
-function showTableAlbum() {
-  if (y.style.display === 'none') {
-    y.style.display = 'block';
-  } else {
-    y.style.display = 'none';
-  }
-}
-
-// FUNCTION TO SHOW/HIDE FULL TABLE CONTENTS FOR GENRE
 const z = document.getElementById('genre');
 z.style.display = 'none';
 
-function showTableGenre() {
-  if (z.style.display === 'none') {
+// Function to display full details for records
+function changeTable() {
+  let dropdown = document.getElementById('selectBox')
+  let index = dropdown.selectedIndex;
+  if (index === 1) {
+    x.style.display = 'block';
+    y.style.display = 'none';
+    z.style.display = 'none';
+  }
+
+  else if (index === 2) {
+    y.style.display = 'block';
+    x.style.display = 'none';
+    z.style.display = 'none';
+  }
+
+  else if (index === 3) {
     z.style.display = 'block';
-  } else {
+    x.style.display = 'none';
+    y.style.display = 'none';
+  } 
+  else if (index !== 1 || index !== 2 || index !== 3) {
+    x.style.display = 'none';
+    y.style.display = 'none';
     z.style.display = 'none';
   }
 }
 
 // FUNCTION TO SEARCH IN OUR DATBASE
-async function searchAlbum() {
+async function searchData() {
   const results = await fetch('/api/album');
   const arrayFromJson = await results.json();
 
@@ -148,4 +150,4 @@ async function searchAlbum() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', async () => searchAlbum());
+document.addEventListener('DOMContentLoaded', async () => searchData());

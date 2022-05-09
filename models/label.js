@@ -7,7 +7,7 @@ export default (database, DataTypes) => {
         allowNull: false,
         primaryKey: true
       },
-      label: {
+      label_name: {
         type: DataTypes.STRING,
         allowNull: false
       }

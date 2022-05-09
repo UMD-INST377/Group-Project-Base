@@ -5,6 +5,7 @@ import Meals from './Meals.js';
 import Artist from './Artist.js';
 import album from './Album.js';
 import genre from './Genre.js';
+import label from './label.js';
 
 export default {
   DietaryRestrictions,
@@ -13,5 +14,6 @@ export default {
   Meals,
   Artist,
   album,
-  genre
+  genre,
+  label
 };

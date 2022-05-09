@@ -1,20 +1,21 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-import label from '../models/label.js';
+
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
 router.route('/label').get(async (req, res) => {
   try {
-    const art = await db.Label.findAll();
+    const art = await db.label.findAll();
     res.json(art);
   } catch (error) {
     console.error(error);
     res.send('Server Error');
   }
 });
+
 router.get('/label/:label_id', async (req, res) => {
   try {
     const art = await db.label.findAll({

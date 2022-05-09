@@ -50,6 +50,24 @@
     color: #000000;
 }
 
+.weekdays {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 35px;
+    color: #000000;
+    padding-left: 20px;
+}
+
+.weekdays, h4 {
+    width: 90px;
+    height: 100px;
+    background-color: #C4C4C4;
+}
+
 .data {
     position: absolute;
     width: 156px;
@@ -67,6 +85,12 @@
     text-align: center;
     
     color: #000000;
+}
+
+.north_schedule {
+    display: flex;
+    flex-direction: row;
+    margin-top: 80px;
 }
 
 .container {
@@ -131,6 +155,50 @@
 
     color: #000000;
 }
+
+.chart {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 700px;
+    align-self: center;
+    margin-top: 115px;
+}
+
+.foodLists {
+    display: flex;
+    flex-direction: row;
+    gap: 100px
+}
+
+.sub_headers {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    line-height: 47px;
+    color: #000000;
+}
+
+.columns {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.column_one, .column_two {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.diet_types {
+    width: 200px;
+    padding-left: 15px;
+    background: #DFDFDF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
 .a:link { text-decoration: none; }
 
 

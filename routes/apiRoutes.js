@@ -219,7 +219,7 @@ router.post('/students', async (req, res) => {
   const currentId = (await student.length) + 1;
   try {
     const newStudent = await db.students.create({
-      student_id: currentId,
+      student_id: req.body.student_id,
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       grad_semester: req.body.grad_semester,

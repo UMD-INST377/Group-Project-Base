@@ -6,14 +6,14 @@ UMD Food Service is a website developed by Chandra Tamang, Spencer VarZandeh, Am
 # Developer Manual
 1. How to install your application and all dependencies
   - To work on Group22-Project
-    - Fork the repository and the Clone the repository on your local folders
+    - Fork the repository and clone it on your local folders
   - npm Installion
-    - Type npm install in terminal
+    - Type "npm install" in your terminal
   - Git Installtion
     - macOS
       - Install brew if you do not have it
-      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      - Then type "brew install git" on terminal
+      - Command for installing brew is /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - Then type "brew install git" in your terminal
     - Window
       - [Choose compatible option from the list](https://git-scm.com/download/win)
   - Postman
@@ -22,7 +22,7 @@ UMD Food Service is a website developed by Chandra Tamang, Spencer VarZandeh, Am
 2. How to run your application on a server
   - Run website on local server
     - Type "npm start" and copy/paste the link on browser
-  - Heroku automatically delpoy the program so click on open app after commiting code
+  - Heroku automatically deploy the program so click on "Open app" after commiting your work
   - If automatic deployment fail
     - [Follow the instruction on this website](https://devcenter.heroku.com/articles/heroku-cli)
 4. How to run any tests you have written for your software

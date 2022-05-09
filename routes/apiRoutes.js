@@ -216,12 +216,14 @@ router.get('/artist_albums/:artist_id', async (req, res) => {
 });
 
 router.post('/artist_albums', async (req, res) => {
-  const artist_albums_items = await db.artistAlbums.findAll();
-  const currentId = (await artist_albums_items.length) + 1;
+  const artist_items = await db.artists.findAll();
+  const album_items = await db.albums.findAll()
+  const currentArtId = (await artist_items.length);
+  const currentAlbId = (await album_items.length);
   try {
     const newArtist_Album = await db.artist_albums.create({
-      artist_id: currentId,
-      album_id: req.body.album_id
+      artist_id: currentArtId,
+      album_id: currentAlbId
     });
     res.json(newArtist_Album);
   } catch (err) {
@@ -356,9 +358,9 @@ router.delete('/albums/:album_id', async (req, res) => {
 
 router.get('/album_songs', async (req, res) => {
   try {
-    const genreItems = await db.albumSongs.findAll();
-    const reply = genreItems.length > 0
-      ? { data: genreItems }
+    const albumSongsItems = await db.albumSongs.findAll();
+    const reply = albumSongsItems.length > 0
+      ? { data: albumSongsItems }
       : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
@@ -369,13 +371,13 @@ router.get('/album_songs', async (req, res) => {
 
 router.get('/album_songs/:album_id', async (req, res) => {
   try {
-    const genreItems = await db.albumSongs.findAll({
+    const albumSongsItems = await db.albumSongs.findAll({
       where: {
         album_id: req.params.album_id
       }
     });
 
-    res.json(genreItems);
+    res.json(albumSongsItems);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -383,14 +385,16 @@ router.get('/album_songs/:album_id', async (req, res) => {
 });
 
 router.post('/album_songs', async (req, res) => {
-  const genreItems = await db.albumSongs.findAll();
-  const currentId = (await genreItems.length) + 1;
+  const albumItems = await db.albums.findAll();
+  const songItems = await db.songs.findAll();
+  const currentAlbId = (await albumItems.length);
+  const currentSngId = (await songItems.length);
   try {
-    const newGenreInfo = await db.album_songs.create({
-      album_id: currentId,
-      song_id: req.body.song_id
+    const newAlbumSongsInfo = await db.album_songs.create({
+      album_id: currentAlbId,
+      song_id: currentSngId
     });
-    res.json(newGenreInfo);
+    res.json(newAlbumSongsInfo);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -463,12 +467,14 @@ router.get('/artist_songs/:artist_id', async (req, res) => {
 });
 
 router.post('/artist_songs', async (req, res) => {
-  const artSongItems = await db.artistSongs.findAll();
-  const currentId = (await artSongItems.length) + 1;
+  const artistItems = await db.artists.findAll();
+  const songItems = await db.songs.findAll();
+  const currentArtId = (await artistItems.length);
+  const currentSngId = (await songItems.length);
   try {
     const newStyle = await db.artistSongs.create({
-      artist_id: currentId,
-      song_id: req.body.song_id
+      artist_id: currentArtId,
+      song_id: currentSngId
     });
     res.json(newStyle);
   } catch (err) {
@@ -514,8 +520,8 @@ router.delete('/artist_songs/:artist_id', async (req, res) => {
 /// /////////////////////////////////
 router.get('/song_genres', async (req, res) => {
   try {
-    const halls = await db.songGenres.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    const songGenres = await db.songGenres.findAll();
+    const reply = songGenres.length > 0 ? { data: songGenres } : { message: 'no results found' };
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -525,13 +531,13 @@ router.get('/song_genres', async (req, res) => {
 
 router.get('/song_genres/:song_id', async (req, res) => {
   try {
-    const hall = await db.songGenres.findAll({
+    const songGenres = await db.songGenres.findAll({
       where: {
         song_id: req.params.song_id
       }
     });
 
-    res.json(hall);
+    res.json(songGenres);
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -539,12 +545,14 @@ router.get('/song_genres/:song_id', async (req, res) => {
 });
 
 router.post('/song_genres', async (req, res) => {
-  const halls = await db.songGenres.findAll();
-  const currentId = (await halls.length) + 1;
+  const songItems = await db.songs.findAll();
+  const genreItems = await db.genres.findAll();
+  const currentSngId = (await songItems.length);
+  const currentGnrId = (await genreItems.length);
   try {
     const newDining = await db.playlists.create({
-      song_id: currentId,
-      genre_id: req.body.genre_id
+      song_id: currentSngId,
+      genre_id: currentGnrId
     });
     res.json(newDining);
   } catch (err) {
@@ -619,12 +627,12 @@ router.get('/playlist_songs/:playlist_id', async (req, res) => {
 });
 
 router.post('/playlist_songs', async (req, res) => {
-  const playSongItems = await db.playlistSongs.findAll();
-  const currentId = (await playSongItems.length) + 1;
+  const songItems = await db.songs.findAll();
+  const currentSngId = (await songItems.length);
   try {
     const newStyle = await db.playlistSongs.create({
-      playlist_id: currentId,
-      song_id: req.body.song_id,
+      playlist_id: currentPlyId,
+      song_id: currentSngId,
       added_by: req.body.added_by,
       date_added: req.body.date_added
     });
@@ -705,6 +713,7 @@ router.get('/songs/:song_id', async (req, res) => {
 router.post('/songs', async (req, res) => {
   const songItems = await db.songs.findAll();
   const currentId = (await songItems.length) + 1;
+  console.log(req.body);
   try {
     const newStyle = await db.songs.create({
       song_id: currentId,
@@ -724,7 +733,7 @@ router.post('/songs', async (req, res) => {
     res.json(newStyle);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -776,7 +785,7 @@ router.delete('/songs/:song_id', async (req, res) => {
 /// ////Genres Endpoints/////////
 /// /////////////////////////////////
 
-router.get('/genres', async (req, res) => {
+router.get('/Genres', async (req, res) => {
   try {
     const genresItems = await db.genres.findAll();
     const reply = genresItems.length > 0
@@ -789,7 +798,7 @@ router.get('/genres', async (req, res) => {
   }
 });
 
-router.get('/genres/:genres_id', async (req, res) => {
+router.get('/Genres/:genres_id', async (req, res) => {
   try {
     const genresItems = await db.genres.findAll({
       where: {
@@ -804,7 +813,7 @@ router.get('/genres/:genres_id', async (req, res) => {
   }
 });
 
-router.post('/genres', async (req, res) => {
+router.post('/Genres', async (req, res) => {
   const genresItems = await db.genres.findAll();
   const currentId = (await genresItems.length) + 1;
   try {
@@ -819,7 +828,7 @@ router.post('/genres', async (req, res) => {
   }
 });
 
-router.put('/genres', async (req, res) => {
+router.put('/Genres', async (req, res) => {
   try {
     await db.genres.update(
       {
@@ -839,7 +848,7 @@ router.put('/genres', async (req, res) => {
   }
 });
 
-router.delete('/genres/:genre_id', async (req, res) => {
+router.delete('/Genres/:genre_id', async (req, res) => {
   try {
     await db.genres.destroy({
       where: {
@@ -924,5 +933,23 @@ router.get('/albumGraph', async (req, res) => {
     res.error('Sever error');
   }
 });
+
+// router.post('/playlists', async (req, res) => {
+//   const playlistItems = await db.playlists.findAll();
+//   const currentId = (await playlistItems.length) + 1;
+//   console.log(req.body);
+//   try {
+//     const newStyle = await db.playlists.create({
+//       playlist_id: currentId,
+//       owner: req.body.owner,
+//       name: req.body.name,
+//       description: req.body.description
+//     });
+//     console.log(newStyle);
+//   } catch (err) {
+//     console.log(err);
+//     res.send('Server error');
+//   }
+// });
 
 export default router;

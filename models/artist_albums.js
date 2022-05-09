@@ -3,12 +3,12 @@ export default (sequelize, DataTypes) => {
     'artist_album',
     {
       album_id: {
-        type: DataTypes.CHAR(20),
+        type: DataTypes.INTEGER,
         allowNull: false,
-        foreginKey: true
+        primaryKey: true
       },
       style_id: {
-        type: DataTypes.CHAR(20),
+        type: DataTypes.INTEGER,
         allowNull: false,
         foreginKey: true
       },

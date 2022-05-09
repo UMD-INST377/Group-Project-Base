@@ -3,12 +3,12 @@ export default (database, DataTypes) => {
     'album_songs',
     {
       album_id: {
-        type: DataTypes.CHAR(22),
+        type: DataTypes.INTEGER,
         allowNull: false,
-        foreignKey: true,
+        primaryKey: true,
       },
       song_id: {
-        type: DataTypes.CHAR(22),
+        type: DataTypes.INTEGER,
         allowNull: false,
         foreignKey: true
       },

@@ -1,5 +1,6 @@
 async function updateStudent() {
   const studentUpdate = {
+    student_id: document.getElementById('label').value,
     first_name: document.getElementById('label1').value,
     last_name: document.getElementById('label2').value,
     grad_semester: document.getElementById('label3').value,
@@ -7,7 +8,7 @@ async function updateStudent() {
     status: document.getElementById('label5').value,
     infosci_concentration: document.getElementById('label6').value
   };
-  console.log(companyUpdate);
+  // console.log(companyUpdate);
   await fetch('/api/students', {
     method: 'PUT',
     headers: {

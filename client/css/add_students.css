@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: grey;
-    height: 100vh;
+    height: 150vh;
 }
 
 .head {
@@ -43,11 +43,12 @@ body {
 }
 
 #form {
-    width: 120%;
-    height: 300px;
+    width: 110%;
+    height: 460px;
     display: flex;
     flex-wrap: column;
     flex-direction: column;
+    margin-top: 60px;
 }
 
 .form {
@@ -64,8 +65,13 @@ body {
     font-size: 30px;
 }
 
-#label, #label1, #label2, #label3, #label4, #label5, #label6 {
+#label, #label1, #label2, #label3, #label4, #label5 {
     width: 50%;
+    background-color: lightgrey;
+}
+
+#label6 {
+    width: 67%;
     background-color: lightgrey;
 }
 

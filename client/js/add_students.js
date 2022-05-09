@@ -1,6 +1,6 @@
 async function insertStudent() {
   const studentInsert = {
-    // company_id: document.getElementById('label').value,
+    student_id: document.getElementById('label').value,
     first_name: document.getElementById('label1').value,
     last_name: document.getElementById('label2').value,
     grad_semester: document.getElementById('label3').value,
@@ -19,5 +19,5 @@ async function insertStudent() {
 }
   
 document.querySelector('#button1').addEventListener('click', (event) => {
-  insertCompany();
+  insertStudent();
 });

@@ -4,7 +4,7 @@ async function updateAdvisors() {
     advisor_initials: document.getElementById('label1').value,
   };
   console.log(advisorUpdate);
-  await fetch('/api/company', {
+  await fetch('/api/advisors', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

@@ -44,7 +44,7 @@ body {
 
 #form {
     width: 120%;
-    height: 300px;
+    height: auto;
     display: flex;
     flex-wrap: column;
     flex-direction: column;

@@ -1,23 +1,4 @@
-function createHTMLtable(currentArray) {
-    //takes in array, prints html list
-    //create list
-    let result = '<ul>';
 
-    //loop through each object in array, add hall names to a list
-    for (let i = 0; i < currentArray.length; i++) {
-      result += `
-        <li> <a href="/menus/index.html">${currentArray[i].hall_name}</a></li>`;
-    }
-    result += '</ul>';
-
-    
-    const targetList = document.querySelector('.hall_list');
-  
-    //inject the table
-    targetList.innerHTML = '';
-    targetList.innerHTML += result;
-  
-  }
   
 
 async function mainEvent() { //mainEvent refers to page loading
@@ -27,7 +8,32 @@ async function mainEvent() { //mainEvent refers to page loading
     
     //create the table
     //createHTMLtable(hallArrayFromJson.data);
-    
+  
+const table = document.querySelector('.table')
+const mealData = await fetch('/api/meals')
+const data = await mealData.json()
+let currentData = data
+console.log(data);
+const searchBar = document.querySelector('#search')
+
+function createHTMLtable(currentArray) {
+  currentData = currentArray.filter((item) => item.meal_name.toLowerCase().includes(searchBar.value.toLowerCase()))
+  console.log(currentData);
+  table.innerHTML = `<tr>
+  <th>
+  Meal Name
+  </th>
+  <th>
+ Meal Category
+  </th>
+</tr>`
+currentData.forEach(element => {
+  table.innerHTML += `<tr> <th>${element.meal_name}</th> <th>${element.meal_category}</th> </tr>`
+  
+});
+}
+
+searchBar.addEventListener('change', () => {createHTMLtable(data)})
   }
   
   document.addEventListener('DOMContentLoaded', async() => mainEvent());

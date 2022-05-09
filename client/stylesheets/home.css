@@ -38,3 +38,7 @@ a:hover {
 a:active {
     color: blue;
 }
+
+table{
+    background: white;
+}

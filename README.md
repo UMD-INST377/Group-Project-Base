@@ -17,7 +17,7 @@ UMD Food Service is a website developed by Chandra Tamang, Spencer VarZandeh, Am
     - Window
       - [Choose compatible option from the list](https://git-scm.com/download/win)
   - Postman
-    - Use browser or indtall the application
+    - Use browser or install the application
     - [Choose appropriate option for your device from this website](https://www.postman.com/downloads/)
 2. **How to run your application on a server**
   - Run website on local server

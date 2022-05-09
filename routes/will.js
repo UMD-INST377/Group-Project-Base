@@ -78,11 +78,11 @@ router.put('/meals', async (req, res) => {
 
 // api/will/meals
 // deletes meal based on body input 
-router.delete('/meals', async (req, res) => {
+router.delete('/meals/:meal_id', async (req, res) => {
   try {
     await db.Meals.destroy({
       where: {
-        meal_id: req.body.meal_id
+        meal_id: req.params.meal_id
       }
     });
     res.send('Meal Successfully Deleted');

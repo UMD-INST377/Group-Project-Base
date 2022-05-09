@@ -223,19 +223,6 @@ router.route('/dietaryRestrictions/:id')
     }
   });
 // Josh Mensah GET Controllers
-router.route('/josh');
-router.route('/mealRestrictions')
-  .get(async (req, res) => {
-    try {
-      const result = await db.MealRestrictions.findAll();
-      res.json({data: result});
-    } catch (err) {
-      console.log(err);
-      res.json({message: 'something went wrong'});
-    }
-  });
-
-// Josh Mensah GET Controllers
 router.route('/josh')
   .get(async (req, res) => {
     try {
@@ -246,6 +233,7 @@ router.route('/josh')
       res.json({message: 'something went wrong'});
     }
   });
+
 
 // Brian McMahon GET controllers
 router.route('/brian')

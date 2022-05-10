@@ -240,7 +240,7 @@ function changeTable() {
   }
 }
 
-// Functon to Update Table
+// Functon to Show Form to Update Table
 function updateTable() {
   let dropdown = document.getElementById('updateBox')
   let index = dropdown.selectedIndex;

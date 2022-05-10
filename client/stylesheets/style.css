@@ -1190,11 +1190,7 @@ p {
 
 /* Notifs
 ================================== */
-<<<<<<< HEAD:client/stylesheets/style.css
-.acct_notif {
-=======
 .acct_notif, .notifs {
->>>>>>> c46cf5084d3409e3b2d77d1040c637601e6c7446:public/stylesheets/style.css
   font-size: 12px;
   color: maroon;
 }

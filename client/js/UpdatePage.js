@@ -128,18 +128,6 @@ async function iAdd(songInfo, userInfo) { // Adds info into the database
   popLinkingTables(user);
 }
 
-// async function getUserAndPlaylist(array)
-
-async function songDelete() {
-  console.log('hello from delete');
-
-  const request = `api/songs/${formbox.value}`;
-  const resp = await fetch(request, { method: 'DELETE' });
-  console.log(resp);
-  if (resp.status === 200) {
-    alert(`${formbox.value}.deleted`);
-  } else {
-    alert('Not_Found');
 async function iDel(songInfo, userInfo) { // TODO get this to work 
   const user = getUserAndPlaylist(userInfo)
   if (user === 0) {

@@ -17,29 +17,29 @@ function getImage(songID) {
   return url;
 }
 
+function createGenreList(collection) {
+  console.log(collection,'Collection');
+  const targetList = document.querySelector('.song_images_chart');
+  targetList.innerHTML = '';
+  // collection = Object.values(collection);
+  // const entries = Object.entries(collection);
+  // console.log(entries);
+
+  collection.data.forEach((item) => {
+    const injectThisItem = `<li><img class="placeholder" src="${getImage(item.song_id)}" alt="Placeholder Image">${item.song_name}</li>`;
+    console.log(item.song_name);
+    targetList.innerHTML += injectThisItem;
+  });
+  console.log(Object.values(collection));
+}
+
 async function mainChart() {
     const genres = await fetch('api/songs'); // This accesses some data from our API
       const genreArray = await genres.json(); // This changes it into data we can use - an object
       console.log('Charts fetch');
       console.log(genreArray);
       createGenreList(genreArray);
-    }
+  }
     
-    
-      function createGenreList(collection) {
-        console.log(collection,'Collection');
-        const targetList = document.querySelector('.songs_images');
-        targetList.innerHTML = '';
-        // collection = Object.values(collection);
-        // const entries = Object.entries(collection);
-        // console.log(entries);
 
-       collection.data.forEach((item) => {
-          const injectThisItem = `<li><img class="placeholder" src="${getImage(item.song_id)}" alt="Placeholder Image">${item.song_name + item.song_id}</li>`;
-          console.log(item.song_name);
-          targetList.innerHTML += injectThisItem;
-        });
-        console.log(Object.values(collection));
-      }
-
-      mainChart();
+  mainChart();

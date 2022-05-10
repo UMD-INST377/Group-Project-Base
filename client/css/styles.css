@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+.page_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 50px 50px 50px;
+}
+
 * {
     font-family: "Montserrat", sans-serif;
     box-sizing: border-box;
@@ -61,22 +68,28 @@ footer {
     padding: 5px;
 }
 
+/* INDEX styles  */
+.carousel_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 50px 50px 50px;
+}
+
+
 .songs_carousel {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 50px 50px 10px 50px;
-    flex-direction: row;
     
 }
-
 
 .artists_carousel {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 50px 50px 10px 50px;
-    flex-direction: row;
 }
 
 .genres_carousel {
@@ -84,108 +97,47 @@ footer {
     justify-content: center;
     align-items: center;
     margin: 50px 50px 10px 50px;
-    flex-direction: row;
 }
 
-.carousel_title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px 50px 50px 50px;
-    flex-direction: row;
-}
-
-
-.page_title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 50px 50px 50px;
-}
-
-
-.songs_images {
-    list-style: none;
-    display: flex;
+.song_images {
+    list-style: inline-block;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.songs_images li {
-    display: inline-block;
-    padding: 0px 20px;
-}
-
-.artists_images {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.artists_images li {
-    display: inline-block;
-    padding: 0px 20px;
-}
-
-.genres_images {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.genres_images li {
-    display: inline-block;
-    padding: 0px 20px;
-}
-
-/*  CHARTS STYLES */
-.charts_header {
-    display: flex;
+.song_images li {
+    display: inline-flex;
     flex-direction: column;
-    align-items: center;
+    padding: 0px 20px;
+    flex-wrap: wrap;
 }
 
-.charts_title {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 37px;
-    /* identical to box height */
-
-    color: #000000;
-}
-
-.charts_categories h1 {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: normal;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-.charts_categories {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.chart_carousel {
-    display: flex;
+.artist_images {
+    list-style: inline-block;
     justify-content: center;
     align-items: center;
-    margin: 50px 50px 10px 50px;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
+    flex-wrap: wrap;
 }
+
+.artist_images li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.genre_images {
+    list-style: inline-block;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.genre_images li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+
 
 /* CONTRIBUTE STYLES */
 
@@ -197,8 +149,7 @@ css. I will leave comments, feel free to change back - Maxim*/
     flex-direction: column;
     align-items: center;
     background-color: white;
-    margin: 0px 800px 0px 800px; 
-    padding: 100px;/*added padding*/
+    padding: 5%;/*added padding*/
     border-radius: 10px;
     border-style: solid; 
     border-color: black;
@@ -206,8 +157,8 @@ css. I will leave comments, feel free to change back - Maxim*/
 }
 
 .form_row {
-margin-bottom: 20px;
-margin-top: 20px;
+margin-bottom: 10px;
+margin-top: 10px;
 
 }
 
@@ -219,7 +170,7 @@ margin-top: 20px;
 .form_row input[type=submit] {
     border: none;
     border-radius: 25px;
-    padding: 10px 40px;
+    padding: 10px 25px;
     cursor: pointer;
     background-color: #ffcc6a;
 }
@@ -276,7 +227,7 @@ margin-top: 20px;
     text-decoration: none;
 }
 
-.account_content {
+.boxed_content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -309,20 +260,6 @@ margin-top: 20px;
     background-color: #ffcc6a;
 }
 
-.form_block {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    margin: 0px 800px 0px 800px; 
-    padding: 100px;/*added padding*/
-    border-radius: 10px;
-    border-style: solid; 
-    border-color: black;
-    margin-bottom: 100px;/*Added this*/
-}
-
 a, a:visited, a:active {
     color: inherit;
     text-decoration: none;
@@ -333,10 +270,51 @@ a:hover {
     font-weight: bold;
 }
 
-/* Charts  Page 
-*/
+/*  CHARTS STYLES */
+.charts_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-.songs_images li { 
+.charts_title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 37px;
+    /* identical to box height */
+
+    color: #000000;
+}
+
+.charts_categories h1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: normal;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.charts_categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.chart_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 50px 10px 50px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.song_images_chart li { 
     display: flex;
     flex-direction: column;
     padding: 2%;

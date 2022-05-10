@@ -98,3 +98,10 @@ li{
     background: transparent; /* make scrollbar transparent */
 }
 
+@media screen and (max-width: 720px) {
+    .button_wrap{
+        flex-direction: column;
+        align-items: center;
+        
+    }
+}

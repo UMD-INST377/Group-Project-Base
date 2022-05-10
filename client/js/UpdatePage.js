@@ -266,7 +266,8 @@ async function mainEvent() {
     console.log('form submission');
   });
   forms[2].addEventListener('submit', async (event) => {
-
+    iDel();
+    event.preventDefault();
   })
   // add.addEventListener('input', songAdd);
   // del.addEventListener('input', songDelete);

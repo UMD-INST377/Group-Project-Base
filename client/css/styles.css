@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.page_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 50px 50px 50px;
+}
+
+* {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-image: url("/bg.png");
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin:0;
+}
+
+header {
+    padding: 30px 10%;
+    background-color: #ffcc6a;
+}
+
+footer {
+    position: fixed;
+    padding: 10px;
+    background-color: #ffcc6a;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+img {
+    border-radius: 6px;
+}
+
+.nav_menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.nav_menu li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav_menu a, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav_menu a:hover {
+    color: white;
+}
+
+.nav_menu input[type=text] {
+    border-radius: 25px;
+    width: 300px;
+    padding: 5px;
+}
+
+/* INDEX styles  */
+.carousel_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 50px 50px 50px;
+}
+
+
+.songs_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 50px 10px 50px;
+    height: 500px;
+    overflow: scroll;
+}
+
+.artists_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 50px 10px 50px;
+}
+
+.genres_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 50px 10px 50px;
+}
+
+.song_images {
+    list-style: inline-block;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    padding-left: 70px;
+    padding-top: 50px;
+    align-items: center;
+}
+
+.song_images li {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    align-items: center;
+    font-style: italic;
+
+}
+
+.artist_images {
+    list-style: inline-block;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.artist_images li {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    align-items: center;
+}
+
+.genre_images {
+    list-style: inline-block;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.genre_images li {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    align-items: center;
+}
+
+
+
+/* CONTRIBUTE STYLES */
+
+/* This part looked really funky on my page, trying some changes to the 
+css. I will leave comments, feel free to change back - Maxim*/
+.form_block {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 5%;/*added padding*/
+    border-radius: 10px;
+    border-style: solid; 
+    border-color: black;
+    margin-bottom: 100px;/*Added this*/
+}
+
+.form_row {
+margin-bottom: 10px;
+margin-top: 10px;
+
+}
+
+.form_row input[type=text] {
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.form_row input[type=submit] {
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    cursor: pointer;
+    background-color: #ffcc6a;
+}
+  
+.form_row input[type=submit]:hover {
+    background-color: #c79e53;
+}
+
+.form_row input[type=submit]:active {
+    background-color: lightgray;
+}
+
+/* minor changes here as well*/
+.thankyou {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    margin: 0px 700px 0px 700px;
+    padding: 70px; /*changed from 20 to 70px*/
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom:100px; /*added this*/ 
+}
+
+.checkmark {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 700px 30px 700px;
+}
+
+.home_btn button {
+    border: none;
+    border-radius: 25px;
+    padding: 10px 40px;
+    cursor: pointer;
+    background-color: #ffcc6a;
+    margin-top: 20px;
+}
+  
+.home_btn button:hover {
+    background-color: #c79e53;
+}
+
+.home_btn button:active {
+    background-color: lightgray;
+}
+
+.home_btn a {
+    text-decoration: none;
+}
+
+.boxed_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10%;
+}
+
+.account_text {
+    display: flex;
+    justify-content: right;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.account_label {
+    align-self: center;
+    text-align: center;
+}
+
+.account_buttons {
+    display: flex;
+    padding: 5%;
+    flex-direction: row;
+}
+
+.account_buttons button {
+    border: none;
+    border-radius: 25px;
+    padding: 10px 40px;
+    cursor: pointer;
+    background-color: #ffcc6a;
+}
+
+a, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    font-weight: bold;
+}
+
+/*  CHARTS STYLES */
+.charts_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.charts_title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 37px;
+    /* identical to box height */
+
+    color: #000000;
+}
+
+.charts_categories h1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: normal;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.charts_categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.chart_carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 50px 10px 50px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.song_images_chart li { 
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    align-items: center;
+}
+
+.placeholder {
+    width: 300px;
+    height: 300px;
+}

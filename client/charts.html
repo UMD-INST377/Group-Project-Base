@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <title>inTune | Home Maxim TEST </title>
+        <title>inTune | Charts</title>
         <link rel="stylesheet", href="css/styles.css">
     </head>
     <body>
@@ -14,50 +13,33 @@
                     <li><img class="logo" src="./inTune_Header.png" alt="inTune Logo" width="143px" height="46px"/></li>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="charts.html">Charts</a></li>
-                    <li><input id="search_bar"onkeyup="intuneSearch()" type="text" placeholder="Search..."></li>
+                    <li><input type="text" placeholder="Search..."></li>
                     <li><a href="contribute.html">Contribute</a></li>
-                    <li><a href="account.html">Account</a></li>
-                    <li><a href="about.html">?</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">?</a></li> 
                 </ul>
             </nav>
         </header>
-
-        <div class="song_carousel">
-            <ul class ="song_images">
-        
-            </ul>
-            
+        <div class="charts_header">
+            <h2 class="charts_title">Charts</h2>
+            <div class="charts_categories">
+                <h1><a id="billboard" href="#"> Billboard </a></h1>
+                <h1><a id="spotify" href="#"> Spotify </a></h1>
+                <h1><a id="apple" href="#"> Apple Music </a></h1>
+                <h1><a id="pandora" href="#"> Pandora  </a></h1>
+            </div>
         </div>
 
-        <div class="carousel_title">
-            <h1>Top Songs</h1>
-        </div>
-
-        <div class="artists_carousel">
-            <ul class ="artist_images">
-                
+        <div class="chart_carousel">
+            <ul class ="song_images_chart">
+                <!--Javascript Gnomes, do your magic!.-->
             </ul>
         </div>
 
-        <div class="carousel_title">
-            <h1>Top Artists</h1>
-        </div>
-
-
-
-        <div class="genres_carousel">
-            <ul class ="genre_images">
-            
-            </ul>
-        </div>
-
-        <div class="carousel_title">
-            <h1>Top Genres</h1>
-        </div>
 
         <footer>
             <p class="footer_text">Group 18 | INST377 | University of Maryland</p>
         </footer>
-        <script src='/js/indexScript.js', charset="UTF-8"></script>
+        <script src='./js/chartsScript.js'></script>
     </body>
 </html>

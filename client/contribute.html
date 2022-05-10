@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>inTune | Contribute</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script async defer src="./js/contributeScript.js" charset="UTF-8"></script>
+    </head>
+    <body>
+        <header>
+            <nav> <!---Navigation Menu-->
+                <ul class="nav_menu">
+                    <!---Make sure to change the href="" property when adding the second page. For example, Charts should be href="charts.html" eventually -->
+                    <li><img class="logo" src="./inTune_Header.png" alt="inTune Logo" width="143px" height="46px"/></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="charts.html">Charts</a></li>
+                    <li><input onkeyup="inTuneSearch()" type="text" placeholder="Search..."></li>
+                    <li><a href="contribute.html">Contribute</a></li>
+                    <li><a href="account.html">Account</a></li>
+                    <li><a href="about.html">?</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="page_title">
+            <h1>Contribute</h1>
+        </div>
+        <div class="boxed_content">
+            <form class="form_block" id="contribute_form" ><!---action="contribute_submission.html"-->
+                <div class="form_row">
+                    <label for="first_name"><b>Artist's First Name</b></label>
+                </div>
+
+                <div class="form_row">
+                    <input id="first_name" name="first_name" type="text" placeholder="First Name"/>
+                </div>
+
+                <div class="form_row">
+                    <label for="last_name"><b>Artist's Last Name</b></label>
+                </div>
+
+                <div class="form_row">
+                    <input id="last_name" name="last_name" type="text" placeholder="Last Name"/>
+                </div>
+                
+                <div class="form_row">
+                    <input type="submit" value="Contribute" onclick="location.href = 'contribute_submission.html';">
+                </div>
+            </form>
+        </div>
+
+        <footer>
+            <p class="footer_text">Group 18 | INST377 | University of Maryland</p>
+        </footer>
+        
+    </body>
+</html>

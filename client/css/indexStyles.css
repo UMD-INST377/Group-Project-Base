@@ -12,7 +12,12 @@ body {
   background-color:#F2F0E4;
   height: 150vh;
 }
-
+a {
+    display: flex;
+    box-sizing: inherit;
+    flex-direction: column;
+    align-items: flex-end;
+}
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #3E4F36;

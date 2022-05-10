@@ -1,11 +1,12 @@
-/* eslint-disable no-restricted-syntax */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
+/* eslint-disable no-restricted-syntax */
 
 // how to access object in returned query array: console.log(arrayFromJson.data[0]);
 
 function generateTableHead(table, data) {
+  table.innerHTML = '';
   const thead = table.createTHead();
   const row = thead.insertRow();
   for (const key of data) {
@@ -16,6 +17,7 @@ function generateTableHead(table, data) {
   }
 }
 
+// TODO: clear table before generating
 function generateTable(table, data) {
   for (const element of data) {
     const row = table.insertRow();
@@ -28,8 +30,7 @@ function generateTable(table, data) {
   }
 }
 
-/// // /
-function createHtmlList(collection) {
+/* function createHtmlList(collection) {
   const targetList = document.querySelector('.plants_list');
   targetList.innerHTML = '';
   collection.forEach((item) => {
@@ -38,7 +39,7 @@ function createHtmlList(collection) {
     const injectThisItem = `<li>${displayName}</li>`;
     targetList.innerHTML += injectThisItem;
   });
-}
+} */
 
 async function mainEvent() {
   console.log('script loaded');
@@ -46,14 +47,19 @@ async function mainEvent() {
   const arrayFromJson = await results.json();
   console.log(arrayFromJson);
 
-  // generate table
   const table = document.querySelector('table');
   const data = Object.keys(arrayFromJson.data[0]);
   generateTableHead(table, data);
-  generateTable(table, arrayFromJson.data);
+
+  // generate table
+  // const table = document.querySelector('table');
+  // const data = Object.keys(arrayFromJson.data[0]);
+  // generateTableHead(table, data);
+  // generateTable(table, arrayFromJson.data);
 
   // const form = document.querySelector('.map_form');
   const location = document.querySelector('#location');
+  const submit = document.querySelector('.submit_button');
 
   if (arrayFromJson.data.length > 0) {
     location.addEventListener('input', async (event) => {
@@ -65,8 +71,15 @@ async function mainEvent() {
         return upperCode.includes(upperInput);
       });
 
-      console.log(selectLocation);
-      createHtmlList(selectLocation);
+      /* console.log(selectLocation);
+      generateTableHead(table, data);
+      generateTable(table, selectLocation); */
+
+      submit.addEventListener('click', async (event) => {
+        console.log('submitted');
+        generateTableHead(table, data);
+        generateTable(table, selectLocation);
+      });
     });
   }
 }

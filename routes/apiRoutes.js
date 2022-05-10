@@ -92,6 +92,7 @@ router.delete('/artists/:artist_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
 /* artwork endpoint */
 router.route('/artwork')
   .get(async (req, res) => {

@@ -286,9 +286,24 @@ export async function displayPastSearches() {
 }
 
 async function deleteQuery(key) {
-    let item = JSON.parse(sessionStorage.getItem(key)).timestamp
-    let sqlTime = item.slice(0, 19).replace('T', ' ');
-    console.log(sqlTime)
+    let itemStamp = JSON.parse(sessionStorage.getItem(key)).timestamp
+    let form = new URLSearchParams({
+        user: username,
+        timestamp: itemStamp
+    })
+    fetch('/index', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: form
+    }).then((res) => {
+        if (res.status === 200) {
+            document.getElementById(key).remove();
+            sessionStorage.removeItem(key)
+        }
+    })
+    .catch(console.log)
 }
 
 async function main() {

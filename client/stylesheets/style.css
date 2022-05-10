@@ -1194,3 +1194,7 @@ p {
   font-size: 12px;
   color: maroon;
 }
+
+#user {
+  object-fit: contain;
+}

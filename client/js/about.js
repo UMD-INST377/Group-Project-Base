@@ -44,6 +44,35 @@ function loadUser() {
         
     }
 }
+async function retrieveHistory() {
+    // if values current in session storage
+    if (sessionStorage.getItem('username') !== null & sessionStorage.getItem('password') !== null) {
+        // bundle into request body
+        let payload = new URLSearchParams({
+             username: sessionStorage.getItem('username'),
+             // to decrypt query data
+             password: sessionStorage.getItem('password')
+            })
+        // send POST request
+        let response = fetch('/queries/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: payload
+        })
+        .then((res) => {
+            // everything went ok
+            if (res.statusText === 'OK') {
+                return res.json();
+            }
+            throw new Error(`Something went wrong. Wasn't able to retrieve history.`)
+        }).then((res) => {
+            saveHistory(res); // going too slow!!
+        }
+        ).then(console.log('retrieveHistory() complete.')).catch((e) => console.log(e))
+    }
+}
 // stores data to session
 async function storeSession(userData) {
     if (typeof userData === 'undefined') {
@@ -118,7 +147,6 @@ async function userLogin(e){
 
 
 function main() {
-    loadUser();
     // User Sign Up
     // const signUpSubmit = document.querySelector('#sign_up');
     const signUpModal = document.querySelector('.sign_up_modal');
@@ -148,6 +176,8 @@ function main() {
         signUpModal.style.display = 'flex';
     })
         // if user account already stored..
+        loadUser()
+        retrieveHistory()
         // loadUser();
         // "create account" form
         document.querySelector('.sign_up_form').addEventListener('submit', async (e) => {

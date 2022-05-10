@@ -4,7 +4,15 @@
     box-sizing: border-box;
 }
 
-  /* Page Layout */
+.home, .imgz {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    left: 40px;
+    top: 25px;
+    cursor: pointer;
+}
+
 .logo_title{
     display: flex;
     flex-direction: row;

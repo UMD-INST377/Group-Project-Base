@@ -24,7 +24,7 @@ albumDelForm.addEventListener('submit', async (SubmitEvent) => {
   console.log(SubmitEvent);
   const formObj = formToObject(albumDelForm);
 
-  const postResult = await fetch('/api/album', {
+  const postResult = await fetch(`/api/album/${formItem}`, {
 
     method: 'DELETE',
     headers: {

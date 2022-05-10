@@ -400,106 +400,105 @@ async function displayPastSearches() {
 }
 
 function main() {
-    let tree;
     // User Sign Up
-  // const signUpSubmit = document.querySelector('#sign_up');
-  const signUpModal = document.querySelector('.sign_up_modal');
-  const modal = document.querySelector('.modal');
-  const signUpLink = document.querySelector('.sign_up');
-  signUpModal.style.display = 'none';
-  modal.style.display = 'none';
-  // Login Modal
-  const loginModal = document.querySelector('.login_modal');
-  // button
-  const loginLink = document.querySelector('.login');
-  loginModal.style.display = 'none';
-  loginLink.addEventListener('click', () => {
-    loginModal.style.display = 'flex';
-    modal.style.display = 'block';
-  });
-
-  modal.addEventListener('click', () => {
-    loginModal.style.display = 'none';
+    // const signUpSubmit = document.querySelector('#sign_up');
+    const signUpModal = document.querySelector('.sign_up_modal');
+    const modal = document.querySelector('.modal');
+    const signUpLink = document.querySelector('.sign_up');
     signUpModal.style.display = 'none';
     modal.style.display = 'none';
-  });
-  signUpLink.addEventListener('click', () => {
+    // Login Modal
+    const loginModal = document.querySelector('.login_modal');
+    // button
+    const loginLink = document.querySelector('.login');
     loginModal.style.display = 'none';
-    modal.style.display = 'block';
-    signUpModal.style.display = 'flex';
-  })
-  // if user account already stored..
-    loadUser();
-    retrieveHistory()
-    // "create account" form
-    document.querySelector('.sign_up_form').addEventListener('submit', async (e) => {
-        // sessionStorage not found
-        if (sessionStorage.getItem('username') === null) {
-            createAccount(e);
-            // back to main()
-            return;
-        }
-        // else, inactive
-        e.preventDefault();
+    loginLink.addEventListener('click', () => {
+        loginModal.style.display = 'flex';
+        modal.style.display = 'block';
     });
-    document.querySelector('.login_modal').addEventListener('submit', async (e) => {
-        if (sessionStorage.getItem('username') === null) {
-            userLogin(e);
-            // back to main()
-            return;
-        }
-        // else, inactive
-        e.preventDefault();
-    });
-    document.querySelector('.login_form').addEventListener('submit', async (e) => {
-        // user not currently logged in
-        if (sessionStorage.getItem('username') === null) {
-            userLogin(e);
-            // back to main()
-            return;
-        }
-        // else, inactive
-        e.preventDefault();
-    })
-    // logout button clears session
-    /**document.querySelector('.logout').addEventListener('click', async (e) => {
-        e.preventDefault();
-        // clear session storage
-        logOut()
-        console.log('Successfully logged out.')
-        // back to main()
-        return;
-    })*/
-    
-    // button to save query to DB
-    const saveQueryPrompt = document.querySelector('.save-query')
-    saveQueryPrompt.style.display = 'none'
 
-    // search bar
-    document.querySelector('.species_form').addEventListener('submit', async (e) => {
-        wikiSearch(e)
-        if (sessionStorage.getItem('username') !== null) {
-            saveQueryPrompt.style.display = 'flex';
-        }
-    })
-   saveQueryPrompt.addEventListener('click', async (e) => {
-        // if there are currently elements inside the query container
-        if (document.querySelector('.query').firstChild) {
-            saveQuery(e);
-            return;
-        }
-        e.preventDefault()
-    })
-    const header = document.querySelector("Header");
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav");
-    
-    hamburger.addEventListener("click", () => {
-    console.log("hamburger");
-    header.classList.toggle("active");
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
+    modal.addEventListener('click', () => {
+        loginModal.style.display = 'none';
+        signUpModal.style.display = 'none';
+        modal.style.display = 'none';
     });
+    signUpLink.addEventListener('click', () => {
+        loginModal.style.display = 'none';
+        modal.style.display = 'block';
+        signUpModal.style.display = 'flex';
+    })
+    // if user account already stored..
+        loadUser();
+        retrieveHistory()
+        // "create account" form
+        document.querySelector('.sign_up_form').addEventListener('submit', async (e) => {
+            // sessionStorage not found
+            if (sessionStorage.getItem('username') === null) {
+                createAccount(e);
+                // back to main()
+                return;
+            }
+            // else, inactive
+            e.preventDefault();
+        });
+        document.querySelector('.login_modal').addEventListener('submit', async (e) => {
+            if (sessionStorage.getItem('username') === null) {
+                userLogin(e);
+                // back to main()
+                return;
+            }
+            // else, inactive
+            e.preventDefault();
+        });
+        document.querySelector('.login_form').addEventListener('submit', async (e) => {
+            // user not currently logged in
+            if (sessionStorage.getItem('username') === null) {
+                userLogin(e);
+                // back to main()
+                return;
+            }
+            // else, inactive
+            e.preventDefault();
+        })
+        // logout button clears session
+        /**document.querySelector('.logout').addEventListener('click', async (e) => {
+            e.preventDefault();
+            // clear session storage
+            logOut()
+            console.log('Successfully logged out.')
+            // back to main()
+            return;
+        })*/
+        
+        // button to save query to DB
+        const saveQueryPrompt = document.querySelector('.save-query')
+        saveQueryPrompt.style.display = 'none'
+
+        // search bar
+        document.querySelector('.species_form').addEventListener('submit', async (e) => {
+            wikiSearch(e)
+            if (sessionStorage.getItem('username') !== null) {
+                saveQueryPrompt.style.display = 'flex';
+            }
+        })
+    saveQueryPrompt.addEventListener('click', async (e) => {
+            // if there are currently elements inside the query container
+            if (document.querySelector('.query').firstChild) {
+                saveQuery(e);
+                return;
+            }
+            e.preventDefault()
+        })
+        const header = document.querySelector("Header");
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav");
+        
+        hamburger.addEventListener("click", () => {
+        console.log("hamburger");
+        header.classList.toggle("active");
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+        });
 }
 
 document.addEventListener('DOMContentLoaded', main);

@@ -11,29 +11,57 @@ https://inst377group15.herokuapp.com/
 Description of target browsers (iOS? Android? Which ones? Which versions?)
 ## Endpoint Doc 
 ### Server application APIs
-```/artist``` - API route for artist data.
-* Get
+```/artists``` - API route for artist data.
+* GET - Logs to console response query from URL. returns a promise object
+* POST - Obtains artist name from request body to fetch url. Fetch data from req.body and returns JSON response to artists table
+* Delete - Obtains artist name from request body to fetch url. fetch data req.body and deletes item from artists table and returns JSON response
 
 ```/genres``` - API route for genres data.
+* GET - Logs to console response query from URL. returns a promise object
+* POST - Obtains genre name from request body to fetch url. Fetch data from req.body and returns JSON response to genres table
+* Delete - Obtains genre name from request body to fetch url. fetch data req.body and deletes item from genres table and returns JSON response
 
 ```/playlists``` - API route for playlists data.
-
-```/artist_albums``` - API route for artist_albums data.
+* GET - Logs to console response query (username and playlist name) from URL. returns a promise object
+* POST - Obtains playlist name from request body to fetch url. Fetch data from req.body and returns JSON response to playlists table
+* Delete - Obtains playlist name from request body to fetch url. fetch data req.body and deletes item from playlists table and returns JSON response
 
 ```/albums``` - API route for albums data.
-
-
-```/album_songs``` - API route for album songs data.
-
-```/artist_songs``` - API route for artist ssongs data.
-
-
-```/song_genres``` - API route for song genres data.
-
-
-```/playlist_songs``` - API route for playlist songs data.
+* GET - Logs to console response query from URL. returns a promise object
+* POST - Obtains album name from request body to fetch url. Fetch data from req.body and returns JSON response to albums table
+* Delete - Obtains albums name from request body to fetch url. fetch data req.body and deletes item from albums table and returns JSON response
 
 ```/songs``` - API route for songs data.
+* GET - Logs to console response query from URL. returns a promise object
+* POST - Obtains song name from request body to fetch url. Fetch data from req.body and returns JSON response to songs table
+* Delete - Obtains song name from request body to fetch url. fetch data req.body and deletes item from songs table and returns JSON response
+
+```/artist_albums``` - API route for artist_albums data.
+* GET - Logs to console response query from URL. returns a promise object
+* POST - Sets artist_albums linking table ids to the new ids from the added values of albums post and artist post
+* Delete - Obtains artist name from request body to fetch url. fetch data req.body and deletes item from artist_albums table and returns JSON response
+
+```/album_songs``` - API route for album songs data.
+* GET - Logs to console response query from URL. returns a promise object
+* POST - Sets album_songs linking table ids to the new ids from the added values of albums post and songs post
+* Delete - Obtains artist name from request body to fetch url. fetch data req.body and deletes item from album_songs table and returns JSON response
+
+```/artist_songs``` - API route for artist ssongs data.
+* GET - Logs to console response query from URL. returns a promise object
+* POST - Sets artist_songs linking table ids to the new ids from the added values of artists post and songs post
+* Delete - Obtains artist name from request body to fetch url. fetch data req.body and deletes item from artist_songs table and returns JSON response
+
+```/song_genres``` - API route for song genres data.
+* GET - Logs to console response query from URL. returns a promise object
+* POST - Sets song_genre linking table ids to the new ids from the added values of genres post and songs post
+* Delete - Obtains artist name from request body to fetch url. fetch data req.body and deletes item from song_genres table and returns JSON response
+
+```/playlist_songs``` - API route for playlist songs data.
+* GET - Logs to console response query from URL. returns a promise object
+* POST - Obtains username and playlist name from request body to fetch url. Fetch data from req.body and returns JSON response to playlist_songs table
+* Delete - Obtains artist name from request body to fetch url. fetch data req.body and deletes item from playlist_songs table and returns JSON response
+
+
 
 
 ## Developer Manual

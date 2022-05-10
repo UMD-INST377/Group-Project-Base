@@ -4,7 +4,7 @@ import db from '../database/initializeDB.js';
 import hallQuery from '../controllers/halls_query.js';
 import hallUpdate from '../controllers/halls_update.js';
 import breakfastQuery from '../controllers/breakfast_query.js';
-import launchQuery from '../controllers/launch_query.js';
+import lunchQuery from '../controllers/lunch_query.js';
 import dinnerQuery from '../controllers/dinner_query.js';
 import mealQuery from '../controllers/meals.js';
 import macroQuery from '../controllers/macro.js';
@@ -114,9 +114,9 @@ router.get('/meals', async (req, res) => {
   }
 });
 
-router.get('/launch', async (req, res) => {
+router.get('/lunch', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(launchQuery, {
+    const result = await db.sequelizeDB.query(lunchQuery, {
       type: Sequelize.QueryTypes.SELECT
     });
     res.json({ data: result });

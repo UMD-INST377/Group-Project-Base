@@ -89,6 +89,7 @@
     font-size: 35px;
     line-height: 47px;
     text-decoration-line: underline;
+	min-width: 0;
 }
 
 .pages {
@@ -97,6 +98,7 @@
     gap: 15px;
     background-color: #FF4747;
     width: 350px;
+	min-width: 0;
     height: 300px;
     padding: 10px;
     font-family: 'Roboto';
@@ -106,6 +108,7 @@
     line-height: 42px;
     text-decoration: none;
 }
+
 
 .image {
     padding-top: 40px;

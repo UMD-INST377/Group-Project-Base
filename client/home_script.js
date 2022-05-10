@@ -10,7 +10,7 @@ async function mainEvent() { //mainEvent refers to page loading
     //createHTMLtable(hallArrayFromJson.data);
   
 const table = document.querySelector('.table')
-const mealData = await fetch('/api/meals')
+const mealData = await fetch('/api/josh')
 const data = await mealData.json()
 let currentData = data
 console.log(data);
@@ -26,9 +26,12 @@ function createHTMLtable(currentArray) {
   <th>
  Meal Category
   </th>
+  <th>
+ Dining Hall 
+  </th>
 </tr>`
 currentData.forEach(element => {
-  table.innerHTML += `<tr> <th>${element.meal_name}</th> <th>${element.meal_category}</th> </tr>`
+  table.innerHTML += `<tr> <th>${element.meal_name}</th> <th>${element.meal_category}</th> <th>${element.hall_name}</th> </tr>`
   
 });
 }

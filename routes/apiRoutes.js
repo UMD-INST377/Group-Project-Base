@@ -226,8 +226,9 @@ router.route('/dietaryRestrictions/:id')
 router.route('/josh')
   .get(async (req, res) => {
     try {
-      const result = await db.MealsLocations.findAll();
-      res.json({data: result});
+      const result = await db.sequelizeDB.query(`SELECT * FROM meals_locations left join dining_hall using(hall_id) left join meals using(meal_id)
+      `);
+      res.json(result[0]);
     } catch (err) {
       console.log(err);
       res.json({message: 'something went wrong'});

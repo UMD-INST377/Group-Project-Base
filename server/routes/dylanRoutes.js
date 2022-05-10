@@ -20,4 +20,4 @@ router.get('/reviews', async (req, res) => {
 
 
 
-
+export default router;

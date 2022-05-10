@@ -15,15 +15,18 @@
     <div class="container">
         <h1 class="header1">College Park Food Finder</h1>
     </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="addRestaurant.html">Add Restaurant</a>
-        <a href="filters.html">Filters</a>
-        <a href="map.html">Map</a>
-        <a href="addressfilter.html">Search Restaurant</a>
-    </nav>
-    <div>
+    <div class="wrapper">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="filters.html">Filters</a>
+            <a href="map.html">Map</a>
+            <a href="addressfilter.html">Search Restaurant</a>
+            <a href="view_num.html">Contact</a>
+        </nav>
+    </div>
+
+    <div class="center">
         <form class="mainform">
             <div class="field">
                 <label>
@@ -31,23 +34,22 @@
                 </label>
                 <input type="text" name="Street_Address" id="Street_Address">
             </div>
-            <div class="control">
-                <button class="button">
-                    submit
+            <div class="control center">
+                <button class="button" style="text-align: center;">
+                    Submit
                 </button>
             </div>
         </form>
+    
+
+        <div class="restaurant_name">
+            <h2>Restaurants</h2>
+            <ul class="resto-list">
+
+            </ul>
+        </div>
     </div>
-
-    <div class="restaurant_name">
-        <h2>Restaurants</h2>
-        <ul class="resto-list">
-
-        </ul>
-    </div>
-    <script src="loadedscriptEthan.js">
-
-    </script>
+    <script src="loadedscriptEthan.js"></script>
 </body>
 
 </html>

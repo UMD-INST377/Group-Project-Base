@@ -261,3 +261,10 @@
     color: white;
     margin-left: 6px;
 }
+
+.update_form {
+    padding-left: 50px;
+    padding-top: 50px;
+    font-size: large;
+    font-weight: 700;
+}

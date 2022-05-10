@@ -101,7 +101,7 @@ async function userLogin(e){
     if (form.get('user') === '' || form.get('pass') === '') {
         return;
     }
-    let response = fetch('/login', {
+    let response = fetch('/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

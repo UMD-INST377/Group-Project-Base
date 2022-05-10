@@ -1,10 +1,10 @@
 import express from 'express';
 import connection from '../config.js'
 
-const usersRouter = express.Router();
+const userRouter = express.Router();
 
 /* GET users listing. */
-usersRouter.get('/', function(req, res, next) {
+userRouter.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
@@ -22,12 +22,12 @@ async function retrieveAcct(username, password) {
 }
 
 /* GET users listing. */
-usersRouter.get('/', function(req, res, next) {
+userRouter.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
 // SIGN UP
-usersRouter.post('/', async (req, res, next) => {
+userRouter.post('/', async (req, res, next) => {
   console.log('POST to usersRouter.post("/")..');
   let userData = [req.body.user, req.body.pass]
   try {
@@ -71,7 +71,7 @@ usersRouter.post('/', async (req, res, next) => {
 })
 
 // SIGN IN
-usersRouter.post('/login', async (req, res, next) => {
+userRouter.post('/login', async (req, res, next) => {
   console.log('POST to usersRouter.post("/login")..');
   let userData = [req.body.user, req.body.pass]
   try {
@@ -94,9 +94,9 @@ usersRouter.post('/login', async (req, res, next) => {
     res.sendStatus(400);
   }
 })
-
+/*
 // UPDATE PASSWORD
-usersRouter.post('/password', (req, res, next) => {
+userRouter.post('/password', (req, res, next) => {
   const formParams = JSON.parse(req.body.form)
   // needed for second query
   const user = req.body.username
@@ -146,65 +146,78 @@ usersRouter.post('/password', (req, res, next) => {
       res.sendStatus(400);
     }
   })
-
-
+*/
 
 // UPDATE USERNAME
-usersRouter.post('/username', (req, res, next) => {
+userRouter.post('/username', (req, res) => {
   const formParams = JSON.parse(req.body.form)
   console.log(formParams)
   // needed for second query
-  const user = req.body.username
+  const old_username = req.body.username
   console.log('usersRouter.post("/username")...')
-  try {
-    // check for null values
-    for (let i in formParams) {
-      let child = formParams[i]
-      if (child === '') {
-        res.status(403).send('Missing value. Try again.')
-        return
-      }
-    }
-    // check for incorrect match
-    if (formParams.pw !== formParams.confirm_pw) {
-      res.status(403).send('Passwords do NOT match. Try again.')
+
+  // check for null values
+  for (let i in formParams) {
+    let child = formParams[i]
+    if (child === '') {
+      res.status(403).send('Missing value. Try again.')
       return
-    } else {
-      
-      const query = `UPDATE users as u, (SELECT * FROM users WHERE username = SHA2("${user}", 256) AND password = SHA2("${formParams.pw}", 256)) as temp SET u.username = SHA2("${formParams.new_username}", 256) WHERE temp.id = u.id;`
-      connection.query(query, async (error, response) => {
-        if (error === null) {
-          console.log('\nUsername updated. No errors detected.')
-      } else {
-      if (!error.errno === "") {
-        console.log('connection.query() Error:', error.errno);
-        res.sendStatus(404);
-        return
-      }
-      }})
-
-      // now, fetch new username hash
-      connection.query(`SELECT username FROM users WHERE username = SHA2("${formParams.new_username}", 256) and password = SHA2("${formParams.pw}", 256);`, async (error, response) => {
-        if (error === null) {
-          if (response.length) {
-            console.log('\nUsername updated. No errors detected.')
-            }          
-          res.status(200).send(JSON.stringify({
-            username: response[0].username,
-            plainUser: formParams.new_username
-          }))
-      } else {
-      if (!error.errno === "") {
-        console.log('connection.query() Error:', error.errno);
-        res.sendStatus(404);
-        return
-      }
-    }})
     }
-    } catch (e) {
-      console.log(`ERROR: ${e.message}\n`);
-      res.sendStatus(400);
-    }
+  }
+  // check for incorrect match
+  if (formParams.pw !== formParams.confirm_pw) {
+    res.status(403).send('Passwords do NOT match. Try again.')
+    return
+  }
+    
+  const input = `UPDATE users as u, (SELECT * FROM users WHERE username = SHA2("${old_username}", 256) AND password = SHA2("${formParams.pw}", 256)) as temp SET u.username = SHA2("${formParams.new_username}", 256) WHERE temp.id = u.id;`
+  let update = connection.promise().query(input)
+  .then(([rows, fields]) => {
+    console.log('affectedRows: ' + rows.affectedRows);
   })
+  .catch(console.log)
+  .then(() => { // pass successful update into select query
+    let getData = `SELECT username FROM users WHERE username = SHA2("${formParams.new_username}", 256) and password = SHA2("${formParams.pw}", 256);`
+    return connection.promise().query(getData)
+  })
+  .then((result) => {
+    res.status(200).send(JSON.stringify({
+      username: result[0]['0'].username,
+      plainUser: formParams.new_username}))
+  }).catch(console.log)
+})
 
-export default usersRouter;
+userRouter.post('/pw', (req, res) => {
+  const formParams = JSON.parse(req.body.form)
+  // needed for second query
+  const user = req.body.username
+  console.log('usersRouter.post("/password")...')
+  for (let i in formParams) {
+    let child = formParams[i]
+    if (child === "") {
+      res.status(403).send('Missing value. Try again.')
+      return
+    }
+  }
+  // check for incorrect match
+  if (formParams.new_pw !== formParams.confirm_pw) {
+    res.status(403).send('Passwords do NOT match. Try again.')
+    return
+  }
+  // create update string
+  const input = `UPDATE users as u, (SELECT * FROM users WHERE username = SHA2("${user}", 256) AND password = SHA2("${formParams.old_pw}", 256)) as temp SET u.password = SHA2("${formParams.new_pw}", 256) WHERE temp.id = u.id;`
+  let update = connection.promise().query(input)
+  .then(([rows, fields]) => {
+    console.log('affectedRows: ' + rows.affectedRows);
+  })
+  .catch(console.log)
+  .then(() => { // pass successful update into select query
+    let getData = `SELECT password FROM users WHERE username = SHA2("${user}", 256) and password = SHA2("${formParams.new_pw}", 256);`
+    return connection.promise().query(getData)
+  })
+  .then((result) => {
+    res.status(200).send(JSON.stringify({ password: result[0]['0'].password}))
+  }).catch(console.log)
+})
+
+export default userRouter;

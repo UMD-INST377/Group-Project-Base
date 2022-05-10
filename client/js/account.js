@@ -197,7 +197,7 @@ async function updatePw() {
         const data = JSON.stringify(formData)
         const user = sessionStorage.getItem('plainUser')
         const reqBody = new URLSearchParams({ form: data, username: user })
-        fetch('users/update/:id', {
+        fetch('/user/pw', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -209,7 +209,7 @@ async function updatePw() {
                 noPwMatch()
             }
             if (res.status === 200) {
-                console.log('Account updated.')
+                console.log('Password updated.')
                 // update function
                 return res.json()
             }
@@ -222,12 +222,52 @@ async function updatePw() {
 
 }
 
+async function updateUsername() {
+    try {
+        const formData = {}
+        const form = new FormData(document.querySelector('.username_form'))
+        form.forEach((input, key) => {
+            formData[key] = input
+        })
+        const data = JSON.stringify(formData)
+        const user = sessionStorage.getItem('plainUser')
+        const reqBody = new URLSearchParams({ form: data, username: user })
+        fetch('/user/username', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: reqBody
+        })
+        .then((res) => {
+            if (res.status === 403) {
+                noPwMatch()
+            }
+            if (res.status === 200) {
+                console.log('Username updated.')
+                // update function
+                return res.json()
+            }
+        }).then((value) => {
+            storeSession(value)
+        }).then(loadUser)
+    } catch(e) {
+        console.log(e)
+    }
+
+}
+
+
 async function main() {
   // if user account already stored..
     loadUser();
     document.querySelector('.pw_form').addEventListener('submit', (e)=> {
         e.preventDefault()
         updatePw()
+    })
+    document.querySelector('.acct_form').addEventListener('submit', (e)=> {
+        e.preventDefault()
+        updateUsername()
     })
     document.querySelector('.log_out').addEventListener('click', () => {
         logOut();

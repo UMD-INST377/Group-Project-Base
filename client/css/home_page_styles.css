@@ -7,7 +7,7 @@ body {
     padding: 0;
     background-image: url("./image.jpg");
     background-color: rgb(180,180,180);
-    background-size: cover;
+    background-size:cover;
     min-height: 100vh;
 }
 

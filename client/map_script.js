@@ -6,6 +6,7 @@
 // how to access object in returned query array: console.log(arrayFromJson.data[0]);
 
 function generateTableHead(table, data) {
+  // eslint-disable-next-line no-param-reassign
   table.innerHTML = '';
   const thead = table.createTHead();
   const row = thead.insertRow();
@@ -75,7 +76,7 @@ async function mainEvent() {
       generateTableHead(table, data);
       generateTable(table, selectLocation); */
 
-      submit.addEventListener('click', async (event) => {
+      submit.addEventListener('click', async () => {
         console.log('submitted');
         generateTableHead(table, data);
         generateTable(table, selectLocation);

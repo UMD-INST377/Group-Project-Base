@@ -20,8 +20,30 @@
       <h1>New Entry</h1>
     </div>
 
+    <p>
+      Enter a location code and plant id below to add a new entry to the map. 
+      View the map or search for plants to get the id you need.
+    </p>
 
-    <script src="script.js"></script>
+    <form method="post" class="new_form" action="/api/map">
+            
+      <div class='form_row'>
+        <label for='plant_id'>Plant ID</label>
+        <input id='plant_id' name='plant_id' type='text'/>
+      </div>
+
+      <div class='form_row'>
+        <label for='location_code'>Location Code</label>
+        <input id='location_code' name='location_code' type='text'/>
+      </div>
+
+      <div class='form_row'>
+        <button class='submit_button'>Add Entry</button>
+      </div>
+    </form>
+
+
+    <script src="new_entry.js"></script>
 
   </body>
 </html>

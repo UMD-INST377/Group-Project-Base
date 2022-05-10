@@ -4,7 +4,7 @@
 Our website will help anyone who is traveling to National Parks in the US and is looking to view or leave reviews for various places and attractions
 
 ## Target Browsers
-This website has been developed for modern desktop and mobile web clients. The styling for mobile versions is currently unfinished, so attempts to use the application should use desktop web browsers if possible.
+This website has been developed for modern desktop and mobile web clients. It should be compatible with chromium based browsers, Safari, or Internet Explorer.
 
 ## Link
 https://group2-project377.herokuapp.com/

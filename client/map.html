@@ -17,29 +17,38 @@
       </div>
     </header>
 
+    <br>
+
     <div class='wrapper'>
       <h1>Map</h1>
     </div>
+
+    <br>
 
     <div><img src='images/color_code_map.png'/></div>
     
     <br>
     
-    <form method="get"> 
+    <form method="get" class="map_form"> 
       <div class='form_row'>
         <label for='location'>Type location code to view plants in the area: </label>
         <input id='location' name='location' type='text'/>
       </div>
     </form>
+    <br>
+
+    <button class='submit_button'>View Plants</button>
+
+    <br>
 
     <div>
       <h2>Plants Found:</h2>
       <br>
-      <ul class="plants_list"></ul>
+      <table id='table' class="table"></table>
     </div>
-
-
-    <script src="script.js"></script>
+    
+    <br>
 
   </body>
+  <script src="map_script.js"></script>
 </html>

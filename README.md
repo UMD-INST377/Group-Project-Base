@@ -96,6 +96,7 @@ Below are details of the API contained within this piece of labwork.
 #### Request
 
 `PUT /api/race/`
+
     curl -d "park_id=4&park_name=Example1&trails=trail&park_lat=0&park_long=1" -X PUT http://localhost:3000/api/race/
 
 #### Response

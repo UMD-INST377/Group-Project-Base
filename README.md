@@ -33,8 +33,9 @@ This software has no tests written for it.
 ### Server application APIs
 /songDisplay - API route for retrieving songs that are currently being hosted by a music station.
 * GET - Returns all songs names that are currently being hosted by a music station; song names are also accompanied by playlist ledger names and station outlet names.
-* POST - Obtains a song name from the user.  If the song name is currently hosted by a music station (meaning it can be found in the GET for this route) then the song name will be returned to the user.  Otherwise, nothing is returned.
+* POST - Obtains a song name from the user.  The key that corresponds with this song name value is "tname". If the song name is currently hosted by a music station (meaning it can be found in the GET for this route) then the song name will be returned to the user.  Otherwise, nothing is returned.
 
 /outletPath - API route for retriving the outlet table and adding records to it.
 * GET - Returns the entire outlet table from the dataset and returns it to the user.
-* POST - Takes in six inputs from the user: Outlet ID, Outlet Name, Outlet Address, Outlet City, Outlet State, and Outlet Zipcode.  With these six inputs, a new record is created in the outlet table.  The Outlet ID needs to be unique, the Outlet State can only be two characters long, and the Outlet Zipcode can only take in integers.
+* POST - Takes in six inputs from the user: Outlet ID, Outlet Name, Outlet Address, Outlet City, Outlet State, and Outlet Zipcode. The corresponding keys to these inputs are: "outID", "outName", "outAddress", "outCity", "outState", and "outZip". With these six inputs, a new record is created in the outlet table.  The Outlet ID needs to be unique, the Outlet State can only be two characters long, and the Outlet Zipcode can only take in integers.
+* DELETE - Takes in one input from the user: Outlet ID.  The corresponding key to this input is "outID".  With this single input, a record with an outlet ID that matches the input will be deleted from the outlet table.

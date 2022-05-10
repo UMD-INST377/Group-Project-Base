@@ -13,6 +13,10 @@
     cursor: pointer;
 }
 
+.imag {
+    padding-top: 40px;
+}
+
 .logo_title{
     display: flex;
     flex-direction: row;
@@ -69,13 +73,47 @@
 .container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    padding-top: 150px;
-    gap: 300px;
-    /*gap center*/	
+    justify-content: flex-start;
+    padding-top: 160px;
+    gap: 200px;
+    /*gap center*/
 }
 
-.location {
+.locations {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 47px;
+    text-decoration-line: underline;
+}
+
+.hourContainers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 150px;
+    gap: 80px;
+}
+
+.hourContainers .locat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 47px;
+    text-decoration-line: underline;
+}
+
+.meal_page {
     display: flex;
     flex-direction: column;
     gap: 5px;

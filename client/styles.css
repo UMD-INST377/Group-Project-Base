@@ -72,8 +72,8 @@
 .container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    padding-top: 100px;
+    justify-content: flex-start;
+    padding-top: 150px;
     gap: 200px;
 }
 

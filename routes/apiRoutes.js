@@ -286,4 +286,18 @@ router.route("/macroNames")
     }
   });
 
+  router.route("/mealNames")
+  .get (async(req,res)=>{
+    try{
+      const casieQuery2 = await db.sequelizeDB.query(
+        `SELECT meal_name, meal_category
+        FROM meals`);
+        res.json({data:casieQuery[0]});
+    }
+    catch (err){
+      console.log(err);
+      res.json({message:"Something went wrong with meal names"})
+    }
+  });
+
 export default router;

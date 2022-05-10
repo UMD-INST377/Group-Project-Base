@@ -16,12 +16,12 @@ function formToObject(htmlFormElement) {
 
 async function mainEvent() {
   const form = document.querySelector('.main_form');
-  const newName = document.querySelector('#original_name');
+  const MealName = document.querySelector('#original_name');
   const submit = document.querySelector('.button');
 
   
 
-  newName.addEventListener('input', async (event) => {
+  MealName.addEventListener('input', async (event) => {
     newMeal = event.target.value;
     console.log(event.target.value);
   });

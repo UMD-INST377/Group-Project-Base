@@ -414,7 +414,7 @@ router.post('/album_songs', async (req, res) => {
     res.json(newAlbumSongsInfo);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 

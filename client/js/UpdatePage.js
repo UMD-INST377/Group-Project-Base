@@ -13,7 +13,7 @@ async function popLinkingTables(user) { // Populates linking tables
     method: 'POST',
     body: JSON.stringify({
       playlist_id: user[0].playlist_id,
-      added_by: user[0].name
+      added_by: user[0].owner
     }),
     headers: {
       'Content-Type': 'application/json'
@@ -39,7 +39,6 @@ async function getUserAndPlaylist(array) { // Gets Username and Playlist name
     });
   console.log(info);
   return info;
-}
 
 async function iAdd(songInfo, userInfo) { // Adds info into the database
   const userP = getUserAndPlaylist(userInfo)

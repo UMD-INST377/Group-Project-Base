@@ -17,7 +17,7 @@ function formToObject(htmlFormElement) {
     return collection;
   }, {});
   return formObject;
-};
+}
 
 albumDelForm.addEventListener('submit', async (SubmitEvent) => {
   SubmitEvent.preventDefault();
@@ -125,49 +125,10 @@ x.style.display = 'none';
 y.style.display = 'none';
 z.style.display = 'none';
 a.style.display = 'none';
-  
-// Function to display full details for records
-function changeTable() {
-  let dropdown = document.getElementById('selectBox')
-  let index = dropdown.selectedIndex;
-  if (index === 1) {
-    x.style.display = 'block';
-    y.style.display = 'none';
-    z.style.display = 'none';
-    a.style.display = 'none';
-  }
-  
-  else if (index === 2) {
-    y.style.display = 'block';
-    x.style.display = 'none';
-    z.style.display = 'none';
-    a.style.display = 'none';
-  }
-  
-  else if (index === 3) {
-    z.style.display = 'block';
-    x.style.display = 'none';
-    y.style.display = 'none';
-    a.style.display = 'none';
-  }
-  
-  else if (index === 4) {
-    a.style.display = 'block';
-    x.style.display = 'none';
-    y.style.display = 'none';
-    z.style.display = 'none'
-  }
-  else if (index !== 1 || index !== 2 || index !== 3 || index !== 4) {
-    x.style.display = 'none';
-    y.style.display = 'none';
-    z.style.display = 'none';
-    a.style.display = 'none';
-  }
-}
 
-// Functon to Show Form to Delete Table
-function deleteTable() {
-  let dropdown = document.getElementById('delBox')
+// Functon to Show Form to Update Table
+function updateTable() {
+  let dropdown = document.getElementById('updateBox')
   let index = dropdown.selectedIndex;
   if (index === 1) {
     albumForm.style.display = 'none';

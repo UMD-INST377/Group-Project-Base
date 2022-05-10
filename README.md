@@ -91,6 +91,16 @@ Below are details of the API contained within this piece of labwork.
     ]
 }
 
+## Update park information
+
+#### Request
+
+`PUT /api/race/`
+    curl -d "park_id=4&park_name=Example1&trails=trail&park_lat=0&park_long=1" -X PUT http://localhost:3000/api/race/
+
+#### Response
+    Successfully updated
+
 # Reviews
 
 ## Get list of Reviews
@@ -159,3 +169,15 @@ Below are details of the API contained within this piece of labwork.
         "description": "Trails were fun"
     }
 ]
+
+## Delete a Review
+
+#### Request
+
+`DELETE /api/race/reviews:id`
+
+    curl -X DELETE http://localhost:3000/api/race/reviews/1
+
+
+#### Response
+   Successfully deleted

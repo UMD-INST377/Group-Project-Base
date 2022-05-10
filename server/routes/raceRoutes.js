@@ -41,17 +41,19 @@ router.route('/race/')
       res.json('Server error');
     }
   });
-router.put('/race/:id', async (req, res) => {
+router.put('/race/', async (req, res) => {
   try {
     console.log(req.params.id);
     await db.Parks.update(
       {
         park_name: req.body.park_name,
-        trails: req.body.trails
+        trails: req.body.trails,
+        park_lat: req.body.lat,
+        park_long: req.body.long,
       },
       {
         where: {
-          park_id: req.params.id
+          park_id: req.body.park_id
         }
       }
     );
@@ -61,11 +63,11 @@ router.put('/race/:id', async (req, res) => {
     res.error('Server error');
   }
 });
-router.delete('/race/:id', async (req, res) => {
+router.delete('/race/reviews/:id', async (req, res) => {
   try {
-    await db.Parks.destroy({
+    await db.Reviews.destroy({
       where: {
-        park_id: req.params.id
+        review_id: req.params.id
       }
     });
     res.send('Successfully Deleted');

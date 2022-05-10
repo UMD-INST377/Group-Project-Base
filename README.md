@@ -12,7 +12,7 @@ Description of target browsers (iOS? Android? Which ones? Which versions?)
 ## Endpoint Doc 
 ### Server application APIs
 ```/artist``` - API route for artist data.
-*Get
+* Get
 
 ```/genres``` - API route for genres data.
 

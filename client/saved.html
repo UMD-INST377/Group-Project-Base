@@ -8,6 +8,7 @@
     <title>Group 3</title>
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="./stylesheets/style.css" />
+    <link rel="stylesheet" href="./stylesheets/saved.css" />
     <script src = "https://d3js.org/d3.v4.min.js"></script>
   </head>
 
@@ -32,6 +33,7 @@
         <a class="nav-link" href="../saved.html">Saved</a>
         <a class="nav-link sign_up" href="#sign_up_modal">Sign Up</a>
         <a class="nav-link login" href="#login_modal">Log in</a>
+        <a class="nav-link" href="../account.html">My Account</a>
        
         <div class="arrow_container_right">
           <div class="arrow_left mobile">
@@ -52,39 +54,20 @@
 
     <main>
       <p class="logged_in"></p>
-      <div class="hero">
+      <div class="form_row">
+        <button class="log_out" type="submit">Log out</button>
+      </div>
+      <div class="hero" style="min-height:200px;">
         <div>
-          <h1>Learn more about the Tree of Life!</h1>
-          <h2>Find the closest common ancestor for any two two species of animal by filling out the form below!</h2>
+          <h2>Search History</h2>
         </div>
       </div>
 
-<!-- Species Form -->
-
-      <form class="species_form">
-        <div class="row desktop">
-          <div class="form_row">
-            <input id="species_a" name="species_a" placeholder="Species A" type="text"/>
-          </div>
-          
-          <div class="form_row">
-            <input id="species_b" name="species_b" placeholder="Species B" type="text"/>
-          </div>
-        </div>
-        
-        <div class="form_row">
-          <button class="submit">Find Common Ancestor</button>
-        </div>
-        <div class="search-errors"></div>
-      </form>
         
   <div class="result-container">
-    <div class="form_row">
-    <button class="save-query" type="submit" placeholder="save">Save Query</button>
-    </div>
-    <div class="query"></div>
+  <h2>Previous Searches</h2>
+  <div class="saved">
   </div>
-
 
     </main>
 <!-- Sign Up Modal -->
@@ -101,7 +84,7 @@
       <label for="password">Password</label>
       <input id="password" name="pass" placeholder="****" type="text"/>
     </div>
-
+    <div class="errors"></div>
     <div class="form_row buttons">
       <button id="cancel">Cancel</button>
       <button class="submit" id="sign_up" type="submit">Sign Up</button>
@@ -118,6 +101,7 @@
 <!-- Login Modal -->
 <div class="login_modal">
   <img src="assets/logo.png" alt="Logo">
+  
   <form class="login_form">
     <div class="form_row">
       <label for="username">Username</label>
@@ -133,7 +117,7 @@
       <button id="cancel">Cancel</button>
       <button class="submit" id="login" type="submit">Login</button>
     </div>
-
+    <div class="errors"></div>
     <div class="form_row log_in">
       <p>or <a href="#sign_up_modal">Sign Up</a> </p>
     </div>
@@ -151,9 +135,9 @@
       </div>
     </footer>
 
-    <script type="module" src="script.js"></script>
+    <script type="module" src="./js/saved.js"></script>
     <script type="module">
-      import {displayTree} from './script.js';
+      import {displayTree} from './saved.js';
       console.log('d3 script loaded.')
       setTimeout(displayTree, 200);
     </script>

@@ -1,9 +1,9 @@
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
-import indexRouter from './routes/index.js';
-import usersRouter from './routes/users.js';
-import searchRouter from './routes/search.js';
+import indexRouter from './server/routes/index.js';
+import usersRouter from './server/routes/users.js';
+import searchRouter from './server/routes/search.js';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // cookie parser
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

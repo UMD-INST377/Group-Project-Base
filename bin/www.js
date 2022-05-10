@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-import app from '../app.js';
+import app from '../server.js';
 import debug from 'debug';
 import http from 'http';
 

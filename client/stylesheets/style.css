@@ -1183,3 +1183,10 @@ p {
       border-radius: 4px;
   }
 }
+
+/* Notifs
+================================== */
+.acct_notif {
+  font-size: 12px;
+  color: maroon;
+}

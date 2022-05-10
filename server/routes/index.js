@@ -4,13 +4,7 @@ import connection from '../config.js'
 var indexRouter = express.Router();
 
 /* GET home page. */
-indexRouter.get('/', function(req, res, next) {
-  try {
-    res.render('index', { title: 'Express' });
-  } catch (e) {
-    console.error(`${e}`);
-  }
-});
+
 /*
 const acct = retrieveAcct(req.body.user, req.body.pass)
 .then((row) => {

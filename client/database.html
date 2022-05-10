@@ -23,13 +23,62 @@
       <div class="column">
         <div class = "title has-text-white is-1 has-text-centered">UPDATE A DATABASE</div>
         <hr style="width: 100%;text-align:left;margin-left:0">
-        <select class = "select" id="selectBox" onchange="changeTable();">
+        <select class = "select" id="updateBox" onchange="updateTable();">
           <option value="0">Select Table To Update</option>
           <option value="1">Artists</option>
           <option value="2">Albums</option>
           <option value="3">Genres</option>
           <option value="4">Labels</option>
-         </select>
+        </select>
+        <form action = '/update' method = 'PUT' class = "form has-text-white" id = "albumForm">
+          <label for="album_id">Album ID:</label><br>
+          <input type="text" id="album_id" name="album_id"><br>
+          <label for="release_id">Release ID:</label><br>
+          <input type="text" id="release_id" name="release_id"><br>
+          <label for="genre_id">Genre ID:</label><br>
+          <input type="text" id="genre_id" name="genre_id"><br>
+          <label for="album_name">Album Name:</label><br>
+          <input type="text" id="album_name" name="album_name"><br>
+          <input type="submit" value = "ADD">
+        </form>
+        <form action = '/update' method = 'PUT' class = "form has-text-white" id = "artistForm">
+          <label for="artist_id">Artist ID:</label><br>
+          <input type="text" id="artist_id" name="artist_id"><br>
+          <label for="label_id">Label ID:</label><br>
+          <input type="text" id="label_id" name="label_id"><br>
+          <label for="stage_name">Stage Name:</label><br>
+          <input type="text" id="stage_name" name="stage_name"><br>
+          <label for="first_name">First Name:</label><br>
+          <input type="text" id="first_name" name="first_name"><br>
+          <label for="last_name">Last Name:</label><br>
+          <input type="text" id="last_name" name="last_name"><br>
+          <label for="gender">Gender:</label><br>
+          <input type="text" id="gender" name="gender"><br>
+          <label for="age">Age</label><br>
+          <input type="text" id="age" name="age"><br>
+          <input type="submit" value = "ADD">
+        </form>
+        <form action = '/update' method = 'PUT' class = "form has-text-white" id = "genreForm">
+          <label for="genre_id">Genre ID:</label><br>
+          <input type="text" id="genre_id" name="genre_id"><br>
+          <label for="genre_name">Genre Name:</label><br>
+          <input type="text" id="genre_name" name="genre_name"><br>
+          <input type="submit" value = "ADD">
+        </form>
+        <form action = '/update' method = 'PUT' class = "form has-text-white" id = "labelForm">
+          <label for="label_id">Label ID:</label><br>
+          <input type="text" id="label_id" name="label_id"><br>
+          <label for="label_name">Label Name:</label><br>
+          <input type="text" id="label_name" name="label_name"><br>
+          <input type="submit" value = "ADD">
+        </form>
+        <select class = "select" id="selectBox" onchange="changeTable();">
+          <option value="0">Select Table To View</option>
+          <option value="1">Artists</option>
+          <option value="2">Albums</option>
+          <option value="3">Genres</option>
+          <option value="4">Labels</option>
+        </select>
         <hr style="width:100%;text-align:left;margin-left:0">
         <table class="table" id = "album">
           <thead>
@@ -122,7 +171,6 @@
         </div>
       </div>
     </div>
-    <script src="./rec.js"></script>
-    <scritp src="./genreRecords.js"></script>
+    <script src="./addRecords.js"></script>
   </body>
 </html>

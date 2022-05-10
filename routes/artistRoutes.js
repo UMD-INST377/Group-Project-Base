@@ -55,7 +55,11 @@ router.put('/artist/', async (req, res) => {
       {
         artist_id: req.body.artist_id,
         label_id: req.body.label_id,
-        stage_name: req.body.stage_name
+        stage_name: req.body.stage_name,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        gender: req.body.gender,
+        age: req.body.age
       },
       {
         where: {

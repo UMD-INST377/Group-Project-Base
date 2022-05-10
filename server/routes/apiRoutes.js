@@ -85,6 +85,43 @@ router.delete('/mealLocation/:meal_id', async(req,res) =>{
   }
 });
 
+router.put('/mealLocation', async (req, res) => {
+  try {
+    await db.mealLocation.update(
+      {
+        meal_id : currentId,
+        meal_name : req.body.meal_name,
+        meal_category: req.body.meal_category,
+      },
+      {
+        where: {
+          meal_id: req.body.meal_id
+        }
+      }
+    );
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

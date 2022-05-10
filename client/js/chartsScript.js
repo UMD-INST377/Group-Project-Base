@@ -1,5 +1,11 @@
 //Charts Maxim
 console.log('hi');
+
+// Put in the songID, get out the songImage from the image dictionary
+function getImage(songID) {
+
+}
+
 async function mainChart() {
     const genres = await fetch('api/songs'); // This accesses some data from our API
       const genreArray = await genres.json(); // This changes it into data we can use - an object
@@ -18,7 +24,7 @@ async function mainChart() {
         // console.log(entries);
 
        collection.data.forEach((item) => {
-          const injectThisItem = `<li>${item.song_name}</li>`;
+          const injectThisItem = `<li><img class="placeholder" src="placeholder.png" alt="Placeholder Image">${item.song_name}</li>`;
           console.log(item.song_name);
           targetList.innerHTML += injectThisItem;
         });

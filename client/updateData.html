@@ -55,17 +55,23 @@
                     <div class="control">
                         <input id="description" class="input" type="text">
                     </div>
-                    <label class="radio">
-                        Public
-                        <input type="radio" name="filter" id="public" checked>
-                        Private
-                        <input type="radio" name="filter" id="private">
-                    </label><br>
-                    <label for="coll">
-                        Collaborative
-                        <input type="radio" name="filter" id="coll">
-                    </label><br><br>
-                    <button class="button is-primary is-centered">Submit</button>
+                    <div>
+                        <label class="radio">
+                            Public
+                            <input type="radio" name="filter" id="public" checked>
+                            Private
+                            <input type="radio" name="filter" id="private">
+                        </label>
+                    </div>
+                    <div>
+                        <label for="coll">
+                            Collaborative
+                            <input type="radio" name="filter" id="coll">
+                        </label>
+                    </div>
+                    <div class="submitButton">
+                        <button class="button is-primary is-centered">Submit</button>
+                    </div>
                 </div>
             </form>  
         </div>
@@ -97,12 +103,15 @@
                     <div class="control">
                         <input id="genre_add" class="input" type="text">
                     </div>
+                    <div>
                     <label for="explic">
                         Explicit?
                         <input type="radio" name="filter" id="explic">
-                    </label><br><br>
-                    <button class="button is-primary is-centered" id="sub_add">Submit</button>
-                
+                    </label>
+                    </div>
+                    <div class="submitButton">
+                        <button class="button is-primary is-centered" id="sub_add">Submit</button>
+                    </div>  
                 </div>
             </form>
         </div>
@@ -134,9 +143,9 @@
                     <div class="control">
                         <input id="gemre_del" class="input" type="text">
                     </div>
-                    <br><br>
-                    <button class="button is-primary is-centered">Submit</button>
-                
+                    <div class="submitButton">
+                        <button class="button is-primary is-centered">Submit</button>
+                    </div>
                 </div>
             </form>
         </div>

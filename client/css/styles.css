@@ -82,7 +82,8 @@ footer {
     justify-content: center;
     align-items: center;
     margin: 50px 50px 10px 50px;
-    
+    height: 500px;
+    overflow: scroll;
 }
 
 .artists_carousel {
@@ -103,14 +104,13 @@ footer {
     list-style: inline-block;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    overflow-x: auto;
 }
 
 .song_images li {
     display: inline-flex;
     flex-direction: column;
     padding: 0px 20px;
-    flex-wrap: wrap;
 }
 
 .artist_images {

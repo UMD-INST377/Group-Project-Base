@@ -20,11 +20,15 @@ function createSongList(collection) {
     // collection = Object.values(collection);
     // const entries = Object.entries(collection);
     // console.log(entries);
-
+    let i =0
     collection.data.forEach((item) => {
+        if(i>3) {
+            return
+        }
         const injectThisItem = `<li><img class="placeholder" src="${getImage(item.song_id)}" alt="Placeholder Image">${item.song_name}</li>`;
         console.log(item.song_name);
         targetList.innerHTML += injectThisItem;
+        i++
     });
     console.log(Object.values(collection));
 }

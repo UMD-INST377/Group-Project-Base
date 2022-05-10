@@ -72,5 +72,5 @@ function inTuneSearch() {
     console.log(searchBar.textContent)
 } 
 
-export function inTuneSearch();
+// export function inTuneSearch();
 

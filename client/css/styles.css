@@ -197,8 +197,7 @@ css. I will leave comments, feel free to change back - Maxim*/
     flex-direction: column;
     align-items: center;
     background-color: white;
-    margin: 0px 800px 0px 800px; 
-    padding: 100px;/*added padding*/
+    padding: 80px;/*added padding*/
     border-radius: 10px;
     border-style: solid; 
     border-color: black;
@@ -239,7 +238,6 @@ margin-top: 20px;
     flex-direction: column;
     align-items: center;
     background-color: white;
-    margin: 0px 700px 0px 700px;
     padding: 70px; /*changed from 20 to 70px*/
     border-radius: 10px;
     border-style: solid;
@@ -280,16 +278,18 @@ margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10%;
 }
 
 div .account_text {
     display: flex;
     justify-content: center;
+    border-radius: 25px;
+    padding: 5px;
 }
 
 div .account_label {
-    justify-content: right;
+    justify-content: center;
+
 }
 
 .account_buttons {
@@ -305,6 +305,17 @@ div .account_label {
     cursor: pointer;
     background-color: #ffcc6a;
 }
+
+
+  
+.account_buttons button:hover {
+    background-color: #c79e53;
+}
+
+.account_buttons button:active {
+    background-color: lightgray;
+}
+    
 
 .form_block {
     display: flex;
@@ -339,3 +350,16 @@ a:hover {
 
 }
 
+.about_block {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 50px;/*added padding*/
+    border-radius: 10px;
+    border-style: solid; 
+    border-color: black;
+    margin-bottom: 100px;/*Added this*/
+    margin: 0px 400px 30px 400px;
+}

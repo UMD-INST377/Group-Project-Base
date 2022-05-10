@@ -2,7 +2,7 @@
 import express from 'express';
 import sequelize from 'sequelize';
 // eslint-disable-next-line import/no-unresolved
-import db from '../../database/initializeDB.js';
+import db from '../database/initializeDB.js';
 
 const router = express.Router();
 

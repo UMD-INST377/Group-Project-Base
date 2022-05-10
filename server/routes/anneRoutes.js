@@ -5,7 +5,7 @@ import chalk from 'chalk';
 // eslint-disable-next-line import/no-unresolved
 import fetch from 'node-fetch';
 // eslint-disable-next-line import/no-unresolved
-import db from '../../database/initializeDB.js';
+import db from '../database/initializeDB.js';
 
 const router = express.Router();
 

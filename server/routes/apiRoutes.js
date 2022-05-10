@@ -4,7 +4,7 @@ import sequelize from 'sequelize';
 import chalk from 'chalk';
 // import fetch from 'node-fetch';
 
-import db from '../../database/initializeDB.js';
+import db from '../database/initializeDB.js';
 import mercyRoutes from './mercyRoutes.js';
 
 const router = express.Router();

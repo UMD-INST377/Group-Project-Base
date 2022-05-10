@@ -330,5 +330,15 @@ a, a:visited, a:active {
 
 a:hover {
     color: white;
-    font-style: italic;
+    font-weight: bold;
 }
+
+/* Charts  Page 
+*/
+
+.songs_images li { 
+    display: flex;
+    flex-direction: column;
+
+}
+

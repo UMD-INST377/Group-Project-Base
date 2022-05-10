@@ -8,7 +8,8 @@ function dataHandler(dataArray) {
 
 async function createMealTable(){
   const results = await fetch('/api/meals');
-  const mealJson = await results.json();
+  const mealsJ = await results.json();
+  const mealJson = mealJson.data
 
   let mealCat = '<ul>';
   let northMeals = '<ul>';

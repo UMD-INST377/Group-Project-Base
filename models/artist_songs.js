@@ -2,7 +2,7 @@ export default (sequelize, DataTypes) => {
   const artistSongs = sequelize.define(
     'artist_songs',
     {
-      album_id: {
+      artist_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true

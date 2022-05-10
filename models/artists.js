@@ -9,7 +9,7 @@ export default (sequelize, DataTypes) => {
         autoIncriment: true,
         primaryKey: true,
       },
-      artist_name: {
+      name: {
         type: DataTypes.CHAR(50),
         allowNull: false,
       }

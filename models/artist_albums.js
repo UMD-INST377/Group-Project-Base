@@ -1,13 +1,13 @@
 export default (sequelize, DataTypes) => {
   const artistAlbum = sequelize.define(
-    'artist_album',
+    'artist_albums',
     {
       album_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      style_id: {
+      artist_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         foreginKey: true

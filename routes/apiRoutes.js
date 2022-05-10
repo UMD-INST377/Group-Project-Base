@@ -135,7 +135,7 @@ router.get('/playlists/:owner/:name', async (req, res) => {
         name: req.params.name
       }
     });
-    console.log(playlistItem.length === 0);
+    console.log(playlistItem);
     res.json(playlistItem);
   } catch (err) {
     console.error(err);
@@ -238,7 +238,7 @@ router.post('/artist_albums', async (req, res) => {
   const currentArtId = (await artist_items.length);
   const currentAlbId = (await album_items.length);
   try {
-    const newArtist_Album = await db.artist_albums.create({
+    const newArtist_Album = await db.artistAlbums.create({
       artist_id: currentArtId,
       album_id: currentAlbId
     });
@@ -407,7 +407,7 @@ router.post('/album_songs', async (req, res) => {
   const currentAlbId = (await albumItems.length);
   const currentSngId = (await songItems.length);
   try {
-    const newAlbumSongsInfo = await db.album_songs.create({
+    const newAlbumSongsInfo = await db.albumSongs.create({
       album_id: currentAlbId,
       song_id: currentSngId
     });
@@ -567,7 +567,7 @@ router.post('/song_genres', async (req, res) => {
   const currentSngId = (await songItems.length);
   const currentGnrId = (await genreItems.length);
   try {
-    const newDining = await db.playlists.create({
+    const newDining = await db.songGenres.create({
       song_id: currentSngId,
       genre_id: currentGnrId
     });
@@ -639,7 +639,7 @@ router.get('/playlist_songs/:playlist_id', async (req, res) => {
     res.json(playSongItems);
   } catch (err) {
     console.error(err);
-    res.error('Server error');
+    res.send('Server error');
   }
 });
 
@@ -651,7 +651,7 @@ router.post('/playlist_songs', async (req, res) => {
       playlist_id: req.body.playlist_id,
       song_id: currentSngId,
       added_by: req.body.added_by,
-      date_added: req.body.date_added
+      date_added: new Date().toLocaleDateString()
     });
     res.json(newStyle);
   } catch (err) {
@@ -730,7 +730,7 @@ router.get('/songs/:name', async (req, res) => {
 router.post('/songs', async (req, res) => {
   const songItems = await db.songs.findAll();
   const currentId = (await songItems.length) + 1;
-  console.log(req.body);
+  console.log(currentId);
   try {
     const newStyle = await db.songs.create({
       song_id: currentId,
@@ -784,11 +784,11 @@ router.put('/songs', async (req, res) => {
   }
 });
 
-router.delete('/songs/:song_id', async (req, res) => {
+router.delete('/songs/:name', async (req, res) => {
   try {
     await db.songs.destroy({
       where: {
-        song_id: req.params.song_id
+        name: req.params.name
       }
     });
     res.send('Successfully Deleted');

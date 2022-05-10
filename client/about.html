@@ -1,0 +1,144 @@
+
+   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Group 3</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="./stylesheets/style.css"/>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="logo">
+        <a href="/index.html"><img src="assets/logo.png" alt="Logo"></a>
+      </div>
+
+
+        <nav class="nav">
+            <div class="arrow_container_left mobile">
+              <div class="arrow_left">
+                <div class="line_a"></div>
+                <div class="line_b"></div>
+              </div>
+            </div>
+
+            <a class="nav-link" href="/.">Home</a>
+            <a class="nav-link active" href="../about.html">About</a>
+            <a class="nav-link" id="saved" href="../saved.html">Saved</a>
+            <a class="nav-link sign_up" href="#sign_up_modal">Sign Up</a>
+            <a class="nav-link login" href="#login_modal">Log in</a>
+            <a class="nav-link account logged_in" href="../account.html"></a>
+
+            <div class="arrow_container_right">
+              <div class="arrow_left mobile">
+                <div class="line_a"></div>
+                <div class="line_b"></div>
+              </div>
+            </div>
+        </nav>
+
+      
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+    </header>
+<main>
+    <div class="hero_sub_page">
+          <h1>About</h1>
+    </div>
+
+
+    <div class="section">
+<div class="content">
+  
+          <p> <img class="darwin" src="../assets/darwin.jpeg" alt="Charles Darwin">
+            Charles Darwin first introduced the idea of a phylogenetic tree back in 1837 and it was first published by zoologist Ernst Haeckel in his book, General Morphology of Organisms. A phylogenetic tree is a diagram of evolutionary relationships among all different organisms. The branches of these trees reflect how species evolved from another species; the same original species that other species derived from are all called common ancestors. The more recent common ancestor between two species, the more related those species are.</p>
+  
+
+
+
+    <p>Exploring the Tree of Life by being able to see the divergence between creatures through time provides an exciting and stimulating way to make scientific abstractions tangible & real. This is especially beneficial for educators and parents dealing with children who often carry a deep fascination for animals and prehistoric times. Not only would easier access to visual representations of this information make it easier for the public to understand the frameworks scientists use to understand Life, it can be a great asset for scientists who want to easily explain the findings of their research to the public.</p>
+
+    <p>Our goal is to bridge the gap between scientific research available to the public on biology & taxonomy and intellectually curious members of the public who want to understand more about current scientific models for Life on Earth. Specifically, we want to create a visual index for the relationship between different creatures and how they play into frameworks that attempt to explain the history of life on our planet.
+    </p>
+
+         
+  </div>
+</main>
+<!-- Sign Up Modal -->
+<div class="sign_up_modal">
+  <img src="assets/logo.png" alt="Logo">
+  
+  <form action="/users" method="post" class="sign_up_form">
+    <div class="form_row">
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+    </div>
+
+    <div class="form_row">
+      <label for="password">Password</label>
+      <input id="password" name="password" placeholder="****" type="text"/>
+    </div>
+
+    <div class="form_row buttons">
+      <button id="cancel">Cancel</button>
+      <button class="submit" id="sign_up" type="submit">Sign Up</button>
+    </div>
+
+    <div class="form_row log_in">
+      <p>or <a href="#login_modal">Log in</a> </p>
+    </div>
+
+  </form>
+
+</div>
+
+<!-- Login Modal -->
+<div class="login_modal">
+  <img src="assets/logo.png" alt="Logo">
+  
+  <form action="/users" method="get" class="login_form">
+    <div class="form_row">
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+    </div>
+
+    <div class="form_row">
+      <label for="password">Password</label>
+      <input id="password" name="password" placeholder="****" type="text"/>
+    </div>
+
+    <div class="form_row buttons">
+      <button id="cancel">Cancel</button>
+      <button class="submit" id="login" type="submit">Login</button>
+    </div>
+
+    <div class="form_row log_in">
+      <p>or <a href="#sign_up_modal">Sign Up</a> </p>
+    </div>
+
+  </form>
+
+</div>
+
+
+<div class="modal"></div>
+
+<footer>
+  <div>
+    <p>Clato was created by Nour Ali Ahmed, Taoheed King, Gabriel Rodriguez, and Sean Simmons.</p>
+  </div>
+</footer>
+    
+</body>
+<script type="module" src="./js/about.js"></script>
+</html>

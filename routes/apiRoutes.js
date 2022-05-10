@@ -1,273 +1,483 @@
+/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-empty */
 /* eslint-disable no-console */
 import express from 'express';
-import sequelize from 'sequelize';
-
+import sequelize, { Sequelize } from 'sequelize';
 import db from '../database/initializeDB.js';
+import User from '../models/User.js';
+import { userSearch, toD3 } from '../helpers/wikidata.js';
+
+// const { body, validationResult } = require('express-validator');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+router.use((req, res, next) => {
+  console.log('router.use() active..');
+  console.log('Time: %d', Date.now());
+  next();
 });
 
-/// /////////////////////////////////
-/// ////Dining Hall Endpoints////////
-/// /////////////////////////////////
-router.get('/dining', async (req, res) => {
+router.get('/', async (req, res) => {
+  res.send('Welcome to Animals db');
+});
+
+router.get('/users', async (req, res) => {
   try {
-    const halls = await db.DiningHall.findAll();
-    const reply = halls.length > 0 ? { data: halls } : { message: 'no results found' };
+    console.log("Using router.get('/users')...");
+    const user = await db.sequelizeDB.models.users.findAll();
+    const reply = user.length > 0 ? { data: user } : { message: 'no results found' };
     res.json(reply);
+    res.end();
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.get('/dining/:hall_id', async (req, res) => {
+router.get('/users/:username', async (req, res) => {
   try {
-    const hall = await db.DiningHall.findAll({
+    console.log(`* Using router.get('/users/:username') to query (USER INPUT): ${req.body.gbif}\n`);
+    const user = await db.sequelizeDB.models.users.findAll({
       where: {
-        hall_id: req.params.hall_id
+        username: req.body.username,
+        password: req.body.password
       }
     });
-
-    res.json(hall);
+    res.json(user);
+    res.end();
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.post('/dining', async (req, res) => {
-  const halls = await db.DiningHall.findAll();
-  const currentId = (await halls.length) + 1;
+router.get('/canidae', async (req, res) => {
   try {
-    const newDining = await db.DiningHall.create({
-      hall_id: currentId,
-      hall_name: req.body.hall_name,
-      hall_address: req.body.hall_address,
-      hall_lat: req.body.hall_lat,
-      hall_long: req.body.hall_long
-    });
-    res.json(newDining);
+    console.log("Using router.get('/canidae')...");
+    const canidae = await db.sequelizeDB.models.canidae.findAll();
+    res.json(canidae);
+    res.end();
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.delete('/dining/:hall_id', async (req, res) => {
+router.get('/canidae/:gbif', async (req, res) => {
   try {
-    await db.DiningHall.destroy({
+    console.log(`* Using router.get('/canidae/:gbif') to query (USER INPUT): ${req.body.gbif}\n`);
+    const canidae = await db.sequelizeDB.models.canidae.findAll({
       where: {
-        hall_id: req.params.hall_id
+        gbif: req.body.gbif
+      }
+    });
+    res.json(canidae);
+    res.end();
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/canidae_by_common_names', async (req, res) => {
+  try {
+    const newCanidaeCommon = await db.Canidae.create({
+      item: req.body.item,
+      GBIF: req.body.gbif,
+      scientific_name: req.body.scientific_name,
+      parent_taxon: req.body.parent_taxon,
+      common_names: req.body.common_names
+    });
+    res.json({data: newCanidaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.delete('/canidae_by_common_names', async (req, res) => {
+  try {
+    await db.Canidae.destroy({
+      where: {
+        GBIF: req.body.gbif
       }
     });
     res.send('Successfully Deleted');
+    res.json({data: newCanidaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.post('/hominidae_by_common_names', async (req, res) => {
+  try {
+    const newHominidaeCommon = await db.Hominidae.create({
+      item: req.body.item,
+      GBIF: req.body.gbif,
+      scientific_name: req.body.scientific_name,
+      parent_taxon: req.body.parent_taxon,
+      common_names: req.body.common_names
+    });
+    res.json({data: newHominidaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.delete('/hominidae_by_common_names', async (req, res) => {
+  try {
+    await db.Hominidae.destroy({
+      where: {
+        GBIF: req.body.gbif
+      }
+    });
+    res.send('Successfully Deleted');
+    res.json({data: newHominidaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.post('/felinae_by_common_names', async (req, res) => {
+  try {
+    const newFelinaeCommon = await db.Felinae.create({
+      item: req.body.item,
+      GBIF: req.body.gbif,
+      scientific_name: req.body.scientific_name,
+      parent_taxon: req.body.parent_taxon,
+      common_names: req.body.common_names
+    });
+    res.json({data: newFelinaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.delete('/felinae_by_common_names', async (req, res) => {
+  try {
+    await db.Felinae.destroy({
+      where: {
+        GBIF: req.body.gbif
+      }
+    });
+    res.send('Successfully Deleted');
+    res.json({data: newFelinaeCommon});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+router.put('/canidae_common_names', async (req, res) => {
+  try {
+    console.log('PUT to router.route("/canidae_by_common_names")..');
+    const canidae_by_common_names = await db.sequelizeDB.models.canidae.update({
+      item: req.body.item,
+      scientific_name: req.body.scientific_name,
+      parent_taxon: req.body.parent_taxon
+    },
+    {
+      where: {
+        GBIF: req.body.gbif
+      }
+    });
+    res.status(200).send(`SUCCESS: Item(s) with GBIF ID: ${req.body.gbif} updated.`);
+    res.end();
+  } catch (e) {
+    res.send(`ERROR: ${e.name}`);
+  }
+})
+router.post('/felinae_by_common_names', async (req, res) => {
+  try {
+    const felinae = await db.sequelizeDB.models.felinae.findAll({
+      where: {
+        common_names: req.body.common_name
+      }
+    });
+    res.json({data: felinae});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.post('/hominidae_by_common_names', async (req, res) => {
+  try {
+    const hominidae = await db.sequelizeDB.models.hominidae.findAll({
+      where: {
+        common_names: req.body.common_name
+      }
+    });
+    res.json({data: hominidae});
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/felinae', async (req, res) => {
+  try {
+    console.log("Using router.get('/felinae')...");
+    const felinae = await db.sequelizeDB.models.felinae.findAll();
+    res.json(felinae);
+    res.end();
+  } catch (err) {
+    console.error(err);
+    res.error('Error during GET all request.');
+  }
+});
+router.get('/felinae/:gbif', async (req, res) => {
+  try {
+    console.log("Using router.get('/felinae/:gbif')...");
+    const felinae = await db.sequelizeDB.models.felinae.findAll({
+      where: {
+        gbif: req.body.gbif
+      }
+    });
+    res.json(felinae);
+    res.end();
   } catch (err) {
     console.error(err);
     res.error('Server error');
   }
 });
 
-router.put('/dining', async (req, res) => {
+router.get('/hominidae', async (req, res) => {
   try {
-    await db.DiningHall.update(
-      {
-        hall_name: req.body.hall_name,
-        hall_location: req.body.hall_location
+    console.log("Using router.get('/hominidae')...");
+    const hominidae = await db.sequelizeDB.models.hominidae.findAll();
+    res.json(hominidae);
+    res.end();
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.get('/hominidae/:gbif', async (req, res) => {
+  try {
+    console.log("Using router.get('/hominidae/:gbif')...");
+    const hominidae = await db.sequelizeDB.models.hominidae.findAll({
+      where: {
+        gbif: req.body.gbif
+      }
+    });
+    res.json(hominidae);
+    res.end();
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/queries', async (req, res) => {
+  try {
+    console.log("Using router.get('/queries')...");
+    const queries = await db.sequelizeDB.models.queries.findAll();
+    res.json(queries);
+    res.end();
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+router.get('/queries/:query_id', async (req, res) => {
+  try {
+    console.log("Using router.get('/queries/:query_id')...");
+    const query = await db.sequelizeDB.models.queries.findAll({
+      where: {
+        query_id: req.body.query_id
+      }
+    });
+    res.json(query);
+    res.end();
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/hominidae/:gbif', async (req, res) => {
+  try {
+    console.log("Using router.get('/hominidae/:gbif')...");
+    const hominidae = await db.sequelizeDB.models.hominidae.findAll({
+      where: {
+        gbif: req.params.gbif
+      }
+    });
+    res.json(hominidae);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// GET Assignment
+router.get('/hominidae', async (req, res) => {
+  try {
+    console.log("Using router.get('/hominidae')...");
+    const hominidae = await db.sequelizeDB.models.hominidae.findAll();
+    res.json(hominidae);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/hominidae/:scientific_name', async (req, res) => {
+  try {
+    console.log("Using router.get('/hominidae/:scientific_name')...");
+    const hominidae = await db.sequelizeDB.models.hominidae.findAll({
+      where: {
+        scientific_name: req.params.scientific_name
+      }
+    });
+    res.json(hominidae);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('/users', async (req, res) => {
+  try {
+    console.log('PUT to router.route("/user")..');
+    const newUser = await db.sequelizeDB.models.users.upsert({
+      username: req.body.username,
+      password: req.body.password
+    },
+    {
+      where: {
+        userid: req.body.userid
+      }
+    })
+    res.status(200).send(`SUCCESS: New user: ${req.body.username} updated.`);
+    res.end();
+  } catch (e) {
+    res.send(`ERROR: ${e.name}`);
+  }
+});
+// router.put('/user', async (req, res) => {
+//   try {
+//     console.log('Putting user');
+//     const user = await db.sequelizeDB.models.users.upsert({
+//       where: {
+//         userid: req.body.userid,
+//         username: req.body.username,
+//         email: req.body.email,
+//         password: req.body.password,
+//         create_time
+//       }
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.error('Server error');
+//   }
+// });
+
+router.post('/hominidae', async (req, res) => {
+  try {
+    console.log('Posting hominidae animal');
+    const user = await sequelizeDB.models.hominidae.data({
+      where: {
+        item: 'random_items',
+        GBIF: 'gbif',
+        scientific_name: 'random animal',
+        parent_taxon: 'unknown',
+        common_names: 'random animal'
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.delete('/hominidae', async (req, res) => {
+  try {
+    console.log('Deleting hominidae animal');
+    const user = await sequelizeDB.models.hominidae.findAll({
+      where: {
+        item: 'random_items'
+      }
+    });
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+// NEW ROUTES for '/felinae'
+router.route('/felinae')
+  .post(async (req, res) => {
+    try {
+      console.log('POST to route.route("/felinae")..');
+      const felinae = await db.sequelizeDB.models.felinae.create({
+        item: req.body.item,
+        GBIF: req.body.gbif,
+        scientific_name: req.body.scientific_name,
+        parent_taxon: req.body.parent_taxon,
+        common_name: req.body.common_name
+      }).then((result) => res.json(result));
+      res.end();
+    } catch (e) {
+      console.error(e);
+      res.send(`ERROR: ${e.name}`);
+    }
+  })
+  .put(async (req, res) => {
+    try {
+      console.log('PUT to router.route("/felinae")..');
+      const felinae = await db.sequelizeDB.models.felinae.upsert({
+        item: req.body.item,
+        GBIF: req.body.GBIF,
+        scientific_name: req.body.scientific_name,
+        parent_taxon: req.body.parent_taxon
       },
       {
         where: {
-          hall_id: req.body.hall_id
+          GBIF: req.body.GBIF
         }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// ////////Meals Endpoints//////////
-/// /////////////////////////////////
-router.get('/meals', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll();
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/meals/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Meals.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/meals', async (req, res) => {
-  try {
-    await db.Meals.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category
-      },
-      {
+      });
+      res.status(200).send(`SUCCESS: Item(s) with GBIF ID: ${req.body.gbif} updated.`);
+      res.end();
+    } catch (e) {
+      res.send(`ERROR: ${e.name}`);
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      console.log('DELETE to router.route("/felinae")..');
+      const felinae = await db.sequelizeDB.models.felinae.destroy({
         where: {
-          meal_id: req.body.meal_id
+          GBIF: req.body.gbif
         }
-      }
-    );
-    res.send('Meal Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+      });
+      res.status(200).send(`SUCCESS: Item(s) with GBIF ID: ${req.body.gbif} deleted.`);
+      res.end();
+    } catch (e) {
+      console.error(e);
+      res.send(`ERROR: ${e.name}`);
+    }
+  });
 
-/// /////////////////////////////////
-/// ////////Macros Endpoints/////////
-/// /////////////////////////////////
-router.get('/macros', async (req, res) => {
-  try {
-    const macros = await db.Macros.findAll();
-    res.send(macros);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/macros/:meal_id', async (req, res) => {
-  try {
-    const meals = await db.Macros.findAll({
-      where: {
-        meal_id: req.params.meal_id
-      }
-    });
-    res.json(meals);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.put('/macros', async (req, res) => {
-  try {
-    // N.B. - this is a good example of where to use code validation to confirm objects
-    await db.Macros.update(
-      {
-        meal_name: req.body.meal_name,
-        meal_category: req.body.meal_category,
-        calories: req.body.calories,
-        serving_size: req.body.serving_size,
-        cholesterol: req.body.cholesterol,
-        sodium: req.body.sodium,
-        carbs: req.body.carbs,
-        protein: req.body.protein,
-        fat: req.body.fat
-      },
-      {
-        where: {
-          meal_id: req.body.meal_id
-        }
-      }
-    );
-    res.send('Successfully Updated');
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// /////////////////////////////////
-/// Dietary Restrictions Endpoints///
-/// /////////////////////////////////
-router.get('/restrictions', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll();
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-router.get('/restrictions/:restriction_id', async (req, res) => {
-  try {
-    const restrictions = await db.DietaryRestrictions.findAll({
-      where: {
-        restriction_id: req.params.restriction_id
-      }
-    });
-    res.json(restrictions);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-/// //////////////////////////////////
-/// ///////Custom SQL Endpoint////////
-/// /////////////////////////////////
-const macrosCustom = 'SELECT `Dining_Hall_Tracker`.`Meals`.`meal_id` AS `meal_id`,`Dining_Hall_Tracker`.`Meals`.`meal_name` AS `meal_name`,`Dining_Hall_Tracker`.`Macros`.`calories` AS `calories`,`Dining_Hall_Tracker`.`Macros`.`carbs` AS `carbs`,`Dining_Hall_Tracker`.`Macros`.`sodium` AS `sodium`,`Dining_Hall_Tracker`.`Macros`.`protein` AS `protein`,`Dining_Hall_Tracker`.`Macros`.`fat` AS `fat`,`Dining_Hall_Tracker`.`Macros`.`cholesterol` AS `cholesterol`FROM(`Dining_Hall_Tracker`.`Meals`JOIN `Dining_Hall_Tracker`.`Macros`)WHERE(`Dining_Hall_Tracker`.`Meals`.`meal_id` = `Dining_Hall_Tracker`.`Macros`.`meal_id`)';
-router.get('/table/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(macrosCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-
-const mealMapCustom = `SELECT hall_name,
-  hall_address,
-  hall_lat,
-  hall_long,
-  meal_name
-FROM
-  Meals m
-INNER JOIN Meals_Locations ml 
-  ON m.meal_id = ml.meal_id
-INNER JOIN Dining_Hall d
-ON d.hall_id = ml.hall_id;`;
-router.get('/map/data', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(mealMapCustom, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
-router.get('/custom', async (req, res) => {
-  try {
-    const result = await db.sequelizeDB.query(req.body.query, {
-      type: sequelize.QueryTypes.SELECT
-    });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.error('Server error');
-  }
-});
+router.route('/search')
+  .post(async (req, res) => {
+    try {
+      console.log('POST to wikidata : route("/search")...');
+      const query = await userSearch(req.body.species_a, req.body.species_b);
+      const data = await toD3(query.query1, query.query2, query.match);
+      res.status(200).send(data);
+      res.end();
+      return data;
+    } catch (e) {
+      console.error(e);
+      res.send(`ERROR: ${e.name}`);
+      res.end();
+    }
+  });
 
 export default router;

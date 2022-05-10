@@ -1,29 +1,36 @@
-/* eslint-disable no-console */
 import express from 'express';
-import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import indexRouter from './server/routes/index.js';
+import userRouter from './server/routes/user.js';
+import searchRouter from './server/routes/search.js';
+import { fileURLToPath } from 'url';
 
-const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const PORT = process.env.PORT || 3000;
-const staticFolder = 'client';
+var app = express();
 
-app.use(express.urlencoded({ extended: true }));
+app.all('/', (req, res, next) => {
+    next();
+})
+// response json parser
 app.use(express.json());
+// html form encoder
+app.use(express.urlencoded({ extended: true }));
+// cookie parser
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'client')));
 
-app.use(express.static(staticFolder));
-app.use('/api', apiRoutes);
+app.use('/index', indexRouter);
+app.use('/user', userRouter);
+app.use('/search', searchRouter);
+/*
+app.get('/', function (req, res) {
+    console.log('Cookies: ', req.cookies)
 
-async function bootServer() {
-  try {
-    // const mysql = await db.sequelizeDB;
-    // await mysql.sync();
-    app.listen(PORT, () => {
-      console.log(`Listening on: http//localhost:${PORT}`);
-    });
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-bootServer();
+    // signed
+    console.log('Signed Cookies: ', req.signedCookies)
+})
+*/
+export default app;

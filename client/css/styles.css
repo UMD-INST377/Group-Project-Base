@@ -280,16 +280,16 @@ margin-top: 20px;
     align-items: center;
 }
 
-div .account_text {
+.account_text {
     display: flex;
     justify-content: center;
     border-radius: 25px;
     padding: 5px;
 }
 
-div .account_label {
-    justify-content: center;
-
+.account_label {
+    align-self: center;
+    text-align: center;
 }
 
 .account_buttons {
@@ -347,7 +347,8 @@ a:hover {
 .songs_images li { 
     display: flex;
     flex-direction: column;
-
+    padding: 2%;
+    align-items: center;
 }
 
 .about_block {
@@ -362,4 +363,8 @@ a:hover {
     border-color: black;
     margin-bottom: 100px;/*Added this*/
     margin: 0px 400px 30px 400px;
+}
+.placeholder {
+    width: 300px;
+    height: 300px;
 }

@@ -145,5 +145,10 @@ button:hover {
 
 .alLeft{
   text-align: left;
-  padding:10%
+  padding:1%;
+  
+}
+
+.push{
+  padding-top:1%;
 }

@@ -22,7 +22,7 @@ https://github.com/vnath22/Group24-Final-INST377SP2022#developer-manual
 ## How to run application on a server
 1. Open repository in VSCode terminal or Terminal application.
 2. Run npm start. There should be no errors.
-3. In a web browser, go to url: http://localhost:3000/.
+3. In a web browser, go to url: `http://localhost:3000/`.
 
 ## To run tests for software
 The are no prewritten tests in the source repository

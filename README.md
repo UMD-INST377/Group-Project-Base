@@ -1,4 +1,4 @@
-# Trailz App
+# Parkz App README
 
 ## Project Description
 Our website will help anyone who is traveling to National Parks in the US and is looking for a guide to help plan their trips. 
@@ -6,6 +6,13 @@ Our website will help anyone who is traveling to National Parks in the US and is
 ## Link
 https://group2-project377.herokuapp.com/
 
+# Developer Manual
+
+## Installation and Usage
+To use this website, fork the code to a local repository and install dependancies using: 
+`npm install`
+Start the server using: 
+`npm start`
 ## Endpoint Doc
 
 <hr>

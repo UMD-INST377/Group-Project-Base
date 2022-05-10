@@ -20,6 +20,7 @@
           </ul>
         </aside>
       </div>
+
       <div class="column">
         <div class = "title has-text-white is-1 has-text-centered">UPDATE A DATABASE</div>
         <hr style="width: 100%;text-align:left;margin-left:0">
@@ -71,6 +72,33 @@
           <label for="label_name">Label Name:</label><br>
           <input type="text" id="label_name" name="label_name"><br>
           <input type="submit" value = "ADD">
+        </form>
+        <select class = "select" id="delBox" onchange="deleteTable();">
+          <option value="0">Select Table To Delete</option>
+          <option value="1">Artists</option>
+          <option value="2">Albums</option>
+          <option value="3">Genres</option>
+          <option value="4">Labels</option>
+        </select>
+        <form action = '/delete' method = 'DELETE' class = "form has-text-white" id = "albumDelForm">
+          <label for="artist_id">Artist ID:</label><br>
+          <input type="text" id="artist_id" name="artist_id"><br>
+          <input type="submit" value="DELETE">
+        </form>
+        <form action = '/delete' method = 'DELETE' class = "form has-text-white" id = "albumDelForm">
+          <label for="album_id">Album ID:</label><br>
+          <input type="text" id="album_id" name="album_id"><br>
+          <input type="submit" value="DELETE">
+        </form>
+        <form action = '/delete' method = 'DELETE' class = "form has-text-white" id = "albumDelForm">
+          <label for="album_id">Genre ID:</label><br>
+          <input type="text" id="genre_id" name="genre_id"><br>
+          <input type="submit" value="DELETE">
+        </form>
+        <form action = '/delete' method = 'DELETE' class = "form has-text-white" id = "albumDelForm">
+          <label for="album_id">Label ID:</label><br>
+          <input type="text" id="label_id" name="label_id"><br>
+          <input type="submit" value="DELETE">
         </form>
         <select class = "select" id="selectBox" onchange="changeTable();">
           <option value="0">Select Table To View</option>
@@ -172,5 +200,6 @@
       </div>
     </div>
     <script src="./addRecords.js"></script>
+    <script src="./delrec.js"></script>
   </body>
 </html>

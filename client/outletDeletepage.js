@@ -48,7 +48,7 @@ const form3 = document.querySelector('.delete_outlet')
     const formObj = formToObject(form3);
     console.log('check the form for filters', formObj);
     const postResult = await fetch('https://group4-final-inst377sp2022.herokuapp.com/api/outletPath/', {
-      method: 'POST',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },

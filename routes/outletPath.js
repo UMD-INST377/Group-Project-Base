@@ -51,7 +51,7 @@ router.route('/')
       console.log(err);
       res.send({message: err})
     }
-  });
+  })
   
   .delete(async (req, res) => {
     try {

@@ -7,7 +7,7 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     max-height: 100vh;
-    overflow-y: hidden;
+    overflow: hidden;
 
 }
 body{
@@ -51,7 +51,7 @@ body{
 
 }
 .wrapper{
-    overflow: hidden;
+    overflow: scroll;
 }
 .text_block{
     background-color: white;

@@ -2,7 +2,8 @@ const coverArt =
 {1 : 'https://upload.wikimedia.org/wikipedia/en/e/e7/Moneybagg_Yo_-_A_Gangsta%27s_Pain.png',
  2 : './covers/holy_2.png',
  3: 'https://i.scdn.co/image/ab67616d0000b273ef017e899c0547766997d874',
- 4: 'https://i1.sndcdn.com/artworks-aMU4GrPiwKtpGnu1-vdrqhQ-t500x500.jpg'}
+ 4: 'https://i1.sndcdn.com/artworks-aMU4GrPiwKtpGnu1-vdrqhQ-t500x500.jpg'};
+ const frontPageLimit = 3;
 
 function getImage(songID) {
     url = "";
@@ -20,15 +21,15 @@ function createSongList(collection) {
     // collection = Object.values(collection);
     // const entries = Object.entries(collection);
     // console.log(entries);
-    let i =0
+    let i =0;
     collection.data.forEach((item) => {
-        if(i>3) {
-            return
+        if(i>frontPageLimit) {
+            return;
         }
         const injectThisItem = `<li><img class="placeholder" src="${getImage(item.song_id)}" alt="Placeholder Image">${item.song_name}</li>`;
         console.log(item.song_name);
         targetList.innerHTML += injectThisItem;
-        i++
+        i++;
     });
     console.log(Object.values(collection));
 }
@@ -42,10 +43,15 @@ function createArtistList(collection) {
     // const entries = Object.entries(collection);
     // console.log(entries);
 
+    let i =0;
     collection.data.forEach((item) => {
-        const injectThisItem = `<li><img class="placeholder" src="${getImage(item.song_id)}" alt="Placeholder Image">${item.song_name}</li>`;
-        console.log(item.song_name);
+        if(i>frontPageLimit) {
+            return;
+        }
+        const injectThisItem = `<li><img class="placeholder" src="${getImage(i + 1)}" alt="Placeholder Image">${item.first_name + " " + item.last_name}</li>`;
+        console.log(item.artist_id);
         targetList.innerHTML += injectThisItem;
+        i++;
     });
     console.log(Object.values(collection));
 }
@@ -59,22 +65,29 @@ function createGenreList(collection) {
     // const entries = Object.entries(collection);
     // console.log(entries);
 
+    let i =0;
     collection.data.forEach((item) => {
-        const injectThisItem = `<li><img class="placeholder" src="${getImage(item.song_id)}" alt="Placeholder Image">${item.song_name}</li>`;
+        if(i>frontPageLimit) {
+            return;
+        }
+        const injectThisItem = `<li><img class="placeholder" src="${getImage(i + 1)}" alt="Placeholder Image">${item.genre_name}</li>`;
         console.log(item.song_name);
         targetList.innerHTML += injectThisItem;
+        i++;
     });
     console.log(Object.values(collection));
 }
   
 async function mainEvent() {
-    const genres = await fetch('api/songs'); // This accesses some data from our API
-    const genreArray = await genres.json(); // This changes it into data we can use - an object
-    console.log('Charts fetch');
-    console.log(genreArray);
-    createSongList(genreArray);
-    createArtistList(genreArray);
-    createGenreList(genreArray);
+    const songs = await fetch('api/songs'); // This accesses some data from our API
+    const songsArray = await songs.json(); // This changes it into data we can use - an object
+    const artists = await fetch('api/artist');
+    const artistArray = await artists.json();
+    const genres = await fetch('api/genre');
+    const genresArray = await genres.json();
+    createSongList(songsArray);
+    createArtistList(artistArray);
+    createGenreList(genresArray);
     console.log('API Retrieval for index.HTML Not Yet Implemented')
 }
 

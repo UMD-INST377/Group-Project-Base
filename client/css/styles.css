@@ -39,6 +39,10 @@ footer {
     right: 0;
 }
 
+img {
+    border-radius: 6px;
+}
+
 .nav_menu {
     list-style: none;
     display: flex;
@@ -105,12 +109,18 @@ footer {
     justify-content: center;
     align-items: center;
     overflow-x: auto;
+    padding-left: 70px;
+    padding-top: 50px;
+    align-items: center;
 }
 
 .song_images li {
     display: inline-flex;
     flex-direction: column;
     padding: 0px 20px;
+    align-items: center;
+    font-style: italic;
+
 }
 
 .artist_images {
@@ -121,8 +131,10 @@ footer {
 }
 
 .artist_images li {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
     padding: 0px 20px;
+    align-items: center;
 }
 
 .genre_images {
@@ -133,8 +145,10 @@ footer {
 }
 
 .genre_images li {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
     padding: 0px 20px;
+    align-items: center;
 }
 
 

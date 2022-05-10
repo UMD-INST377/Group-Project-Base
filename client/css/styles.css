@@ -339,6 +339,8 @@ a:hover {
 .songs_images li { 
     display: flex;
     flex-direction: column;
-
+    flex-wrap: nowrap;
+    padding: 2%;
+    align-items: center;
 }
 

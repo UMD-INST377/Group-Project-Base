@@ -10,12 +10,12 @@ Our database `songs` contains information pretaining to artists such as their ag
 
 ### Relevant Links
 * [Heroku](https://young-savannah-96635.herokuapp.com/index.html)
+* [Developer Manual](#developer-manual)
+
 
 ### Browsers/Devices
-- 
-- 
-- 
-- 
+- Windows 10/11
+- iPhone 6/7/8
 
 # Developer Manual
 
@@ -47,11 +47,42 @@ The are no prewritten tests in our application, though other methods can be used
 - DELETE - Deletes record from the database and sends back "Success. Record Deleted" if valid
 - PUT - Updates record in database and sends back "Success. Updated Deleted" if valid
 
-(NEED TO ADD OTHER ROUTES)
+`/api/album` - API route for albums within our database "songs".
+
+- GET - Gets records from database and returns JSON response.
+- POST - Creates new record in the database and sends back "Successful. Record Updated" if valid.
+
+`/api/album/:album_id` - API route for specific album.
+
+- GET - Gets record from database and returns JSON response.
+- DELETE - Deletes record from the database and sends back "Success. Record Deleted" if valid
+- PUT - Updates record in database and sends back "Success. Updated Deleted" if valid
+
+`/api/label` - API route for labels within our database "songs".
+
+- GET - Gets records from database and returns JSON response.
+- POST - Creates new record in the database and sends back "Successful. Record Updated" if valid.
+
+`/api/label/:label_id` - API route for specific label.
+
+- GET - Gets record from database and returns JSON response.
+- DELETE - Deletes record from the database and sends back "Success. Record Deleted" if valid
+- PUT - Updates record in database and sends back "Success. Updated Deleted" if valid
+
+`/api/genre` - API route for genres within our database "songs".
+
+- GET - Gets records from database and returns JSON response.
+- POST - Creates new record in the database and sends back "Successful. Record Updated" if valid.
+
+`/api/genre/:genre_id` - API route for specific genre.
+
+- GET - Gets record from database and returns JSON response.
+- DELETE - Deletes record from the database and sends back "Success. Record Deleted" if valid
+- PUT - Updates record in database and sends back "Success. Updated Deleted" if valid
 
 ## Bugs and Future Development
 ### Known Bugs:
-- N/A
+- When trying to delete a record, the webpage does not seem to register the change.
 
 ## Future Development:
 - Potential implementation of user login/account management for our website

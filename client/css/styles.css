@@ -11,7 +11,13 @@
   margin: 0;
 }
 
+.submitButton {
+  margin-top: 20px;
+}
 
+label {
+  margin-top: 10px;
+} 
 
 body {
   margin: 0;

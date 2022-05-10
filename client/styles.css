@@ -300,6 +300,14 @@ body {
     border-radius: 10px;
 }
 
+.indextext a {
+
+    text-decoration: none;
+    font-weight: bold;
+    color: #CFFF6A;
+
+}
+
   
   @media screen and (max-height: 450px) {
     .sidenav {

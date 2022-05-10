@@ -79,22 +79,6 @@ router.post('/artists', async (req, res) => {
   }
 });
 
-// router.post('/artists', async (req, res) => {
-//   const art = await db.artists.findAll();
-//   const currentId = (await art.length) + 1;
-//   try {
-//     const newArt = await db.artists.create({
-//       artist_id: currentId,
-//       first_name: req.body.first_name,
-//       last_name: req.body.last_name,
-//       country_id: req.body.country_id
-//     });
-//     res.json(newArt);
-//   } catch (err) {
-//     console.error(err);
-//     res.error('Server error');
-//   }
-// });
 
 router.delete('/artists/:artist_id', async (req, res) => {
   try {
@@ -123,7 +107,8 @@ router.route('/artwork')
       res.send({ error: err});
     }
   });
-router.get('/artwork/:artwork_id', async (req, res) => {
+
+  router.get('/artwork/:artwork_id', async (req, res) => {
   try {
     const artwork = await db.artwork.findOne({
       where: {
@@ -136,6 +121,7 @@ router.get('/artwork/:artwork_id', async (req, res) => {
     res.send('Server error');
   }
 });
+
 router.put('/artwork', async (req, res) => {
   try {
     await db.artwork.update(
@@ -159,18 +145,21 @@ router.put('/artwork', async (req, res) => {
     res.error('Server error');
   }
 });
+
 router.post('/artwork', async (req, res) => {
   try {
-    const result = await db.sequelizeDB.query(artworkController.artworkPost, {
-      replacements: {art: req.body.art},
-      type: sequelize.QueryTypes.INSERT
+    const createQuery = `INSERT INTO artwork (artwork_id, artwork_title, year_created, serial_number, price, discount_price)
+      VALUES('${req.body.artwork_id}','${req.body.artwork_title}','${req.body.year_created}','${req.body.serial_number}','${req.body.price}','${req.body.discount_price}')`;
+    const addArtwork = await db.sequelizeDB.query(createQuery, {
+      type: sequelize.QueryTypes.INSERT,
     });
-    res.json({data: result});
-    console.log('Successfully Updated');
+    res.json(addArtwork);
   } catch (err) {
-    res.json({ error: 'Server error'});
+    console.error(err);
+    res.send({message: 'Something went wrong on the SQL request'});
   }
 });
+
 router.delete('/artwork/:artwork_id', async (req, res) => {
   try {
     await db.artwork.destroy({
@@ -198,7 +187,8 @@ router.route('/country')
       res.send({ error: err});
     }
   });
-router.get('/country/:country_id', async (req, res) => {
+
+  router.get('/country/:country_id', async (req, res) => {
   try {
     const country = await db.country.findOne({
       where: {
@@ -211,9 +201,10 @@ router.get('/country/:country_id', async (req, res) => {
     res.send('Server error');
   }
 });
+
 router.put('/country', async (req, res) => {
   try {
-    await db.artists.update(
+    await db.country.update(
       {
         country_id: req.body.country_id,
         country_name: req.body.country_name,
@@ -232,18 +223,20 @@ router.put('/country', async (req, res) => {
   }
 })
 
-  .post('/country', async (req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(countryController.countryPost, {
-        replacements: {art: req.body.art},
-        type: sequelize.QueryTypes.INSERT
-      });
-      res.json({data: result});
-      console.log('Successfully Updated');
-    } catch (err) {
-      res.json({ error: 'Server error'});
-    }
-  });
+router.post('/country', async (req, res) => {
+  try {
+    const createQuery = `INSERT INTO country (country_id, country_name, country_nationality)
+      VALUES('${req.body.country_id}','${req.body.country_name}','${req.body.country_nationality}')`;
+    const addCountry = await db.sequelizeDB.query(createQuery, {
+      type: sequelize.QueryTypes.INSERT,
+    });
+    res.json(addCountry);
+  } catch (err) {
+    console.error(err);
+    res.send({message: 'Something went wrong on the SQL request'});
+  }
+});
+
 router.delete('/country/:country_id', async (req, res) => {
   try {
     await db.country.destroy({
@@ -271,7 +264,8 @@ router.route('/customer')
       res.send({ error: err});
     }
   });
-router.get('/customer/:customer_id', async (req, res) => {
+
+  router.get('/customer/:customer_id', async (req, res) => {
   try {
     const customer = await db.customer.findOne({
       where: {
@@ -284,6 +278,7 @@ router.get('/customer/:customer_id', async (req, res) => {
     res.send('Server error');
   }
 });
+
 router.put('/customer', async (req, res) => {
   try {
     await db.customer.update(
@@ -312,23 +307,26 @@ router.put('/customer', async (req, res) => {
     res.error('Server error');
   }
 })
-  .post(async (req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(customerController.custPost, {
-        replacements: {art: req.body.art},
-        type: sequelize.QueryTypes.INSERT
-      });
-      res.json({data: result});
-      console.log('Successfully Updated');
-    } catch (err) {
-      res.json({ error: 'Server error'});
-    }
-  });
-router.delete('/artwork/:artwork_id', async (req, res) => {
+
+router.post('/customer', async (req, res) => {
   try {
-    await db.artwork.destroy({
+    const createQuery = `INSERT INTO customer (customer_id, first_name, last_name, credit_info, email_address, street_address, city, state, zip_code, payment_date)
+      VALUES('${req.body.customer_id}','${req.body.first_name}','${req.body.last_name}','${req.body.credit_info}','${req.body.email_address}','${req.body.street_address}','${req.body.city}','${req.body.state}','${req.body.zip_code}','${req.body.payment_date}')`;
+    const addCust = await db.sequelizeDB.query(createQuery, {
+      type: sequelize.QueryTypes.INSERT,
+    });
+    res.json(addCust);
+  } catch (err) {
+    console.error(err);
+    res.send({message: 'Something went wrong on the SQL request'});
+  }
+});
+
+router.delete('/customer/:customer_id', async (req, res) => {
+  try {
+    await db.customer.destroy({
       where: {
-        artwork_id: req.params.artwork_id
+        customer_id: req.params.customer_id
       }
     });
     res.send('Successfully Deleted');
@@ -337,6 +335,7 @@ router.delete('/artwork/:artwork_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
 /* galleries endpoint */
 router.route('/galleries')
   .get(async (req, res) => {
@@ -390,32 +389,35 @@ router.put('/galleries', async (req, res) => {
     res.error('Server error');
   }
 })
-  .post(async (req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(galleriesController.galPost, {
-        replacements: {art: req.body.art},
-        type: sequelize.QueryTypes.INSERT
-      });
-      res.json({data: result});
-      console.log('Successfully Updated');
-    } catch (err) {
-      res.json({ error: 'Server error'});
-    }
-  })
-  .delete(async(req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(galleriesController.galDelete, {
-        replacements: {
-          artist_id: req.body.artist_id
-        },
-        type: sequelize.QueryTypes.DELETE
-      });
-      res.json({data: result});
-      console.log('Deleted successfully');
-    } catch (err) {
-      res.json({error: 'Server error'});
-    }
-  });
+
+router.post('/galleries', async (req, res) => {
+  try {
+    const createQuery = `INSERT INTO galleries (gallery_id, capacity, gallery_name, email, street, city, state, zip_code)
+      VALUES('${req.body.gallery_id}','${req.body.capacity}','${req.body.gallery_name}','${req.body.email}','${req.body.street}','${req.body.city}','${req.body.state}','${req.body.zip_code}')`;
+    const addGall = await db.sequelizeDB.query(createQuery, {
+      type: sequelize.QueryTypes.INSERT,
+    });
+    res.json(addGall);
+  } catch (err) {
+    console.error(err);
+    res.send({message: 'Something went wrong on the SQL request'});
+  }
+});
+
+router.delete('/galleries/:gallery_id', async (req, res) => {
+  try {
+    await db.galleries.destroy({
+      where: {
+        gallery_id: req.params.gallery_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /* genre endpoint */
 router.route('/genres')
   .get(async (req, res) => {
@@ -430,7 +432,8 @@ router.route('/genres')
       res.send({ error: err});
     }
   });
-router.get('/genres/:genre_id', async (req, res) => {
+
+  router.get('/genres/:genre_id', async (req, res) => {
   try {
     const genres = await db.genres.findOne({
       where: {
@@ -443,6 +446,7 @@ router.get('/genres/:genre_id', async (req, res) => {
     res.send('Server error');
   }
 });
+
 router.put('/genres', async (req, res) => {
   try {
     await db.genres.update(
@@ -462,32 +466,35 @@ router.put('/genres', async (req, res) => {
     res.error('Server error');
   }
 })
-  .post(async (req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(genresController.genrePost, {
-        replacements: {art: req.body.art},
-        type: sequelize.QueryTypes.INSERT
-      });
-      res.json({data: result});
-      console.log('Successfully Updated');
-    } catch (err) {
-      res.json({ error: 'Server error'});
-    }
-  })
-  .delete(async(req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(genresController.genreDelete, {
-        replacements: {
-          artist_id: req.body.artist_id
-        },
-        type: sequelize.QueryTypes.DELETE
-      });
-      res.json({data: result});
-      console.log('Deleted successfully');
-    } catch (err) {
-      res.json({error: 'Server error'});
-    }
-  });
+
+router.post('/genres', async (req, res) => {
+  try {
+    const createQuery = `INSERT INTO genres (genre_id, genre_name)
+      VALUES('${req.body.genre_id}','${req.body.genre_name}')`;
+    const addGenre = await db.sequelizeDB.query(createQuery, {
+      type: sequelize.QueryTypes.INSERT,
+    });
+    res.json(addGenre);
+  } catch (err) {
+    console.error(err);
+    res.send({message: 'Something went wrong on the SQL request'});
+  }
+});
+
+router.delete('/genres/:genre_id', async (req, res) => {
+  try {
+    await db.genres.destroy({
+      where: {
+        genre_id: req.params.genre_id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 /* reservation endpoint */
 router.route('/reservation')
   .get(async (req, res) => {
@@ -536,18 +543,20 @@ router.put('/reservation', async (req, res) => {
     res.error('Server error');
   }
 })
-  .post(async (req, res) => {
-    try {
-      const result = await db.sequelizeDB.query(resController.resPost, {
-        replacements: {art: req.body.art},
-        type: sequelize.QueryTypes.INSERT
-      });
-      res.json({data: result});
-      console.log('Successfully Updated');
-    } catch (err) {
-      res.json({ error: 'Server error'});
-    }
-  });
+
+router.post('/reservation', async (req, res) => {
+  try {
+    const createQuery = `INSERT INTO reservation (reservation_id, reservation_date, customer_id, gallery_id)
+      VALUES('${req.body.reservation_id}','${req.body.reservation_date}','${req.body.customer_id}','${req.body.gallery_id}')`;
+    const addRes = await db.sequelizeDB.query(createQuery, {
+      type: sequelize.QueryTypes.INSERT,
+    });
+    res.json(addRes);
+  } catch (err) {
+    console.error(err);
+    res.send({message: 'Something went wrong on the SQL request'});
+  }
+});
 
 router.delete('/reservation/:reservation_id', async (req, res) => {
   try {

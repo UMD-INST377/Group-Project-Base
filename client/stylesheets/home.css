@@ -39,10 +39,12 @@ a:active {
     color: blue;
 }
 
-table{
-    background: white;
-    /* display: flex;
-    justify-content: center;
+.table_container{
+    display: flex;
     align-items: center;
-    flex-direction: column; */
+    flex-direction: column;
+}
+
+.table{
+    background-color: white;
 }

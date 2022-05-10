@@ -1,10 +1,12 @@
 h1{
     color: white;
     text-align: center;
+    margin-top: 45px;
 }
 h2{
     color: white;
     text-align: center;
+    margin-top: 55px;
 }
 html{
     max-height: 100%;
@@ -14,7 +16,7 @@ html{
     flex-direction: row;
     justify-content: space-evenly;
     min-height: 80vh;
-    margin-top: 100px;
+    margin-top: 30px;
     margin-left: -100px;
 }
 .diner_wrap{
@@ -42,7 +44,6 @@ html{
 
 .dropdown { /*Styles the dropped panel*/
     display: none;
-    margin-top: 10px;
     color: rgb(0, 0, 0);
     max-height: 70vh;
     transition: 10s;
@@ -86,7 +87,7 @@ li{
     border: none;
 }
 .meal_list_wrap{
-    max-height: 80%;
+    max-height: 800%;
     overflow: scroll;
 }
 .meal_list_wrap::-webkit-scrollbar {

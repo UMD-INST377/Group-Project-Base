@@ -156,7 +156,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   const state = document.querySelector('#state');
   const rating = document.querySelector('#rating');
   const retVar = 'restaurants';
-  submit.style.display = 'none';
+  // submit.style.display = 'none';
 
 /// start of lab 8 section (modified lab 7 code)
   restaurants = localStorage.getItem(retVar);
@@ -174,7 +174,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   const storedDataString = restaurants;
   const storedDataArray = JSON.parse(storedDataString);
   if (storedDataArray.length > 0) {
-    submit.style.display = 'block';
+    // submit.style.display = 'block';
 
     // allows us to change the var to anything, but pre-sets as array
     let currentArray = [];

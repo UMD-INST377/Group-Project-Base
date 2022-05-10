@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Group 3</title>
+    <link rel="shortcut icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+
+  <body>
+
+    <header>
+      <div class="logo">
+        <a href="/index.html"><img src="assets/logo.png" alt="Logo"></a>
+      </div>
+
+
+        <nav class="nav">
+            <div class="arrow_container_left mobile">
+              <div class="arrow_left">
+                <div class="line_a"></div>
+                <div class="line_b"></div>
+              </div>
+            </div>
+
+            <a class="nav-link" href="/.">Home</a>
+            <a class="nav-link active" href="/about.html">About</a>
+            <a class="nav-link" id = "saved" href="/saved.html">Saved</a>
+            <a class="nav-link sign_up" href="#sign_up_modal">Sign Up</a>
+            <a class="nav-link login" href="#login_modal">Log in</a>
+            <a class="nav-link account logged_in" href="../account.html"></a>
+
+            <div class="arrow_container_right">
+              <div class="arrow_left mobile">
+                <div class="line_a"></div>
+                <div class="line_b"></div>
+              </div>
+            </div>
+        </nav>
+
+      
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+    </header>
+
+    <main>
+        <p class="logged_in"></p>
+        <div class="form_row">
+          <button class="log_out" type="submit">Log out</button>
+        </div>
+        
+      <!-- Page notifications -->
+      <p class="notifs"></p>
+
+      <div class="acct_form">
+        <p class="acct_notif"></p>
+        <form class="username_form">
+          <div class="form_row">
+            <h2>Change Username</h2>
+            <br></br>
+            <label>New Username</label>
+            <input id="username" name="new_username" placeholder="Username" type="text"/>
+          </div>
+
+          <div class="form_row">
+            <label id="password">Password</label>
+            <input id="pw" name="pw" placeholder="****" type="password"/>
+            </div>
+            <div class="form_row">
+                <label id="password">Confirm Password</label>
+                <input id="confirm_pw" name="confirm_pw" placeholder="****" type="password"/>
+            </div>
+            <div class="form_row buttons">
+                <button id="cancel">Cancel</button>
+                <button class="submit" id="login" type="submit">Submit</button>
+            </div>  
+        </div>
+        </form>
+
+          <h2>Update Password</label>
+          </form>
+          <form class="pw_form">
+            <div class="form_row">
+                <label id="password">Current Password</label>
+                <input id="old_pw" name="old_pw" placeholder="****" type="password"/>
+            </div>
+
+            <div class="form_row">
+                <label id="password">New Password</label>
+                <input id="new_pw" name="new_pw" placeholder="****" type="password"/>
+            </div>
+        
+            <div class="form_row">
+                <label id="password">Confirm Password</label>
+                <input id="confirm_pw" name="confirm_pw" placeholder="****" type="password"/>
+            </div>
+            <div class="form_row buttons">
+                <button id="cancel">Cancel</button>
+                <button class="submit" id="login" type="submit">Submit</button>
+            </div>
+        </form>
+
+    </main>
+
+
+<!-- Login Modal -->
+<div class="login_modal">
+  <img src="assets/logo.png" alt="Logo">
+  
+  <form action="/users" method="get" class="login_form">
+    <div class="form_row">
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+    </div>
+
+    <div class="form_row">
+      <label for="password">Password</label>
+      <input id="password" name="password" placeholder="****" type="text"/>
+    </div>
+
+    <div class="form_row buttons">
+      <button id="cancel">Cancel</button>
+      <button class="submit" id="login" type="submit">Login</button>
+    </div>
+
+    <div class="form_row log_in">
+      <p>or <a href="#sign_up_modal">Sign Up</a> </p>
+    </div>
+
+  </form>
+
+</div>
+
+
+<div class="modal"></div>
+
+
+
+
+    <footer>
+      <div>
+        <p>Clato was created by Nour Ali Ahmed, Taoheed King, Gabriel Rodriguez, and Sean Simmons.</p>
+      </div>
+    </footer>
+
+
+    
+  </body>
+  <script type="module" src="./js/account.js"></script>
+</html>

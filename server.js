@@ -1,59 +1,36 @@
-/* eslint-disable no-console */
 import express from 'express';
-import reload from 'livereload';
-import dotenv from 'dotenv';
 import path from 'path';
-import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
-import { userSearch } from './helpers/wikidata.js';
+import cookieParser from 'cookie-parser';
+import indexRouter from './server/routes/index.js';
+import userRouter from './server/routes/user.js';
+import searchRouter from './server/routes/search.js';
+import { fileURLToPath } from 'url';
 
-const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const app = express();
+var app = express();
 
-const PORT = process.env.PORT || 3000;
-const staticFolder = 'client';
-const envConfig = 'development';
-let liveReloadServer;
-
-// console.log(a);
-// auto reloading
-// if (process.env.NODE_ENV === 'development') {
-liveReloadServer = reload.createServer();
-liveReloadServer.watch(path.join(__dirname, staticFolder));
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
-
-// handles params passed by HTML
-app.use(express.urlencoded({ extended: true }));
-// handles JSON recieved by API
+app.all('/', (req, res, next) => {
+    next();
+})
+// response json parser
 app.use(express.json());
-//  serves static files to express
-app.use(express.static(staticFolder));
-app.use('/', apiRoutes); // hooks app to all of our routes
+// html form encoder
+app.use(express.urlencoded({ extended: true }));
+// cookie parser
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'client')));
 
-async function bootServer() {
-  try {
-    // const mysql = await db.sequelizeDB;
-    // await mysql.sync();
-    app.listen(PORT, () => {
-      console.log(`Listening on: http//localhost:${PORT}`);
-      console.log('Environment:', process.env.NODE_ENV);
-    });
-  } catch (err) {
-    console.error(err);
-  }
-}
+app.use('/index', indexRouter);
+app.use('/user', userRouter);
+app.use('/search', searchRouter);
+/*
+app.get('/', function (req, res) {
+    console.log('Cookies: ', req.cookies)
 
-bootServer();
-if (envConfig === 'development') {
-  liveReloadServer.server.once('connection', () => {
-    setTimeout(() => {
-      liveReloadServer.refresh('/');
-    }, 100);
-  });
-}
+    // signed
+    console.log('Signed Cookies: ', req.signedCookies)
+})
+*/
+export default app;

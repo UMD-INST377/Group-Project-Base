@@ -7,98 +7,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Group 3</title>
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+    <link rel="stylesheet" href="./stylesheets/saved.css" />
+    <script src = "https://d3js.org/d3.v4.min.js"></script>
   </head>
+
   <body>
+
     <header>
-        <div class="logo">
-            <a href="/index.html"><img src="assets/logo.png" alt="Logo"></a>
+      <div class="logo">
+        <a href="/index.html"><img src="assets/logo.png" alt="Logo"></a>
+      </div>
+
+
+      <nav class="nav">
+        <div class="arrow_container_left mobile">
+          <div class="arrow_left">
+            <div class="line_a"></div>
+            <div class="line_b"></div>
+          </div>
         </div>
-  
-          <nav class="nav">
-              <div class="arrow_container_left mobile">
-                <div class="arrow_left">
-                  <div class="line_a"></div>
-                  <div class="line_b"></div>
-                </div>
-              </div>
-              <a class="nav-link" href="/.">Home</a>
-              <a class="nav-link active" href="../about.html">About</a>
-              <a class="nav-link" href="../saved.html">Saved</a>
-              <a class="nav-link sign_up" href="../saved.html#sign_up_modal">Sign Up</a>
-              <a class="nav-link login" href="../saved.html#login_modal">Log in</a>
-             
-              <div class="arrow_container_right">
-                <div class="arrow_left mobile">
-                  <div class="line_a"></div>
-                  <div class="line_b"></div>
-                </div>
-              </div>
-          </nav>
-  
+
+        <a class="nav-link" href="/.">Home</a>
+        <a class="nav-link active" href="../about.html">About</a>
+        <a class="nav-link" id = "saved" href="../saved.html">Saved</a>
+        <a class="nav-link sign_up" href="#sign_up_modal">Sign Up</a>
+        <a class="nav-link login" href="#login_modal">Log in</a>
+        <a class="nav-link account logged_in" href="../account.html"></a>
+
+        <div class="arrow_container_right">
+          <div class="arrow_left mobile">
+            <div class="line_a"></div>
+            <div class="line_b"></div>
+          </div>
+        </div>
+    </nav>
+
+      
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+    </header>
+
+    <main>
+      <!-- Page notifications -->
+      <p class="notifs"></p>
+      <div class="hero" style="min-height:200px;">
+        <div>
+          <h2>Search History</h2>
+        </div>
+      </div>
+
         
-        <div class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-  
-      </header>
-
-      <main>
-        <div class="hero_sub_page">
-            <h1>
-                Saved Searches
-            </h1>
-        </div>
-
-        <div class="saved_results_container">
-          
-        </div>
-
-<!-- Edit Search Modal -->
-<div class="edit_modal">
-  <img src="assets/logo.png" alt="Logo">
-  
-  <form action="/queries" method="post" class="edit_form">
-    <div class="form_row">
-      <label for="entry1">Edit</label>
-      <input id="entry1" name="entry1" placeholder="Species 1" type="text"/>
-    </div>
-
-    <div class="form_row">
-      <label for="entry2">Edit</label>
-      <input id="entry2" name="entry2" placeholder="Species 2" type="text"/>
-    </div>
-
-    <div class="form_row buttons">
-      <button id="cancel">Cancel</button>
-      <button class="submit" id="submit_change" type="submit">Finish</button>
-    </div>
-
-    <div class="form_row delete">
-      <p>or <a href="#">Delete</a> </p>
-    </div>
-  </form>
+  <div class="result-container">
+  <h2>Previous Searches</h2>
+  <div class="saved">
   </div>
 
-  <div class="editor_modal"></div>
+    </main>
 
 <!-- Sign Up Modal -->
 <div class="sign_up_modal">
   <img src="assets/logo.png" alt="Logo">
   
-  <form action="/users" method="post" class="sign_up_form">
+  <form class="sign_up_form">
     <div class="form_row">
       <label for="username">Username</label>
-      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+      <input id="username" name="user" placeholder="Ned Flanders" type="text"/>
     </div>
 
     <div class="form_row">
       <label for="password">Password</label>
-      <input id="password" name="password" placeholder="****" type="text"/>
+      <input id="password" name="pass" placeholder="****" type="text"/>
     </div>
-
+    <div class="errors"></div>
     <div class="form_row buttons">
       <button id="cancel">Cancel</button>
       <button class="submit" id="sign_up" type="submit">Sign Up</button>
@@ -116,22 +101,22 @@
 <div class="login_modal">
   <img src="assets/logo.png" alt="Logo">
   
-  <form action="/users" method="get" class="login_form">
+  <form class="login_form">
     <div class="form_row">
       <label for="username">Username</label>
-      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+      <input id="username" name="user" placeholder="Ned Flanders" type="text"/>
     </div>
 
     <div class="form_row">
       <label for="password">Password</label>
-      <input id="password" name="password" placeholder="****" type="text"/>
+      <input id="password" name="pass" placeholder="****" type="text"/>
     </div>
 
     <div class="form_row buttons">
       <button id="cancel">Cancel</button>
       <button class="submit" id="login" type="submit">Login</button>
     </div>
-
+    <div class="errors"></div>
     <div class="form_row log_in">
       <p>or <a href="#sign_up_modal">Sign Up</a> </p>
     </div>
@@ -143,74 +128,18 @@
 
 <div class="modal"></div>
 
+    <footer>
+      <div>
+        <p>Clato was created by Nour Ali Ahmed, Taoheed King, Gabriel Rodriguez, and Sean Simmons.</p>
+      </div>
+    </footer>
 
-
-
-      </main>
-<!-- Sign Up Modal -->
-<div class="sign_up_modal">
-  <img src="assets/logo.png" alt="Logo">
-  
-  <form action="/users" method="post" class="sign_up_form">
-    <div class="form_row">
-      <label for="username">Username</label>
-      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
-    </div>
-
-    <div class="form_row">
-      <label for="password">Password</label>
-      <input id="password" name="password" placeholder="****" type="text"/>
-    </div>
-
-    <div class="form_row buttons">
-      <button id="cancel">Cancel</button>
-      <button class="submit" id="sign_up" type="submit">Sign Up</button>
-    </div>
-
-    <div class="form_row log_in">
-      <p>or <a href="#login_modal">Log in</a> </p>
-    </div>
-
-  </form>
-
-</div>
-
-<!-- Login Modal -->
-<div class="login_modal">
-  <img src="assets/logo.png" alt="Logo">
-  
-  <form action="/users" method="get" class="login_form">
-    <div class="form_row">
-      <label for="username">Username</label>
-      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
-    </div>
-
-    <div class="form_row">
-      <label for="password">Password</label>
-      <input id="password" name="password" placeholder="****" type="text"/>
-    </div>
-
-    <div class="form_row buttons">
-      <button id="cancel">Cancel</button>
-      <button class="submit" id="login" type="submit">Login</button>
-    </div>
-
-    <div class="form_row log_in">
-      <p>or <a href="#sign_up_modal">Sign Up</a> </p>
-    </div>
-
-  </form>
-
-</div>
-
-
-<div class="modal"></div>
-      <footer>
-        <div>
-          <p>Clato was created by Nour Ali Ahmed, Taoheed King, Gabriel Rodriguez, and Sean Simmons.</p>
-        </div>
-      </footer>
-      
+    <script type="module" src="./js/saved.js"></script>
+    <script type="module">
+      import {displayTree} from './saved.js';
+      console.log('d3 script loaded.')
+      setTimeout(displayTree, 200);
+    </script>
   </body>
-  <script src="saved.js"></script>
+
 </html>

@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Group 3</title>
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./stylesheets/style.css" />
+    <script src = "https://d3js.org/d3.v4.min.js"></script>
   </head>
 
   <body>
@@ -18,26 +19,28 @@
       </div>
 
 
-        <nav class="nav">
-            <div class="arrow_container_left mobile">
-              <div class="arrow_left">
-                <div class="line_a"></div>
-                <div class="line_b"></div>
-              </div>
-            </div>
-            <a class="nav-link" href="/.">Home</a>
-            <a class="nav-link active" href="../about.html">About</a>
-            <a class="nav-link" href="../saved.html">Saved</a>
-            <a class="nav-link sign_up" href="./#sign_up_modal">Sign Up</a>
-            <a class="nav-link login" href="./#login_modal">Log in</a>
-           
-            <div class="arrow_container_right">
-              <div class="arrow_left mobile">
-                <div class="line_a"></div>
-                <div class="line_b"></div>
-              </div>
-            </div>
-        </nav>
+      <nav class="nav">
+        <div class="arrow_container_left mobile">
+          <div class="arrow_left">
+            <div class="line_a"></div>
+            <div class="line_b"></div>
+          </div>
+        </div>
+
+        <a class="nav-link" href="/.">Home</a>
+        <a class="nav-link active" href="../about.html">About</a>
+        <a class="nav-link" id = "saved" href="../saved.html">Saved</a>
+        <a class="nav-link sign_up" href="#sign_up_modal">Sign Up</a>
+        <a class="nav-link login" href="#login_modal">Log in</a>
+        <a class="nav-link account logged_in" href="../account.html"></a>
+       
+        <div class="arrow_container_right">
+          <div class="arrow_left mobile">
+            <div class="line_a"></div>
+            <div class="line_b"></div>
+          </div>
+        </div>
+    </nav>
 
       
       <div class="hamburger">
@@ -49,7 +52,7 @@
     </header>
 
     <main>
-
+      <p class="logged_in"></p>
       <div class="hero">
         <div>
           <h1>Learn more about the Tree of Life!</h1>
@@ -59,7 +62,7 @@
 
 <!-- Species Form -->
 
-      <form action="/search" method="post" class="species_form">
+      <form class="species_form">
         <div class="row desktop">
           <div class="form_row">
             <input id="species_a" name="species_a" placeholder="Species A" type="text"/>
@@ -73,34 +76,38 @@
         <div class="form_row">
           <button class="submit">Find Common Ancestor</button>
         </div>
-        
+        <div class="search_notifs"></div>
       </form>
-
-<!-- Tree Diagram -->
-      <div class="tree"></div>
         
+  <div class="result-container">
+    <div class="form_row">
+    <button class="save-query" type="submit" placeholder="save">Save Query</button>
+    </div>
+    <div class="query"></div>
+  </div>
+
 
     </main>
 <!-- Sign Up Modal -->
 <div class="sign_up_modal">
   <img src="assets/logo.png" alt="Logo">
   
-  <form action="/users" method="post" class="sign_up_form">
+  <form class="sign_up_form">
     <div class="form_row">
       <label for="username">Username</label>
-      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+      <input id="username" name="user" placeholder="Ned Flanders" type="text"/>
     </div>
 
     <div class="form_row">
       <label for="password">Password</label>
-      <input id="password" name="password" placeholder="****" type="text"/>
+      <input id="password" name="pass" placeholder="****" type="text"/>
     </div>
 
     <div class="form_row buttons">
       <button id="cancel">Cancel</button>
       <button class="submit" id="sign_up" type="submit">Sign Up</button>
     </div>
-
+    <p class="notifs"></p>
     <div class="form_row log_in">
       <p>or <a href="#login_modal">Log in</a> </p>
     </div>
@@ -112,18 +119,17 @@
 <!-- Login Modal -->
 <div class="login_modal">
   <img src="assets/logo.png" alt="Logo">
-  
-  <form action="/users" method="get" class="login_form">
+  <form class="login_form">
     <div class="form_row">
       <label for="username">Username</label>
-      <input id="username" name="username" placeholder="Ned Flanders" type="text"/>
+      <input id="username" name="user" placeholder="Ned Flanders" type="text"/>
     </div>
 
     <div class="form_row">
       <label for="password">Password</label>
-      <input id="password" name="password" placeholder="****" type="text"/>
+      <input id="password" name="pass" placeholder="****" type="text"/>
     </div>
-
+    <p class="notifs"></p>
     <div class="form_row buttons">
       <button id="cancel">Cancel</button>
       <button class="submit" id="login" type="submit">Login</button>
@@ -140,18 +146,18 @@
 
 <div class="modal"></div>
 
-
-
-
     <footer>
       <div>
         <p>Clato was created by Nour Ali Ahmed, Taoheed King, Gabriel Rodriguez, and Sean Simmons.</p>
       </div>
     </footer>
 
-
-    
+    <script type="module" src="./js/script.js"></script>
+    <script type="module">
+      import {displayTree} from './js/script.js';
+      console.log('d3 script loaded.')
+      setTimeout(displayTree, 200);
+    </script>
   </body>
-  <script src="index.js"></script>
-  <!-- <script src="script.js"></script> -->
+
 </html>

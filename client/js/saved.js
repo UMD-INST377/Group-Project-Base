@@ -200,6 +200,7 @@ async function displayEach(searchItem, index) {
     newNode.id = `x${index}` // x + index = name in session storage
     let editBtn = document.createElement('button')
     editBtn.className = 'delete'
+    editBtn.id = `x${index}`
     editBtn.innerText = 'Delete'
     // editBtn.style.transform = 'translate(70px, -30px)'
 
@@ -284,6 +285,12 @@ export async function displayPastSearches() {
             displayEach(search, index)});
 }
 
+async function deleteQuery(key) {
+    let item = JSON.parse(sessionStorage.getItem(key)).timestamp
+    let sqlTime = item.slice(0, 19).replace('T', ' ');
+    console.log(sqlTime)
+}
+
 async function main() {
     // User Sign Up
   // const signUpSubmit = document.querySelector('#sign_up');
@@ -364,6 +371,15 @@ async function main() {
     loadUser()
     .then(retrieveHistory)
     .then(displayPastSearches)
+    .then(() =>{
+        // event listeners for delete buttons
+    document.querySelectorAll('button.delete')
+        .forEach((element) => {
+            element.addEventListener('click', (e) => {
+                    deleteQuery(element.id)
+            })
+        })
+    })
 }
 
 document.addEventListener('DOMContentLoaded', main);

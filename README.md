@@ -1,7 +1,10 @@
 # Parkz App README
 
 ## Project Description
-Our website will help anyone who is traveling to National Parks in the US and is looking for a guide to help plan their trips. 
+Our website will help anyone who is traveling to National Parks in the US and is looking to view or leave reviews for various places and attractions
+
+## Target Browsers
+This website has been developed for modern desktop and mobile web clients. The styling for mobile versions is currently unfinished, so attempts to use the application should use desktop web browsers if possible.
 
 ## Link
 https://group2-project377.herokuapp.com/
@@ -9,10 +12,12 @@ https://group2-project377.herokuapp.com/
 # Developer Manual
 
 ## Installation and Usage
-To use this website, fork the code to a local repository and install dependancies using: 
-`npm install`
-Start the server using: 
-`npm start`
+To use this website, fork the code to a local repository and install dependancies using: `npm install` after Node.js has been installed
+<br>
+Start the server using: `npm start`
+<br>
+Access the site by navigating to `localhost:3000`
+
 ## Endpoint Doc
 
 <hr>

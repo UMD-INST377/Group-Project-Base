@@ -64,12 +64,22 @@ function addSongs() {
 
 addSongs();
 
+/* Inside this function, we need to call the API for each of the songs that are going to appear
+    on our front page.
+    Then we need to inject HTML into the web page that has the song title, and perhaps
+    gets the song image from the song dictionary. 
+    
+    This is going to be hard.
+    */
+
 // Search Bar
 // I say we just make the search bar change what is on the page just like in the labs
-function inTuneSearch() {
+/* function inTuneSearch() {
     const searchBar = document.querySelector("#search_bar")
     console.log(searchBar.textContent)
 } 
 
-export function inTuneSearch();
 
+
+export function inTuneSearch();
+ */

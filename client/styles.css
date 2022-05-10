@@ -294,6 +294,12 @@ body {
     height: 450px;
 }
 
+#map { 
+    height: 80%; 
+    width: 80%;
+    border-radius: 10px;
+}
+
   
   @media screen and (max-height: 450px) {
     .sidenav {

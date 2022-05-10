@@ -48,6 +48,7 @@ async function iAdd(songInfo, userInfo) { // Adds info into the database
   if (user.length === 0) {
     // This checks to see if the username has the specified playlist, if it doesnt then it does not
     // add any value to the database.
+    alert('Playlist not found when associated with that username.');
     return;
   }
   
@@ -129,10 +130,12 @@ async function iAdd(songInfo, userInfo) { // Adds info into the database
 }
 
 async function iDel(songInfo, userInfo) { // TODO get this to work 
-  const user = getUserAndPlaylist(userInfo)
-  if (user === 0) {
+  const userP = getUserAndPlaylist(userInfo)
+  const user = await userP;
+  if (user.length === 0) {
     // This checks to see if the username has the specified playlist, if it doesnt then it does not
     // add any value to the database.
+    alert('Playlist not found when associated with that username.');
     return;
   }
   songInfo[0].addEventListener('input', async (songEvent) => {

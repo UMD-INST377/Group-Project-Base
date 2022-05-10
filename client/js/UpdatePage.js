@@ -8,6 +8,7 @@ async function popLinkingTables(user) { // Populates linking tables
   const songAlb = await fetch('api/album_songs/', {
     method: 'POST'
   });
+  console.log(user[0].playlist_id);
   const songPlay = await fetch('api/playlist_songs/', {
     method: 'POST',
     body: JSON.stringify({
@@ -26,28 +27,26 @@ async function popLinkingTables(user) { // Populates linking tables
 }
 
 async function getUserAndPlaylist(array) { // Gets Username and Playlist name
-  const getInfo = [];
-  for (let i = 0; i < array.length; i += 1) {
-    array[i].addEventListener('input', async (event) => {
-      console.log(event.target.value);
-      if (event.length < 1) {
-        return;
-      }
-      getInfo[i] = event.target.value;
+  let info;
+  await fetch(`api/playlists/${array[0].value}/${array[1].value}`)
+    .then((response) => response.json())
+    .then((result) => {
+      info = result;
     });
-  }
-  const info = await fetch(`api/playlists/${getInfo[0]}/${getInfo[1]}`);
+  console.log(info);
   return info;
 }
 
 async function iAdd(songInfo, userInfo) { // Adds info into the database
-  // console.log('hello from add');
-  const user = getUserAndPlaylist(userInfo)
-  if (user === 0) {
+  const userP = getUserAndPlaylist(userInfo)
+  const user = await userP;
+  console.log(user)
+  if (user.length === 0) {
     // This checks to see if the username has the specified playlist, if it doesnt then it does not
     // add any value to the database.
     return;
   }
+  
   songInfo[0].addEventListener('input', async (songEvent) => {
     console.log(songEvent.target.value);
     if (songEvent.length < 1) {
@@ -122,7 +121,7 @@ async function iAdd(songInfo, userInfo) { // Adds info into the database
     });
     console.log(addGenre);
   });
-  popLinkingTables();
+  popLinkingTables(user);
 }
 
 async function iDel(songInfo, userInfo) { // TODO get this to work 
@@ -146,8 +145,7 @@ async function iDel(songInfo, userInfo) { // TODO get this to work
     const delSong = await fetch('api/songs/', {
       method: 'DELTE',
       body: JSON.stringify({
-        name: songEvent.target.value,
-        is_explicit: songInfo[4].checked ? 1 : 0
+        name: songEvent.target.value
       }),
       headers: {
         'Content-Type': 'application/json'

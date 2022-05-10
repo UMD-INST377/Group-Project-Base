@@ -35,7 +35,7 @@
 
 .about {
     position: absolute;
-    width: 156px;
+    width: 100px;
     height: 47px;
     left: 1210px;
     top: 85px;
@@ -52,9 +52,9 @@
 
 .data {
     position: absolute;
-    width: 156px;
+    width: 100px;
     height: 47px;
-    left: 1274px;
+    left: 1320px;
     top: 85px;
     
     font-family: 'Roboto';

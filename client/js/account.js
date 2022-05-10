@@ -41,7 +41,6 @@ function loadUser() {
         document.querySelector('.login').style.display = 'none';
         document.querySelector('.sign_up').style.display = 'none';
         document.querySelector('#saved').style.display = 'block';
-        
     }
 }
 // stores data to session
@@ -68,7 +67,7 @@ async function createAccount(e) {
         return;
     }
     let kv = {}
-    let response = fetch('/', {
+    let response = fetch('user/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

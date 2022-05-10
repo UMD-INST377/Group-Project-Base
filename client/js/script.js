@@ -12,6 +12,14 @@ function accountCreated() {
     setInterval(() => {
         notifs.innerText = ''}, 2500);    
 }
+// generic error
+function incorrectInfo() {
+    let notifs = document.querySelector('.notifs')
+    notifs.innerText = 'Incorrect username or password. Try again.'
+    setInterval(() => {
+        notifs.innerText = ''}, 2500);
+}
+
 // confirms log out
 function loggedOut() {
     let notifs = document.querySelector('.notifs')
@@ -41,7 +49,6 @@ function loadUser() {
         document.querySelector('.login').style.display = 'none';
         document.querySelector('.sign_up').style.display = 'none';
         document.querySelector('#saved').style.display = 'block';
-        
     }
 }
 // stores data to session
@@ -69,7 +76,7 @@ async function createAccount(e) {
         return;
     }
     let kv = {}
-    let response = fetch('/', {
+    let response = fetch('user/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -109,10 +116,20 @@ async function userLogin(e){
         body: form
     })
     .then((res) => {
+        if (res.status === 401) {
+            throw new Error('NO_MATCH')
+        }
         return res.json()
     }).then((res) => {
         storeSession(res)
         loadUser()
+    }).catch((err) => {
+        if (err.message === 'NO_MATCH') {
+            incorrectInfo()
+        } else {
+            console.log(err)
+            return
+        }
     })
 
 }
@@ -441,19 +458,13 @@ function main() {
             // else, inactive
             e.preventDefault();
         });
-        document.querySelector('.login_modal').addEventListener('submit', async (e) => {
-            if (sessionStorage.getItem('username') === null) {
-                userLogin(e);
-                // back to main()
-                return;
-            }
-            // else, inactive
-            e.preventDefault();
-        });
         document.querySelector('.login_form').addEventListener('submit', async (e) => {
             // user not currently logged in
             if (sessionStorage.getItem('username') === null) {
                 userLogin(e);
+                loginModal.style.display = 'none';
+                signUpModal.style.display = 'none';
+                modal.style.display = 'none';
                 // back to main()
                 return;
             }

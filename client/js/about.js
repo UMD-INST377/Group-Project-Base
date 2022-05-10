@@ -40,8 +40,7 @@ function loadUser() {
         document.querySelector('.logged_in').style.fontWeight = 'bold';
         document.querySelector('.login').style.display = 'none';
         document.querySelector('.sign_up').style.display = 'none';
-        document.querySelector('#saved').style.display = 'block';
-        
+        document.querySelector('#saved').style.display = 'block';        
     }
 }
 async function retrieveHistory() {
@@ -97,7 +96,7 @@ async function createAccount(e) {
         return;
     }
     let kv = {}
-    let response = fetch('/', {
+    let response = fetch('user/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -190,19 +189,13 @@ function main() {
             // else, inactive
             e.preventDefault();
         });
-        document.querySelector('.login_modal').addEventListener('submit', async (e) => {
-            if (sessionStorage.getItem('username') === null) {
-                userLogin(e);
-                // back to main()
-                return;
-            }
-            // else, inactive
-            e.preventDefault();
-        });
         document.querySelector('.login_form').addEventListener('submit', async (e) => {
             // user not currently logged in
             if (sessionStorage.getItem('username') === null) {
                 userLogin(e);
+                loginModal.style.display = 'none';
+                signUpModal.style.display = 'none';
+                modal.style.display = 'none';
                 // back to main()
                 return;
             }

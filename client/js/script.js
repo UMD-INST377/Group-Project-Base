@@ -1,42 +1,47 @@
-// errors & notifications
+// notifs & notifications
 function accountExists() {
-    let errors = document.querySelector('.errors')
-    errors.innerText = 'Existing account. Try again.'
+    let notifs = document.querySelector('.notifs')
+    notifs.innerText = 'Existing account. Try again.'
     setInterval(() => {
-        errors.innerText = ''}, 2500);
+        notifs.innerText = ''}, 2500);
 }
 // confirms account creation
 function accountCreated() {
-    let errors = document.querySelector('.errors')
-    errors.innerText = 'Account created. Welcome!'
+    let notifs = document.querySelector('.notifs')
+    notifs.innerText = 'Account created. Welcome!'
     setInterval(() => {
-        errors.innerText = ''}, 2500);    
+        notifs.innerText = ''}, 2500);    
 }
 // confirms log out
 function loggedOut() {
-    let errors = document.querySelector('.errors')
-    errors.innerText = 'Successfully logged out.'
+    let notifs = document.querySelector('.notifs')
+    notifs.innerText = 'Successfully logged out.'
     setInterval(() => {
-        errors.innerText = ''}, 2500);   
+        notifs.innerText = ''}, 2500);   
 }
 // generic error
 function somethingWrong() {
-    let errors = document.querySelector('.errors')
-    errors.innerText = 'Something went wrong. Please try again.'
+    let notifs = document.querySelector('.notifs')
+    notifs.innerText = 'Something went wrong. Please try again.'
     setInterval(() => {
-        errors.innerText = ''}, 2500);
+        notifs.innerText = ''}, 2500);
 }
 // empty species query
 function emptyResponse() {
-    let errors = document.querySelector('#search-errors')
-    errors.innerText = 'One of these is not a species. Try again?'
+    let notifs = document.querySelector('#search_notifs')
+    notifs.innerText = 'One of these is not a species. Try again?'
     setInterval(() => {
-        errors.innerText = ''}, 2500);
+        notifs.innerText = ''}, 2500);
 }
 // displays username from local storage
 function loadUser() {
     if (sessionStorage.getItem('plainUser') !== null) {
-        document.querySelector('p.logged_in').innerText = `Welcome, ${sessionStorage.getItem('plainUser')}!`;
+        document.querySelector('.logged_in').innerText = `${sessionStorage.getItem('plainUser')}!`;
+        document.querySelector('.logged_in').style.fontWeight = 'bold';
+        document.querySelector('.login').style.display = 'none';
+        document.querySelector('.sign_up').style.display = 'none';
+        document.querySelector('#saved').style.display = 'block';
+        
     }
 }
 // stores data to session
@@ -52,13 +57,14 @@ async function storeSession(userData) {
 function logOut() {
     sessionStorage.clear();
     clearTree();
-    document.querySelector('p.logged_in').innerText = '';
+    document.querySelector('logged_in').innerText = '';
+    document.querySelector('.account').style.display = 'none';
 }
 // API call
 async function createAccount(e) {
     e.preventDefault()
 
-    let form = new URLSearchParams( new FormData(document.querySelector('.create')))
+    let form = new URLSearchParams( new FormData(document.querySelector('.sign_up_form')))
     if (form.get('user') === '' || form.get('pass') === '') {
         return;
     }
@@ -144,13 +150,7 @@ export function clearTree(){
         displayArea.removeChild(displayArea.firstChild)
     }
 }
-
-
-
-////////////////////////////////////////////////////////////////
-///// d3.js code in here: //////////////////////////////////////
-////////////////////////////////////////////////////////////////
-// Species Query
+// d3.js code in here:
 export function displayTree() {
     if (sessionStorage.getItem('query') === null) {
       console.log('No tree data, waiting..')
@@ -165,9 +165,9 @@ export function displayTree() {
         // gets data from session storage
         const treeData = JSON.parse(sessionStorage.getItem('query'))
         // set the dimensions and margins of the diagram
-        var margin = {top: 80, right: 20, bottom: 80, left: 20},
-            width = 1000 - margin.left - margin.right,
-            height = 1000 - margin.top - margin.bottom;
+        var margin = {top: 40, right: 20, bottom: 80, left: 20},
+            width = 600 - margin.left - margin.right,
+            height = 600 - margin.top - margin.bottom;
 
         // declares a tree layout and assigns the size
         var treemap = d3.tree()
@@ -198,11 +198,6 @@ export function displayTree() {
                 + " " + d.parent.x + "," +  (d.y + d.parent.y) / 2
                 + " " + d.parent.x + "," + d.parent.y;
                 });
-
-
-
-
-
 
         // adds each node as a group
         var node = g.selectAll(".node")
@@ -235,29 +230,12 @@ export function displayTree() {
         // appending image url to the node
         node.append('image')
             .attr("href", function (d) { return d.data.image + '?width=300px' })
-            .attr('x', '0')
-            .attr('y', '0')
+            .attr('x', '-20')
+            .attr('y', '-60')
             //.attr('transform', 'rotate(90)')
         // rotates elements horizontally
         //svg.attr('transform', 'rotate(-90)')
-
-
-        // TODO: 
-        // - insert a parent div on each node
-
-        // This is only wraps the first node
-        // also makes the node disappear
-
-        // let newNode = document.createElement("div");
-        // newNode.classList.add('p_node');
-        // let parentDiv = document.querySelector(".node image").parentNode;
-        // let c_node = document.querySelector(".node image");
-        // parentDiv.insertBefore(newNode, c_node);
-        // newNode.appendChild(c_node);
-
             return;
-
-            
 }
 
 async function saveQuery(e) {
@@ -326,9 +304,6 @@ async function retrieveHistory() {
         ).then(console.log('retrieveHistory() complete.')).catch((e) => console.log(e))
     }
 }
-
-
-// Search 
 async function displayEach(searchItem, index) {
     if (document.querySelector('.saved').children.length > index) {
         return;
@@ -407,9 +382,9 @@ async function displayEach(searchItem, index) {
         // appending image url to the node
         node.append('image')
             .attr("href", function (d) { return d.data.image + '?width=300px' })
-            // .attr('x', '-20')
-            // .attr('y', '-60')
-            // .attr('transform', 'rotate(90)')
+            .attr('x', '-20')
+            .attr('y', '-60')
+            //.attr('transform', 'rotate(90)')
         // rotates elements horizontally
         //svg.attr('transform', 'rotate(-90)')
             return;
@@ -487,24 +462,27 @@ function main() {
         e.preventDefault();
     })
     // logout button clears session
-    // This chunk breaks things
-    // document.querySelector('.log_out').addEventListener('click', async (e) => {
-    //     e.preventDefault();
-    //     // clear session storage
-    //     logOut()
-    //     console.log('Successfully logged out.')
-    //     // back to main()
-    //     return;
-    // })
+    /**document.querySelector('.logout').addEventListener('click', async (e) => {
+        e.preventDefault();
+        // clear session storage
+        logOut()
+        console.log('Successfully logged out.')
+        // back to main()
+        return;
+    })*/
+    
+    // button to save query to DB
+    const saveQueryPrompt = document.querySelector('.save-query')
+    saveQueryPrompt.style.display = 'none'
+
     // search bar
-    // saveQuery keyword was already being used 
     document.querySelector('.species_form').addEventListener('submit', async (e) => {
         wikiSearch(e)
-        saveQuery1.style.display = 'flex';
+        if (sessionStorage.getItem('username') !== null) {
+            saveQueryPrompt.style.display = 'flex';
+        }
     })
-    const saveQuery1 = document.querySelector('.save-query')
-    saveQuery1.style.display = 'none'
-    saveQuery1.addEventListener('click', async (e) => {
+   saveQueryPrompt.addEventListener('click', async (e) => {
         // if there are currently elements inside the query container
         if (document.querySelector('.query').firstChild) {
             saveQuery(e);
@@ -517,12 +495,11 @@ function main() {
     const navMenu = document.querySelector(".nav");
     
     hamburger.addEventListener("click", () => {
-        console.log("hamburger")
+    console.log("hamburger");
     header.classList.toggle("active");
     hamburger.classList.toggle("active");
     navMenu.classList.toggle("active");
     });
-
 }
 
 document.addEventListener('DOMContentLoaded', main);

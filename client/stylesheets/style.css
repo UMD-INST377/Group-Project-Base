@@ -260,6 +260,10 @@ header.active {
   transition: 0.15s;
 }
 
+#saved {
+  display: none;
+}
+
 .nav.active {
  visibility: visible;
   background-color: #F2D5D5;
@@ -1021,7 +1025,7 @@ g image {
   } 
 
   svg {
-    margin: .4rem;
+    margin: 4rem;
     border: #fff;
     border-radius: 24px;
     background-color: #fff;
@@ -1186,7 +1190,11 @@ p {
 
 /* Notifs
 ================================== */
+<<<<<<< HEAD:client/stylesheets/style.css
 .acct_notif {
+=======
+.acct_notif, .notifs {
+>>>>>>> c46cf5084d3409e3b2d77d1040c637601e6c7446:public/stylesheets/style.css
   font-size: 12px;
   color: maroon;
 }

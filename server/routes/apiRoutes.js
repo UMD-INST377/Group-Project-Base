@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import mysql from 'mysql';
-import { userSearch, toD3 } from '../../helpers/wikidata.js'
+import { userSearch, toD3 } from '../helpers/wikidata.js';
 
 const connection = mysql.createConnection({
   db: {

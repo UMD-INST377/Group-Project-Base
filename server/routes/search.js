@@ -1,6 +1,10 @@
 import express from 'express';
 import connection from '../config.js'
+<<<<<<< HEAD:server/routes/search.js
 import { userSearch, toD3 } from '../../helpers/wikidata.js'
+=======
+import { userSearch, toD3 } from '../helpers/wikidata.js'
+>>>>>>> c46cf5084d3409e3b2d77d1040c637601e6c7446:routes/search.js
 
 var searchRouter = express.Router();
 

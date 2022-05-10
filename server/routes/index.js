@@ -75,17 +75,18 @@ indexRouter.post('/login', async (req, res, next) => {
   let userData = [req.body.user, req.body.pass]
   try {
   // fetch their encrypted user data and store it locally
-  connection.query(`SELECT username, email, password FROM users WHERE username = SHA2("${userData[0]}", 256) and password = SHA2("${userData[1]}", 256);`, async (error, results) => {
+  connection.query(`SELECT username, email, password FROM users WHERE username = SHA2("${userData[0]}", 256) and password = SHA2("${userData[1]}", 256);`, async (error, response) => {
+    console.log(response)
     if (error) {
         console.log(error);
       }
-      if (typeof results[0] === 'undefined') {
+      if (typeof response[0] === 'undefined') {
           res.status(400);
           console.log('\nError 400: Problem signing in.')
           return;
         }
       console.log('Signing in...')
-      res.send(JSON.stringify({ plainUser: userData[0], username: results[0].username, email: results[0].email, password: results[0].password }))
+      res.send(JSON.stringify({ plainUser: userData[0], username: response[0].username, email: response[0].email, password: response[0].password }))
       })
   } catch (e) {
     console.log(`ERROR: ${e.message}\n`);

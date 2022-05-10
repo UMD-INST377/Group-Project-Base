@@ -31,10 +31,12 @@ router.get('/label/:label_id', async (req, res) => {
 });
 
 router.post('/label', async (req, res) => {
+  const arts = db.label.findAll();
+  const currentId = (await arts.length) + 1;
   try {
     const newlabel = await db.label.create({
-      label_id: 14,
-      label_name: 'Roc-A-Fella'
+      label_id: currentId,
+      label_name: req.body.label_name
     });
     res.json(newlabel);
   } catch (error) {
@@ -45,7 +47,7 @@ router.post('/label', async (req, res) => {
 
 router.put('/label', async (req, res) => {
   try {
-    const labelUpdate = await db.label.update(
+    const labelUpdate = await db.label.upsert(
       {
         label_id: req.body.label_id,
         label_name: req.label_name

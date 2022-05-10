@@ -34,10 +34,12 @@ router.get('/genre/:genre_id', async (req, res) => {
 });
 
 router.post('/genre', async (req, res) => {
+  const arts = db.genre.findAll();
+  const currentId = (await arts.length) + 1;
   try {
     const newgenre = await db.genre.create({
-      genre_id: 19,
-      genre_name: 'Rap'
+      genre_id: currentId,
+      genre_name: req.body.genre_name
     });
     res.json(newgenre);
   } catch (error) {
@@ -48,7 +50,7 @@ router.post('/genre', async (req, res) => {
 
 router.put('/genre/', async (req, res) => {
   try {
-    const genreUpdate = await db.genre.update(
+    const genreUpdate = await db.genre.upsert(
       {
         genre_id: req.body.genre_id,
         genre_name: req.genre_name

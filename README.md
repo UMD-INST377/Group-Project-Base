@@ -8,7 +8,7 @@ This app allows users to edit songs, artists, albums, and genres to their playli
 https://inst377group15.herokuapp.com/
 
 ## Target Browsers
-Description of target browsers (iOS? Android? Which ones? Which versions?)
+The target brower for this application would be iOS. Specifically it can be used on browers such as Google Chrome or Safari. It can be accessed through the web or on a mobile device to allow for users to interact with the application easily. 
 ## Endpoint Doc 
 ### Server application APIs
 ```/artist``` - API route for artist data.

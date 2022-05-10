@@ -145,3 +145,7 @@ h3{
   margin-left: 28.8%;
   margin-top: -71.9%;
 }
+.chart{
+  max-width: 800px;
+  margin: 0 auto;
+}

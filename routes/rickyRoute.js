@@ -30,4 +30,20 @@ router.get('/macros/:macro_id', async (req, res) => {
     res.json({ message: 'Server error' });
   }
 });
+
+router.post('/macros', async (req, res) => {
+  const macros = await db.macros.findAll();
+  const currentId = (await macros.length) + 1;
+  try {
+    const newMacro = await db.macros.create({
+      macro_id: currentId,
+      calories: req.body.calories,
+      cholesterol: req.body.cholesterol
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ message: 'Server error' });
+  }
+});
+
 export default router;

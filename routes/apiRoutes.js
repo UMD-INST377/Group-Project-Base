@@ -232,7 +232,41 @@ router.route('/josh')
       console.log(err);
       res.json({message: 'something went wrong'});
     }
-  });
+  })
+   .post(async (req, res) => {
+    try {
+      const hallID = req.body.hall_id;
+      const mealID = req.body.meal_id;
+      console.log(mealID);
+      const mealsLocations = await db.sequelizeDB.query(`INSERT INTO meals_locations (hall_id,meal_id) VALUES (${req.body.hall_id},${req.body.meal_id})`);
+      res.json(mealsLocations);
+    } catch (err) {
+      console.error(err);
+      res.send('Server error');
+    }
+  })
+    .put(async (req, res) => {
+      try {
+        const hallID = req.body.hall_id;
+        const mealID = req.body.meal_id;
+        console.log(mealID);
+        const mealsLocations = await db.sequelizeDB.query(`UPDATE meals_locations SET meal_id = ${req.body.meal_id} WHERE hall_id = ${req.body.hall_id} AND meal_id =${req.body.oldmeal_id} `)
+        res.send("meal changed");
+      } catch (err) {
+        console.error(err);
+        res.send('Server error');
+      }
+  })
+  .delete(async (req, res) => {
+    try {
+      const mealsLocations = await db.sequelizeDB.query(`DELETE FROM meals_locations WHERE hall_id = ${req.body.hall_id} AND meal_id =${req.body.meal_id} `)
+      res.send("meal deleted");
+    } catch (err) {
+      console.error(err);
+      res.send('Server error');
+    }
+});
+
 
 
 // Brian McMahon GET controllers

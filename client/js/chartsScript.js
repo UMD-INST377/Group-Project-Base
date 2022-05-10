@@ -1,9 +1,20 @@
+// Maps song IDs to cover art URLs.
+const coverArt = 
+{1 : 'https://upload.wikimedia.org/wikipedia/en/e/e7/Moneybagg_Yo_-_A_Gangsta%27s_Pain.png',
+ 2 : './covers/holy_2.png',
+ 3: 'https://i.scdn.co/image/ab67616d0000b273ef017e899c0547766997d874',
+ 4: 'https://i1.sndcdn.com/artworks-aMU4GrPiwKtpGnu1-vdrqhQ-t500x500.jpg'}
+
 //Charts Maxim
 console.log('hi');
 
 // Put in the songID, get out the songImage from the image dictionary
 function getImage(songID) {
-
+  url = "";
+  if (songID in coverArt) {
+    url = coverArt[songID];
+  }
+  return url;
 }
 
 async function mainChart() {
@@ -24,7 +35,7 @@ async function mainChart() {
         // console.log(entries);
 
        collection.data.forEach((item) => {
-          const injectThisItem = `<li><img class="placeholder" src="placeholder.png" alt="Placeholder Image">${item.song_name}</li>`;
+          const injectThisItem = `<li><img class="placeholder" src="${getImage(item.song_id)}" alt="Placeholder Image">${item.song_name + item.song_id}</li>`;
           console.log(item.song_name);
           targetList.innerHTML += injectThisItem;
         });

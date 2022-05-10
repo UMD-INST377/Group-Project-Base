@@ -10,6 +10,7 @@ import db from '../database/initializeDB.js';
 
 import outletPathQueryAll from '../controllers/outletDisplayQueryAll.js'
 import outletPathInsertQuery from '../controllers/outletPathPostQuery.js'
+import outletDeleteQuery from '../controllers/outletPathDeleteQuery.js'
 
 router.route('/')
   .get(async (req, res) => {
@@ -50,6 +51,24 @@ router.route('/')
       console.log(err);
       res.send({message: err})
     }
+  })
+  
+  .delete(async (req, res) => {
+    try {
+    console.dir(req.body, {depth: null});
+    console.log(req.body?.outID);
+    const outID = req.body?.outID || '50'
+    const result = await db.sequelizeDB.query(outletDeleteQuery, {
+      replacements: {out_id: outID},
+      type: sequelize.QueryTypes.DELETE
+    });
+    res.json({data: result});
+
+  } catch (err) {
+    console.log(err);
+    res.send({message: err})
+  }
+
   });
 
 export default router;

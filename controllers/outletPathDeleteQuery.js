@@ -1,0 +1,1 @@
+export default 'DELETE FROM outlet WHERE outlet_id = :out_id';

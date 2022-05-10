@@ -10,41 +10,24 @@
 <body>
 
     <header class='top-header'>
-        <h1>Search for Songs</h1>
+        <h1>Delete a Station Outlet</h1>
     </header>
-    
+
+    <br>
     <header class='mid-header-1'>
-        <div class = "song"></div>
+        <form class="delete_outlet" id = "delete_outlet">
             <div class="field">
-                <label class="label">Song Name</label>
+                <label class="label">Outlet ID</label>
                 <div class="control">
-                    <input class="input" type="text" name="first-name">
+                    <input class="input" type="text" name="outID" id="outID">
                 </div>
             </div>
-        </div>
-        <div class = "playlist"></div>
-            <div class="field">
-                <label class="label">Song ID</label>
-                <div class="control">
-                    <input class="input" type="text" name="first-name">
-                </div>
             </div>
-        </div>
+            <button class="button submit_button">Delete Outlet With Given ID</button>
+            <button class="button"><a href='station-library.html'>Cancel</a></button>
+        </form>
     </header>
 
-    <div class = "bot-header">
-        <div class="but">
-            <div class="control">
-                <button class="button">Submit</button>
-            </div>
-        </div>
-        <div class="but">
-            <div class="control">
-                <button class="button"><a href = 'station-library.html'>Cancel</a></button>
-            </div>
-        </div>
-    </div>
-
-    <script src="scripts.js"></script>
+    <script src="outletDeletepage.js"></script>
 </body>
 </html>

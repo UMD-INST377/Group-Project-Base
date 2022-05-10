@@ -48,6 +48,7 @@ html{
     max-height: 70vh;
     transition: 10s;
     width: 20em;
+    margin-left: -46.5px;
 }
 
 .accordion{
@@ -73,7 +74,7 @@ li{
     
 }
 .panel{
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 10px;
     padding: 10px 18px;
     display: none;
@@ -81,6 +82,8 @@ li{
     overflow:scroll;
     justify-content: center;
     max-width: 100%;
+    width: 14.4em;
+
 }
 .panel table{
     text-align: center;

@@ -98,6 +98,68 @@ labelDelForm.addEventListener('submit', async (submitEvent) => {
   console.log('return from POST JSON', postResultJSON);
 });
 
+// CREATES TABLE FOR ARTISTS USING JSON DATA FROM DATABASE
+tableMakeArtist = fetch('/api/artist').then((data) => {
+  console.log(data);
+  return data.json();
+}).then((objectData) => {
+  console.log(objectData);
+  let tableData = '';
+  objectData.map((values) => {
+    tableData += `<tr>
+      <td>${values.artist_id}</td>
+      <td>${values.label_id}</td>
+      <td>${values.stage_name}</td>
+      <td>${values.first_name}</td>
+      <td>${values.last_name}</td>
+      <td>${values.gender}</td>
+      <td>${values.age}</td>
+    </tr>`;
+  });
+  document.getElementById('table_body_artist').innerHTML = tableData;
+}).catch((err) => {
+  console.log(err);
+});
+  
+// CREATES TABLE FOR ALBUM USING JSON DATA FROM DATABASE
+tableMakeAlbum = fetch('/api/album').then((data) => {
+  console.log(data);
+  return data.json();
+}).then((objectData) => {
+  console.log(objectData);
+  let tableData = '';
+  objectData.map((values) => {
+    tableData += `<tr>
+      <td>${values.album_id}</td>
+      <td>${values.release_id}</td>
+      <td>${values.genre_id}</td>
+      <td>${values.price_id}</td>
+      <td>${values.album_name}</td>
+    </tr>`;
+  });
+  document.getElementById('table_body_album').innerHTML = tableData;
+}).catch((err) => {
+  console.log(err);
+});
+  
+// CREATES TABLE FOR GENRE USING JSON DATA FROM DATABASE
+tableMakeGenre = fetch('/api/genre').then((data) => {
+  console.log(data);
+  return data.json();
+}).then((objectData) => {
+  console.log(objectData);
+  let tableData = '';
+  objectData.map((values) => {
+    tableData += `<tr>
+      <td>${values.genre_id}</td>
+      <td>${values.genre_name}</td>
+    </tr>`;
+  });
+  document.getElementById('table_body_genre').innerHTML = tableData;
+}).catch((err) => {
+  console.log(err);
+});
+
 // CREATES TABLE FOR LABEL USING JSON DATA FROM DATABASE
 tableMakeLabel = fetch('/api/label').then((data) => {
   console.log(data);

@@ -15,23 +15,42 @@ router.get('/', (req, res) => {
 /// ////////Nana's Endpoints /////////
 /// /////////////////////////////////
 router.route('/songs')
-.get(async (req, res) => {
-    try {
-        const songList = await db.songs.findAll()
-        res.json({data: songList});
-    } catch (err) {
-        console.error(err);
-        res.send({message: 'Error!'});
-    }
-})
+// .get(async (req, res) => {
+//     try {
+//         const songList = await db.song.findAll({})
+//         console.log(songlist);
+//         res.json({data: songList});
+//     } catch (err) {
+//         console.error('LINe 24');
+//         res.send({message: 'Error!'});
+//     }
+// })
 
-router.route('/songs/:song_id')
+// .get(async (req, res) => {
+//     try {
+//         const songList = await db.songs.findAll()
+//         res.json({data: songList});
+//     } catch (err) {
+//         console.error(err);
+//         res.send({message: 'Error!'});
+//     }
+// })
+.get(async (req, res) => {
+  try {
+      const playlistList = await db.sequelizeDB.query('select * from songs');
+      res.json({data: playlistList[0]});
+  } catch (err) {
+      console.error(err);
+      res.send({message: 'Error1!'});
+  }
+})
+router.route('/songs/:id') 
 .get(async (req, res) => {
     try {
       const {song_id} = req.params;
       const song = await db.songs.findAll({
         where: {
-          song_id: song_id
+          id: id
         }
       });
       res.json({data: song})
@@ -92,7 +111,7 @@ router.route('/playlist')
     const playlistList = await db.playlist.findAll();
     const currentId = (await playlistList.length) + 1;
     try {
-      const newGenre = await db.playlist.create({
+      const newPlaylist = await db.playlist.create({
         playlist_id: currentId,
         playlist_title: req.body.playlist_name,
         song_id: req.body.song_id,
@@ -108,7 +127,7 @@ router.route('/playlist/:id')
 .put(async (req, res) => {
     try {
       const {id} = req.params;
-      await db.genre.update(
+      await db.playlist.update(
         {
           playlist_title: req.body.playlist_title
         },

@@ -50,6 +50,7 @@ contributeForm.addEventListener('submit', async (submitEvent) => {
     
 
 });
+//CHarts Maxim Galkin
 
 // Cover Art //
 function addSongs() {

@@ -2,8 +2,6 @@
 /* Desktop Formatting */
 
 * {
-  margin: 100;
-  padding: 100;
   box-sizing: border-box;
 }
 
@@ -18,11 +16,24 @@ body {
   justify-content: center;
 }
 
-p, img {
+img {
   max-width: 960px;
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+p {
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+div{
+  margin: 10px;
 }
 
 .menu_container {
@@ -32,6 +43,7 @@ p, img {
   padding: 20px 0;
   display: flex;
   justify-content: center;
+  margin: 35px;
 }
 
 .menu {
@@ -39,6 +51,22 @@ p, img {
   width: 100%;
   display: flex;
   justify-content: space-around;
+}
+
+button {
+  font-size: 16px;
+  font-weight: bold;
+
+  color: #FFFFFF;
+  background-color: #219653;
+
+  border: none;
+  border-radius: 3px;
+
+  padding: 10px 40px;
+  cursor: pointer;
+
+  margin: 35px;
 }
 
 th {

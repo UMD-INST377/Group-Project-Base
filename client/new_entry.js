@@ -1,3 +1,6 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+
 async function postFormDataAsJson({ url, formData }) {
   const plainFormData = Object.fromEntries(formData.entries());
   const formDataJsonString = JSON.stringify(plainFormData);
@@ -36,9 +39,9 @@ async function handleFormSubmit(event) {
 async function mainEvent() {
   console.log('script loaded');
 
-  const plant = document.querySelector('#plant_id');
-  const location = document.querySelector('#location');
-  const submit = document.querySelector('.submit_button');
+  // const plant = document.querySelector('#plant_id');
+  // const location = document.querySelector('#location');
+  // const submit = document.querySelector('.submit_button');
   const form = document.querySelector('.new_form');
 
   form.addEventListener('submit', handleFormSubmit);

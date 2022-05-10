@@ -648,11 +648,11 @@ footer div {
   flex-grow: 0;
   margin: 32px 0px;
 }
-
+/*
 .sign_up_form > .form_row {
   margin-bottom: 16px;
 }
-
+*/
 .sign_up_form > .form_row > input {
   width: 323px;
   height: 49px;

@@ -95,7 +95,7 @@ router.put("/reviews", async (req, res) => {
 });
 
 /// /////////////////////////////////
-/// //////// Restaurant Endpoints////////// By Nnamdi Ede
+/// //////// Restaurant Endpoints////////// By Nnamdi Ede Iwas going to use this but I couldnt connect the router to the site in time
 /// /////////////////////////////////
 router.get("/restaurant/", async (req, res) => {
   try {
@@ -109,3 +109,5 @@ router.get("/restaurant/", async (req, res) => {
 });
 
 export default router;
+
+

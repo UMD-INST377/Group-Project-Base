@@ -79,7 +79,6 @@ router.post('/artists', async (req, res) => {
   }
 });
 
-
 router.delete('/artists/:artist_id', async (req, res) => {
   try {
     await db.artists.destroy({
@@ -108,7 +107,7 @@ router.route('/artwork')
     }
   });
 
-  router.get('/artwork/:artwork_id', async (req, res) => {
+router.get('/artwork/:artwork_id', async (req, res) => {
   try {
     const artwork = await db.artwork.findOne({
       where: {
@@ -151,7 +150,7 @@ router.post('/artwork', async (req, res) => {
     const createQuery = `INSERT INTO artwork (artwork_id, artwork_title, year_created, serial_number, price, discount_price)
       VALUES('${req.body.artwork_id}','${req.body.artwork_title}','${req.body.year_created}','${req.body.serial_number}','${req.body.price}','${req.body.discount_price}')`;
     const addArtwork = await db.sequelizeDB.query(createQuery, {
-      type: sequelize.QueryTypes.INSERT,
+      type: sequelize.QueryTypes.INSERT
     });
     res.json(addArtwork);
   } catch (err) {
@@ -188,7 +187,7 @@ router.route('/country')
     }
   });
 
-  router.get('/country/:country_id', async (req, res) => {
+router.get('/country/:country_id', async (req, res) => {
   try {
     const country = await db.country.findOne({
       where: {
@@ -221,14 +220,14 @@ router.put('/country', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
-})
+});
 
 router.post('/country', async (req, res) => {
   try {
     const createQuery = `INSERT INTO country (country_id, country_name, country_nationality)
       VALUES('${req.body.country_id}','${req.body.country_name}','${req.body.country_nationality}')`;
     const addCountry = await db.sequelizeDB.query(createQuery, {
-      type: sequelize.QueryTypes.INSERT,
+      type: sequelize.QueryTypes.INSERT
     });
     res.json(addCountry);
   } catch (err) {
@@ -265,7 +264,7 @@ router.route('/customer')
     }
   });
 
-  router.get('/customer/:customer_id', async (req, res) => {
+router.get('/customer/:customer_id', async (req, res) => {
   try {
     const customer = await db.customer.findOne({
       where: {
@@ -306,14 +305,14 @@ router.put('/customer', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
-})
+});
 
 router.post('/customer', async (req, res) => {
   try {
     const createQuery = `INSERT INTO customer (customer_id, first_name, last_name, credit_info, email_address, street_address, city, state, zip_code, payment_date)
       VALUES('${req.body.customer_id}','${req.body.first_name}','${req.body.last_name}','${req.body.credit_info}','${req.body.email_address}','${req.body.street_address}','${req.body.city}','${req.body.state}','${req.body.zip_code}','${req.body.payment_date}')`;
     const addCust = await db.sequelizeDB.query(createQuery, {
-      type: sequelize.QueryTypes.INSERT,
+      type: sequelize.QueryTypes.INSERT
     });
     res.json(addCust);
   } catch (err) {
@@ -388,14 +387,14 @@ router.put('/galleries', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
-})
+});
 
 router.post('/galleries', async (req, res) => {
   try {
     const createQuery = `INSERT INTO galleries (gallery_id, capacity, gallery_name, email, street, city, state, zip_code)
       VALUES('${req.body.gallery_id}','${req.body.capacity}','${req.body.gallery_name}','${req.body.email}','${req.body.street}','${req.body.city}','${req.body.state}','${req.body.zip_code}')`;
     const addGall = await db.sequelizeDB.query(createQuery, {
-      type: sequelize.QueryTypes.INSERT,
+      type: sequelize.QueryTypes.INSERT
     });
     res.json(addGall);
   } catch (err) {
@@ -433,7 +432,7 @@ router.route('/genres')
     }
   });
 
-  router.get('/genres/:genre_id', async (req, res) => {
+router.get('/genres/:genre_id', async (req, res) => {
   try {
     const genres = await db.genres.findOne({
       where: {
@@ -465,14 +464,14 @@ router.put('/genres', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
-})
+});
 
 router.post('/genres', async (req, res) => {
   try {
     const createQuery = `INSERT INTO genres (genre_id, genre_name)
       VALUES('${req.body.genre_id}','${req.body.genre_name}')`;
     const addGenre = await db.sequelizeDB.query(createQuery, {
-      type: sequelize.QueryTypes.INSERT,
+      type: sequelize.QueryTypes.INSERT
     });
     res.json(addGenre);
   } catch (err) {
@@ -542,14 +541,14 @@ router.put('/reservation', async (req, res) => {
     console.error(err);
     res.error('Server error');
   }
-})
+});
 
 router.post('/reservation', async (req, res) => {
   try {
     const createQuery = `INSERT INTO reservation (reservation_id, reservation_date, customer_id, gallery_id)
       VALUES('${req.body.reservation_id}','${req.body.reservation_date}','${req.body.customer_id}','${req.body.gallery_id}')`;
     const addRes = await db.sequelizeDB.query(createQuery, {
-      type: sequelize.QueryTypes.INSERT,
+      type: sequelize.QueryTypes.INSERT
     });
     res.json(addRes);
   } catch (err) {

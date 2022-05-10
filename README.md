@@ -1,4 +1,4 @@
-# Songs Database
+# Songify
 
 ## Project Description
 This app allows users to edit songs, artists, albums, and genres to their playlist. By creating a Username and playlist name, this app keeps track of when a song is added or deleted to the database and by whom. It also displays relevant data such as top 10 longest songs, top 10 largest albums, and top 10 artists with the most albums. Finally we have also implimented a search bar that allows you to search by song name, artist, or album name.
@@ -12,6 +12,7 @@ Description of target browsers (iOS? Android? Which ones? Which versions?)
 ## Endpoint Doc 
 ### Server application APIs
 ```/artist``` - API route for artist data.
+## Get ##
 
 ```/genres``` - API route for genres data.
 

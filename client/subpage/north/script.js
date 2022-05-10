@@ -9,7 +9,7 @@ function dataHandler(dataArray) {
 async function createMealTable(){
   const results = await fetch('/api/meals');
   const mealsJ = await results.json();
-  const mealJson = mealJson.data
+  const mealJson = mealsJ.data
 
   let mealCat = '<ul>';
   let northMeals = '<ul>';
@@ -43,21 +43,16 @@ async function createMacroTable(){
     <th>Calories</th>
     <th>Serving Size</th>
     <th>Cholesterol</th>
-    <th>Sodium</th>
-    <th>Carbs</th>
     <th>Protein</th>
     <th>Fat</th>
   </tr>`;
   console.log(macros)
   for (i = 0 ; i < macros.length; i++) {
     table += `<tr>
-      <td>${macros[i].meal_name}</td>
+    <td>${macros[i].meal_name}</td>
       <td>${macros[i].calories}</td>
       <td>${macros[i].serving_size}</td>
       <td>${macros[i].cholesterol}</td>
-      <td>${macros[i].sodium}</td>
-      <td>${macros[i].carbs}</td>
-      <td>${macros[i].protein}</td>
       <td>${macros[i].fat}</td>
     </tr>`
   }
@@ -66,7 +61,6 @@ async function createMacroTable(){
   const macroQuery = document.querySelector(".macro_table");
   macroQuery.innerHTML = '';
   macroQuery.innerHTML += table;
-  
 }
 
 

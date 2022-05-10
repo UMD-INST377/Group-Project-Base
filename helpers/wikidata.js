@@ -182,7 +182,6 @@ export async function compareSpecies(Q1, Q2) {
     .then((result) => {
       carrier.push(result);
     });
-    console.log(Q1, Q2)
   await queryTree(Q2)
     .then(prune)
     .then((result) => {

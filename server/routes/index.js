@@ -4,25 +4,19 @@ import connection from '../config.js'
 var indexRouter = express.Router();
 
 // SAVE QUERY
-indexRouter.post('/queries', async (req, res, next) => {
-  const queryString = `INSERT INTO queries (\`username\`, \`query_string\`, \`timestamp\`) VALUES("${req.body.username}", HEX(AES_ENCRYPT("${encodeURIComponent(req.body.query)}", UNHEX(SHA2("${req.body.password}", 512)))), now());`
-  try {
-    connection.query(queryString, async (error, results) => {
-      if (error === null) {
-            console.log('\nQuery saved. No issues detected.')
-            res.status(200).send('Successfully saved search.')
-        } 
-        else {
-          if (!error.errno === "") {
-            console.log('SQL Error:', error.errno);
-            res.sendStatus(404);
-          }
-        }
-      })
-  } catch (e) {
-      console.log(`ERROR: ${e.message}\n`);
-      res.sendStatus(400);
-    }
+indexRouter.post('/', (req, res) => {
+  console.log('Saving query...')
+  const input = `INSERT INTO queries (\`username\`, \`query_string\`, \`timestamp\`) VALUES("${req.body.username}", HEX(AES_ENCRYPT("${encodeURIComponent(req.body.query)}", UNHEX(SHA2("${req.body.password}", 512)))), now());`
+  let createAcct = connection.promise().query(input)
+  .then(([rows, fields]) => {
+    console.log('affectedRows: ' + rows.affectedRows)
+    console.log('\Query saved. No issues detected.')
+    res.status(200).send('Successfully saved search.')
+  })
+  .catch((error) => {
+      console.log(error.message)
+      res.status(400).send(error.message)
+    })
 })
 
 async function bundleSearches(results) {
@@ -38,26 +32,26 @@ async function bundleSearches(results) {
 }
 
 // GET ALL PREVIOUS QUERIES
-indexRouter.post('/queries/user', async (req, res, next) => {
-  const queryString = `SELECT username, CONVERT(AES_DECRYPT(UNHEX(query_string), UNHEX(SHA2("${req.body.password}", 512))) USING utf8) as query, timestamp FROM queries WHERE username = "${req.body.username}"`
-  try {
-    connection.query(queryString, async (error, results) => {
-      if (error) {
-        console.log(error);
+indexRouter.post('/user', async (req, res, next) => {
+  console.log('Retrieving user queries....')
+  const input = `SELECT username, CONVERT(AES_DECRYPT(UNHEX(query_string), UNHEX(SHA2("${req.body.password}", 512))) USING utf8) as query, timestamp FROM queries WHERE username = "${req.body.username}"`
+  let getAll = connection.promise().query(input)
+  .then((result) => {
+    if (result[0]['0'] === undefined) {
+      throw new Error('UNDEFINED')
+    }
+    return result
+  })
+  .then((res) => bundleSearches(res[0]))
+  .then((result) => {
+
+    res.status(200).send(result) 
+  })
+  .catch((error) => {
+    if (error.message === 'UNDEFINED') {
+      res.status(400).send('Could not retrieve saved queries. Try again.')
       }
-      if (typeof results[0] === 'undefined') {
-          res.status(400);
-          console.log('\nError 400: Problem storing account info.')
-          return;
-        }
-      console.log('Retrieving history data..')
-      const response = await bundleSearches(results)
-      res.status(200).send(response);
-      })
-  } catch (e) {
-    console.log(`ERROR: ${e.message}\n`);
-    res.sendStatus(400);
-  }
+  })
 })
 
 export default indexRouter;

@@ -54,11 +54,12 @@ function loadUser() {
 // stores data to session
 async function storeSession(userData) {
     if (typeof userData === 'undefined') {
-        return;
+        return 0;
     }
     for (const [key, value] of Object.entries(userData)) {
         sessionStorage.setItem(key, value);
     }
+    return 1
 }
 // clears all session data
 function logOut() {
@@ -151,14 +152,27 @@ async function wikiSearch(e) {
     .then((res) => {
         if (res.status === 401) {
             emptyResponse();
-            throw new Error('Bad query.')
+            throw new Error('Failed to fetch data.')
         }
         return res;
     })
     .then((res) => res.json())
     .then((res) => storeSession({ query: JSON.stringify(res)}))
-    .then((done) => displayTree())
-    .catch((e) => console.log(e))
+    .then((res) => {
+        if (res === 1) {
+            displayTree()
+        }
+        if (res === 0) {
+            throw new Error('NOT_SAVED')
+        }
+    })
+    .catch((e) => {
+        if (e.message === 'NOT_SAVED') {
+            console.log('Failed to store query in session storage.')
+            return
+        }
+        console.log(e)
+    })
 }
 // removes existing tree in search page
 export function clearTree(){
@@ -266,7 +280,7 @@ async function saveQuery(e) {
              password: sessionStorage.getItem('password'),
              query: sessionStorage.getItem('query')})
         // send POST request
-        let response = fetch('/queries', {
+        let response = fetch('/index', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -295,30 +309,40 @@ async function saveHistory(resBody) {
 async function retrieveHistory() {
     // if values current in session storage
     if (sessionStorage.getItem('username') !== null & sessionStorage.getItem('password') !== null) {
-        // bundle into request body
-        let payload = new URLSearchParams({
-             username: sessionStorage.getItem('username'),
-             // to decrypt query data
-             password: sessionStorage.getItem('password')
+            // bundle into request body
+            let payload = new URLSearchParams({
+                username: sessionStorage.getItem('username'),
+                // to decrypt query data
+                password: sessionStorage.getItem('password')
+                })
+            // send POST request
+            let response = fetch('index/user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: payload
             })
-        // send POST request
-        let response = fetch('/queries/user', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: payload
-        })
-        .then((res) => {
-            // everything went ok
-            if (res.statusText === 'OK') {
-                return res.json();
+            .then((res) => {
+                if (res.statusText === 'Not Found') {
+                    throw new Error('NOT_FOUND')
+                }
+                // everything went ok
+                if (res.statusText === 'OK') {
+                    return res.json();
+                }
+            })
+            .then((res) => {
+                return saveHistory(res); // going too slow!!
+            })
+            .finally(console.log('retrieveHistory() complete.'))
+            .catch((e) => {
+                if (e.message === 'NOT_FOUND') {
+                console.log('Something went wrong. Unable to retrieve history.')
+            } else {
+                console.log(e)
             }
-            throw new Error(`Something went wrong. Wasn't able to retrieve history.`)
-        }).then((res) => {
-            saveHistory(res); // going too slow!!
-        }
-        ).then(console.log('retrieveHistory() complete.')).catch((e) => console.log(e))
+        })
     }
 }
 async function displayEach(searchItem, index) {

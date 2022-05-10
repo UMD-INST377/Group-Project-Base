@@ -99,7 +99,7 @@ async function userLogin(e){
     if (form.get('user') === '' || form.get('pass') === '') {
         return;
     }
-    let response = fetch('/login', {
+    let response = fetch('/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -125,7 +125,7 @@ async function saveQuery(e) {
              password: sessionStorage.getItem('password'),
              query: sessionStorage.getItem('query')})
         // send POST request
-        let response = fetch('/queries', {
+        let response = fetch('/index', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -159,7 +159,7 @@ async function retrieveHistory() {
              password: sessionStorage.getItem('password')
             })
         // send POST request
-        let response = fetch('/queries/user', {
+        let response = fetch('/index/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

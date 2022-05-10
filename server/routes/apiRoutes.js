@@ -321,7 +321,6 @@ router.put('/meals', async (req, res) => {
   }
 });
 
-
 router.delete('/meals', async (req, res) => {
   try {
     const update = await db.sequelizeDB.query(`delete from meals where meal_id = ${req.body.meal_id}`);
@@ -331,4 +330,5 @@ router.delete('/meals', async (req, res) => {
     res.send('Server error');
   }
 });
+
 export default router;

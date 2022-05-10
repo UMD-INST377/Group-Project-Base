@@ -20,25 +20,31 @@
                 </ul>
             </nav>
         </header>
-        <div class="page_title">
-            <h1>Account</h1>
+        <div class="boxed_content">
+            <form class="form_block" id="contribute_form" ><!---action="contribute_submission.html"-->
+                <div class="form_row">
+                    <label for="first_name"><b>Username</b></label>
+                </div>
+
+                <div class="form_row">
+                    <input id="first_name" name="first_name" type="text" placeholder="First Name"/>
+                </div>
+
+                <div class="form_row">
+                    <label for="last_name"><b>Password</b></label>
+                </div>
+
+                <div class="form_row">
+                    <input id="last_name" name="last_name" type="text" placeholder="Last Name"/>
+                </div>
+                
+                <div class="form_row">
+                    <input type="submit" value="Login" onclick="location.href = 'account.html';">
+                    <input type="submit" value="Register" onclick="location.href = 'account.html';">
+                </div>
+            </form>
         </div>
-            <div class="account_content">
-                    <form class="form_block">
-                        <div>
-                            <label class="account_label">Username</label>
-                            <input class="account_text" type="text" id="userame" name="username" placeholder="your username">
-                        </div>
-                        <div>
-                            <label class="account_label">Password</label>
-                            <input class="account_text" type="text" id="password" name="password" placeholder="your password">
-                        </div>
-                        <div class="account_buttons">
-                            <button>Log in</button>
-                            <button>Sign up</button>
-                        </div>
-                    </form>
-            </div>
+
         <footer>
             <p class="footer_text">Group 18 | INST377 | University of Maryland</p>
         </footer>

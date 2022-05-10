@@ -2,10 +2,10 @@ const albumDelForm = document.querySelector('#albumDelForm');
 const artistDelForm = document.querySelector('#artistDelForm');
 const genreDelForm = document.querySelector('#genreDelForm');
 const labelDelForm = document.querySelector('#labelDelForm');
-albumDelForm.getElementsByClassName.display = 'none';
-artistDelForm.getElementsByClassName.display = 'none';
-genreDelForm.getElementsByClassName.display = 'none';
-labelDelForm.getElementsByClassName.display = 'none';
+albumDelForm.style.display = 'none';
+artistDelForm.style.display = 'none';
+genreDelForm.style.display = 'none';
+labelDelForm.style.display = 'none';
 
 function formToObject(htmlFormElement) {
   const formItem = new FormData(htmlFormElement).entries();
@@ -126,41 +126,80 @@ y.style.display = 'none';
 z.style.display = 'none';
 a.style.display = 'none';
 
-// Functon to Show Form to Update Table
-function updateTable() {
-  let dropdown = document.getElementById('updateBox')
+// Function to display full details for records
+function changeTable() {
+  let dropdown = document.getElementById('selectBox')
   let index = dropdown.selectedIndex;
   if (index === 1) {
-    albumForm.style.display = 'none';
-    artistForm.style.display = 'block';
-    genreForm.style.display = 'none';
-    labelForm.style.display = 'none';
+    x.style.display = 'block';
+    y.style.display = 'none';
+    z.style.display = 'none';
+    a.style.display = 'none';
   }
   
   else if (index === 2) {
-    albumForm.style.display = 'block';
-    artistForm.style.display = 'none';
-    genreForm.style.display = 'none';
-    labelForm.style.display = 'none';
+    y.style.display = 'block';
+    x.style.display = 'none';
+    z.style.display = 'none';
+    a.style.display = 'none';
   }
   
   else if (index === 3) {
-    albumForm.style.display = 'none';
-    artistForm.style.display = 'none';
-    genreForm.style.display = 'block';
-    labelForm.style.display = 'none';
+    z.style.display = 'block';
+    x.style.display = 'none';
+    y.style.display = 'none';
+    a.style.display = 'none';
   }
   
   else if (index === 4) {
-    albumForm.style.display = 'none';
-    artistForm.style.display = 'none';
-    genreForm.style.display = 'none';
-    labelForm.style.display = 'block';
+    a.style.display = 'block';
+    x.style.display = 'none';
+    y.style.display = 'none';
+    z.style.display = 'none'
   }
   else if (index !== 1 || index !== 2 || index !== 3 || index !== 4) {
-    albumForm.style.display = 'none';
-    artistForm.style.display = 'none';
-    genreForm.style.display = 'none';
-    labelForm.style.display = 'none';
+    x.style.display = 'none';
+    y.style.display = 'none';
+    z.style.display = 'none';
+    a.style.display = 'none';
+  }
+}
+
+// Functon to Show Form to Update Table
+function deleteTable() {
+  let dropdown = document.getElementById('delBox')
+  let index = dropdown.selectedIndex;
+  if (index === 1) {
+    albumDelForm.style.display = 'none';
+    artistDelForm.style.display = 'block';
+    genreDelForm.style.display = 'none';
+    labelDelForm.style.display = 'none';
+  }
+  
+  else if (index === 2) {
+    albumDelForm.style.display = 'block';
+    artistDelForm.style.display = 'none';
+    genreDelForm.style.display = 'none';
+    labelDelForm.style.display = 'none';
+  }
+  
+  else if (index === 3) {
+    albumDelForm.style.display = 'none';
+    artistDelForm.style.display = 'none';
+    genreDelForm.style.display = 'block';
+    labelDelForm.style.display = 'none';
+  }
+  
+  else if (index === 4) {
+    albumDelForm.style.display = 'none';
+    artistDelForm.style.display = 'none';
+    genreDelForm.style.display = 'none';
+    labelDelForm.style.display = 'block';
+  }
+  else if (index !== 1 || index !== 2 || index !== 3 || index !== 4) {
+    albumDelForm.style.display = 'none';
+    artistDelForm.style.display = 'none';
+    genreDelForm.style.display = 'none';
+    labelDelForm.style.display = 'none';
   }
 }

@@ -14,27 +14,51 @@
           <ul class="menu-list">
             <li><a href = "index.html">HOME</a></li>
             <li><a href = "info.html">INFO</a></li>
-            <li><a class="is-active" href = "records.html">SEARCH</a></li>
+            <li><a href = "records.html">SEARCH</a></li>
             <li><a href = "database.html">MY DATABASE</a></li>
-            <li><a href = "delete.html">DELETE RECORD</a></li>
+            <li><a class="is-active" href = "delete.html">DELETE RECORD</a></li>
             <hr style="width:97%;text-align:left;margin-left:5px">
           </ul>
         </aside>
       </div>
+
       <div class="column">
-        <div class = "title has-text-white is-1 has-text-centered">SEARCH ALL</div>
+        <div class = "title has-text-white is-1 has-text-centered">UPDATE A DATABASE</div>
         <hr style="width: 100%;text-align:left;margin-left:0">
-        <div class = "content has-text-white">
-          <input class = "input" id="searchbar" onkeyup="searchData()" type="text" name="search" placeholder="Search for Genres, Artists, Albums, Labels">
-          <ul id="list-holder"></ul>
-        </div>
+        <select class = "select" id="delBox" onchange="deleteTable();">
+            <option value="0">Select Table To Delete</option>
+            <option value="1">Artists</option>
+            <option value="2">Albums</option>
+            <option value="3">Genres</option>
+            <option value="4">Labels</option>
+          </select>
+          <form action = '/delete' method = 'DELETE' class = "form has-text-white" id = "artistDelForm">
+            <label for="artist_id">Artist ID:</label><br>
+            <input type="text" id="artist_id" name="artist_id"><br>
+            <input type="submit" value="DELETE">
+          </form>
+          <form action = '/delete' method = 'DELETE' class = "form has-text-white" id = "albumDelForm">
+            <label for="album_id">Album ID:</label><br>
+            <input type="text" id="album_id" name="album_id"><br>
+            <input type="submit" value="DELETE">
+          </form>
+          <form action = '/delete' method = 'DELETE' class = "form has-text-white" id = "genreDelForm">
+            <label for="album_id">Genre ID:</label><br>
+            <input type="text" id="genre_id" name="genre_id"><br>
+            <input type="submit" value="DELETE">
+          </form>
+          <form action = '/delete' method = 'DELETE' class = "form has-text-white" id = "labelDelForm">
+            <label for="album_id">Label ID:</label><br>
+            <input type="text" id="label_id" name="label_id"><br>
+            <input type="submit" value="DELETE">
+          </form>
         <select class = "select" id="selectBox" onchange="changeTable();">
           <option value="0">Select Table To View</option>
           <option value="1">Artists</option>
           <option value="2">Albums</option>
           <option value="3">Genres</option>
           <option value="4">Labels</option>
-         </select>
+        </select>
         <hr style="width:100%;text-align:left;margin-left:0">
         <table class="table" id = "album">
           <thead>
@@ -124,7 +148,6 @@
         </div>
       </div>
     </div>
-    <script src="./rec.js"></script>
-    <scritp src="./genreRecords.js"></script>
+    <script src="./delrec.js"></script>
   </body>
 </html>

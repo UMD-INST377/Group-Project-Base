@@ -5,16 +5,16 @@ When a student first enters campus, it can be hard to find the foods the student
 https://group7-final.herokuapp.com/
 
 ## Target Browsers
-Desktop/Laptops
+1. Desktop/Laptops
 		- Chrome, Microsoft Edge
 		- Windows
 			Ex: Hp laptop 14
         Mac 
 			Ex: Macbook Pro 15
- 	Tablets
+2. Tablets
 		- Ipad on IOS
 		- Surface Pro 7 on Windows
-	Mobile
+3. Mobile
 		- Samsung Galaxy S8+ on Android
 		- iPhone 7+ on IOS
 

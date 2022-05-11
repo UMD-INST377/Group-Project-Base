@@ -7,7 +7,6 @@
   .columns{
     flex-direction:column-reverse;
   }
-  
   .topnav a {
     font-size: 13px;
   }
@@ -15,17 +14,18 @@
     width: 250px;
   }
   #map {
-    width: 210px;
+    width: 190px;
     height: 200px;
   }
 
-  .topnav a {
-    font-size: 13px;
-  }
 }
 
 /* Tablet Styles */
-@media only screen and (min-width: 401px) and (max-width: 960px) {}
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  #map {
+    width: 400px;
+  }
+}
 
 /* Desktop Styles */
 @media only screen and (min-width: 961px) {

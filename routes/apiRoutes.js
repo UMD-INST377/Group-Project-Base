@@ -8,7 +8,7 @@ import will from './will.js';
 
 import vezRoutes from './vezRoutes.js';
 
-import tristanRoute from './tristanRoute.js'
+import tristanRoute from './tristanRoutes.js';
 
 import db from '../database/initializeDB.js';
 

@@ -35,7 +35,9 @@ Run the browser [My Dietary Assitant](http://localhost:3000) to display the webp
 ## Webpages/Simplified Code
 
 ### index.html
-
+    
+    ![Green robot sitting on a food tree](dietary_assistant_logo.png)
+    
     > Hello, My name is Trakky!
       Welcome to My Personal Dietary Assistant!
       We are an on-campus tool created to help support you on your dietary journey.

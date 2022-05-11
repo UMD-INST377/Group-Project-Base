@@ -43,7 +43,7 @@ artistDelForm.addEventListener('submit', async (submitEvent) => {
   console.log(submitEvent);
   const formObj = formToObject(artistDelForm);
 
-  const postResult = await fetch('/api/artist', {
+  const postResult = await fetch(`/api/artist/${formItem}`, {
 
     method: 'DELETE',
     headers: {
@@ -63,7 +63,7 @@ genreDelForm.addEventListener('submit', async (submitEvent) => {
   console.log(submitEvent);
   const formObj = formToObject(genreDelForm);
 
-  const postResult = await fetch('/api/genre', {
+  const postResult = await fetch(`/api/genre/${formItem}`, {
 
     method: 'DELETE',
     headers: {
@@ -83,7 +83,7 @@ labelDelForm.addEventListener('submit', async (submitEvent) => {
   console.log(submitEvent);
   const formObj = formToObject(labelDelForm);
 
-  const postResult = await fetch('/api/label', {
+  const postResult = await fetch(`/api/label/${formItem}`, {
 
     method: 'DELETE',
     headers: {

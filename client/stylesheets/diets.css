@@ -5,7 +5,7 @@
 }
 
 .wrap {
-  min-height: 600px;
+  height: 600px;
   justify-content: center;
   align-items: flex-start;
   display: flex;
@@ -17,7 +17,6 @@
   min-height: 350px;
   max-height: 500px;
   flex: 1;
-  background-color: rgb(223, 223, 26);
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -30,7 +29,6 @@
   min-height: 350px;
   max-height: 500px;
   flex: 3;
-  background-color: rgb(164, 44, 44);
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -58,6 +56,7 @@
   min-width: 90%;
   font-size: 36px;
   text-align: center;
+  color: white;
 }
 
 .inner_header2 {
@@ -85,17 +84,19 @@
   max-height: 450px;
   min-width: 90%;
   font-size: 20px;
-  background-color: rgb(183, 181, 181);
+  background-color: rgb(209, 209, 209);
   color: black;
   flex-wrap: wrap;
   display: flex;
   align-content: flex-start;
+  padding: 10px;
 }
 .meal_list ul {
   max-height: 300px;
   flex-wrap: wrap;
   display: flex;
   flex-direction: column;
+  margin: 10px;
 }
 
 .meal_list li  {
@@ -104,6 +105,7 @@
   width: 200px;
   display: flex;
   align-self: center;
+  color: rgb(127, 22, 22);
 }
 
 

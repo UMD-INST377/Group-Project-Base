@@ -66,7 +66,7 @@ async function mainEvent() {
     }
 
     withinDiet.forEach(item => {
-      mealList.innerHTML += `<li>${item}</li>`;
+      mealList.innerHTML += `<li>-<em>${item}</em></li>`;
     });
   
 

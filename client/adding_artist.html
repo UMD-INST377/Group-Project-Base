@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Adding an artist</title>
+        <link rel = stylesheet href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel = stylesheet href="styles.css">
+    </head>
+    <body>
+      <nav>
+        <div class="left"><a href="all_artists_info.html">Back to Artwork Details</a></div>
+    </nav>
+
+        <form method="post" class = 'artists_added' action='/api/artists'>
+
+        <form method="post" action='/api/artists'>
+            <div class="field1">
+
+            <div class="field">
+                <label for = 'artist_id' class="label">Artist Id</label>
+                <div class="control">
+                  <input required type="text" name = "artist_id"  id = "artist_id">
+                </div>
+              </div> -->
+              <div class="field">
+                <label for = 'first_name' class="label">First Name</label>
+                <div class="control">
+                  <input required type="text" name = "first_name" id = "first_name">
+                </div>
+              </div>
+              <div class="field">
+                <label for = 'last_name' class="label">Last Name</label>
+                <div class="control">
+                  <input required type="text" name = "last_name"id = "last_name">
+                </div>
+              </div>
+              <div class="field">
+                <label for = 'country_id'class="label">Country Id</label>
+                <div class="control">
+                  <input required type="text" name = "country_id" id = "country_id">
+                </div>
+              </div>
+            </div>
+              <button class="add_artist" type="submit">Submit Input</button>
+        </form>
+        
+        
+          
+    </body>
+</html>

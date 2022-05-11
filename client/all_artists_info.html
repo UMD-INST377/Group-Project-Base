@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Group 24 Project</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+    <nav>
+        <div class="left"><a href="artist_details.html">Back to Artwork Details</a></div>
+    </nav>
+    <table id="table">
+        <th>"Artists Id"</th>
+        <th>"First Name"</th>
+        <th>"Last Name"</th>
+        <th>"Country ID"</th>
+    </table>
+
+    <h3>Add a artist</h3>
+    <div class="submit_button"></div>
+    <form action = "adding_artist.html">
+        <button class="add_artist" type="submit">Click here to add an artist</button>
+    </form>
+    
+    <h3>Delete a artist</h3>
+    <div class="submit_button"></div>
+    <button class="delete_artist">Click here to delete an artist</button>
+    <input required type="number" name = "artist_id" id = "artist_id">
+    
+
+    <script src="artists_script.js"></script>
+
+</body>
+</html>

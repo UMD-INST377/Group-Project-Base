@@ -1,0 +1,116 @@
+.contain {
+  margin: 10px auto; 
+}
+
+.wrap {
+  min-height: 900px;
+  max-width: 90%;
+  max-height: 800px; 
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  padding: 20px;
+}
+
+.onething {
+  min-height: 550px;
+  flex: 3;
+  background-color: rgb(223, 223, 26);
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 10px 20px 10px;
+}
+
+.twothing {
+  min-height: 550px;
+  flex: 3;
+  background-color: rgb(164, 44, 44);
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 10px 20px 10px;
+}
+
+.redthing {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  margin: 10px;
+}
+
+.bluething {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+  margin: 10px;
+}
+
+.inner_header {
+  min-width: 90%;
+  font-size: 36px;
+  text-align: center;
+}
+
+.inner_header2 {
+  min-width: 90%;
+  font-size: 36px;
+  text-align: center;
+  color: white;
+}
+
+.form-r {
+  display: flex;
+  flex: 4;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+  min-height: 300px;
+  width: 60%;
+  background-color: rgb(209, 209, 209);
+  padding: 20px;
+}
+
+.resto_list {
+  margin: 10px;
+  min-width: 90%;
+  font-size: 20px;
+  background-color: rgb(183, 181, 181);
+  color: black;
+  flex-wrap: wrap;
+}
+
+.resto_list li  {
+  margin: 15px;
+  font-size: 25px;
+}
+
+.each_option {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.check_label {
+  margin: 10 5;
+  font-size: 25px;
+}
+
+#submit_button {
+  color: #FFF;
+  background-color: rgb(164, 44, 44);
+  padding: 10px 20px;
+  border: none;
+  width: 150px;
+  border-radius: 4px;
+  margin: 10px;
+  font-size: 25px;
+}

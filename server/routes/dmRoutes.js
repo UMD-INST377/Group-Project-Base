@@ -24,7 +24,7 @@ router.delete('/delete', async (req, res) => {
     }
   });
 
-// update macros database
+// update the macros database
 router.put('/update', async (req, res) => {
   const updateQuery = `UPDATE macros 
     SET calories ='${req.query.new_calories}

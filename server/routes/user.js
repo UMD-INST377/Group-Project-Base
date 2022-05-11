@@ -52,7 +52,7 @@ userRouter.post('/signup', (req, res) => {
 
 // SIGN IN
 userRouter.post('/login', async (req, res) => {
-  console.log('POST to usersRouter.post("/login")..');
+  console.log('POST to usersRouter.post("/login")..\n');
   let userData = [req.body.user, req.body.pass]
   
   const input = `SELECT username, email, password FROM users WHERE username = SHA2("${userData[0]}", 256) and password = SHA2("${userData[1]}", 256);`
@@ -72,12 +72,11 @@ userRouter.post('/login', async (req, res) => {
 })
 
 // UPDATE USERNAME
-userRouter.post('/username', (req, res) => {
+userRouter.put('/username', (req, res) => {
   const formParams = JSON.parse(req.body.form)
-  console.log(formParams)
   // needed for second query
   const old_username = req.body.username
-  console.log('usersRouter.post("/username")...')
+  console.log('usersRouter.put("/username")...\n')
 
   // check for null values
   for (let i in formParams) {
@@ -111,11 +110,11 @@ userRouter.post('/username', (req, res) => {
 })
 
 // UPDATE PASSWORD
-userRouter.post('/pw', (req, res) => {
+userRouter.put('/pw', (req, res) => {
   const formParams = JSON.parse(req.body.form)
   // needed for second query
   const user = req.body.username
-  console.log('usersRouter.post("/password")...')
+  console.log('usersRouter.put("/password")...\n')
   for (let i in formParams) {
     let child = formParams[i]
     if (child === "") {

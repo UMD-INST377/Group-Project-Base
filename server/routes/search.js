@@ -4,8 +4,7 @@ import { userSearch, toD3 } from '../../helpers/wikidata.js'
 
 var searchRouter = express.Router();
 
-// if app.use(/search), then adding a route here would
-// turn it into /search/search
+// app.use(/search) in server.js turns post('/') into post('/search')
 searchRouter.post('/', async (req, res, next) => {
     console.log('POST to searchRouter..');
   try {

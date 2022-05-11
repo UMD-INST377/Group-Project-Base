@@ -197,7 +197,7 @@ async function updatePw() {
         const user = sessionStorage.getItem('plainUser')
         const reqBody = new URLSearchParams({ form: data, username: user })
         fetch('/user/pw', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
@@ -232,7 +232,7 @@ async function updateUsername() {
         const user = sessionStorage.getItem('plainUser')
         const reqBody = new URLSearchParams({ form: data, username: user })
         fetch('/user/username', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },

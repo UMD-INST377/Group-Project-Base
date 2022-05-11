@@ -1,6 +1,8 @@
 # Artwork Gallery Management
 
 ## Description
+Art is a form of expressing oneself. It is used to describe beauty, adventure, entertainment and new. 
+The goal of this website is to allow users to view various artwork designs created by well-known artists.
 
 ## Link to Website
 https://inst377-gproject.herokuapp.com/

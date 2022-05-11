@@ -85,6 +85,20 @@ async function mainEvent() {
         generateTable(table, selectPlant);
       });
     });
+  
+  /*Filtering w/ Radio buttons*/
+  const radios = document.querySelectorAll('input')
+    for (const radio of radios) {
+      radio.onchange = (e) => {
+        const selectPlant = arrayFromJson.data.filter((item) => {
+            const growth_habit = item.growth_habit.toLowerCase();
+            return growth_habit.includes(e.target.value);
+        });
+        
+        generateTableHead(table, data);
+        generateTable(table, selectPlant);
+      }
+    }
   }
 }
 

@@ -54,4 +54,26 @@ indexRouter.post('/user', async (req, res, next) => {
   })
 })
 
+// DELETE PREVIOUS QUERY
+indexRouter.delete('/', async (req, res) => {
+  const input = `DELETE FROM queries
+  WHERE query_id IN (
+    SELECT * FROM (
+      SELECT query_id FROM queries WHERE username=SHA2("${req.body.user}", 256)
+      AND EXTRACT(MINUTE_SECOND FROM timestamp) = EXTRACT( MINUTE_SECOND FROM CAST("${req.body.timestamp}" AS DATETIME))) AS our_query
+      );`
+  let deleteQuery = connection.promise().query(input)
+  .then(([rows, fields]) => {
+    console.log('Numer of records deleted: ' + rows.affectedRows)
+    if (rows.affectedRows === 1) {
+      res.status(200).send('Successfully deleted search.')
+    } else {
+      throw new Error('DELETE_FAILED')
+    }
+  })
+  .catch((error) => {
+      console.log(error.message)
+      res.status(400).send(error.message)
+    })
+})
 export default indexRouter;

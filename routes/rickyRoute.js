@@ -45,5 +45,31 @@ router.post('/macros', async (req, res) => {
     res.json({ message: 'Server error' });
   }
 });
+router.put('/macros', async (req, res) => {
+  try {
+    console.log(req.body);
+    const parsing = JSON.parse(JSON.stringify(req.body));
+    console.log(parsed.meal_id);
+    await db.sequelizeDB.query(
+      `UPDATE macros SET macro_id = "${parsing.macro_id}", calories =  "${parsing.calories}" WHERE cholesterol = ${parsing.cholesterol}`);
+    res.send('Macro Updated');
+  } catch (error) {
+    console.log(error);
+    res.json({ message: 'Server error' });
+  }
+});
+router.delete('/macros/:macro_id', async (req, res) => {
+  try {
+    await db.macros.destroy({
+      where: {
+        macro_id: req.params.macro_id
+      }
+    });
+    res.send('Macro Deleted');
+  } catch (error) {
+    console.log(error);
+    res.json({ message: 'Server error' });
+  }
+});
 
 export default router;

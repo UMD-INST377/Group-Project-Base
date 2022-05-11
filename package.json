@@ -16,6 +16,7 @@
     "chalk": "^4.1.0",
     "connect": "^3.7.0",
     "connect-livereload": "^0.6.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-load": "^1.1.7",
     "livereload": "^0.9.3",

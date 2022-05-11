@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
+import cors from 'cors';
 import db from './database/initializeDB.js';
 import apiRoutes from './server/routes/apiRoutes.js';
 import ryanRoutes from './server/routes/ryanRoutes.js';
@@ -12,8 +13,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const staticFolder = 'client';
 
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+var corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+}
+app.use(cors(corsOptions));
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);

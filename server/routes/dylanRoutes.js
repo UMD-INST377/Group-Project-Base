@@ -19,5 +19,74 @@ router.get('/reviews', async (req, res) => {
 });
 
 
+router.get('/all-reviews', async (req, res) => {
+  try {
+	const query = 'select * from Reviews r inner join Restaurant f on (r.restaurant_id = f.restaurant_id)';
+	const result = await db.sequelizeDB.query(query);
+	res.json({ data: result });
+  } catch (err) {
+    console.error(err);
+    res.send("Server error");
+  }
+});
+
+router.post("/review", async (req, res) => {
+  const { review_id, review_desc, avg_star_rating, restaurant_id } = req.body;
+  try {
+    var query = `Insert into Reviews (review_id, review_desc, avg_star_rating, restaurant_id) Values (?, ?, ?, ?);`;
+    const result = await db.sequelizeDB.query(query, [review_id, review_desc, avg_star_rating, restaurant_id]);
+    res.json({
+      data: result
+    })
+  } catch (err) {
+    console.log(err);
+    res.json("Server error");
+  }
+})
+
+router.get("/review/:id", async(req, res) => {
+  const id = req.params.id
+  try {
+    var query = 'select * from Reviews where review_id = '+id;
+    const result = await db.sequelizeDB.query(query);
+    res.json({
+      data: result
+    })
+  } catch (err) {
+    console.log(err);
+    res.json("Server error");
+  }
+})
+
+router.put("/review/:reviewId", async (req, res) => {
+  const id = req.params.reviewId;
+  console.log(req.body)
+  try {
+    const query = `Update Reviews SET review_desc = '${req.body.review_desc}' , avg_star_rating = ${req.body.avg_star_rating} where review_id = ${id}`;
+    const result = await db.sequelizeDB.query(query);
+    res.json({
+      data: result
+    })
+  } catch (err) {
+    console.log(err);
+    res.json("Server error");
+  }
+})
+
+router.delete("/review/:restaurantId", async (req, res) => {
+  try {
+    const id = req.params.restaurantId
+    const query = 'Delete from Reviews where restaurant_id = '+id
+    const result = await db.sequelizeDB.query(query);
+    res.json({
+      data: result
+    })
+  } catch (error) {
+    console.log(error);
+    res.json("Server error");
+  }
+})
+
+
 
 export default router;

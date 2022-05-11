@@ -30,6 +30,7 @@ router.route('/artists')
       res.send({ error: err});
     }
   });
+
 router.get('/artists/:artist_id', async (req, res) => {
   try {
     const artists = await db.artists.findOne({
@@ -43,6 +44,7 @@ router.get('/artists/:artist_id', async (req, res) => {
     res.send('Server error');
   }
 });
+
 router.put('/artists', async (req, res) => {
   try {
     await db.artists.update(
@@ -173,6 +175,7 @@ router.delete('/artwork/:artwork_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
 /* country endpoint */
 router.route('/country')
   .get(async (req, res) => {
@@ -250,6 +253,7 @@ router.delete('/country/:country_id', async (req, res) => {
     res.error('Server error');
   }
 });
+
 /* customer endpoint */
 router.route('/customer')
   .get(async (req, res) => {
@@ -350,6 +354,7 @@ router.route('/galleries')
       res.send({ error: err});
     }
   });
+
 router.get('/galleries/:gallery_id', async (req, res) => {
   try {
     const galleries = await db.galleries.findOne({
@@ -363,6 +368,7 @@ router.get('/galleries/:gallery_id', async (req, res) => {
     res.send('Server error');
   }
 });
+
 router.put('/galleries', async (req, res) => {
   try {
     await db.galleries.update(
@@ -509,7 +515,8 @@ router.route('/reservation')
       res.send({ error: err});
     }
   });
-router.get('/reservation/:reservation_id', async (req, res) => {
+
+  router.get('/reservation/:reservation_id', async (req, res) => {
   try {
     const reservation = await db.reservation.findOne({
       where: {
@@ -522,6 +529,7 @@ router.get('/reservation/:reservation_id', async (req, res) => {
     res.send('Server error');
   }
 });
+
 router.put('/reservation', async (req, res) => {
   try {
     await db.reservation.update(

@@ -1019,7 +1019,6 @@ g image {
 
   .query {
       height: 1000px;
-      height: 600px;
       max-width: none;
       width: 100%;
       display: flex;

@@ -192,10 +192,14 @@ export function displayTree() {
         console.log('Creating D3.js tree..')
         // gets data from session storage
         const treeData = JSON.parse(sessionStorage.getItem('query'))
+
+        // gets dimensions from parent div
+        const box = document.querySelector('.query')
+
         // set the dimensions and margins of the diagram
-        var margin = {top: 40, right: 20, bottom: 80, left: 20},
-            width = 600 - margin.left - margin.right,
-            height = 600 - margin.top - margin.bottom;
+        var margin = {top: 40, right: 40, bottom: 40, left: 40},
+            width = box.offsetWidth - margin.left - margin.right,
+            height = box.offsetHeight - margin.top - margin.bottom;
 
         // declares a tree layout and assigns the size
         var treemap = d3.tree()

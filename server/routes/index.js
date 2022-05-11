@@ -34,7 +34,7 @@ async function bundleSearches(results) {
 // GET ALL PREVIOUS QUERIES
 indexRouter.post('/user', async (req, res, next) => {
   console.log('Retrieving user queries....')
-  const input = `SELECT username, CONVERT(AES_DECRYPT(UNHEX(query_string), UNHEX(SHA2("${req.body.password}", 512))) USING utf8) as query, timestamp FROM queries WHERE username = "${req.body.username}"`
+  const input = `SELECT username, CONVERT(AES_DECRYPT(UNHEX(query_string), UNHEX(SHA2("${req.query.password}", 512))) USING utf8) as query, timestamp FROM queries WHERE username = "${req.query.username}"`
   let getAll = connection.promise().query(input)
   .then((result) => {
     if (result[0]['0'] === undefined) {

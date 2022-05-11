@@ -316,6 +316,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 80px 10px 80px;
 }
 
@@ -336,7 +337,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;  
-  margin-top: 2rem;  
+  /* margin-top: 2rem;   */
 }
 
 .nav-link {

@@ -27,7 +27,7 @@ async function searchArtists(url) {
 }
 searchArtists('/api/artists');
 
-/* Genre lists in artists */
+/* Genre lists in artists table */
 async function genreInfo(url) {
   const reponse = await fetch(url);
   const arrayFromJson = await reponse.json(); // This changes it into data we can use - an object

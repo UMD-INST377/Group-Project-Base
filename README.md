@@ -1,4 +1,11 @@
-# README.md
+# This is your readme
+You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+
+### How to use Markdown
+Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
+* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+
+#
 Github = https://github.com/vezfly/Group9-Final-INST377SP2022
 
 Heroku App = https://mydietaryassistant.herokuapp.com/index.html
@@ -26,7 +33,7 @@ npm start
   All of the information we provide will be personalized to fit your dietary needs.
   PLEASE ENTER THE SITE BELOW.
 
-  [START](dietplan.html)
+  [START](https://mydietaryassistant.herokuapp.com/dietplan.html)
 
 ### dietplan.html
 
@@ -47,7 +54,7 @@ npm start
 
     (tableCreate.js)
 
-### meal_request
+### meal_request.html
 
     ![Green robot sitting on a food tree](./images/top_left_logo.png)
 
@@ -64,3 +71,22 @@ npm start
     | `<th></th>` | `<th></th>` |
 
     (tableCreate.js)
+
+### meal_search.html
+
+    ![Green robot sitting on a food tree](./images/top_left_logo.png)
+
+    [Home](index.html)
+    [Calorie Count](dietplan.html)
+    [Meal Requests](mealrequest.html)
+    [Meal Search](meal_search.html)
+
+    ![My Personal Dietary Assistant Inc.](bottom_left_logo.png)
+
+    | <form action='api/will/meals' method='post' class='form'> | A table from the Dining Hall Database stored on MySQL |
+    | ------------------------------------------- | -------------------------------------------- |
+    | Meal ID | Meal Name | Meal Category |
+    | `<th></th>` | `<th></th>` | `<th></th>` |
+
+    (tableCreate.js)
+    (mealSearch.js)

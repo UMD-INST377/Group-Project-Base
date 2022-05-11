@@ -34,7 +34,7 @@ https://clato.herokuapp.com/
 * About Page: Forms don't always remember user input
 * Saved Page: Resolve any race conditions related to session storage
 * Solve existing undefined errors in Express routes
-* * Queries table does not update username field when existing accounts change their username
+* Queries table does not update username field when existing accounts change their username
 ### Future Development:
 * Make a logo!
 * Replace banner background image with an image of our own generated diagram

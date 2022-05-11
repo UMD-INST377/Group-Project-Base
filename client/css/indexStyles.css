@@ -82,7 +82,7 @@
   }
 
   .image-container {
-    width: 800;
+    width: 600;
     height: 400px;
     display: flex;
     align-items: flex-start;
@@ -144,8 +144,8 @@ a {
   }
 
 .container {
-  padding-top: 80px;
-  padding-left: 10px;
+  padding-top: 40px;
+  padding-left: 10x;
 }
 
 .text-button-container {

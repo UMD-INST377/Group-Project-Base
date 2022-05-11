@@ -269,5 +269,66 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
+function getRandomIntInclusive(min, max) {
+  const newMin = Math.ceil(min);
+  const newMax = Math.floor(max);
+  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
+}
+router.get('/randomrestriction/:id', async (req, res) => {
+  try {
+    let result = await db.sequelizeDB.query(`select * from meal_restrictions where restriction_id !=${req.params.id}`);
+    result = result[0];
+    res.json(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+router.get('/generateRandom/:id', async (req, res) => {
+  try {
+    let result = await fetch(`/api/randomrestriction/${req.params.id}`);
+    result = result[0];
+    res.json(result);
+    const randMeal = getRandomIntInclusive(0, result.length);
+    console.log(result.length);
+    const meal = await db.sequelizeDB.query(`select meal_name from meals where meal_id=${randMeal}`);
+    res.json({data: meal});
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+router.post('/meals', async (req, res) => {
+  try {
+    const insert = await db.sequelizeDB.query(`insert into meals (meal_id, meal_category, meal_name)
+   values(${req.body.meal_id},"${req.body.meal_category}","${req.body.meal_name}")`);
+
+    res.send('meal was inserted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.put('/meals', async (req, res) => {
+  try {
+    const update = await db.sequelizeDB.query(`update meals set meal_id = ${req.body.meal_id},  meal_category = "${req.body.meal_category}",
+    meal_name = "${req.body.meal_name}"`);
+
+    res.send('meal was inserted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.delete('/meals', async (req, res) => {
+  try {
+    const update = await db.sequelizeDB.query(`delete from meals where meal_id = ${req.body.meal_id}`);
+    res.send('meal was deleted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
 
 export default router;

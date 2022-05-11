@@ -42,7 +42,6 @@
       color: white;
   }
 
-
   .selection-box {
   background-color: #1db954;
   border: 1px solid #000000;
@@ -91,3 +90,7 @@
     justify-content: flex-end;
 }
 
+.mid-header-box {
+  border: solid white 2px;
+  color: white;
+}

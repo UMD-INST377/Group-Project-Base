@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/manual.css">
+    <title>Developer Manual Info</title>
+</head>
+
+<body>
+    <div class="header">UMD Dineify</div>
+    <div class="navbar-container">
+        <div class="navbar">
+            <a href = "index.html" class="navbar-elm">Home</a>
+            <a href = "restaurantInfo.html" class="navbar-elm">Food Info</a>
+            <a href = "dininginfo.html" class="navbar-elm">Hall Info</a>
+            <a href = "aboutUs.html" class="navbar-elm">About Us</a>
+            <a href = "manual.html" class="navbar-elm">Developer Manual</a>
+        </div>
+    </div>
+
+    <div class="manual-header">Developer Manual</div>
+    <div class="hr"></div>
+        <div class="manual info">
+            <h1>How to install application and all dependencies</h1>
+                <ol>
+                    <li>Use Git or Github Desktop to clone this project to your desired repository</li>
+                    <li>Install express.js if you have not already - https://expressjs.com/en/starter/installing.html</li>
+                    <li> Install sequelize if you have not already - https://www.npmjs.com/package/sequelize</li>
+                    <li>Download and install mysql Workbench for testing purposes - https://dev.mysql.com/downloads/workbench/</li>
+                    <li>Application is now ready to use</li>
+                </ol>
+
+            <h1>How to run application on a server</h1>
+                <ol>
+                    <li>Open the repository of this application</li>
+                    <li>Type in npm start into terminal and run it</li>
+                    <li>Go to your web browser and type in the url: http://localhost:3000/</li>
+                </ol>
+
+            <h1>To run tests for software</h1>
+                <ol>
+                    <li>Open two terminals and make sure you are in the main project directory</li>
+                    <li>In the first terminal, run npm start</li>
+                    <li>In the second terminal, run npm test</li>
+                </ol>
+
+            <h1>Server Application AI</h1>
+                <h3><strong>/food - </strong> Api route for getting info about food in the dining halls</h3>
+
+                    <p>PUT - Updates the food name in the database to whatever food the user typed into the form. Returns a JSON response that shows what value an entry has been updated with.<br>
+                        <br>
+                        GET - 
+                            <ol>/ - If there are no query parameters, return a JSON response with all foods in the database.</ol>
+                            
+                            <ol>/search - Search for all foods in the database that match or contain values from the query parameter. Returns a JSON response with all matching entries</ol>
+                
+                            <ol>/:food_id - Returns a JSON response for a specific food id based on user input</ol>
+
+                            <ol>/:specific_hall - Search for all foods in a specified dining hall. Return a JSON response for all matching entries</ol>
+                
+                        DEL - 
+                            <ol>/delete - Delete entry from meal locations table based meal_id in query parameter. Returns a JSON response of the meal_id of the deleted item</ol>
+                            
+                            <ol>/delete2 - Delete entry from meals table based meal_id in query parameter. Returns a JSON response of the meal_id of the deleted item</ol>
+                
+                        POST - 
+                            <ol>/post - Post entry into meals table based on user input on form. Returns a JSON response that shows value that user posted</ol>
+                
+                            <ol>/post2 - Post entry into meals locations table based on user input on form. Returns a JSON response that shows value that user posted</ol>
+                        </p>
+
+            <h3><strong>/dining - </strong> Api route for getting info about the available dining halls</h3>
+
+                <p>PUT - Updates dining hall information into the database based on what the user types into the form. Returns a JSON response that shows what value an entry has been updated with. - Hall id, hall name, address, longitude, and latitude <br>
+                    <br>
+                    GET - 
+                    <ol>/ - If there are no query parameters, return a JSON response with all dining halls in the database</ol>
+                    
+                    <ol>/hall_id: - Returns a JSON response for a specific hall id based on user input</ol>
+            
+                    DEL - 
+                    <ol>/delete/:hall_id - Deletes an entry from dining hall table based on its id</ol>
+            
+                    POST - 
+                    <ol>/post - Post entry into dining hall table based on user input on form. Returns a JSON response that shows the value that the user posted</ol></p>
+
+            <h1>Known Bugs and Future Development</h1>
+                    <li>For each item displayed, also display their nutrient content</li>
+                    <li>Get the menus and info of nearby restaurants, add them to the meals database and display the menus to users on the app</li>
+                    <li> Add a feature where users can post reviews of foods in the database</li>
+                    <li> Add a user profiling and favoriting feature, where users have their own user profile and be able to “favorite” restaurants they like</li>
+                    <li> Include a map of all the dining location as a visual aspect</li>
+        </div>
+</body>
+</html>

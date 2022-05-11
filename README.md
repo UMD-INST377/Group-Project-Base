@@ -31,6 +31,8 @@ https://clato.herokuapp.com/
 
 # Known Bugs and Future Development
 ### Bugs: 
+* DELETE query randomly began failing before submission
+* Did not have time to add a log out button on each page. Right now it is only on the accounts page
 * About Page: Forms don't always remember user input
 * Saved Page: Resolve any race conditions related to session storage
 * Solve existing undefined errors in Express routes

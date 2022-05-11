@@ -22,7 +22,7 @@ function createHtmlList(collection) {
     targetList.innerHTML += injectThisItem;
   });
 }
-function initMap(targetId) {
+/* function initMap(targetId) {
   const latLong = [38.9882,-76.9447];
   const map = L.map(targetId).setView(latLong, 15);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -48,7 +48,7 @@ function addMapMarkers(map, collection) {
     console.log(item.geocoded_column_1?.coordinates);
     L.marker([point[0], point[1]]).addTo(map);
   });
-} 
+} */
 /* function setLat(hallArray) {
   const hall0 = document.querySelector('.the_diner'); // Selects the element to insert the name
   hall0.innerHTML = '';
@@ -98,30 +98,21 @@ function addNames(hallArray) {
 
 async function mainEvent() {
   const results = await fetch('/api/dining');
-  const hallArray = await results.json;
-  const selectHall = hallArray.filter((item)) => {
-      
-  }
-  /* const map = L.map('map').setView([38.9882, -76.9447], 15);
+  const hallArray = await results.json();
+
+
+  const map = L.map('map').setView([38.9882, -76.9460], 14);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map); */
-  for (i = 0, i < hallArray.length; i++) {
+  }).addTo(map);
+  for (let i = 0; i < hallArray.data.length; i++) {
     L.marker([hallArray.data[i].hall_lat, hallArray.data[i].hall_long]).addTo(map)
-    .bindPopup(hallArray.data[i].hall_name)
-    .openPopup();
-    /*
-   L.marker([38.99232230, -76.9466945]).addTo(map)
-    .bindPopup('The Diner')
-    .openPopup();
-  L.marker([38.99324,-76.94931]).addTo(map)
-    .bindPopup('251 North Dining Hall')
-    .openPopup();
-  L.marker([38.98317,-76.944862]).addTo(map)
-    .bindPopup('South Campus Dining Hall')
-    .openPopup(); */
-    }; 
+      .bindPopup(hallArray.data[i].hall_name)
+      .openPopup();
+  }
 
+  // console.log(hallArray.data.length);
+  // console.log(hallArray.data[0].hall_name); 
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

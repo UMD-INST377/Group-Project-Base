@@ -4,7 +4,7 @@ Github = https://github.com/vezfly/Group9-Final-INST377SP2022
 
 Heroku App = https://mydietaryassistant.herokuapp.com/index.html
 
-My Dietary Assistant
+**My Dietary Assistant**
 
 MyDietaryAssistant is a simplified platform that allows users to access information from the UMD Dining Hall Database through personalized queries.
 

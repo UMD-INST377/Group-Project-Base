@@ -897,9 +897,11 @@ footer div {
 .query {
   display: block;
   position: relative;
-  max-width: 323px;
-  height: 337px;
-  
+  min-width: 400px;
+  max-width: 600px;
+  height: 600px;
+  max-height: 1000px;
+
   border: 2px solid #66516E;
   box-shadow: inset 0px 1px 2px #66516E;
   border-radius: 4px;
@@ -1015,9 +1017,8 @@ g image {
 }
 
   .query {
-      height: 1000px;
+      height: 600px;
       max-width: none;
-      width: 100%;
 
       display: flex;
       justify-content: center;

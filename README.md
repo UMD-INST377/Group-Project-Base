@@ -48,6 +48,14 @@ No tests have been written for this software. You can, however, write your own t
 
 #### Roles
 
+| Method   | Route                     | Description                                                  |
+| -------- | ------------------------- | ------------------------------------------------------------ |
+| `GET`    | `/agya/roles`             | Get data on all roles.                                       |
+| `GET`    | `/agya/roles/:role_id`    | Get data for genre with matching `role_id`.                  |
+| `PUT`    | `/agya/roles`             | Get age of roles.                                            |
+| `POST`   | `/agya/roles`             | Select name of roles                                         |
+| `DELETE` | `/agya/roles`             | Delete record for roles whose ID matches role_id parameter.  |
+
 #### Actors
 
 | Method   | Route                     | Description                                                  |

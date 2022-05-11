@@ -1,3 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  .title-container {
+    padding-bottom: 20px;
+  }
+
+  .topnav a {
+    font-size: 13px;
+  }
+
+  .page-title {
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 50px;
+  }
+
+  .header-text {
+    font-size: 20px;
+    line-height: 36px;
+  }
+
+  .image-container {
+    width: 200px;
+    height: 400px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .text-container {
+    font-size: 35px;
+    padding: 10px;
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  .page-title {
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 65px;
+  }
+  
+  .header-text {
+    font-size: 30px;
+    line-height: 46px;
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  .title-container {
+    padding-bottom: 100px;
+  }
+  
+  .topnav a {
+    font-size: 17px;
+  }
+
+  .page-title {
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 85px;
+    padding: 10px;
+  }
+
+  .header-text {
+    font-size: 30px;
+    line-height: 46px;
+  }
+
+  .text-button-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .image-container {
+    width: 800;
+    height: 400px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: right;
+  }
+
+  .text-container {
+    font-size: 25px;
+    padding: 10px;
+  }
+}
+
 img {
   border-radius: 100px;
   max-width: 70%;
@@ -18,6 +115,7 @@ a {
     flex-direction: column;
     align-items: flex-end;
 }
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #3E4F36;
@@ -31,15 +129,14 @@ a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
   }
-  
+
   /* Change the color of links on hover */
   .topnav a:hover {
     background-color: #ddd;
     color: black;
   }
-  
+
   /* Add a color to the active/current link */
   .topnav a.active {
     background-color: #000000;
@@ -50,17 +147,22 @@ a {
   padding-top: 80px;
   padding-left: 10px;
 }
+
+.text-button-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /*Adjusts the title so that it only takes up half of screen*/
 .title-container {
   display: flex;
-  padding-bottom: 100px;
 }
+/* Handles styling for the page stylings - @media differences*/
 .page-title {
   font-family: 'Times New Roman';
   font-style: normal;
-  font-weight: 700;
-  font-size: 80px;
-  line-height: 85px;
 }
 .intro-container {
   display: flex;
@@ -71,6 +173,7 @@ a {
 }
 /*ensures subtitle and button are in column direction*/
 .text-button-container {
+  width: 50%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -82,20 +185,17 @@ a {
   font-style: italic;
   font-weight: 400;
   color: #000000;
-  font-size: 30px;
-  line-height: 46px;
 }
 .image-container {
-  width: 800;
-  height: 1000;
   display: flex;
   align-items: flex-start;
-  justify-content:right;
+  justify-content: right;
 }
+
 .text-container {
   font-family: 'Times New Roman';
   font-style: normal;
   font-weight: 400;
-  font-size: 22px;
   line-height: 134.77%;
+  padding: 10px;
 }

@@ -3,74 +3,102 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
-      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
-    background-color:F2F0E4;
-    width: inherit;
-    min-height: 1000px;
+@media only screen and (max-width: 400px) {
+  .columns{
+    flex-direction:column-reverse;
   }
   
-  #map { height: 360px; }
-  
-  /* Page Layout */
-  .columns {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+  .topnav a {
+    font-size: 13px;
   }
-  
-  .wrapper {
-    display: flex;
-    padding-top: 50px;
+  .page_item_wide {
+    width: 250px;
   }
-  .wrapper2 {
-    display: flex;
-    justify-content: center;
-    padding: 50px;
+  #map {
+    width: 210px;
+    height: 200px;
   }
-  .container {
-    max-width: 100%;
-    margin-top: 25px;
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  .topnav a {
+    font-size: 13px;
   }
-  
-  .header{
-    display: block;
-    padding: 15;
-    border-radius: 4;
-    margin: 15;
-    align-items: center;
-  }
-  .page_item_wide{
+  .page_item_wide {
     width: 640px;
   }
-  /* Add a black background color to the top navigation */
+
+  #map {
+    height: 360px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  background-color:F2F0E4;
+  width: inherit;
+  min-height: 1000px;
+}
+
+/* Page Layout */
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.wrapper {
+  display: flex;
+  padding-top: 50px;
+}
+.wrapper2 {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+.container {
+  max-width: 100%;
+  margin-top: 25px;
+}
+
+.header{
+  display: block;
+  padding: 15;
+  border-radius: 4;
+  margin: 15;
+  align-items: center;
+}
+
+/* Add a black background color to the top navigation */
 .topnav {
-    background-color: #3E4F36;
-    overflow: hidden;
-  }
-  
-  /* Style the links inside the navigation bar */
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  /* Change the color of links on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  /* Add a color to the active/current link */
-  .topnav a.active {
-    background-color: #000000;
-    color: white;
-  }
+  background-color: #3E4F36;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #000000;
+  color: white;
+}

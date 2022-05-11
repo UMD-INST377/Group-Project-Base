@@ -14,7 +14,8 @@ https://group-project-6.herokuapp.com/index.html
 * MacBook Pro 13 inch
 * MacBook Pro 15 inch
 * Dell XPS 13
-* Google Nest Hub Max
+* iPhone XR
+* iPhone 12
 
 ## Links
 * [User Manual](https://github.com/ryessem7/Group6-Final-INST377SP2022/#user-manual)
@@ -418,6 +419,8 @@ GET /ryan/area
 * Adding restaurant names or addresses when user click on a map marker on the location page. In addition, perhaps turning the raw day into a json file so it can be hooked up to an api for fetching results. 
 
 NOTE: These suggestions would be amazing to implement, some are too complicated beyond our capabilities this semester & with the knowledge learned in this course. We would love to see someone expand on this project and enhance it. 
+
+AS AMATEUR WEB DEVELOPERS TAKING OUR FIRST WEB DEVELOPMENT CLASS EVER AND TRYING TO CREATE A FUNCTIONAL, RESPONSIVE WEBSITE, WE TRIED OUR BEST!!!!
 
   
 

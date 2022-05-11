@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>District of Columbia Hispanic Restaurants Blog Site </title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles2.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="header-1">
+            <a href="index.html" class="logo"> <i class="fas fa-utensils"></i> HispanicDC </a>
+
+            <!--search bar-->
+
+            <!--  <form action="" id="search-form">
+  <input type="search" placeholder="search here..." name="" id="search-box">
+  <label for="search-box" class="fas fa-search"></label>
+  <i class="fas fa-times" id="close"></i>
+  </form> -->
+
+            <h3 class="email"> <i class="fas fa-envelope"></i> email now : BIZOUTREACH@HISPANICDC.COM</h3>
+
+        </div>
+
+        <div class="header-2">
+
+            <nav class="navbar">
+                <ul>
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="restTable.html">Locations</a></li>
+                    <li><a href="restaurants.html">Restaurants</a></li>
+                    <li><a href="Reviews.html">Reviews</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+            </nav>
+
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-twitter"></a>
+            </div>
+
+        </div>
+    </header>
+    <!-- header finished-->
+
+
+    <div class="wrapper">
+        <h2>Locations</h2>
+        <div id="error"></div>
+
+        <form class="main-form">
+            <div class="field">
+                <label>Area ID</label>
+                <div class="control">
+                    <input name="areaid" class="areaid" type="number" placeholder="Enter area ID">
+                </div>
+                <label>Neighborhood Name</label>
+                <div class="control">
+                    <input name="name" class="name" type="text" required placeholder="Enter neighborhood">
+                </div>
+                <label>Landmarks</label>
+                <div class="control">
+                    <input name="landmarks" class="landmarks" type="text" placeholder="Enter landmarks">
+                </div>
+                <label>Description</label>
+                <div class="control">
+                    <input name="description" class="description" type="text" placeholder="Enter description">
+                </div>
+
+                <ul>
+                    <li>Adams Morgan </li>
+                    <li>Brightwood Park</li>
+                    <li>Cleveland Park</li>
+                    <li>Columbia Heights</li>
+                    <li>Crestwood</li>
+                    <li>Downtown</li>
+                    <li>Edgewood</li>
+                    <li>Federal Triangle</li>
+                    <li>Foggy Bottom</li>
+                    <li>Mt.Vernon Square</li>
+                    <li>Mt.Pleasant</li>
+                    <li>Navy Yard</li>
+                    <li>Noma</li>
+                    <li>Penn Quarter</li>
+                    <li>Petworth</li>
+                    <li>Tenleytown</li>
+
+                </ul>
+                <div class="control"> <button class="btn">Submit</button></div>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+    <div class="container">
+
+        <table class="table">
+            <tr>
+                <th>Area ID</th>
+                <th>Neighborhood Name</th>
+                <th>Landmarks</th>
+                <th>Description</th>
+            </tr>
+        </table>
+    </div>
+    </section>
+
+    <div class="box">
+        <div id="map"></div>
+    </div>
+
+</body>
+
+<!-- <section class="footer2">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3 class="heading"> <span>Why Choose Us?</span> </h3>
+            <p>At HispanicDC, we seek to provide potential consumers accurate information on hispanic restaurants in
+                the DC
+                area
+                so that they can cater to their needs and experience a good time. We take pride in battling against
+                misinformation by
+                providing accurate information that is verified by our team, not robots. </p>
+        </div>
+
+        <div class="box">
+            <h3 class="heading"> <span>Contact Us</span> </h3>
+            <p> <i class="fas fa-map-marker-alt"></i> College Park, Maryland 20742 </p>
+            <p> <i class="fas fa-envelope"></i> BIZOUTREACH@HISPANICDC.COM </p>
+            <p> <i class="fas fa-globe"></i> WWW.HISPANICDC.BLOG.COM</p>
+            <p>© INST377 2022 | Website Design and Construction done by Group 6 2022</p>
+        </div>
+
+    </div>
+</section> -->
+
+
+<!-- HAVE TO FIGURE OUT HOW TO COMBAT POSITION:ABSOLUTE PROBLEM WITH FOOTER ON THIS PAGE, AND STILL HAVE MY FORM CENTERED  -->
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+<script src="./restTable.js"></script>
+<script src="./map.js"></script>
+
+</form>
+
+
+<!-- added more-->
+<!-- added more stuff-->

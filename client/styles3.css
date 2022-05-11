@@ -1,0 +1,167 @@
+body{
+    background-image: url("pexels-rene-asmussen-1581384.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    min-height:100vh;
+}
+
+tr:nth-child(odd){
+    background-color: rgba(0, 100, 0, 0.213);
+}
+
+.container{
+    max-width: 300px;
+    width:100%;
+    background: yellowgreen;
+    padding: 25px 30px;
+    border-radius: 5px;
+   
+}
+
+table{
+    border-spacing: 0px;
+    background:white;
+}
+
+td{
+    margin: 2px;
+}
+
+
+.wrapper{
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    max-width: 350px;
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgb(222, 220, 220);
+}
+
+.wrapper h2{
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.wrapper .field{
+    margin-bottom:10px;
+}
+
+.wrapper .control input[type="text"],
+.wrapper .control input[type="number"]{
+    width:100%;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+}
+
+.wrapper .btn{
+    border:0;
+    margin-top:15px;
+    padding:10px;
+    width:100%;
+    color:darkred;
+    border:.2rem solid red;
+    outline:.2rem solid black;
+    font-weight: bold;
+}
+
+.restaurants{
+    background-image: url("pexels-ryutaro-tsukata-5472306.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    min-height:100vh;
+}
+
+.dropdown{
+    position: absolute;
+    width: 50%;
+    height: 50px;
+    transition: 0.5s;
+    top:50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+}
+
+
+.dropdown.active{
+    margin-top: -200px;
+}
+
+.dropdown::before{
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 10000;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #333;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(-46deg);
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.dropdown.active::before{
+    top: 22px;
+    transform: rotate(-225deg);
+}
+
+.dropdown input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #fff;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    padding: 12px 20px;
+    border-radius: 10px;
+}
+.dropdown .option{
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 30px 30px rgba(0,0,0,0.4);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 0px;
+    transition: 0.4s;
+}
+
+.dropdown.active .option{
+    height: 238px;
+    overflow-y: scroll;
+}
+
+.dropdown .option div{
+    padding: 12px 20px;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.dropdown .option div:hover{
+    background: #62baea;
+    color: #fff;
+}
+
+.dropdown .option div i{
+    position: relative;
+    top: 4px;
+    font-size: 1.2em;
+}

@@ -8,6 +8,8 @@ import will from './will.js';
 
 import vezRoutes from './vezRoutes.js';
 
+import tristanRoute from './tristanRoute.js'
+
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -21,6 +23,8 @@ router.use('/ricky', rickyRoute);
 router.use('/will', will);
 
 router.use('/vez', vezRoutes);
+
+router.use('/tristan', tristanRoute);
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
@@ -257,7 +261,7 @@ const mealMapCustom = `SELECT hall_name,
   meal_name
 FROM
   Meals m
-INNER JOIN Meals_Locations ml 
+INNER JOIN Meals_Locations ml
   ON m.meal_id = ml.meal_id
 INNER JOIN Dining_Hall d
 ON d.hall_id = ml.hall_id;`;

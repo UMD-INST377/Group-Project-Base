@@ -63,11 +63,17 @@ async function mainEvent() {
         return upperCode.includes(upperInput);
       });
 
+      /*Live Filtering */
+      generateTableHead(table, data);
+      generateTable(table, selectPlant);
+
+      /*
       submit.addEventListener('click', async () => {
         console.log('submitted');
         generateTableHead(table, data);
         generateTable(table, selectPlant);
       });
+      */
     });
 
     botanical_name.addEventListener('input', async (event) => {
@@ -78,6 +84,10 @@ async function mainEvent() {
         const upperInput = event.target.value.toLowerCase();
         return upperCode.includes(upperInput);
       });
+
+      /*Live Filtering */
+      generateTableHead(table, data);
+      generateTable(table, selectPlant);
 
       submit.addEventListener('click', async () => {
         console.log('submitted');

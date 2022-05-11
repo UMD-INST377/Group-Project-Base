@@ -51,7 +51,7 @@ router.put('/macros', async (req, res) => {
     const parsing = JSON.parse(JSON.stringify(req.body));
     console.log(parsed.meal_id);
     await db.sequelizeDB.query(
-      `UPDATE macros SET macro_id = "${parsing.macro_id}", calories =  "${parsing.calories}" WHERE cholesterol = ${parsing.cholesterol}`);
+      `UPDATE macros SET cholesterol = "${parsing.cholesterol}", calories =  "${parsing.calories}" WHERE macro_id = ${parsing.macro_id}`);
     res.send('Macro Updated');
   } catch (error) {
     console.log(error);

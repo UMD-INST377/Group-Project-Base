@@ -35,6 +35,11 @@
 ```/songs``` - Relates to All Songs in Database
 - GET - Accesses all Songs in the Database to be Displayed on Page.
 
+```/charts``` - Relates to All Charts in Database
+- GET - Accesses all charts in the Database.
+
+```/genre``` - Relates to All Genres in Database
+- GET - Accesses Each Song Genre in the Database.
 
 ## Known Bugs & Future Development
 ### Known Bugs

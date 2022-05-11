@@ -98,16 +98,6 @@ header .header-2 .navbar ul{
 }
 
 
-header .header-2 .navbar ul{
-  flex-flow: column;
-  justify-content: center;
-  min-height: calc(100vh - 6rem);
-  padding-bottom: 6rem;
-  background:#000;
-  width: 32rem;
-}
-
-
 header .header-2 .navbar ul li{
   margin:1rem;
 }
@@ -376,69 +366,25 @@ header .header-2.header-active{
   opacity: .8;
 }
 
-
-/* media queries  */
-
 @media only screen and (max-width: 400px) {
 
-    html{
-        font-size: 55%;
-    }
+  html{
+      font-size: 50%;
+  }
 
-    header .header-2 #menu{
-        display: block;
-    }
+  header .header-1{
+      flex-flow: column;
+  }
 
-    header .header-2 .navbar{
-        position: absolute;
-        top:100%; left: -120%;
-    }
+  header .header-1 .logo{
+      padding-bottom: 1rem;
+  }
 
-    header .header-2 .navbar ul{
-        flex-flow: column;
-        justify-content: center;
-        min-height: calc(100vh - 6rem);
-        padding-bottom: 6rem;
-        background:#000;
-        width: 32rem;
-    }
-
-    header .header-2 .navbar ul li{
-        width: 100%;
-        text-align: center;
-    }
-
-    header .header-2 .navbar ul li a{
-        font-size: 2.7rem;
-        display: block;
-    }
-
-    header .header-2 .fa-times{
-        transform: rotate(180deg);
-    }
-
-    header .header-2 .nav-toggle{
-        left:0;
-    }
-
-    .home .content h1{
-        font-size: 5rem;
-    }
-
-    .home .content p{
-        width: auto;
-    }
-
-    .about .row{
-        flex-flow: column;
-    }
-
-    .about .row .image img{
-        width: 85%;
-    }
+  header .header-2 .navbar ul{
+      width: 100vw;
+  }
 
 }
-
 /* additional updates need to be made *\
 
 /* contact page needs work additional updates need to be made *\

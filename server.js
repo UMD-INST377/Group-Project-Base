@@ -25,12 +25,5 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use('/index', indexRouter);
 app.use('/user', userRouter);
 app.use('/search', searchRouter);
-/*
-app.get('/', function (req, res) {
-    console.log('Cookies: ', req.cookies)
 
-    // signed
-    console.log('Signed Cookies: ', req.signedCookies)
-})
-*/
 export default app;

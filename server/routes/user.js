@@ -73,9 +73,11 @@ userRouter.post('/login', async (req, res) => {
 
 // UPDATE USERNAME
 userRouter.put('/username', (req, res) => {
+  console.log(req.body)
   const formParams = JSON.parse(req.body.form)
   // needed for second query
   const old_username = req.body.username
+  console.log(formParams)
   console.log('usersRouter.put("/username")...\n')
 
   // check for null values

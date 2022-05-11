@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'/>
+        <title>PDA - Diet Plan</title>
+        <link rel='stylesheet' href='styles.css'/>
+    </head>
+    <body>
+
+<!--********************************************************************************-->
+<!--I MAY START THIS OUT AS A TABLE BUT I'M GOING TO PUT IT INTO THE FOOD TREE FORMAT-->
+<!--********************************************************************************-->
+
+    <header class='header2'>
+        <div class= "header3">
+            <div>
+                <img class ="logo0" src="./images/top_left_logo.png"  alt="Green robot standing next to a food tree"/>
+            </div>
+            <div>
+                <img style= "width: 200px; height: 70px; " class ="logo0" src="./images/bottom_left_logo.png"  alt="Green robot standing next to a food tree"/>
+            </div>
+        </div>
+    </header>
+                <img style="margin: 0px 300px;"class ="logo" src="./images/robo_speaking1.png"  alt="Green robot standing next to a food tree"/>
+    <header>
+
+    </header>
+    <div class='menu-container2'>
+        <div class='menu2'>
+            <div><a href="index.html"><strong>Home</strong></a></div>
+        </div>
+        <div class='menu2'>
+            <div><a href="dietplan.html"><strong>Dietary Needs</strong></a></div>
+        </div>
+        <div class='menu2'>
+            <div><a href="mealrequest.html"><strong>Meal Request</strong></a></div>
+        </div>
+            <!--a class = 'menu2' href='index.html'><strong>Home</strong></a></div>
+            <a class="menu2" href = 'dietplan.html'><strong>Diet Plan</strong></a></div>
+            <a class="menu2" href = 'mealrequest.html'><strong>Meal Request</strong></a></div-->
+    </div>
+
+      <div class='wrapper'>
+        <div class='columns'>
+
+            <div class='container'>
+
+                <div class='content'>
+
+                    <!--h1>Your Personal Diet Plan</h1-->
+                    
+                        <form action='route' method='get' class='form'>
+
+                        <div class='form-row'>
+                            <label title>Restriction Type</label>
+                            <input name='restriction_type' class='restriction_type' type='text'/>
+                        </div>
+
+                        <div class='form-row'>
+                            <label title>Hall Name</label>
+                            <input name='hall_name' class='hall_name' type='text'/>
+                        </div>
+
+                        <div class='form-row'>
+                            <label title>Calories</label>
+                            <input name='calories' class='calories' type='number'/>
+                        </div>
+
+                        <div class='form-row'>
+                            <!--button> class="button" type="restr_submit_button">Specify Restrictions</button-->
+                            <br>
+                            <button class="button submit_button" type="submit">Submit</button>
+                        </div>
+                        <br>
+                        <!--img class ="logo" src= ../dietary-assistant-images/foodtree.png  alt="Green robot sitting on a food tree"/-->
+                        <table style= "width: 100%; background-color: white; color: black; text-align: left; opacity: 0.5;" class="table">
+                            <!--First tr is the column headers-->
+                            <tr>
+                            <th>Meal Name</th>
+                            <th>Hall Name</th>
+                            <th>Calories</th>
+                            </tr>
+                        </table>
+                        
+    
+            </div>
+          </div>
+    
+    <!--script src="tableCreate.js"></script-->
+    <script src="script.js"></script>
+    </body>
+</html>

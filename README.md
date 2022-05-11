@@ -24,23 +24,23 @@ Then download npm packages with:
 
     npm install
 
-and you can run the browser [My Dietary Assitant](http://localhost:3000) to display the webpage on your local host with:
+Run the browser [My Dietary Assitant](http://localhost:3000) to display the webpage on your local host with:
 
     npm start
     
-or you can push the website content to your heroku app with:
+(OR) you can push the website content to your heroku app with:
 
     git push heroku main
 
 ### index.html
 
     > Hello, My name is Trakky!
-    Welcome to My Personal Dietary Assistant!
-    We are an on-campus tool created to help support you on your dietary journey.
-    All of the information we provide will be personalized to fit your dietary needs.
-    PLEASE ENTER THE SITE BELOW.
+      Welcome to My Personal Dietary Assistant!
+      We are an on-campus tool created to help support you on your dietary journey.
+      All of the information we provide will be personalized to fit your dietary needs.
+      PLEASE ENTER THE SITE BELOW.
 
-  [START](https://mydietaryassistant.herokuapp.com/dietplan.html)
+    [START](https://mydietaryassistant.herokuapp.com/dietplan.html)
 
 ### dietplan.html
 

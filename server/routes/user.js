@@ -21,7 +21,7 @@ userRouter.post('/signup', (req, res) => {
     }
   }
   // first we insert our account data
-  const input = `INSERT INTO users (\`username\`, \`email\`, \`password\`) VALUES(SHA2("${req.body.user}", 256), SHA2("${req.body.email}", 256), SHA2("${req.body.pass}", 256));`
+  const input = `INSERT INTO users (\`username\`, \`password\`) VALUES(SHA2("${req.body.user}", 256), SHA2("${req.body.pass}", 256));`
   let createAcct = connection.promise().query(input)
   .then(([rows, fields]) => {
     console.log('affectedRows: ' + rows.affectedRows);
@@ -33,14 +33,13 @@ userRouter.post('/signup', (req, res) => {
       throw new Error('ER_DUP_ENTRY')
     }
   }).then(() => { // pass successful insert into select query to get account data
-    let getData = `SELECT username, email, password FROM users WHERE username = SHA2("${userData[0]}", 256) and password = SHA2("${userData[1]}", 256);`
+    let getData = `SELECT username, password FROM users WHERE username = SHA2("${userData[0]}", 256) and password = SHA2("${userData[1]}", 256);`
     return connection.promise().query(getData)
   })
   .then((result) => {
     res.status(200).send(JSON.stringify({
         plainUser: userData[0],
         username: result[0].username,
-        email: result[0].email,
         password: result[0].password
       }))
     }).catch((err) => {
@@ -55,7 +54,7 @@ userRouter.post('/login', async (req, res) => {
   console.log('POST to usersRouter.post("/login")..\n');
   let userData = [req.body.user, req.body.pass]
   
-  const input = `SELECT username, email, password FROM users WHERE username = SHA2("${userData[0]}", 256) and password = SHA2("${userData[1]}", 256);`
+  const input = `SELECT username, password FROM users WHERE username = SHA2("${userData[0]}", 256) and password = SHA2("${userData[1]}", 256);`
   let update = connection.promise().query(input)
   .then((result) => {
    if (result[0]['0'] === undefined) {
@@ -65,7 +64,6 @@ userRouter.post('/login', async (req, res) => {
     res.status(200).send(JSON.stringify({
         plainUser: userData[0],
         username: result[0]['0'].username,
-        email: result[0]['0'].email,
         password: result[0]['0'].password
       }))
     }).catch(console.log)

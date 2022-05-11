@@ -94,7 +94,7 @@ Run the browser [My Dietary Assitant](http://localhost:3000) to display the webp
 
     ![My Personal Dietary Assistant Inc.](bottom_left_logo.png)
 
-    | <form action='api/will/meals' method='post' class='form'> | A table from the Dining Hall Database stored on MySQL |
+    | <form action='route' method='get' class='form'> | A table from the Dining Hall Database stored on MySQL |
     | ------------------------------------------- | -------------------------------------------- |
     | Meal ID | Meal Name | Meal Category |
     | `<th></th>` | `<th></th>` | `<th></th>` |

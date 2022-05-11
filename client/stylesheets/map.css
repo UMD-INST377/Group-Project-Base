@@ -10,25 +10,14 @@ h2{
     margin-top: 55px;
 }
 
-.comment {
-    
-    border-radius: 3px;
-  
-    width: 640px;
-    padding: 50px;
-    margin: 40px;
-  }
-
-.columns {
+.elements {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.page_item_wide {
-    width: 640px;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 #map {
     height: 360px;
+    width: 640px;
 }

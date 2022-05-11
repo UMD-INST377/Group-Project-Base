@@ -64,20 +64,6 @@ Run the browser [My Dietary Assitant](http://localhost:3000) to display the webp
     | `<th></th>` | `<th></th>` |
 
     (tableCreate.js)
-![Green robot sitting on a food tree](top_left_logo.png)
-
-[Home](index.html)
-    [Calorie Count](dietplan.html)
-    [Meal Requests](mealrequest.html)
-    [Meal Search](meal_search.html)
-![My Personal Dietary Assistant Inc.](bottom_left_logo.png)
-    ![My Personal Dietary Assistant Inc.](bottom_left_logo.png)
-    | <form action='route' method='get' class='form'> | A table from the Dining Hall Database stored on MySQL |
-    | ------------------------------------------- | -------------------------------------------- |
-    | Hall Name | Calories |
-    | `<th></th>` | `<th></th>` |
-
-    (tableCreate.js)
 
 ### meal_request.html
 

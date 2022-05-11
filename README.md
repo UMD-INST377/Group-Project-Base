@@ -66,6 +66,5 @@ PUT - returns response 'Got a PUT request at /api'.
 
 
 
-API Endpoints:
 
 

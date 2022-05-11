@@ -89,11 +89,13 @@ async function mainEvent() {
       generateTableHead(table, data);
       generateTable(table, selectPlant);
 
+      /*
       submit.addEventListener('click', async () => {
         console.log('submitted');
         generateTableHead(table, data);
         generateTable(table, selectPlant);
       });
+      */
     });
   
   /*Filtering w/ Radio buttons*/

@@ -24,7 +24,7 @@ https://clato.herokuapp.com/
 
 ## Server application APIs
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.postman.co/run-collection/c67b27b5ee795b899d03?action=collection%2Fimport)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1f8a112f2908e715f9a1?action=collection%2Fimport)
 
 ##### STILL NEEDS WORK
 

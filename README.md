@@ -67,7 +67,7 @@ The target brower for this application would be iOS. Specifically it can be used
 
 ## Work for the future
 * Add a search via Genre option in the search menu
-* Add more option for the graph
+* Add more options for the graph
 * Add a feature that pics a random song for you
 
 ## Developer Manual

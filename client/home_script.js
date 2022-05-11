@@ -1,4 +1,4 @@
-const { captureRejections } = require("mysql2/typings/mysql/lib/Connection");
+//const { captureRejections } = require("mysql2/typings/mysql/lib/Connection");
 
   
 
@@ -18,7 +18,7 @@ async function mainEvent() { //mainEvent refers to page loading
   const searchBar = document.querySelector('#search')
 
   function createHTMLtable(currentArray) {
-    currentData = currentArray.filter((item) => item.meal_name.toLowerCase().includes(searchBar.value.toLowerCase()))
+    currentData = currentArray.filter((item) => item.meal_name.toLowerCase().includes(searchBar.value.toLowerCase()));
     console.log(currentData);
     table.innerHTML = `<tr>
   <th>
@@ -36,7 +36,6 @@ async function mainEvent() { //mainEvent refers to page loading
 
     });
   }
-
   searchBar.addEventListener('change', () => {createHTMLtable(data)})
 }
   

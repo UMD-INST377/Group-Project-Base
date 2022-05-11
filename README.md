@@ -1,6 +1,15 @@
 ## Heroku:
 Link: https://inst377-group19-final-project.herokuapp.com/
 
+Project Title: UMD Plants
+
+Project Description:
+UMD Plants is a website designed for students to find and add plant data in an interactive way by using API calls to edit our database.
+
+Target Browsers:
+Desktop Chrome, Firefox, Edge, IE
+
+
 # This is your readme
 You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
 

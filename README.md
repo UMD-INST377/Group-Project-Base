@@ -33,47 +33,49 @@ The are no prewritten tests in the source repository
 
 ## API Server Endpoints
 `/api/artists` - API route for artists
-- GET - Returns data based on the artist id
+- GET - Gets a single record from the artist table
 - POST - Update data based on the artist id
 - PUT - Insert data into the artist table in the database
 - DELETE - Deletes data based on the artist id
 
 `/api/artwork` - API route for artwork
-- GET
-- POST
-- PUT
-- DELETE
+- GET - Gets a single record from the artwork table
+- POST - Update data based on the artwork id
+- PUT - Insert data into the artwork table in the database
+- DELETE - Deletes data based on the artwork id
 
 `/api/country` - API route for country
-- GET
-- POST
-- PUT
-- DELETE
+- GET - Gets a single record from the country table
+- POST - Update data based on the country id
+- PUT - Insert data into the country table in the database
+- DELETE - Deletes data based on the country id
 
 `/api/galleries` - API route for galleries
-- GET
-- POST
-- PUT
-- DELETE
+- GET - Gets a single record from the galleries table
+- POST - Update data based on the gallery id
+- PUT - Insert data into the galleries table in the database
+- DELETE - Deletes data based on the gallery id
 
 `/api/genres` - API route for genres
-- GET
-- POST
-- PUT
-- DELETE
+- GET - Gets a single record from the genres table
+- POST - Update data based on the genre id
+- PUT - Insert data into the genres table in the database
+- DELETE - Deletes data based on the genre id
 
 `/api/reservation` - API route for reservation
-- GET
-- POST
-- PUT
-- DELETE
+- GET - Gets a single record from the reservations table
+- POST - Update data based on the reservation id
+- PUT - Insert data into the reservations table in the database
+- DELETE - Deletes data based on the reservation id
 
 ## Known Bugs and Future Development
 ### Bugs:
-
-
-
+None
 
 ### Future Development:
-
+- Add a login page
+- Add a profile page where customers can purchase, and save their transactions
+- Add more artist and artwork names
+- Have a filter that filters for artist, artwork, or country
+- Make the layout more professional
 

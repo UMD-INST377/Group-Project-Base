@@ -13,7 +13,7 @@ router.get('/actors', async (req, res) => {
     res.send("Error in '/actors'!");
   }
 });
-// API route hello 
+// API route hello
 router.get('/', (req, res) => {
   res.send("Welcome to Isaac's portion of Group 20's project API!");
 });

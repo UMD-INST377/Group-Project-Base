@@ -1,78 +1,51 @@
 <!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <meta charset='UTF-8'/>
-        <title>My Personal Dietary Assistant - Main</title>
-        <link rel='stylesheet' href='styles.css'/>
-    </head>
-    <body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Personal Dietary Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
 
+    <div class='container'>
 
-    <header class='header'>
-        <img class ="logo" src=  alt="Green robot sitting on a food tree"/>
-    </header>
+        <div class="main2">
 
-    <div class='menu-container'>
-
-        <div class='menu'>
-            <div><a href="index.html">Main</a></div>
-        </div>
-        <div class='menu'>
-            <div><a href="dietplan.html">Diet Plan</a></div>
-        </div>
-        <div class='menu'>
-            <div><a href="login.html">Login</a></div>
+        <div class='header'>
+            <img class ="indexlogo" src="./images/dietary_assistant_logo.png" alt="Green robot sitting on a food tree"/>
         </div>
 
+        <div class="divider2"></div>
+
+        <div class='indexcontent'>
+
+            <div class="indextext">
+            <div class='form-row'>
+                <h2>Hello, My name is Trakky!</h2>
+                <p>Welcome to My Personal Dietary Assistant!</p>
+                <p>We are an on-campus tool created to help support you on your dietary journey.</p>
+                <p>All of the information we provide will be personalized to fit your dietary needs.</p>
+
+                <a href="https://github.com/vezfly/Group9-Final-INST377SP2022" class="git"><p>GitHub</p></a>
+
+                <h4>PLEASE ENTER THE SITE BELOW.</h4>
+
+                <div class='form-row'>
+                    <button class="button submit_button" onclick="window.location.href = 'dietplan.html';">START</button>
+                </div>
+
+            </div>
+                
+            </div>
+
+        </div>
+
+        </div>
+    
     </div>
 
-      <div class='wrapper'>
-        <div class='container'>
-        <!--will-->
-        <div class='columns'>
-
-        <div class='content'>
-        <h1>Main Page</h1>
-        </div>
-        <!--will-->
-            <div class='columns'>
-
-                <div class='content'>
-
-                    <h1>Main</h1>
-                    <!-- i am just practicing with this form here for now ~VEZ -->
-                        <form action='' method='get' class='form'>
-
-                        <div class='form-row'>
-                            <label for='restriction'>Do you have dietary restrictions? Yes or No</label>
-                            <input id='restriction' name='restriction' type='text'/>
-                        </div>
-
-                        <div class='form-row'>
-                            <label for='veganorveg'>Vegan or Veggie?</label>
-                            <input id='veganorveg' name='veganorveg' type='text'/>
-                        </div>
-
-                        <div class='form-row'>
-                            <button class="button" type="restr_submit_button">Specify Restrictions</button>
-                            <br>
-                            <button class="button submit_button" type="submit">Submit</button>
-                        </div>
-                    
-                        <table style= "margin: 100px; background-color: aliceblue" class="table">
-                            <!--First tr is the column headers-->
-                            <tr>
-                            <th>meal_id</th>
-                            <th>meal_name</th>
-                            <th>meal_category</th>
-                            </tr>
-                        </table>
-                        
-    
-            </div>
-          </div>
-    
-    <script src="tableCreate.js"></script>
-    <script src="script.js"></script>
-    </body>
+    <!--script src="tableCreate.js"></script>
+    <script src="script.js"></script-->
+  </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Personal Dietary Assistant - Diet Plan</title>
+    <title>My Personal Dietary Assistant - Meal Request</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -15,7 +15,7 @@
         <div class="topleftlogo">
             <img class ="logo1" src="./images/top_left_logo.png" alt="Green robot sitting on a food tree"/>
         </div>
-  
+
         <a href="index.html">Home</a>
         <a href="dietplan.html">Calorie Count</a>
         <a href="mealrequest.html">Meal Requests</a>
@@ -32,50 +32,44 @@
     <div class="main">
 
         <div class="robospeech">
-            <img class="speechbubble" src="./images/robospeaking5.png" alt="Enter info about your dietary needs below!">
+            <img class="speechbubble" src="./images/robo_speaking3.png" alt="Would you like to request a personalized meal?">
         </div>
 
         <div class="contentbox">
             
             <div class="content2">
 
-                <div class="formbox">
-                <form action='route' method='get' class='form'>
+                <form action='api/will/meals' method='post' class='form'>
+                        
+
 
                     <div class='form-row'>
-                        <label title>Hall Name</label>
-                        <input name='hall_name' class='hall_name' type='text'/>
+                        <label title>Meal Name</label>
+                        <input name='meal_name' class='meal_name' type='text'/>
                     </div>
 
                     <div class='form-row'>
-                        <label title>Calories</label>
-                        <input name='calories' class='calories' type='number'/>
+                        <label title>Meal Category</label>
+                        <em>(B for Breakfast, L for Lunch, D for Dinner)</em>
+                        <input name='meal_category' class='meal_category' type='text'/>
                     </div>
 
                     <div class='form-row'>
-                        <button class="button submit_button" type="submit">Submit</button>
+                        <br>
+                        <button class="button submit_button" onclick="window.location.href = 'mealsubmission.html';">ENTER</button>
                     </div>
-                    </form>
-                </div>
 
-                <table class="table">
-                        <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        </tr>
-                    </table>
-                    
+                
+
         </div>
-        <div><a href=" hall_locator.html">Don't know where to find these meals? Check out our Hall Locator.</a></div>
-                    
-    </div>
 
     </div>
 
     </div>
 
-    <script src="tableCreate.js"></script>
+    </div>
+
+    <!--script src="tableCreate.js"></script-->
+    <!--script src="script.js"></script-->
   </body>
 </html>

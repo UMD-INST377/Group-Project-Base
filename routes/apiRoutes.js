@@ -6,7 +6,6 @@ import rickyRoute from './rickyRoute.js';
 
 import will from './will.js';
 
-import leslieRoute from './leslieRoute.js';
 import vezRoutes from './vezRoutes.js';
 
 import db from '../database/initializeDB.js';
@@ -21,7 +20,6 @@ router.use('/ricky', rickyRoute);
 
 router.use('/will', will);
 
-router.use('./leslie', leslieRoute);
 router.use('/vez', vezRoutes);
 
 /// /////////////////////////////////
@@ -111,7 +109,7 @@ router.put('/dining', async (req, res) => {
 router.get('/meals', async (req, res) => {
   try {
     const meals = await db.Meals.findAll();
-    res.json({data: meals})
+    res.json({data: meals});
     //res.json(meals);
   } catch (err) {
     console.error(err);

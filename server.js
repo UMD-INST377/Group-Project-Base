@@ -2,7 +2,7 @@
 import express from 'express';
 import db from './database/initializeDB.js';
 import apiRoutes from './routes/apiRoutes.js';
-
+import vezRoutes from './routes/vezRoutes.js'
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -14,6 +14,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
+app.use('/vez', vezRoutes);
 
 async function bootServer() {
   try {

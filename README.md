@@ -1,6 +1,8 @@
 ## Heroku:
 Link: https://inst377-group19-final-project.herokuapp.com/
 
+
+# This is your readme
 Project Title: UMD Plants
 
 Project Description:
@@ -10,7 +12,6 @@ Target Browsers:
 Desktop Chrome, Firefox, Edge, IE
 
 
-# This is your readme
 You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
 
 ### How to use Markdown

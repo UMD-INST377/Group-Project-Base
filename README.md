@@ -8,7 +8,7 @@ The goal of this website is to allow users to view various artwork designs creat
 https://inst377-gproject.herokuapp.com/
 
 ## Target Browsers
-. Desktop browsers
+- Desktop browsers
 
 ## Link to Developer Manual
 https://github.com/vnath22/Group24-Final-INST377SP2022#developer-manual

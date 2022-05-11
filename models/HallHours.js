@@ -1,17 +1,23 @@
 export default (sequelize, DataTypes) => {
-  const DietaryRestrictions = sequelize.define(
-    'dietary_restrictions',
+  const HallHours = sequelize.define(
+    'hall_hours',
     {
-      restriction_id: {
+      hall_hours_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true
       },
-      restriction_type: {
+      day: {
         type: DataTypes.STRING
+      },
+      schedule_id: {
+        type: DataTypes.STRING
+      },
+      hall_id: {
+        type: DataTypes.INTEGER
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return DietaryRestrictions;
+  return HallHours;
 };

@@ -9,7 +9,7 @@ searchRouter.get('/', async (req, res, next) => {
   console.log('GET from searchRouter..');
 
 try {
-  console.log(route('/search') => QUERY: ${req.query.species_a} + ${req.query.species_b});
+  console.log(`route('/search') => QUERY: ${req.query.species_a} + ${req.query.species_b}`);
   const query = await userSearch(req.query.species_a, req.query.species_b);
   if (typeof query === 'undefined') {
       console.log('Error fetching trees from Wikidata.')
@@ -21,7 +21,7 @@ try {
   return data;
 } catch (e) {
   console.error(e);
-  res.send(ERROR: ${e.name});
+  res.send(`ERROR: ${e.name}`);
   res.end();
 }
 });

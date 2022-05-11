@@ -516,7 +516,7 @@ router.route('/reservation')
     }
   });
 
-  router.get('/reservation/:reservation_id', async (req, res) => {
+router.get('/reservation/:reservation_id', async (req, res) => {
   try {
     const reservation = await db.reservation.findOne({
       where: {

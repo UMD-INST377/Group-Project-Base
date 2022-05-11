@@ -49,6 +49,8 @@ html{
     transition: 10s;
     width: 20em;
     overflow: scroll;
+    margin-left: -46px;
+    margin-top: -16px;
 }
 
 .accordion{

@@ -142,12 +142,8 @@ async function wikiSearch(e) {
     if (search.get('species_a') === '' || search.get('species_b') === '') {
         return;
     }
-    let response = fetch('/search', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: search
+    let response = fetch('/search?' + search, {
+        method: 'GET'
     })
     .then((res) => {
         if (res.status === 401) {
@@ -174,6 +170,7 @@ async function wikiSearch(e) {
         console.log(e)
     })
 }
+
 // removes existing tree in search page
 export function clearTree(){
     let displayArea = document.querySelector('.query')

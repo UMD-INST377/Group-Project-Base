@@ -48,9 +48,10 @@ There are no pre-written tests for this, however, using the Inspect element cons
 ## Server application APIs ##
 
 /allmeals - displays a user friendly table that takes columns from meals, macros, and dining hall tables.
-*GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
-*POST - obtains course name from request body to fetch url. fetch data json from Dining Hall database from API and returns JSON response.
-*PUT - returns response 'Got a PUT request at /api'.
+
+* GET - Logs to console response query from URL. returns response 'Got a GET request from /api'.
+* POST - obtains course name from request body to fetch url. fetch data json from Dining Hall database from API and returns JSON response.
+* PUT - returns response 'Got a PUT request at /api'.
 
 
 ## Known Bugs and Future Development ##

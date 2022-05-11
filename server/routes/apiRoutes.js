@@ -28,6 +28,9 @@ router.use('/dining', etRoutes);
 
 router.use('/restrictions', kkRoutes);
 
+/* EE Routes - Dining Hall */
+router.use('/schedule', eeRoutes);
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////
@@ -237,7 +240,7 @@ router.get('/restrictions/:restriction_id', async (req, res) => {
     res.error('Server error');
   }
 });
-/* EE Routes - Dining Hall */
+
 
 router.use('/dining', etRoutes);
 

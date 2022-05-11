@@ -44,6 +44,5 @@ const artist_country_chart = new Chart(ctx, {
     ],
     borderWidth: 2,
     borderColor: 'black'
-
   }
 });

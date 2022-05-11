@@ -95,7 +95,7 @@ body {
     padding: 35px;
     margin: 3%;
     width: 100%;
-    height: 10%;
+    height: 13%;
     text-align: center;
     align-items: center;
     text-decoration: none;
@@ -193,7 +193,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
+    justify-content: space-evenly;
 }
 
 .content2 {

@@ -1,0 +1,34 @@
+
+h1{
+    color: white;
+    text-align: center;
+    margin-top: 45px;
+}
+h2{
+    color: white;
+    text-align: center;
+    margin-top: 55px;
+}
+
+.comment {
+    
+    border-radius: 3px;
+  
+    width: 640px;
+    padding: 50px;
+    margin: 40px;
+  }
+
+.columns {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.page_item_wide {
+    width: 640px;
+}
+
+#map {
+    height: 360px;
+}

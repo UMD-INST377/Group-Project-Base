@@ -6,6 +6,10 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
+/// /////////////////////////////////
+/// //Get for all/single record////////// Dylan C
+/// /////////////////////////////////
+
 router.get('/reviews', async (req, res) => {
   try {
 	var restaurant_id = req.query.restaurant_id;
@@ -29,6 +33,10 @@ router.get('/all-reviews', async (req, res) => {
     res.send("Server error");
   }
 });
+
+/// /////////////////////////////////
+/// //////// Post request////////// Dylan C
+/// /////////////////////////////////
 
 router.post("/review", async (req, res) => {
   const { review_id, review_desc, avg_star_rating, restaurant_id } = req.body;
@@ -58,6 +66,10 @@ router.get("/review/:id", async(req, res) => {
   }
 })
 
+/// /////////////////////////////////
+/// //////// Put Request////////// Dylan C
+/// /////////////////////////////////
+
 router.put("/review/:reviewId", async (req, res) => {
   const id = req.params.reviewId;
   console.log(req.body)
@@ -72,6 +84,10 @@ router.put("/review/:reviewId", async (req, res) => {
     res.json("Server error");
   }
 })
+
+/// /////////////////////////////////
+/// //////// Delete Request ////////// Dylan C
+/// /////////////////////////////////
 
 router.delete("/review/:restaurantId", async (req, res) => {
   try {

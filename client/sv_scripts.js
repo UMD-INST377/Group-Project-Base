@@ -161,9 +161,9 @@ async function mainEvent() { // the async keyword means we can make API requests
 /// start of lab 8 section (modified lab 7 code)
   restaurants = localStorage.getItem(retVar);
  
-
+console.log(restaurants);
   //if (!localStorage.getItem(retVar)) 
-  if (typeof restaurants === 'undefined'
+  if (restaurants === null
   || restaurants === 'undefined') {
     const results = await fetch('/api/restaurants'); // This accesses some data from our API
     const arrayFromJson = await results.json(); // This changes it into data we can use - an object

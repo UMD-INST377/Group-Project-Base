@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+/* 
+This is for the header of the website 
+*/
+.menu-container{
+    color: #fff;
+    background-color: #E81B1B; /* Red */
+    padding: 20px 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+.menuDining {
+    border: 1px solid #fff; /* White border */
+    width: 100px;
+    display: flex;
+    margin-left: 20px;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.home {
+    margin-left: 900px;
+    color: white;
+}
+
+.home:link {
+    color: white;
+}
+
+.home:visited {
+    color: #E81B1B;
+}
+
+.home:hover {
+    color: blue;
+}
+
+.location {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.about {
+    margin-right: 40px;
+}
+
+/* 
+UMD Dining picture part 
+*/
+.header-container {
+    background-color: yellow;
+    position: relative;
+    justify-content: center;
+    display: flex;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 324;
+    max-width: fit-content;
+}
+
+.caption {
+    text-align: center;
+    font-size: 100px;
+    font-weight: bolder;
+    color: white;
+}
+
+.heading {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+}
+
+/*
+Dining Halls part
+*/
+.hall {
+    width: 1000px;
+    margin-left: 35px;
+    
+}
+
+.titleDining {
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+.diningName {
+    color: #E81B1B;
+    font-weight: bolder;
+    font-size: 50;
+}
+
+/*
+Carosel for Dining Halls Part
+*/
+.photo-grid-container{
+    display: flex;
+    justify-content: center;
+    height: 450px;
+}
+
+.carousel {
+    overflow: hidden;
+    max-width: 900px;
+    position: relative;
+}
+
+.carousel .carousel_item,
+.carousel .carousel_item-hidden {
+    display: none;
+}
+
+.carousel .carousel_item img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+}
+
+.carousel .carousel_item-visible {
+    display: block;
+}
+
+.carousel .carousel_actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%);
+}
+
+.carousel_actions button {
+    color: white;
+    background-color: black;
+    border-radius: 50px;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.carousel_actions button#carousel_button-prev {
+    margin-top: 138px;
+    margin-left: -5px;
+}
+
+.carousel_actions button#carousel_button-prev:focus {
+    background-color: orange;
+    border: 1.5px solid black;
+}
+
+.carousel_actions button#carousel_button-next {
+    margin-top: 138px;
+}
+
+.carousel_actions button#carousel_button-next:focus {
+    background-color: orange;
+    border: 1.5px solid black;
+}
+
+/*
+Last part of the page
+*/
+.form-row {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+.legacy-row {
+    border: none;
+    margin-bottom: 40px;
+  }
+  
+.legacy-row legend {
+    margin-bottom: 15px;
+  }
+
+.submit_button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    margin-left: 25%;
+  }
+
+.foor-list {
+    width: 1000px;
+    margin-left: 35px;
+}
+
+/*
+About Page 
+*/
+.mission-container {
+    width: 10px;
+    border: 10px solid #E81B1B;
+    padding: 650px;
+    margin: 40px;
+}
+
+.about-title {
+    width: 1000px;
+    margin-left: -500px;
+    margin-top: -600px;
+}
+
+.about-header {
+    font-size: 35px;
+    color: #E81B1B;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.about-sub {
+    font-size: 20px;
+}
+
+.about-bold {
+    font-size: 18px;
+    align-items: center;
+    margin-left: 40%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.locTitle {
+    position: absolute;
+    width: 861px;
+    height: 121px;
+    left: 50px;
+    top: 103px;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 121px;
+    /* identical to box height */
+    text-align: center;
+    color: #000000;
+}
+
+.map_item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    position: absolute;
+    height: 634px;
+    width: 1290px;
+    left: 100px;
+    top: 220px;
+    margin: 20px;
+    border: 4px solid #000000;
+    box-sizing: border-box;
+}
+
+.dinerBox {
+    display: flex;
+    position: absolute;
+    width: 1290px;
+    height: 541px;
+    left: 120px;
+    top: 870px;
+    border: 4px solid #000000;
+    box-sizing: border-box;
+    justify-content: space-evenly;
+}
+
+.box-item {
+    padding-left: 20px;
+    padding-top: 15px;
+    border: 1px solid #000000;
+    height: 535px;
+    flex: 1;
+}
+
+.boxTitle {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 36px;
+    line-height: 45px;
+    text-align: left;
+    color: #E81B1B;
+}
+
+.locations {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: bold;
+    text-align: left;
+    color: #000000;
+}
+
+.address {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.hours {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: left;
+    color: #000000;
+}
+
+.day {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #000000;
+}
+
+.time {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.day-box {
+    display: inline-block;
+    width: 80px;
+}
+
+.time-box {
+    display: inline-block;
+}
+
+.picture {
+    height: auto;
+}
+
+#map {
+    height: 634px;
+}

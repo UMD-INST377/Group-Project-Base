@@ -1,1 +1,102 @@
-Hello world!
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8"/>
+        <title>Home Page</title>
+        <link rel = "stylesheet" href = "styles.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    </head>
+    <body>
+        <div class = "menu-container">
+            <div class = "menuDining">
+                <div class = "leftLogo">UMD DINING</div>
+            </div>
+            <div class = "menu">
+                <div class = "home"><a href = './index.html'>HOME</a></div>
+                <div class = "location"><a href = './location.html'>LOCATIONS/HOURS</a></div>
+                <div class = "about"><a href = './about.html'>ABOUT</a></div>
+            </div>
+        </div>
+
+        <div class = "header-container">
+            <div class = "header">
+                <div class = 'picture'><img src = 'images/UMDdine.jpeg'/></div>
+                <div class = "caption heading">Welcome to UMD DINING</div>
+            </div>
+        </div>
+
+        <div class = 'photo-grid-container'>
+            <div class = 'hall'>
+                <div class = "titleDining"><strong>DINING HALLS</strong></div>
+                <div class = "titleDining">&#10148 <script> document.write(new Date().toLocaleDateString()); </script></div>
+                <hr size="50px" width="95%" color="black">
+                <div class = "diningName">South Campus</div>
+                <div>7:00AM - 9:00PM</div>
+                <div class = "diningName">The Diner</div>
+                <div>7:00AM - 9:00PM</div>
+                <div class = "diningName">North Dining</div>
+                <div>8:00AM - 8:00PM</div>
+            </div>
+            <div class = 'carousel_actions'>
+                <button id = 'carousel_button-prev' aria-label="Previous slide"><</button>
+            </div>
+            <div class = 'carousel'>
+                <div class = 'carousel_item carousel_item-visible'>
+                    <img src = './images/south_campus.jpeg'/>
+                </div>
+                <div class = 'carousel_item'>
+                    <img src = './images/diner.jpeg'/>
+                </div>
+                <div class = 'carousel_item'>
+                    <img src = './images/251north.jpeg'/>
+                </div>
+            </div>
+            <div class = 'carousel_actions'>
+                <button id = 'carousel_button-next' aria-label="Next slide">></button>
+            </div>
+        </div>
+
+
+        <div class="photo-grid-container">
+            <div class="hall">
+                <div class ="titleDining">MENU OF THE DAY</div>
+                <div class = "titleDining">&#10148 <script> document.write(new Date().toLocaleDateString()); </script></div>  <!-- date object-->
+                <hr size="50px" width="95%" color="black">
+                
+        <form class = 'reader-form' id = "form-id">
+               <div><strong>Select a Diner</strong></div>
+               <div class = 'form-row'>
+                <input id = 'dinerInput' name = 'dinerInput' type = 'text' placeholder="South Campus"></textarea>
+            </div>
+
+            <div><strong>Select Time</strong></div>
+            <div class = 'form-row'>
+                <input id = 'timeInput' name = 'timeInput' type = 'text' placeholder="'B' for Breakfast"></textarea>
+            </div>
+
+            <div><strong>Dietary Restrictions</strong></div>
+            <div class = 'form-row'>
+                <input id = 'dietInput' name = 'dietInput' type = 'text' placeholder="Vegan"></textarea>
+            </div>
+
+            <div class = 'form-row'>
+                <button class = "submit_button" id = "submit-button" type = "submit">Submit</button>
+            </div>
+        </form>
+            </div>
+            <!-- <div class ="titleDining">MENU OUTPUT</div> -->
+            <div class="photo-grid-container">
+            <table class = "food-list"><tr>
+                <th>Diner</th> 
+                <th>Meal Name</th> 
+                <th>Meal Category</th>
+                <th>Filter</th>
+            </tr> </table></div>
+            </div>
+        </div>
+
+        <script async defer src = 'scripts.js'></script>
+    </body>
+
+</html>
+

@@ -1,22 +1,22 @@
 .contain {
   margin: 10px auto; 
+  max-height: 650px; 
+  flex-wrap: wrap;
 }
 
 .wrap {
-  min-height: 900px;
-  max-width: 90%;
-  max-height: 800px; 
+  min-height: 600px;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-direction: row;
-  margin: 10px;
-  padding: 20px;
+  flex-wrap: wrap;
 }
 
 .onething {
-  min-height: 550px;
-  flex: 3;
+  min-height: 350px;
+  max-height: 500px;
+  flex: 1;
   background-color: rgb(223, 223, 26);
   margin: 10px;
   display: flex;
@@ -27,7 +27,8 @@
 }
 
 .twothing {
-  min-height: 550px;
+  min-height: 350px;
+  max-height: 500px;
   flex: 3;
   background-color: rgb(164, 44, 44);
   margin: 10px;
@@ -71,27 +72,40 @@
   flex: 4;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
   margin-bottom: 10px;
   min-height: 300px;
-  width: 60%;
+  width: 70%;
   background-color: rgb(209, 209, 209);
   padding: 20px;
 }
 
-.resto_list {
+.meal_list {
   margin: 10px;
+  height: fit-content;
+  max-height: 450px;
   min-width: 90%;
   font-size: 20px;
   background-color: rgb(183, 181, 181);
   color: black;
   flex-wrap: wrap;
+  display: flex;
+  align-content: flex-start;
+}
+.meal_list ul {
+  max-height: 300px;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
 }
 
-.resto_list li  {
-  margin: 15px;
-  font-size: 25px;
+.meal_list li  {
+  margin: 1px;
+  font-size: 15px;
+  width: 200px;
+  display: flex;
+  align-self: center;
 }
+
 
 .each_option {
   display: flex;
@@ -100,8 +114,7 @@
 }
 
 .check_label {
-  margin: 10 5;
-  font-size: 25px;
+  font-size: 15px;
 }
 
 #submit_button {
@@ -109,8 +122,13 @@
   background-color: rgb(164, 44, 44);
   padding: 10px 20px;
   border: none;
-  width: 150px;
+  width: 125px;
   border-radius: 4px;
   margin: 10px;
-  font-size: 25px;
+  font-size: 20px;
+  justify-self: center;
+}
+
+#submit_button:hover {
+  background-color: rgb(223, 223, 26);
 }

@@ -5,16 +5,17 @@ async function mainEvent() {
   const checklist = document.querySelectorAll('.each_option > input[type=checkbox]');  
   // selected diet restrictions (can be more than one)
 
-  const restoListItem = document.querySelector('.resto_list > li');
+  const mealList = document.querySelector('.meal_list');
   // the list elements that display compatible meals to the user
 
   button.addEventListener('click', async(submitEvent) => {
     submitEvent.preventDefault();
     console.log('clicked!');
+    mealList.innerHTML = '';
 
     let userFilters = [];  // holds which checkboxes the user selected
 
-    const data = await fetch('/api/allergies');
+    const data = await fetch('/api/allergies');  // this is all the meals and their restrictions
     const formatData = await data.json(); 
 
     [...checklist].forEach((el) => {  // for all 8 fields - if checked, add to the list
@@ -32,7 +33,7 @@ async function mainEvent() {
       const thisMealName = thisMeal.meal_name;            // the meal's name
       const thisRestriction = thisMeal.restriction_id;    // the code for that diet restriction
       const isItAllergy = (value) => value > 3;           // 1, 2, 3 are vegan, vegetarian, halal
-                                                          // everyone can eat those diets - non-exclusive
+                                                          // everyone can eat those diets - inclusive
                                                           // 4-8 = more exclusive -remove from list
 
       // does this diet restriction for this meal match any of the user's filters? (YES)
@@ -59,11 +60,16 @@ async function mainEvent() {
         if (!withinDiet.includes(thisMealName) && userFilters.every(isItAllergy)) { 
           withinDiet.push(thisMeal.meal_name);  
         }
-        else { continue; }
+        else { continue; } // if for some reason none of these are true, skip it. 
       }
+      
     }
-    // withinDiet.forEach()
+
+    withinDiet.forEach(item => {
+      mealList.innerHTML += `<li>${item}</li>`;
+    });
   
+
   });
 
 }

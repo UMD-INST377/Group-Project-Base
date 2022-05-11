@@ -606,4 +606,64 @@ router.route('/plants')
     }
   });
 
+
+/* Plant photo endpoint*/
+router.route('/plantphotos')
+.get(async(req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(plantphotocontroller.plantPhotoGet, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    console.log('This is the route');
+    res.json({data: result});
+  } catch (err) {
+    res.json({error: err});
+  }
+})
+
+.put(async(req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(plantphotocontroller.plantPhotoPut, {
+      replacements: {
+        photo_id: req.body.photo_id,
+        art: req.body.art
+      }, 
+      type: sequelize.QueryTypes.UPDATE
+    });
+    res.json(result);
+    console.log('Successfully Updated');
+  } catch (err) {
+    res.json({error: 'Server error'});
+  }
+})
+
+.post(async(req, res) => {
+  try {
+    const result = db.sequelizeDB.query(plantphotocontroller.plantPhotoPost, {
+      replacements: {art: req.body.art},
+      type: sequelize.QueryTypes.INSERT
+    });
+    res.json(result);
+    console.log('Successfully Updated');
+  } catch (err) {
+    res.json({error: 'Server error'});
+  }
+})
+
+.delete(async(req, res) => {
+  try {
+    const result = db.sequelizeDB.query(plantphotocontroller.plantPhotoDelete, {
+      replacements: {
+        photo_id: req.body.photo_id
+      }, 
+      type: sequelize.QueryTypes.DELETE
+    });
+    res.json(result);
+    console.log('Deleted successfully');
+  } catch (err) {
+    res.json({error: 'Server error'});
+  }
+});
+
+
 export default router;

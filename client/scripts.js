@@ -1,3 +1,5 @@
+import HallHours from "../models/HallHours";
+
 let slidePostition = 0;
 const slides = document.querySelectorAll('.carousel_item');
 const meals = document.querySelector('#form-id');
@@ -71,3 +73,27 @@ function moveToPrevSlide() {
   }
   updateSlidePosition();
 }
+
+HallHours.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const results = await fetch('/api/hallHours');
+  const arrayFromJson = await results.json();
+  console.log(arrayFromJson);
+  const targetList = document.querySelector('.food-list');
+  arrayFromJson.forEach((item) => {
+    const rows = document.createElement('tr');
+    const hallHourId = document.createElement('td');
+    const day = document.createElement('td');
+    const scheduleId = document.createElement('td');
+    const hallId = document.createElement('td');
+    hallHourId.innerHTML = item.hall_hour_id;
+    day.innerHTML = item.day;
+    scheduleId.innerHTML = item.schedule_id;
+    hallId.innerHTML = item.hall_id;
+    rows.appendChild(hallHourId);
+    rows.appendChild(day);
+    rows.appendChild(scheduleId);
+    rows.appendChild(hallId);
+    targetList.appendChild(rows);
+  });
+});

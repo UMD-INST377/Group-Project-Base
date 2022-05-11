@@ -95,6 +95,7 @@ router.put('/mealLocation', async (req, res) => {
         }
       }
     );
+    
     res.send('Successfully Updated');
   } catch (err) {
     console.error(err);

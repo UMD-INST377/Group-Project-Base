@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:  lightyellow;
+}
+.formContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.searchForm {
+    text-align: center;
+    margin: 0 10vw 0 10vw;
+}
+.set {
+    color: black;
+    background-color: lightslategray;
+}
+/* Alternating color #2 */
+.name {
+    background-color: white;
+}
+.taxonID {
+    background-color: lightpink;
+}
+.parent {
+    background-color: white;
+}
+.commonName {
+    background-color: lightcoral;
+}
+
+.obj {
+    padding: 20px;
+}
+
+.resultContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.getAllTable {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.listBody {
+    margin: 20px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.nav a {
+    margin: 1rem;
+}

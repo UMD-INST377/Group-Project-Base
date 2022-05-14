@@ -5,6 +5,7 @@ import indexRouter from './server/routes/index.js';
 import userRouter from './server/routes/user.js';
 import searchRouter from './server/routes/search.js';
 import { fileURLToPath } from 'url';
+import tableRouter from './server/routes/table.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,5 +26,6 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use('/index', indexRouter);
 app.use('/user', userRouter);
 app.use('/search', searchRouter);
+app.use('/table', tableRouter);
 
 export default app;

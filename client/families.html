@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Group 3</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="./stylesheets/families.css" />
+  </head>
+
+  <body>
+    <nav class="nav">
+      <a class="nav-link" href="/index.html">Main</a>
+      <a class="nav-link active" aria-current="page" href="#">Families</a>
+    </nav>
+
+    <div class="formContainer">
+      <form method="GET" class="getAll">
+        <label>Get All Animals of a Particular Family</label>
+        <select id="familyAll" name="family">
+          <option value="canidae">Canidae</option>
+          <option value="felinae">Felinae</option>
+          <option value="hominidae">Hominidae</option>
+        </select>
+        <input type="submit" class="all" value="Submit"/>
+      </form>
+    </div>
+      <div class="resultContainer">
+        <div class="getAllTable"></div>
+    </div>
+      <script src="./js/families.js" type="text/javascript"></script>
+  </body>
+</html>

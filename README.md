@@ -29,6 +29,7 @@ https://clato.herokuapp.com/
 `/Table`
 
 GET - Returns all rows (species) within the selected table (family tree).
+
 DELETE - Deletes a single row (species) from a selected table (family tree). 
 
 

@@ -26,7 +26,10 @@ https://clato.herokuapp.com/
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1f8a112f2908e715f9a1?action=collection%2Fimport)
 
-##### STILL NEEDS WORK
+`/Table`
+
+GET - Returns all rows (species) within the selected table (family tree).
+DELETE - Deletes a single row (species) from a selected table (family tree). 
 
 
 # Known Bugs and Future Development

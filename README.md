@@ -26,7 +26,7 @@ https://clato.herokuapp.com/
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1f8a112f2908e715f9a1?action=collection%2Fimport)
 
-`/Table`
+`/table`
 
 GET - Returns all rows (species) within the selected table (family tree).
 

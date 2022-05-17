@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   const Macros = sequelize.define(
-    'Macros',
+    'macros',
     {
       macro_id: {
         type: DataTypes.INTEGER,

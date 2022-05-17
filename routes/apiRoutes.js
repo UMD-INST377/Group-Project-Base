@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
 import sequelize from 'sequelize';
-
 import db from '../database/initializeDB.js';
 
 const router = express.Router();
@@ -269,5 +268,36 @@ router.get('/custom', async (req, res) => {
     res.error('Server error');
   }
 });
+
+//Casie's route
+router.route("/macroNames")
+  .get (async(req,res)=>{
+    try{
+      const casieQuery = await db.sequelizeDB.query(
+        `SELECT meals.meal_name, meals.meal_id,  macros.calories, macros.serving_size, macros.cholesterol, macros.sodium, macros.carbs, macros.protein, macros.fat
+        FROM meals
+        JOIN macros ON macros.meal_id = meals.meal_id
+        ORDER BY meal_name;`);
+        res.json({data:casieQuery[0]});
+    }
+    catch (err){
+      console.log(err);
+      res.json({message:"Something went wrong with macro names"})
+    }
+  });
+
+  router.route("/mealNames")
+  .get (async(req,res)=>{
+    try{
+      const casieQuery2 = await db.sequelizeDB.query(
+        `SELECT meal_name, meal_category
+        FROM meals`);
+        res.json({data:casieQuery[0]});
+    }
+    catch (err){
+      console.log(err);
+      res.json({message:"Something went wrong with meal names"})
+    }
+  });
 
 export default router;

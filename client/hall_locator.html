@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Personal Dietary Assistant - Dining Hall Locator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+
+  </head>
+  <body>
+
+    <div class="container">
+
+    <div class="sidenav">
+
+        <div class="topleftlogo">
+            <img class ="logo1" src="./images/top_left_logo.png" alt="Green robot sitting on a food tree"/>
+        </div>
+
+        <a href="index.html">Home</a>
+        <a href="dietplan.html">Calorie Count</a>
+        <a href="mealrequest.html">Meal Requests</a>
+        <a href="meal_search.html">Meal Search</a>
+        
+
+        <div class="bottomleftlogo">
+            <img class="logo2" src="./images/bottom_left_logo.png" alt="My Personal Dietary Assistant Inc.">
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="main">
+
+        <div class="robospeech">
+            <div class='form-row'>
+              <label title>Hall Name</label>
+              <input name='hall_name' class='hall_name' type='text'/>
+          </div>
+        </div>
+
+        <div class="contentbox">
+            
+            <div class="content2">
+
+                <div id="map"></div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    <script src="map.js"></script>
+  </body>
+</html>

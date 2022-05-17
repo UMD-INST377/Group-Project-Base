@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Personal Dietary Assistant - Meal Editor</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+    <div class="container">
+
+    <div class="sidenav">
+
+        <div class="topleftlogo">
+            <img class ="logo1" src="./images/top_left_logo.png" alt="Green robot sitting on a food tree"/>
+        </div>
+
+        <a href="index.html">Home</a>
+        <a href="dietplan.html">Calorie Count</a>
+        <a href="mealrequest.html">Meal Requests</a>
+        <a href="meal_search.html">Meal Search</a>
+        
+
+        <div class="bottomleftlogo">
+            <img class="logo2" src="./images/bottom_left_logo.png" alt="My Personal Dietary Assistant Inc.">
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="main">
+
+        <div class="robospeech">
+            <img class="speechbubble" src="./images/robospeaking4.png" alt="Enter info about your dietary needs below!">
+        </div>
+
+        <div class="contentbox">
+            
+            <div class="content2">
+
+                <div class="col update">
+                    <form action='/api/wills/meal' method='put' class='form' id="update">
+
+                    <br>
+
+                    <div class='form-row'>
+                    <label title><u>Update Meal</u></label>
+                    </div>
+
+                    <div class='form-row'>
+                        <label title>Existing Meal ID</label>
+                        <input name='meal_id' class='meal_id' type='number'/>
+                    </div>
+
+                    <div class='form-row'>
+                        <label title>New Meal Name</label>
+                        <input name='meal_name' class='meal_name' type='text'/>
+                    </div>
+
+                    <div class='form-row'>
+                        <label title>New Meal Category</label>
+                        <input name='meal_category' class='meal_category' type='text'/>
+                    </div>
+
+
+                    <div class='form-row'>
+                        <button class="button submit_button" type="submit" id="updatesubmit">Update</button>
+                    </div>
+                    </form>
+                    </div>
+                
+                <div class="col delete">
+                    <form class='form' onsubmit="return false">
+
+                        <br>
+
+                        <div class='form-row'>
+                            <label title><u>Delete Meal</u></label>
+                        </div>
+
+                        <div class='form-row'>
+                            <label title>Meal ID</label>
+                            <input name='meal_id' class='meal_id' type='number'/>
+                        </div>
+    
+                        <div class='form-row'>
+                            <button class="button submit_button" id="delete" type="submit">Delete</button>
+                        </div>
+                        
+                        </form>
+                        
+                </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+    </div>
+    <script src="mealEdit.js"></script>
+  </body>
+</html>
+
+

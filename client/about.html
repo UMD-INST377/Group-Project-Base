@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>inTune | Home Maxim TEST </title>
+        <title>inTune | Charts</title>
         <link rel="stylesheet", href="css/styles.css">
     </head>
     <body>
@@ -15,50 +13,25 @@
                     <li><a href="index.html"><img class="logo" src="./inTune_Header.png" alt="inTune Logo" width="143px" height="46px"/></a></li>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="charts.html">Charts</a></li>
-                    <li><input id="search_bar"onkeyup="intuneSearch()" type="text" placeholder="Search..."></li>
+                    <li><input onkeyup="inTuneSearch()" type="text" placeholder="Search..."></li>
                     <li><a href="contribute.html">Contribute</a></li>
                     <li><a href="account.html">Account</a></li>
                     <li><a href="about.html">?</a></li>
                 </ul>
             </nav>
         </header>
-
-        <div class="song_carousel">
-            <ul class ="song_images">
-        
-            </ul>
-            
+        <div class="page_title">
+            <h1>About Us</h1>
         </div>
-
-        <div class="carousel_title">
-            <h1>Top Songs</h1>
+        <div class="account_content">
+            <div class="about_block">
+                <p>inTune was designed, and is in development, by Group 18 of the Spring 2022 INST 377 Dynamic Web Applications course, at the University of Maryland College Park.</p>
+                <p>This website was created to solve the information problem of inaccessible or hard to find information about music, artists, and genres.</p>
+            </div>
         </div>
-
-        <div class="artists_carousel">
-            <ul class ="artist_images">
-                
-            </ul>
-        </div>
-
-        <div class="carousel_title">
-            <h1>Top Artists</h1>
-        </div>
-
-
-
-        <div class="genres_carousel">
-            <ul class ="genre_images">
-            
-            </ul>
-        </div>
-
-        <div class="carousel_title">
-            <h1>Top Genres</h1>
-        </div>
-
         <footer>
             <p class="footer_text">Group 18 | INST377 | University of Maryland</p>
         </footer>
-        <script src='/js/indexScript.js', charset="UTF-8"></script>
+        <script src="/client/js/script.js", charset="UTF-8"></script>
     </body>
 </html>

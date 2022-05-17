@@ -10,6 +10,495 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
+
+/// /////////////////////////////////
+/// ////////Nana's Endpoints /////////
+/// /////////////////////////////////
+router.route('/songs')
+// .get(async (req, res) => {
+//     try {
+//         const songList = await db.song.findAll({})
+//         console.log(songlist);
+//         res.json({data: songList});
+//     } catch (err) {
+//         console.error('LINe 24');
+//         res.send({message: 'Error!'});
+//     }
+// })
+
+// .get(async (req, res) => {
+//     try {
+//         const songList = await db.songs.findAll()
+//         res.json({data: songList});
+//     } catch (err) {
+//         console.error(err);
+//         res.send({message: 'Error!'});
+//     }
+// })
+.get(async (req, res) => {
+  try {
+      const playlistList = await db.sequelizeDB.query('select * from songs');
+      res.json({data: playlistList[0]});
+  } catch (err) {
+      console.error(err);
+      res.send({message: 'Error1!'});
+  }
+})
+router.route('/songs/:id') 
+.get(async (req, res) => {
+    try {
+      const {song_id} = req.params;
+      const song = await db.songs.findAll({
+        where: {
+          id: id
+        }
+      });
+      res.json({data: song})
+    } catch (err) {
+        console.error(err);
+        res.json({message: 'Error!'});
+    }
+});
+
+router.route('/songs').post( async (req, res) => {
+  const songList = await db.songs.findAll();
+  const currentId = (await songList.length) + 1;
+  try {
+    const newSong = await db.songs.create({
+      song_id: currentId,
+      song_name: req.body.song_name,
+      duration: req.body.duration,
+      genre_id: req.body.genre_id,
+    });
+    res.json({ data: newSong});
+  } catch (err) {
+    console.error(err);
+    res.json({message: 'Server error'});
+  }
+});
+/// /////////////////////////////////
+/// ////////Maxim's Endpoints /////////
+/// /////////////////////////////////
+
+/////GET 
+router.route('/playlist')
+.get(async (req, res) => {
+   try {
+       const playlistList = await db.playlist.findAll()
+       res.json({data: playlistList});
+   } catch (err) {
+       console.error(err);
+       res.send({message: 'Error1!'});
+   }
+})
+ 
+router.route('/playlist/:id')
+.get(async (req, res) => {
+   try {
+     const {id} = req.params;
+     const playlistList = await db.playlist.findAll()
+     res.json({data: playlistList[id]});
+   } catch (err) {
+       console.error(err);
+       res.json({message: 'Error2!'});
+   }
+})
+//// POST 
+
+
+router.route('/playlist')
+.post(async (req, res) => {
+    const playlistList = await db.playlist.findAll();
+    const currentId = (await playlistList.length) + 1;
+    try {
+      const newPlaylist = await db.playlist.create({
+        playlist_id: currentId,
+        playlist_title: req.body.playlist_name,
+        song_id: req.body.song_id,
+      });
+      res.json(newPlaylist);
+    } catch (err) {
+      console.error(err);
+      res.error('Playlist Post Error!');
+    }
+  });
+//PUT
+router.route('/playlist/:id')
+.put(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.playlist.update(
+        {
+          playlist_title: req.body.playlist_title
+        },
+        {
+          song_id: req.body.song_id
+        },
+        {
+          where: {
+            playlist_id: id
+          }
+        }
+      );
+      res.send('Playlist Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Playlist Put Error!'});
+    }
+});
+//Delete
+router.route('/playlist/:id')
+.delete(async (req, res) => {
+    try {
+      await db.playlist.destroy({
+        where: {
+          playlist_id: req.params.playlist_id
+        }
+      });
+      res.send('Successfully Deleted');
+    } catch (err) {
+      console.error(err);
+      res.error('Playlist Delete Error!');
+    }
+  });
+
+
+
+/// /////////////////////////////////
+/// ////////Tayo's Endpoints /////////
+/// /////////////////////////////////
+router.route('/genre')
+.get(async (req, res) => {
+    try {
+        const genreList = await db.genre.findAll()
+        res.json({data: genreList});
+    } catch (err) {
+        console.error(err);
+        res.send({message: 'Error!'});
+    }
+})
+
+router.route('/genre/:id')
+.get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const genreList = await db.genre.findAll()
+      res.json({data: genreList[id]});
+    } catch (err) {
+        console.error(err);
+        res.json({message: 'Error!'});
+    }
+})
+.put(async (req, res) => {
+    try {
+      const {id} = req.params;
+      await db.genre.update(
+        {
+          genre_name: req.body.genre_name
+        },
+        {
+          where: {
+            genre_id: id
+          }
+        }
+      );
+      res.send('Genre Successfully Updated');
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Server error'});
+    }
+})
+.delete(async (req, res) => {
+  try {
+    const {id} = req.params;
+    await db.genre.destroy({
+      where: {
+        genre_id: id
+      }
+    });
+    res.send('Successfully Deleted');
+  } catch (err) {
+    console.error(err);
+    res.json({message: 'Server error'});
+  }
+});
+
+
+router.route('/genre')
+.post(async (req, res) => {
+    const genreList = await db.genre.findAll();
+    const currentId = (await genreList.length) + 1;
+    try {
+      const newGenre = await db.genre.create({
+        genre_id: currentId,
+        genre_name: req.body.type,
+      });
+      res.json(newGenre);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+  });
+
+
+/// /////////////////////////////////
+/// //////\Daniel's Endpoints////////
+/// /////////////////////////////////
+router.route('/artist')
+.get(async (req, res) => {
+    try {
+      const artistList = await db.artist.findAll()
+      res.json({data: artistList});
+    } catch (err) {
+      console.error(err);
+      res.send({message: 'Error!'})
+    }
+})
+
+router.route('/artist/:id')
+.get(async (req, res) => {
+    try {
+      const {id} = req.params;
+      const artistList = await db.artist.findAll();
+      res.json({data: artistList[id]});
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Error!'})
+    }
+})
+
+// artist POST/PUT/DELETE
+// POST
+router.route('/artist')
+.post(async (req, res) => {
+    const artistList = await db.artist.findAll();
+    const currentId = (await artistList.length) + 1;
+    try {
+      const newArtist = await db.artist.create({
+        artist_id: currentId,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+      });
+      res.json(newArtist);
+    } catch (err) {
+      console.error(err);
+      res.error('Servor error')
+    }
+});
+
+// PUT
+router.route('/artist/:id')
+.put(async (req, res) => {
+    try {
+      const {id} =  req.params;
+      await db.aritst.update(
+        {
+          first_name: req.body.first_name
+        },
+        {
+          last_name: req.body.last_name
+        },
+        {
+          where: {
+            artist_id: id
+          }
+        }
+      );
+      res.send('Artist Successfully Updated')
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Servor error'})
+    }
+});
+
+// DELETE
+router.route('/artist/:id')
+.delete(async (req, res) => {
+    try {
+      await db.artist.destroy({
+        where: {
+          artist_id: req.params.artist_id
+        }
+      });
+      res.send("Sucessfully Deleted")
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+});
+
+///********//
+// RATINGS //
+///********//
+
+router.route('/ratings')
+.get(async (req, res) => {
+    try {
+        const ratingsList = await db.ratings.findAll()
+        res.json({data: ratingsList});
+    } catch (err) {
+        console.error(err);
+        res.send({message: 'Error!'})
+    }
+})
+
+router.route('/rating/:id')
+.get(async (req, res) => {
+    try {
+        const {id} = req.params;
+        const ratingsList = await db.ratings.findAll();
+        res.json({data: ratings[id]});
+    } catch (err) {
+        console.error(err);
+        res.json({message: 'Error!'})
+    }
+})
+// ratings POST/PUT/DELETE
+// POST
+router.route('/ratings')
+.post(async (req, res) => {
+    const ratingsList = await db.ratings.findAll();
+    const currentId = (await ratingsList.length) + 1;
+    try {
+      const newRating = await db.ratings.create({
+        rating_id: currentId,
+        ratings: req.body.ratings,
+        description: req.body.description,
+        song_id: req.body.song_id,
+        chart_id: req.body.chart_id,
+      });
+      res.json(newRating);
+    } catch (err) {
+      console.error(err);
+      res.error('Servor error')
+    }
+});
+
+// PUT
+router.route('/rating/:id')
+.put(async (req, res) => {
+    try {
+      const {id} =  req.params;
+      await db.ratings.update(
+        {
+          ratings: req.body.ratings
+        },
+        {
+          description: req.body.description
+        },
+        {
+          song_id: req.body.song_id
+        },
+        {
+          chart_id: req.body.chart_id
+        },
+        {
+          where: {
+            rating_id: id
+          }
+        }
+      );
+      res.send('Rating Successfully Updated')
+    } catch (err) {
+      console.error(err);
+      res.json({message: 'Servor error'})
+    }
+});
+
+// DELETE
+router.route('/ratings/:id')
+.delete(async (req, res) => {
+    try {
+      await db.ratings.destroy({
+        where: {
+          rating_id: req.params.rating_id
+        }
+      });
+      res.send("Sucessfully Deleted")
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
+    }
+});
+
+///////
+router.route('/playlist')
+.get(async (req, res) => {
+   try {
+       const playlistList = await db.playlist.findAll()
+       res.json({data: playlistList});
+   } catch (err) {
+       console.error(err);
+       res.send({message: 'Error!'});
+   }
+})
+ 
+router.route('/playlist/:id')
+.get(async (req, res) => {
+   try {
+     const {id} = req.params;
+     const playlistList = await db.playlist.findAll()
+     res.json({data: playlistList[id]});
+   } catch (err) {
+       console.error(err);
+       res.json({message: 'Error!'});
+   }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
 /// /////////////////////////////////

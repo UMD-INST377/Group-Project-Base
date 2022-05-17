@@ -2,13 +2,111 @@
 import express from 'express';
 import sequelize from 'sequelize';
 
-import db from '../database/initializeDB.js';
+import db from '../../database/initializeDB.js';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
+
+
+router.get('/', (req, res) => {
+  res.send('Welcome to the UMD Dining API!');
+});
+
+router.get('/mealLocation', async (req, res) => {
+  try {
+    const mealLocation = await db.mealLocation.findAll();
+    const reply = mealLocation.length > 0 ? { data: mealLocation } : { message: 'no results found' };
+    res.json(reply);
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.get('/mealLocation/:hall_id', async (req, res) => {
+  try {
+    const hall = await db.mealLocation.findAll({
+      where: {
+        hall_id: req.params.hall_id
+      }
+    });
+
+    res.json(hall);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.get('/mealLocation/:meal_id', async(req,res)=>{
+  try {
+    const meal =await db.mealLocation.findAll({
+      where:{
+        meal_id:req.params.meal_id
+      }
+    });
+    res.json(meal);
+  } catch(err){
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
+router.post('mealLocation', async(req,res)=>{
+  const meals = await db.mealLocation.findAll();
+  const currentId = (await meals.length) + 1;
+  try{
+    const newDining = await db.mealLocation.create({
+      meal_id : currentId,
+      meal_name : req.body.meal_name,
+      meal_category: req.body.meal_category,
+    });
+    res.json(newDining);
+  }catch(err){
+    console.error(err)
+    res.error('Server error');
+  }
+});
+
+router.delete('/mealLocation/:meal_id', async(req,res) =>{
+  try{
+    await db.mealLocation.destroy({
+      where: {
+        meal_id:req.params.meal_id
+      }
+    });
+    res.send('Successfully Deleted')
+  } catch(err){
+    console.error(err)
+    res.error('Server error');
+  }
+});
+
+router.put('/mealLocation', async (req, res) => {
+  try {
+    await db.mealLocation.update(
+      {
+        meal_id : currentId,
+        meal_name : req.body.meal_name,
+        meal_category: req.body.meal_category,
+      },
+      {
+        where: {
+          meal_id: req.body.meal_id
+        }
+      }
+    );
+    
+    res.send('Successfully Updated');
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
+
 
 /// /////////////////////////////////
 /// ////Dining Hall Endpoints////////
@@ -96,7 +194,7 @@ router.put('/dining', async (req, res) => {
 /// /////////////////////////////////
 router.get('/meals', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll();
+    const meals = await db.meals.findAll();
     res.json(meals);
   } catch (err) {
     console.error(err);
@@ -106,12 +204,12 @@ router.get('/meals', async (req, res) => {
 
 router.get('/meals/:meal_id', async (req, res) => {
   try {
-    const meals = await db.Meals.findAll({
+    const meals = await db.meals.findAll({
       where: {
         meal_id: req.params.meal_id
       }
     });
-    res.json(meals);
+    res.json({data: meals});
   } catch (err) {
     console.error(err);
     res.error('Server error');
@@ -267,6 +365,67 @@ router.get('/custom', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.error('Server error');
+  }
+});
+function getRandomIntInclusive(min, max) {
+  const newMin = Math.ceil(min);
+  const newMax = Math.floor(max);
+  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
+}
+router.get('/randomrestriction/:id', async (req, res) => {
+  try {
+    let result = await db.sequelizeDB.query(`select * from meal_restrictions where restriction_id !=${req.params.id}`);
+    result = result[0];
+    res.json(result);
+  } catch (err) {
+    res.send(err);
+  }
+});
+router.get('/generateRandom/:id', async (req, res) => {
+  try {
+    let result = await fetch(`/api/randomrestriction/${req.params.id}`);
+    result = result[0];
+    res.json(result);
+    const randMeal = getRandomIntInclusive(0, result.length);
+    console.log(result.length);
+    const meal = await db.sequelizeDB.query(`select meal_name from meals where meal_id=${randMeal}`);
+    res.json({data: meal});
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+router.post('/meals', async (req, res) => {
+  try {
+    const insert = await db.sequelizeDB.query(`insert into meals (meal_id, meal_category, meal_name)
+   values(${req.body.meal_id},"${req.body.meal_category}","${req.body.meal_name}")`);
+
+    res.send('meal was inserted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.put('/meals', async (req, res) => {
+  try {
+    const update = await db.sequelizeDB.query(`update meals set meal_id = ${req.body.meal_id},  meal_category = "${req.body.meal_category}",
+    meal_name = "${req.body.meal_name}"`);
+
+    res.send('meal was inserted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
+  }
+});
+
+router.delete('/meals', async (req, res) => {
+  try {
+    const update = await db.sequelizeDB.query(`delete from meals where meal_id = ${req.body.meal_id}`);
+    res.send('meal was deleted');
+  } catch (err) {
+    console.error(err);
+    res.send('Server error');
   }
 });
 

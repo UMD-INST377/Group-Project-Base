@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Group 13 Final Project</title>
+  <link rel="stylesheet" href="//brick.freetls.fastly.net/Karla:400/700/400i" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="module" src="js/modules/form.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- navigation -->
+    <section class="navigation">
+      <nav>
+        <div class="nav-wrapper">
+          <ul>
+            <li><a class="active short" href="/"><img src="/images/movie-slate.png"></a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="availability.html">Availability</a></li>
+            <li class="hide-mobile"><a class="dropdown-trigger short" href="#!" data-target="dropdown2">Data<i
+                  class="material-icons right">arrow_drop_down</i></a></li>
+          </ul>
+        </div>
+      </nav>
+      <ul id="dropdown2" class="dropdown-content">
+        <li><a href="records.html">Records</a></li>
+        <li><a href="ratings.html">Ratings</a></li>
+        <li class="divider"></li>
+        <li><a href="form.html">Add new record</a></li>
+      </ul>
+    </section>
+    <!-- content -->
+    <section class="content">
+      <div id="form-wrapper">
+        <div class="row">
+          <form class="col s12 l12">
+            <div class="row">
+              <div class="input-field col s6 l6">
+                <input id="title" type="text" name="title" required="required" />
+                <label>Title</label>
+                <span class="validation" id="title-v">Please enter a title</span>
+              </div>
+              <div class="input-field col s6 l6">
+                <input id="year" type="text" name="year" required="required" />
+                <label>Release Year</label>
+                <span class="validation" id="year-v">Please enter a valid 4 digit year</span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6 l6">
+                <select id="language-input" name="language_id" required="required"></select>
+                <label>Language</label>
+                <span class="validation" id="lang-v">Please select a language</span>
+              </div>
+              <div class="input-field col s6 l6">
+                <select id="rating-input" name="rating_id" required="required"></select>
+                <label>Rating</label>
+                <span class="validation" id="rating-v">Please select a rating</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6 l6">
+                <select id="genre-input" name="genre_id" required="required"></select>
+                <label>Genre</label>
+                <span class="validation" id="genre-v">Please select a genre</span>
+              </div>
+              <div class="input-field col s6 l6">
+                <input id="imageURL" type="text" name="image_url" required="required" />
+                <label>Image URL</label>
+                <span class="validation" id="image-v">Please enter a working image URL ending in .jpg, .png, or .jpeg</span>
+              </div>
+              <div class="input-field col s12 l12">
+                <label class="active">Availability</label>
+                <form action="#">
+                  <p>
+                    <label>
+                      <input type="checkbox" id="netflix" />
+                      <span>Netflix</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="hulu" />
+                      <span>Hulu</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="prime" />
+                      <span>Prime</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="disney" />
+                      <span>Disney</span>
+                    </label>
+                  </p>
+                </form>
+                <span class="validation" id="platform-v">Please select at least one platform</span>
+              </div>
+          </form>
+        </div>
+        <!-- <input type="submit" id="save-button"></input> -->
+        <a class="waves-effect waves-light btn-large" id="save-button">Save</a>
+      </div>
+  </div>
+  </section>
+  </div> <!-- end of wrapper-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

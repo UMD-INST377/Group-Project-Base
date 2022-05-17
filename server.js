@@ -1,12 +1,11 @@
 /* eslint-disable no-console */
 import express from 'express';
-import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
+import apiRoutes from './server/routes/apiRoutes.js';
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-const staticFolder = 'client';
+const staticFolder = 'client/public';
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

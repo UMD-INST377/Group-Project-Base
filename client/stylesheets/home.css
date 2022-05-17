@@ -1,0 +1,54 @@
+.hall_list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px #000000;
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+
+}
+.hall_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px #000000;
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    margin-top: 80px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* unvisited link */
+a:link {
+    color: rgb(255, 255, 255);
+}
+  
+/* visited link */
+a:visited {
+    color: rgb(255, 255, 255);
+}
+  
+  /* mouse over link */
+a:hover {
+    color: rgb(138, 138, 138);
+}
+  
+  /* selected link */
+a:active {
+    color: blue;
+}
+
+.table_container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.table{
+    background-color: white;
+}
+
+@media screen and (max-width: 720px) {
+}

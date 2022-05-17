@@ -1,0 +1,135 @@
+h1{
+    color: white;
+    text-align: center;
+    margin-top: 45px;
+}
+h2{
+    color: white;
+    text-align: center;
+    margin-top: 55px;
+}
+html{
+    max-height: 100%;
+}
+.button_wrap{ /*For centering the buttons*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    min-height: 80vh;
+    margin-top: 30px;
+    margin-left: -100px;
+}
+.diner_wrap{
+    flex-direction: column;
+    max-width: 12%;
+}
+.button_block { /*Top part of the button_block*/
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 18px;
+    width: 35%;
+    margin-top: 35px;
+    font-weight: bold;
+    font-size: .6cm;
+    cursor: pointer;
+    transition: 0.2s;
+    max-height: 80px;
+    min-width: 30vh;
+    
+}
+
+.active, .button_block :hover { /*Changing color when hovering*/
+    background-color: #ccc;
+}
+
+.dropdown { /*Styles the dropped panel*/
+    display: none;
+    color: rgb(0, 0, 0);
+    max-height: 70vh;
+    transition: 10s;
+    width: 20em;
+    overflow: scroll;
+    margin-left: -46px;
+    margin-top: -16px;
+}
+
+.accordion{
+    background-color: white;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 90%;
+    text-align: left;
+    outline: none;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    
+}
+
+li{
+    list-style: none;
+    margin-left: -15px;
+    border:rgb(0, 0, 0);
+    max-width: 100vh;
+    
+}
+.active, .accordion :hover{
+    background-color: #ccc;
+    
+}
+.panel{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding: 10px 18px;
+    display: none;
+    background-color: white;
+    overflow:hidden;
+    justify-content: center;
+    max-width: 100%;
+    width: 14.4em;
+
+}
+.panel table{
+    text-align: center;
+    border: none;
+}
+.meal_list_wrap{
+    max-height: 800%;
+}
+.dropdown::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+    display: none;
+}
+.mobile-add{
+    display: none;
+}
+
+@media screen and (max-width: 720px) {
+    .button_wrap{
+        flex-direction: row;
+        align-items: start;
+        overflow:scroll;
+        width: 300%;
+        
+
+    }
+    .button_block { /*Top part of the button_block*/
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        padding: 18px;
+        width: 35%;
+        margin-top: 35px;
+        font-weight: bold;
+        font-size: .4cm;
+        cursor: pointer;
+        transition: 0.2s;
+        max-height: 80px;
+        min-width: 30vh;      
+    }
+    .mobile-add{
+        display: block;
+        color: white;
+        text-align: center;
+    }
+}

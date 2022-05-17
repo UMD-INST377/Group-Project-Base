@@ -1,0 +1,23 @@
+
+h1{
+    color: white;
+    text-align: center;
+    margin-top: 45px;
+}
+h2{
+    color: white;
+    text-align: center;
+    margin-top: 55px;
+}
+
+.elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#map {
+    height: 360px;
+    width: 640px;
+}

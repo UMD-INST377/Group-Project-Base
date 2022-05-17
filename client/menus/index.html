@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menus</title>
+  <link rel='stylesheet' href='../stylesheets/base.css'/>
+  <link rel='stylesheet' href='../stylesheets/menus.css'/>
+  
+  <script src = "script.js"></script>
+  <div class = 'navi'>
+    <p>UMD Dining Database</p>
+    <a href="../">Home</a>
+    <a href="../menus/">Menus</a>
+    <a href="../map">Map</a>
+    <a href="../about">About Us</a>
+    <a href="../diets">Dietary Restrictions</a>
+    <input type = "search" id="search">
+  </div>
+</head>
+<body>
+  
+  <h1>Diner Menus</h1>
+  <h2><i>Click on a dining hall for the full menu. Click each menu item for the macros and dietary restrictions.</i></h2>
+  <div class = "mobile-add">
+    <p>Scroll left or right to view other diners</p>
+  </div>
+  <div class = "wrapper">
+    <div class="button_wrap"> <!--Each diner name is inserted from the script.js-->
+      <div class = 'diner_wrap'>
+        <button class="button_block "><div class="the_diner"></div></button>
+        <div class="dropdown">
+            <div class="the_diner_menu"></div>
+        </div>
+      </div>
+      <div class = 'diner_wrap'>
+        <button class="button_block "><div class="sc_diner"></div></button>
+        <div class="dropdown">
+            <div class="sc_diner_menu"></div>
+        </div>
+      </div>
+      <div class = 'diner_wrap'>
+        <button class="button_block "><div class="nc_diner"></div></button>
+        <div class="dropdown">
+            <div class="nc_diner_menu"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

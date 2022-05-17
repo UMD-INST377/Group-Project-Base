@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Group 16 Final</title>
+    <link rel='stylesheet' href='../stylesheets/base.css'/>
+    <link rel='stylesheet' href='../stylesheets/diets.css'/>
+    <div class = 'navi'>
+      <p>UMD Dining Database</p>
+      <a href="../">Home</a>
+      <a href="../menus">Menus</a>
+      <a href="../about">About Us</a>
+      <a href="../diets">Dietary Restrictions</a>
+    </div>
+  </head>
+  
+  <body>
+    <div class="contain">
+      
+      <div class="wrap">
+        <div class="onething">
+          <div class="inner_header">
+            <strong><em>Diet</em></strong>
+          </div>
+
+          <br></br>
+
+          <form method="get" class="form-r">
+            
+            <div class="each_option">
+              <input type="checkbox" id="vegan" name="vegan" value="1">
+              <label for="vegan" class="check_label">Vegan</label>
+            </div>
+            
+            <div class="each_option">
+              <input type="checkbox" id="vegetarian" name="vegetarian" value="2">
+              <label for="vegetarian" class="check_label">Vegetarian</label>
+            </div>
+            
+            <div class="each_option">
+              <input type="checkbox" id="halal" name="halal" value="3">
+              <label for="halal" class="check_label">Halal</label>
+            </div>
+            
+            <div class="each_option">
+              <input type="checkbox" id="milk" name="milk" value="4">
+              <label for="milk" class="check_label">Lactose Intolerant</label>
+            </div>
+            
+            <div class="each_option">
+              <input type="checkbox" id="eggs" name="eggs" value="5">
+              <label for="eggs" class="check_label">No eggs</label>
+            </div>
+            
+            <div class="each_option">
+              <input type="checkbox" id="soy" name="soy" value="6">
+              <label for="soy" class="check_label">No soy</label>
+            </div>
+            
+            <div class="each_option">
+              <input type="checkbox" id="glutenfree" name="glutenfree" value="7">
+              <label for="glutenfree" class="check_label">Gluten Intolerant</label>
+            </div>
+            
+            <div class="each_option">
+              <input type="checkbox" id="fish" name="fish" value="9">
+              <label for="fish" class="check_label">Seafood Allergy</label>
+            </div>
+            
+            <button type="button" id="submit_button">Submit</button>
+          </form>
+        </div>
+        
+        <div class="twothing">
+          <div class="inner_header2">
+            <strong><em>Compatible Meals</em></strong>
+          </div>
+          
+          <div class="meal_list">
+            <ul>
+            </ul>
+          </div>
+        </div>
+        
+      </div>  
+      <div class="inner_header2">Our database is currently being updated. Thank you for your patience!</div>
+    </div>
+    <script src = "scriptR.js"></script>
+  </body>
+</html>

@@ -1,17 +1,26 @@
 export default (sequelize, DataTypes) => {
-  const Meals = sequelize.define(
-    "Meals_Locations",
+  const MealsLocations = sequelize.define(
+    'meals_locations',
     {
       hall_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'dining_hall',
+          key: 'hall_id'
+        }
       },
       meal_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'meals',
+          key: 'meal_id'
+        }
       },
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Meals;
+  MealsLocations.removeAttribute('id');
+  return MealsLocations;
 };

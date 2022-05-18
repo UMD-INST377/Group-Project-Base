@@ -1,7 +1,10 @@
 /* eslint-disable no-console */
 import express from 'express';
-import db from './database/initializeDB.js';
-import apiRoutes from './routes/apiRoutes.js';
+import db from './server/database/initializeDB.js';
+import apiRoutes from './server/routes/apiRoutes.js';
+// eslint-disable-next-line import/no-unresolved
+import anneRoutes from './server/routes/anneRoutes.js';
+import raceRoutes from './server/routes/raceRoutes.js';
 
 const app = express();
 
@@ -13,11 +16,13 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
+app.use('/api', anneRoutes);
+app.use('/api', raceRoutes);
 
 async function bootServer() {
   try {
-    // const mysql = await db.sequelizeDB;
-    // await mysql.sync();
+    const mysql = await db.sequelizeDB;
+    await mysql.sync({alter : true});
     app.listen(PORT, () => {
       console.log(`Listening on: http//localhost:${PORT}`);
     });

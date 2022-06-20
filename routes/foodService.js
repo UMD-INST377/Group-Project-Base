@@ -1,6 +1,8 @@
 import express from 'express';
 import fetch from 'node-fetch';
 
+const router = express.Router();
+
 //
 // This is a demo of how to structure your final project API
 // One route file is expected per student, with appropriate HTTP methods on each endpoint

@@ -5,7 +5,7 @@ import apiRoutes from './routes/apiRoutes.js';
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3030;
 const staticFolder = 'client';
 
 app.use(express.urlencoded({ extended: true }));

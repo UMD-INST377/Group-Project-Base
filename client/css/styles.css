@@ -122,29 +122,18 @@ img {
 
 }
 
-.artist_images {
-    list-style: inline-block;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
 .artist_images li {
     display: inline-flex;
+    justify-content: center;
     flex-direction: column;
     padding: 0px 20px;
     align-items: center;
 }
 
-.genre_images {
-    list-style: inline-block;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
 
 .genre_images li {
     display: inline-flex;
+    justify-content: center;
     flex-direction: column;
     padding: 0px 20px;
     align-items: center;

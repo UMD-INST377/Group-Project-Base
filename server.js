@@ -16,7 +16,7 @@ app.use('/api', apiRoutes);
 async function bootServer() {
   try {
     app.listen(PORT, () => {
-      console.log(`Listening on: http//localhost:${PORT}`);
+      console.log(`Listening on: http://localhost:${PORT}`);
     });
   } catch (err) {
     console.error(err);

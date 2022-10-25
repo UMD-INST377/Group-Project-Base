@@ -1,7 +1,7 @@
 
 
-const film1 = "Nightclawer";
-const film2 = "Zodiac";
+const film1 = "The Breakfast Club";
+const film2 = "Ferris Bueller's Day Off";
 const imdbkey = "x/";
 const firstCall = "https://imdb-api.com/en/API/Search/"+ imdbkey+ film1;
 const secondCall = "https://imdb-api.com/en/API/Search/"+ imdbkey + film2;

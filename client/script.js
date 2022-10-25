@@ -7,7 +7,7 @@ const firstCall = "https://imdb-api.com/en/API/Search/"+ imdbkey+ film1;
 const secondCall = "https://imdb-api.com/en/API/Search/"+ imdbkey + film2;
 
 
-
+document.getElementById("h2").innerHTML = "Looking for Cast and Crew members in common between " + film1 + " " + film2;
 
 
 let cclist1;
@@ -36,15 +36,17 @@ getFilmTitle(firstCall)
   cclist1 = cast(firstID); 
    
 })
+.then(function(){
+  getFilmTitle(secondCall)
+  .then(function(jsonData){
+  console.log(jsonData);
+  let secondID= JSON.stringify(jsonData.results[0]).substring(7,16);
+  console.log("ID: " + secondID);
+  cclist2 = cast(secondID);
+  
+})
 
-getFilmTitle(secondCall)
-    .then(function(jsonData){
-    console.log(jsonData);
-    let secondID= JSON.stringify(jsonData.results[0]).substring(7,16);
-    console.log("ID: " + secondID);
-    cclist2 = cast(secondID);
-    intersect();
-  })
+})
 
 
 
@@ -61,7 +63,8 @@ function cast(filmID){
     if(firstdone == false){
       document.getElementById("data").innerHTML = matches;
     } else{
-      document.getElementById("data2").innerHTML = matches;
+      document.getElementById("dataa").innerHTML = matches;
+      intersect();
     }
     firstdone = true;
     return matches;
@@ -76,9 +79,19 @@ function cast(filmID){
 
 async function intersect() {
 
-  console.log("Test1: " + cclist1);
-  console.log(cclist2);
-  const filteredArray = cclist1.filter(value => cclist2.includes(value));
+  const a = document.querySelector("#data").innerHTML;
+  const b = document.querySelector("#dataa").innerHTML;
+
+  const y = a.split(',');
+  const z = b.split(',');
+
+  console.log("Test1: " + y);
+  console.log("Test2: " + z);
+  
+
+  const filteredArray = y.filter(value => z.includes(value));
   console.log("In Common: " + filteredArray);
+
+  document.getElementById("h3").innerHTML = "People in common: " + filteredArray;
 }
 //document.getElementById("demo").innerHTML = n;

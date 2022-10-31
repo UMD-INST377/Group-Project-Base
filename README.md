@@ -6,4 +6,4 @@ Markdown is a text notation system used in Discord, Whatsapp and similar to stru
 * [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
 
 ### Github Link
-[Github Link] (https://github.com/HunterK923/Group12-Final-Project-Movies-Endpoint_
+* [Github Link](https://github.com/HunterK923/Group12-Final-Project-Movies-Endpoint/)

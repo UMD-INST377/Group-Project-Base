@@ -29,7 +29,7 @@ const router = express.Router();
 // /////////////////////////////////
 // Food Inspection Set Demos
 // /////////////////////////////////
-router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
+router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {
         const url = 'https://movie-details1.p.rapidapi.com/imdb_api/movie?id=tt1375666';
@@ -53,7 +53,7 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .put((req, res) => {
     try {
-      res.json({message: 'put FoodServices endpoint'});
+      res.json({message: 'put moveRoutes endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -61,7 +61,7 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .post((req, res) => {
     try {
-      res.json({message: 'post FoodServices endpoint'});
+      res.json({message: 'post moveRoutes endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});

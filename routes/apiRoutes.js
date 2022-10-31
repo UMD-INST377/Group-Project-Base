@@ -3,7 +3,7 @@ import express from 'express';
 import fetch from 'node-fetch';
 
 import foodService from './foodService.js';
-import topGenre from './topGenre.js';
+import movieRoutes from './movieRoutes.js';
 
 const router = express.Router();
 
@@ -15,6 +15,6 @@ router.get('/', (req, res) => {
 // Replace this with the group member's actual route
 // This leads to /api/member1
 router.use('/foodService', foodService);
-router.use('/topGenre', topGenre);
+router.use('/movieRoutes', movieRoutes);
 
 export default router;

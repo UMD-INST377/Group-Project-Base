@@ -53,7 +53,7 @@ router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
   })
   .put((req, res) => {
     try {
-      res.json({message: 'put moveRoutes endpoint'});
+      res.json({message: 'put movieRoutes endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -61,7 +61,7 @@ router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
   })
   .post((req, res) => {
     try {
-      res.json({message: 'post moveRoutes endpoint'});
+      res.json({message: 'post movieRoutes endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -69,7 +69,7 @@ router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
   })
   .delete((req, res) => {
     try {
-      res.json({message: 'delete FoodServices endpoint'});
+      res.json({message: 'delete movieRoutes endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});

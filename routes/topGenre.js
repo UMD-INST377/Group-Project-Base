@@ -2,24 +2,23 @@ import express from 'express';
 import fetch from 'node-fetch';
 
 
-const axios = require("axios");
+const fetch = require('node-fetch');
+
+const url = 'https://movie-details1.p.rapidapi.com/imdb_api/movie?id=tt1375666';
 
 const options = {
   method: 'GET',
-  url: 'https://movie-details1.p.rapidapi.com/imdb_api/movie',
-  params: {id: 'tt1375666'},
   headers: {
     'X-RapidAPI-Key': '11fb2e648emshff0f511bd987be4p197887jsne25c60c996d9',
     'X-RapidAPI-Host': 'movie-details1.p.rapidapi.com'
   }
 };
 
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
-
+fetch(url, options)
+	.then(res => res.json())
+	.then(json => console.log(json))
+	.catch(err => console.error('error:' + err));
+  
 const router = express.Router();
 
 //
@@ -33,7 +32,15 @@ const router = express.Router();
 router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+        const url = 'https://movie-details1.p.rapidapi.com/imdb_api/movie?id=tt1375666';
+
+        const options = {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': '11fb2e648emshff0f511bd987be4p197887jsne25c60c996d9',
+            'X-RapidAPI-Host': 'movie-details1.p.rapidapi.com'
+          }
+        };
       const data = await fetch(url);
       const json = await data.json();
       console.log(json);
@@ -72,7 +79,15 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
 router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+        const url = 'https://movie-details1.p.rapidapi.com/imdb_api/movie?id=tt1375666';
+
+        const options = {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': '11fb2e648emshff0f511bd987be4p197887jsne25c60c996d9',
+            'X-RapidAPI-Host': 'movie-details1.p.rapidapi.com'
+          }
+        };
       const request = await fetch(url);
       const json = await request.json();
       console.log(json);

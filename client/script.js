@@ -2,12 +2,12 @@
 
 const film1 = "The Breakfast Club";
 const film2 = "Ferris Bueller's Day Off";
-const imdbkey = "x/";
+const imdbkey = "k_ljv5h5vz/";
 const firstCall = "https://imdb-api.com/en/API/Search/"+ imdbkey+ film1;
 const secondCall = "https://imdb-api.com/en/API/Search/"+ imdbkey + film2;
 
 
-document.getElementById("h2").innerHTML = "Looking for Cast and Crew members in common between " + film1 + " " + film2;
+document.getElementById("h2").innerHTML = "Looking for Cast and Crew members in common between " + film1 + " & " + film2;
 
 
 let cclist1;
@@ -58,8 +58,7 @@ function cast(filmID){
   .then(function(jsonData){
     let regex = /name":"([a-zA-z ]* [a-zA-z ]*)/g;
     let response = JSON.stringify(jsonData);
-    let matches = response.match(regex);
-    //console.log("Matches: " + matches);
+    let matches = response.match(regex).map(x => x.replace('name":"',""));
     if(firstdone == false){
       document.getElementById("data").innerHTML = matches;
     } else{
@@ -75,7 +74,10 @@ function cast(filmID){
 
 }
 
-
+function removeDups(arr) {
+  return arr.filter((item,
+      index) => arr.indexOf(item) === index);
+}
 
 async function intersect() {
 
@@ -89,7 +91,7 @@ async function intersect() {
   console.log("Test2: " + z);
   
 
-  const filteredArray = y.filter(value => z.includes(value));
+  const filteredArray = removeDups(y.filter(value => z.includes(value)));
   console.log("In Common: " + filteredArray);
 
   document.getElementById("h3").innerHTML = "People in common: " + filteredArray;

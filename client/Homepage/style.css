@@ -17,3 +17,10 @@ body{
     padding-left:15px;
     padding-right:15px;
 }
+.quote{
+    font-size: x-large;
+}
+.storing_information{
+    list-style: none;
+    color: white;
+}

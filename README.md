@@ -1,4 +1,4 @@
-#Readme
+# Readme
 
 we plan on gathering data from the Yahoo Finance API to give users insights into
 some stock tickers' finances. Users should be able to compare different stock financials using our frontend

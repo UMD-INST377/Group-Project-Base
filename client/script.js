@@ -1,7 +1,5 @@
-
-
-const film1 = "The Breakfast Club";
-const film2 = "Ferris Bueller's Day Off";
+const film1 = "Whiplash";
+const film2 = "Jumanji: Welcome to the Jungle";
 const imdbkey = "k_ljv5h5vz/";
 const firstCall = "https://imdb-api.com/en/API/Search/"+ imdbkey+ film1;
 const secondCall = "https://imdb-api.com/en/API/Search/"+ imdbkey + film2;

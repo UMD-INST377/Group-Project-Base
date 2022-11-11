@@ -1,24 +1,6 @@
 import express from 'express';
 import fetch from 'node-fetch';
 
-
-const fetch = require('node-fetch');
-
-const url = 'https://movie-details1.p.rapidapi.com/imdb_api/movie?id=tt1375666';
-
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': '11fb2e648emshff0f511bd987be4p197887jsne25c60c996d9',
-    'X-RapidAPI-Host': 'movie-details1.p.rapidapi.com'
-  }
-};
-
-fetch(url, options)
-	.then(res => res.json())
-	.then(json => console.log(json))
-	.catch(err => console.error('error:' + err));
-  
 const router = express.Router();
 
 //
@@ -29,19 +11,18 @@ const router = express.Router();
 // /////////////////////////////////
 // Food Inspection Set Demos
 // /////////////////////////////////
-router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
+router.route('/imdb_api') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {
-        const url = 'https://movie-details1.p.rapidapi.com/imdb_api/movie?id=tt1375666';
-
-        const options = {
-          method: 'GET',
-          headers: {
-            'X-RapidAPI-Key': '11fb2e648emshff0f511bd987be4p197887jsne25c60c996d9',
-            'X-RapidAPI-Host': 'movie-details1.p.rapidapi.com'
-          }
-        };
-      const data = await fetch(url);
+      const url = 'https://movie-details1.p.rapidapi.com';
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-Rapid-API-Key': '11fb2e648emshff0f511bd987be4p197887jsne25c60c996d9',
+          'X-RapidAPI-Host': 'movie-details1.p.rapidapi.com'
+        }
+      }
+      const data = await fetch(url, options);
       const json = await data.json();
       console.log(json);
 
@@ -53,7 +34,7 @@ router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
   })
   .put((req, res) => {
     try {
-      res.json({message: 'put movieRoutes endpoint'});
+      res.json({message: 'put movie details endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -61,7 +42,7 @@ router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
   })
   .post((req, res) => {
     try {
-      res.json({message: 'post movieRoutes endpoint'});
+      res.json({message: 'post movie details endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -69,7 +50,7 @@ router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
   })
   .delete((req, res) => {
     try {
-      res.json({message: 'delete movieRoutes endpoint'});
+      res.json({message: 'delete movie details endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -79,15 +60,7 @@ router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
 router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
   .get(async (req, res) => {
     try {
-        const url = 'https://movie-details1.p.rapidapi.com/imdb_api/movie?id=tt1375666';
-
-        const options = {
-          method: 'GET',
-          headers: {
-            'X-RapidAPI-Key': '11fb2e648emshff0f511bd987be4p197887jsne25c60c996d9',
-            'X-RapidAPI-Host': 'movie-details1.p.rapidapi.com'
-          }
-        };
+      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
       const request = await fetch(url);
       const json = await request.json();
       console.log(json);

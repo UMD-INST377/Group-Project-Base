@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+  background-color: #fff;
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  /* these are specific to different browsers */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+  
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #FFE5B4;
+}
+  
+
+.nav-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border: 2px solid;
+    border-color: black;
+}
+
+.logo-img{
+    padding-left: 10px;
+}
+
+.login-button{
+    padding-right: 10px;
+}
+
+.logo-img img{
+    width: 50px;
+}
+
+

@@ -11,10 +11,10 @@ const router = express.Router();
 // /////////////////////////////////
 // Food Inspection Set Demos
 // /////////////////////////////////
-router.route('/imdb_api') // actually localhost:3000/api/foodServicesPG
+router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {
-      const url = 'https://movie-details1.p.rapidapi.com';
+      const url = 'https://movie-details1.p.rapidapi.com/imdb_api/movie';
       const options = {
         method: 'GET',
         headers: {

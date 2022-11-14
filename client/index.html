@@ -2,17 +2,33 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group 9</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin=""></script>
 </head>
 <body>
-    <h1>Group 9</h1>
-    <ul>
-        <li>Hello, World -John Lehner</li>
-        <li>Hello, World -Will Jones</li>
-        <li>Checking out the branching</li>
-    </ul>
+    <header class="header">
+        <h1>Group 9, INST377 Project</h1>
+    </header>
+    </div>
+    <div class="middle_section">
+        <h2>PG County Crime Map: 2017-Present</h2>
+        <form action="/api" class="box main_form">
+            <label for="resto">Enter crime type to search...</label>
+            <input type="text" name="resto" id="resto" />
+        <button type="submit" id="get-resto">Search</button>
+        </form>
+        <b>Searchable Crime Types</b>
+        <div class="paragraph">Accident | Theft From Auto | Accident with Impound |
+            Assault | Theft | Auto, Stolen | Vandalism | B & E, Residential | 
+            Robbery, Other | B & E, Commercial | Sex Offense | Assault, Weapon</div>
+    </div>
+    <div id="map"></div>
     <script src="./script.js"></script>
 </body>
 </html>

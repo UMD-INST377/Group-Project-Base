@@ -3,7 +3,7 @@ import express from 'express';
 import apiRoutes from './routes/apiRoutes.js';
 
 const app = express();
-console.log("Hello World")
+console.log("Hello World!")
 
 const PORT = process.env.PORT || 3030;
 const staticFolder = 'client';

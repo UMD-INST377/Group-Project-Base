@@ -24,6 +24,9 @@ const champions = ['Warriors'];
 const championsData = [];
 
 async function teamToID(teamName) {
+  // fetching team data with team name
+  // grabbing the team ID from the response to use in other funtions'
+  
   const url = `https://api-nba-v1.p.rapidapi.com/teams?search=${teamName}`;
   const data = await fetch(url, options);
   const json = await data.json();
@@ -34,18 +37,20 @@ async function teamToID(teamName) {
   });
   return teamID;
 }
-
-function getChampionsData() {
-  champions.forEach((item, index) => {
-    const teamID = teamToID(item);
-    rateSleep(3000);
-  });
-}
-
 function getAnyTeam(teamID, year) {
   // api to get a team by its name and year
   // to see stats of the team from that year
   // Example Wizards 2022
+}
+
+function getChampionsData() {
+  let year = 2015;
+  champions.forEach((item, index) => {
+    const id = teamToID(item);
+    year += 1;
+    rateSleep(3000);
+    getAnyTeam(id, year);
+  });
 }
 
 async function mainEvent() {

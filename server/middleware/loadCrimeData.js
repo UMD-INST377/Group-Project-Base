@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 
 export async function loadCrimeData(req, res, next) {
   try {
-    const url = 'https://data.princegeorgescountymd.gov/api/views/wb4e-w4nf/rows.json?accessType=DOWNLOAD'; // remote URL! you can test it in your browser
+    const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
     const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));

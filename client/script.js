@@ -37,7 +37,26 @@ async function teamToID(teamName) {
   });
   return teamID;
 }
+async function getChampionshipStats(teamID, year) {
+  // api to get a team by its name and year
+  // to see stats of the team from that year
+  // Example Wizards 2022
+  const url = https://api-nba-v1.p.rapidapi.com/teams/statistics?id=${teamID}&season=${year};
+  const data = await fetch(url, options);
+  const json = await data.json();
+  const res = json.response;
+  let threePercentage;
+  let threeMade;
+  let threeAttempted;
 
+  res.forEach((item, index) => {
+    threePercentage = item.tpp;
+    console.log(threePercentage);
+    threeMade = item.tpm;
+    threeAttempted = item.tpa;
+    championsData.push(threePercentage)
+  });
+}
 function getChampionsData() {
   let year = 2015;
   champions.forEach((item, index) => {

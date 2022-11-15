@@ -2,11 +2,17 @@
 import express from 'express';
 import apiRoutes from './routes/apiRoutes.js';
 
+// API Link -- https://rapidapi.com/api-sports/api/api-nba 
+
 const app = express();
-console.log("Hello World!!!")
 
 const PORT = process.env.PORT || 3030;
 const staticFolder = 'client';
+
+
+// api call to NBA data -> route -> apiRoutes -> foodService.js 
+// food services will be changed to our API
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

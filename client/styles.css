@@ -103,10 +103,10 @@ body {
   .left_section {
     background-color: rgba(14, 105, 35, 0.8);
     flex: 0 1 auto;
-    margin: 1rem;      
+    margin: 1rem;
     padding: 1.5rem;
-    align-items: center;
-    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
     }
 
     .center {

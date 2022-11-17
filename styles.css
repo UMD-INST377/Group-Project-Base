@@ -12,7 +12,20 @@
 
 .header {
     background-color: rgba(107, 174, 126, 1);
-}
+    padding-top: 0rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+  
+.header h1 {
+    display: block;
+    border: 3px dashed;
+    border-radius: 0px;
+    font-size: 1.5rem;
+    padding: 1.25rem;
+    margin:0; 
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+  }
 
 .footer {
     background-color: rgba(111, 144, 121, 1);

@@ -1,0 +1,19 @@
+.body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.wrapper {
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+}
+
+.header {
+    background-color: rgba(107, 174, 126, 1);
+}
+
+.footer {
+    background-color: rgba(111, 144, 121, 1);
+}

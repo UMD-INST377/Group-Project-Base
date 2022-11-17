@@ -31,17 +31,21 @@ async function teamToID(teamName) {
   const data = await fetch(url, options);
   const json = await data.json();
   const res = json.response;
-  let teamID;
+  let teamID = 0;
   res.forEach((item, index) => {
     teamID = item.id;
   });
+  console.log('about to tell ID');
+  console.log(`${teamID}`);
   return teamID;
 }
 async function getChampionshipStats(teamID, year) {
   // api to get a team by its name and year
   // to see stats of the team from that year
   // Example Wizards 2022
-  const url = https://api-nba-v1.p.rapidapi.com/teams/statistics?id=${teamID}&season=${year};
+
+  console.log(`${teamID}, ${year}`);
+  const url = `https://api-nba-v1.p.rapidapi.com/teams/statistics?id=${teamID}&season=${year}`;
   const data = await fetch(url, options);
   const json = await data.json();
   const res = json.response;
@@ -50,21 +54,22 @@ async function getChampionshipStats(teamID, year) {
   let threeAttempted;
 
   res.forEach((item, index) => {
+    console.log(item.tpp);
     threePercentage = item.tpp;
-    console.log(threePercentage);
     threeMade = item.tpm;
     threeAttempted = item.tpa;
-    championsData.push(threePercentage)
+    championsThreePercent.push(threePercentage);
   });
 }
 
 function getChampionsData() {
   let year = 2015;
-  champions.forEach((item, index) => {
-    const id = teamToID(item);
-    year += 1;
+  champions.forEach(async (item, index) => {
+    const id = await teamToID(item);
+    console.log(item);
     rateSleep(3000);
     getChampionshipStats(id, year);
+    year += 1;
   });
 }
 
@@ -79,6 +84,7 @@ async function getAnyTeam(teamID, year) {
 
 async function mainEvent() {
   getChampionsData();
+  console.log(championsThreePercent);
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

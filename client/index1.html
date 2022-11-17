@@ -5,11 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Project Base</title>
     <link rel="stylesheet" href="styles.css">
-    <h1>hello world</h1>
 </head>
 <body>
-    <h1>Group 23</h1>
-    <h1>Hello World</h1>
     <script src="./script.js"></script>
+    <div class="wrapper">
+        <header class="header">
+            <h1>PG County Crimes</h1>
+        </header>
+        <div class="container">
+            <div class="left_section box">
+                <h3>Search By Sector</h3>
+                <form action="/api" class="main_form box">
+                    <div>
+                        <label for="resto">Enter Sector</label>
+                        <input type="text" name="resto" id="resto" />
+                    </div>
+                    <button type="submit" id="get-resto">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="left_section box">
+                <h3>Results</h3>
+            </div>
+            <div class="right_section box">
+                <h3>Chart</h3>
+            </div>
+        </div>
+    </div>
+    <footer class="footer footer a footer a:hover">
+        <p>
+          emilyklomparens
+          <a href="https://github.com/emilyklomparens" target ="_blank" rel="noopener noreferrer">GitHub Page</a>
+        </p>
+      </footer>
+      <script src="./script.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
-let params = (new URL(document.location)).searchParams;
-let token = params.get("token");
+// Sends the authentication token and author ids
+// Returns an array of ids
 const get_author_ids = async (id,req_token) => {
     const response = await fetch('https://umd-spotify-backend.herokuapp.com/get_authorlist?', {
       method: 'GET',
@@ -11,7 +11,6 @@ const get_author_ids = async (id,req_token) => {
         'Content-Type': 'application/json'
       }
     });
-    return response; 
+    return response.json(); 
   }
   
-console.log(get_author_ids('short_term',token))

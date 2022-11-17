@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable  no-restricted-syntax */
 /* eslint-disable  no-await-in-loop */
-
+/* eskint-disable no-new */
 // Code for year drop down list
 const checkList = document.getElementById('list1');
 checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
@@ -18,8 +18,8 @@ const options = {
 };
 
 // Champions in order from 2015 - 2022
-// const champions = ['Warriors', 'Cavaliers', 'Warriors', 'Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
-const champions = ['Warriors', 'Cavaliers'];
+const champions = ['Warriors', 'Cavaliers', 'Warriors', 'Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
+// const champions = ['Warriors', 'Cavaliers'];
 let year = 2015;
 const champ3Perc = [];
 const champ3Atts = [];
@@ -80,6 +80,30 @@ async function getAnyTeam(teamID, year) {
   // const json = await data.json();
 }
 
+function makeChart() {
+  const ctx = document.getElementById('myChart');
+
+  // eslint-disable-next-line no-new
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: champions,
+      datasets: [{
+        label: 'Past Champ 3 Point %',
+        data: [40, 32, 18, 55, 10, 8, 77, 13],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
 async function mainEvent() {
   // await getChampionsData();
 
@@ -95,6 +119,7 @@ async function mainEvent() {
   console.log(`total 3% is ${total3Perc} total 3 made is ${total3Made}, total 3 att is ${total3Att}`);
   console.log(`avg 3%: ${avg3Perc}, avg 3 made: ${avg3Made}, avg 3 attempted: ${avg3Att}`);
   console.log(champ3Perc);
+  makeChart();
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

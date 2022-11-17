@@ -19,12 +19,10 @@
   
 .header h1 {
     display: block;
-    border: 3px dashed;
     border-radius: 0px;
     font-size: 1.5rem;
     padding: 1.25rem;
     margin:0; 
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
   }
 
 .footer {

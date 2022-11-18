@@ -9,8 +9,10 @@ const app = express();
 const PORT = process.env.PORT || 3030;
 const staticFolder = 'client';
 
+
 // api call to NBA data -> route -> apiRoutes -> foodService.js 
 // food services will be changed to our API
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

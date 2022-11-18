@@ -24,8 +24,8 @@ html {
 }
 
 body {
-  margin: 100px;
-  padding: 100px;
+  margin: 0px;
+  padding: 0px;
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
@@ -65,7 +65,7 @@ form {
 }
 
 .container {
-  background-color: aqua;
+  background-color: rgb(81, 255, 0);
   margin: 0 20px;
   display: flex;
   justify-content: space-evenly;
@@ -92,7 +92,7 @@ form {
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: #f104f1;
+  background-color: #00eeff;
   color: #4a4a4a;
 
   /* shapes */
@@ -128,14 +128,14 @@ form {
 }
 
 .left_section {
-  background-color: rgba(0, 139, 139, 0.8);
+  background-color: rgba(234, 0, 255, 0.8);
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
 }
 
 .right_section {
-  background-color: rgb(0, 255, 13);
+  background-color: rgb(255, 145, 0);
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
@@ -153,7 +153,7 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: rgb(8, 66, 16);
+  background-color: rgb(0, 19, 185);
   font-size: 1.2rem;
   font-weight: 600;
   border: 3px dashed;

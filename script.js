@@ -21,8 +21,17 @@ function initMap() {
     });
   }
 
-async function mainEvent() {
+  function clickedOn() {
+    const popup = L.popup()
+    .setLatLng([51.513, -0.09])
+    .setContent("You clicked me!")
+    .openOn(map);
 
+    alert(alert("You clicked the map at " + e.latlng));
+  }
+
+async function mainEvent() {
+    
     const page = initMap();
     
     // proceed if we have data. if not, return 
@@ -33,6 +42,7 @@ async function mainEvent() {
             // const filteredList = filterList(currentList, event.target.value);
             // injectHTML(filteredList);
             markerPlace();
+            map.on('click', onMapClick);
         });
     }
 }

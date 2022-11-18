@@ -48,14 +48,6 @@ form {
   accent-color: hsla(120, 100%, 50%, 0.482);
 }
 
-/*
-  - These styles use 'class names'
-  - You can apply them by using the 'class' attribute on your HTML
-  - like this: <div class="wrapper">
-  - note that the period vanishes there!
-*/
-
-
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -103,20 +95,9 @@ form {
   border: 3px dashed;
   text-align: center;
 
-
   /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
-
-
-/*
-  Rules can be combined on a block to apply the 'cascade' in order
-  So you can use two classnames in a single class attribute
-  like: <div class="box section">
-
-  Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
-  And will be what displays in your client
-*/
 
 .box {
   background-color: rgba(239, 239, 239, 0.40);
@@ -165,11 +146,6 @@ form {
   text-decoration: underline;
 }
 
-/*
-  This is an example of a 'pseudoclass'
-  In this instance, it says what to do if a mouse hovers over a link
-  This is pretty desktop-specific, since there's no hover function on touchscreens
-*/
 .footer a:hover {
   /* Hue, saturation, luminosity, alpha */
   background-color: hsla(0, 0%, 90%, 0.15);
@@ -180,8 +156,8 @@ form {
 
 #map { 
     display: block;
-    width: 400px;
-    height: 380px;
+    width: 600px;
+    height: 580px;
     border: 2px dashed rgb(99,99,99);
     margin-bottom: 1rem;
   }

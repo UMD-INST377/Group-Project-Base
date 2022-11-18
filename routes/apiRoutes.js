@@ -15,6 +15,5 @@ router.get('/', (req, res) => {
 // Replace this with the group member's actual route
 // This leads to /api/member1
 router.use('/foodService', foodService);
-router.use('/movieRoutes', movieRoutes);
 
 export default router;

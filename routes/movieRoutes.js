@@ -3,26 +3,29 @@ import fetch from 'node-fetch';
 
 const router = express.Router();
 
+async function getData() {
+  const url = 'movie-details1.p.rapidapi.com';
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-Rapid-API-Key': '11fb2e648emshff0f511bd987be4p197887jsne25c60c996d9',
+      'X-RapidAPI-Host': 'movie-details1.p.rapidapi.com'
+    }
+  };
+  const request = await fetch(url, options);
+  const json = await request.json();
+  return json;
+}
+
 //
 // This is a demo of how to structure your final project API
 // One route file is expected per student, with appropriate HTTP methods on each endpoint
 //
 
-// /////////////////////////////////
-// Food Inspection Set Demos
-// /////////////////////////////////
-router.route('/movieRoutes') // actually localhost:3000/api/foodServicesPG
+router.route('/movieRoutes') // actually localhost:3030/api
   .get(async (req, res) => {
     try {
-      const url = 'https://movie-details1.p.rapidapi.com/imdb_api/movie';
-      const options = {
-        method: 'GET',
-        headers: {
-          'X-Rapid-API-Key': '11fb2e648emshff0f511bd987be4p197887jsne25c60c996d9',
-          'X-RapidAPI-Host': 'movie-details1.p.rapidapi.com'
-        }
-      }
-      const data = await fetch(url, options);
+      const data = await getData();
       const json = await data.json();
       console.log(json);
 

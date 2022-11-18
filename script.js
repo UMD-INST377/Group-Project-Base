@@ -27,11 +27,11 @@ function initMap() {
     .setContent("You clicked me!")
     .openOn(map);
 
-    alert(alert("You clicked the map at " + e.latlng));
+    alert("You clicked the map at " + e.latlng);
   }
 
 async function mainEvent() {
-    
+
     const page = initMap();
     
     // proceed if we have data. if not, return 

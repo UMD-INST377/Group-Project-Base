@@ -156,8 +156,8 @@ form {
 
 #map { 
     display: block;
-    width: 600px;
-    height: 580px;
+    width: 1000px;
+    height: 980px;
     border: 2px dashed rgb(99,99,99);
     margin-bottom: 1rem;
   }

@@ -8,8 +8,6 @@ const AUTHORIZE = "https://accounts.spotify.com/authorize";
 const TOKEN = "https://accounts.spotify.com/api/token";
 
 function onPageLoad() {
-    //client_id = localStorage.getItem("client_id");
-    //client_secret = localStorage.getItem("client_secret");
     if (window.location.search.length > 0){
         handleRedirect();
     }
@@ -34,8 +32,8 @@ function getCode() {
 
 
 function requestAuthorization() {
-    //localStorage.setItem("client_id", client_id);
-    //localStorage.setItem("client_secret", client_secret);
+    localStorage.setItem("client_id", client_id);
+    localStorage.setItem("client_secret", client_secret);
     
     let url = AUTHORIZE;
     url += "?client_id=" + client_id;
@@ -60,7 +58,7 @@ function callAuthorizationApi(body){
     let xhr = new XMLHttpRequest();
     xhr.open("POST", TOKEN, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.setRequestHeader('Authorization', 'Basic ' + Buffer.from((client_id + ':' + client_secret), ('base64')));
+    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(client_id + ":" + client_secret));
     xhr.send(body);
     xhr.onload = handleAuthorizationResponse;
 }

@@ -37,6 +37,7 @@ function getRandomIntInclusive(min, max) {
     });
   }
 
+//   Mapping function which we'll need later
   function initMap() {
 	console.log('initMap');
 	const map = L.map('map').setView([38.9897, -76.9378], 13);
@@ -47,6 +48,7 @@ function getRandomIntInclusive(min, max) {
 	return map;
   }
 
+// We will use this marker function later for help with our heat maps
   function markerPlace(array, map) {
 	// const marker = L.marker([51.5, -0.09]).addTo(map);
 	map.eachLayer((layer) => {
@@ -75,6 +77,7 @@ function getRandomIntInclusive(min, max) {
 	const form = document.querySelector('.main_form'); 
 	const submit = document.querySelector('#get-resto'); 
 	const loadAnimation = document.querySelector('.lds-ellipsis');
+	const chartTarget = document.querySelector('#myChart');
 	submit.style.display = 'none'; 
   
 	const results = await fetch('/api/foodServicePG');
@@ -98,14 +101,14 @@ function getRandomIntInclusive(min, max) {
 		console.log(event.target.value);
 		const filteredList = filterList(currentList, event.target.value);
 		injectHTML(filteredList);
-		// markerPlace(filteredList, pageMap);
+		markerPlace(filteredList, pageMap);
 	  });
 
 	  form.addEventListener('submit', (submitEvent) => {
 		submitEvent.preventDefault();
 		currentList = processRestaurants(arrayFromJson.data);
 		injectHTML(currentList);
-		// markerPlace(currentList, pageMap);
+		markerPlace(currentList, pageMap);
 	  });
 	}
   }

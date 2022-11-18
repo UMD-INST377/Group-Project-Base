@@ -41,7 +41,7 @@ a {
 h2, h3 {
   margin:0;
   padding:0;
-  padding-bottom:1.5rem;
+  padding-bottom:0rem;
 }
 
 form {
@@ -77,7 +77,7 @@ form {
   padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0rem;
 }
 
 
@@ -101,6 +101,7 @@ form {
   padding: 1.25rem;
   margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
   border: 3px dashed;
+  text-align: center;
 
 
   /* box-shadows are fancy */

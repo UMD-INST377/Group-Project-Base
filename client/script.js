@@ -62,6 +62,13 @@ function getRandomIntInclusive(min, max) {
 	})
   }
 
+  async function getData() {
+	const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+    const data = await fetch(url);
+    const json = await data.json(); 
+    const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.name));
+	return reply;
+
   async function mainEvent() {
 	const pageMap = initMap();
 	// the async keyword means we can make API requests
@@ -104,3 +111,4 @@ function getRandomIntInclusive(min, max) {
   }
 
   document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
+}

@@ -316,6 +316,11 @@
     }
   }
 
+  .chart_container {
+	height: 100%;
+	width: 100%;
+  }
+
   @media only screen and (max-width: 736px){
 	/* Rules in here will only apply when a screen is the correct size */
 	/* check it out by using your developer tools to shrink your screen-size */

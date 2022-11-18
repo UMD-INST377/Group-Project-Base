@@ -18,9 +18,13 @@ const options = {
 };
 
 // Champions in order from 2015 - 2022
-const champions = ['Warriors', 'Cavaliers', 'Warriors', 'Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
+// const champions = ['Warriors', 'Cavaliers', 'Warriors', 'Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
+// Champions in order from 2018 - 2022
+const champions = ['Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
+// list of teams for development, to reduce request amount
 // const champions = ['Warriors', 'Cavaliers'];
-let year = 2015;
+let year = 2018;
+// Data for the charts
 const champ3Perc = [];
 const champ3Atts = [];
 const champ3Made = [];
@@ -63,6 +67,8 @@ async function getChampionshipStats(teamID, season) {
 }
 
 async function getChampionsData() {
+  // main triggger for API calls. 
+  // Loop through list of champion teams, get each team ID and team Stats
   for (const team of champions) {
     console.log(team);
     const id = await teamToID(team);
@@ -90,7 +96,7 @@ function makeChart() {
       labels: champions,
       datasets: [{
         label: 'Past Champ 3 Point %',
-        data: [40, 32, 18, 55, 10, 8, 77, 13],
+        data: champ3Perc,
         borderWidth: 1
       }]
     },
@@ -105,7 +111,8 @@ function makeChart() {
 }
 
 async function mainEvent() {
-  // await getChampionsData();
+// 100 request per day, 10 request per minute
+  await getChampionsData();
 
   const total3Perc = champ3Perc.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   const avg3Perc = total3Perc / champ3Perc.length;

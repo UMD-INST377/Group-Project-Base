@@ -101,6 +101,7 @@ form {
   padding: 1.25rem;
   margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
   border: 3px dashed;
+  text-align: center;
 
 
   /* box-shadows are fancy */

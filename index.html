@@ -6,7 +6,7 @@
     <title>Group 102-11 Project</title>
     <link rel="stylesheet" href="./client/styles.css">
 </head>
-<body>
+<body onload= "onPageLoad()">
     <header>
         <div class="nav-bar">
             <div class = 'logo-img'>
@@ -16,7 +16,7 @@
                 <h1>Group 102-11 Project Title</h1>
             </div>
             <div class="login-button">
-                <button>Spotify Login</button>
+                <button class="button-3" role="button" onclick="requestAuthorization()">Spotify Login</button>
             </div>
         </div>
     </header>

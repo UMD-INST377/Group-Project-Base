@@ -20,6 +20,7 @@
                         <label for="resto">Enter Sector</label>
                         <input type="text" name="resto" id="resto" />
                     </div>
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                     <button type="submit" id="get-resto">Submit</button>
                 </form>
             </div>
@@ -29,15 +30,14 @@
                 <h3>Results</h3>
             </div>
             <div class="right_section box">
-                <h3>Chart</h3>
+                <h3>Crimes By Sector</h3>
+                <div class ="chart_container">
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
     <footer class="footer footer a footer a:hover">
-        <p>
-          emilyklomparens
-          <a href="https://github.com/emilyklomparens" target ="_blank" rel="noopener noreferrer">GitHub Page</a>
-        </p>
       </footer>
       <script src="./script.js"></script>
 </body>

@@ -21,6 +21,11 @@ body {
   background-color: #E3F4E8;
 }
 
+@font-face {
+  font-family: GT Flexa Bold Trial;
+  src: url(GT-Flexa-Bold-Trial.otf);
+}
+
 a {
   display: inline-block;
   text-decoration: none;
@@ -60,6 +65,7 @@ form {
 }
 
 .header h1 {
+  font-family: GT Flexa Bold Trial;
   display: block;
   font-size: 1.5rem;
   padding: 1.25rem;

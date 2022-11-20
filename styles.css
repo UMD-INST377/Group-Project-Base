@@ -102,12 +102,12 @@ footer {
 }
 
 .footer a {
-  color: rgb(255, 230, 138);
+  color: rgb(242, 242, 242);
   text-decoration: underline;
 }
 
 .footer a:hover {
-  color: rgb(255, 225, 236);
+  color: rgb(142, 241, 180);
   text-decoration: none;
 }
 

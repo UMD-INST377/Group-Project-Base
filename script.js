@@ -6,6 +6,13 @@
     Under this comment place any utility functions you need - like an inclusive random number selector
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 */
+async function getData(){
+  const url = '';
+  const data = await fetch(url);
+  const json = await data.json();
+  const reply = json.filter((item) => Boolean(item.geocoded_colum_1)).filter((item) => Boolean(item.name));
+  return reply;
+}
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -105,6 +112,8 @@ function getRandomIntInclusive(min, max) {
   }
   
   async function mainEvent() {
+
+    const data = await getData();
     /*
         ## Main Event
           Separating your main programming from your side functions will help you organize your thoughts

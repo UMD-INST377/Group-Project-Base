@@ -13,7 +13,7 @@ function injectHTML(list) {
 }
 
 function processCrimes(list, sector) {
-
+  return list.filter((item) => item.pgpd_sector === (sector));
 }
 function initChart(chart, object) {
   const labels = Object.keys(object);
@@ -39,7 +39,6 @@ function initChart(chart, object) {
 function changeChart(chart, dataObject) {
   const labels = Object.keys(dataObject);
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);
-
   chart.data.labels = labels;
   chart.data.datasets.forEach((set) => {
     set.data = info;
@@ -49,8 +48,7 @@ function changeChart(chart, dataObject) {
 }
 
 function shapeDataForLineChart(array) {
-    console.log("Hi");
-    return array.reduce((collection, item) => {
+  return array.reduce((collection, item) => {
     if (!collection[item.clearance_code_inc_type]) {
       collection[item.clearance_code_inc_type] = [item];
     } else {
@@ -90,9 +88,10 @@ async function mainEvent() {
   form.addEventListener('input', (event) => {
     console.log(event.target.value);
     sector = event.target.value;
-    // const filteredList = processCrimes(chartData, event.target.value);
-    // injectHTML(filteredList);
-    const localData = shapeDataForLineChart(chartData);
+    const filteredList = processCrimes(chartData, event.target.value);
+    console.log(filteredList);
+    //injectHTML(filteredList);
+    const localData = shapeDataForLineChart(filteredList);
     changeChart(myChart, localData);
   });
 }

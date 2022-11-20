@@ -22,7 +22,11 @@
         </div>
         <div class="right_section">
           <h3>About this Site/LitterTRAK</h3>
-          <button type="generate" id="getLitter">See Litter</button>
+          <form action="/api" class="main_form box">
+            <label for="resto">Restaurant Name</label>
+            <input type="text" name="resto" id="resto" />
+            <button type="generate" id="getLitter">See Litter</button>
+          </form>
         </div>
         <div class="right_bottom_section">
           <h3>Reports over days</h3>

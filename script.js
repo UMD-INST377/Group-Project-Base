@@ -95,8 +95,8 @@ function getRandomIntInclusive(min, max) {
     });
   
     array.forEach((item, index) => {
-      const lat = item.latitude;
-      const long = item.longitude;
+      const lat = parseFloat(item.latitude);
+      const long = parseFloat(item.longitude);
       L.marker([lat, long]).addTo(map);
       if (index === 0) {
         map.setView([lat, long], 10);

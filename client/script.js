@@ -1,16 +1,5 @@
 /* eslint-disable max-len */
 
-/*
-  Hook this script to index.html
-  by adding `<script src="script.js">` just before your closing `</body>` tag
-*/
-
-/*
-  ## Utility Functions
-    Under this comment place any utility functions you need - like an inclusive random number selector
-    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-*/
-
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -48,9 +37,11 @@ function filterList(array, filterInputValue) {
   });
 }
 
+/* A processing request that uses array methods (.map, .filter, .find, .reduce) 
+to change your data into the shape your chart, map, or other component needs for display */
 function initMap() {
   console.log('initMap');
-  const map = L.map('map').setView([38.9897, -76.9378], 13);
+  const map = L.map('map').setView([38.9897, -76.9378], 11);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -59,14 +50,19 @@ function initMap() {
 }
 
 function markerPlace(array, map) {
-  console.log('markerPlace', array);
-  // const marker = L.marker[-51.5, 0.09].addTo(map);
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+
   array.forEach((item) => {
-    const {coordinates} = item.location;
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+    const {latitude} = item;
+    const {longitude} = item;
+    L.marker([latitude, longitude]).addTo(map);
   });
 }
-
+// An asynchronous data request to your API
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
   const data = await fetch(url);
@@ -89,12 +85,11 @@ async function mainEvent() {
 
   console.table(mapData);
 
+  console.log(pageMap);
+
   // in your browser console, try expanding this object to see what fields are available to work with
   // for example: arrayFromJson.data[0].name, etc
   console.log(mapData[0]);
-
-  // this is called "string interpolation" and is how we build large text blocks with variables
-  console.log(`${mapData[0].clearance_code_inc_type} ${mapData[0].street_address}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (mapData.length > 0) { // the question mark in this means "if this is set at all"

@@ -102,7 +102,7 @@ function getRandomIntInclusive(min, max) {
     });
   
     array.forEach((item, index) => {
-      const {coordinates} = item.location;
+      const {coordinates} = item.geocoded_column;
     L.marker([coordinates[0], coordinates[1]]).addTo(map);
     if (index === 0) {
       map.setView([coordinates[0], coordinates[1]], 10);

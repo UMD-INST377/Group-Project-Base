@@ -53,6 +53,7 @@ form {
 }
 
 .header {
+  background-color: #6BAE7E;
   padding-top: 0rem;
   padding-left: 0rem;
   padding-right: 0rem;
@@ -96,7 +97,7 @@ form {
 }
 
 footer {
-  background-color: #EFA48B;
+  background-color: #6F9079;
   flex-shrink: 0;
   padding: 1rem;
   font-size: 1.2rem;

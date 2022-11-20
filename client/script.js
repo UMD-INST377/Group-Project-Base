@@ -1,10 +1,3 @@
-/* eslint-disable max-len */
-
-/*
-  Hook this script to index.html
-  by adding `<script src="script.js">` just before your closing `</body>` tag
-*/
-
 /*
   ## Utility Functions
     Under this comment place any utility functions you need - like an inclusive random number selector
@@ -50,7 +43,7 @@ function filterList(array, filterInputValue) {
 
 function initMap() {
   console.log('initMap');
-  const map = L.map('map').setView([38.9897, -76.9378], 13);
+  const map = L.map('map').setView([38.9897, -76.9378], 11);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -59,13 +52,14 @@ function initMap() {
 }
 
 function markerPlace(array, map) {
-  console.log('markerPlace', array);
-  // const marker = L.marker[-51.5, 0.09].addTo(map);
+  map.eachLayer((layer) => {
+		if (layer instanceof L.Marker) {
+		  layer.remove();
+		}});
   array.forEach((item) => {
-    const {coordinates} = item.location;
-    L.latLng(coordinates);
-    console.log(coordinates);
-    L.marker([coordinates[0], coordinates[1]]).addTo(map);
+    const latitude = item.latitude;
+    const longitude = item.longitude;
+    L.marker([latitude, longitude]).addTo(map);
   });
 }
 

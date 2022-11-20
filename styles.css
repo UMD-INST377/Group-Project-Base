@@ -99,6 +99,7 @@ form {
 }
 
 .right_bottom_section {
+  border: 2px dashed;
   flex: 1 2 auto;
   margin: 1rem;
   padding: 1.5rem;

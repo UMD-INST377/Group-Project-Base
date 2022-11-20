@@ -95,10 +95,11 @@ function getRandomIntInclusive(min, max) {
     });
   
     array.forEach((item, index) => {
-      const {coordinates} = item.geocoded_column_1;
-      L.marker([coordinates[1], coordinates[0]]).addTo(map);
+      const lat = parseFloat(item.latitude);
+      const long = parseFloat(item.longitude);
+      L.marker([lat, long]).addTo(map);
       if (index === 0) {
-        map.setView([coordinates[1], coordinates[0]], 10);
+        map.setView([lat, long], 10);
       }
     });
   }
@@ -114,8 +115,6 @@ function getRandomIntInclusive(min, max) {
     // the async keyword means we can make API requests
     const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
     const submit = document.querySelector('#getLitter'); // get a reference to your submit button
-    const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to loading animation
-    submit.style.display = 'none'; // let your submit button disappear
   
     /*
         Let's get some data from the API - it will take a second or two to load
@@ -145,12 +144,7 @@ function getRandomIntInclusive(min, max) {
     // This IF statement ensures we can't do anything if we don't have information yet
     if (arrayFromJson.data?.length > 0) {
       // the question mark in this means "if this is set at all"
-      submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
-  
-      // hide load button
-      loadAnimation.classList.remove('lds-ellipsis');
-      loadAnimation.classList.add('lds-ellipsis_hidden'); // displays as button when there is data
-  
+      
       let currentList = [];
   
       form.addEventListener('input', (event) => {
@@ -162,7 +156,7 @@ function getRandomIntInclusive(min, max) {
   
       // And here's an eventListener! It's listening for a "submit" button specifically being clicked
       // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
-      form.addEventListener('submit', (submitEvent) => {
+      form.addEventListener('generate', (submitEvent) => {
         // This is needed to stop our page from changing to a new URL even though it heard a GET request
         submitEvent.preventDefault();
   

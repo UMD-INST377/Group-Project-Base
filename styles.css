@@ -75,6 +75,15 @@ form {
   margin: 0 auto;
 }
 
+.button {
+  background-color: #6BAE7E;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  }
+
 .left_section {
   border: 2px dashed;
   flex: 0 1 auto;

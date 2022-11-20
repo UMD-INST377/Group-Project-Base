@@ -49,3 +49,8 @@
       float: none;
     }
   }
+
+  body {
+    font-family:  "Helvetica", sans-serif;
+    background-color: black;
+  }

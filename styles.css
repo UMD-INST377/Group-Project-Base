@@ -22,8 +22,8 @@ body {
 }
 
 @font-face {
-  font-family: 'GT Flexa Bold Trial';
-  src: url(GT-Flexa-Bold-Trial.otf);
+  font-family: 'GT Flexa Exp Black';
+  src: url(GT-Flexa-X-Expanded-Black-Trial.otf);
 }
 
 a {
@@ -65,7 +65,7 @@ form {
 }
 
 .header h1 {
-  font-family: 'GT Flexa Bold Trial';
+  font-family: 'GT Flexa Exp Black';
   display: block;
   font-size: 1.5rem;
   padding: 1.25rem;

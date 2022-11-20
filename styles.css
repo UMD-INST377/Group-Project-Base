@@ -83,6 +83,11 @@ form {
 }
 
 .right_section {
+  flex: auto;
+  flex-direction: column;
+}
+
+.right_top_section {
   border: 2px dashed;
   flex: 1 2 auto;
   margin: 1rem;
@@ -101,6 +106,7 @@ form {
   justify-content: center;
   display: flex;
   flex-direction: column;
+  align-self: flex-end;
 }
 
 footer {

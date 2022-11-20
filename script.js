@@ -114,8 +114,6 @@ function getRandomIntInclusive(min, max) {
     // the async keyword means we can make API requests
     const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
     const submit = document.querySelector('#getLitter'); // get a reference to your submit button
-    const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to loading animation
-    submit.style.display = 'none'; // let your submit button disappear
   
     /*
         Let's get some data from the API - it will take a second or two to load

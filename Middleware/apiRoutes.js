@@ -3,7 +3,6 @@ import express from 'express';
 import path from 'path';
 
 import foodServiceRoutes from './litterRoutes.js';
-import sqlDemoRoutes from './sqlDemoRoutes.js'; // this is included in case you want to use a database of your own for the group project
 
 const router = express.Router();
 
@@ -64,11 +63,6 @@ router.route('/')
 
 /* /api/foodServicePG is the main route we use in labs */
 router.use('/foodServicePG', foodServiceRoutes);
-
-/* /api/sqlDemo is an advanced set of files which demonstrate
-  how to use your own database - it's based on using one from 327 for this class
-*/
-router.use('/sqlDemo', sqlDemoRoutes);
 
 // 'export' is how we make this file accessible to 'import' in server.js
 export default router;

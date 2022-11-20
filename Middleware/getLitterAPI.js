@@ -9,13 +9,15 @@ import fetch from 'node-fetch';
 */
 
 // note "export" keyword here
-export async function loadFoodServiceData(req, res, next) {
+export async function loadLitterData(req, res, next) {
   try {
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
 
-    const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+    const lat = json.filter((item) => Boolean(item.latitude)).filter((item) => Boolean(item.name));
+    const long = json.filter((item) => Boolean(item.longitude)).filter((item) => Boolean(item.name));
+    let reply = {lat, long};
     console.log('Results in getLitterAPI', json.length); // let's check that something's there before we return it
     req.foodServiceData = reply; // and let's _attach_ the data to our request object here
     next();

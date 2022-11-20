@@ -64,6 +64,7 @@ form {
   font-size: 1.5rem;
   padding: 1.25rem;
   margin:0; 
+  color:rgb(242, 242, 242);
 }
 
 .box {
@@ -168,7 +169,7 @@ form label {
     /* Rules in here will only apply when a screen is the correct size */
     /* check it out by using your developer tools to shrink your screen-size */
     .container {
-      background-color: #BDD3C4;
+      background-color: #E3F4E8;
       margin: 0px;
       flex-direction: column;
       justify-content: center;

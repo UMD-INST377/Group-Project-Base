@@ -5,7 +5,7 @@ const getTracklist = async (req_term,req_token) => {
       method: 'GET',
       body: JSON.stringify({
         term: req_term,
-        token: req_token
+        acesss_token: req_token
       }), 
       headers: {
         'Content-Type': 'application/json'

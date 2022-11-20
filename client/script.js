@@ -1,3 +1,16 @@
+/* eslint-disable max-len */
+
+/*
+  Hook this script to index.html
+  by adding `<script src="script.js">` just before your closing `</body>` tag
+*/
+
+/*
+  ## Utility Functions
+    Under this comment place any utility functions you need - like an inclusive random number selector
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+*/
+
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);

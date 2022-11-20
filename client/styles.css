@@ -1,3 +1,8 @@
+/* 
+    New code bonus: pure CSS data loading icon
+    This comes from loading.io/css - it's nice to show that something is happening!
+*/
+
 .lds-ellipsis {
     display: inline-block;
     position: relative;
@@ -386,3 +391,4 @@
         align-items: center;
       }
   }
+ 

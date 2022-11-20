@@ -7,10 +7,10 @@
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 */
 async function getData(){
-  const url = '';
+  const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.geocoded_colum_1)).filter((item) => Boolean(item.name));
+  const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.name));
   return reply;
 }
 
@@ -102,11 +102,10 @@ function getRandomIntInclusive(min, max) {
     });
   
     array.forEach((item, index) => {
-      const lat = parseFloat(item.latitude);
-      const long = parseFloat(item.longitude);
-      L.marker([lat, long]).addTo(map);
-      if (index === 0) {
-        map.setView([lat, long], 10);
+      const {coordinates} = item.location;
+    L.marker([coordinates[0], coordinates[1]]).addTo(map);
+    if (index === 0) {
+      map.setView([coordinates[0], coordinates[1]], 10);
       }
     });
   }

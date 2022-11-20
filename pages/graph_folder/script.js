@@ -5,6 +5,7 @@ localStorage.setItem("access_token", token);
 // Sends the authentication token and time_frame - (short_term,medium_term,long_term)
 // Returns an array of songs
 const getTracklist = async (req_term, req_token) => {
+  url = "https://umd-spotify-backend.herokuapp.com/tracklist?";
   const response = await fetch(
     url +
       new URLSearchParams({

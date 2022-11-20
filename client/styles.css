@@ -85,7 +85,7 @@ body {
   }
   
   .playlist_section {
-    /* background-color: rgb(234 141 141 / 89%); */
+    background-color: rgba(255, 255, 255, 0.89);
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;
@@ -93,7 +93,7 @@ body {
     flex-direction: column;
   }
   .box {
-    /* background-color: rgba(239, 239, 239, 0.40); */
+    background-color: rgba(255, 255, 255, 0.4);
     border: 2px dashed;
     border-radius: 4px;
   

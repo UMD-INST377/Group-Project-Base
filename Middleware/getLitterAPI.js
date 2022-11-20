@@ -12,8 +12,8 @@ async function getData() {
 var data = JSON.parse(this.response)
 
 if (request.status >= 200 && request.status < 400) {
-  data.forEach(movie => {
-    console.log(movie.title)
+  data.forEach(item => {
+    console.log(item.organization)
   })
 } else {
   console.log('error')

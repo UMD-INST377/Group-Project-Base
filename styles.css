@@ -60,6 +60,8 @@ form {
 }
 
 .header h1 {
+  font-family: 'GT Flexa Bold Trial';
+  src:url(GT-Flexa-Bold-Trial.otf);
   display: block;
   font-size: 1.5rem;
   padding: 1.25rem;

@@ -63,7 +63,9 @@ function markerPlace(array, map) {
   // const marker = L.marker[-51.5, 0.09].addTo(map);
   array.forEach((item) => {
     const {coordinates} = item.location;
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+    L.latLng(coordinates);
+    console.log(coordinates);
+    L.marker([coordinates[0], coordinates[1]]).addTo(map);
   });
 }
 

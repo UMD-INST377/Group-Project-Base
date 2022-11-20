@@ -16,7 +16,7 @@ import express, { query } from 'express';
 */
 
 // This import is in brackets because 'loadFoodServiceData' is set as the name in the export
-import { loadFoodServiceData } from '../middleware/loadFoodServicesData.js';
+import { loadLitterData } from '/Middleware/getLitterAPI.js';
 
 // here, basicControllers is a name we made up in this file, which exports an unnamed 'default' object
 import foodServiceControllers from '../controllers/foodServiceControllers.js';
@@ -29,7 +29,7 @@ const router = express.Router();
   to load data _before_ any of our routes load.
   The order of the code is important in this case.
 */
-router.use(loadFoodServiceData);
+router.use(loadLitterData);
 
 /*
   And here we begin to set up our route methods - GET, POST, PUT and so on
@@ -58,7 +58,7 @@ router
         }
       } */
       let reply;
-      if (req.query?.resto) {
+      if (req.query?.litter) {
         console.log('query parameters if any', req.query);
 
         // A `.filter` function will return the all elements in an array that match a truth check.
@@ -100,9 +100,9 @@ router
       });
     }
   }) // Other controllers live in the basicControllers file, for legibility - you can even separate them by file if they get very complex
-  .post((req, res) => foodServiceControllers.handlePostRequest(req, res))
-  .put((req, res) => foodServiceControllers.handlePutRequest(req, res))
-  .delete((req, res) => foodServiceControllers.handleDeleteRequest(req, res));
+  .post((req, res) => litterControllers.handlePostRequest(req, res))
+  .put((req, res) => litterControllers.handlePutRequest(req, res))
+  .delete((req, res) => litterControllers.handleDeleteRequest(req, res));
 
 /*
   This route is separated out because it is a 'sub-route' of /foodServicePG

@@ -118,15 +118,6 @@ form {
   align-self: flex-end;
 }
 
-.generate {
-  background-color: #6BAE7E;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  display: inline-block;
-  }
-
 footer {
   background-color: #6F9079;
   flex-shrink: 0;

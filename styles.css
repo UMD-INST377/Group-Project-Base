@@ -93,6 +93,16 @@ form {
   flex-direction: column;
 }
 
+.right_bottom_section {
+  flex: 1 2 auto;
+  margin: 1rem;
+  padding: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
 footer {
   background-color: #6F9079;
   flex-shrink: 0;

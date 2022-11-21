@@ -8,12 +8,14 @@
     <script src="./script.js"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
 
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
     crossorigin=""></script>
+    
   </head>
   <body class="body">
     <div class="wrapper">
@@ -36,7 +38,7 @@
         <div class="right_section">
           <div class="right_top_section">
             <h3>About this Site/LitterTRAK</h3>
-            <form class="main_form box">
+            <form action="/Middleware/" class="main_form box">
               <label for="litter">litter!!!!</label>
               <input type="text" name="litter" id="litter" />
               <button type="generate" id="getLitter">See Litter</button>

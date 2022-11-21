@@ -49,7 +49,8 @@ function getRandomIntInclusive(min, max) {
     */
   }
   
-  function processLitter(list) {
+  function processRestaurants(list) {
+    console.log('fired restaurants list');
     const range = [...Array(15).keys()]; // sp. notation to create array of 15 elements
     const newArray = range.map((item) => {
       const index = getRandomIntInclusive(0, list.length);
@@ -86,7 +87,7 @@ function getRandomIntInclusive(min, max) {
   
   function initMap() {
     console.log('initMap');
-    const map = L.map('map').setView([-76.9378, 38.9897], 13);
+    const map = L.map('map').setView([38.9897, -76.9378], 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -169,7 +170,7 @@ function getRandomIntInclusive(min, max) {
         submitEvent.preventDefault();
   
         // This constant will have the value of your 15-restaurant collection when it processes
-        currentList = processLitter(arrayFromJson.data);
+        currentList = processRestaurants(arrayFromJson.data);
   
         // And this function call will perform the "side effect" of injecting the HTML list for you
         injectHTML(currentList);

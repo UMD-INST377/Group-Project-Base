@@ -10,7 +10,8 @@ async function getData(){
   const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.name));
+  const reply = json.filter((item) => Boolean(item.geocoded_column));
+  console.log(reply);
   return reply;
 }
 
@@ -119,7 +120,7 @@ function getRandomIntInclusive(min, max) {
           When you're not working in a heavily-commented "learning" file, this also is more legible
           If you separate your work, when one piece is complete, you can save it and trust it
       */
-    const pageMap = initMap();
+    const map = initMap();
     // the async keyword means we can make API requests
     const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
     const submit = document.querySelector('#getLitter'); // get a reference to your submit button
@@ -150,7 +151,7 @@ function getRandomIntInclusive(min, max) {
     );
   
     // This IF statement ensures we can't do anything if we don't have information yet
-    if (arrayFromJson.data?.length > 0) {
+    if (arrayFromJson.data.length > 0) {
       // the question mark in this means "if this is set at all"
       
       let currentList = [];
@@ -159,7 +160,7 @@ function getRandomIntInclusive(min, max) {
         console.log(event.target.value);
         const newFilterList = filterList(currentList, event.target.value);
         injectHTML(newFilterList);
-        markerPlace(newFilterList, pageMap);
+        markerPlace(newFilterList, map);
       });
   
       // And here's an eventListener! It's listening for a "submit" button specifically being clicked
@@ -173,7 +174,7 @@ function getRandomIntInclusive(min, max) {
   
         // And this function call will perform the "side effect" of injecting the HTML list for you
         injectHTML(currentList);
-        markerPlace(currentList, pageMap);
+        markerPlace(currentList, map);
   
         // By separating the functions, we open the possibility of regenerating the list
         // without having to retrieve fresh data every time

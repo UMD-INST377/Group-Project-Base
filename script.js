@@ -49,8 +49,7 @@ function getRandomIntInclusive(min, max) {
     */
   }
   
-  function processRestaurants(list) {
-    console.log('fired restaurants list');
+  function processLitter(list) {
     const range = [...Array(15).keys()]; // sp. notation to create array of 15 elements
     const newArray = range.map((item) => {
       const index = getRandomIntInclusive(0, list.length);
@@ -170,7 +169,7 @@ function getRandomIntInclusive(min, max) {
         submitEvent.preventDefault();
   
         // This constant will have the value of your 15-restaurant collection when it processes
-        currentList = processRestaurants(arrayFromJson.data);
+        currentList = processLitter(arrayFromJson.data);
   
         // And this function call will perform the "side effect" of injecting the HTML list for you
         injectHTML(currentList);

@@ -1,8 +1,9 @@
-function myFunction() {
-  document.getElementById('myDropdown').classList.toggle('show');
+function myFunction(contentID) {
+  document.getElementById(contentID).classList.toggle('show');
 }
 
 async function getData() {
+  // Just adding this to add to the newest pull/ commit for lab 9
   const url = 'https://imdb-top-100-movies.p.rapidapi.com/';
   const options = {
     method: 'GET',
@@ -16,8 +17,29 @@ async function getData() {
   return json;
 }
 
+async function injectDateFilter(list, filterInput, injectLocation) {
+  let newArray = list.filter((item) => {
+    const years = item.year >= filterInput && item.year <= (filterInput + 9);
+    return years;
+  });
+  const target = document.querySelector(injectLocation);
+  target.innerHTML = '';
+
+  newArray = newArray.slice(0, 5);
+
+  const listOl = document.createElement('ol');
+  target.appendChild(listOl);
+  newArray.forEach((item) => {
+    const ol = document.createElement('li');
+    ol.innerText = item.title;
+    listOl.appendChild(ol);
+  });
+}
+
 async function mainEvent() {
   data = await getData();
   console.log(data);
+  injectDateFilter(data, 1970, '#best_1970s');
+  injectDateFilter(data, 1980, '#best_1980s');
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

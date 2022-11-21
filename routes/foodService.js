@@ -11,10 +11,12 @@ const router = express.Router();
 // /////////////////////////////////
 // Food Inspection Set Demos
 // /////////////////////////////////
-router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
+router.route('/spotifyMusic') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
+    const clientId = 'c40be5245c694705ac9b2fc0e2603786';
+    const secretId = '053ee1b26dfd43738827448cceebb9e1';
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const url = 'https://accounts.spotify.com/api/token';
       const data = await fetch(url);
       const json = await data.json();
       console.log(json);
@@ -27,7 +29,7 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .put((req, res) => {
     try {
-      res.json({message: 'put FoodServices endpoint'});
+      res.json({message: 'put SpotifyMusic endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -35,7 +37,7 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .post((req, res) => {
     try {
-      res.json({message: 'post FoodServices endpoint'});
+      res.json({message: 'post SpotifyMusic endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -43,51 +45,7 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .delete((req, res) => {
     try {
-      res.json({message: 'delete FoodServices endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  });
-
-router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
-  .get(async (req, res) => {
-    try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-      const request = await fetch(url);
-      const json = await request.json();
-      console.log(json);
-
-      const filteredList = json.filter((item, index) => {
-        const {zipCode} = req.params;
-        return item.zip === zipCode;
-      });
-
-      res.json({data: filteredList});
-    } catch (error) {
-      console.log(error);
-      res.json({error: error});
-    }
-  })
-  .put((req, res) => {
-    try {
-      res.json({message: 'put FoodServices ID endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  })
-  .post((req, res) => {
-    try {
-      res.json({message: 'post FoodServices ID endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  })
-  .delete((req, res) => {
-    try {
-      res.json({message: 'delete FoodServices ID endpoint'});
+      res.json({message: 'delete SpotifyMusic endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});

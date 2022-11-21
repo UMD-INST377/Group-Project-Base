@@ -1,5 +1,5 @@
 /*
-  Fetch request to get top 50 songs - Name, popularity, 
+  Fetch request to get top 50 songs - Name, Artist, popularity, 
   Receives: Access token(obtained through login),term(short_term,medium_term,long_term)
   Note: Short term may not return anything if you haven't listened to spotify recently.
   Response Example: 

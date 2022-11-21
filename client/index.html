@@ -1,14 +1,47 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <script src="./script.js"></script>
-    <h1>Team 103-11</h1>
-    <h1>hello world</h1>
-</body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Spotify API Group Project</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header class="header thickBox">
+                <h1 class="center">Spotify Songs</h1>
+            </header>
+            <div class="container">
+                <h1>USA All-Time Top 10 Songs</h1>
+                <form action="/api" class="box">
+                    <p>Song Title's:</p>
+                    <input type="text">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="container">
+                <h1>This Week's Top 10 Songs</h1>
+                <form action="/api" class="box">
+                    <p>Song Title's:</p>
+                    <input type="text">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="container">
+                <h1>New and Upcoming Artist</h1>
+                <form action="/api" class="box">
+                    <p>Artist Name:</p>
+                    <input type="text">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="container">
+                <h1>Random Song Generator</h1>
+                <form action="/api" class="box">
+                    <p>Search music using specfic terms</p>
+                    <input type="text">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </body>
 </html>

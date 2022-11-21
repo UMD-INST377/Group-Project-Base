@@ -37,10 +37,6 @@ h2, h3 {
   padding-bottom:1.5rem;
 }
 
-form {
-  accent-color: hsla(202, 100%, 50%, 0.482);
-}
-
 .wrapper {
   min-height: 100vh;
   display: flex;

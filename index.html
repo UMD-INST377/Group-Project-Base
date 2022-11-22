@@ -13,20 +13,25 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <h1>Speed Cameras</h1>
-            <h2>Home: <a href="C:\Users\ccobr\OneDrive\Documents\Group10-Final-Project-Speed-Cameras\index.html"></a></h2>
-            <h3>About: <a href="C:\Users\ccobr\OneDrive\Documents\Group10-Final-Project-Speed-Cameras\About.html"></a></h3>
+            <h1><em>Speed Cameras</em></h1>
+            <h2 class="home"><a href="C:\Users\ccobr\OneDrive\Documents\Group10-Final-Project-Speed-Cameras\index.html">Home</a></h2>
+            <h3 class="about"><a href="C:\Users\ccobr\OneDrive\Documents\Group10-Final-Project-Speed-Cameras\About.html">About</a></h3>
         </header>
         <div class="container">
             <div class="left_section box">
-
+                <h2><em>Data Refresher</em></h2>
+                <form action="/api" class="box main_form">
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    <button type="submit" id="get-resto">Data</button>
+                    <button type="reset" id="get-resto">Refresh</button>
+                </form>
             </div>
             <div class="right_section box">
-                <h2>Speed Cameras Map</h2>
+                <h2><em>Speed Cameras Map</em></h2>
                 <div id="map"></div>
             </div>
         </div>
-        <footer class="footer">Section 102 Group 10 - Noah Shaw and Biniam Zemedkun</footer>
+        <footer class="footer"><em>Section 102 Group 10 - Noah Shaw and Biniam Zemedkun</em></footer>
     </div>
     <script src="./script.js"></script>
 </body>

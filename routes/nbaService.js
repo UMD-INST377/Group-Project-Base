@@ -1,23 +1,25 @@
 import express from 'express';
 import fetch from 'node-fetch';
- 
-const router = express.Router();
 
+const router = express.Router();
 //
 // This is a demo of how to structure your final project API
 // One route file is expected per student, with appropriate HTTP methods on each endpoint
 //
 
-// /////////////////////////////////
+// //////////  ///////////
 // Food Inspection Set Demos
 // /////////////////////////////////
 router.route('/nbaServicesPG') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {
-      const url = 'https://api-nba-v1.p.rapidapi.com/seasons';
+      const url = 'https://api-nba-v1.p.rapidapi.com/players';
       const data = await fetch(url, {
         method: 'GET',
-        headers: {'X-RapidAPI-Key': '4f97ce439dmshc2e85d907e86424p17ef73jsna492d20dc9ec'}
+        body: {team: '1', season: '2021'},
+        headers: {
+          'X-RapidAPI-Key': '4f97ce439dmshc2e85d907e86424p17ef73jsna492d20dc9ec'
+        }
       });
       const json = await data.json();
       console.log(json);

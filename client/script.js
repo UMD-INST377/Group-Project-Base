@@ -12,18 +12,28 @@ async function gettingURL(){
     // example dele
     const gettingTitle = await data.response["rows"]["1"]["title"];
   
-    
+    // lenght of the data 
     var arrayLenght = gettingrows.length;
     
+
+    // creating and stroing the data in for loop
+    let findit = document.getElementById("idtest");
+
+
     for (var i = 0; i < arrayLenght; i++) {
         
         console.log(gettingrows[i]["title"])
 
-        const hola = gettingrows[i]["title"]
+        const gettingTitle = gettingrows[i]["title"]
         
-        
-        document.getElementById("list1").textContent = hola
-        document.getElementById("list2").textContent = hola
+        //storing and selecting the data 
+        let span = document.createElement("span");
+        span.id = "span"
+
+        //appending to the findit variable
+        span.textContent = gettingTitle
+        findit.append(span);
+
       }
     
 
@@ -32,5 +42,4 @@ async function gettingURL(){
 }
 
 // Calling the function fetching
-
 gettingURL();

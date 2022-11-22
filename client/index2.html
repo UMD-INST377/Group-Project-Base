@@ -3,31 +3,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Types of Crime</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Group Project Base</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
 </head>
 <body>
+    <script src="./script2.js"></script>
     <div class="wrapper">
         <header class="header">
-            <h1>Types of Crime</h1>
+            <h1>Types of Crimes in PG County</h1>
         </header>
         <div class="container">
             <div class="left_section box">
-                <h3>Form Inputs</h3>
-                <form action="/api" class="box">
-                    <label for="resto"></label>
-                    <input type="text" name="resto" id="resto" />
-                    <button type="submit">Submit</button>
+                <h3>Search By Types of Crime</h3>
+                <form action="/api" class="main_form box">
+                    <div>
+                        <label for="resto">Enter Type of Crime</label>
+                        <input type="text" name="resto" id="resto" />
+                        <button type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
+        </div>
+        <div class="container">
+            <div class="left_section box">
+                <h3>Crime Types</h3>
+            </div>
             <div class="right_section box">
-                <h3>Search a Type of Crime</h3>
-                <div class="restaurant_list box">
-                    A list of local restaurants
+                <h3>Proportion of Crime Type</h3>
+                <div class ="chart_container">
+                    <canvas id="myChart"></canvas>
                 </div>
             </div>
         </div>
     </div>
-    <footer class="footer">hello world</footer>
+    <footer class="footer footer a footer a:hover">
+      </footer>
+      <script src="./script2.js"></script>
 </body>
 </html>

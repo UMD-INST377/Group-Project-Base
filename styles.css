@@ -42,6 +42,7 @@ h2, h3 {
   margin:0;
   padding:0;
   padding-bottom:0rem;
+  flex-direction: row;
 }
 
 form {
@@ -91,7 +92,7 @@ form {
   border-radius: 8px;
   font-size: 1.5rem;
   padding: 1.25rem;
-  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
   border: 3px dashed;
   text-align: center;
 
@@ -126,32 +127,14 @@ form {
   flex-direction: column;
 }
 
-/*
-  This block is actually dependent on the "container" block having a flex set on it
-  and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
-  That serves to cram the footer to the bottom of the page.
-*/
-
 .footer {
   flex-shrink: 0;
   padding: 1rem;
   background-color: rgb(0, 19, 185);
+  text-decoration-color: #fff;
   font-size: 1.2rem;
   font-weight: 600;
   border: 3px dashed;
-}
-
-.footer a {
-  color: rgb(251, 255, 0);
-  text-decoration: underline;
-}
-
-.footer a:hover {
-  /* Hue, saturation, luminosity, alpha */
-  background-color: hsla(0, 0%, 90%, 0.15);
-  /* red, green, blue, alpha */
-  color: rgb(246, 169, 93);
-  text-decoration: none;
 }
 
 #map { 

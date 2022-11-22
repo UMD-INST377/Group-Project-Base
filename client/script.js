@@ -1,11 +1,16 @@
 
 
+function getRandomInclusing(min,max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+  }
+
+
+
 function injectHTML(list) {
 
 }
-
-
-
 
 function createplaylsit(array, song) {
     playlist = []; 
@@ -16,8 +21,6 @@ function createplaylsit(array, song) {
     return playlist;
 }
 
-
-
 async function mainEvent() {
     // map here or something
      const results = await fetch()
@@ -26,6 +29,7 @@ async function mainEvent() {
      if(arrayFromJson.data?.length > 0) {     
 
         form.addEventListener('input', (event) =>{
+
         });
 
 

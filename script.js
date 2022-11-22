@@ -12,16 +12,24 @@
         return newArray;
     
     function initChart(chart, object) {
-        const labels = Object.keys(object);
-        const info = Object.keys(object).map((item) => object[item].length);
-    
+        // const labels = Object.keys(object);
+        // const info = Object.keys(object).map((item) => object[item].length);
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+          ];
+
         const data = {
         labels: labels,
         datasets: [{
             label: 'Restaurants By Category',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: info
+            data: [0, 10, 5, 2, 20, 30, 45],
         }]
         };
     
@@ -89,14 +97,14 @@
         console.log(shapaedData);
         const myChart = initChart(chartTarget, shapaedData);
 
-        form.addEventListener('input',(event) => {
-            currentList = processRe
+        form.addEventListener('submit',(submitEvent) => {
+            submitEvent.preventDefualt();
+            currentList = processRestaurants(chartData);
             injectHTML(currentList);
             const localData = shapeDataForLineChart(currentList);
             changeChart(myChart, localData);
-        })
+        });
         
     }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
-

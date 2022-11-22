@@ -88,7 +88,7 @@ form {
   color: #4a4a4a;
 
   /* shapes */
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1.5rem;
   padding: 1.25rem;
   margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
@@ -156,8 +156,8 @@ form {
 
 #map { 
     display: block;
-    width: 1000px;
-    height: 980px;
+    width: 600px;
+    height: 580px;
     border: 2px dashed rgb(99,99,99);
     margin-bottom: 1rem;
   }

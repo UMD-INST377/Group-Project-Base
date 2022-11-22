@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 
 * {
     box-sizing: border-box;
@@ -272,11 +270,6 @@
     /* Pick a good border colour and check out how it works with your buttons */
   }
   
-  .prev:hover,
-  .next:hover {
-    /* Pick a good background colour for your hover pseudoclass */
-  }
-  
   /*
   Form Styles
   */
@@ -376,4 +369,3 @@
         transform: translate(24px, 0);
       }
     }
->>>>>>> Stashed changes

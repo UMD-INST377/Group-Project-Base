@@ -5,8 +5,13 @@ const options = {
 		'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
 	}
 };
+async function getData() {
+	const url = `https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=2021&team=41`;
+	const data = await fetch(url, options);
+	const json = await data.json();
+	const response = json.response;
+return response;
 
-fetch('https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=2021&team=41', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+}
+const nba_data = getData();
+console.log(nba_data);

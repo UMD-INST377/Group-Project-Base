@@ -94,6 +94,19 @@ async function songNamesArray(){
     //console.log(array)
 }
 
+function injectHTML(list) {
+    console.log('fired injectHTML');
+    const target = document.querySelector('#music_list');
+    target.innerHTML = '';
+  
+    const listEl = document.createElement('ol');
+    target.appendChild(listEl);
+    list.forEach((item) => {
+      const el = document.createElement('li');
+      el.innerText = item;
+      listEl.appendChild(el);
+    });
+}
 
 // UI Handling
 async function init(){
@@ -104,6 +117,19 @@ async function init(){
         e.preventDefault();
         console.log(songArray);
     })
+
+}
+
+
+
+async function mainEvent() {
+    const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
+    const submit = document.querySelector('#get-musiclist'); // get a reference to your submit button
+    const loadAnimation = document.querySelector('.lds-ellipsis');
+    submit.style.display = 'none'; // let your submit button disappear
+
+    const results = await fetch('/api/foodServicePG');//request data from the spotify api
+    const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
 
 }
 

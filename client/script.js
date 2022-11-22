@@ -27,7 +27,7 @@ async function dummyChart() {
     data: {
       labels: title,
       datasets: [{
-        label: '# of Votes',
+        label: 'Popular movies with Rating',
         data: vote_average,
         borderWidth: 1
       }]

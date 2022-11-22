@@ -29,7 +29,7 @@ async function getGenres(token) {
     return data.categories.items;
 }
 
-async function getPlaylistsByGenre(token, genre, limit) {
+async function getPlaylistsByGenre(token, genreId, limit) {
 
     const result = await fetch(`https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=${limit}`, {
         method: 'GET',

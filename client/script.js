@@ -1,10 +1,21 @@
 
+
+function injectHTML(list) {
+
+}
+
+
+
+
 function createplaylsit(array, song) {
     playlist = [];
-    array.forEach((element) => { // not sure if element is correct
-       // will have to do an if statement grabbing songs wthat have the same genre
-       // add them to a new playlist array
-    });
+    genres = ['rock','hip-hop','jazz','country','soul','edm'];
+    if (song.lowerCase() in genres ) {
+        array.forEach((element) => { // not sure if element is correct
+            // will have to do an if statement grabbing songs what have the same genre
+            // add them to a new playlist array
+         });
+    }
     return playlist;
 }
 
@@ -12,7 +23,21 @@ function createplaylsit(array, song) {
 
 async function mainEvent() {
     // map here or something
-     const results =await fetch()
+     const results = await fetch()
+
+
+     if(arrayFromJson.data?.length > 0) {     
+
+        form.addEventListener('input', (event) =>{
+        });
+
+
+
+    } else {
+        console.log('Sorry, that is not a valid genre');
+    }
+
+
 }
 
  document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

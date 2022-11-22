@@ -1,3 +1,24 @@
 body {
-    background-color: rgb(175, 241, 241);
+    background-color: rgb(233, 241, 241);
 }
+
+a {
+    border: blue;
+}
+
+
+.DatenTime {
+    
+}
+
+.chart {
+    background-color: rgba(239, 239, 239, 0.40);
+    border: 1px dashed;
+    border-radius: 4px;
+  
+    width: 500px;
+    height:fit-content;
+    padding: 1.5rem;
+    margin: 0 auto;
+  }
+

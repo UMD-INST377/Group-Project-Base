@@ -83,7 +83,7 @@
     
     async function mainEvent () {
         const chartTarget = document.querySelector('#myChart');
-
+        submit.style.display = 'nonr';
         const chartData = await getData();
         const shapaedData = shapeDataForLineChart(chartData);
         console.log(shapaedData);

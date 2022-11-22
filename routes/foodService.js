@@ -53,7 +53,7 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
 router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const url = 'https://calorieninjas.p.rapidapi.com/v1/nutrition?query=tomato';
       const request = await fetch(url);
       const json = await request.json();
       console.log(json);

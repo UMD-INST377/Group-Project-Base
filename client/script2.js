@@ -6,20 +6,40 @@ function processCrimes(list, sector) {
     const info = Object.keys(object).map((item) => object[item].length);
   
     const data = {
-      labels: labels,
-      datasets: [{
-        label: 'Crimes by Category',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: info
-      }]
-    };
+        labels: labels,
+        datasets: [{
+          label: 'Proportion of Crime Type',
+          data: info,
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(255, 87, 51 )',
+            'rgb(51, 255, 224)',
+            'rgb(184, 51, 255)',
+            'rgb(202, 255, 51)',
+            'rgb(0, 0, 0)',
+            'rgb(255, 255, 255)',
+            'rgb(101, 7, 134)',
+            'rgb(14, 93, 3)',
+            'rgb(93, 44, 3)',
+            'rgb(128, 3, 3)',
+            'rgb(170, 160, 160)',
+            'rgb(218, 247, 166)',
+            'rgb(186, 148, 204)',
+            'rgb(9, 105, 122)',
+            'rgb(116, 122, 9)',
+            'rgb(178, 236, 227)',
+
+          ],
+          hoverOffset: 4
+        }]
+      };
   
     const config = {
-      type: 'bar',
-      data: data,
-      options: {}
-    };
+        type: 'doughnut',
+        data: data,
+      };
     return new Chart(chart, config);
   }
   function changeChart(chart, dataObject) {

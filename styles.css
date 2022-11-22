@@ -42,7 +42,6 @@ h2, h3 {
   margin:0;
   padding:0;
   padding-bottom:0rem;
-  flex-direction: row;
 }
 
 form {
@@ -87,6 +86,7 @@ form {
   /* colors */
   background-color: #00eeff;
   color: #4a4a4a;
+  font-weight: bold;
 
   /* shapes */
   border-radius: 8px;
@@ -98,6 +98,18 @@ form {
 
   /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+}
+
+.home, .about {
+  display: block;
+  background-color: #00eeff;
+  border-radius: 2px;
+  font-size: 1.5rem;
+  padding: 1.25rem;
+  margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  border: 3px dashed;
+  text-align: left;
+  float: left;
 }
 
 .box {
@@ -130,17 +142,101 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: rgb(0, 19, 185);
-  text-decoration-color: #fff;
+  background-color: rgb(255, 0, 0);
   font-size: 1.2rem;
   font-weight: 600;
   border: 3px dashed;
 }
 
+@media only screen and (max-width: 736px){
+  /* Rules in here will only apply when a screen is the correct size */
+  /* check it out by using your developer tools to shrink your screen-size */
+  .container {
+    background-color: rgb(245, 167, 0);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right_section {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .box {
+    width: 85%;     
+  }
+
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis_hidden {
+  display: hidden;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+.chart_container {
+  height: 100%;
+  width: 100%;
+}
+
 #map { 
     display: block;
     width: 600px;
-    height: 980px;
+    height: 480px;
     border: 2px dashed rgb(99,99,99);
     margin-bottom: 1rem;
   }

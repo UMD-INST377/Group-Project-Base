@@ -29,10 +29,6 @@ async function getGenres(token) {
     return data.categories.items;
 }
 
-function dummy(){
-    console.log("dummy")
-};
-
 async function getPlaylistsByGenre(token, genreId, limit) {
 
     const result = await fetch(`https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=${limit}`, {
@@ -94,14 +90,28 @@ async function songNamesArray(){
     //console.log(array)
 }
 
+function injectHTML(list) {
+    console.log('fired injectHTML');
+    const target = document.querySelector('#music_list');
+    target.innerHTML = '';
+  
+    const listEl = document.createElement('ol');
+    target.appendChild(listEl);
+    list.forEach((item) => {
+      const el = document.createElement('li');
+      el.innerText = item;
+      listEl.appendChild(el);
+    });
+}
 
 // UI Handling
 async function init(){
     const submit = document.querySelector('#submit');
 
-    let songArray = songNamesArray();
+    let songArray = await songNamesArray();
     submit.addEventListener('click', (e) => {
         e.preventDefault();
+        injectHTML(songArray);
         console.log(songArray);
     })
 

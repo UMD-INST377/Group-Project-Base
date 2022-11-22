@@ -44,6 +44,7 @@ async function dummyChart() {
 
 dummyChart();
 
+
 //Adhish Paudel 
 
 /* eslint-disable max-len */
@@ -107,3 +108,5 @@ async function mainEvent() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
+
+

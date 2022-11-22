@@ -1,0 +1,7 @@
+.chart_container {
+  display: flex;
+  border: 2px dashed;
+  border-radius: 4px;
+  height: 90%;
+  width: 90%;
+}

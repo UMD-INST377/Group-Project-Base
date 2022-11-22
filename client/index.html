@@ -1,13 +1,58 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>Group 22</h1>
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    	<title>Group 22 Project for INST377</title>
+    	<!-- <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+      integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+      crossorigin=""/> -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    	<link rel="stylesheet" href="style.css" />
+        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <!-- <script
+      src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+      integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+      crossorigin=""
+    ></script> -->
+  	</head>
+  	<body>
+    	<div class="wrapper">
+      	<header class="header"> <h1>Group 22 Project for INST377</h1></header>
+
+      	<div class="container">
+       	 <div class="left_section">
+          	<h2>Form Inputs</h2>
+          	<form action="/api" class="box main_form">
+							<div>
+								<label for="resto">Filter Restaurant List</label>
+								<input type="text" name="resto" id="resto" />
+							</div>
+            	<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            	<button type="submit" id="get-resto">Change Restaurants</button>
+          </form>
+        </div>
+        <div class="right_section box">
+          <h2>Local Restaurant Map</h2>
+
+          <div class="chart_container">
+            <canvas id="myChart"></canvas>
+          </div>
+          <!-- <div id="map"></div> -->
+          <div class="box" id="restaurant_list">
+            A list of Local Restaurants from an API
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      hriportella
+      <a href="http://github.com/hriportella/INST377-Lab-Work" target="_blank" rel="noopener noreferrer">hriportella-INST377 Github Org</a>
+    </footer>
+		</div>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

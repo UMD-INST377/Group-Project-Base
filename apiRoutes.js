@@ -7,7 +7,7 @@ import speedCameras from './speedCameras.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the PG County API!');
+  res.send('Welcome to the PG County Speed Cameras API!');
 });
 
 // Generic API inclusion demonstration

@@ -10,7 +10,7 @@ const APIControler = (function(){
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorisation': 'Basic ' + btoa(clientId + ':' + clientSecret)
+                'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
             },
             body: 'grant_type=client_credentials'
         });

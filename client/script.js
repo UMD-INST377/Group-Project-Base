@@ -112,24 +112,12 @@ function injectHTML(list) {
 async function init(){
     const submit = document.querySelector('#submit');
 
-    let songArray = songNamesArray();
+    let songArray = await songNamesArray();
     submit.addEventListener('click', (e) => {
         e.preventDefault();
+        injectHTML(songArray);
         console.log(songArray);
     })
-
-}
-
-
-
-async function mainEvent() {
-    const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-    const submit = document.querySelector('#get-musiclist'); // get a reference to your submit button
-    const loadAnimation = document.querySelector('.lds-ellipsis');
-    submit.style.display = 'none'; // let your submit button disappear
-
-    const results = await fetch('/api/foodServicePG');//request data from the spotify api
-    const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
 
 }
 

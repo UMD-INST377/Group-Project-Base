@@ -23,9 +23,21 @@ function initChart(targetElement, dataObject) {
       config
     );
   }
+
+  async function getData() {
+    const url = 'https://rest.coinapi.io/v1/assets/BTC'; // remote URL! you can test it in your browser
+    apikey = "36B44DF9-D56A-4A0D-BA15-997D94599D7B"
+    headers = {'X-CoinAPI-Key' : apikey}
+    response = (url, headers=headers)
+    const data = await fetch(response); // We're using a library that mimics a browser 'fetch' for simplicity
+    const json = await data.json(); // the data isn't json until we access it using dot notation
+    const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
   
-async function mainEvent(
-    string = "Hello World"
-    ) 
+    return reply;
+  }
+
+async function mainEvent() {
+const chartData = await getData();
 console.log("Hello world!"); 
 
+}

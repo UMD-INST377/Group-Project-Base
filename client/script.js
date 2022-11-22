@@ -18,6 +18,17 @@ async function getToken() {
     return data.access_token;
 }
 
+async function getGenres(token) {
+
+    const result = await fetch(`https://api.spotify.com/v1/browse/categories?locale=sv_US`, {
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + token}
+    });
+
+    const data = await result.json();
+    return data.categories.items;
+}
+
 async function getPlaylistsByGenre(token, genre, limit) {
 
     const result = await fetch(`https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=${limit}`, {
@@ -53,8 +64,14 @@ async function getTrack(token, tracksEndPoint) {
     return data;
 }
 
-const token = getToken();
-const playlist = getPlaylistsByGenre(token, "Rock", 1);
-const tracks = [] ;
 
-const songs = "";
+
+const token = getToken();
+console.log("Getting playlist for Rock")
+const playlists = getPlaylistsByGenre(token, "0JQ5DAqbMKFDXXwE9BDJAr", 1);
+console.log("Getting tracks from:" + playlist);
+const plalylistSg = playlists.tracks.href
+const tracks = getTracks(token, plalylistSg);
+tracks.forEach(element => {
+    console.log(element)    
+});

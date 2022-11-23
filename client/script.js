@@ -7,17 +7,11 @@ async function gettingURL(){
     const response = await fetch( queryURL + search_name + "&rows=" + rowNumber + "&api_key=" + api_key);
     //converting to json
     const data = await response.json();
-    
-    console.log(data)
 
     const gettingrows = await data.response["rows"];
     
-    // example dele
-    const gettingTitle = await data.response["rows"]["1"]["title"];
-  
     // lenght of the data 
     var arrayLenght = gettingrows.length;
-    
 
     // creating and stroing the data in for loop
     let findit = document.getElementById("idtest");

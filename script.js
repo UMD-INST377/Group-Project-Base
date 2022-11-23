@@ -85,7 +85,5 @@ async function mainEvent() {
           clickedOn(cameras, page);
         });
     }
-    
 }
-
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -1,5 +1,13 @@
-function injectHTML() {
+function processCameras(list) {
+  console.log('speed cameras list');
+  const range = [...Array(15).keys()];
+  // eslint-disable-next-line no-unused-vars
+  const newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length);
+    return list[index];
+  });
 
+  return newArray;
 }
 
 function initMap() {
@@ -21,41 +29,58 @@ function initMap() {
     });
   }
 
-  function clickedOn() {
+  function clickedOn(array, map) {
     array.forEach((item, index) => {
       const {coordinates} = item.location_1;
       const popup = L.popup().setLatLng([coordinates[1], coordinates[0]]).setContent("You Clicked me!").openOn(map);
       L.marker([coordinates[1], coordinates[0]]).addTo(map);
       if (index === 0) {
         map.setView([coordinates[1], coordinates[0]], 10);
+        map.on('click', onMapClick);
       }
       alert("You clicked the map at " + e.latlng);
     });
   }
 
+async function getData() {
+    const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
+    const data = await fetch(url);
+    const json = await data.json();
+    const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.name));
+    return reply;
+}
+
 async function mainEvent() {
 
     const page = initMap();
-    
+      
     const form = document.querySelector('.main_form'); 
     const submit = document.querySelector('#get-resto');
+    const loadAnimation = 
     submit.style.display = 'none';
 
-    const results = await fetch('/api/speedCamerasPG');
-    const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
-
-
+    const mapData = await getData();
+  
     // Return if we have no data
-    if(arrayFromJson.data?.length > 0) {
+    if(mapData.data?.length > 0) {
+      // let's turn the submit button back on by setting it to display as a block when we have data available
+      submit.style.display = 'block'; 
 
-        form.addEventListener('input', (event) => {
-            console.log('input', event.target.value);
-            // const filteredList = filterList(currentList, event.target.value);
-            // injectHTML(filteredList);
-            markerPlace();
-            map.on('click', onMapClick);
+      // Let's hide our load button not that we have some data to manipulate
+      loadAnimation.classList.remove('lds-ellipsis');
+      loadAnimation.classList.add('lds-ellipsis_hidden'); 
+
+      let currentList;
+      form.addEventListener('submit', (submitEvent) => {
+          submitEvent.preventDefault();
+          currentList = processRestaurants(mapData.data);
+
+          const cameras = currentList.filter((item) => Boolean(item.location_1));
+          markerPlace(cameras, map);
+          clickedOn();
         });
     }
+    
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

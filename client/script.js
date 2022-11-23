@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // App Status Development mode (what does this mean?)
 // Client ID e187afb42b73476980c03329ce8256eb
 // Client Secret c8b47ada78f74dfbaffa9527f8d49ee1
@@ -35,10 +36,17 @@ function initChart(chart) {
     config
   );
 }
-
+async function getData() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json'; // remote URL! you can test it in your browser
+  const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
+  const json = await data.json(); // the data isn't json until we access it using dot notation
+  const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+  return reply;
+}
 async function mainEvent() {
   const ctx = document.querySelector('#myChart');
   initChart(ctx);
+  const chartData = await getData();
 
   // API data request
   //   const fs = require('fs');
@@ -77,8 +85,8 @@ async function mainEvent() {
 
   // // credentials are optional
   // var spotifyApi = new SpotifyWebApi({
-  //     clientId: 'XXXXXXXX',
-  //     clientSecret: 'XXXXXX',
+  //     clientId: 'e187afb42b73476980c03329ce8256eb',
+  //     clientSecret: 'c8b47ada78f74dfbaffa9527f8d49ee1',
   //     redirectUri: 'http://localhost:8888/callback'
   //   });
 

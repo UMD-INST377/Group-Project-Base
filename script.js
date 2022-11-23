@@ -1,7 +1,6 @@
 function processCameras(list) {
   console.log('speed cameras list');
   const range = [...Array(15).keys()];
-  // eslint-disable-next-line no-unused-vars
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
     return list[index];
@@ -48,26 +47,32 @@ function clickedOn(array, map) {
 }
 
 async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
-  const data = await fetch(url);
-  const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.name));
-  return reply;
+    const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
+    const data = await fetch(url);
+    const json = await data.json();
+    const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.school));
+    return reply;
 }
 
 async function mainEvent() {
-  const page = initMap();
 
-  const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#get-resto');
-  const loadAnimation = submit.style.display = 'none';
+    const page = initMap();
+      
+    const form = document.querySelector('.main_form'); 
+    const submit = document.querySelector('#get-resto');
+    const loadAnimation = document.querySelector('.lds-ellipsis');
+    submit.style.display = 'none';
 
-  const mapData = await getData();
+    const mapData = await getData();
+  
+    console.table(mapData.data);
+    console.log(mapData.data[0]);
+    console.log(`${mapData.data[0].school} ${mapData.data[0].category}`);
 
-  // Return if we have no data
-  if (mapData.data?.length > 0) {
-    // let's turn the submit button back on by setting it to display as a block when we have data available
-    submit.style.display = 'block';
+    // Return if we have no data
+    if(mapData.data?.length > 0) {
+      // let's turn the submit button back on by setting it to display as a block when we have data available
+      submit.style.display = 'block'; 
 
     // Let's hide our load button not that we have some data to manipulate
     loadAnimation.classList.remove('lds-ellipsis');
@@ -78,10 +83,11 @@ async function mainEvent() {
       submitEvent.preventDefault();
       currentList = processCameras(mapData.data);
 
-      const cameras = currentList.filter((item) => Boolean(item.location_1));
-      markerPlace(cameras, page);
-      clickedOn(cameras, page);
-    });
-  }
+          const cameras = currentList.filter((item) => Boolean(item.location_1));
+
+          markerPlace(cameras, page);
+          clickedOn(cameras, page);
+        });
+    }
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

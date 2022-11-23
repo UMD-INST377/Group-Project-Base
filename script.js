@@ -67,8 +67,8 @@ async function mainEvent() {
     const mapData = await getData();
   
     console.table(mapData.data);
-    console.log(arrayFromJson.data[0]);
-    console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
+    console.log(mapData.data[0]);
+    console.log(`${mapData.data[0].name} ${mapData.data[0].category}`);
 
     // Return if we have no data
     if(mapData.data?.length > 0) {
@@ -85,7 +85,7 @@ async function mainEvent() {
           currentList = processRestaurants(mapData.data);
 
           const cameras = currentList.filter((item) => Boolean(item.location_1));
-          
+
           markerPlace(cameras, page);
           clickedOn(cameras, page);
         });

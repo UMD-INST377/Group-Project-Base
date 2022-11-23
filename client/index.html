@@ -5,12 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Project Base</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mapstyle.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <div>
-        <header><h1>Group 16</h1></header>
+    <div class="wrapper">
+        <header class="header">
+            <h1>Group 16</h1>
+        </header>
+        <div class="container">
+            <div class="left_section box">
+                <h3>PG County Crime Incidents</h3>
+            </div>
+
+            <div class="right_section box">
+                <h2>Filtered Chart</h2>
+                <div class="chart_container">
+                  <canvas id="myChart"></canvas>
+                </div>     
+            </div>
+        </div>
     </div>
     <script src="./script.js"></script>
-    <div>Hello World! Again!</div>
 </body>
 </html>

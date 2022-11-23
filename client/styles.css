@@ -382,5 +382,9 @@
     width: 400px;
     height: 380px;
     border: 2px dashed rgb(99, 99, 99);
-    margin-bottom: 1rem;
-  }
+    margin-bottom: 1rem;}
+
+    .chart_container{
+        height: 100%;
+        width:100%;
+    }

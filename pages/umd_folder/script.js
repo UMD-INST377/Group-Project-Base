@@ -42,3 +42,4 @@ const ctx = document.getElementById('myChart');
 }
 
 initChart()
+

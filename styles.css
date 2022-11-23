@@ -148,6 +148,14 @@ form {
   border: 3px dashed;
 }
 
+#map { 
+    display: block;
+    width: 600px;
+    height: 480px;
+    border: 2px dashed rgb(99,99,99);
+    margin-bottom: 1rem;
+  }
+  
 @media only screen and (max-width: 736px){
   /* Rules in here will only apply when a screen is the correct size */
   /* check it out by using your developer tools to shrink your screen-size */
@@ -233,10 +241,4 @@ form {
   width: 100%;
 }
 
-#map { 
-    display: block;
-    width: 600px;
-    height: 480px;
-    border: 2px dashed rgb(99,99,99);
-    margin-bottom: 1rem;
-  }
+

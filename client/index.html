@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Group Project Base</title>
     <link rel="stylesheet" href="styles.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div>
@@ -14,11 +16,15 @@
 
       <div class="crypto_button">
         <h3>Forum inputs</h3>
-        <form action="/api" class="button">
-          <button type="submit" id="">Get Crypto</button>
+        <form class="main_form">
+          <button type="submit" >Catergories of Crypto</button>
         </form>
       </div>
 
+      <div class="chart_container">
+        <canvas id="myChart"></canvas>
+      </div>
+      
     </div>
     <script src="./script.js"></script>
   </body>

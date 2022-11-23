@@ -1,3 +1,15 @@
+
+function shapeDataForLineChart(array) {
+  return array.reduce((collection, item) => {
+    if(!collection[item.category]) {
+      collection[item.category] = [item]
+    } else {
+      collection[item.category].push(item);
+    }
+    return collection;
+  }, {});
+}
+
 function initChart(targetElement, dataObject) {
     const labels = Object.keys(dataObject);
     const info = Object.keys(dataObject).map((item) => dataObject[item].length);
@@ -24,20 +36,28 @@ function initChart(targetElement, dataObject) {
     );
   }
 
-  async function getData() {
-    const url = 'https://rest.coinapi.io/v1/assets/BTC'; // remote URL! you can test it in your browser
-    apikey = "36B44DF9-D56A-4A0D-BA15-997D94599D7B"
-    headers = {'X-CoinAPI-Key' : apikey}
-    response = (url, headers=headers)
-    const data = await fetch(response); // We're using a library that mimics a browser 'fetch' for simplicity
-    const json = await data.json(); // the data isn't json until we access it using dot notation
-    const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
-  
-    return reply;
+async function getData() {
+  const url = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc'; // remote URL! you can test it in your browser
+  const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
+  const json = await data.json();
+  const reply = json.filter((item));
+  console.log(reply);
+  return reply;
   }
 
 async function mainEvent() {
-const chartData = await getData();
-console.log("Hello world!"); 
+  const form = document.querySelector('.main_form');
+  const currentlist = [];
+
+  form.addEventListener('submit', (submitEvent) => {
+    const cryptoData =  getData();
+    cryptoData.append(currentlist)
+    console.log(currentlist)
+  });
+  
+  const chartData = await getData();
+  const shapedData = shapeDataForLineChart(chartData);
+  console.log(shapedData);
+  const myChart = initChart(chartTarget, shapedData);
 
 }

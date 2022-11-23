@@ -4,7 +4,7 @@ function myFunction(contentID) {
 
 async function getData() {
   // Just adding this to add to the newest pull/ commit for lab 9
-  const url = 'https://imdb-top-100-movies.p.rapidapi.com/';
+  const url = 'https://imdb-top-100-movies.p.rapidapi.com/premiummovies';
   const options = {
     method: 'GET',
     headers: {

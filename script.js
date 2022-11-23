@@ -61,7 +61,7 @@ async function mainEvent() {
       
     const form = document.querySelector('.main_form'); 
     const submit = document.querySelector('#get-resto');
-    const loadAnimation = 
+    const loadAnimation = document.querySelector('.lds-ellipsis');
     submit.style.display = 'none';
 
     const mapData = await getData();

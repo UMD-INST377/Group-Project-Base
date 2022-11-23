@@ -1,3 +1,7 @@
+// App Status Development mode (what does this mean?)
+// Client ID e187afb42b73476980c03329ce8256eb
+// Client Secret c8b47ada78f74dfbaffa9527f8d49ee1 
+
 const { request } = require('express');
 
 function initChart() {

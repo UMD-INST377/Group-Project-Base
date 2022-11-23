@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-
-
-
 <body>
     
     <div class="wrapper">
@@ -20,10 +17,18 @@
             </h1>
         </header>
 
+        <!-- button does not work yet, need css, need link to api-->
         <div class = "head">
-            <h2>Spendings Search</h2>
-            <input type="text">
-            <button> Search </button>
+            <div class = "box"> 
+                <form action="/api">
+                    <h2>Spendings By:</h2>
+                    <!-- <input type="text"> -->
+                    <button> Payee </button>
+                    <button> Agency </button>
+                    <button> Zip Code </button>
+                    <button> Amount </button>
+                </form>
+            </div>
         </div>
 
     </div>

@@ -1,62 +1,42 @@
-const fs = require('fs');
-const SpotifyWebApi = require('spotify-web-api-node');
+/**
+ * This is an example of a basic node.js script that performs
+ * the Client Credentials oAuth2 flow to authenticate against
+ * the Spotify Accounts.
+ *
+ * For more information, read
+ * https://developer.spotify.com/web-api/authorization-guide/#client_credentials_flow
+ */
 
-const token = 'XXXXXX';
+import { post, get } from 'request'; // "Request" library
 
-const spotifyApi = new SpotifyWebApi();
-spotifyApi.setAccessToken(token);
+const client_id = 'e187afb42b73476980c03329ce8256eb'; // Your client id
+const client_secret = 'c8b47ada78f74dfbaffa9527f8d49ee1'; // Your secret
 
-// GET MY PROFILE DATA
-function getMyData() {
-  (async () => {
-    const me = await spotifyApi.getMe();
-    // console.log(me.body);
-    getUserPlaylists(me.body.id);
-  })().catch((e) => {
-    console.error(e);
-  });
-}
+// your application requests authorization
+const authOptions = {
+  url: 'https://accounts.spotify.com/api/token',
+  headers: {
+    Authorization: `Basic ${new Buffer(`${client_id}:${client_secret}`).toString('base64')}`
+  },
+  form: {
+    grant_type: 'client_credentials'
+  },
+  json: true
+};
 
-// GET MY PLAYLISTS
-async function getUserPlaylists(userName) {
-  const data = await spotifyApi.getUserPlaylists(userName);
-
-  console.log('---------------+++++++++++++++++++++++++');
-  const playlists = [];
-
-  for (const playlist of data.body.items) {
-    console.log(`${playlist.name} ${playlist.id}`);
-
-    const tracks = await getPlaylistTracks(playlist.id, playlist.name);
-    // console.log(tracks);
-
-    const tracksJSON = { tracks };
-    const data = JSON.stringify(tracksJSON);
-    fs.writeFileSync(`${playlist.name}.json`, data);
+post(authOptions, (error, response, body) => {
+  if (!error && response.statusCode === 200) {
+    // use the access token to access the Spotify Web API
+    const token = body.access_token;
+    const options = {
+      url: 'https://api.spotify.com/v1/users/jmperezperez',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      json: true
+    };
+    get(options, (error, response, body) => {
+      console.log(body);
+    });
   }
-}
-
-// GET SONGS FROM PLAYLIST
-async function getPlaylistTracks(playlistId, playlistName) {
-  const data = await spotifyApi.getPlaylistTracks(playlistId, {
-    offset: 1,
-    limit: 100,
-    fields: 'items'
-  });
-
-  // console.log('The playlist contains these tracks', data.body);
-  // console.log('The playlist contains these tracks: ', data.body.items[0].track);
-  // console.log("'" + playlistName + "'" + ' contains these tracks:');
-  const tracks = [];
-
-  for (const track_obj of data.body.items) {
-    const {track} = track_obj;
-    tracks.push(track);
-    console.log(`${track.name} : ${track.artists[0].name}`);
-  }
-
-  console.log('---------------+++++++++++++++++++++++++');
-  return tracks;
-}
-
-getMyData();
+});

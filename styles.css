@@ -7,3 +7,12 @@ ul.navbar{
 li.nav {
     display:inline;
 }
+
+#map {
+    display: block;
+    width: 400px;
+    height: 300px;
+    border: 2px solid rgb(99, 99, 99);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }

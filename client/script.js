@@ -41,5 +41,6 @@ async function mainEvent() {
   console.log(data);
   injectDateFilter(data, 1970, '#best_1970s');
   injectDateFilter(data, 1980, '#best_1980s');
+  injectDateFilter(data, 1970, '#best_1990s');
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

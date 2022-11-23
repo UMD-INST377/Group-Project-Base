@@ -20,6 +20,11 @@ function initMap() {
   }
 
   function markerPlace(array, map) {
+    map.eachLayer((layer) => {
+      if (layer instanceof L.Marker) {
+        layer.remove();
+      }
+    });
     array.forEach((item, index) => {
       const {coordinates} = item.location_1;
       L.marker([coordinates[1], coordinates[0]]).addTo(map);
@@ -70,14 +75,14 @@ async function mainEvent() {
       loadAnimation.classList.remove('lds-ellipsis');
       loadAnimation.classList.add('lds-ellipsis_hidden'); 
 
-      let currentList;
-      form.addEventListener('submit', (submitEvent) => {
+      let currentList = [];
+      form.addEventListener('submit', async (submitEvent) => {
           submitEvent.preventDefault();
           currentList = processRestaurants(mapData.data);
 
           const cameras = currentList.filter((item) => Boolean(item.location_1));
-          markerPlace(cameras, map);
-          clickedOn();
+          markerPlace(cameras, page);
+          clickedOn(cameras, page);
         });
     }
     

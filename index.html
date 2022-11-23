@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 102-11 Project</title>
+    <link rel="stylesheet" href="./client/styles.css">
+</head>
+<body onload= "onPageLoad()">
+    <header>
+        <div class="nav-bar">
+            <div class = 'logo-img'>
+                <img src="images/logo.png" alt="Team Logo">
+            </div>
+            <div class="page-title">
+                <h1>Group 102-11 Project Title</h1>
+            </div>
+            <div class="login-button">
+                <button class="button-3" role="button" onclick="requestAuthorization()">Spotify Login</button>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="visualization box">
+            <h3>Playlist Info</h3>
+            <div class="inner box"></div>
+            <button class="button-3 main-button" role="button" onclick="refreshPlaylists()">Get Playlists</button>
+        </div>
+    </div>
+
+    <script src="./client/script.js"></script>
+</body>
+</html>

@@ -12,10 +12,14 @@ async function gettingURL(){
     
     // lenght of the data 
     var arrayLenght = gettingrows.length;
+    
+    
 
     // creating and stroing the data in for loop
     let findit = document.getElementById("idtest");
     let arrayCounter = document.getElementById("arrCoun")
+
+    
 
     for (var i = 0; i < arrayLenght; i++) {
         

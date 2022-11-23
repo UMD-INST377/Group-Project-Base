@@ -10,41 +10,41 @@ function processCameras(list) {
 }
 
 function initMap() {
-    const map = L.map('map').setView([38.7849, -76.8721], 10);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-    return map;
-  }
+  const map = L.map('map').setView([38.7849, -76.8721], 10);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  return map;
+}
 
-  function markerPlace(array, map) {
-    map.eachLayer((layer) => {
-      if (layer instanceof L.Marker) {
-        layer.remove();
-      }
-    });
-    array.forEach((item, index) => {
-      const {coordinates} = item.location_1;
-      L.marker([coordinates[1], coordinates[0]]).addTo(map);
-      if (index === 0) {
-        map.setView([coordinates[1], coordinates[0]], 10);
-      }
-    });
-  }
+function markerPlace(array, map) {
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+  array.forEach((item, index) => {
+    const {coordinates} = item.location_1;
+    L.marker([coordinates[0], coordinates[1]]).addTo(map);
+    if (index === 0) {
+      map.setView([coordinates[0], coordinates[1]], 10);
+    }
+  });
+}
 
-  function clickedOn(array, map) {
-    array.forEach((item, index) => {
-      const {coordinates} = item.location_1;
-      const popup = L.popup().setLatLng([coordinates[1], coordinates[0]]).setContent("You Clicked me!").openOn(map);
-      L.marker([coordinates[1], coordinates[0]]).addTo(map);
-      if (index === 0) {
-        map.setView([coordinates[1], coordinates[0]], 10);
-        map.on('click', onMapClick);
-      }
-      alert("You clicked the map at " + e.latlng);
-    });
-  }
+function clickedOn(array, map) {
+  array.forEach((item, index) => {
+    const {coordinates} = item.location_1;
+    const popup = L.popup().setLatLng([coordinates[0], coordinates[1]]).setContent('You Clicked me!').openOn(map);
+    L.marker([coordinates[0], coordinates[1]]).addTo(map);
+    if (index === 0) {
+      map.setView([coordinates[0], coordinates[1]], 10);
+      map.on('click', onMapClick);
+    }
+    alert(`You clicked the map at ${e.latlng}`);
+  });
+}
 
 async function getData() {
     const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
@@ -74,14 +74,14 @@ async function mainEvent() {
       // let's turn the submit button back on by setting it to display as a block when we have data available
       submit.style.display = 'block'; 
 
-      // Let's hide our load button not that we have some data to manipulate
-      loadAnimation.classList.remove('lds-ellipsis');
-      loadAnimation.classList.add('lds-ellipsis_hidden'); 
+    // Let's hide our load button not that we have some data to manipulate
+    loadAnimation.classList.remove('lds-ellipsis');
+    loadAnimation.classList.add('lds-ellipsis_hidden');
 
-      let currentList = [];
-      form.addEventListener('submit', async (submitEvent) => {
-          submitEvent.preventDefault();
-          currentList = processRestaurants(mapData.data);
+    let currentList = [];
+    form.addEventListener('submit', async (submitEvent) => {
+      submitEvent.preventDefault();
+      currentList = processCameras(mapData.data);
 
           const cameras = currentList.filter((item) => Boolean(item.location_1));
 

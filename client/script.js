@@ -39,7 +39,11 @@ async function injectDateFilter(list, filterInput, injectLocation) {
 async function mainEvent() {
   data = await getData();
   console.log(data);
+  injectDateFilter(data, 1960, '#best_1960s');
   injectDateFilter(data, 1970, '#best_1970s');
   injectDateFilter(data, 1980, '#best_1980s');
+  injectDateFilter(data, 1990, '#best_1990s');
+  injectDateFilter(data, 2000, '#best_2000s');
+  injectDateFilter(data, 2000, '#best_2010s');
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

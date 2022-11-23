@@ -66,6 +66,10 @@ async function mainEvent() {
 
     const mapData = await getData();
   
+    console.table(mapData.data);
+    console.log(arrayFromJson.data[0]);
+    console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
+    
     // Return if we have no data
     if(mapData.data?.length > 0) {
       // let's turn the submit button back on by setting it to display as a block when we have data available

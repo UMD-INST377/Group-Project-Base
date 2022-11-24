@@ -1,6 +1,7 @@
-/* Data Request to API */ 
-token = 'BQCalBboGTYMEuzOb-LA_LZ7fOsmTxJ8o1Nvuza2ggzJYRvjAPz8AnzV_1hOLCkpE-G-cO_xMF_bBGt1SGSEcAgxA1S0W3Yy2CozYTng3sVdA-WOV1LoiGDIAb2is2qXSlZTtuJQDrVRwKhoc5bt4pAt6QQ6zU84QY3SiqtY6H_rOB01a5mX76QYXmX740mLENcNFd8eEV1XMds3wigUWRQ'
-term = 'long_term'
+// params reads in the queries in the url. Example ?access_token=token12345
+let params = new URL(document.location).searchParams;
+// Pulls the token
+let token = params.get("access_token");
 // Saves the token to storage which can be used anywhere on the website
 if (token !== null) {
   localStorage.setItem("access_token", token);
@@ -11,41 +12,81 @@ if (token !== null) {
 console.log("token");
 console.log(token);
 
+/*
+  Fetch request to get top 50 songs - Name, popularity, 
+  Receives: Access token(obtained through login),term(short_term,medium_term,long_term)
+  Note: Short term may not return anything if you haven't listened to spotify recently.
+  Response Example: 
+  {
+  "name": "Rich Flex",
+  "popularity": 94,
+  "artists": ["Drake","21 Savage"]
+  }
+*/
 
-const getTracklist = async (term, token) => {
-const url = `https://umd-spotify-backend.herokuapp.com/tracklist?access_token=${token}&term=${term}`;
-  const response = await fetch(url);
+const getTracklist = async (req_term, req_token) => {
+  url = "https://umd-spotify-backend.herokuapp.com/tracklist?";
+  const response = await fetch(
+    url +
+      new URLSearchParams({
+        access_token: req_token,
+        term: req_term,
+      })
+  );
   const data = await response.json();
   return data;
-}
+};
 
 /*
-const get_authorIDArray = async (term, token) => {
-  const url = `https://umd-spotify-backend.herokuapp.com/get_authorlist?access_token=${token}&term=${term}`;
-  const response = await fetch(url);
+  Fetch request to author ids in the top 50 songs.
+  Receives: Access token(obtained through login),term(short_term,medium_term,long_term)
+  Returns: Nested array with author id strings. Strings within nested array go up to 50.
+  Note: Short term may not return anything if you haven't listened to spotify recently.
+  Response Example: 
+  {
+    [['sadfsadfsf','erwt34t3t3t34t43t4'],['sadfsadfsf','erwt34t3t3t34t43t4']]
+  }
+*/
+
+const get_authorIDArray = async (req_term, req_token) => {
+  url = "https://umd-spotify-backend.herokuapp.com/get_authorlist?";
+  const response = await fetch(
+    url +
+      new URLSearchParams({
+        term: req_term,
+        access_token: req_token,
+      })
+  );
   const data = await response.json();
   return data;
-}
-*/
+};
+
 /*
-const getGenresCount = async (artist_ids, token) => {
-  const url = `https://umd-spotify-backend.herokuapp.com/genreslist?access_token=${token}&id_string=${artist_ids}`;
-  const response = await fetch(url);
+  Fetch request to get genres count based on artist ids
+  Receives: Access token(obtained through login), artist ids(string of artist ids separated by commas)
+  Note: Short term may not return anything if you haven't listened to spotify recently.
+  Response Example: 
+  {
+    "alternative r&b": 4,
+    "indie jazz": 3,
+    "indie r&b": 4,
+    "indie soul": 3,
+  }
+*/
+const getGenresCount = async (artist_ids, req_token) => {
+  url = "https://umd-spotify-backend.herokuapp.com/genreslist?";
+  const response = await fetch(
+    url +
+      new URLSearchParams({
+        id_string: artist_ids,
+        access_token: req_token,
+      })
+  );
   const data = await response.json();
   return data;
-}
-*/
+};
 
-/* Create a barchart with popularity scores of each track from the list*/ 
-/*const getShowcategory = async (artist_id, token) => {
-  const url = `https://umd-spotify-backend.herokuapp.com/artist_albums?`;
-  const response = await fetch(`${url}?id=${artist_id}&access_token=${token}`);
-  const data = await response.json();
-  return data;
-}
-*/
-
-function initChart(){
+const initChart = (chart, chart_data) => {
   const labels = chart_data["label"];
   const data = {
     labels: labels,
@@ -71,11 +112,10 @@ function initChart(){
   };
   return new Chart(chart, config);
 };
-
 const data_format = (track, location) => {
   let { song_name, popularity, artists } = track;
   const newLine = `
-  <div class="album_name">Name: ${album}</div>
+  <div class="art_name">Name: ${song_name}</div>
   <div class="song_name">Artist: ${artists.toString()}</div>
   <div class="pop_name">Popularity: ${popularity}</div>`;
   let content = document.createElement("li");
@@ -83,7 +123,6 @@ const data_format = (track, location) => {
   content.innerHTML = newLine;
   location.appendChild(content);
 };
-
 const data_clean = (final_obj, response, index) => {
   ret_obj = {};
   for (item in response) {

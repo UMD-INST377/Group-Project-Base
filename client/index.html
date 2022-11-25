@@ -1,17 +1,12 @@
-<<<<<<< Updated upstream
 <!DOCTYPE html>
-=======
->>>>>>> Stashed changes
 <html>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
-        <title>Spotify API Group Project</title>
-<<<<<<< Updated upstream
+        <title>Failed House Insepctions API</title>
     </head>
     <body>
         <script src="script.js"></script>
-=======
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
         integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
@@ -21,57 +16,24 @@
         <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
     crossorigin=""></script>
-        
->>>>>>> Stashed changes
         <div class="wrapper">
-            <header class="header thickBox">
-                <h1 class="center">Spotify Songs</h1>
+            <header class="header thickBox green">
+                <h1 class="center">Find Which House in PG County has Failed it's House Inspection!</h1>
             </header>
             <div class="container">
-                <h1>USA All-Time Top 10 Songs</h1>
-<<<<<<< Updated upstream
-                <form action="/api" class="box">
-                    <p>Song Title's:</p>
-                    <input type="text">
-                    <button type="submit" id="get-song">Search</button>
-                </form>
-            </div>
-            <div class="container">
-                <h1>This Week's Top 10 Songs</h1>
-                <form action="/api" class="box">
-                    <p>Song Title's:</p>
-                    <input type="text">
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-            <div class="container">
-                <h1>New and Upcoming Artist</h1>
-                <form action="/api" class="box">
-                    <p>Artist Name:</p>
-                    <input type="text">
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-            <div class="container">
-                <h1>Random Song Generator</h1>
-                <form action="/api" class="box">
-                    <p>Search music using specfic terms</p>
-                    <input type="text">
-                    <button type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-=======
-                <form action="/api" class="box main_form">
-                    <p>Song Title's:</p>
+                <h1>Map Location of Failed House</h1>
+                <form action="/api" class="box main_form orange">
+                    <p>Filtered Failed Homes:</p>
                     <input type="text" name="resto" id="resto">
                     <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                     <button type="submit" id="get-house">Search</button>
                     <div id="map"></div>
+                    <div class="box" id="house_list">
+                        <p>A list of failed homes from the PG County open API</p>
+                    </div>
                 </form>
             </div>
         </div>
         <script src= 'script.js'></script>
->>>>>>> Stashed changes
     </body>
 </html>

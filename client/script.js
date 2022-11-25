@@ -1,9 +1,3 @@
-<<<<<<< Updated upstream
-function injectHTML(list) {
-  const target = document.querySelector('#song_list');
-  target.innerHTML = '';
-  
-=======
 /* eslint linebreak-style: ["error", "windows"] */
 
 function getRandomInclusive(min, max) {
@@ -16,45 +10,14 @@ function injectHTML(list) {
   const target = document.querySelector('#house_list');
   target.innerHTML = '';
 
->>>>>>> Stashed changes
   const listEl = document.createElement('ol');
   target.appendChild(listEl);
 
   list.foreach((item) => {
     const el = document.createElement('li');
-    el.innerText = item.name;
+    el.innerText = item.zip_code;
     listEl.appendChild(el);
   });
-<<<<<<< Updated upstream
-
-}
-
-function processSongs(list) {
-  const range = [...Array(10).keys()];
-  const newArray = range.map();
-  return newArray;
-}
-
-async function mainEvent() {
-  const submit = document.querySelector('#get-song');
-  submit.style.display = 'none';
-  
-  const results = await fetch('/api/');
-  const arrayFromJson = await results.json();
-
-  consle.table(arrayFromJson);
-
-  if (arrayFromJson.data?.length > 0) {
-    submit.style.display = 'block';
-
-    form.addEventListener('submit', (submitEvent) => {
-      submitEvent.preventDefault();
-
-      const songList = processSongs(arrayFromJson.data);
-      console.log(songList);
-      injectHTML(songList)
-    })
-=======
 }
 function filterList(list, filterInputValue) {
   return list.filter((item) => {
@@ -140,7 +103,6 @@ async function mainEvent() {
       injectHTML(currentList);
       markerPlace(currentList, pageMap);
     });
->>>>>>> Stashed changes
   }
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

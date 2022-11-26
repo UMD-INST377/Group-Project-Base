@@ -4,42 +4,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Project Base</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1> Fresh 3: Kevin Jamer & Matthew Tan </h1>
     <!-- <script src="./script.js"></script> -->
-    <div class = "container">
-        <div class = "left_section box">
-            <h3>My Music</h3> 
-            <form action="/api" class="box main_form">
-            <label for="resto">Songs</label>
-            <input type="text" name="resto" id="resto" />
-
-            <button type="submit">Add</button>
-            <ol class="box">
-                 <li>Beabadoobee - Beatopia</li>
-                <li>Fujii Kaze - Help ever hurt never</li>
-                <li>Rich Brian - Brightside</li>
-                <li>Joji - Nectar</li>
-                <li>Tyler the Creator - Flower Boy</li>
-              </ol>
-          </form>
-           
-        </div>
-        <div class = "right_section box">
-            <h3>Recommendations</h3>
-            <ol class="box">
-                <li>Beabadoobee - Talk</li>
-               <li>Fujii Kaze - Shinenoiiga</li>
-               <li>Rich Brian - Lagooon</li>
-               <li>Joji - High Hopes</li>
-               <li>Tyler the Creator - See you again</li>
-             </ol>
-        </div>
     </div>
     <div class = "box">
         <h3>Chart</h3>
+        <div>
+            <canvas id="myChart" width = "400" height = "400"></canvas>
+          </div>
     </div>
     <script src="./script.js"></script>
 </body>

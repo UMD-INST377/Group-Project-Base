@@ -19,6 +19,7 @@ async function mainEvent() {
       //inject? and map shit
      }
 
+}
  document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
 
 

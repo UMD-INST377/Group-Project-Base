@@ -1,15 +1,16 @@
 body {
     background-color: rgb(233, 241, 241);
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 a {
-    border: blue;
+    border: rgb(6, 130, 238);
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
-.DatenTime {
-    
-}
+
 
 .chart {
     background-color: rgba(239, 239, 239, 0.40);
@@ -22,3 +23,7 @@ a {
     margin: 0 auto;
   }
 
+#date-time {
+    text-align: center;
+    font-weight: bold;
+}

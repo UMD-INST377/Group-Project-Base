@@ -6,15 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
-  <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
     integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
     integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
     crossorigin="anonymous"></script>
@@ -33,16 +33,13 @@
 
 <body>
   <div class="container">
-    <h1>Article</h1>
-    <small><a href="">https://developer.spotify.com/documentation/web-api/reference/#/operations/search</a></small>
+    <h1>search what ever you want in the spotify</h1>
+
     <form>
       <div class="form-group">
         <label for="text">text</label>
         <input type="text" class="form-control" id="text" placeholder="text" value="2022">
-        <small>remaster track:Doxy artist:Miles Davis</small>
-        <small>You can narrow down your search using field filters. The available filters are album, artist, track,
-          year, upc,
-          tag:hipster, tag:new, isrc, and genre. Each field filter only applies to certain result types.</small>
+
       </div>
       <div class="form-group">
         <label for="type">type</label>
@@ -55,7 +52,7 @@
           <option value="episode">episode</option>
           <option value="audiobook">audiobook</option>
         </select>
-        <!-- <small>remaster track:Doxy artist:Miles Davis</small> -->
+
       </div>
       <button type="button" class="btn btn-default" id="submit">Submit</button>
     </form>
@@ -78,13 +75,13 @@
   </div>
   <script src="./data.js"></script>
   <script>
-    /* app id */
+
     const clientId = 'e401920d65c744c0b6b85dd07d110aa3';
-    /* 秘钥 */
+
     const clientSecret = '52ed8f6740514deba983ada74ebd19bf';
-    /* 登录的用户信息 */
+
     let localdata = {};
-    /* 获得token */
+
     fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
       headers: {
@@ -96,13 +93,13 @@
       .then((res) => {
         console.log(res)
         localdata = res;
-        /* 模拟数据渲染 */
+
         showlist(data)
 
       }).catch((err) => {
         console.log(err)
       })
-    /* 搜索 */
+
     document.querySelector('#submit').addEventListener('click', function () {
       let q = document.querySelector('#text').value;
       let type = document.querySelector('#type').value;
@@ -113,21 +110,20 @@
         fetch(`https://api.spotify.com/v1/search?q=${q}&type=${type}`, {
           method: 'GET',
           headers: { 'Authorization': 'Bearer ' + localdata.access_token }
-        }).then(response => response.json())//解析为可读数据
+        }).then(response => response.json())
           .then(data => {
             console.log(data)
             console.log(JSON.stringify(data.albums.items))
             showlist(data.albums.items)
-          })//执行结果是 resolve就调用then方法
-          .catch(err => console.log("Oh, error", err))//执行结果是 reject就调用catch方法
+          })
+          .catch(err => console.log("Oh, error", err))
       }
 
     })
 
     function showlist (data) {
       let html = '';
-      /*               <a href="#" class="btn btn-default"
-                role="button">Button</a> */
+
       data.forEach(ele => {
         html += `
              <div class="col-sm-6 col-md-4">

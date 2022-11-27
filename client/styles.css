@@ -2,8 +2,6 @@
   box-sizing: border-box;
 }
 
-
-
 html {
   background-color: #ff9b42;
   font-size: 16px;
@@ -28,12 +26,13 @@ body {
     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: #8a4fff;
+  background-color: #ada6f5;
 }
 
 a {
   display: inline-block;
   text-decoration: none;
+  color: purple;
 }
 
 h2,
@@ -69,16 +68,17 @@ form {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1.5rem;
+  text-align: center;
 }
 
-.header h1 {
+  h1 {
   display: block;
+
   /* this will push other blocks out of the way */
-
-
-  background-color: #c3bef7;
-  color: #000000;
-
+  text-align: center;
+  background-color: #8a4fff;
+  border-color: black;
+  color: #5A019E;
   border-style: double;
   border-radius: 6px;
   font-size: 1.5rem;
@@ -102,20 +102,38 @@ form {
   margin: 0 auto;
 }
 
-.left_section {
+.searchbar {    /*Same searchbar from our past projects. Feel free to add a different one if you find something else that works.*/
   background-color: #effffa;
-  flex: 0 1 auto;
-  margin: 1rem;
-  padding: 1.5rem;
+  flex: 1 0 auto;
+  /*margin: 1rem;*/
+  align-items: right;
 }
 
-.right_section {
+.navbar {     /*navigation bar with links to different pages on our website*/
+  flex: 1 1 auto;
+  border-style: double;
+  width: 1400px;
+  word-spacing: 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+  background-color: #c3bef7;
+  /*
+  padding: 1.5rem;
+  width: 1400px;
+  display: flex;
+  margin: 75px;
+  justify-content: left;
+  */
+}
+
+.mapbox {   /*This is where the visualization from API will be displayed. We can also create one for list visualization*/
   background-color: #effffa;
-  flex: 1 2 auto;
+  flex: 2 1 auto;
   margin: 1rem;
   align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .footer {
@@ -162,69 +180,6 @@ form {
   height: 150px;
 }
 
-/* Carousel */
-div.carousel {
-  max-width: 300px;
-  overflow: hidden;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-}
-
-.carousel .slides {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* .carousel_item, */
-.hidden {
-  display: none;
-}
-
-.visible {
-  display: block;
-}
-
-.carousel_item img {
-
-  width: 150px;
-}
-
-.prev,
-.next {
-  border: none;
-  margin: 2px;
-  text-align: center;
-  border-radius: 5px;
-  font-weight: bold;
-  height: 45px;
-  padding: 10px;
-  line-height: 0; /* This centers a button's text! */
-  border: 2px solid rgb(99, 99, 99); /* shorthand for how to do a border */
-}
-
-.prev:focus,
-.next:focus {
-  margin: 0;
-  border: 2px solid rgb(45, 108, 113);
-  /* Pick a good border colour and check out how it works with your buttons */
-}
-
-.prev:hover,
-.next:hover {
-  background-color: firebrick;
-  color: black;
-  /* Pick a good background colour for your hover pseudoclass */
-}
-
-
  #map { 
     display: block;
     height: 300px;
@@ -253,7 +208,6 @@ form label {
   width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
   width: fill-available;
   align-items: flex-start;
-
   display: block; /* this turns the label text into a box we can set margins on */
   margin-bottom: 0.5rem;
 }

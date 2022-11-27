@@ -1,7 +1,10 @@
-// params reads in the queries in the url. Example ?access_token=token12345
-let params = new URL(document.location).searchParams;
-// Pulls the token
-let token = params.get("access_token");
+/* Data Request to API */ 
+token = 'BQCR6UmzMZlG3MB5N6KiFTXSrt-VGMDfQV89QhsdIGBYoR5pER8aeFZeHTsyElCKCgny4Q7dUOn8IIcekq8cPmPu2XrvZ-W2WfK4FCamILEx7OIzyRnJTg-YLBWNUl7wkbwJHRHNjmT5Uf1au0bsI4rIzSXmta9PSB0IvJfF7IgHt-YTOnOyEXYeCeCAnBHPMR2j0t2AfeMTiGT7QMF288s'
+term = 'long_term'
+artist_ids = '39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V'
+album_id='0TnOYISbd1XYRBk9myaseg'
+
+
 // Saves the token to storage which can be used anywhere on the website
 if (token !== null) {
   localStorage.setItem("access_token", token);
@@ -12,197 +15,251 @@ if (token !== null) {
 console.log("token");
 console.log(token);
 
-/*
-  Fetch request to get top 50 songs - Name, popularity, 
-  Receives: Access token(obtained through login),term(short_term,medium_term,long_term)
-  Note: Short term may not return anything if you haven't listened to spotify recently.
-  Response Example: 
-  {
-  "name": "Rich Flex",
-  "popularity": 94,
-  "artists": ["Drake","21 Savage"]
-  }
-*/
 
-const getTracklist = async (req_term, req_token) => {
-  url = "https://umd-spotify-backend.herokuapp.com/tracklist?";
-  const response = await fetch(
-    url +
-      new URLSearchParams({
-        access_token: req_token,
-        term: req_term,
-      })
-  );
+/*const getTracklist = async (term, token) => {
+const url = `https://umd-spotify-backend.herokuapp.com/tracklist?access_token=${token}&term=${term}`;
+  const response = await fetch(url);
   const data = await response.json();
   return data;
-};
+}
 
-/*
-  Fetch request to author ids in the top 50 songs.
-  Receives: Access token(obtained through login),term(short_term,medium_term,long_term)
-  Returns: Nested array with author id strings. Strings within nested array go up to 50.
-  Note: Short term may not return anything if you haven't listened to spotify recently.
-  Response Example: 
-  {
-    [['sadfsadfsf','erwt34t3t3t34t43t4'],['sadfsadfsf','erwt34t3t3t34t43t4']]
-  }
-*/
-
-const get_authorIDArray = async (req_term, req_token) => {
-  url = "https://umd-spotify-backend.herokuapp.com/get_authorlist?";
-  const response = await fetch(
-    url +
-      new URLSearchParams({
-        term: req_term,
-        access_token: req_token,
-      })
-  );
+const get_authorIDArray = async (term, token) => {
+  const url = `https://umd-spotify-backend.herokuapp.com/get_authorlist?access_token=${token}&term=${term}`;
+  const response = await fetch(url);
   const data = await response.json();
   return data;
-};
+}
 
-/*
-  Fetch request to get genres count based on artist ids
-  Receives: Access token(obtained through login), artist ids(string of artist ids separated by commas)
-  Note: Short term may not return anything if you haven't listened to spotify recently.
-  Response Example: 
-  {
-    "alternative r&b": 4,
-    "indie jazz": 3,
-    "indie r&b": 4,
-    "indie soul": 3,
-  }
-*/
-const getGenresCount = async (artist_ids, req_token) => {
-  url = "https://umd-spotify-backend.herokuapp.com/genreslist?";
-  const response = await fetch(
-    url +
-      new URLSearchParams({
-        id_string: artist_ids,
-        access_token: req_token,
-      })
-  );
+
+const getGenresCount = async (artist_ids, token) => {
+  const url = `https://umd-spotify-backend.herokuapp.com/genreslist?access_token=${token}&id_string=${artist_ids}`;
+  const response = await fetch(url);
   const data = await response.json();
   return data;
-};
+}
+*/ 
 
-const initChart = (chart, chart_data) => {
-  const labels = chart_data["label"];
-  const data = {
-    labels: labels,
-    datasets: [
-      {
-        label: "Counts based on genres",
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgb(255, 99, 132)",
-        data: chart_data["data"],
-      },
-    ],
-  };
-  const config = {
-    type: "bar",
-    data: data,
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  };
-  return new Chart(chart, config);
-};
-const data_format = (track, location) => {
-  let { song_name, popularity, artists } = track;
+/* Create a barchart with popularity scores of each track from the list*/ 
+
+/*const getShowcategory = async (album_id, token) => {
+  const url = `https://umd-spotify-backend.herokuapp.com/artist_albums?access_token=${token}&id=${album_id}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}*/
+
+function getAlbuminfo(album_id,token) {
+  let url = `https://umd-spotify-backend.herokuapp.com/artist_albums?access_token=${token}&id=${album_id}`
+  fetch(url)
+  .then(response => response.json())
+  .then(responseData => {
+  let display = responseData;
+  //console.log(display.items);
+
+let name_items = []
+let date_items = []
+let tracks_items = []
+
+// take all album names and log them into an array
+for (let i = 0; i < display.items.length; i++) {
+  name_items.push(display.items[i].name);
+}
+console.log(name_items);
+
+// take all release date items and log them into an seperate array 
+for (let i = 0; i < display.items.length; i++) {
+  date_items.push(display.items[i].release_date)
+  }
+console.log(date_items);
+
+// take all total tracks items and log them into an array 
+for (let i = 0; i < display.items.length; i++) {
+  tracks_items.push(display.items[i].total_tracks);
+    }
+console.log(tracks_items);  
+
+//getAlbuminfo(album_id,token)
+
+function format_Data(){
+  //let { song_name, popularity, artists } = track;
+  
   const newLine = `
-  <div class="art_name">Name: ${song_name}</div>
-  <div class="song_name">Artist: ${artists.toString()}</div>
-  <div class="pop_name">Popularity: ${popularity}</div>`;
+  <div class="art_name">Name: ${name_items}</div>
+  <div class="song_name">Release Date: ${date_items}</div>
+  <div class="pop_name">Number of Tracks: ${tracks_items}</div>`;
+  //let li = document.createElement('li')
+  //li.textContent = newLine
+  //const menu = document.querySelector('#full_container');
+  //menu.appendChild(li)
+  form = document.querySelector("#load_button_2")
+  form.addEventListener("click", (SubmitEvent) => {
+  SubmitEvent.preventDefault();
+  //content.className = "song_container";
+  //const listContainer = document.querySelectorAll('.full_container');
+  var json_data = JSON.stringify(newLine);
+  document.write(json_data);
+})
+
+  }
+format_Data()
+}) 
+
+}
+getAlbuminfo(album_id,token)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//`<div class="name_info">Name: ${name_items}</div>
+ // <div class="release_info">Release Date: ${date_items}</div>
+ // <div class="tracks_info">Total Tracks: ${tracks_items}</div>`
+
+/*let content = document.createElement("ul");
+  document.getElementById('.song_container');
+  content.className = "user_request";
+  newLine.innerHTML = "";*/
+
+
+
+
+/*const mainEvent = async () => {
+  let res = await data_Format();
+  console.log(res);
+};
+document.addEventListener("DOMContentLoaded", async () => mainEvent());*/
+
+
+
+/*function data_Format(){
+  const newLine = `
+  <div class="album_name">Album Name: ${name_items}</div>
+  <div class="date_name">Date: ${date_items}</div>
+  <div class="tracks_name">Number of Tracks: ${tracks_items}</div>`;
   let content = document.createElement("li");
   content.className = "song_container";
   content.innerHTML = newLine;
-  location.appendChild(content);
-};
-const data_clean = (final_obj, response, index) => {
-  ret_obj = {};
-  for (item in response) {
-    if (item in final_obj) {
-      final_obj[item] += response[item];
-    } else {
-      final_obj[item] = response[item];
-    }
-  }
-  if (index == 0) {
-    const sortable = Object.entries(final_obj)
-      .sort(([, a], [, b]) => b - a)
-      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
-    // graph code here
-    ret_obj["label"] = Object.keys(sortable).slice(0, 6);
-    ret_obj["data"] = Object.values(sortable).slice(0, 6);
-    return ret_obj;
-  }
-};
-// const updateChart = (chart, data) => {
-//   graph_data = Object.values(data).slice(0, 6);
-//   graph_labels = Object.keys(data).slice(0, 6);
-//   chart.update();
-// };
+  console.log(content)
+}
+data_Format()
+
 
 const mainEvent = async () => {
-  // div which receives top 50 tracks
-  const data_list = document.querySelector("#data");
-  // Value of the term in the initial form
-  const term_value = document.querySelector('input[name="term"]:checked').value;
-  // Initial form to pull top 50 songs
-  form = document.querySelector("#load_button");
-  // Form that pulls the graph data and graph
-  graph_load = document.querySelector("#graph_load");
-  // div that holds the graph
-  const chart_target = document.querySelector("#myChart");
-  // chart object holds the actual chart
-  let chart_object = "";
-  let chart_data = {};
-  // Event listener for initial form - Top user tracks
-  form.addEventListener("click", (SubmitEvent) => {
-    // stops the page from redirecting/reloading
-    SubmitEvent.preventDefault();
-    // Clears the div of any old information
-    data_list.innerHTML = "";
-    // Pulls the top 50 tracks - Song name(string), artists(array), popularity(int)
-    getTracklist(term_value, token)
-      .then((data) => {
-        // On success, format and insert into data div
-        data.forEach((track) => {
-          data_format(track, data_list);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+getTracklist(term_value, token)
+.then((data) => {
+  // On success, format and insert into data div
+  data.forEach((track) => {
+    data_format(track, data_list);
   });
-  // call the get_authorIDArray request and get back author ids
-  graph_load.addEventListener("click", (SubmitEvent) => {
-    SubmitEvent.preventDefault();
-    get_authorIDArray(term_value, token)
-      .then((response) => {
-        genre_obj = {};
-        response.forEach((cur_array, index) => {
-          // Convert an array of strings to one string
-          const temp_IDString = cur_array.toString();
-          // Calls the getGenresCount and get back the genres count object
-          getGenresCount(temp_IDString, token).then((response_obj) => {
-            if (index == 0) {
-              chart_data = data_clean(genre_obj, response_obj, index);
-              chart_object = initChart(chart_target, chart_data);
-            } else {
-              data_clean(genre_obj, response_obj, index);
-            }
-          });
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+})
+.catch((error) => {
+  console.log(error);
+});
+}
+
+document.addEventListener("DOMContentLoaded", async () => mainEvent());*/
+
+
+
+
+/* let {name_items, date_items, tracks_items} = information;
+    const newLine = `
+    <div class="art_name">Name: ${name_items}</div>
+    <div class="song_name">Artist: ${date_items}</div>
+    <div class="pop_name">Popularity: ${tracks_items}</div>`;
+    let content = document.createElement("li");
+    content.className = "song_container";
+    content.innerHTML = newLine;
+    location.appendChild(content);*/
+
+
+
+/*create_Table()
+async function create_Table () {
+  let information = await getShowcategory();
+  let html = '';
+  information.forEach(element => {
+    let htmlSegment = `<div class="element">
+    <div class="album_name">Name: ${name}</div>
+    <div class="release_date">Release Date: ${release_date}</div>
+    <div class="total_tracks">Total Tracks: ${total_tracks}</div>`;
+    html += htmlSegment
   });
+  let container = document.querySelector('.full_container')
+  container.innerHTML = html;*/
+
+
+/*async function mainEvent() {
+  const form = document.querySelector('.full_container')
+  const submit = document.querySelector('#load_button_2')
+  const loadAnimation = document.querySelector('graph_area')
+}
+
+document.addEventListener('DOMContentLoaded', async () => mainEvent());*/
+
+ // extract the data and push the items in an array
+ /*for (let i = 0; i < display.items.length; i++) {
+  console.log(display.items[i].name);
+}
+
+for (let i = 0; i < display.items.length; i++) {
+console.log(display.items[i].release_date);
+}
+
+for (let i = 0; i < display.items.length; i++) {
+console.log(display.items[i].total_tracks);
+}*/
+
+
+
+//display.forEach((name_display)=>{name.push(name_display.items.name);});
+//display.forEach((release_display)=>{name.push(release_display.items.release_date);});
+//display.forEach((total_display)=>{name.push(total_display.items.total_tracks);});
+
+//console.log(name)
+//console.log(release_date)
+//console.log(total_tracks)
+
+
+/*async function format_data () {
+  let information = await getShowcategory();
+  let html = '';
+  information.forEach(element => {
+    let htmlSegment = `<div class="element">
+    <div class="album_name">Name: ${name}</div>
+    <div class="release_date">Release Date: ${release_date}</div>
+    <div class="total_tracks">Total Tracks: ${total_tracks}</div>`;
+    html += htmlSegment
+  });
+  let container = document.querySelector('.full_container')
+  container.innerHTML = html;
+}*/
+
+/*const data_format = (album_information, location) => {
+  getShowcategory();
+  let {name , release_date, total_tracks } = album_information;
+  const newLine = `
+  <div class="album_name">Name: ${name}</div>
+  <div class="release_date">Release Date: ${release_date}</div>
+  <div class="total_tracks">Total Tracks: ${total_tracks}</div>`;
+   content.className = "song_container";
+  content.innerHTML = newLine;
+  location.appendChild(content);
+}*/
+
+
+/*const mainEvent = async () => {
+  let res = await getShowcategory(album_id, token);
+  console.log(res);
+  data_format(album_information,location)
 };
-document.addEventListener("DOMContentLoaded", async () => mainEvent());
+document.addEventListener("DOMContentLoaded", async () => mainEvent());*/

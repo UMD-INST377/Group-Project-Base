@@ -1,13 +1,6 @@
 // params reads in the queries in the url. Example ?access_token=token12345
 let params = new URL(document.location).searchParams;
 // Pulls the token
-let token = params.get("access_token");
-// Saves the token to storage which can be used anywhere on the website
-if (token !== null) {
-  localStorage.setItem("access_token", token);
-} else {
-  token = localStorage.getItem("access_token");
-}
 
 console.log("token");
 console.log(token);
@@ -25,11 +18,10 @@ console.log(token);
 */
 
 const getTracklist = async (req_term, req_token) => {
-  url = "https://umd-spotify-backend.herokuapp.com/tracklist?";
+  url = "https://umd-spotify-backend.herokuapp.com/mod/tracklist?";
   const response = await fetch(
     url +
       new URLSearchParams({
-        access_token: req_token,
         term: req_term,
       })
   );
@@ -48,13 +40,12 @@ const getTracklist = async (req_term, req_token) => {
   }
 */
 
-const get_authorIDArray = async (req_term, req_token) => {
-  url = "https://umd-spotify-backend.herokuapp.com/get_authorlist?";
+const get_authorIDArray = async (req_term) => {
+  url = "https://umd-spotify-backend.herokuapp.com/mod/authorlist?";
   const response = await fetch(
     url +
       new URLSearchParams({
         term: req_term,
-        access_token: req_token,
       })
   );
   const data = await response.json();
@@ -73,13 +64,12 @@ const get_authorIDArray = async (req_term, req_token) => {
     "indie soul": 3,
   }
 */
-const getGenresCount = async (artist_ids, req_token) => {
-  url = "https://umd-spotify-backend.herokuapp.com/genreslist?";
+const getGenresCount = async (artist_ids) => {
+  url = "https://umd-spotify-backend.herokuapp.com/mod/genreslist?";
   const response = await fetch(
     url +
       new URLSearchParams({
         id_string: artist_ids,
-        access_token: req_token,
       })
   );
   const data = await response.json();

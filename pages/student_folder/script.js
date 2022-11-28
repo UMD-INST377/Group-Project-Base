@@ -1,4 +1,4 @@
-token = 'BQCalBboGTYMEuzOb-LA_LZ7fOsmTxJ8o1Nvuza2ggzJYRvjAPz8AnzV_1hOLCkpE-G-cO_xMF_bBGt1SGSEcAgxA1S0W3Yy2CozYTng3sVdA-WOV1LoiGDIAb2is2qXSlZTtuJQDrVRwKhoc5bt4pAt6QQ6zU84QY3SiqtY6H_rOB01a5mX76QYXmX740mLENcNFd8eEV1XMds3wigUWRQ'
+token = 'BQD3A8bkEy9etJ0sSQEGwImtxynAoe7bXjwbqwvYaQtsJzKNn4-XdKmvloUaP30GY37svdb9dIz-J_c06WdzvD2S5o62ZEK5MBwx9x9gn6_H-dcUrW9jcRu-6Hyw_116Em_XFglrLrrcK9CyfT1m4Sfice2vNrIKh8eSDCAb1e3UDAenp8_181rri_-ul9Q6wqm2WbbORf9Q6c3wgwGrPV0'
 term = 'long_term'
 artist_ids = '39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V'
 album_id='0TnOYISbd1XYRBk9myaseg'
@@ -35,21 +35,22 @@ const getGenresCount = async (artist_ids, token) => {
 }
 
 const getShowcategory = async (album_id, token) => {
-    const url = `https://umd-spotify-backend.herokuapp.com/artist_albums?access_token=${token}&id_string=${album_id}`;
+    const url = `https://umd-spotify-backend.herokuapp.com/artist_albums?access_token=${token}&id=${album_id}`;
     const response = await fetch(url);
     const data = await response.json();
     return data;
   }
 
+
 const mainEvent = async () => {
-        let res = await getTracklist(term, token);
-        console.log(res);
-        let res_two = await get_authorIDArray(term, token);
-        console.log(res_two);
-        let res_three = await getGenresCount(artist_ids, token);
-        console.log(res_three)
-        let res_four = await getShowcategory(album_id, token)
-        console.log(res_four)
+    let res = await getTracklist(term, token);
+    console.log(res);
+    let res_two = await get_authorIDArray(term, token);
+    console.log(res_two);
+    let res_three = await getGenresCount(artist_ids, token);
+    console.log(res_three)
+    let res_four = await getShowcategory(album_id, token)
+    console.log(res_four)
 
       };
-      document.addEventListener("DOMContentLoaded", async () => mainEvent());   
+    document.addEventListener("DOMContentLoaded", async () => mainEvent());  

@@ -1,6 +1,10 @@
 /* Data Request to API */ 
-token = 'BQCalBboGTYMEuzOb-LA_LZ7fOsmTxJ8o1Nvuza2ggzJYRvjAPz8AnzV_1hOLCkpE-G-cO_xMF_bBGt1SGSEcAgxA1S0W3Yy2CozYTng3sVdA-WOV1LoiGDIAb2is2qXSlZTtuJQDrVRwKhoc5bt4pAt6QQ6zU84QY3SiqtY6H_rOB01a5mX76QYXmX740mLENcNFd8eEV1XMds3wigUWRQ'
+token = 'BQC_gFbcKlyVwNRBmWnyyyHEzPJIUn73KaK7LcBwOsqyBR59j_MTm0By9pJueNdpoWQMZRDHoUHz1nPDkvLSmeevRwKHGxAPcGom2R-Eepasie0xc-KID2HBfvPEG4dCkIZ4MGMrcY-iffmblr6ih3Grtr-wWnwt-YtK4XX51vSHZNSm4pwGXFf2ZybePKScRptUgBUdJCIKoT6LykgrFXg'
 term = 'long_term'
+artist_ids = '39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V'
+album_id='0TnOYISbd1XYRBk9myaseg'
+
+
 // Saves the token to storage which can be used anywhere on the website
 if (token !== null) {
   localStorage.setItem("access_token", token);
@@ -19,33 +23,32 @@ const url = `https://umd-spotify-backend.herokuapp.com/tracklist?access_token=${
   return data;
 }
 
-/*
 const get_authorIDArray = async (term, token) => {
   const url = `https://umd-spotify-backend.herokuapp.com/get_authorlist?access_token=${token}&term=${term}`;
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
-*/
-/*
+
+
 const getGenresCount = async (artist_ids, token) => {
   const url = `https://umd-spotify-backend.herokuapp.com/genreslist?access_token=${token}&id_string=${artist_ids}`;
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
-*/
+
 
 /* Create a barchart with popularity scores of each track from the list*/ 
-/*const getShowcategory = async (artist_id, token) => {
-  const url = `https://umd-spotify-backend.herokuapp.com/artist_albums?`;
-  const response = await fetch(`${url}?id=${artist_id}&access_token=${token}`);
+
+/*const getShowcategory = async (album_id, token) => {
+  const url = `https://umd-spotify-backend.herokuapp.com/artist_albums?access_token=${token}&id=${album_id}`;
+  const response = await fetch(url);
   const data = await response.json();
   return data;
-}
-*/
+}*/
 
-function initChart(){
+const initChart = (chart, chart_data) => {
   const labels = chart_data["label"];
   const data = {
     labels: labels,
@@ -75,7 +78,7 @@ function initChart(){
 const data_format = (track, location) => {
   let { song_name, popularity, artists } = track;
   const newLine = `
-  <div class="album_name">Name: ${album}</div>
+  <div class="art_name">Name: ${song_name}</div>
   <div class="song_name">Artist: ${artists.toString()}</div>
   <div class="pop_name">Popularity: ${popularity}</div>`;
   let content = document.createElement("li");

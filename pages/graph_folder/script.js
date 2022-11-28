@@ -136,6 +136,13 @@ const data_clean = (final_obj, response, index) => {
 // };
 
 const mainEvent = async () => {
+  getTracklist('long_term')
+    .then((data) => {
+      console.log(data)
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   // div which receives top 50 tracks
   const data_list = document.querySelector("#data");
   // Value of the term in the initial form

@@ -7,3 +7,29 @@ body {
 li{
   color: white;
 }
+ul {
+  border: 2px solid rgb(99, 99, 99);
+  width: 800px;
+  height: 200px;
+  overflow: auto;
+}
+li {
+  list-style-type: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-right: 5px;
+}
+.song_container {
+  display: flex;
+  justify-content: space-between;  
+}
+.full_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+canvas{
+  width: 100%;
+  height: 100%;
+} 

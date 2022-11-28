@@ -2,9 +2,6 @@
 let params = new URL(document.location).searchParams;
 // Pulls the token
 
-console.log("token");
-console.log(token);
-
 /*
   Fetch request to get top 50 songs - Name, popularity, 
   Receives: Access token(obtained through login),term(short_term,medium_term,long_term)
@@ -17,7 +14,7 @@ console.log(token);
   }
 */
 
-const getTracklist = async (req_term, req_token) => {
+const getTracklist = async (req_term) => {
   url = "https://umd-spotify-backend.herokuapp.com/mod/tracklist?";
   const response = await fetch(
     url +
@@ -159,7 +156,7 @@ const mainEvent = async () => {
     // Clears the div of any old information
     data_list.innerHTML = "";
     // Pulls the top 50 tracks - Song name(string), artists(array), popularity(int)
-    getTracklist(term_value, token)
+    getTracklist(term_value)
       .then((data) => {
         // On success, format and insert into data div
         data.forEach((track) => {
@@ -173,14 +170,14 @@ const mainEvent = async () => {
   // call the get_authorIDArray request and get back author ids
   graph_load.addEventListener("click", (SubmitEvent) => {
     SubmitEvent.preventDefault();
-    get_authorIDArray(term_value, token)
+    get_authorIDArray(term_value)
       .then((response) => {
         genre_obj = {};
         response.forEach((cur_array, index) => {
           // Convert an array of strings to one string
           const temp_IDString = cur_array.toString();
           // Calls the getGenresCount and get back the genres count object
-          getGenresCount(temp_IDString, token).then((response_obj) => {
+          getGenresCount(temp_IDString).then((response_obj) => {
             if (index == 0) {
               chart_data = data_clean(genre_obj, response_obj, index);
               chart_object = initChart(chart_target, chart_data);

@@ -1,0 +1,8 @@
+/* MAP STYLES */
+#map {
+    display: block;
+    width: 800px;
+    height: 800px;
+    border: 2px groove rgb(99,99,99);
+    margin-bottom: 1rem;
+  }

@@ -4,10 +4,14 @@ import fetch from 'node-fetch';
 
 import foodService from './foodService.js';
 
+
+
+
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to our final project');
 });
 
 // Generic API inclusion demonstration

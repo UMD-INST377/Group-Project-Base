@@ -8,9 +8,9 @@ export async function createArray(year) {
   const dataList = [];
   try {
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?impl_comp_yr=';
-    let obj;
+    // let obj;
     const res = await fetch(url + year);
-    obj = await res.json();
+    const obj = await res.json();
     for (let i = 0; i < obj.length; i++) {
       dataList.push(obj[i]);
     }
@@ -30,9 +30,9 @@ export async function dataYear(year, info) {
   // creationdate, latitude, longitutde, geocoded_column
   try {
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?impl_comp_yr=';
-    let obj;
+    // let obj;
     const res = await fetch(url + year);
-    obj = await res.json();
+    const obj = await res.json();
     for (let i = 0; i < obj.length; i++) {
       console.log(obj[i][info]);
     }

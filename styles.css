@@ -1,6 +1,6 @@
 
 body {
-    background-color: lightblue;
+    background-color: azure;
     margin: 0;
     flex: 1;
 
@@ -46,7 +46,7 @@ header {
     margin: 0;
     flex: 1;
   }
-.column {
+  .column {
     flex:70%;
     padding: 10px;
     height: 500px;

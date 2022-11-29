@@ -1,0 +1,46 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group_9_Project</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/> 
+    <link rel="stylesheet" href="css/styles.css" />
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+    crossorigin=""></script> 
+  </head>
+  <body class="wrapper">
+      <header class="header">
+        <h1>Group_9_Project</h1>
+      </header>
+      <div class="container">
+        <div class="left_section box">
+            <h3>Form Inputs</h3>
+          <form action="/api" class="box main_form">
+            <label for="resto">Crime Type</label>
+            <input type="text" name="resto" id="resto"/>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            <button type="submit" id="get-resto">Search crime by type...</button>
+          </form>
+        </div>
+        <div class="right_section box">
+          <h3>Crime Occurrences</h3>
+          <div id="map"></div>
+          <div class="box" id="crime_list">A list of crimes</div>
+        </div>
+      </div>
+    <footer class="footer">
+      Searchable Crime Types:
+        <p>Accident | Theft From Auto | Accident with Impound |
+      Assault | Theft | Auto, Stolen | Vandalism | B & E, Residential | 
+      Robbery, Other | B & E, Commercial | Sex Offense | Assault, Weapon
+        </p>
+      </footer>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

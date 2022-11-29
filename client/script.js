@@ -1,63 +1,39 @@
 
-function shapeDataForLineChart(array) {
-  return array.reduce((collection, item) => {
-    if(!collection[item.category]) {
-      collection[item.category] = [item]
-    } else {
-      collection[item.category].push(item);
-    }
-    return collection;
-  }, {});
-}
+  function initChart(chart) {
+    const labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
 
-function initChart(targetElement, dataObject) {
-    const labels = Object.keys(dataObject);
-    const info = Object.keys(dataObject).map((item) => dataObject[item].length);
-  
     const data = {
-      labels: labels,
+      label: labels,
       datasets: [{
-        label: 'Restaurants By Category',
-        backgroundColor: 'rgb(255, 60, 255)',
-        borderColor: 'rgb(255, 255, 255)',
-        borderWidth: '3',
-        data: info
+        label: "temp",
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
       }]
-    };
+    }
     const config = {
-      type: 'bar',
-      data: data,
-      options: {}
-    };
-  
+     type : 'line',
+     data: data,
+     options: {}
+  }
     return new Chart(
-      targetElement,
+      chart,
       config
     );
-  }
-
-async function getData() {
-  const url = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc'; // remote URL! you can test it in your browser
-  const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
-  const json = await data.json();
-  const reply = json.filter((item));
-  console.log(reply);
-  return reply;
-  }
-
-async function mainEvent() {
-  const form = document.querySelector('.main_form');
-  const currentlist = [];
-
-  form.addEventListener('submit', (submitEvent) => {
-    const cryptoData =  getData();
-    cryptoData.append(currentlist)
-    console.log(currentlist)
-  });
-  
-  const chartData = await getData();
-  const shapedData = shapeDataForLineChart(chartData);
-  console.log(shapedData);
-  const myChart = initChart(chartTarget, shapedData);
-
 }
+
+  async function getData() {
+    const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false';
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  }
+  
+  async function mainEvent() {
+
+    const form = document.querySelector('.main_form');
+    const chartTarget = doccument.querySelector('#myChart');
+
+    initChart(chartTarget);
+
+    doccument.getElementById('button').addEventListener("click", console.log("hello"));
+  }

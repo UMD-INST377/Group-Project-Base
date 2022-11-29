@@ -2,7 +2,26 @@
     text-align:left;
   }
 
-  .right-side {
-    top: 0;
-    text-align:right;
-  }
+
+.right-side {
+  word-spacing: 2rem;
+  position:absolute;
+  top:0;
+  right:0;
+ }
+
+
+
+.login-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+#login {
+  background-color: greenyellow;
+}
+
+#sign-up {
+  background-color: aquamarine;
+}

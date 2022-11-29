@@ -57,6 +57,9 @@ async function mainEvent() {
   console.log(teamLogo);
   console.log(teamResponse);
 
+  document.getElementById('team-header').textContent = `${teamFullName} ${year}`;
+  document.getElementById('team-logo').src = teamLogo;
+
   teamResponse.forEach((item, index) => {
     document.getElementById('total-games').textContent = `Games played: ${item.games}`;
     document.getElementById('FG-percent').textContent = `Team FG percentage: ${item.fgp}`;
@@ -69,8 +72,6 @@ async function mainEvent() {
     document.getElementById('total-turn').textContent = `Total Turnovers: ${item.turnovers}`;
     document.getElementById('total-blocks').textContent = `Total Blocks: ${item.blocks}`;
   });
-
-  document.getElementById('team-header').textContent = `${teamFullName} ${year}`;
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

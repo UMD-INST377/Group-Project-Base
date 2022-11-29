@@ -105,7 +105,7 @@ function makeChart() {
 
 async function mainEvent() {
 // 100 request per day, 10 request per minute
-  // await getChampionsData();
+  await getChampionsData();
 
   const total3Perc = champ3Perc.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   const avg3Perc = total3Perc / champ3Perc.length;
@@ -120,6 +120,7 @@ async function mainEvent() {
   console.log(`avg 3%: ${avg3Perc}, avg 3 made: ${avg3Made}, avg 3 attempted: ${avg3Att}`);
   console.log(champ3Perc);
   makeChart();
+  document.getElementById('three-avgs').textContent = `average 3 percent: ${avg3Perc}, average 3s made: ${avg3Made}, and average 3s attempted: ${avg3Att}`;
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

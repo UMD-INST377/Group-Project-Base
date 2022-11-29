@@ -4,10 +4,10 @@
 /* eslint-disable  no-await-in-loop */
 /* eskint-disable no-new */
 // Code for year drop down list
-const checkList = document.getElementById('list1');
-checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
-  if (checkList.classList.contains('visible')) { checkList.classList.remove('visible'); } else { checkList.classList.add('visible'); }
-};
+// const checkList = document.getElementById('list1');
+// checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+//   if (checkList.classList.contains('visible')) { checkList.classList.remove('visible'); } else { checkList.classList.add('visible'); }
+// };
 
 const options = {
   method: 'GET',
@@ -67,7 +67,7 @@ async function getChampionshipStats(teamID, season) {
 }
 
 async function getChampionsData() {
-  // main triggger for API calls. 
+  // main triggger for API calls.
   // Loop through list of champion teams, get each team ID and team Stats
   for (const team of champions) {
     console.log(team);
@@ -127,6 +127,20 @@ async function mainEvent() {
   console.log(`avg 3%: ${avg3Perc}, avg 3 made: ${avg3Made}, avg 3 attempted: ${avg3Att}`);
   console.log(champ3Perc);
   makeChart();
+
+  const userInput = document.querySelector('#search-box').value;
+
+  const button = document.querySelector('#search');
+  const year = document.querySelector('#year').value
+
+
+  button.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log(userInput);
+    console.log(year)
+    
+  });
+
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

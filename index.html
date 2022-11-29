@@ -32,13 +32,13 @@
        <!-- Left div for user form input-->
        
        <div>
-        <form action="/api" class="main_form">
+        <form action="/team.html" class="main_form" id="search">
             <h3><lable for="resto">Search team 3 point data</lable></h3>
-            <input type="text" name="resto" id="resto" />
-            <button type="submit" id="get-resto">Search Team Data</button>
+            <input type="text" name="resto" id="search-box" />
+            <button type="submit" id="team-button">Search Team Data</button>
           </form>
 
-          <div id="list1" class="dropdown-check-list" tabindex="100">
+          <!-- <div id="list1" class="dropdown-check-list" tabindex="100">
             <span class="anchor">Years</span>
             <ul class="items">
               <li><input type="radio" />2010 </li>
@@ -53,7 +53,21 @@
               <li><input type="radio" />2019</li>
               <li><input type="radio" />2020</li>
             </ul>
+          </div> -->
+          <div class='form-row'>
+            <label for='year'>Year</label>
+            <select id='year' name='year'>
+              <option value='2015'>2015</option>
+              <option value='2016'>2016</option>
+              <option value='2017'>2017</option>
+              <option value='2018'>2018</option>
+              <option value='2019'>2019</option>
+              <option value='2020'>2020</option>
+              <option value='2021'>2021</option>
+              <option value='2022'>2022</option>
+            </select>
           </div>
+          
        </div>
         
        <!-- Footer div-->

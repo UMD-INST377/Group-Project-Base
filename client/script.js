@@ -44,18 +44,27 @@ async function getData() {
   return reply;
 }
 
+// async function mainEvent() {
+//   const form = document.querySelector('.main_form');
+//   const currentlist = [];
+
+//   form.addEventListener('submit', (submitEvent) => {
+//     const cryptoData = getData();
+//     cryptoData.append(currentlist);
+//     console.log(currentlist);
+//   });
+
+//   const chartData = await getData();
+//   const shapedData = shapeDataForLineChart(chartData);
+//   console.log(shapedData);
+//   const myChart = initChart(chartTarget, shapedData);
+// }
+
 async function mainEvent() {
-  const form = document.querySelector('.main_form');
-  const currentlist = [];
-
-  form.addEventListener('submit', (submitEvent) => {
-    const cryptoData = getData();
-    cryptoData.append(currentlist);
-    console.log(currentlist);
+  const categoriesButton = document.getElementById("categories_button");
+  categoriesButton.addEventListener("submit", () => {
+    console.log("Print some stuff");
   });
-
-  const chartData = await getData();
-  const shapedData = shapeDataForLineChart(chartData);
-  console.log(shapedData);
-  const myChart = initChart(chartTarget, shapedData);
 }
+
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -5,10 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA Team</title>
+    <link rel="stylesheet" href="./teamStyles.css"/>
   </head>
   <body>
     <Div>
-    <h1>Team Data</h1>
+        <div>
+            <img id="team-logo" src="https://upload.wikimedia.org/wikipedia/fr/thumb/d/d1/Bulls_de_Chicago_logo.svg/1200px-Bulls_de_Chicago_logo.svg.png" >
+        </div>
+
+        <div>
+            <h1 id="team-header">Team Name</h1>
+        </div>
+
+        <div class="averages">
+            <h2>Season Averages:</h2>
+            <p id="total-games">Games played </p>
+            <p id="FG-percent">Team FG percentage: </p>
+            <p id="FT-percent">Team Free Throw percentage: </p>
+            <p id="Three-percent">Team Three Point percentage: </p>
+        </div>
+
+        <div class="totals">
+            <h2>Season Totals:</h2>
+            <p id="total-points">Total Points </p>
+            <p id="total-rebound">Total Rebounds </p>
+            <p id="total-assists">Total Assists </p>
+            <p id="total-steal">Totals Steal </p>
+            <p id="total-turn">Total Turnovers </p>
+            <p id="total-blocks">Total Blocks </p>
+        </div>
+    
     
 </Div>
 <script src="./teamScript.js" type="module"></script>

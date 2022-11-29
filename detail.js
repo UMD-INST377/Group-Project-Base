@@ -17,13 +17,13 @@ function showdetail (href) {
   fetch(href, {
     method: 'GET',
     headers: { 'Authorization': 'Bearer ' + access_token }
-  }).then(response => response.json())//解析为可读数据
+  }).then(response => response.json())
     .then(data => {
       showlist(data)
-    })//执行结果是 resolve就调用then方法
-    .catch(err => console.log("Oh, error", err))//执行结果是 reject就调用catch方法
+    })
+    .catch(err => console.log("Oh, error", err))
 }
-/* 显示列表 */
+
 function showlist (data) {
   console.log(data)
   document.querySelector('.tit').innerHTML = `${data.name} <small>${data.release_date}</small>`

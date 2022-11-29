@@ -49,5 +49,20 @@ async function mainEvent() {
   }
   makeGraph(xLabel, rateData);
 }
+this.stocksService.getStockData()
+.subscribe(
+  (response) => {
+    for(var i = 0; i < response.length; i++) {
+      this.stockOpen.push(response[i]['open']);
+    }
+    console.log('after loop: ', this.stockOpen);
+  },
+  ()=>{
+  this.buildStockChart();
+  }
+);
+console.log('real: ', this.stockOpen);
+console.log('test: ', this.testData);
+
 
 mainEvent();

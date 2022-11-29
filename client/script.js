@@ -73,6 +73,7 @@ async function mainEvent() {
   console.log(`total 3% is ${total3Perc} total 3 made is ${total3Made}, total 3 att is ${total3Att}`);
   console.log(`avg 3%: ${avg3Perc}, avg 3 made: ${avg3Made}, avg 3 attempted: ${avg3Att}`);
   console.log(champ3Perc);
+
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

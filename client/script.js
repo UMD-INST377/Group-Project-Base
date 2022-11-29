@@ -49,5 +49,5 @@ async function mainEvent() {
   }
   makeGraph(xLabel, rateData);
 }
-
+ 
 mainEvent();

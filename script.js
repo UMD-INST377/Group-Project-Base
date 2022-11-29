@@ -112,7 +112,7 @@ function makeChart() {
 
 async function mainEvent() {
 // 100 request per day, 10 request per minute
-  await getChampionsData();
+  // await getChampionsData();
 
   const total3Perc = champ3Perc.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   const avg3Perc = total3Perc / champ3Perc.length;

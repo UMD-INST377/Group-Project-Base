@@ -114,23 +114,4 @@ body {
     }
   }
 
-  .myBtn{
-    height: 42px;
-    width: 183px;
-    font-size: 15px;
-    background: rebeccapurple;
-    color: white;
-    font-weight: bold;
-    border-radius: 36px;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    box-shadow: 3px 3px 18px 0px #b9b9b9;
-    transition: 0.3s;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    }
-
    

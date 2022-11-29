@@ -50,8 +50,8 @@ async function getData() {
     const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
     const data = await fetch(url);
     const json = await data.json();
-    const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.school));
-    return reply;
+    //const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.school));
+    return json;
 }
 
 async function mainEvent() {
@@ -64,8 +64,12 @@ async function mainEvent() {
     submit.style.display = 'none';
 
     const mapData = await getData();
-  
+
+    console.log(mapData);
+    console.log(mapData.data);
     console.table(mapData.data);
+    console.log(mapData);
+    console.log(mapData.data);
     console.log(mapData.data[0]);
     console.log(`${mapData.data[0].school} ${mapData.data[0].category}`);
 

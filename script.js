@@ -6,10 +6,8 @@
 /* eskint-disable no-new */
 
 // Code for year drop down list
-// const checkList = document.getElementById('list1');
-// checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
-//   if (checkList.classList.contains('visible')) { checkList.classList.remove('visible'); } else { checkList.classList.add('visible'); }
-// };
+
+
 
 const options = {
   method: 'GET',
@@ -46,10 +44,6 @@ async function teamToID(teamName) {
   console.log(` ${teamName}, ${teamID}`);
   return teamID
 }
-async function getChampionshipStats(teamID, season) {
-  // api to get a team by its name and year
-  // to see stats of the team from that year
-  // Example Wizards 2022
 
   console.log(`${teamID}, ${season}`);
   const url = `https://api-nba-v1.p.rapidapi.com/teams/statistics?id=${teamID}&season=${season}`;
@@ -121,6 +115,7 @@ async function mainEvent() {
   console.log(champ3Perc);
   makeChart();
   document.getElementById('three-avgs').textContent = `average 3 percent: ${avg3Perc}, average 3s made: ${avg3Made}, and average 3s attempted: ${avg3Att}`;
+
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

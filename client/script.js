@@ -1,5 +1,4 @@
-/* eslint linebreak-style: ["error", "windows"] */
-
+/* eslint-disable max-len */
 function getRandomInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -13,9 +12,10 @@ function injectHTML(list) {
   const listEl = document.createElement('ol');
   target.appendChild(listEl);
 
-  list.foreach((item) => {
+  list.forEach((item) => {
     const el = document.createElement('li');
-    el.innerText = item.zip_code;
+    el.innerText = `${item.street_number} ${item.street_name} ${item.street_type
+    } ${item.zip_code}`;
     listEl.appendChild(el);
   });
 }
@@ -50,10 +50,11 @@ function markerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    const {coordinates} = item.geocoded_column_1;
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+    const {location} = item.location;
+    console.log(item.location[1]);
+    L.marker(location[1], location[0]).addTo(map);
     if (index === 0) {
-      map.setView([coordinates[1], coordinates[0]], 10);
+      map.setView([location[1], location[0]], 10);
     }
   });
 }
@@ -62,6 +63,7 @@ async function getData() {
   const data = await fetch(url);
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.inspection_id));
+  console.log(reply);
   return reply;
 }
 async function mainEvent() {

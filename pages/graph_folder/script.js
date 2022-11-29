@@ -15,7 +15,7 @@ let params = new URL(document.location).searchParams;
 */
 
 const getTracklist = async (req_term) => {
-  url = "https://umd-spotify-backend.herokuapp.com/mod/tracklist?";
+  url = "https://localhost:9000/mod/tracklist?";
   const response = await fetch(
     url +
       new URLSearchParams({
@@ -38,7 +38,7 @@ const getTracklist = async (req_term) => {
 */
 
 const get_authorIDArray = async (req_term) => {
-  url = "https://umd-spotify-backend.herokuapp.com/mod/authorlist?";
+  url = "https://localhost:9000/mod/authorlist?";
   const response = await fetch(
     url +
       new URLSearchParams({
@@ -62,7 +62,7 @@ const get_authorIDArray = async (req_term) => {
   }
 */
 const getGenresCount = async (artist_ids) => {
-  url = "https://umd-spotify-backend.herokuapp.com/mod/genreslist?";
+  url = "https://localhost:9000/mod/genreslist?";
   const response = await fetch(
     url +
       new URLSearchParams({

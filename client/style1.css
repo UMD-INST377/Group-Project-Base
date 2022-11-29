@@ -29,10 +29,22 @@ body {
   background-color: rgb(239, 239, 239);
 }
 
+#button {
+  width: 15em;
+  border: 2px solid turquoise;
+  background: #ffe;
+  border-radius: 5px;
+}
+
 
 a {
-  display: inline-block;
+  display: block;
+  width: 100%;
+  line-height: 2em;
+  text-align: center;
   text-decoration: none;
+  border-radius: 5px;
+  color: blue;
 }
 
 h2, h3 {

@@ -1,6 +1,10 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# Link to our website
+https://mederickg.github.io/
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+
+## Shout out to this youtube video that helped me figure out how to use spotify API [11/12/2022]
+https://www.youtube.com/watch?v=1vR3m0HupGI&t=867s
+
+## Turns out the Spotify API is super hard, we pivoted to the Wikipedia API
+### so shout out to this article that helped me figure out the much simpler Wikipedia API
+https://codesnippet.io/wikipedia-api-tutorial/

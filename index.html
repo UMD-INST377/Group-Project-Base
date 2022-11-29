@@ -1,0 +1,31 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="client/styles.css" />
+  </head>
+
+  <body onload="main()">
+    <div class="wrapper">
+      <header class="header">
+      </header>
+      <div id="logo_homepage" class="logo_content">
+        <img class="logo--home" src="images/logo.png" alt="WikiSearch Logo">
+      </div>
+      <div class="container">
+          <form class="box">
+            <label >Search Query</label>
+            <input type="text" name="search_item" id="search_item" />
+            <button id="submit_button" class="button-55" role="button" type="button">Enter</button>
+          </form>
+        <div class="box">
+          <h3>Results</h3>
+          <div id="results"class="box font">No Results Yet.</div>
+        </div>
+      </div>
+    </div>
+    <script src="./client/script.js"></script>
+  </body>
+</html>

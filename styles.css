@@ -41,62 +41,10 @@ h2, h3 {
   padding-bottom:1.5rem;
 }
 
+
 form {
   accent-color: hsla(120, 100%, 50%, 0.482);
 }
-
-.dropdown-check-list {
-    display: inline-block;
-  }
-  
-  .dropdown-check-list .anchor {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    padding: 5px 50px 5px 10px;
-    border: 1px solid #ccc;
-  }
-  
-  .dropdown-check-list .anchor:after {
-    position: absolute;
-    content: "";
-    border-left: 2px solid black;
-    border-top: 2px solid black;
-    padding: 5px;
-    right: 10px;
-    top: 20%;
-    -moz-transform: rotate(-135deg);
-    -ms-transform: rotate(-135deg);
-    -o-transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
-    transform: rotate(-135deg);
-  }
-  
-  .dropdown-check-list .anchor:active:after {
-    right: 8px;
-    top: 21%;
-  }
-  
-  .dropdown-check-list ul.items {
-    padding: 2px;
-    display: none;
-    margin: 0;
-    border: 1px solid #ccc;
-    border-top: none;
-  }
-  
-  .dropdown-check-list ul.items li {
-    list-style: none;
-  }
-  
-  .dropdown-check-list.visible .anchor {
-    color: #0094ff;
-  }
-  
-  .dropdown-check-list.visible .items {
-    display: block;
-  }
-
 
   .wrapper {
     min-height: 100vh;
@@ -156,4 +104,11 @@ form {
     .footer a {
       color: rgb(23, 164, 23);
       text-decoration: underline;
+    }
+
+    .form-row select {
+      width: 30%;
+      padding: 5px;
+      font-size: 14px;            /* This won't work in Chrome or Safari */
+      
     }

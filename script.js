@@ -1,13 +1,13 @@
+/* eslint-disable no-sequences */
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 /* eslint-disable  no-restricted-syntax */
 /* eslint-disable  no-await-in-loop */
 /* eskint-disable no-new */
+
 // Code for year drop down list
-const checkList = document.getElementById('yearsList');
-checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
-  if (checkList.classList.contains('visible')) { checkList.classList.remove('visible'); } else { checkList.classList.add('visible'); }
-};
+
+
 
 const options = {
   method: 'GET',
@@ -42,7 +42,7 @@ async function teamToID(teamName) {
     teamID = item.id;
   });
   console.log(` ${teamName}, ${teamID}`);
-  return teamID;
+  return teamID
 }
 
   console.log(`${teamID}, ${season}`);
@@ -63,21 +63,14 @@ async function teamToID(teamName) {
 }
 
 async function getChampionsData() {
+  // main triggger for API calls.
+  // Loop through list of champion teams, get each team ID and team Stats
   for (const team of champions) {
     console.log(team);
     const id = await teamToID(team);
     await getChampionshipStats(id, year);
     year += 1;
   }
-}
-
-async function getAnyTeam(teamID, year) {
-  // api to get a team by its name and year
-  // to see stats of the team from that year
-  // Example Wizards 2022
-  // const url = `https://api-nba-v1.p.rapidapi.com/teams/statistics?id=${teamID}&season=${year}`;
-  // const data = await fetch(url, options);
-  // const json = await data.json();
 }
 
 function makeChart() {
@@ -106,7 +99,7 @@ function makeChart() {
 
 async function mainEvent() {
 // 100 request per day, 10 request per minute
-  // await getChampionsData();
+  await getChampionsData();
 
   const total3Perc = champ3Perc.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   const avg3Perc = total3Perc / champ3Perc.length;
@@ -120,6 +113,9 @@ async function mainEvent() {
   console.log(`total 3% is ${total3Perc} total 3 made is ${total3Made}, total 3 att is ${total3Att}`);
   console.log(`avg 3%: ${avg3Perc}, avg 3 made: ${avg3Made}, avg 3 attempted: ${avg3Att}`);
   console.log(champ3Perc);
+  makeChart();
+  document.getElementById('three-avgs').textContent = `average 3 percent: ${avg3Perc}, average 3s made: ${avg3Made}, and average 3s attempted: ${avg3Att}`;
+
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

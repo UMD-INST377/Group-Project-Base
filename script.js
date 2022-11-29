@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable  no-restricted-syntax */
 /* eslint-disable  no-await-in-loop */
-
+/* eskint-disable no-new */
 // Code for year drop down list
 const checkList = document.getElementById('yearsList');
 checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
@@ -19,8 +19,12 @@ const options = {
 
 // Champions in order from 2015 - 2022
 // const champions = ['Warriors', 'Cavaliers', 'Warriors', 'Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
-const champions = ['Warriors', 'Cavaliers'];
-let year = 2015;
+// Champions in order from 2018 - 2022
+const champions = ['Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
+// list of teams for development, to reduce request amount
+// const champions = ['Warriors', 'Cavaliers'];
+let year = 2018;
+// Data for the charts
 const champ3Perc = [];
 const champ3Atts = [];
 const champ3Made = [];
@@ -41,10 +45,28 @@ async function teamToID(teamName) {
   return teamID;
 }
 
-function getChampionsData() {
-  let year = 2015;
-  champions.forEach((item, index) => {
-    const id = teamToID(item);
+  console.log(`${teamID}, ${season}`);
+  const url = `https://api-nba-v1.p.rapidapi.com/teams/statistics?id=${teamID}&season=${season}`;
+  const data = await fetch(url, options);
+  const json = await data.json();
+  const res = json.response;
+
+  res.forEach((item, index) => {
+    const threePercentage = parseFloat(item.tpp);
+    const threeMade = item.tpm;
+    const threeAttempted = item.tpa;
+    console.log(`${item.id}, 3pt% ${threePercentage}, 3's made ${threeMade}, 3s attempted ${threeAttempted}`);
+    champ3Perc.push(threePercentage);
+    champ3Atts.push(threeAttempted);
+    champ3Made.push(threeMade);
+  });
+}
+
+async function getChampionsData() {
+  for (const team of champions) {
+    console.log(team);
+    const id = await teamToID(team);
+    await getChampionshipStats(id, year);
     year += 1;
   }
 }
@@ -58,7 +80,32 @@ async function getAnyTeam(teamID, year) {
   // const json = await data.json();
 }
 
+function makeChart() {
+  const ctx = document.getElementById('myChart');
+
+  // eslint-disable-next-line no-new
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: champions,
+      datasets: [{
+        label: 'Past Champ 3 Point %',
+        data: champ3Perc,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
 async function mainEvent() {
+// 100 request per day, 10 request per minute
   // await getChampionsData();
 
   const total3Perc = champ3Perc.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -73,7 +120,6 @@ async function mainEvent() {
   console.log(`total 3% is ${total3Perc} total 3 made is ${total3Made}, total 3 att is ${total3Att}`);
   console.log(`avg 3%: ${avg3Perc}, avg 3 made: ${avg3Made}, avg 3 attempted: ${avg3Att}`);
   console.log(champ3Perc);
-
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

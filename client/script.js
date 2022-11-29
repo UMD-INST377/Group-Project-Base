@@ -1,4 +1,5 @@
 
+
   function initChart(chart) {
     const labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
 

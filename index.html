@@ -17,8 +17,8 @@
         
        <!-- Testing a header line -->
         <div>
-        <a href="/index.html">Home</a>
-        <a href="/about.html">About</a>
+        <a href="./index.html">Home</a>
+        <a href="./about.html">About</a>
          </div>
         
        <!-- Center div for champions graph-->
@@ -32,9 +32,22 @@
        <!-- Left div for user form input-->
        
        <div>
-        <form action="/team.html" class="main_form" id="search">
-            <h3><lable for="resto">Search team 3 point data</lable></h3>
-            <input type="text" name="resto" id="search-box" />
+        <form action="./team.html" class="main_form" id="search">
+            <h3><lable for="team-name">Search team 3 point data</lable></h3>
+            <input type="text" name="team-name" id="search-box" />
+            <div class='form-row'>
+              <label for='year'>Year</label>
+              <select id='year' name='year'>
+                <option value='2015'>2015</option>
+                <option value='2016'>2016</option>
+                <option value='2017'>2017</option>
+                <option value='2018'>2018</option>
+                <option value='2019'>2019</option>
+                <option value='2020'>2020</option>
+                <option value='2021'>2021</option>
+                <option value='2022'>2022</option>
+              </select>
+            </div>
             <button type="submit" id="team-button">Search Team Data</button>
           </form>
 
@@ -54,19 +67,6 @@
               <li><input type="radio" />2020</li>
             </ul>
           </div> -->
-          <div class='form-row'>
-            <label for='year'>Year</label>
-            <select id='year' name='year'>
-              <option value='2015'>2015</option>
-              <option value='2016'>2016</option>
-              <option value='2017'>2017</option>
-              <option value='2018'>2018</option>
-              <option value='2019'>2019</option>
-              <option value='2020'>2020</option>
-              <option value='2021'>2021</option>
-              <option value='2022'>2022</option>
-            </select>
-          </div>
           
        </div>
         
@@ -80,7 +80,7 @@
         </div>
 
     <!-- Connect script to HTML page -->
-    <script src="./script.js"></script>
+    <script src="./script.js" type="module"></script>
     </div>
 </body>
 </html>

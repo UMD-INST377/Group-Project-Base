@@ -4,6 +4,7 @@
 /* eslint-disable  no-restricted-syntax */
 /* eslint-disable  no-await-in-loop */
 /* eskint-disable no-new */
+
 // Code for year drop down list
 // const checkList = document.getElementById('list1');
 // checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
@@ -39,13 +40,11 @@ async function teamToID(teamName) {
   const json = await data.json();
   const res = json.response;
   let teamID = 0;
-  let teamLogo = '';
   res.forEach((item, index) => {
     teamID = item.id;
-    teamLogo = item.logo;
   });
   console.log(` ${teamName}, ${teamID}`);
-  return [teamID, teamLogo];
+  return teamID
 }
 async function getChampionshipStats(teamID, season) {
   // api to get a team by its name and year
@@ -74,28 +73,10 @@ async function getChampionsData() {
   // Loop through list of champion teams, get each team ID and team Stats
   for (const team of champions) {
     console.log(team);
-    const data = await teamToID(team);
-    const id = data[0]
+    const id = await teamToID(team);
     await getChampionshipStats(id, year);
     year += 1;
   }
-}
-
-async function getAnyTeam(teamName, year) {
-  // api to get a team by its name and year
-  // to see stats of the team from that year
-  // Example Wizards 2022
-  const data = await teamToID(teamName);
-  const teamID = data[0];
-  const teamLogo = data[1];
-
-  const url = `https://api-nba-v1.p.rapidapi.com/teams/statistics?id=${teamID}&season=${year}`;
-  const apiData = await fetch(url, options);
-  const json = await apiData.json();
-  const res = json.response;
-  
-  console.log(teamLogo)
-  console.log(res);
 }
 
 function makeChart() {
@@ -139,17 +120,6 @@ async function mainEvent() {
   console.log(`avg 3%: ${avg3Perc}, avg 3 made: ${avg3Made}, avg 3 attempted: ${avg3Att}`);
   console.log(champ3Perc);
   makeChart();
-
-  const form = document.querySelector('#search');
-
-  form.addEventListener('submit', (event) => {
-    const yearQuery = document.querySelector('#year').value;
-    const userInput = document.querySelector('#search-box').value;
-    event.preventDefault();
-    console.log(userInput);
-    console.log(yearQuery);
-    getAnyTeam(userInput, yearQuery);
-  });
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

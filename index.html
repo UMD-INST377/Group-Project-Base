@@ -5,33 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body>
-    
+
+  <div class="wrapper">
     <div>
     <!-- Page Header -->
+    <div class="header">
         <h1>Group 20</h1>
-        
+      </div>
+
        <!-- Testing a header line -->
-        <div>
+      <div class="header">
         <a href="./index.html">Home</a>
         <a href="./about.html">About</a>
-         </div>
+      </div>
         
        <!-- Center div for champions graph-->
+      <div class="container">
        <div>
             <h3>3 point shot ratio of NBA champions from the Last 10 Years</h3>
             <div>
               <canvas id="myChart"></canvas>
               
             </div>
-       </div>
+      </div>
        <!-- Left div for user form input-->
        
-       <div>
+       <div class="left_section  box" id="left_form">
         <form action="./team.html" class="main_form" id="search">
             <h3><lable for="team-name">Search team 3 point data</lable></h3>
             <input type="text" name="team-name" id="search-box" />
@@ -52,12 +56,14 @@
           </form>
        </div>
         
+       <div class="center box" id="center_image">
+        <h3>3 point shot ratio of NBA champions from the Last 10 Years</h3>
+        </div>
        <!-- Footer div-->
         <div>
             <footer class="footer">
                 
                 Group 20 <a href="https://github.com/SegunAwe05/SegunAwe05.github.io" target="_blank" rel="noopener noreferrer">Group 20's Git Hub Repo
-
             </footer>
         </div>
 

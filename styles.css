@@ -5,7 +5,6 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
 
-  /* these are specific to different browsers */
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -29,6 +28,21 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1.5rem;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+h2, h3 {
+  margin:0;
+  padding:0;
+  padding-bottom:1.5rem;
+}
+
+form {
+  accent-color: hsla(120, 100%, 50%, 0.482);
 }
 
 .dropdown-check-list {
@@ -103,10 +117,10 @@ body {
   .left_section {
     background-color: rgba(14, 105, 35, 0.8);
     flex: 0 1 auto;
-    margin: 1rem;      
+    margin: 1rem;
     padding: 1.5rem;
-    align-items: center;
-    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
     }
 
     .center {
@@ -136,6 +150,7 @@ body {
       background-color: rgba(9, 54, 158, 0.8);
       font-size: 1.2rem;
       font-weight: 600;
+      
     }
     
     .footer a {

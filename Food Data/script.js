@@ -138,10 +138,9 @@ function changeChart(chart, dataObject) {
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);
 
   chart.data.labels = labels;
-  chart.data.datasets.forEach((set) => {
+  chart.data.datasets.forEach((set) =>{
     set.data = info;
-    return set;
-  });
+    return set;});
   chart.update();
 }
 

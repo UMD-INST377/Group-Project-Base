@@ -76,19 +76,23 @@ async function initSongs(){
     console.log(token)
     console.log("Getting playlist for Rock")
     const genres = await getGenres(token)
-    console.table(genres)
+    const listOfTracks = [];
     genres.forEach(async genre => {
         console.log(`Getting tracks from: ${genre.name} has id: ${genre.id}`)
         const playlists = await getPlaylistsByGenre(token, genre.id, 3)
-        if(typeof playlists !== "undefined")
-            {console.table(playlists);} 
+        if(typeof playlists !== "undefined"){
+            playlists.forEach(playlist =>{
+                {console.log(playlist.href);}
+            })
+        }      
+            
     })
     
     //const playlists = await getPlaylistsByGenre(token, "0JQ5DAqbMKFDXXwE9BDJAr", 10);
     //console.table(playlists);
     const plalylistSg = "https://api.spotify.com/v1/playlists/37i9dQZF1DXcF6B6QPhFDv/tracks"
     const tracks = await getTracks(token, plalylistSg);
-    console.table(tracks.items)
+    // console.table(tracks.items)
     
     return tracks.items
 }

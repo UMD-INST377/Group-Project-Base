@@ -1,12 +1,27 @@
+
 //This will get the data into console
-fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
+const spendingData = fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(err => console.error(err))
 
+//Need different functions to process data
+async function getData(){
+    const response = await fetch(spendingData);
+    const data = await response.json();
+    const {agency} = data;
+    console.log(agency);
+}
+
+
+
+
+
+
+
+//The button is image code
 let slideIndex = 0;
 showSlides();
-
 function showSlides() {
   let i;
   let slides = document.getElementsByClassName("mySlides");

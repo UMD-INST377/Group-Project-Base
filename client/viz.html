@@ -22,7 +22,7 @@
             </h2>
         </header>
 
-        <canvas id = "chart" width = "200" height = "200" ></canvas>
+        <canvas id = "chart" width = "300" height = "300" ></canvas>
 
         <script>
             const ctx = document.getElementById('chart');
@@ -45,7 +45,23 @@
                 }
               }
             });
-          </script>
+
+            // const spendingData = fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
+            //     .then(response => response.json())
+            //     .then(data => console.log(data))
+            //     .catch(err => console.error(err))
+
+
+
+
+            // async function getAgency(){
+            //     const response = await fetch(spendingData);
+            //     const data = await response.json();
+            //     console.log(data.agency);
+            // }
+
+            // getAgency();
+        </script>
 
 
         <div class="container">

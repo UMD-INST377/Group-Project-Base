@@ -7,11 +7,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1> New Horizons </h1>
     <div class="Wrapper">
-        <button type="button", id="Submit">Broaden my horizon!</button>
-        <div class="box", id="music_list"></div>
+        <div class='header'>
+            <h1> New Horizons </h1>
+        </div>
+        <form action="/api" class="box main_form">
+            <div>
+                <label for="music">Form playlist</label>
+                <input type="music" name="music" id="musico" />
+            </div>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            <button type="button", id="Submit">Broaden my horizon!</button>
+            <div class="box", id="music_list"></div>
+          </form>
+          
     </div>
     <script src="./script.js"></script>
 </body>
 </html>
+

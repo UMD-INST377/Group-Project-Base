@@ -3,7 +3,7 @@ import express from 'express';
 import path from 'path';
 import fetch from 'node-fetch';
 
-import spending from './PgSpending.js';
+import spending from '/PgSpending.js';
 
 const router = express.Router();
 const __dirname = path.resolve();
@@ -26,6 +26,8 @@ router.route('/')
       res.json({ message: 'TemplateDemo failed', error: err });
     }
   });
+
+console.log("hi from apiroutes")
 
 // Generic API inclusion demonstration
 // Replace this with the group member's actual route

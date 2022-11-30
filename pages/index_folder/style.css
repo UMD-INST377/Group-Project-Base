@@ -1,0 +1,26 @@
+body{
+    background-color: #2E3034;
+}
+.quote{
+    color: #6FA3A7;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+.nav a{
+    text-decoration: none;
+    color: white;
+}
+.r_nav a{
+    padding-left:15px;
+    padding-right:15px;
+}
+.quote{
+    font-size: x-large;
+}
+.storing_information{
+    list-style: none;
+    color: white;
+}

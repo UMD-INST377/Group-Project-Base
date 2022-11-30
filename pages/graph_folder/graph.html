@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="full_container">
+      <!-- Data Request -->
+      <div class="user_request">
+        <form id="type_request">
+          <fieldset>
+            <legend>Select a type and submit to pull songs</legend>
+            <input
+              title="All Time top songs"
+              type="radio"
+              name="term"
+              id="long_term"
+              value="long_term"
+              checked
+            />
+            <label title="All Time top songs" for="long_term">long term</label>
+
+            <input
+              title="top songs in last 6 months"
+              type="radio"
+              name="term"
+              id="medium_term"
+              value="medium_term"
+            />
+            <label title="top songs in last 6 months" for="medium_term"
+              >medium term</label
+            >
+
+            <input
+              title="top songs in last 4 weeks"
+              type="radio"
+              name="term"
+              id="short_term"
+              value="short_term"
+            />
+            <label title="top songs in last 4 weeks" for="short_term"
+              >Short term</label
+            ><br />
+
+            <button type="load" id="load_button">Pull Songs</button>
+          </fieldset>
+        </form>
+      </div>
+      <!-- Data Box -->
+      <div>
+        <ul id="data"></ul>
+      </div>
+      <!-- Graph Section -->
+      <div class="graph_area">
+        <form>
+          <button id="graph_load">Load Graph</button>
+        </form>
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </body>
+</html>

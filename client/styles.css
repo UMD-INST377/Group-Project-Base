@@ -1,8 +1,77 @@
+html {
+    background-color: #fff;
+    font-size: 16px;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  
+    /* these are specific to different browsers */
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  h2, h3 {
+    margin:0;
+    padding:0;
+    padding-bottom:1.5rem;
+  }
+  
+  form {
+    accent-color: hsla(120, 100%, 50%, 0.482);
+  }
+
 /* MAP STYLES */
 #map {
+    margin: auto;
     display: block;
-    width: 800px;
-    height: 800px;
+    width: 700px;
+    height: 700px;
     border: 2px groove rgb(99,99,99);
     margin-bottom: 1rem;
+    align-items: center;
+  }
+/* FOOTER STYLES */
+  .footer {
+    flex-shrink: 0;
+    padding: 1rem;
+    background-color: rgba(185, 115, 117, 1);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .footer a {
+    color: rgb(0, 204, 255);
+    text-decoration: underline;
+  }
+
+  .footer a:hover {
+    background-color: hsla(0, 0%, 90%, 0.15);
+    color: rgb(246, 169, 93);
+    text-decoration: none;
+  }
+  
+  .subtitle {
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0px;
+    margin-bottom: 5px;
   }

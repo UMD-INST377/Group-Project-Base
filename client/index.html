@@ -1,12 +1,39 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <script src="./script.js"></script>
-</body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Failed House Insepctions API</title>
+    </head>
+    <body>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+        crossorigin=""/>
+    </head>
+    <body>
+        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+    crossorigin=""></script>
+        <div class="wrapper">
+            <header class="header thickBox green">
+                <h1 class="center">Find Which House in PG County has Failed it's House Inspection!</h1>
+            </header>
+            <div class="container">
+                <h1>Map Location of Failed House</h1>
+                <form action="/api" class="box main_form orange">
+                    <p>Filtered Failed Homes:</p>
+                    <input type="text" name="resto" id="resto">
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    <button type="submit" id="get-house">Search</button>
+                    <div id="map"></div>
+                    <div class="box" id="house_list">
+                        <p>A list of failed homes from the PG County open API</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src= 'script.js'></script>
+    </body>
 </html>

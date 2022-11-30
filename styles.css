@@ -1,0 +1,246 @@
+* {
+  box-sizing: border-box;
+  font-smooth: always;
+}
+
+html {
+  background-color: #fff;
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  /* these are specific to different browsers */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: rgb(239, 239, 239);
+}
+
+.navbar {
+  list-style-type: none;
+  width: 59%;
+  padding: 5px;
+  border-radius: 5px;
+  overflow: auto;
+  background-color: #000;
+  flex-direction: row;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: smaller;
+  font-weight: 250;
+}
+
+a {
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 2px 15px 0;
+}
+
+.navbar a:hover {
+  display: inline-block;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 5px;
+}
+
+h2,
+h3 {
+  margin: 0;
+  padding: 2;
+}
+
+form {
+  accent-color: hsla(120, 100%, 50%, 0.482);
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
+.container {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  flex: 1;
+}
+
+.header {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 10px ;
+  padding-bottom: 10px ;
+}
+
+.head {
+  text-align: center
+}
+
+.description {
+  font-size: 20
+}
+
+.header h2 {
+  position: sticky;
+  display: block;
+  background-color: #ffffff;
+  color: #000000;
+  border-style: ridge;
+  border-color: #000000;
+  border-radius: 6px;
+  font-size: 25;
+  border-bottom-width: 3px;
+  border-top-width: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-left-width: 3px;
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+}
+
+.box {
+  
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: fit-content;
+  height: max-content;
+  margin: 0 auto;
+}
+
+.text.box{
+  position: sticky;
+  top: 150px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+
+.slides {
+  width: 100%;
+  position:fixed;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+form input {
+  width: 100%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
+
+  margin-bottom: 1rem;
+  height: 2rem;
+  border-radius: 4px;
+}
+
+form label {
+  width: 100%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
+  align-items: flex-start;
+
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.footer {
+  position: sticky;
+  flex-shrink: 0;
+  background-color: #000;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 736px) {
+
+  .container {
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header h2 {
+    position: sticky;
+    display: block;
+    background-color: #ffffff;
+    color: #000000;
+    border-style: ridge;
+    border-color: #000000;
+    border-radius: 6px;
+    font-size: 25;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-left-width: 3px;
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+  }
+  .navbar {
+    list-style-type: none;
+    padding: 5px;
+    border-radius: 5px;
+    overflow: auto;
+    background-color: #000;
+    flex-direction: row;
+    display:block;
+    align-items: stretch;
+    justify-content: start;
+    font-size: smaller;
+    font-weight: 250;
+  }
+}
+

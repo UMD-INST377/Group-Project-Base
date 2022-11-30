@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG County Crimes</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+<body>
+    <script src="./script.js"></script>
+    <div class="wrapper">
+        <header class="header">
+            <h1>PG County Crimes</h1>
+            <div class = "button_box">
+                <div id="button">
+                    <a href="index2.html">Click to Search By Type of Crime</a>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="center_section box">
+                <h3>Search By Sector</h3>
+                <form action="/api" class="main_form box">
+                    <div>
+                        <label for="resto">Enter Sector</label>
+                        <input type="text" name="resto" id="resto" />
+                        <button type="submit">Clear Bar Chart</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="left_section box">
+                <h3>Legend for PG County Sectors</h3>
+                <div class="grid">
+                    <img class ="grid img" src="images/sectors.jpeg" alt = "PG County Sectors Map"/>
+                </div>
+            </div>
+            <div class="right_section box">
+                <h3>Crimes By Sector</h3>
+                <div class ="chart_container">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer footer a footer a:hover">
+      </footer>
+      <script src="./script1.js"></script>
+</body>
+</html>

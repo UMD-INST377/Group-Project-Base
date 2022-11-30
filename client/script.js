@@ -1,3 +1,7 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-console */
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 const form = document.querySelector('.main-form');
 const submit = document.querySelector('#get-location');
 // const data = getData();

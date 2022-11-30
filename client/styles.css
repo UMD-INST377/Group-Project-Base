@@ -93,7 +93,7 @@ form {
 
 .right_section {
   background-color: cornflowerblue;
-  display: flex
+  display: flex;
   flex: 1 2 auto;
   margin: 1rem;
 }

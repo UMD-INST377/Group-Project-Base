@@ -1,30 +1,33 @@
+
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 function initChart(targetElement, dataObject) {
   const labels = Object.keys(dataObject);
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'Restaurants By Category',
-      backgroundColor: 'rgb(255, 60, 255)',
-      borderColor: 'rgb(255, 255, 255)',
-      borderWidth: '3',
-      data: info
-    }]
-  };
-  const config = {
-    type: 'bar',
-    data: data,
-    options: {}
-  };
 
-  return new Chart(
-    targetElement,
-    config
-  );
+  function initChart(chart) {
+    const labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+
+    const data = {
+      label: labels,
+      datasets: [{
+        label: "temp",
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    }
+    const config = {
+     type : 'line',
+     data: data,
+     options: {}
+  }
+    return new Chart(
+      chart,
+      config
+    );
 }
+
 
 async function getData() {
   /* Get the data asynchronously */
@@ -67,3 +70,4 @@ async function mainEvent() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
+

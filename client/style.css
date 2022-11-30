@@ -30,12 +30,25 @@ body {
 }
 
 #button {
-  width: 15em;
-  border: 2px solid turquoise;
-  background: #ffe;
+  border: 2px solid blue;
+  background: white;
   border-radius: 5px;
+  justify-content: center;
+  padding: 1rem;
+  font-weight: bold;
 }
 
+.button_box {
+  background-color: rgba(239, 239, 239, 0.40);
+  justify-content: center;
+  border: 2px dashed;
+  border-radius: 4px;
+  width: fit-content;
+  height:fit-content;
+  margin-top: 15px;
+  margin: 5 auto;
+
+}
 
 a {
   display: block;
@@ -44,7 +57,7 @@ a {
   text-align: center;
   text-decoration: none;
   border-radius: 5px;
-  color: blue;
+  color: black;
 }
 
 h2, h3 {
@@ -55,16 +68,8 @@ h2, h3 {
 }
 
 form {
-  accent-color: hsla(120, 100%, 50%, 0.482);
+  accent-color: white;
 }
-
-/*
-  - These styles use 'class names'
-  - You can apply them by using the 'class' attribute on your HTML
-  - like this: <div class="wrapper">
-  - note that the period vanishes there!
-*/
-
 
 .wrapper {
   min-height: 100vh;
@@ -89,13 +94,6 @@ form {
   padding-bottom: 1.5rem;
 } 
 
-
-/*
-  This rule implies that the H1 tag lives within another HTML tag
-  It "inherits" some rules from the above
-  Those rules won't apply to an h1 that's outside a block with the class of 'header'
-*/
-
 .header h1 {
   display: block;
   text-align: center;
@@ -118,15 +116,6 @@ form {
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
-
-/*
-  Rules can be combined on a block to apply the 'cascade' in order
-  So you can use two classnames in a single class attribute
-  like: <div class="box section">
-  Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
-  And will be what displays in your client
-*/
-
 .box {
   background-color: rgba(239, 239, 239, 0.40);
   align-items: center;
@@ -138,13 +127,19 @@ form {
   margin: 0 auto;
 }
 
-.left_section {
+.center_section {
   background-color: #AFDCEB;
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
 }
 
+.left_section {
+  background-color: #AFDCEB;
+  flex: 0 1 auto;
+  margin: 1rem;
+  padding: 1.5rem;
+}
 
 .right_section {
   background-color: #AFDCEB;
@@ -201,8 +196,6 @@ form {
   margin-bottom: 5px;
 }
 
-
-/* Deploy this with images as direct "children" and the images should pop into shape */
 .grid {
   display: flex;
   justify-content: space-evenly;
@@ -216,51 +209,6 @@ form {
   width: 150px;
   height: 150px;
 }
-
-/* Carousel */
-div.carousel {
-  max-width: 300px;
-  overflow: hidden;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-}
-
-.carousel .slides {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* .carousel_item, */
-.hidden {
-  display: none;
-}
-
-.visible {
-  display: block;
-}
-
-.carousel_item img {
-  /* 
-    Setting width, rather than max-width or min-width,
-    means annoying pop-ins won't happen
-    but it also means you need to format your images to be compatible
-    or they will stretch weird
-    - try a tall one and see what happens
-    - change the height on a fixed image size and see what happens
-    - now make sure that images are _always_ square
-    - ... there's a reason crop tools are popular in image editors
-   */
-  width: 150px; 
-}
-
 .prev,
 .next {
   border: none;
@@ -324,77 +272,3 @@ form label {
       align-items: flex-start;
     }
 }
-
-/* MAP STYLES */
-#map {height: 180px;}
-
-#map {
-  display: block;
-  width: 400px;
-  height: 380px;
-  border: 2px dashed rgb(99, 99, 99);
-  margin-bottom: 1rem;
-}
-
-
-.lds-ellipsis {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-  }
-
-  .lds-ellipsis_hidden {
-    display: hidden;
-  }
-
-  .lds-ellipsis div {
-    position: absolute;
-    top: 33px;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: #fff;
-    animation-timing-function: cubic-bezier(0, 1, 1, 0);
-  }
-  .lds-ellipsis div:nth-child(1) {
-    left: 8px;
-    animation: lds-ellipsis1 0.6s infinite;
-  }
-  .lds-ellipsis div:nth-child(2) {
-    left: 8px;
-    animation: lds-ellipsis2 0.6s infinite;
-  }
-  .lds-ellipsis div:nth-child(3) {
-    left: 32px;
-    animation: lds-ellipsis2 0.6s infinite;
-  }
-  .lds-ellipsis div:nth-child(4) {
-    left: 56px;
-    animation: lds-ellipsis3 0.6s infinite;
-  }
-  @keyframes lds-ellipsis1 {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  @keyframes lds-ellipsis3 {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0);
-    }
-  }
-  @keyframes lds-ellipsis2 {
-    0% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(24px, 0);
-    }
-  }
- 

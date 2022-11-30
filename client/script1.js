@@ -66,5 +66,10 @@ async function mainEvent() {
     const localData = shapeDataForBarChart(filteredList);
     changeChart(myChart, localData);
   });
+
+  form.addEventListener('submit', (submitEvent) => {
+    submitEvent.preventDefault();
+    myChart.clear();
+  });
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

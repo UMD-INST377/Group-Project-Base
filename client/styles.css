@@ -137,6 +137,10 @@ form {
   border-radius: 10px;
 }
 
+.text {
+  color: #000;
+}
+
 
 .slides {
   width: 100%;

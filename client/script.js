@@ -11,7 +11,71 @@ async function getData() {
   console.log(json);
   return json;
 }
-getData();
+
+const data = getData();
+
+// const data = []
+
+// $.getJSON(data, function (json) {
+//   for (var key in json) {
+//       if (json.hasOwnProperty(key)) {
+//           var item = json[key];
+//           data.push({
+//               district: council_district,
+//               latitude: latitude,
+//               mobile: item.mobile,
+//               email: item.email
+//           });            
+//       }
+//   }
+//   });
+
+console.log(data.keys)
+
+function districtCount(data, district) {
+  let count = 0;
+  data.forEach(obj => {
+    Object.entries(obj).forEach(([key, value]) => {
+        obj.forEach((litter) => {
+          if (!litter.council_district) { return; }
+          if (litter.council_district === district) { count++; }
+    })
+});
+
+  return count;
+})}
+
+const districts = {1: 0,
+                   2: 0,
+                  3: 0,
+                  4: 0,
+                  5: 0,
+                  6: 0,
+                  7: 0,
+                  8: 0,
+                  9: 0};
+
+
+function districtLitters(){
+
+  for (var i = 1; i <= 9; i++){
+    districts[i] = districtCount(data, i)
+  }
+}
+
+districtLitters();
+
+console.log(districts)
+// function districtCount(district) {
+//  var count = 0;
+// for (var i = 0; i < data.length; i++) {
+//      if (data[i].council_district == district) {
+//          count++;
+//      }
+//  }
+//  return count;
+// }
+
 
 function initMap() {
   console.log('initMap');

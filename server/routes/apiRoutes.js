@@ -2,7 +2,7 @@
 import express from 'express';
 import fetch from 'node-fetch';
 
-import spending from '/PgSpending.js';
+import PgSpendingRoutes from './PgSpendingRoutes.js';
 
 const router = express.Router();
 
@@ -15,6 +15,6 @@ console.log("hi from apiroutes")
 // Generic API inclusion demonstration
 // Replace this with the group member's actual route
 // This leads to /api/member1
-router.use('/foodService', spending);
+router.use('/PgSpending', PgSpendingRoutes);
 
 export default router;

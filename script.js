@@ -176,7 +176,7 @@ async function mainEvent() {
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis');
   const restoName = document.querySelector('#resto');
-  const chartTarget = document.querySelector('#myChart'); // get a reference to your submit button
+  const chartTarget = document.querySelector('#chartContainer'); // get a reference to your submit button
   submit.style.display = 'none'; // let your submit button disappear
 
   /*
@@ -190,7 +190,7 @@ async function mainEvent() {
   const chartData = await getData();
   const shapedData = shapeDataForLineChart(chartData);
   console.log(shapedData);
-  const myChart = initChart(chartTarget, shapedData);
+  const chartContainer = initChart(chartTarget, shapedData);
   /*
           Below this comment, we log out a table of all the results using "dot notation"
           An alternate notation would be "bracket notation" - arrayFromJson["data"]
@@ -234,7 +234,7 @@ async function mainEvent() {
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
       const localData = shapeDataForLineChart(currentList);
-      changeChart(myChart, localData);
+      changeChart(chartContainer, localData);
       // marketPlace(currentList, pageMap);
 
       // By separating the functions, we open the possibility of regenerating the list

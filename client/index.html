@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LitterTRAK</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
 </head>
 <body>
 
@@ -21,15 +27,17 @@
 
             <div class="left_section box">
                 <div class="input">
-                    <form action="/api">
+                    <form action="/api" class="main-form">
                         <label for="location">Input Location: </label>
                         <input type="text" name="location" id="location">
-                        <button class="button-18" role="button" type="submit">Change Location</button>
+                        <button class="button-18" role="button" type="submit" id="get-location">Change Location</button>
                     </form>
                 </div>
             </div>
 
-            <div class="right_section box"></div>
+            <div class="right_section box">
+                <div id="map"></div>
+            </div>
         </div>
     </div>
 

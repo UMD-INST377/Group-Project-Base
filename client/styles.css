@@ -1,0 +1,33 @@
+/*
+Defualt tag styles
+*/
+body {
+  margin: 0;
+  background-color: lightgray;
+}
+
+/*
+Class styles
+*/
+.header {
+color: black;
+background-color: gray;
+
+display: flex;
+justify-content: center;
+
+border-bottom: 2px;
+border-top: 0px;
+border-left: 0px;
+border-right: 0px;
+border-style: solid;
+}
+
+.menu {
+  color: black;
+  margin: 2rem;
+  font-size: 20px;
+
+  justify-content: flex-start;
+
+}

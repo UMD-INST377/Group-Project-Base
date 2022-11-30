@@ -70,6 +70,8 @@ async function initSongs(){
     const token = await getToken();
     console.log(token)
     console.log("Getting playlist for Rock")
+    const genres = getGenres(token)
+    console.log(genres)
     const playlists = await getPlaylistsByGenre(token, "0JQ5DAqbMKFDXXwE9BDJAr", 1);
     console.log("Getting tracks from:");
     console.table(playlists);

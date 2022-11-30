@@ -28,12 +28,12 @@ body {
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: rgb(239, 239, 239);
+  background-color: #fff;
 }
 
 .navbar {
   list-style-type: none;
-  width: 59%;
+  width: 62%;
   padding: 5px;
   border-radius: 5px;
   overflow: auto;
@@ -87,6 +87,11 @@ form {
   flex: 1;
 }
 
+.table.container{
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .header {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -137,6 +142,10 @@ form {
   border-radius: 10px;
 }
 
+.smallbox{
+  display: flex;
+  padding: 1px;
+}
 
 .slides {
   width: 100%;
@@ -181,8 +190,7 @@ form label {
   width: fill-available;
   align-items: flex-start;
 
-  display: block;
-  margin-bottom: 0.5rem;
+  display: flex;
 }
 
 .footer {

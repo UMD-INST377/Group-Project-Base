@@ -1,6 +1,10 @@
 import express from 'express';
 import fetch from 'node-fetch';
 
+import { loadfinServiceData } from '../middleware/loadfinServicesData.js';
+
+import finServiceControllers from '../controllers/finServiceControllers.js';
+
 const router = express.Router();
 
 //
@@ -13,11 +17,6 @@ const router = express.Router();
 // /////////////////////////////////
 
 
-
-
-
-
-//dont know if the route is the correct one
 router.route('/PgSpendings') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {

@@ -9,34 +9,47 @@
 </head>
 
 <body>
-
     <div class="wrapper">
-        <header class="header">
-            <h1 class="head">
-                Prince George County Spending
-            </h1>
-        </header>
-
-        <!-- button does not work yet, need css, need link to api-->
-        <div class="head">
-            <p class = "description"> Data analysis web application of Prince George’s county finance management based on the county’s spending</p>
-            <div class="box">
-                <form action="/api">
-                    <h2>Spendings By:</h2>
-                    <!-- <input type="text"> -->
-
-                    <li><a href="payee.html"> Payee</a></li>
-                    <li><a href="zip.html"> Zip Code</a></li>
-                    <li><a href="amount.html"> Amount</a></li>
-                    <li><a href="payee.html"> Agency</a></li>
-                </form>
-            </div>
+        <div class="header">
+            <h2 class="header">
+                Prince George County Finance
+                <nav class="navbar">
+                    <a href='#'>Home</a>
+                    <a href='data.html'>Data</a>
+                    <a href='viz.html'>Visualization</a>
+                </nav>
+            </h2>
         </div>
-    </div>
 
-    <div class="footer">
-        <a href="https://github.com/bw1umd/Project-pgcounty-spending.git">Github</a>
-    </div>
+   
     <script type = "module" src="./script.js"></script>
+        <div class="container">
+            <div class="slides">
+                <div class="mySlides fade">
+                    <img src="./media/orchard-terrace.jpg" style="width:100%">
+                </div>
+                <div class="mySlides fade">
+                    <img src="./media/imrs.php.webp" style="width:100%">
+                </div>
+            </div>
+            <div class="text box">
+                <h3 class = "text" 15px style="padding-left: 15px;">
+                    Welcome to Prince George county's financial data visualizer
+                </h3>
+                <a class = "text">
+                    Click the Data button to see the tables
+                </a>
+                <a class = "text">
+                    Click Visualization button to see the charts
+                </a>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <a href="https://github.com/bw1umd/Project-pgcounty-spending.git">Github</a>
+        </div>
+        <script src="./script.js"></script>
 </body>
+
 </html>

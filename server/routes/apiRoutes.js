@@ -2,13 +2,15 @@
 import express from 'express';
 import fetch from 'node-fetch';
 
-import spending from './PgSpending.js';
+import spending from '/PgSpending.js';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
+
+console.log("hi from apiroutes")
 
 // Generic API inclusion demonstration
 // Replace this with the group member's actual route

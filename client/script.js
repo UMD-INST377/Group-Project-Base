@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable max-len */
 function initChart(targetElement, dataObject) {
   const labels = Object.keys(dataObject);
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);
@@ -25,34 +27,34 @@ function initChart(targetElement, dataObject) {
 }
 
 async function getData() {
+  /* Get the data asynchronously */
   const url = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc'; // remote URL! you can test it in your browser
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json();
-  const reply = json.filter((item));
-  console.log(reply);
-  return reply;
+  return json;
 }
 
-// async function mainEvent() {
-//   const form = document.querySelector('.main_form');
-//   const currentlist = [];
+async function injectHTML(obj) {
+  const target = document.querySelector('#crypto_information');
+  target.innerHTML = '';
 
-//   form.addEventListener('submit', (submitEvent) => {
-//     const cryptoData = getData();
-//     cryptoData.append(currentlist);
-//     console.log(currentlist);
-//   });
-
-//   const chartData = await getData();
-//   const shapedData = shapeDataForLineChart(chartData);
-//   console.log(shapedData);
-//   const myChart = initChart(chartTarget, shapedData);
-// }
+  ['name', 'id', 'market_cap'].forEach((item) => {
+    const p = document.createElement('p');
+    p.innerText = `${item}: ${obj[item]}`;
+    target.append(p);
+  });
+}
 
 async function mainEvent() {
-  const categoriesButton = document.getElementById("categories_button");
-  categoriesButton.addEventListener("submit", () => {
-    console.log("Print some stuff");
+  const json = await getData(); // Get the data from the API
+  const form = document.querySelector('#category_form');
+
+  let index = 0;
+  form.addEventListener('submit', (submitEvent) => {
+    submitEvent.preventDefault();
+    injectHTML(json[index]);
+    index += 1;
+    index = index > json.length ? 0 : index + 1;
   });
 }
 

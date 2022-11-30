@@ -7,7 +7,7 @@ import spending from '/PgSpending.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to the PG Spending API!');
 });
 
 console.log("hi from apiroutes")

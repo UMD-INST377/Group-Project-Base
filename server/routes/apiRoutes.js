@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
 });
 
-console.log("hi from apiroutes")
 
 // Generic API inclusion demonstration
 // Replace this with the group member's actual route

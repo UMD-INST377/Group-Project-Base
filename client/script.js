@@ -4,7 +4,6 @@ fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
     .then(data => console.log(data))
     .catch(err => console.error(err))
 
-
 let slideIndex = 0;
 showSlides();
 

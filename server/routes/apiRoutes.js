@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
   res.send('Welcome to the PG Spending API!');
 });
 
-console.log("hi from apiroutes")
 
 // Generic API inclusion demonstration
 // Replace this with the group member's actual route

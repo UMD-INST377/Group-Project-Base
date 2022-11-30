@@ -92,8 +92,8 @@
     /* this will push other blocks out of the way */
   
     /* colors */
-    background-color: #ffe08a;
-    color: #4a4a4a;
+    background-color: #efd68e;
+    color: #090909;
   
     /* shapes */
     border-radius: 6px;
@@ -117,7 +117,7 @@
   */
   
   .box {
-    background-color: rgba(239, 239, 239, 0.40);
+    background-color: rgba(116, 181, 241, 0.4);
     border: 2px dashed;
     border-radius: 4px;
   
@@ -128,14 +128,14 @@
   }
   
   .left_section {
-    background-color: rgba(0, 139, 139, 0.8);
+    background-color: rgba(142, 243, 243, 0.8);
     flex: 0 1 auto;
     margin: 1rem;
     padding: 1.5rem;
   }
   
   .right_section {
-    background-color: rgba(255, 224, 138, 0.7);
+    background-color: rgba(244, 218, 146, 0.7);
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;
@@ -151,27 +151,9 @@
   .footer {
     flex-shrink: 0;
     padding: 1rem;
-    background-color: rgba(0, 139, 139, 0.8);
+    background-color: rgba(236, 242, 122, 0.8);
     font-size: 1.2rem;
     font-weight: 600;
-  }
-  
-  .footer a {
-    color: rgba(255, 224, 138, 1);
-    text-decoration: underline;
-  }
-  
-  /*
-    This is an example of a 'pseudoclass'
-    In this instance, it says what to do if a mouse hovers over a link
-    This is pretty desktop-specific, since there's no hover function on touchscreens
-  */
-  .footer a:hover {
-    /* Hue, saturation, luminosity, alpha */
-    background-color: hsla(0, 0%, 90%, 0.15);
-    /* red, green, blue, alpha */
-    color: rgb(246, 169, 93);
-    text-decoration: none;
   }
   
   .subtitle {
@@ -265,7 +247,7 @@
   .prev:hover,
   .next:hover {
     /* Hue, saturation, luminosity, alpha */
-    background-color: hsla(40, 96%, 49%, 0.968);
+    background-color: hsla(194, 83%, 65%, 0.968);
     /* red, green, blue, alpha */
     color: rgb(10, 10, 10);
     text-decoration: none;

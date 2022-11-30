@@ -172,24 +172,6 @@ form {
   border-radius: 4px;
 }
 
-.footer a {
-  color:  #FEE5B5;
-  text-decoration: underline;
-}
-
-/*
-  This is an example of a 'pseudoclass'
-  In this instance, it says what to do if a mouse hovers over a link
-  This is pretty desktop-specific, since there's no hover function on touchscreens
-*/
-.footer a:hover {
-  /* Hue, saturation, luminosity, alpha */
-  background-color: hsla(0, 0%, 90%, 0.15);
-  /* red, green, blue, alpha */
-  color: #FECCA8;
-  text-decoration: none;
-}
-
 .subtitle {
   color: rgba(0, 0, 0, 0.8);
   margin: 0px;
@@ -206,8 +188,8 @@ form {
 }
 
 .grid img {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
 }
 .prev,
 .next {

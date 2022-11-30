@@ -115,6 +115,12 @@
     text-decoration: none;
     color: rgb(242, 207, 117);
   }
+
+  .home {
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(85, 35, 95);
+  }
   
   h2, h3 {
     margin:0;
@@ -409,7 +415,7 @@
       /* Rules in here will only apply when a screen is the correct size */
       /* check it out by using your developer tools to shrink your screen-size */
       .container {
-        background-color: rgba(38, 142, 54, 0.65);
+        background-color: rgb(235, 228, 228);
         flex-direction: column;
         justify-content: center;
         align-items: center;

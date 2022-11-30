@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Group_9_Project</title>
+    <title>Group 9 Project Home</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
     crossorigin=""/> 
@@ -15,31 +15,28 @@
   </head>
   <body class="wrapper">
       <header class="header">
-        <h1>Group_9_Project</h1>
+        <h1>Group 9 Project</h1>
       </header>
       <div class="container">
-        <div class="left_section box">
-            <h3>Form Inputs</h3>
-          <form action="/api" class="box main_form">
-            <label for="resto">Crime Type</label>
-            <input type="text" name="resto" id="resto"/>
-            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-            <button type="submit" id="get-resto">Search crime by type...</button>
-          </form>
-        </div>
+        <!-- <div class="grid">
+          <img src='/images/pg_county_logo.png' alt='PG County Logo'/>
+        </div> -->
         <div class="right_section box">
-          <h3>Crime Occurrences</h3>
-          <div id="map"></div>
-          <div class="box" id="crime_list">A list of crimes</div>
+          <h3>Searchable Crime Types:</h3>
+          <a class="a" href="other_pages/accident.html">Accidents</a>
+          <a class="a" href="other_pages/accident_with_impound.html">Accidents with Impound</a>
+          <a class="a" href="other_pages/theft_from_auto.html">Theft from Vehicles</a>
+          <a class="a" href="other_pages/stolen_auto.html">Stolen Vehicles</a>
+          <a class="a" href="other_pages/theft.html">Theft</a>
+          <a class="a" href="other_pages/assault.html">Assault</a>
+          <a class="a" href="other_pages/weap_assault.html">Assault with Weapon</a>
+          <a class="a" href="other_pages/sex_off.html">Sex Offenses</a>
+          <a class="a" href="other_pages/vandalism.html">Vandalism</a>
+          <a class="a" href="other_pages/rob.html">Robberies</a>
+          <a class="a" href="other_pages/b_and_e_commercial.html">Breaking & Entering, Commercial</a>
+          <a class="a" href="other_pages/b_and_e_res.html">Breaking & Entering, Residential</a>
         </div>
       </div>
-    <footer class="footer">
-      Searchable Crime Types:
-        <p>Accident | Theft From Auto | Accident with Impound |
-      Assault | Theft | Auto, Stolen | Vandalism | B & E, Residential | 
-      Robbery, Other | B & E, Commercial | Sex Offense | Assault, Weapon
-        </p>
-      </footer>
     </div>
     <script src="js/script.js"></script>
   </body>

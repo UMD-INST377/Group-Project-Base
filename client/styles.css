@@ -142,10 +142,6 @@ form {
   border-radius: 10px;
 }
 
-.smallbox{
-  display: flex;
-  padding: 1px;
-}
 
 .slides {
   width: 100%;

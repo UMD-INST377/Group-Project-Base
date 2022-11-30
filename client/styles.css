@@ -65,7 +65,6 @@ h2,
 h3 {
   margin: 0;
   padding: 2;
-  color: #fff;
 }
 
 form {
@@ -143,6 +142,13 @@ form {
   border-radius: 10px;
 }
 
+<<<<<<< HEAD
+=======
+.smallbox{
+  display: flex;
+  padding: 1px;
+}
+>>>>>>> b62b59f (c)
 
 .slides {
   width: 100%;
@@ -248,4 +254,3 @@ form label {
     font-weight: 250;
   }
 }
-

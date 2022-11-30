@@ -1,14 +1,3 @@
-function shapeDataForLineChart(array) {
-  return array.reduce((collection, item) => {
-    if (!collection[item.category]) {
-      collection[item.category] = [item];
-    } else {
-      collection[item.category].push(item);
-    }
-    return collection;
-  }, {});
-}
-
 function initChart(targetElement, dataObject) {
   const labels = Object.keys(dataObject);
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);

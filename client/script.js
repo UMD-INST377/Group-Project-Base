@@ -75,7 +75,7 @@ function getRandomIntInclusive(min, max){
   function initMap(){
     console.log('initMap');
     const map = L.map('map').setView([38.9897, -76.9378], 13);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/australia.geo.json', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);

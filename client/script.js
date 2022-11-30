@@ -20,7 +20,7 @@ async function getToken() {
 
 async function getGenres(token) {
 
-    const result = await fetch(`https://api.spotify.com/v1/browse/categories?locale=sv_US`, {
+    const result = await fetch(`https://api.spotify.com/v1/browse/categories?locale=sv_US&limit=50`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
     });

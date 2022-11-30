@@ -1,3 +1,5 @@
+//const e = require("express");
+
 const clientId = 'd9827efb2c79463b92becb457a635a04';
 const clientSecret = '6f2f0a36046f4f21980873a48c7bdab0';
 
@@ -70,9 +72,13 @@ async function initSongs(){
     const token = await getToken();
     console.log(token)
     console.log("Getting playlist for Rock")
-    const genres = getGenres(token)
-    console.log(genres)
-    const playlists = await getPlaylistsByGenre(token, "0JQ5DAqbMKFDXXwE9BDJAr", 1);
+    const genres = await getGenres(token)
+    console.table(genres)
+    genres.forEach(genre => {
+        console.log(`${genre.name} has id: ${genre.id}`)
+    })
+    
+    const playlists = await getPlaylistsByGenre(token, "0JQ5DAqbMKFDXXwE9BDJAr", 10);
     console.log("Getting tracks from:");
     console.table(playlists);
     const plalylistSg = "https://api.spotify.com/v1/playlists/37i9dQZF1DXcF6B6QPhFDv/tracks"
@@ -92,6 +98,8 @@ async function songNamesArray(){
     //console.log(array)
 }
 
+
+// UI Handling
 function injectHTML(list) {
     console.log('fired injectHTML');
     const target = document.querySelector('#music_list');
@@ -106,7 +114,7 @@ function injectHTML(list) {
     });
 }
 
-// UI Handling
+
 async function init(){
     const submit = document.querySelector('#submit');
 

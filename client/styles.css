@@ -24,6 +24,19 @@ html {
     background-color: rgb(255, 255, 255);
   }
   
+   h1 {
+    display: block;
+  
+    background-color: rgb(84, 216, 106);
+    color: #4a4a4a;
+  
+    font-size: 1.5rem;
+    padding: 1.25rem;
+    margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  
+
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+  }
   
   a {
     display: inline-block;
@@ -54,13 +67,13 @@ html {
   .footer {
     flex-shrink: 0;
     padding: 1rem;
-    background-color: rgba(185, 115, 117, 1);
+    background-color: rgb(84, 216, 106);
     font-size: 1.2rem;
     font-weight: 600;
   }
 
   .footer a {
-    color: rgb(0, 204, 255);
+    color: rgb(208, 255, 0);
     text-decoration: underline;
   }
 

@@ -51,7 +51,7 @@ const initChart = (chart,chartData) => {
   };
   const config = {
     type: "bar",
-    data: chartData.track_results,
+    data: data,
     options: {
       scales: {
         y: {

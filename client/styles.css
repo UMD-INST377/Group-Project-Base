@@ -32,3 +32,9 @@ html {
     padding: 1.5rem;
     margin: 0 auto;
   }
+
+  .search_bar {
+    background-color: rgba(240, 248, 255, 0);
+    height: fit-content;
+    padding: 1.5rem;
+  }

@@ -69,6 +69,12 @@ h2, h3 {
   color:rgb(242, 242, 242);
 }
 
+.navi {
+  left: 20px;
+  padding: 1rem;
+  margin: 0;
+}
+
 .box {
   border: 2px dashed;
   border-radius: 2px;

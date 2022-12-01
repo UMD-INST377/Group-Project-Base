@@ -15,3 +15,10 @@ export async function loadCrimeIncidentsData(req, res, next) {
     res.json({ message: 'Data request failed', error: err });
   }
 }
+
+
+async function mainEvent() {
+
+const pageMap = initMap();
+
+}

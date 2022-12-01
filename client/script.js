@@ -13,9 +13,11 @@ fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
     let placeHolder = document.querySelector("#data-output");
     let out = "";
 
+    num = 1;
     for(let product of products) {
         out += `
         <tr> 
+        <td>${num++}</td>
         <td>${product.payee_name}</td>
         <td>${product.agency}</td>
         <td>${product.zip_code}</td>

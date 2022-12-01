@@ -10,7 +10,7 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
 
-  /* these are specific to different browsers */
+  these are specific to different browsers
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -85,7 +85,7 @@ body {
   }
   
   .playlist_section {
-    /* background-color: rgba(255, 255, 255, 0.89); */
+    background-color: rgba(255, 255, 255, 0.89);
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;
@@ -204,3 +204,4 @@ body {
         align-items: center;
         cursor: pointer;
     }
+    

@@ -1,29 +1,43 @@
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) { slideIndex = 1 }
-  slides[slideIndex - 1].style.display = "block";
-  setTimeout(showSlides, 7000); // Change image every 2 seconds
-}
-
 function injectHTML(list) {
-  console.log('fired injectHTML');
-  const target = document.querySelector("#rlist");
+  let target = document.querySelector("#rlist");
   target.innerHTML = '';
 
-  const listelmnt = document.createElement("ol");
-  target.appendChild(listelmnt);
+  const head = document.createElement('tr');
+  
+  for (const key of Object.keys(list[0])){
+    const th = document.createElement('th');
+    th.innerText = key;
+    head.appendChild(th);
+  }
+  target.appendChild(head);
 
-  list.forEach(i => {
-    const element = document.createElement("li");
-    element.innerText = i.name;
-    listelmnt.appendChild(element);
-  });
+  for (const [key,value] of Object.entries(list)) {
+    const tr = document.createElement('tr');
+    const row = Object.values(value);
+    row.forEach(element =>{
+      const td = document.createElement('td');
+      td.innerText = element;
+      tr.appendChild(td);
+    });
+    target.appendChild(tr);
+  }
 }
+
+function arrayToTable(data) {
+  const keys = [...data.reduce((all, obj)=>{
+      Object.keys(obj).forEach(key => all.add(key));
+      return all;
+  }, new Set())];
+
+  const header = keys.map(key => `<th>${key}</th>`).join('')
+  const tbody = data.map(row => keys.map(key => `<td>${row[key]}</td>`).join('')).map(row => `<tr>${row}</tr>`)
+
+  return `<table>
+      <thead><tr>${header}</tr></thead>
+      <tbody>${tbody}</body>
+  </table>`;
+}
+
 function getRandInt(min, max) {
   min = Math.ceil(min)
   max = Math.floor(max)
@@ -57,12 +71,15 @@ function filterlist(array, filterInputvalue) {
 }
 
 async function mainEvent() {
-  /*
-    ## Main Event
-      Separating your main programming from your side functions will help you organize your thoughts
-      When you're not working in a heavily-commented "learning" file, this also is more legible
-      If you separate your work, when one piece is complete, you can save it and trust it
-  */
+
+  // get data 
+  const url = 'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json';
+  const resp = await fetch(url);
+  const da = await resp.json();
+  if (da.length > 0) {
+    injectHTML(da);
+  }
+
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get'); // get a reference to your submit button
@@ -127,6 +144,5 @@ This last line actually runs first!
 It's calling the 'mainEvent' function at line 57
 It runs first because the listener is set to when your HTML content has loaded
 */
-let slideIndex = 0;
-showSlides();
+
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

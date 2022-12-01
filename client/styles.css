@@ -132,6 +132,10 @@ form {
   height: max-content;
   margin: 0 auto;
 }
+.right.box{
+  background-color: #000;
+  justify-content: flex-end;
+}
 
 .text.box{
   position: sticky;

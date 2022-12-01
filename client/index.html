@@ -29,6 +29,21 @@
                 <div class="mySlides fade">
                     <img src="./media/imrs.php.webp" style="width:100%">
                 </div>
+                <script>
+                    let slideIndex = 0;
+                    function showSlides() {
+                        let i;
+                        let slides = document.getElementsByClassName("mySlides");
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        slideIndex++;
+                        if (slideIndex > slides.length) { slideIndex = 1 }
+                        slides[slideIndex - 1].style.display = "block";
+                        setTimeout(showSlides, 7000); // Change image every 2 seconds
+                    }
+                    showSlides();
+                </script>
             </div>
             <div class="text box">
                 <h3 15px style="padding-left: 15px;">
@@ -41,13 +56,11 @@
                     Click Visualization button to see the charts
                 </a>
             </div>
-
         </div>
 
         <div class="footer">
             <a href="https://github.com/bw1umd/Project-pgcounty-spending.git">Github</a>
         </div>
-        <script src="./script.js"></script>
 </body>
 
 </html>

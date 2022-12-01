@@ -1,0 +1,278 @@
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis_hidden {
+    display: hidden;
+   }
+  
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  
+  
+  form input {
+  /* This is a hack to make sure our boxes line up with one another nicely */
+  width: 100%;
+  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  
+  /* here we are setting white space correctly */
+   
+  margin-bottom: 1rem;
+  height: 2rem;
+  border-radius: 4px;
+  }
+  
+  form label {
+  width: 100%;
+  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: fit-content;
+  align-items: flex-start;
+  
+  display: block; /* this turns the label text into a box we can set margins on */
+  margin-bottom: 0.5rem;
+  }
+  
+  /* How To Write A Media Query For Small Screens */
+  
+  @media only screen and (max-width: 736px){
+  /* Rules in here will only apply when a screen is the correct size */
+  /* check it out by using your developer tools to shrink your screen-size */
+  .container {
+    background-color: rgba(241, 245, 16, 0.83);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+  }  
+  }
+  
+  
+  * {
+  box-sizing: border-box;
+  }
+  
+  /*
+  These rules apply to actual HTML elements with no labelling!
+  So: they style the tags directly
+  */
+  
+  html {
+  background-color: rgb(0, 11, 227);
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  
+  /* these are specific to different browsers */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  }
+  
+  body {
+  margin: 0;
+  padding: 0;
+  
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: rgb(192,192,192);
+  }
+  
+  
+  a {
+  display: inline-block;
+  text-decoration: none;
+  }
+  
+  h2 {
+  margin:0;
+  padding:0;
+  padding-bottom:1.5rem;
+  align-items: start;
+  }
+  
+  form {
+  accent-color: hsla(0, 0%, 100%, 0.952);
+  }
+  
+  /*
+  - These styles use 'class names'
+  - You can apply them by using the 'class' attribute on your HTML
+  - like this: <div class="wrapper">
+  - note that the period vanishes there!
+  */
+  
+  
+  .wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+  }
+  
+  .container {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  flex:1;
+  }
+  
+  .header {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
+  }
+  
+  
+  /*
+  This rule implies that the H1 tag lives within another HTML tag
+  It "inherits" some rules from the above
+  Those rules won't apply to an h1 that's outside a block with the class of 'header'
+  */
+  
+  .header h1 {
+  display: block;
+  /* this will push other blocks out of the way */
+  
+  /* colors */
+  background-color: #0015ffd5;
+  color: #c8be08;
+  
+  /* shapes */
+  border-radius: 6px;
+  font-size: 1.5rem;
+  padding: 1.25rem;
+  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  
+  
+  /* box-shadows are fancy */
+  box-shadow: 0 0.5em 1em -0.125em rgb(255, 255, 255), 0 0 0 1px rgb(255, 255, 255);
+  }
+  
+  
+  /*
+  Rules can be combined on a block to apply the 'cascade' in order
+  So you can use two classnames in a single class attribute
+  like: <div class="box section">
+  
+  Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
+  And will be what displays in your client
+  */
+  
+  .box {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 2px dashed;
+  border-radius: 4px;
+  
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  padding: 1.5rem;
+  margin: 0 auto;
+  }
+  
+  .map  {
+  display: none;
+  }
+  
+  .left_section {
+  background-color: rgba(8, 54, 220, 0.784);
+  flex: 0 1 auto;
+  margin: 1rem;
+  padding: 1.5rem;
+  width: fit-content;
+  }
+  
+  .right_section {
+  background-color: rgba(7, 40, 230, 0.741);
+  flex: 1 2 auto;
+  flex-grow: 3;
+  margin: 1rem;
+  align-items: center;
+  width: fit-containter;
+  }
+  
+  .button {
+  width: fit-content;
+  }
+  
+  /*
+  This block is actually dependent on the "container" block having a flex set on it
+  and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
+  That serves to cram the footer to the bottom of the page.
+  */
+  
+  .footer {
+  flex-shrink: 0;
+  padding: 1rem;
+  background-color: rgba(42, 1, 20, 0.8);
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: 2px dashed;
+  border-radius: 4px;
+  }
+  
+  .footer a {
+  color: rgb(300, 67, 40);
+  text-decoration: underline;
+  }
+  

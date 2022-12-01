@@ -1,5 +1,5 @@
 /* Data Request to API */
-token = "BQBGDsKAmtLmQdl3WEh6nzcLvumJKEym65U8WlDQ_B5RWCCLqmSG6yeE0KvOaV4wHvigEfOA-wXEzrv_VS2Td1EzVtXDRfimG1G92c_D6AqPIejY_X2DznOF_vXM6d5NAi6sI5Gb7zumTaMiGV2qUk_fz5pAxcUxvrHWqtqNh0XkrO9dOwZ6vx-tJPb8LSzxulnkO5In7AhrprqI7u0eGJwyoqCALmwffG2WlkD3mRiDKCouNp61"
+token = "BQDD7bjlALmh4vmm2ByUnxtKvDmOCxu8x528AqVRPbVdTDWa6Zvh3o5h13r462_3H0IT_-Y6nN9Kdk63lZBcn2Olqc9LtuyIW7R2kEnaM5wdgd8y4QS0fsIclKUmmRsQMocbSbiD2iVfaDiG1KbLS19ot4Krt8F8Py1NA_Ia0btv1I6hkjxuSSGOmdh791PbCRAt3tKR1c3QFlVxgQFqntdvUV-s0u06ZlPiCnoMyq-jUc4gT8IG"
 term = "long_term";
 artist_ids = "39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V";
 album_id = "0TnOYISbd1XYRBk9myaseg";
@@ -35,23 +35,23 @@ const data_format = (track, location) => {
 
 const initChart = (chart,chartData) => {
    //Gather items for names
-  const trackInfo = Object.values(chartData["total_tracks"]) 
-  console.log(trackInfo)
+  //const trackInfo = Object.values(chartData["total_tracks"]) 
+  //console.log(trackInfo)
 
     const data = {
-    labels: chartData["name"],
+    labels: chartData.name_result,
     datasets: [
       {
         label: "Total Tracks Per Album",
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         borderColor: "rgb(255, 99, 132)",
-        data: trackInfo
+        data: chartData.track_results
       },
     ],
   };
   const config = {
     type: "bar",
-    data: trackInfo,
+    data: chartData.track_results,
     options: {
       scales: {
         y: {
@@ -87,10 +87,16 @@ async function mainEvent() {
   graph_submit.addEventListener("click", async (submitEvent) => {
     submitEvent.preventDefault();
     chart_target.innerHTML="";
+    let total_result = {
+      name_result:[],
+      track_results:[]
+    }
     arrayFromJson["items"].forEach((item) => {
-      console.log(item)
-      initChart(chart_target, item)
-      })
+      const { name, total_tracks } = item
+      total_result.name_result.push(name)
+      total_result.track_results.push(total_tracks)
+      });
+      initChart(chart_target, total_result)
   });
 }
 document.addEventListener("DOMContentLoaded", async () => mainEvent());

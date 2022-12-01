@@ -172,6 +172,15 @@
    border-color: rgb(88, 105, 201);
   }
   
+  .alignIt {
+    display: flex;
+    flex-direction: column;
+  
+    flex: 1;
+    background-color: rgb(245, 245, 245);
+    align-items: center;
+
+  }
   
   /*
     This rule implies that the H1 tag lives within another HTML tag

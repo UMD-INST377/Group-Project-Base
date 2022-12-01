@@ -18,11 +18,11 @@ fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
     for(let product of products) {
         out += `
         <tr> 
-        <td>${num++}</td>
-        <td>${product.payee_name}</td>
-        <td>${product.agency}</td>
-        <td>${product.zip_code}</td>
-        <td>${product.amount}</td>
+        <td class = "text">${num++}</td>
+        <td class = "text">${product.payee_name}</td>
+        <td class = "text">${product.agency}</td>
+        <td class = "text">${product.zip_code}</td>
+        <td class = "text">${product.amount}</td>
         </tr>
         `;
     }

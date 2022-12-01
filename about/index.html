@@ -1,16 +1,67 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>about this site</title>
+    <title>Group Project: PG Trash</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./script.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
   </head>
-  <body>
-    this is a site made by Paris and Yabing for INST377: Dynamic Web
-    Applications at the University of Maryland.<br>
-    How to use this site:<br>
-    <ol>click the button</ol>
-    <ol>look at the map</ol>
+  <body class="body">
+    <div class="wrapper">
+      <header class="header">
+        <h1>
+          <a href="https://yyang7171.github.io/377-Group-Project/"
+            >Trash Tracker PG County</a
+          >
+        </h1>
+      </header>
+      <div class="container">
+        This site was developed by Paris and Yabing for INST377: Dynamic Web
+        Applications at UMD.<br />
+        How to use this website:
+        <ol>
+          click the button to visualize where trash is being dumped in Prince
+          George's County.
+        </ol>
+        <ol>
+          you can click the button again to show other trash dumping locations.
+        </ol>
+        <ol>
+          see the graph on the bottom right to see the reported dates of trash
+          dumping.
+        </ol>
+      </div>
+    </div>
+    <footer class="footer">
+      <a href="https://www.linkedin.com/in/yyang116/">About Yabing</a>
+      <br />
+      <a href="https://www.linkedin.com/in/paris-lane-531347219/"
+        >About Paris</a
+      >
+      <br />
+      <a
+        href="https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner"
+        >Dataset</a
+      ><br />
+
+      <a href="https://github.com/yyang7171/377-Group-Project"
+        >view project on Github</a
+      >
+    </footer>
   </body>
 </html>

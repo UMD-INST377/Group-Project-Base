@@ -22,7 +22,7 @@ async function getToken() {
 
 async function getGenres(token) {
 
-    const result = await fetch(`https://api.spotify.com/v1/browse/categories?locale=sv_US&limit=50`, {
+    const result = await fetch(`https://api.spotify.com/v1/browse/categories?locale=sv_US&limit=40`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
     });
@@ -39,7 +39,7 @@ async function getPlaylistsByGenre(token, genreId, limit) {
     });
 
     const data = await result.json();
-    if(typeof data.playlists !== "undefined"){
+    if(typeof data.playlists.items !== "undefined"){
         return data.playlists.items;
     }
     
@@ -69,30 +69,38 @@ async function getTrack(token, tracksEndPoint) {
     return data;
 }
 
+/*function fromPlaylistToTracks(plEndpoint){
+    const tracks = await getTracks(token, plEndpoint)
 
+    return tracks
+}*/
 
 async function initSongs(){
     const token = await getToken();
     console.log(token)
-    console.log("Getting playlist for Rock")
     const genres = await getGenres(token)
-    const listOfTracks = [];
+    let listOfTracks = [];
     genres.forEach(async genre => {
-        console.log(`Getting tracks from: ${genre.name} has id: ${genre.id}`)
+        //console.log(`Getting tracks from: ${genre.name} has id: ${genre.id}`)
         const playlists = await getPlaylistsByGenre(token, genre.id, 3)
         if(typeof playlists !== "undefined"){
-            playlists.forEach(playlist =>{
-                {console.log(playlist.href);}
+            playlists.forEach(async playlist =>{
+                //console.log(playlist.href);
+                const plEndpoint = `${playlist.href}/tracks`
+                const tracks = await getTracks(token, plEndpoint);
+                console.log(listOfTracks.length)
+                listOfTracks.push(...tracks.items)
+                console.log(tracks.items)
             })
         }      
             
     })
-    
+    //console.log(listOfTracks.length)
     //const playlists = await getPlaylistsByGenre(token, "0JQ5DAqbMKFDXXwE9BDJAr", 10);
     //console.table(playlists);
     const plalylistSg = "https://api.spotify.com/v1/playlists/37i9dQZF1DXcF6B6QPhFDv/tracks"
     const tracks = await getTracks(token, plalylistSg);
-    // console.table(tracks.items)
+    //console.table(tracks.items)
     
     return tracks.items
 }

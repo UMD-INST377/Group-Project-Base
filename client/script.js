@@ -7,3 +7,11 @@ function initMap() {
     }).addTo(map);
     return map;
   }
+
+  
+
+async function mainEvent() {
+
+    const pageMap = initMap();
+    
+}

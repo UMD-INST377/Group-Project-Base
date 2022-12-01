@@ -35,8 +35,8 @@ header {
   .left_section {
     background-color: rgb(0, 0, 0);
     flex: 0 1 auto;
-    max-height: 100cm;
-    max-width: 1 cm;
+    max-height: 1000px;
+    max-width: 10 cm;
     margin: 1rem;
     padding: 1.5rem;
   }
@@ -57,4 +57,8 @@ header {
 }
 h2{
   color:white;
+}
+img{
+  width: 100px;
+  height: 100px;
 }

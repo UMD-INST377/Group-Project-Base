@@ -1,10 +1,11 @@
 
 //This will get the data into console
-// fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.error(err))
+fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.error(err))
 
+//this will populate the data from json to the data html page
 fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
 .then(function(response){
     return response.json();
@@ -28,22 +29,6 @@ fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
 
     placeHolder.innerHTML = out;
 })
-
-
-
-
-
-
-//Need different functions to process data
-// async function getData(){
-//     const response = await fetch(spendingData);
-//     const data = await response.json();
-//     const {agency} = data;
-//     console.log(agency);
-// }
-
-
-
 
 
 

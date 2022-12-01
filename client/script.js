@@ -27,6 +27,7 @@ function markerPlace(array, map) {
       '<li> Numbers of Bags - (' + item.number_bags + ')</li>' +
       '<li> Latitude - (' + item.latitude + ')</li>' +
       '<li> Longitude - (' + item.longitude + ')</li>' +
+      '<li> Creation Date - (' + item.creationdate + ')</li>' +
       '</ul>';
       marker.bindPopup(list).openPopup();
     }
@@ -56,15 +57,7 @@ async function createArray(year) {
 async function mainEvent() {
   const pageMap = initMap();
 
-  const apiData = await(createArray(2022));
-
-  // const results = await fetch('/api/litterService')
-  // const arrayFromJson = await results.json();
-
-  // console.log(arrayFromJson.data)
-  // console.table(arrayFromJson.data)
-
-  // console.log(arrayFromJson.data[0]);
+  const apiData = await (createArray(2022));
 
   markerPlace(apiData, pageMap);
 }

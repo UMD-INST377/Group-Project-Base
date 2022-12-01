@@ -21,8 +21,9 @@ export async function createArray(year) {
   }
 }
 
-//   const test = await(createArray(2022))
-//   test.forEach((x, i) => console.log(x['latitude'] + ' ' + x['longitude']))
+  const test = await(createArray(2022))
+  console.log(test)
+  // test.forEach((x, i) => console.log(x['latitude'] + ' ' + x['longitude']))
 
 export async function dataYear(year, info) {
   // info can be organization, type_cleanup, type_litter, number_bags

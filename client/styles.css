@@ -32,7 +32,7 @@ html {
   
     font-size: 1.5rem;
     padding: 1.25rem;
-    margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+    margin:1; /* removing the margin on h1 tags means the header pins to the top if we move */
   
 
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
@@ -63,6 +63,20 @@ html {
     margin-bottom: 1rem;
     align-items: center;
   }
+
+/* HOME */
+.info {
+  display: block;
+  background-color: rgb(84, 216, 106);
+  border-radius: 2px;
+  font-size: 1.5rem;
+  padding: 1.25rem;
+  margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  border: 3px solid;
+  text-align: left;
+  float: left;
+}
+
 /* FOOTER STYLES */
   .footer {
     flex-shrink: 0;

@@ -32,7 +32,9 @@ function markerPlace(array, map) {
   });
 
   array.forEach((item, index) => {
+    console.log(item.location_1);
     const {coordinates} = item.location_1;
+    console.log(coordinates);
     L.marker([coordinates[0], coordinates[1]]).addTo(map);
     if (index === 0) {
       map.setView([coordinates[0], coordinates[1]], 10);
@@ -94,7 +96,7 @@ async function mainEvent() {
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
       cameraList = processCameras(mapData); 
-
+      console.log(cameraList);
       markerPlace(cameraList, pageMap);
       clickedOn(cameraList, pageMap);
         });

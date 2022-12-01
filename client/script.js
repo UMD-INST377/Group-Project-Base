@@ -39,7 +39,7 @@ async function getPlaylistsByGenre(token, genreId, limit) {
     });
 
     const data = await result.json();
-    if(typeof data.playlists.items !== "undefined"){
+    if(typeof data.playlists !== "undefined"){
         return data.playlists.items;
     }
     
@@ -80,6 +80,7 @@ async function initSongs(){
     console.log(token)
     const genres = await getGenres(token)
     let listOfTracks = [];
+
     genres.forEach(async genre => {
         //console.log(`Getting tracks from: ${genre.name} has id: ${genre.id}`)
         const playlists = await getPlaylistsByGenre(token, genre.id, 3)
@@ -104,6 +105,17 @@ async function initSongs(){
     
     return tracks.items
 }
+
+/* var bar = new Promise((resolve, reject) => {
+    foo.forEach((value, index, array) => {
+        console.log(value);
+        if (index === array.length -1) resolve();
+    });
+});
+
+bar.then(() => {
+    console.log('All done!');
+}); */
 
 async function songNamesArray(){
     const songs = await initSongs();

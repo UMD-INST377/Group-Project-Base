@@ -126,7 +126,7 @@ form {
 
 .box {
   
-  color: #fff;
+  color: rgb(0, 0, 0);
   background-color: rgba(255, 255, 255, 0.1);
   width: fit-content;
   height: max-content;
@@ -141,9 +141,9 @@ form {
   flex-direction: column;
   border-radius: 10px;
 }
-.text {
-  align-items: center;
+.tableData {
   text-align: center;
+  border: 1px solid;
 }
 
 .smallbox{

@@ -47,9 +47,9 @@ header {
     flex: 1;
   }
   .column {
-    flex:70%;
     padding: 10px;
-    height: 500px;
+    height: 750px;
     width: 275px;
     text-align: center;
+    border: dashed;
 }

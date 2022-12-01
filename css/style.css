@@ -2,10 +2,17 @@
     New code bonus: pure CSS data loading icon
     This comes from loading.io/css - it's nice to show that something is happening!
 */
+
 * {
     box-sizing: border-box;
     }
     
+    p {
+      align-self: center;
+    }
+    li {
+      align-self: center;
+    }
     /* 
     These rules apply to actual HTML elements with no labelling!
     So: they style the tags directly

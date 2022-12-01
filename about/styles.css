@@ -97,7 +97,6 @@ html {
   }
   
   .left_section {
-    border: 2px dashed;
     flex: 0 1 auto;
     margin: 1rem;
     padding: 1.5rem;

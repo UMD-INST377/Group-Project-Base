@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', Georgia;
+}
+:root{
+    --primary-color:#ffffff;
+    --secondary-color:#ffffff;
+}
+body{
+    background-color: var(--primary-color);
+}
+.header{
+    background-color: var(--secondary-color);
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+}
+nav ul{
+    display: flex;
+}
+nav ul li{
+    list-style: none;
+    margin-right: 1rem;
+}
+nav ul li a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.2rem 0.6rem;
+    position: relative;
+}
+
+h2,
+h3 { 
+  margin: 0;
+  padding: 0;
+  padding-bottom: 1.5rem;
+}
+
+.container {
+display: flex;
+}
+
+.box {
+flex: 1;
+border: dashed;
+width: fit-content; 
+margin: 1rem;
+padding: 1.5rem;
+}
+
+.left{
+  background-color: rgb(244, 204, 229);
+}
+
+.right{
+  background-color: rgb(239, 243, 168);
+
+}
+
+.chart_container {
+  height: 100%;
+  width: 90%;
+}
+
+  

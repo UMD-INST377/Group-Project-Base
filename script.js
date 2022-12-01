@@ -51,7 +51,7 @@ async function getData() {
     const data = await fetch(url);
     const json = await data.json();
     const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.school));
-    return json;
+    return reply;
 }
 
 async function mainEvent() {
@@ -85,7 +85,7 @@ async function mainEvent() {
     let currentList = [];
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
-      currentList = processCameras(mapData.data);
+      currentList = processCameras(mapData);
 
           const cameras = currentList.filter((item) => Boolean(item.location_1));
 

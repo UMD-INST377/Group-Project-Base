@@ -99,7 +99,7 @@ async function getData() {
 }
 
 async function mainEvent() {
-  const ctx = document.querySelector('#myChart');
+  const ctx = document.querySelector('#myChart2');
   const results = await getData();
   console.log(results)
   movieData = shapeData(results);

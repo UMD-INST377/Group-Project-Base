@@ -39,7 +39,7 @@
   
   h2, h3 {
     margin:0;
-    padding:0;
+    padding: 2px;
     padding-bottom:1.5rem;
   }
   
@@ -95,7 +95,6 @@
     border-radius: 6px;
     font-size: 1.5rem;
     padding: 1.25rem;
-    border: 2px dashed;
     margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
   
   

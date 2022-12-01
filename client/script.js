@@ -6,7 +6,10 @@ const options = {
   }
 };
 
+
 document.querySelector('#search').addEventListener('click', getPlayer);
+
+const ctx = document.getElementById('myChart');
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -16,37 +19,15 @@ function lowerCaseName(string) {
   return string.toLowerCase();
 }
 
-const ctx = document.getElementById('myChart');
-
-new  Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
-
-async function getPlayer(e) {
+async function getPlayer() {
   try {
     const name = document.querySelector('#namePlayer').value;
     const playerName = lowerCaseName(name);
     const newData = await fetch(`https://api-nba-v1.p.rapidapi.com/players?name=${playerName}`, options);
-    const data = await newData.json();
-    console.log(data);
-
-    const height = data.dat.map((x) => x.response[0].weight.pounds);
-    console.log(height);
+    const data = await newData.json()
+    console.log(data)
+    const weight = data.response[0].weight.pounds
+    console.log(weight)
 
     const playerID = data.response[0].id;
     document.querySelector('.playerBox').innerHTML = `
@@ -75,8 +56,34 @@ async function getPlayer(e) {
             </div>
             `;
       });
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['weight'],
+          datasets: [{
+            label: '# of Votes',
+            data: [weight],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    labelsWeight = weight
+    console.log(weight)
   } catch (err) {
     console.log('Data Request Failed', err);
   }
-  e.preventDefault();
 }
+
+
+async function gettingData() {
+  await getPlayer()
+}
+
+gettingData();

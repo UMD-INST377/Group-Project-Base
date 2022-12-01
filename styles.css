@@ -55,7 +55,7 @@ form {
   }
 
  .container {
-    margin: 0 20px;
+    margin: 0 20px 100vh;
     display: flex;
     justify-content: space-evenly;
     align-items: start;      
@@ -68,7 +68,7 @@ form {
     margin: 1rem;
     padding: 1.5rem;
     display: flex;
-    align-items: flex-start;
+    justify-content: flex-start;
     }
 
     .center {
@@ -77,7 +77,7 @@ form {
       margin: 1rem;
       align-items: center;
       display: flex;
-      flex-direction: column;
+      justify-content: flex-end;
     }
 
     .box {

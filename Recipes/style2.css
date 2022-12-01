@@ -200,7 +200,6 @@
     -webkit-overflow-scrolling: touch;
   }
   
-  /* .carousel_item, */
   .hidden {
     display: none;
   }
@@ -210,17 +209,6 @@
   }
   
   .carousel_item img {
-    /* 
-      Setting width, rather than max-width or min-width,
-      means annoying pop-ins won't happen
-      but it also means you need to format your images to be compatible
-      or they will stretch weird
-  
-      - try a tall one and see what happens
-      - change the height on a fixed image size and see what happens
-      - now make sure that images are _always_ square
-      - ... there's a reason crop tools are popular in image editors
-     */
     width: 150px; 
   }
   
@@ -233,21 +221,18 @@
     font-weight: bold;
     height: 45px;
     padding: 10px;
-    line-height: 0; /* This centers a button's text! */
-    border: 2px solid rgb(4, 4, 4); /* shorthand for how to do a border */
+    line-height: 0; 
+    border: 2px solid rgb(4, 4, 4); 
   }
   
   .prev:focus,
   .next:focus {
     margin: 0;
     border: 2px solid rgb(16, 166, 212);
-    /* Pick a good border colour and check out how it works with your buttons */
   }
   
   .prev:hover,
   .next:hover {
-    /* Hue, saturation, luminosity, alpha */
     background-color: hsla(194, 83%, 65%, 0.968);
-    /* red, green, blue, alpha */
     color: rgb(10, 10, 10);
     text-decoration: none;

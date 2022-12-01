@@ -11,7 +11,7 @@ const router = express.Router();
 // /////////////////////////////////
 // Food Inspection Set Demos
 // /////////////////////////////////
-router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
+router.route('/') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {
       const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';

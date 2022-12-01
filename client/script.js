@@ -43,7 +43,6 @@ async function getPlayer() {
     fetch(`https://api-nba-v1.p.rapidapi.com/players/statistics?id=${playerID}&season=2021`, options)
       .then((res) => res.json())
       .then((info) => {
-        console.log(info);
         document.querySelector('.nbaBox').innerHTML = `
             <div class = "nbaInfo">
                 <h1>${info.response[0].team.name}</h3>

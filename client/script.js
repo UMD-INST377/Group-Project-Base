@@ -36,17 +36,36 @@ function markerPlace(array, map) {
   });
 }
 
+async function createArray(year) {
+  const dataList = [];
+  try {
+    const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?impl_comp_yr=';
+    // let obj;
+    const res = await fetch(url + year);
+    const obj = await res.json();
+    for (let i = 0; i < obj.length; i++) {
+      dataList.push(obj[i]);
+    }
+    return dataList;
+  } catch (err) {
+    console.log('Data request failed', err);
+    res.json({message: 'Data request failed', error: err});
+  }
+}
+
 async function mainEvent() {
   const pageMap = initMap();
 
-  const results = await fetch('/api/litterService')
-  const arrayFromJson = await results.json();
+  const apiData = await(createArray(2022));
 
-  console.log(arrayFromJson.data)
+  // const results = await fetch('/api/litterService')
+  // const arrayFromJson = await results.json();
+
+  // console.log(arrayFromJson.data)
   // console.table(arrayFromJson.data)
 
   // console.log(arrayFromJson.data[0]);
 
-  markerPlace(arrayFromJson.data, pageMap);
+  markerPlace(apiData, pageMap);
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

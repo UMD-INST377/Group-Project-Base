@@ -30,3 +30,5 @@ spotifyApi.clientCredentialsGrant().then(
     );
   }
 );
+
+export default spotifyApi;

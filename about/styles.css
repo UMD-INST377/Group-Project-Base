@@ -85,35 +85,6 @@ html {
     padding: 1.5rem;
   }
   
-  .right_section {
-    flex: auto;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .right_top_section {
-    border: 2px dashed;
-    flex: 1 2 auto;
-    margin: 1rem;
-    padding: 1.5rem;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .right_bottom_section {
-    border: 2px dashed;
-    flex: 1 2 auto;
-    margin: 1rem;
-    padding: 1.5rem;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-self: flex-end;
-  }
-  
   footer {
     background-color: #6F9079;
     flex-shrink: 0;
@@ -132,32 +103,6 @@ html {
     text-decoration: none;
   }
   
-  form input {
-    /* This is a hack to make sure our boxes line up with one another nicely */
-    width: 100%;
-    width: -moz-available;          /* WebKit-based browsers will ignore this. */
-    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-    width: fill-available;
-  
-    /* here we are setting white space correctly */
-    margin-bottom: 1rem;
-    height: 2rem;
-    border-radius: 4px;
-  }
-  
-  form label {
-    width: 100%;
-    width: -moz-available;          /* WebKit-based browsers will ignore this. */
-    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-    width: fill-available;
-    align-items: flex-start;
-  
-    display: block; /* this turns the label text into a box we can set margins on */
-    margin-bottom: 0.5rem;
-  }
-  
-  /* How To Write A Media Query For Small Screens */
-  
   @media only screen and (max-width: 736px){
       /* Rules in here will only apply when a screen is the correct size */
       /* check it out by using your developer tools to shrink your screen-size */
@@ -175,15 +120,5 @@ html {
         align-items: flex-start;
         justify-content: flex-start;
       }
-  }
-  
-  /* MAP STYLES*/
-  
-  #map {
-    display: block;
-    width: 400px;
-    height: 300px;
-    border: 2px dashed;
-    margin-bottom: 1rem;
   }
   

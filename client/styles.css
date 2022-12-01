@@ -57,8 +57,8 @@ html {
 #map {
     margin: auto;
     display: block;
-    width: 700px;
-    height: 700px;
+    width: 750px;
+    height: 750px;
     border: 2px groove rgb(99,99,99);
     margin-bottom: 1rem;
     align-items: center;

@@ -14,6 +14,15 @@ html {
     text-size-adjust: 100%;
   }
 
+  .header {
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  }
+
   .wrapper {
     min-height: 100vh;
     display: flex;
@@ -28,8 +37,8 @@ html {
     border-radius: 4px;
   
     width: fit-content;
-    height: 200px;
-    padding: 1.5rem;
+    height: fit-content;
+    padding: 0.5rem;
     margin: 0 auto;
   }
 
@@ -37,4 +46,11 @@ html {
     background-color: rgba(240, 248, 255, 0);
     height: fit-content;
     padding: 1.5rem;
+  }
+
+  .footer {
+    flex-shrink: 0;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
   }

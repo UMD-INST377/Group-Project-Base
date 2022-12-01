@@ -80,3 +80,10 @@ html {
     width: 100%;
     height: 100%;
   }
+  #myChart{
+    border: 2px solid rgb(99, 99, 99);
+    width: 800px;
+    height: 200px;
+    overflow: auto;
+  }
+ 

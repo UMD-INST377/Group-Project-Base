@@ -1,54 +1,88 @@
-/* eslint-disable max-len */
-/* leaving space here to add more functions */
-
-/// Getting player data from players (mostly for id) ///
-async function getName(term) {
-  const url = `https://api-nba-v1.p.rapidapi.com/players?search=${term}`;
-  const options = {
-    headers: {
-      'X-RapidAPI-Key': '3264b40dd2mshd5149564bef5bf8p1bdbb3jsn1cb056c041c4',
-      'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
-    }
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': '5632c77d22msh70c6d62094e11eep1c2c19jsn4061b7fbefc3',
+    'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
   }
-  /// the search parameter needs at least 3 characters, so this makes sure the term is big enough ///
-  if (term.length >= 3) {
-    const data = await fetch (url, options);
-    const json = await data.json();
-    return json;
+};
+
+
+document.querySelector('#search').addEventListener('click', getPlayer);
+
+const ctx = document.getElementById('myChart');
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function lowerCaseName(string) {
+  return string.toLowerCase();
+}
+
+async function getPlayer() {
+  try {
+    const name = document.querySelector('#namePlayer').value;
+    const playerName = lowerCaseName(name);
+    const newData = await fetch(`https://api-nba-v1.p.rapidapi.com/players?name=${playerName}`, options);
+    const data = await newData.json()
+    console.log(data)
+    const weight = data.response[0].weight.pounds
+    console.log(weight)
+
+    const playerID = data.response[0].id;
+    document.querySelector('.playerBox').innerHTML = `
+    <div>
+      </div>
+      <div class="playerInfo">
+        <h1>${capitalizeFirstLetter(
+    `${data.response[0].firstname} ${data.response[0].lastname}`
+  )}</h3>
+        <p>ID: ${(ind = data.response[0].id)}</p>
+        ${ind}
+      </div>`;
+    fetch(`https://api-nba-v1.p.rapidapi.com/players/statistics?id=${playerID}&season=2021`, options)
+      .then((res) => res.json())
+      .then((info) => {
+        document.querySelector('.nbaBox').innerHTML = `
+            <div class = "nbaInfo">
+                <h1>${info.response[0].team.name}</h3>
+            </div>
+            <div>
+            <img
+            src ="${info.response[0].team.logo}"
+            alt = "${data.name}"
+            />
+            </div>
+            `;
+      });
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['weight'],
+          datasets: [{
+            label: '# of Votes',
+            data: [weight],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    labelsWeight = weight
+    console.log(weight)
+  } catch (err) {
+    console.log('Data Request Failed', err);
   }
 }
 
-/// Getting data from statistics (this requires searching by id, thus why we need to search players) ///
-async function getData(id) {
-  const url = `https://api-nba-v1.p.rapidapi.com/players/statistics?id=${id}`;
-  const options = {
-    headers: {
-      'X-RapidAPI-Key': '3264b40dd2mshd5149564bef5bf8p1bdbb3jsn1cb056c041c4',
-      'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
-    }
-  }
-  const data = await fetch(url, options);
-  const json = await data.json();
-  return json;
+
+async function gettingData() {
+  await getPlayer()
 }
 
-async function mainEvent() {
-  /// creating variables for later use ///
-  const form = document.querySelector('.main_form');
-  /// initializing arrays to put teams in
-  let team1list = [];
-  let team2list = [];
-  /// if (!arrayFromJson.data?.length) { return; }
-
-  form.addEventListener('input', (event) => {
-    nameList= [];
-    const playerNames = getName(event.target.value);
-    console.log(playerNames);
-    playerNames.forEach((item, index) => {
-      const {name} = item.name;
-      nameList.push(name)
-      console.log(nameList);
-    });
-  })
-}
-document.addEventListener('DOMContentLoaded', async () => mainEvent());
+gettingData();

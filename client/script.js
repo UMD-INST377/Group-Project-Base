@@ -50,4 +50,4 @@ async function mainEvent() {
   makeGraph(xLabel, rateData);
 }
  
-mainEvent();
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

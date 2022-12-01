@@ -10,6 +10,8 @@
 </head>
 
 <body>
+
+    <!--Code for header---------->
     <div class="wrapper">
         <header class="header">
             <h2 class="header">
@@ -21,29 +23,77 @@
                 </nav>
             </h2>
         </header>
+    <!---------------------------->
+    
+    
 
+
+    <!--Filter Options-------------------------------------------------------------------------------->
         <div class="table container">
             <form action="/api" class="b main_form">
+
+                <!--Payee checkBox-->
                 <div class="smallbox">
                     <input type="radio" id="df1" checked="TRUE" name="subject" value="Payee Name" />
                     <label for="df1">Payee</label>
                 </div>
+                
+                <!--Agency checkBox-->
                 <div class="smallbox">
                     <input type="radio" id="df2" name="subject" value="Agency" />
                     <label for="df2">Agency</label>
                 </div>
+
+                <!--Zipcode checkBox-->
                 <div class="smallbox">
                     <input type="radio" id="df3" name="subject" value="Zip Code" />
                     <label for="df3">Zip Code</label>
                 </div>
+
+
+
+                <!--Search Box-->
                 <div>
-                    <label for="resto">Search</label>
-                    <input type="text" name="resto" id="resto">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Filter for.." title="Type in a name">
                 </div>
                 <button type="submit" id="get">Submit & filter</button>
+
+
+
+                <!-- i want to do something like this to the table, which is basically oe of the labs
+                    the code below does not work yet
+                    https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_list-->
+                <script>
+                    function myFunction() {
+                        var input, filter, ul, li, a, i, txtValue;
+                        input = document.getElementById("myInput");
+                        filter = input.value.toUpperCase();
+                        ul = document.getElementById("myUL");
+                        li = ul.getElementsByTagName("li");
+                        for (i = 0; i < li.length; i++) {
+                            a = li[i].getElementsByTagName("a")[0];
+                            txtValue = a.textContent || a.innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                li[i].style.display = "";
+                            } else {
+                                li[i].style.display = "none";
+                            }
+                        }
+                    }
+                </script>
             </form>
         </div>
+    <!----------------------------------------------------------------------------------------------------->
 
+
+
+
+
+
+
+
+
+    <!--below is code for the table of data-->
         <div class = "wrapper">
             <table>
                 <thead>
@@ -65,6 +115,7 @@
             <a href="https://github.com/bw1umd/Project-pgcounty-spending.git">Github</a>
         </div>
         <script src="./script.js"></script>
+    <!----------------------------------------->
 </body>
 
 </html>

@@ -134,6 +134,7 @@ form {
 }
 
 .text.box{
+  color: rgb(255, 255, 255);
   position: sticky;
   top: 150px;
   align-items: center;

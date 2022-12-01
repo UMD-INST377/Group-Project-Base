@@ -74,7 +74,7 @@ async function mainEvent() {
     console.log(`${mapData[0].school} ${mapData[0].location}`);
 
     // Return if we have no data
-    if(mapData.data?.length > 0) {
+    if(mapData?.length > 0) {
       // let's turn the submit button back on by setting it to display as a block when we have data available
       submit.style.display = 'block'; 
 

@@ -11,14 +11,13 @@ const router = express.Router();
 // /////////////////////////////////
 // Food Inspection Set Demos
 // /////////////////////////////////
-router.route('/') // actually localhost:3000/api/foodServicesPG
+router.route('/') // http://localhost:3030/api/litterService
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?impl_comp_yr=2022';
       const data = await fetch(url);
       const json = await data.json();
-      console.log(json);
-
+    //   console.log(json);
       res.json({data: json});
     } catch (error) {
       console.log(error);

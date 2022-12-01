@@ -1,15 +1,37 @@
 <html lang="en">
 <head>
+
+    <!---->
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!---->
+
     <title>Group Project Base</title>
-    <h1>Group 103-05</h1>
-    <h1>Harvey Sombat and Daniel Soltis</h1>
-    <!-- Pull Request 11/14 Changes-->
+    <h1>Prince George's County Maryland Trash Tracker</h1>
+
+    <!---->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+    crossorigin=""></script>
+
+    <!---->
+
 </head>
 <body>
+    <div id="map"></div>
+    <div class = "footer box">
+        <p>Data Provided by the LitterTRAK API
+          <a href='https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner'>Link to LitterTRAK API</a>
+        </p>
+      </div>
     <script src="./script.js"></script>
 </body>
 </html>

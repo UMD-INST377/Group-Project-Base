@@ -1,0 +1,90 @@
+html {
+    background-color: #fff;
+    font-size: 16px;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  
+    /* these are specific to different browsers */
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: rgb(255, 255, 255);
+  }
+  
+   h1 {
+    display: block;
+  
+    background-color: rgb(84, 216, 106);
+    color: #4a4a4a;
+  
+    font-size: 1.5rem;
+    padding: 1.25rem;
+    margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  
+
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+  }
+  
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  h2, h3 {
+    margin:0;
+    padding:0;
+    padding-bottom:1.5rem;
+  }
+  
+  form {
+    accent-color: hsla(120, 100%, 50%, 0.482);
+  }
+
+/* MAP STYLES */
+#map {
+    margin: auto;
+    display: block;
+    width: 700px;
+    height: 700px;
+    border: 2px groove rgb(99,99,99);
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+/* FOOTER STYLES */
+  .footer {
+    flex-shrink: 0;
+    padding: 1rem;
+    background-color: rgb(84, 216, 106);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .footer a {
+    color: rgb(208, 255, 0);
+    text-decoration: underline;
+  }
+
+  .footer a:hover {
+    background-color: hsla(0, 0%, 90%, 0.15);
+    color: rgb(246, 169, 93);
+    text-decoration: none;
+  }
+  
+  .subtitle {
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0px;
+    margin-bottom: 5px;
+  }

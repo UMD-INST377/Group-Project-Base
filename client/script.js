@@ -115,9 +115,8 @@ async function init(){
         e.preventDefault();
         injectHTML(songArray);
         console.log(songArray);
+        document.getElementById("music_list").style.display = "block";
     })
-
-    document.getElementById("music_list").style.display = "block";
 
 }
 

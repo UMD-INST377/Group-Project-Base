@@ -38,7 +38,7 @@ async function teamToID(teamName) {
     teamID = item.id;
   });
   console.log(` ${teamName}, ${teamID}`);
-  return teamID
+  return teamID;
 }
 async function getChampionshipStats(teamID, season) {
   // api to get a team by its name and year
@@ -76,7 +76,7 @@ function makeChart() {
   const ctx = document.getElementById('myChart');
 
   // eslint-disable-next-line no-new
-  new Chart(ctx, {
+  const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: champions,
@@ -94,6 +94,7 @@ function makeChart() {
       }
     }
   });
+  return myChart;
 }
 
 async function mainEvent() {
@@ -112,7 +113,13 @@ async function mainEvent() {
   console.log(`total 3% is ${total3Perc} total 3 made is ${total3Made}, total 3 att is ${total3Att}`);
   console.log(`avg 3%: ${avg3Perc}, avg 3 made: ${avg3Made}, avg 3 attempted: ${avg3Att}`);
   console.log(champ3Perc);
-  makeChart();
+  
+  let myChart = makeChart();
+  const refreshBtn = document.getElementById('refresh-button');
+  refreshBtn.addEventListener('click', (submitEvent) => {
+    myChart.destroy();
+    myChart = makeChart();
+  });
   document.getElementById('three-avgs').textContent = `average 3 percent: ${avg3Perc}, average 3s made: ${avg3Made}, and average 3s attempted: ${avg3Att}`;
 }
 

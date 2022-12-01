@@ -47,7 +47,6 @@ async function initChart(targetElement, jsonObject) {
 }
 
 async function getData() {
-  /* Get the data asynchronously */
   const url = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc'; // remote URL! you can test it in your browser
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json();

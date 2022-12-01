@@ -17,7 +17,8 @@ body {
   margin: 0;
   padding: 0;
 
-  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
   background-color: rgba(155, 149, 149, 0.914);
@@ -35,12 +36,12 @@ a {
   text-decoration: none;
 }
 
-h2, h3 {
-  margin:0;
-  padding:0;
-  padding-bottom:1.5rem;
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 1.5rem;
 }
-
 
 form {
   accent-color: hsla(120, 100%, 50%, 0.482);

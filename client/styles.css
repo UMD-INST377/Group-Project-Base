@@ -95,9 +95,8 @@
     /* this will push other blocks out of the way */
   
     /* colors */
-    background-color: #F8AD9D;
-    color: #000000;
-    border: 2px dashed;
+    color: #191414;
+    background-color: #1DB954;
   
     /* shapes */
     border-radius: 6px;
@@ -154,16 +153,16 @@
   */
   
   .footer {
-    border: 2px dashed;
     flex-shrink: 0;
     padding: 1rem;
-    background-color: #FFDAB9;
+    background-color: #1DB954;
+    color: #191414;
     font-size: 1.2rem;
     font-weight: 600;
   }
   
   .footer a {
-    color: rgb(89, 38, 255);
+    color: rgb(0, 174, 255);
     text-decoration: underline;
   }
   
@@ -174,9 +173,8 @@
   */
   .footer a:hover {
     /* Hue, saturation, luminosity, alpha */
-    background-color: hsla(0, 0%, 90%, 0.15);
+    background-color: hsla(204, 100%, 50%, 0.15);
     /* red, green, blue, alpha */
-    color: rgb(246, 169, 93);
     text-decoration: none;
   }
   
@@ -375,12 +373,4 @@
     100% {
       transform: translate(24px, 0);
     }
-  }
-
-  #map { 
-    display: block;
-    width: 400px;
-    height: 380px;
-    border: 2px dashed rgb(99, 99, 99);
-    margin-bottom: 1rem;
   }

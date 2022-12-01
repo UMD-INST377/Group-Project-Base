@@ -22,7 +22,7 @@ async function getData() {
 function traverse_duration(obj){
   lst = [];
   for(var prop in obj){
-      if(typeof obj[prop]=="duration_ms"){
+      if(typeof obj[prop]!="duration_ms"){
           traverse_duration(obj[prop[i]]);
       }else{
           lst.push(obj[prop[i]]);
@@ -34,7 +34,7 @@ function traverse_duration(obj){
 function traverse_name(obj){
   lst = [];
   for(var prop in obj){
-      if(typeof obj[prop]=="name"){
+      if(typeof obj[prop]!="name"){
           traverse_name(obj[prop[i]]);
       }else{
           lst.push(obj[prop[i]]);

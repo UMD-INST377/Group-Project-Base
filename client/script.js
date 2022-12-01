@@ -69,59 +69,51 @@ async function getTrack(token, tracksEndPoint) {
     return data;
 }
 
-/*function fromPlaylistToTracks(plEndpoint){
-    const tracks = await getTracks(token, plEndpoint)
-
-    return tracks
-}*/
-
 async function initSongs(){
+    const listOfTracks = [];
     const token = await getToken();
     console.log(token)
     const genres = await getGenres(token)
-    let listOfTracks = [];
+    let prom = new Promise((resolve, reject) => {
+        genres.forEach(async (genre, index, array) => {
+            //console.log(`Getting tracks from: ${genre.name} has id: ${genre.id}`)
+            const playlists = await getPlaylistsByGenre(token, genre.id, 3)
+            if(typeof playlists !== "undefined"){
+                playlists.forEach(async playlist =>{
+                    //console.log(playlist.href);
+                    if(playlist !== null){
+                        const plEndpoint = `${playlist.href}/tracks`
+                        const tracks = await getTracks(token, plEndpoint);
+                        listOfTracks.push(...tracks.items)
+                        console.log(listOfTracks.length)
+                        //console.log(tracks.items)
+                    }
+                })
+            }      
+            if (index === array.length -1) resolve();
+        });
+    });
 
-    genres.forEach(async genre => {
-        //console.log(`Getting tracks from: ${genre.name} has id: ${genre.id}`)
-        const playlists = await getPlaylistsByGenre(token, genre.id, 3)
-        if(typeof playlists !== "undefined"){
-            playlists.forEach(async playlist =>{
-                //console.log(playlist.href);
-                const plEndpoint = `${playlist.href}/tracks`
-                const tracks = await getTracks(token, plEndpoint);
-                console.log(listOfTracks.length)
-                listOfTracks.push(...tracks.items)
-                console.log(tracks.items)
-            })
-        }      
-            
-    })
-    //console.log(listOfTracks.length)
-    //const playlists = await getPlaylistsByGenre(token, "0JQ5DAqbMKFDXXwE9BDJAr", 10);
-    //console.table(playlists);
+    
+    prom.then(() => {
+        console.log('All done!');
+        console.log(listOfTracks.length);
+    });
+
     const plalylistSg = "https://api.spotify.com/v1/playlists/37i9dQZF1DXcF6B6QPhFDv/tracks"
     const tracks = await getTracks(token, plalylistSg);
-    //console.table(tracks.items)
-    
     return tracks.items
 }
 
-/* var bar = new Promise((resolve, reject) => {
-    foo.forEach((value, index, array) => {
-        console.log(value);
-        if (index === array.length -1) resolve();
-    });
-});
-
-bar.then(() => {
-    console.log('All done!');
-}); */
-
 async function songNamesArray(){
     const songs = await initSongs();
+    console.log(songs)
     const array = [];
     songs.forEach(element => {
-        array.push(element.track.name)
+        array.push({
+            name : element.track.name,
+            link : element.track.external_urls.spotify
+        })
     })
     return(array)
     //console.log(array)
@@ -138,7 +130,7 @@ function injectHTML(list) {
     target.appendChild(listEl);
     list.forEach((item) => {
       const el = document.createElement('li');
-      el.innerText = item;
+      el.innerHTML = `<a href=${item.link}>${item.name}</a>`;
       listEl.appendChild(el);
     });
 }

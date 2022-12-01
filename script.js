@@ -1,6 +1,12 @@
+function getRandomIntInclusive(min, max) {
+  const newMin = Math.ceil(min);
+  const newMax = Math.floor(max);
+  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin); // The maximum is inclusive and the minimum is inclusive
+}
+
 function processCameras(list) {
   console.log('speed cameras list');
-  const range = [...Array(15).keys()];
+  const range = [...Array(20).keys()];
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
     return list[index];
@@ -24,6 +30,7 @@ function markerPlace(array, map) {
       layer.remove();
     }
   });
+
   array.forEach((item, index) => {
     const {coordinates} = item.location_1;
     L.marker([coordinates[0], coordinates[1]]).addTo(map);
@@ -56,7 +63,7 @@ async function getData() {
 
 async function mainEvent() {
 
-    const page = initMap();
+    const pageMap = initMap();
       
     const form = document.querySelector('.main_form'); 
     const submit = document.querySelector('#get-resto');
@@ -82,15 +89,14 @@ async function mainEvent() {
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
-    let currentList = [];
+    let cameraList = [];
+
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
-      currentList = processCameras(mapData);
+      cameraList = processCameras(mapData); 
 
-          const cameras = currentList.filter((item) => Boolean(item.location_1));
-
-          markerPlace(cameras, page);
-          clickedOn(cameras, page);
+      markerPlace(cameraList, pageMap);
+      clickedOn(cameraList, pageMap);
         });
     }
 }

@@ -2,7 +2,34 @@
     text-align:left;
   }
 
-  .right-side {
-    top: 0;
-    text-align:right;
-  }
+
+.right-side {
+  word-spacing: 2rem;
+  font-weight: bold;
+  position:absolute;
+  top:0;
+  right:0;
+ }
+
+
+.login-buttons {
+}
+
+#login {
+  background-color: greenyellow;
+}
+
+#sign-up {
+  background-color: aquamarine;
+}
+
+.box {
+  background-color: rgba(239, 239, 239, 0.40);
+  border: 2px dashed;
+  border-radius: 4px;
+
+  width: fit-content;
+  height:fit-content;
+  padding: 1.5rem;
+  margin: 0 auto;
+}

@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Movie Application</title>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Application</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div className = "header">
+      <h2>Movie Database</h2>
+      <nav>
+        <ul>
+            <li><a href="index2.html">Home</a></li>
+            <li><a href="#">Comedy</a></li>
+            <li><a href="#">Horror</a></li>
+            <li><a href="#">Chart</a></li>
+        </ul>
+    </nav>
+    </div>
     <div class="container">
       <div class="left box">
         <h2>Popular Movies</h2>
+        <button onclick="getMovies()">Refresh</button>
         <div class="chart_container">
-          <canvas id="myChart" ></canvas>
+          <canvas id="myChart"></canvas>
         </div>
       </div>
       <div class="right box">
         <h2>Ratings of the most popular currently airing movies!</h2>
         <div class="chart_container">
           <canvas id="myChart2"></canvas>
-        </div>>
+        </div>
+        >
       </div>
-  </div>
-    <script src="./script.js"></script>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
+>

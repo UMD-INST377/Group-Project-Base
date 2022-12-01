@@ -19,7 +19,7 @@ function injectHTML(list) {
   target.appendChild(listEl);
   list.forEach((item) => {
     const el = document.createElement('li');
-    el.innerText = item.location;
+    el.innerText = item.street_address;
     listEl.appendChild(el);
   });
 }

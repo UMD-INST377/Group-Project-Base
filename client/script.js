@@ -1,4 +1,4 @@
-
+//Work in Progress
 function injectHTML(list) {
     console.log('fired injectHTML');
     const target = document.querySelector('#restaurant_list');

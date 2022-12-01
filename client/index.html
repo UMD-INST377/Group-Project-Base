@@ -1,18 +1,21 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css" />
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body>
-    <div>
-      <header class="header">
-        <h1>Group #103-17 ; Crypto</h1>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Project Base</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Crypto App</title>
+</head>
+
+<body>
+  <div class="Wrapper">
+    <header class="header">
+      <h1>Group #103-17 ; Crypto</h1>
+    </header>
     <!-- Change categories button -->
     <div>
       <form id="category_form">
@@ -21,15 +24,20 @@
     </div>
 
     <!-- Crypto information -->
-    <div id="crypto_information">
-      Crypto data
+    <div class="">
+      
     </div>
 
     <!-- Visualization -->
-    <div class="chart_container">
-      <canvas id="myChart"></canvas>
-
+    <div class="box">
+      <div class="chart_container" style="position: relative; height:auto; width:80vw">
+        Crypto data
+        <canvas id="myChart"></canvas>
+      </div>
     </div>
+
     <script src="./script.js"></script>
-  </body>
+  </div class="Wrapper">
+</body>
+
 </html>

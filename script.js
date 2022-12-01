@@ -83,6 +83,7 @@ function makeChart() {
       datasets: [{
         label: 'Past Champ 3 Point %',
         data: champ3Perc,
+        backgroundColor: ['blue', 'red', 'yellow', 'green', 'blue'],
         borderWidth: 1
       }]
     },
@@ -99,7 +100,7 @@ function makeChart() {
 
 async function mainEvent() {
 // 100 request per day, 10 request per minute
-  await getChampionsData();
+  // await getChampionsData();
 
   const total3Perc = champ3Perc.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   const avg3Perc = total3Perc / champ3Perc.length;
@@ -113,7 +114,7 @@ async function mainEvent() {
   console.log(`total 3% is ${total3Perc} total 3 made is ${total3Made}, total 3 att is ${total3Att}`);
   console.log(`avg 3%: ${avg3Perc}, avg 3 made: ${avg3Made}, avg 3 attempted: ${avg3Att}`);
   console.log(champ3Perc);
-  
+
   let myChart = makeChart();
   const refreshBtn = document.getElementById('refresh-button');
   refreshBtn.addEventListener('click', (submitEvent) => {

@@ -51,7 +51,7 @@ function clickedOn(array, map) {
       map.setView([coordinates[0], coordinates[1]], 10);
       map.on('click', onMapClick);
     }
-    alert(`You clicked the map at ${e.latlng}`);
+    alert(`You clicked the map at ${onMapClick.latlng}`);
   });
 }
 

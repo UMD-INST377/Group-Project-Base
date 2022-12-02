@@ -27,13 +27,23 @@ body {
   background-color: white;
 }
 
+a:visited { 
+  text-decoration: none; 
+  color: black; 
+ }
+ a:hover {
+  color: blue;
+ }
+
 .header {
+  display: flex;
+  justify-content: space-between;
   padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1.5rem;
 
-  display: block;
+  
   /* this will push other blocks out of the way */
 
   /* colors */
@@ -50,6 +60,27 @@ body {
   /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
+ .links {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 60px;
+  /* background-color: red; */
+  width: 300px;
+} 
+.group {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: normal;   
+}
+.title {
+  margin-top: 50px;
+  margin-right: 280px;
+}
+.nba-logo {
+  height: 50px;
+  width: 50px;
+}
+
+
 
 a {
   display: inline-block;

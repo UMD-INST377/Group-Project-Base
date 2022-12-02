@@ -59,6 +59,13 @@ body {
   
 }
 
+.title {
+    margin-top: 80px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight:bold; 
+    /* margin-right: 280px; */
+  }
+
 #team-header {
     padding: 10px;
     border-radius: 10px;

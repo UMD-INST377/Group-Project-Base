@@ -139,11 +139,14 @@ function injectHTML(list) {
 async function init(){
     const submit = document.querySelector('#submit');
 
+    document.getElementById("music_list").style.display = "none";
+
     let songArray = await songNamesArray();
     submit.addEventListener('click', (e) => {
         e.preventDefault();
         injectHTML(songArray);
         console.log(songArray);
+        document.getElementById("music_list").style.display = "block";
     })
 
 }

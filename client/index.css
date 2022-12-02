@@ -1,0 +1,51 @@
+h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 90px;
+}
+#myChart {
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+}
+.inputline {
+  max-width: 900px;
+  margin: auto;
+}
+.inputline .tit {
+  font-size: 18px;
+  line-height: 40px;
+  color: #333;
+  text-align: left;
+  display: inline-block;
+  width: 120px;
+}
+.inputline input {
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 14px;
+}
+.tips {
+  font-size: 12px;
+  padding: 10px 0;
+  background-color: #f4f4f4;
+  text-align: center;
+  color: #666;
+  margin: 30px auto;
+}
+#submit {
+  font-size: 14px;
+  color: #333;
+  line-height: 40px;
+  width: 120px;
+  background-color: #f4f4f4;
+  margin: 0 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+#submit:hover {
+  background-color: #333;
+  color: #fff;
+}

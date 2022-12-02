@@ -11,7 +11,6 @@ function processCameras(list) {
     const index = getRandomIntInclusive(0, list.length - 1);
     return list[index];
   });
-
   return newArray;
 }
 
@@ -33,23 +32,30 @@ function markerPlace(array, map) {
 
   array.forEach((item, index) => {
     console.log(item.location_1);
+
     const lat = item.location_1.latitude;
     const long = item.location_1.longitude;
+
     console.log(lat, long);
+
     cameraMarker = L.marker([lat, long]).addTo(map);
-    console.log("After" , lat, long);
+
+    console.log('After', lat, long);
+
     if (index === 0) {
       map.setView([lat, long], 10);
     }
+
     const address = item.street_address;
-    const school = item.school;
+    const {school} = item;
     const postedSpeed = item.posted_speed;
     const enforcedSpeed = item.enforcement;
-    cameraMarker.bindPopup("Address: " + address + "<br>School: " + school + "<br>Posted Speed: " + postedSpeed + "<br>Enforced Speed: " + enforcedSpeed);
+
+    cameraMarker.bindPopup(`Address: ${address}<br>School: ${school}<br>Posted Speed: ${postedSpeed}<br>Enforced Speed: ${enforcedSpeed}`);
   });
 }
 
-/*function clickedOn(array, map) {
+/* function clickedOn(array, map) {
   array.forEach((item, index) => {
     const lat = item.location_1.latitude;
     const long = item.location_1.longitude;
@@ -61,39 +67,38 @@ function markerPlace(array, map) {
     }
     alert(`You clicked the map at ${e.latlng}`);
   });
-}*/
+} */
 
 async function getData() {
-    const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
-    const data = await fetch(url);
-    const json = await data.json();
-    const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.school));
-    return reply;
+  const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
+  const data = await fetch(url);
+  const json = await data.json();
+  const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.school));
+  return reply;
 }
 
 async function mainEvent() {
+  const pageMap = initMap();
 
-    const pageMap = initMap();
-      
-    const form = document.querySelector('.main_form'); 
-    const submit = document.querySelector('#get-resto');
-    const loadAnimation = document.querySelector('.lds-ellipsis');
-    submit.style.display = 'none';
+  const form = document.querySelector('.main_form');
+  const submit = document.querySelector('#get-resto');
+  const loadAnimation = document.querySelector('.lds-ellipsis');
+  submit.style.display = 'none';
 
-    const mapData = await getData();
+  const mapData = await getData();
 
-    console.log(mapData);
+  console.log(mapData);
 
-    console.table(mapData);
+  console.table(mapData);
 
-    console.log(mapData);
-    console.log(mapData[0]);
-    console.log(`${mapData[0].school} ${mapData[0].location}`);
+  console.log(mapData);
+  console.log(mapData[0]);
+  console.log(`${mapData[0].school} ${mapData[0].location}`);
 
-    // Return if we have no data
-    if(mapData?.length > 0) {
-      // let's turn the submit button back on by setting it to display as a block when we have data available
-      submit.style.display = 'block'; 
+  // Return if we have no data
+  if (mapData?.length > 0) {
+    // let's turn the submit button back on by setting it to display as a block when we have data available
+    submit.style.display = 'block';
 
     // Let's hide our load button not that we have some data to manipulate
     loadAnimation.classList.remove('lds-ellipsis');
@@ -103,11 +108,11 @@ async function mainEvent() {
 
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
-      cameraList = processCameras(mapData); 
+      cameraList = processCameras(mapData);
       console.log(cameraList);
       markerPlace(cameraList, pageMap);
-      //clickedOn(cameraList, pageMap);
-        });
-    }
+      // clickedOn(cameraList, pageMap);
+    });
+  }
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

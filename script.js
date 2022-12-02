@@ -104,7 +104,8 @@ function makeChart() {
 }
 
 async function mainEvent() {
-// 100 request per day, 10 request per minute
+  const loadAnimation = document.querySelector('.loader');
+  const chart = document.querySelector('#myChart');
   await getChampionsData();
 
   const total3Perc = champ3Perc.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -121,6 +122,11 @@ async function mainEvent() {
   console.log(champ3Perc);
 
   let myChart = makeChart();
+  if (champ3Perc.length > 0) {
+    chart.style.display = 'block';
+    loadAnimation.style.display = 'none';
+  }
+
   const refreshBtn = document.getElementById('refresh-button');
   refreshBtn.addEventListener('click', (submitEvent) => {
     myChart.destroy();

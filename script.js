@@ -33,9 +33,10 @@ function markerPlace(array, map) {
 
   array.forEach((item, index) => {
     const {coordinates} = item.location_1;
-    L.latlng([coordinates[0], coordinates[1]]).addTo(map);
+    const marker = L.marker([latitude, longitude]).addTo(map);
+    L.latlng(marker);
     if (index === 0) {
-      map.setView([coordinates[0], coordinates[1]], 10);
+      map.setView([latitude, longitude], 10);
     }
   });
 }
@@ -43,10 +44,11 @@ function markerPlace(array, map) {
 function clickedOn(array, map) {
   array.forEach((item, index) => {
     const {coordinates} = item.location_1;
-    const popup = L.popup().setLatLng([coordinates[0], coordinates[1]]).setContent('You Clicked me!').openOn(map);
-    L.latlng([coordinates[0], coordinates[1]]).addTo(map);
+    const popup = L.popup().setLatLng([latitude, longitude]).setContent('You Clicked me!').openOn(map);
+    const marker = L.marker([latitude, longitude]).addTo(map);
+    L.latlng(marker)
     if (index === 0) {
-      map.setView([coordinates[0], coordinates[1]], 10);
+      map.setView([latitude, longitude], 10);
       map.on('click', onMapClick);
     }
     alert(`You clicked the map at ${onMapClick.latlng}`);

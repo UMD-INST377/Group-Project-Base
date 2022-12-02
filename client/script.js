@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 async function mainEvent() {
   const options = {
     method: 'GET',
@@ -50,9 +51,9 @@ function initChart(chart) {
     data: data,
     options: {}
   };
-  return new Chart(
+  return console.log(new Chart(
     chart,
     config
-  );
+  ));
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

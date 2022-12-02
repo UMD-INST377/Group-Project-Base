@@ -60,7 +60,7 @@ async function getPlayer() {
         data: {
           labels: ['weight'],
           datasets: [{
-            label: '# of Votes',
+            label: [data.response[0].firstname + " " + data.response[0].lastname],
             data: [weight],
             borderWidth: 1
           }]

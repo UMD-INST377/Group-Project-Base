@@ -81,7 +81,6 @@ async function getData() {
 }
 // The async function that runs all the rpevious functions into our HTML file //
 async function mainEvent() {
-  const pageMap = initMap();
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-house');
   const loadAnimation = document.querySelector('.lds-ellipsis');
@@ -89,6 +88,7 @@ async function mainEvent() {
 
   const mapData = await getData();
 
+  const pageMap = initMap();
   // submit.style.display = 'none';
 
   // console.table(mapData);

@@ -132,7 +132,7 @@ async function mainEvent() {
     myChart.destroy();
     myChart = makeChart();
   });
-  document.getElementById('three-avgs').textContent = `average 3 percent: ${avg3Perc}, average 3s made: ${avg3Made}, and average 3s attempted: ${avg3Att}`;
+  document.getElementById('three-avgs').textContent = `average 3 percent: ${avg3Perc.toFixed(1)}, average 3s made: ${avg3Made}, and average 3s attempted: ${avg3Att}`;
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

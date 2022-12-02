@@ -1,8 +1,119 @@
+html {
+  background-color: white;
+  
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.heading {
+  background-color: white;
+  
+  display: flex;
+  justify-content: space-between;
+  border: 2px ;
+  /* box-shadows are fancy */
+  box-shadow: 3px 3px 5px rgba(163,177,198,0.5), -5px -5px 10px rgba(255, 255, 255, 0.6);
+  padding-right: 20px;
+  
+}
+
 #team-logo {
-    width: 150px;
-    height: 150px;
+  width: 120px;
+  height: 120px;
+  padding: 10px;
+  margin-top: 10px;
+  /* background-color: red; */
 }
 .back-button {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
+  padding: 15px;
+  margin-top: 110px;
+  
 }
+
+.title {
+    margin-top: 80px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight:bold; 
+    /* margin-right: 280px; */
+  }
+
+#team-header {
+    padding: 10px;
+    border-radius: 10px;
+    margin-top:80px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: normal;    
+    
+}
+.container {
+    margin: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    flex:1;
+  }
+
+.averages {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 70px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(163,177,198,0.5), -5px -5px 10px rgba(255, 255, 255, 0.6);
+}
+.totals {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 70px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(163,177,198,0.5), -5px -5px 10px rgba(255, 255, 255, 0.6);
+}
+
+.footer {
+    position: relative;
+    padding: 1rem;
+    background-color: rgb(3, 3, 86);
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%); 
+  }
+
+  .footer a {
+    color: rgb(229, 30, 4);
+    text-decoration: underline;
+  }
+
+  .footer p {
+    color: white;
+  }

@@ -10,9 +10,7 @@ async function getData(){
   const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.geocoded_column));
-  console.log(reply);
-  return reply;
+  return json;
 }
 
 function getRandomIntInclusive(min, max) {
@@ -23,7 +21,7 @@ function getRandomIntInclusive(min, max) {
   
 function injectHTML(list) {
   console.log('fired injectHTML');
-  const target = document.querySelector('#restaurant_list');
+  const target = document.querySelector('#stuff');
   target.innerHTML = '';
 
   const listEl = document.createElement('ol');
@@ -101,13 +99,8 @@ function markerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    const {coordinates} = item.geocoded_column;
-  /* geocoded_column is an object with strings for keys and values
-        what we have to do:
-          - get the geocoded_column
-          - get rid of non-numerical characters that aren't .
-          - change to float value 
-        doing so will hopefully get the thing to read correctly to create markers */
+    const {coordinates} = item.latitude;
+    console.log(item);
   L.marker([coordinates[0], coordinates[1]]).addTo(map);
   if (index === 0) {
     map.setView([coordinates[0], coordinates[1]], 10);
@@ -134,28 +127,18 @@ async function mainEvent() {
       This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
       It's at about line 27 - go have a look and see what we're retrieving and sending back.
       */
-  const results = await fetch('/getLitterAPI'); /* have to update this to not be getting from this */ 
-  const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
-
   /*
       Below this comment, we log out a table of all the results using "dot notation"
       An alternate notation would be "bracket notation" - arrayFromJson["data"]
       Dot notation is preferred in JS unless you have a good reason to use brackets
       The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
     */
-  console.table(arrayFromJson.data);
 
   // in your browser console, try expanding this object to see what fields are available to work with
   // for example: arrayFromJson.data[0].name, etc
-  console.log(arrayFromJson.data[0]);
-
-  // this is called "string interpolation" and is how we build large text blocks with variables
-  console.log(
-    `${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`
-  );
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (arrayFromJson.data.length > 0) {
+  if (data.length > 0) {
     // the question mark in this means "if this is set at all"
     
     let currentList = [];
@@ -169,12 +152,12 @@ async function mainEvent() {
 
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
-    form.addEventListener('generate', (submitEvent) => {
+    form.addEventListener('submit', (submitEvent) => {
       // This is needed to stop our page from changing to a new URL even though it heard a GET request
       submitEvent.preventDefault();
 
       // This constant will have the value of your 15-restaurant collection when it processes
-      currentList = processRestaurants(arrayFromJson.data);
+      currentList = processRestaurants(data);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);

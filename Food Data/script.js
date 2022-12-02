@@ -13,9 +13,13 @@ async function getData(){
 	const json = await data.json();
   console.log(json);
 
-  // const name = json.response.map((amount)=> amount.);
-  // console.log(name);
-  // tableData= name
+  const name = json.response.map((name)=> name.payee_name);
+  console.log(name);
+  payerName= name
+
+  const money = json.response.map((money)=> money.amount);
+  console.log(money);
+  payerAmount= money
 }
 
 
@@ -31,23 +35,21 @@ xlabels = [
   'protein_g',
   'carbohydrates_total_g'
 ]
-const blockNumber = [];
-const area_land = [];
+const payerName = [];
+const payerAmount = [];
 
 async function makeChart() {
   await getData();
 
-
-  console.log('hello')
   const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: blockNumber,
+      labels: payerName,
       datasets: [{
         label: '# of contents',
-        data: area_land,
+        data: payerAmount,
         borderWidth: 1
       }]
     },

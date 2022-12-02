@@ -1,5 +1,5 @@
-function processCrimes(list, sector) {
-  return list.filter((item) => item.pgpd_sector === (sector));
+function processCrimes(list, crime_type) {
+  return list.filter((item) => item.clearance_code_inc_type === (crime_type));
 }
 function initChart(chart, object) {
   const labels = Object.keys(object);
@@ -55,14 +55,15 @@ function changeChart(chart, dataObject) {
 
 function shapeDataForBarChart(array) {
   return array.reduce((collection, item) => {
-    if (!collection[item.clearance_code_inc_type]) {
-      collection[item.clearance_code_inc_type] = [item];
+    if (!collection[item.pgpd_sector]) {
+      collection[item.pgpd_sector] = [item];
     } else {
-      collection[item.clearance_code_inc_type].push(item);
+      collection[item.pgpd_sector].push(item);
     }
     return collection;
   }, {});
 }
+
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
   const data = await fetch(url);
@@ -81,10 +82,15 @@ async function mainEvent() {
   const myChart = initChart(chartTarget, shapedData);
 
   form.addEventListener('input', (event) => {
-    sector = event.target.value;
+    crime_type = event.target.value;
     const filteredList = processCrimes(chartData, event.target.value);
     const localData = shapeDataForBarChart(filteredList);
     changeChart(myChart, localData);
+  });
+
+  form.addEventListener('submit', (submitEvent) => {
+    submitEvent.preventDefault();
+    myChart.clear();
   });
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

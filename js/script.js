@@ -59,8 +59,8 @@ function markerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    const lat = item.latitude;
-    const long = item.longitude;
+    const lat = item.location.latitude;
+    const long = item.location.longitude;
     console.log(lat);
     console.log(long);
     console.log(item);

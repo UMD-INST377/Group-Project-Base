@@ -65,9 +65,9 @@ function markerPlace(array, map) {
     console.log(long);
     console.log(item);
     L.marker(lat, long).addTo(map);
-    // if (index === 0) {
-    //   map.setView([location[1], location[0]], 10);
-    // }
+    if (index === 0) {
+      map.setView([lat, long], 10);
+    }
   });
 }
 //  The async function that retreives the GET request information //

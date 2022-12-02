@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-
+// fixing merge head
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);

@@ -17,6 +17,8 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
+    "d3": "^7.6.1",
+    "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
     "node-fetch": "^3.0.0",

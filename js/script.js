@@ -76,7 +76,7 @@ async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.location.latitude)).filter((item) => Boolean(item.location.longitude)).filter((item) => Boolean(item.violation_code));
+  const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.violation_code));
   console.log(reply);
   return reply;
 }

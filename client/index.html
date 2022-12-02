@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>😎Emojify [Group Project]</title>
+    <title>😎EMovie [Group Project]</title>
     <link rel="stylesheet" href="styles.css">
 </head>
     <body>
         <header>
-            <a href="#" class="logo">Emotify</a>
+            <a href="#" class="logo">EMovie</a>
             <ul>
                 <li><a href="second.html">Library</a></li>
             </ul>
         </header>
         <div class="wrapper"></div>
-        <!-- <h1>😎Emojify</h1>  -->
         <p>This is group 14 project</p>
         <div class="DatenTime">
             Today:
@@ -28,11 +27,11 @@
                 <div id="emoji1" class="mini-box">😀 Positive </div>
                 <div id="emoji2" class="mini-box">😢 Negative </div>
                 <div id="emoji3" class="mini-box">😐 Netural </div>
+                <div class="mood-display">here</div>
             </div>
-            <div class="mood-display">here</div>
+            
         </div>
         
-
         <h2 class="container">Music Chart</h2>
         <div class="chart">
 
@@ -40,5 +39,12 @@
         
         <script src="./script.js"></script>
         <script src="https://d3js.org/d3.v7.min.js"></script>
+            <script type="module">
+
+            import * as d3 from "https://cdn.skypack.dev/d3@7";
+            
+            const div = d3.selectAll("div");
+            
+            </script>
     </body>
 </html>

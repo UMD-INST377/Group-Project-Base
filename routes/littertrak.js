@@ -11,10 +11,10 @@ const router = express.Router();
 // /////////////////////////////////
 // Food Inspection Set Demos
 // /////////////////////////////////
-router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
+router.route('/littertrakPG') // actually localhost:3000/api/littertrakPG
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const url = 'https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner/data';
       const data = await fetch(url);
       const json = await data.json();
       console.log(json);
@@ -35,7 +35,7 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .post((req, res) => {
     try {
-      res.json({message: 'post FoodServices endpoint'});
+      res.json({message: 'post LitterTRAK endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -43,17 +43,17 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .delete((req, res) => {
     try {
-      res.json({message: 'delete FoodServices endpoint'});
+      res.json({message: 'delete LitterTRAK endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
     }
   });
 
-router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
+router.route('/littertrakPG/:zipCode') // actually localhost:3000/api/littertrakPG/20782
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const url = 'https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner/data';
       const request = await fetch(url);
       const json = await request.json();
       console.log(json);
@@ -71,7 +71,7 @@ router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServ
   })
   .put((req, res) => {
     try {
-      res.json({message: 'put FoodServices ID endpoint'});
+      res.json({message: 'put LitterTRAK ID endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -79,7 +79,7 @@ router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServ
   })
   .post((req, res) => {
     try {
-      res.json({message: 'post FoodServices ID endpoint'});
+      res.json({message: 'post LitterTRAK ID endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -87,7 +87,7 @@ router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServ
   })
   .delete((req, res) => {
     try {
-      res.json({message: 'delete FoodServices ID endpoint'});
+      res.json({message: 'delete LitterTRAK ID endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});

@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-const {Buffer} = require('buffer/'); // note: the trailing slash is important!
 /*
   Hook this script to index.html
   by adding `<script src="script.js">` just before your closing `</body>` tag
@@ -152,6 +151,7 @@ async function getData(submit) {
 
 // This function retrieves the access token from Spotify
 // Used the "Client Credentials Flow" on Spotify API
+// Problem with Buffer module. Browser doesn't recognize it, but won't let me import it
 async function getAccessToken() {
   const clientID = 'c9270a123b2c408fa9d766cd00e969f2';
   const clientSecret = '978bf9a2f2ec4584966acc8b7fe06168';

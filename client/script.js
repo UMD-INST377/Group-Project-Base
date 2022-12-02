@@ -3,18 +3,18 @@ function injectHTML(list) {
   target.innerHTML = '';
 
   const head = document.createElement('tr');
-  
-  for (const key of Object.keys(list[0])){
+
+  for (const key of Object.keys(list[0])) {
     const th = document.createElement('th');
-    th.innerText = key;
+    th.innerText = cap(key);
     head.appendChild(th);
   }
   target.appendChild(head);
 
-  for (const [key,value] of Object.entries(list)) {
+  for (const [key, value] of Object.entries(list)) {
     const tr = document.createElement('tr');
     const row = Object.values(value);
-    row.forEach(element =>{
+    row.forEach(element => {
       const td = document.createElement('td');
       td.innerText = element;
       tr.appendChild(td);
@@ -23,10 +23,14 @@ function injectHTML(list) {
   }
 }
 
+function cap(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function arrayToTable(data) {
-  const keys = [...data.reduce((all, obj)=>{
-      Object.keys(obj).forEach(key => all.add(key));
-      return all;
+  const keys = [...data.reduce((all, obj) => {
+    Object.keys(obj).forEach(key => all.add(key));
+    return all;
   }, new Set())];
 
   const header = keys.map(key => `<th>${key}</th>`).join('')
@@ -70,18 +74,50 @@ function filterlist(array, filterInputvalue) {
   });
 }
 
+function callyear(year) {
+  const url ={
+    2022:'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json',
+    2021:'https://data.princegeorgescountymd.gov/resource/rh7w-bmhm.json',
+    2020:'https://data.princegeorgescountymd.gov/resource/uh6s-izyj.json',
+    2019:'https://data.princegeorgescountymd.gov/resource/p32t-azw8.json',
+    2018:'https://data.princegeorgescountymd.gov/resource/2qma-7ez9.json',
+    2017:'https://data.princegeorgescountymd.gov/resource/364y-gm2b.json',
+    2016:'https://data.princegeorgescountymd.gov/resource/csi4-9jzc.json',
+    2015:'https://data.princegeorgescountymd.gov/resource/bh8z-9wkk.json',
+    2014:'https://data.princegeorgescountymd.gov/resource/p9kn-7u2k.json',
+    2013:'https://data.princegeorgescountymd.gov/resource/aqt8-5ri2.json',
+    2012:'https://data.princegeorgescountymd.gov/resource/9i62-gki4.json'
+  }
+  return url[year]!= undefined ? url[year] : url[2022];
+}
+
+function addButt() {
+  const form = document.querySelector('.main_form');
+  for (var i = 0; i < 10; i++) {
+     var btn = document.createElement('input');
+     btn.type = 'radio';
+     const year = 2022 - i;
+     btn.value = year;
+     form.appendChild(btn);
+  }
+}
+
 async function mainEvent() {
 
   // get data 
   const url = 'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json';
   const resp = await fetch(url);
-  const da = await resp.json();
-  if (da.length > 0) {
-    injectHTML(da);
+  const findata = await resp.json();
+  if (findata.length > 0) {
+    injectHTML(findata);
   }
 
+  addButt();
+
   // the async keyword means we can make API requests
-  const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
+  const form = document.querySelector('.main_form');
+
+
   const submit = document.querySelector('#get'); // get a reference to your submit button
   submit.style.display = 'none'; // let your submit button disappear
 
@@ -93,12 +129,7 @@ async function mainEvent() {
   const results = await fetch('/');
   const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
 
-  /*
-    Below this comment, we log out a table of all the results using "dot notation"
-    An alternate notation would be "bracket notation" - arrayFromJson["data"]
-    Dot notation is preferred in JS unless you have a good reason to use brackets
-    The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
-  */
+
   console.table(arrayFromJson.data);
 
   // in your browser console, try expanding this object to see what fields are available to work with
@@ -141,7 +172,6 @@ async function mainEvent() {
 
 /*
 This last line actually runs first!
-It's calling the 'mainEvent' function at line 57
 It runs first because the listener is set to when your HTML content has loaded
 */
 

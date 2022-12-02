@@ -5,47 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Project</title>
    
-    <!-- Leaflet CSS -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
-    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-    crossorigin=""/> -->
+      <!-- Leaflet CSS -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+      integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+      crossorigin=""/>
+     <link rel="stylesheet" href="styles.css">
+     <!-- script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
 
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <!-- Leaflet Javascript -->
+     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin=""></script>
 
-    
-    <!-- Leaflet Javascript -->
-    <!-- <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
-    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-    crossorigin=""></script> -->
 </head>
 <body>
     <div class="wrapper">
         <header class="header">
-            <h1>Julie Depenyou's RR8 Submission</h1>
+            <h1>Find your Library</h1>
         </header>
         <div class="container">
             <div class="left_section box">
-                <h3>Filter Restaurant List </h3>
+                <h3>Input ZipCdoe </h3>
                 <form action="/api" class="box main_form">
                     <div>
-                        <label for="resto"></label>
-                        <input type="text" name="resto" id="resto">
+                        <label for="zipcode"></label>
+                        <input type="text" name="zip" id="zip">
                     </div>
                     <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                    <button type="submit" id="get-resto">Change Restaurants</button>
+                    <button type="submit" id="get zipcode">Find Libraries</button>
                 </form>
             </div>
             <div class="right_section box">
                 <h3>Local Restaurants</h3>
-                <!-- <div id="map">  </div> -->
-                <div class="box" id="restaurant_list">
-                    A list of Restaurants from an API
+                <div id="map">  </div> 
+                <div class="box" id="library_list">
+                    A list of Libraries from an API
                 </div>
             </div>
         </div>
     </div>
-    <footer class="footer a"><a href="http://github.com/KarenDepenyou" target="_blank" rel="noopener noreferrer">Julie Depenyou's gitHub</a></footer>
+
     <script src="script.js" ></script>
 </body>
 </html>

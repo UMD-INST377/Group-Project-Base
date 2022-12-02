@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="wrapper">  
+    <div class="wrapper">
         <header class="header">
             <h2 class="header">
                 Prince George County Finance
@@ -22,42 +22,39 @@
             </h2>
         </header>
 
-        <canvas id = "chart" width = "200" height = "200" ></canvas>
-
-        <script>
-            const ctx = document.getElementById('chart');
-          
-            new Chart(ctx, {
-              type: 'bar',
-              data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                  label: '# of Votes',
-                  data: [12, 19, 3, 5, 2, 3],
-                  borderWidth: 1
-                }]
-              },
-              options: {
-                scales: {
-                  y: {
-                    beginAtZero: true
-                  }
-                }
-              }
-            });
-          </script>
-
-
         <div class="container">
-            
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <script>
+                const ctx = document.getElementById('myChart');
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [12, 19, 3, 5, 2, 3],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
         </div>
 
         <div class="footer">
             <a href="https://github.com/bw1umd/Project-pgcounty-spending.git">Github</a>
         </div>
-    </div>
-    <script src="./script.js"></script>
-    
+        <script src="./script.js"></script>
 </body>
 
 </html>

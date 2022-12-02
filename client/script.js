@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-
+const {Buffer} = require('buffer/'); // note: the trailing slash is important!
 /*
   Hook this script to index.html
   by adding `<script src="script.js">` just before your closing `</body>` tag
@@ -133,6 +133,13 @@ function initChart(chartTarget) {
   });
 }
 
+function generateRandomString() {
+  const array = new Uint32Array(1);
+  self.crypto.getRandomValues(array);
+
+  return array[0];
+}
+
 async function getData(submit) {
   const url = 'https://api.si.edu/openaccess/api/v1.0/search?q=q&api_key=v75sWiNNyg1QXFrgYo532qR0gwtYecj6kS8FtQBD'; // remote URL! you can test it in your browser
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
@@ -143,17 +150,39 @@ async function getData(submit) {
   return reply;
 }
 
+// This function retrieves the access token from Spotify
+// Used the "Client Credentials Flow" on Spotify API
+async function getAccessToken() {
+  const clientID = 'c9270a123b2c408fa9d766cd00e969f2';
+  const clientSecret = '978bf9a2f2ec4584966acc8b7fe06168';
+
+  const auth = {
+    url: 'https://acccounts.spotify.com/api/token',
+    headers: {
+      Authorization: `Basic ${Buffer.from(`${clientID}:${clientSecret}`, ['base64'])}`
+    },
+    json: true
+  };
+
+  request.post(auth, (error, response, body) => {
+    if (!error && response.statusCode === 200) {
+      const token = body.access_token;
+      return token;
+    }
+  });
+}
+
 /*
     This function retrieves a list of artists that are related to the artist ID in the request
     Need to add a way for users to type in an artist's name and see a list of related artists
 */
-async function getRelatedArtists() {
+async function getRelatedArtists(token) {
   const url = 'https://api.spotify.com/v1/artists/2wY79sveU1sp5g7SokKOiI/related-artists'; // remote URL! you can test it in your browser
   const data = await fetch(url, {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: 'Bearer BQBNwlyHGUNsBGnvuW4-d8yXJp8gPIip34MDzGwkHNFABpZ9YcpkvgGzEvjHVlYd53wz_WrEAZMVBRmY1v4_2psYmDBK4xFnwD34HpFAcJjoUZcdoSRiCB2Cbj8dgG-pDEIvb1wleXJ7z51lazQBNFp3cNuBho8h0FkD7Q'
+      Authorization: `Bearer ${token}`
     }
   }); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json(); // the data isn't json until we access it using dot notation
@@ -173,7 +202,6 @@ async function mainEvent() {
     */
   //   const pageMap = initMap();
   // the async keyword means we can make API requests
-  const oAuth = 'BQBNwlyHGUNsBGnvuW4-d8yXJp8gPIip34MDzGwkHNFABpZ9YcpkvgGzEvjHVlYd53wz_WrEAZMVBRmY1v4_2psYmDBK4xFnwD34HpFAcJjoUZcdoSRiCB2Cbj8dgG-pDEIvb1wleXJ7z51lazQBNFp3cNuBho8h0FkD7Q';
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
@@ -187,8 +215,8 @@ async function mainEvent() {
       This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
       It's at about line 27 - go have a look and see what we're retrieving and sending back.
      */
-
-  const chartData = await getRelatedArtists();
+  const token = await getAccessToken();
+  const chartData = await getRelatedArtists(token).artists;
 
   /*
       Below this comment, we log out a table of all the results using "dot notation"
@@ -200,13 +228,13 @@ async function mainEvent() {
 
   // in your browser console, try expanding this object to see what fields are available to work with
   // for example: arrayFromJson.data[0].name, etc
-  console.log(chartData[0]);
+  console.log(chartData[0].name);
 
   // this is called "string interpolation" and is how we build large text blocks with variables
-  console.log(`${chartData[0].name} ${chartData[0].category}`);
+  console.log(`${chartData.artists[0].name} ${chartData.artists[0].popularity}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (!chartData?.length) { return; } // Return if we have no data aka array has no length
+  if (!chartData.artists?.length) { return; } // Return if we have no data aka array has no length
 
   submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
@@ -229,7 +257,7 @@ async function mainEvent() {
     submitEvent.preventDefault();
 
     // This constant will have the value of your 15-restaurant collection when it processes
-    currentList = processRestaurants(chartData);
+    currentList = processRestaurants(chartData.artists);
     console.log(currentList);
 
     // And this function call will perform the "side effect" of injecting the HTML list for you

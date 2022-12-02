@@ -36,9 +36,6 @@ function markerPlace(array, map) {
     const {coordinates} = item.location_1;
     console.log(coordinates);
     L.latlng([coordinates[0], coordinates[1]]).addTo(map);
-    console.log(item)
-    console.log(item.Latitude)
-    console.log(item.Longitude)
     if (index === 0) {
       map.setView([coordinates[0], coordinates[1]], 10);
     }

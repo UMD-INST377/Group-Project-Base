@@ -1,7 +1,7 @@
 
 
 html {
-  background-color: rgba(155, 149, 149, 0.914);
+  background-color: white;
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -17,14 +17,14 @@ html {
 
 body {
   margin: 0;
-    padding: 0;
+  padding: 0;
 
 
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: rgba(155, 149, 149, 0.914);
+  background-color: white;
 }
 
 .header {
@@ -37,8 +37,8 @@ body {
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: 547DA0; 
-  color: F0EBD8;
+  background-color: white;
+  color: black;
 
   /* shapes */
   border-radius: 6px;
@@ -92,7 +92,7 @@ h3 {
 
 
     .box {
-      background-color: rgba(239, 239, 239, 0.40);
+      background-color: #f8f8f8;
       border-radius: 10px;
       box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
       width: fit-content;
@@ -108,7 +108,7 @@ h3 {
 
     .footer {
       padding: 1rem;
-      background-color: #0D1321;
+      background-color: rgb(3, 3, 86);
       font-size: 1.2rem;
       font-weight: 600;
       box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);

@@ -8,26 +8,26 @@
     <link rel="stylesheet" href="./teamStyles.css"/>
   </head>
   <body>
-    <Div>
-        <div>
-            <a href="./index.html"><img src="./images/back-button.png" class="back-button" alt=""></a>
-            <img id="team-logo" src="" >
-        </div>
-
-        <div>
+    <div class="wrapper">
+        <div class="heading">
+            <div class="left-header">
+                <a href="./index.html"><img src="./images/back-button.png" class="back-button" alt=""></a>
+                <img id="team-logo" src="" >
+             </div>
             <h1 id="team-header">Team Name</h1>
         </div>
 
+        <div class="container">
+        <h2>Season Averages:</h2>
         <div class="averages">
-            <h2>Season Averages:</h2>
             <p id="total-games">Games played </p>
             <p id="FG-percent">Team FG percentage: </p>
             <p id="FT-percent">Team Free Throw percentage: </p>
             <p id="Three-percent">Team Three Point percentage: </p>
         </div>
 
+        <h2>Season Totals:</h2>
         <div class="totals">
-            <h2>Season Totals:</h2>
             <p id="total-points">Total Points </p>
             <p id="total-rebound">Total Rebounds </p>
             <p id="total-assists">Total Assists </p>
@@ -35,9 +35,12 @@
             <p id="total-turn">Total Turnovers </p>
             <p id="total-blocks">Total Blocks </p>
         </div>
+        </div>
     
-    
-</Div>
+        <footer class="footer">
+            <p> Group 20 <a href="https://github.com/SegunAwe05/SegunAwe05.github.io" target="_blank" rel="noopener noreferrer">Group 20's Git Hub Repo </a></p>
+         </footer>
+    </div>
 <script src="./teamScript.js" type="module"></script>
   </body>
 </html>

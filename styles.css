@@ -16,9 +16,8 @@ html {
 }
 
 body {
-  position: relative;
-  min-height: 100%;
-  min-height: 98vh;
+  margin: 0;
+    padding: 0;
 
 
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
@@ -67,10 +66,10 @@ h3 {
 
 
 .wrapper {
-  min-height: 98vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: 0 auto;
   flex: 1;
 }
 
@@ -108,16 +107,16 @@ h3 {
     
 
     .footer {
-      position: fixed;
-      bottom: 0;
-      padding: 1.5rem;
+      padding: 1rem;
       background-color: #0D1321;
       font-size: 1.2rem;
       font-weight: 600;
       box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
-      right: 0;bottom:0;left:0;
+      
       
     }
+
+    
 
    
     

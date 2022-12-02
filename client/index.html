@@ -13,6 +13,7 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
       integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
       crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
@@ -40,7 +41,10 @@
           <div class="header">
             <h2>Local Restaurant Map</h2>
           </div>
-          <div id="map"></div>
+          <!-- <div id="map"></div> -->
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
           <div class="box" id="restaurant_list">
             <p>A list of restaurants from an API.</p>
           </div>

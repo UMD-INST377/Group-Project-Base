@@ -112,14 +112,56 @@ function markerPlace(array, map) {
   });
 }
 
-async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json'; // remote URL! you can test it in your browser
+function initChart(chartTarget) {
+  return new Chart(chartTarget, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+async function getData(submit) {
+  const url = 'https://api.si.edu/openaccess/api/v1.0/search?q=q&api_key=v75sWiNNyg1QXFrgYo532qR0gwtYecj6kS8FtQBD'; // remote URL! you can test it in your browser
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json(); // the data isn't json until we access it using dot notation
 
   // chained filters check if item has both a location and a name
   const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
   return reply;
+}
+
+/*
+    This function retrieves a list of artists that are related to the artist ID in the request
+    Need to add a way for users to type in an artist's name and see a list of related artists
+*/
+async function getRelatedArtists() {
+  const url = 'https://api.spotify.com/v1/artists/2wY79sveU1sp5g7SokKOiI/related-artists'; // remote URL! you can test it in your browser
+  const data = await fetch(url, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer BQBNwlyHGUNsBGnvuW4-d8yXJp8gPIip34MDzGwkHNFABpZ9YcpkvgGzEvjHVlYd53wz_WrEAZMVBRmY1v4_2psYmDBK4xFnwD34HpFAcJjoUZcdoSRiCB2Cbj8dgG-pDEIvb1wleXJ7z51lazQBNFp3cNuBho8h0FkD7Q'
+    }
+  }); // We're using a library that mimics a browser 'fetch' for simplicity
+  const json = await data.json(); // the data isn't json until we access it using dot notation
+  console.log(json);
+
+  // chained filters check if item has both a location and a name
+  //   const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+  return json;
 }
 
 async function mainEvent() {
@@ -129,19 +171,24 @@ async function mainEvent() {
         When you're not working in a heavily-commented "learning" file, this also is more legible
         If you separate your work, when one piece is complete, you can save it and trust it
     */
-  const pageMap = initMap();
+  //   const pageMap = initMap();
   // the async keyword means we can make API requests
+  const oAuth = 'BQBNwlyHGUNsBGnvuW4-d8yXJp8gPIip34MDzGwkHNFABpZ9YcpkvgGzEvjHVlYd53wz_WrEAZMVBRmY1v4_2psYmDBK4xFnwD34HpFAcJjoUZcdoSRiCB2Cbj8dgG-pDEIvb1wleXJ7z51lazQBNFp3cNuBho8h0FkD7Q';
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
+  const chartTarget = document.querySelector('#myChart');
   submit.style.display = 'none'; // let your submit button disappear
+
+  initChart(chartTarget);
 
   /*
       Let's get some data from the API - it will take a second or two to load
       This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
       It's at about line 27 - go have a look and see what we're retrieving and sending back.
      */
-  const chartData = await getData();
+
+  const chartData = await getRelatedArtists();
 
   /*
       Below this comment, we log out a table of all the results using "dot notation"
@@ -173,7 +220,7 @@ async function mainEvent() {
     console.log('input', event.target.value); // <input> contents
     const newFilterList = filterList(currentList, event.target.value); // filters currentList
     injectHTML(newFilterList);
-    markerPlace(newFilterList, pageMap);
+    // markerPlace(newFilterList, pageMap);
   });
   // And here's an eventListener! It's listening for a "submit" button specifically being clicked
   // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
@@ -187,7 +234,7 @@ async function mainEvent() {
 
     // And this function call will perform the "side effect" of injecting the HTML list for you
     injectHTML(currentList);
-    markerPlace(currentList, pageMap);
+    // markerPlace(currentList, pageMap);
 
     // By separating the functions, we open the possibility of regenerating the list
     // without having to retrieve fresh data every time

@@ -61,10 +61,6 @@ function markerPlace(array, map) {
   array.forEach((item, index) => {
     const lat = item.location.latitude;
     const long = item.location.longitude;
-    console.log(item);
-    console.log(lat);
-    console.log(long);
-    console.log(item);
     L.marker([lat, long]).addTo(map);
     if (index === 0) {
       map.setView([lat, long], 10);
@@ -72,12 +68,15 @@ function markerPlace(array, map) {
   });
 }
 //  The async function that retreives the GET request information //
-async function getData() {
+async function getData(item) {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
   const data = await fetch(url);
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.violation_code));
   console.log(reply);
+  if (item.latitude === null & item.longitude === null) {
+    continue;
+  }
   return reply;
 }
 // The async function that runs all the rpevious functions into our HTML file //

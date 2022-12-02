@@ -8,7 +8,7 @@ function processCameras(list) {
   console.log('speed cameras list');
   const range = [...Array(20).keys()];
   const newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length);
+    const index = getRandomIntInclusive(0, list.length - 1);
     return list[index];
   });
 
@@ -33,27 +33,35 @@ function markerPlace(array, map) {
 
   array.forEach((item, index) => {
     console.log(item.location_1);
-    const {coordinates} = item.location_1;
-    console.log(coordinates);
-    L.marker([coordinates[0], coordinates[1]]).addTo(map);
+    const lat = item.location_1.latitude;
+    const long = item.location_1.longitude;
+    console.log(lat, long);
+    cameraMarker = L.marker([lat, long]).addTo(map);
+    console.log("After" , lat, long);
     if (index === 0) {
-      map.setView([coordinates[0], coordinates[1]], 10);
+      map.setView([lat, long], 10);
     }
+    const address = item.street_address;
+    const school = item.school;
+    const postedSpeed = item.posted_speed;
+    const enforcedSpeed = item.enforcement;
+    cameraMarker.bindPopup("Address: " + address + "<br>School: " + school + "<br>Posted Speed: " + postedSpeed + "<br>Enforced Speed: " + enforcedSpeed);
   });
 }
 
-function clickedOn(array, map) {
+/*function clickedOn(array, map) {
   array.forEach((item, index) => {
-    const {coordinates} = item.location_1;
-    const popup = L.popup().setLatLng([coordinates[0], coordinates[1]]).setContent('You Clicked me!').openOn(map);
-    L.marker([coordinates[0], coordinates[1]]).addTo(map);
+    const lat = item.location_1.latitude;
+    const long = item.location_1.longitude;
+    const popup = L.popup().setLatLng([lat, long]).setContent('You Clicked me!').openOn(map);
+    L.marker([lat, long]).addTo(map);
     if (index === 0) {
-      map.setView([coordinates[0], coordinates[1]], 10);
+      map.setView([lat, long], 10);
       map.on('click', onMapClick);
     }
     alert(`You clicked the map at ${e.latlng}`);
   });
-}
+}*/
 
 async function getData() {
     const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
@@ -98,7 +106,7 @@ async function mainEvent() {
       cameraList = processCameras(mapData); 
       console.log(cameraList);
       markerPlace(cameraList, pageMap);
-      clickedOn(cameraList, pageMap);
+      //clickedOn(cameraList, pageMap);
         });
     }
 }

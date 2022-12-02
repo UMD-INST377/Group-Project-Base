@@ -14,4 +14,4 @@ function injectHTML(list) {
   
 
 
-document.addEventListener('DOMContentLoaded', async () => mainEvent());
+document.addEventListener('DOMContentLoaded', async () => mainEvent())};

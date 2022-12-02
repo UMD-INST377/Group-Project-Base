@@ -57,3 +57,14 @@ html {
     font-size: 1.2rem;
     font-weight: 600;
   }
+
+  #Imagebox{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #Imagebox img{
+    width: 33%;
+    height: 33%;
+  }

@@ -35,7 +35,7 @@ function markerPlace(array, map) {
     console.log(item.location_1);
     const {coordinates} = item.location_1;
     console.log(coordinates);
-    L.marker([coordinates[0], coordinates[1]]).addTo(map);
+    L.latlng([coordinates[0], coordinates[1]]).addTo(map);
     if (index === 0) {
       map.setView([coordinates[0], coordinates[1]], 10);
     }
@@ -46,12 +46,12 @@ function clickedOn(array, map) {
   array.forEach((item, index) => {
     const {coordinates} = item.location_1;
     const popup = L.popup().setLatLng([coordinates[0], coordinates[1]]).setContent('You Clicked me!').openOn(map);
-    L.marker([coordinates[0], coordinates[1]]).addTo(map);
+    L.latlng([coordinates[0], coordinates[1]]).addTo(map);
     if (index === 0) {
       map.setView([coordinates[0], coordinates[1]], 10);
       map.on('click', onMapClick);
     }
-    alert(`You clicked the map at ${e.latlng}`);
+    alert(`You clicked the map at ${onMapClick.latlng}`);
   });
 }
 

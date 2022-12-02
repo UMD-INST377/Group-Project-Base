@@ -10,8 +10,12 @@
 </head>
 
 <body>
+
     <div class="wrapper">  
-        <header class="header">
+
+
+    <!--Code for header---------->
+      <header class="header">
             <h2 class="header">
                 Prince George County Finance
                 <nav class="navbar">
@@ -21,47 +25,68 @@
                 </nav>
             </h2>
         </header>
+    <!--------------------------->
+
+
+        
+    <!---Code for chart Visual---------------->
 
         <canvas id = "chart" width = "300" height = "300" ></canvas>
 
         <script>
-            const ctx = document.getElementById('chart');
+
+          PayeeArr = [];
+          AgencyArr = [];
+          ZipCodeArr = [];
+          AmountArr = [];
+
+          fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
+          .then(function(response){
+              return response.json();
+          })
+          .then(function(contentList){
+
+            for( let i = 0; i < contentList.length; i++){
+
+              
+
+              
+              console.log(contentList[i.element.agency]);
+              // AgencyArr += document.getElementById("agency");
+              // ZipCodeArr += document.getElementById("zip_code");
+              // AmountArr += document.getElementById("amount");
+              
+            }
+          })
           
-            new Chart(ctx, {
-              type: 'bar',
-              data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                  label: '# of Votes',
-                  data: [12, 19, 3, 5, 2, 3],
-                  borderWidth: 1
-                }]
-              },
-              options: {
-                scales: {
-                  y: {
-                    beginAtZero: true
-                  }
+
+
+
+
+
+          const ctx = document.getElementById('chart');
+        
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+              datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
                 }
               }
-            });
+            }
+          });
 
-            // const spendingData = fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
-            //     .then(response => response.json())
-            //     .then(data => console.log(data))
-            //     .catch(err => console.error(err))
-
-
-
-
-            // async function getAgency(){
-            //     const response = await fetch(spendingData);
-            //     const data = await response.json();
-            //     console.log(data.agency);
-            // }
-
-            // getAgency();
         </script>
+      <!------------------------------------------->
 
 
         <div class="container">

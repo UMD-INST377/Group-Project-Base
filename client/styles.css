@@ -61,3 +61,20 @@ img{
 width: 100px;
 height: 100px;
 }
+
+ .right_section {
+    background-color: #C7DBE6;
+    flex: 1 2 auto;
+    margin: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }  
+  @media only screen and (max-width: 736px){
+    .wrapper {
+      background-color: purple;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+}

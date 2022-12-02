@@ -1,35 +1,49 @@
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PG County Crime Viz</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-    <div class='wrapper'>
-        <header class='header'>
-            <h1>Prince George's County Crime Viz</h1>
-        </header>
-        <div class="container">
-            <div class='box'>
-
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1>
+          <img src="images/county.png" alt="Picture 404" />Prince George's
+          County Crime Viz
+        </h1>
+      </header>
+      <div class="container">
+        <div class="box left_section">
+          <h3>Location Search</h3>
+          <form action="/api" class="box main_form">
+            <label>Enter City Name</label>
+            <input type="text" name="location" id="location" />
+            <div class="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
             </div>
-            <div class="box left_section">
-
-            </div>
-            <div class="box right_section">
-                <div>
-                    <canvas id='myChart'></canvas>
-                </div>
-            </div>
+            <button type="submit" id="get-location">Crime Search</button>
+          </form>
+          <div id="map">A place reserved for maps</div>
         </div>
+        <div class="box right_section">
+          <div>
+            <canvas id="myChart"></canvas>
+            <div>A place researved for charts</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <footer class="footer">ZW975: <a href="https://github.com/ZW975">Zijing Wang's Github Account</footer>
+    <footer class="footer">
+      A work done by Jiayuan Shen and Zijing Wang, All right reserved to authors
+      and UMD
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./script.js"></script>
-</body>
-
+  </body>
 </html>

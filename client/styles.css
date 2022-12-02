@@ -89,11 +89,12 @@
   
   .header h1 {
     display: block;
+    text-align: center;
     /* this will push other blocks out of the way */
   
     /* colors */
-    background-color: #8aff90;
-    color: #3a3939;
+    background-color: #e93232;
+    color: #080808;
   
     /* shapes */
     border-radius: 6px;

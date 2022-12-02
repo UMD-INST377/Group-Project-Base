@@ -98,9 +98,49 @@ function initChart(chart, object) {
   );
 }
 
+function tvChart(chart, object) {
+  const labels = object.map((item) => item.name);
+  const info = Object.keys(object).map((item) => object[item].vote_average);
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Ratings for most popular TV Shows airing right now!',
+      data: info,
+      borderWidth: 1
+    }]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+
+  return new Chart(
+    chart,
+    config
+  );
+}
+
 // Gets one page (20 items) of movie data sorted by popularity
-async function getData() {
+async function getMovieData() {
   const url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=29c91bbcfb2a62a20125c03d7800a192&language=en-US&page=1';
+  const data = await fetch(url);
+  const json = await data.json();
+  const reply = json.results.filter(Boolean);
+  return reply;
+}
+
+// Gets one page (20 items) of TV shows airing in the next 7 days, sorted by popularity
+async function getTvData() {
+  const url = 'https://api.themoviedb.org/3/tv/on_the_air?api_key=29c91bbcfb2a62a20125c03d7800a192&language=en-US&page=1';
   const data = await fetch(url);
   const json = await data.json();
   const reply = json.results.filter(Boolean);
@@ -109,11 +149,28 @@ async function getData() {
 
 async function mainEvent() {
   const ctx = document.querySelector('#myChart2');
-  const results = await getData();
-  console.log(results)
-  movieData = shapeData(results);
-  console.log(movieData)
+  const movieResults = await getMovieData();
+  const tvResults = await getTvData();
+  let current = 0;
+  // console.log(movieResults)
+  movieData = shapeData(movieResults);
+  tvData = shapeData(tvResults);
+  // console.log(tvData);
+  // console.log(movieData)
   myChart = initChart(ctx, movieData);
+  // myChart = tvChart(ctx, tvData);
+  document.getElementById('button').addEventListener('click', function() {
+    console.log(current);
+    if (current === 0) {
+      current = 1;
+      myChart.destroy();
+      myChart = tvChart(ctx, tvData);
+    } else {
+      current = 0;
+      myChart.destroy();
+      myChart = initChart(ctx, movieData);
+    }
+  })
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

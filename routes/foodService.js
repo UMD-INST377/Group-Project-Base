@@ -11,6 +11,26 @@ const router = express.Router();
 // /////////////////////////////////
 // Food Inspection Set Demos
 // /////////////////////////////////
+
+const fetch = require('node-fetch');
+
+const url = 'https://api-nba-v1.p.rapidapi.com/seasons';
+
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': '5b5cc7cce2msh82973c0b8c40442p11a742jsn3f450cbb4805',
+    'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+  }
+};
+
+fetch(url, options)
+  .then((res) => res.json())
+  .then((json) => console.log(json))
+  .catch((err) => console.error(`error:${err}`));
+
+
+
 router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {

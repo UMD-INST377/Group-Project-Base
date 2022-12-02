@@ -1,16 +1,55 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Final Project of INST 377 </title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
-    <script src="./script.js"></script>
+  <div class="cover">
+    <header><i class='bx bx-left-arrow-alt'></i>FIND THE WEATHER</header>
+    <section class="input-part">
+      <p class="info-txt"></p>
+      <input type="text" placeholder="Enter city name" spellcheck="false" required>
+      <div class="separator"></div>
+      <button>Search The Location</button>
+    </secti on>
+    <section class="weather-part">
+      <img src="image/cloud.png" alt="weather Icon">
+      <div class="temp">
+        <span class="numb">12</span>
+        <span class="deg">°</span>C
+      </div>
+      <div class="weather">Clouds</div>
+      <div class="location">
+        <i class='bx bx-map'></i>
+        <span>Busan, South Korea</span>
+      </div>
+      <div class="bottom-details">
+        <div class="column feels">
+          <i class = "bx bxs-thermometer"></i>
+          <div class="details">
+            <div class="temp">
+              <span class="numb">18</span>
+              <span class="deg">°</span>C
+            </div>
+            <p>Temperture</p>
+          </div>
+        </div>
+        <div class="column humidity">
+          <i class='bx bxs-droplet-half'></i>
+          <div class="details">
+            <span class="numb">99%</span>
+            <p>Humidity</p>          
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <script src="script.js"></script>
 </body>
-    <div>
-        <h1>102-04 group Final project</h1>
-        <div>"Hello, World"</div>
-    </div>
 </html>

@@ -91,12 +91,12 @@ async function mainEvent() {
 
   // submit.style.display = 'none';
 
-  console.table(mapData);
-  console.log(mapData[0]);
+  // console.table(mapData);
+  // console.log(mapData[0]);
 
-  console.log(
-    `${mapData[0].location} ${mapData[0].inspection_id}`
-  );
+  // console.log(
+  //   `${mapData[0].location} ${mapData[0].inspection_id}`
+  // );
 
   if (mapData.length > 0) {
     submit.style.display = 'block';

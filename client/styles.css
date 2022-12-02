@@ -60,6 +60,13 @@ body {
   border: 4px solid;
 }
 
+.about_header {
+  text-align: center;
+  position: relative;
+  top: 50px;
+  text-decoration: underline;
+}
+
 .box {
   background-color: rgba(239, 239, 239, 0.4);
   border: 2px solid;
@@ -151,4 +158,63 @@ form label {
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+
+/*CSS found on https://www.w3schools.com/howto/howto_css_dropdown.asp */
+  .dropdown_button {
+    background-color: #ffe5b4;
+    color: white;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+    font-family: "Fira Mono", monospace;
+    border: solid;
+    border-color: #000000;
+    border-radius: 12px;
+    width: auto;
+  }
+  
+  .dropdown_menu {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: inline-block;
+    width: auto;
+  }
+  
+  .dropdown_menu-content {
+    display: none;
+    position: absolute;
+    background-color: #ffe5b4;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    position: relative;
+    border-radius: 12px;
+  }
+  
+  .dropdown_menu-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    font-family: "Fira Mono", monospace;
+    font-size: 1rem;
+  }
+  
+  .dropdown_menu-content a:hover {
+    background-color: #ddd;
+    border: solid;
+    border-radius: 12px;
+  }
+  
+  .dropdown_menu:hover .dropdown_menu-content {
+    display: block;
+  }
+  
+  .dropdown_menu:hover .dropdown_button {
+    background-color: #f7c465;
+    border: solid;
   }

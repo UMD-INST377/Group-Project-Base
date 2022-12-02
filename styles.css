@@ -69,6 +69,12 @@ h2, h3 {
   color:rgb(242, 242, 242);
 }
 
+.header a {
+  float: right;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
 .box {
   border: 2px dashed;
   border-radius: 2px;

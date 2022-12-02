@@ -52,19 +52,20 @@ function initMap() {
 }
 // The fucntion that adds a marker placement onto the map //
 function markerPlace(array, map) {
+  console.log('markerPlace', array);
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
       layer.remove();
     }
   });
   array.forEach((item, index) => {
-    const latitude = item.lat;
-    const longitude = item.long;
-    // console.log(item.location[1]);
-    L.marker(latitude, longitude).addTo(map);
-    // if (index === 0) {
-    //   map.setView([location[1], location[0]], 10);
-    // }
+    const lat = item.location.latitude;
+    const long = item.location.longitude;
+    console.log([lat, long]);
+    L.marker([lat, long]).addTo(map);
+    if (index === 0) {
+      map.setView([lat, long], 10);
+    }
   });
 }
 //  The async function that retreives the GET request information //
@@ -72,7 +73,7 @@ async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.inspection_id));
+  const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.violation_code));
   console.log(reply);
   return reply;
 }
@@ -83,17 +84,16 @@ async function mainEvent() {
   const loadAnimation = document.querySelector('.lds-ellipsis');
   submit.style.display = 'none';
   const pageMap = initMap();
-
   const mapData = await getData();
 
   // submit.style.display = 'none';
 
-  console.table(mapData);
-  console.log(mapData[0]);
+  // console.table(mapData);
+  // console.log(mapData[0]);
 
-  console.log(
-    `${mapData[0].location} ${mapData[0].inspection_id}`
-  );
+  // console.log(
+  //   `${mapData[0].location} ${mapData[0].inspection_id}`
+  // );
 
   if (mapData.length > 0) {
     submit.style.display = 'block';

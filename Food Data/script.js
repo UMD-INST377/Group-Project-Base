@@ -8,7 +8,7 @@
 
 async function getData(){
   const url = 'https://data.princegeorgescountymd.gov/resource/2qma-7ez9.json'; 
-  const data = await fetch(url, options);
+  const data = await fetch(url);
   // console.log(data);
 	const json = await data.json();
   console.log(json);

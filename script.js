@@ -32,6 +32,7 @@ function markerPlace(array, map) {
   });
 
   array.forEach((item, index) => {
+    console.log(location_1);
     const {latitude, longitude} = item.location_1;
     const marker = L.marker([latitude, longitude]).addTo(map);
     L.latlng(marker);

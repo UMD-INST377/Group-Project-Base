@@ -86,10 +86,9 @@ async function mainEvent() {
   const submit = document.querySelector('#get-house');
   const loadAnimation = document.querySelector('.lds-ellipsis');
   submit.style.display = 'none';
-
+  const pageMap = initMap();
   const mapData = await getData();
 
-  const pageMap = initMap();
   // submit.style.display = 'none';
 
   // console.table(mapData);

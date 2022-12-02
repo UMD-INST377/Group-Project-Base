@@ -1,10 +1,10 @@
 import fetch from 'node-fetch';
 
-export async function loadFoodServiceData(req, res, next) {
+export async function loadSpendingData(req, res, next) {
   try {
 
     //url is where we gonna get our data. its in json format
-    const url = 'https://data.princegeorgescountymd.gov/api/views/INLINE/rows.json?accessType=DOWNLOAD'; // remote URL! you can test it in your browser
+    const url = 'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
 

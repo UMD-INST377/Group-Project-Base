@@ -1,11 +1,9 @@
 import express from 'express';
 import fetch from 'node-fetch';
 
-import { loadfinServiceData } from '../middleware/loadfinServicesData.js';
-
-import finServiceControllers from '../controllers/finServiceControllers.js';
-
 const router = express.Router();
+
+router.use(loadSpendingData);
 
 //
 // This is a demo of how to structure your final project API
@@ -17,10 +15,15 @@ const router = express.Router();
 // /////////////////////////////////
 
 
+
+
+
+
+//dont know if the route is the correct one
 router.route('/PgSpendings') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/api/views/INLINE/rows.json?accessType=DOWNLOAD';
+      const url = 'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json';
       const data = await fetch(url);
       const json = await data.json();
       console.log(json);

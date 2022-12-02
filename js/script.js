@@ -52,6 +52,7 @@ function initMap() {
 }
 // The fucntion that adds a marker placement onto the map //
 function markerPlace(array, map) {
+  console.log('markerPlace', array);
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
       layer.remove();
@@ -60,7 +61,9 @@ function markerPlace(array, map) {
   array.forEach((item, index) => {
     const lat = item.latitude;
     const long = item.longitude;
-    // console.log(item.location[1]);
+    console.log(lat);
+    console.log(long);
+    console.log(item);
     L.marker(lat, long).addTo(map);
     // if (index === 0) {
     //   map.setView([location[1], location[0]], 10);
@@ -78,11 +81,11 @@ async function getData() {
 }
 // The async function that runs all the rpevious functions into our HTML file //
 async function mainEvent() {
+  const pageMap = initMap();
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-house');
   const loadAnimation = document.querySelector('.lds-ellipsis');
   submit.style.display = 'none';
-  const pageMap = initMap();
 
   const mapData = await getData();
 

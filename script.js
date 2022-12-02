@@ -13,8 +13,6 @@ const options = {
   }
 };
 
-// Champions in order from 2015 - 2022
-// const champions = ['Warriors', 'Cavaliers', 'Warriors', 'Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
 // Champions in order from 2018 - 2022
 const champions = ['Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
 // list of teams for development, to reduce request amount
@@ -81,10 +79,17 @@ function makeChart() {
     data: {
       labels: champions,
       datasets: [{
-        label: 'Past Champ 3 Point %',
+        label: '5 past NBA championship teams 3pt shooting %',
         data: champ3Perc,
-        backgroundColor: ['blue', 'red', 'yellow', 'green', 'blue'],
-        borderWidth: 1
+        // data: [22, 33, 44, 55, 66],
+        backgroundColor: [
+          'rgba(0, 0, 255, 0.4)',
+          'rgba(255, 0, 0, 0.4)',
+          'rgba(255, 255, 0, 0.4)',
+          'rgba(0, 100, 0, 0.4)',
+          'rgba(0, 0, 255, 0.4)'],
+        borderWidth: 2,
+        borderColor: ['blue', 'red', 'yellow', 'green', 'blue']
       }]
     },
     options: {
@@ -100,7 +105,7 @@ function makeChart() {
 
 async function mainEvent() {
 // 100 request per day, 10 request per minute
-  // await getChampionsData();
+  await getChampionsData();
 
   const total3Perc = champ3Perc.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   const avg3Perc = total3Perc / champ3Perc.length;

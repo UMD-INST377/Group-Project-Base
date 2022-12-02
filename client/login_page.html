@@ -7,11 +7,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header" #add container left>
-        <img src="" alt="">
-        <h1> Spotify Analytics </h1>
-    </div>
-    <div id="container-right">
+    <div class="wrapper">
+        <header class="header"><h1>Spotify Analytics</h1>
+        </header> 
+        <div class="container">
+            <div class="left-side">
+            <h3>Buttons</h3>
+            <ol class="login-buttons">
+            <button type="load" id="login">Login</button>
+            <button type="load_2" id="sign-up">Sign-up</button>
+            </ol>
+</div>
+    <div class="box-right">
     <nav>
         <ul class="right-side"> 
             <a href ="Home.html">Home</a>
@@ -19,11 +26,9 @@
             <a href = "About-us.html">About-Us</a>
         </ul>
     </nav>
-    </div>
-  <div class="login-buttons">
-        <button type="load" id="login">Login</button>
-        <button type="load_2" id="sign-up">Sign-up</button>
 </div>
+</div>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 /* Data Request to API */
-token = "BQDD7bjlALmh4vmm2ByUnxtKvDmOCxu8x528AqVRPbVdTDWa6Zvh3o5h13r462_3H0IT_-Y6nN9Kdk63lZBcn2Olqc9LtuyIW7R2kEnaM5wdgd8y4QS0fsIclKUmmRsQMocbSbiD2iVfaDiG1KbLS19ot4Krt8F8Py1NA_Ia0btv1I6hkjxuSSGOmdh791PbCRAt3tKR1c3QFlVxgQFqntdvUV-s0u06ZlPiCnoMyq-jUc4gT8IG"
+token = "BQBT4wBqclxU6HCkerH5j2ug-JU_lRZKZg3wfxzTjWvHuGxRIgI0SA1ntj3A4Tfm6k1JgwnKnZJQxwV4hdjj5XdoAz_NqOFJMm8VthxSgaUHMwbw7RV8ARFtPh_oO3k8FbjNbT9yBq8UDPjVcoMv8gc43-lwRr6mW9lSiUJv5MpKCdHLEjEtREI8cCzq3SbNED-ZBsjhVEIoSinGZ3EHCi0xtXROwJJq7knTY4n8aNPgfeANXP7v"
 term = "long_term";
 artist_ids = "39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V";
 album_id = "0TnOYISbd1XYRBk9myaseg";
@@ -68,8 +68,7 @@ async function mainEvent() {
   const submit = document.querySelector("#load_button_2");
   const graph_submit = document.querySelector("#graph_load_2") 
   const chart_target = document.querySelector("#myChart")
-  let chart_object = "";
-
+  
   const results = await fetch(
     `https://umd-spotify-backend.herokuapp.com/artist_albums?access_token=${token}&id=${album_id}`
   );

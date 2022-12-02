@@ -1,15 +1,128 @@
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+
 body {
-    background-color: rgb(233, 241, 241);
+    min-height: 100vh;
+    background: linear-gradient(#aca5d4, #f5fdc2);
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-a {
-    border: blue;
+header {
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    padding: 20px 100px;
+    align-items: center;
+    justify-content: space-between;
 }
 
+header .logo {
+    color: #ffff;
+    font-size: 2em;
+    letter-spacing: 2px;
+    font-weight: 800;
 
-.DatenTime {
+}
+
+a p{
+    border: rgb(6, 130, 238);
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-left: auto;
     
 }
+
+p {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+div.DatenTime {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+h2 {
+    padding-top: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 10px;
+}
+
+.wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: auto;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5rem;
+    max-width: auto;
+}
+
+.emoji-container {
+    background-color: rgba(239, 239, 239, 0.40);
+    border-radius: 1rem;  
+    width: 548px;
+    height:298px;
+    padding: 1.5rem;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.box {
+    margin-right: 0px;
+    border-right: 1rem, dotted, greenyellow;
+    display: grid;
+    padding: 20px;
+    width: 240px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-items: start;
+    
+}
+
+.mini-box {
+    display: flex;
+    border-radius: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    width: 50%;
+    padding: 16px;
+    margin-right: auto;
+    align-items: center;
+    height:fit-content;
+    border: 1px solid greenyellow;
+}
+
+.mood-display {
+    display: grid;
+    width: 50%;
+    padding: 10px;
+    border: 1px solid greenyellow;
+    background-color: #ffff;
+    height:fit-content;
+    justify-content: space-around;
+}
+
 
 .chart {
     background-color: rgba(239, 239, 239, 0.40);
@@ -21,4 +134,11 @@ a {
     padding: 1.5rem;
     margin: 0 auto;
   }
+ */
+
+
+#date-time {
+    text-align: center;
+    font-weight: bold;
+}
 

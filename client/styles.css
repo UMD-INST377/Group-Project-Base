@@ -96,7 +96,7 @@
   
     /* colors */
     color: #191414;
-    background-color: #1DB954;
+    background-color: #bdbdbd;
   
     /* shapes */
     border-radius: 6px;
@@ -119,7 +119,7 @@
   */
   
   .box {
-    background-color: #f08080;
+    background-color: #5c5c5c;
     border: 2px dashed;
     border-radius: 4px;
   
@@ -130,14 +130,14 @@
   }
   
   .left_section {
-    background-color: #f4978E;
+    background-color: #b7b7b7;
     flex: 0 1 auto;
     margin: 1rem;
     padding: 1.5rem;
   }
   
   .right_section {
-    background-color: #f4978E;
+    background-color: #b7b7b7;
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;
@@ -155,7 +155,7 @@
   .footer {
     flex-shrink: 0;
     padding: 1rem;
-    background-color: #1DB954;
+    background-color: #b7b7b7;
     color: #191414;
     font-size: 1.2rem;
     font-weight: 600;
@@ -305,7 +305,7 @@
       /* Rules in here will only apply when a screen is the correct size */
       /* check it out by using your developer tools to shrink your screen-size */
       .container {
-        background-color: #fbc4ab;
+        background-color: #d4d4d4;
         flex-direction: column;
         justify-content: center;
         align-items: center;

@@ -10,7 +10,6 @@ export async function loadCrimeIncidentsData(req, res, next) {
     req.CrimeIncidentsData = reply;
     next();
   } catch (err) {
-    
     console.log('Data request failed', err);
     res.json({ message: 'Data request failed', error: err });
   }

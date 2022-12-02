@@ -104,7 +104,7 @@ async function initSongs(){
 
     //This is a placeholder part until I make all of the above work.
     const plalylistSg = "https://api.spotify.com/v1/playlists/37i9dQZF1DXcF6B6QPhFDv/tracks"
-    const tracks = await getTracks(token, plalylistSg, 20);
+    const tracks = await getTracks(token, plalylistSg, 60);
     console.log(tracks)
     return tracks.items.map(obj => ({ ...obj, gen: "Rock"}))
 }

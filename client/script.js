@@ -163,7 +163,7 @@ function injectHTML(list) {
 function injectImages(list){
     console.log('fired injectHTML');
     const target = document.querySelector('#Imagebox');
-    target.innerHTML = '';
+    target.innerHTML = '<h2>Songs are from these albums</h2><br>';
 
     list.forEach((item) => {
       let el = `<img src="${item.image_url}"></img>`;
@@ -173,7 +173,7 @@ function injectImages(list){
 
 // Turn the site script on
 async function init(){
-    document.getElementById("music_list").style.display = "none";
+    document.getElementById("GeneratedContents").style.display = "none";
     const submit = document.querySelector('#submit');
 
     let songArray = await songNamesArray();
@@ -183,7 +183,7 @@ async function init(){
         injectHTML(sample);
         injectImages(sample);
         console.log(sample);
-        document.getElementById("music_list").style.display = "block";
+        document.getElementById("GeneratedContents").style.display = "flex";
 
     })
 

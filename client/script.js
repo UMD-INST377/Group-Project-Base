@@ -152,24 +152,28 @@ async function getData(submit) {
 // This function retrieves the access token from Spotify
 // Used the "Client Credentials Flow" on Spotify API
 // Problem with Buffer module. Browser doesn't recognize it, but won't let me import it
+// Current workaround for Buffer problem - used an online base64 encoder and manually encoded the client ID and secret key
 async function getAccessToken() {
-  const clientID = 'c9270a123b2c408fa9d766cd00e969f2';
-  const clientSecret = '978bf9a2f2ec4584966acc8b7fe06168';
+  const clientBase64 = 'YzkyNzBhMTIzYjJjNDA4ZmE5ZDc2NmNkMDBlOTY5ZjI6OTc4YmY5YTJmMmVjNDU4NDk2NmFjYzhiN2ZlMDYxNjg=';
+  const url = 'https://accounts.spotify.com/api/token';
+  const myHeaders = new Headers();
+  myHeaders.append('Authorization', `Basic ${clientBase64}`);
+  myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
+  myHeaders.append('Cookie', '__Host-device_id=AQBrEpG1cy0DhOXDyzabACYbb5SZKeLLWNMCoH4UJHKKW0CVBslV9tFnuaXGti78fRhIEXO512-5ZA35sx_VKqoJRO67Dd80T08; sp_tr=false');
 
-  const auth = {
-    url: 'https://acccounts.spotify.com/api/token',
-    headers: {
-      Authorization: `Basic ${Buffer.from(`${clientID}:${clientSecret}`, ['base64'])}`
-    },
-    json: true
+  const urlencoded = new URLSearchParams();
+  urlencoded.append('grant_type', 'client_credentials');
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: urlencoded,
+    redirect: 'follow'
   };
-
-  request.post(auth, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-      const token = body.access_token;
-      return token;
-    }
-  });
+  const reply = await fetch(url, requestOptions)
+  const json = await reply.json();
+  console.log(json.access_token);
+  return json.access_token;
 }
 
 /*
@@ -188,9 +192,8 @@ async function getRelatedArtists(token) {
   const json = await data.json(); // the data isn't json until we access it using dot notation
   console.log(json);
 
-  // chained filters check if item has both a location and a name
-  //   const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
-  return json;
+  // getRelatedArtists returns a json containing an array, but only the array is returned
+  return json.artists;
 }
 
 async function mainEvent() {
@@ -216,7 +219,8 @@ async function mainEvent() {
       It's at about line 27 - go have a look and see what we're retrieving and sending back.
      */
   const token = await getAccessToken();
-  const chartData = await getRelatedArtists(token).artists;
+  const chartData = await getRelatedArtists(token);
+  console.log(chartData);
 
   /*
       Below this comment, we log out a table of all the results using "dot notation"
@@ -231,7 +235,7 @@ async function mainEvent() {
   console.log(chartData[0].name);
 
   // this is called "string interpolation" and is how we build large text blocks with variables
-  console.log(`${chartData.artists[0].name} ${chartData.artists[0].popularity}`);
+  console.log(`${chartData[0].name} ${chartData[0].popularity}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (!chartData.artists?.length) { return; } // Return if we have no data aka array has no length

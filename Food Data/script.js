@@ -9,53 +9,64 @@ const options = {
 async function getData(){
   const url = 'https://calorieninjas.p.rapidapi.com/v1/nutrition?query=tomato'; 
   const data = await fetch(url, options);
-  console.log(data);
 	const json = data.json();
-  const res = json.response;
-	return res;
-}
 
+  const name = json.items.map((x)=> x.sugar_g);
+  const name2 = json.items.map((x)=> x.fiber_g);
+  const name3 = json.items.map((x)=> x.sodium_mg);
+  console.log(name,name2,name3);
+}
+getData()
+xlabels = [
+  'sugar_g',
+  'fiber_g',
+  'serving_size_g',
+  'potassium_mg',
+  'fat_saturated_g',
+  'fat_total_g',
+  'calories',
+  'cholesterol_mg',
+  'protein_g',
+  'carbohydrates_total_g'
+]
+
+tableData = 
 function makeChart() {
-  const labels = Object.keys(object);
-  const info = Object.keys(object).map((item) => object[item].length);
+  const ctx = document.getElementById('myChart');
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'Restaurants By Category',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: info
-    }]
-  };
-
-  const config = {
+  new Chart(ctx, {
     type: 'bar',
-    data: data,
-    options: {}
-  };
-
-  return new Chart(
-    chart,
-    config
-  );
+    data: {
+      labels: xlabels,
+      datasets: [{
+        label: '# of ',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 }
 
-function changeChart(chart, dataObject) {
-  const labels = Object.keys(dataObject);
-  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+// function changeChart(chart, dataObject) {
+  //const labels = Object.keys(dataObject);
+  //const info = Object.keys(dataObject).map((item) => dataObject[item].length);
 
-  chart.data.labels = labels;
-  chart.data.datasets.forEach((set) =>{
-    set.data = info;
-    return set;});
-  chart.update();
-}
+  //chart.data.labels = labels;
+  //chart.data.datasets.forEach((set) =>{
+    //set.data = info;
+    // return set;});
+  // chart.update();
+// } 
 
 async function mainEvent() {
   console.log("hi1"); 
-  await getData();
-  console.log("hi");
   const form = document.querySelector('.main_form');
 
   const submit = document.querySelector('#get-resto');
@@ -66,7 +77,6 @@ async function mainEvent() {
   form.addEventListener('submit', (submitEvent) => {
     // This is needed to stop our page from changing to a new URL even though it heard a GET request
     submitEvent.preventDefault();
-
   });
 }
 

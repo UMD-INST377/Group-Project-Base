@@ -7,7 +7,7 @@ import foodService from './foodService.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the UMD Dining API!');
+  res.send('Welcome to PG County DataSset!');
 });
 
 // Generic API inclusion demonstration

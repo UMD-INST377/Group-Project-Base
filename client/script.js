@@ -135,7 +135,7 @@ async function songNamesArray(){
 //Get random 10 items from an aray (to be replacedby betterselection item)
 function getRandomTen(list) {
     console.log('fired get 10 songs');
-    const range = [...Array(10).keys()];
+    const range = [...Array(9).keys()];
     const newArray = range.map(() => {
       const index = getRandomIntInclusive(0, list.length);
       let picked = list[index];
@@ -159,18 +159,31 @@ function injectHTML(list) {
     });
 }
 
+//Inject images
+function injectImages(list){
+    console.log('fired injectHTML');
+    const target = document.querySelector('#Imagebox');
+    target.innerHTML = '<h2>Songs are from these albums</h2><br>';
+
+    list.forEach((item) => {
+      let el = `<img src="${item.image_url}"></img>`;
+      target.innerHTML += el;
+    });
+}
+
 // Turn the site script on
 async function init(){
-    document.getElementById("music_list").style.display = "none";
+    document.getElementById("GeneratedContents").style.display = "none";
     const submit = document.querySelector('#submit');
 
     let songArray = await songNamesArray();
     submit.addEventListener('click', (e) => {
         e.preventDefault();
         sample = getRandomTen(songArray)
-        injectHTML(sample)
+        injectHTML(sample);
+        injectImages(sample);
         console.log(sample);
-        document.getElementById("music_list").style.display = "block";
+        document.getElementById("GeneratedContents").style.display = "flex";
 
     })
 

@@ -57,3 +57,26 @@ html {
     font-size: 1.2rem;
     font-weight: 600;
   }
+
+  #GeneratedContents{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #Imagebox h2{
+    width: 100%;
+    text-align: center;
+  }
+
+  #Imagebox{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  #Imagebox img{
+    max-width: 300px;
+    width: 33%;
+    height: 33%;
+  }

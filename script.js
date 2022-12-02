@@ -13,8 +13,6 @@ const options = {
   }
 };
 
-// Champions in order from 2015 - 2022
-// const champions = ['Warriors', 'Cavaliers', 'Warriors', 'Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
 // Champions in order from 2018 - 2022
 const champions = ['Warriors', 'Raptors', 'Lakers', 'Bucks', 'Warriors'];
 // list of teams for development, to reduce request amount
@@ -81,9 +79,17 @@ function makeChart() {
     data: {
       labels: champions,
       datasets: [{
-        label: 'Past Champ 3 Point %',
+        label: '5 past NBA championship teams 3pt shooting %',
         data: champ3Perc,
-        borderWidth: 1
+        // data: [22, 33, 44, 55, 66],
+        backgroundColor: [
+          'rgba(0, 0, 255, 0.4)',
+          'rgba(255, 0, 0, 0.4)',
+          'rgba(255, 255, 0, 0.4)',
+          'rgba(0, 100, 0, 0.4)',
+          'rgba(0, 0, 255, 0.4)'],
+        borderWidth: 2,
+        borderColor: ['blue', 'red', 'yellow', 'green', 'blue']
       }]
     },
     options: {
@@ -113,7 +119,7 @@ async function mainEvent() {
   console.log(`total 3% is ${total3Perc} total 3 made is ${total3Made}, total 3 att is ${total3Att}`);
   console.log(`avg 3%: ${avg3Perc}, avg 3 made: ${avg3Made}, avg 3 attempted: ${avg3Att}`);
   console.log(champ3Perc);
-  
+
   let myChart = makeChart();
   const refreshBtn = document.getElementById('refresh-button');
   refreshBtn.addEventListener('click', (submitEvent) => {

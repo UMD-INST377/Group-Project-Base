@@ -61,22 +61,23 @@ function markerPlace(array, map) {
   array.forEach((item, index) => {
     const lat = item.location.latitude;
     const long = item.location.longitude;
-    L.marker([lat, long]).addTo(map);
+    if (typeof lat !== 'undefined' && long !== 'undefined') {
+      console.log([lat, long]);
+    } else {
+      L.marker([lat, long]).addTo(map);
+    };
     if (index === 0) {
       map.setView([lat, long], 10);
     }
   });
 }
 //  The async function that retreives the GET request information //
-async function getData(item) {
+async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
   const data = await fetch(url);
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.violation_code));
   console.log(reply);
-  if (item.latitude === null & item.longitude === null) {
-    continue;
-  }
   return reply;
 }
 // The async function that runs all the rpevious functions into our HTML file //

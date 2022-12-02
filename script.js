@@ -32,9 +32,7 @@ function markerPlace(array, map) {
   });
 
   array.forEach((item, index) => {
-    console.log(item.location_1);
     const {coordinates} = item.location_1;
-    console.log(coordinates);
     L.latlng([coordinates[0], coordinates[1]]).addTo(map);
     if (index === 0) {
       map.setView([coordinates[0], coordinates[1]], 10);
@@ -74,11 +72,7 @@ async function mainEvent() {
 
     const mapData = await getData();
 
-    console.log(mapData);
-
     console.table(mapData);
-
-    console.log(mapData);
     console.log(mapData[0]);
     console.log(`${mapData[0].school} ${mapData[0].location}`);
 

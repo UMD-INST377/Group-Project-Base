@@ -7,8 +7,9 @@ const options = {
 };
 
 async function getData(){
-  const url = 'https://calorieninjas.p.rapidapi.com/v1/nutrition?query=tomato/${name}'; 
-  const data = await fetch(url, options); 
+  const url = 'https://calorieninjas.p.rapidapi.com/v1/nutrition?query=tomato'; 
+  const data = await fetch(url, options);
+  console.log(data);
 	const json = data.json();
   const res = json.response;
 	return res;
@@ -52,15 +53,21 @@ function changeChart(chart, dataObject) {
 }
 
 async function mainEvent() {
+  console.log("hi1"); 
   await getData();
-  console.log()
+  console.log("hi");
   const form = document.querySelector('.main_form');
-  form.addEventListener('input', (event) => {
-    console.log(event.target.value);
-  });  
+
   const submit = document.querySelector('#get-resto');
   const resto = document.querySelector('#resto');
-  const chart = document.querySelector('#myChart')
-  
+  const chart = document.querySelector('#myChart');
+
   let myChart = makeChart();
+  form.addEventListener('submit', (submitEvent) => {
+    // This is needed to stop our page from changing to a new URL even though it heard a GET request
+    submitEvent.preventDefault();
+
+  });
 }
+
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -161,13 +161,17 @@ function injectHTML(list) {
 
 // Turn the site script on
 async function init(){
+    document.getElementById("music_list").style.display = "none";
     const submit = document.querySelector('#submit');
+
     let songArray = await songNamesArray();
     submit.addEventListener('click', (e) => {
         e.preventDefault();
         sample = getRandomTen(songArray)
         injectHTML(sample)
         console.log(sample);
+        document.getElementById("music_list").style.display = "block";
+
     })
 
 }

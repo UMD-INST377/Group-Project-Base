@@ -15,3 +15,5 @@ async function mainEvent() {
     const pageMap = initMap();
     
 }
+
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

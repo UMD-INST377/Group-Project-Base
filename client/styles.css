@@ -23,6 +23,9 @@ html {
     font-weight: bold;
   }
 
+  .header h2 {
+    font-size: 1em;
+  }
   .wrapper {
     min-height: 100vh;
     display: flex;

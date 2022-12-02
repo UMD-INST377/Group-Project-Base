@@ -65,7 +65,7 @@ function markerPlace(array, map) {
       map.setView([lat, long], 10);
       map.on('click', onMapClick);
     }
-    alert(`You clicked the map at ${e.latlng}`);
+    alert(`You clicked the map at ${onMapClick.latlng}`);
   });
 } */
 

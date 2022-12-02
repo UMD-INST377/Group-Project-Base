@@ -1,12 +1,10 @@
 /* eslint-disable no-console */
 import express from 'express';
-import path from 'path';
 import fetch from 'node-fetch';
 
 import PgSpendingRoutes from './PgSpendingRoutes.js';
 
 const router = express.Router();
-const __dirname = path.resolve();
 
 router.get('/', (req, res) => {
   res.send('Welcome to the PG Spending API!');

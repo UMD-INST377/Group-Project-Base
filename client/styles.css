@@ -64,7 +64,7 @@ a {
 h2,
 h3 {
   margin: 0;
-  padding: 10;
+  padding: 2;
 }
 
 form {
@@ -87,7 +87,7 @@ form {
   flex: 1;
 }
 
-.form.container{
+.table.container{
   align-items: flex-start;
   justify-content: flex-start;
 }
@@ -132,12 +132,6 @@ form {
   height: max-content;
   margin: 0 auto;
 }
-.right.box{
-  background-color: #000;
-  justify-content: flex-end;
-  border-radius: 15px;
-  padding: 10px;
-}
 
 .text.box{
   color: rgb(255, 255, 255);
@@ -170,7 +164,7 @@ form {
 
 .fade {
   animation-name: fade;
-  animation-duration: 3s;
+  animation-duration: 1.5s;
 }
 
 @keyframes fade {
@@ -179,24 +173,8 @@ form {
   }
 
   to {
-    opacity: .99
+    opacity: 1
   }
-}
-
-.table{
-  border-radius: 5px;
-}
-
-th{
-  text-align: center;
-}
-
-td{
-  padding: 5px;
-  background-color: rgb(40, 39, 39);
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 form input {

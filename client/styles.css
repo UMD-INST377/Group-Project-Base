@@ -193,6 +193,8 @@
     border: 2px dashed rgb(99, 99, 99);
     margin-bottom: 1rem;
     margin-inline-start: 33%;
+    margin-left: auto;
+    margin-right: auto;
   }
  
 

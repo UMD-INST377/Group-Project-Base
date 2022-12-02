@@ -10,7 +10,7 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
 
-  these are specific to different browsers
+  /*these are specific to different browsers*/
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;

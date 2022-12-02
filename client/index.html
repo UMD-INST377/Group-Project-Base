@@ -1,12 +1,46 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    	<title>Riportella's NBA Fantasy Mock Draft</title>
+    
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    	<link rel="stylesheet" href="style.css" />
+
+  	</head>
+  	<body>
+    	<div class="wrapper">
+      	<header class="header"> <h1>Hunter Riportella's Labs for INST377</h1></header>
+
+      	<div class="container">
+       	 <div class="left_section">
+          	<h2>Mock Draft</h2>
+          	<form action="/api" class="box main_form">
+							<div>
+								<label for="resto">Search Player</label>
+								<input type="text" name="resto" id="resto" />
+							</div>
+            	<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            	<button type="submit" id="get-resto">Draft</button>
+          </form>
+        </div>
+        <div class="right_section box">
+          <h2>Player Stats</h2>
+
+          <div class="chart_container">
+            <canvas id="myChart"></canvas>
+          </div>
+          <div class="box" id="player_list">
+            A list of Local Restaurants from an API
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      hriportella
+      <a href="http://github.com/hriportella/INST377-Lab-Work" target="_blank" rel="noopener noreferrer">hriportella-INST377 Github Org</a>
+    </footer>
+		</div>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

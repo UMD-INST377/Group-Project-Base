@@ -99,11 +99,12 @@ function markerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    const {coordinates} = item.latitude;
+    const lat = item.latitude;
+    const long = item.longitude;
     console.log(item);
-  L.marker([coordinates[0], coordinates[1]]).addTo(map);
+  L.marker([long, lat]).addTo(map);
   if (index === 0) {
-    map.setView([coordinates[0], coordinates[1]], 10);
+    map.setView([long, lat], 10);
     }
   });
 }

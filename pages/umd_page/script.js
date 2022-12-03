@@ -1,5 +1,7 @@
 /* Data Request to API */
-token = "BQBKe21DUghMdZ3_P_HFTWfRKEmAMF_ydyRrOTJzlsUDn8N8BFVux8xlft4qx4z2ftsuS-ZpnV1zNgHIQrbVKmcONMsEtdghNZjuYDLIO-_lZewbwmMo9cDDviAV0cYmvadqSOREGQdgJpg3bKQKDZ8y6d6RbaYjj2z-1clJS5EIOVDSqgZqG1MkZ2qXHNbVeRgOM8SOtN0UxHP7JgCM05o-LFbmXBCSrTg3Zcm5sPNAPUEfWr_U"
+//token = "BQBKe21DUghMdZ3_P_HFTWfRKEmAMF_ydyRrOTJzlsUDn8N8BFVux8xlft4qx4z2ftsuS-ZpnV1zNgHIQrbVKmcONMsEtdghNZjuYDLIO-_lZewbwmMo9cDDviAV0cYmvadqSOREGQdgJpg3bKQKDZ8y6d6RbaYjj2z-1clJS5EIOVDSqgZqG1MkZ2qXHNbVeRgOM8SOtN0UxHP7JgCM05o-LFbmXBCSrTg3Zcm5sPNAPUEfWr_U"
+let params = new URL(document.location).searchParams;
+let token = params.get("token");
 term = "long_term";
 artist_ids = "39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V";
 album_id = "0TnOYISbd1XYRBk9myaseg";

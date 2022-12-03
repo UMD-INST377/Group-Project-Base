@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Project Base</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin=""></script>
 </head>
 <body>
     <header class="header">
@@ -13,17 +16,24 @@
     <wrapper>
         <h2>
             <a href="index.html"> Home</a>
-
        </h2>
        <h2>
            <a href="page2.html"> page 2</a>
        </h2>
         <div class="container">
             <div class="box left_section">
-                This is where the search box and list will display
+                <h2>Search for a Mueseum</h2>
+                <form action="/api" class="box main_form"></form>
+                <div>
+                    <label for="resto">Mueseum</label>
+                    <input type="text" name="resto" id="resto">
+                </div>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                <button type="submit" id="get-resto">Submit</button>
             </div>
             <div class="box right_section">
-                This is where the map will display
+                <h2>Smithsonian Map</h2>
+                <div id="map"></div>
             </div>
         </div>
     </wrapper>

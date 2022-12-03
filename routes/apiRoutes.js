@@ -51,6 +51,6 @@ router.route('/smithsonian/owenK')
       res.json({error: 'Something went wrong on the server'});
     }
   });
-router.use('/foodService', smithsonian);
+router.use('/smithsonian', smithsonian);
 
 export default router;

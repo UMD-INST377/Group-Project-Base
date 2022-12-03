@@ -50,7 +50,7 @@ router.route('/smithsonian') // actually localhost:3000/api/foodServicesPG
     }
   });
 
-router.route('/foodServicesPG/:category') // actually localhost:3000/api/foodServicesPG/20782
+router.route('/smithsonian/:category') // actually localhost:3000/api/foodServicesPG/20782
   .get(async (req, res) => {
     try {
       const url = 'https://api.si.edu/openaccess/api/v1.0/category/:cat/search?api_key=bDy3ONUljbeF9nhGIgWGL3G0EMCOcOgLgPGqXpDq';

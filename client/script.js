@@ -88,15 +88,12 @@ async function mainEvent() {
       labelSublist = rotateList(labelsList, start, numOfElements);
       marketCapSublist = rotateList(marketCapList, start, numOfElements);
 
-      start = 0;
+      start = -10; // start at -10 to offset increment above
     } else {
       numOfElements = 10;
       labelSublist = rotateList(labelsList, start, numOfElements);
       marketCapSublist = rotateList(marketCapList, start, numOfElements);
     }
-
-    console.log(marketCapChart.data.labels);
-    marketCapChart.data.datasets.forEach((dataset) => console.log(dataset.data));
 
     // Remove old data from chart
     while (marketCapChart.data.labels.length > 0) {

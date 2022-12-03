@@ -1,3 +1,19 @@
+/*
+function injectHTML(list) {
+  console.log('fired injectHTML');
+  const target = document.querySelector('#restaurant_list');
+  target.innerHTML = '';
+
+  const listElement = document.createElement('ol');
+  target.appendChild(listElement);
+  list.forEach((item) => {
+    const newElement = document.createElement('li');
+    newElement.innerText = item.school;
+    listElement.appendChild(newElement);
+  });
+}
+*/
+
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -69,7 +85,18 @@ function markerPlace(array, map) {
   });
 } */
 
-// function filterList(list, value) {}
+/* 
+function filterList(list, value) {
+  const newArray = list.filter((item) => {
+    if (!item.school) { return; }
+    const lowerCaseSchoolName = item.school.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    // eslint-disable-next-line consistent-return
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
+  return newArray;
+}
+*/
 
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
@@ -108,8 +135,14 @@ async function mainEvent() {
 
     let cameraList = [];
     
-    
-    // form.addEventListener('input', (event) => );
+    /*
+    form.addEventListener('input', (event) => 
+      console.log('input', event.target.value);
+      const filteredList = filterList(currentList, event.target.value);
+      injectHTML(filteredList);
+      markerPlace(filteredList, pageMap);
+    );
+    */
 
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();

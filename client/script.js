@@ -61,40 +61,23 @@ async function initChart(initLabels, initMarketCapData, targetElement) {
   );
 }
 
-function addData(chart, label, data) {
-  chart.data.labels.push(label);
-  chart.data.datasets.forEach((dataset) => {
-    dataset.data.push(data);
-  });
-  chart.update();
-}
-
-function removeData(chart) {
-  chart.data.labels.pop();
-  chart.data.datasets.forEach((dataset) => {
-    dataset.data.pop();
-  });
-  chart.update();
-}
-
 async function mainEvent() {
   const json = await getData(); // get the json data
   const labelsList = await getProperty(json, 'name'); // extract the labels
   const marketCapList = await getProperty(json, 'market_cap'); // extract the market cap data
 
   // Visualizations
-  let start = 10; // where to start
+  let start = 0; // where to start
   let marketCapSublist = await rotateList(labelsList, start, 10); // rotate the market capital list
   const labelSublist = await rotateList(labelsList, start, 10); // rotate the labels list
 
   const targetElement = document.querySelector('#market_cap_chart'); // get DOM Object for chart
   const marketCapChart = initChart(marketCapSublist, marketCapList, targetElement); // create the chart
 
-  const updateChartForm = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
-  updateChartForm.addEventListener('submit', async (submitEvent) => { // add event listener to the button
+  const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
+  updateChartButton.addEventListener('click', async (submitEvent) => { // add event listener to the button
     submitEvent.preventDefault();
-    console.log('execute!');
-    // If our starting position is longer
+    console.log('execute');
     if (start > json.length) {
       start = json.length - (json.length % 10);
       marketCapSublist = await rotateList(marketCapList, start, json.length % 10);
@@ -102,10 +85,11 @@ async function mainEvent() {
       start += 10;
       marketCapSublist = await rotateList(marketCapList, start, 10);
     }
-    chart.data.labels = labelSublist;
-    chart.data.datasets.forEach((dataset) => {
+    marketCapChart.data.labels = labelSublist;
+    marketCapChart.data.datasets.forEach((dataset) => {
       dataset.data = marketCapSublist;
     });
   });
 }
+
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

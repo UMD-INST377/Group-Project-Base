@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,49 +7,64 @@
     <title>Group Project Base</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <script src="./script.js"></script>
-    <h1>Group 10</h1>
-    <body>
-    <div>
-        <header><h1>NBA Dataset and API</h1></header>
-        <div>
+    <div class=wrapper>
+
+        <h1>Group 10</h1>
+
+        <body>
             <div>
-                <h3>Players</h3>
-                <ol>
-                    <li>Steals</li>
-                    <li>Points</li>
-                    <li>Rebounds</li>
-                </ol>
+                <header>
+                    <h1>NBA Dataset and API</h1>
+                </header>
+                <form action="/api" class="main_form">
+                    <label for="resto"></label>
+                    <input class="input" type="text" name="resto" id="resto">
+                    <button class="button" type="submit" id="get-nba">search</button>
+                </form>
+                <div>
+                    <div>
+                        <h3>Players</h3>
+                        <ol>
+                            <li>Steals</li>
+                            <li>Points</li>
+                            <li>Rebounds</li>
+                        </ol>
+                    </div>
+                    <h4>Teams</h4>
+                    <div>
+                        <h2>Available Conferences</h2>
+                        <div>
+                            <ol>East</ol>
+                            <ol>West</ol>
+                        </div>
+                        <h2>Available Divisions</h2>
+                        <div>
+                            <ol>Atlantic</ol>
+                            <ol>Central</ol>
+                            <ol>Northwest</ol>
+                            <ol>Pacific</ol>
+                            <ol>Southeast</ol>
+                            <ol>Southwest</ol>
+                        </div>
+                        <div>
+                            <p><strong>Steals</strong></p>
+                            <p><strong>Total 3 Pointers Made</strong></p>
+                            <ol>
+                                <li>James Harden</li>
+                                <li>Jaylen Brown</li>
+                                <li>Stephen Curry</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h4>Teams</h4>
-            <div>
-                <h2>Available Conferences</h2>
-                <div>
-                    <ol>East</ol>
-                    <ol>West</ol>
-                </div>
-                <h2>Available Divisions</h2>
-                <div>
-                    <ol>Atlantic</ol>
-                    <ol>Central</ol>
-                    <ol>Northwest</ol>
-                    <ol>Pacific</ol>
-                    <ol>Southeast</ol>
-                    <ol>Southwest</ol>
-                </div>
-                <div>
-                    <p><strong>Steals</strong></p>
-                    <p><strong>Total 3 Pointers Made</strong></p>
-                    <ol>
-                        <li>James Harden</li>
-                        <li>Jaylen Brown</li>
-                        <li>Stephen Curry</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
     </div>
-    <footer><p>Link to Github page: <a href='https://github.com/meche234/Group10-Project-Base'>Group 10</a>.</p></footer>
+    <footer>
+        <p>Link to Github page: <a href='https://github.com/meche234/Group10-Project-Base'>Group 10</a>.</p>
+    </footer>
+    <script src="./script.js"></script>
 </body>
+
 </html>

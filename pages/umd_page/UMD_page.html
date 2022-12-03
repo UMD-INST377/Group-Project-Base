@@ -32,9 +32,7 @@
               value="medium_term"
             />
             <label title="top songs in last 6 months" for="medium_term"
-              >medium term</label
-            >
-
+              >medium term</label>
             <input
               title="top songs in last 4 weeks"
               type="radio"
@@ -45,7 +43,6 @@
             <label title="top songs in last 4 weeks" for="short_term"
               >Short term</label
             ><br />
-
             <button type="load" id="load_button">Pull Songs</button>
             <button type="load" id="load_button_2">Pull Albums</button>
           </fieldset>
@@ -57,14 +54,19 @@
       </div>
       <!-- Graph Section -->
       <div class="graph_area">
-        <form>
+        <form class="graph-form">
           <button id="graph_load">Load Graph</button>
-          <button id="graph_load_2">Load Top Album Information Graph</button>
         </form>
+     <form>
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+      <button id="graph_load_2">Load Top Album Information Graph</button>
+     </form>
+          
+      </div>
+        </div>
         <canvas id="myChart"></canvas>   
       </div>
-
-    <script src="script2.js"></script>
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>

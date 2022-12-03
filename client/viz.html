@@ -27,10 +27,13 @@
         </header>
     <!--------------------------->
 
-
-    <button onclick="fetchData()"> Fetch </button>
-    <button onclick="getAgency()"> Fetch Agency</button>
-    <button onclick="getZip()"> Fetch Agency</button>
+        <div class = "container">
+          <button class = "button" onclick="fetchData()"> Fetch </button>
+          <button class = "button" onclick="getPayee()"> Fetch Payee</button>
+          <button class = "button" onclick="getAgency()"> Fetch Agency</button>
+          <button class = "button" onclick="getZip()"> Fetch Zip</button>
+          <button class = "button" onclick="getAmount()"> Fetch Amount</button>
+        </div>
 
 
         
@@ -40,7 +43,8 @@
 
         <script>
 
-      
+          
+          // Code for the buttons //
           async function fetchData() {
             const url = "https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json";
             const response = await fetch(url);
@@ -50,27 +54,46 @@
             return dataPoints;
           };
 
-
-          fetchData().then(dataPoints => {
-            const payeeData = dataPoints.map(function(index){
-              return index.payee_name
+          async function getPayee() {
+            fetchData().then(dataPoints => {
+              const payeeDat = dataPoints.map(function(index){
+                return index.payee_name
+              })
+              console.log(payeeDat);
             })
-            const agencyData = dataPoints.map(function(index){
-              return index.agency
+          };
+          async function getAgency() {
+            fetchData().then(dataPoints => {
+              const agencyDat = dataPoints.map(function(index){
+                return index.agency
+              })
+              console.log(agencyDat);
             })
-            const zipData = dataPoints.map(function(index){
-              return index.zip_code
+          };
+          async function getZip() {
+            fetchData().then(dataPoints => {
+              const zipDat = dataPoints.map(function(index){
+                return index.zip_code
+              })
+              console.log(zipDat);
             })
-            const amountData = dataPoints.map(function(index){
-              return index.amount
+          };
+          async function getAmount() {
+            fetchData().then(dataPoints => {
+              const amountDat = dataPoints.map(function(index){
+                return index.amount
+              })
+              console.log(amountDat);
             })
+          };
+          // Code for the buttons // top
 
-            console.log(agencyData);
+          function count(list){
 
-            Chart.config.data.labels = agencyData;
-            Chart.update();
-
-          })
+            list.forEach(element => {
+              
+            });
+          }
 
           const ctx = document.getElementById('chart');
         

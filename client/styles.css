@@ -255,4 +255,9 @@ form label {
     font-size: smaller;
     font-weight: 250;
   }
+  .button {
+    float: left;
+    border: 1px solid green;
+  }
+
 }

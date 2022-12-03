@@ -14,7 +14,7 @@ fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
     let placeHolder = document.querySelector("#data-output");
     let out = "";
 
-    num = 1;
+    let num = 1;
     for(let product of products) {
         out += `
         <tr> 
@@ -29,21 +29,3 @@ fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
 
     placeHolder.innerHTML = out;
 })
-
-
-
-
-//The button is image code
-let slideIndex = 0;
-showSlides();
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none"; 
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1} 
-  slides[slideIndex-1].style.display = "block"; 
-  setTimeout(showSlides, 10000); // Change image every 2 seconds
-}

@@ -37,7 +37,7 @@ function initChart(chart) {
   );
 }
 async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json'; // remote URL! you can test it in your browser
+  const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json'; // remote URL! you can test it in your browser
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json(); // the data isn't json until we access it using dot notation
   const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
@@ -45,6 +45,16 @@ async function getData() {
 }
 async function mainEvent() {
   const ctx = document.querySelector('#myChart');
+  const results = await fetch('/api/foodServicePG');
+  const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
+  console.table(arrayFromJson.data);
+
+  // in your browser console, try expanding this object to see what fields are available to work with
+  // for example: arrayFromJson.data[0].name, etc
+  console.log(arrayFromJson.data[0]);
+
+  // this is called "string interpolation" and is how we build large text blocks with variables
+  console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
   initChart(ctx);
   const chartData = await getData();
 

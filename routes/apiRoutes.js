@@ -2,9 +2,10 @@
 import express from 'express';
 import fetch from 'node-fetch';
 
-import foodService from './crimeData.js';
-
+// import loadFoodServiceData from './crime.js';
+import loadFoodServiceData from './crimeData.js';
 const router = express.Router();
+router.use(loadFoodServiceData);
 
 router.get('/', (req, res) => {
   res.send('Welcome to the UMD Dining API!');
@@ -13,6 +14,6 @@ router.get('/', (req, res) => {
 // Generic API inclusion demonstration
 // Replace this with the group member's actual route
 // This leads to /api/member1
-router.use('/foodService', foodService);
+router.use('/crimeData', loadFoodServiceData);
 
 export default router;

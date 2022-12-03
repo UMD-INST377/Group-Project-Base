@@ -24,10 +24,27 @@ function initChart(chart, object) {
   );
 }
 
+async function mainEvent() {
+  const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
+  const submit = document.querySelector('#get-resto'); // get a reference to your submit button
+  const loadAnimation = document.querySelector('.lds-ellipsis');
+  const chartTarget = document.querySelector('#myChart');
+  submit.style.display = 'none'; 
+
+  const results = await fetch('/api/littertrak');
+  const arrayFromJson = await results.json();
+  
+  const chartData = await getData();
+  
+  
+}
+
 async function getData() {
-  const url = 'insert link to data here';
+  const url = 'https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner/data';
   const data = await fetch(url);
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
   return reply;
 }
+
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

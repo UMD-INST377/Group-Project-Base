@@ -35,6 +35,21 @@ function filterList(list, filterInputValue) {
   });
 }
 
+function injectHTML(list) {
+  console.log('fired injectHTML');
+  const target = document.querySelector('#property_list');
+  target.innerHTML = '';
+
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
+
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item.property_id;
+    listEl.appendChild(el);
+  });
+}
+
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
   const data = await fetch(url);

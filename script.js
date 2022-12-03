@@ -1,3 +1,5 @@
+// const { isPrimitive } = require("sequelize/types/utils");
+
 function initChart(chart) {
   // const ctx = document.getElementById('myChart');
 
@@ -22,7 +24,14 @@ function initChart(chart) {
 }
 
 function processData(array) {
-  
+  return array.reduce((collection, item) => {
+    if (!collection[item.primary_artist]) {
+      collection[item.primary_artist] = [item];
+    } else {
+      collection[item.primary_artist].push(item);
+    }
+    return collection;
+  }, {});
 }
 
 const options = {
@@ -34,10 +43,9 @@ const options = {
 };
 
 async function getData() {
-  const url = 'https://genius.p.rapidapi.com/search?q=Kendrick%20Lamar';
+  const url = 'https://genius.p.rapidapi.com/artists/70/songs';
   const data = await fetch(url, options);
   const json = await data.json();
-  const reply = json.filter()
   return json;
 }
 async function mainEvent() {
@@ -46,7 +54,9 @@ async function mainEvent() {
   console.log('Data recived', data);
   const chartTarget = document.querySelector('#myChart');
 
-  const myChart = initChart(chartTarget);
   const chartData = await getData();
+  const processedData = processData(chartData);
+  console.log(processData)
+  const myChart = initChart(chartTarget, processedData);
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

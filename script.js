@@ -53,20 +53,19 @@ async function mainEvent() {
   );
 
   const pageMap = initMap();
-  const form = document.querySelector('.main_form');
+  const mapForm = document.querySelector('.map_form');
   const propMapInput = document.querySelector('#prop_map');
-  const clear = document.querySelector('#clear');
   markerPlace(data, pageMap);
 
   if (data?.length > 0) {
-    form.addEventListener('input', (event) => {
+    mapForm.addEventListener('input', (event) => {
       console.log(event.target.value);
       const filteredList = filterList(data, event.target.value);
       markerPlace(filteredList, pageMap);
     });
   }
 
-  clear.addEventListener('click', (event) => {
+  mapForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     propMapInput.value = '';

@@ -15,7 +15,7 @@ legend,
 option,
 select,
 textarea {
-  font-family: tahoma, verdana, arial, STHeiTi, simsun, sans-serif
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1,
@@ -29,7 +29,7 @@ h6 {
 }
 
 * {
-  font-family: tahoma, verdana, arial, STHeiTi, simsun, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   font-family: Helvetica;

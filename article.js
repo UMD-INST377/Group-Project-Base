@@ -69,7 +69,7 @@ function showdata (maindata) {
       plugins: {
         title: {
           display: true,
-          text: 'Artists followers',/* the name of the chart */
+          text: 'Artists Followers',/* the name of the chart */
         }
       },
     }

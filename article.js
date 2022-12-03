@@ -95,12 +95,12 @@ document.querySelector('#submit').addEventListener('click', function () {
     fetch(`https://api.spotify.com/v1/artists?ids=${q}`, {
       method: 'GET',
       headers: { 'Authorization': 'Bearer ' + localdata.access_token }
-    }).then(response => response.json())// resolve readable data
+    }).then(response => response.json())     // resolve readable data
       .then(data => {
         maindata = data;
         showdata(maindata)
       })// resolve use then
-      .catch(err => console.log("Oh, error", err))// if not use catch 
+      .catch(err => console.log("crashedddddddd", err))      // if not use catch 
   }
 })
 
@@ -142,7 +142,7 @@ document.querySelector('#max').addEventListener('click', function () {
     showdata(result)
   }
 })
-
+// this is the function to see who is bigger
 function dateData (property) {
   return function (a, b) {
     var value1 = a[property];

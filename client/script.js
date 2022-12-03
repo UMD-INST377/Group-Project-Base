@@ -35,10 +35,10 @@ async function initChart(initLabels, initMarketCapData, targetElement) {
   */
 
   const data = {
-    labels: labels,
+    labels: initLabels,
     datasets: [{
       label: 'Market Cap',
-      data: marketCapData
+      data: initMarketCapData
     }]
   };
 
@@ -61,10 +61,6 @@ async function initChart(initLabels, initMarketCapData, targetElement) {
   );
 }
 
-async updateMarketCapChart(chart, labels, marketCap) {
-  let newLabels = []; 
-}
-
 function addData(chart, label, data) {
   chart.data.labels.push(label);
   chart.data.datasets.forEach((dataset) => {
@@ -81,17 +77,23 @@ function removeData(chart) {
   chart.update();
 }
 
-
 async function mainEvent() {
   const data = getData();
   const json = await data.json(); // get the json data
-  const labels = getProperty(json, 'name');
-  const marketCap = getProperty(json, 'market_cap');
+  const labels = getProperty(json, 'name'); // extract the labels
+  const marketCap = getProperty(json, 'market_cap'); // extract the market cap data
 
   // Visualizations
-  const chartTarget = document.querySelector('#myChart');
-  const marketCapChart = initChart(labels, marketCap);
-  const filterListButton = document.querySelector('myBtn', async () => {
+  let start = 10; // stores the index of the last element in the sublist
+  let marketCapitalSublist = rotateList(labels, start, 10); // rotate the market capital list
+  let labelSublist = rotateList(labels, start, 10); // rotate the labels list
+  
+  const targetElement = document.querySelector('#market_cap_chart'); // get DOM Object for chart
+  const marketCapChart = initChart(labels, marketCap, targetElement); // create the chart
+  const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
+
+  let start = 10; // where to start
+  updateChartButton.addEventListener('submit', async () => { // add event listener to the button
     
   });
 }

@@ -28,6 +28,11 @@
     <!--------------------------->
 
 
+    <button onclick="fetchData()"> Fetch </button>
+    <button onclick="getAgency()"> Fetch Agency</button>
+    <button onclick="getZip()"> Fetch Agency</button>
+
+
         
     <!---Code for chart Visual---------------->
 
@@ -35,39 +40,42 @@
 
         <script>
 
-          PayeeArr = [];
-          AgencyArr = [];
-          ZipCodeArr = [];
-          AmountArr = [];
+      
+          async function fetchData() {
+            const url = "https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json";
+            const response = await fetch(url);
 
-          fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
-          .then(function(response){
-              return response.json();
+            const dataPoints = await response.json();
+            console.log(dataPoints);
+            return dataPoints;
+          };
+
+
+          fetchData().then(dataPoints => {
+            const payeeData = dataPoints.map(function(index){
+              return index.payee_name
+            })
+            const agencyData = dataPoints.map(function(index){
+              return index.agency
+            })
+            const zipData = dataPoints.map(function(index){
+              return index.zip_code
+            })
+            const amountData = dataPoints.map(function(index){
+              return index.amount
+            })
+
+            console.log(agencyData);
+
+            Chart.config.data.labels = agencyData;
+            Chart.update();
+
           })
-          .then(function(contentList){
-
-            for( let i = 0; i < contentList.length; i++){
-
-              
-
-              
-              console.log(contentList[i.element.agency]);
-              // AgencyArr += document.getElementById("agency");
-              // ZipCodeArr += document.getElementById("zip_code");
-              // AmountArr += document.getElementById("amount");
-              
-            }
-          })
-          
-
-
-
-
 
           const ctx = document.getElementById('chart');
         
           new Chart(ctx, {
-            type: 'bar',
+            type: 'doughnut',
             data: {
               labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
               datasets: [{
@@ -76,13 +84,7 @@
                 borderWidth: 1
               }]
             },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
+        
           });
 
         </script>

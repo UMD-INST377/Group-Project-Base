@@ -6,6 +6,7 @@
 /* eslint-disable no-console */
 
 import { Chart } from "chart.js/auto";
+import fs from 'fs';
 
 async function getData() {
   const url = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc';
@@ -57,6 +58,14 @@ async function initChart(targetElement, jsonObject) {
 async function mainEvent() {
   let data = await getData(); // get the json data
   let chartTarget = document.querySelector('#myChart');
-  initChart(target, data);
+  // initChart(target, data);
+
+  fs.writeFile('crypto-data.txt', data, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('success!');
+    }
+  });
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
+import {fs} from 'fs';
+
 async function initChart(targetElement, jsonObject) {
   /*
   targetElement: The DOM object where we want to insert the visualization
@@ -57,6 +59,16 @@ async function getData() {
 async function mainEvent() {
   const data = await getData(); // get the json data
   const chartTarget = document.querySelector('#myChart');
+
+  console.log('started!');
+  fs.writeFile('crypto-data.txt', data, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('success!');
+    }
+  });
+
   initChart(chartTarget, data);
 }
 

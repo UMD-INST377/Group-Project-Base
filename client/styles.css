@@ -74,7 +74,7 @@ h3 {
 }
 
 .box {
-  background-color: rgba(46, 221, 177, 0.4);
+  background-color: rgb(255, 255, 255);
   border: 2px solid;
   border-radius: 4px;
 
@@ -91,6 +91,14 @@ h3 {
   padding: 1.5rem;
 }
 
+.search_bar {
+  display: flex;
+}
+
+.submit_btn {
+  display: inline-block;
+}
+
 form input {
   /* This is a hack to make sure our boxes line up with one another nicely */
   width: 100%;
@@ -104,6 +112,20 @@ form input {
   border-radius: 4px;
 }
 
+#prop_info {
+  /* This is a hack to make sure our boxes line up with one another nicely */
+  width: 100%;
+  width: -moz-available; /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+
+  /* here we are setting white space correctly */
+  margin-bottom: 0rem;
+  height: 2rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
 form label {
   width: 100%;
   width: -moz-available; /* WebKit-based browsers will ignore this. */
@@ -112,6 +134,17 @@ form label {
   align-items: flex-start;
 
   display: block; /* this turns the label text into a box we can set margins on */
+  margin-bottom: 0.5rem;
+}
+
+form.property_form label {
+  width: 100%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
+  align-items: flex-start;
+  justify-content: center;
+  display: flex;
   margin-bottom: 0.5rem;
 }
 

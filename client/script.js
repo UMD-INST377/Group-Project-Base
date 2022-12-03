@@ -20,22 +20,10 @@ async function mainEvent() {
   initChart(chartTarget);
 }
 
-function notNull(array) {
-  return array.map((item) => {
-    if (item.weight.pounds !== null) {
-      return item.weight.pounds;
-    }
-  });
-}
-function initChart(chart) {
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June'
-  ];
+const team_players = document.querySelectorAll('player');
+const player_list = Array.from(team_players);
+const totalPlayers = player_list.length;
+
 
   const data = {
     label: labels,
@@ -55,5 +43,11 @@ function initChart(chart) {
     chart,
     config
   ));
+function show_players_team() {
+  player_list.forEach((player) => {
+    player.classList.add('visible');
+  });
+  console.log
 }
+
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
-async function initChart(targetElement, jsonObject) {
+function initChart(targetElement, jsonObject) {
   /*
   targetElement: The DOM object where we want to insert the visualization
   dataObject: The Object containing the information in a one-to-one key-value form
@@ -14,11 +14,11 @@ async function initChart(targetElement, jsonObject) {
   const currencyDetails = currencies.map((item) => jsonObject[item]); // Get the cryptocurrency data
   console.log(currencyDetails)
 
-  const currencyNames = currencies.map((currency) => { // Get the currency names
+  const labels = currencies.map((currency) => { // Get the currency names
     const info = currencyDetails[currency];
     return info.name;
   });
-  console.log(currencyNames)
+  console.log(labels)
 
   const marketCapData = currencies.map((currency) => { // Get the market cap for each cryptocurrency
     const info = currencyDetails[currency];
@@ -26,7 +26,7 @@ async function initChart(targetElement, jsonObject) {
   });
 
   const data = {
-    labels: currencyNames,
+    labels: labels,
     datasets: [{
       label: 'Market Cap',
       data: marketCapData
@@ -52,6 +52,8 @@ async function initChart(targetElement, jsonObject) {
   );
 }
 
+function shappedDataforBarChart(json){}
+
 async function getData() {
   /* Get the data asynchronously */
   const url = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc'; // remote URL! you can test it in your browser
@@ -65,7 +67,14 @@ async function getData() {
 async function mainEvent() {
   const data = await getData(); // get the json data
   const chartTarget = document.querySelector('#myChart');
-  initChart(chartTarget, data);
+  const element = document.querySelector("#myBtn");
+  const myChart = initChart(chartTarget, data);
+
+  /* */
+  element.addEventListener("click", function() {
+    document.querySelector("#test").innerHTML = "test";
+    //code to make button do something goes here.
+  });
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

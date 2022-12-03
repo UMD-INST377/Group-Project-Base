@@ -54,7 +54,8 @@ async function mainEvent() {
 
   const pageMap = initMap();
   const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#get-prop');
+  const propMapInput = document.querySelector('#prop_map');
+  const clear = document.querySelector('#clear');
   markerPlace(data, pageMap);
 
   if (data?.length > 0) {
@@ -64,6 +65,13 @@ async function mainEvent() {
       markerPlace(filteredList, pageMap);
     });
   }
+
+  clear.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    propMapInput.value = '';
+    markerPlace(data, pageMap);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

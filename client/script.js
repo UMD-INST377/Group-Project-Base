@@ -24,7 +24,7 @@ const team_players = document.querySelectorAll('player');
 const player_list = Array.from(team_players);
 const totalPlayers = player_list.length;
 
-function initChart() {
+function initChart(chart) {
   const data = {
     label: labels,
     dataset: [{

@@ -18,6 +18,9 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-image: url("Background_Image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 
 
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
@@ -125,6 +128,15 @@ h3 {
     .box {
       background-color: #f8f8f8;
       border-radius: 10px;
+      box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+      width: fit-content;
+      height:fit-content;
+      padding: 1.5rem;
+      margin: 0 auto;
+    }
+    .chartBox {
+      background-color: #f8f8f8;
+      border-radius: 50px;
       box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
       width: fit-content;
       height:fit-content;

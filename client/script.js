@@ -17,6 +17,10 @@ let firstdone = false;
 
 const output = document.getElementById("data").innerHTML;
 
+function injectHTML {
+
+}
+
     
 async function getFilmTitle(name){
   let response = await fetch(name)
@@ -96,4 +100,10 @@ async function intersect() {
 
   document.getElementById("h3").innerHTML = "People in common: " + filteredArray;
 }
+
+async function mainEvent() {
+  const form = document.querySelector('.main_form');
+  const submit = document.querySelector('')
+}
+
 //document.getElementById("demo").innerHTML = n;

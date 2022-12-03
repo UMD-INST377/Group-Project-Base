@@ -96,4 +96,11 @@ async function intersect() {
 
   document.getElementById("h3").innerHTML = "People in common: " + filteredArray;
 }
+
+async function mainEvent() {
+  const form = document.querySelector('.main_form');
+  const submit = document.querySelector('#get-film');
+  
+  const results = await fetch('https://imdb-api.com/en/API/Search/');
+}
 //document.getElementById("demo").innerHTML = n;

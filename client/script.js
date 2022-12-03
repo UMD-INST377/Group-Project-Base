@@ -72,12 +72,15 @@ async function mainEvent() {
   let labelSublist = rotateList(labelsList, start, numOfElements); // rotate the labels list
   let marketCapSublist = rotateList(marketCapList, start, numOfElements); // rotate the market capital list
 
-  const targetElement = document.querySelector('#market_cap_chart'); // get DOM Object for chart
-  const marketCapChart = initChart(labelSublist, marketCapSublist, targetElement); // create the chart
+  const targetElement = document.querySelector('#market-cap-chart'); // get DOM Object for chart
+  const marketCapChart = initChart(labelSublist, marketCapSublist, targetElement); // initialize the chart
 
   const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
   updateChartButton.addEventListener('click', async (submitEvent) => { // add event listener to the button
-    submitEvent.preventDefault();
+    submitEvent.preventDefault(); // stop the event from causing a redirect
+
+    // increase the starting index
+    start += 10;
 
     if (start > json.length) {
       start = json.length - (json.length % 10);
@@ -88,10 +91,12 @@ async function mainEvent() {
       start = 0;
     } else {
       numOfElements = 10;
-      start += 10;
       labelSublist = rotateList(labelsList, start, numOfElements);
       marketCapSublist = rotateList(marketCapList, start, numOfElements);
     }
+
+    console.log(marketCapChart.data.labels);
+    marketCapChart.data.datasets.forEach((dataset) => console.log(dataset.data));
 
     // Remove old data from chart
     while (marketCapChart.data.labels.length > 0) {
@@ -106,6 +111,7 @@ async function mainEvent() {
       const newMarketCap = marketCapSublist[i];
       marketCapChart.data.datasets.forEach((dataset) => dataset.data.push(newMarketCap));
     }
+    marketCapChart.update();
   });
 }
 

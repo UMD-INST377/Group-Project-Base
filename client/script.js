@@ -1,5 +1,5 @@
-function injectHTML(list) {
-  let target = document.querySelector("#rlist");
+function injectHTML(list,elehtml) {
+  let target = document.querySelector(elehtml);
   target.innerHTML = '';
 
   // populate table head
@@ -111,7 +111,7 @@ async function mainEvent() {
   const findata = await resp.json();
   if (findata.length > 0) {
     addButt();
-    injectHTML(findata);
+    injectHTML(findata,'#rlist');
   }
 
 

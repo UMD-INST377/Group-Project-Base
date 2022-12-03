@@ -24,6 +24,17 @@ function markerPlace(array, map) {
   });
 }
 
+function filterList(list, filterInputValue) {
+  return list.filter((item) => {
+    if (!item.street_number.concat(' ', item.street_name)) {
+      return;
+    }
+    const lowerCaseName = item.street_number.concat(' ', item.street_name.toLowerCase);
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
+}
+
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
   const data = await fetch(url);
@@ -42,7 +53,17 @@ async function mainEvent() {
   );
 
   const pageMap = initMap();
+  const form = document.querySelector('.main_form');
+  const submit = document.querySelector('#get-prop');
   markerPlace(data, pageMap);
+
+  if (data?.length > 0) {
+    form.addEventListener('input', (event) => {
+      console.log(event.target.value);
+      const filteredList = filterList(data, event.target.value);
+      markerPlace(filteredList, pageMap);
+    });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

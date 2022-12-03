@@ -75,7 +75,7 @@ h3 {
 
 .box {
   background-color: rgba(46, 221, 177, 0.4);
-  border: 2px dashed;
+  border: 2px solid;
   border-radius: 4px;
 
   width: fit-content;
@@ -121,7 +121,6 @@ form label {
   /* Rules in here will only apply when a screen is the correct size */
   /* check it out by using your developer tools to shrink your screen-size */
   .container {
-    background-color: rgba(52, 228, 219, 0.65);
     flex-direction: column;
     justify-content: center;
     align-items: center;

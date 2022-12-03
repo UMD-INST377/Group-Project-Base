@@ -77,6 +77,21 @@ body {
   margin: 0 auto;
 }
 
+#static{
+  width: 500px;
+  height: 450px;
+}
+
+#results{
+  min-height: 300px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 form input {
   width: 100%;
   width: fill-available;
@@ -165,6 +180,7 @@ form label {
     background-color: #ffe5b4;
     color: white;
     padding: 16px;
+    margin: 2rem;
     font-size: 1rem;
     font-weight: bold;
     color: #000000;

@@ -20,7 +20,7 @@ async function rotateList(array, start, numOfElements) {
   if (start > array.length - 1) {
     start = 0;
   }
-  for (let i = start + numOfElements; i >= start; i--) {
+  for (let i = start; i < start + numOfElements; i++) {
     retval.push(array[i]);
   }
   return retval;
@@ -88,17 +88,19 @@ async function mainEvent() {
   const labelSublist = await rotateList(labelsList, start, 10); // rotate the labels list
 
   const targetElement = document.querySelector('#market_cap_chart'); // get DOM Object for chart
-  const marketCapChart = initChart(labelsList, marketCapList, targetElement); // create the chart
-  const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
+  const marketCapChart = initChart(marketCapSublist, marketCapList, targetElement); // create the chart
 
-  updateChartButton.addEventListener('submit', async () => { // add event listener to the button
+  const updateChartForm = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
+  updateChartForm.addEventListener('submit', async (submitEvent) => { // add event listener to the button
+    submitEvent.preventDefault();
+    console.log('execute!');
     // If our starting position is longer
     if (start > json.length) {
       start = json.length - (json.length % 10);
-      marketCapSublist = rotateList(marketCapList, start, json.length % 10);
+      marketCapSublist = await rotateList(marketCapList, start, json.length % 10);
     } else {
       start += 10;
-      marketCapSublist = rotateList(marketCapList, start, 10);
+      marketCapSublist = await rotateList(marketCapList, start, 10);
     }
     chart.data.labels = labelSublist;
     chart.data.datasets.forEach((dataset) => {

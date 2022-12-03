@@ -1,0 +1,66 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo a Page Send</title>
+  </head>
+  <body>
+    <!-- classic use of in-page styling -->
+    <!--
+        This and the JS below are all written in the same file 
+        because it is hard to route requests from this page to the server's "static" routes
+
+        an image file, for example, would be on a totally different page route
+    -->
+    <style>
+        .demo_container {
+          margin: 40px auto;
+          max-width: 650px;
+          line-height: 1.6;
+          font-size: 18px;
+          color: #444;
+          padding: 0 10px;
+        }
+    </style>
+    <div class="demo_container">
+        <h2>Hello world!</h2>
+        <h3 id="target">Hello world!</h3>
+        <p>This is an HTML page sent by touching an api route.</p>
+        <p>The method of loading this page is very close to the default way the internet loads a page, but not exactly the same.</p>
+        <ul>
+          <li>
+            Different than a main page because the <em>filename</em> is not the same as the <em>route</em> name
+          </li>
+          <li>
+            Look at the address bar to find our "route"
+            <ul>
+              <li>It will be something like '/api/templateDemo'</li>
+            </ul>
+          </li>
+          <li>Check out /server/templates/demo.html to find our "filename" <ul>
+            <li>This also contains the JS that is injecting your restaurant name from the URL</li>
+          </ul></li>
+          <li>Check out /server/apiRoutes.js at line 38 to find the API response that gave us this page</li>
+          <p>
+            If this were PHP days, this file would be static information about your website. In fact, when "dynamic" was first coined, what it meant was partly dynamic, like this page.
+          </p>
+          <p>
+            In that case, a client would send a request to the server, and receive a full page back. That model is rare now, because it does not work well with multiple types of client devices - phones, laptops, watches and so on. It's much easier to write an application for the device that will digest information and present it in a device-specific format.
+          </p>
+          <p>
+            CSS can help a bunch with that - the internet is fluid! - but it is easier to divide human labour into more specific design work. This page has seven lines of CSS on it, which is how it comes to look slightly better than "no CSS at all."
+          </p>
+          <p>
+            Even though static page retrieval is very fast after the first load, we do not focus on it in this class.
+          </p>
+        </ul>
+    </div>
+    <script>
+      // classic use of javascript in-page
+      const params = (new URL(document.location)).searchParams;
+      const injector = params.get("resto") || 'none submitted';
+      document.querySelector("#target").innerText= `Your restaurant name is: ${injector}`;
+    </script>
+  </body>
+</html>

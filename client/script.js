@@ -12,7 +12,7 @@ async function getData() {
 }
 
 async function getProperty(json, property) {
-  return json.forEach((item) => item[property]);
+  return json.map((item) => item[property]);
 }
 
 async function rotateList(array, start, numOfElements) {
@@ -78,35 +78,32 @@ function removeData(chart) {
 }
 
 async function mainEvent() {
-  const data = getData();
-  const json = await data.json(); // get the json data
-  const labelsList = getProperty(json, 'name'); // extract the labels
-  const marketCapList = getProperty(json, 'market_cap'); // extract the market cap data
+  const json = await getData(); // get the json data
+  const labelsList = await getProperty(json, 'name'); // extract the labels
+  const marketCapList = await getProperty(json, 'market_cap'); // extract the market cap data
 
   // Visualizations
   let start = 10; // where to start
-  let marketCapSublist = rotateList(labelsList, start, 10); // rotate the market capital list
-  const labelSublist = rotateList(labelsList, start, 10); // rotate the labels list
+  let marketCapSublist = await rotateList(labelsList, start, 10); // rotate the market capital list
+  const labelSublist = await rotateList(labelsList, start, 10); // rotate the labels list
 
   const targetElement = document.querySelector('#market_cap_chart'); // get DOM Object for chart
   const marketCapChart = initChart(labelsList, marketCapList, targetElement); // create the chart
   const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
 
   updateChartButton.addEventListener('submit', async () => { // add event listener to the button
-
+    // If our starting position is longer
     if (start > json.length) {
-      start = json.length;
+      start = json.length - (json.length % 10);
       marketCapSublist = rotateList(marketCapList, start, json.length % 10);
     } else {
       start += 10;
       marketCapSublist = rotateList(marketCapList, start, 10);
     }
-    chart.data.labels = labelSublist; 
+    chart.data.labels = labelSublist;
     chart.data.datasets.forEach((dataset) => {
-      dataset.data = marketCapSublist; 
-    })
+      dataset.data = marketCapSublist;
+    });
   });
 }
-21*+
--+*
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

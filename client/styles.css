@@ -101,7 +101,11 @@ main {
   margin-top: 2rem;
   justify-content: center;
 }
-
+.thumbnail {
+  display: flex;
+  width: 150px;
+  height: 150px;
+}
 .nbaBoxes img {
   width: 200px;
 }

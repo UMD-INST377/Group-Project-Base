@@ -2,8 +2,8 @@ function injectHTML(list) {
   let target = document.querySelector("#rlist");
   target.innerHTML = '';
 
+  // populate table head
   const head = document.createElement('tr');
-
   for (const key of Object.keys(list[0])) {
     const th = document.createElement('th');
     th.innerText = cap(key);
@@ -11,6 +11,7 @@ function injectHTML(list) {
   }
   target.appendChild(head);
 
+  // populate table content
   for (const [key, value] of Object.entries(list)) {
     const tr = document.createElement('tr');
     const row = Object.values(value);
@@ -109,10 +110,10 @@ async function mainEvent() {
   const resp = await fetch(url);
   const findata = await resp.json();
   if (findata.length > 0) {
+    addButt();
     injectHTML(findata);
   }
 
-  addButt();
 
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form');

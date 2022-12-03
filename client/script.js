@@ -63,14 +63,14 @@ async function mainEvent() {
       const filteredList = filterList(data, event.target.value);
       markerPlace(filteredList, pageMap);
     });
+
+    mapForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      propMapInput.value = '';
+      markerPlace(data, pageMap);
+    });
   }
-
-  mapForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    propMapInput.value = '';
-    markerPlace(data, pageMap);
-  });
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

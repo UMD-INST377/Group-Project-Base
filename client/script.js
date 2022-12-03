@@ -26,10 +26,10 @@ function markerPlace(array, map) {
 
 function filterList(list, filterInputValue) {
   return list.filter((item) => {
-    if (!item.street_number.concat(' ', item.street_name)) {
+    if (!item.street_number.concat(' ', item.street_name).concat(' ', item.street_type)) {
       return;
     }
-    const lowerCaseName = item.street_number.concat(' ', item.street_name.toLowerCase);
+    const lowerCaseName = item.street_number.concat(' ', item.street_name.toLowerCase()).concat(' ', item.street_type.toLowerCase());
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });

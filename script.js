@@ -93,7 +93,7 @@ async function intersect() {
 
   const filteredArray = removeDups(y.filter(value => z.includes(value)));
   console.log("In Common: " + filteredArray);
-
   document.getElementById("h3").innerHTML = "People in common: " + filteredArray;
+
+  document.getElementById("cloud").appendChild(document.createElement('img')).src = "https://quickchart.io/wordcloud?text=" + y + z;
 }
-//document.getElementById("demo").innerHTML = n;

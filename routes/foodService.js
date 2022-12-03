@@ -9,7 +9,7 @@ const router = express.Router();
 //
 
 // /////////////////////////////////
-// Spotify Data set Demos
+// Movie Data set Demos
 // /////////////////////////////////
 router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {

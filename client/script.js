@@ -1,12 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
-import {fs} from 'fs';
-
-// async function initChart(targetElement, jsonObject) {
-
 function initChart(targetElement, jsonObject) {
-
   /*
   targetElement: The DOM object where we want to insert the visualization
   dataObject: The Object containing the information in a one-to-one key-value form
@@ -60,6 +55,7 @@ function initChart(targetElement, jsonObject) {
 function shappedDataforBarChart(json){}
 
 async function getData() {
+  /* Get the data asynchronously */
   const url = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc'; // remote URL! you can test it in your browser
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json();
@@ -71,18 +67,14 @@ async function getData() {
 async function mainEvent() {
   const data = await getData(); // get the json data
   const chartTarget = document.querySelector('#myChart');
+  const element = document.querySelector("#myBtn");
+  const myChart = initChart(chartTarget, data);
 
-  console.log('started!');
-  fs.writeFile('crypto-data.txt', data, (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('success!');
-    }
+  /* */
+  element.addEventListener("click", function() {
+    document.querySelector("#test").innerHTML = "test";
+    //code to make button do something goes here.
   });
-
-  initChart(chartTarget, data);
-
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

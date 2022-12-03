@@ -19,7 +19,7 @@ function injectHTML(list) {
 
   list.forEach((item) => {
     const el = document.createElement('li');
-    el.innerText = item.property_id;
+    el.innerText = item.violation_description;
     listEl.appendChild(el);
   });
 }

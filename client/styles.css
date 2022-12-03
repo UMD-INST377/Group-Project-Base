@@ -322,3 +322,7 @@ width: 150px;
 height: 150px;
 }
 
+.chart_container {
+  height: 100%;
+  width: 100%;
+}

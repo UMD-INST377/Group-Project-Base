@@ -2,24 +2,31 @@
 const clientId = 'cb1c6f6066584c86a0e3a39d2c451b65';
 /* Secret */
 const clientSecret = '613a41ee4e6f411e8f0f7c523c554204';
-/* localuserdata */
-let localdata = {};
-/* get token everytime */
-fetch('https://accounts.spotify.com/api/token', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
-  },
-  body: 'grant_type=client_credentials'
-}).then(response => response.json())
-  .then((res) => {
-    console.log(res)
-    localdata = res;
 
-  }).catch((err) => {
-    console.log(err)
-  })
+/* localuserdata */
+let localdata = "";
+/* get token */
+let getToken = async () => {
+  const maindata = localdata = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+    },
+    body: 'grant_type=client_credentials'
+  });
+  const data = await maindata.json();
+  return data;
+};
+/* get data */
+getToken().then((res) => {
+  localdata = res;
+  console.log(localdata)
+}).catch((err) => {
+  /* return error */
+  console.log(err)
+})
+
 
 var maindata = '';
 //chart dom object
@@ -38,15 +45,15 @@ document.querySelector('#reset').addEventListener('click', function () {
 // draw the chart
 function showdata (maindata) {
   let data = maindata;
-// return name 
+  // return name 
   var labels = data.artists.map((ele) => {
     return ele.name
   })
-// return  followers total number
+  // return  followers total number
   var followers = data.artists.map((ele) => {
     return ele.followers.total
   })
-// return background color 
+  // return background color 
   var backgroundColor = [];
   followers.forEach((ele, i) => {
     backgroundColor.push(choseRgb().toString())
@@ -108,30 +115,30 @@ document.querySelector('#submit').addEventListener('click', function () {
 
 function choseRgb () {
 
-// use math random to make chart color random 
+  // use math random to make chart color random 
   let r = Math.floor(Math.random() * 256);
 
   let g = Math.floor(Math.random() * 256);
 
   let b = Math.floor(Math.random() * 256);
 
-// return color veriable
+  // return color veriable
   return `rgb(${r},${g},${b})`;
 }
 document.querySelector('#max').addEventListener('click', function () {
-// show the max number 
+  // show the max number 
   console.log(maindata)
- // find the max number
+  // find the max number
   let showFirst = maindata.artists.sort(dateData("followers", true))[0]
   console.log(showFirst)
   let result = { 'artists': [showFirst] };
   if (myChart != '') {
- // reset
+    // reset
     myChart.destroy();
   }
   console.log(result);
   if (maindata != '') {
- // re-render chart 
+    // re-render chart 
     showdata(result)
   }
 })

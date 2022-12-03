@@ -14,22 +14,23 @@
       <nav>
         <ul>
             <li><a href="index2.html">Home</a></li>
-            <li><a href="#">Comedy</a></li>
-            <li><a href="#">Horror</a></li>
-            <li><a href="#">Chart</a></li>
+            <li><a href="index3.html">Comedy</a></li>
+            <li><a href="index4.html">Horror</a></li>
+            <li><a href="index.html">Chart</a></li>
         </ul>
     </nav>
     </div>
     <div class="container">
       <div class="left box">
-        <h2>Popular Movies</h2>
-        <button onclick="getMovies()">Refresh</button>
+        <h2>Top-Rated Movies</h2>
+        <button id = 'button_1' type="submit">Refresh Graph</button>
         <div class="chart_container">
           <canvas id="myChart"></canvas>
         </div>
       </div>
       <div class="right box">
         <h2>Ratings of the most popular currently airing movies!</h2>
+        <button id = 'button' type="submit">Switch</button>
         <div class="chart_container">
           <canvas id="myChart2"></canvas>
         </div>

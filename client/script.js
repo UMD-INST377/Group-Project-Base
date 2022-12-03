@@ -18,6 +18,7 @@ async function mainEvent() {
   console.log(weight1);
   const chartTarget = document.querySelector('#myChart');
   initChart(chartTarget);
+  document.addEventListener('DOMContentLoaded', async () => mainEvent());
 }
 
 const team_players = document.querySelectorAll('player');
@@ -51,5 +52,3 @@ function show_players_team() {
   });
   console.log
 }
-
-document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -6,7 +6,6 @@ import {fs} from 'fs';
 // async function initChart(targetElement, jsonObject) {
 
 function initChart(targetElement, jsonObject) {
-
   /*
   targetElement: The DOM object where we want to insert the visualization
   dataObject: The Object containing the information in a one-to-one key-value form

@@ -1,7 +1,7 @@
 /* clientId id */
-const clientId = 'e401920d65c744c0b6b85dd07d110aa3';
+const clientId = 'cb1c6f6066584c86a0e3a39d2c451b65';
 /* Secret */
-const clientSecret = '52ed8f6740514deba983ada74ebd19bf';
+const clientSecret = '613a41ee4e6f411e8f0f7c523c554204';
 /* localuserdata */
 let localdata = {};
 /* get token everytime */

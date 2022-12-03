@@ -6,6 +6,10 @@ body {
   background-color: lightgray;
 }
 
+button {
+  align-self: end;
+}
+
 /*
 Class styles
 */
@@ -31,3 +35,22 @@ border-style: solid;
   justify-content: flex-start;
 
 }
+
+.box {
+  margin: 1rem;
+  padding: 1rem;
+  color: black;
+  background-color: lightyellow;
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+  border-radius: 10px;
+  border: 2px;
+  border-style: dashed;
+  }
+
+  .chart_container {
+    height: 70rem;
+  }

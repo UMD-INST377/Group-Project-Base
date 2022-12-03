@@ -1,14 +1,77 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>group 1 Garrett Fisk, Jaeha Song</h1>
-    <script src="./script.js"></script>
-    <b>hello</b>
-</body>
+  <head>
+    <title>Group 1 - Garrett Fisk, Jaeha Song</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""/>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <h1>Group 1 - Garrett Fisk, Jaeha Song</h1>
+      </div>
+
+      <div class="container">
+        <div class="left_section box">
+          <div class="header">
+            <h3>Form Inputs</h3>
+          </div>
+          <form class="box main_form" action="/api">
+            <div>
+                <label for="resto">Filter Restaurant List</label>
+                <input type="text" name="resto" id="resto">
+            </div>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            <button type="submit" id="get-resto">Change Restaurants</button>
+        </form>
+        </div>
+
+        <div class="right_section box">
+          <div class="header">
+            <h2>Local Restaurant Map</h2>
+          </div>
+          <!-- <div id="map"></div> -->
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
+          <div class="box" id="restaurant_list">
+            <p>A list of restaurants from an API.</p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        gfisk777
+        <a
+          href="https://github.com/gfisk777/Group1-Project-Base"
+          target="blank"
+          >Link to gitHub</a
+        >
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
+
+
+<!--
+    This is how to build the CSS-only load animation from loading.io    
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+
+    This is helpful for showing your client-side users when data is loading,
+    since there's otherwise no sign your app is thinking about something!
+
+    Try placing it at the same level in your element tree as your Submit button
+-->

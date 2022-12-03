@@ -27,7 +27,7 @@ function innitChart(chart) {
     labels: labels,
     datasets: [{
       label: 'Player Name',
-      backgroundColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgb(255, 99, 131)',
       borderColor: 'rgb(255, 99, 132)',
       data: [0],
     }]

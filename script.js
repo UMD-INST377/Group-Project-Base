@@ -99,7 +99,7 @@ async function intersect() {
   document.getElementById("cloud").appendChild(document.createElement('img')).src = "https://quickchart.io/wordcloud?text=" + y + z;
 }
 
-}
+
 
 async function mainEvent() {
   const form = document.querySelector('.main_form');
@@ -107,5 +107,5 @@ async function mainEvent() {
   
   const results = await fetch('https://imdb-api.com/en/API/Search/');
 }
-//document.getElementById("demo").innerHTML = n;
+
 

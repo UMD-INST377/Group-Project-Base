@@ -69,9 +69,7 @@ function markerPlace(array, map) {
   });
 } */
 
-function filterList(list, value) {
-  
-}
+// function filterList(list, value) {}
 
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
@@ -110,11 +108,9 @@ async function mainEvent() {
 
     let cameraList = [];
     
-    /*
-    form.addEventListener('input', (event) => 
+    
+    // form.addEventListener('input', (event) => );
 
-    );
-    */
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
       cameraList = processCameras(mapData);

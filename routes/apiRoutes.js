@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import express from 'express';
 import fetch from 'node-fetch';
 

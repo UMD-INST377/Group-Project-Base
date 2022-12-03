@@ -24,7 +24,7 @@ const team_players = document.querySelectorAll('player');
 const player_list = Array.from(team_players);
 const totalPlayers = player_list.length;
 
-
+function initChart() {
   const data = {
     label: labels,
     dataset: [{
@@ -43,6 +43,8 @@ const totalPlayers = player_list.length;
     chart,
     config
   ));
+
+
 function show_players_team() {
   player_list.forEach((player) => {
     player.classList.add('visible');

@@ -64,7 +64,7 @@ async function initChart(initLabels, initMarketCapData, targetElement) {
 function addData(chart, label, data) {
   chart.data.labels.push(label);
   chart.data.datasets.forEach((dataset) => {
-      dataset.data.push(data);
+    dataset.data.push(data);
   });
   chart.update();
 }
@@ -72,7 +72,7 @@ function addData(chart, label, data) {
 function removeData(chart) {
   chart.data.labels.pop();
   chart.data.datasets.forEach((dataset) => {
-      dataset.data.pop();
+    dataset.data.pop();
   });
   chart.update();
 }
@@ -80,22 +80,33 @@ function removeData(chart) {
 async function mainEvent() {
   const data = getData();
   const json = await data.json(); // get the json data
-  const labels = getProperty(json, 'name'); // extract the labels
-  const marketCap = getProperty(json, 'market_cap'); // extract the market cap data
+  const labelsList = getProperty(json, 'name'); // extract the labels
+  const marketCapList = getProperty(json, 'market_cap'); // extract the market cap data
 
   // Visualizations
-  let start = 10; // stores the index of the last element in the sublist
-  let marketCapitalSublist = rotateList(labels, start, 10); // rotate the market capital list
-  let labelSublist = rotateList(labels, start, 10); // rotate the labels list
-  
+  let start = 10; // where to start
+  let marketCapSublist = rotateList(labelsList, start, 10); // rotate the market capital list
+  const labelSublist = rotateList(labelsList, start, 10); // rotate the labels list
+
   const targetElement = document.querySelector('#market_cap_chart'); // get DOM Object for chart
-  const marketCapChart = initChart(labels, marketCap, targetElement); // create the chart
+  const marketCapChart = initChart(labelsList, marketCapList, targetElement); // create the chart
   const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
 
-  let start = 10; // where to start
   updateChartButton.addEventListener('submit', async () => { // add event listener to the button
-    
+
+    if (start > json.length) {
+      start = json.length;
+      marketCapSublist = rotateList(marketCapList, start, json.length % 10);
+    } else {
+      start += 10;
+      marketCapSublist = rotateList(marketCapList, start, 10);
+    }
+    chart.data.labels = labelSublist; 
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data = marketCapSublist; 
+    })
   });
 }
-
+21*+
+-+*
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

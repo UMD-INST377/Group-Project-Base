@@ -104,3 +104,33 @@ height: 100px;
   background-color: yellow;
 }
 
+
+div.players{
+
+  max-width: 300px;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.players.player{
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}*/

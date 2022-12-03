@@ -19,40 +19,15 @@ async function mainEvent() {
   initChart(chartTarget);
 }
 
-function notNull(array) {
-  return array.map((item) => {
-    if (item.weight.pounds !== null) {
-      return item.weight.pounds;
-    }
-  });
-}
-function initChart(chart) {
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June'
-  ];
+const team_players = document.querySelectorAll('player');
+const player_list = Array.from(team_players);
+const totalPlayers = player_list.length;
 
-  const data = {
-    label: labels,
-    dataset: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255,99,132)',
-      borderColor: 'rgb(255,99,132)',
-      data: [0, 10, 5, 2, 20, 30, 45]
-    }]
-  };
-  const config = {
-    type: 'bar',
-    data: data,
-    options: {}
-  };
-  return new Chart(
-    chart,
-    config
-  );
+function show_players_team() {
+  player_list.forEach((player) => {
+    player.classList.add('visible');
+  });
+  console.log
 }
+
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

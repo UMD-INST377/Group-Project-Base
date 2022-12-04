@@ -3,6 +3,7 @@ import express from 'express';
 import fetch from 'node-fetch';
 
 import foodService from './foodService.js';
+import movieRoutes from './movieRoutes.js';
 
 const router = express.Router();
 

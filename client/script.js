@@ -17,7 +17,6 @@ async function mainEvent() {
   const ctx = document.querySelectorAll('#myChart');
   initChart(ctx);
   document.addEventListener('DOMContentLoaded', async () => mainEvent());
-
 }
 
 const team_players = document.querySelectorAll('player');

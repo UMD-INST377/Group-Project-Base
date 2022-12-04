@@ -154,8 +154,10 @@ div.players{
   display: block;
 }*/
 
-.right1 {
+.alt_right{
   position: absolute;
   top: 200px;
   right: 16px;
 }
+
+.box

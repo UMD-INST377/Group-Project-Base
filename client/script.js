@@ -38,36 +38,44 @@ function initMap() {
 //   });
 // }
 
-const districtCities = {
-  1: ['Adelphi', 'Beltsville', 'Calverton', 'College Park', 'Laurel', 'Montpelier', 'South Laurel', 'Vansville', 'West Laurel'],
-  2: ['Adelphi', 'Avondale', 'Brentwood', 'Carole Highlands', 'Chillum', 'Green Meadows', 'Hyattsville', 'Langley Park', 'Lewisdale', 'Mount Rainier', 'North Brentwood'],
-  3: ['Beacon Heights', 'Berwyn Heights', 'College Park', 'East Pines', 'Glenn Dale', 'Glenridge', 'Landover Hills', 'Lanham', 'New Carrollton', 'Riverdale Heights and Hills', 'Riverdale Park', 'Seabrook', 'Templeton Knolls', 'University Park', 'West Lanham Hills', 'Woodlawn'],
-  4: ['Bowie', 'Glenn Dale', 'Greenbelt', 'Westchester Park', 'Seabrook', 'Upper Marlboro'],
-  5: ['Bladensburg', 'Cheverly', 'Edmonston', 'Fairmount Heights', 'Glenarden', 'Landover', 'Colmar Manor', 'Cottage City', 'Springdale', 'Bowie', 'Lanham', 'Hyattsville', 'Landover Hills'],
-  6: ['South Bowie', 'Capitol Heights', 'District Heights', 'Forestville', 'Kettering', 'Largo', 'Mitchellville', 'Upper Marlboro'],
-  7: ['District Heights', 'Bradbury', 'Boulevard Heights', 'Capitol Heights', 'Hillcrest Heights', 'Marlow Heights', 'Seat Pleasant', 'Suitland', 'Morningside'],
-  8: ['Camp Springs', 'Andrews Air Force Base', 'Clinton', 'Forest Heights', 'Fort Washington', 'Glass Manor', 'Marlow Heights', 'Oxon Hill', 'Temple Hills'],
-  9: ['Accokeek', 'Aquasco', 'Baden', 'Brandywine', 'Cheltenham', 'Clinton', 'Eagle Harbor', 'Fort Washington', 'Piscataway', 'Upper Marlboro']
-};
+// const districtCities = {
+//   1: ['Adelphi', 'Beltsville', 'Calverton', 'College Park', 'Laurel', 'Montpelier', 'South Laurel', 'Vansville', 'West Laurel'],
+//   2: ['Adelphi', 'Avondale', 'Brentwood', 'Carole Highlands', 'Chillum', 'Green Meadows', 'Hyattsville', 'Langley Park', 'Lewisdale', 'Mount Rainier', 'North Brentwood'],
+//   3: ['Beacon Heights', 'Berwyn Heights', 'College Park', 'East Pines', 'Glenn Dale', 'Glenridge', 'Landover Hills', 'Lanham', 'New Carrollton', 'Riverdale Heights and Hills', 'Riverdale Park', 'Seabrook', 'Templeton Knolls', 'University Park', 'West Lanham Hills', 'Woodlawn'],
+//   4: ['Bowie', 'Glenn Dale', 'Greenbelt', 'Westchester Park', 'Seabrook', 'Upper Marlboro'],
+//   5: ['Bladensburg', 'Cheverly', 'Edmonston', 'Fairmount Heights', 'Glenarden', 'Landover', 'Colmar Manor', 'Cottage City', 'Springdale', 'Bowie', 'Lanham', 'Hyattsville', 'Landover Hills'],
+//   6: ['South Bowie', 'Capitol Heights', 'District Heights', 'Forestville', 'Kettering', 'Largo', 'Mitchellville', 'Upper Marlboro'],
+//   7: ['District Heights', 'Bradbury', 'Boulevard Heights', 'Capitol Heights', 'Hillcrest Heights', 'Marlow Heights', 'Seat Pleasant', 'Suitland', 'Morningside'],
+//   8: ['Camp Springs', 'Andrews Air Force Base', 'Clinton', 'Forest Heights', 'Fort Washington', 'Glass Manor', 'Marlow Heights', 'Oxon Hill', 'Temple Hills'],
+//   9: ['Accokeek', 'Aquasco', 'Baden', 'Brandywine', 'Cheltenham', 'Clinton', 'Eagle Harbor', 'Fort Washington', 'Piscataway', 'Upper Marlboro']
+// };
 
-function findDistrict(districtObject, city) {
-  let match = 0;
+const districts = [
+  [1, 'Adelphi', 'Beltsville', 'Calverton', 'College Park', 'Laurel', 'Montpelier', 'South Laurel', 'Vansville', 'West Laurel'],
+  [2, 'Adelphi', 'Avondale', 'Brentwood', 'Carole Highlands', 'Chillum', 'Green Meadows', 'Hyattsville', 'Langley Park', 'Lewisdale', 'Mount Rainier', 'North Brentwood'],
+  [3, 'Beacon Heights', 'Berwyn Heights', 'College Park', 'East Pines', 'Glenn Dale', 'Glenridge', 'Landover Hills', 'Lanham', 'New Carrollton', 'Riverdale Heights and Hills', 'Riverdale Park', 'Seabrook', 'Templeton Knolls', 'University Park', 'West Lanham Hills', 'Woodlawn'],
+  [4, 'Bowie', 'Glenn Dale', 'Greenbelt', 'Westchester Park', 'Seabrook', 'Upper Marlboro'],
+  [5, 'Bladensburg', 'Cheverly', 'Edmonston', 'Fairmount Heights', 'Glenarden', 'Landover', 'Colmar Manor', 'Cottage City', 'Springdale', 'Bowie', 'Lanham', 'Hyattsville', 'Landover Hills'],
+  [6, 'South Bowie', 'Capitol Heights', 'District Heights', 'Forestville', 'Kettering', 'Largo', 'Mitchellville', 'Upper Marlboro'],
+  [7, 'District Heights', 'Bradbury', 'Boulevard Heights', 'Capitol Heights', 'Hillcrest Heights', 'Marlow Heights', 'Seat Pleasant', 'Suitland', 'Morningside'],
+  [8, 'Camp Springs', 'Andrews Air Force Base', 'Clinton', 'Forest Heights', 'Fort Washington', 'Glass Manor', 'Marlow Heights', 'Oxon Hill', 'Temple Hills'],
+  [9, 'Accokeek', 'Aquasco', 'Baden', 'Brandywine', 'Cheltenham', 'Clinton', 'Eagle Harbor', 'Fort Washington', 'Piscataway', 'Upper Marlboro']
 
-  const findCity = (c) => {
-    const obj = Object.entries(districtObject);
-    obj.forEach((item) => {
-      const newArray = [].concat.apply([], item);
-      if (newArray.includes(c)) {
-        match = newArray[0];
-      }
-      return match;
-    });
-  };
-  console.log(findCity('Adelphi'));
-  return findCity();
-  // return Object.keys(districtObject).find((key) => object[key] === city);
+];
+
+function findDistrict(districtArray, city) {
+  let match = [];
+  // for (const i of districtArray) {
+  //   if (i.includes(city)) return i[0];
+  // }
+  districtArray.forEach((district) => {
+    if (district.includes(city)) {
+      match.push(district[0]);
+    }
+  });
+  return match.pop();
 }
-console.log(findDistrict(districtCities, 'Bowie'));
+console.log(findDistrict(districts, 'Upper Marlboro'));
 
 async function main() {
   const map = initMap();
@@ -106,17 +114,17 @@ main();
 //   });
 // }
 
-const districts = {
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
-  6: 0,
-  7: 0,
-  8: 0,
-  9: 0
-};
+// const districts = {
+//   1: 0,
+//   2: 0,
+//   3: 0,
+//   4: 0,
+//   5: 0,
+//   6: 0,
+//   7: 0,
+//   8: 0,
+//   9: 0
+// };
 
 // function districtLitters() {
 //   for (let i = 1; i <= 9; i++) {

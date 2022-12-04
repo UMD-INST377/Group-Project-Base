@@ -66,7 +66,6 @@ async function mainEvent() {
 
   const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
   const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the cryptocurrency data
-  console.log(cryptocurrencyJson); 
 
   const labelsList = getProperty(ecosystemJson, 'name'); // extract the labels
   const marketCapList = getProperty(ecosystemJson, 'market_cap'); // extract the market cap data
@@ -116,6 +115,6 @@ async function mainEvent() {
     }
     marketCapChart.update();
   });
-
+}
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

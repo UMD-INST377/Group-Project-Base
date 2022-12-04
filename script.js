@@ -97,9 +97,11 @@ function makeChart() {
     options: {
       scales: {
         y: {
-          beginAtZero: true,
+          beginAtZero: false,
+          min: 30,
           ticks: {
             color: 'white'
+            
           }
 
         },

@@ -131,7 +131,21 @@ h3 {
     border-radius: 10px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(95, 95, 95, 0.19);
     }
-
+    .right-stack {
+      display: flex;
+      flex-direction: column;
+      /* background-color: red; */
+      color: white;
+      align-items: flex-end;
+    }
+    .summary {
+      /* margin-top: 100px; */
+      margin-left: 50px;
+      background-color:rgb(1, 1, 1, 0.6);
+      padding: 8px;
+      align-self: center;
+      border-radius: 10px;
+    }
 
     .box {
       color: white;

@@ -84,7 +84,7 @@ async function mainEvent() {
   updateChartButton.addEventListener('click', async (submitEvent) => { // add event listener to the button
     submitEvent.preventDefault(); // stop the event from causing a redirect
 
-    // increase the starting index8
+    // increase the starting index
     start += 10;
 
     if (start > ecosystemJson.length) {

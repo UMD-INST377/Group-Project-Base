@@ -80,14 +80,6 @@ function processRestaurants(list) {
       */
 }
 
-// function filterList(array, filterInputValue) {
-//   return array.filter((item) => {
-//     const lowerCaseName = item.name.toLowerCase();
-//     const lowerCaseQuery = filterInputValue.toLowerCase();
-//     return lowerCaseName.includes(lowerCaseQuery);
-//   });
-// }
-
 function filterList(array, filterInputValue) {
   return newArray = array.filter((item) => {
     if (!item.clearance_code_inc_type) { return; }
@@ -121,13 +113,43 @@ function markerPlace(array, map) {
   array.forEach((item, index) => {
     // const {coordinates} = item.location;
     // console.log(item.location.latitude);
-    L.marker([item.location.latitude, item.location.longitude]).addTo(map);
+    L.marker([item.location.latitude, item.location.longitude], {alt: item.street_address}).addTo(map).bindPopup(item.street_address);
     if (index === 0) {
       map.setView([item.location.latitude, item.location.longitude], 10);
     }
   });
 }
 
+function initChart(chart) {
+  const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June'
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [0, 10, 5, 2, 20, 30, 45]
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+  return new Chart(
+    chart,
+    config
+  );
+}
 async function mainEvent() {
   /*
         ## Main Event
@@ -140,6 +162,7 @@ async function mainEvent() {
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis');
+  const ctx = document.querySelector('#myChart');
   submit.style.display = 'none'; // let your submit button disappear
 
   /*
@@ -154,8 +177,8 @@ async function mainEvent() {
   const results = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const arrayFromJson = await results.json(); // the data isn't json until we access it using dot notation
 
-  console.log('Results in crime.js', arrayFromJson); // let's check that something's there before we return it
-
+  // console.log('Results in crime.js', arrayFromJson); // let's check that something's there before we return it
+initChart(ctx);
   /*
         Below this comment, we log out a table of all the results using "dot notation"
         An alternate notation would be "bracket notation" - arrayFromJson["data"]

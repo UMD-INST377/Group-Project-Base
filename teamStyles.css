@@ -103,7 +103,7 @@ body {
 .footer {
     position: relative;
     padding: 1rem;
-    background-color: rgb(3, 3, 86);
+    background-color: black;
     font-size: 1.2rem;
     font-weight: 600;
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%); 

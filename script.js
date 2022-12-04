@@ -90,12 +90,25 @@ function makeChart() {
           'rgba(0, 0, 255, 0.4)'],
         borderWidth: 2,
         borderColor: ['blue', 'red', 'yellow', 'green', 'blue']
-      }]
+
+      }],
+      color: 'white'
     },
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: false,
+          min: 30,
+          ticks: {
+            color: 'white'
+            
+          }
+
+        },
+        x: {
+          ticks: {
+            color: 'white'
+          }
         }
       }
     }

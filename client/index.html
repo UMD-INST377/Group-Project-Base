@@ -1,5 +1,6 @@
 <html lang="en">
 
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,25 +14,49 @@
 
 <body>
   <div class="Wrapper">
+
+    <!-- title / top center -->
     <header class="header">
-      <h1>Group #103-17 ;Crypto</h1>
+      <h1>Crypto-Viewer</h1>
     </header>
 
-    <!-- Change categories button -->
-    <div>
-      <button id="update-chart-button">Submit</button>
+    <!-- buttons and bar / top center -->
+  <div class="container">
+    <h2 class="bouncy">Saved</h2>
+    <h2 class="bouncy">Trends</h2>
+
+    <div class="search_box">
+      <button id="search_api">Search</button>
+      <input type="text" placeholder="Search...."></input>
     </div>
 
-    <!-- Visualization -->
-    <div class="box">
+  </div>
+
+  <div class="container">
+    <!-- ??? / top left -->
+    <div class="box top_left"></div>
+
+    <!-- ??? / top right -->
+    <div class="box top_right"></div>
+
+    <!-- Visualization / Buttom left -->
+
+    <div class="box bottom_left">
+      <button id="update-chart-button">Referesh with new list</button>
       <div class="chart_container" style="position: relative; height:auto; width:80vw">
         Crypto data
         <canvas id="market-cap-chart"></canvas>
       </div>
     </div>
 
-    <script src="./script.js"></script>
-  </div class="Wrapper">
+    <!-- ??? / Buttom right -->
+    <div class="box bottom_right"></div>
+
+  </div>
+
+    <script type="module" src="./script.js"></script>
+
+  </div>
 </body>
 
 </html>

@@ -17,41 +17,48 @@
 
     <!-- title / top center -->
     <header class="header">
-      <h1>Crypto-Viewer</h1>
       <iframe height="270" src="https://giphy.com/embed/FlJ76bXyXwgWjOJkeJ/video" width="480"></iframe>
+      <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
     </header>
 
     <!-- buttons and bar / top center -->
-  <div class="container">
-    <h2 class="bouncy">Saved</h2>
-    <h2 class="bouncy">Trends</h2>
+  <div class="container bar">
+
+    <button class="bouncy font-effect-anaglyph" id="saved">Saved</button>
+    <button class="bouncy font-effect-anaglyph" id="trends">Trends</button>
 
     <div class="search_box">
       <button id="search_api">Search</button>
-      <input type="text" placeholder="Search...."></input>
+      <input type="text" placeholder="Search...." id="search_api"></input>
     </div>
 
   </div>
 
   <div class="container">
-    <!-- ??? / top left -->
-    <div class="box top_left"></div>
+    <div class="left_section">
 
-    <!-- ??? / top right -->
-    <div class="box top_right"></div>
+      <!-- ??? / top left -->
+      <div class="box top_left" id="top_left">top_left</div>
 
-    <!-- Visualization / Buttom left -->
-
-    <div class="box bottom_left">
-      <button id="update-chart-button">Referesh with new list</button>
-      <div class="chart_container" style="position: relative; height:auto; width:80vw">
-        Crypto data
-        <canvas id="market-cap-chart"></canvas>
+      <!-- Visualization / Buttom left -->
+      <div class="box bottom_left">
+        <button id="update-chart-button">Referesh with new list</button>
+        <div class="chart_container" style="position: relative; height:auto; width:80vw">
+          Crypto data
+          <canvas id="market-cap-chart"></canvas>
+        </div>
       </div>
     </div>
 
+    <div class="right_section">
+    <!-- ??? / top right -->
+    <div class="box top_right" id="top_right">top_right</div>
+
     <!-- ??? / Buttom right -->
-    <div class="box bottom_right"></div>
+    <div class="box bottom_right" id="bottom_right">bottom_right</div>
+    </div>
+
+  </div>
 
   </div>
 

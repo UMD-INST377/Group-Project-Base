@@ -1,4 +1,11 @@
-/* old code below */
+@import url(https://fonts.googleapis.com/css?family=Changa+One&effect=anaglyph);
+
+.font-effect-anaglyph {
+  font-family: 'times new roman', cursive;
+  text-align: center;
+  color: rgba(33, 64, 83, 0.9);
+}
+
 html {
   background-color: #f5f8ff;
   font-size: 16px;
@@ -34,6 +41,7 @@ a {
 h2, h3 {
   margin:0;
   padding:0;
+  font-size: 30;
   padding-bottom:1.5rem;
 }
 
@@ -70,11 +78,11 @@ form {
 .header {
   display: block;
   margin: 20 20px;
-  padding: 60px;
+  padding: 10px;
   text-align: center;
-  background: #1abc9c;
+  background: #27ceaa;
   color: white;
-  font-size: 30px;
+  font-size: 25px;
 
   /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
@@ -87,12 +95,6 @@ form {
   Those rules won't apply to an h1 that's outside a block with the class of 'header'
 */
 
-.top_right {
-  position: absolute;
-  top: 8px;
-  right: 16px;
-  font-size: 18px;
-}
 
 /* Makes the buttons/objects bounce*/
 .bouncy{
@@ -149,6 +151,37 @@ form {
   padding: 1.5rem;
   margin: 0 auto;
   
+}
+
+.bar {
+  background-color: rgb(82, 76, 76);
+  margin: 20 20px;
+  height:fit-content;
+  justify-content:space-around;
+  padding: 1.5rem;
+  overflow: auto;
+  
+}
+
+p:hover, h2:hover, a:hover {
+  background-color: rgb(39, 230, 86);
+}
+
+.left_section {
+  background-color: rgba(0, 139, 139, 0.8);
+  flex: 0 1 auto;
+  margin: 1rem;
+  padding: 1.5rem;
+  overflow: auto;
+}
+
+.right_section {
+  background-color: rgba(255, 224, 138, 0.7);
+  flex: 1 2 auto;
+  margin: 1rem;
+  align-items: center;
+  max-width: 450px;
+  overflow: auto;
 }
 
 @media only screen and (max-width: 736px){

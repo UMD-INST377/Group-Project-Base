@@ -1,6 +1,17 @@
 const form = document.querySelector('.main-form');
 const submit = document.querySelector('#get-location');
 
+async function getData() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
+  const apiData = await fetch(url);
+  const json = await apiData.json();
+  const reply = json.filter((item) => Boolean(item.geocoded_column))
+    .filter((item) => Boolean(item.council_district));
+  return reply;
+}
+
+/* Map Functions */
+
 function initMap() {
   console.log('initMap');
   const map = L.map('map').setView([38.9849, -76.9378], 13);
@@ -27,23 +38,6 @@ function initMap() {
 //   });
 // }
 
-const map = initMap();
-
-async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
-  const apiData = await fetch(url);
-  const json = await apiData.json();
-  const reply = json.filter((item) => Boolean(item.geocoded_column))
-    .filter((item) => Boolean(item.council_district));
-  return reply;
-}
-
-async function main() {
-  const data = await getData();
-  console.log(data[0]);
-}
-main();
-
 const districtCities = {
   1: ['Adelphi', 'Beltsville', 'Calverton', 'College Park', 'Laurel', 'Montpelier', 'South Laurel', 'Vansville', 'West Laurel'],
   2: ['Adelphi', 'Avondale', 'Brentwood', 'Carole Highlands', 'Chillum', 'Green Meadows', 'Hyattsville', 'Langley Park', 'Lewisdale', 'Mount Rainier', 'North Brentwood'],
@@ -55,6 +49,32 @@ const districtCities = {
   8: ['Camp Springs', 'Andrews Air Force Base', 'Clinton', 'Forest Heights', 'Fort Washington', 'Glass Manor', 'Marlow Heights', 'Oxon Hill', 'Temple Hills'],
   9: ['Accokeek', 'Aquasco', 'Baden', 'Brandywine', 'Cheltenham', 'Clinton', 'Eagle Harbor', 'Fort Washington', 'Piscataway', 'Upper Marlboro']
 };
+
+function findDistrict(districtObject, city) {
+  let match = 0;
+
+  const findCity = (c) => {
+    const obj = Object.entries(districtObject);
+    obj.forEach((item) => {
+      const newArray = [].concat.apply([], item);
+      if (newArray.includes(c)) {
+        match = newArray[0];
+      }
+      return match;
+    });
+  };
+  console.log(findCity('Adelphi'));
+  return findCity();
+  // return Object.keys(districtObject).find((key) => object[key] === city);
+}
+console.log(findDistrict(districtCities, 'Bowie'));
+
+async function main() {
+  const map = initMap();
+  const data = await getData();
+  console.log(data[0]);
+}
+main();
 
 // const data = []
 
@@ -116,4 +136,3 @@ console.log(districts);
 //  }
 //  return count;
 // }
-

@@ -13,26 +13,34 @@ async function mainEvent() {
   );
   const arrayFromJson = await dataGet.json();
   const response_object = arrayFromJson.response;
-  console.log(response_object);
   weight1 = notNull(response_object);
-  console.log(weight1);
   const chartTarget = document.querySelector('#myChart');
-  initChart(chartTarget);
   document.addEventListener('DOMContentLoaded', async () => mainEvent());
+
+  initChart(chartTarget);
 }
 
 const team_players = document.querySelectorAll('player');
 const player_list = Array.from(team_players);
 const totalPlayers = player_list.length;
 
+function show_players_team() {
+  player_list.forEach((player) => {
+    player.classList.add('visible');
+  });
+  console.log;
+}
+
 function initChart(chart) {
+  const labels = ['A', 'B', 'C', 'D', 'E', 'F'
+  ];
   const data = {
-    label: labels,
-    dataset: [{
-      label: 'My First dataset',
+    labels: labels,
+    datasets: [{
+      label: 'Test Chart',
       backgroundColor: 'rgb(255,99,132)',
-      borderColor: 'rgb(255,99,132)',
-      data: [0, 10, 5, 2, 20, 30, 45]
+      borderColors: 'rgb(255,99,132)',
+      data: [1, 2, 3, 4, 5, 6]
     }]
   };
   const config = {
@@ -40,15 +48,8 @@ function initChart(chart) {
     data: data,
     options: {}
   };
-  return console.log(new Chart(
+  return new Chart(
     chart,
     config
-  ));
-
-
-function show_players_team() {
-  player_list.forEach((player) => {
-    player.classList.add('visible');
-  });
-  console.log
+  );
 }

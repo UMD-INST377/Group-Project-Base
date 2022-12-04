@@ -170,3 +170,8 @@ div.players{
   margin: auto;
   justify-content: center;
 }
+
+.chart_container {
+  height: 100%;
+  width: 100%;
+}

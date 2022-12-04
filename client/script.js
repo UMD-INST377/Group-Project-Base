@@ -14,10 +14,10 @@ async function mainEvent() {
   const arrayFromJson = await dataGet.json();
   const response_object = arrayFromJson.response;
   weight1 = notNull(response_object);
-  const chartTarget = document.querySelector('#myChart');
+  const ctx = document.querySelectorAll('#myChart');
+  initChart(ctx);
   document.addEventListener('DOMContentLoaded', async () => mainEvent());
 
-  initChart(chartTarget);
 }
 
 const team_players = document.querySelectorAll('player');

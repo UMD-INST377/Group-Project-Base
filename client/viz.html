@@ -28,7 +28,10 @@
     <!--------------------------->
 
         <div class = "container">
-          <button class = "button" onclick="fetchData()"> Fetch </button>
+          <div class = "container">
+            <button class = "button" onclick="BarChart()"> Bar Chart </button>
+            <button class = "button" onclick="DoughnutChart()"> Doughnut Chart </button>
+          </div>
           <button class = "button" onclick="getPayee()"> Fetch Payee</button>
           <button class = "button" onclick="getAgency()"> Fetch Agency</button>
           <button class = "button" onclick="getZip()"> Fetch Zip</button>
@@ -39,7 +42,9 @@
         
     <!---Code for chart Visual---------------->
 
-        <canvas id = "chart" width = "300" height = "300" ></canvas>
+        <div>
+          <canvas id = "chart" width = "300" height = "300" ></canvas>
+        </div>
 
         <script>
 
@@ -59,15 +64,43 @@
               const payeeDat = dataPoints.map(function(index){
                 return index.payee_name
               })
-              console.log(payeeDat);
+              const unique = [...new Set(dataPoints.map(item => item.payee_name))];
+              const count = {};
+
+              for (const element of payeeDat) {
+                if (count[element]) {
+                  count[element] += 1;
+                } else {
+                  count[element] = 1;
+                }
+              }
+              myChart.config.data.labels = unique;
+              myChart.config.data.datasets[0].label = "Total";
+              myChart.config.data.datasets[0].data = Object.values(count);
+              myChart.update();
             })
+
           };
           async function getAgency() {
             fetchData().then(dataPoints => {
               const agencyDat = dataPoints.map(function(index){
                 return index.agency
               })
-              console.log(agencyDat);
+
+              const unique = [...new Set(dataPoints.map(item => item.agency))];
+              const count = {};
+
+              for (const element of agencyDat) {
+                if (count[element]) {
+                  count[element] += 1;
+                } else {
+                  count[element] = 1;
+                }
+              }
+              myChart.config.data.labels = unique;
+              myChart.config.data.datasets[0].label = "Total";
+              myChart.config.data.datasets[0].data = Object.values(count);
+              myChart.update();
             })
           };
           async function getZip() {
@@ -75,29 +108,64 @@
               const zipDat = dataPoints.map(function(index){
                 return index.zip_code
               })
-              console.log(zipDat);
+              const unique = [...new Set(dataPoints.map(item => item.zip_code))];
+              const count = {};
+
+              for (const element of zipDat) {
+                if (count[element]) {
+                  count[element] += 1;
+                } else {
+                  count[element] = 1;
+                }
+              }
+              myChart.config.data.labels = unique;
+              myChart.config.data.datasets[0].label = "Total";
+              myChart.config.data.datasets[0].data = Object.values(count);
+              myChart.update();
             })
+
           };
+
+
+
+          //need to set this to get range instead of unique number
           async function getAmount() {
             fetchData().then(dataPoints => {
               const amountDat = dataPoints.map(function(index){
                 return index.amount
               })
-              console.log(amountDat);
+              const unique = [...new Set(dataPoints.map(item => item.amount))];
+              const count = {};
+
+              for (const element of amountDat) {
+                if (count[element]) {
+                  count[element] += 1;
+                } else {
+                  count[element] = 1;
+                }
+              }
+              myChart.config.data.labels = unique;
+              myChart.config.data.datasets[0].label = "Total";
+              myChart.config.data.datasets[0].data = Object.values(count);
+              myChart.update();
             })
+          
           };
-          // Code for the buttons // top
 
-          function count(list){
-
-            list.forEach(element => {
-              
-            });
+          async function BarChart(){
+            myChart.config.type = "bar";
+            myChart.update();
           }
 
+          async function DoughnutChart(){
+            myChart.config.type = "doughnut";
+            myChart.update();
+          }
+          // Code for the buttons // top
+
           const ctx = document.getElementById('chart');
-        
-          new Chart(ctx, {
+
+          const myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
               labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -107,8 +175,16 @@
                 borderWidth: 1
               }]
             },
-        
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
           });
+        
+          
 
         </script>
       <!------------------------------------------->

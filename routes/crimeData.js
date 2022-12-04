@@ -12,6 +12,39 @@ router.route('/crimeData') // actually localhost:3000/api/foodServicesPG
       console.log(req.crimeData);
       console.log('You touched the foodService Route!');
       console.log('req.foodServiceData results in foodServicePG GET', req.crimeData.length); // this information comes in through the middleware above
+      let reply;
+      if (req.query?.resto) {
+        console.log('query parameters if any', req.query);
+
+        // A `.filter` function will return the all elements in an array that match a truth check.
+        // Here, our truth check is: 'does any element contain our form query'
+        // so... 'is there a restaurant with pizza (or steak or so on) in the name in this data set'
+        reply = req.foodServiceData.filter((item) => {
+          // This function has been split to be easier to read, although in practice it could be one line
+          const lowerCaseName = item.name.toLowerCase(); // these need to be in the same case for easier comparison
+          const lowerCaseQuery = req.query?.resto.toLowerCase(); // capital letters and lowercase letters are different characters to a computer
+
+          // Once both our functions are in lower case
+          // we can check if the current item's name includes the query
+          // And we return the _first_ item that is "true" from that check
+          return lowerCaseName.includes(lowerCaseQuery);
+
+          // If we were writing a "find," this would return the first single object that matched the test
+          // If we were writing a "map," the function we applied would change every element and return a new array of those elements
+          // If we write a "forEach," the function changes the original array, which tends to be less good - unexpected errors can seep in
+        });
+
+        console.log('how many restaurants match the query?', reply.length);
+      } else {
+        reply = req.foodServiceData;
+      }
+
+      /*
+        Here we're closing the request to the route by passing back our "reply":
+        All array items if we have no query
+        Only the matches if we have a query - which means nothing if the query did not match anything
+      */
+      res.json({ data: reply });
     } catch (error) {
       console.log(error);
       res.json({error: error});

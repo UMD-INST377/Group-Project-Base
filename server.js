@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import apiRoutes from './routes/apiRoutes.js';
+// import { loadFoodServiceData } from './routes/crime.js';
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
-
+// app.use('/api/crimeData', apiRoutes);
 async function bootServer() {
   try {
     app.listen(PORT, () => {

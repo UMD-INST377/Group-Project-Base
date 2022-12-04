@@ -30,8 +30,8 @@ window.onclick = function (event) {
 
 function ttt(data) {
   console.log(data);
-  //   data.forEach((element, index) => {
-  //
+     data.forEach((element, index) => {
+  
   //   });
   //   data.forEach(myFunction);
   //   function myFunction(item, index) {

@@ -153,3 +153,9 @@ div.players{
 .visible {
   display: block;
 }*/
+
+.right1 {
+  position: absolute;
+  top: 200px;
+  right: 16px;
+}

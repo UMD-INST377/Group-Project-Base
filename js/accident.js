@@ -4,41 +4,29 @@
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 */
 
-function getRandomIntInclusive(min, max) {
-  const newMin = Math.ceil(min);
-  const newMax = Math.floor(max);
-  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
-}
-
 function injectHTML(list) {
   console.log('fired injectHTML');
   const target = document.querySelector('#crime_list');
   target.innerHTML = '';
-
   const listEl = document.createElement('ol');
   target.appendChild(listEl);
   list.forEach((item) => {
     const el = document.createElement('li');
-    el.innerText = item.clearance_code_inc_type;
+    el.innerText = item.street_address;
     listEl.appendChild(el);
   });
 }
 
 function processCrime(list) {
-  const range = [...Array(20).keys()];
-  const newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length);
-    return list[index];
+  const newArray = list.filter((item) => {
+    const clearanceCodeIncType = item.clearance_code_inc_type;
+    if (clearanceCodeIncType && clearanceCodeIncType === 'ACCIDENT') {
+      console.log(item);
+      return item;
+    }
+    return null;
   });
   return newArray;
-}
-
-function filterList(array, filterInputValue) {
-  return array.filter((item) => {
-    const lowerCaseName = item.clearance_code_inc_type.toLowerCase();
-    const lowerCaseQuery = filterInputValue.toLowerCase();
-    return lowerCaseName.includes(lowerCaseQuery);
-  });
 }
 
 function initMap() {

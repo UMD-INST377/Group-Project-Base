@@ -18,6 +18,7 @@ btn.onclick = function () {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
   modal.style.display = 'none';
+  location.reload();
 };
 
 // When the user clicks anywhere outside of the modal, close it
@@ -30,36 +31,40 @@ window.onclick = function (event) {
 
 function ttt(data) {
   console.log(data);
-  //   data.forEach((element, index) => {
-  //
-  //   });
-  //   data.forEach(myFunction);
-  //   function myFunction(item, index) {
-  //     for (var i = 0; i < item.length; i++) {
-  //       console.log(i);
-  //       document.getElementById("farm_name").innerHTML = item.farm_name;
-  //     }
-  //   }
-
   let items = '';
-  for (let i = 0; i < data.length; i += 1) {
+
+  data.forEach((element, index) => {
+    console.log(element);
     items += ` <strong>Farm Name </strong> : ${
-      data[i].farm_name !== undefined ? data[i].farm_name : ''
+      element.market_name !== undefined ? element.market_name : ''
     } <br/>`;
-    items += `<strong>Category </strong> : ${data[i].category} <br/>`;
-    items += `<strong>Item</strong> : ${data[i].item} <br/>`;
-    items += `<strong>Website</strong> : <a href =" ${data[i].website.url}"> ${data[i].website.url}</a> <br/>`;
-    items += `<strong>Address</strong> : ${data[i].location_1.human_address}<br/>`;
-    items += `<strong>Phone</strong> : ${data[i].phone1}<br/>`;
-    items += `<strong>Zipcode</strong> : ${data[i].zipcode}<br/> <br/><br/>`;
-    document.getElementById('farm_name').innerHTML = items;
-    document.getElementById('category').innerHTML = items;
-    document.getElementById('item').innerHTML = items;
-    document.getElementById('website').innerHTML = items;
-    document.getElementById('human_address').innerHTML = items;
-    document.getElementById('phone').innerHTML = items;
-    document.getElementById('zipcode').innerHTML = items;
-  }
+    items += `<strong>Credit </strong> : ${element.credit} <br/>`;
+    items += `<strong>Wic </strong> : ${element.wic} <br/>`;
+    items += `<strong>Website </strong> : <a href=" ${element.website}"> ${element.website}</a> <br/>`;
+    items += `<strong>Bakedgoods </strong> : ${element.bakedgoods} <br/>`;
+    items += `<strong>Cheese </strong> : ${element.cheese} <br/>`;
+    items += `<strong>Crafts </strong> : ${element.crafts} <br/>`;
+    items += `<strong>Flowers </strong> : ${element.flowers} <br/>`;
+    items += `<strong>Eggs </strong> : ${element.eggs} <br/>`;
+    items += `<strong>Seafood </strong> : ${element.seafood} <br/>`;
+    items += `<strong>Herbs </strong> : ${element.herbs} <br/>`;
+    items += `<strong>Vegetables </strong> : ${element.vegetables} <br/>`;
+    items += `<strong>Honey </strong> : ${element.honey} <br/>`;
+    items += `<strong>Jams </strong> : ${element.jams} <br/>`;
+    items += `<strong>Maple </strong> : ${element.maple} <br/>`;
+    items += `<strong>Meat </strong> : ${element.meat} <br/>`;
+    items += `<strong>Nursery </strong> : ${element.nursery} <br/>`;
+    items += `<strong>Nuts </strong> : ${element.nuts} <br/>`;
+    items += `<strong>Plants </strong> : ${element.plants} <br/>`;
+    items += `<strong>Poultry </strong> : ${element.poultry} <br/>`;
+    items += `<strong>Prepared </strong> : ${element.prepared} <br/>`;
+    items += `<strong>Soap </strong> : ${element.soap} <br/>`;
+    items += `<strong>Trees </strong> : ${element.trees} <br/>`;
+    items += `<strong>Wine </strong> : ${element.wine} <br/>`;
+    items += `<strong>Address </strong> : ${element.location.human_address} <br/> <br/><br/>`;
+    document.getElementById('market_name').innerHTML = items;
+  });
+
   return items;
 }
 function getCheckboxValue() {
@@ -88,7 +93,6 @@ function getCheckboxValue() {
   if (l1.checked === true) {
     const pl1 = document.getElementById('check1').value;
     res = pl1;
-    console.log(res);
   } else if (l2.checked === true) {
     const pl2 = document.getElementById('check2').value;
     res += pl2;
@@ -150,9 +154,8 @@ function getCheckboxValue() {
   // eslint-disable-next-line no-empty
   } else {
   }
-  console.log(res);
 
-  fetch(`https://data.ct.gov/resource/hma6-9xbg.json?item=${res}`)
+  fetch(`https://data.princegeorgescountymd.gov/resource/sphi-rwax.json?${res}`)
     .then((response) => response.json())
     .then((data) => ttt(data));
 }

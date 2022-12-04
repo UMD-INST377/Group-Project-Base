@@ -31,7 +31,7 @@ function injectHTML(list) {
 
   list.forEach((item) => {
     const el = document.createElement('li');
-    el.innerText = item.name;
+    el.innerText = item.clearance_code_inc_type;
     listEl.appendChild(el);
   });
 
@@ -90,8 +90,8 @@ function processRestaurants(list) {
 
 function filterList(array, filterInputValue) {
   return newArray = array.filter((item) => {
-    if (!item.name) { return; }
-    const lowerCaseName = item.name.toLowerCase();
+    if (!item.clearance_code_inc_type) { return; }
+    const lowerCaseName = item.clearance_code_inc_type.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
@@ -119,11 +119,11 @@ function markerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    const coordinates = item;
-    console.log(coordinates);
-    L.marker([coordinates[2], coordinates[1]]).addTo(map);
+    // const {coordinates} = item.location;
+    // console.log(item.location.latitude);
+    L.marker([item.location.latitude, item.location.longitude]).addTo(map);
     if (index === 0) {
-      map.setView([coordinates[2], coordinates[1]], 10);
+      map.setView([item.location.latitude, item.location.longitude], 10);
     }
   });
 }

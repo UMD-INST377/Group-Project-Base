@@ -10,7 +10,7 @@
     <!---->
 
     <title>Group Project Base</title>
-    <h1>2022 Prince George's County Maryland Trash Tracker</h1>
+    <h1>2022 Prince George's County Maryland Trash Visualizer</h1>
 
     <h2 class ="info">
         <a = href="./info.html">Info</a>
@@ -32,16 +32,21 @@
 <body>
     <div class = "sidebar">
         <div>
-            <label for="resto">Organization</label>
-            <input type="text" name="resto" id="resto">
+            <label>Organization</label>  
+            <select id="Organization">  
+            <option value = ""></option>
+            <option value = "RHHilarios">RHHilarios</option>
+            <option value = "ExpressBusiness">ExpressBusiness</option>
+            <option value = "CommunityBridge">CommunityBridge</option>
+            </select>  
         </div>
         <div>
-            <label for="resto">Month</label>
-            <input type="text" name="resto" id="resto">
+            <label for="resto">Atleast number of bags</label>
+            <input type="text" name="Bags" id="Bags">
         </div>
         <div>
-            <label for="resto">Numbers of Bags</label>
-            <input type="text" name="resto" id="resto">
+            <label for="resto">Max Number of Markers (Default 50)</label>
+            <input type="text" name="Max" id="Max">
         </div>
         <button type="submit" id="submit_info">Submit</button>
     </div>

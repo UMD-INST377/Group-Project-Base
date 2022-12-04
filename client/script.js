@@ -77,8 +77,9 @@ async function mainEvent() {
   let labelSublist = rotateList(labelsList, start, numOfElements); // rotate the labels list
   let marketCapSublist = rotateList(marketCapList, start, numOfElements); // rotate the market capital list
 
-  const targetElement = document.querySelector('#market-cap-chart'); // get DOM Object for chart
-  const marketCapChart = initChart(labelSublist, marketCapSublist, targetElement); // initialize the chart
+  // Market Cap Chart
+  const marketCapTargetElement = document.querySelector('#market-cap-chart'); // get DOM Object for chart
+  const marketCapChart = initChart(labelSublist, marketCapSublist, marketCapTargetElement); // initialize the chart
 
   const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
   updateChartButton.addEventListener('click', async (submitEvent) => { // add event listener to the button
@@ -116,8 +117,5 @@ async function mainEvent() {
     marketCapChart.update();
   });
 
-  initChart(chartTarget, data);
-
-}
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

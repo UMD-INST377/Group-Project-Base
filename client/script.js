@@ -8,7 +8,7 @@ function initMap() {
 }
 
 function markerPlace(array, map, organization, max, bags) {
-  markerCounter = 1
+  markerCounter = 1;
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
       layer.remove();
@@ -16,7 +16,7 @@ function markerPlace(array, map, organization, max, bags) {
   });
   array.forEach((item) => {
     if (markerCounter <= max) {
-      if (item.number_bags > parseInt(bags) && item.organization === organization) {
+      if (item.number_bags > bags && item.organization === organization) {
         const {latitude} = item;
         const {longitude} = item;
         const marker = L.marker([longitude, latitude]).addTo(map);
@@ -29,11 +29,11 @@ function markerPlace(array, map, organization, max, bags) {
           + `<li> Longitude - (${item.longitude})</li>`
           + `<li> Creation Date - (${item.creationdate})</li>`
           + '</ul>';
-        markerCounter++
+        markerCounter += 1;
         marker.bindPopup(list).openPopup();
       }
-    };
-  })
+    }
+  });
 }
 
 async function createArray(year) {
@@ -42,7 +42,7 @@ async function createArray(year) {
     const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?impl_comp_yr=';
     const res = await fetch(url + year);
     const obj = await res.json();
-    for (let i = 0; i < obj.length; i++) {
+    for (let i = 0; i < obj.length; i += 1) {
       dataList.push(obj[i]);
     }
     return dataList;
@@ -57,23 +57,16 @@ async function mainEvent() {
   const submit = document.querySelector('#submit_info');
   const apiData = await (createArray(2022));
 
-  // markerPlace(apiData, pageMap);
   submit.addEventListener('click', () => {
     const organization = document.querySelector('#Organization').value;
     const maxMarkers = document.querySelector('#Max').value;
     const bags = document.querySelector('#Bags').value;
 
-    // testArray = [];
-    // newArray = [];
-    // let i = 0;
-    // while (i < 11) {
-    //   const random = Math.floor(Math.random() * apiData.length);
-    //   testArray.push(random);
-    //   i++;
-    // }
-    // testArray.forEach((item) => newArray.push(apiData[item]));
-
-    markerPlace(apiData, pageMap, organization, maxMarkers, bags);
+    if (organization.length > 0 && maxMarkers > 0 && bags > 0) {
+      markerPlace(apiData, pageMap, organization, maxMarkers, bags);
+    } else {
+      alert('Please put in values.');
+    }
   });
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

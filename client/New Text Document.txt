@@ -1,0 +1,15 @@
+document.getElementById("market_name").innerHTML = items;
+    document.getElementById("credit").innerHTML = items;
+    document.getElementById("wic").innerHTML = items;
+    document.getElementById("website").innerHTML = items;
+    
+    
+   
+    document.getElementById("nuts").innerHTML = items;
+    document.getElementById("plants").innerHTML = items;
+    document.getElementById("poultry").innerHTML = items;
+    document.getElementById("prepared").innerHTML = items;
+    document.getElementById("soap").innerHTML = items;
+    document.getElementById("trees").innerHTML = items;
+    document.getElementById("wine").innerHTML = items;
+    document.getElementById("location").innerHTML = items;

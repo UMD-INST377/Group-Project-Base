@@ -3,8 +3,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
-async function getData() {
-  const url = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc'; // remote URL! you can test it in your browser
+async function getData(url) {
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json();
 
@@ -36,7 +35,7 @@ function initChart(initLabels, initMarketCap, targetElement) {
   const data = {
     labels: initLabels,
     datasets: [{
-      label: 'Market Cap',
+      label: 'Eco System Market Cap',
       data: initMarketCap
     }]
   };
@@ -61,9 +60,16 @@ function initChart(initLabels, initMarketCap, targetElement) {
 }
 
 async function mainEvent() {
-  const json = await getData(); // get the json data
-  const labelsList = getProperty(json, 'name'); // extract the labels
-  const marketCapList = getProperty(json, 'market_cap'); // extract the market cap data
+  // Sources
+  const ecosystemDataURL = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc';
+  const ecosystemJson = await getData(ecosystemDataURL); // get the ecosystem data
+
+  const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
+  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the cryptocurrency data
+  console.log(cryptocurrencyJson); 
+
+  const labelsList = getProperty(ecosystemJson, 'name'); // extract the labels
+  const marketCapList = getProperty(ecosystemJson, 'market_cap'); // extract the market cap data
 
   // Visualizations
   let start = 0; // where to start
@@ -81,9 +87,9 @@ async function mainEvent() {
     // increase the starting index
     start += 10;
 
-    if (start > json.length) {
-      start = json.length - (json.length % 10);
-      numOfElements = json.length % 10;
+    if (start > ecosystemJson.length) {
+      start = ecosystemJson.length - (ecosystemJson.length % 10);
+      numOfElements = ecosystemJson.length % 10;
       labelSublist = rotateList(labelsList, start, numOfElements);
       marketCapSublist = rotateList(marketCapList, start, numOfElements);
 

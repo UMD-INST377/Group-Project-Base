@@ -160,4 +160,13 @@ div.players{
   right: 16px;
 }
 
-.box
+.alt_box {
+  display: flex;
+  width: 500px;
+  height: 400px;
+  padding: 50px;
+  border: dashed;
+  background-color: lightblue;
+  margin: auto;
+  justify-content: center;
+}

@@ -59,6 +59,7 @@ form {
 
 .container {
   margin: 0 20px;
+  display: inline-block;
   display: flex;
   justify-content: space-evenly;
   align-items: start;
@@ -67,10 +68,16 @@ form {
 }
 
 .header {
-  padding-top: 1rem;
-  padding-left: .5rem;
-  padding-right: .5rem;
-  padding-bottom: 1.5rem;
+  display: block;
+  margin: 20 20px;
+  padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+
+  /* box-shadows are fancy */
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
 
@@ -80,12 +87,34 @@ form {
   Those rules won't apply to an h1 that's outside a block with the class of 'header'
 */
 
-.header h1 {
+.top_right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+/* Makes the buttons/objects bounce*/
+.bouncy{
+   animation:bouncy 5s infinite linear;
+   position:relative;
+  }
+  @keyframes bouncy {
+   0%{top:0em}
+   40%{top:0em}
+   43%{top:-0.9em}
+   46%{top:0em}
+   48%{top:-0.4em}
+   50%{top:0em}
+   100%{top:0em;}
+  }
+
+.header h2 {
   display: block;
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: #ffe08a;
+  background-color: #8aff8a;
   color: #4a4a4a;
 
   /* shapes */
@@ -93,8 +122,8 @@ form {
   border: 2px dashed;
   font-size: 1.5rem;
   padding: 1.25rem;
+  width: 200;
   margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
-
 
   /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);

@@ -30,7 +30,6 @@ function initChart(initLabels, initMarketCap, targetElement) {
   /*
   targetElement: The DOM object where we want to insert the visualization
   dataObject: The Object containing the information in a one-to-one key-value form
-
   returns Chart: A new Chart object that's configured with the data in dataObject
   */
 
@@ -110,6 +109,9 @@ async function mainEvent() {
     }
     marketCapChart.update();
   });
+
+  initChart(chartTarget, data);
+
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

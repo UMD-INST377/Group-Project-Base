@@ -58,6 +58,7 @@ async function mainEvent() {
   console.log(teamResponse);
 
   document.getElementById('team-header').textContent = `${teamFullName} ${year}`;
+  document.getElementById('team-title').textContent = `${teamFullName}`;
   document.getElementById('team-logo').src = teamLogo;
 
   teamResponse.forEach((item, index) => {

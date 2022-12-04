@@ -7,64 +7,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Group Project Base</title>
   <link rel="stylesheet" href="styles.css" />
-
+  
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Crypto App</title>
 </head>
 
 <body>
   <div class="Wrapper">
-
+    
     <!-- title / top center -->
     <header class="header">
       <!--<iframe height="270" responsive = "off" fetch src="https://giphy.com/embed/FlJ76bXyXwgWjOJkeJ/video" width="480"></iframe> -->
       <iframe class="img" src="https://i0.wp.com/crackingcryptocurrency.com/wp-content/uploads/2017/08/CrackingCryptoCurrency_logo__960_720_mock-C1.8-256x256.png?resize=256%2C256&ssl=1"></iframe>
       <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
     </header>
-
+    
     <!-- buttons and bar / top center -->
-  <div class="container bar">
-
-    <button class="bouncy font-effect-anaglyph" id="saved">Saved</button>
-    <button class="bouncy font-effect-anaglyph" id="trends">Trends</button>
-
-    <div class="search_box">
-      <button id="search_api">Search</button>
-      <input type="text" placeholder="Search...." id="search_api"></input>
+    <div class="container bar">
+      
+      <button class="bouncy font-effect-anaglyph" id="saved">Saved</button>
+      <button class="bouncy font-effect-anaglyph" id="trends">Trends</button>
+      
+      <div class="search_box">
+        <button id="search_api">Search</button>
+        <input type="text" placeholder="Search...." id="search_api"></input>
+      </div>
+      
     </div>
-
-  </div>
-
-  <div class="container">
-    <div class="left_section">
-
-      <!-- ??? / top left -->
-      <div class="box top_left" id="top_left">top_left</div>
-
-      <!-- Visualization / Buttom left -->
-      <div class="box bottom_left">
-        <button id="update-chart-button">Referesh with new list</button>
-        <div class="chart_container" style="position: relative; height:auto; width:80vw">
-          Crypto data
-          <canvas id="market-cap-chart"></canvas>
+    
+    <div class="container">
+      <div class="left_section">
+        
+        <!-- ??? / top left -->
+        <div class="box top_left" id="top_left">top_left</div>
+        
+        <!-- Visualization / Buttom left -->
+        <div class="box bottom_left">
+          <button id="update-chart-button">Referesh with new list</button>
+          <div class="chart_container" style="position: relative; height:auto; width:80vw">
+            Crypto data
+            <canvas id="market-cap-chart"></canvas>
+          </div>
         </div>
       </div>
+      
+      <div class="right_section">
+        <!-- ??? / top right -->
+        <div class="box top_right" id="top_right">top_right</div>
+        
+        <!-- ??? / Buttom right -->
+        <div class="box bottom_right" id="bottom_right">bottom_right</div>
+      </div>
+      
     </div>
-
-    <div class="right_section">
-    <!-- ??? / top right -->
-    <div class="box top_right" id="top_right">top_right</div>
-
-    <!-- ??? / Buttom right -->
-    <div class="box bottom_right" id="bottom_right">bottom_right</div>
-    </div>
-
+    
   </div>
-
-  </div>
-
-    <script type="module" src="./script.js"></script>
-
-  </div>
+  
+  <script type="module" src="./script.js"></script>
+  
+</div>
 </body>
 </html>

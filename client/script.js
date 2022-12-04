@@ -22,7 +22,7 @@ span.onclick = function () {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-  if (event.target == modal) {
+  if (event.target === modal) {
     window.location.reload();
     modal.style.display = 'none';
   }
@@ -42,7 +42,7 @@ function ttt(data) {
   //   }
 
   let items = '';
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < data.length; i += 1) {
     items += ` <strong>Farm Name </strong> : ${
       data[i].farm_name !== undefined ? data[i].farm_name : ''
     } <br/>`;

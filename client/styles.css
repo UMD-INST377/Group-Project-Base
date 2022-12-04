@@ -167,6 +167,12 @@ p:hover, h2:hover, a:hover {
   background-color: rgb(39, 230, 86);
 }
 
+.img {
+  width: 260px;
+  height: 275px;
+  object-fit: contain;
+}
+
 .left_section {
   flex: 0 1 auto;
   margin: 1rem;

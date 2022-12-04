@@ -107,6 +107,19 @@ function markerPlace(array, map) {
   });
 }
 
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+		'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+	}
+};
+
+fetch('https://api-nba-v1.p.rapidapi.com/teams', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+
 async function mainEvent() {
   /*
       ## Main Event

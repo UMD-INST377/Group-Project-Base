@@ -68,23 +68,8 @@ form {
 }
 
 .header {
-  padding: 60px;
-  text-align: center;
-  justify-content: space-evenly;
-  background: #8c8c8c;
-  color: white;
-  font-size: 30px;
-}
-
-
-/*
-  This rule implies that the H1 tag lives within another HTML tag
-  It "inherits" some rules from the above
-  Those rules won't apply to an h1 that's outside a block with the class of 'header'
-*/
-
-.header h1 {
   display: block;
+  margin: 20 20px;
   padding: 60px;
   text-align: center;
   background: #1abc9c;
@@ -94,6 +79,14 @@ form {
   /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
+
+
+/*
+  This rule implies that the H1 tag lives within another HTML tag
+  It "inherits" some rules from the above
+  Those rules won't apply to an h1 that's outside a block with the class of 'header'
+*/
+
 .top_right {
   position: absolute;
   top: 8px;

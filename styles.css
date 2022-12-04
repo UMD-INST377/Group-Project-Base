@@ -1,7 +1,7 @@
 
 
 html {
-  background-color: white;
+  background-color: rgb(8, 7, 7);
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -29,13 +29,16 @@ body {
   line-height: 1.5;
   background-color: white;
 }
+.wrapper {
+  background-color: rgb(1, 1, 1, 0.8);
+}
 
 a:visited { 
   text-decoration: none; 
-  color: black; 
+  color: white; 
  }
  a:hover {
-  color: blue;
+  color: red;
  }
 
 .header {
@@ -50,8 +53,8 @@ a:visited {
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: white;
-  color: black;
+  background-color: rgb(3, 3, 3);
+  color: rgb(246, 245, 245);
 
   /* shapes */
   border-radius: 6px;
@@ -64,6 +67,7 @@ a:visited {
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
  .links {
+  color: white;
   display: flex;
   justify-content: space-evenly;
   margin-top: 60px;
@@ -110,23 +114,27 @@ h3 {
 .container {
   margin: 30px 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: start;
   flex:1;
 }
 
-  .left_section {
-    background-color: rgba(14, 105, 35, 0.8);
-    flex: 0 1 auto;
-    margin: 1rem;
+  .right_section {
+    background-color:rgb(1, 1, 1, 0.6);
+    color: white;
+    /* flex: 0 1 auto; */
+    margin-left: 300px;
     padding: 1.5rem;
-    display: flex;
-    justify-content: flex-start;
+    /* width: 350px; */
+    /* display: flex;
+    justify-content: flex-start; */
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(95, 95, 95, 0.19);
     }
 
 
     .box {
-      background-color: #f8f8f8;
+      color: white;
       border-radius: 10px;
       box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
       width: fit-content;
@@ -135,13 +143,13 @@ h3 {
       margin: 0 auto;
     }
     .chartBox {
-      background-color: #f8f8f8;
-      border-radius: 50px;
+      background-color: rgb(1, 1, 1, 0.2);
+      border-radius: 10px;
       box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
       width: fit-content;
       height:fit-content;
       padding: 1.5rem;
-      margin: 0 auto;
+      /* margin: 0 auto; */
     }
     #refresh-button {
       padding: 25px;
@@ -151,7 +159,7 @@ h3 {
 
     .footer {
       padding: 1rem;
-      background-color: rgb(3, 3, 86);
+      background-color: rgb(1, 1, 1);
       font-size: 1.2rem;
       font-weight: 600;
       box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
@@ -164,7 +172,7 @@ h3 {
    
     
     .footer a {
-      color: rgb(229, 30, 4);
+      color: rgb(236, 23, 23);
       text-decoration: underline;
     }
 
@@ -180,7 +188,7 @@ h3 {
     }
     .loader {
       border: 10px solid #f3f3f3; /* Light grey */
-      border-top: 10px solid #08004f; /* Blue */
+      border-top: 10px solid red; /* Blue */
       border-radius: 50%;
       width: 20px;
       height: 20px;
@@ -189,8 +197,37 @@ h3 {
       
 
     }
-    
+    #team-button {
+      background-color: white;
+      border: 0px;
+      padding: 7px;
+      width: 100px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: black;
+    }
+    #search-box {
+      background-color: rgb(255, 255, 255);
+      border: 0px;
+      padding: 7px;
+      border-radius: 10px;
+      width: 80px;
+      color: black;
+      border-color: black;
+      box-shadow: 0 4px 16px 0 rgba(88, 88, 88, 0.2), 0 6px 20px 0 rgba(134, 134, 134, 0.19);
+    }
+    #search-box:focus {
+      outline: none;
+    }
 
+    #year {
+      background-color: white;
+      border: 0px;
+      padding: 7px;
+      border-radius: 10px;
+      color: black;
+    }
+ 
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }

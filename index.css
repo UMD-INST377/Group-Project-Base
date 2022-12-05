@@ -1,0 +1,291 @@
+h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 90px;
+}
+#myChart {
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+}
+.inputline {
+  max-width: 900px;
+  margin: auto;
+}
+.inputline .tit {
+  font-size: 18px;
+  line-height: 40px;
+  color: #333;
+  text-align: left;
+  display: inline-block;
+  width: 120px;
+}
+.inputline input {
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 14px;
+}
+.tips {
+  font-size: 12px;
+  padding: 10px 0;
+  background-color: #f4f4f4;
+  text-align: center;
+  color: #666;
+  margin: 30px auto;
+}
+.inputline #submit {
+  font-size: 14px;
+  color: #333;
+  line-height: 40px;
+  width: 120px;
+  background-color: #f4f4f4;
+  margin: 0 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.inputline #submit:hover {
+  background-color: #333;
+  color: #fff;
+}
+.container #submit {
+  border: 1px solid #333;
+  background-color: #fff;
+  margin: 30px auto;
+  border-radius: 6px;
+  display: block;
+  font-size: 24px;
+  width: 180px;
+  height: 60px;
+  line-height: 60px;
+}
+#reset,
+#max {
+  border: 1px solid #333;
+  background-color: #fff;
+  margin: 10px 30px;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 0 10px;
+  height: 40px;
+  line-height: 40px;
+}
+#reset:hover,
+#max:hover {
+  background-color: #f4f4f4;
+}
+#index {
+  background: transparent url('1116498.jpg') no-repeat top fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+#index .content {
+  background-color: rgba(255, 255, 255, 0);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  padding: 30px;
+}
+#index .content p {
+  /* background-color: rgba(255, 255, 255, 0); */
+  color: #2600ff;
+  font-size: 50px;
+  white-space: no-warp;
+  line-height: 90px;
+  text-align: center;
+  padding: 60px 0;
+  font-weight: bold;
+  white-space: nowrap;
+}
+#index .content .btns {
+  color: #00eaff;
+  border: 1px solid #9e5dff;
+  background-color: #be81ff;
+  margin: 30px auto;
+  border-radius: 6px;
+  display: block;
+  font-size: 24px;
+  width: 180px;
+  height: 60px;
+  line-height: 60px;
+}
+#index .content .btns:hover {
+  background-color: #7d49ff;
+}
+.goodslist {
+  max-width: 900px;
+  margin: auto;
+  display: block;
+}
+.goodslist .box {
+  background-color: #fff;
+  width: 48%;
+  margin: 1%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+.goodslist .box em {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  background-color: #5be4a9;
+  border-bottom-right-radius: 4px;
+  padding: 0 10px;
+  white-space: nowarp;
+}
+.goodslist .box .png {
+  display: inline-block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px dashed #ccc;
+}
+.goodslist .box .contxt {
+  padding: 0 10px;
+}
+.goodslist .box .tit img {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.goodslist .box p {
+  font-size: 14px;
+  color: #333;
+  line-height: 30px;
+}
+.goodslist .box .fr {
+  color: #d85b3f;
+}
+.goodslist .box .fr i {
+  text-decoration: line-through;
+}
+.goodslist .box .tit {
+  text-align: left;
+  font-size: 12px;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.goodslist .box .price {
+  color: #5be4a9;
+  font-weight: bold;
+}
+.goodslist .box .price img {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+.formbox {
+  max-width: 900px;
+  margin: auto;
+  text-align: left;
+}
+h1 a {
+  font-size: 24px;
+  line-height: 40px;
+}
+#detail .tit {
+  font-size: 24px;
+  line-height: 40px;
+  text-align: center;
+}
+#detail .png {
+  display: block;
+  margin: auto;
+  width: 400px;
+  border: 1px solid #333;
+}
+#detail h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 60px;
+}
+#detail ul {
+  max-width: 600px;
+  margin: auto;
+  display: block;
+}
+#detail ul li {
+  padding: 10px 0;
+}
+#detail ul .media {
+  border-bottom: 1px solid #333;
+}
+#detail ul .tit {
+  color: #333;
+  font-size: 14px;
+  line-height: 30px;
+  font-weight: bold;
+}
+#detail ul .desc {
+  color: #666;
+}
+#sec {
+  background: transparent url('aaaaa.jpg') no-repeat top fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+@media only screen and (max-width: 736px) {
+  .tips {
+    font-size: 12px;
+    line-height: 30px;
+    overflow-wrap: break-word;
+  }
+  .inputline .tit {
+    flex-wrap: nowrap;
+    width: 120px;
+    font-size: 12px;
+  }
+  #sec {
+    padding: 0 30px;
+    box-sizing: border-box;
+    height: auto;
+  }
+  #sec .inputline {
+    flex-wrap: nowrap;
+  }
+  #myChart {
+    width: 100%;
+  }
+  #index {
+    display: block;
+    overflow: hidden;
+    width: 100vw;
+    position: fixed;
+    height: 100vh;
+  }
+  #index .content {
+    width: 100vw;
+    padding: 0;
+    transform: none;
+    left: 0;
+    top: 0;
+    position: static;
+  }
+  #index .content p {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  #reset,
+  #max {
+    margin: 10px;
+    font-size: 14px;
+  }
+}

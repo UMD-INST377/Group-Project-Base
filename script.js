@@ -15,7 +15,8 @@ let cclist2;
 
 let firstdone = false;
 
-const output = document.getElementById("#get-film").innerHTML;
+const output1 = document.getElementById("#get-film1").innerHTML;
+
 
     
 async function getFilmTitle(name){
@@ -60,9 +61,9 @@ function cast(filmID){
     let response = JSON.stringify(jsonData);
     let matches = response.match(regex).map(x => x.replace('name":"',""));
     if(firstdone == false){
-      document.getElementById("data").innerHTML = matches;
+      document.getElementById("get-film1").innerHTML = matches;
     } else{
-      document.getElementById("dataa").innerHTML = matches;
+      document.getElementById("get-film2").innerHTML = matches;
       intersect();
     }
     firstdone = true;
@@ -81,8 +82,8 @@ function removeDups(arr) {
 
 async function intersect() {
 
-  const a = document.querySelector("#data").innerHTML;
-  const b = document.querySelector("#dataa").innerHTML;
+  const a = document.querySelector("#get-film1").innerHTML;
+  const b = document.querySelector("#get-film2").innerHTML;
 
   const y = a.split(',');
   const z = b.split(',');
@@ -99,7 +100,8 @@ async function intersect() {
 
 async function mainEvent() {
   const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#get-film');
+  const submit1 = document.querySelector('#get-film1');
+  const submit2 = document.querySelector('#get-film2');
   
   const results = await fetch('https://imdb-api.com/en/API/Search/');
 }

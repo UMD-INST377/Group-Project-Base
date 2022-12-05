@@ -1,25 +1,22 @@
 
 
-const film1 = "The Breakfast Club";
-const film2 = "Ferris Bueller's Day Off";
+/* const film1 = "The Breakfast Club";
+const film2 = "Ferris Bueller's Day Off"; */
 const imdbkey = "k_ljv5h5vz/";
 const firstCall = "https://imdb-api.com/en/API/Search/"+ imdbkey+ film1;
 const secondCall = "https://imdb-api.com/en/API/Search/"+ imdbkey + film2;
 
 
-document.getElementById("h2").innerHTML = "Looking for Cast and Crew members in common between " + film1 + " & " + film2;
-
+/* document.getElementById("h2").innerHTML = "Looking for Cast and Crew members in common between " + film1 + " & " + film2;
+ */
 
 let cclist1;
 let cclist2;
 
 let firstdone = false;
 
-const output = document.getElementById("data").innerHTML;
+const output1 = document.getElementById("#get-film1").innerHTML;
 
-function injectHTML {
-
-}
 
     
 async function getFilmTitle(name){
@@ -64,17 +61,15 @@ function cast(filmID){
     let response = JSON.stringify(jsonData);
     let matches = response.match(regex).map(x => x.replace('name":"',""));
     if(firstdone == false){
-      document.getElementById("data").innerHTML = matches;
+      document.getElementById("get-film1").innerHTML = matches;
     } else{
-      document.getElementById("dataa").innerHTML = matches;
+      document.getElementById("get-film2").innerHTML = matches;
       intersect();
     }
     firstdone = true;
     return matches;
     
   })
-  
-  
   
 }
 
@@ -85,25 +80,25 @@ function removeDups(arr) {
 
 async function intersect() {
 
-  const a = document.querySelector("#data").innerHTML;
-  const b = document.querySelector("#dataa").innerHTML;
+  const a = document.querySelector("#get-film1").innerHTML;
+  const b = document.querySelector("#get-film2").innerHTML;
 
   const y = a.split(',');
   const z = b.split(',');
 
-  console.log("Test1: " + y);
-  console.log("Test2: " + z);
-  
-
   const filteredArray = removeDups(y.filter(value => z.includes(value)));
   console.log("In Common: " + filteredArray);
-
   document.getElementById("h3").innerHTML = "People in common: " + filteredArray;
+  document.getElementById("cloud").appendChild(document.createElement('img')).src = "https://quickchart.io/wordcloud?text=" + y + z;
 }
+
+
 
 async function mainEvent() {
   const form = document.querySelector('.main_form');
-  const submit = document.querySelector('')
+  const submit1 = document.querySelector('#get-film1');
+  const submit2 = document.querySelector('#get-film2');
+  
+  const results = await fetch('https://imdb-api.com/en/API/Search/');
 }
-
 //document.getElementById("demo").innerHTML = n;

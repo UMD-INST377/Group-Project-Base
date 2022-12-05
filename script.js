@@ -1,21 +1,21 @@
 
 
-const film1 = "The Breakfast Club";
-const film2 = "Ferris Bueller's Day Off";
+/* const film1 = "The Breakfast Club";
+const film2 = "Ferris Bueller's Day Off"; */
 const imdbkey = "k_ljv5h5vz/";
 const firstCall = "https://imdb-api.com/en/API/Search/"+ imdbkey+ film1;
 const secondCall = "https://imdb-api.com/en/API/Search/"+ imdbkey + film2;
 
 
-document.getElementById("h2").innerHTML = "Looking for Cast and Crew members in common between " + film1 + " & " + film2;
-
+/* document.getElementById("h2").innerHTML = "Looking for Cast and Crew members in common between " + film1 + " & " + film2;
+ */
 
 let cclist1;
 let cclist2;
 
 let firstdone = false;
 
-const output = document.getElementById("data").innerHTML;
+const output = document.getElementById("#get-film").innerHTML;
 
     
 async function getFilmTitle(name){
@@ -102,5 +102,13 @@ async function mainEvent() {
   const submit = document.querySelector('#get-film');
   
   const results = await fetch('https://imdb-api.com/en/API/Search/');
+}
+
+function injectHTML(list) {
+console.log('fired injectHTML');
+const target = document.querySelector('#cast_list');
+target.innerHTML = '';
+
+
 }
 //document.getElementById("demo").innerHTML = n;

@@ -19,17 +19,6 @@ async function mainEvent() {
   document.addEventListener('DOMContentLoaded', async () => mainEvent());
 }
 
-const team_players = document.querySelectorAll('player');
-const player_list = Array.from(team_players);
-const totalPlayers = player_list.length;
-
-function show_players_team() {
-  player_list.forEach((player) => {
-    player.classList.add('visible');
-  });
-  console.log;
-}
-
 function initChart() {
   return new Chart(document.getElementById('myChart'), {
     type: 'bar',
@@ -51,4 +40,15 @@ function initChart() {
       }
     }
   });
+}
+
+const team_players = document.querySelectorAll('player');
+const player_list = Array.from(team_players);
+const totalPlayers = player_list.length;
+
+function show_players_team() {
+  player_list.forEach((player) => {
+    player.classList.add('visible');
+  });
+  console.log;
 }

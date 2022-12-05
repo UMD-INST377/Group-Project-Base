@@ -69,6 +69,14 @@ function markerPlace(array, map) {
   });
 }
 //  The async function that retreives the GET request information //
+async function violationH7() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H7';
+  const data = await fetch(url);
+  const json = await data.json();
+  const reply = json.filter.filter((item) => Boolean(item.violation_code));
+  console.log(reply);
+  return reply;
+}
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
   const data = await fetch(url);
@@ -86,6 +94,8 @@ async function mainEvent() {
   const pageMap = initMap();
   const mapData = await getData();
 
+  const violation1 = await violationH7();
+
   // submit.style.display = 'none';
 
   // console.table(mapData);
@@ -94,8 +104,29 @@ async function mainEvent() {
   // console.log(
   //   `${mapData[0].location} ${mapData[0].inspection_id}`
   // );
+  if (violation1.length > 0) {
+    submit.style.display = 'block';
+    loadAnimation.classList.remove('lds-ellipsis');
+    loadAnimation.classList.add('lds-ellipsis_hidden');
 
-  if (mapData.length > 0) {
+    let currentList = [];
+    form.addEventListener('input', (event) => {
+      console.log(event.target.value);
+      const newFilterList = filterList(currentList, event.target.value);
+      injectHTML(newFilterList);
+      markerPlace(newFilterList, pageMap);
+    });
+
+    form.addEventListener('violationh7', (SubmitEvent) => {
+      SubmitEvent.preventDefault();
+
+      currentList = processHouse(violation1);
+
+      injectHTML(currentList);
+      markerPlace(currentList, pageMap);
+    });
+  }
+  else if (mapData.length > 0) {
     submit.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');

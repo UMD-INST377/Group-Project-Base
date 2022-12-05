@@ -136,7 +136,7 @@
   }
   
   .right_section {
-    background-color: rgba(53, 82, 212, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;

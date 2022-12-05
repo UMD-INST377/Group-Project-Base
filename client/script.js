@@ -8,7 +8,7 @@ function getRandomIntInclusive(min, max){
     console.log('fired injectHTML');
     const target = document.querySelector("#Library_List");
     target.innerHTML = '';
-  
+  /*
     const listEl = document.createElement('ol');
     target.appendChild(listEl);
   
@@ -18,7 +18,7 @@ function getRandomIntInclusive(min, max){
       listEl.appendChild(el);
  
     })
-
+*/
   }
   
   async function getData(){

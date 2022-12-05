@@ -73,7 +73,7 @@ async function violationH7() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H7';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter.filter((item) => Boolean(item.violation_code));
+  const reply = json.filter((item) => Boolean(item.violation_code));
   console.log(reply);
   return reply;
 }

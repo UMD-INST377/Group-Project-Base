@@ -211,7 +211,7 @@ async function mainEvent() {
   const arrayFromJson = await results.json(); // the data isn't json until we access it using dot notation
 
   const shapedData = shapeDataForLineChart(arrayFromJson);
-  console.log(shapedData);
+  // console.log(shapedData);
   const myChart = initChart(ctx, shapedData);
   /*
         Below this comment, we log out a table of all the results using "dot notation"

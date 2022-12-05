@@ -125,16 +125,14 @@ async function initTable() {
     return data;
   });
 
+  console.log(tableData);
   const table = new Handsontable(
     targetElement, {
-      tableData,
+      licenseKey: 'non-commercial-and-evaluation',
+      data: tableData,
       colHeaders: headers,
-      columns: [
-        {data: 1, type: 'text'},
-        {data: 2, type: 'text'},
-        {data: 3, type: 'numeric'}
-      ],
-      licenseKey: 'non-commercial-and-evaluation'
+      width: 450,
+      height: 300
     }
   );
 

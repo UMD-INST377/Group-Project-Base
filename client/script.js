@@ -14,7 +14,7 @@ function getRandomIntInclusive(min, max){
   
     list.forEach(item => {
       const el = document.createElement('li');
-      el.innerText = item.name;
+      el.innerText = item.zip_code;
       listEl.appendChild(el);
  
     })
@@ -70,10 +70,14 @@ function getRandomIntInclusive(min, max){
     });
 
     array.forEach((item, index) => {
-      const {coordinates} = item.location_1;
-      L.marker([coordinates[1], coordinates[0]]).addTo(map);
+      console.log(location_1);
+      const {latitude, longitude} = item.location_1;
+      const intLat = new Number(latitude);
+      const intLng = new Number(longitude);
+      const marker = L.marker([intLat, intLng].addTo(map));
+      L.latlng(marker);
       if(index === 0){
-        map.setView([38.9897, -76.9378], 11);
+        map.setView([intLat, intLng], 11);
       }
     })
   }

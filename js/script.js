@@ -90,7 +90,7 @@ async function mainEvent() {
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-house');
   const loadAnimation = document.querySelector('.lds-ellipsis');
-  const h7 = document.querySelector('violationh7');
+  const h7 = document.querySelector('#violationh7');
 
   submit.style.display = 'none';
   const pageMap = initMap();

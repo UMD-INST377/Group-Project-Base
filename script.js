@@ -9,8 +9,8 @@ function initChart(chart, object) {
     labels: labels,
     datasets: [{
       label: 'Crimes by Category',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'black',
+      borderColor: 'black',
       data: info
     }]
   };

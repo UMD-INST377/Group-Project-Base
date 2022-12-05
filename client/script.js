@@ -196,8 +196,6 @@ async function mainEvent() {
   const results = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const arrayFromJson = await results.json(); // the data isn't json until we access it using dot notation
 
-  // console.log('Results in crime.js', arrayFromJson); // let's check that something's there before we return it
-  // const myChart = initChart(ctx);
   const shapedData = shapeDataForLineChart(arrayFromJson);
   console.log(shapedData);
   const myChart = initChart(ctx, shapedData);
@@ -241,7 +239,7 @@ async function mainEvent() {
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
       markerPlace(currentList, pageMap);
-      const localData = shapeDataForLineChart(arrayFromJson);
+      const localData = shapeDataForLineChart(currentList);
       changeChart(myChart, localData);
 
       // By separating the functions, we open the possibility of regenerating the list

@@ -6,7 +6,15 @@
 * {
     box-sizing: border-box;
     }
-    
+    footer h4 {
+      text-align: center;
+      width: auto;
+
+    }
+    img {
+      height: 100px;
+      width: auto;
+    }
     p {
       align-self: center;
     }

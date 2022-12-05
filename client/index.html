@@ -8,13 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!---->
-
     <title>Group Project Base</title>
-    <h1>2022 Prince George's County Maryland Trash Visualizer</h1>
 
-    <h2 class ="info">
-        <a = href="./info.html">Info</a>
-    </h2>
+    <div class = "header">
+        <h1>2022 Prince George's County Maryland Trash Visualizer</h1>
+
+        <h2 class ="info">
+            <a = href="./info.html">Info</a>
+        </h2>
+        
+    </div>
+
+
 
     <!---->
 
@@ -29,11 +34,13 @@
     <!---->
 
 </head>
+
 <body>
-    <div class = "sidebar">
+
+    <div class = "centerContainer">
         <div>
             <label>Organization</label>  
-            <select id="Organization">  
+            <select id="Organization" class = "inputBars">  
             <option value = ""></option>
             <option value = "RHHilarios">RHHilarios</option>
             <option value = "ExpressBusiness">ExpressBusiness</option>
@@ -42,20 +49,43 @@
         </div>
         <div>
             <label for="resto">Atleast number of bags</label>
-            <input type="text" name="Bags" id="Bags">
+            <input type="text"  class = "inputBars" name="Bags" id="Bags" placeholder="Enter a number">
         </div>
         <div>
-            <label for="resto">Max Number of Markers (Recommended 50)</label>
-            <input type="text" name="Max" id="Max">
+            <label for="resto">Max Number of Markers (Default 50)</label>
+            <input type="text" class = "inputBars" name="Max" id="Max" placeholder="Enter a number">
         </div>
         <button type="submit" id="submit_info">Submit</button>
     </div>
-    <div id="map"></div>
-    <div class = "footer box">
+
+    <div class="flex-container">
+
+        <div class = "flex-child">
+
+            <h1>How to use the Trash Visualizer</h1>
+            <h2>
+                <ul>
+                    <li>1. Select the organization you want to research. (RHHilarios, ExpressBusiness, CommunityBridge)</li>
+                    <li>2. Enter how many bags or more you want to see, (1 will show all of the trash collected)</li>
+                    <li>3. Enter the max number of markers, recommended is 50 so it won't overload your browser.</li>
+                </ul>
+            </h2>
+            
+            <h1>Map of where Prince Georges County is located</h1>
+            <img class = "pgImage" src="images/prince.png" alt="Map of Prince George's County">
+        </div>
+
+        <div class = "flex-child" id="map"></div>
+    </div>
+
+    <div class = "footer">
         <p>Data Provided by the LitterTRAK API
           <a href='https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner'>Link to LitterTRAK API</a>
         </p>
-      </div>
+    </div>
+
     <script src="./script.js"></script>
+
 </body>
+
 </html>

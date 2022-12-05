@@ -16,7 +16,7 @@ function markerPlace(array, map, organization, max, bags) {
   });
   array.forEach((item) => {
     if (markerCounter <= max) {
-      if (item.number_bags > bags && item.organization === organization) {
+      if (item.number_bags > +bags && item.organization === organization) {
         const {latitude} = item;
         const {longitude} = item;
         const marker = L.marker([longitude, latitude]).addTo(map);

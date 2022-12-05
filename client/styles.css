@@ -60,11 +60,19 @@ html {
     width: 750px;
     height: 750px;
     border: 2px groove rgb(99,99,99);
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
     align-items: center;
   }
 
 /* HOME */
+
+.header {
+  padding-top: 0rem;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-bottom: 2rem;
+}
+
 .info {
   display: block;
   background-color: rgb(84, 216, 106);
@@ -77,7 +85,47 @@ html {
   float: left;
 }
 
+.centerContainer {
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex:1;
+  padding-bottom: 5rem;
+}
+
+.inputBars {
+  border-radius: 8px 8px 8px 8px;
+  outline: none;
+  height: 30px;
+  padding: 3px 3px;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+}
+
+.pgImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+  border: 2px solid rgb(0, 0, 0);
+}  
+
+.flex-child:first-child {
+  margin-right: 20px;
+} 
+
 /* FOOTER STYLES */
+
   .footer {
     flex-shrink: 0;
     padding: 1rem;
@@ -102,3 +150,16 @@ html {
     margin: 0px;
     margin-bottom: 5px;
   }
+  
+/* SMALL SCREEN STYLES */
+
+  @media only screen and (max-width: 736px){
+    /* Rules in here will only apply when a screen is the correct size */
+    /* check it out by using your developer tools to shrink your screen-size */
+    .container {
+      background-color: rgba(241, 228, 232, 1);
+      flex-direction:column;
+      justify-content: center;
+      align-items:  stretch;
+    }
+}

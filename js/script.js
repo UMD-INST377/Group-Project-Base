@@ -90,6 +90,8 @@ async function mainEvent() {
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-house');
   const loadAnimation = document.querySelector('.lds-ellipsis');
+  const h7 = document.querySelector('violationh7');
+
   submit.style.display = 'none';
   const pageMap = initMap();
   const mapData = await getData();
@@ -110,14 +112,14 @@ async function mainEvent() {
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
     let currentList = [];
-    form.addEventListener('input', (event) => {
+    h7.addEventListener('input', (event) => {
       console.log(event.target.value);
       const newFilterList = filterList(currentList, event.target.value);
       injectHTML(newFilterList);
       markerPlace(newFilterList, pageMap);
     });
 
-    form.addEventListener('violationh7', (SubmitEvent) => {
+    h7.addEventListener('submit', (SubmitEvent) => {
       SubmitEvent.preventDefault();
 
       currentList = processHouse(violation1);

@@ -18,8 +18,7 @@ function injectHTML(list) {
 
   list.forEach((item) => {
     const el = document.createElement('li');
-    el.innerText = `${item.street_number} ${item.street_name} ${item.street_type
-    } ${item.zip_code}`;
+    el.innerText = `${item.street_number} ${item.street_name} ${item.street_type} ${item.zip_code}`;
     listEl.appendChild(el);
   });
 }
@@ -46,7 +45,8 @@ function initMap() {
   const map = L.map('map').setView([38.9897, -76.9378], 13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    attribution:
+      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
   return map;
 }
@@ -69,27 +69,27 @@ function markerPlace(array, map) {
   });
 }
 //  The async function that retreives the GET request information //
-async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
+async function violationH7() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H7';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.violation_code));
+  const reply = json.filter((item) => Boolean(item.violation_code));
   console.log(reply);
   return reply;
 }
 // The async function that runs all the rpevious functions into our HTML file //
 async function mainEvent() {
   const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#get-house');
   const loadAnimation = document.querySelector('.lds-ellipsis');
+  const h7 = document.querySelector('#violationh7');
 
-  submit.style.display = 'none';
+  h7.style.display = 'none';
 
   const pageMap = initMap();
-  const mapData = await getData();
+  const violation1 = await violationH7();
 
   if (violation1.length > 0) {
-    submit.style.display = 'block';
+    h7.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
@@ -104,7 +104,7 @@ async function mainEvent() {
     form.addEventListener('submit', (SubmitEvent) => {
       SubmitEvent.preventDefault();
 
-      currentList = processHouse(mapData);
+      currentList = processHouse(violation1);
 
       injectHTML(currentList);
       markerPlace(currentList, pageMap);

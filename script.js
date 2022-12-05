@@ -10,10 +10,10 @@ function initMap() {
 
 function initChart(chart) {
   const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
+    'CRIME 1',
+    'CRIME 1',
+    'CRIME 2',
+    'CRIME 3',
     'May',
     'June'
   ];

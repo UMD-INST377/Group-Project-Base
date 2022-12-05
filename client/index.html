@@ -28,9 +28,19 @@
             <div class="left_section box">
                 <div class="input">
                     <form action="/api" class="main-form">
-                        <label for="location">Input Location: </label>
-                        <input type="text" name="location" id="location">
-                        <button class="button-18" role="button" type="submit" id="get-location">Change Location</button>
+                        <div>
+                            <label for="location">Select Location: </label>
+                            <select id="location" name="location">
+                                <option value="Adelphi">Adelphi</option>
+                                <option value="11">Medical Leave</option>
+                                <option value="14">Long Service</option>
+                                <option value="17">Leave Without Pay</option>
+                            </select>
+                        </div>
+                       <!--<input type="text" name="location" id="location"> -->
+                       <div>
+                            <button class="button-18" role="button" type="submit" id="get-location">Change Location</button>
+                       </div>
                     </form>
                 </div>
             </div>

@@ -26,11 +26,12 @@ function getRandomIntInclusive(min, max){
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
     const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.zip_code));
+    console.log('Results in library API', json.length); 
     return reply ;
   }
 
   function processRestaurants(list) {
-    console.log('fired restaurants list');
+    console.log('fired library list');
     const range = [...Array(15).keys()];
     const newArray = range.map((item) => {
       const index = getRandomIntInclusive(0, list.length);
@@ -69,7 +70,7 @@ function getRandomIntInclusive(min, max){
     });
 
     array.forEach((item, index) => {
-      const {coordinates} = item.geocoded_column_1;
+      const {coordinates} = item.location_1;
       L.marker([coordinates[1], coordinates[0]]).addTo(map);
       if(index === 0){
         map.setView([38.9897, -76.9378], 11);
@@ -100,15 +101,15 @@ function getRandomIntInclusive(min, max){
     const libraryData = await getData();
     // loadLibraryData('https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json');
     // const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
-    const results = await fetch('/api/foodServicePG');
-    const arrayFromJson = await results.json();
+    //const results = await fetch(libraryData);
+   // const arrayFromJson = await results.json();
     /*
       Below this comment, we log out a table of all the results using "dot notation"
       An alternate notation would be "bracket notation" - arrayFromJson["data"]
       Dot notation is preferred in JS unless you have a good reason to use brackets
       The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
     */
-    //console.table(arrayFromJson.data);
+    console.table(libraryData);
   
     // in your browser console, try expanding this object to see what fields are available to work with
     // for example: arrayFromJson.data[0].name, etc

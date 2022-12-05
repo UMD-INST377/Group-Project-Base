@@ -92,7 +92,7 @@ async function mainEvent() {
   const loadAnimation = document.querySelector('.lds-ellipsis');
   const h7 = document.querySelector('#violationh7');
 
-  submit.style.display = 'none';
+  h7.style.display = 'none';
   const pageMap = initMap();
   const mapData = await getData();
 

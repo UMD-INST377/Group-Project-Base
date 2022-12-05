@@ -107,7 +107,7 @@ async function mainEvent() {
   //   `${mapData[0].location} ${mapData[0].inspection_id}`
   // );
   if (violation1.length > 0) {
-    submit.style.display = 'block';
+    h7.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 

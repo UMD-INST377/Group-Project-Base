@@ -16,24 +16,9 @@ function getRandomIntInclusive(min, max){
       const el = document.createElement('li');
       el.innerText = item.name;
       listEl.appendChild(el);
-      /*
-      const str = `<li>${item.name} </li>`;
-      target.innerHTML += str;*/
+ 
     })
-    /*
-    ## JS and HTML Injection
-      There are a bunch of methods to inject text or HTML into a document using JS
-      Mainly, they're considered "unsafe" because they can spoof a page pretty easily
-      But they're useful for starting to understand how websites work
-      the usual ones are element.innerText and element.innerHTML
-      Here's an article on the differences if you want to know more:
-      https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent#differences_from_innertext
-  
-    ## What to do in this function
-      - Accept a list of restaurant objects
-      - using a .forEach method, inject a list element into your index.html for every element in the list
-      - Display the name of that restaurant and what category of food it is
-  */
+
   }
   
   async function getData(){
@@ -52,24 +37,7 @@ function getRandomIntInclusive(min, max){
       return list[index];
     })
     return newArray;
-    /*
-      ## Process Data Separately From Injecting It
-        This function should accept your 1,000 records
-        then select 15 random records
-        and return an object containing only the restaurant's name, category, and geocoded location
-        So we can inject them using the HTML injection function
-  
-        You can find the column names by carefully looking at your single returned record
-        https://data.princegeorgescountymd.gov/Health/Food-Inspection/umjn-t2iz
-  
-      ## What to do in this function:
-  
-      - Create an array of 15 empty elements (there are a lot of fun ways to do this, and also very basic ways)
-      - using a .map function on that range,
-      - Make a list of 15 random restaurants from your list of 100 from your data request
-      - Return only their name, category, and location
-      - Return the new list of 15 restaurants so we can work on it separately in the HTML injector
-    */
+
   }
   
   function filterList(array, filterInputValue){
@@ -90,6 +58,7 @@ function getRandomIntInclusive(min, max){
     return map;
   }
 
+
   function markerPlace(array, map){
     map.eachLayer((layer) => {
       if (layer instanceof L.Marker) {
@@ -106,11 +75,6 @@ function getRandomIntInclusive(min, max){
     })
   }
 
- /* async function loadLibraryData(url){
-  const results = await fetch(url);
-  const arrayFromJson = await results.json();
-  console.log(arrayFromJson);
-}*/
 
   async function mainEvent() {
     /*
@@ -134,7 +98,8 @@ function getRandomIntInclusive(min, max){
     const libraryData = await getData();
     // loadLibraryData('https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json');
     // const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
-  
+    const results = await fetch('/api/foodServicePG');
+    const arrayFromJson = await results.json();
     /*
       Below this comment, we log out a table of all the results using "dot notation"
       An alternate notation would be "bracket notation" - arrayFromJson["data"]

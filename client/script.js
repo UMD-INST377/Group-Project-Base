@@ -3,9 +3,6 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
-import Chart from 'chart.js/auto';
-import Handsontable from 'handsontable';
-
 async function getData(url) {
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json();
@@ -45,9 +42,9 @@ async function initChart() {
   let labelSublist = rotateList(labelsList, start, numOfElements); // rotate the labels list
   let marketCapSublist = rotateList(marketCapList, start, numOfElements); // rotate the market cap list
 
-  // Market Cap Chart
   const targetElement = document.querySelector('#market-cap-chart'); // get DOM Object for chart
 
+  // prepare the data for the chart
   const data = {
     labels: labelSublist,
     datasets: [{
@@ -56,6 +53,7 @@ async function initChart() {
     }]
   };
 
+  // configure the asesthetics of the chart
   const config = {
     options: {
       scales: {
@@ -117,6 +115,8 @@ async function initTable() {
   const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the cryptocurrency data
 
   // Extract the data we need from the JSON object
+  const targetElement = document.querySelector('#trending-crypto-table'); // get DOM object where the table will live
+  const headers = ['Name', 'ID', 'Current Price'];
   const tableData = cryptocurrencyJson.map((currency) => {
     const n = currency.name; // currency name
     const i = currency.id; // currency id
@@ -124,8 +124,21 @@ async function initTable() {
     const data = [n, i, c];
     return data;
   });
-  const targetElement = document.querySelector('#trending-crypto-table');
-  const table = new Handsontable();
+
+  const table = new Handsontable(
+    targetElement, {
+      tableData,
+      colHeaders: headers,
+      columns: [
+        {data: 1, type: 'text'},
+        {data: 2, type: 'text'},
+        {data: 3, type: 'numeric'}
+      ],
+      licenseKey: 'non-commercial-and-evaluation'
+    }
+  );
+
+  return table;
 }
 
 async function mainEvent() {

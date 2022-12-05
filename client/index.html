@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Group Project Base</title>
+  <!-- CDN for 'Handsontable' library -->
+  <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js" type="module"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" type="module"></script>
   <link rel="stylesheet" href="styles.css" />
   
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -40,7 +43,9 @@
       <div class="left_section">
         <!-- 1. Trending Cyprto / top left -->
         <div class="box">
-          <div id="trending-crypto-table"></div>
+          <div style="position: relative; height:auto">
+            <div id="trending-crypto-table"></div>
+          </div>
         </div>
         
         <!-- 2. Market Cap / Buttom left -->
@@ -53,15 +58,17 @@
         </div>
       </div>
       
-
-      <div class="right_section">
-        <!-- ??? / top right -->
-        <div class="box top_right" id="top_right">top_right</div>
+      <!-- Contains Price Percentage Change; Rising and Falling -->
+      <div class="container">
+        <div class="right_section">
+          <!-- 3. Price Percentage change (Rising) / top right -->
+          <div class="box top_right" id="top_right">top_right</div>
+          
+          <!-- 4. Price percentage change (Falling) / Buttom right -->
+          <div class="box bottom_right" id="bottom_right">bottom_right</div>
+        </div>
         
-        <!-- ??? / Buttom right -->
-        <div class="box bottom_right" id="bottom_right">bottom_right</div>
       </div>
-      
     </div>
     
   </div>

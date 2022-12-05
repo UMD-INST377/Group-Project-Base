@@ -88,7 +88,7 @@ async function violationH7() {
 // The async function that runs all the rpevious functions into our HTML file //
 async function mainEvent() {
   const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#get-house');
+  const submit = dcument.querySelector('#get-house');
   const loadAnimation = document.querySelector('.lds-ellipsis');
   const h7 = document.querySelector('#violationh7');
 
@@ -112,7 +112,7 @@ async function mainEvent() {
       markerPlace(newFilterList, pageMap);
     });
 
-    h7.addEventListener('submit', (SubmitEvent) => {
+    form.addEventListener('submit', (SubmitEvent) => {
       SubmitEvent.preventDefault();
 
       currentList = processHouse(violation1);

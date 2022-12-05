@@ -71,8 +71,6 @@ function cast(filmID){
     
   })
   
-  
-  
 }
 
 function removeDups(arr) {
@@ -88,15 +86,13 @@ async function intersect() {
   const y = a.split(',');
   const z = b.split(',');
 
-  console.log("Test1: " + y);
-  console.log("Test2: " + z);
-  
-
   const filteredArray = removeDups(y.filter(value => z.includes(value)));
   console.log("In Common: " + filteredArray);
-
   document.getElementById("h3").innerHTML = "People in common: " + filteredArray;
+  document.getElementById("cloud").appendChild(document.createElement('img')).src = "https://quickchart.io/wordcloud?text=" + y + z;
 }
+
+
 
 async function mainEvent() {
   const form = document.querySelector('.main_form');
@@ -104,13 +100,5 @@ async function mainEvent() {
   const submit2 = document.querySelector('#get-film2');
   
   const results = await fetch('https://imdb-api.com/en/API/Search/');
-}
-
-function injectHTML(list) {
-console.log('fired injectHTML');
-const target = document.querySelector('#cast_list');
-target.innerHTML = '';
-
-
 }
 //document.getElementById("demo").innerHTML = n;

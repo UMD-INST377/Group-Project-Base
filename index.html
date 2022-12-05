@@ -16,31 +16,27 @@
     
     <!-- Start of onsite code -->
     <div class="wrapper">
-        <header class="header">
-          <h1>NBA Statistics</h1>
-        </header>
-        <div class="container">
-          <div class="left_section box">
-              <h2>Form Inputs</h2>
-            <form action="/api" class="box main_form">
-              <div>
-                  <label for="resto">Filter Restaurant List</label>
-                  <input type="text" name="resto" id="resto">
-              </div>
-              <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-              <button type="submit" id="get-resto"> Change Restaurants </button>
-            </form>
-          </div>
-          <div class="right_section box">
-            <h2>Local Restaurant Map</h2>
-            
-            <div class="chart_container">
-              <canvas id="myChart"></canvas>
+      <header class="header">
+        <h1>Anusha's Labs for INST377</h1>
+      </header>
+      <div class="container">
+        <div class="left_section box">
+            <h2>Form Inputs</h2>
+          <form action="/api" class="box main_form">
+            <div>Hello World</div>
+            <div>
+                <label for="resto">Filter Restaurant List</label>
+                <input type="text" name="resto" id="resto">
             </div>
-            <!--<div id="map"></div> --> 
-            <div class="box" id="restaurant_list">
-              A list of restaurants from an API
-            </div>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            <button type="submit" id="get-resto"> Change Restaurants </button>
+          </form>
+        </div>
+        <div class="right_section box">
+          <h2>Local Restaurant Map</h2>
+          <div id="map"></div>
+          <div class="box" id="restaurant_list">
+            A list of restaurants from an API
           </div>
         </div>
       </div>

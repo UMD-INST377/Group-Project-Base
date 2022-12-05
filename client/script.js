@@ -12,10 +12,9 @@ async function mainEvent() {
     options
   );
   const arrayFromJson = await dataGet.json();
+  // eslint-disable-next-line camelcase
   const response_object = arrayFromJson.response;
-  weight1 = notNull(response_object);
-  const chart1 = initChart();
-  console.log(chart1);
+  console.log('hello');
   document.addEventListener('DOMContentLoaded', async () => mainEvent());
 }
 

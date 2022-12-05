@@ -98,8 +98,7 @@ function getRandomIntInclusive(min, max){
     const libraryData = await getData();
     // loadLibraryData('https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json');
     // const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
-    const results = await fetch('/api/foodServicePG');
-    const arrayFromJson = await results.json();
+
     /*
       Below this comment, we log out a table of all the results using "dot notation"
       An alternate notation would be "bracket notation" - arrayFromJson["data"]

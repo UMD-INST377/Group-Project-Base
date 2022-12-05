@@ -14,8 +14,8 @@ async function mainEvent() {
   const arrayFromJson = await dataGet.json();
   const response_object = arrayFromJson.response;
   weight1 = notNull(response_object);
-  const ctx = document.querySelectorAll('#myChart');
-  initChart(ctx);
+  const chart1 = initChart();
+  console.log(chart1);
   document.addEventListener('DOMContentLoaded', async () => mainEvent());
 }
 
@@ -30,25 +30,25 @@ function show_players_team() {
   console.log;
 }
 
-function initChart(chart) {
-  const labels = ['A', 'B', 'C', 'D', 'E', 'F'
-  ];
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'Test Chart',
-      backgroundColor: 'rgb(255,99,132)',
-      borderColors: 'rgb(255,99,132)',
-      data: [1, 2, 3, 4, 5, 6]
-    }]
-  };
-  const config = {
+function initChart() {
+  return new Chart(document.getElementById('myChart'), {
     type: 'bar',
-    data: data,
-    options: {}
-  };
-  return new Chart(
-    chart,
-    config
-  );
+    data: {
+      labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
+      datasets: [
+        {
+          label: 'Population (millions)',
+          backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f', '#e8c3b9', '#c45850'],
+          data: [2478, 5267, 734, 784, 433]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Predicted world population (millions) in 2050'
+      }
+    }
+  });
 }

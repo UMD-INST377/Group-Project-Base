@@ -36,6 +36,7 @@ html {
   
 
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    flex: 1;
   }
   
   a {
@@ -47,6 +48,7 @@ html {
     margin:0;
     padding:0;
     padding-bottom:1.5rem;
+    flex: 1;
   }
   
   form {
@@ -66,11 +68,29 @@ html {
 
 /* HOME */
 
+.wrapper {
+  min-height: 100vh;
+  /* display: flex; */
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
 .header {
+  display:flex;
+  flex-direction: row;
+  align-items: stretch;
   padding-top: 0rem;
   padding-left: 0rem;
   padding-right: 0rem;
   padding-bottom: 2rem;
+}
+
+.header>.h1 {
+  flex: 1;
+}
+.header>.h2 {
+  flex: 1;
 }
 
 .info {
@@ -80,7 +100,7 @@ html {
   font-size: 1.5rem;
   padding: 1.25rem;
   margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
-  border: 3px solid;
+  /* border: 3px solid; */
   text-align: left;
   float: left;
 }
@@ -88,6 +108,8 @@ html {
 .centerContainer {
   margin: 0 20px;
   display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   flex:1;

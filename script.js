@@ -84,7 +84,7 @@ function filterList (array, filterInputValue) {
 function initMap() {
   console.log('initMap');
   const map = L.map('map').setView([38.9897, -76.9378], 13);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  L.tileLayer('https://www.atlistmaps.com/showcase/nba-team-map-all-30-teams-on-a-map', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);

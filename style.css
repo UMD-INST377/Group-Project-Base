@@ -1,8 +1,12 @@
 .circle{
     background: red;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.left_image{
+  padding-right: 85%;
 }
 
 .wrapper {
@@ -216,10 +220,9 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: rgba(139, 0, 120, 0.8);
+  background-color: rgba(26, 28, 182, 0.8);
   font-size: 1.2rem;
   font-weight: 600;
-  border-style: dashed;
 }
 
 .footer a {
@@ -451,4 +454,39 @@ form label {
 .chart_container {
   height: 100%;
   width: 100%;
+}
+
+
+/* Style the search field */
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
 }

@@ -36,6 +36,7 @@ html {
   
 
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    flex: 1;
   }
   
   a {
@@ -47,6 +48,7 @@ html {
     margin:0;
     padding:0;
     padding-bottom:1.5rem;
+    flex: 1;
   }
   
   form {
@@ -66,11 +68,29 @@ html {
 
 /* HOME */
 
+.wrapper {
+  min-height: 100vh;
+  /* display: flex; */
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
 .header {
+  display:flex;
+  flex-direction: row;
+  align-items: stretch;
   padding-top: 0rem;
   padding-left: 0rem;
   padding-right: 0rem;
   padding-bottom: 2rem;
+}
+
+.header>.h1 {
+  flex: 1;
+}
+.header>.h2 {
+  flex: 1;
 }
 
 .info {
@@ -80,7 +100,7 @@ html {
   font-size: 1.5rem;
   padding: 1.25rem;
   margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
-  border: 3px solid;
+  /* border: 3px solid; */
   text-align: left;
   float: left;
 }
@@ -88,6 +108,8 @@ html {
 .centerContainer {
   margin: 0 20px;
   display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   flex:1;
@@ -151,6 +173,48 @@ html {
     margin-bottom: 5px;
   }
   
+
+
+/* BUTTON STYLE (FOUND ONLINE) */
+.greenButton {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-3:hover {
+  background-color: #2c974b;
+}
+
+.button-3:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-3:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
 /* SMALL SCREEN STYLES */
 
   @media only screen and (max-width: 736px){

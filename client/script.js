@@ -123,7 +123,7 @@ async function songNamesArray(){
             link : element.track.external_urls.spotify,
             image_url : element.track.album.images[0].url,
             genre : element.gen,
-            length : element.track.duration
+            length : element.track.duration_ms
         })
     })
     return(array)

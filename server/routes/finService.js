@@ -16,7 +16,6 @@ const router = express.Router();
 
 
 
-
 //dont know if the route is the correct one
 router.route('/PgSpendings') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {

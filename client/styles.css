@@ -24,7 +24,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
@@ -65,6 +64,9 @@ h2,
 h3 {
   margin: 0;
   padding: 10;
+}
+h5{
+  margin: auto;
 }
 
 form {
@@ -125,7 +127,6 @@ form {
 }
 
 .box {
-  
   color: #fff;
   background-color: rgba(255, 255, 255, 0.1);
   width: fit-content;
@@ -138,7 +139,18 @@ form {
   border-radius: 15px;
   padding: 10px;
 }
-
+.left.box{
+  color: #000;
+  background-color: #fff;
+  justify-content: start;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+}
+.inner{
+  position: fixed;
+  background-color: #fff;
+}
 .text.box{
   position: sticky;
   top: 150px;
@@ -200,7 +212,6 @@ form input {
   width: -webkit-fill-available;
   width: fill-available;
 
-  margin-bottom: 1rem;
   height: 2rem;
   border-radius: 4px;
 }
@@ -214,6 +225,19 @@ form label {
 
   display: flex;
 }
+
+.radiobutt{
+  display: block;
+}
+
+.combo{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  padding: 0.5px;
+}
+
 
 .footer {
   position: sticky;

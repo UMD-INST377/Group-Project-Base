@@ -1,5 +1,5 @@
-function injectHTML(list,elehtml) {
-  let target = document.querySelector(elehtml);
+function injectHTML(list, htmlelm) {
+  let target = document.querySelector(htmlelm);
   target.innerHTML = '';
 
   // populate table head
@@ -76,43 +76,57 @@ function filterlist(array, filterInputvalue) {
 }
 
 function callyear(year) {
-  const url ={
-    2022:'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json',
-    2021:'https://data.princegeorgescountymd.gov/resource/rh7w-bmhm.json',
-    2020:'https://data.princegeorgescountymd.gov/resource/uh6s-izyj.json',
-    2019:'https://data.princegeorgescountymd.gov/resource/p32t-azw8.json',
-    2018:'https://data.princegeorgescountymd.gov/resource/2qma-7ez9.json',
-    2017:'https://data.princegeorgescountymd.gov/resource/364y-gm2b.json',
-    2016:'https://data.princegeorgescountymd.gov/resource/csi4-9jzc.json',
-    2015:'https://data.princegeorgescountymd.gov/resource/bh8z-9wkk.json',
-    2014:'https://data.princegeorgescountymd.gov/resource/p9kn-7u2k.json',
-    2013:'https://data.princegeorgescountymd.gov/resource/aqt8-5ri2.json',
-    2012:'https://data.princegeorgescountymd.gov/resource/9i62-gki4.json'
+  const url = {
+    2022: 'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json',
+    2021: 'https://data.princegeorgescountymd.gov/resource/rh7w-bmhm.json',
+    2020: 'https://data.princegeorgescountymd.gov/resource/uh6s-izyj.json',
+    2019: 'https://data.princegeorgescountymd.gov/resource/p32t-azw8.json',
+    2018: 'https://data.princegeorgescountymd.gov/resource/2qma-7ez9.json',
+    2017: 'https://data.princegeorgescountymd.gov/resource/364y-gm2b.json',
+    2016: 'https://data.princegeorgescountymd.gov/resource/csi4-9jzc.json',
+    2015: 'https://data.princegeorgescountymd.gov/resource/bh8z-9wkk.json',
+    2014: 'https://data.princegeorgescountymd.gov/resource/p9kn-7u2k.json',
+    2013: 'https://data.princegeorgescountymd.gov/resource/aqt8-5ri2.json',
+    2012: 'https://data.princegeorgescountymd.gov/resource/9i62-gki4.json'
   }
-  return url[year]!= undefined ? url[year] : url[2022];
+  return url[year] != undefined ? url[year] : url[2022];
 }
 
-function addButt() {
-  const form = document.querySelector('.main_form');
-  for (var i = 0; i < 10; i++) {
-     var btn = document.createElement('input');
-     btn.type = 'radio';
-     const year = 2022 - i;
-     btn.value = year;
-     form.appendChild(btn);
+function addButt(htmlelm) {
+  const form = document.querySelector(htmlelm);
+  for (var i = 0; i < 11; i++) {
+    var div = document.createElement('div');
+    var btn = document.createElement('input');
+    var labl = document.createElement('label');
+    div.className = 'combo';
+    btn.className = 'radiobutt';
+    btn.type = 'radio';
+    btn.name = 'butt';
+    const year = 2022 - i;
+    btn.id = year;
+    btn.value = year;
+    labl.htmlFor = year;
+    labl.innerText = year;
+    if(year === 2022){
+      btn.checked = true;
+    }
+    div.appendChild(btn);
+    div.appendChild(labl);
+    form.appendChild(div);
   }
 }
 
 async function mainEvent() {
 
   // get data 
-  const url = 'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json';
+  addButt('#butts');
+  let yr = await document.querySelector('input[name="butt"]:checked').value;
+  const url = await callyear(yr);
   const resp = await fetch(url);
   const findata = await resp.json();
   if (findata.length > 0) {
-    addButt();
-    injectHTML(findata,'#rlist');
-  }
+    injectHTML(findata, '#rlist');
+  } 
 
 
   // the async keyword means we can make API requests

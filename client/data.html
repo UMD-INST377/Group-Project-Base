@@ -22,21 +22,29 @@
         </header>
 
         <div class="form container">
-            <form action="/api" class="b main_form">
-                <div>
-                    <label for="resto">Search</label>
-                    <input type="text" name="resto" id="resto">
+            <div class="left box">
+                <div class="inner">
+                    <form action="/api" class="b main_form">
+                        <div>
+                            <label for="resto">Search</label>
+                            <input type="text" name="resto" id="resto">
+                        </div>
+                        <button type="submit" id="get">Submit & filter</button>
+                    </form>
+                    <h5>Select Year:</h5>
+                    <form action="" name="year">
+                        <div class="small" id="butts">
+                        </div>
+                    </form>
                 </div>
-                <button type="submit" id="get">Submit & filter</button>
-            </form>
-
+            </div>
             <div class="right box">
                 <h2>
                     Data Entires of
                 </h2>
-                    <div class="table" id="rlist">
-                        A list from an API.
-                    </div>
+                <div class="table" id="rlist">
+                    A list from an API.
+                </div>
             </div>
         </div>
 

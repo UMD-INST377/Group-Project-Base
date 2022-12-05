@@ -59,6 +59,15 @@ async function getData() {
   return reply;
 }
 
+function filterList(list, filterInputValue) {
+	return list.filter((item) => {
+	  if (!item.street_address) { return; }
+		const lowerCaseName = item.street_address.toLowerCase();
+		const lowerCaseQuery = filterInputValue.toLowerCase();
+		return lowerCaseName.includes(lowerCaseQuery);
+    });
+  }
+
 async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it

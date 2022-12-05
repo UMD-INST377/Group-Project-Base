@@ -29,6 +29,13 @@
             <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> 
             <button type="submit" id="get-resto">Show accidents with impounds...</button>
           </form>
+          <form action="/api" class="box main_form">
+            <div>
+            <label for="resto">Filter by address</label>
+            <input type="text" name="resto" id="resto" />
+            </div>
+            <button type="submit" id="get-resto">Filter</button>
+          </form>
           <div class="box" id="crime_list">A list of accidents with impounds</div>
         </div>
       </div>

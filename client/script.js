@@ -69,7 +69,7 @@ function getRandomIntInclusive(min, max){
     });
 
     array.forEach((item, index) => {
-      console.log(location_1);
+      console.log(item.location_1);
       const {latitude, longitude} = item.location_1;
       const intLat = new Number(latitude);
       const intLng = new Number(longitude);

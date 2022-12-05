@@ -140,10 +140,7 @@
     background-color: #DDDBF1;
     font-size: 0.7rem;
     font-weight: 600;
-    position: absolute;
-    bottom: 0%;
-    width: 100%;
-    border: 3px dashed;
+
   }
   
   .footer a {

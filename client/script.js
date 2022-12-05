@@ -120,23 +120,18 @@ function markerPlace(array, map) {
   });
 }
 
-function initChart(chart) {
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June'
-  ];
+function initChart(chart, object) {
+  const labels = Object.keys(object);
+
+  const info = labels.map((item) => object[item].length);
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
+      label: 'Different type of Crime',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45]
+      data: info
     }]
   };
 
@@ -149,6 +144,30 @@ function initChart(chart) {
     chart,
     config
   );
+}
+
+function changeChart(chart, dataObject) {
+  const labels = Object.keys(dataObject);
+  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+
+  console.log('Newdata', labels, info);
+
+  chart.data.labels = labels;
+  chart.data.datasets.forEach((set) => {
+    set.data = info;
+    return set;
+  });
+  chart.update();
+}
+function shapeDataForLineChart(array) {
+  return array.reduce((collection, item) => {
+    if (!collection[item.clearance_code_inc_type]) {
+      collection[item.clearance_code_inc_type] = [item];
+    } else {
+      collection[item.clearance_code_inc_type].push(item);
+    }
+    return collection;
+  }, {});
 }
 async function mainEvent() {
   /*
@@ -178,7 +197,10 @@ async function mainEvent() {
   const arrayFromJson = await results.json(); // the data isn't json until we access it using dot notation
 
   // console.log('Results in crime.js', arrayFromJson); // let's check that something's there before we return it
-initChart(ctx);
+  // const myChart = initChart(ctx);
+  const shapedData = shapeDataForLineChart(arrayFromJson);
+  console.log(shapedData);
+  const myChart = initChart(ctx, shapedData);
   /*
         Below this comment, we log out a table of all the results using "dot notation"
         An alternate notation would be "bracket notation" - arrayFromJson["data"]
@@ -219,6 +241,8 @@ initChart(ctx);
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
       markerPlace(currentList, pageMap);
+      const localData = shapeDataForLineChart(arrayFromJson);
+      changeChart(myChart, localData);
 
       // By separating the functions, we open the possibility of regenerating the list
       // without having to retrieve fresh data every time

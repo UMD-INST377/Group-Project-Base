@@ -93,6 +93,7 @@ async function mainEvent() {
   const h7 = document.querySelector('#violationh7');
 
   h7.style.display = 'none';
+  submit.style.display = 'none';
   const pageMap = initMap();
   const mapData = await getData();
 
@@ -120,7 +121,7 @@ async function mainEvent() {
       markerPlace(currentList, pageMap);
     });
   }
-  if (mapData.length > 0) {
+  else if (mapData.length > 0) {
     submit.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');

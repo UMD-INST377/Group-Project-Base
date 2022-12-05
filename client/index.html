@@ -22,22 +22,24 @@
         </div>
         
         <h2>Today Mood</h2>
-        <div class="emoji-container">
-            <div class="box">
-                <div id="emoji1" class="mini-box">😀 Positive </div>
-                <div id="emoji2" class="mini-box">😢 Negative </div>
-                <div id="emoji3" class="mini-box">😐 Netural </div>
-                <div class="mood-display">here</div>
-            </div>
+        <form action="/api" class="emoji-container">
+            <h>Click to describe your mood today!</h>
+            <div id="emoji1" class="mini-box">😀 Positive </div>
+            <div id="emoji2" class="mini-box">😢 Negative </div>
+            <div id="emoji3" class="mini-box">😐 Netural </div>
+            <button type="submit">Submit</button>
+            <div class="mood-display">here</div>
             
-        </div>
+            
+        </form>
         
         <h2 class="container">Music Chart</h2>
         <div class="chart">
 
         </div>
-        
-        <script src="script.js"></script>
+        <!-- <script src="./movie.js"></script> -->
+        <script src="./api.js"></script>
+        <script src="./script.js"></script>
         <script src="https://d3js.org/d3.v7.min.js"></script>
             <script type="module">
 

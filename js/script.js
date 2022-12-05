@@ -112,7 +112,7 @@ async function mainEvent() {
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
     let currentList = [];
-    h7.addEventListener('input', (event) => {
+    form.addEventListener('input', (event) => {
       console.log(event.target.value);
       const newFilterList = filterList(currentList, event.target.value);
       injectHTML(newFilterList);
@@ -128,7 +128,7 @@ async function mainEvent() {
       markerPlace(currentList, pageMap);
     });
   }
-  // else if (mapData.length > 0) {
+  // if (mapData.length > 0) {
   //   submit.style.display = 'block';
   //   loadAnimation.classList.remove('lds-ellipsis');
   //   loadAnimation.classList.add('lds-ellipsis_hidden');

@@ -126,27 +126,27 @@ async function mainEvent() {
       markerPlace(currentList, pageMap);
     });
   }
-  else if (mapData.length > 0) {
-    submit.style.display = 'block';
-    loadAnimation.classList.remove('lds-ellipsis');
-    loadAnimation.classList.add('lds-ellipsis_hidden');
+  // else if (mapData.length > 0) {
+  //   submit.style.display = 'block';
+  //   loadAnimation.classList.remove('lds-ellipsis');
+  //   loadAnimation.classList.add('lds-ellipsis_hidden');
 
-    let currentList = [];
-    form.addEventListener('input', (event) => {
-      console.log(event.target.value);
-      const newFilterList = filterList(currentList, event.target.value);
-      injectHTML(newFilterList);
-      markerPlace(newFilterList, pageMap);
-    });
+  //   let currentList = [];
+  //   form.addEventListener('input', (event) => {
+  //     console.log(event.target.value);
+  //     const newFilterList = filterList(currentList, event.target.value);
+  //     injectHTML(newFilterList);
+  //     markerPlace(newFilterList, pageMap);
+  //   });
 
-    form.addEventListener('submit', (SubmitEvent) => {
-      SubmitEvent.preventDefault();
+  //   form.addEventListener('submit', (SubmitEvent) => {
+  //     SubmitEvent.preventDefault();
 
-      currentList = processHouse(mapData);
+  //     currentList = processHouse(mapData);
 
-      injectHTML(currentList);
-      markerPlace(currentList, pageMap);
-    });
-  }
+  //     injectHTML(currentList);
+  //     markerPlace(currentList, pageMap);
+  //   });
+  // }
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

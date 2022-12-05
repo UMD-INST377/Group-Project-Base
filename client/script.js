@@ -16,9 +16,8 @@ function getRandomIntInclusive(min, max){
       const el = document.createElement('li');
       el.innerText = item.zip_code;
       listEl.appendChild(el);
- 
     })
-
+    return list;
   }
   
   async function getData(){

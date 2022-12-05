@@ -106,13 +106,13 @@ function markerPlace(array, map) {
     }
   });
 }
-
 const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
-		'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
-	}
+  method: 'GET',
+  url: 'https://api-nba-v1.p.rapidapi.com/seasons',
+  headers: {
+    'X-RapidAPI-Key': '2b72393b93mshf825d32d05da23fp150bf8jsn49c4e04b8ce1',
+    'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+  }
 };
 
 fetch('https://api-nba-v1.p.rapidapi.com/teams', options)

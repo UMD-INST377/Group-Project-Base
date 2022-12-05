@@ -6,7 +6,7 @@ function getRandomIntInclusive(min, max){
   
   function injectHTML(list) {
     console.log('fired injectHTML');
-    const target = document.querySelector("#restaurant_list");
+    const target = document.querySelector("#Library_List");
     target.innerHTML = '';
   
     const listEl = document.createElement('ol');

@@ -14,7 +14,7 @@ function getRandomIntInclusive(min, max){
   
     list.forEach(item => {
       const el = document.createElement('li');
-      el.innerText = item.zip_code;
+      el.innerText = item.branch_name;
       listEl.appendChild(el);
     })
     return list;
@@ -24,7 +24,7 @@ function getRandomIntInclusive(min, max){
     const url = 'https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
-    const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.zip_code));
+    const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.branch_name));
     console.log('Results in library API', json.length); 
     return reply ;
   }

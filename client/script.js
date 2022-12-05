@@ -238,6 +238,8 @@ async function mainEvent() {
       const filteredList = filterList(currentList, event.target.value);
       injectHTML(filteredList);
       markerPlace(filteredList, pageMap);
+      const localData = shapeDataForLineChart(filteredList);
+      changeChart(myChart, localData);
     });
 
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked

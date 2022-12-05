@@ -260,4 +260,8 @@ form label {
     border: 1px solid green;
   }
 
+  .myChart{
+    size: 100;
+  }
+
 }

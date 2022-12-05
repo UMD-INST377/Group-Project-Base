@@ -40,7 +40,7 @@ function getRandomIntInclusive(min, max){
     const url = 'https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json'; // remote URL! you can test it in your browser
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
-    const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+    const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.zip_code));
     return reply ;
   }
 
@@ -72,11 +72,13 @@ function getRandomIntInclusive(min, max){
     */
   }
   
+  /* This function filters the given list by the input value. turning a string into an integer */
   function filterList(array, filterInputValue){
     return newArray = array.filter((item) => {
-      const lowerCaseName = item.name.toLowerCase();
-      const lowerCaseQuery = filterInputValue.toLowerCase();
-      return lowerCaseName.includes(lowerCaseQuery);
+      const intVal = new Number(filterInputValue);
+      //const lowerCaseQuery = filterInputValue.toLowerCase();
+      const zipMatch = item.zip_code.includes(intVal);
+      return zipMatch;
     })
   }
 

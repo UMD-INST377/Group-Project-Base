@@ -98,14 +98,6 @@ async function mainEvent() {
 
   const violation1 = await violationH7();
 
-  // submit.style.display = 'none';
-
-  // console.table(mapData);
-  // console.log(mapData[0]);
-
-  // console.log(
-  //   `${mapData[0].location} ${mapData[0].inspection_id}`
-  // );
   if (violation1.length > 0) {
     h7.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
@@ -128,27 +120,27 @@ async function mainEvent() {
       markerPlace(currentList, pageMap);
     });
   }
-  // if (mapData.length > 0) {
-  //   submit.style.display = 'block';
-  //   loadAnimation.classList.remove('lds-ellipsis');
-  //   loadAnimation.classList.add('lds-ellipsis_hidden');
+  if (mapData.length > 0) {
+    submit.style.display = 'block';
+    loadAnimation.classList.remove('lds-ellipsis');
+    loadAnimation.classList.add('lds-ellipsis_hidden');
 
-  //   let currentList = [];
-  //   form.addEventListener('input', (event) => {
-  //     console.log(event.target.value);
-  //     const newFilterList = filterList(currentList, event.target.value);
-  //     injectHTML(newFilterList);
-  //     markerPlace(newFilterList, pageMap);
-  //   });
+    let currentList = [];
+    form.addEventListener('input', (event) => {
+      console.log(event.target.value);
+      const newFilterList = filterList(currentList, event.target.value);
+      injectHTML(newFilterList);
+      markerPlace(newFilterList, pageMap);
+    });
 
-  //   form.addEventListener('submit', (SubmitEvent) => {
-  //     SubmitEvent.preventDefault();
+    form.addEventListener('submit', (SubmitEvent) => {
+      SubmitEvent.preventDefault();
 
-  //     currentList = processHouse(mapData);
+      currentList = processHouse(mapData);
 
-  //     injectHTML(currentList);
-  //     markerPlace(currentList, pageMap);
-  //   });
-  // }
+      injectHTML(currentList);
+      markerPlace(currentList, pageMap);
+    });
+  }
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

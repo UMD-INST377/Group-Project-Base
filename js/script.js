@@ -77,14 +77,14 @@ async function violationH7() {
   console.log(reply);
   return reply;
 }
-async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
-  const data = await fetch(url);
-  const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.violation_code));
-  console.log(reply);
-  return reply;
-}
+// async function getData() {
+//   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
+//   const data = await fetch(url);
+//   const json = await data.json();
+//   const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.violation_code));
+//   console.log(reply);
+//   return reply;
+// }
 // The async function that runs all the rpevious functions into our HTML file //
 async function mainEvent() {
   const form = document.querySelector('.main_form');
@@ -95,7 +95,7 @@ async function mainEvent() {
   // h7.style.display = 'none';
   // submit.style.display = 'none';
   const pageMap = initMap();
-  const mapData = await getData();
+  // const mapData = await getData();
 
   const violation1 = await violationH7();
 

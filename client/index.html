@@ -4,67 +4,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
+    <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=.2">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <div class=wrapper>
+    <div class=".panel-block.is-wrapped">
+        <header class="title">
+            <h1>Victor Aldridge INST 377 labs</h1>
+        </header>
 
-        <h1>Group 10</h1>
-
-        <body>
-            <div>
-                <header>
-                    <h1>NBA Dataset and API</h1>
-                </header>
-                <form action="/api" class="main_form">
-                    <label for="resto"></label>
-                    <input class="input" type="text" name="resto" id="resto">
-                    <button class="button" type="submit" id="get-nba">search</button>
-                </form>
-                <div>
-                    <div>
-                        <h3>Players</h3>
-                        <ol>
-                            <li>Steals</li>
-                            <li>Points</li>
-                            <li>Rebounds</li>
-                        </ol>
-                    </div>
-                    <h4>Teams</h4>
-                    <div>
-                        <h2>Available Conferences</h2>
-                        <div>
-                            <ol>East</ol>
-                            <ol>West</ol>
-                        </div>
-                        <h2>Available Divisions</h2>
-                        <div>
-                            <ol>Atlantic</ol>
-                            <ol>Central</ol>
-                            <ol>Northwest</ol>
-                            <ol>Pacific</ol>
-                            <ol>Southeast</ol>
-                            <ol>Southwest</ol>
-                        </div>
-                        <div>
-                            <p><strong>Steals</strong></p>
-                            <p><strong>Total 3 Pointers Made</strong></p>
-                            <ol>
-                                <li>James Harden</li>
-                                <li>Jaylen Brown</li>
-                                <li>Stephen Curry</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
-    <footer>
-        <p>Link to Github page: <a href='https://github.com/meche234/Group10-Project-Base'>Group 10</a>.</p>
+
+    </form>
+    </div>
+
+    </div>
+    <div class="column"></div>
+    <div class="column"></div>
+    </div>
+
+
+
+
+    <div class="hero">
+        <h3>Local Resturants</h3>
+        <div class="table-container" style="position: relative; height:70vh; width:100vw">
+            <canvas id="myChartAvg"></canvas>
+        </div>
+
+        <div class="space">
+
+        </div>
+        <div class="table-container" style="position: relative; height:80vh; width:110w">
+            <canvas id="myChart"></canvas>
+        </div>
+
+
+
+        <div class="title strong" id="restaurant_list">
+            A list of cool restaurant to try
+        </div>
+    </div>
+
+    <div class ="columns">
+        <div class="column">
+            
+        
+            <div style = "background-color: grey;">
+                <div class="box">
+                    <h3>Name Your Restaurant</h3>
+                </div>
+                <form action="/api" class="main_form box">
+                    <label for="resto"></label>
+                    <input class="input" type="text" name="resto" id="resto" placeholder="e.g. accidents ">
+                    <button class="button is-dark" type="submit" id="get-resto">Search</button>
+                    <div class="lds-ellipsis">
+                    </form>
+    <footer class="footer">
+        <a href="http://github.com/meche234/" target="_blank" rel="noopener noreferrer">meche234/INST377-Lab-Work</a>
     </footer>
-    <script src="./script.js"></script>
+    </div>
+
+
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -315,7 +315,7 @@ th:not([align]) {
 }
 
 html {
-  background-color: rgb(0, 0, 0);
+  background-color: white;
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -2924,11 +2924,8 @@ div.icon-text {
   -webkit-overflow-scrolling: touch;
   overflow: auto;
   overflow-y: hidden;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  max-width: 100%;
 }
-  
 
 .tags {
   align-items: center;
@@ -3200,7 +3197,6 @@ a.tag:hover {
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.125;
-  background-color: grey;
 }
 
 .title strong {
@@ -11853,9 +11849,3 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 /*# sourceMappingURL=bulma.css.map */
-
-
-.space {
-  background-color:grey;
-  height:100;
-}

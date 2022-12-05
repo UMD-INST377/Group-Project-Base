@@ -25,12 +25,7 @@ function rotateList(array, start, numOfElements) {
   return retval;
 }
 
-async function initChart() {
-  /*
-  targetElement: The DOM object where we want to insert the visualization
-  dataObject: The Object containing the information in a one-to-one key-value form
-  returns Chart: A new Chart object that's configured with the data in dataObject
-  */
+async function initEcosystemMarketCapChart() {
   const ecosystemDataURL = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc';
   const ecosystemJson = await getData(ecosystemDataURL); // get the ecosystem data
 
@@ -109,7 +104,7 @@ async function initChart() {
   });
 }
 
-async function initTable() {
+async function initTrendingCryptoTable() {
   // Get the json object containing the crypto data
   const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
   const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the cryptocurrency data
@@ -119,13 +114,13 @@ async function initTable() {
   const headers = ['Name', 'ID', 'Current Price'];
   const tableData = cryptocurrencyJson.map((currency) => {
     const n = currency.name; // currency name
-    const i = currency.id; // currency id
+    const s = currency.symbol; // currency id
     const c = currency.market_data.current_price.usd; // currency price
-    const data = [n, i, c];
+    const data = [n, s, c];
     return data;
   });
 
-  console.log(tableData);
+  // Initialize the chart
   const table = new Handsontable(
     targetElement, {
       licenseKey: 'non-commercial-and-evaluation',
@@ -136,12 +131,64 @@ async function initTable() {
     }
   );
 
+  const prevThreeButton = document.querySelector('#prev-three');
+  prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
+    console.log('prev3');
+  });
+
+  const nextThreeButton = document.querySelector('#next-three');
+  nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
+    console.log('next3');
+  });
   return table;
 }
 
+async function initFallingCryptoTable() {
+  // Get the json object containing the crypto data
+  const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
+  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the cryptocurrency data
+
+  // Extract the data we need from the JSON object
+  const targetElement = document.querySelector('#price-percentage-falling-table'); // get DOM object where the table will live
+  const headers = ['Name', 'ID', 'Current Price'];
+  console.log(cryptocurrencyJson[0]);
+  const tableData = cryptocurrencyJson.map((currency) => {
+    const n = currency.name; // currency name
+    const i = currency.id; // currency id
+
+    const currPrice = currency.market_data.current_price.usd;
+    const priceChange = currency.market_data.price_change_24h_in_currency.usd;
+    const c = priceChange / (currPrice - priceChange); // percentage price change
+    const data = [n, i, c];
+    return data;
+  });
+
+  // Initialize the chart
+  const table = new Handsontable(
+    targetElement, {
+      licenseKey: 'non-commercial-and-evaluation',
+      data: tableData,
+      colHeaders: headers,
+      width: 550,
+      height: 300
+    }
+  );
+
+  const prevThreeButton = document.querySelector('#prev-three');
+  prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
+    console.log('prev3');
+  });
+
+  const nextThreeButton = document.querySelector('#next-three');
+  nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
+    console.log('next3');
+  });
+}
+
 async function mainEvent() {
-  const ecosystemChart = initChart();
-  const trendingCryptoTable = initTable();
+  const ecosystemChart = initEcosystemMarketCapChart();
+  const trendingCryptoTable = initTrendingCryptoTable();
+  const fallingCryptoTable = initFallingCryptoTable();
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

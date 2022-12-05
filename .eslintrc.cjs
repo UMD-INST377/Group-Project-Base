@@ -11,11 +11,12 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'linebreak-style': [1, 'unix'],
+    'linebreak-style': [0],
     'newline-per-chained-call': [0],
     semi: [1, 'always'],
     'eol-last': [0],
     'comma-spacing': 1,
+    'no-console': [0],
     'no-mixed-requires': [0],
     'no-underscore-dangle': [0],
     'no-extra-parens': 0,

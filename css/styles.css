@@ -154,7 +154,7 @@
     flex-direction: column;
     margin: 0;
     flex: 1;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(229, 9, 9);
   }
   
   .container {
@@ -163,7 +163,7 @@
     justify-content: space-evenly;
     align-items: start;
     flex:1;
-    background-color: rgb(248, 251, 253);
+    background-color: rgb(229, 9, 9);
   }
   
   .header {
@@ -172,6 +172,15 @@
    border-color: rgb(88, 105, 201);
   }
   
+  .alignIt {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+    background-color: rgb(229, 9, 9);
+    align-items: center;
+
+  }
   
   /*
     This rule implies that the H1 tag lives within another HTML tag

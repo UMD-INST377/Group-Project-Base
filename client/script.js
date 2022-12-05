@@ -33,7 +33,7 @@ function processPlayers(list) {
 function filterList(array, filterInputValue) {
   return array.filter((item) => {
     if (!item.last_name) { return; }
-    const lowerCaseName = item.last_name.toLowerCase(); // name appears again maybe lastname
+    const lowerCaseName = `${item.player.first_name} ${item.player.last_name} ${item.player.position}`.toLowerCase(); // name appears again maybe lastname
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });

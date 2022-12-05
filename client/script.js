@@ -3,6 +3,9 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
+import Chart from 'chart.js/auto';
+import Handsontable from 'handsontable';
+
 async function getData(url) {
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json();
@@ -25,18 +28,31 @@ function rotateList(array, start, numOfElements) {
   return retval;
 }
 
-function initChart(initLabels, initMarketCap, targetElement) {
+async function initChart() {
   /*
   targetElement: The DOM object where we want to insert the visualization
   dataObject: The Object containing the information in a one-to-one key-value form
   returns Chart: A new Chart object that's configured with the data in dataObject
   */
+  const ecosystemDataURL = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc';
+  const ecosystemJson = await getData(ecosystemDataURL); // get the ecosystem data
+
+  const labelsList = getProperty(ecosystemJson, 'name'); // extract the labels
+  const marketCapList = getProperty(ecosystemJson, 'market_cap'); // extract the market cap data
+
+  let start = 0; // index to start the sublist at
+  let numOfElements = 10; // the number of elements we want in the sublist
+  let labelSublist = rotateList(labelsList, start, numOfElements); // rotate the labels list
+  let marketCapSublist = rotateList(marketCapList, start, numOfElements); // rotate the market cap list
+
+  // Market Cap Chart
+  const targetElement = document.querySelector('#market-cap-chart'); // get DOM Object for chart
 
   const data = {
-    labels: initLabels,
+    labels: labelSublist,
     datasets: [{
       label: 'Eco System Market Cap',
-      data: initMarketCap
+      data: marketCapSublist
     }]
   };
 
@@ -50,35 +66,13 @@ function initChart(initLabels, initMarketCap, targetElement) {
     }
   };
 
-  return new Chart(
+  const marketCapChart = new Chart(
     targetElement, {
       type: 'bar',
       data: data,
       config
     }
   );
-}
-
-async function mainEvent() {
-  // Sources
-  const ecosystemDataURL = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc';
-  const ecosystemJson = await getData(ecosystemDataURL); // get the ecosystem data
-
-  const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
-  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the cryptocurrency data
-
-  const labelsList = getProperty(ecosystemJson, 'name'); // extract the labels
-  const marketCapList = getProperty(ecosystemJson, 'market_cap'); // extract the market cap data
-
-  // Visualizations
-  let start = 0; // where to start
-  let numOfElements = 10;
-  let labelSublist = rotateList(labelsList, start, numOfElements); // rotate the labels list
-  let marketCapSublist = rotateList(marketCapList, start, numOfElements); // rotate the market capital list
-
-  // Market Cap Chart
-  const marketCapTargetElement = document.querySelector('#market-cap-chart'); // get DOM Object for chart
-  const marketCapChart = initChart(labelSublist, marketCapSublist, marketCapTargetElement); // initialize the chart
 
   const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
   updateChartButton.addEventListener('click', async (submitEvent) => { // add event listener to the button
@@ -115,6 +109,28 @@ async function mainEvent() {
     }
     marketCapChart.update();
   });
+}
+
+async function initTable() {
+  // Get the json object containing the crypto data
+  const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
+  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the cryptocurrency data
+
+  // Extract the data we need from the JSON object
+  const tableData = cryptocurrencyJson.map((currency) => {
+    const n = currency.name; // currency name
+    const i = currency.id; // currency id
+    const c = currency.market_data.current_price.usd; // currency price
+    const data = [n, i, c];
+    return data;
+  });
+  const targetElement = document.querySelector('#trending-crypto-table');
+  const table = new Handsontable();
+}
+
+async function mainEvent() {
+  const ecosystemChart = initChart();
+  const trendingCryptoTable = initTable();
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

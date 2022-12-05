@@ -46,6 +46,8 @@
           <div style="position: relative; height:auto">
             <div id="trending-crypto-table"></div>
           </div>
+          <button id="prev-three">&lt;Prev 3</button>
+          <button id="next-three">Next 3&gt;</button>
         </div>
         
         <!-- 2. Market Cap / Buttom left -->
@@ -61,11 +63,15 @@
       <!-- Contains Price Percentage Change; Rising and Falling -->
       <div class="container">
         <div class="right_section">
-          <!-- 3. Price Percentage change (Rising) / top right -->
-          <div class="box top_right" id="top_right">top_right</div>
+          <!-- 3. Price Percentage change (falling) / top right -->
+          <div class="box">
+            <div style="position: relative; height:auto">
+              <div id="price-percentage-falling-table"></div>
+            </div>
+          </div>
           
-          <!-- 4. Price percentage change (Falling) / Buttom right -->
-          <div class="box bottom_right" id="bottom_right">bottom_right</div>
+          <!-- 4. Price percentage change (rising) / Buttom right -->
+          <div class="box bottom_right" id="price-percentage-rising">bottom_right</div>
         </div>
         
       </div>

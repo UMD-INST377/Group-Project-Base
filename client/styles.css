@@ -30,6 +30,8 @@ body {
   font-weight: 400;
   line-height: 1.5;
   background-color: rgb(174, 172, 172);
+  background-image: url("images/basketball.png");
+  /* CHANGE IMAGE LATER, LOOK FOR BETTER ONE */
 }
 
 
@@ -91,7 +93,7 @@ form {
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: rgb(172, 168, 133);
+  background-color: #FFFFFF;
   color: #0d0d0d;
 
   /* shapes */
@@ -126,7 +128,7 @@ form {
 }
 
 .left_section {
-  background-color: rgba(225, 202, 150, 0.8);
+  background-color: #C9082A;
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
@@ -134,7 +136,7 @@ form {
 }
 
 .right_section {
-  background-color: rgba(98, 108, 102, 0.7);
+  background-color: #17408B;
   flex: 1 2 auto;
   margin: 1rem;
   border: 2px dotted;
@@ -153,7 +155,7 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: rgba(67, 74, 66, 0.8);
+  background-color: #FFFFFF;
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -391,4 +393,14 @@ form label {
     height: 100%;
     width: 100%;
   }
-}
+
+  .prev {
+      position: relative;
+      right: 50px;
+      top: 563px;
+  }
+
+  .next {
+      position: relative;
+      left: 50px;
+  }

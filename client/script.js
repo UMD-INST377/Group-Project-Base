@@ -31,7 +31,7 @@ function getRandomIntInclusive(min, max){
 
   function processRestaurants(list) {
     console.log('fired library list');
-    const range = [...Array(15).keys()];
+    const range = [...Array(20).keys()];
     const newArray = range.map((item) => {
       const index = getRandomIntInclusive(0, list.length);
       return list[index];

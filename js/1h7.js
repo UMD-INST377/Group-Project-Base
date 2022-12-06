@@ -75,14 +75,14 @@ async function violationH7() {
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.violation_code));
   console.log(reply);
-  const newArray = array.map((item) => {
+  const newArray = reply.map((item) => {
     if (!item.location.latitude && item.location.longitude) {
       return item;
     }
     const assumption = item.location;
     console.log(assumption);
   });
-  const array = reply;
+  const array1 = reply;
   const truth = array.filter(Boolean);
   console.log(truth);
   console.log(newArray);

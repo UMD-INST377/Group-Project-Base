@@ -18,7 +18,7 @@ function initChart(chart, object) {
       label: 'Restaurants by Category',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45]
+      data: info
     }]
   };
 
@@ -34,6 +34,26 @@ function initChart(chart, object) {
   );
 }
 
+function shapeDataForLineChart(array) {
+  return array.reduce((collection, item) => {
+    if (!collection[item.category]) {
+      collection[item.category] = [item];
+    } else {
+      collection[item.category].push(item);
+    }
+    return collection;
+  }, {});
+}
+
+
+async function getData() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+  const data = await fetch(url);
+  const json = await data.json();
+  const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+  return reply;
+}
+
 function changeChart(chart, dataObject) {
   const labels = Object.keys(dataObject);
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);
@@ -46,29 +66,41 @@ function changeChart(chart, dataObject) {
   chart.update();
 }
 
-function shapeDataForLineChart(array) {
-  return array.reduce((collection, item) => {
-    if (!collection[item.category]) {
-      collection[item.category] = [item];
-    } else {
-      collection[item.category].push(item);
-    }
-    return collection;
-  }, {});
-}
 
 async function mainEvent() {
   const pageMap = initMap();
 
-  const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-  const submit = document.querySelector('#get-resto'); // get a reference to your submit button
+  const form = document.querySelector('.main_form');
+  const submit = document.querySelector('#get-resto');
+  // const loadAnimation = document.querySelector('.lds-ellipsis');
+  const restoName = document.querySelector('#resto');
   const chartTarget = document.querySelector('#myChart');
-
-  const results = await fetch('/api/CrimeIncidentsPG');
-  
-  const arrayFromJson = await results.json();
+  // submit.style.display = 'none';
 
   initChart(chartTarget);
+
+  const chartData = await getData();
+  const shapedData = shapeDataForLineChart(chartData);
+  const myChart = initChart(chartTarget, shapedData);
+
+  if (chartData?.length > 0) {
+    submit.style.display = 'block';
+
+    loadAnimation.classList.remove('ldas-ellipsis');
+    loadAnimation.classList.add('lds-ellipsis_hidden');
+
+    let currentList = [];
+
+    form.addEventListener('input', (event) => {
+      console.log(event.target.value);
+    });
+
+
+  }
+
+  const results = await fetch('/api/CrimeIncidentsPG');
+
+  const arrayFromJson = await results.json();
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

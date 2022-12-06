@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-/* eslint linebreak-style: ["error", "windows"] */
+
 
 // function used to grab random number from the API //
 function getRandomInclusive(min, max) {

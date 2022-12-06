@@ -83,13 +83,13 @@ function getRandomInclusive(min, max) {
     const loadAnimation = document.querySelector('.lds-ellipsis');
     const h2 = document.querySelector('#violationh2');
   
-    h7.style.display = 'none';
+    h2.style.display = 'none';
   
     const pageMap = initMap();
     const violation1 = await violationH2();
   
     if (violation1.length > 0) {
-      h7.style.display = 'block';
+      h2.style.display = 'block';
       loadAnimation.classList.remove('lds-ellipsis');
       loadAnimation.classList.add('lds-ellipsis_hidden');
   

@@ -4,11 +4,11 @@
 function getRandomInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
-    return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
-  }
-  // The function that injects the HTML page with information from the API //
-  function injectHTML(list) {
-    console.log('fired injectHTML');
+  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
+}
+// The function that injects the HTML page with information from the API //
+function injectHTML(list) {
+  console.log('fired injectHTML');
     const target = document.querySelector('#house_list');
     target.innerHTML = '';
   

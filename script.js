@@ -30,9 +30,9 @@ async function mainEvent() {
       console.log("ID: " + currentFilmID);
 
       // Adds posters
-      getPoster("https://imdb-api.com/en/API/Posters/k_ljv5h5vz/" + currentFilmID)
+      getPoster("https://imdb-api.com/en/API/Title/k_ljv5h5vz/" + currentFilmID)
       .then(function(jsonData){
-        const poster = JSON.stringify(jsonData.backdrops[0].link);
+        const poster = JSON.stringify(jsonData.image);
         if(firstdone){
           document.getElementById("secondpost").src = poster.slice(1, -1);
           document.getElementById("postName2").innerHTML = Object.values(formProps)
@@ -127,7 +127,7 @@ function removeDups(arr) {
 }
 
 async function intersect() {
-
+  window.location.href = "chart.html";
   const a = filmCC[0];
   const b = filmCC[1];
 

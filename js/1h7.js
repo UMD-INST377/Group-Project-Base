@@ -73,8 +73,19 @@ async function violationH7() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H7';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.latitude)).filter((item) => Boolean(item.longitude)).filter((item) => Boolean(item.violation_code));
+  const reply = json.filter((item) => Boolean(item.violation_code));
   console.log(reply);
+  const newArray = array.map((item) => {
+    if (!item.location.latitude && item.location.longitude) {
+      return item;
+    }
+    const assumption = item.location;
+    console.log(assumption);
+  });
+  const array = reply;
+  const truth = array.filter(Boolean);
+  console.log(truth);
+  console.log(newArray);
   return reply;
 }
 // The async function that runs all the rpevious functions into our HTML file //

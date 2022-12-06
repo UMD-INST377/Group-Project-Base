@@ -9,16 +9,16 @@ function getRandomInclusive(min, max) {
 // The function that injects the HTML page with information from the API //
 function injectHTML(list) {
   console.log('fired injectHTML');
-    const target = document.querySelector('#house_list');
-    target.innerHTML = '';
-  
-    const listEl = document.createElement('ol');
-    target.appendChild(listEl);
-  
-    list.forEach((item) => {
-      const el = document.createElement('li');
-      el.innerText = `${item.street_number} ${item.street_name} ${item.street_type} ${item.zip_code}`;
-      listEl.appendChild(el);
+  const target = document.querySelector('#house_list');
+  target.innerHTML = '';
+
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
+
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = `${item.street_number} ${item.street_name} ${item.street_type} ${item.zip_code}`;
+    listEl.appendChild(el);
     });
   }
   // Function that fliters the list from the API data. //

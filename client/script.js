@@ -62,13 +62,16 @@ async function getTracks(token, tracksEndPoint, limit) {
     return data;
 }
 
+async function insertGenres(){
+    
+}
 
 async function initSongs(){
     // A function that gets us a lot of songs from different genres on spotify
     const listOfTracks = []; //Initialize output
     const token = await getToken(); //Get token
     console.log(token)
-    const genres = await getGenres(token)
+    
     let prom = new Promise((resolve, reject) => { //Wrapped the loop in a promise to make the rest of the func wait for the loop to execute
 
         genres.map(async (genre, index, array) => {
@@ -134,6 +137,11 @@ async function songNamesArray(){
 // -------------------UI Handling-------------------
 
 //Get random 10 items from an aray (to be replacedby betterselection item)
+function insertGenres(text, value, element) {
+    const html = `<option value="${value}">${text}</option>`;
+    element.insertAdjacentHTML('beforeend', html);
+}
+
 function getRandomTen(list) {
     console.log('fired get 10 songs');
     const range = [...Array(9).keys()];
@@ -172,10 +180,26 @@ function injectImages(list){
     });
 }
 
+
+
+// ---------------------------Page Initialisation-------------------------------------------
+
 // Turn the site script on
 async function init(){
+    const token = await getToken()
     document.getElementById("GeneratedContents").style.display = "none";
+    const selectGenre = document.querySelector('#select_genre')
     const submit = document.querySelector('#submit');
+
+    const genres = await getGenres(token)
+    console.log(genres)
+    genres.map(genre => {
+        insertGenres(genre.name, genre.id, selectGenre)
+    })
+
+    
+
+
 
     let songArray = await songNamesArray();
     submit.addEventListener('click', (e) => {

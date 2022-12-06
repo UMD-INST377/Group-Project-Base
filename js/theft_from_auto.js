@@ -44,10 +44,13 @@ function markerPlace(array, map) {
 		if (layer instanceof L.Marker) {
 		  layer.remove();
 		}});
-  array.forEach((item) => {
+  array.forEach((item, index) => {
     const latitude = item.latitude;
     const longitude = item.longitude;
     L.marker([latitude, longitude]).addTo(map);
+    if(index === 0) {
+      map.setView([latitude, longitude], 11);
+    }
   });
 }
 

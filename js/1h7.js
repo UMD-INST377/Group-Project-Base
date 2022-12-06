@@ -75,17 +75,17 @@ async function violationH7() {
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.violation_code));
   console.log(reply);
-  const newArray = reply.map((item) => {
-    if (!item.location.latitude && item.location.longitude) {
-      return item;
-    }
-    const assumption = item.location;
-    console.log(assumption);
-  });
+  // const newArray = reply.map((item) => {
+  //   if (!item.location.latitude && item.location.longitude) {
+  //     return item;
+  //   }
+  //   const assumption = item.location;
+  //   console.log(assumption);
+  // });
   const array1 = reply;
-  const truth = array.filter(Boolean);
+  const truth = array1.filter((item) => Boolean(item.location.latitude));
   console.log(truth);
-  console.log(newArray);
+  // console.log(newArray);
   return reply;
 }
 // The async function that runs all the rpevious functions into our HTML file //

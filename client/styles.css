@@ -26,7 +26,7 @@
     font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    background-color: #F9E79F;
+    background-color: #FAD7A0;
   }
   
   
@@ -112,7 +112,7 @@
   }
   
   .left_section {
-    background-color: #FAD7A0;
+    background-color: #FDEBD0 ;
     justify-items: center;
     flex: 0 1 auto;
     margin: 1rem;
@@ -123,7 +123,7 @@
   }
   
   .right_section {
-    background-color: #FAD7A0;
+    background-color: #FDEBD0 ;
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;
@@ -170,15 +170,17 @@
       border-radius: 4px;
     }
   
-    form label {
+    label {
       width: 100%;
       width: -moz-available;          /* WebKit-based browsers will ignore this. */
       width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
       width: fill-available;
-      align-items: flex-start;
-  
+      
+      text-align: center;
       display: block; /* this turns the label text into a box we can set margins on */
       margin-bottom: 0.5rem;
+      font-size: 10px;
+      font-weight: bold;
     }
   
 

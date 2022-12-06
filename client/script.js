@@ -21,7 +21,7 @@ function initChart(chart, object) {
       data: info
     }]
   }; 
-  console.log('initChart');
+  console.log('initChart'); // Doesn't reach this
 
   const config = {
     type: 'line',

@@ -25,7 +25,7 @@ function injectHTML(list) {
 // Function that fliters the list from the API data. //
 function filterList(list, filterInputValue) {
   return list.filter((item) => {
-    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseName = item.street_number.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
@@ -73,7 +73,7 @@ async function violationH7() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H7';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.violation_code));
+  const reply = json.filter((item) => Boolean(item.location.latitude)).filter((item) => Boolean(item.location.longitude)).filter((item) => Boolean(item.violation_code));
   console.log(reply);
   return reply;
 }

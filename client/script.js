@@ -15,6 +15,10 @@ fetch('https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr', options)
   .catch((err) => console.error(err));
 
 d3.selectAll('p').style('color', () => `hsl(${Math.random() * 360},100%,50%)`);
+
+
+
+
 /* Cuurent Date and Time */
 function date_time() {
   const datetimeDisplay = document.getElementById('date-time');

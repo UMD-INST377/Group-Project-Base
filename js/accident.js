@@ -29,6 +29,15 @@ function processCrime(list) {
   return newArray;
 }
 
+function filterList(list, filterInputValue) {
+	return list.filter((item) => {
+    if (!item.street_address) { return; }
+      const lowerCaseName = item.street_address.toLowerCase();
+      const lowerCaseQuery = filterInputValue.toLowerCase();
+      return lowerCaseName.includes(lowerCaseQuery);
+    });
+  }
+
 function initMap() {
   console.log('initMap');
   const map = L.map('map').setView([38.9897, -76.9378], 11);
@@ -91,11 +100,11 @@ async function mainEvent() {
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
     let currentList = [];
+
     form.addEventListener('input', (event) => {
-      console.log(event.target.value);
+      console.log('input', event.target.value);
       const newFilterList = filterList(currentList, event.target.value);
-      injectHTML(newFilterList);
-      markerPlace(newFilterList, pageMap);
+      injectHTML(newFilterList, pageMap);
     });
 
     form.addEventListener('submit', (submitEvent) => {

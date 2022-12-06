@@ -75,6 +75,14 @@ async function violationH7() {
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.violation_code));
   console.log(reply);
+  switch (reply) {
+    default:
+      break;
+
+    case 1:
+      statement = item.location.latitude != null;
+      return statement;
+  }
   // const newArray = reply.map((item) => {
   //   if (!item.location.latitude && item.location.longitude) {
   //     return item;
@@ -83,7 +91,7 @@ async function violationH7() {
   //   console.log(assumption);
   // });
   const array1 = reply;
-  const truth = array1.filter((item) => Boolean(item.location.latitude));
+  const truth = array1.filter((item) => Boolean(item.location));
   console.log(truth);
   // console.log(newArray);
   return reply;

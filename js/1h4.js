@@ -19,11 +19,11 @@ function injectHTML(list) {
     const el = document.createElement('li');
     el.innerText = `${item.street_number} ${item.street_name} ${item.street_type} ${item.zip_code}`;
     listEl.appendChild(el);
-    });
-  }
-  // Function that fliters the list from the API data. //
-  function filterList(list, filterInputValue) {
-    return list.filter((item) => {
+  });
+}
+// Function that fliters the list from the API data. //
+function filterList(list, filterInputValue) {
+  return list.filter((item) => {
       const lowerCaseName = item.name.toLowerCase();
       const lowerCaseQuery = filterInputValue.toLowerCase();
       return lowerCaseName.includes(lowerCaseQuery);

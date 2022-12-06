@@ -98,6 +98,23 @@ form {
   margin: 0 auto;
 }
 
+.filmList{
+  background-color: rgba(87, 87, 87, 0.4);
+  display:flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.film {
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pic_title {
+  display:flex;
+  flex-direction: row;
+  align-items:center;
+}
+
 .left_section {
   flex: 0 1 auto;
   margin: 1rem;

@@ -92,7 +92,7 @@ function getRandomIntInclusive(min, max){
     const pageMap = initMap();
     // the async keyword means we can make API requests
     const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-    const submit = document.querySelector('#get-resto'); // get a reference to your submit button
+    const submit = document.querySelector('#get-zipcode'); // get a reference to your submit button
     const loadAnimation = document.querySelector('.lds-ellipsis');
     submit.style.display = 'none'; // let your submit button disappear
   

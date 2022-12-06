@@ -4,7 +4,7 @@
   
   
   html {
-    background-color: #fff;
+    background-color: #F8C471;
     font-size: 16px;
     min-width: 300px;
     overflow-x: hidden;
@@ -26,7 +26,7 @@
     font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    background-color: #383F51;
+    background-color: #F9E79F;
   }
   
   
@@ -71,9 +71,9 @@
     /* this will push other blocks out of the way */
     border: 3px dashed;
     /* colors */
-    background-color: #DDDBF1;
+    background-color: #E67E22;
     color: #131313;
-  
+    width: 100%;
     /* shapes */
     border-radius: 6px;
     font-size: 1rem;
@@ -98,7 +98,7 @@
   }
 
   .box{
-    background-color: #3c4f76d7;
+    background-color: #FDEDEC;
     border: 2px dashed;
     border-radius: 4px;
     font-size: 0.5rem;
@@ -112,7 +112,7 @@
   }
   
   .left_section {
-    background-color: #DDDBF1;
+    background-color: #FAD7A0;
     justify-items: center;
     flex: 0 1 auto;
     margin: 1rem;
@@ -123,7 +123,7 @@
   }
   
   .right_section {
-    background-color: #DDDBF1;
+    background-color: #FAD7A0;
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;
@@ -137,14 +137,14 @@
   .footer {
     flex-shrink: 0;
     padding: 0.6rem;
-    background-color: #DDDBF1;
+    background-color: #5D6D7E;
     font-size: 0.7rem;
     font-weight: 600;
 
   }
   
   .footer a {
-    color: #20A39E;
+    color: #FAE5D3;
     text-decoration: underline;
   }
   
@@ -255,19 +255,18 @@
     }
   
       /* How To Write A Media Query For Small Screens */
-  /*mobile*/
+  /*mobile
   @media only screen and (max-width: 736px){
-    /* Rules in here will only apply when a screen is the correct size */
-    /* check it out by using your developer tools to shrink your screen-size */
+    /* Rules in here will only apply when a screen is the correct size 
+    /* check it out by using your developer tools to shrink your screen-size 
   .container {
-    background-color: #383F51;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
   }
   .left_section {
-    background-color: #DDDBF1;
+    background-color: #E6B0AA;
     justify-items: center;
     flex: 0 1 auto;
     margin: 0.5rem;
@@ -277,7 +276,7 @@
   }
   
   .right_section {
-    background-color: #DDDBF1;
+    background-color: #E6B0AA;
     flex: 1 2 auto;
     margin: 0.5rem;
     align-items: center;
@@ -286,4 +285,4 @@
     padding-bottom: 1rem;
     width: 80%;
   }
-}
+}*/

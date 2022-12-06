@@ -1,58 +1,21 @@
-let filmCount = 0;
-let filmCC = [];
+
+
+const film1 = "The Breakfast Club";
+const film2 = "Ferris Bueller's Day Off";
+const imdbkey = "k_ljv5h5vz/";
+const firstCall = "https://imdb-api.com/en/API/Search/"+ imdbkey+ film1;
+const secondCall = "https://imdb-api.com/en/API/Search/"+ imdbkey + film2;
+
+
+document.getElementById("h2").innerHTML = "Looking for Cast and Crew members in common between " + film1 + " & " + film2;
+
+
+let cclist1;
+let cclist2;
 
 let firstdone = false;
 
-
-
-// Need to clear form after submit
-async function mainEvent() {
-  
-  const titleform = document.getElementById("titleForm");
-  const apiCall = "https://imdb-api.com/en/API/Search/k_ljv5h5vz/";
-  let currentFilmID = "";
-  
-  // Gets the names of the films from the form
-  titleform.addEventListener("submit", async (x) => {
-    x.preventDefault();
-    console.log("Film added");
-    const formData = new FormData(x.target); // get the data from the listener target
-    const formProps = Object.fromEntries(formData); // Turn it into an object
-    console.log(Object.values(formProps));
-    filmCount++;
-
-
-    // Gets the ID of the film
-    getFilmTitle(apiCall + Object.values(formProps))
-    .then(function(jsonData){
-      console.log(jsonData);
-      currentFilmID= JSON.stringify(jsonData.results[0]).substring(7,16);
-      console.log("ID: " + currentFilmID);
-
-      // Adds posters
-      getPoster("https://imdb-api.com/en/API/Posters/k_ljv5h5vz/" + currentFilmID)
-      .then(function(jsonData){
-        const poster = JSON.stringify(jsonData.backdrops[0].link);
-        if(firstdone){
-          document.getElementById("secondpost").src = poster.slice(1, -1);
-          document.getElementById("postName2").innerHTML = Object.values(formProps)
-        } else {
-          document.getElementById("firstpost").src = poster.slice(1, -1);
-          document.getElementById("postName1").innerHTML = Object.values(formProps)
-          
-        }
-      });
-      cast(currentFilmID); 
-       
-    });
-
-
-  });
-
-
-  
-}
-
+const output = document.getElementById("data").innerHTML;
 
     
 async function getFilmTitle(name){
@@ -78,12 +41,10 @@ function cast(filmID){
     let regex = /name":"([a-zA-z ]* [a-zA-z ]*)/g;
     let response = JSON.stringify(jsonData);
     let matches = response.match(regex).map(x => x.replace('name":"',""));
-
-
-
-    // Only calls intersect function if more than 2 films were added
-    filmCC.push(matches);
-    if(firstdone){
+    if(firstdone == false){
+      document.getElementById("data").innerHTML = matches;
+    } else{
+      document.getElementById("dataa").innerHTML = matches;
       intersect();
 
             
@@ -128,8 +89,8 @@ function removeDups(arr) {
 
 async function intersect() {
 
-  const a = filmCC[0];
-  const b = filmCC[1];
+  const a = document.querySelector("#data").innerHTML;
+  const b = document.querySelector("#dataa").innerHTML;
 
   const filteredArray = removeDups(a.filter(value => b.includes(value)));
   console.log("In Common: " + filteredArray);
@@ -138,5 +99,11 @@ async function intersect() {
 
 
 
+async function mainEvent() {
+  const form = document.querySelector('.main_form');
+  const submit = document.querySelector('#get-film');
+  
+  const results = await fetch('https://imdb-api.com/en/API/Search/');
+}
 
-document.addEventListener('DOMContentLoaded', async () => mainEvent());
+

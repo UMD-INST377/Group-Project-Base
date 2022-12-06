@@ -81,6 +81,7 @@ async function violationH7() {
 
     case 1:
       statement = item.location.latitude != null;
+      console.log(statement);
       return statement;
   }
   // const newArray = reply.map((item) => {

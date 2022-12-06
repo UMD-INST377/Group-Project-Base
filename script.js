@@ -75,6 +75,7 @@ function cast(filmID){
   console.log("Cast: " + cast1);
   getFilmTitle(cast1)
   .then(function(jsonData){
+    console.log(jsonData);
     let regex = /name":"([a-zA-z ]* [a-zA-z ]*)/g;
     let response = JSON.stringify(jsonData);
     let matches = response.match(regex).map(x => x.replace('name":"',""));
@@ -146,6 +147,44 @@ async function intersect() {
 }
 
 
+function initChart(chart, shapedObj){
+  const ctx = chart;
+  
+  const label = Object.keys(shapedObj);
+  const info = Object.keys(shapedObj).map((item) => shapedObj[item].length);
+
+  const cinst = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: label,
+      datasets: [{
+        label: 'Film Role',
+        data: info,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  return cinst;
+}
+
+function changeChart(chart, dataObj){
+  const labels = Object.keys(dataObj);
+  const info = Object.keys(dataObj).map((item) => dataObj[item].length);
+
+  chart.data.labels = labels;
+  chart.data.datasets.forEach((set) => {
+    set.data = info;
+    return set;})
+  chart.update();
+}
 
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

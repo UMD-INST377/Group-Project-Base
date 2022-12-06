@@ -15,12 +15,13 @@ function initChart(chart, object) {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'Restaurants by Category',
+      label: 'Crimes by Category',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: info
     }]
-  };
+  }; 
+  console.log('initChart');
 
   const config = {
     type: 'line',
@@ -78,7 +79,7 @@ async function mainEvent() {
   // submit.style.display = 'none';
 
   initChart(chartTarget);
-
+  console.log('hii');
   const chartData = await getData();
   const shapedData = shapeDataForLineChart(chartData);
   const myChart = initChart(chartTarget, shapedData);

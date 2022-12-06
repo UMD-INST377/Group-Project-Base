@@ -26,7 +26,7 @@ function injectHTML(list) {
 // Function that fliters the list from the API data. //
 function filterList(list, filterInputValue) {
   return list.filter((item) => {
-    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseName = item.street_number.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });

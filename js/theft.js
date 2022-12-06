@@ -45,10 +45,13 @@ function markerPlace(array, map) {
 		  layer.remove();
     }
   });
-  array.forEach((item) => {
+  array.forEach((item, index) => {
     const {latitude} = item;
     const {longitude} = item;
     L.marker([latitude, longitude]).addTo(map);
+    if(index === 0) {
+      map.setView([latitude, longitude], 11);
+    }
   });
 }
 

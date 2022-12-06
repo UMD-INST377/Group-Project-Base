@@ -53,21 +53,23 @@ function send_rand_req(){
 
         // Log the page objects
         //console.log(data.query.pages);
-
-        let title_array = [];
-        let id_array = []
-        for (var i in data.query.pages) {
-            title_array.push(data.query.pages[i].title);
-            id_array.push(data.query.pages[i].pageid)
-            
-        populate_results_rand(title_array, id_array)
         
-;        
+        process_rand_results(data);
+        
+        
     }
-}
-
     xhr.send();
 }
+
+function process_rand_results(data){
+    let title_array = [];
+    let id_array = []
+    for (var i in data.query.pages) {
+        title_array.push(data.query.pages[i].title);
+        id_array.push(data.query.pages[i].pageid)
+    }
+    populate_results_rand(title_array, id_array)
+};
 
 /* makes sure the field isnt empty */
 function handle_rand_click(){
@@ -131,8 +133,46 @@ function populate_results_top(titles, ids){
 
 /* event listeners on the buttons */
 function main(){
-    document.getElementById("get_top").addEventListener("click", handle_top_click);
-    document.getElementById("get_rand").addEventListener("click", handle_rand_click);
+    // const form = document.getElementById('#search');
+    const top = document.getElementById("get_top");
+    const rand = document.getElementById("get_rand");
+    // const search = document.getElementById('#search_item')
+
+    // if (search){
+    //     console.log('entered search')
+    //     search.addEventListener('change', (event) => {
+    //         let top_clicks = 0;
+    //         let rand_clicks = 0;
+    
+    //         //top.addEventListener("click", handle_top_click);
+    
+    //         if (rand_clicks === 0){
+    //             console.log('rand is 0')
+    //             rand.addEventListener("click", function() {
+    //                 rand_clicks += 1;
+    //                 rand.addEventListener("click", handle_rand_click);
+    //             });
+            
+    //         } else {
+    //             console.log('u clicked rand 2 times')
+    
+    //         }
+    //     });
+    // }
+  
+    
+    //handle_rand_click();
+
+
+
+    //THIS WORKS
+
+    top.addEventListener("click", handle_top_click);
+    rand.addEventListener("click", (submitEvent) => {
+        submitEvent.preventDefault();
+        handle_rand_click()
+        
+    });
 
 }
 

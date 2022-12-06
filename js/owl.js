@@ -1,11 +1,12 @@
 /* eslint-disable max-len */
-
 // function used to grab random number from the API //
+
 function getRandomInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
   return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
 }
+
 // The function that injects the HTML page with information from the API //
 function injectHTML(list) {
   console.log('fired injectHTML');
@@ -21,6 +22,7 @@ function injectHTML(list) {
     listEl.appendChild(el);
   });
 }
+
 // Function that fliters the list from the API data. //
 function filterList(list, filterInputValue) {
   return list.filter((item) => {
@@ -29,6 +31,7 @@ function filterList(list, filterInputValue) {
     return lowerCaseName.includes(lowerCaseQuery);
   });
 }
+
 // Function that process the house list into an array of 10 houses per search //
 function processHouse(list) {
   const range = [...Array(10).keys()];
@@ -38,6 +41,7 @@ function processHouse(list) {
   });
   return newArray;
 }
+
 // The function that is incharge of the objects for the map location //
 function initMap() {
   console.log('initMap');
@@ -49,6 +53,7 @@ function initMap() {
   }).addTo(map);
   return map;
 }
+
 // The fucntion that adds a marker placement onto the map //
 function markerPlace(array, map) {
   console.log('markerPlace', array);
@@ -67,6 +72,7 @@ function markerPlace(array, map) {
     }
   });
 }
+
 //  The async function that retreives the GET request information //
 async function violationowl() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=owl';
@@ -76,6 +82,7 @@ async function violationowl() {
   console.log(reply);
   return reply;
 }
+
 // The async function that runs all the rpevious functions into our HTML file //
 async function mainEvent() {
   const form = document.querySelector('.main_form');

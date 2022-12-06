@@ -98,7 +98,7 @@ function cast(filmID){
       // Updates photo and name for third actor
       document.getElementById("preview13").src = JSON.stringify(jsonData.actors[2].image).slice(1, -1);
       document.getElementById("preview13Name").innerHTML = JSON.stringify(jsonData.actors[2].name).slice(1, -1);
-
+      sleep(4000);
     } else{
       firstdone = true;
       
@@ -126,7 +126,16 @@ function removeDups(arr) {
       index) => arr.indexOf(item) === index);
 }
 
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
 async function intersect() {
+  
   window.location.href = "chart.html";
   const a = filmCC[0];
   const b = filmCC[1];

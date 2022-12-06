@@ -1,21 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+
+<title>Coffee and Cereal</title>
 </head>
-<body>
-    <h1>21 Coffee and Cereal</h1>
-    <h2 id="h2"></h2>
-    
-    <div id="cloud">
-        <h3 id="h3"></h3>
+    <body>
+    <div class= "container">
+    <div class = "left_section box">
+    <form id="titleForm">
+    <h1>Enter Name of Film or Show</h1>
+        <input type ="text" name="film" id="film">
+        <div class = "container">
+            <button type="submit">Submit</button>
+        </div>
+        
+    </form>
+    <div class="filmList" id ="movie_list">
+        <div class="film">
+            <div class="pic_title">
+                <img src="pictures\schindlers.jpg" alt="Schindler's List" id="firstpost" width="200" height="300">
+                <p id="postName1">Schindler's List</p>
+            </div>
+            <div class="pic_title">
+                <img src="pictures\liam.jpg" alt="Liam Neeson" id="preview1" width="150" height="200">
+                <p id="preview1Name">Liam Neeson</p>
+            </div>
+            <div class="pic_title">
+                <img src="pictures\Ralph.jpg" alt="Ralph Fiennes" id="preview2" width="150" height="200">
+                <p id="preview2Name">Ralph Fiennes</p>
+            </div>
+            <div class="pic_title">
+                <img src="pictures\Ben.jpg" alt="Ben Kingsley" id="preview3" width="150" height="200">
+                <p id="preview3Name">Ben Kingsley</p>
+            </div>
+        </div>
+        <div class="film">
+            <div class="pic_title">
+                <img src="pictures\pulp.jpg" alt="Pulp Fiction" id="secondpost" width="200" height="300">
+                <p id="postName2">Pulp Fiction</p>
+            </div>
+            <div class="pic_title">
+                <img src="pictures\John.jpg" alt="John Travolta" id="preview11" width="150" height="200">
+                <p id="preview11Name">John Travolta</p>
+            </div>
+            <div class="pic_title">
+                <img src="pictures\Uma.jpg" alt="Uma Thurman" id="preview12" width="150" height="200">
+                <p id="preview12Name">Uma Thurman</p>
+            </div>
+            <div class="pic_title">
+                <img src="pictures\Jackson.jpg" alt="Samuel L. Jackson" id="preview13" width="150" height="200">
+                <p id="preview13Name">Samuel L. Jackson</p>
+            </div>
+        </div>
     </div>
-    <p id="data">Breakfast Club</p>
-    <p id="dataa">Ferris Bueller's Day Off</p>
-    <script src="script.js"></script>
-</body>
+    <script src="script.js" ></script>
+    </body>
 </html>

@@ -24,90 +24,90 @@ function injectHTML(list) {
 // Function that fliters the list from the API data. //
 function filterList(list, filterInputValue) {
   return list.filter((item) => {
-      const lowerCaseName = item.name.toLowerCase();
-      const lowerCaseQuery = filterInputValue.toLowerCase();
-      return lowerCaseName.includes(lowerCaseQuery);
-    });
-  }
-  // Function that process the house list into an array of 10 houses per search //
-  function processHouse(list) {
-    const range = [...Array(10).keys()];
-    const newArray = range.map((item) => {
-      const index = getRandomInclusive(0, list.length);
-      return list[index];
-    });
-    return newArray;
-  }
-  // The function that is incharge of the objects for the map location //
-  function initMap() {
-    console.log('initMap');
-    const map = L.map('map').setView([38.9897, -76.9378], 13);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map);
-    return map;
-  }
-  // The fucntion that adds a marker placement onto the map //
-  function markerPlace(array, map) {
-    console.log('markerPlace', array);
-    map.eachLayer((layer) => {
-      if (layer instanceof L.Marker) {
-        layer.remove();
-      }
-    });
-    array.forEach((item, index) => {
-      const lat = item.location.latitude;
-      const long = item.location.longitude;
-      console.log([lat, long]);
-      L.marker([lat, long]).addTo(map);
-      if (index === 0) {
-        map.setView([lat, long], 10);
-      }
-    });
-  }
-  //  The async function that retreives the GET request information //
-  async function violationH4() {
-    const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H4';
-    const data = await fetch(url);
-    const json = await data.json();
-    const reply = json.filter((item) => Boolean(item.violation_code));
-    console.log(reply);
-    return reply;
-  }
-  // The async function that runs all the rpevious functions into our HTML file //
-  async function mainEvent() {
-    const form = document.querySelector('.main_form');
-    const loadAnimation = document.querySelector('.lds-ellipsis');
-    const h4 = document.querySelector('#violationh4');
-  
-    h4.style.display = 'none';
-  
-    const pageMap = initMap();
-    const violation1 = await violationH4();
-  
-    if (violation1.length > 0) {
-      h4.style.display = 'block';
-      loadAnimation.classList.remove('lds-ellipsis');
-      loadAnimation.classList.add('lds-ellipsis_hidden');
-  
-      let currentList = [];
-      form.addEventListener('input', (event) => {
-        console.log(event.target.value);
-        const newFilterList = filterList(currentList, event.target.value);
-        injectHTML(newFilterList);
-        markerPlace(newFilterList, pageMap);
-      });
-  
-      form.addEventListener('submit', (SubmitEvent) => {
-        SubmitEvent.preventDefault();
-  
-        currentList = processHouse(violation1);
-  
-        injectHTML(currentList);
-        markerPlace(currentList, pageMap);
-      });
+    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
+}
+// Function that process the house list into an array of 10 houses per search //
+function processHouse(list) {
+  const range = [...Array(10).keys()];
+  const newArray = range.map((item) => {
+    const index = getRandomInclusive(0, list.length);
+    return list[index];
+  });
+  return newArray;
+}
+// The function that is incharge of the objects for the map location //
+function initMap() {
+  console.log('initMap');
+  const map = L.map('map').setView([38.9897, -76.9378], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  return map;
+}
+// The fucntion that adds a marker placement onto the map //
+function markerPlace(array, map) {
+  console.log('markerPlace', array);
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
     }
+  });
+  array.forEach((item, index) => {
+    const lat = item.location.latitude;
+    const long = item.location.longitude;
+    console.log([lat, long]);
+    L.marker([lat, long]).addTo(map);
+    if (index === 0) {
+      map.setView([lat, long], 10);
+    }
+  });
+}
+//  The async function that retreives the GET request information //
+async function violationH4() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H4';
+  const data = await fetch(url);
+  const json = await data.json();
+  const reply = json.filter((item) => Boolean(item.violation_code));
+  console.log(reply);
+  return reply;
+}
+// The async function that runs all the rpevious functions into our HTML file //
+async function mainEvent() {
+  const form = document.querySelector('.main_form');
+  const loadAnimation = document.querySelector('.lds-ellipsis');
+  const h4 = document.querySelector('#violationh4');
+
+  h4.style.display = 'none';
+
+  const pageMap = initMap();
+  const violation1 = await violationH4();
+
+  if (violation1.length > 0) {
+    h4.style.display = 'block';
+    loadAnimation.classList.remove('lds-ellipsis');
+    loadAnimation.classList.add('lds-ellipsis_hidden');
+
+    let currentList = [];
+    form.addEventListener('input', (event) => {
+      console.log(event.target.value);
+      const newFilterList = filterList(currentList, event.target.value);
+      injectHTML(newFilterList);
+      markerPlace(newFilterList, pageMap);
+    });
+
+    form.addEventListener('submit', (SubmitEvent) => {
+      SubmitEvent.preventDefault();
+
+      currentList = processHouse(violation1);
+
+      injectHTML(currentList);
+      markerPlace(currentList, pageMap);
+    });
   }
-  document.addEventListener('DOMContentLoaded', async () => mainEvent());
+}
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

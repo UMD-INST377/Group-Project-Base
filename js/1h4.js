@@ -1,10 +1,9 @@
 /* eslint-disable max-len */
 
-
 // function used to grab random number from the API //
 function getRandomInclusive(min, max) {
-    const newMin = Math.ceil(min);
-    const newMax = Math.floor(max);
+  const newMin = Math.ceil(min);
+  const newMax = Math.floor(max);
     return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
   }
   // The function that injects the HTML page with information from the API //

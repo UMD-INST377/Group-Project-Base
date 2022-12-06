@@ -63,23 +63,16 @@ async function getTracks(token, tracksEndPoint, limit) {
 }
 
 
-async function initSongs(){
-    // A function that gets us a lot of songs from different genres on spotify
-    const token = await getToken(); //Get token
-    console.log(token)
+async function initSongs(plalylistSg, genre, token){
+    // A function that gets us a the songs from a playlist
 
-    //This is a placeholder part until I make all of the above work.
-    const plalylistSg = "https://api.spotify.com/v1/playlists/37i9dQZF1DXcF6B6QPhFDv/tracks"
     const tracks = await getTracks(token, plalylistSg, 60);
-    console.log(tracks)
-    return tracks.items.map(obj => ({ ...obj, gen: "Rock"}))
+    console.log(tracks.items)
+    return tracks.items.map(obj => ({ ...obj, gen: genre}))
 }
 
 
-
-async function songNamesArray(){
-    const songs = await initSongs();
-    let files = ['a', 'b', 'c', 'd', 'e', 'f'];
+function songsToArray(songs){
     
     console.log(songs)
     const array = [];
@@ -149,19 +142,22 @@ function injectImages(list){
 
 // Turn the site script on
 async function init(){
+    // Step 1: Get token, initialise variables
     const token = await getToken()
     document.getElementById("GeneratedContents").style.display = "none";
     const selectGenre = document.querySelector('#select_genre')
     const submit = document.querySelector('#submit');
-    let playlistID = ''
+    let playlistEndpoint = ''
+    let songArray = []
 
+    // Step 2: Get genre selection and insert the options into HTML
     const genres = await getGenres(token)
     console.log(genres)
     genres.map(genre => {
         insertGenres(genre.name, genre.id, selectGenre)
     })
 
-
+    //Step 3: When user selects a genre get a playlist for it.
     selectGenre.addEventListener('change', async () => {         
         // get the genre id associated with the selected genre
         const genreId = selectGenre.options[selectGenre.selectedIndex].value;
@@ -170,16 +166,17 @@ async function init(){
         console.log(`Getting tracks from genre: ${genreName} which has the id: ${genreId}`)
         const playlist = await getPlaylistsByGenre(token, genreId, 1);       
         // store the ID of the playlist
-        playlistID = `${playlist[0].href}/tracks`;
-        console.log(playlistID)
+        playlistEndpoint = `${playlist[0].href}/tracks`;
+        console.log(playlistEndpoint)
+        const tracks = await initSongs(playlistEndpoint, genreName, token)
+        songArray = songsToArray(tracks)
     });
-     
 
 
-    let songArray = await songNamesArray();
+    //let songArray = await songNamesArray();
     submit.addEventListener('click', (e) => {
         e.preventDefault();
-        sample = getRandomTen(songArray)
+        const sample = getRandomTen(songArray)
         injectHTML(sample);
         injectImages(sample);
         console.log(sample);
@@ -190,36 +187,3 @@ async function init(){
 }
 
 document.addEventListener('DOMContentLoaded', async () => init());
-
-
-/*
-const listOfTracks = []; //Initialize output
-let prom = new Promise((resolve, reject) => { //Wrapped the loop in a promise to make the rest of the func wait for the loop to execute
-
-
-            console.log(`Getting tracks from: ${genre.name} has id: ${genre.id}`)
-            const playlists = await getPlaylistsByGenre(token, genre.id, 3)
-
-            if(typeof playlists !== "undefined"){
-
-                playlists.map(async playlist =>{
-
-                    //console.log(playlist.href);
-                    if(playlist !== null){
-                        const plEndpoint = `${playlist.href}/tracks`
-                        const tracks = await getTracks(token, plEndpoint,10);
-                        tracks.items.map(obj => ({ ...obj, gen: genre.name }))
-                        listOfTracks.push(...tracks.items)
-                        console.log(listOfTracks)
-                    }
-                })
-            }  
-        
-    });
-
-    
-    prom.then(() => {
-        console.log('All done!');
-        console.log(listOfTracks.length);
-    });
-*/

@@ -30,13 +30,13 @@ function processCrime(list) {
 }
 
 function filterList(list, filterInputValue) {
-	return list.filter((item) => {
+  return list.filter((item) => {
     if (!item.street_address) { return; }
-      const lowerCaseName = item.street_address.toLowerCase();
-      const lowerCaseQuery = filterInputValue.toLowerCase();
-      return lowerCaseName.includes(lowerCaseQuery);
-    });
-  }
+    const lowerCaseName = item.street_address.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
+}
 
 function initMap() {
   console.log('initMap');
@@ -50,14 +50,15 @@ function initMap() {
 
 function markerPlace(array, map) {
   map.eachLayer((layer) => {
-		if (layer instanceof L.Marker) {
+    if (layer instanceof L.Marker) {
 		  layer.remove();
-		}});
+    }
+  });
   array.forEach((item, index) => {
-    const latitude = item.latitude;
-    const longitude = item.longitude;
+    const {latitude} = item;
+    const {longitude} = item;
     L.marker([latitude, longitude]).addTo(map);
-    if(index === 0) {
+    if (index === 0) {
       map.setView([latitude, longitude], 11);
     }
   });
@@ -102,9 +103,10 @@ async function mainEvent() {
     let currentList = [];
 
     form.addEventListener('input', (event) => {
-      console.log('input', event.target.value);
+      console.log(event.target.value);
       const newFilterList = filterList(currentList, event.target.value);
-      injectHTML(newFilterList, pageMap);
+      injectHTML(newFilterList);
+      markerPlace(newFilterList, pageMap);
     });
 
     form.addEventListener('submit', (submitEvent) => {

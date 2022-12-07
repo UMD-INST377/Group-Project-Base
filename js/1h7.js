@@ -70,31 +70,11 @@ function markerPlace(array, map) {
 }
 //  The async function that retreives the GET request information //
 async function violationH7() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H7';
+  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H7&$where=within_circle(location,%2038.83063,%20-76.901726,%20500000)';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.violation_code));
+  const reply = json.filter((item) => Boolean(item.violation_code)).filter((item) => Boolean(item.location));
   console.log(reply);
-  switch (reply) {
-    default:
-      break;
-
-    case 1:
-      statement = item.location.latitude != null;
-      console.log(statement);
-      return statement;
-  }
-  // const newArray = reply.map((item) => {
-  //   if (!item.location.latitude && item.location.longitude) {
-  //     return item;
-  //   }
-  //   const assumption = item.location;
-  //   console.log(assumption);
-  // });
-  const array1 = reply;
-  const truth = array1.filter((item) => Boolean(item.location));
-  console.log(truth);
-  // console.log(newArray);
   return reply;
 }
 // The async function that runs all the rpevious functions into our HTML file //

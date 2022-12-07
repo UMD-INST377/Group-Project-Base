@@ -3,10 +3,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
+    <title>LitterTRAK</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
 </head>
 <body>
+
+    <div class="wrapper">
+        <header class="header">
+            <h1>Group 24: LitterTRAK</h1>
+            <div class="other-pages">
+                <span class="home">Home</span>
+                <span class="about">About</span>
+            </div>
+        </header>
+
+        <div class="container">
+
+            <div class="left_section box">
+                <div class="input">
+                    <form action="/api" class="main-form">
+                        <div>
+                            <label for="location">Select Location: </label>
+                            <form autocomplete="off" action="/action_page.php">
+                                <div class="autocomplete" style="width:300px;">
+                                  <input id="city" type="text" name="myCity" placeholder="City">
+                                </div>
+                                <input type="submit">
+                            </form>
+                        </div>
+                       <!--<input type="text" name="location" id="location"> -->
+                       <div>
+                            <!-- <button class="button-18" role="button" type="submit" id="get-location">Change Location</button> -->
+                       </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="right_section box">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
     <script src="./script.js"></script>
 </body>
 </html>

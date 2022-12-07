@@ -28,7 +28,7 @@ async function getToken() {
 
 async function getGenres(token) {
     // Gets a list of genres
-    const result = await fetch(`https://api.spotify.com/v1/browse/categories?locale=sv_US&limit=40`, {
+    const result = await fetch(`https://api.spotify.com/v1/browse/categories?locale=US&limit=45`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
     });
@@ -158,22 +158,27 @@ async function init(){
     })
 
     //Step 3: When user selects a genre get a playlist for it.
-    selectGenre.addEventListener('change', async () => {         
-        // get the genre id associated with the selected genre
+    selectGenre.addEventListener('change', async () => {
+
+        // get the genre id and name associated with the selected genre
         const genreId = selectGenre.options[selectGenre.selectedIndex].value;
         const genreName = selectGenre.options[selectGenre.selectedIndex].innerHTML;
+
         // get the playlist based on a genre
         console.log(`Getting tracks from genre: ${genreName} which has the id: ${genreId}`)
-        const playlist = await getPlaylistsByGenre(token, genreId, 1);       
-        // store the ID of the playlist
+        const playlist = await getPlaylistsByGenre(token, genreId, 1);
+
+        // store the track endpoint of the playlist
         playlistEndpoint = `${playlist[0].href}/tracks`;
         console.log(playlistEndpoint)
+
+        //Finally get the tracks
         const tracks = await initSongs(playlistEndpoint, genreName, token)
         songArray = songsToArray(tracks)
     });
 
 
-    //let songArray = await songNamesArray();
+    //
     submit.addEventListener('click', (e) => {
         e.preventDefault();
         const sample = getRandomTen(songArray)

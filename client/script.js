@@ -90,8 +90,7 @@ function songsToArray(songs){
     //console.log(array)
 }
 
-async function songLenArray(){
-    const songs = await initSongs();
+async function songLenArray(songs){
     console.log(songs)
     const array = [];
     songs.forEach(element => {
@@ -220,12 +219,13 @@ async function init(){
     //If user changes genre the 
     submit.addEventListener('click', (e) => {
         e.preventDefault();
-        const sample = getRandomTen(songArray)
+        const sample = getRandomTen(songArray);
+        const sample_len = songLenArray(songs);
         console.log(sample);
         injectHTML(sample);
         injectImages(sample);
         document.getElementById("GeneratedContents").style.display = "flex";
-        initChart(sample);
+        initChart(sample, sample_len);
 
     })
 

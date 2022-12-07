@@ -52,3 +52,7 @@ function show_players_team() {
   });
   console.log;
 }
+
+function ShowDiv() {
+  document.getElementById("myDiv").style.display = "";
+}

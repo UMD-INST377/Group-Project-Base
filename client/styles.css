@@ -12,6 +12,9 @@ header {
   text-align: center;
 
 }
+*{
+  box-sizing: border-box;
+}
 .container {
   margin: 0 20px;
   display: flex;
@@ -95,12 +98,13 @@ height: 100px;
 /* Container needed to position the button. Adjust the width as needed */
 .container {
   position: relative;
+  float: left;
   width: 50%;
 }
 
 /* Make the image responsive */
 .container img {
-  width: 100%;
+  width: 70%;
   height: auto;
 }
 
@@ -108,7 +112,7 @@ height: 100px;
 .container .btn {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 38%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: transparent;
@@ -130,6 +134,7 @@ div.players{
   overflow: hidden;
   text-align: center;
   display: flex;
+  float: right;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;

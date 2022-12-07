@@ -90,18 +90,27 @@ function songsToArray(songs){
     //console.log(array)
 }
 
-async function songLenArray(songs){
-    console.log(songs)
+async function songLenArray(list){
     const array = [];
-    songs.forEach(element => {
-        array.push({
-            Length : element.track.length,
-        })
+    list.forEach((element) => {
+        array.push(
+            element.length
+        )
     })
     return(array)
     //console.log(array)
 }
 
+async function songNameArray(list){
+    const array = [];
+    list.forEach((element) => {
+        array.push(
+            element.name
+        )
+    })
+    return(array)
+    //console.log(array)
+}
 // -------------------UI Handling-------------------
 
 // Inject genres into the dropdown menu
@@ -158,7 +167,7 @@ function initChart(songs,songlength) {
         labels: songs,
         datasets: [{
             label: 'Length of the song',
-            data: [12, 19, 3, 5, 2, 3],
+            data: songlength,
             borderWidth: 4
         }]
         },
@@ -220,12 +229,14 @@ async function init(){
     submit.addEventListener('click', (e) => {
         e.preventDefault();
         const sample = getRandomTen(songArray);
-        const sample_len = songLenArray(songs);
+        const sample_name = songNameArray(sample);
+        const sample_len = songLenArray(sample);
         console.log(sample);
         injectHTML(sample);
         injectImages(sample);
         document.getElementById("GeneratedContents").style.display = "flex";
-        initChart(sample, sample_len);
+
+        initChart(sample_name, sample_len);
 
     })
 

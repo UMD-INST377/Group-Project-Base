@@ -1,19 +1,13 @@
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': '0e06a17926msh338e516eca5534bp1efaadjsnb8d059881c35',
-    'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
-  }
-};
+function getComedy() {
+  return fetch('https://api.tvmaze.com/shows')
+    .then((response) => response.json())
+    .then((jsonData) => {
+      const titleList = jsonData;
+      const newList = titleList.filter((title) => title.genres.includes('Comedy'));
 
-fetch('https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr', options)
-  .then((response) => response.json())
-  .then((response) => {
-    console.log(response);
-    return response;
-  })
-  .catch((err) => console.error(err));
-
+      const show = newList[Math.floor(Math.random() * newList.length)];
+      return show.image.medium;
+    });
 d3.selectAll('p').style('color', () => `hsl(${Math.random() * 360},100%,50%)`);
 
 
@@ -26,30 +20,64 @@ function date_time() {
   const formatString = datetimeString.replace(', ', ' - ');
   datetimeDisplay.textContent = formatString;
 }
-setInterval(date_time, 100);
 
+const positiveButton = document.getElementById('emoji1');
+const comedyImage = document.getElementById('comedyImage');
+positiveButton.addEventListener('click', () => {
+  getComedy()
+    .then((image) => comedyImage.src = image);
+});
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     'X-RapidAPI-Key': '0e06a17926msh338e516eca5534bp1efaadjsnb8d059881c35',
+//     'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+//   }
+// };
 
+// fetch('https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr', options)
+//   .then((response) => response.json())
+//   .then((response) => {
+//     console.log(response);
+//     return response;
+//   })
+//   .catch((err) => console.error(err));
 
-// D3.js
-// import * as d3 from 'd3';
+// const genres = {
+//   method: 'GET',
+//   headers: {
+//     'X-RapidAPI-Key': '0e06a17926msh338e516eca5534bp1efaadjsnb8d059881c35',
+//     'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+//   }
+// };
 
-
+// fetch('https://imdb8.p.rapidapi.com/title/v2/get-popular-movies-by-genre?genre=adventure&limit=100', genres)
+//   .then((response) => response.json())
+//   .then((response) => console.log(response))
+//   .catch((err) => console.error(err));
 
 // d3.selectAll('p').style('color', () => `hsl(${Math.random() * 360},100%,50%)`);
+// /* Cuurent Date and Time */
+// function date_time() {
+//   const datetimeDisplay = document.getElementById('date-time');
+//   const datetimeString = new Date().toLocaleString();
+//   const formatString = datetimeString.replace(', ', ' - ');
+//   datetimeDisplay.textContent = formatString;
+// }
+// setInterval(date_time, 100);
 
+// // D3.js
+// // import * as d3 from 'd3';
 
+// // d3.selectAll('p').style('color', () => `hsl(${Math.random() * 360},100%,50%)`);
 
-
-
-
-async function mainEvent() {
-  const form = document.querySelector('.main_form');
-  form.addEventListener('submit', async(submitEvent) => {
-    submitEvent.preventDefault();
-    console.log('submission!');
-
-  })
-}
+// async function mainEvent() {
+//   const form = document.querySelector('.main_form');
+//   form.addEventListener('submit', async(submitEvent) => {
+//     submitEvent.preventDefault();
+//     console.log('submission!');
+//   });
+// }
 
 // async function mainEvent() { // the async keyword means we can make API requests
 //   const form = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it

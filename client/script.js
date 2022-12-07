@@ -188,6 +188,7 @@ async function init(){
     // Step 1: Get token, initialise variables
     const token = await getToken()
     document.getElementById("GeneratedContents").style.display = "none";
+    document.getElementById("Chartbox").style.display = "none";
     const selectGenre = document.querySelector('#select_genre')
     const submit = document.querySelector('#submit');
     let playlistEndpoint = ''
@@ -236,7 +237,9 @@ async function init(){
         injectImages(sample);
         document.getElementById("GeneratedContents").style.display = "flex";
 
+        document.getElementById("Chartbox").style.display = "block";
         initChart(sample_name, sample_len);
+        
 
     })
 

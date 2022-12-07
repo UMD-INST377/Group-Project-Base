@@ -1,4 +1,5 @@
 
+
 /* Cuurent Date and Time */
 function date_time() {
   const datetimeDisplay = document.getElementById('date-time');

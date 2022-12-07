@@ -1,0 +1,259 @@
+
+
+html {
+  background-color: rgb(8, 7, 7);
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("Background_Image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: white;
+}
+.wrapper {
+  background-color: rgb(1, 1, 1, 0.8);
+}
+
+a:visited { 
+  text-decoration: none; 
+  color: white; 
+ }
+ a:hover {
+  color: red;
+ }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
+
+  
+  /* this will push other blocks out of the way */
+
+  /* colors */
+  background-color: rgb(3, 3, 3);
+  color: rgb(246, 245, 245);
+
+  /* shapes */
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 1.25rem;
+  margin:0;
+
+  border: 2px ;
+  /* box-shadows are fancy */
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+}
+ .links {
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 60px;
+  /* background-color: red; */
+  width: 300px;
+} 
+.group {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: normal;   
+}
+.title {
+  margin-top: 50px;
+  margin-right: 280px;
+}
+.nba-logo {
+  height: 50px;
+  width: 50px;
+}
+
+
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 1.5rem;
+}
+
+
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.container {
+  margin: 30px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex:1;
+}
+
+  .right_section {
+    background-color:rgb(1, 1, 1, 0.6);
+    color: white;
+    /* flex: 0 1 auto; */
+    margin-left: 300px;
+    padding: 1.5rem;
+    /* width: 350px; */
+    /* display: flex;
+    justify-content: flex-start; */
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(95, 95, 95, 0.19);
+    }
+    .right-stack {
+      display: flex;
+      flex-direction: column;
+      /* background-color: red; */
+      color: white;
+      align-items: flex-end;
+    }
+    .summary {
+      /* margin-top: 100px; */
+      margin-left: 50px;
+      background-color:rgb(1, 1, 1, 0.6);
+      padding: 8px;
+      align-self: center;
+      border-radius: 10px;
+    }
+
+    .box {
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+      width: fit-content;
+      height:fit-content;
+      padding: 1.5rem;
+      margin: 0 auto;
+    }
+    .chartBox {
+      background-color: rgb(1, 1, 1, 0.2);
+      border-radius: 10px;
+      box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+      width: fit-content;
+      height:fit-content;
+      padding: 1.5rem;
+      /* margin: 0 auto; */
+    }
+    #refresh-button {
+      padding: 25px;
+    }
+
+    
+
+    .footer {
+      padding: 1rem;
+      background-color: rgb(1, 1, 1);
+      font-size: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+      
+      
+    }
+
+    
+
+   
+    
+    .footer a {
+      color: rgb(236, 23, 23);
+      text-decoration: underline;
+    }
+
+    .footer p {
+      color: white;
+    }
+
+    .form-row select {
+      width: 30%;
+      padding: 5px;
+      font-size: 14px;            /* This won't work in Chrome or Safari */
+      
+    }
+    .loader {
+      border: 10px solid #f3f3f3; /* Light grey */
+      border-top: 10px solid red; /* Blue */
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 2s linear infinite;
+      margin-left: 300px;
+      
+
+    }
+    #team-button {
+      background-color: white;
+      border: 0px;
+      padding: 7px;
+      width: 100px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: black;
+    }
+    #search-box {
+      background-color: rgb(255, 255, 255);
+      border: 0px;
+      padding: 7px;
+      border-radius: 10px;
+      width: 80px;
+      color: black;
+      border-color: black;
+      box-shadow: 0 4px 16px 0 rgba(88, 88, 88, 0.2), 0 6px 20px 0 rgba(134, 134, 134, 0.19);
+    }
+    #search-box:focus {
+      outline: none;
+    }
+
+    #year {
+      background-color: white;
+      border: 0px;
+      padding: 7px;
+      border-radius: 10px;
+      color: black;
+    }
+ 
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+   
+    @media only screen and (max-width: 736px){
+      /* Rules in here will only apply when a screen is the correct size */
+      /* check it out by using your developer tools to shrink your screen-size */
+      .container {
+        /* background-color: rgba(204, 8, 162, 0.65); */ 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+  }

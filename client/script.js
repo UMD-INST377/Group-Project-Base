@@ -1,4 +1,5 @@
 
+
 /* Cuurent Date and Time */
 function date_time() {
   const datetimeDisplay = document.getElementById('date-time');
@@ -31,14 +32,6 @@ positiveButton.addEventListener('click', () => {
   getComedy()
     .then((image) => comedyImage.src = image);
 });
-
-
-
-
-
-
-
-
 
 
 

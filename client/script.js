@@ -42,34 +42,7 @@ function fillNBAInfo (name, logo) {
   </div>
   `;
 }
-const labels = ['Points Scored', 'assists', 'steals', 'goals', 'Free Throws', 'Three-Pointers'];
-function initChart(chart, object) {
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'Player Name',
-      backgroundColor: 'rgb(255, 99, 131)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0],
-    }]
-  };
 
-  const config = {
-    type: 'bar',
-    data: data,
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  };
-  return new Chart(
-    chart,
-    config
-  );
-}
 
 function updateChart(chart, object) {
   chart.data.labels = labels;
@@ -80,6 +53,8 @@ function updateChart(chart, object) {
   chart.data.datasets[0].data[3] = object[5];
   chart.data.datasets[0].data[4] = object[6];
   chart.data.datasets[0].data[5] = object[7];
+  chart.data.datasets[0].label = object[8];
+  
   chart.update();
 }
 
@@ -116,16 +91,45 @@ async function getPlayerData(playerID) {
   }
 }
 
+const labels = ['Points Scored', 'assists', 'steals', 'goals', 'Free Throws', 'Three-Pointers'];
+function initChart(chart, object) {
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Player Name',
+      backgroundColor: 'rgb(255, 99, 131)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [0],
+    }]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+  return new Chart(
+    chart,
+    config
+  );
+}
+
 const ctx = document.querySelector('#myChart');
 let chartData;
 const playerChart = initChart(ctx, chartData);
 
 document.querySelector('#search').addEventListener('click', async (event) => {
   player = await getPlayer(event.target.value);
-  console.log(player);
-  console.log(player[0]);
-  console.log(player[1]);
-  console.log(player[2]);
+  console.log(player)
+  console.log(player[0])
+  console.log(player[1])
+  console.log(player[2])
   playerInfo = await getPlayerData(player[0]);
   console.log(playerInfo);
   console.log(playerInfo[0]);
@@ -139,6 +143,8 @@ document.querySelector('#search').addEventListener('click', async (event) => {
     playerInfo[4],
     playerInfo[5],
     playerInfo[6],
-    playerInfo[7]];
+    playerInfo[7],
+    player[1] + ' ' + player[2]];
+    
   updateChart(playerChart, chartData);
 });

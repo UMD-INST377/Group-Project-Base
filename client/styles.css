@@ -1,9 +1,10 @@
 html {
-    background-color: rgb(130, 187, 231);
+    background-color: #1a1a1a;
     font-size: 16px;
     min-width: 300px;
     overflow-x: hidden;
     overflow-y: scroll;
+    color: #a7a7a7;
   
     /* these are specific to different browsers */
     -moz-osx-font-smoothing: grayscale;

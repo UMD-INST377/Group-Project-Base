@@ -94,9 +94,9 @@ async function mainEvent() {
   h7.style.display = 'none';
 
   const pageMap = initMap();
-  const violation1 = await violationH7();
+  const violation7 = await violationH7();
 
-  if (violation1.length > 0) {
+  if (violation7.length > 0) {
     h7.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
@@ -109,10 +109,10 @@ async function mainEvent() {
       markerPlace(newFilterList, pageMap);
     });
 
-    form.addEventListener('submit', (SubmitEvent) => {
-      SubmitEvent.preventDefault();
+    form.addEventListener('submit', (submitEvent) => {
+      submitEvent.preventDefault();
 
-      currentList = processHouse(violation1);
+      currentList = processHouse(violation7);
 
       injectHTML(currentList);
       markerPlace(currentList, pageMap);

@@ -76,7 +76,7 @@ function markerPlace(array, map) {
 }
 
 //  The async function that retreives the GET request information //
-async function violationowl() {
+async function violationOwl() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=owl$where=within_circle(location,%2038.83063,%20-76.901726,%20500000)';
   const data = await fetch(url);
   const json = await data.json();
@@ -94,9 +94,9 @@ async function mainEvent() {
   owl.style.display = 'none';
 
   const pageMap = initMap();
-  const violation1 = await violationowl();
+  const violationO = await violationOwl();
 
-  if (violation1.length > 0) {
+  if (violationO.length > 0) {
     owl.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
@@ -109,10 +109,10 @@ async function mainEvent() {
       markerPlace(newFilterList, pageMap);
     });
 
-    form.addEventListener('submit', (SubmitEvent) => {
-      SubmitEvent.preventDefault();
+    form.addEventListener('submit', (submitEvent) => {
+      submitEvent.preventDefault();
 
-      currentList = processHouse(violation1);
+      currentList = processHouse(violationO);
 
       injectHTML(currentList);
       markerPlace(currentList, pageMap);

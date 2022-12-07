@@ -109,8 +109,8 @@ async function mainEvent() {
       markerPlace(newFilterList, pageMap);
     });
 
-    form.addEventListener('submit', (SubmitEvent) => {
-      SubmitEvent.preventDefault();
+    form.addEventListener('submit', (submitEvent) => {
+      submitEvent.preventDefault();
 
       currentList = processHouse(violation1);
 

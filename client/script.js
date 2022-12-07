@@ -21,8 +21,8 @@ function initChart(chart) {
   });
 }
 
-// eslint-disable-next-line no-unused-vars
 async function mainEvent() {
+  document.addEventListener('DOMContentLoaded', async () => mainEvent());
   const options = {
     method: 'GET',
     headers: {
@@ -36,5 +36,6 @@ async function mainEvent() {
   );
   const arrayFromJson = await dataGet.json();
   const response_object = arrayFromJson.response;
-  document.addEventListener('DOMContentLoaded', async () => mainEvent());
+  const chartTarget = initChart();
+  initChart(charTarget);
 }

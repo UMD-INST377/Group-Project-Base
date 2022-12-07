@@ -238,7 +238,7 @@ async function init(){
         document.getElementById("GeneratedContents").style.display = "flex";
 
         document.getElementById("Chartbox").style.display = "block";
-        initChart(sample_name, sample_len);
+        initChart(sample, sample_len);
         
 
     })

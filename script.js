@@ -71,6 +71,7 @@ function cast(filmID){
   console.log("Cast: " + cast1);
   getFilmTitle(cast1)
   .then(function(jsonData){
+    console.log("Testing");
     console.log(jsonData);
     let regex = /name":"([a-zA-z ]* [a-zA-z ]*)/g;
     let response = JSON.stringify(jsonData);

@@ -23,6 +23,7 @@ fetch("https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json")
         <td class = "tableData">${product.agency}</td>
         <td class = "tableData">${product.zip_code}</td>
         <td class = "tableData">${product.amount}</td>
+        <td class = "tableData">${product.payment_description}</td>
         </tr>
         `;
     }
@@ -41,6 +42,7 @@ async function fetchData() {
   return dataPoints;
 };
 
+// Code for the fetch payee buttons //
 async function getPayee() {
   fetchData().then(dataPoints => {
     const payeeDat = dataPoints.map(function(index){
@@ -63,6 +65,8 @@ async function getPayee() {
   })
 
 };
+
+// Code for the fetch agency buttons //
 async function getAgency() {
   fetchData().then(dataPoints => {
     const agencyDat = dataPoints.map(function(index){
@@ -85,6 +89,8 @@ async function getAgency() {
     myChart.update();
   })
 };
+
+// Code for the fetch zipcode buttons //
 async function getZip() {
   fetchData().then(dataPoints => {
     const zipDat = dataPoints.map(function(index){
@@ -108,8 +114,6 @@ async function getZip() {
 
 };
 
-
-
 //need to set this to get range instead of unique number
 async function getAmount() {
   fetchData().then(dataPoints => {
@@ -119,21 +123,39 @@ async function getAmount() {
     const unique = [...new Set(dataPoints.map(item => item.amount))];
     const count = {};
 
-    for (const element of amountDat) {
-      if (count[element]) {
-        count[element] += 1;
-      } else {
-        count[element] = 1;
-      }
+    // for (const element of amountDat) {
+    //   if (count[element]) {
+    //     count[element] += 1;
+    //   } else {
+    //     count[element] = 1;
+    //   }
+    // }
+
+    function groupBy(array, keyFunc){
+
+      var r = {};
+      array.forEach(function(x) {
+        var y = keyFunc(x);
+        r[y] = (r[y] || []).concat(x);
+      });
+
     }
-    myChart.config.data.labels = unique;
-    myChart.config.data.datasets[0].label = "Total";
-    myChart.config.data.datasets[0].data = Object.values(count);
-    myChart.update();
+
+    g = groupBy(amountDat, function(x) {return Math.floor(x/100)});
+
+  
+
+    console.log(g);
+    // myChart.config.data.labels = unique;
+    // myChart.config.data.datasets[0].label = "Total";
+    // myChart.config.data.datasets[0].data = Object.values(count);
+    // myChart.update();
   })
 
 };
 
+
+//Change chart type
 async function BarChart(){
   myChart.config.type = "bar";
   myChart.update();
@@ -144,6 +166,67 @@ async function DoughnutChart(){
   myChart.update();
 }
 // Code for the buttons // top
+
+
+
+function filterTable(array, filterItem){
+  return array.filter((item) => {
+    const lowerCaseName = item.agency.toLowerCase();
+    const lowerCaseQuery = filterItem.toLowerCase();
+    return lowerCaseName.includes(lowerCaseQuery);
+  })
+}
+
+function injectHTML(list) {
+  console.log('fired injectHTML');
+  const target = document.querySelector('#data-output');
+  target.innerHTML = '';
+
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
+
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item.name;
+    listEl.appendChild(el);
+  });
+}
+
+async function mainEvent(){
+
+  const form = document.querySelector('.main_form');
+  const submit = document.querySelector('#myInput')
+
+  console.log("inside mainevent");
+
+  if(response.data?.length > 0){
+
+    let currentList = [];
+
+    form.addEventListener('input', (event) => {
+      console.log(event.target.value);
+
+      const newList = filterTable(currentList, event.target.value);
+
+      injectHTML(newList);
+
+
+    });
+
+    form.addEventListener('submit', (submitEvent) => {
+      submitEvent.preventDefault();
+
+      currentList = response;
+
+      injectHTML(currentList);
+    });
+
+  }
+
+  console.log(response);
+}
+
+
 
 const ctx = document.getElementById('chart');
 
@@ -158,4 +241,6 @@ const myChart = new Chart(ctx, {
     }]
   }
 });
+
+
 

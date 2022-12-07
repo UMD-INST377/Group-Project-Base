@@ -11,10 +11,6 @@ function getComedy() {
 
 
 
-
-
-
-
 const positiveButton = document.getElementById('emoji1');
 const comedyImage = document.getElementById('comedyImage');
 positiveButton.addEventListener('click', () => {

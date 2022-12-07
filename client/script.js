@@ -3,35 +3,7 @@
 /* eslint-disable no-use-before-define */
 const form = document.querySelector('.main-form');
 const submit = document.querySelector('#get-location');
-// const data = getData();
-const form = document.querySelector('.main-form');
-const submit = document.querySelector('#get-location');
 
-function initMap() {
-  console.log('initMap');
-  const map = L.map('map').setView([38.9849, -76.9378], 13);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
-  return map;
-}
-
-function markerPlace(array, map) {
-  map.eachLayer((layer) => {
-    if (layer instanceof L.Marker) {
-      layer.remove();
-    }
-  });
-
-  array.forEach((item, index) => {
-    const {coordinates} = item.geocoded_column;
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
-    if (index === 0) {
-      map.setView([coordinates[1], coordinates[0]], 10);
-    }
-  });
-}
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
   const apiData = await fetch(url);
@@ -42,32 +14,16 @@ async function getData() {
 
 function processLitters(list, location) {
   console.log('fired litter list');
-  const range = []; // creating an array of 15 elements
-  // eslint-disable-next-line no-unused-vars
+  const range = []
   const district = findDistrict(districts, location);
 
-  /* list.forEach((item) => {
-    if (item.council_district === district) { range.add(item); }
-  }); */
-
-  // const keys = Object.keys(list);
-
-  // const len = keys.length;
-  for (let i = 0; i < 999; i++) {
-    // console.log(list[i]);
-    if (list[i].council_district == location) {
-      console.log(list[i]);
-      range.add(list[i]);
-    }
-    // Do something
-  } 
-
-  /* const newArray = range.add((item) => {
-    const index = getRandomIntInclusive(0, list.length);
-    return list[index];
-  }); */
+  list.forEach((item) => {
+    if (item.council_district == district) {range.push(item)};
+  })
+  console.log(range)
   return range;
 }
+
 /* Map Functions */
 
 function initMap() {
@@ -88,10 +44,12 @@ function markerPlace(array, map) {
   });
 
   array.forEach((item, index) => {
-    const {coordinates} = item.geocoded_column;
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+    const coordinates = item.geocoded_column;
+    const latitude = Object.values(coordinates)[0];
+    const longitude = Object.values(coordinates)[1];
+    L.marker([longitude, latitude]).addTo(map);
     if (index === 0) {
-      map.setView([38.9869, -76.9426], 9);
+      map.setView([longitude, latitude], 10);
     }
   });
 }
@@ -131,8 +89,6 @@ function findDistrict(districtArray, city) {
   });
   return match.pop();
 }
-
-console.log(findDistrict(districts, 'Laurel'));
 
 function autocomplete(inp, arr) {
   /* the autocomplete function takes two arguments,
@@ -250,8 +206,10 @@ async function main() {
     submitEvent.preventDefault();
 
     // This constant will have the value of your 15-restaurant collection when it processes
-    currentList = processLitters(litterData, document.getElementById.value);
+    const userInput = document.getElementById('city').value;
+    currentList = processLitters(litterData, userInput);
     // console.log(restaurantList);
+    console.log(userInput);
 
     // And this function call will perform the "side effect" of injecting the HTML list for you
     markerPlace(currentList, map);

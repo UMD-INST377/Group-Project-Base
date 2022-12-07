@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #0d0e0f;
+  }
+  
+  body,
+  input,
+  textarea,
+  select,
+  button {
+    color: white;
+    font: 400 1rem "Roboto", sans-serif;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  main {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+  
+  .searchBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .searchBox input {
+    border-radius: 8px 0 0 8px;
+    border: 0;
+    outline: none;
+    height: 36px;
+    padding: 4px 16px;
+    background-color: white;
+    color: #000;
+  }
+  
+  .searchBox button {
+    border-radius: 0 8px 8px 0;
+    border: 0;
+    height: 36px;
+    padding: 4px 16px;
+    background-color: white;
+  }
+  
+  .nbaBoxes {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+  }
+  
+  .nbaBoxes img {
+    width: 200px;
+  }
+  
+  .nbaBoxes p {
+    margin-top: 1rem;
+  }
+  
+  .nbaBoxes .pokemonInfos {
+    padding: 2rem;
+  }
+  
+  .chart_container {
+    height: 100%;
+    width: 100%;
+  }

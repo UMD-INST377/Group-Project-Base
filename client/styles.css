@@ -1,59 +1,83 @@
 html {
-    background-color: rgb(130, 187, 231);
-    font-size: 16px;
-    min-width: 300px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  
-    /* these are specific to different browsers */
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
+  background-color: #1a1a1a;
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  color: #a7a7a7;
 
-  .header {
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-  }
+  /* these are specific to different browsers */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 
-  .header h2 {
-    font-size: 1em;
-  }
-  .wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    flex: 10;
-  }
+.header {
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
 
-  .box {
-    background-color: rgba(36, 34, 163, 0.4);
-    border: 2px dashed;
-    border-radius: 4px;
-  
-    width: fit-content;
-    height: fit-content;
-    padding: 0.5rem;
-    margin: 0 auto;
-  }
+.header h2 {
+  font-size: 1em;
+}
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 10;
+}
 
-  .search_bar {
-    background-color: rgba(240, 248, 255, 0);
-    height: fit-content;
-    padding: 1.5rem;
-  }
+.box {
+  background-color: rgba(36, 34, 163, 0.4);
+  border: 2px dashed;
+  border-radius: 4px;
 
-  .footer {
-    flex-shrink: 0;
-    padding: 1rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem;
+  margin: 0 auto;
+}
+
+.search_bar {
+  background-color: rgba(240, 248, 255, 0);
+  height: fit-content;
+  padding: 1.5rem;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#GeneratedContents{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#Imagebox h2{
+  width: 100%;
+  text-align: center;
+}
+
+#Imagebox{
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#Imagebox img{
+  max-width: 300px;
+  width: 33%;
+  height: 33%;
+}

@@ -28,7 +28,7 @@ async function getToken() {
 
 async function getGenres(token) {
     // Gets a list of genres
-    const result = await fetch(`https://api.spotify.com/v1/browse/categories?locale=sv_US&limit=40`, {
+    const result = await fetch(`https://api.spotify.com/v1/browse/categories?locale=US&limit=45`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
     });
@@ -63,57 +63,16 @@ async function getTracks(token, tracksEndPoint, limit) {
 }
 
 
-async function initSongs(){
-    // A function that gets us a lot of songs from different genres on spotify
-    const listOfTracks = []; //Initialize output
-    const token = await getToken(); //Get token
-    console.log(token)
-    const genres = await getGenres(token)
-    let prom = new Promise((resolve, reject) => { //Wrapped the loop in a promise to make the rest of the func wait for the loop to execute
+async function initSongs(plalylistSg, genre, token){
+    // A function that gets us a the songs from a playlist
 
-        genres.map(async (genre, index, array) => {
-
-            console.log(`Getting tracks from: ${genre.name} has id: ${genre.id}`)
-            const playlists = await getPlaylistsByGenre(token, genre.id, 3)
-
-            if(typeof playlists !== "undefined"){
-
-                playlists.map(async playlist =>{
-
-                    //console.log(playlist.href);
-                    if(playlist !== null){
-                        const plEndpoint = `${playlist.href}/tracks`
-                        const tracks = await getTracks(token, plEndpoint,10);
-                        tracks.items.map(obj => ({ ...obj, gen: genre.name }))
-                        listOfTracks.push(...tracks.items)
-                        console.log(listOfTracks)
-                    }
-                })
-            }  
-            if (index === array.length -1) {
-                resolve()
-            };
-        });
-    });
-
-    
-    prom.then(() => {
-        console.log('All done!');
-        console.log(listOfTracks.length);
-    });
-
-    //This is a placeholder part until I make all of the above work.
-    const plalylistSg = "https://api.spotify.com/v1/playlists/37i9dQZF1DXcF6B6QPhFDv/tracks"
     const tracks = await getTracks(token, plalylistSg, 60);
-    console.log(tracks)
-    return tracks.items.map(obj => ({ ...obj, gen: "Rock"}))
+    console.log(tracks.items)
+    return tracks.items.map(obj => ({ ...obj, gen: genre}))
 }
 
 
-
-async function songNamesArray(){
-    const songs = await initSongs();
-    let files = ['a', 'b', 'c', 'd', 'e', 'f'];
+function songsToArray(songs){
     
     console.log(songs)
     const array = [];
@@ -134,6 +93,11 @@ async function songNamesArray(){
 // -------------------UI Handling-------------------
 
 //Get random 10 items from an aray (to be replacedby betterselection item)
+function insertGenres(text, value, element) {
+    const html = `<option value="${value}">${text}</option>`;
+    element.insertAdjacentHTML('beforeend', html);
+}
+
 function getRandomTen(list) {
     console.log('fired get 10 songs');
     const range = [...Array(9).keys()];
@@ -172,15 +136,52 @@ function injectImages(list){
     });
 }
 
+
+
+// ---------------------------Page Initialisation-------------------------------------------
+
 // Turn the site script on
 async function init(){
+    // Step 1: Get token, initialise variables
+    const token = await getToken()
     document.getElementById("GeneratedContents").style.display = "none";
+    const selectGenre = document.querySelector('#select_genre')
     const submit = document.querySelector('#submit');
+    let playlistEndpoint = ''
+    let songArray = []
 
-    let songArray = await songNamesArray();
+    // Step 2: Get genre selection and insert the options into HTML
+    const genres = await getGenres(token)
+    console.log(genres)
+    genres.map(genre => {
+        insertGenres(genre.name, genre.id, selectGenre)
+    })
+
+    //Step 3: When user selects a genre get a playlist for it.
+    selectGenre.addEventListener('change', async () => {
+
+        // get the genre id and name associated with the selected genre
+        const genreId = selectGenre.options[selectGenre.selectedIndex].value;
+        const genreName = selectGenre.options[selectGenre.selectedIndex].innerHTML;
+
+        // get the playlist based on a genre
+        console.log(`Getting tracks from genre: ${genreName} which has the id: ${genreId}`)
+        const playlist = await getPlaylistsByGenre(token, genreId, 1);
+
+        // store the track endpoint of the playlist
+        playlistEndpoint = `${playlist[0].href}/tracks`;
+        console.log(playlistEndpoint)
+
+        //Finally get the tracks
+        const tracks = await initSongs(playlistEndpoint, genreName, token)
+        songArray = songsToArray(tracks)
+    });
+
+
+    //
     submit.addEventListener('click', (e) => {
         e.preventDefault();
-        sample = getRandomTen(songArray)
+        const sample = getRandomTen(songArray)
         injectHTML(sample);
         injectImages(sample);
         console.log(sample);

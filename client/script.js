@@ -1,3 +1,4 @@
+// get API
 function getComedy() {
   return fetch('https://api.tvmaze.com/shows')
     .then((response) => response.json())
@@ -8,7 +9,7 @@ function getComedy() {
       const show = newList[Math.floor(Math.random() * newList.length)];
       return show.image.medium;
     });
-
+}
 
 
 const positiveButton = document.getElementById('emoji1');
@@ -17,6 +18,9 @@ positiveButton.addEventListener('click', () => {
   getComedy()
     .then((image) => comedyImage.src = image);
 });
+
+
+
 // const options = {
 //   method: 'GET',
 //   headers: {

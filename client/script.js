@@ -120,36 +120,30 @@ async function getAmount() {
     const amountDat = dataPoints.map(function(index){
       return index.amount
     })
-    const unique = [...new Set(dataPoints.map(item => item.amount))];
     const count = {};
 
-    // for (const element of amountDat) {
-    //   if (count[element]) {
-    //     count[element] += 1;
-    //   } else {
-    //     count[element] = 1;
-    //   }
-    // }
+    const range = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+    console.log(range);
 
-    function groupBy(array, keyFunc){
+    for(const x of amountDat) {
+      for(const y of range) {
 
-      var r = {};
-      array.forEach(function(x) {
-        var y = keyFunc(x);
-        r[y] = (r[y] || []).concat(x);
-      });
-
+         if(x < y && x > y - 100) {
+            if(count[y]) {
+              count[y] += 1;
+            }else{
+              count[y] = 1;
+            }
+         }
+      }
     }
 
-    g = groupBy(amountDat, function(x) {return Math.floor(x/100)});
+    const labels = ["0-99", "100-199", "200-299", "300-399", "400-499","500-599", "600-699", "700-799", "800-899", "900-999", "1000+"];
 
-  
-
-    console.log(g);
-    // myChart.config.data.labels = unique;
-    // myChart.config.data.datasets[0].label = "Total";
-    // myChart.config.data.datasets[0].data = Object.values(count);
-    // myChart.update();
+    myChart.config.data.labels = labels;
+    myChart.config.data.datasets[0].label = "Total";
+    myChart.config.data.datasets[0].data = Object.values(count);
+    myChart.update();
   })
 
 };
@@ -233,7 +227,7 @@ const ctx = document.getElementById('chart');
 const myChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Black', 'Grey', 'Pink'],
     datasets: [{
       label: '# of Votes',
       data: [12, 19, 3, 5, 2, 3],

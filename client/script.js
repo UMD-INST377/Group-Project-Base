@@ -36,6 +36,5 @@ async function mainEvent() {
   );
   const arrayFromJson = await dataGet.json();
   const response_object = arrayFromJson.response;
-  console.log(response_object);
   document.addEventListener('DOMContentLoaded', async () => mainEvent());
 }

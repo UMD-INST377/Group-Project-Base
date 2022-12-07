@@ -42,17 +42,23 @@ function initChart() {
   });
 }
 
-const team_players = document.querySelectorAll('player');
+const team_players = document.querySelector('.players');
 const player_list = Array.from(team_players);
 const totalPlayers = player_list.length;
 
 function show_players_team() {
-  player_list.forEach((player) => {
-    player.classList.add('visible');
-  });
-  console.log;
+ team_players.classList.remove('player_hidden');
+ team_players.classList.add('player_visible');
 }
+document.querySelector('.btn')
+ .addEventListener('click',()=>{
+  console.log('clicked vissible for players');
+  console.log(team_players);
+  show_players_team();
+ })
 
 function ShowDiv() {
   document.getElementById("myDiv").style.display = "";
 }
+
+document.addEventListener('DOMContentLoaded',async () => mainEvent());

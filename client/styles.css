@@ -128,10 +128,9 @@ height: 100px;
 }
 
 
-div.players{
 
+.players{
   max-width: 300px;
-  overflow: hidden;
   text-align: center;
   display: flex;
   float: right;
@@ -142,22 +141,16 @@ div.players{
   margin-bottom: 1rem;
 }
 
+/*
 .players.player{
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-}
-
-/*
-.hidden {
-  display: none;
-}
-
-.visible {
-  display: block;
 }*/
+
+
 
 .alt_right{
   position: absolute;
@@ -179,4 +172,10 @@ div.players{
 .chart_container {
   height: 100%;
   width: 100%;
+}
+.player_hidden{
+  display: none;
+}
+.player_visible{
+  display: flex;
 }

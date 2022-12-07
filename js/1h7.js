@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+/* eslint linebreak-style: ["error", "windows"] */
+
 // function used to grab random number from the API //
 
 function getRandomInclusive(min, max) {
@@ -49,7 +51,7 @@ function initMap() {
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution:
-      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
   return map;
 }

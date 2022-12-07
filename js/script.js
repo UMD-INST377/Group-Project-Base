@@ -70,7 +70,7 @@ function markerPlace(array, map) {
 }
 //  The async function that retreives the GET request information //
 async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json';
+  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json$where=within_circle(location,%2038.83063,%20-76.901726,%20500000)'';
   const data = await fetch(url);
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.violation_code));

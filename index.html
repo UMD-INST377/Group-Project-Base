@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music: Broad Horizons</title>
     <link rel="stylesheet" href="./client/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="Wrapper">
@@ -22,11 +23,16 @@
         </div>
         <div id="GeneratedContents">
             <div class="box", id="music_list"></div>
-            <div class="box", id="Imagebox">
-                
+            <div class="box", id="Imagebox">    
+            </div>
+            
+               
+        </div>
+        <div class="box", id="Chartbox">
+            <div>
+                <canvas id="myChart"></canvas>
             </div>
         </div>
-        
         <div class='footer'>
             <p>Go to <a href='https://open.spotify.com/'>Spotify</a></p>
             <p><a href='about_us.html'>About us</a></p>

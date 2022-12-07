@@ -138,7 +138,28 @@ function injectImages(list){
     });
 }
 
+function initChart(songs,songlength) {
+    const ctx = document.getElementById('myChart');
 
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: songs,
+        datasets: [{
+            label: 'Length of the song',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 4
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    });
+}
 
 // ---------------------------Page Initialisation-------------------------------------------
 
@@ -151,6 +172,7 @@ async function init(){
     const submit = document.querySelector('#submit');
     let playlistEndpoint = ''
     let songArray = []
+    const chartTarget = document.querySelector('#myChart');
 
     // Step 2: Get genre selection and insert the options into HTML
     const genres = await getGenres(token)
@@ -191,6 +213,7 @@ async function init(){
         injectHTML(sample);
         injectImages(sample);
         document.getElementById("GeneratedContents").style.display = "flex";
+        initChart(sample);
 
     })
 

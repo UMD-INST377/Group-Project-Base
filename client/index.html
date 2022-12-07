@@ -28,9 +28,19 @@
             <div class="left_section box">
                 <div class="input">
                     <form action="/api" class="main-form">
-                        <label for="location">Input Location: </label>
-                        <input type="text" name="location" id="location">
-                        <button class="button-18" role="button" type="submit" id="get-location">Change Location</button>
+                        <div>
+                            <label for="location">Select Location: </label>
+                            <form autocomplete="off" action="/action_page.php">
+                                <div class="autocomplete" style="width:300px;">
+                                  <input id="city" type="text" name="myCity" placeholder="City">
+                                </div>
+                                <input type="submit">
+                            </form>
+                        </div>
+                       <!--<input type="text" name="location" id="location"> -->
+                       <div>
+                            <!-- <button class="button-18" role="button" type="submit" id="get-location">Change Location</button> -->
+                       </div>
                     </form>
                 </div>
             </div>

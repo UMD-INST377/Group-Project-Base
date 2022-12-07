@@ -3,7 +3,7 @@
 const clientId = 'd9827efb2c79463b92becb457a635a04';
 const clientSecret = '6f2f0a36046f4f21980873a48c7bdab0';
 
-// API dialogue functions
+// --------------------- API dialogue functions ---------------------
 
 function getRandomIntInclusive(min, max) {
     const newMin = Math.ceil(min);
@@ -62,6 +62,7 @@ async function getTracks(token, tracksEndPoint, limit) {
     return data;
 }
 
+// --------------------- Data handling functions ---------------------
 
 async function initSongs(plalylistSg, genre, token){
     // A function that gets us a the songs from a playlist
@@ -92,17 +93,18 @@ function songsToArray(songs){
 
 // -------------------UI Handling-------------------
 
-//Get random 10 items from an aray (to be replacedby betterselection item)
+// Inject genres into the dropdown menu
 function insertGenres(text, value, element) {
     const html = `<option value="${value}">${text}</option>`;
     element.insertAdjacentHTML('beforeend', html);
 }
 
+//Get random 10 items from an aray (to be replacedby betterselection item)
 function getRandomTen(list) {
-    console.log('fired get 10 songs');
+    console.log('fired get 9 songs');
     const range = [...Array(9).keys()];
     const newArray = range.map(() => {
-      const index = getRandomIntInclusive(0, list.length);
+      const index = getRandomIntInclusive(0, list.length-1);
       let picked = list[index];
       return picked;
     });
@@ -126,7 +128,7 @@ function injectHTML(list) {
 
 //Inject images
 function injectImages(list){
-    console.log('fired injectHTML');
+    console.log('fired injectImages');
     const target = document.querySelector('#Imagebox');
     target.innerHTML = '<h2>Songs are from these albums</h2><br>';
 
@@ -172,19 +174,22 @@ async function init(){
         playlistEndpoint = `${playlist[0].href}/tracks`;
         console.log(playlistEndpoint)
 
-        //Finally get the tracks
+        //Finally get the tracks and turn them into an array
         const tracks = await initSongs(playlistEndpoint, genreName, token)
         songArray = songsToArray(tracks)
+        document.getElementById("GeneratedContents").style.display = "none";
     });
 
 
-    //
+    //Step 4: When user presses the submit button (broaden my horizons) we display 9 random songs out of those retrived.
+    //If the user keeps pressing submit he should get new songs from the same genre.
+    //If user changes genre the 
     submit.addEventListener('click', (e) => {
         e.preventDefault();
         const sample = getRandomTen(songArray)
+        console.log(sample);
         injectHTML(sample);
         injectImages(sample);
-        console.log(sample);
         document.getElementById("GeneratedContents").style.display = "flex";
 
     })

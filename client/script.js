@@ -90,6 +90,18 @@ function songsToArray(songs){
     //console.log(array)
 }
 
+async function songLenArray(){
+    const songs = await initSongs();
+    console.log(songs)
+    const array = [];
+    songs.forEach(element => {
+        array.push({
+            Length : element.track.length,
+        })
+    })
+    return(array)
+    //console.log(array)
+}
 
 // -------------------UI Handling-------------------
 

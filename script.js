@@ -21,7 +21,6 @@ async function mainEvent() {
     console.log(Object.values(formProps));
     filmCount++;
 
-
     // Gets the ID of the film
     getFilmTitle(apiCall + Object.values(formProps))
     .then(function(jsonData){
@@ -64,9 +63,6 @@ async function getPoster(name){
   let response = await fetch(name)
   return response.json();
 }
-
-
-
 
 function cast(filmID){
   let cast1 = "https://imdb-api.com/en/API/FullCast/k_ljv5h5vz/" + filmID;
@@ -147,44 +143,6 @@ async function intersect() {
 }
 
 
-function initChart(chart, shapedObj){
-  const ctx = chart;
-  
-  const label = Object.keys(shapedObj);
-  const info = Object.keys(shapedObj).map((item) => shapedObj[item].length);
-
-  const cinst = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: label,
-      datasets: [{
-        label: 'Film Role',
-        data: info,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-  return cinst;
-}
-
-function changeChart(chart, dataObj){
-  const labels = Object.keys(dataObj);
-  const info = Object.keys(dataObj).map((item) => dataObj[item].length);
-
-  chart.data.labels = labels;
-  chart.data.datasets.forEach((set) => {
-    set.data = info;
-    return set;})
-  chart.update();
-}
 
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

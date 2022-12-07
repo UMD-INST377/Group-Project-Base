@@ -35,14 +35,6 @@ positiveButton.addEventListener('click', () => {
 
 
 
-
-
-
-
-
-
-
-
 // async function mainEvent() {
 //   const form = document.querySelector('.main_form');
 //   form.addEventListener('submit', async(submitEvent) => {

@@ -49,7 +49,7 @@ function initMap() {
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution:
-      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
   return map;
 }
@@ -74,8 +74,8 @@ function markerPlace(array, map) {
 }
 
 //  The async function that retreives the GET request information //
-async function violationH7() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H7';
+async function violationowl() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=owl';
   const data = await fetch(url);
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.violation_code));
@@ -87,15 +87,15 @@ async function violationH7() {
 async function mainEvent() {
   const form = document.querySelector('.main_form');
   const loadAnimation = document.querySelector('.lds-ellipsis');
-  const h7 = document.querySelector('#violationh7');
+  const owl = document.querySelector('#violationowl');
 
-  h7.style.display = 'none';
+  owl.style.display = 'none';
 
   const pageMap = initMap();
-  const violation1 = await violationH7();
+  const violation1 = await violationowl();
 
   if (violation1.length > 0) {
-    h7.style.display = 'block';
+    owl.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 

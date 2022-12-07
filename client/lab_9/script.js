@@ -1,5 +1,23 @@
 /* eslint-disable max-len */
-// fixing merge head
+
+// import { response } from "express";
+
+// import { response } from 'express';
+
+// import { response } from "express";
+
+// import { response } from 'express';
+
+/*
+  Hook this script to index.html
+  by adding `<script src="script.js">` just before your closing `</body>` tag
+*/
+
+/*
+    Under this comment place any utility functions you need - like an inclusive random number selector
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+*/
+// This is how we are going to get a random player from our list of 41
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -18,6 +36,19 @@ function injectHTML(list) {
     el.innerText = `${item.player.first_name} ${item.player.last_name} ${item.player.position}`; // maybe change this to lastname? however name should work
     listEl.appendChild(el);
   });
+  /*
+        JS and HTML Injection
+          There are a bunch of methods to inject text or HTML into a document using JS
+          Mainly, they're considered "unsafe" because they can spoof a page pretty easily
+          But they're useful for starting to understand how websites work
+          the usual ones are element.innerText and element.innerHTML
+          Here's an article on the differences if you want to know more:
+
+        What to do in this function
+          - Accept a list of restaurant objects
+          - using a .forEach method, inject a list element into your index.html for every element in the list
+          - Display the name of that restaurant and what category of food it is
+      */
 }
 
 function processPlayers(list) {
@@ -28,26 +59,62 @@ function processPlayers(list) {
     return list[index];
   });
   return newArray;
+
+  /*
+          Process Data Separately From Injecting It
+            This function should accept your 1,000 records
+            then select 15 random records
+            and return an object containing only the restaurant's name, category, and geocoded location
+            So we can inject them using the HTML injection function
+
+            You can find the column names by carefully looking at your single returned record
+            https://data.princegeorgescountymd.gov/Health/Food-Inspection/umjn-t2iz
+
+          What to do in this function:
+
+          - Create an array of 15 empty elements (there are a lot of fun ways to do this, and also very basic ways)
+          - using a .map function on that range,
+          - Make a list of 15 random restaurants from your list of 100 from your data request
+          - Return only their name, category, and location
+          - Return the new list of 15 restaurants so we can work on it separately in the HTML injector
+        */
 }
 
 function filterList(array, filterInputValue) {
   return array.filter((item) => {
-    if (!item.last_name) { return; }
+    if (!item.player.last_name) { return; }
     const lowerCaseName = `${item.player.first_name} ${item.player.last_name} ${item.player.position}`.toLowerCase(); // name appears again maybe lastname
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
 }
+function shapeLabelsForBarChart(array) {
+  const completeArrayOfPlayers = array.map((subArray) => subArray
+    .filter((item) => item.player.last_name) // only return it if we have players
+    .map((item) => item.player.last_name));// return the player information
+  return completeArrayOfPlayers;
+}
 
-function initChart(chart, object) {
-  const labels = Object.keys(object);
+// array.forEach(((subArray) => {
+//   subArray.forEach((item) => {
+//     console.log(item.player?.last_name);
+//     return item.player?.last_name;
+//   });
+// }));
 
-  const info = Object.keys(object).map((item) => object[item].length);
+function initChart(chart, dataObject) {
+  const relabel = Object.values(dataObject);
+  const labels = shapeLabelsForBarChart(relabel);
+  console.log(relabel);
+  console.log(labels);
+  console.log(dataObject['0'][0].player.last_name);
+
+  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'NBA 3 pointers made in 2022 per player',
+      label: 'NBA 3 pointers made in 2022 Opening Night',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: info
@@ -58,7 +125,7 @@ function initChart(chart, object) {
     type: 'bar',
     data: data,
     options: {
-      indexAxis: 'y'
+      indexAxis: 'x'
     }
   };
 
@@ -69,15 +136,22 @@ function initChart(chart, object) {
 }
 
 function changeChart(chart, dataObject) {
-  const labels = Object.keys(dataObject);
-  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+  const relabel = Object.values(dataObject);
+  const labels = shapeLabelsForBarChart(relabel);
+  console.log(dataObject);
+  // console.log(reLabel);
+  const info = Object.keys(dataObject).map((item) => dataObject[item].length); // .length?
 
   chart.data.labels = labels;
-  chart.data.datasets.forEach((set) => {
-    set.data = info;
-    return set;
+  console.log(labels);
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data = info;
   });
   chart.update();
+
+  // chart.data.labels = labels;
+  // chart.data.dataset.forEach((set) => { set.data = info; return set; });
+  // chart.update();
 }
 
 function shapeDataForBarChart(array) {
@@ -87,79 +161,13 @@ function shapeDataForBarChart(array) {
     } else {
       collection[item.fg3m].push(item);
     }
+    // console.log(collection);
     return collection;
   }, {});
 }
 
-let slidePosition = 0;
-
-// gather a reference to every slide we're using via the class name and querySelectorAll
-const slides = document.querySelectorAll('.stats');
-
-// change that "NodeList" into a Javascript "array", to get access to "array methods"
-const slidesArray = Array.from(slides);
-
-// Figure out how many slides we have available
-const totalSlides = slidesArray.length;
-
-function updateSlidePosition() {
-  slidesArray.forEach((slide) => {
-    slide.classList.remove('visible');
-    slide.classList.add('hidden');
-  });
-
-  console.log(slidePosition);
-  slides[slidePosition].classList.add('visible');
-}
-
-function moveToNextSlide() {
-  if (slidePosition === totalSlides - 1) {
-    slidePosition = 0;
-  } else {
-    slidePosition += 1;
-  }
-  /*
-    add an if statement here that checks
-    if you're already at the max number of slides
-    and if so, sets your slidePosition to the first index of an array
-    if not, set the slidePosition to the current position plus one
-  */
-  updateSlidePosition(); // this is how you call a function within a function
-}
-function moveToPrevSlide() {
-  if (slidePosition === totalSlides - 5) {
-    slidePosition = 4;
-  } else {
-    slidePosition -= 1;
-  }
-  // add your code in here for when you click the "prev" button
-  /*
-    add an if statement here that checks
-    if you're already at the first index position for an array
-    and if so, sets your slidePosition to the last slide position in totalSlides
-    if not, set the slidePosition to the current position minus one
-  */
-  updateSlidePosition();
-}
-
-/*
-  These two functions have been assigned via "addEventListener"
-  to the elements accessed by the "querySelector" set to the class name on each
-*/
-document.querySelector('.next') // Get the appropriate element (<button class="next">)
-  .addEventListener('click', () => { // set an event listener on it - when it's clicked, do this callback function
-    console.log('clicked next'); // let's tell the client console we made it to this point in the script
-    moveToNextSlide(); // call the function above to handle this
-  });
-
-document.querySelector('.prev')
-  .addEventListener('click', () => {
-    console.log('clicked prev');
-    moveToPrevSlide();
-  });
-
 async function nbaData() {
-  const url = 'https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022'; // Data goes here
+  const url = 'https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022'; // Data goes here https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022
   const data = await fetch(url);
   const json = await data.json();
   console.log(json);
@@ -167,24 +175,37 @@ async function nbaData() {
 }
 
 async function mainEvent() {
-  const form = document.querySelector('.main_form'); // get your main form
-  const submit = document.querySelector('#get-resto'); // reference tosubmit button
+  // the async keyword means we can make API requests
+  const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
+  const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis');
   const chartTarget = document.querySelector('#myChart');
-  submit.style.display = 'none'; // submit button disappear
+  submit.style.display = 'none'; // let your submit button disappear
 
-  /* API data request await */
+  /* New API data request */
 
   const chartData = await nbaData();
   console.log(chartData.data);
   const shapedData = shapeDataForBarChart(chartData.data);
+  // const shapedLabels = shapeLabelsForBarChart(chartData.data);
+  console.log(shapedData);
   const myChart = initChart(chartTarget, shapedData);
 
-  console.log(`${chartData.data[0].player.first_name} ${chartData.data[0].player.last_name}`);
+  /*
+          Below this comment, we log out a table of all the results using "dot notation"
+          An alternate notation would be "bracket notation" - arrayFromJson["data"]
+          Dot notation is preferred in JS unless you have a good reason to use brackets
+          The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
+        */
+  // console.table(arrayFromJson.data);
+
+  // in your browser console, try expanding this object to see what fields are available to work with
+  // for example: arrayFromJson.data[0].name, etc
+
+  // this is called "string interpolation" and is how we build large text blocks with variables
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (!chartData.data?.length) { return; } // Return if no data
-
   let currentList = [];
 
   submit.style.display = 'block';
@@ -196,23 +217,28 @@ async function mainEvent() {
     const filteredList = filterList(currentList, event.target.value);
     injectHTML(filteredList);
     const localData = shapeDataForBarChart(chartData.data);
+    // const localLabels = shapeLabelsForBarChart(chartData.data);
     changeChart(myChart, localData);
-    // markerPlace(filteredList, pageMap);
+    // changeChart(myChart, localLabels);
   });
 
+  // And here's an eventListener! It's listening for a "submit" button specifically being clicked
+  // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
   form.addEventListener('submit', (submitEvent) => {
     // This is needed to stop our page from changing to a new URL even though it heard a GET request
     submitEvent.preventDefault();
 
-    // This constant will have the value of your 15-restaurant collection when it processes
     currentList = processPlayers(chartData.data);
     console.log(currentList);
-
-    // And this function call will perform the "side effect" of injecting the HTML list for you
     injectHTML(currentList);
     const localData = shapeDataForBarChart(chartData.data);
     changeChart(myChart, localData);
-    // markerPlace(currentList, pageMap);
   });
 }
+
+/*
+        This last line actually runs first!
+        It's calling the 'mainEvent' function at line 57
+        It runs first because the listener is set to when your HTML content has loaded
+      */
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

@@ -13,7 +13,7 @@ async function mainEvent() {
   );
   const arrayFromJson = await dataGet.json();
   const response_object = arrayFromJson.response;
-  weight1 = notNull(response_object);
+  console.log(response_object);
   const chart1 = initChart();
   console.log(chart1);
   document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -75,6 +75,12 @@
   }
   
   .header {
+    padding: 10px;
+    text-align: center;
+    background: #000000;
+    color: rgb(12, 119, 18);
+    font-size: 20px;
+    
     /* padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -93,19 +99,18 @@
     /* this will push other blocks out of the way */
   
     /* colors */
-    background-color: #66B0FB;
-    color: #000;
+    background-color: #000000;
+    color: rgb(57, 116, 12);
   
     /* shapes */
-    border: 2px dashed;
     border-radius: 6px;
     font-size: 1.5rem;
     padding: 1.25rem;
-    margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
-  
+    margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
+    font-style: italic;
   
     /* box-shadows are fancy */
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0 0 1px rgb(10 10 10 / 2%);
     
   }
   
@@ -120,7 +125,7 @@
   */
   
   .box {
-    background-color: #7CC9F4;
+    background-color: #42938d;
     border: 2px dashed;
     border-radius: 4px;
     height:fit-content;
@@ -128,7 +133,7 @@
   }
   
   .left_section {
-    background-color: #937CF4;
+    background-color: #000001;
     flex: 0 1 0;
     margin: 1rem;
     padding: 1.5rem;
@@ -136,7 +141,7 @@
   }
   
   .right_section {
-    background-color: #937CF4;
+    background-color: #242424;
     flex: 0 1 auto;
     margin: 1rem;
     align-items: center;

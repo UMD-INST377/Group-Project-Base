@@ -1,4 +1,5 @@
 # INST377, Group 9 Final Project
+John Lehner & William Jones
 Web-Application Link: https://will16363.github.io/Group9-Final-Project-Endpoint/
 
 ### How to use Markdown

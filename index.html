@@ -3,13 +3,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LitterTRAK Data Visualization</title>
+  <title>LitterTRAK Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!--script src="https://cdn.jsdelivr.net/npm/chart.js"></script-->
+  <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin=""></script>
 </head>
 <body>
   <header>
-    <h1> LitterTRAK Visualization </h1>
+    <h1> LitterTRAK Map </h1>
   </header>
   <div class="wrapper">
     <div class="navigation">
@@ -20,6 +26,7 @@
     <div class="filter">
       <div class="searchbar">
         <form action="/api" class="box main_form">
+          Enter a Zipcode
             <div class="search"></div>
             <label for="trash"></label>
             <input type="text" name="trash" id="trash">
@@ -28,7 +35,8 @@
       </div>
     </div>
     <div class="visualization">
-      <canvas id="myChart"></canvas>
+      <div id="map"></div>
+      <!--canvas id="myChart"></canvas-->
     </div>
   </div>
   <footer class="footer">

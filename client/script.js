@@ -48,17 +48,44 @@ function initChart(targetElement, dataObject) {
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);
 
   const data = {
-    labels: labels,
+    labels: [
+      'Red',
+      'Green',
+      'Yellow',
+      'Grey',
+      'Blue'
+    ],
     datasets: [{
-      label: 'Line Chart',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: info
+      label: 'My First Dataset',
+      data: [11, 16, 7, 3, 14],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(75, 192, 192)',
+        'rgb(255, 205, 86)',
+        'rgb(201, 203, 207)',
+        'rgb(54, 162, 235)'
+      ]
     }]
   };
+  /*
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Polar Chart',
+      data: info,
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(75, 192, 192)',
+        'rgb(255, 205, 86)',
+        'rgb(201, 203, 207)',
+        'rgb(54, 162, 235)'
+      ]
+    }]
+  };
+  */
 
   const config = {
-    type: 'line',
+    type: 'polarArea',
     data: data,
     options: {}
   };
@@ -93,6 +120,15 @@ function shapeDataForLineChart(array) {
   }, {});
 }
 
+function initMap() {
+  const map = L.map('map').setView([38.8911, -76.8848], 10);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  return map;
+}
+
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
   const data = await fetch(url);
@@ -102,6 +138,7 @@ async function getData() {
 }
 
 async function mainEvent() {
+  initMap();
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-trash');
   // const year = document.querySelector('#year');
@@ -138,7 +175,7 @@ async function mainEvent() {
       // console.log(currentList);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
-      const localData = shapeDataForLineChart(chartData);
+      const localData = shapeDataForLineChart(currentList);
       changeChart(myChart, localData);
       // markerPlace(currentList, pageMap);
 

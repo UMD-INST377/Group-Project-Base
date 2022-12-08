@@ -278,6 +278,52 @@ function groupBy(objectArray, property) {
   }, {});
 }
 
+async function getdata() {
+  const url2017 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+
+  const data2017 = await fetch(url2017); // We're using a library that mimics a browser 'fetch' for simplicity
+  const json2017 = await data2017.json(); // the data isn't json until we access it using dot notation
+
+  const reply2017 = json2017.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
+
+  const url2018 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+
+  const data2018 = await fetch(url2018); // We're using a library that mimics a browser 'fetch' for simplicity
+  const json2018 = await data2018.json(); // the data isn't json until we access it using dot notation
+
+  const reply2018 = json2018.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
+
+  const url2019 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+
+  const data2019 = await fetch(url2019); // We're using a library that mimics a browser 'fetch' for simplicity
+  const json2019 = await data2019.json(); // the data isn't json until we access it using dot notation
+
+  const reply2019 = json2019.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
+
+  const url2020 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+
+  const data2020 = await fetch(url2020); // We're using a library that mimics a browser 'fetch' for simplicity
+  const json2020 = await data2020.json(); // the data isn't json until we access it using dot notation
+
+  const reply2020 = json2020.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
+
+  const url2021 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+
+  const data2021 = await fetch(url2021); // We're using a library that mimics a browser 'fetch' for simplicity
+  const json2021 = await data2021.json(); // the data isn't json until we access it using dot notation
+
+  const reply2021 = json2021.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
+
+  const url2022 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+
+  const data2022 = await fetch(url2022); // We're using a library that mimics a browser 'fetch' for simplicity
+  const json2022 = await data2022.json(); // the data isn't json until we access it using dot notation
+
+  const reply2022 = json2022.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
+
+  return [reply2017, reply2018, reply2019, reply2020, reply2021, reply2022];
+}
+
 async function mainEvent() {
   /*
               ## Main Event
@@ -301,17 +347,17 @@ async function mainEvent() {
               This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
               It's at about line 27 - go have a look and see what we're retrieving and sending back.
              */
-  const results2017 = await fetch('/api/crimeRate2017PG');
+  const results2017 = await getdata()[0];
   const arrayFromJson2017 = await results2017.json();
-  const results2018 = await fetch('/api/crimeRate2018PG');
+  const results2018 = await getdata()[1];
   const arrayFromJson2018 = await results2018.json();
-  const results2019 = await fetch('/api/crimeRate2019PG');
+  const results2019 = await getdata()[2];
   const arrayFromJson2019 = await results2019.json();
-  const results2020 = await fetch('/api/crimeRate2020PG');
+  const results2020 = await getdata()[3];
   const arrayFromJson2020 = await results2020.json();
-  const results2021 = await fetch('/api/crimeRate2021PG');
+  const results2021 = await getdata()[4];
   const arrayFromJson2021 = await results2021.json();
-  const results2022 = await fetch('/api/crimeRate2022PG');
+  const results2022 = await getdata()[5];
   const arrayFromJson2022 = await results2022.json();
 
   const chartData2017 = arrayFromJson2017.data;

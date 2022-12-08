@@ -129,6 +129,27 @@ function initMap() {
   return map;
 }
 
+function markerPlace(array, map) {
+  console.log('markerPlace', array);
+  const marker = L.marker([38.8911, -76.8848]).addTo(map);
+  /*
+  console.log('markerPlace', array);
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+
+  array.forEach((item, index) => {
+    const coordinates = item.geocoded_column;
+    L.marker(latitude, longitude).addTo(map);
+    if (index === 0) {
+      map.setView(latitude, longitude, 10);
+    }
+  });
+  */
+}
+
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
   const data = await fetch(url);
@@ -138,15 +159,15 @@ async function getData() {
 }
 
 async function mainEvent() {
-  initMap();
+  const pageMap = initMap();
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-trash');
   // const year = document.querySelector('#year');
-  const chartTarget = document.querySelector('#myChart');
+  // const chartTarget = document.querySelector('#myChart');
 
-  const chartData = await getData();
-  const shapedData = shapeDataForLineChart(chartData);
-  const myChart = (chartTarget, shapedData);
+     const chartData = await getData();
+  // const shapedData = shapeDataForLineChart(chartData);
+  // const myChart = (chartTarget, shapedData);
 
   /*
   form.addEventListener('submit', async (submitEvent) => {
@@ -161,7 +182,8 @@ async function mainEvent() {
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
       const newFilterList = filterList(currentList, event.target.value);
-    // markerPlace(newFilterList, pageMap);
+      // injectHTML(newFilterList);
+      markerPlace(newFilterList, pageMap);
     });
 
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
@@ -175,9 +197,10 @@ async function mainEvent() {
       // console.log(currentList);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
-      const localData = shapeDataForLineChart(currentList);
-      changeChart(myChart, localData);
-      // markerPlace(currentList, pageMap);
+      // const localData = shapeDataForLineChart(currentList);
+      // changeChart(myChart, localData);
+      // injectHTML(currentList);
+      markerPlace(currentList, pageMap);
 
     // By separating the functions, we open the possibility of regenerating the list
     // without having to retrieve fresh data every time

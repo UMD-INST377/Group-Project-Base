@@ -7,7 +7,7 @@ import foodService from './littertrak.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to PG County DataSset!');
+  res.send('Welcome to PG County Dataset!');
 });
 
 // Generic API inclusion demonstration

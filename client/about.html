@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LitterTRAK Data Visualization</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header>
@@ -17,18 +16,17 @@
       |
       <a href="about.html">ABOUT</a>
     </div>
-    <div class="filter">
-      <div class="searchbar">
-        <form action="/api" class="box main_form">
-            <div class="search"></div>
-            <label for="trash"></label>
-            <input type="text" name="trash" id="trash">
-            <button type="submit" id="get-trash">Search</button>
-        </form>
-      </div>
-    </div>
-    <div class="visualization">
-      <canvas id="myChart"></canvas>
+    <div class="maincontent">
+      <h3>ABOUT WEBSITE</h3>
+      <p>This website displays a visualization of data from LitterTRAK dataset 
+        that contains information about yearly data on litter and trash discarded 
+        from different regions of Prince George’s County from Prince George’s County 
+        OpenData web repository.</p>
+
+      <h3>HOW TO NAVIGATE</h3>
+      <p>On the homepage, use the search bar to type a specific year within the range to see a 
+        visualization of trash data within the inputted year represented in a form of 
+        polar/pie/donut chart.</p>
     </div>
   </div>
   <footer class="footer">
@@ -40,6 +38,5 @@
       >Github Repository Link</a
     >
   </footer>
-  <script src="script.js"></script>
 </body>
 </html>

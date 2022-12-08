@@ -11,32 +11,36 @@ async function mainEvent() {
 
   const arrayFromJson = await dataGet.json();
   const response_object = arrayFromJson.response;
-  console.log(response_object);
-  const chart1 = initChart();
-  console.log(chart1);
-}
+  console.log(response_object[0]);
+  const fgp = parseFloat(response_object[0].fgp);
+  const ftp = parseFloat(response_object[0].ftp);
+  const tpp = parseFloat(response_object[0].tpp);
 
-function initChart() {
-  return new Chart(document.getElementById('myChart'), {
-    type: 'bar',
-    data: {
-      labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
-      datasets: [
-        {
-          label: 'Population (millions)',
-          backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f', '#e8c3b9', '#c45850'],
-          data: [2478, 5267, 734, 784, 433]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Predicted world population (millions) in 2050'
-      }
-    }
-  });
+
+  function initChart() {
+    const data = {
+      labels: [
+        'Free Throw Percentage',
+        'Free Goal Percentage',
+        'Three Point Percentage'
+      ],
+      datasets: [{
+        label: 'Washington Wizards Shot Percentage',
+        data: [ftp, fgp, tpp],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ],
+        hoverOffset: 4,
+        padding: 20
+      }]
+    };
+    const config = {type: 'doughnut', data: data};
+
+    return new Chart(document.querySelector('#myChart'), config);
+  }
+  initChart();
 }
 
 const team_players = document.querySelector('.players');

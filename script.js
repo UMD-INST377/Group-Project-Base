@@ -1,8 +1,11 @@
 let filmCount = 0;
 let filmCC = [];
+let film2CC = [];
 
 
 let firstdone = false;
+let jsonTest;
+let film1CC = {};
 
 // Used for showing demo
 let autotypingI = 0;
@@ -129,19 +132,11 @@ function cast(filmID){
   console.log("Cast: " + cast1);
   getFilmTitle(cast1)
   .then(function(jsonData){
-    console.log("Testing");
-    console.log(jsonData);
-    let regex = /name":"([a-zA-z ]* [a-zA-z ]*)/g;
-    let response = JSON.stringify(jsonData);
-    let matches = response.match(regex).map(x => x.replace('name":"',""));
 
+    console.log("Testing input data");
+    jsonTest = jsonData;
 
-
-    // Only calls intersect function if more than 2 films were added
-    filmCC.push(matches);
     if(firstdone){
-      
-
             
       // Updates photo and name for first actor
       document.getElementById("preview11").src = JSON.stringify(jsonData.actors[0].image).slice(1, -1);
@@ -155,10 +150,43 @@ function cast(filmID){
       document.getElementById("preview13").src = JSON.stringify(jsonData.actors[2].image).slice(1, -1);
       document.getElementById("preview13Name").innerHTML = JSON.stringify(jsonData.actors[2].name).slice(1, -1);
       document.getElementById("filmfield").value="";
+
+      (jsonData.writers.items).forEach(x => film2CC[x.id]="Writer");
+      (jsonTest.directors.items).forEach(x => film2CC[x.id]="Director");
+      (jsonTest.actors).forEach(x => film2CC[x.id]="Actor");
+      (jsonTest.others[0].items).forEach(x => film2CC[x.id] = "Producer");
+      (jsonTest.others[1].items).forEach(x => film2CC[x.id] = "Cinematography");
+      (jsonTest.others[2].items).forEach(x => film2CC[x.id] = "Film Editing");
+      (jsonTest.others[3].items).forEach(x => film2CC[x.id] = "Casting");
+      (jsonTest.others[4].items).forEach(x => film2CC[x.id] = "Production Design");
+      (jsonTest.others[5].items).forEach(x => film2CC[x.id] = "Art Direction");
+      (jsonTest.others[6].items).forEach(x => film2CC[x.id] = "Costume Design");
+      (jsonTest.others[7].items).forEach(x => film2CC[x.id] = "Makeup Department");
+      (jsonTest.others[8].items).forEach(x => film2CC[x.id] = "Production Management");
+      (jsonTest.others[9].items).forEach(x => film2CC[x.id] = "Second Unit Director or Assistant Director");
+      (jsonTest.others[10].items).forEach(x => film2CC[x.id] = "Art Department");
+      (jsonTest.others[11].items).forEach(x => film2CC[x.id] = "Sound Department");
+      (jsonTest.others[12].items).forEach(x => film2CC[x.id] = "Special Effects");
+      (jsonTest.others[13].items).forEach(x => film2CC[x.id] = "Visual Effects");
+      (jsonTest.others[14].items).forEach(x => film2CC[x.id] = "Stunts");
+      (jsonTest.others[15].items).forEach(x => film2CC[x.id] = "Camera and Electrical Department");
+      (jsonTest.others[16].items).forEach(x => film2CC[x.id] = "Animation Department");
+      (jsonTest.others[17].items).forEach(x => film2CC[x.id] = "Casting Department");
+      (jsonTest.others[18].items).forEach(x => film2CC[x.id] = "Costume and Wardrobe Department");
+      (jsonTest.others[19].items).forEach(x => film2CC[x.id] = "Editorial Department");
+      (jsonTest.others[20].items).forEach(x => film2CC[x.id] = "Location Management");
+      (jsonTest.others[21].items).forEach(x => film2CC[x.id] = "Music Department");
+      (jsonTest.others[22].items).forEach(x => film2CC[x.id] = "Production Department");
+      (jsonTest.others[23].items).forEach(x => film2CC[x.id] = "Script and Continuity Department");
+      (jsonTest.others[24].items).forEach(x => film2CC[x.id] = "Transportation Department");
+      (jsonTest.others[25].items).forEach(x => film2CC[x.id] = "Additional Crew");
+      (jsonTest.others[26].items).forEach(x => film2CC[x.id] = "Thanks");
+      //console.log(film2CC);
       firstdone = false;
       intersect();  
       sleep(4000);
     } else{
+      console.log("First is done!")
       firstdone = true;
       
       // Updates photo and name for first actor
@@ -175,9 +203,38 @@ function cast(filmID){
       document.getElementById("filmfield").value=""; 
       document.getElementById("button").classList.toggle("fadeOut"); 
       document.getElementById("button").classList.toggle("fade"); 
+      (jsonData.writers.items).forEach(x => film1CC[x.id]="Writer");
+      (jsonTest.directors.items).forEach(x => film1CC[x.id]="Director");
+      (jsonTest.actors).forEach(x => film1CC[x.id]="Actor");
+      (jsonTest.others[0].items).forEach(x => film1CC[x.id] = "Producer");
+      (jsonTest.others[1].items).forEach(x => film1CC[x.id] = "Cinematography");
+      (jsonTest.others[2].items).forEach(x => film1CC[x.id] = "Film Editing");
+      (jsonTest.others[3].items).forEach(x => film1CC[x.id] = "Casting");
+      (jsonTest.others[4].items).forEach(x => film1CC[x.id] = "Production Design");
+      (jsonTest.others[5].items).forEach(x => film1CC[x.id] = "Art Direction");
+      (jsonTest.others[6].items).forEach(x => film1CC[x.id] = "Costume Design");
+      (jsonTest.others[7].items).forEach(x => film1CC[x.id] = "Makeup Department");
+      (jsonTest.others[8].items).forEach(x => film1CC[x.id] = "Production Management");
+      (jsonTest.others[9].items).forEach(x => film1CC[x.id] = "Second Unit Director or Assistant Director");
+      (jsonTest.others[10].items).forEach(x => film1CC[x.id] = "Art Department");
+      (jsonTest.others[11].items).forEach(x => film1CC[x.id] = "Sound Department");
+      (jsonTest.others[12].items).forEach(x => film1CC[x.id] = "Special Effects");
+      (jsonTest.others[13].items).forEach(x => film1CC[x.id] = "Visual Effects");
+      (jsonTest.others[14].items).forEach(x => film1CC[x.id] = "Stunts");
+      (jsonTest.others[15].items).forEach(x => film1CC[x.id] = "Camera and Electrical Department");
+      (jsonTest.others[16].items).forEach(x => film1CC[x.id] = "Animation Department");
+      (jsonTest.others[17].items).forEach(x => film1CC[x.id] = "Casting Department");
+      (jsonTest.others[18].items).forEach(x => film1CC[x.id] = "Costume and Wardrobe Department");
+      (jsonTest.others[19].items).forEach(x => film1CC[x.id] = "Editorial Department");
+      (jsonTest.others[20].items).forEach(x => film1CC[x.id] = "Location Management");
+      (jsonTest.others[21].items).forEach(x => film1CC[x.id] = "Music Department");
+      (jsonTest.others[22].items).forEach(x => film1CC[x.id] = "Production Department");
+      (jsonTest.others[23].items).forEach(x => film1CC[x.id] = "Script and Continuity Department");
+      (jsonTest.others[24].items).forEach(x => film1CC[x.id] = "Transportation Department");
+      (jsonTest.others[25].items).forEach(x => film1CC[x.id] = "Additional Crew");
+      (jsonTest.others[26].items).forEach(x => film1CC[x.id] = "Thanks");
+      //console.log(film1CC);
     }
-    
-    return matches;
     
   })
   
@@ -198,11 +255,11 @@ function sleep(milliseconds) {
 
 async function intersect() {
   
-  window.location.href = "chart.html";
-  const a = filmCC[0];
-  const b = filmCC[1];
+  //window.location.href = "chart.html";
+  film1CC;
+  film2CC;
 
-  const filteredArray = removeDups(a.filter(value => b.includes(value)));
+  Object.keys(film1CC).filter(x => Object.keys(film2CC).includes(x));
   console.log("In Common: " + filteredArray);
   //document.getElementById("cloud").appendChild(document.createElement('img')).src = "https://quickchart.io/wordcloud?text=" + y + z;
 }

@@ -161,7 +161,7 @@ function injectImages(list) {
     const el = `<img src="${item.image_url}"></img>`;
     target.innerHTML += el;
   });
-
+}
 
 
 function initChart(songs, songlength) {

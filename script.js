@@ -140,8 +140,6 @@ async function mainEvent() {
   // submit.style.display = 'none';
 
   const arrayFromJson = await getData();
-  console.log(arrayFromJson);
-  console.log(arrayFromJson[0]);
   const shapedData = shapeDataForBarChart(arrayFromJson);
   const myChart = initChart(chartTarget, shapedData);
 
@@ -155,11 +153,10 @@ async function mainEvent() {
 
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
-      console.log(arrayFromJson.data);
+      console.log(arrayFromJson);
       currentList = processCrime(arrayFromJson);
 
       markerPlace(currentList, pageMap);
-      changeChart();
     });
   }
 }

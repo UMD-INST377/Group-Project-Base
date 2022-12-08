@@ -1,15 +1,16 @@
 // const { isPrimitive } = require("sequelize/types/utils");
 
-function initChart(chart) {
+function initChart(chart, dataObject) {
   // const ctx = document.getElementById('myChart');
-
+  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+  const labels = Object.keys(dataObject);
   return new Chart(chart, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: labels,
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Spending Information for FY 2021 by Agency',
+        data: info,
         borderWidth: 1
       }]
     },
@@ -23,7 +24,7 @@ function initChart(chart) {
   });
 }
 
-function processData(array) {
+function shapeDataForChart(array) {
   console.log('Data Processed');
   return array.reduce((collection, item) => {
     if (!collection[item.agency]) {
@@ -35,6 +36,18 @@ function processData(array) {
   }, {});
 }
 
+function changeChart(chart, dataObject) {
+  const labels = Object.keys(dataObject);
+  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+
+  chart.data.labels = labels;
+  chart.data.datasets.forEach((set) => {
+    set.data = info;
+    return set;
+  });
+  chart.update();
+}
+
 // const options = {
 //   method: 'GET',
 //   headers: {
@@ -44,7 +57,7 @@ function processData(array) {
 // };
 
 async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/uh6s-izyj.json';
+  const url = 'https://data.princegeorgescountymd.gov/resource/rh7w-bmhm.json';
   const data = await fetch(url);
   const json = await data.json();
   return json;
@@ -56,9 +69,9 @@ async function mainEvent() {
   const chartTarget = document.querySelector('#myChart');
 
   const chartData = await getData();
-  const processedData = processData(chartData);
+  const processedData = shapeDataForChart(chartData);
   console.log(processedData);
   const myChart = initChart(chartTarget, processedData);
-  //initChart(chartTarget);
+  changeChart(myChart, processedData);
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

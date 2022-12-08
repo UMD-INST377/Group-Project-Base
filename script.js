@@ -23,8 +23,13 @@ function getRandomIntInclusive(min, max) {
 function processCameras(list) {
   console.log('speed cameras list');
   const range = [...Array(20).keys()];
+  const indexList = [];
   const newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length - 1);
+    let index = getRandomIntInclusive(0, list.length - 1);
+    while (indexList.includes(index)) {
+      index = getRandomIntInclusive(0, list.length - 1);
+    }
+    indexList.push(index);
     return list[index];
   });
   return newArray;
@@ -85,7 +90,7 @@ function markerPlace(array, map) {
   });
 } */
 
-/* 
+/*
 function filterList(list, value) {
   const newArray = list.filter((item) => {
     if (!item.school) { return; }
@@ -134,9 +139,9 @@ async function mainEvent() {
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
     let cameraList = [];
-    
+
     /*
-    form.addEventListener('input', (event) => 
+    form.addEventListener('input', (event) =>
       console.log('input', event.target.value);
       const filteredList = filterList(currentList, event.target.value);
       injectHTML(filteredList);

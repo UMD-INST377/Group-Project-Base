@@ -17,7 +17,8 @@ function injectHTML(list) {
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
-  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin); // The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
+  // The maximum is inclusive and the minimum is inclusive
 }
 
 function processCameras(list) {
@@ -85,7 +86,7 @@ function markerPlace(array, map) {
   });
 } */
 
-/* 
+/*
 function filterList(list, value) {
   const newArray = list.filter((item) => {
     if (!item.school) { return; }
@@ -134,9 +135,9 @@ async function mainEvent() {
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
     let cameraList = [];
-    
+
     /*
-    form.addEventListener('input', (event) => 
+    form.addEventListener('input', (event) =>
       console.log('input', event.target.value);
       const filteredList = filterList(currentList, event.target.value);
       injectHTML(filteredList);

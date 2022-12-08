@@ -27,17 +27,22 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <h1>Mandy Chan's INST377 Labs</h1>
+            <center><h1>0101 Group 7 Final Project</h1></center>
         </header>
         <div class="container">
             <div class="left_section box">
-                    <h3>Form Inputs</h3>
+                    <h3>Generate Graphics</h3>
                 <form action="/api" class="box main_form">
                     <label for="resto"></label>
-                    <p>Filter Restaurant List</p>
-                    <input type="text" name="resto" id="resto"/>
-                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                    <button type="submit" id = 'get-resto'>Change Restaurants</button>
+                    <p>Filter Crime Data List</p>
+                    <div class="dropdown">
+                        <button class="dropbtn">Select Year</button>
+                        <div class="dropdown-content">
+                          <a href="#">2017-Present</a>
+                          <a href="#">2017-2020</a>
+                          <a href="#">2020-Present</a>
+                        </div>
+                      </div>
                 </form>
             </div>
             <div class="right_section box">

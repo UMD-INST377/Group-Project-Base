@@ -8,7 +8,7 @@
 */
 
 html {
-  background-color: rgb(234, 239, 241);
+  background-color: #fff;
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -30,7 +30,7 @@ body {
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: rgb(197, 232, 255);
+  background-color: rgb(239, 239, 239);
 }
 
 
@@ -46,7 +46,7 @@ h2, h3 {
 }
 
 form {
-  accent-color: hsla(305, 100%, 50%, 0.482);
+  accent-color: hsla(120, 100%, 50%, 0.482);
 }
 
 /*
@@ -56,6 +56,10 @@ form {
   - note that the period vanishes there!
 */
 
+div {
+  border: 2px rgba(0, 0, 0, 0.8);
+
+}
 
 .wrapper {
   min-height: 100vh;
@@ -92,18 +96,18 @@ form {
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: #8ab3ff;
-  color: #ffffff;
+  background-color: #735d78;
+  color: #f7d1cd;
 
   /* shapes */
-  border-radius: 6px;
+  border-radius: 10px;
   font-size: 1.5rem;
   padding: 1.25rem;
   margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
 
 
   /* box-shadows are fancy */
-  box-shadow: 0 0.5em 1em -0.125em rgba(136, 229, 248, 0.777), 0 0 0 1px rgb(50, 102, 255);
+  box-shadow: 0 0.5em 1em -0.125em rgba(148, 126, 126, 0.1), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
 
@@ -116,33 +120,35 @@ form {
   And will be what displays in your client
 */
 
+
+
 .box {
-  background-color: rgb(235, 235, 235);
-  border: 2px;
-  border-radius: 4px;
+  background-color: #f7d1cd;
+  border-radius: 10px;
 
   width: fit-content;
   height:fit-content;
   padding: 1.5rem;
-  margin: 0 auto;
 }
 
 .left_section {
-  background-color: #8ab3ff;
+  background-color: #d1b3c4;
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
+  box-shadow: 0 0.5em 1em -0.125em rgba(148, 126, 126, 0.1), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
 .right_section {
-  background-color: #8ab3ff;
+  background-color: #b392ac;
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
   justify-content: center;
   max-width: 450px;
-  display: flex;
+  display:flex;
   flex-direction: column;
+  box-shadow: 0 0.5em 1em -0.125em rgba(148, 126, 126, 0.1), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
 /*
@@ -154,13 +160,13 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: rgba(138, 92, 255, 0.777);
+  background-color: rgba(0, 139, 139, 0.8);
   font-size: 1.2rem;
   font-weight: 600;
 }
 
 .footer a {
-  color: rgb(255, 255, 255);
+  color: rgba(255, 224, 138, 1);
   text-decoration: underline;
 }
 
@@ -242,7 +248,8 @@ div.carousel {
     - now make sure that images are _always_ square
     - ... there's a reason crop tools are popular in image editors
    */
-  width: 150px; 
+   
+   width: 150px; 
 }
 
 .prev,
@@ -250,7 +257,7 @@ div.carousel {
   border: none;
   margin: 2px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   font-weight: bold;
   height: 45px;
   padding: 10px;
@@ -261,14 +268,14 @@ div.carousel {
 .prev:focus,
 .next:focus {
   margin: 0;
+  border: 2px solid rgb(176, 80, 146);
   /* Pick a good border colour and check out how it works with your buttons */
-  border: 4px solid rgb(114, 0, 185);
 }
 
 .prev:hover,
 .next:hover {
+  color: rgb(176, 80, 146);
   /* Pick a good background colour for your hover pseudoclass */
-  background-color: rgb(239, 167, 94);
 }
 
 
@@ -286,7 +293,7 @@ form input {
     /* here we are setting white space correctly */
     margin-bottom: 1rem;
     height: 2rem;
-    border-radius: 4px;
+    border-radius: 10px;
   }
 
   form label {
@@ -306,90 +313,78 @@ form input {
     /* Rules in here will only apply when a screen is the correct size */
     /* check it out by using your developer tools to shrink your screen-size */
     .container {
-      background-color: rgba(255, 242, 176, 0.65);
+      background-color: #b392ac;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
+    
+    .right_section {
+      background-color: #e8c2ca;
+      flex: 1 2 auto;
+      margin: 1rem;
+      align-items:flex-start;
+      justify-content:flex-start;
+      max-width: 450px;
+      display:flex;
+      flex-direction: column;
+  }
 }
 
-/* MAP STYLES */
-#map { 
+#map {
   display: block;
   width: 400px;
   height: 380px;
-  border: 2px dashed rgb(99,99,99);
-  margin-bottom: 1rem; 
+  border: 2px rgb(0, 0, 0);
+  margin-bottom: 1rem;
 }
+
 
 /* 
     New code bonus: pure CSS data loading icon
     This comes from loading.io/css - it's nice to show that something is happening!
 */
 
-.lds-ellipsis {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-  }
+/* Dropdown Button */
+.dropbtn {
+  background-color: #63215d;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+}
 
-  .lds-ellipsis_hidden {
-    display: hidden;
-  }
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+}
 
-  .lds-ellipsis div {
-    position: absolute;
-    top: 33px;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: #fff;
-    animation-timing-function: cubic-bezier(0, 1, 1, 0);
-  }
-  .lds-ellipsis div:nth-child(1) {
-    left: 8px;
-    animation: lds-ellipsis1 0.6s infinite;
-  }
-  .lds-ellipsis div:nth-child(2) {
-    left: 8px;
-    animation: lds-ellipsis2 0.6s infinite;
-  }
-  .lds-ellipsis div:nth-child(3) {
-    left: 32px;
-    animation: lds-ellipsis2 0.6s infinite;
-  }
-  .lds-ellipsis div:nth-child(4) {
-    left: 56px;
-    animation: lds-ellipsis3 0.6s infinite;
-  }
-  @keyframes lds-ellipsis1 {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  @keyframes lds-ellipsis3 {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0);
-    }
-  }
-  @keyframes lds-ellipsis2 {
-    0% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(24px, 0);
-    }
-  }
-  
-  .chart_container {
-    height: 100%;
-    width: 100%;
-  }
-  
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #692e7a;}

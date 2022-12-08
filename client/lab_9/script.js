@@ -175,6 +175,7 @@ async function mainEvent() {
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis');
   const chartTarget = document.querySelector('#myChart');
+  const chartTarget2 = document.querySelector('#myChart2');
   submit.style.display = 'none'; // let your submit button disappear
 
   /* New API data request */
@@ -185,6 +186,7 @@ async function mainEvent() {
   // const shapedLabels = shapeLabelsForBarChart(chartData.data);
   console.log(shapedData);
   const myChart = initChart(chartTarget, shapedData);
+  const myChart2 = initChart(chartTarget2, shapedData);
 
   /*
           Below this comment, we log out a table of all the results using "dot notation"
@@ -214,6 +216,7 @@ async function mainEvent() {
     const localData = shapeDataForBarChart(filteredList);
     // const localLabels = shapeLabelsForBarChart(chartData.data);
     changeChart(myChart, localData);
+    changeChart(myChart2, localData);
     // changeChart(myChart, localLabels);
   });
 
@@ -228,6 +231,7 @@ async function mainEvent() {
     injectHTML(currentList);
     const localData = shapeDataForBarChart(currentList);
     changeChart(myChart, localData);
+    changeChart(myChart2, localData);
   });
 }
 

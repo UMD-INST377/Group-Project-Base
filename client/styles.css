@@ -28,12 +28,19 @@
     margin: 0;
     padding: 0;
   
-    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    font-family: 'Segoe UI', Candara, 'Bitstream Vera Sans', 'DejaVu Sans', 'Bitsream Vera Sans', 'Trebuchet MS', Verdana, 'Verdana Ref', sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    background-color: #fefae0;
+    background-color: #ffffff;
   }
   
+  canvas { 
+    display: block;
+  }
+
+  #myChart {
+    display: block;
+  }
   
   a {
     display: inline-block;
@@ -117,7 +124,7 @@
   */
   
   .box {
-    background-color: rgba(48, 30, 30, 0.3);
+    background-color: rgba(255, 0, 0, 0.3);
     
     border-radius: 4px;
   
@@ -189,7 +196,7 @@
     margin-bottom: 5px;
   }
   
-
+  
   /* Deploy this with images as direct "children" and the images should pop into shape */
   .grid {
     display: flex;
@@ -270,11 +277,7 @@
     /* Pick a good border colour and check out how it works with your buttons */
   }
   
-  .prev:hover,
-  .next:hover {
-    /* Pick a good background colour for your hover pseudoclass */
-  }
-  
+
   /*
   Form Styles
   */

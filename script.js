@@ -97,14 +97,6 @@ function processCrime(list) {
   return newArray;
 }
 
-function filterList(array, filterInputValue) {
-  return array.filter((item) => {
-    const lowerCaseName = item.name.toLowerCase();
-    const lowerCaseQuery = filterInputValue.toLowerCase();
-    return lowerCaseName.includes(lowerCaseQuery);
-  });
-}
-
 function shapeDataForBarChart(array) {
   return array.reduce((collection, item) => {
     if (!collection[item.category]) {

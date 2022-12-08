@@ -10,7 +10,7 @@ async function getData(url) {
   return json;
 }
 
-function getProperty(json, property) {
+function getPropertyForAll(json, property) {
   return json.map((item) => item[property]);
 }
 
@@ -29,8 +29,8 @@ async function initEcosystemMarketCapChart() {
   const ecosystemDataURL = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc';
   const ecosystemJson = await getData(ecosystemDataURL); // get the ecosystem data
 
-  const labelsList = getProperty(ecosystemJson, 'name'); // extract the labels
-  const marketCapList = getProperty(ecosystemJson, 'market_cap'); // extract the market cap data
+  const labelsList = getPropertyForAll(ecosystemJson, 'name'); // extract the labels
+  const marketCapList = getPropertyForAll(ecosystemJson, 'market_cap'); // extract the market cap data
 
   let start = 0; // index to start the sublist at
   let numOfElements = 10; // the number of elements we want in the sublist
@@ -150,7 +150,50 @@ async function initFallingCryptoTable() {
 
   // Extract the data we need from the JSON object
   const targetElement = document.querySelector('#price-percentage-falling-table'); // get DOM object where the table will live
-  const headers = ['Name', 'ID', 'Current Price'];
+  const headers = ['Name', 'ID', '% Change'];
+  const tableData = cryptocurrencyJson.map((currency) => {
+    const n = currency.name; // currency name
+    const i = currency.id; // currency id
+
+    const currPrice = currency.market_data.current_price.usd;
+    const priceChange = currency.market_data.price_change_24h_in_currency.usd;
+    const c = priceChange / (currPrice - priceChange); // percentage price change
+    const data = [n, i, c];
+    return data;
+  });
+
+  // Initialize the chart
+  const table = new Handsontable(
+    targetElement, {
+      licenseKey: 'non-commercial-and-evaluation',
+      data: tableData,
+      colHeaders: headers,
+      width: 550,
+      height: 300
+    }
+  );
+
+  const prevThreeButton = document.querySelector('#prev-three');
+  prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
+    console.log('prev3');
+  });
+
+  const nextThreeButton = document.querySelector('#next-three');
+  nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
+    console.log('next3');
+  });
+
+  return table;
+}
+
+async function initRisingCryptoTable() {
+  // Get the json object containing the crypto data
+  const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
+  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the cryptocurrency data
+
+  // Extract the data we need from the JSON object
+  const targetElement = document.querySelector('#price-percentage-rising-table'); // get DOM object where the table will live
+  const headers = ['Name', 'ID', '% Change'];
   console.log(cryptocurrencyJson[0]);
   const tableData = cryptocurrencyJson.map((currency) => {
     const n = currency.name; // currency name
@@ -189,6 +232,7 @@ async function mainEvent() {
   const ecosystemChart = initEcosystemMarketCapChart();
   const trendingCryptoTable = initTrendingCryptoTable();
   const fallingCryptoTable = initFallingCryptoTable();
+  const risingCryptoTable = initRisingCryptoTable();
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

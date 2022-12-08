@@ -7,6 +7,7 @@ const clientId = 'd9827efb2c79463b92becb457a635a04';
 const clientSecret = '6f2f0a36046f4f21980873a48c7bdab0';
 // --------------------- API dialogue functions ---------------------
 
+
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -69,6 +70,7 @@ async function getTracks(token, tracksEndPoint, limit) {
   return data;
 }
 
+
 // --------------------- Data handling functions ---------------------
 
 async function initSongs(plalylistSg, genre, token) {
@@ -78,6 +80,7 @@ async function initSongs(plalylistSg, genre, token) {
   console.log(tracks.items);
   return tracks.items.map((obj) => ({ ...obj, gen: genre }));
 }
+
 
 function songsToArray(songs) {
   console.log(songs);
@@ -94,6 +97,7 @@ function songsToArray(songs) {
   return array;
   // console.log(array)
 }
+
 
 function songLenArray(list) {
   const array = [];
@@ -157,10 +161,12 @@ function injectImages(list) {
     const el = `<img src="${item.image_url}"></img>`;
     target.innerHTML += el;
   });
-}
+
+
 
 function initChart(songs, songlength) {
   const ctx = document.getElementById('myChart');
+
 
   // eslint-disable-next-line no-new
   const m_chart = new Chart(ctx, {
@@ -222,6 +228,7 @@ async function init() {
       `Getting tracks from genre: ${genreName} which has the id: ${genreId}`
     );
     const playlist = await getPlaylistsByGenre(token, genreId, 1);
+
 
     // store the track endpoint of the playlist
     playlistEndpoint = `${playlist[0].href}/tracks`;

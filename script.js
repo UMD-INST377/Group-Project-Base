@@ -108,6 +108,11 @@ function getRandomIntInclusive(min, max) {
     if (index === 0) {
       map.setView([coordinates[0], coordinates[1]], 10);
       }
+
+      marker.on('mouseover',function(ev) {
+        ev.target.openPopup();
+      });
+      
     });
   }
   

@@ -60,9 +60,14 @@ function sampleUse() {
   console.log("Showing Demo");
   
   typeWriter();
-  
+  fadeIn(document.getElementById("leftFilm"));
 
 } 
+
+function fadeIn(id){
+  id.classList.toggle("fadeOut");
+  id.classList.toggle("fade");
+}
     
 function typeWriter() {
   if (autotypingI < autotypingtext.length) {

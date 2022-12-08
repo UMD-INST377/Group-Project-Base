@@ -18,7 +18,7 @@ function getRandomIntInclusive(min, max) {
 
 function injectHTML(list) {
   console.log('fired injectHTML');
-  const target = document.querySelector('#restaurant_list');
+  const target = document.querySelector('#crime_list');
   target.innerHTML = '';
 
   const listEl = document.createElement('ol');
@@ -45,7 +45,7 @@ function injectHTML(list) {
 
 function processCrimes(list) {
   console.log('fired cr list');
-  const range = [...Array(15).keys()]; // special notation to make an array of 15 elements
+  const range = [...Array(10).keys()]; // special notation to make an array of 15 elements
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
     return list[index];
@@ -71,9 +71,9 @@ function processCrimes(list) {
 
 function filterList(array, filterInputValue) {
   return array.filter((item) => {
-    if (!item.name) { return; }
-    const lowerCaseName = item.name.toLowerCase();
-    const lowerCaseQuery = filterInputValue.toLowerCase();
+    if (!item.street_address || item.clearance_code_inc_type) { return; }
+    const lowerCaseName = item.name.toUpperCase();
+    const lowerCaseQuery = filterInputValue.toUpperCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
 }
@@ -96,10 +96,11 @@ function markerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    // const {coordinates} = item.geocoded_column_1;
-    L.marker(arrayFromJson.latitude, arrayFromJson.longitude).addTo(map);
+    const {coordinates} = [item.latitude, item.longitude];
+    console.log(coordinates);
+    L.marker(coordinates[0], coordinates[1]).addTo(map);
     if (index === 0) {
-      map.setView(arrayFromJson.latitude, arrayFromJson.longitude, 10);
+      map.setView(coordinates[0], coordinates[1], 10);
     }
   });
 }

@@ -93,6 +93,7 @@ div {
 
 .header h1 {
   display: block;
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
   /* this will push other blocks out of the way */
 
   /* colors */
@@ -100,7 +101,7 @@ div {
   color: #f7d1cd;
 
   /* shapes */
-  border-radius: 10px;
+  border-radius: 15px;
   font-size: 1.5rem;
   padding: 1.25rem;
   margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
@@ -124,7 +125,8 @@ div {
 
 .box {
   background-color: #f7d1cd;
-  border-radius: 10px;
+  border: 1px solid rgb(156, 103, 159);
+  border-radius: 15px;
 
   width: fit-content;
   height:fit-content;
@@ -136,7 +138,6 @@ div {
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
-  box-shadow: 0 0.5em 1em -0.125em rgba(148, 126, 126, 0.1), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
 .right_section {
@@ -148,7 +149,6 @@ div {
   max-width: 450px;
   display:flex;
   flex-direction: column;
-  box-shadow: 0 0.5em 1em -0.125em rgba(148, 126, 126, 0.1), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
 /*
@@ -257,7 +257,7 @@ div.carousel {
   border: none;
   margin: 2px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 15px;
   font-weight: bold;
   height: 45px;
   padding: 10px;
@@ -293,7 +293,7 @@ form input {
     /* here we are setting white space correctly */
     margin-bottom: 1rem;
     height: 2rem;
-    border-radius: 10px;
+    border-radius: 15px;
   }
 
   form label {
@@ -331,16 +331,11 @@ form input {
   }
 }
 
-.chart_container{
-  width: 100%;
-  height: 100%;
-}
-
 #map {
-  display: block; 
+  display: block;
   width: 400px;
   height: 380px;
-  border: 2px rgb(0, 0, 0);
+  border: 1px rgb(0, 0, 0);
   margin-bottom: 1rem;
 }
 
@@ -350,53 +345,64 @@ form input {
     This comes from loading.io/css - it's nice to show that something is happening!
 */
 
-/* Dropdown Button */
-.dropbtn {
-  background-color: #63215d;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
-}
+  .lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-  border-radius: 10px;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: #692e7a;
-}
-
+  .lds-ellipsis_hidden {
+    display: hidden;
+  }
+  
+  .lds-ellipsis div { 
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  

@@ -14,16 +14,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crime Data</title>
-    <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    <title>Mandy Chan's Labs for INST377</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-    crossorigin=""/>-->
-    <link rel="stylesheet" href="/Group07-Final-Project/style.css">
+    crossorigin=""/>
+    <link rel="stylesheet" href="style.css">
      <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <!--<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-    crossorigin=""></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    crossorigin=""></script>
 </head>
 <body>
     <div class="wrapper">
@@ -32,32 +31,24 @@
         </header>
         <div class="container">
             <div class="left_section box">
-                    <h3>Generate Graphics</h3>
+                    <h3>Generate Crime Map</h3>
                 <form action="/api" class="box main_form">
                     <label for="resto"></label>
                     <p>Filter Crime Data List</p>
-                    <div class="dropdown">
-                        <button class="dropbtn">Select Year</button>
-                        <div class="dropdown-content">
-                          <a href="#">2017-Present</a>
-                          <a href="#">2017-2020</a>
-                          <a href="#">2020-Present</a>
-                        </div>
-                      </div>
+                    <input type="text" name="resto" id="resto"/>
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    <button type="submit" id = 'get-resto'>Change List</button>
                 </form>
             </div>
             <div class="right_section box">
-                <h2>Local Restaurant Map</h2>
-                <div class = 'chart_container'>
-                    <canvas id="myChart"></canvas>
-                  </div>
-                <!--<div id="map"></div>-->
-                <div class="box" id = 'restaurant_list'>
-                    A list of local restaurants
+                <h2>Local crime Map</h2>
+                <div id="map"></div>
+                <div class="box" id = 'crime_list'>
+                    A list of local crimes
                 </div>
             </div>
         </div>
     </div>
-    <script src="/Group07-Final-Project/script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

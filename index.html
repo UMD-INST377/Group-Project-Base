@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 102 Group 10</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" 
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><em>Speed Cameras</em></h1>
+            <h2 class="home"><a href="./index.html">Home</a></h2>
+            <h3 class="about"><a href="./About.html">About</a></h3>
+        </header>
+        <div class="container">
+            <div class="left_section box">
+                <h2><em>Data Refresher</em></h2>
+                <form action="/api" class="box main_form">
+                    <div>
+                        <label for="resto">Filter Speed Cameras</label>
+                        <input type="text" name="resto" id="resto" />
+                    </div>
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    <button type="submit" id="get-resto">New Set of 10 Cameras</button>
+                    <button type="submit" id="get-all">Show All Cameras</button>
+                </form>
+            </div>
+            <div class="right_section box">
+                <h2><em>Speed Cameras Map</em></h2>
+                <div id="map"></div>
+            </div>
+        </div>
+        <footer class="footer">
+            <em>Section 102 Group 10 - Noah Shaw and Biniam Zemedkun</em>
+        </footer>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

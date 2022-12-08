@@ -3,11 +3,15 @@ let filmCC = [];
 
 let firstdone = false;
 
+// Used for showing demo
+let autotypingI = 0;
+const autotypingtext = "Schindler's List";
 
 
 // Need to clear form after submit
 async function mainEvent() {
   
+  sampleUse();
   const titleform = document.getElementById("titleForm");
   const apiCall = "https://imdb-api.com/en/API/Search/k_ljv5h5vz/";
   let currentFilmID = "";
@@ -52,8 +56,23 @@ async function mainEvent() {
 
 }
 
+function sampleUse() {
+  console.log("Showing Demo");
+  
+  typeWriter();
+  
 
+} 
     
+function typeWriter() {
+  if (autotypingI < autotypingtext.length) {
+    document.getElementById("filmfield").value += autotypingtext.charAt(autotypingI);
+    
+    autotypingI++;
+    setTimeout(typeWriter, 90);
+  }
+}
+
 async function getFilmTitle(name){
   let response = await fetch(name)
   return response.json();

@@ -24,27 +24,28 @@ function initChart(chart) {
 }
 
 function processData(array) {
+  console.log('Data Processed');
   return array.reduce((collection, item) => {
-    if (!collection[item.primary_artist]) {
-      collection[item.primary_artist] = [item];
+    if (!collection[item.agency]) {
+      collection[item.agency] = [item];
     } else {
-      collection[item.primary_artist].push(item);
+      collection[item.agency].push(item);
     }
     return collection;
   }, {});
 }
 
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': '79286f9b48msh455d85ddc2d4316p18f1ccjsnabaae7ed74b1',
-    'X-RapidAPI-Host': 'genius.p.rapidapi.com'
-  }
-};
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     'X-RapidAPI-Key': '79286f9b48msh455d85ddc2d4316p18f1ccjsnabaae7ed74b1',
+//     'X-RapidAPI-Host': 'genius.p.rapidapi.com'
+//   }
+// };
 
 async function getData() {
-  const url = 'https://genius.p.rapidapi.com/artists/70/songs';
-  const data = await fetch(url, options);
+  const url = 'https://data.princegeorgescountymd.gov/resource/uh6s-izyj.json';
+  const data = await fetch(url);
   const json = await data.json();
   return json;
 }
@@ -56,7 +57,8 @@ async function mainEvent() {
 
   const chartData = await getData();
   const processedData = processData(chartData);
-  console.log(processData)
+  console.log(processedData);
   const myChart = initChart(chartTarget, processedData);
+  //initChart(chartTarget);
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -51,6 +51,7 @@ async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
   const data = await fetch(url);
   const json = await data.json();
+  // eslint-disable-next-line max-len
   const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
   return reply;
 }
@@ -70,15 +71,14 @@ function changeChart(chart, dataObject) {
 
 async function mainEvent() {
   const pageMap = initMap();
-
+  console.log('hey');
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-resto');
   // const loadAnimation = document.querySelector('.lds-ellipsis');
   const restoName = document.querySelector('#resto');
   const chartTarget = document.querySelector('#myChart');
   // submit.style.display = 'none';
-
-  initChart(chartTarget);
+  
   console.log('hii');
   const chartData = await getData();
   const shapedData = shapeDataForLineChart(chartData);

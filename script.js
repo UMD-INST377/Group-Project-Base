@@ -52,16 +52,16 @@ function markerPlace(array, map) {
   });
 
   array.forEach((item, index) => {
-    console.log(item.location_1);
+    //console.log(item.location_1);
 
     const lat = item.location_1.latitude;
     const long = item.location_1.longitude;
 
-    console.log(lat, long);
+    //console.log(lat, long);
 
     cameraMarker = L.marker([lat, long]).addTo(map);
 
-    console.log('After', lat, long);
+    //console.log('After', lat, long);
 
     if (index === 0) {
       map.setView([lat, long], 10);
@@ -90,18 +90,16 @@ function markerPlace(array, map) {
   });
 } */
 
-/*
-function filterList(list, value) {
-  const newArray = list.filter((item) => {
+
+function filterList(array, filterInputValue) {
+  return array.filter((item) => {
     if (!item.school) { return; }
-    const lowerCaseSchoolName = item.school.toLowerCase();
+    const lowerCaseSchool = item.school.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
-    // eslint-disable-next-line consistent-return
-    return lowerCaseName.includes(lowerCaseQuery);
+    return lowerCaseSchool.includes(lowerCaseQuery);
   });
-  return newArray;
 }
-*/
+
 
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
@@ -116,8 +114,10 @@ async function mainEvent() {
 
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-resto');
+  const all = document.querySelector('#get-all');
   const loadAnimation = document.querySelector('.lds-ellipsis');
   submit.style.display = 'none';
+  all.style.display = 'none';
 
   const mapData = await getData();
 
@@ -133,6 +133,7 @@ async function mainEvent() {
   if (mapData?.length > 0) {
     // let's turn the submit button back on by setting it to display as a block when we have data available
     submit.style.display = 'block';
+    all.style.display = 'block';
 
     // Let's hide our load button not that we have some data to manipulate
     loadAnimation.classList.remove('lds-ellipsis');
@@ -140,18 +141,27 @@ async function mainEvent() {
 
     let cameraList = [];
 
-    /*
-    form.addEventListener('input', (event) =>
+    
+    form.addEventListener('input', (event) => {
       console.log('input', event.target.value);
-      const filteredList = filterList(currentList, event.target.value);
-      injectHTML(filteredList);
+      const filteredList = filterList(cameraList, event.target.value);
+      console.log(filteredList);
+      // injectHTML(filteredList);
       markerPlace(filteredList, pageMap);
-    );
-    */
+    });
+    
 
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
       cameraList = processCameras(mapData);
+      console.log(cameraList);
+      markerPlace(cameraList, pageMap);
+      // clickedOn(cameraList, pageMap);
+    });
+
+    all.addEventListener('click', async (allEvent) => {
+      allEvent.preventDefault();
+      cameraList = mapData;
       console.log(cameraList);
       markerPlace(cameraList, pageMap);
       // clickedOn(cameraList, pageMap);

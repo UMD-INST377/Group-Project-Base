@@ -1,3 +1,10 @@
+function getRandomIntInclusive(min, max) {
+  const newMin = Math.ceil(min);
+  const newMax = Math.floor(max);
+  // eslint-disable-next-line max-len
+  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin); // The maximum is inclusive and the minimum is inclusive
+}
+
 function initMap() {
   console.log('initMap');
   const map = L.map('map').setView([38.9897, -76.9378], 13);
@@ -6,6 +13,22 @@ function initMap() {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
   return map;
+}
+
+function markerPlace(array, map) {
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+
+  array.forEach((item, index) => {
+    const {coordinates} = item.geocoded_column_1;
+    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+    if (index === 0) {
+      map.setView([coordinates[1], coordinates[0]], 10);
+    }
+  });
 }
 
 function initChart(chart, object) {
@@ -21,18 +44,33 @@ function initChart(chart, object) {
       data: info
     }]
   }; 
-  console.log('initChart'); // Doesn't reach this
-
+  console.log('initChart');
   const config = {
-    type: 'line',
+    type: 'bar',
     data: data,
-    options: {}
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
   };
 
   return new Chart(
     chart,
     config
   );
+}
+
+function processCrime(list) {
+  console.log('fired processCrime');
+  const range = [...Array(15).keys()];
+  const newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length);
+    return list[index];
+  });
+  return newArray;
 }
 
 function shapeDataForLineChart(array) {
@@ -44,16 +82,6 @@ function shapeDataForLineChart(array) {
     }
     return collection;
   }, {});
-}
-
-
-async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
-  const data = await fetch(url);
-  const json = await data.json();
-  // eslint-disable-next-line max-len
-  const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
-  return reply;
 }
 
 function changeChart(chart, dataObject) {
@@ -68,40 +96,45 @@ function changeChart(chart, dataObject) {
   chart.update();
 }
 
+async function getData() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+  const data = await fetch(url);
+  const json = await data.json();
+  // eslint-disable-next-line max-len
+  const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+  return reply;
+}
 
 async function mainEvent() {
   const pageMap = initMap();
-  console.log('hey');
+
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-resto');
-  // const loadAnimation = document.querySelector('.lds-ellipsis');
-  const restoName = document.querySelector('#resto');
+  const loadAnimation = document.querySelector('.lds-ellipsis');
+  // const restoName = document.querySelector('#resto');
   const chartTarget = document.querySelector('#myChart');
   // submit.style.display = 'none';
-  
-  console.log('hii');
-  const chartData = await getData();
-  const shapedData = shapeDataForLineChart(chartData);
+
+  const results = await fetch('https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json');
+  const arrayFromJson = await results.json();
+  const shapedData = shapeDataForLineChart(arrayFromJson);
   const myChart = initChart(chartTarget, shapedData);
 
-  if (chartData?.length > 0) {
+  if (arrayFromJson?.length > 0) {
     submit.style.display = 'block';
-
-    loadAnimation.classList.remove('ldas-ellipsis');
+    console.log('hii');
+    loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
     let currentList = [];
 
-    form.addEventListener('input', (event) => {
-      console.log(event.target.value);
+    form.addEventListener('submit', (submitEvent) => {
+      submitEvent.preventDefault();
+      currentList = processCrime(arrayFromJson.data);
+      markerPlace(currentList, pageMap);
+      changeChart();
     });
-
-
   }
-
-  const results = await fetch('/api/CrimeIncidentsPG');
-
-  const arrayFromJson = await results.json();
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

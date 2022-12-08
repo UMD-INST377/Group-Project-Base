@@ -1,0 +1,54 @@
+<!--
+    This is how to build the CSS-only load animation from loading.io    
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+
+    This is helpful for showing your client-side users when data is loading,
+    since there's otherwise no sign your app is thinking about something!
+
+    Try placing it at the same level in your element tree as your Submit button
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandy Chan's Labs for INST377</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>
+    <link rel="stylesheet" href="./style.css">
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+    crossorigin=""></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <center><h1>0101 Group 7 Final Project</h1></center>
+        </header>
+        <div class="container">
+            <div class="left_section box">
+                    <h3>Generate Crime Map</h3>
+                <form action="/api" class="box main_form">
+                    <label for="resto"></label>
+                    <p>Filter Crime Data List</p>
+                    <input type="text" name="resto" id="resto"/>
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    <button type="submit" id = 'get-resto'>Change List</button>
+                </form>
+            </div>
+            <div class="right_section box">
+                <h2>Local crime Map</h2>
+                <div id="map"></div>
+                <div class="box" id = 'crime_list'>
+                    A list of local crimes
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

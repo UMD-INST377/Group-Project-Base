@@ -7,6 +7,7 @@ function initMap() {
   return map;
 }
 
+
 function markerPlace(array, map, organization, max, bags) {
   markerCounter = 1;
   map.eachLayer((layer) => {

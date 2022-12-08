@@ -139,7 +139,7 @@ async function getMovieData() {
   const url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=29c91bbcfb2a62a20125c03d7800a192&language=en-US&page=1';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.results.filter(Boolean);
+  const reply = json.results.filter((item) => Boolean(item.vote_average));
   return reply;
 }
 
@@ -148,7 +148,7 @@ async function getTvData() {
   const url = 'https://api.themoviedb.org/3/tv/on_the_air?api_key=29c91bbcfb2a62a20125c03d7800a192&language=en-US&page=1';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.results.filter(Boolean);
+  const reply = json.results.filter((item) => Boolean(item.vote_average));
   return reply;
 }
 
@@ -179,6 +179,6 @@ async function mainEvent() {
     }
   });
 
-}
+} 
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

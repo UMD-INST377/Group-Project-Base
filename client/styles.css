@@ -73,6 +73,10 @@ padding: 1.5rem;
   width: 90%;
 }
 
+
+.dropdown{
+  margin: 1%;
+=======
 main{
   display:flex;
   flex-wrap: wrap;

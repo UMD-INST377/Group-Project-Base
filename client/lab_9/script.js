@@ -114,7 +114,7 @@ function initChart(chart, dataObject) {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'NBA 3 pointers made in 2022 Opening Night',
+      label: 'NBA 3 point fg percentage made in 2022 Opening Night',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: info

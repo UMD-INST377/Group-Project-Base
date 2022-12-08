@@ -1,3 +1,4 @@
+/* eslint-disable no-new-wrappers */
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -23,10 +24,15 @@ function markerPlace(array, map) {
   });
 
   array.forEach((item, index) => {
-    const {coordinates} = item.geocoded_column_1;
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+    // const lat = item.latitude;
+    // const lng = item.longitude;
+    const lat = new Number(latitude);
+    const lng = new Number(longitude);
+    const newLatLng = L.latLng(lat, lng);
+
+    L.marker(newLatLng).addTo(map);
     if (index === 0) {
-      map.setView([coordinates[1], coordinates[0]], 10);
+      map.setView([lat, lng], 10);
     }
   });
 }
@@ -38,12 +44,29 @@ function initChart(chart, object) {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'Crimes by Category',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: info
+      label: 'My First Dataset',
+      data: info,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+      borderWidth: 1
     }]
-  }; 
+  };
   console.log('initChart');
   const config = {
     type: 'bar',
@@ -65,7 +88,7 @@ function initChart(chart, object) {
 
 function processCrime(list) {
   console.log('fired processCrime');
-  const range = [...Array(15).keys()];
+  const range = [...Array(100).keys()];
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
     return list[index];
@@ -73,7 +96,7 @@ function processCrime(list) {
   return newArray;
 }
 
-function shapeDataForLineChart(array) {
+function shapeDataForBarChart(array) {
   return array.reduce((collection, item) => {
     if (!collection[item.category]) {
       collection[item.category] = [item];
@@ -101,8 +124,8 @@ async function getData() {
   const data = await fetch(url);
   const json = await data.json();
   // eslint-disable-next-line max-len
-  const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
-  return reply;
+  // const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+  return json;
 }
 
 async function mainEvent() {
@@ -115,9 +138,9 @@ async function mainEvent() {
   const chartTarget = document.querySelector('#myChart');
   // submit.style.display = 'none';
 
-  const results = await fetch('https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json');
-  const arrayFromJson = await results.json();
-  const shapedData = shapeDataForLineChart(arrayFromJson);
+  const arrayFromJson = await getData();
+  console.log(arrayFromJson[0]);
+  const shapedData = shapeDataForBarChart(arrayFromJson);
   const myChart = initChart(chartTarget, shapedData);
 
   if (arrayFromJson?.length > 0) {
@@ -131,6 +154,7 @@ async function mainEvent() {
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
       currentList = processCrime(arrayFromJson.data);
+      console.log(currentList);
       markerPlace(currentList, pageMap);
       changeChart();
     });

@@ -1,11 +1,14 @@
 let filmCount = 0;
 let filmCC = [];
 
+
 let firstdone = false;
 
 // Used for showing demo
 let autotypingI = 0;
+let autotypingI2 = 0;
 const autotypingtext = "Schindler's List";
+const autotypingtext2 = "Pulp Fiction";
 
 
 // Need to clear form after submit
@@ -56,13 +59,31 @@ async function mainEvent() {
 
 }
 
-function sampleUse() {
+async function sampleUse() {
   console.log("Showing Demo");
   
-  typeWriter();
-  fadeIn(document.getElementById("leftFilm"));
+  
 
+  typeWriter();
+  console.log("Done");
+  setTimeout(function() {
+    fadeIn(document.getElementById("leftFilm"));
+  }, 1500);
+  setTimeout(function() {
+    document.getElementById("filmfield").value="";
+  }, 2500);
+  setTimeout(function() {
+    typeWriter2();
+  }, 2500);
+  setTimeout(function() {
+    fadeIn(document.getElementById("rightFilm"));
+  }, 3500);
+  setTimeout(function() {
+    document.getElementById("filmfield").value="";
+  }, 4200);
 } 
+
+
 
 function fadeIn(id){
   id.classList.toggle("fadeOut");
@@ -74,10 +95,21 @@ function typeWriter() {
     document.getElementById("filmfield").value += autotypingtext.charAt(autotypingI);
     
     autotypingI++;
-    setTimeout(typeWriter, 90);
+    setTimeout(typeWriter, 70);
+    
   }
+  
 }
-
+function typeWriter2() {
+  if (autotypingI2 < autotypingtext.length) {
+    document.getElementById("filmfield").value += autotypingtext2.charAt(autotypingI2);
+    
+    autotypingI2++;
+    setTimeout(typeWriter2, 70);
+    
+  }
+  
+}
 async function getFilmTitle(name){
   let response = await fetch(name)
   return response.json();

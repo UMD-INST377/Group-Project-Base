@@ -57,11 +57,12 @@ form {
 }
 
 .container {
-  background-color: rgb(81, 255, 0);
+  background-color: rgb(36, 114, 0);
   margin: 0 20px;
   display: flex;
   justify-content: space-evenly;
   align-items: start;
+  margin: 10;
   flex:1;
 }
 
@@ -84,7 +85,7 @@ form {
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: #00eeff;
+  background-color:	hsl(171, 100%, 42%);
   color: #4a4a4a;
   font-weight: bold;
 
@@ -93,8 +94,11 @@ form {
   font-size: 1.5rem;
   padding: 1.25rem;
   margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
-  border: 3px dashed;
+  border: 2px dashed;
   text-align: center;
+  text-transform: uppercase;
+  color: #000;
+
 
   /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
@@ -102,12 +106,12 @@ form {
 
 .home, .about {
   display: block;
-  background-color: #0066ff;
+  background-color: #06c200;
   border-radius: 2px;
   font-size: 1.5rem;
   padding: 1.25rem;
-  margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
-  border: 3px dashed;
+  margin: 5; /* removing the margin on h1 tags means the header pins to the top if we move */
+  border: 2px dashed;
   text-align: left;
   float: left;
 }
@@ -130,7 +134,7 @@ form {
 }
 
 .right_section {
-  background-color: rgb(255, 145, 0);
+  background-color: rgb(255, 115, 0);
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
@@ -145,7 +149,7 @@ form {
   background-color: rgb(255, 0, 0);
   font-size: 1.2rem;
   font-weight: 600;
-  border: 3px dashed;
+  border: 2px dashed;
 }
 
 

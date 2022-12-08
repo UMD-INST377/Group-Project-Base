@@ -1,6 +1,9 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# API Endpoint Documentation
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+## our Crypto API: https://api.coindesk.com/v1/bpi/currentprice.json
+- This API contains of cryptocurrency data for several differnt countries
+- Shows the rate of crypto
+- Many countries are involved
+
+### Considering the Spotify API was a struggle to use, we believed that an Open key API wuld be the best way to go as we found this on coindesk
+(https://www.markdownguide.org/cheat-sheet/)

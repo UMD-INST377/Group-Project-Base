@@ -1,3 +1,11 @@
+/* eslint-disable no-new-wrappers */
+function getRandomIntInclusive(min, max) {
+  const newMin = Math.ceil(min);
+  const newMax = Math.floor(max);
+  // eslint-disable-next-line max-len
+  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin); // The maximum is inclusive and the minimum is inclusive
+}
+
 function initMap() {
   console.log('initMap');
   const map = L.map('map').setView([38.9897, -76.9378], 13);
@@ -8,29 +16,69 @@ function initMap() {
   return map;
 }
 
-function initChart(chart) {
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June'
-  ];
+function markerPlace(array, map) {
+  console.log('markerPlace', array);
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+
+  array.forEach((item, index) => {
+    // const lat = item.latitude;
+    // const lng = item.longitude;
+    const lat = new Number(item.latitude);
+    const lng = new Number(item.longitude);
+    const newLatLng = L.latLng(lat, lng);
+
+    L.marker(newLatLng).addTo(map);
+    if (index === 0) {
+      map.setView([lat, lng], 10);
+    }
+  });
+}
+
+function initChart(chart, object) {
+  const labels = Object.keys(object);
+  const info = Object.keys(object).map((item) => object[item].length);
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 30, 45]
+      label: 'My First Dataset',
+      data: info,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+      borderWidth: 1
     }]
   };
+  console.log('initChart');
   const config = {
-    type: 'line',
+    type: 'bar',
     data: data,
-    options: {}
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
   };
 
   return new Chart(
@@ -38,41 +86,90 @@ function initChart(chart) {
     config
   );
 }
-/*   const ctx = document.getElementById('myChart');
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
+
+function processCrime(list) {
+  console.log('fired processCrime');
+  const range = [...Array(list.length).keys()];
+  const newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length);
+    return list[index];
+  });
+  return newArray;
+}
+
+function filterList(array, filterInputValue) {
+  return array.filter((item) => {
+    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
+}
+
+function shapeDataForBarChart(array) {
+  return array.reduce((collection, item) => {
+    if (!collection[item.category]) {
+      collection[item.category] = [item];
+    } else {
+      collection[item.category].push(item);
     }
-  }
-});
-return ctx;
-} */
+    return collection;
+  }, {});
+}
+
+function changeChart(chart, dataObject) {
+  const labels = Object.keys(dataObject);
+  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+  chart.data.labels = labels;
+  chart.data.datasets.forEach((set) => {
+    set.data = info;
+    return set;
+  });
+
+  chart.update();
+}
+
+async function getData() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+  const data = await fetch(url);
+  const json = await data.json();
+  // eslint-disable-next-line max-len
+  // const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+  return json;
+}
 
 async function mainEvent() {
   const pageMap = initMap();
 
-  const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-  const submit = document.querySelector('#get-resto'); // get a reference to your submit button
-  /* const loadAnimation = document.querySelector('.lds-ellipsis'); */
-  const restoName = document.querySelector('#resto');
+  const form = document.querySelector('.main_form');
+  const submit = document.querySelector('#get-resto');
+  const loadAnimation = document.querySelector('.lds-ellipsis');
+  // const restoName = document.querySelector('#resto');
   const chartTarget = document.querySelector('#myChart');
+  // submit.style.display = 'none';
 
-  const results = await fetch('/api/CrimeIncidentsPG');
-  const arrayFromJson = await results.json();
+  const arrayFromJson = await getData();
+  console.log(arrayFromJson);
+  console.log(arrayFromJson[0]);
+  const shapedData = shapeDataForBarChart(arrayFromJson);
+  const myChart = initChart(chartTarget, shapedData);
 
-  initChart(chartTarget);
+  if (arrayFromJson?.length > 0) {
+    submit.style.display = 'block';
+    console.log('hii');
+    loadAnimation.classList.remove('lds-ellipsis');
+    loadAnimation.classList.add('lds-ellipsis_hidden');
+
+    let currentList = [];
+
+    form.addEventListener('submit', (submitEvent) => {
+      submitEvent.preventDefault();
+      console.log(arrayFromJson.data);
+      currentList = processCrime(arrayFromJson);
+
+      markerPlace(currentList, pageMap);
+      changeChart();
+    });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

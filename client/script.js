@@ -42,4 +42,18 @@ async function mainEvent() {
   injectDateFilter(data, 1970, '#best_1970s');
   injectDateFilter(data, 1980, '#best_1980s');
 }
+
+function processmovies(list) {
+  console.log('movie lists');
+  const range = [...Array(15).keys()];
+  const newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length);
+    return list[index];
+  });
+  return newArray;
+
+  
+
+
+
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -95,7 +95,7 @@ function songsToArray(songs) {
   // console.log(array)
 }
 
-async function songLenArray(list) {
+function songLenArray(list) {
   const array = [];
   list.forEach((element) => {
     array.push(element.length);
@@ -104,7 +104,7 @@ async function songLenArray(list) {
   // console.log(array)
 }
 
-async function songNameArray(list) {
+function songNameArray(list) {
   const array = [];
   list.forEach((element) => {
     array.push(element.name);
@@ -249,7 +249,7 @@ async function init() {
     document.getElementById('Chartbox').style.display = 'block';
     
     myChart.destroy();
-    myChart = initChart(sample, sample_len);
+    myChart = initChart(sample_name, sample_len);
   });
 }
 

@@ -288,35 +288,35 @@ async function getdata() {
   const reply2017 = json2017.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
   console.log(reply2017);
 
-  const url2018 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+  const url2018 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2018-01-01' and '2018-12-31'${limit}`;
 
   const data2018 = await fetch(url2018); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2018 = await data2018.json(); // the data isn't json until we access it using dot notation
 
   const reply2018 = json2018.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
 
-  const url2019 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+  const url2019 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2019-01-01' and '2019-12-31'${limit}`;
 
   const data2019 = await fetch(url2019); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2019 = await data2019.json(); // the data isn't json until we access it using dot notation
 
   const reply2019 = json2019.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
 
-  const url2020 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+  const url2020 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2020-01-01' and '2020-12-31'${limit}`;
 
   const data2020 = await fetch(url2020); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2020 = await data2020.json(); // the data isn't json until we access it using dot notation
 
   const reply2020 = json2020.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
 
-  const url2021 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+  const url2021 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2021-01-01' and '2021-12-31'${limit}`;
 
   const data2021 = await fetch(url2021); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2021 = await data2021.json(); // the data isn't json until we access it using dot notation
 
   const reply2021 = json2021.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
 
-  const url2022 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+  const url2022 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2022-01-01' and '2022-12-31'${limit}`;
 
   const data2022 = await fetch(url2022); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2022 = await data2022.json(); // the data isn't json until we access it using dot notation

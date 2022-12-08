@@ -4,7 +4,6 @@ body {
   flex: 1;
 
 }
-
 header {
   padding-top: 1rem;
   padding-left: 1rem;
@@ -68,7 +67,6 @@ img{
 width: 100px;
 height: 100px;
 }
-
   .right_section {
     background-color: #C7DBE6;
     flex: 1 2 auto;

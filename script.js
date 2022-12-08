@@ -13,7 +13,7 @@ const autotypingtext2 = "Pulp Fiction";
 
 // Need to clear form after submit
 async function mainEvent() {
-  
+  firstdone = false;
   sampleUse();
   const titleform = document.getElementById("titleForm");
   const apiCall = "https://imdb-api.com/en/API/Search/k_ljv5h5vz/";
@@ -23,6 +23,7 @@ async function mainEvent() {
   titleform.addEventListener("submit", async (x) => {
     x.preventDefault();
     console.log("Film added");
+    document.getElementById("button").classList.toggle("fadeOut");
     const formData = new FormData(x.target); // get the data from the listener target
     const formProps = Object.fromEntries(formData); // Turn it into an object
     console.log(Object.values(formProps));
@@ -39,6 +40,7 @@ async function mainEvent() {
       getPoster("https://imdb-api.com/en/API/Title/k_ljv5h5vz/" + currentFilmID)
       .then(function(jsonData){
         const poster = JSON.stringify(jsonData.image);
+        console.log("First done:" + firstdone);
         if(firstdone){
           document.getElementById("secondpost").src = poster.slice(1, -1);
           document.getElementById("postName2").innerHTML = Object.values(formProps)
@@ -138,7 +140,7 @@ function cast(filmID){
     // Only calls intersect function if more than 2 films were added
     filmCC.push(matches);
     if(firstdone){
-      intersect();
+      
 
             
       // Updates photo and name for first actor
@@ -152,6 +154,9 @@ function cast(filmID){
       // Updates photo and name for third actor
       document.getElementById("preview13").src = JSON.stringify(jsonData.actors[2].image).slice(1, -1);
       document.getElementById("preview13Name").innerHTML = JSON.stringify(jsonData.actors[2].name).slice(1, -1);
+      document.getElementById("filmfield").value="";
+      firstdone = false;
+      intersect();  
       sleep(4000);
     } else{
       firstdone = true;
@@ -167,6 +172,9 @@ function cast(filmID){
       // Updates photo and name for third actor
       document.getElementById("preview3").src = JSON.stringify(jsonData.actors[2].image).slice(1, -1);
       document.getElementById("preview3Name").innerHTML = JSON.stringify(jsonData.actors[2].name).slice(1, -1);
+      document.getElementById("filmfield").value=""; 
+      document.getElementById("button").classList.toggle("fadeOut"); 
+      document.getElementById("button").classList.toggle("fade"); 
     }
     
     return matches;

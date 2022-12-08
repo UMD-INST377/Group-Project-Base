@@ -110,7 +110,7 @@ function getRandomIntInclusive(min, max) {
       }
       
       marker.on('mouseover',function(ev) {
-        ev.target.openPopup("one");
+        ev.target.openPopup();
       });
       
     });

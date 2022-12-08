@@ -50,8 +50,9 @@ h2 {
   flex-direction: column;
   margin: 0;
   flex: 1;
-  al
+
 }
+
 .column {
   flex:70%;
   padding: 10px;
@@ -86,6 +87,10 @@ height: 100px;
 #nba_logo{
   width: 500px;
   height:300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
 }
 
 
@@ -207,4 +212,11 @@ height: 100px;
   height: fit-content;
   width: fit-content;
   align-content: center;
+}
+
+.was_logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
 }

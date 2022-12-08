@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+/* eslint linebreak-style: ["error", "windows"] */
+
 // function used to grab random number from the API //
 
 function getRandomInclusive(min, max) {
@@ -26,7 +28,7 @@ function injectHTML(list) {
 // Function that fliters the list from the API data. //
 function filterList(list, filterInputValue) {
   return list.filter((item) => {
-    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseName = `${item.street_number} ${item.street_name} ${item.street_type} ${item.zip_code}`.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
@@ -75,10 +77,10 @@ function markerPlace(array, map) {
 
 //  The async function that retreives the GET request information //
 async function violationH2() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H2';
+  const url = 'https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H2&$where=within_circle(location,%2038.83063,%20-76.901726,%20500000)';
   const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.violation_code));
+  const reply = json.filter((item) => Boolean(item.violation_code)).filter((item) => Boolean(item.location));
   console.log(reply);
   return reply;
 }
@@ -92,9 +94,9 @@ async function mainEvent() {
   h2.style.display = 'none';
 
   const pageMap = initMap();
-  const violation1 = await violationH2();
+  const violation2 = await violationH2();
 
-  if (violation1.length > 0) {
+  if (violation2.length > 0) {
     h2.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
@@ -107,10 +109,10 @@ async function mainEvent() {
       markerPlace(newFilterList, pageMap);
     });
 
-    form.addEventListener('submit', (SubmitEvent) => {
-      SubmitEvent.preventDefault();
+    form.addEventListener('submit', (submitEvent) => {
+      submitEvent.preventDefault();
 
-      currentList = processHouse(violation1);
+      currentList = processHouse(violation2);
 
       injectHTML(currentList);
       markerPlace(currentList, pageMap);

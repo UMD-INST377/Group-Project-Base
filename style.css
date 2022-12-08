@@ -11,6 +11,11 @@
   opacity: 0;
 }
 
+.chart_container {
+  width: 700px;
+  height: 700px;
+}
+
 html {
   background-color: #fff;
   font-size: 16px;
@@ -101,7 +106,7 @@ form {
 }
 
 .filmList{
-  background-color: rgba(134, 131, 131, 0.4);
+  background-color: rgba(87, 87, 87, 0.4);
   display:flex;
   flex-wrap: wrap;
   gap: 20px;

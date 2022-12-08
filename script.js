@@ -6,6 +6,9 @@ let film2CC = [];
 let firstdone = false;
 let jsonTest;
 let film1CC = {};
+const ctx = document.getElementById('myChart');
+let myChart;
+
 
 // Used for showing demo
 let autotypingI = 0;
@@ -26,7 +29,7 @@ async function mainEvent() {
   titleform.addEventListener("submit", async (x) => {
     x.preventDefault();
     console.log("Film added");
-    document.getElementById("button").classList.toggle("fadeOut");
+    //document.getElementById("button").classList.toggle("fadeOut");
     const formData = new FormData(x.target); // get the data from the listener target
     const formProps = Object.fromEntries(formData); // Turn it into an object
     console.log(Object.values(formProps));
@@ -86,6 +89,10 @@ async function sampleUse() {
   setTimeout(function() {
     document.getElementById("filmfield").value="";
   }, 4200);
+
+  setTimeout(function() {
+    mkChart();
+  }, 4500);
 } 
 
 
@@ -93,8 +100,7 @@ async function sampleUse() {
 function fadeIn(id){
   id.classList.toggle("fadeOut");
   id.classList.toggle("fade");
-}
-    
+}    
 function typeWriter() {
   if (autotypingI < autotypingtext.length) {
     document.getElementById("filmfield").value += autotypingtext.charAt(autotypingI);
@@ -115,6 +121,35 @@ function typeWriter2() {
   }
   
 }
+
+function mkChart(){
+   
+  const label = ["Camera and Electrical Department", "Casting Department", "Location Management", "Script and Continuity Department"];
+  
+  const info = [12,1,1,2];
+
+  const cinst = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: label,
+      datasets: [{
+        label: '# of people in Common',
+        data: info,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  myChart = cinst;
+}
+
 async function getFilmTitle(name){
   let response = await fetch(name)
   return response.json();
@@ -129,7 +164,7 @@ function cast(filmID){
   let cast1 = "https://imdb-api.com/en/API/FullCast/k_ljv5h5vz/" + filmID;
 
   // Get all cast members from the film
-  console.log("Cast: " + cast1);
+  //console.log("Cast: " + cast1);
   getFilmTitle(cast1)
   .then(function(jsonData){
 
@@ -179,8 +214,6 @@ function cast(filmID){
       (jsonTest.others[22].items).forEach(x => film2CC[x.id] = "Production Department");
       (jsonTest.others[23].items).forEach(x => film2CC[x.id] = "Script and Continuity Department");
       (jsonTest.others[24].items).forEach(x => film2CC[x.id] = "Transportation Department");
-      (jsonTest.others[25].items).forEach(x => film2CC[x.id] = "Additional Crew");
-      (jsonTest.others[26].items).forEach(x => film2CC[x.id] = "Thanks");
       //console.log(film2CC);
       firstdone = false;
       intersect();  
@@ -201,8 +234,8 @@ function cast(filmID){
       document.getElementById("preview3").src = JSON.stringify(jsonData.actors[2].image).slice(1, -1);
       document.getElementById("preview3Name").innerHTML = JSON.stringify(jsonData.actors[2].name).slice(1, -1);
       document.getElementById("filmfield").value=""; 
-      document.getElementById("button").classList.toggle("fadeOut"); 
-      document.getElementById("button").classList.toggle("fade"); 
+      //document.getElementById("button").classList.toggle("fadeOut"); 
+      //document.getElementById("button").classList.toggle("fade"); 
       (jsonData.writers.items).forEach(x => film1CC[x.id]="Writer");
       (jsonTest.directors.items).forEach(x => film1CC[x.id]="Director");
       (jsonTest.actors).forEach(x => film1CC[x.id]="Actor");
@@ -231,8 +264,6 @@ function cast(filmID){
       (jsonTest.others[22].items).forEach(x => film1CC[x.id] = "Production Department");
       (jsonTest.others[23].items).forEach(x => film1CC[x.id] = "Script and Continuity Department");
       (jsonTest.others[24].items).forEach(x => film1CC[x.id] = "Transportation Department");
-      (jsonTest.others[25].items).forEach(x => film1CC[x.id] = "Additional Crew");
-      (jsonTest.others[26].items).forEach(x => film1CC[x.id] = "Thanks");
       //console.log(film1CC);
     }
     
@@ -240,10 +271,6 @@ function cast(filmID){
   
 }
 
-function removeDups(arr) {
-  return arr.filter((item,
-      index) => arr.indexOf(item) === index);
-}
 
 function sleep(milliseconds) {
   const date = Date.now();
@@ -253,14 +280,48 @@ function sleep(milliseconds) {
   } while (currentDate - date < milliseconds);
 }
 
+
+
+
+  function addData(counts) {
+    console.log("Adding new data");
+
+    const info = Object.values(counts);
+    const labels = Object.keys(counts);
+
+    myChart.data.labels = labels;
+    myChart.data.datasets.forEach((set) => {
+      set.data = info;
+      return set;})
+    myChart.update();
+}
+
 async function intersect() {
   
-  //window.location.href = "chart.html";
-  film1CC;
-  film2CC;
+  
+  let ranking = [];
+  let counts = {};
 
-  Object.keys(film1CC).filter(x => Object.keys(film2CC).includes(x));
-  console.log("In Common: " + filteredArray);
+
+  Object.keys(film1CC).filter(x => {
+    if(Object.keys(film2CC).includes(x)){
+      ranking.push(film1CC[x]);
+    }
+  });
+
+
+  for (const num of ranking) {
+    counts[num] = counts[num] ? counts[num] + 1 : 1;
+  }
+
+
+  console.log("Displaying Data");
+  console.log(counts);
+  //window.location.href = "chart.html";
+  addData(counts);
+  film1CC = [];
+  film2CC = [];
+  firstdone = false;
   //document.getElementById("cloud").appendChild(document.createElement('img')).src = "https://quickchart.io/wordcloud?text=" + y + z;
 }
 

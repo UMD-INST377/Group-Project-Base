@@ -7,12 +7,12 @@ async function mainEvent() {
       'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
     }
   };
-  
+
   fetch('https://api-nba-v1.p.rapidapi.com/teams/statistics?id=41&season=2021', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
-  
+    .then((response) => response.json())
+    .then((response) => console.log(response))
+    .catch((err) => console.error(err));
+
   const arrayFromJson = await dataGet.json();
   const response_object = arrayFromJson.response;
   console.log(response_object);
@@ -48,18 +48,18 @@ const player_list = Array.from(team_players);
 const totalPlayers = player_list.length;
 
 function show_players_team() {
- team_players.classList.remove('player_hidden');
- team_players.classList.add('player_visible');
+  team_players.classList.remove('player_hidden');
+  team_players.classList.add('player_visible');
 }
 document.querySelector('.btn')
- .addEventListener('click',()=>{
-  console.log('clicked vissible for players');
-  console.log(team_players);
-  show_players_team();
- })
+  .addEventListener('click', () => {
+    console.log('clicked vissible for players');
+    console.log(team_players);
+    show_players_team();
+  });
 
 function ShowDiv() {
-  document.getElementById("myDiv").style.display = "";
+  document.getElementById('myDiv').style.display = '';
 }
 
-document.addEventListener('DOMContentLoaded',async () => mainEvent());
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -7,16 +7,12 @@ async function mainEvent() {
       'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
     }
   };
-  const dataGet = await fetch(
-    'https://api-nba-v1.p.rapidapi.com/players?team=41&season=2021',
-    options
-  );
-  const arrayFromJson = await dataGet.json();
-  const response_object = arrayFromJson.response;
-  console.log(response_object);
-  const chart1 = initChart();
-  console.log(chart1);
-  document.addEventListener('DOMContentLoaded', async () => mainEvent());
+  
+  fetch('https://api-nba-v1.p.rapidapi.com/teams/statistics?id=41&season=2021', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+  
 }
 
 function initChart() {

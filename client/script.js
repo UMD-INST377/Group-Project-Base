@@ -1,4 +1,16 @@
-
+function injectHTML(list) {
+  console.log('fired injectHTML');
+  const target = document.querySelector("#population_list");
+  target.innerHTML = ''; // null error
+  
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl); // cannot read properties of null
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item
+    listEl.appendChild(el);
+  });
+}
 
 function makeChart(x, y) {
   const ctx = document.getElementById('myChart');
@@ -43,6 +55,8 @@ function getPopulation(array) {
 
 
 async function mainEvent() {
+  const submit = document.querySelector('#get-years');
+  const form = document.querySelector('.main_form');
   const data = await fetch('https://datausa.io/api/data?drilldowns=Nation&measures=Population');
   const array_US = await data.json(); 
   console.log(array_US);
@@ -53,16 +67,21 @@ async function mainEvent() {
   if (array_US.data?.length > 0) {
    x_labels = getYear(array_US.data);
    populationData = getPopulation(array_US.data);
-  }
 
-  makeChart(x_labels, populationData);
+   curr_list = [];
+    for (let i = 0; i < x_labels.length; i++) {
+      curr_list[i] = String(x_labels[i]) + ": " + String(populationData[i])
+    }
+
+    submit.addEventListener('submit', (submitEvent) => {
+      console.log("here");
+      // This is needed to stop our page from changing to a new URL even though it heard a GET request
+      submitEvent.preventDefault(); 
+      
+    });
+    makeChart(x_labels, populationData);
+    injectHTML(curr_list);
+  }
 }
 
 mainEvent();
-
-An asynchronous data request to your API
-A processing request that uses array methods (.map, .filter, .find, .reduce) to change your data into the shape your chart, map, or other component needs for display
-*/
-
-* https://www.darkcode.info/2019/12/button-with-awesome-hover-effects-using.html
-*/

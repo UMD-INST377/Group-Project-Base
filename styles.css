@@ -331,8 +331,13 @@ form input {
   }
 }
 
+.chart_container{
+  width: 100%;
+  height: 100%;
+}
+
 #map {
-  display: block;
+  display: block; 
   width: 400px;
   height: 380px;
   border: 2px rgb(0, 0, 0);
@@ -381,10 +386,17 @@ form input {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #692e7a;}
+.dropdown:hover .dropbtn {
+  background-color: #692e7a;
+}
+

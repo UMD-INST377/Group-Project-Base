@@ -17,20 +17,21 @@
       <div>
         <ul class="navbar">
           <li class="nav"><a href="index.html">Map</a></li>
-          <li class="nav"><a href="property.html">Property Info</a></li>
+          <li class="nav on_page"><a href="property.html">Property Info</a></li>
           <li class="nav"><a href="about.html">About</a></li>
           <li class="nav"><a href="code.html">Source Code</a></li>
         </ul>
       </div>
       <form class="property_form">
         <label for="prop_info">Search For Property</label>
+        <label>(Format: Address, City, State ZipCode)</label>
         <div class="search_bar">
             <input type="text" name="prop_info" id="prop_info" />
             <button type="submit" class="submit_btn">Search</button>
         </div>
       </form>
       <div class="box" id="property_list">
-        Matching Properties with Existing Violations
+        Existing Violations for Searched Property
       </div>
     </div>
   </body>

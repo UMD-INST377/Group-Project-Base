@@ -1,28 +1,13 @@
-/*
-function injectHTML(list) {
-  console.log('fired injectHTML');
-  const target = document.querySelector('#restaurant_list');
-  target.innerHTML = '';
-
-  const listElement = document.createElement('ol');
-  target.appendChild(listElement);
-  list.forEach((item) => {
-    const newElement = document.createElement('li');
-    newElement.innerText = item.school;
-    listElement.appendChild(newElement);
-  });
-}
-*/
-
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
-  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin); // The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
+  // The maximum is inclusive and the minimum is inclusive
 }
 
 function processCameras(list) {
   console.log('speed cameras list');
-  const range = [...Array(20).keys()];
+  const range = [...Array(10).keys()];
   const indexList = [];
   const newArray = range.map((item) => {
     let index = getRandomIntInclusive(0, list.length - 1);
@@ -52,16 +37,16 @@ function markerPlace(array, map) {
   });
 
   array.forEach((item, index) => {
-    //console.log(item.location_1);
+    // console.log(item.location_1);
 
     const lat = item.location_1.latitude;
     const long = item.location_1.longitude;
 
-    //console.log(lat, long);
+    // console.log(lat, long);
 
     cameraMarker = L.marker([lat, long]).addTo(map);
 
-    //console.log('After', lat, long);
+    // console.log('After', lat, long);
 
     if (index === 0) {
       map.setView([lat, long], 10);
@@ -76,30 +61,15 @@ function markerPlace(array, map) {
   });
 }
 
-/* function clickedOn(array, map) {
-  array.forEach((item, index) => {
-    const lat = item.location_1.latitude;
-    const long = item.location_1.longitude;
-    const popup = L.popup().setLatLng([lat, long]).setContent('You Clicked me!').openOn(map);
-    L.marker([lat, long]).addTo(map);
-    if (index === 0) {
-      map.setView([lat, long], 10);
-      map.on('click', onMapClick);
-    }
-    alert(`You clicked the map at ${onMapClick.latlng}`);
-  });
-} */
-
-
 function filterList(array, filterInputValue) {
   return array.filter((item) => {
     if (!item.school) { return; }
     const lowerCaseSchool = item.school.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
+    // eslint-disable-next-line consistent-return
     return lowerCaseSchool.includes(lowerCaseQuery);
   });
 }
-
 
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
@@ -141,22 +111,18 @@ async function mainEvent() {
 
     let cameraList = [];
 
-    
     form.addEventListener('input', (event) => {
       console.log('input', event.target.value);
       const filteredList = filterList(cameraList, event.target.value);
       console.log(filteredList);
-      // injectHTML(filteredList);
       markerPlace(filteredList, pageMap);
     });
-    
 
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
       cameraList = processCameras(mapData);
       console.log(cameraList);
       markerPlace(cameraList, pageMap);
-      // clickedOn(cameraList, pageMap);
     });
 
     all.addEventListener('click', async (allEvent) => {
@@ -164,7 +130,6 @@ async function mainEvent() {
       cameraList = mapData;
       console.log(cameraList);
       markerPlace(cameraList, pageMap);
-      // clickedOn(cameraList, pageMap);
     });
   }
 }

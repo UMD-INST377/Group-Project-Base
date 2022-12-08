@@ -13,6 +13,11 @@ async function mainEvent() {
     .then(response => console.log(response))
     .catch(err => console.error(err));
   
+  const arrayFromJson = await dataGet.json();
+  const response_object = arrayFromJson.response;
+  console.log(response_object);
+  const chart1 = initChart();
+  console.log(chart1);
 }
 
 function initChart() {

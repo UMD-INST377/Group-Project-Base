@@ -17,6 +17,7 @@ function initMap() {
 }
 
 function markerPlace(array, map) {
+  console.log('markerPlace', array);
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
       layer.remove();
@@ -26,8 +27,8 @@ function markerPlace(array, map) {
   array.forEach((item, index) => {
     // const lat = item.latitude;
     // const lng = item.longitude;
-    const lat = new Number(latitude);
-    const lng = new Number(longitude);
+    const lat = new Number(item.latitude);
+    const lng = new Number(item.longitude);
     const newLatLng = L.latLng(lat, lng);
 
     L.marker(newLatLng).addTo(map);
@@ -88,12 +89,20 @@ function initChart(chart, object) {
 
 function processCrime(list) {
   console.log('fired processCrime');
-  const range = [...Array(100).keys()];
+  const range = [...Array(list.length).keys()];
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
     return list[index];
   });
   return newArray;
+}
+
+function filterList(array, filterInputValue) {
+  return array.filter((item) => {
+    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
 }
 
 function shapeDataForBarChart(array) {
@@ -139,6 +148,7 @@ async function mainEvent() {
   // submit.style.display = 'none';
 
   const arrayFromJson = await getData();
+  console.log(arrayFromJson);
   console.log(arrayFromJson[0]);
   const shapedData = shapeDataForBarChart(arrayFromJson);
   const myChart = initChart(chartTarget, shapedData);
@@ -153,8 +163,9 @@ async function mainEvent() {
 
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
-      currentList = processCrime(arrayFromJson.data);
-      console.log(currentList);
+      console.log(arrayFromJson.data);
+      currentList = processCrime(arrayFromJson);
+
       markerPlace(currentList, pageMap);
       changeChart();
     });

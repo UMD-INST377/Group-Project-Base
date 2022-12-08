@@ -12,9 +12,9 @@ async function getData(){
     const json = await data.json()
 }
 
-function filterData (json){
+/* function filterData (json){
 
     json.filter(item){
         item.
     }
-}
+} */

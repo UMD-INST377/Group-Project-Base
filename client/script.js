@@ -16,7 +16,6 @@ async function mainEvent() {
   const ftp = parseFloat(response_object[0].ftp);
   const tpp = parseFloat(response_object[0].tpp);
 
-
   function initChart() {
     const data = {
       labels: [
@@ -61,5 +60,7 @@ document.querySelector('.btn')
 function ShowDiv() {
   document.getElementById('myDiv').style.display = '';
 }
-
+function refresh() {
+  
+}
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

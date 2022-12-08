@@ -131,7 +131,7 @@ function radarChart(chart, object) {
 function initChartAvg(chart, tot2017, tot2018, tot2019, tot2020, tot2021, tot2022) {
   const ctx2 = document.getElementById('myChartAvg');
   return new Chart(ctx2, {
-    type: 'line',
+    type: 'bar',
     data: {
       labels: [
         '2017',
@@ -142,7 +142,7 @@ function initChartAvg(chart, tot2017, tot2018, tot2019, tot2020, tot2021, tot202
         '2022'
       ],
       datasets: [{
-        label: ['2017'],
+        label: 'Trend Of Crime',
         data: [tot2017, tot2018, tot2019, tot2020, tot2021, tot2022],
         backgroundColor: [
           'blue',
@@ -153,9 +153,26 @@ function initChartAvg(chart, tot2017, tot2018, tot2019, tot2020, tot2021, tot202
           'purple'
         ],
         hoverOffset: 50,
-        fill: true
+        fill: true,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1,
+        pointHoverBackgroundColor: 100
       }]
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: 'Crime Totals Over 5 Years',
+          padding: {
+            top: 10,
+            bottom: 30
+          },
+          color: 'white'
+        }
+      }
     }
+
   });
 }
 
@@ -220,6 +237,18 @@ function initChart(chart, object2017, object2018, object2019, object2020, object
       scales: {
         y: {
           beginAtZero: true
+        }
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: 'Crime Totals Over 5 Years',
+          padding: {
+            top: 10,
+            bottom: 30
+          },
+          color: 'white',
+          position: 'left'
         }
       }
     }

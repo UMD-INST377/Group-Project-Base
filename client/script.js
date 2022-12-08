@@ -164,7 +164,9 @@ async function mainEvent() {
   // console.log(movieData)
   myChart = initChart(ctx, movieData);
   // myChart = tvChart(ctx, tvData);
+
   document.getElementById('button').addEventListener('click', () => {
+
     console.log(current);
     if (current === 0) {
       current = 1;
@@ -176,6 +178,7 @@ async function mainEvent() {
       myChart = initChart(ctx, movieData);
     }
   });
+
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

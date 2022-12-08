@@ -77,6 +77,10 @@ body {
   margin: 0 auto;
 }
 
+#about_box{
+  width: 500px;
+}
+
 #static{
   width: 500px;
   height: 450px;
@@ -151,29 +155,13 @@ form label {
 }
 
 
-/* mobile stuff */
-@media only screen and (max-width: 736px) {
-  .container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .right_section,
-  .left_section,
-  .box {
-    width: 100%;
-    align-items: flex-start;
-  }
-}
-
 .logo--home {
     width: 450px;
     height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
-  }
+}
 
 /*CSS found on https://www.w3schools.com/howto/howto_css_dropdown.asp */
   .dropdown_button {
@@ -189,7 +177,7 @@ form label {
     border-color: #000000;
     border-radius: 12px;
     width: auto;
-  }
+}
   
   .dropdown_menu {
     position: absolute;
@@ -197,13 +185,13 @@ form label {
     right: 0px;
     display: inline-block;
     width: auto;
-  }
+}
   
   .dropdown_menu-content {
     display: none;
     position: absolute;
     background-color: #ffe5b4;
-    min-width: 160px;
+    /* min-width: 160px; */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     position: relative;
@@ -212,9 +200,9 @@ form label {
   
   .dropdown_menu-content a {
     color: black;
-    padding: 12px 16px;
     text-decoration: none;
     display: block;
+    padding: 12px 16px;
     font-weight: bold;
     font-family: "Fira Mono", monospace;
     font-size: 1rem;
@@ -234,3 +222,44 @@ form label {
     background-color: #f7c465;
     border: solid;
   }
+
+/* mobile stuff */
+@media only screen and (max-width: 736px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #static{
+    width: 100%;
+    width: fill-available;
+    height: fit-content;
+  }
+
+  #results{
+    width: 100%;
+    width: fill-available;
+  }
+
+  .logo--home{
+    width: 200px;
+  }
+
+  .dropdown_menu{
+
+  }
+
+  .dropdown_button{
+    padding: 10px;
+  }
+
+
+  #about_box{
+    width: auto;
+  }
+  .box {
+    width: 100%;
+    align-items: flex-start;
+  }
+}

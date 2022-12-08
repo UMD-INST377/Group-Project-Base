@@ -47,12 +47,12 @@ html {
   h2, h3 {
     margin:0;
     padding:0;
-    padding-bottom:1.5rem;
+    padding-bottom:2 rem;
     flex: 1;
   }
   
   form {
-    accent-color: hsla(120, 100%, 50%, 0.482);
+    accent-color: hsla(120, 65%, 70%, 0.482);
   }
 
 /* MAP STYLES */

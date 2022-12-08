@@ -1,6 +1,5 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# INST377 Final Project | Movie Database
+For the final project, we are developing a website that shows general information about tv shows. The website will provide different genres of tv shows. The potential genres are popular movies, crime, drama, and animation (the genres may change when developing the website). The website will also provide the ratings of each movie display. The project idea is feasible for a six-week time limit and it is a web-appropriate project. 
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+### GitHub Page
+https://mchang7489.github.io/INST377-Final-Project/client/index2.html

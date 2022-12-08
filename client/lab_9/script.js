@@ -138,28 +138,23 @@ function initChart(chart, dataObject) {
 function changeChart(chart, dataObject) {
   const relabel = Object.values(dataObject);
   const labels = shapeLabelsForBarChart(relabel);
-  console.log(dataObject);
-  // console.log(reLabel);
+
   const info = Object.keys(dataObject).map((item) => dataObject[item].length); // .length?
 
   chart.data.labels = labels;
   console.log(labels);
   chart.data.datasets.forEach((dataset) => {
-    dataset.data = info;
+    dataset.data.push(info);
   });
   chart.update();
-
-  // chart.data.labels = labels;
-  // chart.data.dataset.forEach((set) => { set.data = info; return set; });
-  // chart.update();
 }
 
 function shapeDataForBarChart(array) {
   return array.reduce((collection, item) => {
-    if (!collection[item.fg3m]) {
-      collection[item.fg3m] = [item];
+    if (!collection[item.reb]) {
+      collection[item.reb] = [item];
     } else {
-      collection[item.fg3m].push(item);
+      collection[item.reb].push(item);
     }
     // console.log(collection);
     return collection;
@@ -216,7 +211,7 @@ async function mainEvent() {
     console.log('input', event.target.value);
     const filteredList = filterList(currentList, event.target.value);
     injectHTML(filteredList);
-    const localData = shapeDataForBarChart(chartData.data);
+    const localData = shapeDataForBarChart(filteredList);
     // const localLabels = shapeLabelsForBarChart(chartData.data);
     changeChart(myChart, localData);
     // changeChart(myChart, localLabels);
@@ -231,7 +226,7 @@ async function mainEvent() {
     currentList = processPlayers(chartData.data);
     console.log(currentList);
     injectHTML(currentList);
-    const localData = shapeDataForBarChart(chartData.data);
+    const localData = shapeDataForBarChart(currentList);
     changeChart(myChart, localData);
   });
 }

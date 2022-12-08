@@ -5,7 +5,7 @@
     font-family: 'Poppins', Georgia;
 }
 :root{
-    --primary-color:#ffffff;
+    --primary-color:#F3FCF0;
     --secondary-color:#ffffff;
 }
 body{
@@ -13,6 +13,7 @@ body{
 }
 .header{
     background-color: var(--secondary-color);
+    color: #540D6E;
     height: 100px;
     width: 100%;
     display: flex;
@@ -57,11 +58,13 @@ padding: 1.5rem;
 }
 
 .left{
-  background-color: rgb(244, 204, 229);
+  background-color: #EE4266;
+  color: var(--primary-color);
 }
 
 .right{
-  background-color: rgb(239, 243, 168);
+  background-color: #FFD23F;
+  color: var(--primary-color);
 
 }
 
@@ -70,3 +73,18 @@ padding: 1.5rem;
   width: 90%;
 }
 
+main{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie {
+  width: 500px;
+  margin: 1rem;
+  border-radius: 3px;
+  box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-color);
+  position:relative;
+  overflow: hidden;
+}

@@ -1,4 +1,16 @@
-
+function injectHTML(list1, list2) {
+  console.log('fired injectHTML');
+  const target = document.querySelector("#population_list");
+  target.innerHTML = ''; // null error
+  
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl); // cannot read properties of null
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item.name;
+    listEl.appendChild(el);
+  });
+}
 
 function makeChart(x, y) {
   const ctx = document.getElementById('myChart');

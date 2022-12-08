@@ -279,12 +279,14 @@ function groupBy(objectArray, property) {
 }
 
 async function getdata() {
+  const limit = '&$limit=5';
   const url2017 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
 
   const data2017 = await fetch(url2017); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2017 = await data2017.json(); // the data isn't json until we access it using dot notation
 
   const reply2017 = json2017.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
+  console.log(reply2017);
 
   const url2018 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
 
@@ -347,32 +349,28 @@ async function mainEvent() {
               This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
               It's at about line 27 - go have a look and see what we're retrieving and sending back.
              */
-  const results2017 = await getdata()[0];
-  const arrayFromJson2017 = await results2017.json();
-  const results2018 = await getdata()[1];
-  const arrayFromJson2018 = await results2018.json();
-  const results2019 = await getdata()[2];
-  const arrayFromJson2019 = await results2019.json();
-  const results2020 = await getdata()[3];
-  const arrayFromJson2020 = await results2020.json();
-  const results2021 = await getdata()[4];
-  const arrayFromJson2021 = await results2021.json();
-  const results2022 = await getdata()[5];
-  const arrayFromJson2022 = await results2022.json();
+  const results = await getdata();
 
-  const chartData2017 = arrayFromJson2017.data;
-  const chartData2018 = arrayFromJson2018.data;
-  const chartData2019 = arrayFromJson2019.data;
-  const chartData2020 = arrayFromJson2020.data;
-  const chartData2021 = arrayFromJson2021.data;
-  const chartData2022 = arrayFromJson2022.data;
+  const arrayFromJson2017 = results[0];
+  const arrayFromJson2018 = results[1];
+  const arrayFromJson2019 = results[2];
+  const arrayFromJson2020 = results[3];
+  const arrayFromJson2021 = results[4];
+  const arrayFromJson2022 = results[5];
+
+  const chartData2017 = arrayFromJson2017;
+  const chartData2018 = arrayFromJson2018;
+  const chartData2019 = arrayFromJson2019;
+  const chartData2020 = arrayFromJson2020;
+  const chartData2021 = arrayFromJson2021;
+  const chartData2022 = arrayFromJson2022;
   // Average 2017-2019 vs 2020-2022
-  const total2017 = arrayFromJson2017.data.length;
-  const total2018 = arrayFromJson2018.data.length;
-  const total2019 = arrayFromJson2019.data.length;
-  const total2020 = arrayFromJson2020.data.length;
-  const total2021 = arrayFromJson2021.data.length;
-  const total2022 = arrayFromJson2022.data.length;
+  const total2017 = arrayFromJson2017.length;
+  const total2018 = arrayFromJson2018.length;
+  const total2019 = arrayFromJson2019.length;
+  const total2020 = arrayFromJson2020.length;
+  const total2021 = arrayFromJson2021.length;
+  const total2022 = arrayFromJson2022.length;
 
   /* const avgPreCovid = (total2017 + total2018 + total2019) / 3;
   const avgPostCovid = (total2020 + total2021 + total2022) / 3;
@@ -411,7 +409,7 @@ async function mainEvent() {
   console.log(arrayFromJson2022.data[0]); */
 
   // this is called "string interpolation" and is how we build large text blocks with variables
-  console.log(`${arrayFromJson2017.data[0].date.slice(0, 10)} ${arrayFromJson2017.data[0].clearance_code_inc_type}`);
+  console.log(`${arrayFromJson2017[0].date.slice(0, 10)} ${arrayFromJson2017[0].clearance_code_inc_type}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (arrayFromJson2017.data?.length > 0) { // the question mark in this means "if this is set at all"

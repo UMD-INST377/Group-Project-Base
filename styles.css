@@ -51,6 +51,8 @@
     8px -8px 1px lightgrey,
     9px -9px 1px lightgrey,
     10px -10px 1px lightgrey;
+    background:
+      linear-gradient(lightgrey, lightgrey, lightgrey);
   }
   
   a {
@@ -58,10 +60,7 @@
     text-decoration: none;
   }
 
-  h1 {
-    background-color: #ff8800;
-    color: white;
-  }
+
   
   h2, h3 {
     margin:0;
@@ -111,12 +110,12 @@
     Those rules won't apply to an h1 that's outside a block with the class of 'header'
   */
   
-  .header h1 {
+  h1 {
     display: block;
     /* this will push other blocks out of the way */
   
     /* colors */
-    background-color: #ea912c;
+    color: rgb(255, 166, 0);
   
     /* shapes */
     border-radius: 6px;

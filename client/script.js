@@ -7,8 +7,7 @@ form.addEventListener('submit', (e) => {
 })
 
 async function getData(){
-    // const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=financialData`
-    const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/aapl?modules=financialData`
+    url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=financialData`
     const data = await fetch (url)
     const json = await data.json()
     console.log(json);
@@ -20,7 +19,7 @@ async function mainEvent(){
     console.log(test);
 }
 
-document.addEventListener('DOMContentLoaded', async () => mainEvent());
+// document.addEventListener('DOMContentLoaded', async () => mainEvent());
 
 
 /* function filterData (json){

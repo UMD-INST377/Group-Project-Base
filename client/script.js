@@ -70,7 +70,7 @@ function ShowDiv() {
 function redirection() {
 
 }
-function imageClicked() {
+function imageClickedWizard() {
   window.location = 'wizard_stats.html';
   return window;
 }
@@ -78,4 +78,19 @@ function ImageClickedHawks() {
   window.location = 'hawks_stats.html';
   return window;
 }
+
+function ImageClickedHawks() {
+    window.location = 'hawks_stats.html';
+    return window;
+  }
+
+  function ImageClickedMagic(){
+    window.location = 'magic_stats.html';
+    return window;
+  }
+
+  function ImageClickedHawks() {
+    window.location = 'hawks_stats.html';
+    return window;
+  }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

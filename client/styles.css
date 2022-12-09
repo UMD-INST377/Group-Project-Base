@@ -43,6 +43,7 @@
     margin:0;
     padding:0;
     padding-bottom:1.5rem;
+    color:#ffffff
   }
   
   form {
@@ -93,7 +94,7 @@
     /* this will push other blocks out of the way */
   
     /* colors */
-    background-color: #360b53f2;
+    background-color: #36194b;
     color: #ffffff;
   
     /* shapes */
@@ -154,13 +155,14 @@
   .footer {
     flex-shrink: 0;
     padding: 1rem;
-    background-color: rgb(130, 9, 9);
+    background-color:#36194b;
     font-size: 1.2rem;
     font-weight: 600;
+    color:#ffffff
   }
   
   .footer a {
-    color: rgb(255, 242, 0);
+    color: #007bff;
     text-decoration: underline;
   }
   
@@ -173,7 +175,7 @@
     /* Hue, saturation, luminosity, alpha */
     background-color: hsla(0, 0%, 90%, 0.15);
     /* red, green, blue, alpha */
-    color: rgb(246, 169, 93);
+    color: #007bff;
     text-decoration: none;
   }
   
@@ -324,7 +326,7 @@
       New code bonus: pure CSS data loading icon
       This comes from loading.io/css - it's nice to show that something is happening!
   */
-/*   
+  
   .lds-ellipsis {
       display: inline-block;
       position: relative;
@@ -383,6 +385,6 @@
       }
       100% {
         transform: translate(24px, 0);
-      } */
+      }
     }
     

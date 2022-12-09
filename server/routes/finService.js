@@ -30,7 +30,7 @@ function callyear(year) {
 router.route('/') 
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json?$limit=100000';
+      const url = callyear();
       const data = await fetch(url);
       const json = await data.json();
       console.log('length',json.length);

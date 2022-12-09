@@ -57,6 +57,8 @@ router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServ
       const json = await request.json();
       console.log(json);
 
+      
+      //filter lab 11//
       const filteredList = json.filter((item, index) => {
         const {zipCode} = req.params;
         return item.zip === zipCode;

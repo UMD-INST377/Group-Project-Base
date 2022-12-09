@@ -68,10 +68,12 @@ function getRandomIntInclusive(min, max){
     });
 
     array.forEach((item, index) => {
-      const [latitude, longitude] = item.location_1;
+      //const [latitude, longitude] = item.location_1;
+      const latitude = item.location_1.latitude;
+      const longitude = item.location_1.longitude;
       const numLat = parseFloat(latitude);
       const numLng = parseFloat(longitude);
-      L.marker([numLat, numLng].addTo(map));
+      L.marker([numLat, numLng]).addTo(map);
 
       if(index === 0){
         map.setView([numLat, numLng], 10.5);

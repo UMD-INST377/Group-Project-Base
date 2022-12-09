@@ -1,5 +1,5 @@
 /* Data Request to API */
-token = "BQBJqQwiFnPvr0_9EIZucy6QqL5hAN9TTZo3jNCfR9kLPGCFCOfljYMiDr6RrOVqzao2jH-XfaHaXXBl77FQX_fL1cjMQpe6otbzYRLhNZ_ZsnV8EfrDxAHls97I96cjlPPSjXLJd_UEBZlosk0-AvIorC1Fhg2MDUOz94xkLj1NhopR_KrUnqd1unoVMUJtNXvvq30i0FZRe52BmZB4y41L96y45DGTBp3p-85fvyFVvtzq32Za"
+token = "BQDh4RD541vJuz8rvPSBmIHo_ZtQFBSZGa36SkdFYqxfOjk1T8BfYgKso1LrnW1QWe1T5ye-rDzyxnRoZaggRbMcNp-hLZUfEsZ3QY6Ocyinyk9qXyLJDFNKYtPahfFph3NS8U3DpuenQYNpJl3X37rQW6vAVR037v_nlQ7qGWwIy7p3POTItEQWutPLRvTDR3YrfYD2wDfXYcAuq08bsemWFGq_tCLY-gA4CcIZkd9FW6UXJr8c"
 term = "long_term";
 artist_ids = "39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V";
 album_id = "0TnOYISbd1XYRBk9myaseg";
@@ -21,6 +21,23 @@ console.log(token);
 }
 getShowcategory(album_id,token)*/
 
+function injectHTML(list) {
+  console.log(list)
+  console.log('fired injectHTML');
+  const target = document.querySelector('#loadfilter');
+  target.innerHTML = '';
+
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item.name;
+    listEl.appendChild(el);
+  });
+
+  
+}
+
 const data_format = (track, location) => {
   let { name, release_date, total_tracks } = track;
   const newLine = `
@@ -32,6 +49,19 @@ const data_format = (track, location) => {
   content.innerHTML = newLine;
   location.appendChild(content);
 };
+
+
+
+
+
+function filterList(array, filterInputValue) {
+  return array.filter((item) => {
+    if (!item.name) { return; }
+    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
+}
 
 const initChart = (chart,chartData) => {
    //Gather items for names
@@ -64,8 +94,8 @@ const initChart = (chart,chartData) => {
 };
 
 function addData(chart, label, data) {
-  console.log(label)
-  console.log(data)
+  /*console.log(label)
+  console.log(data)*/
   console.log(chart)
   chart.data.labels = label; /*set up as an array chart.data.labels*/ 
   chart.data.datasets.forEach((dataset) => {
@@ -82,8 +112,21 @@ function removeData(chart) {
   chart.update();
 }
 
+/*function shapeDataforBarChart(array) {
+  console.log(array)
+  return array.reduce((collection,item)=>{
+    if (!collection[data.category]){
+      collection[data.category]=[item];
+    } else {
+      collection[item.category].push(item);
+    }
+    return collection;
+  }, {});
+
+}*/
 
 async function mainEvent() {
+
   const data_list = document.querySelector("#data");
   const submit = document.querySelector("#load_button_2");
   const graph_submit = document.querySelector("#graph_load_2")
@@ -91,6 +134,12 @@ async function mainEvent() {
   const chart_target = document.querySelector("#myChart")
   const laodAnimation = document.querySelector('.lds-ellipsis')
   graph_submit.style.display='none';
+
+  // These queryselectors are for the filtering
+  const mainFilterform = document.querySelector(".filter-form")
+  /*const filterid = document.querySelector("#mySearch")*/
+  const filterButton = document.querySelector("#loadfilter")
+  /*const filterBox= document.querySelector("#data2")*/
 
   const results = await fetch(
     `https://umd-spotify-backend.herokuapp.com/artist_albums?access_token=${token}&id=${album_id}`
@@ -107,7 +156,7 @@ async function mainEvent() {
     const { name, total_tracks } = item
     total_result.name_result.push(name)
     total_result.track_results.push(total_tracks)
-    });
+  });
 
   const mychart = initChart(chart_target, total_result)
 
@@ -131,12 +180,30 @@ async function mainEvent() {
     /*chart_target.innerHTML="";*/
     addData(mychart, total_result.name_result, total_result.track_results)
     removeData(mychart)
-
-
+    /*injectHTML(arrayFromJson)*/
+    /*shapeDataforBarChart(arrayFromJson)*/
     /*const filtered = 
     const data = total_results.label.filter*/
   });
+
+//Used in tehe filter box
+  let currentList = []
+  mainFilterform.addEventListener('input', (event) => {
+    console.log(event.target.value);
+    const filteredList = filterList(currentList, event.target.value);
+    injectHTML(filteredList)
+    /*data_format(filteredList)*/
+    /*markerPlace(filteredList, pageMap);*/
+  });
+
+  mainFilterform.addEventListener('submit', (submitEvent) => {
+    submitEvent.preventDefault();
+    currentList = arrayFromJson.data;
+    console.log(currentList);
+    injectHTML(currentList);
+  })
+
 }
 
-document.addEventListener("DOMContentLoaded", async () => mainEvent());
 
+document.addEventListener("DOMContentLoaded", async () => mainEvent());

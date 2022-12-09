@@ -233,3 +233,16 @@ height: 100px;
   width: fit-content;
   align-items: center;
 }
+
+.box3 {
+  flex:1;
+  height: fit-content;
+  width: fit-content;
+  align-items: center;
+}
+.box4 {
+  flex:1;
+  height: fit-content;
+  width: fit-content;
+  align-items: center;
+}

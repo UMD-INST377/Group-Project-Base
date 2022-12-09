@@ -96,7 +96,7 @@ async function mainEvent() {
   const pageMap = initMap();
 
   const form = document.querySelector('.main_form'); 
-  const submit = document.querySelector('#get-resto'); 
+  const submit = document.querySelector('#get-info'); 
   const loadAnimation = document.querySelector('.lds-ellipsis');
   submit.style.display = 'none'; 
 

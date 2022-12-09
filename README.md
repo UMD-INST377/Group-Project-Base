@@ -4,8 +4,12 @@ Link to GitHub Pages: https://jphart98.github.io/Team-11-103-Group-Project-Base/
 # Title: Failed House Inspections in PG County
 
 # Targeted Browsers:
+- Google Chrome v.s 108.0.5359
+- Microsoft Edge v.s 106.0. 1370
+- Mozilla Firefox v.s 107.0.1
+- Safari v.s 5.1.7
 
-The targeted browsers are for all smartphone users on any IOS and Android version.
+This webpage is assesible to desktop and mobile users.
 
 # Description of the Project:
 

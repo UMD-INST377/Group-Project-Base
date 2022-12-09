@@ -6,7 +6,7 @@ import foodService from './foodService.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Here is Movie API!');
+  res.send('Here is TV shows API!');
 });
 
 // Generic API inclusion demonstration

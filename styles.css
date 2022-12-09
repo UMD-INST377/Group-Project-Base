@@ -54,7 +54,13 @@
     background:
       linear-gradient(lightgrey, lightgrey, lightgrey);
   }
-  
+
+  #myChart.bar {
+    height: 200px;
+    max-width: 300px;
+    margin: 0 auto;
+    }
+
   a {
     display: inline-block;
     text-decoration: none;

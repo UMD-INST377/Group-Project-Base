@@ -2,7 +2,6 @@
   ## Utility Functions
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 */
-test  
 async function getData(){
   const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
   const data = await fetch(url);

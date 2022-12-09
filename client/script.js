@@ -1,16 +1,5 @@
 /* eslint-disable max-len */
 
-/*
-  Hook this script to index.html
-  by adding `<script src="script.js">` just before your closing `</body>` tag
-*/
-
-/*
-  ## Utility Functions
-    Under this comment place any utility functions you need - like an inclusive random number selector
-    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-*/
-
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -106,28 +95,31 @@ function markerPlace(array, map) {
     }
   });
 }
+async function getData() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json'; // remote URL! you can test it in your browser
+  const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
+  const json = await data.json(); // the data isn't json until we access it using dot notation
+
+  const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+  return reply;
+}
 
 async function mainEvent() {
-  /*
-        ## Main Event
-          Separating your main programming from your side functions will help you organize your thoughts
-          When you're not working in a heavily-commented "learning" file, this also is more legible
-          If you separate your work, when one piece is complete, you can save it and trust it
-      */
   const pageMap = initMap();
-  // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
   submit.style.display = 'none'; // let your submit button disappear
+
+
 
   /*
         Let's get some data from the API - it will take a second or two to load
         This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
         It's at about line 27 - go have a look and see what we're retrieving and sending back.
        */
-  const results = await fetch('/api/foodServicePG');
-  const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
+  //   const results = await fetch('/api/foodServicePG');
+//   const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
 
   /*
         Below this comment, we log out a table of all the results using "dot notation"

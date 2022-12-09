@@ -1,4 +1,4 @@
-<html lang="en">
+<html style="background-image: url('img_girl.jpg');" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -20,20 +20,29 @@
     <title>Crypto App</title>
   </head>
 
-  <body>
+  <body class="backg_image">
+    
     <div class="Wrapper">
+
+      <style>
+        p {
+          background-image: src="images/fancy-pants.jpeg";
+        }
+        </style>
+
       <!-- title / top center -->
-      <header class="header">
-        <iframe
+      <header class="banner">
+        <iframe class="justify-start"
           height="112"
           fetch
           src="https://giphy.com/embed/FlJ76bXyXwgWjOJkeJ/video"
           width="200"
         ></iframe>
-        <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
+        <h1 class="font-effect-anaglyph selected">Crypto Viewer</h1>
+        <button>Matrix</button>
+
       </header>
 
-      <!-- buttons and bar / top center -->
       <div class="bar">
         <button class="bouncy font-effect-anaglyph" id="saved">Saved</button>
         <button class="bouncy font-effect-anaglyph" id="trends">Trends</button>
@@ -43,6 +52,8 @@
           <input type="text" placeholder="Search...." id="search_api"></input>
         </div>
       </div>
+
+      <!-- buttons and bar / top center -->
 
       <!-- Contains Trending Crypto and Market Cap visualizations -->
       <div class="level1">
@@ -61,6 +72,7 @@
             <div id="price-percentage-falling-table"></div>
           </div>
         </div>
+
       </div>
 
       <!-- 2. Market Cap / Buttom -->

@@ -1,5 +1,5 @@
 /* Data Request to API */
-token = "BQBKe21DUghMdZ3_P_HFTWfRKEmAMF_ydyRrOTJzlsUDn8N8BFVux8xlft4qx4z2ftsuS-ZpnV1zNgHIQrbVKmcONMsEtdghNZjuYDLIO-_lZewbwmMo9cDDviAV0cYmvadqSOREGQdgJpg3bKQKDZ8y6d6RbaYjj2z-1clJS5EIOVDSqgZqG1MkZ2qXHNbVeRgOM8SOtN0UxHP7JgCM05o-LFbmXBCSrTg3Zcm5sPNAPUEfWr_U"
+token = "BQBJqQwiFnPvr0_9EIZucy6QqL5hAN9TTZo3jNCfR9kLPGCFCOfljYMiDr6RrOVqzao2jH-XfaHaXXBl77FQX_fL1cjMQpe6otbzYRLhNZ_ZsnV8EfrDxAHls97I96cjlPPSjXLJd_UEBZlosk0-AvIorC1Fhg2MDUOz94xkLj1NhopR_KrUnqd1unoVMUJtNXvvq30i0FZRe52BmZB4y41L96y45DGTBp3p-85fvyFVvtzq32Za"
 term = "long_term";
 artist_ids = "39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V";
 album_id = "0TnOYISbd1XYRBk9myaseg";
@@ -63,6 +63,26 @@ const initChart = (chart,chartData) => {
   return new Chart(chart, config);
 };
 
+function addData(chart, label, data) {
+  console.log(label)
+  console.log(data)
+  console.log(chart)
+  chart.data.labels = label; /*set up as an array chart.data.labels*/ 
+  chart.data.datasets.forEach((dataset) => {
+      dataset.data = data;
+  });
+  chart.update();
+}
+
+function removeData(chart) {
+  chart.data.labels.pop();
+  chart.data.datasets.forEach((dataset) => {
+      dataset.data.pop();
+  });
+  chart.update();
+}
+
+
 async function mainEvent() {
   const data_list = document.querySelector("#data");
   const submit = document.querySelector("#load_button_2");
@@ -78,6 +98,18 @@ async function mainEvent() {
   const arrayFromJson = await results.json();
   //console.log(arrayFromJson)
 
+  let total_result = {
+    name_result:[],
+    track_results:[]
+  }
+  
+  arrayFromJson["items"].forEach((item) => {        
+    const { name, total_tracks } = item
+    total_result.name_result.push(name)
+    total_result.track_results.push(total_tracks)
+    });
+
+  const mychart = initChart(chart_target, total_result)
 
   submit.addEventListener("click", async (submitEvent) => {
     submitEvent.preventDefault();
@@ -85,30 +117,26 @@ async function mainEvent() {
     arrayFromJson["items"].forEach((item) => {
       //console.log(item)
       data_format(item,data_list)
+
     });
   });
 
-  if (!arrayFromJson.items?.length === 0){ return ;}
-  graph_submit.style.display = 'block'
+  if (!arrayFromJson.items?.length === 0){return;}
+  graph_submit.style.display = 'block';
   laodAnimation.classList.remove('lds-ellipsis');
-  laodAnimation.classList.add('lds-ellipsis_hidden');
-  
+  laodAnimation.classList.add('lds-ellipsis_hidden')
+
   graph_submit.addEventListener("click", async (submitEvent) => {
     submitEvent.preventDefault();
-    chart_target.innerHTML="";
-    let total_result = {
-      name_result:[],
-      track_results:[]
-    }
-    
-    arrayFromJson["items"].forEach((item) => {        
-      const { name, total_tracks } = item
-      total_result.name_result.push(name)
-      total_result.track_results.push(total_tracks)
-      });
-      initChart(chart_target, total_result)
+    /*chart_target.innerHTML="";*/
+    addData(mychart, total_result.name_result, total_result.track_results)
+    removeData(mychart)
+
+
+    /*const filtered = 
+    const data = total_results.label.filter*/
   });
-  
 }
+
 document.addEventListener("DOMContentLoaded", async () => mainEvent());
 

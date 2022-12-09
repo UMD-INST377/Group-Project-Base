@@ -15,17 +15,17 @@ async function mainEvent() {
       'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
     }
   };
-  const dataGet1 = await fetch('https://api-nba-v1.p.rapidapi.com/teams/statistics?id=2&season=2021', options1);
+  const dataGet1 = await fetch('https://api-nba-v1.p.rapidapi.com/teams/statistics?id=1&season=2021', options1);
 
   // wizards data
   const arrayFromJson = await dataGet.json();
   const response_object = arrayFromJson.response;
-  // celtics data
+  // hawks data
   const arrayFromJson2 = await dataGet1.json();
   const response_object1 = arrayFromJson2.response;
   // loaded the wizards data and it shows on console
   console.log(response_object[0]);
-  // loaded the celtics data and it shows on console
+  // loaded the hawks data and it shows on console
   console.log(response_object1[0]);
 
   // changing the wizards data that are strings into float
@@ -33,7 +33,7 @@ async function mainEvent() {
   const ftp = parseFloat(response_object[0].ftp);
   const tpp = parseFloat(response_object[0].tpp);
 
-  // changing the celtics data that are strings into float
+  // changing the hawks data that are strings into float
   const fgp1 = parseFloat(response_object1[0].fgp);
   const ftp1 = parseFloat(response_object1[0].ftp);
   const tpp1 = parseFloat(response_object1[0].tpp);

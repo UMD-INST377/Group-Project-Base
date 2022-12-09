@@ -8,7 +8,10 @@ form.addEventListener('submit', (e) => {
 
 async function getData(){
     url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/tsla?modules=financialData`
-    const data = await fetch (url)
+    const data = await get(url,headers={
+
+        'User-Agent': 'My User Agent 1.0'
+        })
     const json = await data.json()
     console.log(json);
     return json;

@@ -1,5 +1,5 @@
 /* Data Request to API */
-token = "BQDh4RD541vJuz8rvPSBmIHo_ZtQFBSZGa36SkdFYqxfOjk1T8BfYgKso1LrnW1QWe1T5ye-rDzyxnRoZaggRbMcNp-hLZUfEsZ3QY6Ocyinyk9qXyLJDFNKYtPahfFph3NS8U3DpuenQYNpJl3X37rQW6vAVR037v_nlQ7qGWwIy7p3POTItEQWutPLRvTDR3YrfYD2wDfXYcAuq08bsemWFGq_tCLY-gA4CcIZkd9FW6UXJr8c"
+token = "BQDC4le4HB7R2A3ejW7G5kyABxVvmeYXc7-BW6CIzOY1XDzNyrqtQEARU4XwpfEaJ7e2StywJHnBbZTbvpkL_hZcmQ7NEDFGO7QUg6r9cBjgJQihZ_0JV3KvTVo6zWjOXKNFg6EVkBBaaUXYgln3CLz99dR5CzMHeG7J_aSlx6bkM7c-XXXC_r5od9MoA8M_es32ocwI7EcDbKnMNApSCF84ztIaYHuC9pIwrIvGbUaCl7qdK6US"
 term = "long_term";
 artist_ids = "39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V";
 album_id = "0TnOYISbd1XYRBk9myaseg";
@@ -21,10 +21,16 @@ console.log(token);
 }
 getShowcategory(album_id,token)*/
 
+function getRandomIntInclusive(min, max) {
+  const newMin = Math.ceil(min);
+  const newMax = Math.floor(max);
+  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin); // The maximum is inclusive and the minimum is inclusive
+}
+
 function injectHTML(list) {
   console.log(list)
   console.log('fired injectHTML');
-  const target = document.querySelector('#loadfilter');
+  const target = document.querySelector('#data2');
   target.innerHTML = '';
 
   const listEl = document.createElement('ol');
@@ -34,9 +40,28 @@ function injectHTML(list) {
     el.innerText = item.name;
     listEl.appendChild(el);
   });
-
-  
 }
+
+function processAlbums(list) {
+  console.log('fired restaurants list');
+  const range = [...Array(25).keys()];
+  const newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length);
+    return list[index];
+  });
+  return newArray;
+}
+
+function filterList(array, filterInputValue) {
+  return array.filter((item) => {
+    if (!item.name) { return; }
+    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
+}
+
+
 
 const data_format = (track, location) => {
   let { name, release_date, total_tracks } = track;
@@ -49,9 +74,6 @@ const data_format = (track, location) => {
   content.innerHTML = newLine;
   location.appendChild(content);
 };
-
-
-
 
 
 function filterList(array, filterInputValue) {
@@ -186,22 +208,39 @@ async function mainEvent() {
     const data = total_results.label.filter*/
   });
 
-//Used in tehe filter box
-  let currentList = []
-  mainFilterform.addEventListener('input', (event) => {
-    console.log(event.target.value);
-    const filteredList = filterList(currentList, event.target.value);
-    injectHTML(filteredList)
-    /*data_format(filteredList)*/
-    /*markerPlace(filteredList, pageMap);*/
+//FOR THE FILTER PORTION LAB 11
+currentList = []
+mainFilterform.addEventListener('input',(event)=>{
+  console.log(event.target.value)
+  const filteredList = filterList(currentList, event.target.value);
+  
+
+  const variable_names = []
+  const track_numbers = []
+  total_results.name_result.forEach((item) => {
+    if (event.target.value.includes(item)){
+      
+    }
+
+
+  })
+    
+
+
+  injectHTML(filteredList);
+  addData(mychart, total_result.name_result, total_result.track_results)
+  removeData(mychart)
+    });
+
+mainFilterform.addEventListener('submit', (submitEvent) => {
+    submitEvent.preventDefault();
+    currentList = (arrayFromJson.items);
+    injectHTML(currentList);
+    addData(mychart, total_result.name_result, total_result.track_results)
+    removeData(mychart)
+
   });
 
-  mainFilterform.addEventListener('submit', (submitEvent) => {
-    submitEvent.preventDefault();
-    currentList = arrayFromJson.data;
-    console.log(currentList);
-    injectHTML(currentList);
-  })
 
 }
 

@@ -108,7 +108,7 @@ h2, h3 {
   flex-direction: column;
 }
 
-.right_bottom_section {
+.chart_container {
   border: none;
   flex: 1 2 auto;
   margin: 1rem;

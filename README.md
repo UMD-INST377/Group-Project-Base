@@ -33,7 +33,6 @@ OWL: https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_co
 
 Within our project, a JS library that we used throughout our project was Leaflet. Leaflet is a open-source library using which we used to simply deploy lightweight web maps of Prince George's County. We centered it around Collge Park based on our latitude and longitude coordinates however once you look up the violation code, the map changes and shows you places all around Prince George's County.
 
-# CSS Frameworks: Version
 
 # What we wanted to Solve:
 

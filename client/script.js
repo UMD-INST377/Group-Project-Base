@@ -19,7 +19,7 @@ function getRandomIntInclusive(min, max) {
 function injectHTML(list) {
   console.log('fired injectHTML');
 
-  const target = document.querySelector('#restaurant_list');
+  const target = document.querySelector('#crime_list');
   target.innerHTML = '';
 
   const listEl = document.createElement('ol');
@@ -64,20 +64,19 @@ function filterList(array, filterInputValue) {
     return str.includes(lowerCaseQuery);
   });
 }
-
 function initMap() {
   console.log('initMap');
-  const map = L.map('map').setView([38.9897, -76.9378], 12);
+  const map = L.map('map').setView([38.7849, -76.87], 10);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 15,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
   return map;
 }
 
 function makerPlace(array, map) {
-  console.log('markerPlace', array);
-  const marker = L.marker([51.5, -0.09]).addTo(map);
+  console.log('markerPlace lol', array);
+  // const marker = L.marker([51.5, -0.09]).addTo(map);
 
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
@@ -85,10 +84,10 @@ function makerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    const { coordinates } = item.geocoded_column_1;
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+    console.log('hello', item.location.latitude);
+    L.marker([item.location.latitude, item.location.longitude]).addTo(map);
     if (index === 0) {
-      map.setView([coordinates[1], coordinates[0]]);
+      map.setView([item.location.latitude, item.location.longitude]);
     }
   });
 }
@@ -145,12 +144,12 @@ function initChartAvg(chart, tot2017, tot2018, tot2019, tot2020, tot2021, tot202
         label: 'Trend Of Crime',
         data: [tot2017, tot2018, tot2019, tot2020, tot2021, tot2022],
         backgroundColor: [
-          'blue',
-          'red',
+          '#74b2bfcc',
           'grey',
-          'green',
-          'orange',
-          'purple'
+          '#5d475acc',
+          '#d86e30cc',
+          '#425949cc',
+          '#e4b94fcc'
         ],
         hoverOffset: 50,
         fill: true,
@@ -279,8 +278,9 @@ function groupBy(objectArray, property) {
 }
 
 async function getdata() {
-  const limit = '&$limit=100000000';
-  const url2017 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}`;
+  const app_token = '&$$app_token=84LR83Ksyc2P3O19GyzXILSkd';
+  const limit = '&$limit=500000';
+  const url2017 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}${app_token}`;
 
   const data2017 = await fetch(url2017); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2017 = await data2017.json(); // the data isn't json until we access it using dot notation
@@ -288,35 +288,35 @@ async function getdata() {
   const reply2017 = json2017.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
   console.log(reply2017);
 
-  const url2018 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2018-01-01' and '2018-12-31'${limit}`;
+  const url2018 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2018-01-01' and '2018-12-31'${limit}${app_token}`;
 
   const data2018 = await fetch(url2018); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2018 = await data2018.json(); // the data isn't json until we access it using dot notation
 
   const reply2018 = json2018.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
 
-  const url2019 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2019-01-01' and '2019-12-31'${limit}`;
+  const url2019 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2019-01-01' and '2019-12-31'${limit}${app_token}`;
 
   const data2019 = await fetch(url2019); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2019 = await data2019.json(); // the data isn't json until we access it using dot notation
 
   const reply2019 = json2019.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
 
-  const url2020 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2020-01-01' and '2020-12-31'${limit}`;
+  const url2020 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2020-01-01' and '2020-12-31'${limit}${app_token}`;
 
   const data2020 = await fetch(url2020); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2020 = await data2020.json(); // the data isn't json until we access it using dot notation
 
   const reply2020 = json2020.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
 
-  const url2021 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2021-01-01' and '2021-12-31'${limit}`;
+  const url2021 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2021-01-01' and '2021-12-31'${limit}${app_token}`;
 
   const data2021 = await fetch(url2021); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2021 = await data2021.json(); // the data isn't json until we access it using dot notation
 
   const reply2021 = json2021.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
 
-  const url2022 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2022-01-01' and '2022-12-31'${limit}`;
+  const url2022 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2022-01-01' and '2022-12-31'${limit}${app_token}`;
 
   const data2022 = await fetch(url2022); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2022 = await data2022.json(); // the data isn't json until we access it using dot notation
@@ -327,6 +327,10 @@ async function getdata() {
 }
 
 async function mainEvent() {
+  const pageMap = initMap();
+  setInterval(() => {
+    pageMap.invalidateSize();
+  }, 100);
   /*
               ## Main Event
                 Separating your main programming from your side functions will help you organize your thoughts
@@ -335,20 +339,134 @@ async function mainEvent() {
             */
 
   // the async keyword means we can make API requests
-  // const pageMap = initMap();
+
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get-resto');
   const chartTarget = document.querySelector('#myChart');
   const charAvg = document.querySelector('#myChartAvg');
-  // get a reference to your submit button
-  // const loadAnimation = document.querySelector('.lds-ellipsis');
-  // submit.style.display = 'visible'; // let your submit button disappear
+  const reloadtButton = document.querySelector('#reload');
+  const tabs = document.querySelectorAll('[data-tab-target]');
+
+  /* eslint-disable max-len */
+  /*
+  Welcome to Javascript!
+
+  This file contains parts of a simple script to make your carousel work.
+  Please feel free to edit away - the main version of this with all the notes is safely stored elsewhere
+*/
+  /* eslint-enable max-len */
+  // set our first slide's position to "0", the opening position in an array
+  let slidePosition = 0;
+
+  // gather a reference to every slide we're using via the class name and querySelectorAll
+  const slides = document.querySelectorAll('.carousel_item');
+
+  // change that "NodeList" into a Javascript "array", to get access to "array methods"
+  const slidesArray = Array.from(slides);
+
+  // Figure out how many slides we have available
+  const totalSlides = slidesArray.length;
+
+  function updateSlidePosition() {
+    slidesArray.forEach((slide) => {
+      slide.classList.remove('visible');
+      slide.classList.add('hidden');
+    });
+    console.log(slidePosition);
+    slides[slidePosition].classList.add('visible');
+  }
+
+  function moveToNextSlide() {
+    if (slidePosition === totalSlides - 1) {
+      slidePosition = 0;
+    } else {
+      slidePosition += 1;
+    }
+    /*
+    add an if statement here that checks
+    if you're already at the max number of slides
+    and if so, sets your slidePosition to the first index of an array
+    if not, set the slidePosition to the current position plus one
+  */
+    updateSlidePosition(); // this is how you call a function within a function
+  }
+  function moveToPrevSlide() {
+    if (slidePosition === 0) {
+      slidePosition = totalSlides - 1;
+    } else {
+      slidePosition -= 1;
+    }
+
+    // add your code in here for when you click the "prev" button
+    /*
+    add an if statement here that checks
+    if you're already at the first index position for an array
+    and if so, sets your slidePosition to the last slide position in totalSlides
+    if not, set the slidePosition to the current position minus one
+  */
+    updateSlidePosition();
+  }
 
   /*
-              Let's get some data from the API - it will take a second or two to load
-              This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
-              It's at about line 27 - go have a look and see what we're retrieving and sending back.
-             */
+  These two functions have been assigned via "addEventListener"
+  to the elements accessed by the "querySelector" set to the class name on each
+*/
+  document.querySelector('#next')
+    .addEventListener('click', () => {
+      console.log('clicked next'); // let's tell the client console we made it to this point in the script
+      moveToNextSlide(); // call the function above to handle this
+    });
+
+  document.querySelector('#prev')
+    .addEventListener('click', () => {
+      console.log('clicked prev');
+      moveToPrevSlide();
+    });
+
+  // Reload everything:
+  function reload() {
+    reload = location.reload();
+  }
+  // Event listeners for reload
+  reloadtButton.addEventListener('click', reload, false);
+
+  window.onload = () => {
+    const transEl = document.querySelector('.trans');
+    setTimeout(() => {
+      transEl.classList.remove('is-active');
+    }, 500);
+
+    const tab_switchers = document.querySelectorAll('[data-switcher]');
+    for (let i = 0; i < tab_switchers.length; i++) {
+      const tab_switch = tab_switchers[i];
+      const page_id = tab_switch.dataset.tab;
+      tab_switch.addEventListener('click', () => {
+        transEl.classList.add('is-active');
+        setTimeout(() => {
+          transEl.classList.remove('is-active');
+        }, 500);
+      });
+    }
+
+    for (let i = 0; i < tab_switchers.length; i++) {
+      const tab_switch = tab_switchers[i];
+      const page_id = tab_switch.dataset.tab;
+      tab_switch.addEventListener('click', () => {
+        setTimeout(() => {
+          document.querySelector('.navbar .tab.is-active').classList.remove('is-active');
+          tab_switch.parentNode.classList.add('is-active');
+          switchPage(page_id);
+        }, 500);
+      });
+    }
+  };
+
+  function switchPage(page_id) {
+    const current_page = document.querySelector('.pages .page.is-active');
+    current_page.classList.remove('is-active');
+    const next_page = document.querySelector(`.pages .page[data-page="${page_id}"]`);
+    next_page.classList.add('is-active');
+  }
   const results = await getdata();
 
   const arrayFromJson2017 = results[0];
@@ -385,34 +503,10 @@ async function mainEvent() {
   const myChart = initChart(chartTarget, shapeData2017, shapeData2018, shapeData2019, shapeData2020, shapeData2021, shapeData2022);
   const myAverage = initChartAvg(charAvg, total2017, total2018, total2019, total2020, total2021, total2022);
 
-  //
-  /*
-              Below this comment, we log out a table of all the results using "dot notation"
-              An alternate notation would be "bracket notation" - arrayFromJson["data"]
-              Dot notation is preferred in JS unless you have a good reason to use brackets
-              The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
-            */
-  /* console.table(arrayFromJson2017.data);
-  console.table(arrayFromJson2018.data);
-  console.table(arrayFromJson2019.data);
-  console.table(arrayFromJson2020.data);
-  console.table(arrayFromJson2021.data);
-  console.table(arrayFromJson2022.data);
-
-  // in your browser console, try expanding this object to see what fields are available to work with
-  // for example: arrayFromJson.data[0].name, etc
-  console.log(arrayFromJson2017.data[0]);
-  console.log(arrayFromJson2018.data[0]);
-  console.log(arrayFromJson2019.data[0]);
-  console.log(arrayFromJson2020.data[0]);
-  console.log(arrayFromJson2021.data[0]);
-  console.log(arrayFromJson2022.data[0]); */
-
-  // this is called "string interpolation" and is how we build large text blocks with variables
-  console.log(`${arrayFromJson2017[0].date.slice(0, 10)} ${arrayFromJson2017[0].clearance_code_inc_type}`);
+  console.log(`${arrayFromJson2022[0].date.slice(0, 10)} ${arrayFromJson2022[0].clearance_code_inc_type}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (arrayFromJson2017.data?.length > 0) { // the question mark in this means "if this is set at all"
+  if (arrayFromJson2022?.length > 0) { // the question mark in this means "if this is set at all"
     let currentList = [];
 
     // submit.style.display = 'block';
@@ -427,7 +521,7 @@ async function mainEvent() {
       injectHTML(filteredList);
       const localData = groupBy(filteredList, 'clearance_code_inc_type');
       changeChart(myChart, localData);
-      // makerPlace(filteredList, pageMap);
+      makerPlace(filteredList, pageMap);
     });
 
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
@@ -437,13 +531,16 @@ async function mainEvent() {
       submitEvent.preventDefault();
 
       // This constant will have the value of your 15-restaurant collection when it processes
-      currentList = processRestaurants(arrayFromJson2017.data);
+      currentList = processRestaurants(arrayFromJson2017);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
       const localData = groupBy(currentList, 'clearance_code_inc_type');
       changeChart(myChart, localData);
-      // makerPlace(currentList, pageMap);
+      console.log(localData);
+
+      makerPlace(currentList, pageMap);
+      heatMap(currentList, pageMap);
 
       // By separating the functions, we open the possibility of regenerating the list
       // without having to retrieve fresh data every time

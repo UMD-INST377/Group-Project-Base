@@ -7,6 +7,7 @@
     <link rel="shortcut icon" type="image/jpg" href="/images/icon.png" />
     <link rel="stylesheet" href="styles.css" />
     <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link
       rel="stylesheet"
@@ -26,7 +27,11 @@
     <div class="wrapper">
       <header class="header">
         <h1>Trash Tracker PG County</h1>
-        <a class="about" href="https://yyang7171.github.io/377-Group-Project/about">about this site</a>
+        <a
+          class="about"
+          href="https://yyang7171.github.io/377-Group-Project/about"
+          >about this site</a
+        >
       </header>
       <div class="container">
         <div class="left_section">
@@ -49,9 +54,42 @@
               <div id="stuff"></div>
             </form>
           </div>
-          <div class="right_bottom_section" id="nones">
+          <div class="right_bottom_section">
             <h3>Reports over days this month</h3>
-            coming soon!
+            <div>
+              <canvas id="litterChart"></canvas>
+            </div>
+            <script>
+              const ctx = document.getElementById("litterChart");
+
+              new Chart(ctx, {
+                type: "bar",
+                data: {
+                  labels: [
+                    "Red",
+                    "Blue",
+                    "Yellow",
+                    "Green",
+                    "Purple",
+                    "Orange",
+                  ],
+                  datasets: [
+                    {
+                      label: "# of Votes",
+                      data: [12, 19, 3, 5, 2, 3],
+                      borderWidth: 1,
+                    },
+                  ],
+                },
+                options: {
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                    },
+                  },
+                },
+              });
+            </script>
           </div>
         </div>
       </div>
@@ -59,19 +97,19 @@
     <footer class="footer">
       <small>
         <a href="https://www.linkedin.com/in/yyang116/">About Yabing</a>
-      <br />
-      <a href="https://www.linkedin.com/in/paris-lane-531347219/"
-        >About Paris</a
-      >
-      <br />
-      <a
-        href="https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner"
-        >Dataset</a
-      ><br />
+        <br />
+        <a href="https://www.linkedin.com/in/paris-lane-531347219/"
+          >About Paris</a
+        >
+        <br />
+        <a
+          href="https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner"
+          >Dataset</a
+        ><br />
 
-      <a href="https://github.com/yyang7171/377-Group-Project"
-        >view project on Github</a
-      >
+        <a href="https://github.com/yyang7171/377-Group-Project"
+          >view project on Github</a
+        >
       </small>
     </footer>
   </body>

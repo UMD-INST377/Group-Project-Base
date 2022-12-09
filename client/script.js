@@ -95,6 +95,8 @@ async function mainEvent() {
   const arrayJason = await data.json();
 
   console.table(arrayJason.data);
+
+
 };
 
 // async function mainEvent() { // the async keyword means we can make API requests

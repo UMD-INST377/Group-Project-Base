@@ -73,8 +73,9 @@ function getRandomIntInclusive(min, max){
       const {latitude, longitude} = item.location_1;
       const intLat = new Number(latitude);
       const intLng = new Number(longitude);
-      const marker = L.marker([intLat, intLng].addTo(map));
-      L.latlng(marker);
+      // const marker = L.marker([intLat, intLng].addTo(map));
+      L.marker([intLat, intLng].addTo(map));
+      // L.latlng(marker);
       if(index === 0){
         map.setView([intLat, intLng], 11);
       }

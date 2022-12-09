@@ -2,35 +2,45 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/style.css">
         <title>1H7 Violation Code</title>
     </head>
     <body>
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
         integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
         crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
         integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
         crossorigin=""></script>
-        <link rel="stylesheet" href="../css/style.css">
-        <a href="../index.html">Home</a>
         <header class="header thickBox green">
+            <button><a href="../index.html">Home</a></button>
             <h1 class="center">This is the violation page for the 1H7 code</h1>
         </header>
         <div class="container">
-            <h1>Map Location of Failed House</h1>
-            <ul>
-                <li>1h7: International Property Maintenance Code - Building elements, site conditions, swimming pools, plumbing, mechanical, electrical and fire protection systems in residential & nonresidential structures</li>
-            </ul>
             <form action="/api" class="box main_form orange">
-                <p>Filtered Failed Homes:</p>
+                <h1>Failed houses</h1>
+                <p>Select the button below to show houses in PG county that have failed the 1H7 Violation Code</p>
                 <input type="text" name="resto" id="resto">
                 <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                <button type="h7" id="violationh7">Search</button>
+                <button type="h7" id="violationh7">Look-up</button>
                 <div id="map"></div>
                 <div class="box" id="house_list">
                     <p>A list of failed homes from the PG County open API</p>
                 </div>
             </form>
+            <dic class="blank_box"></dic>
+            <div class="box orange">
+                <h1>What is a 1H7 Violation Code?</h1>
+                <div class="box">
+                    <p>1h7- Section 13-118(a) 302.1 Sanitation. All exterior property and premises shall be maintained in a clean, safe, 
+                        and sanitary condition. The occupant shall keep that part of the exterior property which such occupancy occupies 
+                        or controls in a clean and sanitary condition. Except as otherwise specifically authorized by law, the open storage 
+                        on residential property of any household appliance, motor vehicle parts, building materials, furniture, weeds, dead 
+                        trees, garbage, rubbish, or similar items or materials, or residue therefrom, is prohibited, regardless of age or condition.
+                    </p>
+                </div>
+            </div>
         </div>
         <script src="../js/1h7.js"></script>
     </body>

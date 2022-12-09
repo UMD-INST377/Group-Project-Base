@@ -13,24 +13,45 @@
         <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
         integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
         crossorigin=""></script>
-        <link rel="stylesheet" href="../css/style.css">
-        <a href="../index.html">Home</a>
         <header class="header thickBox green">
+            <button><a href="../index.html">Home</a></button>
             <h1 class="center">This is the violation page for the OWL code</h1>
         </header>
         <div class="container">
-            <h1>Map Location of Failed House</h1>
-            <p>1h9: PG County Code </p>
             <form action="/api" class="box main_form orange">
-                <p>Filtered Failed Homes:</p>
+                <h1>Failed houses</h1>
+                <p>Select the button below to show houses in PG county that have failed the OWL Violation Code</p>
                 <input type="text" name="resto" id="resto">
                 <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                <button type="owl" id="violationowl">Search</button>
+                <button type="owl" id="violationowl">Look-up</button>
                 <div id="map"></div>
                 <div class="box" id="house_list">
                     <p>A list of failed homes from the PG County open API</p>
                 </div>
             </form>
+            <dic class="blank_box"></dic>
+            <div class="box orange">
+                <h1>What is a OWL Violation Code?</h1>
+                <div class="box">OWL: Prince George's County Code
+                    <p>
+                        <ul> <li>owl- Sec. 13-181. - License required. No person shall conduct or operate or cause to be operated either 
+                            as owner, lessee, agent, or in any other capacity within the County any single-family rental facility or any 
+                            multifamily rental facility as defined in Section 13-138(a) without having first obtained a license as provided in this Division.
+                        </li> 
+                        <li>
+                            Owl- Sec. 13-182. - License application; existing or new premises.The legal owner of record of each existing single-family 
+                            rental facility or multifamily rental facility shall make written application to the Director for a license for such use, on 
+                            a form to be supplied by the Director and containing such information as necessary to administer and enforce the provisions of, 
+                            and to insure compliance with the provisions of, this Division and the Housing Code in its entirety. Such information shall include, 
+                            but shall not be limited to, the name and address of the owner's mortgage holder. There shall be a continuing obligation on the part 
+                            of the license holder to update the information on the application and/or to supply information not previously submitted. In addition,
+                            the legal owner of record of each such multifamily rental facility newly constructed shall make written application to the Director for
+                            a license, as herein provided, prior to any initial occupancy.
+                        </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
         </div>
         <script src="../js/owl.js"></script>
     </body>

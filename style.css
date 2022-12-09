@@ -1,3 +1,7 @@
+
+button {
+  margin-top: auto;
+}
 .circle{
     background: red;
     border-radius: 50%;
@@ -12,7 +16,7 @@
 .wrapper {
     position: relative;
     display: flex;
-    min-width: 100px;
+    justify-content: space-around;
   }
 
   .search-icon {
@@ -184,10 +188,8 @@ form {
 */
 
 .box {
-  background-color: rgba(167, 42, 140, 0.4);
-  border: 2px dashed;
+  background-color: rgb(185, 23, 23);
   border-radius: 4px;
-
   width: fit-content;
   height: fit-content;
   padding: 1.5rem;
@@ -237,7 +239,7 @@ form {
 */
 .footer a:hover {
   /* Hue, saturation, luminosity, alpha */
-  background-color: hsla(0, 0%, 90%, 0.15);
+  background-color: hsl(0, 0%, 100%);
   /* red, green, blue, alpha */
   color: rgb(246, 169, 93);
   text-decoration: none;
@@ -471,8 +473,8 @@ form.example input[type=text] {
 form.example button {
   float: left;
   width: 20%;
-  padding: 10px;
-  background: #2196F3;
+  padding: 5px;
+  background: #b10303;
   color: white;
   font-size: 17px;
   border: 1px solid grey;

@@ -132,11 +132,11 @@ async function mainEvent() {
   const pageMap = initMap();
 
   const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#get-resto');
+  const submit = document.querySelector('#get-year');
   const loadAnimation = document.querySelector('.lds-ellipsis');
-  // const restoName = document.querySelector('#resto');
+  const yearNum = document.querySelector('#year');
   const chartTarget = document.querySelector('#myChart');
-  // submit.style.display = 'none';
+  submit.style.display = 'none';
 
   const arrayFromJson = await getData();
   const shapedData = shapeDataForBarChart(arrayFromJson);
@@ -144,7 +144,6 @@ async function mainEvent() {
 
   if (arrayFromJson?.length > 0) {
     submit.style.display = 'block';
-    console.log('hii');
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
@@ -152,7 +151,7 @@ async function mainEvent() {
 
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
-      console.log(submitEvent.target);
+      console.log(Number(yearNum.value));
       currentList = processCrime(arrayFromJson);
 
       markerPlace(currentList, pageMap);

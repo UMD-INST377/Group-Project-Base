@@ -57,10 +57,10 @@
           <div class="chart_container">
             <h3>Reports in the past 3 months</h3>
             <div>
-              <canvas id="litterChart" width="100%" height="100%"></canvas>
+              <canvas id="litterChart"></canvas>
             </div>
             <script>
-              const ctx = document.querySelector("litterChart");
+              const ctx = document.querySelector("#litterChart");
 
               new Chart(ctx, {
                 type: "bar",

@@ -46,8 +46,8 @@ async function mainEvent() {
         'Three Point Percentage'
       ],
       datasets: [{
-        label: 'Washington Wizards Shot Percentage',
-        data: [ftp, fgp, tpp],
+        label: 'ATL Hawks Shot Percentage',
+        data: [ftp1, fgp1, tpp1],
         backgroundColor: [
           'rgb(255, 99, 132)',
           'rgb(54, 162, 235)',
@@ -61,6 +61,7 @@ async function mainEvent() {
 
     return new Chart(document.querySelector('#myChart'), config);
   }
+  initChart();
 }
 
 function ShowDiv() {

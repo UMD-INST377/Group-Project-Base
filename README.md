@@ -1,5 +1,5 @@
 ### Group Members:
-Mederick Grivel
+Mederick Grivel, 
 Diego Zuniga
 
 # Link to our website

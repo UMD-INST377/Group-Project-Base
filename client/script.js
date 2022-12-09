@@ -76,7 +76,7 @@ function initChart(chart, object) {
           beginAtZero: true
         }
       }
-    },
+    }
   };
 
   return new Chart(
@@ -153,9 +153,13 @@ async function mainEvent() {
 
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
-      data = Number(dayNum.value);
-      currentList = processCrime(arrayFromJson, data);
-
+      if (dayNum.value.length !== 0) {
+        data = Number(dayNum.value);
+        console.log(data.length);
+        currentList = processCrime(arrayFromJson, data);
+      } else {
+        currentList = arrayFromJson;
+      }
       markerPlace(currentList, pageMap);
     });
   }

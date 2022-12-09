@@ -140,7 +140,7 @@
     /* this will push other blocks out of the way */
   
     /* colors */
-    background-color: #dda15e;
+    background-color: #4d6fb7;
   
     /* shapes */
     border-radius: 6px;
@@ -179,14 +179,14 @@
   }
   
   .left_section {
-    background-color: #bc6c25;
+    background-color: #db5959e1;
     flex: 0 1 auto;
     margin: 1rem;
     padding: 1.5rem;
   }
   
   .right_section {
-    background-color: #606c38;
+    background-color: #3c3d8d;
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;

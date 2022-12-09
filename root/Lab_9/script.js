@@ -85,14 +85,15 @@ function initChart(chart, object) {
   );
 }
 
-function processCrime(list) {
+function processCrime(list, data) {
   console.log('fired processCrime');
   const newArray = [];
   list.forEach((item, index) => {
-    const date = new Number(item.date.substring(0, 4));
-    newArray.push(item);
+    if (Number(item.date.substring(8, 10)) === data) {
+      newArray.push(item);
+    }
   });
-  console.log(newArray[0]);
+  console.log(newArray.length);
   return newArray;
 }
 
@@ -132,11 +133,11 @@ async function mainEvent() {
   const pageMap = initMap();
 
   const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#get-resto');
+  const submit = document.querySelector('#get-day');
   const loadAnimation = document.querySelector('.lds-ellipsis');
-  // const restoName = document.querySelector('#resto');
+  const dayNum = document.querySelector('#day');
   const chartTarget = document.querySelector('#myChart');
-  // submit.style.display = 'none';
+  submit.style.display = 'none';
 
   const arrayFromJson = await getData();
   const shapedData = shapeDataForBarChart(arrayFromJson);
@@ -144,7 +145,7 @@ async function mainEvent() {
 
   if (arrayFromJson?.length > 0) {
     submit.style.display = 'block';
-    console.log('hii');
+    console.log(arrayFromJson.length);
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
@@ -152,8 +153,8 @@ async function mainEvent() {
 
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
-      console.log(submitEvent.target);
-      currentList = processCrime(arrayFromJson);
+      data = Number(dayNum.value);
+      currentList = processCrime(arrayFromJson, data);
 
       markerPlace(currentList, pageMap);
     });

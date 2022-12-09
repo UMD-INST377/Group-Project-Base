@@ -13,6 +13,21 @@ header {
   text-align: center;
 
 }
+.footer {
+  border : 2px dashed;
+  flex-shrink: 0;
+  padding: 1rem;
+  background-color: yellow;
+  color: #00CC99;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.footer a {
+  color:#00CC99;
+  text-decoration: underline;
+}
+
 
 .h1 {
   align-content: center;

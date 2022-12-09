@@ -10,6 +10,7 @@
     Under this comment place any utility functions you need - like an inclusive random number selector
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 */
+
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -95,12 +96,17 @@ function markerPlace(array, map) {
       layer.remove();
     }
   });
+  coordinates = array.map((index) => [parseFloat(index.latitude), parseFloat(index.longitude)]);
+  console.log(coordinates);
+  console.log(coordinates[0]);
+  console.log(coordinates[0][1]);
   array.forEach((item, index) => {
-    const {coordinates} = [item.latitude, item.longitude];
-    console.log(coordinates);
-    L.marker(coordinates[0], coordinates[1]).addTo(map);
+    console.log(coordinates[index][0]);
+    console.log([coordinates[index][0], coordinates[index][1]]);
+    const newLatLng = L.latLng(coordinates[index][0], coordinates[index][1]);
+    L.marker(newLatLng).addTo(map);
     if (index === 0) {
-      map.setView(coordinates[0], coordinates[1], 10);
+      map.setView((newLatLng), 10);
     }
   });
 }
@@ -165,6 +171,8 @@ async function mainEvent() {
 
       // This constant will have the value of your 15-restaurant collection when it processes
       currentList = processCrimes(arrayFromJson);
+
+      console.log(currentList);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);

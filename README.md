@@ -15,7 +15,7 @@ This webpage is assesible to desktop and mobile users.
 
 Our project is the complete list of properties within Prince George's County that have been presented Housing Inspection Violations. Our repository breaks down 6 of the significant Housing Inspection Violations codes into different catagories where users can click on each link and look up the violations on a map and see where they are located with pinpoint cooridnates. 
 
-# API Endpoints:
+# API used and API Endpoints: Open Source PG County Failed Home Inspections API
 
 1H1: https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_code=1H1&$where=within_circle(location,%2038.83063,%20-76.901726,%20500000)
 
@@ -33,6 +33,7 @@ OWL: https://data.princegeorgescountymd.gov/resource/9hyf-46qb.json?violation_co
 
 Within our project, a JS library that we used throughout our project was Leaflet. Leaflet is a open-source library using which we used to simply deploy lightweight web maps of Prince George's County. We centered it around Collge Park based on our latitude and longitude coordinates however once you look up the violation code, the map changes and shows you places all around Prince George's County.
 
+# CSS Frameworks used: Modern CSS 
 
 # What we wanted to Solve:
 

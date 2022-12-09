@@ -54,13 +54,13 @@
               <div id="stuff"></div>
             </form>
           </div>
-          <div class="right_bottom_section">
+          <div class="chart_container">
             <h3>Reports in the past 3 months</h3>
             <div>
-              <canvas id="litterChart"></canvas>
+              <canvas id="litterChart" width="100%" height="100%"></canvas>
             </div>
             <script>
-              const ctx = document.getElementById("litterChart");
+              const ctx = document.querySelector("litterChart");
 
               new Chart(ctx, {
                 type: "bar",
@@ -68,7 +68,7 @@
                   labels: [
                     "October",
                     "November",
-                    "December",
+                    "December"
                   ],
                   datasets: [
                     {

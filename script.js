@@ -44,7 +44,7 @@ async function chartIt() {
     datasets: [{
       label: 'Country Rate of BTC',
       data: rateData,
-      borderWidth: 1
+      borderWidth: 10
     }]
   },
   options: {

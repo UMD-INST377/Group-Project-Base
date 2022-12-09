@@ -1,4 +1,4 @@
-# Group 7 Final Project: Prince George's Country Crime Tracker
+# Group 7 Final Project: Prince George's County Crime Tracker
 
 By Mandy Chan and Abigail Miller
 

@@ -76,19 +76,9 @@ function ImageClickedHawks() {
   window.location = 'hawks_stats.html';
   return window;
 }
+function ImageClickedHeat() {
+  window.location = 'heat_stats.html';
+  return window;
+}
 
-function ImageClickedHawks() {
-    window.location = 'hawks_stats.html';
-    return window;
-  }
-
-  function ImageClickedMagic(){
-    window.location = 'magic_stats.html';
-    return window;
-  }
-
-  function ImageClickedHawks() {
-    window.location = 'hawks_stats.html';
-    return window;
-  }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

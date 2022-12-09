@@ -111,7 +111,8 @@
     /* this will push other blocks out of the way */
   
     /* colors */
-    background-color: #d28f42;
+    background-color: #ea912c;
+    color: white;
   
     /* shapes */
     border-radius: 6px;
@@ -127,7 +128,8 @@
   
   
   .box {
-    background-color: rgba(241, 134, 12, 0.891);
+    background-color: rgb(252, 136, 4);
+    color: rgb(255, 255, 255);
     
     border-radius: 4px;
   

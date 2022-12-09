@@ -1,13 +1,6 @@
 /* eslint-disable max-len */
 
-function getRandomIntInclusive(min, max) {
-  const newMin = Math.ceil(min);
-  const newMax = Math.floor(max);
-  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin); // The maximum is inclusive and the minimum is inclusive
-}
-
 function injectHTML(list) {
-  console.log('fired injectHTML');
   const target = document.querySelector('#restaurant_list');
   target.innerHTML = '';
 
@@ -35,7 +28,6 @@ function injectHTML(list) {
 }
 
 function processRestaurants(list) {
-  console.log('fired restaurants list');
   const range = [...Array(15).keys()]; // Special notation to create an array of 15 elements
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
@@ -95,8 +87,9 @@ function markerPlace(array, map) {
     }
   });
 }
+
 async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json'; // remote URL! you can test it in your browser
+  const url = 'https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json'; // PG County Library URL
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json(); // the data isn't json until we access it using dot notation
 
@@ -111,30 +104,10 @@ async function mainEvent() {
   const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
   submit.style.display = 'none'; // let your submit button disappear
 
+  const mapData = await getData();
 
-
-  /*
-        Let's get some data from the API - it will take a second or two to load
-        This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
-        It's at about line 27 - go have a look and see what we're retrieving and sending back.
-       */
-  //   const results = await fetch('/api/foodServicePG');
-//   const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
-
-  /*
-        Below this comment, we log out a table of all the results using "dot notation"
-        An alternate notation would be "bracket notation" - arrayFromJson["data"]
-        Dot notation is preferred in JS unless you have a good reason to use brackets
-        The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
-      */
-  console.table(arrayFromJson.data);
-
-  // in your browser console, try expanding this object to see what fields are available to work with
-  // for example: arrayFromJson.data[0].name, etc
-  console.log(arrayFromJson.data[0]);
-
-  // this is called "string interpolation" and is how we build large text blocks with variables
-  console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
+  // const shapedData = shapeDataForLineChart(chartData);
+  // const myChart = initChart(chartTarget, shapedData);
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (arrayFromJson.data?.length > 0) { // the question mark in this means "if this is set at all"

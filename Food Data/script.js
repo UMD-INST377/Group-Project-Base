@@ -1,9 +1,9 @@
 const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'e2a17786bamsh39f2855f9aaf40dp1b10c0jsnf0ccf57e91e0',
-		'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com'
-	}
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': 'e2a17786bamsh39f2855f9aaf40dp1b10c0jsnf0ccf57e91e0',
+    'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com'
+  }
 };
 
 async function getData(){
@@ -11,10 +11,12 @@ async function getData(){
   const data = await fetch(url, options);
   console.log(data);
 	const json = await data.json();
-  return json;
+  
+  console.log(json);
+  console.log(json.items);
+  console.log(json.items.name);
+  console.log(json.items.calories);
 }
-
-
 
 xlabels = [
   'sugar_g',
@@ -36,7 +38,7 @@ async function makeChart() {
 
   const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
+  const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: xlabels,

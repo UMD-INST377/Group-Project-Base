@@ -6,74 +6,156 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="client/styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=.2">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <div class=".panel-block.is-wrapped">
+    <div class="trans trans1 is-active"></div>
+    <div class="panel-block.is-wrapped">
         <header class="title">
             <h1>Victor Aldridge INST 377 labs</h1>
+            <div class=image>
+                <nav>
+                    <ul class="navbar">
+                        <li class="tab is-active">
+                            <a data-switcher data-tab="1">Home</a>
+
+                        </li>
+                        <li class="tab">
+                            <a data-switcher data-tab="2">About</a>
+                        </li>
+
+                    </ul>
+                </nav>
         </header>
+        <main>
+            <section= class="pages">
+                <div class="page is-active" data-page="1">
+                    <div class = "box">
+                        <h1 class="title strong">Welcome to the PG County's KYK</h1>
+                        <h4>(K)eeping (Y)ou in the (K)now</h>
 
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
+                    </div>
 
-    </form>
-    </div>
-
-    </div>
-    <div class="column"></div>
-    <div class="column"></div>
-    </div>
+                    <p>
 
 
 
+                    <div class="hero">
+                        <div class="carousel">
+                            <div class="slides">
+                          
+                                <canvas class = "carousel_item visible" id="myChartAvg"></canvas>
+                                <canvas class = "carousel_item hidden" id="myChart"></canvas>
+                            </div>
+    
+                            <div>
+                                <button class = "button is-dark" type="button" id="next">Next</button>
+                                <button class = "button is-dark" type="button" id="prev">Prev</button>
+                                <div>
+                                    <button class="button is-dark spacing-button" type="button" id="reload">Reload Visiulation</button>
+                                </div>
+                                
+                            </div>
 
-    <div class="hero">
-        <h3>Local Resturants</h3>
-        <div class="table-container" style="position: relative; height:70vh; width:100vw">
-            <canvas id="myChartAvg"></canvas>
-        </div>
+                            <div>
+                            </div>
+                        
 
-        <div class="space">
 
-        </div>
-        <div class="table-container" style="position: relative; height:80vh; width:110w">
-            <canvas id="myChart"></canvas>
-        </div>
+                         </div>
+                       </div>
+                </div>
 
 
 
-        <div class="title strong" id="restaurant_list">
-            A list of cool restaurant to try
-        </div>
-    </div>
 
-    <div class ="columns">
-        <div class="column">
-            
+
+
+
+
+
+
+
+
+
+
+
+    </p>
+
+    <div class="page" data-page="2">
+        <h2>Map</h2>
+        <div id="map"></div>
         
-            <div style = "background-color: grey;">
+        <div class="columns">
+        <div class="column">
+
+            <div style="background-color: grey;">
                 <div class="box">
-                    <h3>Name Your Restaurant</h3>
+                    <h3>Name Your City In Prince George County</h3>
                 </div>
                 <form action="/api" class="main_form box">
                     <label for="resto"></label>
                     <input class="input" type="text" name="resto" id="resto" placeholder="e.g. accidents ">
                     <button class="button is-dark" type="submit" id="get-resto">Search</button>
-                    <div class="lds-ellipsis">
-                    </form>
-    <footer class="footer">
-        <a href="http://github.com/meche234/" target="_blank" rel="noopener noreferrer">meche234/INST377-Lab-Work</a>
-    </footer>
+                    <div id="crime_list"></div>
+                </form>
+
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </p>
+    </div>
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+
 
 
     <script src="client/script.js"></script>
 </body>
+
+<footer>
+    <a href="http://github.com/meche234/" target="_blank" rel="noopener noreferrer">meche234/INST377-Lab-Work</a>
+</footer>
 
 </html>

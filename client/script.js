@@ -20,3 +20,7 @@ const widget = new TradingView.Widget({
   user_id: 'public_user_id',
   theme: 'Dark' /* Light or Dark */
 });
+
+function mainEvent() {
+  widget()
+}

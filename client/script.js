@@ -16,20 +16,6 @@ function capitalizeFirstLetter(string) {
 function lowerCaseName(string) {
   return string.toLowerCase();
 }
-
-function fillPlayerInfo(firstname, lastname, id) {
-  document.querySelector('.playerBox').innerHTML = `
-  <div>
-    </div>
-    <div class="playerInfo">
-      <h1>${capitalizeFirstLetter(
-    `${firstname} ${lastname}`
-  )}</h3>
-      <p>ID: ${(ind = id)}</p>
-      ${ind}
-    </div>`;
-}
-
 function fillNBAInfo (name, logo) {
   document.querySelector('.nbaBox').innerHTML = `
   <div class = "nbaInfo">
@@ -43,6 +29,27 @@ function fillNBAInfo (name, logo) {
   `;
 }
 
+function fillPlayerInfo(firstname, lastname, id, array) {
+  console.log(array.length)
+
+
+
+  document.querySelector('.playerBox').innerHTML = `
+  <div>
+    </div>
+    <div class="playerInfo">
+      <h1>${capitalizeFirstLetter(
+    `${array} ${lastname}`
+  )}</h3>
+      <p>ID: ${(ind = id)}</p>
+      ${ind}
+    </div>`;
+}
+
+function fillNBAInfoAll (array) {
+  console.log(array)
+  
+}
 
 function updateChart(chart, object) {
   chart.data.labels = labels;
@@ -64,10 +71,19 @@ async function getPlayer() {
     const playerName = lowerCaseName(name);
     const newData = await fetch(`https://api-nba-v1.p.rapidapi.com/players?name=${playerName}`, options);
     const data = await newData.json();
+    const nameArray = []
+    
+    const allNames = data.response;
+    const length = allNames.length;
+    
+    for (let i = 0; i < length; i++) {
+      nameArray.push(allNames[i].firstname)
+    }
+    console.log(nameArray)
     const playerID = data.response[0].id;
     const firstName = data.response[0].firstname;
     const lastName = data.response[0].lastname;
-    return [playerID, firstName, lastName];
+    return [playerID, firstName, lastName, nameArray];
   } catch (err) {
     console.log('Data Request Failed', err);
   }
@@ -134,8 +150,9 @@ document.querySelector('#search').addEventListener('click', async (event) => {
   console.log(playerInfo);
   console.log(playerInfo[0]);
   console.log(playerInfo[1]);
-  fillPlayerInfo(player[1], player[2], player[0]);
+  fillPlayerInfo(player[1], player[2], player[0], player[3]);
   fillNBAInfo(playerInfo[0], playerInfo[1]);
+  fillNBAInfoAll(player[3]);
   chartData = [player[1],
     player[2],
     playerInfo[2],

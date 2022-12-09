@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
-import apiRoutes from '../Project-pgcounty-spending/server/routes/apiRoutes';
+import apiRoutes from './server/routes/apiRoutes.js';
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use('/api', apiRoutes);
 async function bootServer() {
   try {
     app.listen(PORT, () => {
-      console.log(`Listening on: http//localhost:${PORT}`);
+      console.log(`Listening on: http://localhost:${PORT}`);
     });
   } catch (err) {
     console.error(err);

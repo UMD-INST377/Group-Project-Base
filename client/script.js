@@ -2,9 +2,10 @@ function injectHTML(list, htmlelm) {
   let target = document.querySelector(htmlelm);
   target.innerHTML = '';
 
+  
   // populate table head
   const head = document.createElement('tr');
-  for (const key of Object.keys(list[0])) {
+  for (const key of Object.keys(list['data'][0])) {
     const th = document.createElement('th');
     th.innerText = cap(key);
     head.appendChild(th);
@@ -12,7 +13,7 @@ function injectHTML(list, htmlelm) {
   target.appendChild(head);
 
   // populate table content
-  for (const [key, value] of Object.entries(list)) {
+  for (const [key, value] of Object.entries(list['data'])) {
     const tr = document.createElement('tr');
     const row = Object.values(value);
     row.forEach(element => {
@@ -76,22 +77,6 @@ function filterlist(array, filterInputvalue) {
   });
 }
 
-function callyear(year) {
-  const url = {
-    2022: 'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json',
-    2021: 'https://data.princegeorgescountymd.gov/resource/rh7w-bmhm.json',
-    2020: 'https://data.princegeorgescountymd.gov/resource/uh6s-izyj.json',
-    2019: 'https://data.princegeorgescountymd.gov/resource/p32t-azw8.json',
-    2018: 'https://data.princegeorgescountymd.gov/resource/2qma-7ez9.json',
-    2017: 'https://data.princegeorgescountymd.gov/resource/364y-gm2b.json',
-    2016: 'https://data.princegeorgescountymd.gov/resource/csi4-9jzc.json',
-    2015: 'https://data.princegeorgescountymd.gov/resource/bh8z-9wkk.json',
-    2014: 'https://data.princegeorgescountymd.gov/resource/p9kn-7u2k.json',
-    2013: 'https://data.princegeorgescountymd.gov/resource/aqt8-5ri2.json',
-    2012: 'https://data.princegeorgescountymd.gov/resource/9i62-gki4.json'
-  }
-  return url[year] != undefined ? url[year] : url[2022];
-}
 
 function addButt(htmlelm) {
   const form = document.querySelector(htmlelm);
@@ -119,30 +104,31 @@ function addButt(htmlelm) {
 
 async function mainEvent() {
 
-  addButt('#butts');
-
+  
+  let yr = document.querySelector('#year').value;
+  console.log(yr);
+  /*
   form.addEventListener('#butt', (submitEvent) => {
-    // get data 
+    // get data //input[name="butt"]:checked
     submitEvent.preventDefault();
-    let yr = document.querySelector('input[name="butt"]:checked').value;
-    console.log(yr);
-    const url = callyear(yr);
-    const resp = fetch(url);
-    const findata = resp.json();
-    if (findata.length > 0) {
-      injectHTML(findata, '#rlist');
-    }
+    
+    console.log(submitEvent);
   });
+*/
+  
+  const main = await fetch('/api/finServices');
+  const listdata = await main.json();
+  if (listdata.data?.length > 0) {
+    document.querySelector('#rlist')
+    .addEventListener('load',injectHTML(listdata,'#rlist'))
+  }
 
-
-
+/*
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form');
-
-
   const submit = document.querySelector('#get'); // get a reference to your submit button
   submit.style.display = 'none'; // let your submit button disappear
-
+*/
   /*
     Let's get some data from the API - it will take a second or two to load
     This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
@@ -196,5 +182,5 @@ async function mainEvent() {
 This last line actually runs first!
 It runs first because the listener is set to when your HTML content has loaded
 */
-
+addButt('#butts');
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

@@ -1,0 +1,83 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Group Project</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          
+
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Group 103-21: Yuvan Sundrani & Jose Murillo </h1>
+        <div class = "box">
+            <h2>Bar Graph</h2>
+            <button onClick="window.location.reload();">Refresh Page</button>
+
+        </div>
+        <canvas id='myChart' width="400" height="400"></canvas>
+        <script src="./script.js"></script>
+        <!-- <script>
+            const xLabel = [];
+            const rateData = [];
+            chartIt();
+        async function chartIt()    {
+            await getData();
+            const ctx = document.getElementById('myChart');
+            const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: xLabel,
+              datasets: [{
+                label: 'Country Rate of BTC',
+                data: rateData,
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+            }
+        async function getData()  {
+            const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
+            const data = await response.json();
+            console.log(data);
+            xLabel.push(data.bpi.USD.code);
+            xLabel.push(data.bpi.EUR.code);
+            xLabel.push(data.bpi.GBP.code);
+            console.log(xLabel);
+            var tempUSDRate = data.bpi.USD.rate;
+            tempUSDRate = tempUSDRate.replaceAll(',', '');
+            tempUSDRate = parseFloat(tempUSDRate);
+            var tempEURRate = data.bpi.EUR.rate;
+            tempEURRate = tempEURRate.replaceAll(',', '');
+            tempEURRate = parseFloat(tempEURRate);
+            var tempGBPRate = data.bpi.GBP.rate;
+            tempGBPRate = tempGBPRate.replaceAll(',', '');
+            tempGBPRate = parseFloat(tempGBPRate);
+            rateData.push(tempUSDRate);
+            rateData.push(tempEURRate);
+            rateData.push(tempGBPRate);
+            console.log(rateData);
+    //         fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+    //         .then((response) => response.json()).then((data => {
+    //             rateData.push(data.bpi.USD.rate);
+    //             rateData.push(data.bpi.EUR.rate);
+    //             rateData.push(data.bpi.GBP.rate);
+    //             xLabel.push('US');
+    //             xLabel.push('EUR');
+    //             xLabel.push('GBP');
+    //             console.log(rateData);
+    //             console.log(xLabel);
+    // }));
+            } -->
+          </script>
+
+    </body>
+    </html>

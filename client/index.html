@@ -16,22 +16,38 @@
       <h1>Final Project</h1>
     </div>
 
-    <div class="menu">
-      <u>Pages:</u>
-      <br><br>
-      <a href="page-1.html">Page 1</a>
+    <div class="box">
+
+      <div class="left_menu">
+        <h2>PG County Spending</h2>
+
+        <form class="all_form">
+          <button type="submit" id="all-spend">All Spending</button>
+        </form>
+        <form class="env_form">
+          <button type="submit" id="env-spend">Environment Spending</button>
+        </form>
+        <form class="pie_form">
+          <button type="submit" id="pie-spend">Permitting & Inspections Spending</button>
+        </form>
+        <form class="pol_form">
+         <button type="submit" id="pol-spend">Police Spending</button>
+        </form>
+        <form class="fir_form">
+         <button type="submit" id="fir-spend">Fire/EMS Spending</button>
+        </form>
+      </div>
+
+      <div class="box right_menu" id="spending_list">Spending list items</div>
+
     </div>
-
-    <form class="main_form box">
-      <h2>PG County Spending</h2>
-
-      <div class="box" id="spending_list">Spending list items</div>
-
-      <button type="submit" id="get-spend">Get Spending</button>
-    </form>
 
     <div class="chart_container box">
       <canvas id="myChart"></canvas>
+    </div>
+
+    <div class="img_container">
+      <img src="images/pgcounty.jpeg" alt="pg county image"/>
     </div>
 
   </div>

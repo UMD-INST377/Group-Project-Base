@@ -111,6 +111,58 @@ function markerPlace(array, map) {
   });
 }
 
+function initChart(chart) {
+  const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June'
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [0, 10, 5, 2, 20, 30, 45]
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+  return new Chart(
+    chart,
+    config
+  );
+}
+
+/* function shapeDataForLineChart(array) {
+    if (!array[item.category]) {
+      array[item.category] = [item]
+    } else {
+      array[item.category].push(item);
+    }
+    console.log(array)
+    return collection;
+  }, {}); 
+}
+
+async function getData() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+  const data = await fetch(url);
+  const json = await data.json();
+  const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.street_address));
+  return reply;
+} */
+
+
 async function mainEvent() {
   /*
         ## Main Event
@@ -123,6 +175,7 @@ async function mainEvent() {
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis');
+  const chartTarget = document.querySelector('#myChart');
   submit.style.display = 'none'; // let your submit button disappear
 
   /*
@@ -148,6 +201,10 @@ async function mainEvent() {
   // this is called "string interpolation" and is how we build large text blocks with variables
   console.log(`${arrayFromJson[0].incident_case_id} ${arrayFromJson[0].clearance_code_inc_type}`);
 
+  initChart(chartTarget);
+  // const chartData = await getData();
+  // const shapedData = shapeDataForLineChart(chartData);
+  // const myChart = initChart(chartTarget, shapedData);
   // This IF statement ensures we can't do anything if we don't have information yet
   if (arrayFromJson?.length > 0) { // the question mark in this means "if this is set at all"
     submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available

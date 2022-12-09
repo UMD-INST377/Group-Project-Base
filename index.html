@@ -14,16 +14,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crime Data</title>
+    <title>Mandy Chan's Labs for INST377</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
     crossorigin=""/>
-    <link rel="stylesheet" href="/Group07-Final-Project/styles.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/x-icon" href="https://instructure-uploads.s3.amazonaws.com/account_120000000081466/attachments/44159818/umd.ico?AWSAccessKeyId=AKIAJFNFXH2V2O7RPCAA&amp;Expires=1937381306&amp;Signature=KhIz7VvLBsAEAINSKbfCqL%2B6hFQ%3D&amp;response-cache-control=Cache-Control%3Amax-age%3D473364000.0%2C%20public&amp;response-expires=473364000.0">
      <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
     crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -32,7 +33,7 @@
         </header>
         <div class="container">
             <div class="left_section box">
-                    <h3>Generate Crime Map</h3>
+                    <h2>Generate Crime Map</h2>
                 <form action="/api" class="box main_form">
                     <label for="resto"></label>
                     <p>Filter Crime Data List</p>
@@ -41,15 +42,34 @@
                     <button type="submit" id = 'get-resto'>Change List</button>
                 </form>
             </div>
-            <div class="right_section box">
+            <div class="middle_section box">
                 <h2>Local crime Map</h2>
                 <div id="map"></div>
                 <div class="box" id = 'crime_list'>
                     A list of local crimes
                 </div>
             </div>
+            <div class="right_section box">
+                <h2>Generate Crime Map</h2>
+                <div class="dropdown clear_box">
+                    <button class="dropbtn">Select Year</button>
+                    <div class="dropdown-content">
+                      <a href="#">2017-Present</a>
+                      <a href="#">2017-2020</a>
+                      <a href="#">2020-Present</a>
+                    </div>
+                  </div>
+                <h2>Local Crimes Graph</h2>
+                <div class = 'chart_container box'>
+                    <canvas id="myChart"></canvas>
+                  </div>
+                <!-- 
+                <div class="box" id = 'restaurant_list'>
+                A graph of local crimes
+                </div> -->
+            </div>
         </div>
     </div>
-    <script src="/Group07-Final-Project/script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

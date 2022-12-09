@@ -25,8 +25,6 @@ function markerPlace(array, map) {
   });
 
   array.forEach((item, index) => {
-    // const lat = item.latitude;
-    // const lng = item.longitude;
     const lat = new Number(item.latitude);
     const lng = new Number(item.longitude);
     const newLatLng = L.latLng(lat, lng);
@@ -89,17 +87,12 @@ function initChart(chart, object) {
 
 function processCrime(list) {
   console.log('fired processCrime');
-  const range = [...Array(list.length).keys()];
   const newArray = [];
-  // eslint-disable-next-line no-plusplus
-  for (i = 0; i < list.length; i++) {
-    newArray[i] = list[i];
-  }
-  /* = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length);
-    return list[index];
-  }); */
-  console.log(newArray);
+  list.forEach((item, index) => {
+    const date = new Number(item.date.substring(0, 4));
+    newArray.push(item);
+  });
+  console.log(newArray[0]);
   return newArray;
 }
 
@@ -159,10 +152,10 @@ async function mainEvent() {
 
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
-      console.log(arrayFromJson);
-      // currentList = processCrime(arrayFromJson);
+      console.log(submitEvent.target);
+      currentList = processCrime(arrayFromJson);
 
-      markerPlace(arrayFromJson, pageMap);
+      markerPlace(currentList, pageMap);
     });
   }
 }

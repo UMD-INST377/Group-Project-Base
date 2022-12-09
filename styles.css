@@ -179,7 +179,7 @@
   }
   
   .left_section {
-    background-color: #bc6c25;
+    background-color: rgba(48, 30, 30, 0.3);
     flex: 0 1 auto;
     margin: 1rem;
     padding: 1.5rem;
@@ -194,6 +194,13 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
+  }
+  canvas { 
+    display: block;
+  }
+
+  #myChart {
+    display: block;
   }
   
   /*
@@ -317,11 +324,7 @@
     /* Pick a good border colour and check out how it works with your buttons */
   }
   
-  .prev:hover,
-  .next:hover {
-    /* Pick a good background colour for your hover pseudoclass */
-  }
-  
+
   /*
   Form Styles
   */

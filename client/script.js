@@ -61,31 +61,6 @@ positiveButton.addEventListener('click', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 async function mainEvent() {
   const form = document.querySelector('.main_form');
   const start = document.querySelector('#get-shows');

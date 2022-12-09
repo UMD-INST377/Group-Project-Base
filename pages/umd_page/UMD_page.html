@@ -49,19 +49,40 @@
           </fieldset>
         </form>
       </div>
+
       <!-- Data Box -->
       <div>
         <ul id="data"></ul>
       </div>
+
       <!-- Graph Section -->
       <div class="graph_area">
         <form class="graph-form">
           <!-- <button id="graph_load">Load Graph</button>-->
         </form>
+
+        <!--filter visulaization create a search bar-->
+      <fieldset>
+      <legend>Filter Data</legend>
+      <form class="filter-form">
+        <input type="search" id="mySearch" name="q" />
+        <button type="load" id="loadfilter">Filter by Number of Tracks </button>
+    </form>   
+  </fieldset>
+
+  <!-- Data Box for Filtering Data -->
+  <div>
+    <ul id="data2"></ul>
+  </div>
+  
+<!--visulaization-->
+  <div>
      <form>
+      <legend>Visulaization</legend>
       <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
       <button id="graph_load_2">Load Top Album Information Graph</button>
      </form>
+    </div>
       </div>
         </div>
         <canvas id="myChart"></canvas>   

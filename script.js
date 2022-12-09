@@ -33,7 +33,7 @@ function markerPlace(array, map) {
 
     L.marker(newLatLng).addTo(map);
     if (index === 0) {
-      map.setView([lat, lng], 10);
+      map.setView(newLatLng, 10);
     }
   });
 }

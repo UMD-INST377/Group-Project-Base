@@ -18,7 +18,7 @@ function getRandomIntInclusive(min, max) {
 function processSpending(list) {
   const range = [...Array(20).keys()]; // Creates an array of 15 elements
   const newArray = range.map(() => {
-    const index = getRandomIntInclusive(0, list.length);
+    const index = getRandomIntInclusive(0, list.length - 1);
     return list[index];
   });
   return newArray;
@@ -39,9 +39,19 @@ function injectHTML(list) {
   });
 }
 
+function calcAmount(array) {
+  let amount = 0.0;
+
+  array.forEach((item) => {
+    amount += parseFloat(item.amount);
+  });
+
+  return amount;
+}
+
 function initChart(chart, object) {
   const labels = Object.keys(object);
-  const info = Object.keys(object).map((item) => object[item].length);
+  const info = Object.keys(object).map((item) => calcAmount(object[item]));
 
   console.log(labels);
   console.log(info);
@@ -70,7 +80,7 @@ function initChart(chart, object) {
 
 function changeChart(chart, dataObject) {
   const labels = Object.keys(dataObject);
-  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+  const info = Object.keys(dataObject).map((item) => calcAmount(dataObject[item]));
 
   chart.data.labels = labels;
   chart.data.datasets.forEach((set) => {
@@ -81,12 +91,23 @@ function changeChart(chart, dataObject) {
   chart.update();
 }
 
-function shapeDataForLineChart(array) {
+function shapeDataForChart(array) {
   return array.reduce((collection, item) => {
     if (!collection[item.agency]) {
       collection[item.agency] = [item];
     } else {
       collection[item.agency].push(item);
+    }
+    return collection;
+  }, {});
+}
+
+function shapePartialData(array) {
+  return array.reduce((collection, item) => {
+    if (!collection[item.payment_description]) {
+      collection[item.payment_description] = [item];
+    } else {
+      collection[item.payment_description].push(item);
     }
     return collection;
   }, {});
@@ -107,25 +128,70 @@ async function getData() {
 
 // Main function
 async function mainEvent() {
-  const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#get-spend');
+  const allForm = document.querySelector('.all_form');
+  const envForm = document.querySelector('.env_form');
+  const pieForm = document.querySelector('.pie_form');
+  const polForm = document.querySelector('.pol_form');
+  const firForm = document.querySelector('.fir_form');
+  const submit = document.querySelector('#all-spend');
   const chartTarget = document.querySelector('#myChart');
   submit.style.display = 'block';
 
   const spendingData = await getData(); // waits for the data to be gathered
-  const shapedData = shapeDataForLineChart(spendingData);
+  const shapedData = shapeDataForChart(spendingData);
   const myChart = initChart(chartTarget, shapedData);
+  console.log(shapedData);
 
   let currentList = [];
-  currentList = processSpending(spendingData);
-  console.log(currentList);
 
-  // Get spending button listener
-  form.addEventListener('submit', (submitEvent) => {
+  // All Spending button event listener
+  allForm.addEventListener('submit', (submitEvent) => {
     submitEvent.preventDefault();
-    currentList = processSpending(spendingData);
-    injectHTML(currentList);
-    const localData = shapeDataForLineChart(currentList);
+    currentList = spendingData;
+    const maxList = processSpending(spendingData);
+    injectHTML(maxList);
+    const localData = shapeDataForChart(currentList);
+    changeChart(myChart, localData);
+  });
+
+  // Environment Spending button event listener
+  envForm.addEventListener('submit', (submitEvent) => {
+    submitEvent.preventDefault();
+    currentList = spendingData.filter((item) => item.agency === 'ENVIRONMENT');
+    console.log(currentList);
+    const maxList = processSpending(currentList);
+    injectHTML(maxList);
+    const localData = shapePartialData(currentList);
+    changeChart(myChart, localData);
+  });
+
+  // Permitting & Inspections Spending button event listener
+  pieForm.addEventListener('submit', (submitEvent) => {
+    submitEvent.preventDefault();
+    currentList = spendingData.filter((item) => item.agency === 'PERMITTING, INSPECTIONS & ENFORCEMENT');
+    const maxList = processSpending(currentList);
+    injectHTML(maxList);
+    const localData = shapePartialData(currentList);
+    changeChart(myChart, localData);
+  });
+
+  // Police Spending button event listener
+  polForm.addEventListener('submit', (submitEvent) => {
+    submitEvent.preventDefault();
+    currentList = spendingData.filter((item) => item.agency === 'POLICE');
+    const maxList = processSpending(currentList);
+    injectHTML(maxList);
+    const localData = shapePartialData(currentList);
+    changeChart(myChart, localData);
+  });
+
+  // Fire/EMS Spending button event listener
+  firForm.addEventListener('submit', (submitEvent) => {
+    submitEvent.preventDefault();
+    currentList = spendingData.filter((item) => item.agency === 'FIRE/EMS');
+    const maxList = processSpending(currentList);
+    injectHTML(maxList);
+    const localData = shapePartialData(currentList);
     changeChart(myChart, localData);
   });
 }

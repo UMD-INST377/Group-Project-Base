@@ -17,7 +17,7 @@ function initMap() {
 }
 
 function markerPlace(array, map) {
-  console.log('markerPlace', array);
+  console.log('markerPlace');
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
       layer.remove();
@@ -90,10 +90,16 @@ function initChart(chart, object) {
 function processCrime(list) {
   console.log('fired processCrime');
   const range = [...Array(list.length).keys()];
-  const newArray = range.map((item) => {
+  const newArray = [];
+  // eslint-disable-next-line no-plusplus
+  for (i = 0; i < list.length; i++) {
+    newArray[i] = list[i];
+  }
+  /* = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
     return list[index];
-  });
+  }); */
+  console.log(newArray);
   return newArray;
 }
 
@@ -154,9 +160,9 @@ async function mainEvent() {
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
       console.log(arrayFromJson);
-      currentList = processCrime(arrayFromJson);
+      // currentList = processCrime(arrayFromJson);
 
-      markerPlace(currentList, pageMap);
+      markerPlace(arrayFromJson, pageMap);
     });
   }
 }

@@ -14,7 +14,9 @@ Description of target browsers (iOS? Android? Which ones? Which versions?)
 
 What API did you use, link to the API
 
-For this project, we used the crime incidents API provided by PG County.
+For this project, we used the crime incidents API provided by the Prince George's County Open Data Portal. The data in this API spans from February 2017 to present, and it was last updated on December 9, 2022. 
+
+API link: https://data.princegeorgescountymd.gov/Public-Safety/Crime-Incidents-February-2017-to-Present/wb4e-w4nf
 
 ### Visualizations
 

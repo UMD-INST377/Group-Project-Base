@@ -1,5 +1,6 @@
 import express from 'express';
-import fetch from 'node-fetch';
+
+import { ServiceData } from '../middleware/loadfinServicesData.js';
 
 const router = express.Router();
 
@@ -12,15 +13,15 @@ const router = express.Router();
 // Food Inspection Set Demos
 // /////////////////////////////////
 
-
+router.use(ServiceData);
 
 
 
 //dont know if the route is the correct one
-router.route('/PgSpendings') // actually localhost:3000/api/foodServicesPG
+router.route('/finService') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/api/views/INLINE/rows.json?accessType=DOWNLOAD';
+      const url = 'https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json';
       const data = await fetch(url);
       const json = await data.json();
       console.log(json);
@@ -56,7 +57,7 @@ router.route('/PgSpendings') // actually localhost:3000/api/foodServicesPG
     }
   });
 
-router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
+router.route('/finServices/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
   .get(async (req, res) => {
     try {
       const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';

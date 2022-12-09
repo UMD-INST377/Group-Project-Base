@@ -22,6 +22,7 @@ function injectHTML(list, htmlelm) {
     });
     target.appendChild(tr);
   }
+  console.log('injected');
 }
 
 function cap(string) {
@@ -107,7 +108,7 @@ function addButt(htmlelm) {
     btn.value = year;
     labl.htmlFor = year;
     labl.innerText = year;
-    if(year === 2022){
+    if (year === 2022) {
       btn.checked = true;
     }
     div.appendChild(btn);
@@ -118,15 +119,21 @@ function addButt(htmlelm) {
 
 async function mainEvent() {
 
-  // get data 
   addButt('#butts');
-  let yr = await document.querySelector('input[name="butt"]:checked').value;
-  const url = await callyear(yr);
-  const resp = await fetch(url);
-  const findata = await resp.json();
-  if (findata.length > 0) {
-    injectHTML(findata, '#rlist');
-  } 
+
+  form.addEventListener('#butt', (submitEvent) => {
+    // get data 
+    submitEvent.preventDefault();
+    let yr = document.querySelector('input[name="butt"]:checked').value;
+    console.log(yr);
+    const url = callyear(yr);
+    const resp = fetch(url);
+    const findata = resp.json();
+    if (findata.length > 0) {
+      injectHTML(findata, '#rlist');
+    }
+  });
+
 
 
   // the async keyword means we can make API requests

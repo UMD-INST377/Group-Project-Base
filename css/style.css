@@ -98,6 +98,14 @@
     padding-right: 1rem;
     padding-bottom: 1.5rem;
 }
+.blank_box{
+    
+  border-radius: 4px;
+  width: fit-content;
+  height:fit-content;
+  padding: 1.5rem;
+  margin: 0 auto;
+  }
 
 .box{
     

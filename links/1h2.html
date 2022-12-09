@@ -13,23 +13,27 @@
         <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
         integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
         crossorigin=""></script>
-        <a href="../index.html">Home</a>
         <header class="header thickBox green">
+            <button><a href="../index.html">Home</a></button>
             <h1 class="center">This is the violation page for the 1H2 code</h1>
         </header>
         <div class="container">
-            <h1>Map Location of Failed House</h1>
-            <p>1h2: International Property Maintenance Code - Building elements, site conditions, swimming pools, plumbing, mechanical, electrical and fire protection systems in residential & nonresidential structures </p>
             <form action="/api" class="box main_form orange">
-                <p>Filtered Failed Homes:</p>
+                <h1>Failed houses</h1>
+                <p>Select the button below to show houses in PG county that have failed the 1H2 Viololation Code</p>
                 <input type="text" name="resto" id="resto">
                 <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                <button type="h2" id="violationh2">Search</button>
+                <button type="h2" id="violationh2">Look-up</button>
                 <div id="map"></div>
                 <div class="box" id="house_list">
                     <p>A list of failed homes from the PG County open API</p>
                 </div>
             </form>
+            <dic class="blank_box"></dic>
+            <div class="box orange">
+                <h1>What is a 1H2 Violation Code?</h1>
+                <div class="box">1H2: International Property Maintenance Code - Building elements, site conditions, swimming pools, plumbing, mechanical, electrical and fire protection systems in residential & nonresidential structures</div>
+            </div>
         </div>
         <script src="../js/1h2.js"></script>
     </body>

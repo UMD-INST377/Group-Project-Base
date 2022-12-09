@@ -76,7 +76,7 @@ function initChart(chart, object) {
           beginAtZero: true
         }
       }
-    },
+    }
   };
 
   return new Chart(
@@ -85,7 +85,7 @@ function initChart(chart, object) {
   );
 }
 
-function processCrime(list) {
+ function processCrime(list) {
   console.log('fired processCrime');
   const newArray = [];
   list.forEach((item, index) => {
@@ -95,6 +95,23 @@ function processCrime(list) {
   console.log(newArray[0]);
   return newArray;
 }
+
+/*
+function obtainRandomInt(min, max) {
+  const maxInt = Math.floor(max);
+  const minInt = Math.ceil(min);
+  return Math.floor(Math.random() * (maxInt - minInt + 1) + minInt);
+}
+
+function processCrime(list) {
+  const range = [...Array(20).keys()];
+  const newArray = range.map((item) => {
+    const index = obtainRandomInt(0, list.length);
+    return list[index];
+  });
+  return newArray;
+}
+*/
 
 function shapeDataForBarChart(array) {
   return array.reduce((collection, item) => {

@@ -343,7 +343,7 @@
         transform: translate(24px, 0);
       }
     }
-  .myChart {
+ #myChart {
       -fx-background-color: rgba(0,168,355,0.05);
       -fx-border-color: rgba(0,168,355,0.3) rgba(0,168,355,0.3) 
           transparent rgba(0,168,355,0.3);

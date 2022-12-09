@@ -1,9 +1,5 @@
-/* eslint-disable max-len */
-
-// const { load } = require('dotenv');
 /*
   ## Utility Functions
-    Under this comment place any utility functions you need - like an inclusive random number selector
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 */
 async function getData(){

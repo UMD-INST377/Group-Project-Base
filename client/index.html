@@ -1,86 +1,77 @@
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Project Base</title>
+    <!-- CDN for 'Handsontable' library -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"
+      type="module"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css"
+      type="module"
+    />
+    <link rel="stylesheet" href="styles.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Crypto App</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Group Project Base</title>
-  <!-- CDN for 'Handsontable' library -->
-  <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js" type="module"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" type="module"></script>
-  <link rel="stylesheet" href="styles.css" />
-  
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <title>Crypto App</title>
-</head>
+  <body>
+    <div class="Wrapper">
+      <!-- title / top center -->
+      <header class="header">
+        <iframe
+          height="112"
+          fetch
+          src="https://giphy.com/embed/FlJ76bXyXwgWjOJkeJ/video"
+          width="200"
+        ></iframe>
+        <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
+      </header>
 
-<body>
-  <div class="Wrapper">
-    
-    <!-- title / top center -->
-    <header class="header">
-      <!--<iframe height="270" responsive = "off" fetch src="https://giphy.com/embed/FlJ76bXyXwgWjOJkeJ/video" width="480"></iframe> -->
-      <iframe class="img" src="https://i0.wp.com/crackingcryptocurrency.com/wp-content/uploads/2017/08/CrackingCryptoCurrency_logo__960_720_mock-C1.8-256x256.png?resize=256%2C256&ssl=1"></iframe>
-      <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
-    </header>
-    
-    <!-- buttons and bar / top center -->
-    <div class="container bar">
-      
-      <button class="bouncy font-effect-anaglyph" id="saved">Saved</button>
-      <button class="bouncy font-effect-anaglyph" id="trends">Trends</button>
-      
-      <div class="search_box">
-        <button id="search_api">Search</button>
-        <input type="text" placeholder="Search...." id="search_api"></input>
+      <!-- buttons and bar / top center -->
+      <div class="bar">
+        <button class="bouncy font-effect-anaglyph" id="saved">Saved</button>
+        <button class="bouncy font-effect-anaglyph" id="trends">Trends</button>
+
+        <div class="search_box">
+          <button id="search_api">Search</button>
+          <input type="text" placeholder="Search...." id="search_api"></input>
+        </div>
       </div>
-      
-    </div>
-    
-    <!-- Contains Trending Crypto and Market Cap visualizations -->
-    <div class="container">
-      <div class="left_section">
+
+      <!-- Contains Trending Crypto and Market Cap visualizations -->
+      <div class="level1">
         <!-- 1. Trending Cyprto / top left -->
         <div class="box">
-          <div style="position: relative; height:auto">
-            <div id="trending-crypto-table"></div>
+          <div style="position: relative; height: auto">
+            <div class="chart" id="trending-crypto-table"></div>
           </div>
           <button id="prev-three">&lt;Prev 3</button>
           <button id="next-three">Next 3&gt;</button>
         </div>
-        
-        <!-- 2. Market Cap / Buttom left -->
-        <div class="box bottom_left">
+
+        <!-- 3. Price Percentage change (falling) / top right -->
+        <div class="box">
+          <div style="position: relative; height: auto">
+            <div id="price-percentage-falling-table"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Market Cap / Buttom -->
+      <div class="level2">
+        <div class="chartBox">
           <button id="update-chart-button">Referesh with new list</button>
-          <div class="chart_container" style="position: relative; height:auto; width:80vw">
-            Market Cap Data
-            <canvas id="market-cap-chart"></canvas>
-          </div>
+          <canvas id="market-cap-chart"></canvas>
         </div>
       </div>
-      
-      <!-- Contains Price Percentage Change; Rising and Falling -->
-      <div class="container">
-        <div class="right_section">
-          <!-- 3. Price Percentage change (falling) / top right -->
-          <div class="box">
-            <div style="position: relative; height:auto">
-              <div id="price-percentage-falling-table"></div>
-            </div>
-          </div>
-          
-          <!-- 4. Price percentage change (rising) / Buttom right -->
-          <div class="box bottom_right" id="price-percentage-rising">bottom_right</div>
-        </div>
-        
-      </div>
+
     </div>
-    
-  </div>
-  
-  <script type="module" src="./script.js"></script>
-  
-</div>
-</body>
+    <script type="module" src="./script.js"></script>
+  </body>
 </html>

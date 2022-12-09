@@ -1,4 +1,27 @@
 /* eslint-disable */
+let data;
+let mostRecentSearch;
+
+function retrieveSearchData(callback) {
+    const search_query = document.querySelector('#search_item').value;
+    if (search_query === mostRecentSearch) {
+        callback(data);
+        return;
+    }
+    mostRecentSearch = search_query;
+
+    let xhr = new XMLHttpRequest();
+    let base_url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=200&gsrsearch=";
+    url = base_url + "'" + search_query + "'";
+
+    xhr.open('GET', url, true);
+    
+    xhr.onload = function() {
+        data = JSON.parse(this.response);
+        callback(data);
+    }
+    xhr.send();
+}
 
 function getRandomIntInclusive(min, max) {
     const newMin = Math.ceil(min);
@@ -8,68 +31,28 @@ function getRandomIntInclusive(min, max) {
 
 /* API request */
 function send_top_req(){
-    let xhr = new XMLHttpRequest();
-    let base_url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=10&gsrsearch=";
-
-    search_query = document.querySelector('#search_item').value;
-    url = base_url + "'" + search_query + "'"
-
-    xhr.open('GET', url, true);
-
-    xhr.onload = function() {
-    // Parse the request into JSON
-    let data = JSON.parse(this.response);
-
-    // Log the page objects
-    //console.log(data.query.pages);
-
-    let title_array = [];
-    let id_array = []
-    for (var i in data.query.pages) {
-        title_array.push(data.query.pages[i].title);
-        id_array.push(data.query.pages[i].pageid)
-        
-    populate_results_top(title_array, id_array)
-    
-;        
-}
-}
-
-xhr.send();
+    retrieveSearchData((data) => {
+        let title_array = [];
+        let id_array = []
+        for (var i in data.query.pages) {
+            title_array.push(data.query.pages[i].title);
+            id_array.push(data.query.pages[i].pageid)
+        }
+        populate_results_top(title_array, id_array)
+    });
 }
 
 function send_rand_req(){
-        let xhr = new XMLHttpRequest();
-        let base_url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=200&gsrsearch=";
-
-        search_query = document.querySelector('#search_item').value;
-        url = base_url + "'" + search_query + "'"
-
-        xhr.open('GET', url, true);
-
-        xhr.onload = function() {
-        // Parse the request into JSON
-        let data = JSON.parse(this.response);
-
-        // Log the page objects
-        //console.log(data.query.pages);
-        
-        process_rand_results(data);
-        
-        
-    }
-    xhr.send();
+    retrieveSearchData((data) => {
+        let title_array = [];
+        let id_array = []
+        for (var i in data.query.pages) {
+            title_array.push(data.query.pages[i].title);
+            id_array.push(data.query.pages[i].pageid)
+        }
+        populate_results_rand(title_array, id_array)
+    });
 }
-
-function process_rand_results(data){
-    let title_array = [];
-    let id_array = []
-    for (var i in data.query.pages) {
-        title_array.push(data.query.pages[i].title);
-        id_array.push(data.query.pages[i].pageid)
-    }
-    populate_results_rand(title_array, id_array)
-};
 
 /* makes sure the field isnt empty */
 function handle_rand_click(){
@@ -117,8 +100,8 @@ function populate_results_top(titles, ids){
     target.innerHTML = '';
     const list_item = document.createElement('ul');
     target.appendChild(list_item);
-
-    titles.forEach((item, i) => {
+    for (let i=0; i<10; i++){
+        let item = titles[i];
         article_id = ids[i]
         dir_url = 'https://en.wikipedia.org/w/index.php?curid=' + article_id;
         const item_link = document.createElement('a');
@@ -128,7 +111,8 @@ function populate_results_top(titles, ids){
         value.innerText = item;
         item_link.appendChild(value);
         list_item.appendChild(item_link)
-    });
+    }
+
 }
 
 /* event listeners on the buttons */

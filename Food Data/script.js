@@ -59,7 +59,7 @@ makeChart();
 
 function injectHTML(list) {
   console.log('fired injectHTML');
-  const target = document.querySelector("#restaurant_list");
+  const target = document.querySelector("#data_list");
   target.innerHTML = '';
 
   const listEL = document.createElement('ol');

@@ -14,24 +14,24 @@ function injectHTML(list) {
 
   list.forEach(item => {
     const el = document.createElement('li');
-    el.innerText = item.zip_code;
+    el.innerText = item.branch_name;
     listEl.appendChild(el);
   })
-  return list;
+  return listEl;
 }
 
 async function getData(){
   const url = 'https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json'; // remote URL! you can test it in your browser
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json(); // the data isn't json until we access it using dot notation
-  const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.zip_code));
+  const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.branch_name));
   console.log('Results in library API', json.length); 
   return reply ;
 }
 
 function processRestaurants(list) {
   console.log('fired library list');
-  const range = [...Array(15).keys()];
+  const range = [...Array(20).keys()];
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
     return list[index];
@@ -44,7 +44,6 @@ function processRestaurants(list) {
 function filterList(array, filterInputValue){
   return newArray = array.filter((item) => {
     const intVal = new Number(filterInputValue);
-    //const lowerCaseQuery = filterInputValue.toLowerCase();
     const zipMatch = item.zip_code.includes(intVal);
     return zipMatch;
   })
@@ -52,7 +51,7 @@ function filterList(array, filterInputValue){
 
 function initMap(){
   console.log('initMap');
-  const map = L.map('map').setView([38.880540, -76.831386],10);
+  const map = L.map('map').setView([38.880540, -76.831386],10.5);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -69,14 +68,15 @@ function markerPlace(array, map){
   });
 
   array.forEach((item, index) => {
-    console.log(location_1);
-    const {latitude, longitude} = item.location_1;
-    const intLat = new Number(latitude);
-    const intLng = new Number(longitude);
-    const marker = L.marker([intLat, intLng].addTo(map));
-    L.latlng(marker);
+    //const [latitude, longitude] = item.location_1;
+    const latitude = item.location_1.latitude;
+    const longitude = item.location_1.longitude;
+    const numLat = parseFloat(latitude);
+    const numLng = parseFloat(longitude);
+    L.marker([numLat, numLng]).addTo(map);
+
     if(index === 0){
-      map.setView([intLat, intLng], 11);
+      map.setView([numLat, numLng], 10.5);
     }
   })
 }
@@ -92,7 +92,7 @@ async function mainEvent() {
   const pageMap = initMap();
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-  const submit = document.querySelector('#get-resto'); // get a reference to your submit button
+  const submit = document.querySelector('#get-zipcode'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis');
   submit.style.display = 'none'; // let your submit button disappear
 
@@ -166,3 +166,4 @@ async function mainEvent() {
   It runs first because the listener is set to when your HTML content has loaded
 */
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
+

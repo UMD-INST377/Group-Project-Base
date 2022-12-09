@@ -4,23 +4,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Group Project: PG Trash</title>
+    <link rel="shortcut icon" type="image/jpg" href="/images/icon.png" />
     <link rel="stylesheet" href="styles.css" />
     <script src="./script.js"></script>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-     crossorigin=""/>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
 
-     <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
-    
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
   </head>
   <body class="body">
     <div class="wrapper">
       <header class="header">
         <h1>Trash Tracker PG County</h1>
+        <a class="about" href="https://yyang7171.github.io/377-Group-Project/about">about this site</a>
       </header>
       <div class="container">
         <div class="left_section">
@@ -37,24 +43,22 @@
         </div>
         <div class="right_section">
           <div class="right_top_section">
-            <h3>About this Site/LitterTRAK</h3>
-            <form action="/Middleware/" class="main_form box">
-              <label for="litter">litter!!!!</label>
-              <input type="text" name="litter" id="litter" />
+            <h3>Visualize Litter in PG County</h3>
+            <form class="main_form">
               <button type="generate" id="getLitter">See Litter</button>
+              <div id="stuff"></div>
             </form>
           </div>
-          <div class="right_bottom_section">
+          <div class="right_bottom_section" id="nones">
             <h3>Reports over days this month</h3>
+            coming soon!
           </div>
         </div>
       </div>
     </div>
     <footer class="footer">
-      
-      <a href="https://www.linkedin.com/in/yyang116/"
-        >About Yabing</a
-      >
+      <small>
+        <a href="https://www.linkedin.com/in/yyang116/">About Yabing</a>
       <br />
       <a href="https://www.linkedin.com/in/paris-lane-531347219/"
         >About Paris</a
@@ -68,6 +72,7 @@
       <a href="https://github.com/yyang7171/377-Group-Project"
         >view project on Github</a
       >
+      </small>
     </footer>
   </body>
 </html>

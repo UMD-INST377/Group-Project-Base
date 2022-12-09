@@ -37,10 +37,6 @@ h2, h3 {
   padding-bottom:1.5rem;
 }
 
-form {
-  accent-color: hsla(202, 100%, 50%, 0.482);
-}
-
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -68,9 +64,15 @@ form {
   font-family: 'GT Flexa Exp Black';
   display: block;
   font-size: 1.5rem;
-  padding: 1.25rem;
-  margin:0; 
+  padding: 1rem;
+  margin: 0; 
   color:rgb(242, 242, 242);
+}
+
+.header a {
+  float: right;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 
 .box {
@@ -136,35 +138,7 @@ footer {
   text-decoration: none;
 }
 
-form input {
-  /* This is a hack to make sure our boxes line up with one another nicely */
-  width: 100%;
-  width: -moz-available;          /* WebKit-based browsers will ignore this. */
-  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-  width: fill-available;
-
-  /* here we are setting white space correctly */
-  margin-bottom: 1rem;
-  height: 2rem;
-  border-radius: 4px;
-}
-
-form label {
-  width: 100%;
-  width: -moz-available;          /* WebKit-based browsers will ignore this. */
-  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-  width: fill-available;
-  align-items: flex-start;
-
-  display: block; /* this turns the label text into a box we can set margins on */
-  margin-bottom: 0.5rem;
-}
-
-/* How To Write A Media Query For Small Screens */
-
 @media only screen and (max-width: 736px){
-    /* Rules in here will only apply when a screen is the correct size */
-    /* check it out by using your developer tools to shrink your screen-size */
     .container {
       background-color: #E3F4E8;
       margin: 0px;

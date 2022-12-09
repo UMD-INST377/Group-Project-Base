@@ -77,21 +77,18 @@ function markerPlace(array, map) {
 /*
 function initChart(chart) {
   const labels = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6'
+    "October",
+    "November",
+    "December"
   ];
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My Dataset',
+      label: '# of Litter Reports',
       backgroundColor: 'rgb(255,99,132)',
       borderColor: 'rgb(255,99,132)',
-      data: [0, 10, 5, 2, 20, 30, 45]
+      data: [144, 1435, 229]
     }]
   };
 
@@ -101,12 +98,11 @@ function initChart(chart) {
     options: {}
   };
 
-  const myChart = new chart(
+  return litterChart = new chart(
     chart,
     config
   );
-};
-*/
+}; */
   
 async function mainEvent() {
 
@@ -138,7 +134,6 @@ async function mainEvent() {
       markerPlace(currentList, map);
     });
   }
-  // initChart();
 }
   
 

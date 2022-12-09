@@ -209,7 +209,8 @@ async function mainEvent() {
   const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json'; // remote URL
   const results = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const reply = await results.json(); // the data isn't json until we access it using dot notation
-  const arrayFromJson = reply.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.clearance_code_inc_type));
+  // const arrayFromJson = reply.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.clearance_code_inc_type));
+  const arrayFromJson = reply.filter((item) => item.clearance_code_inc_type.length > 1);
 
   const shapedData = shapeDataForLineChart(arrayFromJson);
   // console.log(shapedData);

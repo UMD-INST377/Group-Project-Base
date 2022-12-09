@@ -1,5 +1,8 @@
-# INST377 Group 7 Final Project
-## GitHub Pages Site: https://mchan02.github.io/Group07-Final-Project/
+# Group 7 Final Project: Prince George's Country Crime Tracker
+
+By Mandy Chan and Abigail Miller
+
+GitHub Pages Site: https://mchan02.github.io/Group07-Final-Project/
 
 For this project, we used the crime incidents API provided by PG County.
 

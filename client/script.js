@@ -66,7 +66,15 @@ async function mainEvent() {
 function ShowDiv() {
   document.getElementById('myDiv').style.display = '';
 }
-function refresh() {
+function redirection() {
 
+}
+function imageClicked() {
+  window.location = 'wizard_stats.html';
+  return window;
+}
+function ImageClickedHawks() {
+  window.location = 'hawks_stats.html';
+  return window;
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

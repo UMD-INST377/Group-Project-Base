@@ -17,7 +17,7 @@ function getRandomIntInclusive(min, max){
       el.innerText = item.branch_name;
       listEl.appendChild(el);
     })
-    return list;
+    return listEl;
   }
   
   async function getData(){
@@ -44,7 +44,6 @@ function getRandomIntInclusive(min, max){
   function filterList(array, filterInputValue){
     return newArray = array.filter((item) => {
       const intVal = new Number(filterInputValue);
-      //const lowerCaseQuery = filterInputValue.toLowerCase();
       const zipMatch = item.zip_code.includes(intVal);
       return zipMatch;
     })
@@ -69,15 +68,13 @@ function getRandomIntInclusive(min, max){
     });
 
     array.forEach((item, index) => {
-      console.log(item.location_1);
-      const {latitude, longitude} = item.location_1;
-      const intLat = new Number(latitude);
-      const intLng = new Number(longitude);
-      // const marker = L.marker([intLat, intLng].addTo(map));
-      L.marker([intLat, intLng].addTo(map));
-      // L.latlng(marker);
+      const [latitude, longitude] = item.location_1;
+      const numLat = parseFloat(latitude);
+      const numLng = parseFloat(longitude);
+      L.marker([numLat, numLng].addTo(map));
+
       if(index === 0){
-        map.setView([intLat, intLng], 11);
+        map.setView([numLat, numLng], 10.5);
       }
     })
   }

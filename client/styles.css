@@ -73,6 +73,15 @@
     align-items: start;
     flex:1;
   }
+
+  .intro {
+    display: flex;
+    height:fit-content;
+    font-size: 1.5rem;
+    text-align: center;
+
+  }
+  
   
   .header {
     padding: 10px;
@@ -80,19 +89,10 @@
     background: #000000;
     color: rgb(12, 119, 18);
     font-size: 20px;
-    
-    /* padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 1.5rem; */
   }
   
   
-  /*
-    This rule implies that the H1 tag lives within another HTML tag
-    It "inherits" some rules from the above
-    Those rules won't apply to an h1 that's outside a block with the class of 'header'
-  */
+ 
   
   .header h1 {
     display: block;
@@ -113,19 +113,8 @@
     box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0 0 1px rgb(10 10 10 / 2%);
     
   }
-  
-  
-  /*
-    Rules can be combined on a block to apply the 'cascade' in order
-    So you can use two classnames in a single class attribute
-    like: <div class="box section">
-  
-    Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
-    And will be what displays in your client
-  */
-  
   .box {
-    background-color: #42938d;
+    background-color: #037c0b;
     border: 2px dashed;
     border-radius: 4px;
     height:fit-content;

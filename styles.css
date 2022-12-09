@@ -57,6 +57,11 @@
     display: inline-block;
     text-decoration: none;
   }
+
+  h1 {
+    background-color: #ff8800;
+    color: white;
+  }
   
   h2, h3 {
     margin:0;
@@ -112,7 +117,6 @@
   
     /* colors */
     background-color: #ea912c;
-    color: white;
   
     /* shapes */
     border-radius: 6px;

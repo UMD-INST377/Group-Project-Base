@@ -73,6 +73,8 @@ function markerPlace(array, map) {
     }
   });
 }
+
+/*
 function initChart(chart) {
   const labels = [
     "October",
@@ -100,7 +102,7 @@ function initChart(chart) {
     chart,
     config
   );
-};
+}; */
   
 async function mainEvent() {
 
@@ -131,7 +133,6 @@ async function mainEvent() {
       injectHTML(currentList);
       markerPlace(currentList, map);
     });
-    // initChart(chartTarget);
   }
 }
   

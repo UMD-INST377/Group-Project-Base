@@ -29,14 +29,46 @@ function processMueseums(list) {
   return newArray;
 }
 
-function initMap() {
-  console.log('initMap');
-  const map = L.map('map').setView([38.5324, -77.125], 10);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
-  return map;
+//function initMap() {
+//  console.log('initMap');
+// const map = L.map('map').setView([38.5324, -77.125], 10);
+//  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//    maxZoom: 19,
+//    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+//  }).addTo(map);
+//  return map;
+//}
+
+function initChart(chart){
+  const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [0, 10, 5, 2, 20, 30, 45],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+  return new Chart(
+    chart,
+    config
+  );
 }
 
 function markerPlace(array, map) {
@@ -62,11 +94,15 @@ async function mainEvent() {
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-resto');
   const loadAnimation = document.querySelector('.lds-ellipsis');
+  const restoName = document.querySelector('#resto')
+  const chartTarget =  document.querySelector('#myChart');
   submit.style.display = 'none';
 
   const results = await fetch('/api/smithsonian');
   const arrayFromJson = await results.json();
   
+initChart(chartTarget);
+
   if (arrayFromJson.data?.length > 0) {
     submit.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
@@ -87,7 +123,7 @@ async function mainEvent() {
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
-      markerPlace(currentList, pageMap);
+      //markerPlace(currentList, pageMap);
 
       // By separating the functions, we open the possibility of regenerating the list
       // without having to retrieve fresh data every time

@@ -2,6 +2,7 @@
 Trash Tracker PG County is a website which displays locations in Prince
 George's County which had litter cleaned up. This was developed for the final pair project
 of INST377: Dynamic Web Applications at the University of Maryland.<br>
+[View the API data for LitterTRAK here.](https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner)<br>
 [The GitHub Pages site for this project can be seen here!](https://yyang7171.github.io/377-Group-Project/)
 
 - [Description](#description)

@@ -67,9 +67,7 @@ async function mainEvent() {
 function ShowDiv() {
   document.getElementById('myDiv').style.display = '';
 }
-function redirection() {
 
-}
 function imageClickedWizard() {
   window.location = 'wizard_stats.html';
   return window;

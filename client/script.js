@@ -8,13 +8,35 @@ async function mainEvent() {
     }
   };
   const dataGet = await fetch('https://api-nba-v1.p.rapidapi.com/teams/statistics?id=41&season=2021', options);
+  const options1 = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '5dc02365d4mshd9eff5d73eae486p1c6bb0jsnd676be7e93c5',
+      'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+    }
+  };
+  const dataGet1 = await fetch('https://api-nba-v1.p.rapidapi.com/teams/statistics?id=2&season=2021', options1);
 
+  // wizards data
   const arrayFromJson = await dataGet.json();
   const response_object = arrayFromJson.response;
+  // celtics data
+  const arrayFromJson2 = await dataGet1.json();
+  const response_object1 = arrayFromJson2.response;
+  // loaded the wizards data and it shows on console
   console.log(response_object[0]);
+  // loaded the celtics data and it shows on console
+  console.log(response_object1[0]);
+
+  // changing the wizards data that are strings into float
   const fgp = parseFloat(response_object[0].fgp);
   const ftp = parseFloat(response_object[0].ftp);
   const tpp = parseFloat(response_object[0].tpp);
+
+  // changing the celtics data that are strings into float
+  const fgp1 = parseFloat(response_object1[0].fgp);
+  const ftp1 = parseFloat(response_object1[0].ftp);
+  const tpp1 = parseFloat(response_object1[0].tpp);
 
   function initChart() {
     const data = {
@@ -39,13 +61,12 @@ async function mainEvent() {
 
     return new Chart(document.querySelector('#myChart'), config);
   }
-  initChart();
 }
 
 function ShowDiv() {
   document.getElementById('myDiv').style.display = '';
 }
 function refresh() {
-  
+
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -23,21 +23,16 @@
     <script src="./script.js"></script>
     <div class = "container">
         <div class = "left_section box">
-            <h3>USA Population:</h3> 
-            <form action="/api" class="box main_form">
-            <label for="resto">Year:</label>
-            <input type="text" name="resto" id="resto" />
-
-            <button class="btn">Submit</button>
-
-           
+            <h3>Chart</h3>
+        <div>
+            <canvas id="myChart" width = "400" height = "400"></canvas>
+          </div>
         </div>
         <div class = "right_section box">
-            <h3>Population at Year:</h3>
+            <h3>List of population by year</h3>
+        <button type ="submit" id = "get-years">Get Data</button>
+        <div class="box" id = "population_list"></div>
         </div>
-    </div>
-    <div class = "box">
-        <h3>Chart</h3>
     </div>
     <script src="./script.js"></script>
 </body>

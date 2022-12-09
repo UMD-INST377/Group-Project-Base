@@ -1,5 +1,3 @@
-
-
 /* Cuurent Date and Time */
 function date_time() {
   const datetimeDisplay = document.getElementById('date-time');
@@ -12,8 +10,9 @@ setInterval(date_time, 100);
 
 
 
-/* get API image */
-function getComedy() {
+/* get Mood image */
+
+function getComedy() { // positive mood will show comedy tv shows poster!
   return fetch('https://api.tvmaze.com/shows')
     .then((response) => response.json())
     .then((jsonData) => {
@@ -31,18 +30,72 @@ const comedyImage = document.getElementById('comedyImage');
 positiveButton.addEventListener('click', () => {
   getComedy()
     .then((image) => comedyImage.src = image);
+    console.log('get comedy image successfully')
 });
 
 
+// function getDrama() { // negative mood will show drama tv shows poster!
+//   return fetch('https://api.tvmaze.com/shows')
+//     .then((response) => response.json())
+//     .then((jsonData) => {
+//       const titleList = jsonData;
+//       const newList = titleList.filter((title) => title.genres.includes('Drama'));
 
-
-// async function mainEvent() {
-//   const form = document.querySelector('.main_form');
-//   form.addEventListener('submit', async(submitEvent) => {
-//     submitEvent.preventDefault();
-//     console.log('submission!');
-//   });
+//       const show = newList[Math.floor(Math.random() * newList.length)];
+//       return show.image.medium;
+//     });
 // }
+
+
+// const negativeButton = document.getElementById('emoji2');
+// const dramaImage = document.getElementById('dramaImage');
+// negativeButton.addEventListener('click', () => {
+//   getDrama()
+//     .then((image) => dramaImage.src = image);
+//     console.log('get drama image successfully')
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function mainEvent() {
+  const form = document.querySelector('.main_form');
+  const start = document.querySelector('#get-shows');
+  start.style.display = '';
+
+  const data = await fetch('/api/shows');
+  const arrayJason = await data.json();
+
+  console.table(arrayJason.data);
+};
 
 // async function mainEvent() { // the async keyword means we can make API requests
 //   const form = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
@@ -107,4 +160,6 @@ positiveButton.addEventListener('click', () => {
 //   The use of the async keyword means we can "await" events before continuing in our scripts
 //   In this case, we load some data when the form has submitted
 // */
-// document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
+document.addEventListener('DOMContentLoaded', async () => mainEvent()); 
+
+

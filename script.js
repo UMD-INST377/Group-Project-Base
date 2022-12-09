@@ -96,23 +96,6 @@ function initChart(chart, object) {
   return newArray;
 }
 
-/*
-function obtainRandomInt(min, max) {
-  const maxInt = Math.floor(max);
-  const minInt = Math.ceil(min);
-  return Math.floor(Math.random() * (maxInt - minInt + 1) + minInt);
-}
-
-function processCrime(list) {
-  const range = [...Array(20).keys()];
-  const newArray = range.map((item) => {
-    const index = obtainRandomInt(0, list.length);
-    return list[index];
-  });
-  return newArray;
-}
-*/
-
 function shapeDataForBarChart(array) {
   return array.reduce((collection, item) => {
     if (!collection[item.category]) {

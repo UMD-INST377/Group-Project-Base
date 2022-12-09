@@ -5,4 +5,4 @@ You are required to fill it in with documentation similar to that found in the S
 Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
 * [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
 
-https://fictionfriction.github.io/Group-14-Spotify-Project/client/index.html
+https://fictionfriction.github.io/Group-14-Spotify-Project/

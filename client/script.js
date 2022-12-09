@@ -69,6 +69,7 @@ async function initEcosystemMarketCapChart() {
   // configure the asesthetics of the chart
   const config = {
     options: {
+      maintainAspectRatio: false,
       scales: {
         y: {
           beginAtZero: true

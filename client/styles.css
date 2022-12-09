@@ -134,7 +134,7 @@ form {
 .container {
   margin: 0 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: start;
   flex: 1;
@@ -144,22 +144,30 @@ form {
   display: flex;
   flex-direction: column;
   background-color: rgba(239, 239, 239, 0.40);
-  border: 2px dashed;
-  width: fit-content;
+  border-radius: 20px;
+  border: solid 5px rgb(26, 60, 255);
+  width: min-content;
   padding: .5rem;
   margin: 30 auto;
   
 }
 
-.chart {
-  display: flex;
+.chartBox {
+  flex: auto;
+  width: 700px;
+  padding: 20px;
+  border-radius: 20px;
+  border: solid 5px rgb(152, 26, 255);
+  background: white;
 }
 
 .bar {
   background-color: rgb(82, 76, 76);
-  margin: 20 20px;
-  height:fit-content;
+  margin: 0 20px;
+  display: flex;
+  flex-direction: row;
   justify-content:space-around;
+  border: solid 5px rgb(64, 255, 26);
   padding: 1.5rem;
   overflow: auto;
   
@@ -169,26 +177,24 @@ p:hover, h2:hover, a:hover {
   background-color: rgb(39, 230, 86);
 }
 
-.img {
-  width: 260px;
-  height: 275px;
-  object-fit: contain;
-}
-
-.left_section {
-  flex: 0 1 auto;
+.level1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   margin: 1rem;
-  padding: 1.5rem;
   overflow: auto;
 }
 
+.level2{
+  margin: 30 auto;
+}
 
-.right_section {
-  flex: 1 2 auto;
-  margin: 1rem;
-  align-items: center;
-  max-width: 450px;
-  overflow: auto;
+@media only screen and (max-width: 1139px){
+  
+.level1{
+  flex-direction: column;
+}
+
 }
 
 @media only screen and (max-width: 736px){
@@ -202,7 +208,10 @@ p:hover, h2:hover, a:hover {
     align-items: start;
     display: block;
   }
-
+  .chartBox{
+    width: 93%;
+    height: 350px;
+  }
   .left_section{
     background-color: rgba(38, 235, 117, 0.749);
     color: rgb(255, 225, 0);

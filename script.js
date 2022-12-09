@@ -73,15 +73,49 @@ function markerPlace(array, map) {
     }
   });
 }
+
+/*
+function initChart(chart) {
+  const labels = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6'
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My Dataset',
+      backgroundColor: 'rgb(255,99,132)',
+      borderColor: 'rgb(255,99,132)',
+      data: [0, 10, 5, 2, 20, 30, 45]
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+  const myChart = new chart(
+    chart,
+    config
+  );
+};
+*/
   
 async function mainEvent() {
 
   const data = await getData();
 
   const map = initMap();
-  // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#getLitter'); // get a reference to your submit button
+  const chartTarget = document.querySelector('#litterChart');
 
   if (data.length > 0) {
     
@@ -104,6 +138,7 @@ async function mainEvent() {
       markerPlace(currentList, map);
     });
   }
+  // initChart();
 }
   
 

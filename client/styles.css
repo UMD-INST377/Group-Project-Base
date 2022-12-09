@@ -83,11 +83,18 @@ h2 {
 h3{
 color:white;
 }
+<<<<<<< Updated upstream
 img{
 width: 100px;
 height: 100px;
 }
   .right_section {
+=======
+
+
+
+ .right_section {
+>>>>>>> Stashed changes
     background-color: #C7DBE6;
     flex: 1 2 auto;
     margin: 1rem;
@@ -126,7 +133,7 @@ height: 100px;
 
 /* Make the image responsive */
 .container img {
-  width: 70%;
+  width: 15%;
   height: auto;
 }
 
@@ -196,12 +203,7 @@ height: 100px;
   height: 100%;
   width: 100%;
 }
-.player_hidden{
-  display: none;
-}
-.player_visible{
-  display: flex;
-}
+
 
 
 
@@ -215,6 +217,7 @@ height: 100px;
   color: white;
   text-align: center;
 }
+<<<<<<< Updated upstream
 
 .container2 {
   display: flex;
@@ -233,3 +236,9 @@ height: 100px;
   width: fit-content;
   align-items: center;
 }
+=======
+img{
+  width: 50px;
+  height: 50px;
+  }
+>>>>>>> Stashed changes

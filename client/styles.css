@@ -2,13 +2,9 @@
   box-sizing: border-box;
 }
 
-/* 
-  These rules apply to actual HTML elements with no labelling!
-  So: they style the tags directly
-*/
 
 html {
-  background-color: #fff;
+  background-color: rgb(176, 196, 222);
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;

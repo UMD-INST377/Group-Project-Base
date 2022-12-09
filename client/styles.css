@@ -1,290 +1,257 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  
-  html {
-    background-color: #fff;
-    font-size: 16px;
-    min-width: 300px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  
-    /* these are specific to different browsers */
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-  
-    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    background-color: #383F51;
-  }
-  
-  
-  a {
-    display: inline-block;
-    text-decoration: none;
-  }
-  
-  h2 {
-    margin:0;
-    padding:0;
-    padding-bottom:1.5rem;
-  }
-  
-  form {
-    accent-color: hsla(120, 100%, 50%, 0.482);
-  }
-  
-  
-  
-  .wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    flex: 1;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .header {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-top: 0px;
-  }
-  
-  .header h1 {
-    display: block;
-    /* this will push other blocks out of the way */
-    border: 3px dashed;
-    /* colors */
-    background-color: #DDDBF1;
-    color: #131313;
-  
-    /* shapes */
-    border-radius: 6px;
-    font-size: 1rem;
-    padding: 1rem;
-    margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
-  
-  
-    /* box-shadows are fancy */
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
-  }
-  
-  .right_section h4{
-    text-align: center;
-  }
-
-  .left_section h3{
-    text-align: center;
-  }
-  
-  .left_section .box{
-    width: 80%;
-  }
-
-  .box{
-    background-color: #3c4f76d7;
-    border: 2px dashed;
-    border-radius: 4px;
-    font-size: 0.5rem;
-    width: fit-content;
-    height:fit-content;
-    padding: 0.5rem;
-    margin: 0 auto;
-    align-items: center;
-    width: 50%;
-    
-  }
-  
-  .left_section {
-    background-color: #DDDBF1;
-    justify-items: center;
-    flex: 0 1 auto;
-    margin: 1rem;
-    padding-bottom: 1.5rem;
-    border: 2px dashed;
-    margin-left: 1.5rem;
-    width: 15%;
-  }
-  
-  .right_section {
-    background-color: #DDDBF1;
-    flex: 1 2 auto;
-    margin: 1rem;
-    align-items: center;
-    justify-content: center;
-    border: 2px dashed;
-    padding-bottom: 1.5rem;
-    width: 70%;
-  }
-  
-  
-  .footer {
-    flex-shrink: 0;
-    padding: 0.6rem;
-    background-color: #DDDBF1;
-    font-size: 0.7rem;
-    font-weight: 600;
-    position: absolute;
-    bottom: 0%;
-    width: 100%;
-    border: 3px dashed;
-  }
-  
-  .footer a {
-    color: #20A39E;
-    text-decoration: underline;
-  }
-  
-  .footer a:hover {
-    /* Hue, saturation, luminosity, alpha */
-    background-color: hsla(0, 0%, 90%, 0.15);
-    /* red, green, blue, alpha */
-    color: rgb(246, 169, 93);
-    text-decoration: none;
-  }
-  
-  
-  form input {
-      /* This is a hack to make sure our boxes line up with one another nicely */
-      width: 100%;
-      width: -moz-available;          /* WebKit-based browsers will ignore this. */
-      width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-      width: fill-available;
-  
-      /* here we are setting white space correctly */
-      margin-bottom: 1rem;
-      height: 2rem;
-      border-radius: 4px;
-    }
-  
-    form label {
-      width: 100%;
-      width: -moz-available;          /* WebKit-based browsers will ignore this. */
-      width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-      width: fill-available;
-      align-items: flex-start;
-  
-      display: block; /* this turns the label text into a box we can set margins on */
-      margin-bottom: 0.5rem;
-    }
-  
-
-  /*Map styles*/
-  #map {
-    display: block;
-    width: 400px;
-    height: 380px;
-    border: 2px dashed rgb(99, 99, 99);
-    margin-bottom: 1rem;
-    margin-inline-start: 33%;
-  }
- 
-
-  .lds-ellipsis {
-      display: inline-block;
-      position: relative;
-      width: 80px;
-      height: 80px;
-    }
-    .lds-ellipsis_hidden{
-      display: hidden;
-    }
-    .lds-ellipsis div {
-      position: absolute;
-      top: 33px;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: #fff;
-      animation-timing-function: cubic-bezier(0, 1, 1, 0);
-    }
-    .lds-ellipsis div:nth-child(1) {
-      left: 8px;
-      animation: lds-ellipsis1 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(2) {
-      left: 8px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(3) {
-      left: 32px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(4) {
-      left: 56px;
-      animation: lds-ellipsis3 0.6s infinite;
-    }
-    @keyframes lds-ellipsis1 {
-      0% {
-        transform: scale(0);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    @keyframes lds-ellipsis3 {
-      0% {
-        transform: scale(1);
-      }
-      100% {
-        transform: scale(0);
-      }
-    }
-    @keyframes lds-ellipsis2 {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(24px, 0);
-      }
-    }
-  
-      /* How To Write A Media Query For Small Screens */
-  /*mobile*/
-  @media only screen and (max-width: 736px){
-    /* Rules in here will only apply when a screen is the correct size */
-    /* check it out by using your developer tools to shrink your screen-size */
-  .container {
-    background-color: #383F51;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-  }
-  .left_section {
-    background-color: #DDDBF1;
-    justify-items: center;
-    flex: 0 1 auto;
-    margin: 0.5rem;
-    padding-bottom: 1.5rem;
-    border: 2px dashed;
-    width: 80%;
-  }
-  
-  .right_section {
-    background-color: #DDDBF1;
-    flex: 1 2 auto;
-    margin: 0.5rem;
-    align-items: center;
-    justify-content: center;
-    border: 2px dashed;
-    padding-bottom: 1rem;
-    width: 80%;
-  }
+  box-sizing: border-box;
 }
+
+
+html {
+  background-color: #F8C471;
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  /* these are specific to different browsers */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #FAD7A0;
+}
+
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+h2 {
+  margin:0;
+  padding:0;
+  padding-bottom:1.5rem;
+}
+
+form {
+  accent-color: hsla(120, 100%, 50%, 0.482);
+}
+
+
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 0px;
+}
+
+.header h1 {
+  display: block;
+  /* this will push other blocks out of the way */
+  border: 3px dashed;
+  /* colors */
+  background-color: #E67E22;
+  color: #131313;
+  width: 100%;
+  /* shapes */
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 1rem;
+  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+
+
+  /* box-shadows are fancy */
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+}
+
+.right_section h4{
+  text-align: center;
+}
+
+.left_section h3{
+  text-align: center;
+}
+
+.left_section .box{
+  width: 80%;
+}
+
+.box{
+  background-color: #FDEDEC;
+  border: 2px dashed;
+  border-radius: 4px;
+  font-size: 0.5rem;
+  width: fit-content;
+  height:fit-content;
+  padding: 0.5rem;
+  margin: 0 auto;
+  align-items: center;
+  width: 50%;
+  
+}
+
+.left_section {
+  background-color: #FDEBD0 ;
+  justify-items: center;
+  flex: 0 1 auto;
+  margin: 1rem;
+  padding-bottom: 1.5rem;
+  border: 2px dashed;
+  margin-left: 1.5rem;
+  width: 15%;
+}
+
+.right_section {
+  background-color: #FDEBD0 ;
+  flex: 1 2 auto;
+  margin: 1rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed;
+  padding-bottom: 1.5rem;
+  width: 70%;
+}
+
+
+.footer {
+  flex-shrink: 0;
+  padding: 0.6rem;
+  background-color: #5D6D7E;
+  font-size: 0.7rem;
+  font-weight: 600;
+
+}
+
+.footer a {
+  color: #FAE5D3;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  /* Hue, saturation, luminosity, alpha */
+  background-color: hsla(0, 0%, 90%, 0.15);
+  /* red, green, blue, alpha */
+  color: rgb(246, 169, 93);
+  text-decoration: none;
+}
+
+
+form input {
+    /* This is a hack to make sure our boxes line up with one another nicely */
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
+
+    /* here we are setting white space correctly */
+    margin-bottom: 1rem;
+    height: 2rem;
+    border-radius: 4px;
+  }
+
+  label {
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
+    
+    text-align: center;
+    display: block; /* this turns the label text into a box we can set margins on */
+    margin-bottom: 0.5rem;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+
+/*Map styles*/
+#map {
+  display: block;
+  width: 700px;
+  height: 380px;
+  border: 2px dashed rgb(99, 99, 99);
+  margin-bottom: 1rem;
+  margin-inline-start: 33%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis_hidden{
+    display: hidden;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }

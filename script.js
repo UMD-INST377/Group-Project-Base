@@ -1,8 +1,21 @@
+/* eslint-disable max-len */
+
+/*
+  Hook this script to index.html
+  by adding `<script src="script.js">` just before your closing `</body>` tag
+*/
+
+/*
+  ## Utility Functions
+    Under this comment place any utility functions you need - like an inclusive random number selector
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+*/
 
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
-  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin);
+  return Math.floor(Math.random() * (newMax - newMin + 1) + newMin); // The maximum is exclusive and the minimum is inclusive
+}
 
 function injectHTML(list) {
   console.log('fired injectHTML');
@@ -146,7 +159,10 @@ async function mainEvent() {
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
+      console.log('input', event.target.value);
       const newArray = filterList(currentList, event.target.value);
+      console.log(newArray);
+      console.log(pageMap);
       injectHTML(newArray);
       markerPlace(newArray, pageMap);
     });

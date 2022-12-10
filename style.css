@@ -17,7 +17,7 @@
 }
 
 html {
-  background-color: #fff;
+  background-color: #000000;
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -95,7 +95,7 @@ form {
 }
 
 .box {
-  background-color: rgba(153, 149, 149, 0.4);
+  background-color: rgba(94, 91, 93, 0.27);
   border: 2px;
   border-radius: 4px;
 
@@ -106,7 +106,7 @@ form {
 }
 
 .filmList{
-  background-color: rgba(87, 87, 87, 0.4);
+  background-color: rgba(219, 218, 218, 0.27);
   display:flex;
   flex-wrap: wrap;
   gap: 20px;

@@ -140,7 +140,7 @@ async function mainEvent() {
       This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
       It's at about line 27 - go have a look and see what we're retrieving and sending back.
      */
-  const results = await fetch('/api/foodServicePG');
+  const results = await fetch('https://api-nba-v1.p.rapidapi.com/teams');
   const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
 
   /*

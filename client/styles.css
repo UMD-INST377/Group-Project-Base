@@ -205,3 +205,11 @@ img{
   height: 50px;
   }
 */
+
+.container2 {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex:1;
+}

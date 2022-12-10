@@ -46,7 +46,7 @@ async function mainEvent() {
   injectDateFilter(data, 2000, '#best_2010s');
 }
 
-function processmovies(list) {
+async function processmovies(list) {
   console.log('movie lists');
   const range = [...Array(15).keys()];
   const newArray = range.map((item) => {

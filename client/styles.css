@@ -188,7 +188,7 @@ nav ul li a {
     box-shadow: 1px 4px 12px rgba(94,28,68,.15);
 }
 .movies{
-    display: flex;
+    display: none;
     height: 100%;
     position: absolute;
     width: 600px;

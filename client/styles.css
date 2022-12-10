@@ -69,3 +69,12 @@ html, body {
   
    
 }
+
+@media only screen and (max-width: 736px){
+  .container {
+    background-color: rgba(16, 223, 223, 0.65);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}

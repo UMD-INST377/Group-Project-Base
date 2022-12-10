@@ -2,9 +2,6 @@
 
 [Main site:](https://guntherchung.github.io/Group17-Final-Project-Crypto/client/)
 
-(https://github.com/user/repo/blob/branch/other_file.md)
-
-
 You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
 
 Requirments: 

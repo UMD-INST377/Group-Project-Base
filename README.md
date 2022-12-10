@@ -1,6 +1,12 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+#Final-Project Group103-03
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+Running web: https://jelee127.github.io/Group103-03-Final-Project/client/index.html
+
+Project title: Library map in PG county
+
+Target Browser: Web page - Window, Mac
+
+API end point documentation link: https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json
+Data source Web address: https://data.princegeorgescountymd.gov/Education/Libraries/7k64-tdwr
+
+

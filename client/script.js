@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
-async function getgrapData(url = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc') {
+async function getData(url) {
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json();
 
@@ -25,13 +25,14 @@ function rotateList(array, start, numOfElements) {
   return retval;
 }
 
-function initChart() {
-  const ecosystemJson = await getData(); // get the ecosystem data
+async function initEcosystemMarketCapChart() {
+  const ecosystemDataURL = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc';
+  const ecosystemJson = await getData(ecosystemDataURL); // get the ecosystem data
 
   const labelsList = getProperty(ecosystemJson, 'name'); // extract the labels
   const marketCapList = getProperty(ecosystemJson, 'market_cap'); // extract the market cap data
 
-  const start = 0; // index to start the sublist at
+  let start = 0; // index to start the sublist at
   let numOfElements = 10; // the number of elements we want in the sublist
   let labelSublist = rotateList(labelsList, start, numOfElements); // rotate the labels list
   let marketCapSublist = rotateList(marketCapList, start, numOfElements); // rotate the market cap list
@@ -67,7 +68,6 @@ function initChart() {
 
   // configure the asesthetics of the chart
   const config = {
-    type: 'bar',
     options: {
       maintainAspectRatio: false,
       scales: {
@@ -78,30 +78,32 @@ function initChart() {
     }
   };
 
-  return new chart(
+  const marketCapChart = new Chart(
     targetElement, {
+      type: 'bar',
       data: data,
       config
     }
   );
-}
 
-function updateChartButton(chart) {
+  const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
+  updateChartButton.addEventListener('click', async (submitEvent) => { // add event listener to the button
+    submitEvent.preventDefault(); // stop the event from causing a redirect
+
     // increase the starting index
+    start += 10;
 
-    chart.start += 10;
-
-    if (chart.start > chart.ecosystemJson.length) {
-      chart.start = ecosystemJson.length - (ecosystemJson.length % 10);
+    if (start > ecosystemJson.length) {
+      start = ecosystemJson.length - (ecosystemJson.length % 10);
       numOfElements = ecosystemJson.length % 10;
-      labelSublist = rotateList(labelsList, chart.start, numOfElements);
-      marketCapSublist = rotateList(marketCapList, chart.start, numOfElements);
+      labelSublist = rotateList(labelsList, start, numOfElements);
+      marketCapSublist = rotateList(marketCapList, start, numOfElements);
 
-      chart.start = -10; // start at -10 to offset increment above
+      start = -10; // start at -10 to offset increment above
     } else {
       numOfElements = 10;
-      labelSublist = rotateList(labelsList, chart.start, numOfElements);
-      marketCapSublist = rotateList(marketCapList, chart.start, numOfElements);
+      labelSublist = rotateList(labelsList, start, numOfElements);
+      marketCapSublist = rotateList(marketCapList, start, numOfElements);
     }
 
     // Remove old data from chart
@@ -118,7 +120,8 @@ function updateChartButton(chart) {
       marketCapChart.data.datasets.forEach((dataset) => dataset.data.push(newMarketCap));
     }
     marketCapChart.update();
-  }
+  });
+}
 
 async function initTrendingCryptoTable() {
   // Get the json object containing the crypto data
@@ -147,6 +150,10 @@ async function initTrendingCryptoTable() {
     }
   );
 
+  const prevThreeButton = document.querySelector('#prev-three');
+  prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
+    console.log('prev3');
+  });
 
   const nextThreeButton = document.querySelector('#next-three');
   nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
@@ -199,16 +206,9 @@ async function initFallingCryptoTable() {
 }
 
 async function mainEvent() {
-  const ecosystemChart = initChart();
+  const ecosystemChart = initEcosystemMarketCapChart();
   const trendingCryptoTable = initTrendingCryptoTable();
   const fallingCryptoTable = initFallingCryptoTable();
-  const chartbutton = document.querySelector('#update-chart-button');
-
-  const prevThreeButton = document.querySelector('#prev-three');
-
-
-
-  chartbutton.addEventListener('click', updateChartButton(ecosystemChart));
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

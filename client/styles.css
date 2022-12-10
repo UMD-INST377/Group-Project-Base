@@ -255,3 +255,36 @@ form input {
       transform: translate(24px, 0);
     }
   }
+
+    /* How To Write A Media Query For Small Screens */
+/*mobile
+@media only screen and (max-width: 736px){
+  /* Rules in here will only apply when a screen is the correct size 
+  /* check it out by using your developer tools to shrink your screen-size 
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.left_section {
+  background-color: #E6B0AA;
+  justify-items: center;
+  flex: 0 1 auto;
+  margin: 0.5rem;
+  padding-bottom: 1.5rem;
+  border: 2px dashed;
+  width: 80%;
+}
+
+.right_section {
+  background-color: #E6B0AA;
+  flex: 1 2 auto;
+  margin: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed;
+  padding-bottom: 1rem;
+  width: 80%;
+}
+}*/

@@ -146,9 +146,10 @@ form {
   border-radius: 15px;
   padding: 10px;
   margin: 10px;
+  position: fixed;
 }
 .inner{
-  position: fixed;
+  
   background-color: #fff;
 }
 .text.box{

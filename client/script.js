@@ -2,7 +2,7 @@ function injectHTML(list, htmlelm) {
   let target = document.querySelector(htmlelm);
   target.innerHTML = '';
 
-  
+
   // populate table head
   const head = document.createElement('tr');
   for (const key of Object.keys(list['data'][0])) {
@@ -102,33 +102,32 @@ function addButt(htmlelm) {
   }
 }
 
+async function fetchJson(yr) {
+  const main = await fetch(`api/finServices/${yr}`);
+  return await main.json();
+}
+
 async function mainEvent() {
 
-  
-  let yr = document.querySelector('#year').value;
-  console.log(yr);
-  /*
-  form.addEventListener('#butt', (submitEvent) => {
-    // get data //input[name="butt"]:checked
-    submitEvent.preventDefault();
-    
-    console.log(submitEvent);
+  // click button to change the year
+  let yr = document.querySelector('.yr_form');
+  yr.addEventListener('input', async (event) => {
+    event.preventDefault();
+    let data = await fetchJson(event.target.value);
+    console.log(data);
+    if (event.target.value.length > 0) {
+      document.querySelector('#rlist')
+        .addEventListener('load', injectHTML(data, '#rlist'))
+    }
   });
-*/
-  
-  const main = await fetch('/api/finServices');
-  const listdata = await main.json();
-  if (listdata.data?.length > 0) {
-    document.querySelector('#rlist')
-    .addEventListener('load',injectHTML(listdata,'#rlist'))
-  }
 
-/*
-  // the async keyword means we can make API requests
-  const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#get'); // get a reference to your submit button
-  submit.style.display = 'none'; // let your submit button disappear
-*/
+
+  /*
+    // the async keyword means we can make API requests
+    const form = document.querySelector('.main_form');
+    const submit = document.querySelector('#get'); // get a reference to your submit button
+    submit.style.display = 'none'; // let your submit button disappear
+  */
   /*
     Let's get some data from the API - it will take a second or two to load
     This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js

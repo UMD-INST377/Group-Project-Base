@@ -30,7 +30,7 @@ What visualisation or other JS libraries does your project use?
 
 ### CSS Frameworks
 
-What CSS frameworks did you use? What version of them?
+We used CSS Flexible Box, or Flexbox, to give our containers the ability to fill the available space. This framework is used to accomodate various display devices and screen sizes. 
 
 
 ### What This Project is Displaying and Solving

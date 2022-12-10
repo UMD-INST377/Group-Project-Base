@@ -1,5 +1,5 @@
 /* Data Request to API */ 
-token = 'BQC_gFbcKlyVwNRBmWnyyyHEzPJIUn73KaK7LcBwOsqyBR59j_MTm0By9pJueNdpoWQMZRDHoUHz1nPDkvLSmeevRwKHGxAPcGom2R-Eepasie0xc-KID2HBfvPEG4dCkIZ4MGMrcY-iffmblr6ih3Grtr-wWnwt-YtK4XX51vSHZNSm4pwGXFf2ZybePKScRptUgBUdJCIKoT6LykgrFXg'
+token = 'BQA6B7hBcJuMS13pih0IBOjZZ5QLIyjDVVky6nNJjYq2l6sBe2QgFEn9384HAhFAWocfIxs_0xky7kgcg9acvB_R8CpZkJbyzB41LjDKJf4n3vFUxPRmqkVOunlp1woX-KqZC0a5X3Wz2GHN0AHo__T77Mp_3e-lTkYOPT1l1GNJT6D9kGAlrsmTlj61m9u5C1bc07hgDgLThtPhUlr6o2gOmPaxjYCj02jLKlN35d1pdie8lMPU4g'
 term = 'long_term'
 artist_ids = '39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V'
 album_id='0TnOYISbd1XYRBk9myaseg'

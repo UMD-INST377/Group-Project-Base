@@ -1,6 +1,7 @@
 html, body {
   min-height: 100%;
   min-width: 100%;
+  overflow: hidden
 }
 .flex-container {
     display: flex;

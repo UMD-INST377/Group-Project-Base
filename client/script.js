@@ -46,4 +46,18 @@ async function mainEvent() {
   injectDateFilter(data, 2000, '#best_2000s');
   injectDateFilter(data, 2000, '#best_2010s');
 }
+
+function processmovies(list) {
+  console.log('movie lists');
+  const range = [...Array(15).keys()];
+  const newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length);
+    return list[index];
+  });
+  return newArray;
+
+  
+
+
+
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

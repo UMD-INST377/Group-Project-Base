@@ -85,11 +85,9 @@ async function initEcosystemMarketCapChart() {
       config
     }
   );
+}
 
-  const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
-  updateChartButton.addEventListener('click', async (submitEvent) => { // add event listener to the button
-    submitEvent.preventDefault(); // stop the event from causing a redirect
-
+function updateChartButton() {
     // increase the starting index
     start += 10;
 
@@ -120,8 +118,7 @@ async function initEcosystemMarketCapChart() {
       marketCapChart.data.datasets.forEach((dataset) => dataset.data.push(newMarketCap));
     }
     marketCapChart.update();
-  });
-}
+  }
 
 async function initTrendingCryptoTable() {
   // Get the json object containing the crypto data
@@ -150,10 +147,6 @@ async function initTrendingCryptoTable() {
     }
   );
 
-  const prevThreeButton = document.querySelector('#prev-three');
-  prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
-    console.log('prev3');
-  });
 
   const nextThreeButton = document.querySelector('#next-three');
   nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
@@ -209,6 +202,17 @@ async function mainEvent() {
   const ecosystemChart = initEcosystemMarketCapChart();
   const trendingCryptoTable = initTrendingCryptoTable();
   const fallingCryptoTable = initFallingCryptoTable();
+  const chartbutton = document.querySelector(".update-chart-button");
+
+  const prevThreeButton = document.querySelector('#prev-three');
+
+  prevThreeButton.addEventListener('click', submitEvent => { // display the next three cryptocurrencies
+    console.log("prev3")
+  });
+
+  chartbutton.addEventListener('click', async (submitEvent) => { // add event listener to the button
+    submitEvent.preventDefault()
+  })
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

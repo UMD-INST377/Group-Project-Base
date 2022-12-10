@@ -61,7 +61,13 @@ header button {
 */
 
 .backg_image{
-  background-image: url("images/fancy-pants.jpg")}
+  background-image: url("images/fancy-pants.jpg")
+}
+
+.gif{
+  width: 100%;
+  height: auto;
+}
 
 .wrapper {
   min-height: 100vh;
@@ -84,13 +90,6 @@ header button {
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
-.banner .justify-start {
-  margin-left: 1;
-}
-
-.banner .selected {
-  margin:;
-}
 
 /*
   This rule implies that the H1 tag lives within another HTML tag

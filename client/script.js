@@ -72,13 +72,5 @@ function imageClickedWizard() {
   window.location = 'wizard_stats.html';
   return window;
 }
-function ImageClickedHawks() {
-  window.location = 'hawks_stats.html';
-  return window;
-}
-function ImageClickedHeat() {
-  window.location = 'heat_stats.html';
-  return window;
-}
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -145,24 +145,13 @@ div {
   padding: 1.5rem;
 }
 
-.middle_section {
+.right_section {
   background-color: #b392ac;
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
   justify-content: center;
-  max-width: 450px;
-  display:flex;
-  flex-direction: column;
-}
-
-.right_section {
-  background-color: #d1b3c4;
-  flex: 1 2 auto;
-  margin: 1rem;
-  align-items: center;
-  justify-content: center;
-  max-width: 450px;
+  max-width: 550px;
   display:flex;
   flex-direction: column;
 }
@@ -325,7 +314,16 @@ form input {
 
 /* How To Write A Media Query For Small Screens */
 
-@media only screen and (max-width: 736px){
+#map {
+  display: block;
+  width: 500px;
+  height: 480px;
+  border: 2px solid rgb(135, 88, 138);
+  margin-bottom: 1rem;
+}
+
+
+  @media only screen and (max-width: 736px){
     /* Rules in here will only apply when a screen is the correct size */
     /* check it out by using your developer tools to shrink your screen-size */
     .container {
@@ -341,21 +339,32 @@ form input {
       margin: 1rem;
       align-items:flex-start;
       justify-content:flex-start;
-      max-width: 450px;
+      max-width: 400px;
       display:flex;
       flex-direction: column;
   }
+
+  #map {
+    background-color: #e8c2ca;
+    flex: 1 2 auto;
+    margin: 1rem;
+    align-items:flex-start;
+    justify-content:flex-start;
+    width: 90%;
+    max-height: 350px;
+    display:flex;
+    flex-direction: column;
+  }
+  
+  .box {
+    background-color: #f7d1cd;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+    align-items: center;
+  }
 }
-
-#map {
-  display: block;
-  width: 400px;
-  height: 380px;
-  border: 2px solid rgb(135, 88, 138);
-  margin-bottom: 1rem;
-}
-
-
 /* 
     New code bonus: pure CSS data loading icon
     This comes from loading.io/css - it's nice to show that something is happening!

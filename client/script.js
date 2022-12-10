@@ -111,11 +111,12 @@ async function mainEvent() {
 
   // click button to change the year
   let yr = document.querySelector('.yr_form');
+  injectHTML(await fetchJson(2022), '#rlist');
   yr.addEventListener('input', async (event) => {
     event.preventDefault();
     let data = await fetchJson(event.target.value);
     console.log(data);
-    if (event.target.value.length > 0) {
+    if (data.data.length > 0) {
       document.querySelector('#rlist')
         .addEventListener('load', injectHTML(data, '#rlist'))
     }

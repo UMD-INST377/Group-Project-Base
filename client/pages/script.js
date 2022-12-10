@@ -64,7 +64,8 @@ async function mainEvent() {
   const loadAnimation = document.querySelector('.lds-ellipsis');
   submit.style.display = 'none';
 
- /* const data_source = 
+  /* 
+ const data_source = 
     "National Museum of American History" : [38.5328,77.0148],
   */
   const results = await fetch('/api/smithsonian');

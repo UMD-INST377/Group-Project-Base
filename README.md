@@ -1,6 +1,6 @@
 # This is your readme
 
-Main site: [https://guntherchung.github.io/Group17-Final-Project-Crypto/client/]
+Main site :[link](https://guntherchung.github.io/Group17-Final-Project-Crypto/client/)
 
 You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
 

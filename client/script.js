@@ -189,35 +189,19 @@ function injectHTML(list) {
 async function mainEvent(){
 
   const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#myInput')
 
   console.log("inside mainevent");
 
   if(response.data?.length > 0){
 
-    let currentList = [];
+    console.log("inside if");
 
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
 
-      const newList = filterTable(currentList, event.target.value);
-
-      injectHTML(newList);
-
-
     });
-
-    form.addEventListener('submit', (submitEvent) => {
-      submitEvent.preventDefault();
-
-      currentList = response;
-
-      injectHTML(currentList);
-    });
-
   }
 
-  console.log(response);
 }
 
 
@@ -235,6 +219,8 @@ const myChart = new Chart(ctx, {
     }]
   }
 });
+
+document.addEventListener('DomContentLoaded', async () => mainEvent());
 
 
 

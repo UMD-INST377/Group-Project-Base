@@ -8,6 +8,8 @@ GitHub Pages Site: https://mchan02.github.io/Group07-Final-Project/
 
 ### Target Browsers
 
+Our project is directed at a variety of browsers. Since we used Flexbox, our page is able to suit different browsers due to its ability to change size.
+
 Description of target browsers (iOS? Android? Which ones? Which versions?)
 
 
@@ -25,15 +27,21 @@ What visualisations does your project drive?
 
 ### JavaScript Libraries and Other Tools Used
 
+Our project primarily uses Leaflet.js for our map visualization component. 
+
 What visualisation or other JS libraries does your project use?
+
+Our project primarily uses Leaflet.js for our main visualization component. We also used Chart.js to make a pie chart of the county's population by race. We also embeded a Tableau dashboard that houses two additional maps. Another tool we used is Geoapify’s Marker Icon API Playground to create custom markers for our Leaflet.js map. This tool is free and only requires the use of an API key.
 
 
 ### CSS Frameworks
 
-We used CSS Flexible Box, or Flexbox, to give our containers the ability to fill the available space. This framework is used to accomodate various display devices and screen sizes. 
+Our project uses CSS Flexible Box, or Flexbox, to give our containers the ability to fill the available space. This framework is used to accomodate various display devices and screen sizes. 
 
 
 ### What This Project is Displaying and Solving
+
+This project takes in data from the Prince George's County Crime Incidents API, and generates a list of 10 crimes, plus the type of crime and location, and displays that information on a map. The idea for this project is to provide a convenient way for users to visualize crime in Prince George's County, and have an accurate space to do that.  
 
 What is your actual project trying to display and solve?
 

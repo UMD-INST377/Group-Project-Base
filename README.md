@@ -24,14 +24,14 @@ API link: https://data.princegeorgescountymd.gov/Public-Safety/Crime-Incidents-F
 
 What visualisations does your project drive?
 
+Our project provides an interactive map visualization for users. This map provides a visual for types of crimes in Prince George's County, and where they occurred. 
+
 
 ### JavaScript Libraries and Other Tools Used
 
-Our project primarily uses Leaflet.js for our map visualization component. 
-
 What visualisation or other JS libraries does your project use?
 
-Our project primarily uses Leaflet.js for our main visualization component. We also used Chart.js to make a pie chart of the county's population by race. We also embeded a Tableau dashboard that houses two additional maps. Another tool we used is Geoapify’s Marker Icon API Playground to create custom markers for our Leaflet.js map. This tool is free and only requires the use of an API key.
+Our project primarily uses Leaflet.js for our map visualization component. 
 
 
 ### CSS Frameworks

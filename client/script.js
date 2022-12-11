@@ -256,7 +256,7 @@ async function mainEvent() {
 
   form.addEventListener('input', (event) => { // event bubbling
     console.log('input', event.target.value); // <input> contents
-    const newFilterList = filterList(currentList, event.target.value); // filters currentList
+    const newFilterList = filterList(chartData, event.target.value); // filters currentList
     injectHTML(newFilterList);
     // markerPlace(newFilterList, pageMap);
   });

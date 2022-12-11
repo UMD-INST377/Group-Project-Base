@@ -139,7 +139,7 @@ function changeChart(chart, dataObject) {
   const relabel = Object.values(dataObject);
   const labels = shapeLabelsForBarChart(relabel);
 
-  const info = Object.keys(dataObject).map((item) => dataObject[item].length); // .length?
+  const info = Object.keys(dataObject).map((item) => dataObject[item].length); // this is the problem
 
   chart.data.labels = labels;
   console.log(labels);

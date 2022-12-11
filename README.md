@@ -30,9 +30,9 @@ Our project primarily uses Leaflet.js for our map visualization component.
 
 ### CSS Frameworks
 
-Our project uses CSS Flexible Box, or Flexbox, to give our containers the ability to fill the available space. This framework is used to accomodate various display devices and screen sizes. 
+Our project uses CSS Flexible Box, or Flexbox, to give the containers the ability to fill the available space. This framework is used to accomodate various display devices and screen sizes. 
 
 
 ### What This Project is Displaying and Solving
 
-This project takes in data from the Prince George's County Crime Incidents API, and generates a list of 10 crimes, plus the type of crime and location, and displays that information on a map. The idea for this project is to provide a convenient way for users to visualize crime in Prince George's County, and have an accurate space to do that.  
+This project takes in data from the Prince George's County Crime Incidents API, and generates a list of 10 crimes, along with the type of crime and location, and displays that information on a map. The idea for this project is to provide a convenient way for users to visualize crime in Prince George's County, and have an accurate space to do that. We hope this project is helpful for those who may be curious about these crime statistics.

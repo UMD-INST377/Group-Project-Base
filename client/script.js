@@ -73,7 +73,11 @@ function getRandomIntInclusive(min, max){
       const longitude = item.location_1.longitude;
       const numLat = parseFloat(latitude);
       const numLng = parseFloat(longitude);
-      L.marker([numLat, numLng]).addTo(map);
+      //L.marker([numLat, numLng]).addTo(map);
+      L.marker([numLat, numLng]).bindPopup(L.popup({maxWidth:500}).
+      setContent("Branch name: " + item.branch_name +"<br>"+"Branch type: " + item.branch_type +"<br>"+
+       "\nPhone Number: " + item.telephone))
+      .addTo(map);
 
       if(index === 0){
         map.setView([numLat, numLng], 10.5);

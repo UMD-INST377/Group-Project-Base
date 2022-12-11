@@ -252,7 +252,7 @@ async function init() {
 
     filter.addEventListener('click', (z) => {
       z.preventDefault();
-      const filterData = myChart.data.datasets[0].data.filter((value) => value > 180000);
+      const filterData = myChart.data.datasets[0].data.filter((value) => value > 200000);
 
       const filterLabels = [];
       let i = 0;

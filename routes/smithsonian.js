@@ -11,10 +11,10 @@ const router = express.Router();
 // /////////////////////////////////
 // Food Inspection Set Demos
 // /////////////////////////////////
-router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
+router.route('/smithsonian') // actually localhost:3000/api/foodServicesPG
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const url = 'https://api.si.edu/openaccess/api/v1.0/stats?api_key=bDy3ONUljbeF9nhGIgWGL3G0EMCOcOgLgPGqXpDq';
       const data = await fetch(url);
       const json = await data.json();
       console.log(json);
@@ -27,7 +27,7 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .put((req, res) => {
     try {
-      res.json({message: 'put FoodServices endpoint'});
+      res.json({message: 'put Smitsonain endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -35,7 +35,7 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .post((req, res) => {
     try {
-      res.json({message: 'post FoodServices endpoint'});
+      res.json({message: 'post Smithsonain endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -43,17 +43,17 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .delete((req, res) => {
     try {
-      res.json({message: 'delete FoodServices endpoint'});
+      res.json({message: 'delete Smithsonain endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
     }
   });
 
-router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
+router.route('/smithsonian/:category') // actually localhost:3000/api/foodServicesPG/20782
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+      const url = 'https://api.si.edu/openaccess/api/v1.0/category/:cat/search?api_key=bDy3ONUljbeF9nhGIgWGL3G0EMCOcOgLgPGqXpDq';
       const request = await fetch(url);
       const json = await request.json();
       console.log(json);

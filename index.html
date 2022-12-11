@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music: Broad Horizons</title>
+    <link rel="stylesheet" href="./client/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="Wrapper">
+        <div class='header'>
+            <h1> New Horizons </h1>
+        </div>
+        <div>
+            <label for="Genre">Genre:</label>
+            <select name="" id="select_genre">
+                <option>Select...</option>                    
+            </select>
+        </div>
+        <div class="search_bar">
+            <button type="button", id="Submit">Broaden my horizon!</button>
+        </div>
+        <div id="GeneratedContents">
+            <div class="box", id="music_list"></div>
+            <div class="box", id="Imagebox">    
+            </div>
+
+            <div class="box", id="Chartbox">
+            
+                <div class="chart_container">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <button type="button", id="filter">Filter Length > 180000ms</button>
+            </div>
+               
+        </div>
+        
+
+        <div class='footer'>
+            <p>Go to <a href='https://open.spotify.com/'>Spotify</a></p>
+            <p><a href='about_us.html'>About us</a></p>
+        </div>
+    </div>
+    <script src="./client/script.js"></script>
+</body>
+</html>
+
+

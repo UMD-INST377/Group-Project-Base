@@ -18,17 +18,4 @@ Our second page includes a doughnut chart, this is similar to a pie chart, showi
 We used the chart.js library to visualize our data.
 
 ## CSS Framework
-There was not a specific famework or library that we implemented into this project in terms of styling. We decided to choose techniques we learned through our class labs. This was the best option for our data, making the user experience as best as possible. The main pages have the information styled with flexboxes, ensuring that page changes depending on the device being used to access the page. 
-
-
-
-
-
-
-
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
-
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+There was not a specific famework or library that we implemented into this project in terms of styling. We decided to choose techniques we learned through our class labs. This was the best option for our data, making the user experience as best as possible. The main pages have the information styled with flexboxes, ensuring that page changes depending on the device being used to access the page.

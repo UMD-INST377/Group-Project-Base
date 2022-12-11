@@ -10,8 +10,6 @@ GitHub Pages Site: https://mchan02.github.io/Group07-Final-Project/
 
 Our project is directed at a variety of browsers. Since we used Flexbox, our page is able to suit different browsers due to its ability to change size.
 
-Description of target browsers (iOS? Android? Which ones? Which versions?)
-
 
 ### API
 
@@ -22,14 +20,10 @@ API link: https://data.princegeorgescountymd.gov/Public-Safety/Crime-Incidents-F
 
 ### Visualizations
 
-What visualisations does your project drive?
-
 Our project provides an interactive map visualization for users. This map provides a visual for types of crimes in Prince George's County, and where they occurred. 
 
 
 ### JavaScript Libraries and Other Tools Used
-
-What visualisation or other JS libraries does your project use?
 
 Our project primarily uses Leaflet.js for our map visualization component. 
 
@@ -42,6 +36,3 @@ Our project uses CSS Flexible Box, or Flexbox, to give our containers the abilit
 ### What This Project is Displaying and Solving
 
 This project takes in data from the Prince George's County Crime Incidents API, and generates a list of 10 crimes, plus the type of crime and location, and displays that information on a map. The idea for this project is to provide a convenient way for users to visualize crime in Prince George's County, and have an accurate space to do that.  
-
-What is your actual project trying to display and solve?
-

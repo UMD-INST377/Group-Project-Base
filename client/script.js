@@ -42,6 +42,7 @@ function injectHTML(list) {
     const el = document.createElement('li');
     el.innerText = item.name;
     listEl.appendChild(el);
+    console.log(item.name);
   });
 }
 
@@ -49,7 +50,8 @@ function processRestaurants(list) {
   console.log('fired restaurants list');
   const range = [...Array(15).keys()]; // Special notation to create an array of 15 elements
   const newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length);
+    const index = getRandomIntInclusive(0, list.length - 1);
+    console.log(list[index]);
     return list[index];
   });
   return newArray;
@@ -170,7 +172,7 @@ async function getAccessToken() {
     body: urlencoded,
     redirect: 'follow'
   };
-  const reply = await fetch(url, requestOptions)
+  const reply = await fetch(url, requestOptions);
   const json = await reply.json();
   console.log(json.access_token);
   return json.access_token;
@@ -238,7 +240,7 @@ async function mainEvent() {
   console.log(`${chartData[0].name} ${chartData[0].popularity}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (!chartData.artists?.length) { return; } // Return if we have no data aka array has no length
+  if (!chartData.length) { return; } // Return if we have no data aka array has no length
 
   submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
@@ -261,7 +263,7 @@ async function mainEvent() {
     submitEvent.preventDefault();
 
     // This constant will have the value of your 15-restaurant collection when it processes
-    currentList = processRestaurants(chartData.artists);
+    currentList = processRestaurants(chartData);
     console.log(currentList);
 
     // And this function call will perform the "side effect" of injecting the HTML list for you

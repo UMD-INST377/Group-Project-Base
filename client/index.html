@@ -7,7 +7,7 @@
     	<title> NBA Fantasy Mock Draft</title>
     
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    	<link rel="stylesheet" href="style.css" />
+    	<link rel="stylesheet" href="styles.css" />
 
   	</head>
   	<body>
@@ -26,6 +26,10 @@
             	<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
             	<button type="submit" id="get-resto">Draft</button>
           </form>
+
+          <div class="box" id="player_list">
+            A list of Players from an API
+          </div>
         </div>
         <!-- Left Side Ends-->
 
@@ -34,22 +38,26 @@
           <h2>Player Stats</h2>
 
           <!-- Buttons Start -->
-          <button class="prev">previous stat</button>
+          <!-- <button class="prev">previous stat</button> -->
+          <div class="chart_container">
+            <canvas id="myChart2"></canvas>
+          </div>
+
             <div class="chart_container">
                 <canvas id="myChart"></canvas>
             </div>
 
-            <div class="slides">
+            <!-- <div class="slides">
                 <div class="stats"><script id="chart_1" src="Stats/script1.js" ></script></div>
                 <div class="stats"><script id="chart_2" src="Stats/script2.js" ></script></div>
                 <div class="stats"><script id="chart_3" src="Stats/script3.js" ></script></div>
               </div>
-          <button class="next">next stat</button>
+          <button class="next">next stat</button> -->
           <!-- Buttons End -->
 
-          <div class="box" id="player_list">
+          <!-- <div class="box" id="player_list">
             A list of Players from an API
-          </div>
+          </div> -->
         </div>
         <!-- Right Side Ends-->
 

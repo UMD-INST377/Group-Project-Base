@@ -17,7 +17,7 @@
 }
 
 html {
-  background-color: #000000;
+  background-color: #fff;
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -34,9 +34,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  color: #FFFFFF;
 
-  font-family: 'Helvetica Neue';
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
 }
@@ -96,8 +95,7 @@ form {
 }
 
 .box {
-  background-color: rgba(39, 3, 158, 0.27);
-  color: white;
+  background-color: rgba(153, 149, 149, 0.4);
   border: 2px;
   border-radius: 4px;
 
@@ -108,8 +106,7 @@ form {
 }
 
 .filmList{
-  background-color: #1B5176;
-  color: #000000;
+  background-color: rgba(87, 87, 87, 0.4);
   display:flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -198,14 +195,4 @@ form label {
     justify-content: center;
     align-items: center;
   }
-}
-
-img {
-  border: 1px solid white;
-  margin-right: 2px;
-  margin: auto;
-}
-
-flex {
-width: 300 px;
 }

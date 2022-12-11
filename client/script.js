@@ -230,7 +230,7 @@ async function mainEvent() {
       Dot notation is preferred in JS unless you have a good reason to use brackets
       The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
     */
-  // console.table(arrayFromJson.data);
+  console.table(chartData);
 
   // in your browser console, try expanding this object to see what fields are available to work with
   // for example: arrayFromJson.data[0].name, etc
@@ -248,7 +248,7 @@ async function mainEvent() {
   loadAnimation.classList.remove('lds-ellipsis');
   loadAnimation.classList.add('lds-ellipsis_hidden');
 
-  let currentList = []; // used by both event listeners, allows them to interact with each other
+  // let currentList = []; // used by both event listeners, allows them to interact with each other
 
   form.addEventListener('input', (event) => { // event bubbling
     console.log('input', event.target.value); // <input> contents
@@ -263,11 +263,11 @@ async function mainEvent() {
     submitEvent.preventDefault();
 
     // This constant will have the value of your 15-restaurant collection when it processes
-    currentList = processRestaurants(chartData);
-    console.log(currentList);
+    // currentList = processRestaurants(chartData);
+    // console.log(currentList);
 
     // And this function call will perform the "side effect" of injecting the HTML list for you
-    injectHTML(currentList);
+    injectHTML(chartData);
     // markerPlace(currentList, pageMap);
 
     // By separating the functions, we open the possibility of regenerating the list

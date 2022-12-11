@@ -76,8 +76,6 @@ function initScatter(chart, dataObject) {
     const scatterObject = {};
     scatterObject.x = xvalue;
     scatterObject.y = y[index];
-    console.log(xvalue);
-    console.log(y[index]);
     return scatterObject;
   });
 
@@ -129,7 +127,9 @@ function initBarChart(chart, dataObject) {
   console.log(labels);
   console.log(dataObject['0'][0].player.last_name);
 
-  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+  const info = shapeDataForMade(intialData);
+  console.log(info)
+  // Object.keys(dataObject).map((item) => dataObject[item].length);
 
   const data = {
     labels: labels,
@@ -181,8 +181,6 @@ function changeScatter(chart, dataObject) {
     const scatterObject = {};
     scatterObject.x = xvalue;
     scatterObject.y = y[index];
-    console.log(xvalue);
-    console.log(y[index]);
     return scatterObject;
   });
   chart.data.labels = labels;

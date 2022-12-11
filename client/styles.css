@@ -155,6 +155,12 @@
     color: rgb(246, 169, 93);
     text-decoration: none;
   }
+
+  .leaflet-popup-content { 
+    background-color: #fde1d0 ;
+    border: 2px dashed rgb(99, 99, 99);
+
+  }
   
   
   form input {

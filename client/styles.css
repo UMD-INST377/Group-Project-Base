@@ -43,6 +43,7 @@ body {
   justify-content: flex-end;
   font-size: smaller;
   font-weight: 250;
+  position: fixed;
 }
 
 a {
@@ -99,6 +100,7 @@ form {
   padding-right: 1rem;
   padding-top: 10px ;
   padding-bottom: 10px ;
+  position: relative;
 }
 
 .head {
@@ -120,9 +122,9 @@ form {
   font-size: 25;
   border-bottom-width: 3px;
   border-top-width: 3px;
-  padding-top: 1px;
-  padding-bottom: 1px;
   border-left-width: 3px;
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
@@ -145,12 +147,12 @@ form {
   justify-content: start;
   border-radius: 15px;
   padding: 10px;
-  margin: 10px;
   position: fixed;
 }
 .inner{
-  
+  padding: 80px;
   background-color: #fff;
+  width:auto;
 }
 .text.box{
   position: sticky;
@@ -197,14 +199,18 @@ form {
 
 th{
   text-align: center;
+  width: auto;
 }
 
 td{
   padding: 5px;
   background-color: rgb(40, 39, 39);
+  border-style: hidden;
+  border-color: #fff;
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: auto;
 }
 
 form input {
@@ -269,7 +275,6 @@ form label {
   }
 
   .header h2 {
-    position: sticky;
     display: block;
     background-color: #ffffff;
     color: #000000;
@@ -283,6 +288,7 @@ form label {
     padding-bottom: 1px;
     border-left-width: 3px;
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    position: fixed;
   }
   .navbar {
     list-style-type: none;

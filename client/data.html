@@ -24,7 +24,7 @@
         <div class="form container">
             <div class="left box">
                 <div class="innr">
-                    <form action="/api" class="b main_form">
+                    <form action="/api" class="sr_form">
                         <div>
                             <label for="resto">Search</label>
                             <input type="text" name="resto" id="resto">
@@ -34,14 +34,18 @@
                     <h5>Select Year:</h5>
                     <form action="/api" class="yr_form">
                         <div class="small" id="butts">
+                            <script>
+                            window.addEventListener('load', (event) => {
+                                addButt('#butts');
+                            });
+                            </script>
                         </div>
                     </form>
                 </div>
             </div>
+            <div class="inner"></div>
             <div class="right box">
-                <h2>
-                    Data Entires of
-                </h2>
+                <div id="yrtitle"></div>
                 <div class="table" id="rlist">
                     Loading data from an API...
                 </div>

@@ -71,12 +71,12 @@ function processCrimes(list) {
 }
 
 function filterList(array, filterInputValue) {
-  return array.filter((item) => {
-    if (!item.street_address || item.clearance_code_inc_type) { return; }
-    const lowerCaseName = item.name.toUpperCase();
-    const lowerCaseQuery = filterInputValue.toUpperCase();
+  const newArray = array.filter(() => {
+    const lowerCaseName = item.clearance_code_inc_type.toLowerCase();
+    const lowerCaseQuery = filterInputValue.clearance_code_inc_type.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
+  return newArray;
 }
 
 function initMap() {

@@ -16,6 +16,16 @@ function capitalizeFirstLetter(string) {
 function lowerCaseName(string) {
   return string.toLowerCase();
 }
+
+function filterList(array, filterInputValue) {
+  const newArray = array.filter((item) => {
+    const lowCaseName = lowerCaseName(item);
+    const lowCaseQuery = filterInputValue.toLowerCase();
+    return lowCaseName.includes(lowCaseQuery);
+  });
+  return newArray;
+}
+
 function fillNBAInfo (name, logo) {
   document.querySelector('.nbaBox').innerHTML = `
   <div class = "nbaInfo">
@@ -29,26 +39,38 @@ function fillNBAInfo (name, logo) {
   `;
 }
 
-function fillPlayerInfo(firstname, lastname, id, array) {
-  console.log(array.length)
-
-
-
+function fillPlayerInfo(firstname, lastname, id) {
   document.querySelector('.playerBox').innerHTML = `
   <div>
     </div>
     <div class="playerInfo">
       <h1>${capitalizeFirstLetter(
-    `${array} ${lastname}`
+    `${firstname} ${lastname}`
   )}</h3>
       <p>ID: ${(ind = id)}</p>
       ${ind}
     </div>`;
 }
 
-function fillNBAInfoAll (array) {
-  console.log(array)
-  
+function injectHTML(list) {
+  console.log('fired injectHTML');
+  const target = document.querySelector('#player_list');
+  target.innerHTML = '';
+
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
+
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item;
+    listEl.appendChild(el);
+  });
+}
+
+function processPlayers(list) {
+  const range = [...Array(list.length).keys()];
+  const newArray = range.map((item) => item);
+  return newArray;
 }
 
 function updateChart(chart, object) {
@@ -61,29 +83,29 @@ function updateChart(chart, object) {
   chart.data.datasets[0].data[4] = object[6];
   chart.data.datasets[0].data[5] = object[7];
   chart.data.datasets[0].label = object[8];
-  
+
   chart.update();
 }
 
 async function getPlayer() {
   try {
-    const name = document.querySelector('#namePlayer').value;
+    const name = document.querySelector('#lastNamePlayer').value;
     const playerName = lowerCaseName(name);
     const newData = await fetch(`https://api-nba-v1.p.rapidapi.com/players?name=${playerName}`, options);
     const data = await newData.json();
-    const nameArray = []
-    
+    const nameArray = [];
+
     const allNames = data.response;
     const length = allNames.length;
-    
+
     for (let i = 0; i < length; i++) {
-      nameArray.push(allNames[i].firstname)
+      nameArray.push(allNames[i].firstname);
     }
-    console.log(nameArray)
+    console.log(nameArray);
     const playerID = data.response[0].id;
     const firstName = data.response[0].firstname;
     const lastName = data.response[0].lastname;
-    return [playerID, firstName, lastName, nameArray];
+    return [playerID, firstName, lastName, nameArray, data];
   } catch (err) {
     console.log('Data Request Failed', err);
   }
@@ -115,7 +137,7 @@ function initChart(chart, object) {
       label: 'Player Name',
       backgroundColor: 'rgb(255, 99, 131)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0],
+      data: [0]
     }]
   };
 
@@ -135,24 +157,41 @@ function initChart(chart, object) {
     config
   );
 }
-
+// setting up chart //
 const ctx = document.querySelector('#myChart');
 let chartData;
 const playerChart = initChart(ctx, chartData);
 
+// setting other variables//
+let player;
+let playerInfo;
+let playerList = [];
+let newFilterList = []
+
 document.querySelector('#search').addEventListener('click', async (event) => {
   player = await getPlayer(event.target.value);
-  console.log(player)
-  console.log(player[0])
-  console.log(player[1])
-  console.log(player[2])
-  playerInfo = await getPlayerData(player[0]);
+  console.log(player);
+  console.log(player[0]);
+  console.log(player[1]);
+  console.log(player[2]);
+  console.log(player[3]);
+
+  playerList = player[3];
+  console.log(playerList);
+  injectHTML(playerList);
+});
+
+document.querySelector('#search2').addEventListener('click', async (event) => {
+  searchName = newFilterList[0];
+  searchPlayer = player[4].response.filter((obj) => obj.firstname === searchName);
+  id = searchPlayer[0].id;
+  console.log(id);
+  playerInfo = await getPlayerData(id);
   console.log(playerInfo);
   console.log(playerInfo[0]);
   console.log(playerInfo[1]);
-  fillPlayerInfo(player[1], player[2], player[0], player[3]);
+  fillPlayerInfo(player[1], player[2], player[0]);
   fillNBAInfo(playerInfo[0], playerInfo[1]);
-  fillNBAInfoAll(player[3]);
   chartData = [player[1],
     player[2],
     playerInfo[2],
@@ -161,7 +200,12 @@ document.querySelector('#search').addEventListener('click', async (event) => {
     playerInfo[5],
     playerInfo[6],
     playerInfo[7],
-    player[1] + ' ' + player[2]];
-    
+    `${player[1]} ${player[2]}`];
+
   updateChart(playerChart, chartData);
 });
+
+document.querySelector('#firstNamePlayer').addEventListener('input', (event) => {
+  newFilterList = filterList(playerList, event.target.value);
+  injectHTML(newFilterList);
+})

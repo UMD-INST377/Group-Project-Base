@@ -31,6 +31,7 @@ function getRandomIntInclusive(min, max) {
       - using a .forEach method, inject a list element into your index.html for every element in the list
       - Display the name of that restaurant and what category of food it is
   */
+ 
 function injectHTML(list) {
   console.log('fired injectHTML');
   const target = document.querySelector('#restaurant_list');
@@ -40,9 +41,12 @@ function injectHTML(list) {
   target.appendChild(listEl);
   list.forEach((item) => {
     const el = document.createElement('li');
-    el.innerText = item.name;
+    const anchor = document.createElement('a');
+    anchor.href = item.external_urls.spotify;
+    anchor.innerText = item.name;
+    el.appendChild(anchor);
     listEl.appendChild(el);
-    console.log(item.name);
+    // console.log(item.name);
   });
 }
 

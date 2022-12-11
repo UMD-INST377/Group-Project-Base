@@ -17,7 +17,7 @@
 }
 
 html {
-  background-color: #000000;
+  background-color: #213240;
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -96,7 +96,7 @@ form {
 }
 
 .box {
-  background-color: #213240
+  background-color: rgba(39, 3, 158, 0.27);
   color: white;
   border: 2px;
   border-radius: 4px;

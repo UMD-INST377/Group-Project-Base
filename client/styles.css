@@ -23,6 +23,11 @@ html {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   font-weight: bold;
+  text-align: center;
+}
+
+.header img{
+  max-height: 1em;
 }
 
 .header h2 {
@@ -96,3 +101,4 @@ html {
   margin-inline-end: 0px;
   font-weight: bold;
 }
+

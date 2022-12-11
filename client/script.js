@@ -92,7 +92,6 @@ function songsToArray(songs) {
     });
   });
   return array;
-  // console.log(array)
 }
 
 function songLenArray(list) {
@@ -101,7 +100,6 @@ function songLenArray(list) {
     array.push(element.length);
   });
   return array;
-  // console.log(array)
 }
 
 function songNameArray(list) {
@@ -110,7 +108,6 @@ function songNameArray(list) {
     array.push(element.name);
   });
   return array;
-  // console.log(array)
 }
 // -------------------UI Handling-------------------
 
@@ -120,7 +117,7 @@ function insertGenres(text, value, element) {
   element.insertAdjacentHTML('beforeend', html);
 }
 
-// Get random 10 items from an aray (to be replacedby betterselection item)
+// Get random 9 items from an aray (to be replacedby betterselection item)
 function getRandomTen(list) {
   console.log('fired get 9 songs');
   const range = [...Array(9).keys()];
@@ -235,7 +232,7 @@ async function init() {
 
   // Step 4: When user presses the submit button (broaden my horizons) we display 9 random songs out of those retrived.
   // If the user keeps pressing submit he should get new songs from the same genre.
-  // If user changes genre the
+  // If user changes genre the generate content will be hidden until he presses the button again
   submit.addEventListener('click', (e) => {
     e.preventDefault();
     const sample = getRandomTen(songArray);

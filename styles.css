@@ -93,7 +93,7 @@ div {
   /* this will push other blocks out of the way */
   /* colors */
   background-color: #2f6447;
-  color: #f7d1cd;
+  color: #fffcfb;
   /* shapes */
   border-radius: 15px;
   font-size: 1.5rem;
@@ -118,15 +118,15 @@ div {
 
 .clear_box {
   border-radius: 15px;
-  color: rgb(71, 47, 72);
+  color: rgb(255, 250, 250);
   width: fit-content;
   height:fit-content;
   padding: 1.5rem;
 }
 
 .box {
-  background-color: #f7d1cd;
-  border: 1px solid rgb(156, 103, 159);
+  background-color: #25644f;
+  border: 1px solid rgb(38, 99, 63);
   border-radius: 15px;
 
   width: fit-content;
@@ -135,14 +135,14 @@ div {
 }
 
 .left_section {
-  background-color: #d1b3c4;
+  background-color: #25644f;
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
 }
 
 .right_section {
-  background-color: #b392ac;
+  background-color: #25644f;
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;

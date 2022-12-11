@@ -69,8 +69,8 @@ function initScatter(chart, dataObject) {
   console.log(intialData);
   const labels = 'na';
 
-  const x = intialData[0];
-  const y = intialData[1];
+  const x = intialData[1];
+  const y = intialData[0];
 
   const scatterArray = x.map((xvalue, index) => {
     const scatterObject = {};
@@ -174,8 +174,8 @@ function changeScatter(chart, dataObject) {
   console.log(intialData);
   const labels = 'na';
 
-  const x = intialData[0];
-  const y = intialData[1];
+  const x = intialData[1];
+  const y = intialData[0];
 
   const scatterArray = x.map((xvalue, index) => {
     const scatterObject = {};

@@ -91,11 +91,9 @@ div {
   display: block;
   /* border: 1px solid rgba(0, 0, 0, 0.8); */
   /* this will push other blocks out of the way */
-
   /* colors */
   background-color: #735d78;
   color: #f7d1cd;
-
   /* shapes */
   border-radius: 15px;
   font-size: 1.5rem;
@@ -118,6 +116,13 @@ div {
 */
 
 
+.clear_box {
+  border-radius: 15px;
+  color: rgb(71, 47, 72);
+  width: fit-content;
+  height:fit-content;
+  padding: 1.5rem;
+}
 
 .box {
   background-color: #f7d1cd;
@@ -142,7 +147,7 @@ div {
   margin: 1rem;
   align-items: center;
   justify-content: center;
-  max-width: 450px;
+  max-width: 550px;
   display:flex;
   flex-direction: column;
 }
@@ -305,7 +310,16 @@ form input {
 
 /* How To Write A Media Query For Small Screens */
 
-@media only screen and (max-width: 736px){
+#map {
+  display: block;
+  width: 500px;
+  height: 480px;
+  border: 2px solid rgb(135, 88, 138);
+  margin-bottom: 1rem;
+}
+
+
+  @media only screen and (max-width: 736px){
     /* Rules in here will only apply when a screen is the correct size */
     /* check it out by using your developer tools to shrink your screen-size */
     .container {
@@ -321,9 +335,30 @@ form input {
       margin: 1rem;
       align-items:flex-start;
       justify-content:flex-start;
-      max-width: 450px;
+      max-width: 400px;
       display:flex;
       flex-direction: column;
+  }
+
+  #map {
+    background-color: #e8c2ca;
+    flex: 1 2 auto;
+    margin: 1rem;
+    align-items:flex-start;
+    justify-content:flex-start;
+    width: 90%;
+    max-height: 350px;
+    display:flex;
+    flex-direction: column;
+  }
+  
+  .box {
+    background-color: #f7d1cd;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+    align-items: center;
   }
 }
 
@@ -334,12 +369,81 @@ form input {
   border: 1px rgb(0, 0, 0);
   margin-bottom: 1rem;
 }
-
-
 /* 
     New code bonus: pure CSS data loading icon
     This comes from loading.io/css - it's nice to show that something is happening!
 */
+
+  .lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+
+  .lds-ellipsis_hidden {
+    display: hidden;
+  }
+  
+  .lds-ellipsis div { 
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  
+/* Dropdown Button */
+.dropbtn {
+background-color: #f7d1cd;
+color: rgb(71, 47, 72);
+padding: 12px;
+font-size: 13px;
+border: 1px solid rgb(156, 103, 159);
+border-radius: 10px;
+}
 
   .lds-ellipsis {
     display: inline-block;

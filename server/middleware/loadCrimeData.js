@@ -15,7 +15,7 @@ export async function importCrimeData(req, res, next) {
     const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
     const json = await data.json(); // the data isn't json until we access it using dot notation
 
-    const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+    const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.name));
 
     console.log('Results in crimeData middleware', json.length); // let's check that something's there before we return it
     req.crimeData = reply; // and let's _attach_ the data to our request object here

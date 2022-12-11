@@ -3,7 +3,6 @@ import express from 'express';
 import path from 'path';
 
 import CrimeDataRoutes from './CrimeDataRoutes';
-import sqlDemoRoutes from './sqlDemoRoutes.js'; // this is included in case you want to use a database of your own for the group project
 
 const router = express.Router();
 

@@ -1,0 +1,61 @@
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project-pgcounty-spending</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h2 class="header">
+                Prince George County Finance
+                <nav class="navbar">
+                    <a href='index.html'>Home</a>
+                    <a href=''>Data</a>
+                    <a href='viz.html'>Visualization</a>
+                </nav>
+            </h2>
+        </header>
+
+        <div class="form container">
+            <div class="left box">
+                <div class="innr">
+                    <form action="/api" class="sr_form">
+                        <div>
+                            <label for="resto">Search</label>
+                            <input type="text" name="resto" id="resto">
+                        </div>
+                        <button type="submit" id="get">Submit & filter</button>
+                    </form>
+                    <h5>Select Year:</h5>
+                    <form action="/api" class="yr_form">
+                        <div class="small" id="butts">
+                            <script>
+                            window.addEventListener('load', (event) => {
+                                addButt('#butts');
+                            });
+                            </script>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="inner"></div>
+            <div class="right box">
+                <div id="yrtitle"></div>
+                <div class="table" id="rlist">
+                    Loading data from an API...
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="https://github.com/bw1umd/Project-pgcounty-spending.git">Github</a>
+        </div>
+        <script src="./script.js"></script>
+</body>
+
+</html>

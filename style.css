@@ -111,7 +111,6 @@ form {
   background-color: #1B5176;
   color: #000000;
   display:flex;
-  flex-wrap: wrap;
   gap: 20px;
   padding-top: 25px;
   padding-right: 25px;

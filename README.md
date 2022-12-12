@@ -13,3 +13,6 @@ https://github.com/p3stuff/Group-102-03-Final-Project
 This website is designed to work for both mobile and desktop devices. Any screen with a size greater than 
 736 pixels will see the desktop version of the website, while any smaller screens will be viewing the mobile 
 version of the website.
+
+### Home Page
+https://p3stuff.github.io/Group-102-03-Final-Project/client/index.html

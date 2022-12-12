@@ -72,8 +72,9 @@ function processCrimes(list) {
 
 function filterList(array, filterInputValue) {
   console.log(array);
+  const error = 'Please Enter a Crime Category.';
   return array.filter((item) => {
-    if (!item.clearance_code_inc_type) { return; }
+    if (!item.clearance_code_inc_type) { return error; }
     const lowerCaseName = item.clearance_code_inc_type.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     console.log(lowerCaseName.includes(lowerCaseQuery));

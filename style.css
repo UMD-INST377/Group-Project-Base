@@ -126,7 +126,7 @@ line-height: 1.5;
 
 .clear_box {
   border-radius: 15px;
-  color: rgb(141, 194, 161);
+  color: rgb(255,255,255);
   width: fit-content;
   height:fit-content;
 }

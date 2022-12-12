@@ -47,3 +47,15 @@ li {
     margin-left: auto;
     max-width: auto;
 }
+
+#chart {
+    display: flex;
+}
+
+#d3-container {
+    width: 100%;
+}
+
+#container {
+    display: flex;
+}

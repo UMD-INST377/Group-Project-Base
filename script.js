@@ -67,10 +67,10 @@ function shapeDataForMade(array) {
 function initScatter(chart, dataObject) {
   const intialData = Object.values(dataObject);
   console.log(intialData);
-  const labels = 'na';
+  labels = '';
 
-  const x = intialData[1];
-  const y = intialData[0];
+  const x = intialData[0];
+  const y = intialData[1];
 
   const scatterArray = x.map((xvalue, index) => {
     const scatterObject = {};
@@ -137,17 +137,6 @@ function initBarChart(chart, dataObject) {
   const info = Object.keys(dataObject);
   console.log(info);
 
-  // const x = intialData[0];
-  // console.log(intialData);
-  // const y = intialData[1];
-
-  // const barArray = x.map((xvalue, index) => {
-  //   const barObject = {};
-  //   barObject.x = xvalue;
-  //   barObject.y = y[index];
-  //   return barObject;
-  // });
-
   const data = {
     labels: labels,
     datasets: [{
@@ -193,7 +182,7 @@ function changeChart(chart, dataObject) {
 function changeScatter(chart, dataObject) {
   const intialData = Object.values(dataObject);
   console.log(intialData);
-  const labels = 'na';
+  const labels = '';
 
   const x = intialData[1];
   const y = intialData[0];

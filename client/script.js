@@ -87,7 +87,7 @@ function getRandomIntInclusive(min, max){
     let str = " " ;
     if (item.branch_type == "County"){
       str = "Branch name: " + item.branch_name +"<br>"+"Branch type: " + item.branch_type +"<br>"+
-      "Phone Number: " +"<br>"+ item.telephone +"<br>"+ "Site: https://www.pgcmls.info/"
+      "Phone Number: " +"<br>"+ item.telephone +"<br>"+ "Site: https://www.pgcmls.info/" 
     }
     else{
       str = "Branch name: " + item.branch_name +"<br>"+"Branch type: " + item.branch_type +"<br>"+

@@ -1,9 +1,9 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-    <title> NBA Webpage </title>
+    <title> List of Speed Cameras in Prince George's County </title>
   </head>
   <body>
     <link rel="stylesheet" href="style.css" />
@@ -13,70 +13,45 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
     crossorigin=""></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <!-- Start of onsite code -->
-      <head>
-      </div>
-      <div>
-        <img src="images/NBA-logo.jpg" width="250px">
-      </div>
-      </head>
+ </head>
+  <body>
     <div class="wrapper">
-      <header class="">
-        <h1>Top 6 NBA Teams Statistics in the Western Conference</h1>
-      </header>
-        <form action="/api" class="example">
-          <label for="teams">Filter Team List</label>
-        <input type="text" name="teams" id="teams">
-        <button type="submit" id="get-teams"><i class="fa fa-search"></i></button>
-      </form>
+        <div class="container">
+      <div class="image">
+        <img src="images/pg county.gif">
+      </div>
+      <div class="text">
+        <h1>Speed Cameras In PG County By District</h1>
+      </div>
+    </div>
       <div class="container">
-        <div class="box">
-            <h1>New Orleans Pelicans</h1>
-            <img src="images/pelicans.png" width="150" height="150" alt="">
-          <!-- <form action="/api" class="box main_form"> -->
-            <!-- <div> -->
-                <!-- <label for="resto">Filter NBA Teams</label> -->
-                <!-- <input type="text" name="resto" id="resto"> -->
-            <!-- </div> -->
-            <!-- <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> -->
-            <!-- <button type="submit" id="get-resto"> Change Restaurants </button> -->
-          <!-- </form> -->
+        <div class="left_section box">
+            <h2>Pick A District</h2>
+            <li><a href="html_links/district1.html"> District 1 </a></li>
+            <li><a href="html_links/district2.html"> District 2 </a></li>
+            <li><a href="html_links/district3.html"> District 3 </a></li>
+            <li><a href="html_links/district4.html"> District 4 </a></li>
         </div>
-        <div class="box">
-          <h1>Phoenix Suns</h1>
-          <img src="images/phoneix suns.png" width="150" height="150" alt="">
+         
+         
+         <form action="/api" class="box main_form">
+        <!-- <label for="resto">Filter Districts list</label> -->
+          <!-- <input type="text" name="resto" id="resto">  -->
+         <!-- <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> -->
+         <button type="h1" id="district1"> Change District</button> 
+         <div id="map"></div>
         </div>
-        <div class="box">
-          <h1>Memphis Grizzlies</h1>
-          <img src="images/emphis.png" width="150" height="150" alt="">
-         <!-- <div id="map"></div> -->
-          <!-- <div class="box" id="restaurant_list"> -->
-            <!-- A list of restaurants from an API -->
-          </div>
-        
-          <div class="box">
-            <h1>Denver Nuggets</h1>
-            <img src="images/denver.png" width="150" height="150" alt="">
-          </div>
-          <div class="box">
-            <h1>Sacramento Kings</h1>
-            <img src="images/sacra.png" width="150" height="150" alt="">
-          </div>
-          <div class="box">
-            <h1>Utah Jazz</h1>
-            <img src="images/utah.png" width="150" height="150" alt="">
-           
-          </div>
+    
         </div>
       </div>
-      
-      <div>
-        <footer class="footer">
-          Created by Anusha Basnyat & Dagm Tsigie <a href="https://github.com/anubasnyat" target="blank" rel="noopener noreferrer"></a>
-      </footer>
-      </div>
-      <script src="script.js"></script>
-    </body>
-  </html> 
+    </div>
+    <div>
+      <footer class="footer">
+        Created by Anusha Basnyat & Dagm Tsigie <a href="https://github.com/anubasnyat" target="blank" rel="noopener noreferrer"></a>
+    </footer>
+    </div>
+    <script src="scripttest.js"></script>
+  </body>
+</html>

@@ -15,4 +15,5 @@ We used Leaflet to display a map of the PG County area with map markers for each
 ### CSS Frameworks
 We used the Flexbox method to design our application inorder to make it responsixe to the sizes needed to be displayed. When using flexboses it allows us to style the application how we intended it to look.
 
-### The users are able to pick one day from February 2- 21 in 2017; where they will be presented with where the crime took place on the map and a chart of how many of the crimes took place. In order to make this project we utilized an API that is accessible to the public on Prince George's County data portal. Using the API we were able to create our application that used HTML, CSS, and JavaScript.
+### Solution
+The users are able to pick one day from February 2- 21 in 2017; where they will be presented with where the crime took place on the map and a chart of how many of the crimes took place. In order to make this project we utilized an API that is accessible to the public on Prince George's County data portal. Using the API we were able to create our application that used HTML, CSS, and JavaScript.

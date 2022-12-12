@@ -143,6 +143,7 @@ div {
   margin: 1rem;
   padding: 1.5rem;
   align-items: center;
+  max-width: 40%;
 }
 
 .right_section {
@@ -332,7 +333,17 @@ form input {
       justify-content: center;
       align-items: center;
     }
-    
+
+    .left_section {
+      background-color: #e8c2ca;
+      flex: 1 2 auto;
+      align-items:flex-start;
+      justify-content:flex-start;
+      max-width: 400px;
+      display:flex;
+      flex-direction: column;
+    }
+
     .right_section {
       background-color: #e8c2ca;
       flex: 1 2 auto;

@@ -19,7 +19,7 @@
   }
 
   @media only screen and (max-width: 480px){
-    .container {
+    .flex-container {
       background-color: rgba(19, 228, 228, 0.65);
       flex-direction: column;
       justify-content: flex-start;

@@ -1,10 +1,10 @@
 # INST377 Final Project | Movie Database
 
 ## Targeted Browser
-We mainly targeted users using Google Chrome. 
+Our app is targeted towards PC/Windows browsers such as Chrome and Firefox.
 
 ## Description:
-For the final project, we are developing a website that shows general information about tv shows. The website will provide different genres of tv shows. The potential genres are popular movies, crime, drama, and animation (the genres may change when developing the website). The website will also provide the ratings of each movie display. The project idea is feasible for a six-week time limit and it is a web-appropriate project. 
+For the final project, we are developing a website that shows general information about movies. The home page displays the movie that are popular currently. You can also use the search bar in the home screen to find a movie. The genres tab allows you to view and filter movies based on genre. The movies are sorted using an internal vote counte, with the movies that have the most votes shown first. The genres can only be selected one at a time through the dropdown menu. The charts tab will show two graphs. One graph will display the movies that are popular right now, and the other grap will show the most popular movies that are airing right now. The second graph also has a button that let's you swap to the most popular TV shows that are airing right now. The graphs change weekly as the database is updated. 
 
 ## GitHub Page: 
 [Movie Database](https://mchang7489.github.io/INST377-Final-Project/client/index2.html)

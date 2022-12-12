@@ -20,67 +20,57 @@
     <title>Crypto App</title>
   </head>
 
-  <body class="backg_image">
-    
-    <div class="Wrapper">
-
-      <style>
-        p {
-          background-image: src="images/fancy-pants.jpeg";
-        }
-        </style>
-
-      <!-- title / top center -->
-      <header class="banner">
-        <a href="index2.html">
-          <button class="bouncy font-effect-anaglyph selected">Second Page</button>
+  <header>
+    <div class="top">
+      <div class="items">
+        <!-- crypto image in top left -->
+        <img src="images/icons8-bitcoin-100.png" width="auto" height="auto" />
+        <!-- title -->
+        <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
+        <!-- button to link to second Page -->
+        <a href="index2.html" class="right">
+          <button class="button1">The Matrix</button>
         </a>
-        <h1 class="font-effect-anaglyph selected">Crypto Viewer</h1>
-        <button>Matrix</button>
+      </div>
 
-      </header>
-
-      <div class="bar">
+      
         
-        <button class="bouncy font-effect-anaglyph" id="trends">Trends</button>
+      
+    
+  </header>
 
+  <body class="wrapper">
+    <div class="content">
+      <!-- title / top center -->
+      <div class="left_section">
         <div class="search_box">
-          <button id="search_api">Search</button>
-          <input type="text" placeholder="Search...." id="search_api"></input>
+          <button class="button1">Search</button>
+          <input type="text" placeholder="Search...." id="search_api" />
         </div>
       </div>
-
-      <!-- buttons and bar / top center -->
-
-      <!-- Contains Trending Crypto and Market Cap visualizations -->
-      <div class="level1">
-        <!-- 1. Trending Cyprto / top left -->
-        <div class="box">
-          <div style="position: relative; height: auto">
-            <div class="chart" id="trending-crypto-table"></div>
-          </div>
-          <button id="prev-three">Prev 3</button>
-          <button id="next-three">Next 3</button>
-        </div>
-
-        <!-- 3. Price Percentage change (falling) / top right -->
-        <div class="box">
-          <div style="position: relative; height: auto">
-            <div id="price-percentage-falling-table"></div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- 2. Market Cap / Buttom -->
-      <div class="level2">
+      <!-- 2. Market Cap / Bottom -->
+      <div class="right_section">
         <div class="chartBox">
           <button id="update-chart-button">Refresh with new list</button>
           <canvas id="market-cap-chart"></canvas>
         </div>
       </div>
-
     </div>
-    <script type="module" src="./script.js"></script>
+    <footer class="footer">
+      <a
+        href="https://github.com/GuntherChung/Group17-Final-Project-Crypto"
+        class="right"
+      >
+        <button class="button1">Project Repository</button>
+      </a>
+
+      <a
+        href="https://guntherchung.github.io/Group17-Final-Project-Crypto/"
+        class="right"
+      >
+        <button class="button1">About page</button>
+      </a>
+    </footer>
+    <script src="script.js"></script>
   </body>
 </html>

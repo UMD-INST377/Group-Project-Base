@@ -5,6 +5,7 @@
 
 async function getData(url) {
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
+  console.log(data.status);
   const json = await data.json();
 
   return json;
@@ -121,8 +122,6 @@ async function initEcosystemMarketCapChart() {
     }
     marketCapChart.update();
   });
-
-  initChart(chartTarget, data);
 
 }
 

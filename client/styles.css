@@ -13,14 +13,31 @@
   body {
     margin: 0;
     padding: 0;
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
     font-weight: 400;
     line-height: 1.5;
     /* background-color:rgba(134, 134, 134, 0.747); */
   }
 
+  .wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    flex: 1;
+  }
+
+  .header {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1.5rem;
+    width: 100%;
+  }
+
   @media only screen and (max-width: 480px){
     .flex-container {
-      background-color: rgba(19, 228, 228, 0.65);
+      background-color: rgba(117, 116, 116, 0.747);
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
@@ -49,7 +66,7 @@
     margin: 4px 2px;
     cursor: pointer;
   }
-  .button2 {background-color: #008CBA;} /* Blue */
+  .button2 {background-color: #222222;} /* Blue */
 
   /* The Modal (background) */
 .modal {
@@ -69,7 +86,7 @@
   /* Modal Content */
   .modal-content {
     overflow: scroll;
-    background-color: #fefefe;
+    background-color: #cecece;
     margin: auto;
     height:500px;
     padding: 20px;

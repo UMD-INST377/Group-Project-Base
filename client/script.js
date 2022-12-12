@@ -160,7 +160,61 @@ function main(){
 
 }
 
+const barChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+        scales: {
+            x: {
+                stacked: true
+            },
+            y: {
+                stacked: true
+            }
+        }
+    }
+});
 
+/* source: https://observablehq.com/@anirudhb/alphabet-visualization-with-d3
+
+let margin = {left: 50, top: 10, bottom: 30, right: 10};
+  let w = width-margin.left-margin.right;
+  let h = height-margin.top-margin.bottom;
+  let alphabet2 = alphabet.sort(sort)
+  let [letters, frequencies] = [alphabet2.map(x=>x.letter), alphabet2.map(x=>x.frequency)]
+  let x = d3.scaleBand().domain(letters).range([0, w]).padding(0.2)
+  let y = d3.scaleLinear().domain(d3.extent(frequencies)).nice().range([h, 0])
+  let line = d3.line()
+    .x(function(d) { return x(d.letter); })
+    .y(function(d) { return y(d.frequency); })
+  let svg = DOM.svg(width, height)
+  let d = d3.select(svg)
+  d.selectAll()
+      .data(alphabet2)
+    .enter()
+    .append("rect")
+      .attr("x", (d,i)=>margin.left+x(d.letter))
+      .attr("y", (d,i)=>margin.top+y(d.frequency))
+      .attr("width", x.bandwidth())
+      .attr("height", (d,i)=>h-y(d.frequency))
+      .attr("stroke", "transparent")
+      .attr("fill", "blue")
+  d.append("g")
+      .call(g =>
+         g
+            .attr("transform", `translate(${margin.left}, ${height-margin.bottom})`)
+            .call(d3.axisBottom(x).tickSizeOuter(0))
+       )
+  d.append("g")
+      .call(g =>
+         g
+            .attr("transform", `translate(${margin.left}, ${margin.top})`)
+            .call(d3.axisLeft(y))
+       )
+  return svg
+}
+
+*/
 
 /* eslint-disable */
 

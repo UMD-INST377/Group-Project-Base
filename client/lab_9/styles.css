@@ -369,5 +369,18 @@ form label {
   
   .chart_container {
     height: 100%;
-    width: 100%;
+    width: 150%;
+
+  }
+
+  .column {
+    float: left;
+    padding: 100px;
+    width: 50%;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
   }

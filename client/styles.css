@@ -1,17 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Changa+One&effect=anaglyph);
 
 .font-effect-anaglyph {
-  font-family: 'times new roman', cursive;
+  font-family: "times new roman", cursive;
   text-align: center;
   color: rgba(4, 247, 174, 0.9);
 }
 
 html {
-  background-color: #f5f8ff;
+  background-color: #63708d;
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
   overflow-y: scroll;
+  background-image: url("images/fancy-pants.jpg");
 
   /* these are specific to different browsers */
   -moz-osx-font-smoothing: grayscale;
@@ -26,22 +27,23 @@ body {
   margin: 0;
   padding: 0;
 
-  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
 }
-
 
 a {
   display: inline-block;
   text-decoration: none;
 }
 
-h2, h3 {
-  margin:0;
-  padding:0;
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
   font-size: 30;
-  padding-bottom:1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 form {
@@ -49,37 +51,26 @@ form {
 }
 
 header button {
-  display:inline-block;
-  padding:0.5em 3em;
-  border:0.16em solid #FFFFFF;
-  margin:0 0.3em 0.3em 0;
+  display: inline-block;
+  padding: 0.5em 3em;
+  border: 0.16em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
   box-sizing: border-box;
-  text-decoration:none;
-  text-transform:uppercase;
-  font-family:'Roboto',sans-serif;
-  font-weight:400;
-  color:#FFFFFF;
-  text-align:center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
   transition: all 0.15s;
   background-color: transparent;
+  width: fit-content;
 }
 
-.gif{
-  flex-direction: column;
-  background-color: rgba(239, 239, 239, 0.40);
-  border-radius: 20px;
+.gif {
   border: solid 5px rgb(202, 26, 255);
-  width: min-content;
-  padding: .5rem;
-}
-a.hover{
-  color:#f30b0b;
-  border-color:#c71f1f;
-}
-
-header img {
-  width: 100px;
-  height: 100px;
+  width: auto;
+  height: auto;
 }
 
 /*
@@ -90,40 +81,35 @@ header img {
 */
 
 /* Header */
-.top{
+.top {
+  border-radius: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #16100b;
-
+  background-color: #693001;
+  height: auto;
 }
-.left{
+.left {
   font-size: 20px;
-  width: inherit;
+  width: auto;
   flex-direction: inherit;
   display: flex;
-  justify-content:  space-around;
+  justify-content: space-around;
   align-items: center;
 }
 
-.right{
-  font-size:large;
+.right {
+  font-size: 20px;
+  width: auto;
+  flex-direction: inherit;
   display: flex;
-  justify-content: space-between;
-  align-self: center;
-  margin: 40;
-}
-a.right{
-  padding-right: 10px;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.search_box{
+.search_box {
   display: flex;
   flex-direction: row;
-}
-
-.backg_image{
-  background-image: url("images/fancy-pants.jpg")
 }
 
 .wrapper {
@@ -140,21 +126,34 @@ a.right{
   Those rules won't apply to an h1 that's outside a block with the class of 'header'
 */
 
-
 /* Makes the buttons/objects bounce*/
-.bouncy{
-   animation:bouncy 5s infinite linear;
-   position:relative;
+.bouncy {
+  animation: bouncy 5s infinite linear;
+  position: relative;
+}
+@keyframes bouncy {
+  0% {
+    top: 0em;
   }
-  @keyframes bouncy {
-   0%{top:0em}
-   40%{top:0em}
-   43%{top:-0.9em}
-   46%{top:0em}
-   48%{top:-0.4em}
-   50%{top:0em}
-   100%{top:0em;}
+  40% {
+    top: 0em;
   }
+  43% {
+    top: -0.9em;
+  }
+  46% {
+    top: 0em;
+  }
+  48% {
+    top: -0.4em;
+  }
+  50% {
+    top: 0em;
+  }
+  100% {
+    top: 0em;
+  }
+}
 
 .header h2 {
   display: block;
@@ -166,12 +165,12 @@ a.right{
   font-size: 1.5rem;
   padding: 1.25rem;
   width: 200;
-  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
 
   /* box-shadows are fancy */
-  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0 0 1px rgb(10 10 10 / 2%);
 }
-
 
 /*
   Rules can be combined on a block to apply the 'cascade' in order
@@ -182,6 +181,34 @@ a.right{
   And will be what displays in your client
 */
 
+.level1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  overflow: auto;
+}
+
+.level2 {
+  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  padding-bottom: 10;
+}
+
+.chartBox {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: 20px;
+  border-radius: 20px;
+  border: solid 5px rgb(152, 26, 255);
+  background-color: rgba(239, 239, 239, 0.9);
+  width: 50%;
+
+  overflow: auto;
+}
 .container {
   margin: 0 20px;
   display: flex;
@@ -189,121 +216,107 @@ a.right{
   justify-content: space-evenly;
   align-items: start;
   flex: 1;
-  
 }
+
 .box {
   display: flex;
   flex-direction: column;
-  background-color: rgba(239, 239, 239, 0.40);
+  background-color: rgba(239, 239, 239, 0.7);
   border-radius: 20px;
   border: solid 5px rgb(26, 60, 255);
   width: min-content;
-  padding: .5rem;
+  padding-bottom: 10;
   margin: 30 auto;
-  
 }
 
-.chartBox {
-  flex: auto;
-  width: 700px;
-  padding: 20px;
+.footer {
+  flex-shrink: 0;
+  background-color: rgba(0, 139, 139, 0.8);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+}
+
+.footer a {
+  color: rgba(255, 224, 138, 1);
+  text-decoration: underline;
+  background-color: rgba(239, 239, 239, 0.4);
   border-radius: 20px;
-  border: solid 5px rgb(152, 26, 255);
-  background: white;
+  border: solid 5px rgb(26, 60, 255);
+  padding: 0.5rem;
+  margin: 15 auto;
 }
 
-.bar {
-  display: flex;
-  background-color: rgb(82, 76, 76);
-  margin: 0 20px;
-  flex-direction: row;
-  justify-content:space-around;
-  border: solid 5px rgb(64, 255, 26);
-  padding: 1.5rem;
-  overflow: auto;
-  
+/*
+  This is an example of a 'pseudoclass'
+  In this instance, it says what to do if a mouse hovers over a link
+  This is pretty desktop-specific, since there's no hover function on touchscreens
+*/
+.footer a:hover {
+  /* Hue, saturation, luminosity, alpha */
+  background-color: hsla(106, 83%, 50%, 0.247);
+  /* red, green, blue, alpha */
+  color: rgb(20, 20, 220);
+  text-decoration: none;
 }
 
-
-.level1 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 1rem;
-  overflow: auto;
-}
-
-.level2{
-  margin: 30 auto;
-}
-
-
-@media only screen and (max-width: 1139px){
-  
-.level1{
-  flex-direction: column;
-}
-
-}
-
-@media only screen and (max-width: 973px){
-  
-  .header{
-    justify-content: center;
+@media only screen and (max-width: 1139px) {
+  .level1 {
     flex-direction: column;
   }
-  
+}
+
+@media only screen and (max-width: 840px) {
+  .top {
+    flex-direction: column;
+    justify-content: center;
   }
+}
 
-  @media only screen and (max-width: 833px){
-  
-    .top{
-      flex-direction: column;
-    }
-    
-    }
-
-@media only screen and (max-width: 736px){
+@media only screen and (max-width: 736px) {
   /* Rules in here will only apply when a screen is the correct size */
   /* check it out by using your developer tools to shrink your screen-size */
-  .top{
+  .top {
     margin: auto;
     flex-direction: column;
     justify-content: space-around;
   }
-  .left{
+  .left {
     width: 100%;
     margin: 0;
   }
- 
 
   .container {
     background-color: rgba(146, 16, 189, 0.749);
     flex-direction: column;
-    justify-content:start;
+    justify-content: start;
     align-items: start;
     display: block;
   }
-  .chartBox{
+  .chartBox {
     width: 93%;
     height: 350px;
   }
-  .left_section{
+  .left_section {
     background-color: rgba(38, 235, 117, 0.749);
     color: rgb(255, 225, 0);
-    border: 5pt dotted
+    border: 5pt dotted;
   }
-  .header h1{
+  .header h1 {
     background-color: rgba(24, 222, 13, 0.749);
     color: rgb(255, 0, 123);
-    border: 10pt dotted
+    border: 10pt dotted;
   }
-  .right_section{
+  .right_section {
     background-color: rgba(222, 180, 13, 0.749);
     color: rgba(13, 48, 222, 0.749);
-    border: 5pt dotted
+    border: 5pt dotted;
   }
-  .box{
+  .box {
     align-items: flex-start;
   }
 }

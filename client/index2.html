@@ -1,48 +1,66 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Project Base</title>
+    <!-- CDN for 'Handsontable' library -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"
+      type="module"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css"
+      type="module"
+    />
+    <link rel="stylesheet" href="styles.css" />
 
-    <link rel="stylesheet" href="styles.css" />    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Crypto App</title>
-</head>
-<body class="backg_image">
-    <div class="Wrapper">
+  </head>
+  <header>
+    <div class="top">
+      <div class="left">
+        <!-- crypto image in top left -->
+        <img src="images/icons8-bitcoin-100.png" width="auto" height="auto" />
+        <!-- title -->
+        <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
+      </div>
 
-        <style>
-          p {
-            background-image: src="images/fancy-pants.jpeg";
-          }
-          </style>
-  
-        <!-- title / top center -->
-        <header class="top">
-
-  
-            <div class="left">
-              <img src="images/icons8-bitcoin-100.png" /> <!-- crypto image in top left -->
-              <h1 class="font-effect-anaglyph">Crypto Viewer</h1> <!-- title -->
-            </div>
-
-          <div class="gif">
-            <iframe class="justify-start"
+      <div class="gif">
+        <iframe
+          class="justify-start"
           fetch
           src="https://giphy.com/embed/FlJ76bXyXwgWjOJkeJ/video"
-        ></iframe></div>
-  
-            <div class="right">
-              <a href="index.html"><button class="bouncy hover">Home</button></a> <!-- button to link to second Page -->
-                <div class="search_box">
-                  <button >Search</button>
-                  <input type="text" placeholder="Search...." id="search_api" />
-                </div>
-            </div>
+        ></iframe>
+      </div>
 
-        </header>
+      <div class="right">
+        <!-- button to link to second Page -->
+        <a href="index.html" class="right">
+          <button>Home</button>
+        </a>
 
-            
+        <div class="search_box">
+          <button class="hover">Search</button>
+          <input type="text" placeholder="Search...." id="search_api" />
         </div>
-    </wrapper>  
-</body>
+      </div>
+    </div>
+  </header>
+<div class="wrapper">
+  <body>
+    <div class="wrapper backg_image">
+      <style>
+        p {
+          background-image: src= "images/fancy-pants.jpeg";
+        }
+      </style>
+
+    </div>
+    <script type="module" src="./script.js"></script>
+  </body>
+  <footer></footer>
+</div>
 </html>

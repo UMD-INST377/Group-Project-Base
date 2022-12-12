@@ -111,6 +111,7 @@ function initChart(chart, dataObject) {
 
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);
 
+  //FIRST CHART
   const data = {
     labels: labels,
     datasets: [{
@@ -133,6 +134,37 @@ function initChart(chart, dataObject) {
     chart,
     config
   );
+}
+  //SECOND CHART
+  const labels = Utils.months({count: 7});
+const data = {
+  labels: labels,
+  datasets: [{
+    label: 'My First Dataset',
+    data: [65, 59, 80, 81, 56, 55, 40],
+    fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+    tension: 0.1
+  }]
+};
+
+const config = {
+  type: 'line',
+  data: data,
+};
+
+function changeChart(chart, dataObject) {
+const relabel = Object.values(dataObject);
+const labels = shapeLabelsForBarChart(relabel);
+
+const info = Object.keys(dataObject).map((item) => dataObject[item].length); // .length?
+
+chart.data.labels = labels;
+console.log(labels);
+chart.data.datasets.forEach((dataset) => {
+  dataset.data.push(info);
+});
+chart.update();
 }
 
 function changeChart(chart, dataObject) {
@@ -175,7 +207,9 @@ async function mainEvent() {
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis');
   const chartTarget = document.querySelector('#myChart');
-  const chartTarget2 = document.querySelector('#myChart2');
+ // const chartTarget2 = document.querySelector('#myChart2');
+ // const chartTarget3 = document.querySelector('#myChart3');
+ // const chartTarget4 = document.querySelector('#myChart4');
   submit.style.display = 'none'; // let your submit button disappear
 
   /* New API data request */
@@ -186,7 +220,9 @@ async function mainEvent() {
   // const shapedLabels = shapeLabelsForBarChart(chartData.data);
   console.log(shapedData);
   const myChart = initChart(chartTarget, shapedData);
-  const myChart2 = initChart(chartTarget2, shapedData);
+ // const myChart2 = initChart(chartTarget2, shapedData);
+ // const myChart3 = initChart(chartTarget3, shapedData);
+ // const myChart4 = initChart(chartTarget4, shapedData);
 
   /*
           Below this comment, we log out a table of all the results using "dot notation"
@@ -216,7 +252,9 @@ async function mainEvent() {
     const localData = shapeDataForBarChart(filteredList);
     // const localLabels = shapeLabelsForBarChart(chartData.data);
     changeChart(myChart, localData);
-    changeChart(myChart2, localData);
+   // changeChart(myChart2, localData);
+   // changeChart(myChart3, localData);
+   // changeChart(myChart4, localData);
     // changeChart(myChart, localLabels);
   });
 
@@ -231,7 +269,9 @@ async function mainEvent() {
     injectHTML(currentList);
     const localData = shapeDataForBarChart(currentList);
     changeChart(myChart, localData);
-    changeChart(myChart2, localData);
+   // changeChart(myChart2, localData);
+  //  changeChart(myChart3, localData);
+   // changeChart(myChart4, localData);
   });
 }
 

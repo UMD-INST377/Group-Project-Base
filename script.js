@@ -8,29 +8,86 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (newMax - newMin + 1) + newMin); // The maximum is inclusive and the minimum is inclusive
 }
 
+function shapeInfoForChart(array) {
+  const completeArrayOfAmounts = array.map((subArray) => subArray
+    .filter((item) => item.amount)
+    .map((item) => item.amount));
+  console.log(completeArrayOfAmounts);
+  const completeArrayOfSums = completeArrayOfAmounts.map((subArray) => subArray
+    .reduce((sum, current) => Number(sum) + Number(current), 0));
+  console.log(completeArrayOfSums);
+  return completeArrayOfSums;
+}
+
 function initChart(chart, dataObject) {
-  // const ctx = document.getElementById('myChart');
-  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+  const valuesArray = Object.values(dataObject);
+  const info = shapeInfoForChart(valuesArray);
   const labels = Object.keys(dataObject);
-  return new Chart(chart, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Spending Information for FY 2021 by Agency',
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Dataset 1',
         data: info,
-        borderWidth: 1
-      }]
-    },
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)',
+          'rgb(255, 128, 0)',
+          'rgb(153 ,255, 153)',
+          'rgb(153, 51, 255)',
+          'rgb(153, 0, 76)',
+          'rgb(0, 0, 153)',
+          'rgb(153, 0, 153)',
+          'rgb(64, 64, 64)'
+        ]
+      }
+    ]
+  };
+
+  const config = {
+    type: 'pie',
+    data: data,
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top'
+        },
+        title: {
+          display: true,
+          text: 'Spending Information for FY 2021 by Agency'
         }
       }
     }
-  });
+  };
+
+  return new Chart(
+    chart,
+    config
+  );
 }
+
+//   return new Chart(chart, {
+//     type: 'bar',
+//     data: {
+//       labels: labels,
+//       datasets: [{
+//         label: 'Spending Information for FY 2021 by Agency',
+//         data: info,
+//         borderWidth: 1
+//       }]
+//     },
+//     options: {
+//       scales: {
+//         y: {
+//           beginAtZero: true
+//         }
+//       }
+//     }
+//   });
+// }
 
 function injectHTML(list) {
   console.log('fired injectHTML');
@@ -39,16 +96,17 @@ function injectHTML(list) {
 
   const listEl = document.createElement('ol');
   target.appendChild(listEl);
-  list.forEach((item) => {
+  listReverse = list.reverse();
+  listReverse.forEach((item) => {
     const el = document.createElement('li');
-    el.innerText = item.amount;
+    el.innerText = item.agency;
     listEl.appendChild(el);
   });
 }
 
 function processRestaurants(list) {
   console.log('fired restaurants list');
-  const range = [...Array(15).keys()];
+  const range = [...Array(10).keys()];
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
     return list[index];
@@ -79,7 +137,8 @@ function shapeDataForChart(array) {
 
 function changeChart(chart, dataObject) {
   const labels = Object.keys(dataObject);
-  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+  const valuesArray = Object.values(dataObject);
+  const info = shapeInfoForChart(valuesArray);
 
   chart.data.labels = labels;
   chart.data.datasets.forEach((set) => {
@@ -110,6 +169,7 @@ async function mainEvent() {
 
   const chartData = await getData();
   const processedData = shapeDataForChart(chartData);
+  console.log(processedData);
   const myChart = initChart(chartTarget, processedData);
 
   if (data.length > 0) {
@@ -133,8 +193,8 @@ async function mainEvent() {
       currentList = processRestaurants(data);
       console.log(currentList);
 
-      injectHTML(currentList);
-      const localData = shapeDataForChart(chartData);
+      injectHTML(currentList.sort((a, b) => a.amount - b.amount));
+      const localData = shapeDataForChart(currentList);
       changeChart(myChart, localData);
 
       // const formData = new FormData(submitEvent.target);

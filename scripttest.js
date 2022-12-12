@@ -88,6 +88,7 @@ async function getData() {
 }
 
 async function mainEvent() {
+  initMap();
   const form = document.querySelector('.main_form'); 
   const submit = document.querySelector('#get-speed'); //inputed//
   const loadAnimation = document.querySelector('.lds-ellipsis');

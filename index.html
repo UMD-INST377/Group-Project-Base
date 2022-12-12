@@ -6,13 +6,14 @@
     <title> List of Speed Cameras in Prince George's County </title>
   </head>
   <body>
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=""
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
     crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
+    <link rel="stylesheet" href="style.css" />
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+ integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+ crossorigin=""></script>
     
     <!-- Start of onsite code -->
  </head>
@@ -27,22 +28,45 @@
       </div>
     </div>
       <div class="container">
-        <div class="left_section box">
+        <div class="container">
+          <div class="left_section box">
+              <h2>Pick A District</h2>
+              <li><a href="html_links/district1.html"> District 1 </a></li>
+            <li><a href="html_links/district2.html"> District 2 </a></li>
+            <li><a href="html_links/district3.html"> District 3 </a></li>
+            <li><a href="html_links/district4.html"> District 4 </a></li>
+            <form action="/api" class="">
+              <!-- <div>
+                  <label for="resto">Filter Restaurant List</label>
+                  <input type="text" name="resto" id="resto">
+              </div> -->
+              <!-- <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+              <button type="submit" id="get-resto"> Change Restaurants </button>
+            </form> -->
+          </div>
+          <div class="right_section box">
+            <h2>Local Restaurant Map</h2>
+            <div id="map"></div>
+            <div class="box" id="restaurant_list">
+              A list of restaurants from an API
+            </div>
+          </div>
+        </div>
+        <!-- <div class="left_section box">
             <h2>Pick A District</h2>
             <li><a href="html_links/district1.html"> District 1 </a></li>
             <li><a href="html_links/district2.html"> District 2 </a></li>
             <li><a href="html_links/district3.html"> District 3 </a></li>
             <li><a href="html_links/district4.html"> District 4 </a></li>
         </div>
-         
-         
-         <form action="/api" class="box main_form">
-        <!-- <label for="resto">Filter Districts list</label> -->
-          <!-- <input type="text" name="resto" id="resto">  -->
-         <!-- <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> -->
-         <button type="h1" id="district1"> Change District</button> 
-         <div id="map"></div>
+        <div class="right_section box">
+          <h2>Local Restaurant Map</h2>
+          <div id="map"></div>
+          <div class="box" id="restaurant_list">
+            A list of restaurants from an API
+          </div>
         </div>
+        </div> -->
     
         </div>
       </div>

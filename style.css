@@ -61,17 +61,17 @@ button {
   background-color: rgba(213, 226, 21, 0.8);
   flex: 0 1 auto;
   margin: 1rem;
-  padding: 1.5rem;
+  padding: 1.5rem ;
 }
 
 .right_section {
   background-color: rgba(213, 226, 21, 0.8);
   flex: 1 2 auto;
-  margin: 1rem;
-  align-items: center;
-  max-width: 450px;
-  display: flex;
-  flex-flow:column;
+    margin: 1rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 /* CSS instructions for Lab 5 */
 /* Bring in your successful CSS from week 4 */

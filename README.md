@@ -20,5 +20,5 @@ https://github.com/Jsmurillo16/Group103-21-Final-Project-Endpoint
 ### In the future it would be interesting to also look at the price fluctuation over time with a line graph.
 ### Our repository yields a bar graph that shows the live cryptocurrency data of the different countries in USD, EUR, and GBP
 ### We use ChartJS in order to graph our bar graphs, and it turned out looking great!
-#### The main js library we used was the chart.js which was used for the bar graph. 
+### The main js library we used was the chart.js which was used for the bar graph. 
 ### Our project is trying to display the rate of BTC in the 3 countries, tryign to solve the question of how do these rates match up with other countries

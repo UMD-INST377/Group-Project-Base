@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+/* 
+  These rules apply to actual HTML elements with no labelling!
+  So: they style the tags directly
+*/
 
 html {
   background-color: rgb(255, 250, 250);
@@ -95,7 +99,7 @@ div {
   background-color: #2f6447;
   color: #fffcfb;
   /* shapes */
-  border-radius: 15px;
+  /*border-radius: 15px;*/
   font-size: 1.5rem;
   padding: 1.25rem;
   margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
@@ -115,20 +119,23 @@ div {
   And will be what displays in your client
 */
 
+.button {
+font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+line-height: 1.5;
+}
 
 .clear_box {
   border-radius: 15px;
   color: rgb(255, 250, 250);
   width: fit-content;
   height:fit-content;
-  padding: 1.5rem;
 }
 
 .box {
   background-color: #25644f;
   border: 1px solid rgb(38, 99, 63);
   border-radius: 15px;
-
+  color: rgb(71, 47, 72);
   width: fit-content;
   height:fit-content;
   padding: 1.5rem;
@@ -139,6 +146,8 @@ div {
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
+  align-items: center;
+  max-width: 40%;
 }
 
 .right_section {
@@ -328,7 +337,17 @@ form input {
       justify-content: center;
       align-items: center;
     }
-    
+
+    .left_section {
+      background-color: #e8c2ca;
+      flex: 1 2 auto;
+      align-items:flex-start;
+      justify-content:flex-start;
+      max-width: 400px;
+      display:flex;
+      flex-direction: column;
+    }
+
     .right_section {
       background-color: #e8c2ca;
       flex: 1 2 auto;
@@ -360,90 +379,16 @@ form input {
     height: 90%;
     align-items: center;
   }
-}
-
-#map {
-  display: block;
-  width: 400px;
-  height: 380px;
-  border: 1px rgb(0, 0, 0);
-  margin-bottom: 1rem;
+  .clear_box {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 /* 
     New code bonus: pure CSS data loading icon
     This comes from loading.io/css - it's nice to show that something is happening!
 */
-
-  .lds-ellipsis {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-  }
-
-  .lds-ellipsis_hidden {
-    display: hidden;
-  }
-  
-  .lds-ellipsis div { 
-    position: absolute;
-    top: 33px;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background: #fff;
-    animation-timing-function: cubic-bezier(0, 1, 1, 0);
-  }
-  .lds-ellipsis div:nth-child(1) {
-    left: 8px;
-    animation: lds-ellipsis1 0.6s infinite;
-  }
-  .lds-ellipsis div:nth-child(2) {
-    left: 8px;
-    animation: lds-ellipsis2 0.6s infinite;
-  }
-  .lds-ellipsis div:nth-child(3) {
-    left: 32px;
-    animation: lds-ellipsis2 0.6s infinite;
-  }
-  .lds-ellipsis div:nth-child(4) {
-    left: 56px;
-    animation: lds-ellipsis3 0.6s infinite;
-  }
-  @keyframes lds-ellipsis1 {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  @keyframes lds-ellipsis3 {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0);
-    }
-  }
-  @keyframes lds-ellipsis2 {
-    0% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(24px, 0);
-    }
-  }
-  
-/* Dropdown Button */
-.dropbtn {
-background-color: #f7d1cd;
-color: rgb(71, 47, 72);
-padding: 12px;
-font-size: 13px;
-border: 1px solid rgb(156, 103, 159);
-border-radius: 10px;
-}
 
   .lds-ellipsis {
     display: inline-block;

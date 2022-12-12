@@ -71,12 +71,15 @@ function processCrimes(list) {
 }
 
 function filterList(array, filterInputValue) {
-  const newArray = array.filter(() => {
+  console.log(array);
+  const error = 'Please Enter a Crime Category.';
+  return array.filter((item) => {
+    if (!item.clearance_code_inc_type) { return error; }
     const lowerCaseName = item.clearance_code_inc_type.toLowerCase();
-    const lowerCaseQuery = filterInputValue.clearance_code_inc_type.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    console.log(lowerCaseName.includes(lowerCaseQuery));
     return lowerCaseName.includes(lowerCaseQuery);
   });
-  return newArray;
 }
 
 function initMap() {
@@ -90,6 +93,7 @@ function initMap() {
 }
 
 function markerPlace(array, map) {
+  console.log(array);
   console.log('markerPlace', array);
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
@@ -98,8 +102,6 @@ function markerPlace(array, map) {
   });
   coordinates = array.map((index) => [parseFloat(index.latitude), parseFloat(index.longitude)]);
   console.log(coordinates);
-  console.log(coordinates[0]);
-  console.log(coordinates[0][1]);
   array.forEach((item, index) => {
     console.log(coordinates[index][0]);
     console.log([coordinates[index][0], coordinates[index][1]]);
@@ -161,6 +163,7 @@ async function mainEvent() {
       console.log(event.target.value);
       console.log('input', event.target.value);
       const newArray = filterList(currentList, event.target.value);
+      console.log(currentList);
       console.log(newArray);
       console.log(pageMap);
       injectHTML(newArray);

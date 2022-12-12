@@ -20,13 +20,13 @@ function processData(list) {
           This function should accept your 1,000 records
           then select 15 random records
           and return an object containing only the restaurant's name, category, and geocoded location
+
           So we can inject them using the HTML injection function
 
           You can find the column names by carefully looking at your single returned record
           https://data.princegeorgescountymd.gov/Health/Food-Inspection/umjn-t2iz
 
         ## What to do in this function:
-
         - Create an array of 15 empty elements (there are a lot of fun ways to do this, and also very basic ways)
         - using a .map function on that range,
         - Make a list of 15 random restaurants from your list of 100 from your data request
@@ -129,6 +129,40 @@ function initMap() {
   return map;
 }
 
+function markerPlace(array, map) {
+  console.log('markerPlace', array);
+  const marker = L.marker([38.8911, -76.8848]).addTo(map);
+
+
+/*for(let x =0;x<array.length;x++){
+if(array[x].zipcode==20740){
+  var marker = L.marker([38.8911, -76.8848]).addTo(map);
+
+}
+if(array[x].zipcode==20740){
+  var marker = L.marker([38.8911, -76.8848]).addTo(map);
+
+}
+}
+*/
+  /*
+  console.log('markerPlace', array);
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+
+  array.forEach((item, index) => {
+    const coordinates = item.geocoded_column;
+    L.marker(latitude, longitude).addTo(map);
+    if (index === 0) {
+      map.setView(latitude, longitude, 10);
+    }
+  });
+  */
+}
+
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
   const data = await fetch(url);
@@ -138,15 +172,15 @@ async function getData() {
 }
 
 async function mainEvent() {
-  initMap();
+  const pageMap = initMap();
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-trash');
   // const year = document.querySelector('#year');
-  const chartTarget = document.querySelector('#myChart');
+  // const chartTarget = document.querySelector('#myChart');
 
   const chartData = await getData();
-  const shapedData = shapeDataForLineChart(chartData);
-  const myChart = (chartTarget, shapedData);
+  // const shapedData = shapeDataForLineChart(chartData);
+  // const myChart = (chartTarget, shapedData);
 
   /*
   form.addEventListener('submit', async (submitEvent) => {
@@ -161,7 +195,8 @@ async function mainEvent() {
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
       const newFilterList = filterList(currentList, event.target.value);
-    // markerPlace(newFilterList, pageMap);
+      // injectHTML(newFilterList);
+      markerPlace(newFilterList, pageMap);
     });
 
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
@@ -175,9 +210,10 @@ async function mainEvent() {
       // console.log(currentList);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
-      const localData = shapeDataForLineChart(currentList);
-      changeChart(myChart, localData);
-      // markerPlace(currentList, pageMap);
+      // const localData = shapeDataForLineChart(currentList);
+      // changeChart(myChart, localData);
+      // injectHTML(currentList);
+      markerPlace(currentList, pageMap);
 
     // By separating the functions, we open the possibility of regenerating the list
     // without having to retrieve fresh data every time

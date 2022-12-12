@@ -1,5 +1,5 @@
 /* Data Request to API */
-token = "BQDC4le4HB7R2A3ejW7G5kyABxVvmeYXc7-BW6CIzOY1XDzNyrqtQEARU4XwpfEaJ7e2StywJHnBbZTbvpkL_hZcmQ7NEDFGO7QUg6r9cBjgJQihZ_0JV3KvTVo6zWjOXKNFg6EVkBBaaUXYgln3CLz99dR5CzMHeG7J_aSlx6bkM7c-XXXC_r5od9MoA8M_es32ocwI7EcDbKnMNApSCF84ztIaYHuC9pIwrIvGbUaCl7qdK6US"
+token = "BQDzKTn6C_4akp--tBxe6qfUuSNc5KsF8dejavBBb8cw79G-YUPRuoUH-k3WnafSbmvmCzdwblC6P2L9mSL_8lJ4n9cJYICiJ9Y5lAoC6z03eCJVza3kB0vv4WtOm52k6er39k-BKK-lfN4tPo8K__osjfsHNMsfBZTNQGF07syzkAEhP8dgc00LC62WPOMzDCYz4gC7B37sDj9ZHT5cOFI60PKmGnz2Gq14K7OGHQBX9N30bsjn"
 term = "long_term";
 artist_ids = "39cDMNnxwjrKJE1dyt47jh,1aBDI4nH6OfAkNyUX08O2V";
 album_id = "0TnOYISbd1XYRBk9myaseg";
@@ -217,18 +217,19 @@ mainFilterform.addEventListener('input',(event)=>{
 
   const variable_names = []
   const track_numbers = []
-  total_results.name_result.forEach((item) => {
-    if (event.target.value.includes(item)){
-      
+  total_result.name_result.forEach((item, index) => {
+    if (event.target.value.toLowerCase()===(item.toLowerCase())){
+      variable_names.push(item)
+      track_numbers.push(total_result.track_results[index])
+      console.log(variable_names)
+      console.log(track_numbers)
     }
-
-
   })
     
 
 
   injectHTML(filteredList);
-  addData(mychart, total_result.name_result, total_result.track_results)
+  addData(mychart, variable_names, track_numbers)
   removeData(mychart)
     });
 

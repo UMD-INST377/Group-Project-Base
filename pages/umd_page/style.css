@@ -1,6 +1,7 @@
 html {
     font-family: sans-serif;
   }
+
   /* body {
     background-color: #2e3034;
   } */
@@ -75,6 +76,7 @@ html {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      background-color: grey;
   }
   canvas{
     width: 100%;
@@ -86,6 +88,38 @@ html {
     height: 200px;
     overflow: auto;
   }
+
+#load_button_2{
+  background-color: #1DB954;
+  font-size: 15px;
+  padding:0.5em 1em;
+  margin:0.25em;
+  outline:none;
+  border:none;
+  border-radius: 1em;
+}
+
+#loadfilter{
+  background-color: #1DB954;
+  font-size: 15px;
+  padding:0.5em 1em;
+  margin:0.25em;
+  outline:none;
+  border:none;
+  border-radius: 1em;
+}
+
+#graph_load_2 {
+  background-color: #1DB954;
+  font-size: 15px;
+  padding:0.5em 1em;
+  margin:0.25em;
+  outline:none;
+  border:none;
+  border-radius: 1em;
+}
+
+
 /**/
   .lds-ellipsis {
     display: inline-block;

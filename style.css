@@ -323,7 +323,7 @@ form input {
   display: block;
   width: 500px;
   height: 480px;
-  border: 2px solid rgb(135, 88, 138);
+  border: 2px solid rgb(14, 73, 65);
   margin-bottom: 1rem;
 }
 
@@ -332,14 +332,14 @@ form input {
     /* Rules in here will only apply when a screen is the correct size */
     /* check it out by using your developer tools to shrink your screen-size */
     .container {
-      background-color: #b392ac;
+      background-color: #084423;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
 
     .left_section {
-      background-color: #e8c2ca;
+      background-color: #17462a;
       flex: 1 2 auto;
       align-items:flex-start;
       justify-content:flex-start;
@@ -349,7 +349,7 @@ form input {
     }
 
     .right_section {
-      background-color: #e8c2ca;
+      background-color: #144624;
       flex: 1 2 auto;
       margin: 1rem;
       align-items:flex-start;
@@ -360,7 +360,7 @@ form input {
   }
 
   #map {
-    background-color: #e8c2ca;
+    background-color: #0d3f22;
     flex: 1 2 auto;
     margin: 1rem;
     align-items:flex-start;
@@ -372,7 +372,7 @@ form input {
   }
   
   .box {
-    background-color: #f7d1cd;
+    background-color: #0c441f;
     flex-direction: column;
     justify-content: center;
     width: 90%;

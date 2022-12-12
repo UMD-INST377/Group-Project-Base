@@ -47,6 +47,18 @@ function filterList(array, filterInputValue) {
     return lowerCaseName.includes(lowerCaseQuery);
   });
 }
+
+function shapeDataForFg3mBarChart(array) {
+  return array.reduce((collection, item) => {
+    if (!collection[item.fg3m]) {
+      collection[item.fg3m] = [item];
+    } else {
+      collection[item.fg3m].push(item);
+    }
+    return collection;
+  }, {});
+}
+
 function shapeLabelsForBarChart(array) {
   const completeArrayOfPlayers = array.map((subArray) => subArray
     .filter((item) => item.player.last_name) // only return it if we have players
@@ -65,6 +77,7 @@ function shapeDataForMade(array) {
 }
 
 function initScatter(chart, dataObject) {
+  console.log(dataObject);
   const intialData = Object.values(dataObject);
   console.log(intialData);
   labels = '';
@@ -108,23 +121,6 @@ function initScatter(chart, dataObject) {
     chart,
     config
   );
-}
-
-function shapeDataForFg3mBarChart(array) {
-  return array.reduce((collection, item) => {
-    if (!collection[item.fg3m]) {
-      collection[item.fg3m] = [item];
-    } else {
-      collection[item.fg3m].push(item);
-    }
-    return collection;
-  }, {});
-}
-
-function shapeDataForBarChart(array) {
-  const allThreeData = array.filter((item => item.fg3m));
-  console.log(allThreeData)
-  return allThreeData;
 }
 
 function initBarChart(chart, dataObject) {
@@ -226,6 +222,7 @@ async function mainEvent() {
   form.addEventListener('input', (event) => {
     console.log('input', event.target.value);
     const filteredList = filterList(currentList, event.target.value);
+    console.log(filteredList)
     injectHTML(filteredList);
     const localFg3mData = shapeDataForFg3mBarChart(filteredList);
     const localScatterData = [shapeDataForMade(filteredList), shapeDataForAttempted(filteredList)];

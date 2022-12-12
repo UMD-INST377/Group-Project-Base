@@ -9,7 +9,7 @@
 
 body {
     min-height: 100vh;
-    background-image: url('cool-background.png');
+    background-image: url('./img/cool-background.png');
     background-size: cover;
     font-family: 'Courier New', Courier, monospace;
     padding-left: 100px;

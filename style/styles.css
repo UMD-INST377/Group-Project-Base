@@ -9,8 +9,8 @@
 
 body {
     min-height: 100vh;
-    /* background: linear-gradient(#aca5d4, #f5fdc2); */
     background-image: url('cool-background.png');
+    background-size: cover;
     font-family: 'Courier New', Courier, monospace;
     padding-left: 100px;
     padding-right: 100px;
@@ -19,7 +19,6 @@ body {
 }
 
 header {
-    /* position: absolute; */
     top: 0;
     left: 0;
     display: flex;
@@ -91,30 +90,7 @@ button#get-shows:hover {
     max-width: auto;
 }
 
-.container {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 5rem;
-    max-width: auto;
-}
-
-.emoji-button {
-    text-align: center;
-    display: inline-flex;
-    flex-direction: column;
-    padding: 16px;
-    align-items: center;
-    height: fit-content;
-    width: 50%;
-}
-
-.emoji-display {
-    display: flex;
-    padding-left: 10px;
-    padding-right: 20px;
-}
-
-.emoji-container {
+.reco-container {
     text-align: center;
     background-color: rgba(239, 239, 239, 0.40);
     border-radius: 1rem;  
@@ -128,12 +104,30 @@ button#get-shows:hover {
     padding-bottom: 10px;
 }
 
+.emoji-display {
+    display: flex;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.emoji-button {
+    text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 16px;
+    align-items: center;
+    height: fit-content;
+    width: 50%;
+}
+
+
+
+
 .box {
     margin-right: 0px;
     border-right: 1rem, dotted, greenyellow;
     display: grid;
     padding: 20px;
-    /* width: 240px; */
     flex-direction: column;
     flex-wrap: nowrap;
     align-content: flex-start;
@@ -145,7 +139,7 @@ button#get-shows:hover {
     border-radius: 1rem;
     width: 50%;
     height:fit-content;
-    border: 1px solid greenyellow;
+    border: 1px solid gray;
     padding-bottom: 10px;
     padding-right: 10px;
     padding-left: 10px;
@@ -158,19 +152,19 @@ button#get-shows:hover {
     display: grid;
     width: 50%;
     padding: 10px;
-    border: 1px solid greenyellow;
-    background-color: #ffff;
+    border: 1px solid gray;
+    background-color: pink;
     height:fit-content;
     justify-content: space-around;
 }
 
 
-.chart {
+
+div.chart {
     background-color: rgba(239, 239, 239, 0.40);
-    border: 1px dashed;
-    border-radius: 4px;
-  
-    width: 500px;
+    border: none;
+    border-radius: 1rem;
+    width: 548px;
     height:fit-content;
     padding: 1.5rem;
     margin: 0 auto;
@@ -183,10 +177,11 @@ button#get-shows:hover {
     font-weight: bold;
 }
 
-#emoji1 #emoji2 #emoji3 {
+button #emoji1 #emoji2 #emoji3 {
     margin-top: 30px;
     margin-right: 0px;
 }
+
 
 #instruction {
     padding-bottom: 20px;

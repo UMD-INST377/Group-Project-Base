@@ -5,28 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>😎EMovie [Group Project]</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/style/styles.css">
 </head>
     <body>
         <header>
             <a href="./index.html" class="logo">EMovie</a>
             <ul>
-                <li><a href="second.html">Library</a></li>
+                <li><a href="/menu/library.html">Library</a></li>
             </ul>
         </header>
         <div class="wrapper"></div>
-        <p>This is group 14 project</p>
+        <p hidden>This is group 14 project</p>
         <div class="DatenTime">
             Today:
             <span id = 'date-time'></span>
         </div>
-        <form action="/api" class="main_form">
+        <form action="/" class="main_form">
             <button type="start" id="get-shows">Start</button>
         </form>
         
-        <h2>Today Mood</h2>
-        <form action="/api" class="emoji-container">
-            <p id="instruction">Click to describe your mood today!</p>
+        <h2>TV shows for Today Mood</h2>
+        <form action="/" class="reco-container">
+            <p id="instruction">Click the button for recommendation TV show today for your Mood!</p>
             <div class="emoji-display">
                 <div class="emoji-button">
                     <button type="button" id="emoji1" class="mini-box">😀 Positive </button>
@@ -34,20 +34,22 @@
                     <button type="button" id="emoji3" class="mini-box">😐 Netural </button>
                 </div>
                 <div class="recommendation-display">
-                    <img src="" alt="" id="comedyImage">
+                    <img src="" alt="" id="positiveImage">
+                    <img src="" alt="" id="negativeImage">
+                    <img src="" alt="" id="neturalImage">
                 </div>
             </div>
         </form>
         
 
-        <h2 class="container">Music Chart</h2>
+        <h2 class="chart-container">Music Chart</h2>
         <div class="chart">
             <svg>
 
             </svg>
         </div>
-        <script src="./script.js"></script>
+        <script src="script.js"></script>
         <script src="https://d3js.org/d3.v7.min.js"></script>
-        <script src="./chart.js"></script>
+        <script src="/chart/chart.js"></script>
     </body>
 </html>

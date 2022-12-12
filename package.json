@@ -20,6 +20,7 @@
     "chalk": "^4.1.0",
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
+    "nba.js": "^0.6.1",
     "node-fetch": "^3.0.0",
     "nodemon": "^2.0.7",
     "sequelize": "^6.5.0",

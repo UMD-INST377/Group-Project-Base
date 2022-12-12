@@ -33,7 +33,7 @@ function processPlayers(list) {
   console.log('fired Players list');
   const range = [...Array(15).keys()];
   const newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length);
+    const index = getRandomIntInclusive(0, 15);
     return list[index];
   });
   return newArray;

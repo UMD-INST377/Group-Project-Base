@@ -50,7 +50,7 @@ router.route('/littertrakPG') // actually localhost:3000/api/littertrakPG
     }
   });
 
-router.route('/littertrakPG/:') // actually localhost:3000/api/littertrakPG/20782
+router.route('/littertrakPG/:organization') // actually localhost:3000/api/littertrakPG/20782
   .get(async (req, res) => {
     try {
       const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?type_litter=ExpressBusiness';

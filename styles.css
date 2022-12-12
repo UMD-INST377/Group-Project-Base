@@ -395,14 +395,3 @@ form label {
     height: 100%;
     width: 100%;
   }
-
-  .prev {
-      position: relative;
-      right: 50px;
-      top: 563px;
-  }
-
-  .next {
-      position: relative;
-      left: 50px;
-  }

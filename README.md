@@ -1,6 +1,10 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# README
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+# Link to our page
+https://gfisk777.github.io/Group1-Project-Base/routes/client/index.html
+
+# Target Browsers
+The main target of our site is people that use the newest versions of MAC and IOS
+
+# Description of Project
+We used the spotify API(https://developer.spotify.com/documentation/web-api/)

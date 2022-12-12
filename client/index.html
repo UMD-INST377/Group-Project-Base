@@ -1,12 +1,76 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <script src="./script.js"></script>
-</body>
+  <head>
+    <title>Group 1 - Garrett Fisk, Jaeha Song</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""/>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+      <body>
+        <div class="wrapper">
+          <div class="spotifyimage">
+          <a href="https://open.spotify.com/"><img  src='images/spotify.png' width="225"> </a>
+          </div>
+          <div class="header">
+            <h1>Spotify Song Tracker</h1>
+          </div>
+    
+    
+          <div class="intro">
+            <h2>On our website you can search and track the top artists that are available on Spotify. You can try typing you favorite songs and artists from spotify and 
+              a list of artists that have have a song by that name name will pop up. You can also type in your favorite artist and a link to that artist and other similar 
+              artists will pop up.You will also be able to see what other people rate the artists that you are interested in. 
+              For example if you were to search "Something in the Orange", artists that have made songs that have that name will pop up and in this case the top artist
+              Zach Bryan. 
+            </h2> 
+          </div>
+      <div class="container">
+        <div class="left_section box">
+          <div class="header">
+            <h3>Aritst Input</h3>
+          </div>
+          <form class="box main_form" action="/api">
+            <div>
+                <label for="resto">Filter Artist List</label>
+                <input type="text" name="resto" id="resto">
+                <small></small>
+            </div>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            <button type="submit" id="get-resto">Change Songs</button>
+        </form>
+        
+        <div class="search" id="results"></div>
+        
+        </div>
+
+        <div class="right_section box">
+          <div class="header">
+            <h3>Chart of Artists</h2>
+          </div>
+          <!-- <div id="map"></div> -->
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
+          <div class="box" id="restaurant_list">
+            <p>A list of Artists from api</p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">Group 1 - Garrett Fisk, Jaeha Song</footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
+

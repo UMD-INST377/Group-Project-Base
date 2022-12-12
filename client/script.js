@@ -286,7 +286,7 @@ async function mainEvent() {
     console.log(document.getElementById('resto'));
 
     const formText = document.getElementById('resto').value;
-    
+
     const searchResults = await searchArtists(formText, token); // json containing an array containing artists
     artists = searchResults.items;
     console.log(artists);

@@ -2,7 +2,7 @@
 import express from 'express';
 import fetch from 'node-fetch';
 
-import foodService from './littertrak.js';
+import littertrak from './littertrak.js';
 
 const router = express.Router();
 

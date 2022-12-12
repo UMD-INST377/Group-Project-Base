@@ -1,7 +1,8 @@
 # PG County Crime Display
 Application Link: https://achen52.github.io/Group16-Project-Base/
 
-API: https://data.princegeorgescountymd.gov/Public-Safety/District-VII-Crime/amvf-x3gi
+API: https://data.princegeorgescountymd.gov/Public-Safety/District-VII-Crime/amvf-x3gi  
+
 API (JSON): https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json
 
 ## Information Problem and Solution

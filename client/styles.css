@@ -200,7 +200,11 @@ form {
     width: 150px;
     height: 150px;
   }
-  
+
+  .search img {
+    width: 75px;
+    height: 75px;
+  }
   
   /* Carousel */
   div.carousel {
@@ -245,6 +249,12 @@ form {
       - ... there's a reason crop tools are popular in image editors
      */
     width: 150px; 
+  }
+  
+  .embed {
+    border-radius: 12px;
+    width: 100%;
+    height: 80;
   }
   
   .prev,

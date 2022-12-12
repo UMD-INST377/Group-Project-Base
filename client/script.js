@@ -34,17 +34,40 @@ function getRandomIntInclusive(min, max) {
       - Display the name of that restaurant and what category of food it is
   */
 
-function injectHTML(list, div) {
+function injectHTML(list, divTarget) {
   console.log('fired injectHTML');
-  const target = document.querySelector(div);
+  const target = document.querySelector(divTarget);
   target.innerHTML = '';
   const listEl = document.createElement('ol');
   target.appendChild(listEl);
   list.forEach((item) => {
     const el = document.createElement('li');
+    const image = document.createElement('img');
     const anchor = document.createElement('a');
+    image.src = item.images[2].url;
     anchor.href = item.external_urls.spotify;
     anchor.innerText = item.name;
+    el.appendChild(image);
+    el.appendChild(anchor);
+    listEl.appendChild(el);
+    // console.log(item.name);
+  });
+}
+
+function injectSearchResults(list, divTarget) {
+  console.log('fired injectSearchResults');
+  const target = document.querySelector(divTarget);
+  target.innerHTML = '';
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    const image = document.createElement('img');
+    const anchor = document.createElement('a');
+    image.src = item.images[2].url;
+    anchor.href = item.external_urls.spotify;
+    anchor.innerText = item.name;
+    el.appendChild(image);
     el.appendChild(anchor);
     listEl.appendChild(el);
     // console.log(item.name);
@@ -204,8 +227,8 @@ async function getAccessToken() {
     This function retrieves a list of artists that are related to the artist ID in the request
     Need to add a way for users to type in an artist's name and see a list of related artists
 */
-async function getRelatedArtists(token) {
-  const url = 'https://api.spotify.com/v1/artists/2wY79sveU1sp5g7SokKOiI/related-artists'; // remote URL! you can test it in your browser
+async function getRelatedArtists(token, id) {
+  const url = `https://api.spotify.com/v1/artists/${id}/related-artists`; // remote URL! you can test it in your browser
   const data = await fetch(url, {
     headers: {
       Accept: 'application/json',
@@ -233,8 +256,6 @@ async function mainEvent() {
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
   const chartTarget = document.querySelector('#myChart');
-  const divResults = '#results';
-  const relatedArtists = '#restaurant_list';
   let artists = [];
   submit.style.display = 'none'; // let your submit button disappear
 
@@ -246,8 +267,7 @@ async function mainEvent() {
       It's at about line 27 - go have a look and see what we're retrieving and sending back.
      */
   const token = await getAccessToken();
-  const chartData = await getRelatedArtists(token);
-  console.log(chartData);
+  let chartData;
 
   /*
       Below this comment, we log out a table of all the results using "dot notation"
@@ -255,17 +275,14 @@ async function mainEvent() {
       Dot notation is preferred in JS unless you have a good reason to use brackets
       The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
     */
-  console.table(chartData);
 
   // in your browser console, try expanding this object to see what fields are available to work with
   // for example: arrayFromJson.data[0].name, etc
-  console.log(chartData[0].name);
 
   // this is called "string interpolation" and is how we build large text blocks with variables
-  console.log(`${chartData[0].name} ${chartData[0].popularity}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (!chartData.length) { return; } // Return if we have no data aka array has no length
+  // if (!chartData.length) { return; } // Return if we have no data aka array has no length
 
   submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
@@ -273,25 +290,24 @@ async function mainEvent() {
   loadAnimation.classList.remove('lds-ellipsis');
   loadAnimation.classList.add('lds-ellipsis_hidden');
 
-  // form.addEventListener('input', (event) => { // event bubbling
-  //   console.log('input', event.target.value); // <input> contents
-  //   const searchQuery = event.target.value;
-  //   return searchQuery;
-  // });
+  form.addEventListener('input', async (event) => { // event bubbling
+    console.log('input', event.target.value); // <input> contents
+    const searchQuery = event.target.value;
+    const searchResults = await searchArtists(searchQuery, token); // json containing an array containing artists
+    artists = searchResults.items;
+    console.log(artists);
+
+    injectHTML(artists, '#results');
+  });
   // And here's an eventListener! It's listening for a "submit" button specifically being clicked
   // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
   form.addEventListener('submit', async (submitEvent) => {
     // This is needed to stop our page from changing to a new URL even though it heard a GET request
     submitEvent.preventDefault();
-    console.log(document.getElementById('resto'));
-
-    const formText = document.getElementById('resto').value;
-
-    const searchResults = await searchArtists(formText, token); // json containing an array containing artists
-    artists = searchResults.items;
-    console.log(artists);
-
-    injectHTML(artists, divResults);
+    chartData = await getRelatedArtists(token, artists[0].id);
+    console.log(chartData);
+    console.log(artists[0].id);
+    injectHTML(chartData, '#restaurant_list');
 
     // This constant will have the value of your 15-restaurant collection when it processes
     // currentList = processRestaurants(chartData);

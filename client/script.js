@@ -43,7 +43,8 @@ function initChart(chart, object) {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First Dataset',
+      label: 'Crime By Type',
+      barPercentage: 1,
       data: info,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
@@ -93,24 +94,26 @@ function processCrime(list, data) {
       newArray.push(item);
     }
   });
-  console.log(newArray.length);
   return newArray;
 }
 
 function shapeDataForBarChart(array) {
+  console.log('fired shapeData');
   return array.reduce((collection, item) => {
-    if (!collection[item.category]) {
-      collection[item.category] = [item];
+    if (!collection[item.clearance_code_inc_type]) {
+      collection[item.clearance_code_inc_type] = [item];
     } else {
-      collection[item.category].push(item);
+      collection[item.clearance_code_inc_type].push(item);
     }
     return collection;
   }, {});
 }
 
 function changeChart(chart, dataObject) {
+  console.log('fired changeChart');
   const labels = Object.keys(dataObject);
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+
   chart.data.labels = labels;
   chart.data.datasets.forEach((set) => {
     set.data = info;
@@ -145,7 +148,7 @@ async function mainEvent() {
 
   if (arrayFromJson?.length > 0) {
     submit.style.display = 'block';
-    console.log(arrayFromJson.length);
+
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
@@ -153,13 +156,16 @@ async function mainEvent() {
 
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
+      let localData = [];
       if (dayNum.value.length !== 0) {
         data = Number(dayNum.value);
-        console.log(data.length);
         currentList = processCrime(arrayFromJson, data);
+        localData = shapeDataForBarChart(currentList);
       } else {
         currentList = arrayFromJson;
+        localData = shapeDataForBarChart(arrayFromJson);
       }
+      changeChart(myChart, localData);
       markerPlace(currentList, pageMap);
     });
   }

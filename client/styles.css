@@ -65,7 +65,12 @@ header button {
 }
 
 .gif{
-  
+  flex-direction: column;
+  background-color: rgba(239, 239, 239, 0.40);
+  border-radius: 20px;
+  border: solid 5px rgb(202, 26, 255);
+  width: min-content;
+  padding: .5rem;
 }
 a.hover{
   color:#f30b0b;
@@ -90,10 +95,12 @@ header img {
   flex-direction: row;
   justify-content: space-between;
   background-color: #16100b;
+
 }
 .left{
   font-size: 20px;
-  width: 30%;
+  width: inherit;
+  flex-direction: inherit;
   display: flex;
   justify-content:  space-around;
   align-items: center;
@@ -101,24 +108,22 @@ header img {
 
 .right{
   font-size:large;
-  width: 35%;
   display: flex;
-  justify-content:  space-around;
+  justify-content: space-between;
   align-self: center;
+  margin: 40;
+}
+a.right{
+  padding-right: 10px;
 }
 
 .search_box{
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
 }
 
 .backg_image{
   background-image: url("images/fancy-pants.jpg")
-}
-
-.gif{
-  width: 200px;
-  height: auto;
 }
 
 .wrapper {
@@ -128,20 +133,6 @@ header img {
   margin: 0;
   flex: 1;
 }
-
-.banner {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 10px;
-  text-align: center;
-  background: #71e6ab;
-  font-size: 25px;
-
-  /* box-shadows are fancy */
-  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
-}
-
 
 /*
   This rule implies that the H1 tag lives within another HTML tag
@@ -246,6 +237,7 @@ header img {
   margin: 30 auto;
 }
 
+
 @media only screen and (max-width: 1139px){
   
 .level1{
@@ -263,12 +255,28 @@ header img {
   
   }
 
+  @media only screen and (max-width: 833px){
+  
+    .top{
+      flex-direction: column;
+    }
+    
+    }
+
 @media only screen and (max-width: 736px){
   /* Rules in here will only apply when a screen is the correct size */
   /* check it out by using your developer tools to shrink your screen-size */
-  header .top{
+  .top{
+    margin: auto;
     flex-direction: column;
+    justify-content: space-around;
   }
+  .left{
+    width: 100%;
+    margin: 0;
+  }
+ 
+
   .container {
     background-color: rgba(146, 16, 189, 0.749);
     flex-direction: column;

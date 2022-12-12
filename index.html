@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INST377 Pair Project</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1>Pair Project</h1>
+      </header>
+      <div class="container">
+        <div class="left_section box">
+          <h3>Form Inputs</h3>
+          <form action="/api" class="box main_form">
+            <label for="resto"></label>
+            <input type="text" name="resto" id="resto"/>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            <button type="submit" id="get-data">Change Data</button>
+          </form>
+        </div>
+        <div class="right_section box">
+              <h3>Data</h3>
+              <div class="myChart">
+                <canvas id="myChart"></canvas>
+              </div>
+            <div class="box" id="restaurant_list">
+                A list of local restaurants
+            </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      Github Account:
+      <a href="https://github.com/kbouda/group102inst377.github.io" target="_blank">kbouda</a>
+    </footer>
+    <script src="./script.js"></script>
+  </body>
+</html>

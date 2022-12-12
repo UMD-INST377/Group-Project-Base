@@ -1,37 +1,33 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trent's Labs for INST377</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
+    <title>INST377 Pair Project</title>
     <link rel="stylesheet" href="styles.css" />
-
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div class="wrapper">
       <header class="header">
-        <h1>Trent's Labs for INST377</h1>
+        <h1>Pair Project</h1>
       </header>
       <div class="container">
         <div class="left_section box">
           <h3>Form Inputs</h3>
           <form action="/api" class="box main_form">
-            <label for="resto">Filter Restaurant List</label>
+            <label for="resto"></label>
             <input type="text" name="resto" id="resto"/>
             <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-            <button type="submit" id="get-resto">Change Restaurants</button>
+            <button type="submit" id="get-data">Change Data</button>
           </form>
         </div>
         <div class="right_section box">
-            <h3>Local Restaurant Map</h3>
-            <div id="map"></div>
+              <h3>Data</h3>
+              <div>
+                <canvas id="myChart"></canvas>
+              </div>
             <div class="box" id="restaurant_list">
                 A list of local restaurants
             </div>
@@ -40,12 +36,12 @@
     </div>
     <footer class="footer">
       Github Account:
-      <a href="https://github.com/Travious46/" target="_blank">Travious46</a>
+      <a href="https://github.com/kbouda/group102inst377.github.io" target="_blank">kbouda</a>
     </footer>
     <script src="./script.js"></script>
   </body>
-</html> -->
-<html lang="en">
+</html>
+<!-- <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,13 +54,18 @@
     <div class ="wrapper">
       <div class="header">
           <a href="#default" class="logo">INST377 Pair Project</a>
-          <!-- <div class="header-right">
-              <a class="active" href="#home">Home</a>
-              <a href="#about">About</a>
-          </div> -->
       </div>
       <div class="container">
-          <div class="playlist_section box">
+        <div class="left_section box">
+          <h3>Form Inputs</h3>
+          <form action="/api" class="box main_form">
+            <label for="resto">Filter Restaurant List</label>
+            <input type="text" name="resto" id="resto"/>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            <button type="submit" id="get-resto">Change Restaurants</button>
+          </form>
+        </div>
+        <div class="right_section box">
               <h3>Data</h3>
               <div>
                 <canvas id="myChart"></canvas>
@@ -74,4 +75,4 @@
     </div>   
     <script src="./script.js"></script>
 </body>
-</html>
+</html> -->

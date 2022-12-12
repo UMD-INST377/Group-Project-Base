@@ -1,0 +1,304 @@
+/* CSS instructions for Lab 5 */
+/* Bring in your successful CSS from week 4 */
+/* In your #map rule, set map to display:none; to temporarily hide your map box */
+* {
+  box-sizing: border-box;
+}
+
+/* 
+    These rules apply to actual HTML elements with no labelling!
+    So: they style the tags directly
+  */
+
+html {
+  background-color: #fafafa;
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  /* these are specific to different browsers */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #fafafa;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 1.5rem;
+}
+
+form {
+  accent-color: hsla(120, 100%, 50%, 0.482);
+}
+
+/*
+    - These styles use 'class names'
+    - You can apply them by using the 'class' attribute on your HTML
+    - like this: <div class="wrapper">
+    - note that the period vanishes there!
+  */
+
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
+.container {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  flex: 1;
+}
+
+.header {
+  text-align: left;
+  vertical-align: middle;
+  background-color: #fafafa;
+}
+
+
+/*
+    This rule implies that the H1 tag lives within another HTML tag
+    It "inherits" some rules from the above
+    Those rules won't apply to an h1 that's outside a block with the class of 'header'
+  */
+
+.header h1 {
+  display: block;
+  /* this will push other blocks out of the way */
+
+  /* colors */
+  color: #fafafa;
+  background: linear-gradient(180deg, #00498D 0%, #00498D 81.56%, #FAFAFA 100%);
+
+  /* shapes */
+  font-size: 1.5rem;
+  padding: 1.25rem;
+  margin: 0;
+  /* removing the margin on h1 tags means the header pins to the top if we move */
+}
+
+
+/*
+    Rules can be combined on a block to apply the 'cascade' in order
+    So you can use two classnames in a single class attribute
+    like: <div class="box section">
+    Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
+    And will be what displays in your client
+  */
+
+.box {
+  background-color: #53cbff;
+  border-radius: 4px;
+
+  width: fit-content;
+  height: fit-content;
+  padding: 1.5rem;
+  margin: 0 auto;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+
+.left_section {
+  background-color: #c1eafc;
+  flex: 0 1 auto;
+  margin: 1rem;
+  padding: 1.5rem;
+  color: #fafafa;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+
+.right_section {
+  background-color: #c1eafc;
+  flex: 1 2 auto;
+  margin: 1rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+
+/*
+    This block is actually dependent on the "container" block having a flex set on it
+    and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
+    That serves to cram the footer to the bottom of the page.
+  */
+
+.footer {
+  flex-shrink: 0;
+  padding: 1rem;
+  background: linear-gradient(180deg, #FAFAFA 0%, rgba(0, 73, 141, 0.87) 24.79%, #00498D 70.1%, #00498D 100%);
+  color: #fafafa;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+/*
+  Form Styles
+  */
+
+form input {
+  /* This is a hack to make sure our boxes line up with one another nicely */
+  width: 100%;
+  width: -moz-available;
+  /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;
+  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+
+  /* here we are setting white space correctly */
+  margin-bottom: 1rem;
+  height: 2rem;
+  border-radius: 4px;
+}
+
+form label {
+  width: 100%;
+  width: -moz-available;
+  /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;
+  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  align-items: flex-start;
+
+  display: block;
+  /* this turns the label text into a box we can set margins on */
+  margin-bottom: 0.5rem;
+}
+
+#map{
+  display: block;
+  width: 400px;
+  height: 380px;
+  margin-top: 2rem;
+}
+
+.chart{
+  height: 100%;
+  width: 100%;
+}
+
+/* How To Write A Media Query For Small Screens */
+
+@media only screen and (max-width: 736px) {
+
+  /* Rules in here will only apply when a screen is the correct size */
+  /* check it out by using your developer tools to shrink your screen-size */
+  .container {
+    background-color: #fafafa;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* 
+      New code bonus: pure CSS data loading icon
+      This comes from loading.io/css - it's nice to show that something is happening!
+  */
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ellipsis_hidden {
+  display: hidden;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fafafa;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(24px, 0);
+  }
+}

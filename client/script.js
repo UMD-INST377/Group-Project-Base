@@ -31,10 +31,6 @@ function getRandomIntInclusive(min, max) {
       - using a .forEach method, inject a list element into your index.html for every element in the list
       - Display the name of that restaurant and what category of food it is
   */
-<<<<<<< HEAD
-=======
- 
->>>>>>> parent of 56cc95c (implemented basic search bar)
 function injectHTML(list) {
   console.log('fired injectHTML');
   const target = document.querySelector('#restaurant_list');
@@ -250,19 +246,11 @@ async function mainEvent() {
   loadAnimation.classList.remove('lds-ellipsis');
   loadAnimation.classList.add('lds-ellipsis_hidden');
 
-<<<<<<< HEAD
   let currentList = []; // used by both event listeners, allows them to interact with each other
 
   form.addEventListener('input', (event) => { // event bubbling
     console.log('input', event.target.value); // <input> contents
     const newFilterList = filterList(currentList, event.target.value); // filters currentList
-=======
-  // let currentList = []; // used by both event listeners, allows them to interact with each other
-
-  form.addEventListener('input', (event) => { // event bubbling
-    console.log('input', event.target.value); // <input> contents
-    const newFilterList = filterList(chartData, event.target.value); // filters currentList
->>>>>>> parent of 56cc95c (implemented basic search bar)
     injectHTML(newFilterList);
     // markerPlace(newFilterList, pageMap);
   });
@@ -277,11 +265,7 @@ async function mainEvent() {
     console.log(currentList);
 
     // And this function call will perform the "side effect" of injecting the HTML list for you
-<<<<<<< HEAD
     injectHTML(currentList);
-=======
-    injectHTML(chartData);
->>>>>>> parent of 56cc95c (implemented basic search bar)
     // markerPlace(currentList, pageMap);
 
     // By separating the functions, we open the possibility of regenerating the list

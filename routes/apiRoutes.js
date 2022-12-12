@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 // Generic API inclusion demonstration
 // Replace this with the group member's actual route
 // This leads to /api/member1
-router.route('/smithsonian/owenK')
+router.route('/smithsonian')
   .get(async (req, res) => {
     try {
       const url = 'https://api.si.edu/openaccess/api/v1.0/stats?api_key=bDy3ONUljbeF9nhGIgWGL3G0EMCOcOgLgPGqXpDq';
@@ -27,30 +27,7 @@ router.route('/smithsonian/owenK')
       res.json({error: error});
     }
   })
-  .put((req, res) => {
-    try {
-      res.json({message: 'put Smitsonain endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  })
-  .post((req, res) => {
-    try {
-      res.json({message: 'post Smithsonain endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  })
-  .delete((req, res) => {
-    try {
-      res.json({message: 'delete Smithsonain endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  });
+
 router.use('/smithsonian', smithsonian);
 
 export default router;

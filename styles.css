@@ -86,29 +86,6 @@ button#refresh:hover {
 }
 
 
-button#filter {
-    font-size: 17px;
-    padding: 10px 20px;
-    background-color: rgb(94, 241, 138);
-    color: black;
-    border: 3px solid black;
-    border-radius: 3em;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-family: sans-serif;
-    transition: all 0.4s;
-    margin-left: 570px;
-
-}
-
-button#filter:focus {
-    outline: none;
-}
-
-button#filter:hover {
-    background-color: rgb(106, 99, 233);
-    color: white;
-}
 
 
 

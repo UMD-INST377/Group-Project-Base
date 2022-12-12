@@ -101,7 +101,7 @@ async function mainEvent() {
   const results = await fetch('/api/smithsonian');
   const arrayFromJson = await results.json();
   
-initChart(chartTarget);
+  initChart(chartTarget);
 
   if (arrayFromJson.data?.length > 0) {
     submit.style.display = 'block';

@@ -41,7 +41,7 @@ async function mainEvent() {
     submitEvent.preventDefault();
     console.log('form start')
   })
-  const start = document.querySelector('#get-shows');
+  const start = document.querySelector('#refresh');
   start.style.display = '';
 
 

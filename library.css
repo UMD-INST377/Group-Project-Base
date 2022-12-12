@@ -37,6 +37,11 @@ header .logo {
 
 }
 
+li {
+    list-style: none;
+    text-decoration: none;
+}
+
 .wrapper {
     margin-right: auto;
     margin-left: auto;

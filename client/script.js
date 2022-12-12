@@ -2,7 +2,13 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-use-before-define */
 const form = document.querySelector('.main-form');
-const submit = document.querySelector('#get-location');
+const btn = document.querySelector('button');
+
+btn.addEventListener('click', active);
+
+function active() {
+  btn.classList.toggle('is_active');
+}
 
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
@@ -14,13 +20,13 @@ async function getData() {
 
 function processLitters(list, location) {
   console.log('fired litter list');
-  const range = []
+  const range = [];
   const district = findDistrict(districts, location);
 
   list.forEach((item) => {
-    if (item.council_district == district) {range.push(item)};
-  })
-  console.log(range)
+    if (item.council_district == district) { range.push(item); }
+  });
+  console.log(range);
   return range;
 }
 

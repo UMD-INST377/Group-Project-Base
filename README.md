@@ -1,8 +1,16 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+https://fictionfriction.github.io/Group-14-TV-Show-Project/
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+Group 14 Tv Show Project
 
-https://fictionfriction.github.io/Group-14-Spotify-Project
+Our target browser is Google Chrome. We didn't a mobile version of the site.
+
+We used a TV Show API: https://www.tvmaze.com/api#show-main-information
+
+Our project uses visualize the ratings of the TV shows from our API by using
+bar charts we created using D3.
+
+We didn't use any CSS frameworks.
+
+Our site is designed to help users decide what shows to watch based off of
+their mood. It also visualizes what shows of certain genres are most popular, to
+help users get an idea of where to start.

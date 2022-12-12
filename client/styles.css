@@ -33,12 +33,12 @@
   min-width: 100%;
   overflow: hidden
 } */
-.wrapper {
+/* .wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0;
-  flex: 1;
+  flex: 1; */
 }
 
 .header {

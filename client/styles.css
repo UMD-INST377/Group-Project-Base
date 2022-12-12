@@ -3,7 +3,7 @@
 .font-effect-anaglyph {
   font-family: 'times new roman', cursive;
   text-align: center;
-  color: rgba(33, 64, 83, 0.9);
+  color: rgba(4, 247, 174, 0.9);
 }
 
 html {
@@ -49,10 +49,34 @@ form {
 }
 
 header button {
- width: 100px;
- height: 50px;
- align-self: center;
+  display:inline-block;
+  padding:0.5em 3em;
+  border:0.16em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-family:'Roboto',sans-serif;
+  font-weight:400;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.15s;
+  background-color: transparent;
 }
+
+.gif{
+  
+}
+a.hover{
+  color:#f30b0b;
+  border-color:#c71f1f;
+}
+
+header img {
+  width: 100px;
+  height: 100px;
+}
+
 /*
   - These styles use 'class names'
   - You can apply them by using the 'class' attribute on your HTML
@@ -60,12 +84,40 @@ header button {
   - note that the period vanishes there!
 */
 
+/* Header */
+.top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #16100b;
+}
+.left{
+  font-size: 20px;
+  width: 30%;
+  display: flex;
+  justify-content:  space-around;
+  align-items: center;
+}
+
+.right{
+  font-size:large;
+  width: 35%;
+  display: flex;
+  justify-content:  space-around;
+  align-self: center;
+}
+
+.search_box{
+  display: flex;
+  justify-content: space-between;
+}
+
 .backg_image{
   background-image: url("images/fancy-pants.jpg")
 }
 
 .gif{
-  width: 100%;
+  width: 200px;
   height: auto;
 }
 
@@ -116,10 +168,6 @@ header button {
 .header h2 {
   display: block;
   /* this will push other blocks out of the way */
-
-  /* colors */
-  background-color: #8aff8a;
-  color: #4a4a4a;
 
   /* shapes */
   border-radius: 6px;
@@ -185,9 +233,6 @@ header button {
   
 }
 
-p:hover, h2:hover, a:hover {
-  background-color: rgb(39, 230, 86);
-}
 
 .level1 {
   display: flex;
@@ -221,7 +266,9 @@ p:hover, h2:hover, a:hover {
 @media only screen and (max-width: 736px){
   /* Rules in here will only apply when a screen is the correct size */
   /* check it out by using your developer tools to shrink your screen-size */
-
+  header .top{
+    flex-direction: column;
+  }
   .container {
     background-color: rgba(146, 16, 189, 0.749);
     flex-direction: column;

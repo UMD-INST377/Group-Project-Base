@@ -21,36 +21,39 @@
   </head>
 
   <body class="backg_image">
-    
     <div class="Wrapper">
-
       <style>
         p {
-          background-image: src="images/fancy-pants.jpeg";
+          background-image: src= "images/fancy-pants.jpeg";
         }
-        </style>
+      </style>
 
       <!-- title / top center -->
-      <header class="banner">
-        <a href="index2.html">
-          <button class="bouncy font-effect-anaglyph selected">Second Page</button>
-        </a>
-        <h1 class="font-effect-anaglyph selected">Crypto Viewer</h1>
-        <button>Matrix</button>
+      <header>
+        <div class="top">            
+          
+          <div class="left">
+            <!-- crypto image in top left -->
+            <img src="images/icons8-bitcoin-100.png" />
+            <!-- title -->
+            <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
+            
+          </div>
 
-      </header>
+          <div class="right">
+            <!-- button to link to second Page -->
+            <a href="index2.html" class="hover">
+              <button>Second Page</button>
+            </a>
+            
+            <div class="search_box">
+              <button class="hover">Search</button>
+              <input type="text" placeholder="Search...." id="search_api" />
+            </div>
+          </div>
 
-      <div class="bar">
-        
-        <button class="bouncy font-effect-anaglyph" id="trends">Trends</button>
-
-        <div class="search_box">
-          <button id="search_api">Search</button>
-          <input type="text" placeholder="Search...." id="search_api"></input>
         </div>
-      </div>
-
-      <!-- buttons and bar / top center -->
+      </header>
 
       <!-- Contains Trending Crypto and Market Cap visualizations -->
       <div class="level1">
@@ -69,17 +72,15 @@
             <div id="price-percentage-falling-table"></div>
           </div>
         </div>
-
       </div>
 
-      <!-- 2. Market Cap / Buttom -->
+      <!-- 2. Market Cap / Bottom -->
       <div class="level2">
         <div class="chartBox">
           <button id="update-chart-button">Refresh with new list</button>
           <canvas id="market-cap-chart"></canvas>
         </div>
       </div>
-
     </div>
     <script type="module" src="./script.js"></script>
   </body>

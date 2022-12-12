@@ -7,7 +7,7 @@ function getRandomIntInclusive(min, max) {
 
 function injectHTML(list) {
   console.log('fired injectHTML');
-  const target = document.querySelector('#restaurant_list');
+  const target = document.querySelector('#art_list');
   target.innerHTML = '';
 
   const listEl = document.createElement('ol');
@@ -97,7 +97,7 @@ async function mainEvent() {
   const chartTarget = document.querySelector('#myChart');
   submit.style.display = 'none';
 
-  const results = await fetch('/api/smithsonian');
+  const results = await fetch('/api/smithsonian/search');
   const arrayFromJson = await results.json();
 
   initChart(chartTarget);

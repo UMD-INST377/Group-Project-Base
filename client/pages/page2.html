@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,11 +7,10 @@
     <title>Group Project Base</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
 </head>
 <body>
     <header class="header">
-        <h1>Fresh 4: Smithsonian Museum Locator</h1>
+        <h1>Fresh 4: Smithsonian Museum Graph Data</h1>
     </header>
     <wrapper>
         <h2>
@@ -21,13 +21,16 @@
        </h2>
         <div class="container">
             <div class="box left_section">
-                <h2>Search for a Museum</h2>
-                <form action="/api" class="box main_form">Search for a topic a list of museums should be returned. With a graph displaying what museum has the most of a given topic </form>
+                <h2>Search for a Topic</h2>
+                <form action="/api" class="box main_form">Search for a topic, and a list of museums should be returned. With a graph displaying what museum has the most of a given topic </form>
                 <div>
-                    <label for="resto">Museum</label>
+                    <label for="resto">Topic:</label>
                     <input type="text" name="resto" id="resto">
                 </div>
                 <button type="submit" id="get-resto">Submit</button>
+                <div class="box" id="art_list">
+                    A list of the artwork in the specified topic from the Smithsonian API
+                </div>
             </div>
             <div class="box right_section">
                 <h2>Smithsonian Graph</h2>

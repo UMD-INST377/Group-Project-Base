@@ -18,10 +18,10 @@ router.route('/smithsonian')
     }
   })
 
-router.route('/smithsonian/:search')
+router.route('/smithsonian/search')
   .get(async (req, res) => {
     try {
-      const request = await fetch(`${apiUrl}/search?q=${textBox}&api_key=bDy3ONUljbeF9nhGIgWGL3G0EMCOcOgLgPGqXpDq`);
+      const request = await fetch(`${apiUrl}/search?q=topic:${textBox}&api_key=bDy3ONUljbeF9nhGIgWGL3G0EMCOcOgLgPGqXpDq`);
       const json = await request.json();
       console.log(json);
 

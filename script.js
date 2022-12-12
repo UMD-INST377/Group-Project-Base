@@ -94,6 +94,8 @@ async function mainEvent() {
 // */
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
 
+
+// call tv api and return tv show images
 function getComedy() {
   return fetch('https://api.tvmaze.com/shows')
     .then((response) => response.json())

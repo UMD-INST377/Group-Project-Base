@@ -45,6 +45,10 @@ h2, h3 {
   padding-bottom:1.5rem;
 }
 
+p {
+  max-width: 500px;
+}
+
 form {
   accent-color: hsla(120, 100%, 50%, 0.482);
 }

@@ -18,3 +18,27 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+header {
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo {
+    color: black;
+    font-size: 2em;
+    letter-spacing: 2px;
+    font-weight: 800;
+    font-family: sans-serif;
+
+}
+
+.wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: auto;
+}

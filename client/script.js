@@ -132,6 +132,19 @@ function initMap() {
 function markerPlace(array, map) {
   console.log('markerPlace', array);
   const marker = L.marker([38.8911, -76.8848]).addTo(map);
+  
+  
+  /*for(let x =0;x<array.length;x++){
+if(array[x].zipcode==20740){
+  var marker = L.marker([38.8911, -76.8848]).addTo(map);
+
+}
+if(array[x].zipcode==20740){
+  var marker = L.marker([38.8911, -76.8848]).addTo(map);
+
+}
+}
+*/
   /*
   console.log('markerPlace', array);
   map.eachLayer((layer) => {

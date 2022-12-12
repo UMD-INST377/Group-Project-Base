@@ -61,7 +61,17 @@ h2 {
     height: 500px;
 }
 
-img {
+div.img-carousel {
+    background-color: rgba(239, 239, 239, 0.40);
+    border: none;
+    border-radius: 1rem;
+    width: 848px;
+    height: fit-content;
+    padding: 1.5rem;
+    margin: 0 auto;
+}
+
+img #tvshow-image {
     display: grid;
     border: 4px gray;
     border-radius: 3rem;

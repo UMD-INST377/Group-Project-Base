@@ -1,3 +1,4 @@
+// function to get random integer value
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -5,21 +6,25 @@ function getRandomIntInclusive(min, max) {
   // The maximum is inclusive and the minimum is inclusive
 }
 
+// function that randomly selects 10 speed cameras and returns them as a list
 function processCameras(list) {
   console.log('speed cameras list');
   const range = [...Array(10).keys()];
   const indexList = [];
   const newArray = range.map((item) => {
     let index = getRandomIntInclusive(0, list.length - 1);
+
     while (indexList.includes(index)) {
       index = getRandomIntInclusive(0, list.length - 1);
     }
+
     indexList.push(index);
     return list[index];
   });
   return newArray;
 }
 
+// intialize the map
 function initMap() {
   const map = L.map('map').setView([38.7849, -76.8721], 10);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -29,6 +34,7 @@ function initMap() {
   return map;
 }
 
+// function that places the speed camera popups based on coordinates
 function markerPlace(array, map) {
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
@@ -37,16 +43,10 @@ function markerPlace(array, map) {
   });
 
   array.forEach((item, index) => {
-    // console.log(item.location_1);
-
     const lat = item.location_1.latitude;
     const long = item.location_1.longitude;
 
-    // console.log(lat, long);
-
     cameraMarker = L.marker([lat, long]).addTo(map);
-
-    // console.log('After', lat, long);
 
     if (index === 0) {
       map.setView([lat, long], 10);
@@ -61,6 +61,7 @@ function markerPlace(array, map) {
   });
 }
 
+// function that filters the speed cameras based on school name
 function filterList(array, filterInputValue) {
   return array.filter((item) => {
     if (!item.school) { return; }
@@ -71,6 +72,7 @@ function filterList(array, filterInputValue) {
   });
 }
 
+// get data from our API
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
   const data = await fetch(url);
@@ -91,14 +93,6 @@ async function mainEvent() {
 
   const mapData = await getData();
 
-  console.log(mapData);
-
-  console.table(mapData);
-
-  console.log(mapData);
-  console.log(mapData[0]);
-  console.log(`${mapData[0].school} ${mapData[0].location}`);
-
   // Return if we have no data
   if (mapData?.length > 0) {
     // let's turn the submit button back on by setting it to display as a block when we have data available
@@ -112,23 +106,19 @@ async function mainEvent() {
     let cameraList = [];
 
     form.addEventListener('input', (event) => {
-      console.log('input', event.target.value);
       const filteredList = filterList(cameraList, event.target.value);
-      console.log(filteredList);
       markerPlace(filteredList, pageMap);
     });
 
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
       cameraList = processCameras(mapData);
-      console.log(cameraList);
       markerPlace(cameraList, pageMap);
     });
 
     all.addEventListener('click', async (allEvent) => {
       allEvent.preventDefault();
       cameraList = mapData;
-      console.log(cameraList);
       markerPlace(cameraList, pageMap);
     });
   }

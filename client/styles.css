@@ -1,164 +1,171 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  /* 
-    These rules apply to actual HTML elements with no labelling!
-    So: they style the tags directly
-  */
-  
-  html {
-    background-color: rgb(255, 241, 241);
-    font-size: 16px;
-    min-width: 300px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  
-    /* these are specific to different browsers */
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-  }
-  
-  body {
-    margin: 0;
-    padding: 1em;
-  
-    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    background-color: #463c3c;
+  box-sizing: border-box;
+}
 
-  }
-  
-  
-  a {
-    display: inline-block;
-    text-decoration: none;
-  }
-  
-  
-  
-  form {
-    accent-color: hsla(120, 100%, 50%, 0.482);
-  }
-  
-  .header {
-    padding: 10px;
-    text-align: center;    
-  }
+/* 
+  These rules apply to actual HTML elements with no labelling!
+  So: they style the tags directly
+*/
 
-  .header h1 {
+html {
+  background-color: rgb(255, 241, 241);
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
-  
-    /* colors */
-    background-color: #000000;
-    color: rgb(57, 116, 12);
-  
-    /* shapes */
-    border-radius: 6px;
-    font-size: 2.5rem;
-    padding: 1.25rem;
-    margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
-    font-style: italic;
-  }
-  
-  .header h3 {
-    margin:0;
-    padding:0;
-    padding-bottom: 1.5rem;
-    color: #037c0b;
-  }
+  /* these are specific to different browsers */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 
-  .intro {
-    background-color: #070606;
-    margin: 20px;
-    display:flex;
-    height:fit-content;
-    justify-content: center;
-    
-  }
+body {
+  margin: 0;
+  padding: 1em;
 
-  .intro h2 {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
-    color: #037c0b;
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #463c3c;
 
-  }
+}
 
-  .introdiscription {
-    font-size:100px;
-  }
-  
-  .wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    flex: 1;
-  }
-  
-  .container {
-    margin: 0 20px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items:start;
-    flex:1;
-  }
-  
-  .box {
-    background-color: #037c0b;
-    border: 2px dashed;
-    border-radius: 4px;
-    height:fit-content;
-    padding: 1.5rem;
-  }
-  
-  .left_section {
-    background-color: #242424;
-    flex: 0 1 0;
-    margin: 1rem;
-    padding: 2.5rem;
-    width: 90%;
-  }
-  
-  .right_section {
-    background-color: #242424;
 
-    flex: 0 1 auto;
-    margin: 1rem;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 90%;
-    padding: 2.5rem;
-  }
-  
-  
-  /*
-    This block is actually dependent on the "container" block having a flex set on it
-    and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
-    That serves to cram the footer to the bottom of the page.
-  */
-  
-  .footer {
-    flex-shrink: 0;
-    padding: 1rem;
-    background-color: #291db6;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border: 2px dashed;
-  }
-  
-  .footer a {
-    color: rgba(255, 224, 138, 1);
-    text-decoration: underline;
-  }
-  
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+
+
+form {
+  accent-color: hsla(120, 100%, 50%, 0.482);
+}
+
+.header {
+  padding: 10px;
+  text-align: center;    
+}
+
+.header h1 {
+
+
+  /* colors */
+  background-color: #000000;
+  color: rgb(57, 116, 12);
+
+  /* shapes */
+  border-radius: 6px;
+  font-size: 2.5rem;
+  padding: 1.25rem;
+  margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  font-style: italic;
+}
+
+.header h3 {
+  margin:0;
+  padding:0;
+  padding-bottom: 1.5rem;
+  color: #037c0b;
+}
+
+.spotifyimage {
+  display: flex;
+  justify-content: center;
+}
+
+.intro {
+  background-color: #070606;
+  margin: 20px 20px 20px;
+  padding: 2rem 2rem;
+  display:flex;
+  height:fit-content;
+  justify-content: center;
+  border-style: solid;
+}
+
+.intro h2 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  color: #037c0b;
+
+}
+
+.introdiscription {
+  font-size:100px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
+.container {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items:start;
+  flex:1;
+}
+
+.box {
+  background-color: #037c0b;
+  border: 2px ;
+  border-radius: 4px;
+  height:fit-content;
+  padding: 1.5rem;
+  margin-top: 10px;
+  border-style: solid;
+}
+
+.left_section {
+  background-color: #242424;
+  flex: 0 1 0;
+  margin: 1rem;
+  padding: 2.5rem;
+  width: 90%;
+}
+
+.right_section {
+  background-color: #242424;
+
+  flex: 0 1 auto;
+  margin: 1rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  padding: 1.5rem;
+}
+
+
+/*
+  This block is actually dependent on the "container" block having a flex set on it
+  and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
+  That serves to cram the footer to the bottom of the page.
+*/
+
+.footer {
+  flex-shrink: 0;
+  padding: 1rem;
+  background-color: #242424;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.footer a {
+  color: rgba(255, 224, 138, 1);
+  text-decoration: underline;
+}
+
   /*
     This is an example of a 'pseudoclass'
     In this instance, it says what to do if a mouse hovers over a link

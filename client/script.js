@@ -9,7 +9,7 @@ function getRandomIntInclusive(min, max) {
 
 // Function that injects information from API
 function injectHTML(list) {
-  console.log('Inject HTML');
+  console.log('Fired Inject HTML');
   const target = document.querySelector('#library_list');
   target.innerHTML = '';
 
@@ -18,13 +18,15 @@ function injectHTML(list) {
 
   list.forEach((item) => {
     const el = document.createElement('li');
-    el.innerText = item.name;
+    el.innerText = item.branch_name;
+    // `${item.branch_name} ${item.zip_code}`;
     listEl.appendChild(el);
   });
 }
 
 // Function that processes a list of PG County Libraries into an array of 15
 function processLibraries(list) {
+  console.log('Fired Library List');
   const range = [...Array(15).keys()]; // Special notation to create an array of 15 elements
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
@@ -62,12 +64,12 @@ function filterList(array, filterInputValue) {
 
 // Function for map
 function initMap() {
-  console.log('initMap');
   const map = L.map('map').setView([38.9897, -76.9378], 13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
+  console.log('initMap');
   return map;
 }
 
@@ -78,10 +80,13 @@ function markerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    const {coordinates} = item.geocoded_column_1; // need editing
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+    const lat = item.location_1.latitude;
+    const long = item.location_1.longitude;
+    const numLat = parseFloat(lat);
+    const numLong = parseFloat(long);
+    L.marker([numLat, numLong]).addTo(map);
     if (index === 0) {
-      map.setView([coordinates[1], coordinates[0]], 10);
+      map.setView([numLat, numLong], 10);
     }
   });
 }
@@ -106,6 +111,10 @@ async function mainEvent() {
   const pageMap = initMap();
   const mapData = await getData();
 
+  // console.table(arrayFromJson.data);
+  // console.log(arrayFromJson.data[0]);
+  // console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
+
   // This IF statement ensures we can't do anything if we don't have information yet
   if (mapData?.length > 0) { // the question mark in this means "if this is set at all"
     submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
@@ -124,9 +133,8 @@ async function mainEvent() {
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault(); // Needed to stop our page from changing to a new URL even though it heard a GET request
-
-      // This constant will have the value of your 15-restaurant collection when it processes
-      currentList = processLibraries(mapData);
+      console.log('Submit Event Listener');
+      currentList = processLibraries(mapData); // This constant will have the value of your 15-restaurant collection when it processes
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);

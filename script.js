@@ -48,17 +48,6 @@ function filterList(array, filterInputValue) {
   });
 }
 
-function shapeDataForFg3mBarChart(array) {
-  return array.reduce((collection, item) => {
-    if (!collection[item.fg3m]) {
-      collection[item.fg3m] = [item];
-    } else {
-      collection[item.fg3m].push(item);
-    }
-    return collection;
-  }, {});
-}
-
 function shapeLabelsForBarChart(array) {
   const completeArrayOfPlayers = array.map((subArray) => subArray
     .filter((item) => item.player.last_name) // only return it if we have players
@@ -123,6 +112,30 @@ function initScatter(chart, dataObject) {
   );
 }
 
+function shapeDataForFg3mBarChart(array) {
+  return array.reduce((collection, item) => {
+    if (!collection[item.fg3m]) {
+      collection[item.fg3m] = [item];
+    } else {
+      collection[item.fg3m].push(item);
+    }
+    return collection;
+  }, {});
+}
+
+// function shapeDataForBarChart(array) {
+//   const allThreeData = array.filter((item => item.fg3m));
+//   console.log(allThreeData)
+//   return allThreeData;
+// }
+
+// //ADDED
+// function shapeDataForBarChart2(array) {
+//   const allPtsData = array.filter((item => item.pts));
+//   console.log(allPtsData)
+//  return allPtsData;
+// }
+
 function initBarChart(chart, dataObject) {
   const intialData = Object.values(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
@@ -151,6 +164,51 @@ function initBarChart(chart, dataObject) {
     config
   );
 }
+
+//ADDED
+function initBarChart2(chart, dataObject) {
+  console.log(dataObject);
+  const intialData = Object.values(dataObject);
+  const labels = shapeLabelsForBarChart(intialData);
+  const info = Object.keys(dataObject);
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'NBA Pts scored in 2022 Opening Night',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: info
+    }]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      indexAxis: 'x'
+    }
+  };
+
+  return new Chart(
+    chart,
+    config
+  );
+}
+
+//ADDED
+function shapeDataForPtsBarChart(array) {
+  return array.reduce((collection, item) => {
+    if (!collection[item.pts]) {
+      collection[item.pts] = [item];
+    } else {
+      collection[item.pts].push(item);
+    }
+    console.log(collection);
+    return collection;
+  }, {});
+}
+
 
 function changeChart(chart, dataObject) {
   const intialData = Object.values(dataObject);
@@ -185,6 +243,21 @@ function changeScatter(chart, dataObject) {
   chart.update();
 }
 
+// // ADDED
+// function changeChart2(chart, dataObject) {
+//   console.log(dataObject);
+//   const intialData = Object.values(dataObject);
+//   const labels = shapeLabelsForBarChart(intialData);
+//   const info = Object.keys(dataObject);
+
+
+//   chart.data.labels = labels;
+//   chart.data.datasets.forEach((dataset) => {
+//     dataset.data = info;
+//   });
+//   chart.update();
+// }
+
 async function nbaData() {
   const url = 'https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022'; // Data goes here https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022
   const data = await fetch(url);
@@ -200,6 +273,7 @@ async function mainEvent() {
   const loadAnimation = document.querySelector('.lds-ellipsis');
   const chartTarget = document.querySelector('#myChart');
   const chartTarget2 = document.querySelector('#myChart2');
+  const chartTarget3 = document.querySelector('#myChart3'); //ADDED
   submit.style.display = 'none'; // let your submit button disappear
 
   /* New API data request */
@@ -208,8 +282,10 @@ async function mainEvent() {
   console.log(chartData.data);
   const fg3mData = shapeDataForFg3mBarChart(chartData.data);
   const scatterData = [shapeDataForAttempted(chartData.data), shapeDataForMade(chartData.data)];
+  const PtsData = shapeDataForPtsBarChart(chartData.data); //ADDED
   const myChart = initBarChart(chartTarget, fg3mData);
   const scatter = initScatter(chartTarget2, scatterData);
+  const myChart2 = initBarChart(chartTarget3, PtsData); //ADDED
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (!chartData.data?.length) { return; } // Return if no data
@@ -226,8 +302,11 @@ async function mainEvent() {
     injectHTML(filteredList);
     const localFg3mData = shapeDataForFg3mBarChart(filteredList);
     const localScatterData = [shapeDataForMade(filteredList), shapeDataForAttempted(filteredList)];
+    const localPtsData = shapeDataForPtsBarChart(filteredList);//ADDED
     changeChart(myChart, localFg3mData);
     changeScatter(scatter, localScatterData);
+    changeChart(myChart2, localPtsData);//ADDED
+
   });
 
   form.addEventListener('submit', (submitEvent) => {
@@ -238,8 +317,10 @@ async function mainEvent() {
     injectHTML(currentList);
     const localFg3mData = shapeDataForFg3mBarChart(currentList);
     const localScatterData = [shapeDataForMade(currentList), shapeDataForAttempted(currentList)];
+    const localPtsData = shapeDataForPtsBarChart(currentList); //ADDED
     changeChart(myChart, localFg3mData);
     changeScatter(scatter, localScatterData);
+    changeChart(myChart2, localPtsData); //ADDED
   });
 }
 

@@ -39,10 +39,11 @@ a {
   text-decoration: none;
 }
 
-h2, h3 {
-  margin:0;
-  padding:0;
-  padding-bottom:1.5rem;
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 1.5rem;
 }
 
 form {
@@ -70,7 +71,7 @@ form {
   display: flex;
   justify-content: space-evenly;
   align-items: start;
-  flex:1;
+  flex: 1;
 }
 
 .header {
@@ -100,7 +101,8 @@ form {
   border-radius: 6px;
   font-size: 1.5rem;
   padding: 1.25rem;
-  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  margin: 0;
+  /* removing the margin on h1 tags means the header pins to the top if we move */
 
 
   /* box-shadows are fancy */
@@ -123,7 +125,7 @@ form {
   border-radius: 4px;
 
   width: fit-content;
-  height:fit-content;
+  height: fit-content;
   padding: 1.5rem;
   margin: 0 auto;
 }
@@ -247,7 +249,7 @@ div.carousel {
     - now make sure that images are _always_ square
     - ... there's a reason crop tools are popular in image editors
    */
-  width: 150px; 
+  width: 150px;
 }
 
 .prev,
@@ -259,8 +261,10 @@ div.carousel {
   font-weight: bold;
   height: 45px;
   padding: 10px;
-  line-height: 0; /* This centers a button's text! */
-  border: 2px solid rgb(99,99,99); /* shorthand for how to do a border */
+  line-height: 0;
+  /* This centers a button's text! */
+  border: 2px solid rgb(99, 99, 99);
+  /* shorthand for how to do a border */
 }
 
 .prev:focus,
@@ -279,40 +283,46 @@ Form Styles
 */
 
 form input {
-    /* This is a hack to make sure our boxes line up with one another nicely */
-    width: 100%;
-    width: -moz-available;          /* WebKit-based browsers will ignore this. */
-    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-    width: fill-available;
+  /* This is a hack to make sure our boxes line up with one another nicely */
+  width: 100%;
+  width: -moz-available;
+  /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;
+  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
 
-    /* here we are setting white space correctly */
-    margin-bottom: 1rem;
-    height: 2rem;
-    border-radius: 4px;
-  }
+  /* here we are setting white space correctly */
+  margin-bottom: 1rem;
+  height: 2rem;
+  border-radius: 4px;
+}
 
 form label {
   width: 100%;
-  width: -moz-available;          /* WebKit-based browsers will ignore this. */
-  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: -moz-available;
+  /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;
+  /* Mozilla-based browsers will ignore this. */
   width: fill-available;
   align-items: flex-start;
 
-  display: block; /* this turns the label text into a box we can set margins on */
+  display: block;
+  /* this turns the label text into a box we can set margins on */
   margin-bottom: 0.5rem;
 }
 
 /* How To Write A Media Query For Small Screens */
 
-@media only screen and (max-width: 736px){
-    /* Rules in here will only apply when a screen is the correct size */
-    /* check it out by using your developer tools to shrink your screen-size */
-    .container {
-      background-color: rgba(116, 8, 204, 0.65);
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+@media only screen and (max-width: 736px) {
+
+  /* Rules in here will only apply when a screen is the correct size */
+  /* check it out by using your developer tools to shrink your screen-size */
+  .container {
+    background-color: rgba(116, 8, 204, 0.65);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* MAP STYLES */
@@ -330,7 +340,8 @@ form label {
   width: 80px;
   height: 80px;
 }
-.lds-ellipsis_hidden{
+
+.lds-ellipsis_hidden {
   display: hidden;
 }
 
@@ -343,51 +354,64 @@ form label {
   background: #fff;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
+
 .lds-ellipsis div:nth-child(1) {
   left: 8px;
   animation: lds-ellipsis1 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(2) {
   left: 8px;
   animation: lds-ellipsis2 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(3) {
   left: 32px;
   animation: lds-ellipsis2 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(4) {
   left: 56px;
   animation: lds-ellipsis3 0.6s infinite;
 }
+
 @keyframes lds-ellipsis1 {
   0% {
     transform: scale(0);
   }
+
   100% {
     transform: scale(1);
   }
 }
+
 @keyframes lds-ellipsis3 {
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(0);
   }
 }
+
 @keyframes lds-ellipsis2 {
   0% {
     transform: translate(0, 0);
   }
+
   100% {
     transform: translate(24px, 0);
   }
 }
 
 .chart_container {
-  height: 100%;
-  width: 100%;
+  width: 450px;
+  height: 300px;
+  padding: 10px;
+  float: right;
 }
+
 .nav_bar {
   background-color: #000000;
   color: rgb(194, 22, 131);
@@ -396,10 +420,12 @@ form label {
   align-items: center;
   font-size: 30px;
 }
+
 .nav_bar a:hover {
   color: #601646;
   font-weight: bold;
 }
+
 .nav_bar a {
   color: rgb(21, 0, 247);
   text-decoration: none;
@@ -409,6 +435,7 @@ form label {
   display: inline-block;
   padding: 30px 15px;
 }
+
 .nav_list {
   list-style-type: none;
 }

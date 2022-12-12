@@ -42,20 +42,42 @@ li {
     text-decoration: none;
 }
 
+h2 {
+    margin-top: 50px;
+    margin-left: 400px;
+}
+
 .wrapper {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: auto;
+
+    width: 90%;
+    margin: 0 auto;
 }
 
-#chart {
-    display: flex;
+
+.banner-area {
+    background-image: url(/img/tvshowbanner.jpg);
+    background-size: cover;
+    background-position: center;
+    top: 100px;
+    height: 500px;
 }
 
-#d3-container {
-    width: 100%;
+div.img-carousel {
+    background-color: rgba(239, 239, 239, 0.40);
+    border: none;
+    border-radius: 1rem;
+    width: 848px;
+    height: fit-content;
+    padding: 1.5rem;
+    margin: 0 auto;
 }
 
-#container {
-    display: flex;
+img #tvshow-image {
+    display: grid;
+    border: 4px gray;
+    border-radius: 3rem;
+
 }
+
+
+

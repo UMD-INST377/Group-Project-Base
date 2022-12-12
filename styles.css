@@ -72,7 +72,7 @@ button#refresh {
     letter-spacing: 4px;
     font-family: sans-serif;
     transition: all 0.4s;
-    margin-left: 750px;
+    margin-left: 200px;
 
 }
 
@@ -84,7 +84,12 @@ button#refresh:hover {
     background-color: palevioletred;
     color: white;
 }
- 
+
+
+
+
+
+
   
 .wrapper {
     margin-right: auto;
@@ -167,7 +172,7 @@ div.chart {
     background-color: rgba(239, 239, 239, 0.40);
     border: none;
     border-radius: 1rem;
-    width: 548px;
+    width: 848px;
     height:fit-content;
     padding: 1.5rem;
     margin: 0 auto;

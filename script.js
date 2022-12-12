@@ -92,6 +92,7 @@ function initMap() {
 }
 
 function markerPlace(array, map) {
+  console.log(array);
   console.log('markerPlace', array);
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
@@ -100,8 +101,6 @@ function markerPlace(array, map) {
   });
   coordinates = array.map((index) => [parseFloat(index.latitude), parseFloat(index.longitude)]);
   console.log(coordinates);
-  console.log(coordinates[0]);
-  console.log(coordinates[0][1]);
   array.forEach((item, index) => {
     console.log(coordinates[index][0]);
     console.log([coordinates[index][0], coordinates[index][1]]);
@@ -163,6 +162,7 @@ async function mainEvent() {
       console.log(event.target.value);
       console.log('input', event.target.value);
       const newArray = filterList(currentList, event.target.value);
+      console.log(currentList);
       console.log(newArray);
       console.log(pageMap);
       injectHTML(newArray);

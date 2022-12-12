@@ -158,11 +158,12 @@
     background-color:#36194b;
     font-size: 1.2rem;
     font-weight: 600;
+    text-align: center;
     color:#ffffff
   }
   
   .footer a {
-    color: #007bff;
+    color: #eae4e4;
     text-decoration: underline;
   }
   

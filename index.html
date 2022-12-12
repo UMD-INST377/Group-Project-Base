@@ -4,41 +4,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Project Base</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
+    <link rel="stylesheet" href="client/styles.css">
 </head>
 <body>
     <div class="wrapper">
         <header class="header">
-            <img src="images/pgLogoheader.png" alt="images/pgLogoheader.png">
+            <img src="client/images/pgLogoheader.png" alt="pgLogoheader.png">
             <h1>Prince George's County Libraries By Zip Code</h1>
         </header>
         <div class="container">
-          <div class="left_section box">
-              <h3>Form Inputs</h3>
-            <form action="/api" class="box main_form">
-              <label for="resto">Zip Code</label>
-              <input type="text" name="resto" id="resto" />
-              <!-- <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> -->
-              <button type="submit" id="get-resto">Find</button>
-            </form>
-          </div>
-          <div class="right_section box">
-            <h3>Local Library Map</h3>
-            <div id="map"></div>
-            <div class="box" id="restaurant_list">Library List:</div>
-          </div>
+          <h1>Website Information</h1>
         </div>
-      </div>
-    <script src="./script.js"></script>
-    <footer class="footer">
-        <a href="https://www.pgcmls.info/"><img src="images/pgLogofooter.png" alt="Link to PG County Libraries Website"></a> 
-        To learn more click the image to the left!
-    </a></footer>
+    </div>
+    <script src="client/script.js"></script>
+    <footer class="footer"><a href="client/index_2.html" target="_blank" rel="noopener noreferrer">NEXT</a></footer>
 </body> 
 </html>

@@ -19,22 +19,6 @@
     /* background-color:rgba(134, 134, 134, 0.747); */
   }
 
-  .wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    flex: 1;
-  }
-
-  .header {
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 1.5rem;
-    width: 100%;
-  }
-
   @media only screen and (max-width: 480px){
     .flex-container {
       background-color: rgba(117, 116, 116, 0.747);
@@ -49,6 +33,21 @@
   min-width: 100%;
   overflow: hidden
 } */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
+.header {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
+  width: 100%;
+}
 .flex-container {
     display: flex;
     flex-direction: row;

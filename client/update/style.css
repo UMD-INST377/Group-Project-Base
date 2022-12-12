@@ -41,8 +41,18 @@ i {
   
 .right_section {
 	margin: 1rem;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
 }	
 
+.about_box {
+	margin-top: 2rem;
+	border-radius: 25px;
+	background: #5161ce;
+	padding: 20px;
+	color:white
+}
 
 #map {
 	display: block;
@@ -52,6 +62,24 @@ i {
 	margin-bottom: 1rem;
 }
   
+.table {
+	margin-left: auto;
+	margin-right: auto;
+}
+  
+table th, table td{
+	color:#f1f1f1;
+	text-align: center;
+}
+
+tbody tr:nth-child(even) {
+	background: #707dcf;
+}
+  
+table th{
+	font-size: large;
+}
+
 /*the container must be positioned relative:*/
 .autocomplete {
 	position: relative;
@@ -199,6 +227,7 @@ button.is_active span{
 .navbar {
     padding: 0rem 1rem !important;
 }
+
 /*----------bootstrap-navbar-css------------*/
 .navbar-logo{
 	padding: 15px;
@@ -332,7 +361,10 @@ button.is_active span{
         margin: unset;
         border-top: unset
       }
-
+	
+	.navbar-toggler {
+		display: contents;
+	}
 	#navbarSupportedContent ul li a{
 		padding: 12px 30px;
 	}

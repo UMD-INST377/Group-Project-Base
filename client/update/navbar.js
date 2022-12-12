@@ -33,7 +33,6 @@ function test() {
   });
 }
 
-
 $(document).ready(() => {
   setTimeout(() => { test(); });
 });

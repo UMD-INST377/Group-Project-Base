@@ -121,6 +121,9 @@ async function initEcosystemMarketCapChart() {
     }
     marketCapChart.update();
   });
+
+  initChart(chartTarget, data);
+
 }
 
 async function initTrendingCryptoTable() {

@@ -26,15 +26,14 @@ function injectHTML(list) {
 
   list.forEach((item) => {
     const el = document.createElement('li');
-      el.innerText = `${item.street_address} ${item.school} ${item.posted_speed
-     } ${item.district}`;
+      el.innerText = item.name;
     listEl.appendChild(el);
   });
 }
 // Filtering data //
 function filterList(list, filterInputValue) {
   return list.filter((item) => {
-    const lowerCaseName = `${item.street_address} ${item.school} ${item.posted_speed} ${item.district}`.toLowerCase();
+    const lowerCaseName = item.name.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
@@ -52,13 +51,14 @@ function processSpeed(list) { //inputted//
 
 function initMap() {
   console.log('initMap');
-  const map = L.map('map').setView([38.9897, -76.9378], 13);
+  const map = L.map('map').setView([38.7849, -76.8721], 13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
   return map;
 }
+
 
 function markerPlace(array, map) {
   console.log('markerPlace', array);
@@ -88,15 +88,17 @@ async function getData() {
 }
 
 async function mainEvent() {
-  initMap();
+  // initMap();
+  const pageMap = initMap();
+  const mapData = await getData();
   const form = document.querySelector('.main_form'); 
   const submit = document.querySelector('#get-speed'); //inputed//
   const loadAnimation = document.querySelector('.lds-ellipsis');
 
   submit.style.display = 'none';
 
-  const pageMap = initMap();
-  const mapData = await getData();
+  // const pageMap = initMap();
+  // const mapData = await getData();
 
   if (arrayFromJson.data?.length > 0) { //inputted// 
     submit.style.display = 'block';

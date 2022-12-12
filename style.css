@@ -24,11 +24,11 @@ button {
   padding-right: 85%;
 }
 
-.wrapper {
+/* .wrapper {
     position: relative;
     display: flex;
     justify-content: space-around;
-  }
+  } */
 
   .search-icon {
     position: absolute;
@@ -56,8 +56,24 @@ button {
     background-color: #f5f5f5;
   }
 /* hi */
-
 .left_section {
+  background-color: 
+  rgba(92, 43, 102, 0.8);
+  flex: .5 3 auto;
+  margin: 1rem;
+  padding: 1.5rem ;
+}
+
+.right_section {
+  background-color: rgba(220, 114, 241, 0.8);
+  flex: 1.5 3 auto;
+  margin: 1rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+/* .left_section {
   background-color: rgba(213, 226, 21, 0.8);
   flex: 0 1 auto;
   margin: 1rem;
@@ -72,7 +88,7 @@ button {
     justify-content: center;
     display: flex;
     flex-direction: column;
-}
+} */
 /* CSS instructions for Lab 5 */
 /* Bring in your successful CSS from week 4 */
 /* In your #map rule, set map to display:none; to temporarily hide your map box */
@@ -200,7 +216,7 @@ form {
   margin: 0 auto;
 }
 
-.left_section {
+/* .left_section {
   background-color: 
   rgba(92, 43, 102, 0.8);
   flex: .5 3 auto;
@@ -216,7 +232,7 @@ form {
   justify-content: center;
   display: flex;
   flex-direction: column;
-}
+} */
 
 /*
   This block is actually dependent on the "container" block having a flex set on it

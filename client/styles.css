@@ -11,6 +11,10 @@ body {
     min-height: 100vh;
     background: linear-gradient(#aca5d4, #f5fdc2);
     font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 header {
@@ -19,7 +23,6 @@ header {
     left: 0;
     display: flex;
     width: 100%;
-    padding: 20px 100px;
     align-items: center;
     justify-content: space-between;
 }
@@ -43,15 +46,11 @@ a p{
 p {
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 100px;
-    padding-right: 100px;
 }
 
 div.DatenTime {
     padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-bottom: 20px;
 }
 
 h2 {
@@ -61,9 +60,27 @@ h2 {
     padding-bottom: 10px;
 }
 
+button#get-shows {
+    font-size: 17px;
+    padding: 10px 20px;
+    background-color: skyblue;
+    color: black;
+    border: 3px solid black;
+    border-radius: 3em;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-family: sans-serif;
+    transition: all 0.4s;
+}
 
+button#get-shows:focus {
+    outline: none;
+}
 
-
+button#get-shows:hover {
+    background-color: palevioletred;
+    color: white;
+}
  
   
 .wrapper {

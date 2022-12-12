@@ -409,7 +409,7 @@ form label {
   width: 450px;
   height: 300px;
   padding: 10px;
-  float: right;
+  float: left;
 }
 
 .nav_bar {

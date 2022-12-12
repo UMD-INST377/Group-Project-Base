@@ -1,38 +1,30 @@
 /* eslint-disable max-len */
+
+// Random Number Generator for API
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
   return Math.floor(Math.random() * (newMax - newMin + 1) + newMin); // The maximum is inclusive and the minimum is inclusive
 }
 
+// Function that injects information from API
 function injectHTML(list) {
-  const target = document.querySelector('#restaurant_list');
+  console.log('Inject HTML');
+  const target = document.querySelector('#library_list');
   target.innerHTML = '';
 
   const listEl = document.createElement('ol');
   target.appendChild(listEl);
+
   list.forEach((item) => {
     const el = document.createElement('li');
     el.innerText = item.name;
     listEl.appendChild(el);
   });
-  /*
-      ## JS and HTML Injection
-        There are a bunch of methods to inject text or HTML into a document using JS
-        Mainly, they're considered "unsafe" because they can spoof a page pretty easily
-        But they're useful for starting to understand how websites work
-        the usual ones are element.innerText and element.innerHTML
-        Here's an article on the differences if you want to know more:
-        https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent#differences_from_innertext
-
-      ## What to do in this function
-        - Accept a list of restaurant objects
-        - using a .forEach method, inject a list element into your index.html for every element in the list
-        - Display the name of that restaurant and what category of food it is
-    */
 }
 
-function processRestaurants(list) {
+// Function that processes a list of PG County Libraries into an array of 15
+function processLibraries(list) {
   const range = [...Array(15).keys()]; // Special notation to create an array of 15 elements
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
@@ -62,12 +54,13 @@ function processRestaurants(list) {
 
 function filterList(array, filterInputValue) {
   return array.filter((item) => {
-    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseName = item.branch_name.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
 }
 
+// Function for map
 function initMap() {
   console.log('initMap');
   const map = L.map('map').setView([38.9897, -76.9378], 13);
@@ -85,7 +78,7 @@ function markerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    const {coordinates} = item.geocoded_column_1;
+    const {coordinates} = item.geocoded_column_1; // need editing
     L.marker([coordinates[1], coordinates[0]]).addTo(map);
     if (index === 0) {
       map.setView([coordinates[1], coordinates[0]], 10);
@@ -93,37 +86,33 @@ function markerPlace(array, map) {
   });
 }
 
+// ASYNC Function that pulls data from API
 async function getData() {
   const url = 'https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json'; // PG County Library URL
-  const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
-  const json = await data.json(); // the data isn't json until we access it using dot notation
+  const data = await fetch(url);
+  const json = await data.json();
 
-  const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
+  const reply = json.filter((item) => Boolean(item.zip_code)).filter((item) => Boolean(item.branch_name));
+  console.log(json);
   return reply;
 }
 
 async function mainEvent() {
-  const pageMap = initMap();
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-  const submit = document.querySelector('#get-resto'); // get a reference to your submit button
+  const submit = document.querySelector('#get-zip'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
   submit.style.display = 'none'; // let your submit button disappear
 
+  const pageMap = initMap();
   const mapData = await getData();
 
-  // const shapedData = shapeDataForLineChart(chartData);
-  // const myChart = initChart(chartTarget, shapedData);
-
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (arrayFromJson.data?.length > 0) { // the question mark in this means "if this is set at all"
+  if (mapData?.length > 0) { // the question mark in this means "if this is set at all"
     submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
-
-    // Let's hide the load button now that we have some data to manipualte
-    loadAnimation.classList.remove('lds-ellipsis');
-    loadAnimation.classList.add('lds-ellipsis_hidden'); // let's turn the submit button back on by setting it to display as a block when we have data
+    loadAnimation.classList.remove('lds-ellipsis'); // hide the load button now that we have some data to manipualte
+    loadAnimation.classList.add('lds-ellipsis_hidden'); // turn the submit button back on by setting it to display as a block when we have data
 
     let currentList = [];
-
     form.addEventListener('input', (event) => {
       console.log(event.target.value);
       const newFilterList = filterList(currentList, event.target.value);
@@ -134,11 +123,10 @@ async function mainEvent() {
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
     form.addEventListener('submit', (submitEvent) => {
-      // This is needed to stop our page from changing to a new URL even though it heard a GET request
-      submitEvent.preventDefault();
+      submitEvent.preventDefault(); // Needed to stop our page from changing to a new URL even though it heard a GET request
 
       // This constant will have the value of your 15-restaurant collection when it processes
-      currentList = processRestaurants(arrayFromJson.data);
+      currentList = processLibraries(mapData);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
@@ -151,9 +139,4 @@ async function mainEvent() {
   }
 }
 
-/*
-      This last line actually runs first!
-      It's calling the 'mainEvent' function at line 57
-      It runs first because the listener is set to when your HTML content has loaded
-    */
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

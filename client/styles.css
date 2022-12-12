@@ -76,7 +76,7 @@
     width: 100%;
     /* shapes */
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 1rem;
     margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
   
@@ -84,7 +84,11 @@
     /* box-shadows are fancy */
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
   }
-  
+  .logo{
+    width: 80px;
+    height: 40px;
+  }
+
   .right_section h4{
     text-align: center;
   }

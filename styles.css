@@ -118,7 +118,7 @@ form {
 */
 
 .box {
-  background-color: rgba(145, 139, 118, 0.40);
+  background-color: rgba(251, 248, 238, 0.4);
   border: 2px groove;
   border-radius: 4px;
 
@@ -391,6 +391,7 @@ form label {
   }
   
   .chart_container {
+    display: flex;
     height: 100%;
     width: 100%;
   }

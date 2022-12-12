@@ -69,13 +69,13 @@ function initScatter(chart, dataObject) {
   console.log(intialData);
   labels = '';
 
-  const x = intialData[0];
-  const y = intialData[1];
+  const xaxis = intialData[0];
+  const yaxis = intialData[1];
 
-  const scatterArray = x.map((xvalue, index) => {
+  const scatterArray = xaxis.map((item, index) => {
     const scatterObject = {};
-    scatterObject.x = xvalue;
-    scatterObject.y = y[index];
+    scatterObject.x = item;
+    scatterObject.y = yaxis[index];
     return scatterObject;
   });
 
@@ -173,13 +173,13 @@ function changeScatter(chart, dataObject) {
   const intialData = Object.values(dataObject);
   const labels = '';
 
-  const x = intialData[1];
-  const y = intialData[0];
+  const xaxis = intialData[1];
+  const yaxis = intialData[0];
 
-  const scatterArray = x.map((xvalue, index) => {
+  const scatterArray = xaxis.map((item, index) => {
     const scatterObject = {};
-    scatterObject.x = xvalue;
-    scatterObject.y = y[index];
+    scatterObject.x = item;
+    scatterObject.y = yaxis[index];
     return scatterObject;
   });
   chart.data.labels = labels;

@@ -10,7 +10,7 @@
 body {
     min-height: 100vh;
     /* background: linear-gradient(#aca5d4, #f5fdc2); */
-    background-image: url('/img/cool-background-purple.png');
+    background-image: url('./img/cool-background-purple.png');
     background-size: cover;
     font-family: 'Courier New', Courier, monospace;
     padding-left: 100px;

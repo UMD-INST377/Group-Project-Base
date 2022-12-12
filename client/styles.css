@@ -47,6 +47,7 @@
   padding-right: 1rem;
   padding-bottom: 1.5rem;
   width: 100%;
+  align-items: center;
 }
 .flex-container {
     display: flex;

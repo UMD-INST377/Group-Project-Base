@@ -161,6 +161,13 @@ line-height: 1.5;
   flex-direction: column;
 }
 
+.pic {
+  padding-top: 8%;
+  max-width: 43%;
+  max-height: 43%;
+}
+/*
+
 /*
   This block is actually dependent on the "container" block having a flex set on it
   and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.

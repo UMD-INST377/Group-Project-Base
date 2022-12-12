@@ -32,15 +32,16 @@
         </header>
         <div class="container">
             <div class="left_section box">
-                    <center><h2>Generate Crime Map</h2></center>
-                <form action="/api" class="box main_form">
-                    <label for="resto"></label>
-                    <center><p class = 'clear_box'>Pressing the "Change List" button will generate a list of 10 crimes, the type of crime, and the location at which the crime occured. There is also an interactive map that will display the locations of the crimes. To filter the list, enter the type of crime you wish to examine.</p></center>
-                    <input type="text" name="resto" id="resto"/>
-                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                    <center><button type="submit" id = 'get-resto'>Change List</button></center>
-                </form>
-            </div>
+                <center><h2>Generate Crime Map</h2></center>
+            <form action="/api" class="box main_form">
+                <label for="resto"></label>
+                <center><p class = 'clear_box'>Pressing the "Change List" button will generate a list of 10 crimes, the type of crime, and the location at which the crime occured. There is also an interactive map that will display the locations of the crimes. To filter the list, enter the type of crime you wish to examine.</p></center>
+                <input type="text" name="resto" id="resto"/>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                <center><button type="submit" id = 'get-resto' class = "button">Change List</button></center>
+            </form>
+            <center><img id = "pg" class = 'pic' src = 'pg_seal_small.png' alt='a small seal of pg county'/></center>
+        </div>
             <div class="right_section box">
                 <center><h2>Local crime Map</h2></center>
                 <div id="map" ></div>

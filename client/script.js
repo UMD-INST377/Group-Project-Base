@@ -54,65 +54,7 @@ function injectHTML(list, divTarget) {
   });
 }
 
-function injectSearchResults(list, divTarget) {
-  console.log('fired injectSearchResults');
-  const target = document.querySelector(divTarget);
-  target.innerHTML = '';
-  const listEl = document.createElement('ol');
-  target.appendChild(listEl);
-  list.forEach((item) => {
-    const el = document.createElement('li');
-    const image = document.createElement('img');
-    const anchor = document.createElement('a');
-    image.src = item.images[2].url;
-    anchor.href = item.external_urls.spotify;
-    anchor.innerText = item.name;
-    el.appendChild(image);
-    el.appendChild(anchor);
-    listEl.appendChild(el);
-    // console.log(item.name);
-  });
-}
-
-function processRestaurants(list) {
-  console.log('fired restaurants list');
-  const range = [...Array(15).keys()]; // Special notation to create an array of 15 elements
-  const newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length - 1);
-    console.log(list[index]);
-    return list[index];
-  });
-  return newArray;
-  /*
-      ## Process Data Separately From Injecting It
-        This function should accept your 1,000 records
-        then select 15 random records
-        and return an object containing only the restaurant's name, category, and geocoded location
-        So we can inject them using the HTML injection function
-
-        You can find the column names by carefully looking at your single returned record
-        https://data.princegeorgescountymd.gov/Health/Food-Inspection/umjn-t2iz
-
-      ## What to do in this function:
-
-      - Create an array of 15 empty elements (there are a lot of fun ways to do this, and also very basic ways)
-      - using a .map function on that range,
-      - Make a list of 15 random restaurants from your list of 100 from your data request
-      - Return only their name, category, and location
-      - Return the new list of 15 restaurants so we can work on it separately in the HTML injector
-    */
-}
-
 // good programming practice: one idea per line
-function filterList(array, filterInputValue) {
-  const newArray = array.filter((item) => { // .filter(array) checks if true and adds the item to a new array
-    if (!item.name) { return; }
-    const lowerCaseName = item.name.toLowerCase();
-    const lowerCaseQuery = filterInputValue.toLowerCase();
-    return lowerCaseName.includes(lowerCaseQuery);
-  });
-  return newArray;
-}
 
 async function searchArtists(term, token) {
   const search = encodeURIComponent(term);
@@ -131,32 +73,6 @@ async function searchArtists(term, token) {
   return json.artists; // object containing, among other things, an array of artists
 }
 
-function initMap() {
-  console.log('initMap');
-  const map = L.map('map').setView([38.7849, -76.8721], 13);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
-  return map;
-}
-
-function markerPlace(array, map) {
-  console.log('markerPlace', array);
-  // const marker = L.marker([51.5, -0.09]).addTo(map);
-  map.eachLayer((layer) => {
-    if (layer instanceof L.Marker) {
-      layer.remove();
-    }
-  });
-  array.forEach((item, index) => {
-    const {coordinates} = item.geocoded_column_1;
-    L.marker([coordinates[1], coordinates[0]]).addTo(map);
-    if (index === 0) {
-      map.setView([coordinates[1], coordinates[0]], 10);
-    }
-  });
-}
 
 function initChart(chartTarget) {
   return new Chart(chartTarget, {
@@ -259,30 +175,8 @@ async function mainEvent() {
   let artists = [];
   submit.style.display = 'none'; // let your submit button disappear
 
-  initChart(chartTarget);
-
-  /*
-      Let's get some data from the API - it will take a second or two to load
-      This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
-      It's at about line 27 - go have a look and see what we're retrieving and sending back.
-     */
   const token = await getAccessToken();
   let chartData;
-
-  /*
-      Below this comment, we log out a table of all the results using "dot notation"
-      An alternate notation would be "bracket notation" - arrayFromJson["data"]
-      Dot notation is preferred in JS unless you have a good reason to use brackets
-      The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
-    */
-
-  // in your browser console, try expanding this object to see what fields are available to work with
-  // for example: arrayFromJson.data[0].name, etc
-
-  // this is called "string interpolation" and is how we build large text blocks with variables
-
-  // This IF statement ensures we can't do anything if we don't have information yet
-  // if (!chartData.length) { return; } // Return if we have no data aka array has no length
 
   submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
@@ -291,11 +185,9 @@ async function mainEvent() {
   loadAnimation.classList.add('lds-ellipsis_hidden');
 
   form.addEventListener('input', async (event) => { // event bubbling
-    console.log('input', event.target.value); // <input> contents
     const searchQuery = event.target.value;
     const searchResults = await searchArtists(searchQuery, token); // json containing an array containing artists
     artists = searchResults.items;
-    console.log(artists);
 
     injectHTML(artists, '#results');
   });
@@ -308,18 +200,6 @@ async function mainEvent() {
     console.log(chartData);
     console.log(artists[0].id);
     injectHTML(chartData, '#restaurant_list');
-
-    // This constant will have the value of your 15-restaurant collection when it processes
-    // currentList = processRestaurants(chartData);
-    // console.log(currentList);
-
-    // And this function call will perform the "side effect" of injecting the HTML list for you
-    // injectHTML(chartData);
-    // markerPlace(currentList, pageMap);
-
-    // By separating the functions, we open the possibility of regenerating the list
-    // without having to retrieve fresh data every time
-    // We also have access to some form values, so we could filter the list based on name
   });
 }
 

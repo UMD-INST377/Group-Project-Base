@@ -18,6 +18,12 @@
     cursor: pointer;
   }
 
+  .test {
+    background-color: aqua;
+    height: 150px;
+    width: 150px;
+  }
+
   .right_section {
     
     flex: 1 2 auto;

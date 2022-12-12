@@ -11,8 +11,6 @@
 */
 
 // gets a random integer between two numbers
-const apiURL = 'https://api.spotify.com/v1/';
-
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -33,21 +31,17 @@ function getRandomIntInclusive(min, max) {
       - using a .forEach method, inject a list element into your index.html for every element in the list
       - Display the name of that restaurant and what category of food it is
   */
-
-function injectHTML(list, div) {
+function injectHTML(list) {
   console.log('fired injectHTML');
-  const target = document.querySelector(div);
+  const target = document.querySelector('#restaurant_list');
   target.innerHTML = '';
+
   const listEl = document.createElement('ol');
   target.appendChild(listEl);
   list.forEach((item) => {
     const el = document.createElement('li');
-    const anchor = document.createElement('a');
-    anchor.href = item.external_urls.spotify;
-    anchor.innerText = item.name;
-    el.appendChild(anchor);
+    el.innerText = item.name;
     listEl.appendChild(el);
-    // console.log(item.name);
   });
 }
 
@@ -55,8 +49,7 @@ function processRestaurants(list) {
   console.log('fired restaurants list');
   const range = [...Array(15).keys()]; // Special notation to create an array of 15 elements
   const newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length - 1);
-    console.log(list[index]);
+    const index = getRandomIntInclusive(0, list.length);
     return list[index];
   });
   return newArray;
@@ -89,23 +82,6 @@ function filterList(array, filterInputValue) {
     return lowerCaseName.includes(lowerCaseQuery);
   });
   return newArray;
-}
-
-async function searchArtists(term, token) {
-  const search = encodeURIComponent(term);
-  console.log(search);
-  const url = `${apiURL}search?q=${search}&type=artist&limit=5`;
-  console.log(url);
-  const data = await fetch(url, {
-    headers: {
-      Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
-  });
-  const json = await data.json();
-  console.log(json.artists.items);
-  return json.artists; // object containing, among other things, an array of artists
 }
 
 function initMap() {
@@ -194,7 +170,7 @@ async function getAccessToken() {
     body: urlencoded,
     redirect: 'follow'
   };
-  const reply = await fetch(url, requestOptions);
+  const reply = await fetch(url, requestOptions)
   const json = await reply.json();
   console.log(json.access_token);
   return json.access_token;
@@ -233,9 +209,6 @@ async function mainEvent() {
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
   const chartTarget = document.querySelector('#myChart');
-  const divResults = '#results';
-  const relatedArtists = '#restaurant_list';
-  let artists = [];
   submit.style.display = 'none'; // let your submit button disappear
 
   initChart(chartTarget);
@@ -255,7 +228,7 @@ async function mainEvent() {
       Dot notation is preferred in JS unless you have a good reason to use brackets
       The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
     */
-  console.table(chartData);
+  // console.table(arrayFromJson.data);
 
   // in your browser console, try expanding this object to see what fields are available to work with
   // for example: arrayFromJson.data[0].name, etc
@@ -265,7 +238,7 @@ async function mainEvent() {
   console.log(`${chartData[0].name} ${chartData[0].popularity}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
-  if (!chartData.length) { return; } // Return if we have no data aka array has no length
+  if (!chartData.artists?.length) { return; } // Return if we have no data aka array has no length
 
   submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
 
@@ -273,32 +246,26 @@ async function mainEvent() {
   loadAnimation.classList.remove('lds-ellipsis');
   loadAnimation.classList.add('lds-ellipsis_hidden');
 
-  // form.addEventListener('input', (event) => { // event bubbling
-  //   console.log('input', event.target.value); // <input> contents
-  //   const searchQuery = event.target.value;
-  //   return searchQuery;
-  // });
+  let currentList = []; // used by both event listeners, allows them to interact with each other
+
+  form.addEventListener('input', (event) => { // event bubbling
+    console.log('input', event.target.value); // <input> contents
+    const newFilterList = filterList(currentList, event.target.value); // filters currentList
+    injectHTML(newFilterList);
+    // markerPlace(newFilterList, pageMap);
+  });
   // And here's an eventListener! It's listening for a "submit" button specifically being clicked
   // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
-  form.addEventListener('submit', async (submitEvent) => {
+  form.addEventListener('submit', (submitEvent) => {
     // This is needed to stop our page from changing to a new URL even though it heard a GET request
     submitEvent.preventDefault();
-    console.log(document.getElementById('resto'));
-
-    const formText = document.getElementById('resto').value;
-    
-    const searchResults = await searchArtists(formText, token); // json containing an array containing artists
-    artists = searchResults.items;
-    console.log(artists);
-
-    injectHTML(artists, divResults);
 
     // This constant will have the value of your 15-restaurant collection when it processes
-    // currentList = processRestaurants(chartData);
-    // console.log(currentList);
+    currentList = processRestaurants(chartData.artists);
+    console.log(currentList);
 
     // And this function call will perform the "side effect" of injecting the HTML list for you
-    // injectHTML(chartData);
+    injectHTML(currentList);
     // markerPlace(currentList, pageMap);
 
     // By separating the functions, we open the possibility of regenerating the list

@@ -13,7 +13,7 @@
   body {
     margin: 0;
     padding: 0;
-    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, Verdana Ref, ‘sans-serif’;
+    font-family: Verdana, Verdana Ref;
     font-weight: 400;
     line-height: 1.5;
     /* background-color:rgba(134, 134, 134, 0.747); */
@@ -70,7 +70,7 @@
   /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    position: flex; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;

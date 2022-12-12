@@ -11,6 +11,8 @@
 */
 
 // gets a random integer between two numbers
+const apiURL = 'https://api.spotify.com/v1/';
+
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -31,12 +33,11 @@ function getRandomIntInclusive(min, max) {
       - using a .forEach method, inject a list element into your index.html for every element in the list
       - Display the name of that restaurant and what category of food it is
   */
- 
-function injectHTML(list) {
-  console.log('fired injectHTML');
-  const target = document.querySelector('#restaurant_list');
-  target.innerHTML = '';
 
+function injectHTML(list, div) {
+  console.log('fired injectHTML');
+  const target = document.querySelector(div);
+  target.innerHTML = '';
   const listEl = document.createElement('ol');
   target.appendChild(listEl);
   list.forEach((item) => {
@@ -88,6 +89,23 @@ function filterList(array, filterInputValue) {
     return lowerCaseName.includes(lowerCaseQuery);
   });
   return newArray;
+}
+
+async function searchArtists(term, token) {
+  const search = encodeURIComponent(term);
+  console.log(search);
+  const url = `${apiURL}search?q=${search}&type=artist&limit=5`;
+  console.log(url);
+  const data = await fetch(url, {
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
+  const json = await data.json();
+  console.log(json.artists.items);
+  return json.artists; // object containing, among other things, an array of artists
 }
 
 function initMap() {
@@ -215,6 +233,9 @@ async function mainEvent() {
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
   const chartTarget = document.querySelector('#myChart');
+  const divResults = '#results';
+  const relatedArtists = '#restaurant_list';
+  let artists = [];
   submit.style.display = 'none'; // let your submit button disappear
 
   initChart(chartTarget);
@@ -252,26 +273,32 @@ async function mainEvent() {
   loadAnimation.classList.remove('lds-ellipsis');
   loadAnimation.classList.add('lds-ellipsis_hidden');
 
-  // let currentList = []; // used by both event listeners, allows them to interact with each other
-
-  form.addEventListener('input', (event) => { // event bubbling
-    console.log('input', event.target.value); // <input> contents
-    const newFilterList = filterList(chartData, event.target.value); // filters currentList
-    injectHTML(newFilterList);
-    // markerPlace(newFilterList, pageMap);
-  });
+  // form.addEventListener('input', (event) => { // event bubbling
+  //   console.log('input', event.target.value); // <input> contents
+  //   const searchQuery = event.target.value;
+  //   return searchQuery;
+  // });
   // And here's an eventListener! It's listening for a "submit" button specifically being clicked
   // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
-  form.addEventListener('submit', (submitEvent) => {
+  form.addEventListener('submit', async (submitEvent) => {
     // This is needed to stop our page from changing to a new URL even though it heard a GET request
     submitEvent.preventDefault();
+    console.log(document.getElementById('resto'));
+
+    const formText = document.getElementById('resto').value;
+    
+    const searchResults = await searchArtists(formText, token); // json containing an array containing artists
+    artists = searchResults.items;
+    console.log(artists);
+
+    injectHTML(artists, divResults);
 
     // This constant will have the value of your 15-restaurant collection when it processes
     // currentList = processRestaurants(chartData);
     // console.log(currentList);
 
     // And this function call will perform the "side effect" of injecting the HTML list for you
-    injectHTML(chartData);
+    // injectHTML(chartData);
     // markerPlace(currentList, pageMap);
 
     // By separating the functions, we open the possibility of regenerating the list

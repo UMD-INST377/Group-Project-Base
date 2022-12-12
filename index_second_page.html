@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Project Base</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+<body>
+    <script src="./script2.js"></script>
+    <div class="wrapper">
+        <header class="header">
+            <h1>Types of Crimes in PG County</h1>
+            <div class = "button_box">
+                <div id="button">
+                    <a href="index.html">Click to Search By Sector</a>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="left_section box">
+                <h3>Search By Types of Crime</h3>
+                <form action="/api" class="main_form box">
+                    <div>
+                        <label for="resto">Enter Type of Crime</label>
+                        <input type="text" name="resto" id="resto" />
+                        <button type="submit">Clear Chart</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="left_section box">
+                <h3>Crime Types</h3>
+                <ul>
+                    <li>ACCIDENT</li>
+                    <li>THEFT FROM AUTO</li> 
+                    <li>THEFT</li> 
+                    <li>ASSAULT, SHOOTING</li> 
+                    <li>SEX OFFENSE</li> 
+                    <li>AUTO, STOLEN</li> 
+                    <li>ROBBERY COMMERCIAL</li> 
+                    <li>B & E, COMMERCIAL</li> 
+                    <li>ACCIDENT WITH IMPOUND</li> 
+                    <li>ASSAULT</li> 
+                    <li>VANDELISM</li> 
+                    <li>ASSUALT, WEAPON</li> 
+                    <li>B & E, RESIDENTIAL</li> 
+                    <li>ROBBERY, OTHER</li> 
+                    <li>ROBBERY, REDSIDENTIAL (VACANT)</li> 
+                    <li>B & E, OTHER</li> 
+                    <li>B & E, VACANT</li> 
+                    <li>AUTO, STOLEN & RECOVERED</li> 
+                    <li>HOMICIDE</li>   
+                </ul>
+            </div>
+            <div class="right_section box">
+                <h3>Proportion of Crime Type</h3>
+                <div class ="chart_container">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+      </footer>
+      <script src="./script_second_page.js"></script>
+</body>
+</html>

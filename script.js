@@ -15,31 +15,6 @@ function initMap() {
   }).addTo(map);
   return map;
 }
-/*
-function injectHTML(list) {
-  console.log('fired injectHTML');
-  const target = document.querySelector('#crime_list');
-  target.innerHTML = '';
-
-  const listEl = document.createElement('ol');
-  target.appendChild(listEl);
-
-  list.forEach((item) => {
-    const el = document.createElement('li');
-    el.innerText = item.clearance_code_inc_type;
-    listEl.appendChild(el);
-  });
-}
-function filterList(array, filterInputValue) {
-  return newArray = array.filter((item) => {
-    if (!item.clearance_code_inc_type) { return; }
-    const lowerCaseName = item.clearance_code_inc_type.toLowerCase();
-    const lowerCaseQuery = filterInputValue.toLowerCase();
-    return lowerCaseName.includes(lowerCaseQuery);
-  });
-}
-
-*/
 
 function markerPlace(array, map) {
   console.log('markerPlace');
@@ -61,7 +36,6 @@ function markerPlace(array, map) {
   });
 }
 
-
 function initChart(chart, object) {
   const labels = Object.keys(object);
   const info = Object.keys(object).map((item) => object[item].length);
@@ -69,7 +43,8 @@ function initChart(chart, object) {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First Dataset',
+      label: 'Crime By Type',
+      barPercentage: 1,
       data: info,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
@@ -93,7 +68,6 @@ function initChart(chart, object) {
     }]
   };
   console.log('initChart');
-
   const config = {
     type: 'bar',
     data: data,
@@ -112,33 +86,35 @@ function initChart(chart, object) {
   );
 }
 
- function processCrime(list) {
+function processCrime(list, data) {
   console.log('fired processCrime');
   const newArray = [];
   list.forEach((item, index) => {
-    const date = new Number(item.date.substring(0, 4));
-    newArray.push(item);
+    if (Number(item.date.substring(8, 10)) === data) {
+      newArray.push(item);
+    }
   });
-  console.log(newArray[0]);
   return newArray;
 }
 
 function shapeDataForBarChart(array) {
+  console.log('fired shapeData');
   return array.reduce((collection, item) => {
-    if (!collection[item.category]) {
-      collection[item.category] = [item];
+    if (!collection[item.clearance_code_inc_type]) {
+      collection[item.clearance_code_inc_type] = [item];
     } else {
-      collection[item.category].push(item);
+      collection[item.clearance_code_inc_type].push(item);
     }
     return collection;
   }, {});
 }
 
 function changeChart(chart, dataObject) {
+  console.log('fired changeChart');
   const labels = Object.keys(dataObject);
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+
   chart.data.labels = labels;
-  //console.log('Newdata', labels, info);
   chart.data.datasets.forEach((set) => {
     set.data = info;
     return set;
@@ -160,11 +136,11 @@ async function mainEvent() {
   const pageMap = initMap();
 
   const form = document.querySelector('.main_form');
-  const submit = document.querySelector('#get-resto');
+  const submit = document.querySelector('#get-day');
   const loadAnimation = document.querySelector('.lds-ellipsis');
-  // const restoName = document.querySelector('#resto');
+  const dayNum = document.querySelector('#day');
   const chartTarget = document.querySelector('#myChart');
-  // submit.style.display = 'none';
+  submit.style.display = 'none';
 
   const arrayFromJson = await getData();
   const shapedData = shapeDataForBarChart(arrayFromJson);
@@ -172,7 +148,7 @@ async function mainEvent() {
 
   if (arrayFromJson?.length > 0) {
     submit.style.display = 'block';
-    console.log('hii');
+
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
 
@@ -180,10 +156,16 @@ async function mainEvent() {
 
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
-      console.log(submitEvent.target);
-      currentList = processCrime(arrayFromJson);
-
-      //injectHTML(currentList);
+      let localData = [];
+      if (dayNum.value.length !== 0) {
+        data = Number(dayNum.value);
+        currentList = processCrime(arrayFromJson, data);
+        localData = shapeDataForBarChart(currentList);
+      } else {
+        currentList = arrayFromJson;
+        localData = shapeDataForBarChart(arrayFromJson);
+      }
+      changeChart(myChart, localData);
       markerPlace(currentList, pageMap);
     });
   }

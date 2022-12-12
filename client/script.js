@@ -117,39 +117,10 @@ function populate_results_top(titles, ids){
 
 /* event listeners on the buttons */
 function main(){
-    // const form = document.getElementById('#search');
+
     const top = document.getElementById("get_top");
     const rand = document.getElementById("get_rand");
-    // const search = document.getElementById('#search_item')
 
-    // if (search){
-    //     console.log('entered search')
-    //     search.addEventListener('change', (event) => {
-    //         let top_clicks = 0;
-    //         let rand_clicks = 0;
-    
-    //         //top.addEventListener("click", handle_top_click);
-    
-    //         if (rand_clicks === 0){
-    //             console.log('rand is 0')
-    //             rand.addEventListener("click", function() {
-    //                 rand_clicks += 1;
-    //                 rand.addEventListener("click", handle_rand_click);
-    //             });
-            
-    //         } else {
-    //             console.log('u clicked rand 2 times')
-    
-    //         }
-    //     });
-    // }
-  
-    
-    //handle_rand_click();
-
-
-
-    //THIS WORKS
 
     top.addEventListener("click", handle_top_click);
     rand.addEventListener("click", (submitEvent) => {
@@ -174,6 +145,7 @@ const barChart = new Chart(ctx, {
         }
     }
 });
+
 
 /* source: https://observablehq.com/@anirudhb/alphabet-visualization-with-d3
 

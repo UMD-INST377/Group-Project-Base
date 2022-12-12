@@ -30,7 +30,7 @@
     font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    background-color: rgb(239, 239, 239);
+    background-color: #1d2b31;
   }
   
   
@@ -129,14 +129,14 @@
   }
   
   .left_section {
-    background-color: #00a5ff;
+    background-color: #0072b0;
     flex: 0 1 auto;
     margin: 1rem;
     padding: 1.5rem;
   }
   
   .right_section {
-    background-color: rgb(234 141 141 / 89%);
+    background-color: hsla(212, 73%, 44%, 0.4);
     flex: 1 2 auto;
     margin: 1rem;
     align-items: center;
@@ -199,6 +199,10 @@
     height: 150px;
   }
   
+  .myChart {
+    width: 400px;
+    height: 450px;
+  }
   
   /* Carousel */
   div.carousel {

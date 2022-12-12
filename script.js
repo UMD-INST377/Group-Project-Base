@@ -69,6 +69,41 @@ function initChart(chart, dataObject) {
   );
 }
 
+//   const data = {
+//     labels: labels,
+//     datasets: [
+//       {
+//         label: 'Dataset 1',
+//         data: info,
+//         borderColor: 'rgb(255, 99, 132)',
+//         backgroundColor: 'rgb(54, 162, 235)',
+//       },
+//     ]
+//   };
+
+//   const config = {
+//     type: 'bar',
+//     data: data,
+//     options: {
+//       responsive: true,
+//       plugins: {
+//         legend: {
+//           position: 'top',
+//         },
+//         title: {
+//           display: true,
+//           text: 'Chart.js Bar Chart'
+//         }
+//       }
+//     },
+//   };
+
+//   return new Chart(
+//     chart,
+//     config
+//   );
+// }
+
 //   return new Chart(chart, {
 //     type: 'bar',
 //     data: {
@@ -116,7 +151,7 @@ function processRestaurants(list) {
 
 function filterList(array, filterInputValue) {
   const newArray = array.filter((item) => {
-    const lowerCaseName = item.amount.toLowerCase();
+    const lowerCaseName = item.agency.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
@@ -173,17 +208,19 @@ async function mainEvent() {
   const myChart = initChart(chartTarget, processedData);
 
   if (data.length > 0) {
+    let currentList = [];
+
     submit.style.display = 'block';
 
     loadAnimtion.classList.remove('lds-ellipsis');
     loadAnimtion.classList.add('lds-ellipsis_hidden');
 
-    let currentList = [];
-
     form.addEventListener('input', (event) => {
       console.log('input', event.target.value);
       const newFilterList = filterList(currentList, event.target.value);
       injectHTML(newFilterList);
+      const localData = shapeDataForChart(newFilterList);
+      changeChart(myChart, localData);
     });
 
     form.addEventListener('submit', async (submitEvent) => {

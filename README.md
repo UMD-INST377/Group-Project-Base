@@ -35,4 +35,4 @@ Our project uses CSS Flexible Box, or Flexbox, to give the containers the abilit
 
 ### What This Project is Displaying and Solving
 
-This project takes in data from the Prince George's County Crime Incidents API, and generates a list of 10 crimes, along with the type of crime and location, and displays that information on a map. The idea for this project is to provide a convenient way for users to visualize crime in Prince George's County, and have an accurate space to do that. We hope this project is helpful for those who may be curious about these crime statistics.
+This project takes in data from the Prince George's County Crime Incidents API, and generates a list of 10 crimes, along with the type of crime and location, and displays that information on a map. The user can then input a type of crime through a form and the list will be filtered to only display the selected crime. The idea for this project is to provide a convenient way for users to visualize crime in Prince George's County, and have an accurate space to do that. We hope this project is helpful for those who may be curious about these crime statistics.

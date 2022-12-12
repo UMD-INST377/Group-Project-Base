@@ -25,6 +25,13 @@ header {
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    list-style: none;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+    text-decoration: none;
 }
 
 header .logo {
@@ -36,13 +43,6 @@ header .logo {
 
 }
 
-a p{
-    border: rgb(6, 130, 238);
-    font-size: large;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-left: auto;
-    
-}
 
 p {
     padding-top: 20px;
@@ -61,7 +61,7 @@ h2 {
     padding-bottom: 10px;
 }
 
-button#get-shows {
+button#refresh {
     font-size: 17px;
     padding: 10px 20px;
     background-color: skyblue;
@@ -72,13 +72,15 @@ button#get-shows {
     letter-spacing: 4px;
     font-family: sans-serif;
     transition: all 0.4s;
+    margin-left: 750px;
+
 }
 
-button#get-shows:focus {
+button#refresh:focus {
     outline: none;
 }
 
-button#get-shows:hover {
+button#refresh:hover {
     background-color: palevioletred;
     color: white;
 }
@@ -144,6 +146,7 @@ button#get-shows:hover {
     padding-right: 10px;
     padding-left: 10px;
     padding-top: 10px;
+    margin-bottom: 10px;
 }
 
 

@@ -8,7 +8,7 @@
   */
   
   html {
-    background-color: #fff;
+    background-color: rgb(255, 241, 241);
     font-size: 16px;
     min-width: 300px;
     overflow-x: hidden;
@@ -31,6 +31,7 @@
     font-weight: 400;
     line-height: 1.5;
     background-color: #463c3c;
+
   }
   
   
@@ -126,6 +127,7 @@
   
   .right_section {
     background-color: #242424;
+
     flex: 0 1 auto;
     margin: 1rem;
     align-items: center;
@@ -146,7 +148,7 @@
   .footer {
     flex-shrink: 0;
     padding: 1rem;
-    background-color: #66B0FB;
+    background-color: #291db6;
     font-size: 1.2rem;
     font-weight: 600;
     border: 2px dashed;

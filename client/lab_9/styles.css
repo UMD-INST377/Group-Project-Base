@@ -368,9 +368,10 @@ form label {
   }
   
   .chart_container {
-    height: 100%;
-    width: 150%;
-
+    height: 300px;
+    width: 400px;
+    position: relative;
+    right: 100px;
   }
 
   .column {

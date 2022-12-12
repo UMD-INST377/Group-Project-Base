@@ -132,9 +132,15 @@ form {
 
 .left_section {
   background-color: rgba(0, 100, 139, 0.8);
-  flex: 0 1 auto;
+  flex: 1 2 auto;
   margin: 1rem;
-  padding: 1.5rem;
+  align-items: center;
+  max-width: 450px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  
 }
 
 .right_section {

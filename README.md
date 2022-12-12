@@ -1,5 +1,7 @@
-# EricSalmeron.github.io.
-A base for group projects in the course
+# NBA Battle!
+A project creating a site pitching two NBA players against each other to see who's stats trump the others.
+Target browsers: Current versions (2022) of Chrome, IoS, and Android.
+GitHub Pages Link: https://ericsalmeron.github.io/EricSalmeron.github.io./client/
 
 API Documentation:
 const options = {

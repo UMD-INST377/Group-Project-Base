@@ -93,15 +93,10 @@ async function mainEvent() {
   const pageMap = initMap();
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-resto');
-  const loadAnimation = document.querySelector('.lds-ellipsis');
-  const restoName = document.querySelector('#resto');
+  const textBox = document.querySelector('#resto');
   const chartTarget = document.querySelector('#myChart');
   submit.style.display = 'none';
 
-  /*
- const data_source =
-    "National Museum of American History" : [38.5328,77.0148],
-  */
   const results = await fetch('/api/smithsonian');
   const arrayFromJson = await results.json();
 
@@ -109,8 +104,6 @@ async function mainEvent() {
 
   if (arrayFromJson.data?.length > 0) {
     submit.style.display = 'block';
-    loadAnimation.classList.remove('lds-ellipsis');
-    loadAnimation.classList.add('lds-ellipsis_hidden');
     let currentList = [];
 
     form.addEventListener('input', (event) => {

@@ -42,8 +42,30 @@ li {
     text-decoration: none;
 }
 
-.wrapper {
-    margin-right: auto;
-    margin-left: auto;
-    max-width: auto;
+h2 {
+    margin-top: 50px;
+    margin-left: 400px;
 }
+
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.banner-area {
+    background-image: url(/img/tvshowbanner.jpg);
+    background-size: cover;
+    background-position: center;
+    top: 100px;
+    height: 500px;
+}
+
+img {
+    display: grid;
+    border: 4px gray;
+    border-radius: 3rem;
+
+}
+
+

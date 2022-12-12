@@ -39,31 +39,38 @@
         </a>
       </div>
 
-
-        <!-- button to link to second Page -->
-        
-
-
-
+      <!-- button to link to second Page -->
     </div>
   </header>
 
   <body>
     <div class="wrapper">
-      <div class="level1">
+      <div class="items">
         <!-- 1. Trending Cyprto / top left -->
         <div class="box">
-          <div style="position: relative; height: auto">
-            <div class="chart" id="trending-crypto-table"></div>
+          <div class="frame">
+            <div>
+              <div class="chart" id="trending-crypto-table"></div>
+            </div>
           </div>
-          <button id="prev-three">Prev 3</button>
-          <button id="next-three">Next 3</button>
+          <!-- outside of green -->
+          <div class="prev_nex">
+            <button id="prev-three">Prev 3</button>
+            <button id="next-three">Next 3</button>
+          </div>
         </div>
 
         <!-- 3. Price Percentage change (falling) / top right -->
         <div class="box">
-          <div style="position: relative; height: auto">
-            <div id="price-percentage-falling-table"></div>
+          <div class="frame">
+            <div>
+              <div id="price-percentage-falling-table"></div>
+            </div>
+          </div>
+          <!-- outside of green -->
+          <div class="prev_nex">
+            <button id="prev-three">Prev 3</button>
+            <button id="next-three">Next 3</button>
           </div>
         </div>
       </div>

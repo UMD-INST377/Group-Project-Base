@@ -70,6 +70,8 @@ async function initEcosystemMarketCapChart() {
   // configure the asesthetics of the chart
   const config = {
     options: {
+      color: "#16777215",
+      backgroundColor: '#9BD0F5',
       maintainAspectRatio: false,
       scales: {
         y: {

@@ -8,15 +8,6 @@
 
 // import { response } from 'express';
 
-/*
-  Hook this script to index.html
-  by adding `<script src="script.js">` just before your closing `</body>` tag
-*/
-
-/*
-    Under this comment place any utility functions you need - like an inclusive random number selector
-    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-*/
 // This is how we are going to get a random player from our list of 41
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
@@ -36,48 +27,16 @@ function injectHTML(list) {
     el.innerText = `${item.player.first_name} ${item.player.last_name} ${item.player.position}`; // maybe change this to lastname? however name should work
     listEl.appendChild(el);
   });
-  /*
-        JS and HTML Injection
-          There are a bunch of methods to inject text or HTML into a document using JS
-          Mainly, they're considered "unsafe" because they can spoof a page pretty easily
-          But they're useful for starting to understand how websites work
-          the usual ones are element.innerText and element.innerHTML
-          Here's an article on the differences if you want to know more:
-
-        What to do in this function
-          - Accept a list of restaurant objects
-          - using a .forEach method, inject a list element into your index.html for every element in the list
-          - Display the name of that restaurant and what category of food it is
-      */
 }
 
 function processPlayers(list) {
   console.log('fired Players list');
   const range = [...Array(15).keys()];
   const newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length);
+    const index = getRandomIntInclusive(0, 15);
     return list[index];
   });
   return newArray;
-
-  /*
-          Process Data Separately From Injecting It
-            This function should accept your 1,000 records
-            then select 15 random records
-            and return an object containing only the restaurant's name, category, and geocoded location
-            So we can inject them using the HTML injection function
-
-            You can find the column names by carefully looking at your single returned record
-            https://data.princegeorgescountymd.gov/Health/Food-Inspection/umjn-t2iz
-
-          What to do in this function:
-
-          - Create an array of 15 empty elements (there are a lot of fun ways to do this, and also very basic ways)
-          - using a .map function on that range,
-          - Make a list of 15 random restaurants from your list of 100 from your data request
-          - Return only their name, category, and location
-          - Return the new list of 15 restaurants so we can work on it separately in the HTML injector
-        */
 }
 
 function filterList(array, filterInputValue) {
@@ -95,27 +54,94 @@ function shapeLabelsForBarChart(array) {
   return completeArrayOfPlayers;
 }
 
-// array.forEach(((subArray) => {
-//   subArray.forEach((item) => {
-//     console.log(item.player?.last_name);
-//     return item.player?.last_name;
-//   });
-// }));
+function shapeDataForAttempted(array) {
+  const completeArrayOfPct = array.map((item) => item.fg3m);
+  return completeArrayOfPct;
+}
 
-function initChart(chart, dataObject) {
-  const relabel = Object.values(dataObject);
-  const labels = shapeLabelsForBarChart(relabel);
-  console.log(relabel);
+function shapeDataForMade(array) {
+  const completeArrayOfPct = array.map((item) => item.fg3a);
+  return completeArrayOfPct;
+}
+
+function initScatter(chart, dataObject) {
+  const intialData = Object.values(dataObject);
+  console.log(intialData);
+  labels = '';
+
+  const x = intialData[0];
+  const y = intialData[1];
+
+  const scatterArray = x.map((xvalue, index) => {
+    const scatterObject = {};
+    scatterObject.x = xvalue;
+    scatterObject.y = y[index];
+    return scatterObject;
+  });
+
+  console.log(scatterArray);
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Made vs Attempted',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: scatterArray
+    }]
+  };
+
+  const config = {
+    type: 'scatter',
+    data: data,
+    options: {
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom'
+        }
+      }
+    }
+  };
+
+  return new Chart(
+    chart,
+    config
+  );
+}
+
+function shapeDataForFg3mBarChart(array) {
+  return array.reduce((collection, item) => {
+    if (!collection[item.fg3m]) {
+      collection[item.fg3m] = [item];
+    } else {
+      collection[item.fg3m].push(item);
+    }
+    return collection;
+  }, {});
+}
+
+function shapeDataForBarChart(array) {
+  const allThreeData = array.filter((item => item.fg3m));
+  console.log(allThreeData)
+  return allThreeData;
+}
+
+function initBarChart(chart, dataObject) {
+  const intialData = Object.values(dataObject);
+  console.log(dataObject);
+  const labels = shapeLabelsForBarChart(intialData);
   console.log(labels);
   console.log(dataObject['0'][0].player.last_name);
 
-  const info = Object.keys(dataObject).map((item) => dataObject[item].length);
+  const info = Object.keys(dataObject);
+  console.log(info);
 
   //FIRST CHART
   const data = {
     labels: labels,
     datasets: [{
-      label: 'NBA 3 point fg percentage made in 2022 Opening Night',
+      label: 'NBA 3 pointers made in 2022 Opening Night',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: info
@@ -168,29 +194,43 @@ chart.update();
 }
 
 function changeChart(chart, dataObject) {
-  const relabel = Object.values(dataObject);
-  const labels = shapeLabelsForBarChart(relabel);
+  const intialData = Object.values(dataObject);
+  console.log(dataObject);
+  const labels = shapeLabelsForBarChart(intialData);
+  console.log(labels);
+  console.log(dataObject['0'][0].player.last_name);
 
-  const info = Object.keys(dataObject).map((item) => dataObject[item].length); // .length?
+  const info = Object.keys(dataObject);
+  console.log(info);
 
   chart.data.labels = labels;
   console.log(labels);
   chart.data.datasets.forEach((dataset) => {
-    dataset.data.push(info);
+    dataset.data = info;
   });
   chart.update();
 }
 
-function shapeDataForBarChart(array) {
-  return array.reduce((collection, item) => {
-    if (!collection[item.reb]) {
-      collection[item.reb] = [item];
-    } else {
-      collection[item.reb].push(item);
-    }
-    // console.log(collection);
-    return collection;
-  }, {});
+function changeScatter(chart, dataObject) {
+  const intialData = Object.values(dataObject);
+  console.log(intialData);
+  const labels = '';
+
+  const x = intialData[1];
+  const y = intialData[0];
+
+  const scatterArray = x.map((xvalue, index) => {
+    const scatterObject = {};
+    scatterObject.x = xvalue;
+    scatterObject.y = y[index];
+    return scatterObject;
+  });
+  chart.data.labels = labels;
+  console.log(labels);
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data = scatterArray;
+  });
+  chart.update();
 }
 
 async function nbaData() {
@@ -216,6 +256,7 @@ async function mainEvent() {
 
   const chartData = await nbaData();
   console.log(chartData.data);
+<<<<<<< HEAD:client/lab_9/script.js
   const shapedData = shapeDataForBarChart(chartData.data);
   // const shapedLabels = shapeLabelsForBarChart(chartData.data);
   console.log(shapedData);
@@ -236,6 +277,13 @@ async function mainEvent() {
   // for example: arrayFromJson.data[0].name, etc
 
   // this is called "string interpolation" and is how we build large text blocks with variables
+=======
+  const fg3mData = shapeDataForFg3mBarChart(chartData.data);
+  const scatterData = [shapeDataForAttempted(chartData.data), shapeDataForMade(chartData.data)];
+  console.log(scatterData);
+  const myChart = initBarChart(chartTarget, fg3mData);
+  const scatter = initScatter(chartTarget2, scatterData);
+>>>>>>> f3eed7d854d07f4362cbe640fd6e698cae8cea60:script.js
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (!chartData.data?.length) { return; } // Return if no data
@@ -249,12 +297,18 @@ async function mainEvent() {
     console.log('input', event.target.value);
     const filteredList = filterList(currentList, event.target.value);
     injectHTML(filteredList);
-    const localData = shapeDataForBarChart(filteredList);
+    const localFg3mData = shapeDataForFg3mBarChart(filteredList);
+    const localScatterData = [shapeDataForMade(filteredList), shapeDataForAttempted(filteredList)];
     // const localLabels = shapeLabelsForBarChart(chartData.data);
+<<<<<<< HEAD:client/lab_9/script.js
     changeChart(myChart, localData);
    // changeChart(myChart2, localData);
    // changeChart(myChart3, localData);
    // changeChart(myChart4, localData);
+=======
+    changeChart(myChart, localFg3mData);
+    changeScatter(scatter, localScatterData);
+>>>>>>> f3eed7d854d07f4362cbe640fd6e698cae8cea60:script.js
     // changeChart(myChart, localLabels);
   });
 
@@ -267,11 +321,19 @@ async function mainEvent() {
     currentList = processPlayers(chartData.data);
     console.log(currentList);
     injectHTML(currentList);
+<<<<<<< HEAD:client/lab_9/script.js
     const localData = shapeDataForBarChart(currentList);
     changeChart(myChart, localData);
    // changeChart(myChart2, localData);
   //  changeChart(myChart3, localData);
    // changeChart(myChart4, localData);
+=======
+    const localFg3mData = shapeDataForFg3mBarChart(currentList);
+    const localScatterData = [shapeDataForMade(currentList), shapeDataForAttempted(currentList)];
+    // const localLabels = shapeLabelsForBarChart(chartData.data);
+    changeChart(myChart, localFg3mData);
+    changeScatter(scatter, localScatterData);
+>>>>>>> f3eed7d854d07f4362cbe640fd6e698cae8cea60:script.js
   });
 }
 

@@ -25,12 +25,13 @@
   
   body {
     margin: 0;
-    padding: 0;
+    padding: 1em;
   
     font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
     font-weight: 400;
     line-height: 1.5;
-    background-color: #000000;
+    background-color: #463c3c;
+
   }
   
   
@@ -39,24 +40,58 @@
     text-decoration: none;
   }
   
-  .header h2, 
-  .header h3 {
-    margin:0;
-    padding:0;
-    padding-bottom: 1.5rem;
-  }
+  
   
   form {
     accent-color: hsla(120, 100%, 50%, 0.482);
   }
   
-  /*
-    - These styles use 'class names'
-    - You can apply them by using the 'class' attribute on your HTML
-    - like this: <div class="wrapper">
-    - note that the period vanishes there!
-  */
+  .header {
+    padding: 10px;
+    text-align: center;    
+  }
+
+  .header h1 {
+
   
+    /* colors */
+    background-color: #000000;
+    color: rgb(57, 116, 12);
+  
+    /* shapes */
+    border-radius: 6px;
+    font-size: 2.5rem;
+    padding: 1.25rem;
+    margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
+    font-style: italic;
+  }
+  
+  .header h3 {
+    margin:0;
+    padding:0;
+    padding-bottom: 1.5rem;
+    color: #037c0b;
+  }
+
+  .intro {
+    background-color: #070606;
+    margin: 20px;
+    display:flex;
+    height:fit-content;
+    justify-content: center;
+    
+  }
+
+  .intro h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    color: #037c0b;
+
+  }
+
+  .introdiscription {
+    font-size:100px;
+  }
   
   .wrapper {
     min-height: 100vh;
@@ -70,57 +105,12 @@
     margin: 0 20px;
     display: flex;
     justify-content: space-evenly;
-    align-items: start;
+    align-items:start;
     flex:1;
   }
   
-  .header {
-    /* padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 1.5rem; */
-  }
-  
-  
-  /*
-    This rule implies that the H1 tag lives within another HTML tag
-    It "inherits" some rules from the above
-    Those rules won't apply to an h1 that's outside a block with the class of 'header'
-  */
-  
-  .header h1 {
-    display: block;
-    /* this will push other blocks out of the way */
-  
-    /* colors */
-    background-color: #66B0FB;
-    color: #000;
-  
-    /* shapes */
-    border: 2px dashed;
-    border-radius: 6px;
-    font-size: 1.5rem;
-    padding: 1.25rem;
-    margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
-  
-  
-    /* box-shadows are fancy */
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
-    
-  }
-  
-  
-  /*
-    Rules can be combined on a block to apply the 'cascade' in order
-    So you can use two classnames in a single class attribute
-    like: <div class="box section">
-  
-    Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
-    And will be what displays in your client
-  */
-  
   .box {
-    background-color: #7CC9F4;
+    background-color: #037c0b;
     border: 2px dashed;
     border-radius: 4px;
     height:fit-content;
@@ -128,15 +118,16 @@
   }
   
   .left_section {
-    background-color: #2300ae;
+    background-color: #242424;
     flex: 0 1 0;
     margin: 1rem;
-    padding: 1.5rem;
+    padding: 2.5rem;
     width: 90%;
   }
   
   .right_section {
-    background-color: #310bca;
+    background-color: #242424;
+
     flex: 0 1 auto;
     margin: 1rem;
     align-items: center;
@@ -144,6 +135,7 @@
     flex-direction: column;
     justify-content: center;
     width: 90%;
+    padding: 2.5rem;
   }
   
   

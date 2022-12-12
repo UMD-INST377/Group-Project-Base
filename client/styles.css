@@ -5,7 +5,7 @@ html {
   min-width: 300px;
   overflow-x: hidden;
   overflow-y: scroll;
-  color: #a7a7a7;
+  color: #909090;
 
   /* these are specific to different browsers */
   -moz-osx-font-smoothing: grayscale;
@@ -14,6 +14,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .header {
@@ -33,6 +34,8 @@ html {
 .header h2 {
   font-size: 1em;
 }
+
+
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -42,7 +45,7 @@ html {
 }
 
 .box {
-  background-color: rgba(36, 34, 163, 0.4);
+  background-color: rgba(40, 125, 79, 0.363);
   border: 2px dashed;
   border-radius: 4px;
 
@@ -102,3 +105,9 @@ html {
   font-weight: bold;
 }
 
+a:link{
+  color: rgba(201, 204, 211, 0.94);
+}
+a:visited{
+  color: rgb(134, 136, 137)
+}

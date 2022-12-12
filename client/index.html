@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LitterMapper</title>
+    <title>PG County LitterMapper</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
@@ -16,11 +16,11 @@
 
     <div class="wrapper">
         <header class="header">
-            <h1>LitterMapper</h1>
+            <h1>Prince George's County LitterMapper</h1>
             <nav>
                 <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./about.html">About</a></li>
+                    <li id="home"><a href="./index.html">Home</a></li>
+                    <li id="about"><a href="./about.html">About</a></li>
                 </ul>
             </nav>
         </header>
@@ -31,13 +31,17 @@
                 <div class="input">
                     <form action="/api" class="main-form">
                         <div>
-                            <label for="location">Select Location: </label>
+                            <div>
+                                <label for="location">Enter a City in PG County: </label>
+                            </div>
+                            <div>
                             <form autocomplete="off" action="/action_page.php">
                                 <div class="autocomplete" style="width:300px;">
                                   <input id="city" type="text" name="myCity" placeholder="City">
                                 </div>
                                 <input type="submit">
                             </form>
+                            </div>
                         </div>
                        <!--<input type="text" name="location" id="location"> -->
                        <div>
@@ -51,6 +55,166 @@
                 <div id="map"></div>
             </div>
         </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>District 1</th>
+                <th>District 2</th>
+                <th>District 3</th>
+                <th>District 4</th>
+                <th>District 5</th>
+                <th>District 6</th>
+                <th>District 7</th>
+                <th>District 8</th>
+                <th>District 9</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Adelphi</td>
+                <td>Avondale</td>
+                <td>Beacon Heights</td>
+                <td>Bowie</td>
+                <td>Bladensburg</td>
+                <td>Forestville</td>
+                <td>Boulevard Heights</td>
+                <td>Andrews Air Force Base</td>
+                <td>Accokeek</td>
+              </tr>
+              <tr>
+                <td>Beltsville</td>
+                <td>Brentwood</td>
+                <td>Berwyn Heights</td>
+                <td>Glenn Dale</td>
+                <td>Cheverly</td>
+                <td>Kettering</td>
+                <td>Bradbury</td>
+                <td>Camp Springs</td>
+                <td>Aquasco</td>
+              </tr>
+              <tr>
+                <td>Calverton</td>
+                <td>Carole Highlands</td>
+                <td>East Pines</td>
+                <td>Greenbelt</td>
+                <td>Edmonston</td>
+                <td>Largo</td>
+                <td>Capitol Heights</td>
+                <td>Clinton</td>
+                <td>Brandywine</td>
+              </tr>
+              <tr>
+                <td>College Park</td>
+                <td>Chillum</td>
+                <td>Glenridge</td>
+                <td>Westchester Park</td>
+                <td>Fairmount Heights</td>
+                <td>Mitchellville</td>
+                <td>District Heights</td>
+                <td>Forest Heights</td>
+                <td>Cheltenham</td>
+              </tr>
+              <tr>
+                <td>Laurel</td>
+                <td>Green Meadows</td>
+                <td>Lanham</td>
+                <td>Upper Marlboro</td>
+                <td>Glenarden</td>
+                <td>South Bowie</td>
+                <td>Hillcrest Heights</td>
+                <td>Glass Manor</td>
+                <td>Eagle Harbor</td>
+              </tr>
+              <tr>
+                <td>Montpelier</td>
+                <td>Hyattsville</td>
+                <td>New Carrollton</td>
+                <td></td>
+                <td>Landover</td>
+                <td></td>
+                <td>Marlow Heights</td>
+                <td>Oxon Hill</td>
+                <td>Fort Washington</td>
+              </tr>
+              <tr>
+                <td>South Laurel</td>
+                <td>Langley Park</td>
+                <td>Riverdale Heights and Hills</td>
+                <td></td>
+                <td>Colmar Manor</td>
+                <td></td>
+                <td>Morningside</td>
+                <td>Temple Hill</td>
+                <td>Piscataway</td>
+              </tr>
+              <tr>
+                <td>Vansville</td>
+                <td>Lewisdale</td>
+                <td>Riverdale Park</td>
+                <td></td>
+                <td>Cottage City</td>
+                <td></td>
+                <td>Seat Pleasant</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>West Laurel</td>
+                <td>Mount Rainier</td>
+                <td>Seabrook</td>
+                <td></td>
+                <td>Springdale</td>
+                <td></td>
+                <td>Suitland</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>North Brentwood</td>
+                <td>Templeton Knolls</td>
+                <td></td>
+                <td>Landover Hills</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td>University Park</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td>West Lanham Hills</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td>Woodlawn</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+        </table>
     </div>
 
     <script src="./script.js"></script>

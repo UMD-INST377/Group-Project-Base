@@ -7,7 +7,7 @@
 */
 
 html {
-  background-color: rgb(225, 202, 150);
+  background-color: rgb(11, 11, 10);
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -94,6 +94,7 @@ form {
 
   /* colors */
   background-color: #FFFFFF;
+  background-image: url("basketball-texture.png");
   color: #0d0d0d;
 
   /* shapes */
@@ -132,14 +133,14 @@ form {
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
-  border: 2px dotted;
+  border: 2px ridge;
 }
 
 .right_section {
   background-color: #17408B;
   flex: 1 2 auto;
   margin: 1rem;
-  border: 2px dotted;
+  border: 2px ridge;
   align-items: center;
   justify-content: center;
   display: flex;

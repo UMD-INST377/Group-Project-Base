@@ -148,7 +148,7 @@ form {
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
-  max-width: 450px;
+  max-width: 750px;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -412,8 +412,8 @@ form label {
 }
 
 .chart_container {
-  height: 100%;
-	width: 100%;
+  height: 700px;
+	width: 700px;
 }
 
 .nav_bar {

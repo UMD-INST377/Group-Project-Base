@@ -1,3 +1,4 @@
+
 <!--merger-->
 <html lang="en">
    <head>
@@ -32,33 +33,50 @@
         <!-- Bottom Left Starts-->
      <!-- </div class="positioning"> -->
           <div class="box" id="player_list">
-            A list of Players from an API
+            A List of Players from an API
           </div>
      <!-- </div> -->
         <!-- Bottom Left Ends-->
 
         <!-- Right Side Starts-->
         <div class="right_section box">
-              <!-- Chart 1-->
-          <h2>Player Stats</h2>
+
+          <div class="row">
+            <!-- Chart 1-->
+            <div class="column" id="div1" style="background: #444;">  
+              <h2>Player Stats</h2>
               <div class="chart_container">
                   <canvas id="myChart"></canvas>
               </div>
-              <!-- Chart 2-->
-          <h2>Player Stats</h2>
+            </div>
+
+            <!-- Chart 2-->
+            <div class="column" id="div2" style="background: #777;">   
+              <h2>Player Stats</h2>
               <div class="chart_container">
                   <canvas id="myChart2"></canvas>
               </div>
-              <!-- Chart 2-->
-          <h2>Player Stats</h2>
-            <div class="chart_container">
-                <canvas id="myChart3"></canvas>
             </div>
-          <!-- Chart 2-->
-          <h2>Player Stats</h2>
-            <div class="chart_container">
-                <canvas id="myChart4"></canvas>
+          </div>  
+
+          <div class="row">  
+            <!-- Chart 3-->
+            <div class="column" id="div3" style="background: #AAA;">
+              <h2>Player Stats</h2>
+              <div class="chart_container">
+                  <canvas id="myChart3"></canvas>
+              </div>
             </div>
+
+            <!-- Chart 4-->
+            <div class="column" id="div4" style="background: #DDD;">
+              <h2>Player Stats</h2>
+              <div class="chart_container">
+                  <canvas id="myChart4"></canvas>
+              </div>
+            </div>
+          </div>  
+
         </div>
         <!-- Right Side Ends-->
 

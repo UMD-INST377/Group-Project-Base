@@ -4,28 +4,35 @@ function test() {
   const selectorNewAnim = $('#navbarSupportedContent').find('li').length;
   const activeItemNewAnim = tabsNewAnim.find('.active');
 
-  $('.hori-selector').css({
-    top: '0px',
-    left: '117.106px',
-    height: '62.5px',
-    width: '133.544px'
-  });
+  function setHoriSelectorPositionAndDimensions(activeItem) {
+    const activeWidthNewAnimHeight = activeItem.innerHeight();
+    const activeWidthNewAnimWidth = activeItem.innerWidth();
+    const itemPosNewAnimTop = activeItem.position();
+    const itemPosNewAnimLeft = activeItem.position();
+    console.log(activeItem, itemPosNewAnimTop, itemPosNewAnimLeft);
 
-  $('#navbarSupportedContent').on('click', 'li', function(e) {
-    $('#navbarSupportedContent ul li').removeClass('active');
-    $(this).addClass('active');
-    let activeWidthNewAnimHeight = $(this).innerHeight();
-    let activeWidthNewAnimWidth = $(this).innerWidth();
-    let itemPosNewAnimTop = $(this).position();
-    let itemPosNewAnimLeft = $(this).position();
     $('.hori-selector').css({
       top: `${itemPosNewAnimTop.top}px`,
       left: `${itemPosNewAnimLeft.left}px`,
       height: `${activeWidthNewAnimHeight}px`,
       width: `${activeWidthNewAnimWidth}px`
     });
+  }
+  // Show the li elements before calling the setHoriSelectorPositionAndDimensions function
+  $('#navbarSupportedContent ul li').show();
+
+  // Call the setHoriSelectorPositionAndDimensions function when the page is first loaded
+  setHoriSelectorPositionAndDimensions(activeItemNewAnim);
+
+  $('#navbarSupportedContent').on('click', 'li', function(e) {
+    $('#navbarSupportedContent ul li').removeClass('active');
+    $(this).addClass('active');
+
+    // Call the setHoriSelectorPositionAndDimensions function when an item is clicked
+    setHoriSelectorPositionAndDimensions($(this));
   });
 }
+
 
 $(document).ready(() => {
   setTimeout(() => { test(); });

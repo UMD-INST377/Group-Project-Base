@@ -66,6 +66,14 @@ h3 {
   flex: 1;
 }
 
+.image {
+  margin: 0 40px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  flex: 1;
+}
+
 .header {
   display: flex;
   justify-content: center;

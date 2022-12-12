@@ -412,8 +412,8 @@ form label {
 }
 
 .chart_container {
-  height: 400px;
-	width: 700px;
+  height: 100%;
+	width: 100%;
 }
 
 .nav_bar {

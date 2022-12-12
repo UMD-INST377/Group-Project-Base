@@ -45,10 +45,6 @@ h2, h3 {
   padding-bottom:1.5rem;
 }
 
-p {
-  max-width: 500px;
-}
-
 form {
   accent-color: hsla(120, 100%, 50%, 0.482);
 }
@@ -129,7 +125,6 @@ div {
   color: rgb(71, 47, 72);
   width: fit-content;
   height:fit-content;
-  padding: 1.5rem;
 }
 
 .box {
@@ -147,6 +142,7 @@ div {
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
+  align-items: center;
 }
 
 .right_section {
@@ -366,6 +362,11 @@ form input {
     justify-content: center;
     width: 90%;
     height: 90%;
+    align-items: center;
+  }
+  .clear_box {
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
 }

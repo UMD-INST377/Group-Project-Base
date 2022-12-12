@@ -29,7 +29,7 @@ function processMueseums(list) {
   return newArray;
 }
 
-//function initMap() {
+// function initMap() {
 //  console.log('initMap');
 // const map = L.map('map').setView([38.5324, -77.125], 10);
 //  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -37,16 +37,16 @@ function processMueseums(list) {
 //    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 //  }).addTo(map);
 //  return map;
-//}
+// }
 
-function initChart(chart){
+function initChart(chart) {
   const labels = [
     'January',
     'February',
     'March',
     'April',
     'May',
-    'June',
+    'June'
   ];
 
   const data = {
@@ -55,7 +55,7 @@ function initChart(chart){
       label: 'My First dataset',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
+      data: [0, 10, 5, 2, 20, 30, 45]
     }]
   };
 
@@ -84,7 +84,7 @@ function markerPlace(array, map) {
     console.log(item);
     L.marker([coordinates[1], coordinates[0]]).addTo(map);
     if (index === 0) {
-      map.setView([coordinates[1], coordinates[0]], 9)
+      map.setView([coordinates[1], coordinates[0]], 9);
     }
   });
 }
@@ -94,18 +94,18 @@ async function mainEvent() {
   const form = document.querySelector('.main_form');
   const submit = document.querySelector('#get-resto');
   const loadAnimation = document.querySelector('.lds-ellipsis');
-  const restoName = document.querySelector('#resto')
-  const chartTarget =  document.querySelector('#myChart');
+  const restoName = document.querySelector('#resto');
+  const chartTarget = document.querySelector('#myChart');
   submit.style.display = 'none';
 
-  /* 
- const data_source = 
+  /*
+ const data_source =
     "National Museum of American History" : [38.5328,77.0148],
   */
   const results = await fetch('/api/smithsonian');
   const arrayFromJson = await results.json();
-  
-initChart(chartTarget);
+
+  initChart(chartTarget);
 
   if (arrayFromJson.data?.length > 0) {
     submit.style.display = 'block';
@@ -125,9 +125,8 @@ initChart(chartTarget);
       currentList = processMueseums(arrayFromJson.data);
       console.log(currentList);
 
-      // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
-      //markerPlace(currentList, pageMap);
+      // markerPlace(currentList, pageMap);
 
       // By separating the functions, we open the possibility of regenerating the list
       // without having to retrieve fresh data every time

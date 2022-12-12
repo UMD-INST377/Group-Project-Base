@@ -73,13 +73,19 @@
     color: #037c0b;
   }
 
+  .spotifyimage {
+    display: flex;
+    justify-content: center;
+  }
+  
   .intro {
     background-color: #070606;
-    margin: 20px;
+    margin: 20px 20px 20px;
+    padding: 2rem 2rem;
     display:flex;
     height:fit-content;
     justify-content: center;
-    
+    border-style: solid;
   }
 
   .intro h2 {
@@ -111,10 +117,12 @@
   
   .box {
     background-color: #037c0b;
-    border: 2px dashed;
+    border: 2px ;
     border-radius: 4px;
     height:fit-content;
     padding: 1.5rem;
+    margin-top: 10px;
+    border-style: solid;
   }
   
   .left_section {
@@ -135,7 +143,7 @@
     flex-direction: column;
     justify-content: center;
     width: 90%;
-    padding: 2.5rem;
+    padding: 1.5rem;
   }
   
   
@@ -148,10 +156,9 @@
   .footer {
     flex-shrink: 0;
     padding: 1rem;
-    background-color: #291db6;
+    background-color: #242424;
     font-size: 1.2rem;
     font-weight: 600;
-    border: 2px dashed;
   }
   
   .footer a {
@@ -164,14 +171,6 @@
     In this instance, it says what to do if a mouse hovers over a link
     This is pretty desktop-specific, since there's no hover function on touchscreens
   */
-  .footer a:hover {
-    /* Hue, saturation, luminosity, alpha */
-    background-color: #fff;
-    /* red, green, blue, alpha */
-    color: rgb(246, 169, 93);
-    text-decoration: none;
-  }
-  
   .subtitle {
     color: rgba(0, 0, 0, 0.8);
     margin: 0px;
@@ -192,28 +191,6 @@
   .grid img {
     width: 150px;
     height: 150px;
-  }
-  
-  
-  /* Carousel */
-  div.carousel {
-    max-width: 300px;
-    overflow: hidden;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-bottom: 1rem;
-  }
-  
-  .carousel .slides {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
   }
   
   /* .carousel_item, */
@@ -259,10 +236,7 @@
     /* Pick a good border colour and check out how it works with your buttons */
   }
   
-  .prev:hover,
-  .next:hover {
-    /* Pick a good background colour for your hover pseudoclass */
-  }
+
   
   
   /*

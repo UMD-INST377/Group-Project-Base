@@ -121,15 +121,32 @@ function shapeDataForFg3mBarChart(array) {
   }, {});
 }
 
+function shapeDataForBarChart(array) {
+  const allThreeData = array.filter((item => item.fg3m));
+  console.log(allThreeData)
+  return allThreeData;
+}
+
 function initBarChart(chart, dataObject) {
   const intialData = Object.values(dataObject);
+  console.log(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
   console.log(labels);
   console.log(dataObject['0'][0].player.last_name);
 
-  const info = shapeDataForMade(intialData);
-  console.log(info)
-  // Object.keys(dataObject).map((item) => dataObject[item].length);
+  const info = Object.keys(dataObject);
+  console.log(info);
+
+  // const x = intialData[0];
+  // console.log(intialData);
+  // const y = intialData[1];
+
+  // const barArray = x.map((xvalue, index) => {
+  //   const barObject = {};
+  //   barObject.x = xvalue;
+  //   barObject.y = y[index];
+  //   return barObject;
+  // });
 
   const data = {
     labels: labels,
@@ -157,9 +174,13 @@ function initBarChart(chart, dataObject) {
 
 function changeChart(chart, dataObject) {
   const intialData = Object.values(dataObject);
+  console.log(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
+  console.log(labels);
+  console.log(dataObject['0'][0].player.last_name);
 
-  const info = Object.keys(dataObject).map((item) => dataObject[item].length); // this is the current problem
+  const info = Object.keys(dataObject);
+  console.log(info);
 
   chart.data.labels = labels;
   console.log(labels);

@@ -165,6 +165,10 @@ form {
   text-decoration: underline;
 }
 
+.footer_text {
+  margin-left: 15px;
+}
+
 /*
   This is an example of a 'pseudoclass'
   In this instance, it says what to do if a mouse hovers over a link
@@ -383,4 +387,28 @@ form label {
 .chart_container {
   height: 100%;
   width: 100%;
+}
+.nav_bar {
+  background-color: #000000;
+  color: rgb(194, 22, 131);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+}
+.nav_bar a:hover {
+  color: #601646;
+  font-weight: bold;
+}
+.nav_bar a {
+  color: rgb(21, 0, 247);
+  text-decoration: none;
+}
+
+.nav_list .list-item {
+  display: inline-block;
+  padding: 30px 15px;
+}
+.nav_list {
+  list-style-type: none;
 }

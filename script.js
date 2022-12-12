@@ -15,6 +15,31 @@ function initMap() {
   }).addTo(map);
   return map;
 }
+/*
+function injectHTML(list) {
+  console.log('fired injectHTML');
+  const target = document.querySelector('#crime_list');
+  target.innerHTML = '';
+
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
+
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item.clearance_code_inc_type;
+    listEl.appendChild(el);
+  });
+}
+function filterList(array, filterInputValue) {
+  return newArray = array.filter((item) => {
+    if (!item.clearance_code_inc_type) { return; }
+    const lowerCaseName = item.clearance_code_inc_type.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
+}
+
+*/
 
 function markerPlace(array, map) {
   console.log('markerPlace');
@@ -35,6 +60,7 @@ function markerPlace(array, map) {
     }
   });
 }
+
 
 function initChart(chart, object) {
   const labels = Object.keys(object);
@@ -67,6 +93,7 @@ function initChart(chart, object) {
     }]
   };
   console.log('initChart');
+
   const config = {
     type: 'bar',
     data: data,
@@ -111,6 +138,7 @@ function changeChart(chart, dataObject) {
   const labels = Object.keys(dataObject);
   const info = Object.keys(dataObject).map((item) => dataObject[item].length);
   chart.data.labels = labels;
+  //console.log('Newdata', labels, info);
   chart.data.datasets.forEach((set) => {
     set.data = info;
     return set;
@@ -155,6 +183,7 @@ async function mainEvent() {
       console.log(submitEvent.target);
       currentList = processCrime(arrayFromJson);
 
+      //injectHTML(currentList);
       markerPlace(currentList, pageMap);
     });
   }

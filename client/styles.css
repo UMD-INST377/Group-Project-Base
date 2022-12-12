@@ -64,15 +64,16 @@
     padding-left: 1rem;
     padding-right: 1rem;
     margin-top: 0px;
+    text-align: center;
   }
   
   .header h1 {
-    display: block;
+    display: flex;
     /* this will push other blocks out of the way */
     border: 3px dashed;
     /* colors */
     background-color: #E67E22;
-    color: #131313;
+    color: #000000;
     width: 100%;
     /* shapes */
     border-radius: 6px;
@@ -80,13 +81,19 @@
     padding: 1rem;
     margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
   
-  
     /* box-shadows are fancy */
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
   }
+  /*
+  .title{
+    
+    margin-left: 20%;
+  }
+ */
   .logo{
-    width: 80px;
-    height: 40px;
+    width: 85px;
+    height: 45px;
+    margin-left: 50%;
   }
 
   .right_section h4{
@@ -112,7 +119,7 @@
     margin: 0 auto;
     align-items: center;
     width: 50%;
-    
+    border-color: #fc4700;
   }
   
   .left_section {
@@ -124,6 +131,7 @@
     border: 2px dashed;
     margin-left: 1.5rem;
     width: 15%;
+    border-color: #E67E22;
   }
   
   .right_section {
@@ -135,14 +143,15 @@
     border: 2px dashed;
     padding-bottom: 1.5rem;
     width: 70%;
+    border-color: #E67E22;
   }
   
   
   .footer {
     flex-shrink: 0;
-    padding: 0.6rem;
+    padding: 1rem;
     background-color: #5D6D7E;
-    font-size: 0.7rem;
+    font-size: 1rem;
     font-weight: 600;
 
   }
@@ -204,6 +213,7 @@
     margin-inline-start: 33%;
     margin-left: auto;
     margin-right: auto;
+    border-color: #fc4700;
   }
  
 

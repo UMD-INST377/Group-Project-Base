@@ -21,9 +21,9 @@ function getRandomIntInclusive(min, max){
   }
   
   async function getData(){
-    const url = 'https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json'; // remote URL! you can test it in your browser
-    const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
-    const json = await data.json(); // the data isn't json until we access it using dot notation
+    const url = 'https://data.princegeorgescountymd.gov/resource/7k64-tdwr.json'; 
+    const data = await fetch(url); 
+    const json = await data.json(); 
     const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.branch_name));
     console.log('Results in library API', json.length); 
     return reply ;

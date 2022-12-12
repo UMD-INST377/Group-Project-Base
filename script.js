@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
-// const { isPrimitive } = require("sequelize/types/utils");
 
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
@@ -68,61 +67,6 @@ function initChart(chart, dataObject) {
     config
   );
 }
-
-//   const data = {
-//     labels: labels,
-//     datasets: [
-//       {
-//         label: 'Dataset 1',
-//         data: info,
-//         borderColor: 'rgb(255, 99, 132)',
-//         backgroundColor: 'rgb(54, 162, 235)',
-//       },
-//     ]
-//   };
-
-//   const config = {
-//     type: 'bar',
-//     data: data,
-//     options: {
-//       responsive: true,
-//       plugins: {
-//         legend: {
-//           position: 'top',
-//         },
-//         title: {
-//           display: true,
-//           text: 'Chart.js Bar Chart'
-//         }
-//       }
-//     },
-//   };
-
-//   return new Chart(
-//     chart,
-//     config
-//   );
-// }
-
-//   return new Chart(chart, {
-//     type: 'bar',
-//     data: {
-//       labels: labels,
-//       datasets: [{
-//         label: 'Spending Information for FY 2021 by Agency',
-//         data: info,
-//         borderWidth: 1
-//       }]
-//     },
-//     options: {
-//       scales: {
-//         y: {
-//           beginAtZero: true
-//         }
-//       }
-//     }
-//   });
-// }
 
 function injectHTML(list) {
   console.log('fired injectHTML');
@@ -199,7 +143,6 @@ async function mainEvent() {
   console.log('Script loaded');
   const data = await getData();
   console.log('Data recived', data);
-  // console.table(getData().data);
   const chartTarget = document.querySelector('#myChart');
 
   const chartData = await getData();
@@ -233,15 +176,6 @@ async function mainEvent() {
       injectHTML(currentList.sort((a, b) => a.amount - b.amount));
       const localData = shapeDataForChart(currentList);
       changeChart(myChart, localData);
-
-      // const formData = new FormData(submitEvent.target);
-      // const formProps = Object.fromEntries(formData);
-
-      // const fetchQuery = new URLSearchParams(formProps);
-      // const results = await fetch(`https://data.princegeorgescountymd.gov/resource/rh7w-bmhm.json${fetchQuery}`);
-
-      // const arrayFromJson = await results.json();
-      // console.table(arrayFromJson.data);
     });
   }
 }

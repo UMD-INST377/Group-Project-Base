@@ -127,12 +127,18 @@ function shapeDataForBarChart(array) {
   return allThreeData;
 }
 
+//ADDED
+function shapeDataForBarChart2(array) {
+  const allPtsData = array.filter((item => item.pts));
+  console.log(allPtsData)
+  return allPtsData;
+}
+
 function initBarChart(chart, dataObject) {
   const intialData = Object.values(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
   const info = Object.keys(dataObject);
 
-  //FIRST CHART
   const data = {
     labels: labels,
     datasets: [{
@@ -156,37 +162,49 @@ function initBarChart(chart, dataObject) {
     config
   );
 }
-  //SECOND CHART
-  const labels = Utils.months({count: 7});
-const data = {
-  labels: labels,
-  datasets: [{
-    label: 'My First Dataset',
-    data: [65, 59, 80, 81, 56, 55, 40],
-    fill: false,
-    borderColor: 'rgb(75, 192, 192)',
-    tension: 0.1
-  }]
-};
 
-const config = {
-  type: 'line',
-  data: data,
-};
+//ADDED
+function initBarChart2(chart, dataObject) {
+  const intialData = Object.values(dataObject);
+  const labels = shapeLabelsForBarChart2(intialData);
+  const info = Object.keys(dataObject);
 
-function changeChart(chart, dataObject) {
-const relabel = Object.values(dataObject);
-const labels = shapeLabelsForBarChart(relabel);
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'NBA Pts scored in 2022 Opening Night',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: info
+    }]
+  };
 
-const info = Object.keys(dataObject).map((item) => dataObject[item].length); // .length?
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      indexAxis: 'x'
+    }
+  };
 
-chart.data.labels = labels;
-console.log(labels);
-chart.data.datasets.forEach((dataset) => {
-  dataset.data.push(info);
-});
-chart.update();
+  return new Chart(
+    chart,
+    config
+  );
 }
+
+//ADDED
+function shapeDataForPtsBarChart(array) {
+  return array.reduce((collection, item) => {
+    if (!collection[item.pts]) {
+      collection[item.pts] = [item];
+    } else {
+      collection[item.pts].push(item);
+    }
+    return collection;
+  }, {});
+}
+
 
 function changeChart(chart, dataObject) {
   const intialData = Object.values(dataObject);
@@ -221,6 +239,20 @@ function changeScatter(chart, dataObject) {
   chart.update();
 }
 
+// ADDED
+function changeChart2(chart, dataObject) {
+  const intialData = Object.values(dataObject);
+  const labels = shapeLabelsForBarChart(intialData);
+  const info = Object.keys(dataObject);
+
+
+  chart.data.labels = labels;
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data = info;
+  });
+  chart.update();
+}
+
 async function nbaData() {
   const url = 'https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022'; // Data goes here https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022
   const data = await fetch(url);
@@ -235,42 +267,20 @@ async function mainEvent() {
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis');
   const chartTarget = document.querySelector('#myChart');
- // const chartTarget2 = document.querySelector('#myChart2');
- // const chartTarget3 = document.querySelector('#myChart3');
- // const chartTarget4 = document.querySelector('#myChart4');
+  const chartTarget2 = document.querySelector('#myChart2');
+  const chartTarget3 = document.querySelector('#myChart3'); //ADDED
   submit.style.display = 'none'; // let your submit button disappear
 
   /* New API data request */
 
   const chartData = await nbaData();
   console.log(chartData.data);
-<<<<<<< HEAD:client/lab_9/script.js
-  const shapedData = shapeDataForBarChart(chartData.data);
-  // const shapedLabels = shapeLabelsForBarChart(chartData.data);
-  console.log(shapedData);
-  const myChart = initChart(chartTarget, shapedData);
- // const myChart2 = initChart(chartTarget2, shapedData);
- // const myChart3 = initChart(chartTarget3, shapedData);
- // const myChart4 = initChart(chartTarget4, shapedData);
-
-  /*
-          Below this comment, we log out a table of all the results using "dot notation"
-          An alternate notation would be "bracket notation" - arrayFromJson["data"]
-          Dot notation is preferred in JS unless you have a good reason to use brackets
-          The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
-        */
-  // console.table(arrayFromJson.data);
-
-  // in your browser console, try expanding this object to see what fields are available to work with
-  // for example: arrayFromJson.data[0].name, etc
-
-  // this is called "string interpolation" and is how we build large text blocks with variables
-=======
   const fg3mData = shapeDataForFg3mBarChart(chartData.data);
   const scatterData = [shapeDataForAttempted(chartData.data), shapeDataForMade(chartData.data)];
+  const PtsData = shapeDataForPtsBarChart(chartData.data); //ADDED
   const myChart = initBarChart(chartTarget, fg3mData);
   const scatter = initScatter(chartTarget2, scatterData);
->>>>>>> f3eed7d854d07f4362cbe640fd6e698cae8cea60:script.js
+  const myChart2 = initBarChart(chartTarget3, PtsData); //ADDED
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (!chartData.data?.length) { return; } // Return if no data
@@ -286,22 +296,11 @@ async function mainEvent() {
     injectHTML(filteredList);
     const localFg3mData = shapeDataForFg3mBarChart(filteredList);
     const localScatterData = [shapeDataForMade(filteredList), shapeDataForAttempted(filteredList)];
-<<<<<<< HEAD
-    // const localLabels = shapeLabelsForBarChart(chartData.data);
-<<<<<<< HEAD:client/lab_9/script.js
-    changeChart(myChart, localData);
-   // changeChart(myChart2, localData);
-   // changeChart(myChart3, localData);
-   // changeChart(myChart4, localData);
-=======
+    const localPtsData = shapeDataForPtsBarChart(filteredList);//ADDED
     changeChart(myChart, localFg3mData);
     changeScatter(scatter, localScatterData);
->>>>>>> f3eed7d854d07f4362cbe640fd6e698cae8cea60:script.js
-    // changeChart(myChart, localLabels);
-=======
-    changeChart(myChart, localFg3mData);
-    changeScatter(scatter, localScatterData);
->>>>>>> 4d793894eff6c855b2abff2817e3b000296a0152
+    changeChart2(myChart2, localPtsData);//ADDED
+
   });
 
   form.addEventListener('submit', (submitEvent) => {
@@ -310,18 +309,12 @@ async function mainEvent() {
     currentList = processPlayers(chartData.data);
     console.log(currentList);
     injectHTML(currentList);
-<<<<<<< HEAD:client/lab_9/script.js
-    const localData = shapeDataForBarChart(currentList);
-    changeChart(myChart, localData);
-   // changeChart(myChart2, localData);
-  //  changeChart(myChart3, localData);
-   // changeChart(myChart4, localData);
-=======
     const localFg3mData = shapeDataForFg3mBarChart(currentList);
     const localScatterData = [shapeDataForMade(currentList), shapeDataForAttempted(currentList)];
+    const localPtsData = shapeDataForFg3mBarChart(currentList); //ADDED
     changeChart(myChart, localFg3mData);
     changeScatter(scatter, localScatterData);
->>>>>>> f3eed7d854d07f4362cbe640fd6e698cae8cea60:script.js
+    changeChart2(myChart2, localPtsData); //ADDED
   });
 }
 

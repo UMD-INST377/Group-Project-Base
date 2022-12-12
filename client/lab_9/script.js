@@ -299,7 +299,7 @@ async function mainEvent() {
     const localPtsData = shapeDataForPtsBarChart(filteredList);//ADDED
     changeChart(myChart, localFg3mData);
     changeScatter(scatter, localScatterData);
-    changeChart(myChart2, localPtsData);//ADDED
+    changeChart2(myChart2, localPtsData);//ADDED
 
   });
 
@@ -314,7 +314,7 @@ async function mainEvent() {
     const localPtsData = shapeDataForFg3mBarChart(currentList); //ADDED
     changeChart(myChart, localFg3mData);
     changeScatter(scatter, localScatterData);
-    changeChart(myChart2, localPtsData); //ADDED
+    changeChart2(myChart2, localPtsData); //ADDED
   });
 }
 

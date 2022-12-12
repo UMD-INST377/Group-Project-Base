@@ -4,7 +4,7 @@ https://github.com/Jsmurillo16/Group103-21-Final-Project-Endpoint
 
 ## API Endpoint Documentation
 
-## our Crypto API: https://api.coindesk.com/v1/bpi/currentprice.json
+## Our Crypto API: https://api.coindesk.com/v1/bpi/currentprice.json
 - This API contains of cryptocurrency data for several differnt countries
 - Shows the rate of crypto
 - Many countries are involved

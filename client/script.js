@@ -75,14 +75,25 @@ function getRandomIntInclusive(min, max){
       const numLng = parseFloat(longitude);
       //L.marker([numLat, numLng]).addTo(map);
       L.marker([numLat, numLng]).bindPopup(L.popup({maxWidth:500}).
-      setContent("Branch name: " + item.branch_name +"<br>"+"Branch type: " + item.branch_type +"<br>"+
-       "\nPhone Number: " + item.telephone))
+      setContent(markerContent(item)))
       .addTo(map);
 
       if(index === 0){
         map.setView([numLat, numLng], 10.5);
       }
     })
+  }
+  function markerContent(item){
+    let str = " " ;
+    if (item.branch_type == "County"){
+      str = "Branch name: " + item.branch_name +"<br>"+"Branch type: " + item.branch_type +"<br>"+
+      "Phone Number: " +"<br>"+ item.telephone +"<br>"+ "Site: https://www.pgcmls.info/"
+    }
+    else{
+      str = "Branch name: " + item.branch_name +"<br>"+"Branch type: " + item.branch_type +"<br>"+
+      "Phone Number: " + item.telephone +"<br>"+ "Site: N/A"
+    }
+    return str ;
   }
 
 

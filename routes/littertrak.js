@@ -14,7 +14,7 @@ const router = express.Router();
 router.route('/littertrakPG') // actually localhost:3000/api/littertrakPG
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
+      const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?type_litter=ExpressBusiness;
       const data = await fetch(url);
       const json = await data.json();
       console.log(json);
@@ -50,10 +50,10 @@ router.route('/littertrakPG') // actually localhost:3000/api/littertrakPG
     }
   });
 
-router.route('/littertrakPG/:zipCode') // actually localhost:3000/api/littertrakPG/20782
+router.route('/littertrakPG/:') // actually localhost:3000/api/littertrakPG/20782
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
+      const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?type_litter=ExpressBusiness';
       const request = await fetch(url);
       const json = await request.json();
       console.log(json);

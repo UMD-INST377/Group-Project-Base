@@ -148,10 +148,10 @@ form {
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
-  max-width: 750px;
   justify-content: center;
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
+  border-radius: 25px;
 }
 
 /*
@@ -412,8 +412,8 @@ form label {
 }
 
 .chart_container {
-  height: 700px;
-	width: 700px;
+  height: 100%;
+	width: 100%;
 }
 
 .nav_bar {

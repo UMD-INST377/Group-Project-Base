@@ -9,30 +9,7 @@
     Under this comment place any utility functions you need - like an inclusive random number selector
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 */
-
-// gets a random integer between two numbers
 const apiURL = 'https://api.spotify.com/v1/';
-
-function getRandomIntInclusive(min, max) {
-  const newMin = Math.ceil(min);
-  const newMax = Math.floor(max);
-  return Math.floor(Math.random() * (newMax - newMin + 1) + min); // The maximum is inclusive and the minimum is inclusive
-}
-
-/*
-    ## JS and HTML Injection
-      There are a bunch of methods to inject text or HTML into a document using JS
-      Mainly, they're considered "unsafe" because they can spoof a page pretty easily
-      But they're useful for starting to understand how websites work
-      the usual ones are element.innerText and element.innerHTML
-      Here's an article on the differences if you want to know more:
-      https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent#differences_from_innertext
-
-    ## What to do in this function
-      - Accept a list of restaurant objects
-      - using a .forEach method, inject a list element into your index.html for every element in the list
-      - Display the name of that restaurant and what category of food it is
-  */
 
 function injectHTML(list, divTarget) {
   console.log('fired injectHTML');
@@ -54,8 +31,6 @@ function injectHTML(list, divTarget) {
   });
 }
 
-// good programming practice: one idea per line
-
 async function searchArtists(term, token) {
   const search = encodeURIComponent(term);
   console.log(search);
@@ -73,44 +48,6 @@ async function searchArtists(term, token) {
   return json.artists; // object containing, among other things, an array of artists
 }
 
-
-function initChart(chartTarget) {
-  return new Chart(chartTarget, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-}
-
-function generateRandomString() {
-  const array = new Uint32Array(1);
-  self.crypto.getRandomValues(array);
-
-  return array[0];
-}
-
-async function getData(submit) {
-  const url = 'https://api.si.edu/openaccess/api/v1.0/search?q=q&api_key=v75sWiNNyg1QXFrgYo532qR0gwtYecj6kS8FtQBD'; // remote URL! you can test it in your browser
-  const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
-  const json = await data.json(); // the data isn't json until we access it using dot notation
-
-  // chained filters check if item has both a location and a name
-  const reply = json.filter((item) => Boolean(item.geocoded_column_1)).filter((item) => Boolean(item.name));
-  return reply;
-}
 
 // This function retrieves the access token from Spotify
 // Used the "Client Credentials Flow" on Spotify API
@@ -166,12 +103,10 @@ async function mainEvent() {
         When you're not working in a heavily-commented "learning" file, this also is more legible
         If you separate your work, when one piece is complete, you can save it and trust it
     */
-  //   const pageMap = initMap();
   // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get-resto'); // get a reference to your submit button
   const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
-  const chartTarget = document.querySelector('#myChart');
   let artists = [];
   submit.style.display = 'none'; // let your submit button disappear
 

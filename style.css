@@ -126,13 +126,13 @@ line-height: 1.5;
 
 .clear_box {
   border-radius: 15px;
-  color: rgb(255, 255, 255);
+  color: rgb(141, 194, 161);
   width: fit-content;
   height:fit-content;
 }
 
 .box {
-  background-color: #25644f;
+  background-color: #98d4c0;
   border: 1px solid rgb(38, 99, 63);
   border-radius: 15px;
   color: rgb(255, 255, 255);
@@ -142,7 +142,7 @@ line-height: 1.5;
 }
 
 .left_section {
-  background-color: #25644f;
+  background-color: #98d4c0;
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;

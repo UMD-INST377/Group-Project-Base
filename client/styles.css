@@ -2,15 +2,16 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
 
 body {
     min-height: 100vh;
-    background: linear-gradient(#aca5d4, #f5fdc2);
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* background: linear-gradient(#aca5d4, #f5fdc2); */
+    background-image: url('cool-background.png');
+    font-family: 'Courier New', Courier, monospace;
     padding-left: 100px;
     padding-right: 100px;
     padding-top: 20px;
@@ -28,10 +29,11 @@ header {
 }
 
 header .logo {
-    color: #ffff;
+    color: black;
     font-size: 2em;
     letter-spacing: 2px;
     font-weight: 800;
+    font-family: sans-serif;
 
 }
 

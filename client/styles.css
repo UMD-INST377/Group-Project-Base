@@ -139,17 +139,6 @@ flex-direction: column;
   right: 16px;
 }
 
-.alt_box {
-  display: flex;
-  width: 300px;
-  height: 300px;
-  padding: 50px;
-  border: dashed;
-  background-color: lightblue;
-  margin: auto;
-  align-items: center;
-  justify-content: center;
-}
 
 .chart_container {
   height: 100%;

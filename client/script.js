@@ -226,7 +226,6 @@ async function mainEvent() {
       Below this comment, we log out a table of all the results using "dot notation"
       An alternate notation would be "bracket notation" - arrayFromJson["data"]
       Dot notation is preferred in JS unless you have a good reason to use brackets
-      The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
     */
   // console.table(arrayFromJson.data);
 

@@ -17,7 +17,8 @@
     
 </head>
 <body>
-
+    <div class="wrapper">
+        <header class="header">
 <nav class="nav_bar">
     <h2>Prince George's County Crime</h2>
     <ul class="nav_list">
@@ -29,11 +30,8 @@
         </li>
     </ul>
 </nav>
-   
-      <!-- <div class = "header">
-        <h1>PG Crime</h1>
-    </div>
-    -->
+</header>
+<div class="container">
     <div class="left_section box">
         <h2>Local Crime Map</h2>
         <div id="map"></div>
@@ -48,8 +46,10 @@
         </form>
     </div>
     <script src="./script.js"></script>
+
     <div class="right_section box">
         <h2>Crime By Type</h2>
+        
         <div class="chart_container">
             <canvas id="myChart"></canvas>
         </div>

@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 export async function createArray(type) {
   const dataList = [];
   try {
-    const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?type_litter';
+    const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?organization=ExpressBusiness';
     // let obj;
     const res = await fetch(url + type);
     const obj = await res.json();
@@ -23,7 +23,7 @@ export async function createArray(type) {
 
 export async function datatype(type, info) {
   try {
-    const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?type_litter';
+    const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?organization=ExpressBusiness';
     const res = await fetch(url + type);
     const obj = await res.json();
     for (let i = 0; i < obj.length; i++) {

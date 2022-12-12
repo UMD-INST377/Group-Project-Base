@@ -11,13 +11,6 @@ async function mainEvent() {
   const data = await response.json();
   console.table(data); // check data as table format
 
-  const form = document.querySelector('.main_form');
-  form.addEventListener('start', async(submitEvent) => {
-    submitEvent.preventDefault();
-    console.log('form start');
-  });
-  const start = document.querySelector('#refresh');
-  start.style.display = '';
 }
 
 

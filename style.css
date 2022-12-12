@@ -132,7 +132,7 @@ line-height: 1.5;
 }
 
 .box {
-  background-color: #98d4c0;
+  background-color: #7ea094;
   border: 1px solid rgb(38, 99, 63);
   border-radius: 15px;
   color: rgb(255, 255, 255);
@@ -142,7 +142,7 @@ line-height: 1.5;
 }
 
 .left_section {
-  background-color: #98d4c0;
+  background-color: #25644f;
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
@@ -379,7 +379,7 @@ form input {
   }
   
   .box {
-    background-color: #59a071;
+    background-color: #7ea094;
     flex-direction: column;
     justify-content: center;
     width: 90%;

@@ -26,15 +26,9 @@ function processData(list) {
           You can find the column names by carefully looking at your single returned record
           https://data.princegeorgescountymd.gov/Health/Food-Inspection/umjn-t2iz
 
-        ## What to do in this function:
-        - Create an array of 15 empty elements (there are a lot of fun ways to do this, and also very basic ways)
-        - using a .map function on that range,
-        - Make a list of 15 random restaurants from your list of 100 from your data request
-        - Return only their name, category, and location
-        - Return the new list of 15 restaurants so we can work on it separately in the HTML injector
-      */
 }
-
+*/ 
+  
 function filterList(array, filterInputValue) {
   return array.filter((item) => {
     const lowerCaseName = item.name.toLowerCase();
@@ -129,10 +123,13 @@ function initMap() {
   return map;
 }
 
-function markerPlace(array, map) {
-  console.log('markerPlace', array);
-  const marker = L.marker([38.8911, -76.8848]).addTo(map);
-
+function markerPlace(array, map, organization, ) {
+  markerCounter = 1;
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+  }
+  });
 
 /*for(let x =0;x<array.length;x++){
 if(array[x].zipcode==20740){
@@ -164,7 +161,7 @@ if(array[x].zipcode==20740){
 }
 
 async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json';
+  const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?organization=ExpressBusiness';
   const data = await fetch(url);
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.geocoded_column)).filter((item) => Boolean(item.name));
@@ -215,10 +212,7 @@ async function mainEvent() {
       // injectHTML(currentList);
       markerPlace(currentList, pageMap);
 
-    // By separating the functions, we open the possibility of regenerating the list
-    // without having to retrieve fresh data every time
-    // We also have access to some form values, so we could filter the list based on name
-    });
+  
   }
 }
 

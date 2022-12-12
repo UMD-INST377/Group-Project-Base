@@ -129,13 +129,8 @@ function shapeDataForBarChart(array) {
 
 function initBarChart(chart, dataObject) {
   const intialData = Object.values(dataObject);
-  console.log(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
-  console.log(labels);
-  console.log(dataObject['0'][0].player.last_name);
-
   const info = Object.keys(dataObject);
-  console.log(info);
 
   const data = {
     labels: labels,
@@ -163,16 +158,11 @@ function initBarChart(chart, dataObject) {
 
 function changeChart(chart, dataObject) {
   const intialData = Object.values(dataObject);
-  console.log(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
-  console.log(labels);
-  console.log(dataObject['0'][0].player.last_name);
-
   const info = Object.keys(dataObject);
-  console.log(info);
+
 
   chart.data.labels = labels;
-  console.log(labels);
   chart.data.datasets.forEach((dataset) => {
     dataset.data = info;
   });
@@ -181,7 +171,6 @@ function changeChart(chart, dataObject) {
 
 function changeScatter(chart, dataObject) {
   const intialData = Object.values(dataObject);
-  console.log(intialData);
   const labels = '';
 
   const x = intialData[1];
@@ -194,7 +183,6 @@ function changeScatter(chart, dataObject) {
     return scatterObject;
   });
   chart.data.labels = labels;
-  console.log(labels);
   chart.data.datasets.forEach((dataset) => {
     dataset.data = scatterArray;
   });
@@ -224,7 +212,6 @@ async function mainEvent() {
   console.log(chartData.data);
   const fg3mData = shapeDataForFg3mBarChart(chartData.data);
   const scatterData = [shapeDataForAttempted(chartData.data), shapeDataForMade(chartData.data)];
-  console.log(scatterData);
   const myChart = initBarChart(chartTarget, fg3mData);
   const scatter = initScatter(chartTarget2, scatterData);
 
@@ -242,16 +229,11 @@ async function mainEvent() {
     injectHTML(filteredList);
     const localFg3mData = shapeDataForFg3mBarChart(filteredList);
     const localScatterData = [shapeDataForMade(filteredList), shapeDataForAttempted(filteredList)];
-    // const localLabels = shapeLabelsForBarChart(chartData.data);
     changeChart(myChart, localFg3mData);
     changeScatter(scatter, localScatterData);
-    // changeChart(myChart, localLabels);
   });
 
-  // And here's an eventListener! It's listening for a "submit" button specifically being clicked
-  // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
   form.addEventListener('submit', (submitEvent) => {
-    // This is needed to stop our page from changing to a new URL even though it heard a GET request
     submitEvent.preventDefault();
 
     currentList = processPlayers(chartData.data);
@@ -259,15 +241,9 @@ async function mainEvent() {
     injectHTML(currentList);
     const localFg3mData = shapeDataForFg3mBarChart(currentList);
     const localScatterData = [shapeDataForMade(currentList), shapeDataForAttempted(currentList)];
-    // const localLabels = shapeLabelsForBarChart(chartData.data);
     changeChart(myChart, localFg3mData);
     changeScatter(scatter, localScatterData);
   });
 }
 
-/*
-        This last line actually runs first!
-        It's calling the 'mainEvent' function at line 57
-        It runs first because the listener is set to when your HTML content has loaded
-      */
 document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests

@@ -27,7 +27,7 @@ router.route('/smithsonian')
       res.json({error: error});
     }
   })
-  });
+
 router.use('/smithsonian', smithsonian);
 
 export default router;

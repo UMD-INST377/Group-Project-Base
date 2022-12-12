@@ -54,7 +54,7 @@ h2 {
 
 
 .banner-area {
-    background-image: url(/img/tvshowbanner.jpg);
+    background-image: url(./img/tvshowbanner.jpg);
     background-size: cover;
     background-position: center;
     top: 100px;

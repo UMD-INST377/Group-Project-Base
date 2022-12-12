@@ -12,5 +12,5 @@ Our site allows users to search different spotify artists. When you type the nam
 # Target Browsers
 The main target of our site is people that use the newest versions of MAC, IOS and Windows.
 
-# Description of Project
+# API
 We used the spotify API(https://developer.spotify.com/documentation/web-api/)

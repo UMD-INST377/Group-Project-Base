@@ -257,6 +257,23 @@ function changeChart(chart, dataObject) {
   chart.update();
 }
 
+function replaceCity (city, array) {
+  list = [];
+
+  array.forEach((item) => {
+    const sgeo = JSON.stringify(item);
+    city.forEach((word) => {
+      const lowerCities = word.toLowerCase();
+      if (sgeo.includes(lowerCities)) {
+        cityString = lowerCities.toString();
+        item['Geocoded address'] = item['Geocoded address'].replaceAll(item['Geocoded address'], cityString);
+        list.push(item);
+      }
+    });
+  });
+  return list;
+}
+
 function groupBy(objectArray, property) {
   return objectArray.reduce((acc, obj) => {
     const key = obj[property];
@@ -267,6 +284,25 @@ function groupBy(objectArray, property) {
     acc[key].push(obj);
     return acc;
   }, {});
+}
+
+async function findLocation() {
+  const url = 'crime.json';
+  const getGeoData = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
+  const converterGeo = await getGeoData.json(); // the data isn't json until we access it using dot notation
+
+  const replyGeo = converterGeo;
+
+  return replyGeo;
+}
+
+async function findCities() {
+  const url = 'cities.txt';
+  const getCityData = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
+  const converterCity = await getCityData.text(); // the data isn't json until we access it using dot notation
+
+  const replyCity = converterCity;
+  return replyCity.split('\n');
 }
 
 async function getdata() {
@@ -439,6 +475,11 @@ async function mainEvent() {
 
   // ----------------------------------------GETING API DATA RETUREND AS LIST
   const results = await getdata();
+  const resultsGeo = await findLocation();
+  const resultsCities = await findCities();
+  const replacer = replaceCity(resultsCities, resultsGeo);
+  const cityLocation = groupBy(replacer, 'Geocoded address');
+  console.log('testing', cityLocation);
 
   // ---------------------------------------GRABING EACH ARRAY FROM LIST
   const arrayFromJson2017 = results[0];
@@ -463,8 +504,6 @@ async function mainEvent() {
   const total2022 = arrayFromJson2022.length;
   // --------------------------------- SHAPING THE DATA INORDER TO FIT NICELY INTO GRAPH
   const shapeData2017 = groupBy(chartData2017, 'clearance_code_inc_type');
-  console.log(shapeData2017);
-  console.log(chartData2017);
   const shapeData2018 = groupBy(chartData2018, 'clearance_code_inc_type');
   const shapeData2019 = groupBy(chartData2019, 'clearance_code_inc_type');
   const shapeData2020 = groupBy(chartData2020, 'clearance_code_inc_type');

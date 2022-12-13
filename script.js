@@ -9,9 +9,6 @@
 // import { response } from 'express';
 
 // This is how we are going to get a random player from our list of 41
-
-//uniq = [...new Set(array)];
-
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -171,7 +168,6 @@ function initBarChart(chart, dataObject) {
 //ADDED
 function initBarChart2(chart, dataObject) {
   console.log(dataObject);
-<<<<<<< HEAD
   const intialData = Object.values(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
   const info = Object.keys(dataObject);
@@ -179,7 +175,7 @@ function initBarChart2(chart, dataObject) {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'NBA Pts scored from 2022 Opening Night',
+      label: 'NBA Pts scored in 2022 Opening Night',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: info
@@ -258,7 +254,6 @@ function shapeDataForFtsBarChart(array) {
   }, {});
 }
 
-
 function changeChart(chart, dataObject) {
   const intialData = Object.values(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
@@ -333,7 +328,7 @@ async function mainEvent() {
   const fg3mData = shapeDataForFg3mBarChart(chartData.data);
   const scatterData = [shapeDataForAttempted(chartData.data), shapeDataForMade(chartData.data)];
   const PtsData = shapeDataForPtsBarChart(chartData.data); //ADDED
-  const FtsData = shapeDataForFtsBarChart(chartData.data); //ADDED
+  const FtsData = shapeDataForFtsBarChart(chartData.data); //NEW
   const myChart = initBarChart(chartTarget, fg3mData);
   const scatter = initScatter(chartTarget2, scatterData);
   const myChart2 = initBarChart2(chartTarget3, PtsData); //ADDED
@@ -360,7 +355,6 @@ async function mainEvent() {
     changeScatter(scatter, localScatterData);
     changeChart(myChart2, localPtsData);//ADDED
     changeChart(myChart3, localFtsData);//NEW
-
   });
 
   form.addEventListener('submit', (submitEvent) => {

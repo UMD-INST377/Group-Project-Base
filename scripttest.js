@@ -100,7 +100,7 @@ async function mainEvent() {
   // const pageMap = initMap();
   // const mapData = await getData();
 
-  if (arrayFromJson.data?.length > 0) { //inputted// 
+  if (getData?.length > 0) { //inputted// 
     submit.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');

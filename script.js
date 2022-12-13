@@ -5,18 +5,6 @@ async function getData() {
     const reply = json.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.location));
     return reply;
   }
-  /*
-  function shapeDataForLineChart(array) {
-    return array.reduce((collection, item) => {
-      if(!collection[item.category]) {
-        collection[item.category] = [item]
-      } else {
-        collection[item.category].push(item);
-      }
-      return collection;
-    }, {});
-  }
-  */
 
   function initMap() {
     // will need this to inject markers later!
@@ -28,31 +16,84 @@ async function getData() {
     }).addTo(map);
     return map;
   }
+//
+function getRandomIntInclusive(min, max) {
+  const newMin = Math.ceil(min);
+  const newMax = Math.floor(max);
+  return Math.floor(Math.random() * (newMax - newMin) + newMin); // The maximum is exclusive and the minimum is inclusive
+}
+
+function injectHTML(list) {
+  console.log('fired injectHTML');
+  const target = document.querySelector('#incident_list');
+  target.innerHTML = '';
+
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
+
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item.name;
+    listEl.appendChild(el);
+  });
+}
+
+  function processIncidents(list) {
+    console.log('fired incidents list');
+    const range = [...Array(15).keys()]; // special notation to create the array
+    const newArray = range.map((item) => {
+      const index = getRandomIntInclusive(0, list.length);
+      return list[index];
+    });
+    return newArray;
+  }
+
+  function markerPlace(array, map) {
+    // must keep the reference to the marker so this is here
+    // const marker = L.marker([51.5, -0.09]).addTo(map);
+    map.eachLayer((layer) => {
+      if (layer instanceof L.Marker) {
+        layer.remove();
+      }
+    });
+
+    array.forEach((item, index) => {
+      const newLat = new Number(latitude);
+      const newLng = new Number(longitude);
+      const newLatLng = (newLat, newLng);
+      L.marker(newLatLng).addTo(map);
+      if (index === 0) {
+        map.setView([coordinates[1], coordinates[0]], 9);
+      }
+    });
+
+  }
+
+  function filterList(array, filterInputValue) {
+    return array.filter((item) => {
+      // filter prepares an array based on items from the initial array that match the truth cases set up as a test
+      if (!item.name) {
+        return;
+      } // return an element only when the element has an actual item name
+      const lowerCaseName = item.name.toLowerCase();
+      const lowerCaseQuery = filterInputValue.toLowerCase();
+      return lowerCaseName.includes(lowerCaseQuery);
+    });
+  }
+
+
 
   async function mainEvent() {
     
     const pageMap = initMap();
     // the async keyword means we can make API requests
     const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-    const submit = document.querySelector('#get-crime'); // get a reference to your submit button
+    const submit = document.querySelector('#get-incident'); // get a reference to your submit button
     //const loadAnimation = document.querySelector('.lds-ellipsis'); -->
-    //submit.style.display = 'none'; // let your submit button disappear
+    submit.style.display = 'none'; // let your submit button disappear
   
-    /*
-          Let's get some data from the API - it will take a second or two to load
-          This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
-          It's at about line 27 - go have a look and see what we're retrieving and sending back.
-         */
-    //const results = await fetch('/api/foodServicePG');
     const arrayFromJson = await getData(); // here is where we get the data from our request as JSON
-    console.log(arrayFromJson);
   
-    /*
-          Below this comment, we log out a table of all the results using "dot notation"
-          An alternate notation would be "bracket notation" - arrayFromJson["data"]
-          Dot notation is preferred in JS unless you have a good reason to use brackets
-          The 'data' key, which we set at line 38 in foodServiceRoutes.js, contains all 1,000 records we need
-        */
     console.table(arrayFromJson.data);
   
     // in your browser console, try expanding this object to see what fields are available to work with
@@ -89,16 +130,12 @@ async function getData() {
         submitEvent.preventDefault();
   
         // This constant will have the value of your 15-restaurant collection when it processes
-        currentList = processRestaurants(arrayFromJson.data);
+        currentList = processIncidents(arrayFromJson.data);
         console.log(currentList);
   
         // And this function call will perform the "side effect" of injecting the HTML list for you
         injectHTML(currentList);
         markerPlace(currentList, pageMap);
-  
-        // By separating the functions, we open the possibility of regenerating the list
-        // without having to retrieve fresh data every time
-        // We also have access to some form values, so we could filter the list based on name
       });
     }
   }

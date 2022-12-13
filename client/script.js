@@ -280,7 +280,7 @@ function groupBy(objectArray, property) {
 
 async function getdata() {
   const app_token = '&$$app_token=84LR83Ksyc2P3O19GyzXILSkd';
-  const limit = '&$limit=5';
+  const limit = '&$limit=5000000';
   const url2017 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}${app_token}`;
 
   const data2017 = await fetch(url2017); // We're using a library that mimics a browser 'fetch' for simplicity

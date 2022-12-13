@@ -19,7 +19,6 @@ function updateSlidePosition() {
 }
 
 function moveToNextSlide() {
-
   if (slidePosition === totalSlides - 1) {
     slidePosition = 0;
   } else {

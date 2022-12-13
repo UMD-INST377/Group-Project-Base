@@ -1,6 +1,7 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
-testing git pull request can delete later
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
+# INST 377 Final Project
+This is the final project for INST 377. A group project where we created a web application that does various things. This specific page we made allows for the user to search any food into the search box and then have its nutritional information come up.
+### API Used
+We used this API: https://rapidapi.com/calorieninjas/api/calorieninjas/
+### Website Link
+
 * [Markdown guide](https://www.markdownguide.org/cheat-sheet/)

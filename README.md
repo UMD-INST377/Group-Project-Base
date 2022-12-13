@@ -1,5 +1,5 @@
 
-This repository is made to hold the semester HTML, JavaScript, and CSS project created by: Prince Prince Okpoziakpo, and Daniel H Gonzalez. (INST377 – 0103)
+This repository is made to hold the semester HTML, JavaScript, and CSS project created by: Prince Prince Okpoziakpo, and Daniel H Gonzalez.(INST377 – 0103)
 
 # CryptoViewer
 

@@ -1,37 +1,23 @@
+const label = [];
+const foodData = [];
+
 const options = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Key': 'e2a17786bamsh39f2855f9aaf40dp1b10c0jsnf0ccf57e91e0',
     'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com'
   }
-};
-
-async function getData(){
-  const url = 'https://calorieninjas.p.rapidapi.com/v1/nutrition?query=tomato'; 
-  const data = await fetch(url, options);
-  console.log(data);
-	const json = await data.json();
-  
-  console.log(json);
-  console.log(json.items);
-  console.log(json.items.name);
-  console.log(json.items.calories);
 }
 
-xlabels = [
-  'sugar_g',
-  'fiber_g',
-  'serving_size_g',
-  'potassium_mg',
-  'fat_saturated_g',
-  'fat_total_g',
-  'calories',
-  'cholesterol_mg',
-  'protein_g',
-  'carbohydrates_total_g'
-] 
+async function getData(){
+  const url = `https://calorieninjas.p.rapidapi.com/v1/nutrition?query=apple`; 
+  const data = await fetch(url, options);
+	const json = await data.json();
 
-const payerAmount = [];
+  console.log(data);
+  console.log(json.items);
+}
+
 
 async function makeChart() {
   await getData();
@@ -41,10 +27,10 @@ async function makeChart() {
   const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: xlabels,
+      labels: label,
       datasets: [{
         label: '# of contents',
-        data: payerAmount,
+        data: foodData,
         borderWidth: 1
       }]
     },
@@ -63,16 +49,25 @@ makeChart();
 async function mainEvent() {
   const form = document.querySelector('.main_form');
 
-  const submit = document.querySelector('#get-resto');
-  const resto = document.querySelector('#resto');
+  const submit = document.querySelector('#submit');
+  const input = document.querySelector('#input');
   const chart = document.querySelector('#myChart');
+
+  //const fetchQuery = new URLSearchParams(formProps);
+  //const results = await fetch(`/api/foodService?${fetchQuery}`);
+
+
+  //const formData = new FormData(submitEvent.target); // get the data from the listener target
+  //const formProps = Object.fromEntries(formData);
+  //const arrayFromJson = await results.json()
+  //console.table(arrayFromJson.data)
 
   // const arrayFromJson = await getData();
 
   // console.table(arrayFromJson);
 
 
-  const myChart = makeChart(chart);
+  // const myChart = makeChart(chart);
 
   form.addEventListener('submit', (submitEvent) => {
     submitEvent.preventDefault();

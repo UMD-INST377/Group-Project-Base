@@ -186,3 +186,28 @@
     background-color: hsla(194, 83%, 65%, 0.968);
     color: rgb(10, 10, 10);
     text-decoration: none;
+  }
+  @media only screen and (max-width: 736px){
+    /* Rules in here will only apply when a screen is the correct size */
+    /* check it out by using your developer tools to shrink your screen-size */
+    .container {
+      background-color: rgba(229, 241, 164, 0.65);
+      flex-direction: column;
+      align-items: center;
+    }
+    .left_section {
+      background-color: rgba(142, 243, 243, 0.8);
+      flex: 0 1 auto;
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+    
+    .right_section {
+        background-color: rgba(244, 218, 146, 0.7);
+        flex: 1 2 auto;
+        margin: 1rem;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+}

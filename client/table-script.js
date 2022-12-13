@@ -87,7 +87,6 @@ async function initFallingCryptoTable() {
 async function mainEvent() {
   const trendingCryptoTable = initTrendingCryptoTable();
   const fallingCryptoTable = initFallingCryptoTable();
-  const searchBar = initSearchBar();
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

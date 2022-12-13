@@ -4,62 +4,26 @@ https://hriportella.github.io/Group22-Final-Project/
 ## **Evaluation of Three Pointers on NBA Opening Night 2022**
 
 ### Target Browsers
+Ideally designed to be used on a desktop running google chrome. Mac IOS Preferred.
 
+# Project Description
 
-# balldontlie API from balldontlie.io
+## balldontlie API from balldontlie.io
 ## Link to balldontlie APi
 https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022
 
+### Visualization
+- Our project has a total of 4 visualizations.
+- 3 of which are bar charts that output Three Pointers Made Per Player, Points Per Player, and Free Throws Per Player.
+- The other visualisation is a scatter chart that ouputs Made Vs. Attempted 3 Pointers
 
+# Visualization Libraries
+- Our Project focuses and utilizes the Chart JS library.
+- This is what powers both our Bar Charts and our Scatter Plot Visualizations
 
-
-
-## Getting Started
-
-* "Clone" or download this repository using the large green button marked "code"
-* Install the software dependencies
-* Start your server, which will run on `port 3000` locally
-
-### Install Dependencies 
-
-    npm install
-
-### Run the Server
-
-    npm start
-<hr>
-
-Below are details of the API contained within this piece of labwork.
-
-<hr>
-
-## REST API example using Sequelize
-<table>
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>GET</td>
-      <td>Retrieves resources</td>
-    </tr>
-    <tr>
-      <td>POST</td>
-      <td>Creates resources</td>
-    </tr>
-    <tr>
-      <td>PUT</td>
-      <td>Changes and/or replaces resources or collections</td>
-    </tr>
-    <tr>
-      <td>DELETE</td>
-      <td>Deletes resources</td>
-    </tr>
-  </tbody>
-</table>
+### Purpose of this project
+The purpose of this project is to give a birds eye view analysis of current NBA players, a good way to measure this is how league leaders performed at the start of the 2022 Season.
+We set out to try to figure out the best all around offensive player on opening night.
 
 # NBA Player Stats
 

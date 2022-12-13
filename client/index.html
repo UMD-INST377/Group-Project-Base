@@ -1,33 +1,52 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Project Base</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
+
 <body>
-    <div class="container">
-    <div>
-        <h1>NBA Player Comparer</h1>
+    <div class="svg-container">
+      <svg viewbox="0 0 800 400" class="svg">
+        <path id="curve" fill="#50c6d8" d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z">
+        </path>
+      </svg>
     </div>
-    <div class="container">
-        <div class="left_section box">
-            <h2>Enter a player name</h2>
-            <form action="/api" class="box main_form"></form>
-            <div class="box" id="stock">Input</div>
-        </div>
-        </div>
-    <div class="container">
-        <div class="right_section box">
-            <h2>Players</h2>
-            <div class="box" id="stock">Players</div>
+  
+    <header>
+      <h1>Ticker Tracker</h1>
+      <bR></bR>
+      <h3>This website get a stocks financial 
+            data from yahoo finace api</h3>
+    </header>
+  
+    <main>
+        <div class="left_section ">
+            <h2>ENTER A STOCK TICKER</h2>
+            <br> <br>
+            <input type='text' id='userInput' value='' />
+            <br><br>
+            <input type="button" onclick="getData()" value="Submit">
+            <br> <br>
+            <br> <br>
+            <div class="left_section_1" id="apiResponse">
+                <h3>Financial Information about the stock</h3>
+            </div>
+            <br> <br>
+            <div>
+                <canvas id="myChart"></canvas>
+              </div>
         </div>
     </div>
-    </div>
-    <footer class="footer">
-        <a href="https://github.com/RezikEffort/INST-377-Group102-12--Final-Project/tree/main/client">Team Github account</a>
-      </footer>
+    </main>
     <script src="./script.js"></script>
-</body>
-</html>
+    <footer>
+      <p>INST377 final Project</p>
+      <small>🕷 By Abdulrezak Mohamed & Rijul Newalkar , <a href="https://github.com/RezikEffort/INST377-Lab-Work">GitHub</a>.</small>
+    </footer>
+  </body>

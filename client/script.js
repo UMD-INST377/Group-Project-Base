@@ -288,7 +288,7 @@ function replaceCity (city, array) {
 }
 
 async function findLocation() {
-  const url = 'crime.json';
+  const url = 'client/crime.json';
   const getGeoData = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const converterGeo = await getGeoData.json(); // the data isn't json until we access it using dot notation
 

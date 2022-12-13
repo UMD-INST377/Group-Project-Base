@@ -1,12 +1,4 @@
-async function getData() {
-    const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
-    const request = await fetch(url);
-    const json = await request.json();
-    const reply = json.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.location));
-    return reply;
-  }
-
-  function initMap() {
+function initMap() {
     // will need this to inject markers later!
     console.log('initMap');
     const map = L.map('map').setView([38.8300, -76.8500], 13);
@@ -38,6 +30,51 @@ function injectHTML(list) {
   });
 }
 
+function searchIncidents(list) {
+  const newArray = list.filter((item) => {
+    const clearance = item.clearance_code_inc_type;
+    if (clearance === 'ACCIDENT') {
+      return item;
+    } else if (clearance === 'ACCIDENT WITH IMPOUND') {
+      return item;
+    } else if (clearance === 'ASSAULT') {
+      return item;
+    } else if (clearance === 'ASSAULT, SHOOTING') {
+      return item;
+    } else if (clearance === 'ASSAULT, WEAPON') {
+      return item;
+    } else if (clearance === 'AUTO, STOLEN') {
+      return item;
+    } else if (clearance === 'AUTO, STOLEN & RECOVERED') {
+      return item;
+    } else if (clearance === 'B & E, COMMERCIAL') {
+      return item;
+    } else if (clearance === 'B & E, RESIDENTIAL') {
+      return item;
+    } else if (clearance === 'B & E, VACANT') {
+      return item;
+    } else if (clearance === 'HOMICIDE') {
+      return item;
+    } else if (clearance === 'SEX OFFENSE') {
+      return item;
+    } else if (clearance === 'THEFT') {
+      return item;
+    } else if (clearance === 'THEFT FROM AUTO') {
+      return item;
+    } else if (clearance === 'ROBBERY, COMMERCIAL') {
+      return item;
+    } else if (clearance === 'ROBBERY, RESIDENTIAL') {
+      return item;
+    } else if (clearance === 'ROBBERY, OTHER') {
+      return item;
+    } else if (clearance === 'VANDALISM') {
+      return item;
+    } else
+    return null;
+  });
+  return newArray;
+}
+
   function processIncidents(list) {
     console.log('fired incidents list');
     const range = [...Array(15).keys()]; // special notation to create the array
@@ -51,19 +88,20 @@ function injectHTML(list) {
   function markerPlace(array, map) {
     // must keep the reference to the marker so this is here
     // const marker = L.marker([51.5, -0.09]).addTo(map);
+    console.log('markerPlace', array)
     map.eachLayer((layer) => {
       if (layer instanceof L.Marker) {
         layer.remove();
       }
     });
 
-    array.forEach((item, index) => {
-      const newLat = new Number(latitude);
-      const newLng = new Number(longitude);
+    array.forEach((item) => {
+      const newLat = new Number(item);
+      const newLng = new Number(item);
       const newLatLng = (newLat, newLng);
       L.marker(newLatLng).addTo(map);
       if (index === 0) {
-        map.setView([coordinates[1], coordinates[0]], 9);
+        map.setView((newLatLng), 9);
       }
     });
 
@@ -72,41 +110,44 @@ function injectHTML(list) {
   function filterList(array, filterInputValue) {
     return array.filter((item) => {
       // filter prepares an array based on items from the initial array that match the truth cases set up as a test
-      if (!item.name) {
+      if (!item.clearance_code_inc_type) {
         return;
       } // return an element only when the element has an actual item name
-      const lowerCaseName = item.name.toLowerCase();
+      const lowerCaseName = item.clearance_code_inc_type.toLowerCase();
       const lowerCaseQuery = filterInputValue.toLowerCase();
       return lowerCaseName.includes(lowerCaseQuery);
     });
   }
 
-
-
+  async function getData() {
+    const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+    const data = await fetch(url);
+    const json = await data.json();
+    const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.clearance_code_inc_type));
+    return reply;
+  }
+  
   async function mainEvent() {
-    
     const pageMap = initMap();
+    const arrayFromJson = await getData();
     // the async keyword means we can make API requests
     const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
     const submit = document.querySelector('#get-incident'); // get a reference to your submit button
-    //const loadAnimation = document.querySelector('.lds-ellipsis'); -->
-    submit.style.display = 'none'; // let your submit button disappear
-  
-    const arrayFromJson = await getData(); // here is where we get the data from our request as JSON
+    const loadAnimation = document.querySelector('.lds-ellipsis');
+    //submit.style.display = 'none'; // let your submit button disappear
   
     console.table(arrayFromJson);
   
     // in your browser console, try expanding this object to see what fields are available to work with
     // for example: arrayFromJson.data[0].name, etc
-    console.log(arrayFromJson.data[0]);
+    console.log(arrayFromJson[0]);
   
     // this is called "string interpolation" and is how we build large text blocks with variables
     console.log(
-      `${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`
-    );
+      `${arrayFromJson[0].clearance_code_inc_type} ${arrayFromJson[0].street_address}`);
   
     // This IF statement ensures we can't do anything if we don't have information yet
-    if (arrayFromJson.data?.length > 0) {
+    if (arrayFromJson.length > 0) {
       // the question mark in this means "if this is set at all" & return if we have no data
       submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
   
@@ -130,6 +171,7 @@ function injectHTML(list) {
         submitEvent.preventDefault();
   
         // This constant will have the value of your 15-restaurant collection when it processes
+        currentList = searchIncidents(arrayFromJson);
         currentList = processIncidents(arrayFromJson);
         console.log(currentList);
   

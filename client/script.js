@@ -29,17 +29,6 @@ window.onclick = function (event) {
   }
 };
 
-//map
-function baseMap() {
-  console.log('baseMap');
-  const map = L.map('map').setView([38.7849, -76.8721], 13);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
-  return map;
-}
-
 function ttt(data) {
   console.log(data);
   let items = '';

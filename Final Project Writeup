@@ -1,0 +1,12 @@
+
+
+What API did you use, link to the API: 
+yahoo finance API, https://polygon.io
+What visualizations does your project drive? 
+Chart.js 
+What visualization or other JS libraries does your project use? 
+None, google front api
+What CSS frameworks did you use?What version of them? 
+None, we used google fonts API to import styles
+What is your actual project trying to display and solve?
+Our project is aiming to give users information about a stock they may be considering to purchase. This app shows some basic information so that it is easier for new traders to learn stocks.

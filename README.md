@@ -16,3 +16,5 @@ The main target of our site is people that use the newest versions of MAC, IOS a
 We used the spotify API(https://developer.spotify.com/documentation/web-api/)
 
 
+Garrett Fisk and Jaeha Song
+

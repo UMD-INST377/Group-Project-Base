@@ -3,6 +3,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
+// Returns a JSON object from the 'url'
 async function getData(url) {
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const json = await data.json();
@@ -15,44 +16,47 @@ function getPropertyForAll(json, property) {
   return json.map((item) => item[property]);
 }
 
-function rotateList(array, start, numOfElements) {
+// Get 'numOfElements' from 'list' beginning at 'start'; wrap around the list if necessary
+function rotateList(list, start, numOfElements) {
   const retval = [];
-  if (start > array.length - 1) {
+  if (start > list.length - 1) {
     start = 0;
   }
   for (let i = start; i < start + numOfElements; i++) {
-    retval.push(array[i]);
+    retval.push(list[i]);
   }
   return retval;
 }
 
-function injectHTML(list) {
-  console.log('fired injectHTML');
-  const target = document.querySelector('#catagories_list');
-  target.innerHTML = '';
+// Sorts the object, using Selection Sort algorithm, by the object according to the given property
+function sort(obj, property) {
+  let smallestIndex;
+  let temp;
+  for (let i = 0; i < obj.length; i++) {
+    smallestIndex = i;
 
-  const listEl = document.createElement('ol');
-  target.appendChild(listEl);
-  list.forEach((item) => {
-    const el = document.createElement('li');
-    el.innerText = item.name;
-    listEl.appendChild(el);
-  });
-  /*
-    ## What to do in this function
-      - Accept a list of restaurant objects
-      - using a .forEach method, inject list element into your index.html for every element in the list
-      - Display the name of that restaurant and what category of food it is
-  */
+    // Find the smallest element in obj[i... j]
+    for (let j = i + 1; j < obj.length; j++) {
+      if (obj[smallestIndex][property] > obj[j][property]) {
+        smallestIndex = j;
+      }
+    }
+
+    // Swap obj[i] and the smallest element
+    temp = obj[i];
+    obj[i] = obj[smallestIndex];
+    obj[smallestIndex] = temp;
+  }
+
+  return obj;
 }
 
 // Display a bar chart showing the price of each coin (alphabetically ordered)
 async function initEcosystemMarketCapChart() {
   const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
-  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the ecosystem data
-
+  const cryptocurrencyJson = sort(await getData(cryptocurrencyDataURL), 'name'); // get the ecosystem data, and sort it by 'name'
   const labelsList = getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
-  
+
   const marketDataList = getPropertyForAll(cryptocurrencyJson, 'market_data'); // extract market data list
   const currentPriceList = getPropertyForAll(marketDataList, 'current_price'); // extract the current price in multiple currencies
   const cryptoPriceList = getPropertyForAll(currentPriceList, 'usd'); // extract the current price in usd
@@ -179,12 +183,10 @@ async function initTrendingCryptoTable() {
 
   const prevThreeButton = document.querySelector('#prev-three');
   prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
-    console.log('prev3');
   });
 
   const nextThreeButton = document.querySelector('#next-three');
   nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
-    console.log('next3');
   });
   return table;
 }
@@ -221,12 +223,10 @@ async function initFallingCryptoTable() {
 
   const prevThreeButton = document.querySelector('#prev-three');
   prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
-    console.log('prev3');
   });
 
   const nextThreeButton = document.querySelector('#next-three');
   nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
-    console.log('next3');
   });
 
   return table;
@@ -264,20 +264,34 @@ async function initRisingCryptoTable() {
 
   const prevThreeButton = document.querySelector('#prev-three');
   prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
-    console.log('prev3');
   });
 
   const nextThreeButton = document.querySelector('#next-three');
   nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
-    console.log('next3');
   });
   return table;
+}
+
+// Injects the filtered list of cryptocurrencies into the search area
+function injectHTML(list) {
+  const targetElement = document.querySelector('#crypto_list');
+  targetElement.innerHTML = ''; // Clear the inner HTML of the list
+
+  const listEl = document.createElement('ol');
+  targetElement.appendChild(listEl);
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item.name;
+    listEl.appendChild(el);
+  });
+  console.log('fired injectHTML');
 }
 
 async function initSearchBar() {
   const targetElement = document.querySelector('#search_button');
   targetElement.addEventListener('click', async () => {
-    console.log('search crypto');
+    // injectHTML(null);
+    injectHTML();
   });
 }
 

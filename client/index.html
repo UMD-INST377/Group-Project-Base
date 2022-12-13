@@ -29,7 +29,7 @@
         <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
         <!-- button to link to second Page -->
         <a href="index2.html" class="right">
-          <button class="button1">The Matrix</button>
+          <button class="button1"></button>
         </a>
       </div>
   </header>
@@ -39,21 +39,26 @@
 
       <!-- Search area / left side-->
       <div class="left_section">
-        <h2 style="font-size: medium;">Below search for the coin</h2>
+        <h2 style="font-size: medium;">Coin Search</h2>
         <div class="search_box">
-          <button id="search_button">Search</button>
-          <input type="text" placeholder="Search...." id="search_api" />
+          <!-- <button id="search_button">Search</button>
+          <input type="text" placeholder="Search...." id="search_api" /> -->
+          <form action="" class="search_form">
+            <input type="text" name="" id="">
+            <button type="submit"  id="search_button">Search</button>
+          </form>
         </div>
       </div>
 
-      <!-- Market Cap / right side -->
+      <!-- Cryptocurrency data / right side -->
       <div class="right_section">
-
         <div class="chartBox">
           <button class="button2"id="update-chart-button">Refresh with new list</button>
           <canvas id="market-cap-chart"></canvas>
         </div>
-
+        <div class="box" id="catagories_list">
+          A list of the currencies currently in the chart
+        </div>
       </div>
     </div>
     <footer class="footer">

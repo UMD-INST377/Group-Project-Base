@@ -316,10 +316,8 @@
     margin-bottom: 1rem;
   }
 
-  #myChart {
-    display: block;
-    width: 400px;
-    height: 380px;
-    border: 2px dashed rgb(0, 0, 0);
-    margin-bottom: 1rem;
-  }
+.chart_container {
+  height: 100%;
+  width: 100%;
+
+}

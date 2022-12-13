@@ -99,7 +99,7 @@ async function mainEvent() {
 
   const results = await fetch('/api/smithsonian/search');
   const arrayFromJson = await results.json();
-
+  
   initChart(chartTarget);
 
   if (arrayFromJson.data?.length > 0) {

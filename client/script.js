@@ -298,7 +298,7 @@ async function findLocation() {
 }
 
 async function findCities() {
-  const url = 'cities.txt';
+  const url = 'client/cities.txt';
   const getCityData = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
   const converterCity = await getCityData.text(); // the data isn't json until we access it using dot notation
 
@@ -480,7 +480,7 @@ async function mainEvent() {
   const resultsCities = await findCities();
   const replacer = replaceCity(resultsCities, resultsGeo);
   seeData = [];
-  const worker = new Worker('worker.js');
+  const worker = new Worker('client/worker.js');
   // Sending the message using postMessage
   worker.postMessage([JSON.stringify(replacer), JSON.stringify(results[5])]);
   worker.onmessage = function(e) {

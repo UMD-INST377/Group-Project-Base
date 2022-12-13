@@ -18,7 +18,6 @@ async function getData(){
   console.log(json.items);
 }
 
-
 async function makeChart() {
   await getData();
 

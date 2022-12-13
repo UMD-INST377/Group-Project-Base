@@ -94,11 +94,11 @@ function injectHTML(list) {
   
     const arrayFromJson = await getData(); // here is where we get the data from our request as JSON
   
-    console.table(arrayFromJson.data);
+    console.table(arrayFromJson);
   
     // in your browser console, try expanding this object to see what fields are available to work with
     // for example: arrayFromJson.data[0].name, etc
-    console.log(arrayFromJson.data[0]);
+    console.log(arrayFromJson[0]);
   
     // this is called "string interpolation" and is how we build large text blocks with variables
     console.log(

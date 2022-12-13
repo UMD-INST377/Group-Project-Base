@@ -199,25 +199,16 @@ async function mainEvent() {
       markerPlace(newFilterList, pageMap);
     });
 
-    // And here's an eventListener! It's listening for a "submit" button specifically being clicked
-    // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
     form.addEventListener('submit', (submitEvent) => {
-    // This is needed to stop our page from changing to a new URL even though it heard a GET request
+ 
       submitEvent.preventDefault();
 
-      // This constant will have the value of your 15-restaurant collection when it processes
+    
       currentList = processData(chartData);
-      // console.log(currentList);
-
-      // And this function call will perform the "side effect" of injecting the HTML list for you
-      // const localData = shapeDataForLineChart(currentList);
-      // changeChart(myChart, localData);
-      // injectHTML(currentList);
+     
       markerPlace(currentList, pageMap);
 
-    // By separating the functions, we open the possibility of regenerating the list
-    // without having to retrieve fresh data every time
-    // We also have access to some form values, so we could filter the list based on name
+ 
     });
   }
 }

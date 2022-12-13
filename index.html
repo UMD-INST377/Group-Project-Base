@@ -1,0 +1,113 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Project: PG Trash</title>
+    <link rel="shortcut icon" type="image/jpg" href="/images/icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+  </head>
+  <body class="body">
+    <div class="wrapper">
+      <header class="header">
+        <h1>Trash Tracker PG County</h1>
+        <a
+          class="about"
+          href="/377-Group-Project/about"
+          >about this site</a
+        >
+      </header>
+      <div class="container">
+        <div class="left_section">
+          <h3>PG County Map</h3>
+          <div id="map"></div>
+        </div>
+        <div class="right_section">
+          <div class="right_top_section">
+            <h3>Visualize Litter in PG County</h3>
+            <form class="main_form">
+              <button type="generate" id="getLitter">See Litter</button>
+            </form>
+            <div id="stuff"></div>
+          </div>
+          <div class="chart_container">
+            <h3>Reports in the past 3 months</h3>
+            <div>
+              <canvas id="litterChart"></canvas>
+            </div>
+            <script>
+              const ctx = document.querySelector("#litterChart");
+
+              new Chart(ctx, {
+                type: "bar",
+                data: {
+                  labels: [
+                    "October",
+                    "November",
+                    "December"
+                  ],
+                  datasets: [
+                    {
+                      label: "# of Trash Incidents",
+                      data: [144, 1435, 229],
+                      borderWidth: 1,
+                    },
+                  ],
+                },
+                options: {
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                    },
+                  },
+                },
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img
+          src="./images/Raccoon.png"
+          alt="A raccoon"
+          width="387"
+          height="266"
+        />
+      </div>
+    </div>
+    <footer class="footer">
+      <small>
+        <a href="https://www.linkedin.com/in/yyang116/">About Yabing</a>
+        <br />
+        <a href="https://www.linkedin.com/in/paris-lane-531347219/"
+          >About Paris</a
+        >
+        <br />
+        <a
+          href="https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner"
+          >Dataset</a
+        ><br />
+
+        <a href="https://github.com/yyang7171/377-Group-Project"
+          >view project on Github</a
+        >
+      </small>
+    </footer>
+  </body>
+</html>

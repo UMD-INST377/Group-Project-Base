@@ -1,0 +1,39 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group 9 Project - Sex Offenses</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/> 
+    <link rel="stylesheet" href="../css/styles.css" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+    crossorigin=""></script> 
+  </head>
+  <body class="wrapper">
+      <header class="header">
+        <h1>Group 9 Project</h1>
+      </header>
+      <div class="alignIt">
+      <button> <a class="home" href="../index.html">Home</a> </button>
+      <div class="grid">
+        <img src='../images/pg_county_logo.png' alt='PG County Logo'/>
+      </div>
+        <div class="right_section box">
+            <h3>Sex Offense Occurrences</h3>
+          <div id="map"></div>
+          <form action="/api" class="main_form"> 
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> 
+            <button type="submit" id="get-resto">Show sex offenses ...</button>
+          </form>
+          <div class="box" id="crime_list">A list of sex offenses</div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <script src="../js/sex_off.js"></script>
+  </body>
+</html>

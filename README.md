@@ -1,7 +1,7 @@
 # Link to Github Pages Site
 https://hriportella.github.io/Group22-Final-Project/
 
-## **Evaluation of Three Pointers on NBA Opening Night 2022**
+## **Evaluation of Players on NBA Opening Night 2022**
 
 ### Target Browsers
 Ideally designed to be used on a desktop running google chrome. Mac IOS Preferred.

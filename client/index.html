@@ -24,7 +24,7 @@
     <div class="top">
       <div class="items">
         <!-- crypto image in top left -->
-        <img src="images/icons8-bitcoin-100.png" width="auto" height="auto" />
+        <img src="images/icons8-bitcoin-100.png" alt="icons8-bitcoin" width="auto" height="auto" />
         <!-- title -->
         <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
         <!-- button to link to second Page -->
@@ -36,45 +36,26 @@
 
   <body class="wrapper">
     <div class="content">
+
       <!-- Search area / left side-->
       <div class="left_section">
-        <!-- 1. Trending Cyprto / top left -->
-        <div class="box">
-          <div style="position: relative; height:auto">
-            <div id="trending-crypto-table"></div>
-          </div>
-          <button id="prev-three">&lt;Prev 3</button>
-          <button id="next-three">Next 3&gt;</button>
-        </div>
-        
-        <!-- 2. Market Cap / Buttom left -->
-        <div class="box bottom_left">
-          <button id="update-chart-button">Referesh with new list</button>
-          <div class="chart_container" style="position: relative; height:auto; width:80vw">
-            Market Cap Data
-            <canvas id="market-cap-chart"></canvas>
-          </div>
+        <h2 style="font-size: medium;">Below search for the coin</h2>
+        <div class="search_box">
+          <button id="search_button">Search</button>
+          <input type="text" placeholder="Search...." id="search_api" />
         </div>
       </div>
-      
-      <!-- Contains Price Percentage Change; Rising and Falling -->
-      <div class="container">
-        <div class="right_section">
-          <!-- 3. Price Percentage change (falling) / top right -->
-          <div class="box">
-            <div><h1>Falling Crypto</h1></div>
-            <div style="position: relative; height:auto">
-              <div id="price-percentage-falling-table"></div>
-            </div>
-          </div>
-          
-          <!-- 4. Price percentage change (rising) / Buttom right -->
-          <div class="box">
-            <div><h1>Rising Crypto</h1></div>
-            <div style="position: relative; height:auto">
-              <div id="price-percentage-rising-table"></div>
-            </div>
-          </div>
+
+      <!-- Market Cap / right side -->
+      <div class="right_section">
+
+        <div class="chartBox">
+          <button class="button1"id="update-chart-button">Refresh with new list</button>
+          <canvas id="market-cap-chart"></canvas>
+        </div>
+
+        <div class="box" id="catagories_list">
+          A list of reasturants
         </div>
 
       </div>

@@ -60,6 +60,14 @@
     align-items: start;
     flex:1;
   }
+
+  .description {
+    margin: 0 20px;
+    display: flex;
+    justify-content:center;
+    text-align: center;
+    flex:1;
+  }
   
   .header {
     padding-top: 1rem;

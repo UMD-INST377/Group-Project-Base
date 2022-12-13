@@ -163,8 +163,8 @@ function initBarChart2(chart, dataObject) {
     labels: labels,
     datasets: [{
       label: 'NBA Pts scored in 2022 Opening Night',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgb(255, 8, 42)',
+      borderColor: 'rgb(255, 8, 42)',
       data: info
     }]
   };
@@ -195,8 +195,8 @@ function initBarChart3(chart, dataObject) {
     labels: labels,
     datasets: [{
       label: 'NBA Free Throw % in 2022 Opening Night',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgb(255, 8, 42)',
+      borderColor: 'rgb(255, 8, 42)',
       data: info
     }]
   };

@@ -1,4 +1,3 @@
-// Work in Progress
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -7,7 +6,7 @@ function getRandomIntInclusive(min, max) {
 
 function injectHTML(list) {
   console.log('fired injectHTML');
-  const target = document.querySelector('#restaurant_list');
+  const target = document.querySelector('#art_list');
   target.innerHTML = '';
 
   const listEl = document.createElement('ol');
@@ -41,18 +40,16 @@ function processMueseums(list) {
 
 function initChart(chart) {
   const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June'
+    'National Museum of American History',
+    'Smithsonian Libraries',
+    'NMNH - Anthropology Dept.',
+    'Natural Resources',
   ];
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
+      label: 'Sample graph',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: [0, 10, 5, 2, 20, 30, 45]

@@ -45,9 +45,18 @@ function injectHTML(list) {
           */
 }
 
-function processRestaurants(list) {
+function processCrimeData(list) {
   console.log('fired incident list');
   const range = [...Array(15).keys()];
+  const newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length - 1);
+    return list[index];
+  });
+  return newArray;
+}
+function processAllCrimeData(list) {
+  console.log('fired crime list');
+  const range = [...Array(100).keys()];
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length - 1);
     return list[index];
@@ -75,7 +84,6 @@ function initMap() {
 }
 
 function makerPlace(array, map) {
-  console.log('markerPlace lol', array);
   // const marker = L.marker([51.5, -0.09]).addTo(map);
 
   map.eachLayer((layer) => {
@@ -84,7 +92,6 @@ function makerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    console.log('hello', item.location.latitude);
     L.marker([item.location.latitude, item.location.longitude]).addTo(map);
     if (index === 0) {
       map.setView([item.location.latitude, item.location.longitude]);
@@ -180,27 +187,21 @@ function initChart(chart, object2017, object2018, object2019, object2020, object
 
   const lab2017 = Object.keys(object2017);
   const info2017 = Object.keys(object2017).map((item) => object2017[item].length);
-  console.log(object2017);
 
   const lab2018 = Object.keys(object2018);
   const info2018 = Object.keys(object2018).map((item) => object2018[item].length);
-  console.log(object2018);
 
   const lab2019 = Object.keys(object2019);
   const info2019 = Object.keys(object2019).map((item) => object2019[item].length);
-  console.log(object2019);
 
   const lab2020 = Object.keys(object2020);
   const info2020 = Object.keys(object2020).map((item) => object2020[item].length);
-  console.log(object2020);
 
   const lab2021 = Object.keys(object2021);
   const info2021 = Object.keys(object2021).map((item) => object2021[item].length);
-  console.log(object2021);
 
   const lab2022 = Object.keys(object2022);
   const info2022 = Object.keys(object2022).map((item) => object2022[item].length);
-  console.log(object2022);
 
   return new Chart(ctx, {
     type: 'bar',
@@ -279,14 +280,13 @@ function groupBy(objectArray, property) {
 
 async function getdata() {
   const app_token = '&$$app_token=84LR83Ksyc2P3O19GyzXILSkd';
-  const limit = '&$limit=500000';
+  const limit = '&$limit=5';
   const url2017 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}${app_token}`;
 
   const data2017 = await fetch(url2017); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2017 = await data2017.json(); // the data isn't json until we access it using dot notation
 
   const reply2017 = json2017.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
-  console.log(reply2017);
 
   const url2018 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2018-01-01' and '2018-12-31'${limit}${app_token}`;
 
@@ -372,7 +372,6 @@ async function mainEvent() {
       slide.classList.remove('visible');
       slide.classList.add('hidden');
     });
-    console.log(slidePosition);
     slides[slidePosition].classList.add('visible');
   }
 
@@ -413,13 +412,11 @@ async function mainEvent() {
 */
   document.querySelector('#next')
     .addEventListener('click', () => {
-      console.log('clicked next'); // let's tell the client console we made it to this point in the script
       moveToNextSlide(); // call the function above to handle this
     });
 
   document.querySelector('#prev')
     .addEventListener('click', () => {
-      console.log('clicked prev');
       moveToPrevSlide();
     });
 
@@ -490,11 +487,9 @@ async function mainEvent() {
   const total2021 = arrayFromJson2021.length;
   const total2022 = arrayFromJson2022.length;
 
-  /* const avgPreCovid = (total2017 + total2018 + total2019) / 3;
-  const avgPostCovid = (total2020 + total2021 + total2022) / 3;
-  console.log(avgPreCovid); */
-
   const shapeData2017 = groupBy(chartData2017, 'clearance_code_inc_type');
+  console.log(shapeData2017);
+  console.log(chartData2017);
   const shapeData2018 = groupBy(chartData2018, 'clearance_code_inc_type');
   const shapeData2019 = groupBy(chartData2019, 'clearance_code_inc_type');
   const shapeData2020 = groupBy(chartData2020, 'clearance_code_inc_type');
@@ -516,7 +511,6 @@ async function mainEvent() {
     // loadAnimation.classList.add('lds-ellipsis_hidden');
 
     form.addEventListener('input', (event) => {
-      console.log('input', event.target.value);
       const filteredList = filterList(currentList, event.target.value);
       injectHTML(filteredList);
       const localData = groupBy(filteredList, 'clearance_code_inc_type');
@@ -531,16 +525,15 @@ async function mainEvent() {
       submitEvent.preventDefault();
 
       // This constant will have the value of your 15-restaurant collection when it processes
-      currentList = processRestaurants(arrayFromJson2017);
+      currentList = processCrimeData(arrayFromJson2017);
+      console.log('current list', currentList);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you
       injectHTML(currentList);
       const localData = groupBy(currentList, 'clearance_code_inc_type');
       changeChart(myChart, localData);
-      console.log(localData);
 
       makerPlace(currentList, pageMap);
-      heatMap(currentList, pageMap);
 
       // By separating the functions, we open the possibility of regenerating the list
       // without having to retrieve fresh data every time

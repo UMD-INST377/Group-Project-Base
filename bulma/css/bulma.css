@@ -266,7 +266,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: 25px;
+  font-size: 100%;
   font-weight: normal;
 }
 
@@ -315,7 +315,7 @@ th:not([align]) {
 }
 
 html {
-  background-color: rgb(214 208 210);
+  background-color: white;
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -336,8 +336,6 @@ header,
 hgroup,
 section {
   display: block;
-  background-color: #040404;
-  color: white;
 }
 
 body,
@@ -473,15 +471,12 @@ table th {
 
 /* Bulma Elements */
 .box {
-  background-color: #99541f;
+  background-color: white;
   border-radius: 6px;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
   color: #4a4a4a;
   display: block;
   padding: 1.25rem;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
 
 a.box:hover, a.box:focus {
@@ -2927,15 +2922,10 @@ div.icon-text {
 
 .table-container {
   -webkit-overflow-scrolling: touch;
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  height: 80vh;
   overflow: auto;
   overflow-y: hidden;
-  justify-content: center;
+  max-width: 100%;
 }
-  
 
 .tags {
   align-items: center;
@@ -3203,9 +3193,8 @@ a.tag:hover {
 }
 
 .title {
-  align-items: center;
-  color: #fde0e6;
-  font-size: 3rem;
+  color: #363636;
+  font-size: 2rem;
   font-weight: 600;
   line-height: 1.125;
 }
@@ -5417,7 +5406,7 @@ button.dropdown-item.is-active {
 }
 
 .navbar {
-  background-color: orange;
+  background-color: white;
   min-height: 3.25rem;
   position: relative;
   z-index: 30;
@@ -9537,6 +9526,14 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   display: table;
 }
 
+.is-pulled-left {
+  float: left !important;
+}
+
+.is-pulled-right {
+  float: right !important;
+}
+
 .is-radiusless {
   border-radius: 0 !important;
 }
@@ -11852,218 +11849,3 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 /*# sourceMappingURL=bulma.css.map */
-
-
-.space {
-  background-color:grey;
-  height:100;
-}
-
-.navbar {
-  overflow: visible;
-  background-color: #a15821; 
-  display: flex;
-}
-
-.navbar a {
-  display: flex;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.subnav {
-
-  overflow: hidden;
-}
-
-.subnav .subnavbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: red;
-}
-
-.subnav-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  background-color: red;
-  width: 100%;
-  z-index: 1;
-}
-
-.subnav-content a {
-  color: white;
-  text-decoration: none;
-}
-
-.subnav-content a:hover {
-  background-color: #eee;
-  color: black;
-}
-
-.subnav:hover .subnav-content {
-  display: block;
-}
-
-.image {
-  background-image:url('copCar.jpg');
-  min-height: 380px;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  
-  /* Needed to position the navbar */
-  position: relative;;
-}
-
-li {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  }
-  
-.tab.is-active{
-    background-color: grey;
-    font-weight: 700;
-
-  }
-
-  main {
-    padding-left: 142px;
-    padding-right: 142px;
-  }
-
-  .pages {
-    margin-top: 100px;
-    padding: 50px 30px;
-  }
-
-.pages .page {
-  display: none;
-}
-
-.pages .page.is-active{
-  display: block;
-}
-
-.trans1 {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 101;
-  background-color: #181616;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.5s ease-in-out;
-}
-
-.trans1.is-active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-footer {
-  bottom: 0;
-  background-color: #00d1b2;
-}
-
-.grid {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: 110vh;
-  height: 80vw;
-  margin: 0 auto;
-}
-
-
-.grid img {
-  width: 150px;
-  height: 150px;
-}
-
-
-/* Carousel */
-div.carousel {
-  overflow: hidden;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-}
-
-.carousel .slides {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  width: 80vw;
-  height: 80vh;
-}
-
-/* .carousel_item, */
-.hidden {
-  display: none !important;
-}
-
-.visible {
-  display: block !important;
-}
-
-canvas .carousel_item {
-  /* 
-    Setting width, rather than max-width or min-width,
-    means annoying pop-ins won't happen
-    but it also means you need to format your images to be compatible
-    or they will stretch weird
-
-    - try a tall one and see what happens
-    - change the height on a fixed image size and see what happens
-    - now make sure that images are _always_ square
-    - ... there's a reason crop tools are popular in image editors
-   */
-  width: 150px; 
-}
-
-
-h4 {
-  font-style: italic;
-  color: black;
-  font-size: 2rem;
-}
-
-h3 {
-  color: white;
-}
-
-.spacing-button {
-  margin: 10px;
-}
-
-
-#map {
-  width: 80vw;
-  height: 50vh;
-  border: 1px dashed;
-  transition: .0s ease-out;
-}

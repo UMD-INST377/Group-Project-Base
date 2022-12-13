@@ -114,15 +114,8 @@ footer {
       background-color: #E3F4E8;
       margin: 0px;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .box {
-      width: flex;
-    }
-    .right_section {
-      align-items: flex-start;
       justify-content: flex-start;
+      align-items: center;
     }
 }
 

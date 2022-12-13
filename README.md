@@ -1,8 +1,8 @@
-### Yearly USA Population
+# Yearly USA Population
 
 Insert link here
 
-# Our API: [Data USA](https://datausa.io/about/api/)
+## Our API: [Data USA](https://datausa.io/about/api/)
 
 The Data USA API allows users to explore the entire database using carefully constructed query strings, returning data as JSON results. All of the visualizations on the page have a "show data" button on their top-right that displays the API call(s) used to generate that visualization. We did not use any CSS frameworks. Our project is trying to solve the issue of USA population statistics by displaying charts and data for the US population.
 

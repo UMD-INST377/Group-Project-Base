@@ -103,7 +103,11 @@ async function mainEvent() {
   // const pageMap = initMap();
   // const mapData = await getData();
 
+<<<<<<< Updated upstream
   if (mapData?.length > 0) { //inputted// 
+=======
+  if (posted_speed.length > 0) { //inputted// 
+>>>>>>> Stashed changes
     submit.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');

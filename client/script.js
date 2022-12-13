@@ -3,8 +3,22 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
+/*
+async function getCatagories(){
+  const data = await fetch("https://api.coingecko.com/api/v3/coins/categories/list");
+  console.log(data.status);
+  const json = await data.json();
+  console.log(json);
+
+  const category_id = json.map((item) => item['category_id']);
+  console.log(category_id)
+  return (category_id)
+}
+*/
+
 async function getData(url) {
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
+  console.log(data.status);
   const json = await data.json();
 
   return json;
@@ -25,12 +39,32 @@ function rotateList(array, start, numOfElements) {
   return retval;
 }
 
+function injectHTML(list) {
+  console.log('fired injectHTML');
+  const target = document.querySelector('#catagories_list');
+  target.innerHTML = '';
+
+  const listEl = document.createElement('ol');
+  target.appendChild(listEl);
+  list.forEach((item) => {
+    const el = document.createElement('li');
+    el.innerText = item.name;
+    listEl.appendChild(el);
+  });
+  /*
+    ## What to do in this function
+      - Accept a list of restaurant objects
+      - using a .forEach method, inject list element into your index.html for every element in the list
+      - Display the name of that restaurant and what category of food it is
+  */
+}
+
 async function initEcosystemMarketCapChart() {
   const ecosystemDataURL = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc';
   const ecosystemJson = await getData(ecosystemDataURL); // get the ecosystem data
 
-  const labelsList = getPropertyForAll(ecosystemJson, 'name'); // extract the labels
-  const marketCapList = getPropertyForAll(ecosystemJson, 'market_cap'); // extract the market cap data
+  const labelsList = await getProperty(ecosystemJson, 'name'); // extract the labels
+  const marketCapList = getProperty(ecosystemJson, 'market_cap'); // extract the market cap data
 
   let start = 0; // index to start the sublist at
   let numOfElements = 10; // the number of elements we want in the sublist
@@ -44,13 +78,34 @@ async function initEcosystemMarketCapChart() {
     labels: labelSublist,
     datasets: [{
       label: 'Eco System Market Cap',
-      data: marketCapSublist
+      data: marketCapSublist,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
     }]
   };
 
   // configure the asesthetics of the chart
   const config = {
     options: {
+      responsive: true,
+      backgroundColor: '#9BD0F5',
+      maintainAspectRatio: false,
       scales: {
         y: {
           beginAtZero: true
@@ -100,8 +155,11 @@ async function initEcosystemMarketCapChart() {
       const newMarketCap = marketCapSublist[i];
       marketCapChart.data.datasets.forEach((dataset) => dataset.data.push(newMarketCap));
     }
+    console.log(labelSublist);
+
     marketCapChart.update();
   });
+
 }
 
 async function initTrendingCryptoTable() {
@@ -226,6 +284,7 @@ async function initRisingCryptoTable() {
   nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
     console.log('next3');
   });
+  return table;
 }
 
 async function mainEvent() {

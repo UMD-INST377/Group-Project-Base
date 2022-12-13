@@ -1,49 +1,45 @@
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Project Base</title>
+    <!-- CDN for 'Handsontable' library -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"
+      type="module"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css"
+      type="module"
+    />
+    <link rel="stylesheet" href="styles.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Crypto App</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Group Project Base</title>
-  <!-- CDN for 'Handsontable' library -->
-  <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js" type="module"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" type="module"></script>
-  <link rel="stylesheet" href="styles.css" />
-  
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <title>Crypto App</title>
-</head>
-
-<body>
-  <div class="Wrapper">
-    
-    <!-- title / top center -->
-    <header class="header">
-      <!--<iframe height="270" responsive = "off" fetch src="https://giphy.com/embed/FlJ76bXyXwgWjOJkeJ/video" width="480"></iframe> -->
-      <iframe class="img" src="https://i0.wp.com/crackingcryptocurrency.com/wp-content/uploads/2017/08/CrackingCryptoCurrency_logo__960_720_mock-C1.8-256x256.png?resize=256%2C256&ssl=1"></iframe>
-      <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
-    </header>
-    
-    <!-- buttons and bar / top center -->
-    <div class="container bar">
-      
-      <button class="bouncy font-effect-anaglyph" id="saved">Saved</button>
-      <button class="bouncy font-effect-anaglyph" id="trends">Trends</button>
-      
-      <div class="search_box">
-        <button id="search_api">Search</button>
-        <input type="text" placeholder="Search...." id="search_api"></input>
+  <header>
+    <div class="top">
+      <div class="items">
+        <!-- crypto image in top left -->
+        <img src="images/icons8-bitcoin-100.png" width="auto" height="auto" />
+        <!-- title -->
+        <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
+        <!-- button to link to second Page -->
+        <a href="index2.html" class="right">
+          <button class="button1">The Matrix</button>
+        </a>
       </div>
-      
-    </div>
-    
-    <!-- Contains Trending Crypto and Market Cap visualizations -->
-    <div class="container">
+  </header>
+
+  <body class="wrapper">
+    <div class="content">
+      <!-- Search area / left side-->
       <div class="left_section">
         <!-- 1. Trending Cyprto / top left -->
         <div class="box">
-          <div><h1>Current Price</h1></div>
           <div style="position: relative; height:auto">
             <div id="trending-crypto-table"></div>
           </div>
@@ -80,14 +76,24 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
-    
-  </div>
-  
-  <script type="module" src="./script.js"></script>
-  
-</div>
-</body>
+    <footer class="footer">
+      <a
+        href="https://github.com/GuntherChung/Group17-Final-Project-Crypto"
+        class="right"
+      >
+        <button class="button1">Project Repository</button>
+      </a>
+
+      <a
+        href="https://guntherchung.github.io/Group17-Final-Project-Crypto/"
+        class="right"
+      >
+        <button class="button1">About page</button>
+      </a>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>

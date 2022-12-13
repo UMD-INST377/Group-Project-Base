@@ -1,12 +1,4 @@
-async function getData() {
-    const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
-    const request = await fetch(url);
-    const json = await request.json();
-    const reply = json.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.location));
-    return reply;
-  }
-
-  function initMap() {
+function initMap() {
     // will need this to inject markers later!
     console.log('initMap');
     const map = L.map('map').setView([38.8300, -76.8500], 13);
@@ -38,6 +30,17 @@ function injectHTML(list) {
   });
 }
 
+function searchIncidents(list) {
+  const newArray = list.filter((item) => {
+    const clear = item.clearance_code_inc_type;
+    if (clear && clear === 'ACCIDENT') {
+      return item;
+    }
+    return null;
+  });
+  return newArray;
+}
+/*
   function processIncidents(list) {
     console.log('fired incidents list');
     const range = [...Array(15).keys()]; // special notation to create the array
@@ -47,10 +50,11 @@ function injectHTML(list) {
     });
     return newArray;
   }
-
+*/
   function markerPlace(array, map) {
     // must keep the reference to the marker so this is here
     // const marker = L.marker([51.5, -0.09]).addTo(map);
+    console.log('markerPlace', array)
     map.eachLayer((layer) => {
       if (layer instanceof L.Marker) {
         layer.remove();
@@ -58,12 +62,12 @@ function injectHTML(list) {
     });
 
     array.forEach((item, index) => {
-      const newLat = new Number(latitude);
-      const newLng = new Number(longitude);
+      const newLat = new Number(item);
+      const newLng = new Number(item);
       const newLatLng = (newLat, newLng);
       L.marker(newLatLng).addTo(map);
       if (index === 0) {
-        map.setView([coordinates[1], coordinates[0]], 9);
+        map.setView((newLatLng), 9);
       }
     });
 
@@ -72,24 +76,30 @@ function injectHTML(list) {
   function filterList(array, filterInputValue) {
     return array.filter((item) => {
       // filter prepares an array based on items from the initial array that match the truth cases set up as a test
-      if (!item.name) {
+      if (!item.clearance_code_inc_type) {
         return;
       } // return an element only when the element has an actual item name
-      const lowerCaseName = item.name.toLowerCase();
+      const lowerCaseName = item.clearance_code_inc_type.toLowerCase();
       const lowerCaseQuery = filterInputValue.toLowerCase();
       return lowerCaseName.includes(lowerCaseQuery);
     });
   }
 
-
-
+  async function getData() {
+    const url = 'https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json';
+    const data = await fetch(url);
+    const json = await data.json();
+    const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.clearance_code_inc_type));
+    return reply;
+  }
+  
   async function mainEvent() {
     
     const pageMap = initMap();
     // the async keyword means we can make API requests
     const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-    const submit = document.querySelector('#get-incident'); // get a reference to your submit button
-    //const loadAnimation = document.querySelector('.lds-ellipsis'); -->
+    const submit = document.querySelector('#get-crime'); // get a reference to your submit button
+    const loadAnimation = document.querySelector('.lds-ellipsis');
     submit.style.display = 'none'; // let your submit button disappear
   
     const arrayFromJson = await getData(); // here is where we get the data from our request as JSON
@@ -102,11 +112,10 @@ function injectHTML(list) {
   
     // this is called "string interpolation" and is how we build large text blocks with variables
     console.log(
-      `${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`
-    );
+      `${arrayFromJson.data[0].clearance_code_inc_type} ${arrayFromJson.data[0].street_address}`);
   
     // This IF statement ensures we can't do anything if we don't have information yet
-    if (arrayFromJson.data?.length > 0) {
+    if (arrayFromJson.length > 0) {
       // the question mark in this means "if this is set at all" & return if we have no data
       submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
   
@@ -130,7 +139,7 @@ function injectHTML(list) {
         submitEvent.preventDefault();
   
         // This constant will have the value of your 15-restaurant collection when it processes
-        currentList = processIncidents(arrayFromJson);
+        currentList = searchIncidents(arrayFromJson);
         console.log(currentList);
   
         // And this function call will perform the "side effect" of injecting the HTML list for you

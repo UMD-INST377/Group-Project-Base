@@ -54,15 +54,6 @@ function processCrimeData(list) {
   });
   return newArray;
 }
-function processAllCrimeData(list) {
-  console.log('fired crime list');
-  const range = [...Array(100).keys()];
-  const newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length - 1);
-    return list[index];
-  });
-  return newArray;
-}
 
 function filterList(array, filterInputValue) {
   return array.filter((item) => {
@@ -282,40 +273,40 @@ async function getdata() {
   const app_token = '&$$app_token=84LR83Ksyc2P3O19GyzXILSkd';
   const limit = '&$limit=5000000';
   const url2017 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2017-01-01' and '2017-12-31'${limit}${app_token}`;
-
+  // 2017 -------2017---------2017------2017----------2017------2017----------//
   const data2017 = await fetch(url2017); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2017 = await data2017.json(); // the data isn't json until we access it using dot notation
 
   const reply2017 = json2017.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
-
+  // 2018 -------2018---------2018------2018----------2018------2018----------//
   const url2018 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2018-01-01' and '2018-12-31'${limit}${app_token}`;
 
   const data2018 = await fetch(url2018); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2018 = await data2018.json(); // the data isn't json until we access it using dot notation
 
   const reply2018 = json2018.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
-
+  // 2019 -------2019---------2019------2019----------2019------2019----------//
   const url2019 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2019-01-01' and '2019-12-31'${limit}${app_token}`;
 
   const data2019 = await fetch(url2019); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2019 = await data2019.json(); // the data isn't json until we access it using dot notation
 
   const reply2019 = json2019.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
-
+  // 2020 -------2020---------2020------2020----------2020------2020----------//
   const url2020 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2020-01-01' and '2020-12-31'${limit}${app_token}`;
 
   const data2020 = await fetch(url2020); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2020 = await data2020.json(); // the data isn't json until we access it using dot notation
 
   const reply2020 = json2020.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
-
+  // 2021 -------2021---------2021------2021----------2021------2021----------//
   const url2021 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2021-01-01' and '2021-12-31'${limit}${app_token}`;
 
   const data2021 = await fetch(url2021); // We're using a library that mimics a browser 'fetch' for simplicity
   const json2021 = await data2021.json(); // the data isn't json until we access it using dot notation
 
   const reply2021 = json2021.filter((item) => Boolean(item.clearance_code_inc_type)).filter((item) => Boolean(item.date));
-
+  // 2022 -------2022---------2022------2022----------2022------2022----------//
   const url2022 = `https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$where=date between '2022-01-01' and '2022-12-31'${limit}${app_token}`;
 
   const data2022 = await fetch(url2022); // We're using a library that mimics a browser 'fetch' for simplicity
@@ -327,46 +318,28 @@ async function getdata() {
 }
 
 async function mainEvent() {
+  // MAP------------- MAP ---------------------MAP
   const pageMap = initMap();
+
   setInterval(() => {
-    pageMap.invalidateSize();
+    pageMap.invalidateSize(); // resizing map
   }, 100);
-  /*
-              ## Main Event
-                Separating your main programming from your side functions will help you organize your thoughts
-                When you're not working in a heavily-commented "learning" file, this also is more legible
-                If you separate your work, when one piece is complete, you can save it and trust it
-            */
-
-  // the async keyword means we can make API requests
-
+  // queries--------------- queries -------------------quries
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
   const submit = document.querySelector('#get-resto');
   const chartTarget = document.querySelector('#myChart');
   const charAvg = document.querySelector('#myChartAvg');
   const reloadtButton = document.querySelector('#reload');
   const tabs = document.querySelectorAll('[data-tab-target]');
-
-  /* eslint-disable max-len */
-  /*
-  Welcome to Javascript!
-
-  This file contains parts of a simple script to make your carousel work.
-  Please feel free to edit away - the main version of this with all the notes is safely stored elsewhere
-*/
-  /* eslint-enable max-len */
-  // set our first slide's position to "0", the opening position in an array
-  let slidePosition = 0;
-
-  // gather a reference to every slide we're using via the class name and querySelectorAll
   const slides = document.querySelectorAll('.carousel_item');
 
-  // change that "NodeList" into a Javascript "array", to get access to "array methods"
+  // Carousel-----------Carousel--------------------Carousel
+  let slidePosition = 0;
   const slidesArray = Array.from(slides);
 
   // Figure out how many slides we have available
   const totalSlides = slidesArray.length;
-
+  // fuction -----------------------------------Carousel UPDATE Function
   function updateSlidePosition() {
     slidesArray.forEach((slide) => {
       slide.classList.remove('visible');
@@ -374,7 +347,7 @@ async function mainEvent() {
     });
     slides[slidePosition].classList.add('visible');
   }
-
+  // fuction -----------------------------------Carousel NEXT SLIDE Function
   function moveToNextSlide() {
     if (slidePosition === totalSlides - 1) {
       slidePosition = 0;
@@ -387,8 +360,9 @@ async function mainEvent() {
     and if so, sets your slidePosition to the first index of an array
     if not, set the slidePosition to the current position plus one
   */
-    updateSlidePosition(); // this is how you call a function within a function
+    updateSlidePosition();
   }
+  // fuction -----------------------------------Carousel PREV SLIDE Function
   function moveToPrevSlide() {
     if (slidePosition === 0) {
       slidePosition = totalSlides - 1;
@@ -406,10 +380,7 @@ async function mainEvent() {
     updateSlidePosition();
   }
 
-  /*
-  These two functions have been assigned via "addEventListener"
-  to the elements accessed by the "querySelector" set to the class name on each
-*/
+  // EventListener -----------------------------------Carousel addEventListeners
   document.querySelector('#next')
     .addEventListener('click', () => {
       moveToNextSlide(); // call the function above to handle this
@@ -420,13 +391,14 @@ async function mainEvent() {
       moveToPrevSlide();
     });
 
-  // Reload everything:
+  // ----------------------------------------------Reload Function
   function reload() {
     reload = location.reload();
   }
-  // Event listeners for reload
+  // ------------------------------------ Event listeners for reload
   reloadtButton.addEventListener('click', reload, false);
 
+  // -----------------------------------Creating transitions when the window loads
   window.onload = () => {
     const transEl = document.querySelector('.trans');
     setTimeout(() => {
@@ -464,29 +436,32 @@ async function mainEvent() {
     const next_page = document.querySelector(`.pages .page[data-page="${page_id}"]`);
     next_page.classList.add('is-active');
   }
+
+  // ----------------------------------------GETING API DATA RETUREND AS LIST
   const results = await getdata();
 
+  // ---------------------------------------GRABING EACH ARRAY FROM LIST
   const arrayFromJson2017 = results[0];
   const arrayFromJson2018 = results[1];
   const arrayFromJson2019 = results[2];
   const arrayFromJson2020 = results[3];
   const arrayFromJson2021 = results[4];
   const arrayFromJson2022 = results[5];
-
+  // --------------------------CREATING COPIED VARIBLES JUST INCASE OF A ACCIDENTAL REWRITE
   const chartData2017 = arrayFromJson2017;
   const chartData2018 = arrayFromJson2018;
   const chartData2019 = arrayFromJson2019;
   const chartData2020 = arrayFromJson2020;
   const chartData2021 = arrayFromJson2021;
   const chartData2022 = arrayFromJson2022;
-  // Average 2017-2019 vs 2020-2022
+  // ------------------------- TAKING THE Average 2017-2019 vs 2020-2022
   const total2017 = arrayFromJson2017.length;
   const total2018 = arrayFromJson2018.length;
   const total2019 = arrayFromJson2019.length;
   const total2020 = arrayFromJson2020.length;
   const total2021 = arrayFromJson2021.length;
   const total2022 = arrayFromJson2022.length;
-
+  // --------------------------------- SHAPING THE DATA INORDER TO FIT NICELY INTO GRAPH
   const shapeData2017 = groupBy(chartData2017, 'clearance_code_inc_type');
   console.log(shapeData2017);
   console.log(chartData2017);
@@ -498,6 +473,7 @@ async function mainEvent() {
   const myChart = initChart(chartTarget, shapeData2017, shapeData2018, shapeData2019, shapeData2020, shapeData2021, shapeData2022);
   const myAverage = initChartAvg(charAvg, total2017, total2018, total2019, total2020, total2021, total2022);
 
+  // TESTING DIFFRENT FORMATS
   console.log(`${arrayFromJson2022[0].date.slice(0, 10)} ${arrayFromJson2022[0].clearance_code_inc_type}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
@@ -525,7 +501,7 @@ async function mainEvent() {
       submitEvent.preventDefault();
 
       // This constant will have the value of your 15-restaurant collection when it processes
-      currentList = processCrimeData(arrayFromJson2017);
+      currentList = processCrimeData(arrayFromJson2022);
       console.log('current list', currentList);
 
       // And this function call will perform the "side effect" of injecting the HTML list for you

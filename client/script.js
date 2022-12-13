@@ -3,28 +3,15 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 
-/*
-async function getCatagories(){
-  const data = await fetch("https://api.coingecko.com/api/v3/coins/categories/list");
-  console.log(data.status);
-  const json = await data.json();
-  console.log(json);
-
-  const category_id = json.map((item) => item['category_id']);
-  console.log(category_id)
-  return (category_id)
-}
-*/
-
 async function getData(url) {
   const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
-  console.log(data.status);
   const json = await data.json();
 
   return json;
 }
 
-function getProperty(json, property) {
+// Returns a list containing the value of the given 'property' for each element in the JSON
+function getPropertyForAll(json, property) {
   return json.map((item) => item[property]);
 }
 
@@ -59,17 +46,21 @@ function injectHTML(list) {
   */
 }
 
+// Display a bar chart showing the price of each coin (alphabetically ordered)
 async function initEcosystemMarketCapChart() {
-  const ecosystemDataURL = 'https://api.coingecko.com/api/v3/coins/categories?order=name_asc';
-  const ecosystemJson = await getData(ecosystemDataURL); // get the ecosystem data
+  const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
+  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the ecosystem data
 
-  const labelsList = await getProperty(ecosystemJson, 'name'); // extract the labels
-  const marketCapList = getProperty(ecosystemJson, 'market_cap'); // extract the market cap data
+  const labelsList = getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
+  
+  const marketDataList = getPropertyForAll(cryptocurrencyJson, 'market_data'); // extract market data list
+  const currentPriceList = getPropertyForAll(marketDataList, 'current_price'); // extract the current price in multiple currencies
+  const cryptoPriceList = getPropertyForAll(currentPriceList, 'usd'); // extract the current price in usd
 
   let start = 0; // index to start the sublist at
   let numOfElements = 10; // the number of elements we want in the sublist
   let labelSublist = rotateList(labelsList, start, numOfElements); // rotate the labels list
-  let marketCapSublist = rotateList(marketCapList, start, numOfElements); // rotate the market cap list
+  let cryptoPriceSublist = rotateList(cryptoPriceList, start, numOfElements); // rotate the market cap list
 
   const targetElement = document.querySelector('#market-cap-chart'); // get DOM Object for chart
 
@@ -77,8 +68,8 @@ async function initEcosystemMarketCapChart() {
   const data = {
     labels: labelSublist,
     datasets: [{
-      label: 'Eco System Market Cap',
-      data: marketCapSublist,
+      label: 'Crypto Price (USD)',
+      data: cryptoPriceSublist,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(255, 159, 64, 0.2)',
@@ -96,7 +87,7 @@ async function initEcosystemMarketCapChart() {
         'rgb(54, 162, 235)',
         'rgb(153, 102, 255)',
         'rgb(201, 203, 207)'
-      ],
+      ]
     }]
   };
 
@@ -129,17 +120,17 @@ async function initEcosystemMarketCapChart() {
     // increase the starting index
     start += 10;
 
-    if (start > ecosystemJson.length) {
-      start = ecosystemJson.length - (ecosystemJson.length % 10);
-      numOfElements = ecosystemJson.length % 10;
+    if (start > cryptocurrencyJson.length) {
+      start = cryptocurrencyJson.length - (cryptocurrencyJson.length % 10);
+      numOfElements = cryptocurrencyJson.length % 10;
       labelSublist = rotateList(labelsList, start, numOfElements);
-      marketCapSublist = rotateList(marketCapList, start, numOfElements);
+      cryptoPriceSublist = rotateList(cryptoPriceList, start, numOfElements);
 
       start = -10; // start at -10 to offset increment above
     } else {
       numOfElements = 10;
       labelSublist = rotateList(labelsList, start, numOfElements);
-      marketCapSublist = rotateList(marketCapList, start, numOfElements);
+      cryptoPriceSublist = rotateList(cryptoPriceList, start, numOfElements);
     }
 
     // Remove old data from chart
@@ -152,14 +143,11 @@ async function initEcosystemMarketCapChart() {
     for (let i = 0; i < numOfElements; i++) {
       const newLabel = labelSublist[i];
       marketCapChart.data.labels.push(newLabel);
-      const newMarketCap = marketCapSublist[i];
+      const newMarketCap = cryptoPriceSublist[i];
       marketCapChart.data.datasets.forEach((dataset) => dataset.data.push(newMarketCap));
     }
-    console.log(labelSublist);
-
     marketCapChart.update();
   });
-
 }
 
 async function initTrendingCryptoTable() {
@@ -208,8 +196,50 @@ async function initFallingCryptoTable() {
 
   // Extract the data we need from the JSON object
   const targetElement = document.querySelector('#price-percentage-falling-table'); // get DOM object where the table will live
-  const headers = ['Name', 'ID', 'Current Price'];
-  console.log(cryptocurrencyJson[0]);
+  const headers = ['Name', 'ID', '% Change'];
+  const tableData = cryptocurrencyJson.map((currency) => {
+    const n = currency.name; // currency name
+    const i = currency.id; // currency id
+
+    const currPrice = currency.market_data.current_price.usd;
+    const priceChange = currency.market_data.price_change_24h_in_currency.usd;
+    const c = priceChange / (currPrice - priceChange); // percentage price change
+    const data = [n, i, c];
+    return data;
+  });
+
+  // Initialize the chart
+  const table = new Handsontable(
+    targetElement, {
+      licenseKey: 'non-commercial-and-evaluation',
+      data: tableData,
+      colHeaders: headers,
+      width: 550,
+      height: 300
+    }
+  );
+
+  const prevThreeButton = document.querySelector('#prev-three');
+  prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
+    console.log('prev3');
+  });
+
+  const nextThreeButton = document.querySelector('#next-three');
+  nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
+    console.log('next3');
+  });
+
+  return table;
+}
+
+async function initRisingCryptoTable() {
+  // Get the json object containing the crypto data
+  const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
+  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the cryptocurrency data
+
+  // Extract the data we need from the JSON object
+  const targetElement = document.querySelector('#price-percentage-rising-table'); // get DOM object where the table will live
+  const headers = ['Name', 'ID', '% Change'];
   const tableData = cryptocurrencyJson.map((currency) => {
     const n = currency.name; // currency name
     const i = currency.id; // currency id
@@ -244,10 +274,19 @@ async function initFallingCryptoTable() {
   return table;
 }
 
+async function initSearchBar() {
+  const targetElement = document.querySelector('#search_button');
+  targetElement.addEventListener('click', async () => {
+    console.log('search crypto');
+  });
+}
+
 async function mainEvent() {
   const ecosystemChart = initEcosystemMarketCapChart();
   const trendingCryptoTable = initTrendingCryptoTable();
   const fallingCryptoTable = initFallingCryptoTable();
+  const risingCryptoTable = initRisingCryptoTable();
+  const searchBar = initSearchBar();
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

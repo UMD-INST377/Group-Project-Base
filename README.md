@@ -1,9 +1,10 @@
 ## Trash Tracker PG County<br>
 Trash Tracker PG County is a website which displays locations in Prince
-George's County which had litter cleaned up and which watershed has been affected. This was developed for the final pair project
+George's County which had litter cleaned up and which watershed has been affected. This is to raise awareness amount of litter in PG County, and how it can affect the water systems and ecological environment of the watersheds. This was developed for the final pair project
 of INST377: Dynamic Web Applications at the University of Maryland.<br>
 [View the API data for LitterTRAK here.](https://data.princegeorgescountymd.gov/Environment/LitterTRAK/9tsa-iner)<br>
-[The GitHub Pages site for this project can be seen here!](https://yyang7171.github.io/377-Group-Project/)
+[The GitHub Pages site for this project can be seen here!](https://yyang7171.github.io/377-Group-Project/)<br>
+This site should be compatible with all browsers updated to the latest versions.
 
 - [Description](#description)
 - [Usage](#usage)

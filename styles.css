@@ -391,16 +391,20 @@ form label {
   }
 
   .chart_container {
-    height: 300px;
-    width: 400px;
+    height: 100%;
+    width: 450px;
     position: relative;
-    right: 100px;
+    right: 25%;
+    border: 2px dotted;
+    padding: 0%;
+    background-color: rgb(157, 153, 153);
   }
 
   .column {
     float: left;
     padding: 100px;
     width: 50%;
+    border: 1px groove;
   }
 
   .row:after {

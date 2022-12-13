@@ -32,15 +32,49 @@ function injectHTML(list) {
 
 function searchIncidents(list) {
   const newArray = list.filter((item) => {
-    const clear = item.clearance_code_inc_type;
-    if (clear && clear === 'ACCIDENT') {
+    const clearance = item.clearance_code_inc_type;
+    if (clearance === 'ACCIDENT') {
       return item;
-    }
+    } else if (clearance === 'ACCIDENT WITH IMPOUND') {
+      return item;
+    } else if (clearance === 'ASSAULT') {
+      return item;
+    } else if (clearance === 'ASSAULT, SHOOTING') {
+      return item;
+    } else if (clearance === 'ASSAULT, WEAPON') {
+      return item;
+    } else if (clearance === 'AUTO, STOLEN') {
+      return item;
+    } else if (clearance === 'AUTO, STOLEN & RECOVERED') {
+      return item;
+    } else if (clearance === 'B & E, COMMERCIAL') {
+      return item;
+    } else if (clearance === 'B & E, RESIDENTIAL') {
+      return item;
+    } else if (clearance === 'B & E, VACANT') {
+      return item;
+    } else if (clearance === 'HOMICIDE') {
+      return item;
+    } else if (clearance === 'SEX OFFENSE') {
+      return item;
+    } else if (clearance === 'THEFT') {
+      return item;
+    } else if (clearance === 'THEFT FROM AUTO') {
+      return item;
+    } else if (clearance === 'ROBBERY, COMMERCIAL') {
+      return item;
+    } else if (clearance === 'ROBBERY, RESIDENTIAL') {
+      return item;
+    } else if (clearance === 'ROBBERY, OTHER') {
+      return item;
+    } else if (clearance === 'VANDALISM') {
+      return item;
+    } else
     return null;
   });
   return newArray;
 }
-/*
+
   function processIncidents(list) {
     console.log('fired incidents list');
     const range = [...Array(15).keys()]; // special notation to create the array
@@ -50,7 +84,7 @@ function searchIncidents(list) {
     });
     return newArray;
   }
-*/
+
   function markerPlace(array, map) {
     // must keep the reference to the marker so this is here
     // const marker = L.marker([51.5, -0.09]).addTo(map);
@@ -94,15 +128,13 @@ function searchIncidents(list) {
   }
   
   async function mainEvent() {
-    
     const pageMap = initMap();
+    const arrayFromJson = await getData();
     // the async keyword means we can make API requests
     const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-    const submit = document.querySelector('#get-crime'); // get a reference to your submit button
+    const submit = document.querySelector('#get-incident'); // get a reference to your submit button
     const loadAnimation = document.querySelector('.lds-ellipsis');
-    submit.style.display = 'none'; // let your submit button disappear
-  
-    const arrayFromJson = await getData(); // here is where we get the data from our request as JSON
+    //submit.style.display = 'none'; // let your submit button disappear
   
     console.table(arrayFromJson);
   
@@ -112,7 +144,7 @@ function searchIncidents(list) {
   
     // this is called "string interpolation" and is how we build large text blocks with variables
     console.log(
-      `${arrayFromJson.data[0].clearance_code_inc_type} ${arrayFromJson.data[0].street_address}`);
+      `${arrayFromJson[0].clearance_code_inc_type} ${arrayFromJson[0].street_address}`);
   
     // This IF statement ensures we can't do anything if we don't have information yet
     if (arrayFromJson.length > 0) {

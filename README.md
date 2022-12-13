@@ -2,7 +2,7 @@
 
 https://young-bastion-96605.herokuapp.com/
 
-Title: Stock Ticker
+Title: Ticker Tracker
 
 We plan on gathering data from the Yahoo Finance API to give users insights into
  stock tickers' finances. Users should be able to compare different stock financials using our frontend

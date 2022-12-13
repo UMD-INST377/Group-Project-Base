@@ -13,6 +13,6 @@ router.get('/', (req, res) => {
 // Generic API inclusion demonstration
 // Replace this with the group member's actual route
 // This leads to /api/member1
-router.use('/littertrak', foodService);
+router.use('/littertrak', littertrak);
 
 export default router;

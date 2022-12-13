@@ -14,7 +14,7 @@ const router = express.Router();
 router.route('/littertrakPG') // actually localhost:3000/api/littertrakPG
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?type_litter=ExpressBusiness;
+      const url = 'https://data.princegeorgescountymd.gov/resource/9tsa-iner.json?type_litter=ExpressBusiness';
       const data = await fetch(url);
       const json = await data.json();
       console.log(json);

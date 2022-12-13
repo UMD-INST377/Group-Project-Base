@@ -26,7 +26,6 @@ async function getData() {
     new_data += `<li>${data_filter[i]}</li>`;
   }
 
-  
   const ctx = document.getElementById('myChart');
   if (myChart != null) {
     myChart.destroy();
@@ -52,5 +51,3 @@ async function getData() {
   });
   document.getElementById('apiResponse').innerHTML = new_data;
 }
-
-

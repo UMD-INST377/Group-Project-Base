@@ -18,4 +18,4 @@ In our project, we attempted to add a map visualization to our webpage that allo
 # CSS Frameworks used: Modern CSS 
 
 # Description of the Project and Problem Solved:
-Through our final project, we wanted to develop an application that allowed users to have access to location information on Libraries across PG County. Libraries are centers of knowledge, so knowing where the closest library is is very useful information to know. As a result, through our webpage, users are able to be generated a list of libraries throughout PG County, and are able to put in their zip code to find a libarary that is closest to them.
+Through our final project, we wanted to develop an application that allowed users to have access to location information on Libraries across PG County, easily. Libraries are centers of knowledge, so knowing where the closest library is, without having to do extensive research, is very useful information to know. As a result, through our webpage, users are able to be generated a list of libraries throughout PG County, and are able to put in their zip code to find a libarary that is closest to them.

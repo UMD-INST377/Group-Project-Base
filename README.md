@@ -1,6 +1,8 @@
 
 # 📼ETV
-![image](project website image.jpg)
+
+![image ETV](ETV.jpg)
+
 ## Description
 Our project was created to provide the potential consumers who are demanding TV shows contents with information of them. The user can choose the today mood and the system will recommend random TV shows from the specific TV shows' genres. Follwoing with that, the user can see which TV show would be highest rating with the bar chart using d3 library based on TV shows rating data from the TV shows API. Additionaly, the user can check which TV shows are currently popular with their poster image up to top 5 TV shows on the Library page. Our project aims to give users enjoy their process of searching TV shows with relevant information that they demand.
 

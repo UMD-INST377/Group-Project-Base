@@ -131,9 +131,15 @@ form {
 
 .left_section {
   background-color: rgba(0, 100, 139, 0.8);
-  flex: 0 1 auto;
+  flex: 1 2 auto;
   margin: 1rem;
-  padding: 1.5rem;
+  align-items: center;
+  max-width: 450px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  
 }
 
 .right_section {
@@ -141,7 +147,7 @@ form {
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
-  max-width: 450px;
+  max-width: 750px;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -404,11 +410,8 @@ form label {
 }
 
 .chart_container {
-  width: 450px;
-  height: 300px;
-  padding: 10px;
-  font-size: 14px;
-  right: 20px;
+  height: 100%;
+	width: 100%;
 }
 
 .nav_bar {

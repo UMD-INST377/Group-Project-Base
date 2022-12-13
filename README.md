@@ -1,3 +1,4 @@
+
 # 📼ETV
 ![image]('project website image.jpg')
 ## Description
@@ -24,6 +25,4 @@ Our project did not use special CSS framworks, but we use CSS Flex and Grid to o
 
 ### Actual project and solution
 Our actual project was trying to display music recommendation with the list and visualization based on using Spotify API, but we changed our project would deliver TV shows recommendation according to our potential users' mood since the Authorization process of Spotify API is quite complicated. Thus, we solved to get API and fetch it to our project by using TV shows API instead of Spotify API. However, we are improving our website adding music recommendation features with TV shows recommendation such as recommendation OST based on TV shows by using Spotify API.  
-
-
 

@@ -28,11 +28,33 @@ function rotateList(list, start, numOfElements) {
   return retval;
 }
 
+// Sorts the object, using Selection Sort algorithm, by the object according to the given property
+function sort(obj, property) {
+  let smallestIndex;
+  let temp;
+  for (let i = 0; i < obj.length; i++) {
+    smallestIndex = i;
+
+    // Find the smallest element in obj[i... j]
+    for (let j = i + 1; j < obj.length; j++) {
+      if (obj[smallestIndex][property] > obj[j][property]) {
+        smallestIndex = j;
+      }
+    }
+
+    // Swap obj[i] and the smallest element
+    temp = obj[i];
+    obj[i] = obj[smallestIndex];
+    obj[smallestIndex] = temp;
+  }
+
+  return obj;
+}
+
 // Display a bar chart showing the price of each coin (alphabetically ordered)
 async function initEcosystemMarketCapChart() {
   const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
-  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get the ecosystem data
-
+  const cryptocurrencyJson = sort(await getData(cryptocurrencyDataURL), 'name'); // get the ecosystem data, and sort it by 'name'
   const labelsList = getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
 
   const marketDataList = getPropertyForAll(cryptocurrencyJson, 'market_data'); // extract market data list
@@ -161,12 +183,10 @@ async function initTrendingCryptoTable() {
 
   const prevThreeButton = document.querySelector('#prev-three');
   prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
-    console.log('prev3');
   });
 
   const nextThreeButton = document.querySelector('#next-three');
   nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
-    console.log('next3');
   });
   return table;
 }
@@ -203,12 +223,10 @@ async function initFallingCryptoTable() {
 
   const prevThreeButton = document.querySelector('#prev-three');
   prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
-    console.log('prev3');
   });
 
   const nextThreeButton = document.querySelector('#next-three');
   nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
-    console.log('next3');
   });
 
   return table;
@@ -246,12 +264,10 @@ async function initRisingCryptoTable() {
 
   const prevThreeButton = document.querySelector('#prev-three');
   prevThreeButton.addEventListener('click', async (submitEvent) => { // display the next three cryptocurrencies
-    console.log('prev3');
   });
 
   const nextThreeButton = document.querySelector('#next-three');
   nextThreeButton.addEventListener('click', async (submitEvent) => { // display the previous three cryptocurrencies
-    console.log('next3');
   });
   return table;
 }
@@ -274,7 +290,8 @@ function injectHTML(list) {
 async function initSearchBar() {
   const targetElement = document.querySelector('#search_button');
   targetElement.addEventListener('click', async () => {
-    injectHTML(null);
+    // injectHTML(null);
+    injectHTML();
   });
 }
 

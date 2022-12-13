@@ -151,3 +151,6 @@ dist
 
 # TernJS port file
 .tern-port
+.eslintrc.cjs
+.eslintrc.cjs
+.vscode/settings.json

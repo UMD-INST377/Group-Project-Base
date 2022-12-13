@@ -223,6 +223,17 @@ form label {
     border: solid;
   }
 
+ #bar{
+  padding: 2rem;
+ }
+
+ .chart-container{
+  display: flex;
+  width: 100%;
+  height: 500px;
+  justify-content: center;
+ }
+
 /* mobile stuff */
 @media only screen and (max-width: 736px) {
   .container {

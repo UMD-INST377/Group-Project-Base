@@ -30,7 +30,7 @@ function makeChart(){
 
   const ctx = document.getElementById('myChart');
 
-  const myChart = new Chart(ctx, {
+  const chart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['Calories', 'Sugar', 'Protein', 'Fiber', 'Serving Size', 'Total Fat'],

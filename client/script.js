@@ -95,12 +95,10 @@ async function mainEvent() {
     });
 
     form.addEventListener('submit', (submitEvent) => {
-
       // This is needed to stop our page from changing to a new URL even though it heard a GET request
       submitEvent.preventDefault();
       current_list = full_list;
       injectHTML(current_list);
-
     });
     makeChart(x_labels, populationData);
   }

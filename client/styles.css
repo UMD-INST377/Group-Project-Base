@@ -179,7 +179,9 @@
   }
   
   .left_section {
+
     background-color: #db5959e1;
+
     flex: 0 1 auto;
     margin: 1rem;
     padding: 1.5rem;

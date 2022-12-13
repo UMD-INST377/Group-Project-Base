@@ -2,11 +2,6 @@
     box-sizing: border-box;
   }
   
-  /* 
-    These rules apply to actual HTML elements with no labelling!
-    So: they style the tags directly
-  */
-  
   html {
     background-color: #fff;
     font-size: 16px;
@@ -14,7 +9,6 @@
     overflow-x: hidden;
     overflow-y: scroll;
   
-    /* these are specific to different browsers */
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -49,14 +43,6 @@
     accent-color: hsla(120, 100%, 50%, 0.482);
   }
   
-  /*
-    - These styles use 'class names'
-    - You can apply them by using the 'class' attribute on your HTML
-    - like this: <div class="wrapper">
-    - note that the period vanishes there!
-  */
-  
-  
   .wrapper {
     min-height: 100vh;
     display: flex;
@@ -80,42 +66,24 @@
     padding-bottom: 1.5rem;
   }
   
-  
-  /*
-    This rule implies that the H1 tag lives within another HTML tag
-    It "inherits" some rules from the above
-    Those rules won't apply to an h1 that's outside a block with the class of 'header'
-  */
+
   
   .header h1 {
     display: block;
-    /* this will push other blocks out of the way */
   
-    /* colors */
     background-color: #16cb61;
     color: #4a4a4a;
   
-    /* shapes */
     border-radius: 6px;
     font-size: 1.5rem;
     padding: 1.25rem;
-    margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+    margin:0;
   
   
-    /* box-shadows are fancy */
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
     border: 3px dashed;
   }
   
-  
-  /*
-    Rules can be combined on a block to apply the 'cascade' in order
-    So you can use two classnames in a single class attribute
-    like: <div class="box section">
-  
-    Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
-    And will be what displays in your client
-  */
   
   .box {
     background-color: rgba(239, 239, 239, 0.40);
@@ -144,12 +112,6 @@
     flex-direction: column;
   }
   
-  /*
-    This block is actually dependent on the "container" block having a flex set on it
-    and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
-    That serves to cram the footer to the bottom of the page.
-  */
-  
   .footer {
     flex-shrink: 0;
     padding: 1rem;
@@ -164,15 +126,8 @@
     text-decoration: underline;
   }
   
-  /*
-    This is an example of a 'pseudoclass'
-    In this instance, it says what to do if a mouse hovers over a link
-    This is pretty desktop-specific, since there's no hover function on touchscreens
-  */
   .footer a:hover {
-    /* Hue, saturation, luminosity, alpha */
     background-color: hsla(0, 0%, 90%, 0.15);
-    /* red, green, blue, alpha */
     color: rgb(93, 246, 172);
     text-decoration: none;
   }
@@ -183,8 +138,7 @@
     margin-bottom: 5px;
   }
   
-  
-  /* Deploy this with images as direct "children" and the images should pop into shape */
+
   .grid {
     display: flex;
     justify-content: space-evenly;
@@ -204,7 +158,6 @@
     height: 450px;
   }
   
-  /* Carousel */
   div.carousel {
     max-width: 300px;
     overflow: hidden;
@@ -225,7 +178,6 @@
     -webkit-overflow-scrolling: touch;
   }
   
-  /* .carousel_item, */
   .hidden {
     display: none;
   }
@@ -235,17 +187,6 @@
   }
   
   .carousel_item img {
-    /* 
-      Setting width, rather than max-width or min-width,
-      means annoying pop-ins won't happen
-      but it also means you need to format your images to be compatible
-      or they will stretch weird
-  
-      - try a tall one and see what happens
-      - change the height on a fixed image size and see what happens
-      - now make sure that images are _always_ square
-      - ... there's a reason crop tools are popular in image editors
-     */
     width: 150px; 
   }
   
@@ -258,19 +199,19 @@
     font-weight: bold;
     height: 45px;
     padding: 10px;
-    line-height: 0; /* This centers a button's text! */
-    border: 2px solid rgb(99,99,99); /* shorthand for how to do a border */
+    line-height: 0;
+    border: 2px solid rgb(99,99,99);
   }
   
   .prev:focus,
   .next:focus {
     margin: 0;
-    border-color: #16cb61;/* Pick a good border colour and check out how it works with your buttons */
+    border-color: #16cb61;
   }
   
   .prev:hover,
   .next:hover {
-    background-color: #1094dc;/* Pick a good background colour for your hover pseudoclass */
+    background-color: #1094dc;
   }
   
   .restuarant_list{
@@ -282,13 +223,11 @@
   */
   
   form input {
-      /* This is a hack to make sure our boxes line up with one another nicely */
       width: 100%;
-      width: -moz-available;          /* WebKit-based browsers will ignore this. */
-      width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+      width: -moz-available;          
+      width: -webkit-fill-available;  
       width: fill-available;
   
-      /* here we are setting white space correctly */
       margin-bottom: 1rem;
       height: 2rem;
       border-radius: 4px;
@@ -296,20 +235,16 @@
   
   form label {
     width: 100%;
-    width: -moz-available;          /* WebKit-based browsers will ignore this. */
-    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: -moz-available;         
+    width: -webkit-fill-available;  
     width: fill-available;
     align-items: flex-start;
   
-    display: block; /* this turns the label text into a box we can set margins on */
+    display: block;
     margin-bottom: 0.5rem;
   }
   
-  /* How To Write A Media Query For Small Screens */
-  
   @media only screen and (max-width: 736px){
-      /* Rules in here will only apply when a screen is the correct size */
-      /* check it out by using your developer tools to shrink your screen-size */
       .container {
         flex-direction: column;
         align-items: center;
@@ -330,10 +265,6 @@
     margin-bottom: 1rem;
   }
   
-  /* 
-      New code bonus: pure CSS data loading icon
-      This comes from loading.io/css - it's nice to show that something is happening!
-  */
   
   .lds-ellipsis {
       display: inline-block;
@@ -395,7 +326,6 @@
         transform: translate(24px, 0);
       }
     }
-/* * {
 
   box-sizing: border-box;
 }

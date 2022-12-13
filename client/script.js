@@ -73,7 +73,7 @@ function handle_top_click(){
     }
 }
 
-/* populate results onto the website */
+/* populate results onto the website and initiates chart */
 function populate_results_rand(titles, ids) {
 
     const target = document.querySelector('#results');
@@ -93,6 +93,7 @@ function populate_results_rand(titles, ids) {
         item_link.appendChild(value);
         list_item.appendChild(item_link)
     }
+    build_chart();
 }
 
 function populate_results_top(titles, ids){
@@ -112,44 +113,88 @@ function populate_results_top(titles, ids){
         item_link.appendChild(value);
         list_item.appendChild(item_link)
     }
+    build_chart();
 
+}
+
+/* Counts frequency of each character*/
+function getFrequency(string) {
+    var freq = {};
+    for (var i=0; i<string.length;i++) {
+        var character = string.charAt(i).toUpperCase();
+        if (character === " ") {
+        }
+        else if (freq[character]) {
+           freq[character]++;
+        } else {
+           freq[character] = 1;
+        }
+    }
+
+    return freq;
+};
+
+function build_chart(){
+    let canvas = document.getElementById("bar");
+    let list_titles = document.getElementById("results").getElementsByTagName("li");
+    arr = Array.from(list_titles).map(linkElem => linkElem.innerHTML);
+    str = arr.join('');
+    no_special_str = str.replace(/[^a-zA-Z0-9 ]/g, '')
+    freqs = getFrequency(no_special_str);
+    const ordered = Object.keys(freqs).sort().reduce(
+        (obj, key) => { 
+          obj[key] = freqs[key]; 
+          return obj;
+        }, 
+        {}
+      );
+    let keys = Object.keys(ordered);
+    let values = Object.values(ordered);
+
+    let config = {
+        type: "bar",
+        data: 
+            {labels: keys,
+            datasets: [{
+                label: "Frequency of Characters in Your Results", 
+                data: values,
+                borderColor: '#eb8752',
+                backgroundColor: '#eb8752'}]},
+        options: {
+            scales: {
+                y: {
+                  title: {
+                    display: true,
+                    text: 'Frequency'
+                  }
+                },
+                x: {
+                    title: {
+                      display: true,
+                      text: 'Characters'
+                    }
+                  }
+            }
+        }
+    };
+
+    if (
+        window.chart !== undefined
+        &&
+        window.chart !== null
+    ) {
+        window.chart.destroy();
+    }
+
+    window.chart = new Chart(canvas, config);
 }
 
 /* event listeners on the buttons */
 function main(){
-    // const form = document.getElementById('#search');
+
     const top = document.getElementById("get_top");
     const rand = document.getElementById("get_rand");
-    // const search = document.getElementById('#search_item')
 
-    // if (search){
-    //     console.log('entered search')
-    //     search.addEventListener('change', (event) => {
-    //         let top_clicks = 0;
-    //         let rand_clicks = 0;
-    
-    //         //top.addEventListener("click", handle_top_click);
-    
-    //         if (rand_clicks === 0){
-    //             console.log('rand is 0')
-    //             rand.addEventListener("click", function() {
-    //                 rand_clicks += 1;
-    //                 rand.addEventListener("click", handle_rand_click);
-    //             });
-            
-    //         } else {
-    //             console.log('u clicked rand 2 times')
-    
-    //         }
-    //     });
-    // }
-  
-    
-    //handle_rand_click();
-
-
-
-    //THIS WORKS
 
     top.addEventListener("click", handle_top_click);
     rand.addEventListener("click", (submitEvent) => {
@@ -159,62 +204,6 @@ function main(){
     });
 
 }
-
-const barChart = new Chart(ctx, {
-    type: 'bar',
-    data: data,
-    options: {
-        scales: {
-            x: {
-                stacked: true
-            },
-            y: {
-                stacked: true
-            }
-        }
-    }
-});
-
-/* source: https://observablehq.com/@anirudhb/alphabet-visualization-with-d3
-
-let margin = {left: 50, top: 10, bottom: 30, right: 10};
-  let w = width-margin.left-margin.right;
-  let h = height-margin.top-margin.bottom;
-  let alphabet2 = alphabet.sort(sort)
-  let [letters, frequencies] = [alphabet2.map(x=>x.letter), alphabet2.map(x=>x.frequency)]
-  let x = d3.scaleBand().domain(letters).range([0, w]).padding(0.2)
-  let y = d3.scaleLinear().domain(d3.extent(frequencies)).nice().range([h, 0])
-  let line = d3.line()
-    .x(function(d) { return x(d.letter); })
-    .y(function(d) { return y(d.frequency); })
-  let svg = DOM.svg(width, height)
-  let d = d3.select(svg)
-  d.selectAll()
-      .data(alphabet2)
-    .enter()
-    .append("rect")
-      .attr("x", (d,i)=>margin.left+x(d.letter))
-      .attr("y", (d,i)=>margin.top+y(d.frequency))
-      .attr("width", x.bandwidth())
-      .attr("height", (d,i)=>h-y(d.frequency))
-      .attr("stroke", "transparent")
-      .attr("fill", "blue")
-  d.append("g")
-      .call(g =>
-         g
-            .attr("transform", `translate(${margin.left}, ${height-margin.bottom})`)
-            .call(d3.axisBottom(x).tickSizeOuter(0))
-       )
-  d.append("g")
-      .call(g =>
-         g
-            .attr("transform", `translate(${margin.left}, ${margin.top})`)
-            .call(d3.axisLeft(y))
-       )
-  return svg
-}
-
-*/
 
 /* eslint-disable */
 

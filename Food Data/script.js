@@ -1,35 +1,42 @@
-const label = [];
-const foodData = [];
-
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': 'e2a17786bamsh39f2855f9aaf40dp1b10c0jsnf0ccf57e91e0',
-    'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com'
+const xLabels = [];
+function getData(){
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'e2a17786bamsh39f2855f9aaf40dp1b10c0jsnf0ccf57e91e0',
+      'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com'
+    }
   }
-}
-
-async function getData(){
-  const url = `https://calorieninjas.p.rapidapi.com/v1/nutrition?query=apple`; 
-  const data = await fetch(url, options);
-	const json = await data.json();
-
+  const input = document.getElementById('input').value;
+  const url = `https://calorieninjas.p.rapidapi.com/v1/nutrition?query=${input}`; 
+  const data = fetch(url, options);
   console.log(data);
-  console.log(json.items);
+	const json = data.json();
+
+  
+  console.log(json.items[0]);
+  const {name} = json.items[0];
+  const {calories} = json.items[0];
+  const {sugar_g} = data.items[0];
+  const {protein_g} = data.items[0];
+  const {fiber_g} = data.items[0];
+  const {serving_size_g} = data.items[0];
+  const {fat_total_g}= data.items[0];
+
+  xLabels.push(calories, sugar_g, protein_g, fiber_g, serving_size_g, fat_total_g);
 }
 
-async function makeChart() {
-  await getData();
+function makeChart(){
 
   const ctx = document.getElementById('myChart');
 
   const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: label,
+      labels: ['Calories', 'Sugar', 'Protein', 'Fiber', 'Serving Size', 'Total Fat'],
       datasets: [{
-        label: '# of contents',
-        data: foodData,
+        label: '# of contents in grams)',
+        data: xLabels ,
         borderWidth: 1
       }]
     },
@@ -63,16 +70,16 @@ async function mainEvent() {
 
   // const arrayFromJson = await getData();
 
-  // console.table(arrayFromJson);
+  //console.log();
 
 
-  // const myChart = makeChart(chart);
+  //const myChart = makeChart(chart);
 
   form.addEventListener('submit', (submitEvent) => {
-    submitEvent.preventDefault();
+   submitEvent.preventDefault();
 
-    // const dataList = sendData(arrayFromJson.data);
-    // console.log(dataList);
+    const dataList = sendData(arrayFromJson.data);
+    console.log(dataList);
   });
 }
 

@@ -26,7 +26,7 @@ async function getData() {
   }
   const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
+  Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['Gross Profits', 'Total Revenue'],

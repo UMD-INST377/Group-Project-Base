@@ -94,7 +94,7 @@ function injectHTML(list) {
   
     const arrayFromJson = await getData(); // here is where we get the data from our request as JSON
   
-    console.table(arrayFromJson.data);
+    console.table(arrayFromJson);
   
     // in your browser console, try expanding this object to see what fields are available to work with
     // for example: arrayFromJson.data[0].name, etc
@@ -130,7 +130,7 @@ function injectHTML(list) {
         submitEvent.preventDefault();
   
         // This constant will have the value of your 15-restaurant collection when it processes
-        currentList = processIncidents(arrayFromJson.data);
+        currentList = processIncidents(arrayFromJson);
         console.log(currentList);
   
         // And this function call will perform the "side effect" of injecting the HTML list for you

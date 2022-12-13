@@ -198,7 +198,7 @@ function initBarChart3(chart, dataObject) {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'NBA Pts scored in 2022 Opening Night',
+      label: 'NBA Free Throw % in 2022 Opening Night',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: info

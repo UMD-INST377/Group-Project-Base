@@ -391,6 +391,7 @@ form label {
   }
 
   .chart_container {
+    display: flex;
     height: 100%;
     width: 450px;
     position: relative;

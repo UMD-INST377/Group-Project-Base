@@ -34,7 +34,7 @@ async function getData() {
 
     type: 'bar',
     data: {
-      labels: ['Gross Profits', 'Total Revenue'],
+      labels: ['Total Revenue', 'Gross Profits'],
       datasets: [{
         label: 'Profit Margin',
         data: [parseInt(char_data[0]), parseInt(char_data[1])],

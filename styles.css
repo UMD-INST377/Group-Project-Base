@@ -412,3 +412,7 @@ form label {
     display: table;
     clear: both;
   }
+
+  #div3 {
+    height: 525px;
+  }

@@ -1,4 +1,3 @@
-// Work in Progress
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -41,18 +40,16 @@ function processMueseums(list) {
 
 function initChart(chart) {
   const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June'
+    'National Museum of American History',
+    'Smithsonian Libraries',
+    'NMNH - Anthropology Dept.',
+    'Natural Resources',
   ];
 
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
+      label: 'Sample graph',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: [0, 10, 5, 2, 20, 30, 45]
@@ -97,7 +94,7 @@ async function mainEvent() {
   const chartTarget = document.querySelector('#myChart');
   submit.style.display = 'none';
 
-  const results = await fetch('/api/smithsonian/search');
+  const results = await fetch('/api/smithsonian');
   const arrayFromJson = await results.json();
   
   initChart(chartTarget);

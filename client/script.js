@@ -1,6 +1,7 @@
 const options = {
   method: 'GET',
   headers: {
+
     'X-RapidAPI-Key': '0c8a1be604msh71b46e583df36e2p12b5d0jsn8d7b867ab3b9',
     'X-RapidAPI-Host': 'yahoo-finance15.p.rapidapi.com'
   }
@@ -24,12 +25,14 @@ async function getData() {
   for (let i = 0; i < data_filter.length; i++) {
     new_data += `<li>${data_filter[i]}</li>`;
   }
+
   
   const ctx = document.getElementById('myChart');
   if (myChart != null) {
     myChart.destroy();
   }
   myChart = new Chart(ctx, {
+
     type: 'bar',
     data: {
       labels: ['Gross Profits', 'Total Revenue'],
@@ -49,3 +52,5 @@ async function getData() {
   });
   document.getElementById('apiResponse').innerHTML = new_data;
 }
+
+

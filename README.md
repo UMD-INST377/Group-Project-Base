@@ -4,5 +4,8 @@ This is the final project for INST 377. A group project where we created a web a
 We used this API: https://rapidapi.com/calorieninjas/api/calorieninjas/
 ### Website Link
 http://127.0.0.1:5500/index3.html
+### Github Link
+https://github.com/KiraFreedman/Group-Project-Base
+
 
 * [Markdown guide](https://www.markdownguide.org/cheat-sheet/)

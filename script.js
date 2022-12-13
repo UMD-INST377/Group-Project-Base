@@ -70,7 +70,7 @@ function initChart(chart, dataObject) {
 
 function injectHTML(list) {
   console.log('fired injectHTML');
-  const target = document.querySelector('#restaurant_list');
+  const target = document.querySelector('#amounts_list');
   target.innerHTML = '';
 
   const listEl = document.createElement('ol');
@@ -83,8 +83,8 @@ function injectHTML(list) {
   });
 }
 
-function processRestaurants(list) {
-  console.log('fired restaurants list');
+function processPayments(list) {
+  console.log('fired amounts list');
   const range = [...Array(10).keys()];
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
@@ -170,7 +170,7 @@ async function mainEvent() {
       submitEvent.preventDefault();
       console.log('form submitted');
 
-      currentList = processRestaurants(data);
+      currentList = processPayments(data);
       console.log(currentList);
 
       injectHTML(currentList.sort((a, b) => a.amount - b.amount));

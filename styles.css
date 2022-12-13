@@ -201,6 +201,10 @@ form {
   height: 150px;
 }
 
+.myChart{
+  width: 400px;
+  height: 450px;
+}
 
 /* Carousel */
 div.carousel {

@@ -1,7 +1,7 @@
 function injectHTML(list, htmlelm) {
   let target = document.querySelector(htmlelm);
   target.innerHTML = '';
-  
+
   // populate table head
   const head = document.createElement('tr');
   for (const key of Object.keys(list[0])) {
@@ -75,7 +75,7 @@ async function fetchJson(yr) {
 }
 
 async function mainEvent() {
-  
+
   // hide button
   const submit = document.querySelector('#get');
   submit.style.display = 'none';
@@ -119,10 +119,9 @@ async function mainEvent() {
     });
   }
 
-  expo = data;
+  expo = await data;
+  console.log(expo);
 }
 
-// export the variable
-let expo;
 // run main
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -1,11 +1,14 @@
-
+async function fetchJson(yr) {
+    const main = await fetch(`api/finServices/${yr}`);
+    return await main.json();
+}
 // Code for the fetch payee buttons //
 async function getPayee() {
-    expo.then((dataPoints) => {
-        const payeeDat = dataPoints.map(function (index) {
+    fetchJson(2022).then((i) => {
+        const payeeDat = i.data.map(function (index) {
             return index.payee_name;
         });
-        const unique = [...new Set(dataPoints.map((item) => item.payee_name))];
+        const unique = [...new Set(i.data.map((item) => item.payee_name))];
         const count = {};
 
         for (const element of payeeDat) {
@@ -15,21 +18,20 @@ async function getPayee() {
                 count[element] = 1;
             }
         }
-        myChart.config.data.labels = unique;
-        myChart.config.data.datasets[0].label = "Total";
-        myChart.config.data.datasets[0].data = Object.values(count);
-        myChart.update();
+        updatec(myChart,unique,count);
+        updatec(barchart,unique,count);
     });
 }
 
 // Code for the fetch agency buttons //
-async function getAgency() {
-    expo.then((dataPoints) => {
-        const agencyDat = dataPoints.map(function (index) {
+async function getAgency(data) {
+    console.log(data);
+    fetchJson(2022).then((i) => {
+        const agencyDat = i.data.map(function (index) {
             return index.agency;
         });
 
-        const unique = [...new Set(dataPoints.map((item) => item.agency))];
+        const unique = [...new Set(i.data.map((item) => item.agency))];
         const count = {};
 
         for (const element of agencyDat) {
@@ -39,20 +41,18 @@ async function getAgency() {
                 count[element] = 1;
             }
         }
-        myChart.config.data.labels = unique;
-        myChart.config.data.datasets[0].label = "Total";
-        myChart.config.data.datasets[0].data = Object.values(count);
-        myChart.update();
+        updatec(myChart,unique,count);
+        updatec(barchart,unique,count);
     });
 }
 
 // Code for the fetch zipcode buttons //
 async function getZip() {
-    expo.then((dataPoints) => {
-        const zipDat = dataPoints.map(function (index) {
+    fetchJson(2022).then((i) => {
+        const zipDat = i.data.map(function (index) {
             return index.zip_code;
         });
-        const unique = [...new Set(dataPoints.map((item) => item.zip_code))];
+        const unique = [...new Set(i.data.map((item) => item.zip_code))];
         const count = {};
 
         for (const element of zipDat) {
@@ -62,17 +62,15 @@ async function getZip() {
                 count[element] = 1;
             }
         }
-        myChart.config.data.labels = unique;
-        myChart.config.data.datasets[0].label = "Total";
-        myChart.config.data.datasets[0].data = Object.values(count);
-        myChart.update();
+        updatec(myChart,unique,count);
+        updatec(barchart,unique,count);
     });
 }
 
 //need to set this to get range instead of unique number
 async function getAmount() {
-    expo.then((dataPoints) => {
-        const amountDat = dataPoints.map(function (index) {
+    fetchJson(2022).then((i) => {
+        const amountDat = i.data.map(function (index) {
             return index.amount;
         });
         const count = {};
@@ -106,27 +104,23 @@ async function getAmount() {
             "1000+",
         ];
 
-        myChart.config.data.labels = labels;
-        myChart.config.data.datasets[0].label = "Total";
-        myChart.config.data.datasets[0].data = Object.values(count);
-        myChart.update();
+        updatec(myChart,unique,count);
+        updatec(barchart,unique,count);
     });
 }
 
 //Change chart type
-async function BarChart() {
-    myChart.config.type = "bar";
-    myChart.update();
+async function updatec(chart,unique,count) {
+    chart.config.data.labels = unique;
+    chart.config.data.datasets[0].label = "Total";
+    chart.config.data.datasets[0].data = Object.values(count);
+    chart.update();
 }
 
-async function DoughnutChart() {
-    myChart.config.type = "doughnut";
-    myChart.update();
-}
+const dochart = document.getElementById('dochart');
+const bar = document.getElementById('barchart');
 
-const ctx = document.getElementById("chart");
-
-const myChart = new Chart(ctx, {
+const myChart = new Chart(dochart, {
     type: "doughnut",
     data: {
         labels: [
@@ -147,7 +141,54 @@ const myChart = new Chart(ctx, {
                 borderWidth: 1,
             },
         ],
-    },
+    }
 });
 
-//document.addEventListener("DOMContentLoaded", async () => mainEvent());
+const barchart = new Chart(bar, {
+    type: "bar",
+    data: {
+        labels: [
+            "Red",
+            "Blue",
+            "Yellow",
+            "Green",
+            "Purple",
+            "Orange",
+            "Black",
+            "Grey",
+            "Pink",
+        ],
+        datasets: [
+            {
+                label: "# of Votes",
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1,
+            },
+        ],
+    }
+});
+
+async function mainEvent() {
+    let yrtitle = '2022';
+    let yr = document.querySelector('.yr_form');
+    let data = await fetchJson(2022);
+
+    const b1 = document.querySelector('#b1');
+    const b2 = document.querySelector('#b2');
+    const b3 = document.querySelector('#b3');
+    const b4 = document.querySelector('#b4');
+
+    yr.addEventListener('input', async (event) => {
+        event.preventDefault();
+        data = await fetchJson(event.target.value);
+        console.log(data.data.length);
+        if (data.data.length > 0) {
+            yrtitle = await event.target.value;
+            console.log(data);
+            b2.addEventListener('click', getAgency(data['data']));
+
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", async () => mainEvent());

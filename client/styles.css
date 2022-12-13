@@ -32,7 +32,7 @@ body {
 
 .navbar {
   list-style-type: none;
-  width: 62%;
+  width: 60%;
   padding: 5px;
   border-radius: 5px;
   overflow: auto;
@@ -66,7 +66,8 @@ h3 {
   margin: 0;
   padding: 10;
 }
-h5{
+
+h5 {
   margin: auto;
 }
 
@@ -90,7 +91,7 @@ form {
   flex: 1;
 }
 
-.form.container{
+.form.container {
   align-items: flex-start;
   justify-content: flex-start;
 }
@@ -98,8 +99,8 @@ form {
 .header {
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 10px ;
-  padding-bottom: 10px ;
+  padding-top: 10px;
+  padding-bottom: 10px;
   position: relative;
 }
 
@@ -135,13 +136,15 @@ form {
   height: max-content;
   margin: 0 auto;
 }
-.right.box{
+
+.right.box {
   background-color: #000;
   justify-content: flex-end;
   border-radius: 15px;
   padding: 10px;
 }
-.left.box{
+
+.left.box {
   color: #000;
   background-color: #fff;
   justify-content: start;
@@ -149,12 +152,14 @@ form {
   padding: 10px;
   position: fixed;
 }
-.inner{
+
+.inner {
   padding: 80px;
   background-color: #fff;
-  width:auto;
+  width: auto;
 }
-.text.box{
+
+.text.box {
   position: sticky;
   top: 150px;
   align-items: center;
@@ -163,14 +168,15 @@ form {
   border-radius: 10px;
 }
 
-.smallbox{
+.smallbox {
   display: flex;
+  align-items: flex-start;
   padding: 1px;
 }
 
 .slides {
   width: 100%;
-  position:fixed;
+  position: fixed;
   margin: auto;
 }
 
@@ -183,6 +189,14 @@ form {
   animation-duration: 3s;
 }
 
+.vcontainer {
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+}
+
 @keyframes fade {
   from {
     opacity: .4
@@ -193,16 +207,21 @@ form {
   }
 }
 
-.table{
+.table {
   border-radius: 5px;
 }
 
-th{
+.chart {
+  width: fit-content;
+  height: fit-content;
+}
+
+th {
   text-align: center;
   width: auto;
 }
 
-td{
+td {
   padding: 5px;
   background-color: rgb(40, 39, 39);
   border-style: hidden;
@@ -233,11 +252,15 @@ form label {
   display: flex;
 }
 
-.radiobutt{
+.radiobutt {
   display: block;
 }
 
-.combo{
+.buttons {
+  display: inline-grid;
+}
+
+.combo {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -290,6 +313,7 @@ form label {
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
     position: fixed;
   }
+
   .navbar {
     list-style-type: none;
     padding: 5px;
@@ -297,7 +321,7 @@ form label {
     overflow: auto;
     background-color: #000;
     flex-direction: row;
-    display:block;
+    display: block;
     align-items: stretch;
     justify-content: start;
     font-size: smaller;

@@ -394,7 +394,8 @@ form label {
     height: 300px;
     width: 400px;
     position: relative;
-    right: 100px;
+    right: 90px;
+    display: inline-block;
   }
 
   .column {

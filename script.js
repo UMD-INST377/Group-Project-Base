@@ -95,7 +95,7 @@ function searchIncidents(list) {
       }
     });
 
-    array.forEach((item, index) => {
+    array.forEach((item) => {
       const newLat = new Number(item);
       const newLng = new Number(item);
       const newLatLng = (newLat, newLng);
@@ -172,6 +172,7 @@ function searchIncidents(list) {
   
         // This constant will have the value of your 15-restaurant collection when it processes
         currentList = searchIncidents(arrayFromJson);
+        currentList = processIncidents(arrayFromJson);
         console.log(currentList);
   
         // And this function call will perform the "side effect" of injecting the HTML list for you

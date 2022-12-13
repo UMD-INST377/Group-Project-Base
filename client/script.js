@@ -19,7 +19,6 @@ function injectHTML(list) {
   list.forEach((item) => {
     const el = document.createElement('li');
     el.innerText = item.branch_name;
-    // `${item.branch_name} ${item.zip_code}`;
     listEl.appendChild(el);
   });
 }
@@ -27,36 +26,19 @@ function injectHTML(list) {
 // Function that processes a list of PG County Libraries into an array of 15
 function processLibraries(list) {
   console.log('Fired Library List');
-  const range = [...Array(15).keys()]; // Special notation to create an array of 15 elements
+  const range = [...Array(15).keys()];
   const newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length);
     return list[index];
   });
   return newArray;
-
-  /*
-        ## Process Data Separately From Injecting It
-          This function should accept your 1,000 records
-          then select 15 random records
-          and return an object containing only the restaurant's name, category, and geocoded location
-          So we can inject them using the HTML injection function
-
-          You can find the column names by carefully looking at your single returned record
-          https://data.princegeorgescountymd.gov/Health/Food-Inspection/umjn-t2iz
-
-        ## What to do in this function:
-
-        - Create an array of 15 empty elements (there are a lot of fun ways to do this, and also very basic ways)
-        - using a .map function on that range,
-        - Make a list of 15 random restaurants from your list of 100 from your data request
-        - Return only their name, category, and location
-        - Return the new list of 15 restaurants so we can work on it separately in the HTML injector
-      */
 }
 
+// Function used to filter list by Zipcode once library list is generated
 function filterList(array, filterInputValue) {
+  console.log('HERE');
   return array.filter((item) => {
-    const lowerCaseName = item.branch_name.toLowerCase();
+    const lowerCaseName = `${item.branch_name} ${item.zip_code}`.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
@@ -73,6 +55,7 @@ function initMap() {
   return map;
 }
 
+// Function to put marker points on the map
 function markerPlace(array, map) {
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
@@ -104,22 +87,19 @@ async function getData() {
 
 async function mainEvent() {
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-  const submit = document.querySelector('#get-zip'); // get a reference to your submit button
-  const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to our loading animation
-  submit.style.display = 'none'; // let your submit button disappear
+  const submit = document.querySelector('#get-zip'); // get a reference to submit button
+  const loadAnimation = document.querySelector('.lds-ellipsis'); // get a reference to loading animation
+  submit.style.display = 'none'; // let submit button disappear
 
   const pageMap = initMap();
   const mapData = await getData();
 
-  // console.table(arrayFromJson.data);
-  // console.log(arrayFromJson.data[0]);
-  // console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
 
   // This IF statement ensures we can't do anything if we don't have information yet
   if (mapData?.length > 0) { // the question mark in this means "if this is set at all"
-    submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
-    loadAnimation.classList.remove('lds-ellipsis'); // hide the load button now that we have some data to manipualte
-    loadAnimation.classList.add('lds-ellipsis_hidden'); // turn the submit button back on by setting it to display as a block when we have data
+    submit.style.display = 'block'; // turns the submit button back on by setting it to display as a block when we have data available
+    loadAnimation.classList.remove('lds-ellipsis'); // hides the load button now that we have some data to manipualte
+    loadAnimation.classList.add('lds-ellipsis_hidden'); // turns the submit button back on by setting it to display as a block when we have data
 
     let currentList = [];
     form.addEventListener('input', (event) => {
@@ -136,15 +116,10 @@ async function mainEvent() {
       console.log('Submit Event Listener');
       currentList = processLibraries(mapData); // This constant will have the value of your 15-restaurant collection when it processes
 
-      // And this function call will perform the "side effect" of injecting the HTML list for you
-      injectHTML(currentList);
+      injectHTML(currentList); // function call will perform the "side effect" of injecting the HTML list
       markerPlace(currentList, pageMap);
-
-      // By separating the functions, we open the possibility of regenerating the list
-      // without having to retrieve fresh data every time
-      // We also have access to some form values, so we could filter the list based on name
     });
   }
 }
 
-document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

@@ -1,0 +1,47 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Group 16 Project Base</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+    <link rel="stylesheet" href="styles.css">
+        <!-- <link rel="stylesheet" href="mapstyle.css"/> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+    </head>
+    
+    <body>
+        <div class="wrapper">
+            <header class="header"><h1>Group 16 - PG County Crime Project</h1></header>
+            <p style="font-size: 20px; color:#559973;">
+            <a href="about.html">About page</a>
+            </p>
+            <div class="container">
+                <div class="left_section box">
+                    <h3>PG County Crime Incidents</h3>
+                    <form action="/api" class="box main_form">
+                        <div>
+                            <label for="crime">Filter Incidents</label>
+                            <input type="text" name="crime" id="crime" />
+                        </div>
+                        <button type="submit" id="get-crime">Filter</button>
+                    </form>
+                </div>
+    
+                <div class="right_section box">
+                    <h2>Filtered Map</h2>
+                    <div id="map"></div>
+                    <!-- <div class="box" id="incident_list">list of incidents</div>
+                        <canvas id="myChart"></canvas> -->
+                    </div>     
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+    </html>

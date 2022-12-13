@@ -53,3 +53,14 @@ small {
   font-weight: 300;
 
 }
+
+@media only screen and (max-width: 736px){
+  /* Rules in here will only apply when a screen is the correct size */
+  /* check it out by using your developer tools to shrink your screen-size */
+  .container {
+    background-color: rgba(255, 255, 255, 0.65);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

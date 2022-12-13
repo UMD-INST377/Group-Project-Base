@@ -78,7 +78,6 @@ function markerPlace(array, map) {
   });
 }
 
-const url_1 = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json?$where=within_circle(location_1, 47.59, -122.33, 1000)';
 
 async function getData(url) {
   const response = await fetch(url);
@@ -91,6 +90,8 @@ async function getData(url) {
 
 async function mainEvent() {
   // initMap();
+  const url_1 = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json?$where=within_circle(location_1, 47.59, -122.33, 1000)';
+
   const pageMap = initMap();
   const mapData = await getData(url_1);
   const form = document.querySelector('.main_form'); 

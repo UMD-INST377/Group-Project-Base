@@ -1,0 +1,419 @@
+* {
+  box-sizing: border-box;
+}
+
+/* 
+  merger
+*/
+
+html {
+  background-color: rgb(11, 11, 10);
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  /* these are specific to different browsers */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: rgb(174, 172, 172);
+  background-image: url("basketball.png");
+  /* CHANGE IMAGE LATER, LOOK FOR BETTER ONE */
+}
+
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+h2, h3 {
+  margin:0;
+  padding:0;
+  padding-bottom:1.5rem;
+}
+
+form {
+  accent-color: hsla(120, 100%, 50%, 0.482);
+}
+
+/*
+  - These styles use 'class names'
+  - You can apply them by using the 'class' attribute on your HTML
+  - like this: <div class="wrapper">
+  - note that the period vanishes there!
+*/
+
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
+.container {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  flex:1;
+}
+
+.header {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+
+/*
+  This rule implies that the H1 tag lives within another HTML tag
+  It "inherits" some rules from the above
+  Those rules won't apply to an h1 that's outside a block with the class of 'header'
+*/
+
+.header h1 {
+  display: block;
+  /* this will push other blocks out of the way */
+
+  /* colors */
+  background-color: #FFFFFF;
+  background-image: url("basketball-texture.png");
+  color: #0d0d0d;
+
+  /* shapes */
+  border-radius: 6px;
+  font-size: 1.5rem;
+  padding: 1.25rem;
+  margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
+
+
+  /* box-shadows are fancy */
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+}
+
+
+/*
+  Rules can be combined on a block to apply the 'cascade' in order
+  So you can use two classnames in a single class attribute
+  like: <div class="box section">
+  Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
+  And will be what displays in your client
+*/
+
+.box {
+  background-color: rgba(251, 248, 238, 0.4);
+  border: 2px groove;
+  border-radius: 4px;
+
+  width: fit-content;
+  height:fit-content;
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+}
+
+.left_section {
+  background-color: #C9082A;
+  flex: 0 1 auto;
+  margin: 1rem;
+  padding: 1.5rem;
+  border: 2px ridge;
+}
+
+.right_section {
+  background-color: #17408B;
+  flex: 1 2 auto;
+  margin: 1rem;
+  border: 2px ridge;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  This block is actually dependent on the "container" block having a flex set on it
+  and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
+  That serves to cram the footer to the bottom of the page.
+*/
+
+.footer {
+  flex-shrink: 0;
+  padding: 1rem;
+  background-color: #FFFFFF;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.footer a {
+  color: rgb(41, 174, 167);
+  text-decoration: underline;
+}
+
+/*
+  This is an example of a 'pseudoclass'
+  In this instance, it says what to do if a mouse hovers over a link
+  This is pretty desktop-specific, since there's no hover function on touchscreens
+*/
+.footer a:hover {
+  /* Hue, saturation, luminosity, alpha */
+  background-color: hsla(0, 0%, 90%, 0.15);
+  /* red, green, blue, alpha */
+  color: rgb(246, 169, 93);
+  text-decoration: none;
+}
+
+.subtitle {
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+
+/* Deploy this with images as direct "children" and the images should pop into shape */
+.grid {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: wrap;
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+}
+
+.grid img {
+  width: 150px;
+  height: 150px;
+}
+
+
+/* Carousel */
+div.carousel {
+  max-width: 300px;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.carousel .slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* .carousel_item, */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.carousel_item img {
+  /* 
+    Setting width, rather than max-width or min-width,
+    means annoying pop-ins won't happen
+    but it also means you need to format your images to be compatible
+    or they will stretch weird
+    - try a tall one and see what happens
+    - change the height on a fixed image size and see what happens
+    - now make sure that images are _always_ square
+    - ... there's a reason crop tools are popular in image editors
+   */
+  height: 150px;
+  width: 150px; 
+}
+
+.prev,
+.next {
+  border: none;
+  margin: 2px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+  height: 45px;
+  padding: 10px;
+  line-height: 0; /* This centers a button's text! */
+  border: 2px solid rgb(99,99,99); /* shorthand for how to do a border */
+}
+
+.prev:focus,
+.next:focus {
+  margin: 0;
+  border-color: lightblue;
+  /* Pick a good border colour and check out how it works with your buttons */
+}
+
+.prev:hover,
+.next:hover {
+  background-color: orange;
+  /* Pick a good background colour for your hover pseudoclass */
+}
+
+/*
+Form Styles
+*/
+
+form input {
+    /* This is a hack to make sure our boxes line up with one another nicely */
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
+
+    /* here we are setting white space correctly */
+    margin-bottom: 1rem;
+    height: 2rem;
+    border-radius: 4px;
+  }
+
+form label {
+  width: 100%;
+  width: -moz-available;          /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  align-items: flex-start;
+
+  display: block; /* this turns the label text into a box we can set margins on */
+  margin-bottom: 0.5rem;
+}
+
+/* How To Write A Media Query For Small Screens */
+
+@media only screen and (max-width: 736px){
+    /* Rules in here will only apply when a screen is the correct size */
+    /* check it out by using your developer tools to shrink your screen-size */
+    .container {
+      background-color: rgba(43, 105, 57, 0.65);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+}
+
+/* MAP STYLES */
+
+#map {
+  display: block;
+  width: 400;
+  height: 380;
+  border: 2px dashed rgb(99, 99, 99);
+  margin-bottom: 1rem;
+}
+
+/* 
+    New code bonus: pure CSS data loading icon
+    This comes from loading.io/css - it's nice to show that something is happening!
+*/
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+
+  .lds-ellipsis_hidden{
+    display: hidden;
+  }
+
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+
+  .chart_container {
+    display: flex;
+    height: 100%;
+    width: 450px;
+    position: relative;
+    right: 25%;
+    border: 2px dotted;
+    padding: 0%;
+    background-color: rgb(157, 153, 153);
+  }
+
+  .column {
+    float: left;
+    padding: 100px;
+    width: 50%;
+    border: 1px groove;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  #div3 {
+    height: 525px;
+  }

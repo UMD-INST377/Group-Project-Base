@@ -1,5 +1,7 @@
 # Readme
 
+https://young-bastion-96605.herokuapp.com/
+
 We plan on gathering data from the Yahoo Finance API to give users insights into
  stock tickers' finances. Users should be able to compare different stock financials using our frontend
 website designed using HTML, CSS, and Js. Our stakeholders would be anyone who trades stocks and

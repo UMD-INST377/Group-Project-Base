@@ -2,14 +2,17 @@
 function test() {
   const tabsNewAnim = $('#navbarSupportedContent');
   const selectorNewAnim = $('#navbarSupportedContent').find('li').length;
-  const activeItemNewAnim = tabsNewAnim.find('.active');
+  const activeItemNewAnim = tabsNewAnim
+    .find('li')
+    .end()
+    .find('.active');
 
   function setHoriSelectorPositionAndDimensions(activeItem) {
     const activeWidthNewAnimHeight = activeItem.innerHeight();
     const activeWidthNewAnimWidth = activeItem.innerWidth();
     const itemPosNewAnimTop = activeItem.position();
     const itemPosNewAnimLeft = activeItem.position();
-    console.log(activeItem, itemPosNewAnimTop, itemPosNewAnimLeft);
+    console.log(activeItem, itemPosNewAnimTop, activeWidthNewAnimWidth);
 
     $('.hori-selector').css({
       top: `${itemPosNewAnimTop.top}px`,
@@ -34,7 +37,7 @@ function test() {
 }
 
 $(document).ready(() => {
-  setTimeout(() => { test(); });
+  setTimeout(() => { test(); }, 150); // adding 100 fixed the alignment of the hori-selector
 });
 $(window).on('resize', () => {
   setTimeout(() => { test(); }, 500);

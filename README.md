@@ -10,7 +10,7 @@ The website will perfectly fit into the browser of any personal computer, with t
 ### Overall description
 Similar to previous labs, the visualization will filter 15 crimes and project them onto a map, and generate a bar chart based on crime type.
 ### Map
-The map will be used to mark 15 locations of the crime. When hover the cursor above the tag in the map, a short description of the crime will be shown. This is done by using the Leaflets library. 
+The map will be used to mark 15 locations of the crime. When clicking the tag in the map, a short description of the crime will be shown. This is done by using the Leaflets library. 
 ### Bar Chart
 Before the first search, the bar chart illustrate a overall stats of crimes in Prince George's County. Once the first filter is done (by interacting with the button), the bar chart will be used to display the stats of the 15 crime records filtered. The Chart.js library is used to implement this function.
 ## CSS framwork

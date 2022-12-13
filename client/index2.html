@@ -1,0 +1,112 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Project Base</title>
+    <!-- CDN for 'Handsontable' library -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"
+      type="module"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css"
+      type="module"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Crypto App</title>
+  </head>
+
+  <header>
+    <div class="top">
+      <div class="items">
+        <!-- crypto image in top left -->
+        <img
+          src="images/icons8-bitcoin-100.png"
+          alt=""
+          width="auto"
+          height="auto"
+        />
+        <!-- title -->
+        <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
+
+        <a href="index.html" class="right">
+          <button class="button1">Home</button>
+        </a>
+      </div>
+
+      <!-- button to link to second Page -->
+    </div>
+  </header>
+
+  <body>
+    <div class="wrapper">
+      <div class="content2">
+        <div class="left_section2">
+          <!-- 1. Trending Cyprto / left -->
+          <div class="box">
+            <p>
+              The graph below shows a list of cryptos coins align with their
+              short hand ID, and price.
+            </p>
+            <div class="frame">
+              <div>
+                <div
+                  style="position: relative; height: auto"
+                  class="chart"
+                  id="trending-crypto-table"
+                ></div>
+              </div>
+            </div>
+            <!-- outside of green -->
+            <div class="prev_nex">
+              <button id="prev-three">Prev 3</button>
+              <button id="next-three">Next 3</button>
+            </div>
+          </div>
+
+          <!-- 3. Price Percentage change (falling) / right -->
+        </div>
+        <div class="right_section2">
+          <div class="box">
+            <p>The graph below shows data for how cryptos are trending. The numbers that start with a (-) have fallen that amount as a 
+              percentage of their current price on the graph on the left. The cryptos without a (-) are positive and have gained that much as a percentage of their current price on the graph on the left. </p>
+            <div class="frame">
+              <div>
+                <div
+                  style="position: relative; height: auto"
+                  id="price-percentage-falling-table"
+                ></div>
+              </div>
+            </div>
+            <!-- outside of green -->
+            <div class="prev_nex">
+              <button id="prev-three">Prev 3</button>
+              <button id="next-three">Next 3</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <a
+          href="https://github.com/GuntherChung/Group17-Final-Project-Crypto"
+          class="right"
+        >
+          <button class="button1">Project Repository</button>
+        </a>
+
+        <a
+          href="https://guntherchung.github.io/Group17-Final-Project-Crypto/"
+          class="right"
+        >
+          <button class="button1">About page</button>
+        </a>
+      </footer>
+      <script src="script.js"></script>
+    </div>
+  </body>
+</html>

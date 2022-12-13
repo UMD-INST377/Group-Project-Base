@@ -1,13 +1,18 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# Link to Github Pages Site
+https://hriportella.github.io/Group22-Final-Project/
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+## **Evaluation of Three Pointers on NBA Opening Night 2022**
 
-# INST377 Lab Support Software
+### Target Browsers
 
-This repository is intended for Group 22's final INST377 project. It contains a client package which contains the files related to the project. Code in this package, is an accumulation of code knowledge and examples gained over the period of time this course ran. 
+
+# balldontlie API from balldontlie.io
+## Link to balldontlie APi
+https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022
+
+
+
+
 
 ## Getting Started
 

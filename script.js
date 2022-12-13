@@ -171,6 +171,7 @@ function initBarChart(chart, dataObject) {
 //ADDED
 function initBarChart2(chart, dataObject) {
   console.log(dataObject);
+<<<<<<< HEAD
   const intialData = Object.values(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
   const info = Object.keys(dataObject);
@@ -202,6 +203,8 @@ function initBarChart2(chart, dataObject) {
 //NEW
 function initBarChart3(chart, dataObject) {
   console.log(dataObject);
+=======
+>>>>>>> 80f35ce98339d97389bcefe1177666f1b5d7d3b2
   const intialData = Object.values(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
   const info = Object.keys(dataObject);

@@ -26,7 +26,7 @@ function injectHTML(list) {
   target.appendChild(listEl);
   list.forEach((item) => {
     const el = document.createElement('li');
-    el.innerText = `${item.clearance_code_inc_type} On ${item.date.slice(0, 10)}`;
+    el.innerText = `${item.clearance_code_inc_type} on ${item.date.slice(0, 10)} in ${item.location.toUpperCase()}`;
     listEl.appendChild(el);
   });
   /*
@@ -59,8 +59,9 @@ function filterList(array, filterInputValue) {
   return array.filter((item) => {
     if (!item.date || !item.clearance_code_inc_type) { return; }
     const lowerCaseName = item.clearance_code_inc_type.toLowerCase();
+    const lowerCity = item.location.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
-    const str = ` ${item.date}${lowerCaseName} `;
+    const str = ` ${item.date}${lowerCaseName} ${lowerCity}`;
     return str.includes(lowerCaseQuery);
   });
 }
@@ -83,9 +84,9 @@ function makerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    L.marker([item.location.latitude, item.location.longitude]).addTo(map);
+    L.marker([item.latitude, item.longitude]).addTo(map);
     if (index === 0) {
-      map.setView([item.location.latitude, item.location.longitude]);
+      map.setView([item.latitude, item.longitude]);
     }
   });
 }
@@ -257,6 +258,18 @@ function changeChart(chart, dataObject) {
   chart.update();
 }
 
+function groupBy(objectArray, property) {
+  return objectArray.reduce((acc, obj) => {
+    const key = obj[property];
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    // Add object to list for given key's value
+    acc[key].push(obj);
+    return acc;
+  }, {});
+}
+
 function replaceCity (city, array) {
   list = [];
 
@@ -272,18 +285,6 @@ function replaceCity (city, array) {
     });
   });
   return list;
-}
-
-function groupBy(objectArray, property) {
-  return objectArray.reduce((acc, obj) => {
-    const key = obj[property];
-    if (!acc[key]) {
-      acc[key] = [];
-    }
-    // Add object to list for given key's value
-    acc[key].push(obj);
-    return acc;
-  }, {});
 }
 
 async function findLocation() {
@@ -362,7 +363,7 @@ async function mainEvent() {
   }, 100);
   // queries--------------- queries -------------------quries
   const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
-  const submit = document.querySelector('#get-resto');
+  const submit = document.querySelector('search');
   const chartTarget = document.querySelector('#myChart');
   const charAvg = document.querySelector('#myChartAvg');
   const reloadtButton = document.querySelector('#reload');
@@ -478,8 +479,22 @@ async function mainEvent() {
   const resultsGeo = await findLocation();
   const resultsCities = await findCities();
   const replacer = replaceCity(resultsCities, resultsGeo);
-  const cityLocation = groupBy(replacer, 'Geocoded address');
-  console.log('testing', cityLocation);
+  seeData = [];
+  const worker = new Worker('worker.js');
+  // Sending the message using postMessage
+  worker.postMessage([JSON.stringify(replacer), JSON.stringify(results[5])]);
+  worker.onmessage = function(e) {
+    list = [];
+    connector = JSON.parse(e.data);
+    console.log(connector);
+
+    seeData.push(connector);
+  };
+  const cityLocation = groupBy(seeData, 'location');
+  // const connector = await connectApitoDatabase(replacer, results[5]);
+  // console.log(connector);
+
+  console.log(seeData);
 
   // ---------------------------------------GRABING EACH ARRAY FROM LIST
   const arrayFromJson2017 = results[0];
@@ -504,6 +519,7 @@ async function mainEvent() {
   const total2022 = arrayFromJson2022.length;
   // --------------------------------- SHAPING THE DATA INORDER TO FIT NICELY INTO GRAPH
   const shapeData2017 = groupBy(chartData2017, 'clearance_code_inc_type');
+  console.log(chartData2017);
   const shapeData2018 = groupBy(chartData2018, 'clearance_code_inc_type');
   const shapeData2019 = groupBy(chartData2019, 'clearance_code_inc_type');
   const shapeData2020 = groupBy(chartData2020, 'clearance_code_inc_type');
@@ -512,6 +528,7 @@ async function mainEvent() {
   const myChart = initChart(chartTarget, shapeData2017, shapeData2018, shapeData2019, shapeData2020, shapeData2021, shapeData2022);
   const myAverage = initChartAvg(charAvg, total2017, total2018, total2019, total2020, total2021, total2022);
 
+  // console.log('connector', connector);
   // TESTING DIFFRENT FORMATS
   console.log(`${arrayFromJson2022[0].date.slice(0, 10)} ${arrayFromJson2022[0].clearance_code_inc_type}`);
 
@@ -525,30 +542,29 @@ async function mainEvent() {
     // loadAnimation.classList.remove('lds-ellipsis');
     // loadAnimation.classList.add('lds-ellipsis_hidden');
 
-    form.addEventListener('input', (event) => {
-      const filteredList = filterList(currentList, event.target.value);
-      injectHTML(filteredList);
-      const localData = groupBy(filteredList, 'clearance_code_inc_type');
-      changeChart(myChart, localData);
-      makerPlace(filteredList, pageMap);
-    });
-
     // And here's an eventListener! It's listening for a "submit" button specifically being clicked
+
     // this is a synchronous event event, because we already did our async request above, and waited for it to resolve
-    form.addEventListener('submit', (submitEvent) => {
+
+    form.addEventListener('input', (event) => {
+      const filteredList = filterList(seeData, event.target.value);
       // This is needed to stop our page from changing to a new URL even though it heard a GET request
-      submitEvent.preventDefault();
+      if (filteredList?.length > 0) {
+        form.addEventListener('submit', (submitEvent) => {
+          submitEvent.preventDefault();
+          const localData = groupBy(filteredList, 'clearance_code_inc_type');
+          currentList = processCrimeData(filteredList);
+          changeChart(myChart, localData);
+          makerPlace(currentList, pageMap);
+          injectHTML(filteredList);
+
+          console.log('current list', currentList);
+        });
+
+        // And this function call will perform the "side effect" of injecting the HTML list for yo
+      }
 
       // This constant will have the value of your 15-restaurant collection when it processes
-      currentList = processCrimeData(arrayFromJson2022);
-      console.log('current list', currentList);
-
-      // And this function call will perform the "side effect" of injecting the HTML list for you
-      injectHTML(currentList);
-      const localData = groupBy(currentList, 'clearance_code_inc_type');
-      changeChart(myChart, localData);
-
-      makerPlace(currentList, pageMap);
 
       // By separating the functions, we open the possibility of regenerating the list
       // without having to retrieve fresh data every time

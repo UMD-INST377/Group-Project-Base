@@ -76,17 +76,7 @@ h2, h3 {
   padding-right: 1rem;
 }
 
-.box {
-  border: none;
-  border-radius: 2px;
-  width: fit-content;
-  height:fit-content;
-  padding: 1.5rem;
-  margin: 0 auto;
-}
-
 .left_section {
-  border: none;
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
@@ -99,10 +89,9 @@ h2, h3 {
 }
 
 .right_top_section {
-  border: none;
   flex: 1 2 auto;
   margin: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -110,7 +99,6 @@ h2, h3 {
 }
 
 .chart_container {
-  border: none;
   flex: 1 2 auto;
   margin: 1rem;
   padding: 1.5rem;

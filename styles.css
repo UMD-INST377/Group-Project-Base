@@ -202,8 +202,10 @@ form {
 }
 
 .myChart{
-  width: 400px;
-  height: 450px;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 /* Carousel */
@@ -320,6 +322,13 @@ form label {
     .box{
       width: 100%;
       align-items: flex-start;
+    }
+
+    .myChart{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
     }
     
 }

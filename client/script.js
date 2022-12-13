@@ -85,6 +85,7 @@ async function mainEvent() {
     full_list = [];
     for (let i = 0; i < x_labels.length; i += 1) {
       full_list[i] = `${String(x_labels[i])}: ${String(populationData[i])}`;
+
     }
     current_list = [];
     form.addEventListener('input', (event) => {
@@ -94,10 +95,12 @@ async function mainEvent() {
     });
 
     form.addEventListener('submit', (submitEvent) => {
+
       // This is needed to stop our page from changing to a new URL even though it heard a GET request
       submitEvent.preventDefault();
       current_list = full_list;
       injectHTML(current_list);
+
     });
     makeChart(x_labels, populationData);
   }

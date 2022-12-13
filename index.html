@@ -8,19 +8,34 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1> Fresh 3: Kevin Jamer & Matthew Tan </h1>
+    <header class="header" ><h1>Fresh 3: Kevin Jamer & Matthew Tan</h1></header>
     <!-- <script src="./script.js"></script> -->
     </div>
     <div class = "box">
         <h3>Chart</h3>
-        <button type ="submit" id = "get-years">Get Data</button>
-
         <div>
             <canvas id="myChart" width = "400" height = "400"></canvas>
           </div>
           <div class = "box" id = "population_list">
             <p> List of population by year </p>
           </div>
+    </div>
+    <script src="./script.js"></script>
+    <div class = "container">
+        <div class = "left_section box">
+            <h3>Chart</h3>
+        <div>
+            <canvas id="myChart" width = "400" height = "400"></canvas>
+          </div>
+        </div>
+        <div class = "right_section box">
+            <h3>List of population by year</h3>
+
+            <form action="/api" class="box main_form">  
+        <button type ="submit" id = "get-years">Get Data</button>
+        <div class="box" id = "population_list"></div>
+        <form>
+        </div>
     </div>
     <script src="./script.js"></script>
 </body>

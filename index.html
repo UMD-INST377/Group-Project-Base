@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="client/styles.css">
+    <link rel="stylesheet" href="/client/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
     crossorigin=""/>
@@ -19,7 +19,7 @@
     <div class="trans trans1 is-active"></div>
     <div class="panel-block.is-wrapped">
         <header class="title">
-            <h1>Group 10 INST 377 labs</h1>
+            <h1>Victor Aldridge INST 377 labs</h1>
             <div class=image>
                 <nav>
                     <ul class="navbar">
@@ -28,7 +28,7 @@
 
                         </li>
                         <li class="tab">
-                            <a data-switcher data-tab="2">Map</a>
+                            <a data-switcher data-tab="2">About</a>
                         </li>
 
                     </ul>
@@ -36,7 +36,7 @@
         </header>
         <main>
             <section= class="pages">
-                <div class="page is-active" data-page="1">
+                <div class="page" data-page="1">
                     <div class = "box">
                         <h1 class="title strong">Welcome to the PG County's KYK</h1>
                         <h4>(K)eeping (Y)ou in the (K)now</h>
@@ -59,7 +59,7 @@
                                 <button class = "button is-dark" type="button" id="next">Next</button>
                                 <button class = "button is-dark" type="button" id="prev">Prev</button>
                                 <div>
-                                    <button class="button is-dark spacing-button" type="button" id="reload">Reload Visualization</button>
+                                    <button class="button is-dark spacing-button" type="button" id="reload">Reload Visiulation</button>
                                 </div>
                                 
                             </div>
@@ -89,7 +89,7 @@
 
     </p>
 
-    <div class="page" data-page="2">
+    <div class="page is-active" data-page="2">
         <h2>Map</h2>
         <div id="map"></div>
         
@@ -101,11 +101,12 @@
                     <h3>Name Your City In Prince George County</h3>
                 </div>
                 <form action="/api" class="main_form box">
-                    <label for="resto"></label>
-                    <input class="input" type="text" name="resto" id="resto" placeholder="e.g. accidents ">
-                    <button class="button is-dark" type="submit" id="get-resto">Search</button>
+                    <label for="crime"></label>
+                    <input class="input" type="text" name="crime" id="crime" placeholder="e.g. accidents ">
+                    <button class="button is-dark" type="submit" id="search">Search</button>
                     <div id="crime_list"></div>
                 </form>
+           
 
             </div>
         </div>
@@ -151,11 +152,11 @@
 
 
 
-    <script src="client/script.js"></script>
+    <script src="/client/script.js"></script>
 </body>
 
 <footer>
-    <a href="http://github.com/meche234/" target="_blank" rel="noopener noreferrer">meche234/INST377/group10</a>
+    <a href="http://github.com/meche234/" target="_blank" rel="noopener noreferrer">meche234/INST377-Lab-Work</a>
 </footer>
 
 </html>

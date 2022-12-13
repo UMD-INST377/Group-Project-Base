@@ -1,6 +1,6 @@
 # Yearly USA Population
 
-Insert link here
+[Git Pages]:(https://kevjamer.github.io/Fresh3-Final-Project-USA-Population.github.io/)
 
 ## Our API: [Data USA](https://datausa.io/about/api/)
 

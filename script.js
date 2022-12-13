@@ -17,17 +17,6 @@ function injectHTML(list) {
   });
 }
 
-function filterList(list,filterInputValue) {
-  ret_list = [];
-  list.forEach((item) => {
-    if(item.includes(filterInputValue)) {
-      ret_list.push(item);
-    }
-  });
-  return ret_list;
-}
-
-
 function makeChart(x, y) {
   const ctx = document.getElementById('myChart');
   new Chart(ctx, {
@@ -82,24 +71,17 @@ async function mainEvent() {
     x_labels = getYear(array_US.data);
     populationData = getPopulation(array_US.data);
 
-
-    full_list = [];
+    curr_list = [];
     for (let i = 0; i < x_labels.length; i += 1) {
-      full_list[i] = `${String(x_labels[i])}: ${String(populationData[i])}`;
-
+      curr_list[i] = `${String(x_labels[i])}: ${String(populationData[i])}`;
     }
-    current_list = [];
-    form.addEventListener('input', (event) => {
-      console.log(event.target.value);
-     const filtered_list = filterList(current_list, event.target.value);
-     injectHTML(filtered_list);
-    });
 
     form.addEventListener('submit', (submitEvent) => {
+      console.log('here');
+
       // This is needed to stop our page from changing to a new URL even though it heard a GET request
       submitEvent.preventDefault();
-      current_list = full_list;
-      injectHTML(current_list);
+      injectHTML(curr_list);
     });
     makeChart(x_labels, populationData);
   }

@@ -1,12 +1,37 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <script src="./script.js"></script>
-</body>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fresh 3 Group Project</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header class="header" ><h1>Fresh 3: Kevin Jamer & Matthew Tan</h1></header>
+        <!-- <script src="./script.js"></script> -->
+        <div class = "container">
+            <div class = "left_section box">
+                <h3>Chart</h3>
+            <div>
+                <canvas id="myChart" width = "400" height = "400"></canvas>
+            </div>
+            </div>
+            <div class = "right_section box">
+                <h3>List of population by year</h3>
+
+                <form action="/api" class="box main_form">
+                    <div>
+                        <label for="pop">Filtered Population Data</label>
+                        <input type = "text" name= "pop" id = "pop"/>
+                    </div>  
+                    <button type ="submit" id = "get-years">Get Data</button>
+                    <div id = "population_list"></div>
+                </form>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+
 </html>

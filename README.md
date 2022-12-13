@@ -23,10 +23,6 @@ Link to the Github Pages site where things are running
 Title of your project
 Description of target browsers (iOS? Android? Which ones? Which versions?)
 Documentation needs to be written in Markdown (*.md) files, nicely formatted
-Description of your project:
 
-What API did you use, link to the API
-What visualisations does your project drive?
-What visualisation or other JS libraries does your project use?
-What CSS frameworks did you use? What version of them?
-What is your actual project trying to display and solve?
+Description of our project:
+We used the US Population API. The API link we used was https://datausa.io/api/data?drilldowns=Nation&measures=Population. We used Chart.js to create a bar chart of the recently population in recently. We did not use any CSS frameworks. Our project is trying to solve the issue of USA population statistics by displaying charts and data for the US population.

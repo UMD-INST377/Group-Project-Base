@@ -78,9 +78,11 @@ function markerPlace(array, map) {
   });
 }
 
-async function getData() {
-  const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json?$where=within_circle(location_1, 47.59, -122.33, 1000)';
-  const data = await fetch(url);
+const url_1 = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json?$where=within_circle(location_1, 47.59, -122.33, 1000)';
+
+async function getData(url) {
+  const response = await fetch(url);
+  const data = await fetch(response);
   const json = await data.json();
   const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.district));
   console.log(reply);
@@ -90,7 +92,7 @@ async function getData() {
 async function mainEvent() {
   // initMap();
   const pageMap = initMap();
-  const mapData = await getData();
+  const mapData = await getData(url_1);
   const form = document.querySelector('.main_form'); 
   const submit = document.querySelector('#get-speed'); //inputed//
   const loadAnimation = document.querySelector('.lds-ellipsis');

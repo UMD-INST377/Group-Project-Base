@@ -18,7 +18,7 @@ For our Api we chose [CoinGecko](https://www.coingecko.com/en/api/documentation)
 
 We chose to use [Chart.js](https://www.chartjs.org/) for our main visualization which we hold on our home page because it shows data in a way in which you can compare how one coin is going to another. We were then able to allow the chart to update at the request of the user with a clock of a button. Also, on our second page, we used [HandsOnTable](https://handsontable.com/) to display data for trending and change in crypto currencies. 
 
-###CSS Frameworks:
+### CSS Frameworks:
 
 In the beginning we did consider importing and using a framework such as Bulma, although while formats in Bulma looked nice it was not as easy to use as we first thought. Instead of using a premade CSS framework we chose to look at layouts we thought looked good on the surface and build those on our own. This way of doing our CSS allowed us to really understand what it takes to design a html file in ways that we felt fit our ideas and visualizations. 
 

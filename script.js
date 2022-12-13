@@ -41,7 +41,7 @@ function processPlayers(list) {
 
 function filterList(array, filterInputValue) {
   return array.filter((item) => {
-    if (!item.player.last_name) { return; }
+    // if (!item.player.last_name) { return; }
     const lowerCaseName = `${item.player.first_name} ${item.player.last_name} ${item.player.position}`.toLowerCase(); // name appears again maybe lastname
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
@@ -87,8 +87,8 @@ function initScatter(chart, dataObject) {
     labels: labels,
     datasets: [{
       label: 'Made vs Attempted',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgb(201, 8, 42)',
+      borderColor: 'rgb(255, 8, 42)',
       data: scatterArray
     }]
   };
@@ -123,19 +123,6 @@ function shapeDataForFg3mBarChart(array) {
   }, {});
 }
 
-// function shapeDataForBarChart(array) {
-//   const allThreeData = array.filter((item => item.fg3m));
-//   console.log(allThreeData)
-//   return allThreeData;
-// }
-
-// //ADDED
-// function shapeDataForBarChart2(array) {
-//   const allPtsData = array.filter((item => item.pts));
-//   console.log(allPtsData)
-//  return allPtsData;
-// }
-
 function initBarChart(chart, dataObject) {
   const intialData = Object.values(dataObject);
   const labels = shapeLabelsForBarChart(intialData);
@@ -145,8 +132,8 @@ function initBarChart(chart, dataObject) {
     labels: labels,
     datasets: [{
       label: 'NBA 3 pointers made in 2022 Opening Night',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgb(255, 8, 42)',
+      borderColor: 'rgb(255, 8, 42)',
       data: info
     }]
   };
@@ -207,7 +194,7 @@ function initBarChart3(chart, dataObject) {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'NBA FT percentage from 2022 Opening Night',
+      label: 'NBA Pts scored in 2022 Opening Night',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: info
@@ -286,21 +273,6 @@ function changeScatter(chart, dataObject) {
   });
   chart.update();
 }
-
-// // ADDED
-// function changeChart2(chart, dataObject) {
-//   console.log(dataObject);
-//   const intialData = Object.values(dataObject);
-//   const labels = shapeLabelsForBarChart(intialData);
-//   const info = Object.keys(dataObject);
-
-
-//   chart.data.labels = labels;
-//   chart.data.datasets.forEach((dataset) => {
-//     dataset.data = info;
-//   });
-//   chart.update();
-// }
 
 async function nbaData() {
   const url = 'https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022'; // Data goes here https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]=2022

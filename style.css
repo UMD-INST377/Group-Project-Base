@@ -59,20 +59,21 @@ button {
 .left_section {
   background-color: 
   rgba(92, 43, 102, 0.8);
-  flex: .5 3 auto;
+  flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem ;
 }
 
 .right_section {
   background-color: rgba(220, 114, 241, 0.8);
-  flex: 1.5 3 auto;
+  flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
 }
+
 /* CSS instructions for Lab 5 */
 /* Bring in your successful CSS from week 4 */
 /* In your #map rule, set map to display:none; to temporarily hide your map box */
@@ -193,7 +194,7 @@ form {
 
 .box {
   background-color: rgb(149, 183, 235);
-  border-radius: 4px;
+  border-radius: 2px;
   width: fit-content;
   height: fit-content;
   padding: 1.5rem;
@@ -227,7 +228,7 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: rgba(92 , 43, 102, 0.8);
+  background-color: rgba(43, 75, 102, 0.8);
   font-size: 1.2rem;
   font-weight: 600;
 }

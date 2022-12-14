@@ -1,4 +1,3 @@
-
 /* eslint-disable max-len */
 /*
   Hook this script to index.html
@@ -17,8 +16,8 @@ function getRandomInclusive(min, max) {
 }
 
 function injectHTML(list) {
-  console.log('fired injectHTML');
-  const target = document.querySelector('#speed_list');
+  
+  const target = document.querySelector('#speed_list'); //inputted // 
   target.innerHTML = '';
 
   const listEl = document.createElement('ol');
@@ -26,29 +25,30 @@ function injectHTML(list) {
 
   list.forEach((item) => {
     const el = document.createElement('li');
-      el.innerText = item.name;
+      el.innerText = item.school;
+  ;
     listEl.appendChild(el);
+    console.log('fired injectHTML');
   });
 }
 // Filtering data //
 function filterList(list, filterInputValue) {
   return list.filter((item) => {
-    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseName = `${item.school} ${item.object_id} ${item.street_address} ${item.posted_speed}`.toLowerCase(); //inputted
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
 }
 
 function processSpeed(list) { //inputted//
-  console.log('fired speed list');
   const range = [...Array(10).keys()];
   const newArray = range.map((item) => {
     const index = getRandomInclusive(0, list.length);
+    console.log('fired speed list');
     return list[index];
   });
   return newArray;
 }
-
 function initMap() {
   console.log('initMap');
   const map = L.map('map').setView([38.7849, -76.8721], 13);
@@ -59,7 +59,6 @@ function initMap() {
   return map;
 }
 
-
 function markerPlace(array, map) {
   console.log('markerPlace', array);
   map.eachLayer((layer) => {
@@ -68,46 +67,41 @@ function markerPlace(array, map) {
     }
   });
   array.forEach((item, index) => {
-    const lat = item.location.latitude;
-    const long = item.location.longitude;
-    console.log([lat, long]);
-    L.marker([lat, long]).addTo(map);
+    const lat = item.location_1.latitude;
+    const long = item.location_1.longitude;
+    const numLat = parseFloat(lat);
+    const numLong = parseFloat(long);
+    console.log([numLat, numLong]);
+    L.marker([numLat, numLong]).addTo(map);
     if (index === 0) {
-      map.setView([lat, long], 10);
+      map.setView([numLat, numLong], 10);
     }
   });
 }
 
 
-async function getData(url) {
-  const response = await fetch(url);
-  const data = await fetch(response);
+async function getData() {
+  const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
+  const data = await fetch(url);
   const json = await data.json();
-  const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.district));
-  console.log(reply);
+  const reply = json.filter((item) => Boolean(item.location)).filter((item) => Boolean(item.school)); //inputted//
+  console.log(json);
   return reply;
 }
 
 async function mainEvent() {
   // initMap();
-  const url_1 = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json?$where=within_circle(location_1, 47.59, -122.33, 1000)';
-
-  const pageMap = initMap();
-  const mapData = await getData(url_1);
+  
   const form = document.querySelector('.main_form'); 
   const submit = document.querySelector('#get-speed'); //inputed//
   const loadAnimation = document.querySelector('.lds-ellipsis');
 
   submit.style.display = 'none';
+  const pageMap = initMap();
+  
+  const mapData = await getData();
 
-  // const pageMap = initMap();
-  // const mapData = await getData();
-
-<<<<<<< Updated upstream
   if (mapData?.length > 0) { //inputted// 
-=======
-  if (posted_speed.length > 0) { //inputted// 
->>>>>>> Stashed changes
     submit.style.display = 'block';
     loadAnimation.classList.remove('lds-ellipsis');
     loadAnimation.classList.add('lds-ellipsis_hidden');
@@ -122,7 +116,7 @@ async function mainEvent() {
 
     form.addEventListener('submit', (submitEvent) => {
       submitEvent.preventDefault();
-
+      console.log('here')
       currentList = processSpeed(mapData); //inputted//
 
       injectHTML(currentList);
@@ -130,5 +124,8 @@ async function mainEvent() {
     });
   }
 }
-document.addEventListener('DOMContentLoaded', async () => mainEvent());
 
+
+
+
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

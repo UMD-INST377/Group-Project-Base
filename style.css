@@ -1,9 +1,10 @@
 .container {
+  margin: 0 20px;
   display: flex;
-  align-items: center;
-  justify-content: center
+  justify-content: space-evenly;
+  align-items: start;
+  flex: 1;
 }
-
 img {
   max-width: 100%
 }
@@ -227,8 +228,8 @@ form {
 
 .footer {
   flex-shrink: 0;
-  padding: 1rem;
-  background-color: rgba(43, 75, 102, 0.8);
+  padding: .5rem;
+  background-color: rgba(149, 183, 235);
   font-size: 1.2rem;
   font-weight: 600;
 }

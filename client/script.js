@@ -55,18 +55,12 @@ async function initCryptoDataChart() {
   const cryptocurrencyJson = sort(await getData(cryptocurrencyDataURL), 'max_supply'); // get a 250 long list of coins and their 7 day change in price
 
   const Coin_Names = await getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
-  console.log(Coin_Names)
-
   const Coin_History = await getPropertyForAll(cryptocurrencyJson, 'sparkline_in_7d'); // extract nested array
-  console.log(Coin_History)
-
   const History_Price = await getPropertyForAll(Coin_History, 'price'); // extract 7 days worth of price changes in array
-  console.log(History_Price)
 
   let start = 0; // index to start the sublist at
   let numOfElements = 10; // the number of elements we want in the sublist
   let labelSublist = rotateList(Coin_Names, start, numOfElements); // rotate the labels list
-  console.log(labelSublist)
   let cryptoPriceSublist = rotateList(History_Price, start, numOfElements); // rotate the market cap list
   
 

@@ -52,7 +52,7 @@ function sort(obj, property) {
 // Display a bar chart showing the price of each coin (alphabetically ordered)
 async function initCryptoDataChart() {
   const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true';
-  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get a 250 long list of coins and their 7 day change in price
+  const cryptocurrencyJson = sort(await getData(cryptocurrencyDataURL), 'max_supply'); // get a 250 long list of coins and their 7 day change in price
 
   const Coin_Names = await getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
   console.log(Coin_Names)
@@ -66,6 +66,7 @@ async function initCryptoDataChart() {
   let start = 0; // index to start the sublist at
   let numOfElements = 10; // the number of elements we want in the sublist
   let labelSublist = rotateList(Coin_Names, start, numOfElements); // rotate the labels list
+  console.log(labelSublist)
   let cryptoPriceSublist = rotateList(History_Price, start, numOfElements); // rotate the market cap list
   
 
@@ -74,7 +75,7 @@ async function initCryptoDataChart() {
   // prepare the data for the chart
 
   // to not cluster the graph, the "" are skipped along the x-axis
-  const labels = (["DAY1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "DAY3", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "DAY5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "DAY7", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]);
+  const labels = (["DAY1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "DAY3", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "DAY5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "TODAY", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]);
   
   const data = {
     labels: labels,
@@ -94,22 +95,22 @@ async function initCryptoDataChart() {
         yAxisID: 'y',
       },
       {
-        label: labelSublist[3],
-        data: cryptoPriceSublist[3],
+        label: labelSublist[2],
+        data: cryptoPriceSublist[2],
         borderColor: "#0291f7",
         backgroundColor: "#0291f7",
         yAxisID: 'y',
       },
       {
-        label: labelSublist[4],
-        data: cryptoPriceSublist[4],
+        label: labelSublist[3],
+        data: cryptoPriceSublist[3],
         borderColor: "#f70202",
         backgroundColor: "#f70202",
         yAxisID: 'y',
       },
       {
-        label: labelSublist[5],
-        data: cryptoPriceSublist[5],
+        label: labelSublist[4],
+        data: cryptoPriceSublist[4],
         borderColor: "#f20aee",
         backgroundColor: "#f20aee",
         yAxisID: 'y',
@@ -172,29 +173,59 @@ async function initCryptoDataChart() {
     if (start > cryptocurrencyJson.length) {
       start = cryptocurrencyJson.length - (cryptocurrencyJson.length % 10);
       numOfElements = cryptocurrencyJson.length % 10;
-      labelSublist = rotateList(labelsList, start, numOfElements);
-      cryptoPriceSublist = rotateList(cryptoPriceList, start, numOfElements);
+      labelSublist = rotateList(Coin_Names, start, numOfElements);
+      cryptoPriceSublist = rotateList(History_Price, start, numOfElements);
 
       start = -10; // start at -10 to offset increment above
     } else {
       numOfElements = 10;
-      labelSublist = rotateList(labelsList, start, numOfElements);
-      cryptoPriceSublist = rotateList(cryptoPriceList, start, numOfElements);
+      labelSublist = rotateList(Coin_Names, start, numOfElements);
+      cryptoPriceSublist = rotateList(History_Price, start, numOfElements);
     }
 
     // Remove old data from chart
-    while (marketCapChart.data.labels.length > 0) {
+    while (marketCapChart.data.datasets.length > 0) {
       marketCapChart.data.labels.pop();
-      marketCapChart.data.datasets.forEach((dataset) => dataset.data.pop());
+      marketCapChart.data.datasets.pop();
     }
 
-    // Add new data to chart
-    for (let i = 0; i < numOfElements; i++) {
-      const newLabel = labelSublist[i];
-      marketCapChart.data.labels.push(newLabel);
-      const newMarketCap = cryptoPriceSublist[i];
-      marketCapChart.data.datasets.forEach((dataset) => dataset.data.push(newMarketCap));
-    }
+    marketCapChart.data.datasets.push(
+      {
+        label: labelSublist[0],
+        data: cryptoPriceSublist[0],
+        borderColor: "#f79205",
+        backgroundColor: "#f79205",
+        yAxisID: 'y',
+      },
+      {
+        label: labelSublist[1],
+        data: cryptoPriceSublist[1],
+        borderColor: "#00fc00",
+        backgroundColor: "#00fc00",
+        yAxisID: 'y',
+      },
+      {
+        label: labelSublist[2],
+        data: cryptoPriceSublist[2],
+        borderColor: "#0291f7",
+        backgroundColor: "#0291f7",
+        yAxisID: 'y',
+      },
+      {
+        label: labelSublist[3],
+        data: cryptoPriceSublist[3],
+        borderColor: "#f70202",
+        backgroundColor: "#f70202",
+        yAxisID: 'y',
+      },
+      {
+        label: labelSublist[4],
+        data: cryptoPriceSublist[4],
+        borderColor: "#f20aee",
+        backgroundColor: "#f20aee",
+        yAxisID: 'y',
+      });
+
     marketCapChart.update();
   });
 }

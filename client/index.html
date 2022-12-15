@@ -46,7 +46,7 @@
           <form action="" class="search_box">
             
             <button class="button2"id="update-chart-button">Refresh with new list</button> <!-- add id="search_button" when ready-->
-            <input type="text" name="" id="">
+            <input type="text" placeholder="Search a Crypto..." id=""> <!-- Work in progress -->
 
           </form>
         </div>
@@ -54,11 +54,11 @@
 
       <!-- Cryptocurrency data / right side -->
       <div class="right_section">
+        <p class="word_box">The chart below shows 5 crypto currencies at a time, this is to not overfill the graph. 
+          The <b>Y axis</b> describes the price over time in USD. 
+          The <b>X axis</b> describes the price over the span of 7 days. </p>
         <div class="chartBox">
           <canvas id="market-cap-chart"></canvas> 
-        </div>
-        <div class="box" id="table-data">
-          A list of the currencies currently in the chart
         </div>
       </div>
     </div>

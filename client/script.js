@@ -170,10 +170,10 @@ function injectHTML(list) {
 }
 
 async function initSearchBar() {
-  const targetElement = document.querySelector('#search_button');
-  targetElement.addEventListener('click', async () => {
-    // injectHTML(null);
-    injectHTML();
+  const form = document.querySelector('.search_form');
+  form.addEventListener('input', (event) => {
+    event.preventDefault();
+    console.log(event.target);
   });
 }
 

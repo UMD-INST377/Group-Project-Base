@@ -52,7 +52,7 @@ function sort(obj, property) {
 // Display a bar chart showing the price of each coin (alphabetically ordered)
 async function initCryptoDataChart() {
   const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true';
-  const cryptocurrencyJson = sort(await getData(cryptocurrencyDataURL), 'max_supply'); // get a 250 long list of coins and their 7 day change in price
+  const cryptocurrencyJson = sort(await getData(cryptocurrencyDataURL), 'market_cap_rank'); // get a 250 long list of coins and their 7 day change in price
 
   const Coin_Names = await getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
   const Coin_History = await getPropertyForAll(cryptocurrencyJson, 'sparkline_in_7d'); // extract nested array

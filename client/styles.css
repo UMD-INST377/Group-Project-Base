@@ -86,9 +86,30 @@ form {
   color: #fa1111;
   text-align: center;
   transition: all 0.15s;
-  background-color: transparent;
+  background-color: #221c44;
   width: fit-content;
   cursor:pointer;
+}
+.button3 {
+  display: inline-block;
+  padding: 0.5em 3em;
+  border: 0.16em solid #fefeff;
+  background-color: #221c44;
+  margin: 0 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #fffafa;
+  text-align: center;
+  transition: all 0.15s;
+  width: fit-content;
+  cursor:pointer;
+}
+
+.button3:hover{
+  background-color: aqua;
 }
 
 .button2:hover{
@@ -292,10 +313,14 @@ form {
 }
 
 .word_box{
+  display: block;
   background-color: rgb(255, 255, 255);
   border-radius: 20px;
   border: solid 5px rgb(205, 26, 255);
-  padding-bottom: 10;
+  width: 75%;
+  padding: 20;
+  margin: 30 auto;
+
 }
 
 .frame{

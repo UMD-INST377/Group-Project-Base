@@ -6,12 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>project-pgcounty-spending</title>
     <link rel="stylesheet" href="styles.css">
-    <script src = "https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
-
-    <!--Code for header---------->
     <div class="wrapper">
         <header class="header">
             <h2 class="header">
@@ -23,48 +20,43 @@
                 </nav>
             </h2>
         </header>
-    <!---------------------------->
-    
 
-    <!--Filter Options-------------------------------------------------------------------------------->
-        <div class="table container">
-            <form action="/api" class="b main_form">
-
-                <!--Search Box-->
-                <div>
-                    <input type="text" id="myInput" placeholder="Filter">
+        <div class="form container">
+            <div class="left box">
+                <div class="innr">
+                    <form action="/api" class="sr_form" style="width: 110px">
+                        <div>
+                            <label for="resto">Search</label>
+                            <input type="text" name="resto" id="resto">
+                        </div>
+                        <button type="submit" id="get">Submit & filter</button>
+                    </form>
+                    <h5>Select Year:</h5>
+                    <form action="/api" class="yr_form">
+                        <div class="small" id="butts">
+                            <script>
+                                window.addEventListener('load', (event) => {
+                                    addButt('#butts');
+                                });
+                            </script>
+                        </div>
+                    </form>
                 </div>
-
-
-            </form>
-        </div>
-    <!----------------------------------------------------------------------------------------------------->
-
-
-    <!--below is code for the table of data-->
-        <div class = "wrapper">
-            <table>
-                <thead>
-                    <tr class = "text">
-                        <th>Number</th>
-                        <th>Payee</th>
-                        <th>Agency</th>
-                        <th>ZipCode</th>
-                        <th>Amount</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody id = "data-output">
-
-                </tbody>
-            </table>
+            </div>
+            <div class="inner"></div>
+            <div class="right box">
+                <div id="yrtitle"></div>
+                <div class="table" id="rlist">
+                    Loading data from an API...
+                </div>
+            </div>
         </div>
 
         <div class="footer">
             <a href="https://github.com/bw1umd/Project-pgcounty-spending.git">Github</a>
         </div>
         <script src="./script.js"></script>
-    <!----------------------------------------->
+    </div>
 </body>
 
 </html>

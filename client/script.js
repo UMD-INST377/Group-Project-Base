@@ -13,7 +13,8 @@ async function getData(url) {
 
 // Returns a list containing the value of the given 'property' for each element in the JSON
 function getPropertyForAll(json, property) {
-  return json.map((item) => item[property]);
+  data = json.map((item) => item[property]);
+  return data;
 }
 
 // Get 'numOfElements' from 'list' beginning at 'start'; wrap around the list if necessary
@@ -55,15 +56,15 @@ function sort(obj, property) {
 async function initCryptoDataChart() {
   const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true';
   const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get a 250 long list of coins and their 7 day change in price
-  const Coin_Names = getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
 
-  const Coin_History = getPropertyForAll(Coin_Names, 'sparkline_in_7d'); // extract nested array
-  const History_Price = getPropertyForAll(Coin_History, 'price'); // extract 7 days worth of price changes in array
+  const Coin_Names = await getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
+  const Coin_History = await getPropertyForAll(Coin_Names, 'sparkline_in_7d'); // extract nested array
+  const History_Price = await getPropertyForAll(Coin_History, 'price'); // extract 7 days worth of price changes in array
 
   let start = 0; // index to start the sublist at
   let numOfElements = 10; // the number of elements we want in the sublist
-  let labelSublist = rotateList(labelsList, start, numOfElements); // rotate the labels list
-  let cryptoPriceSublist = rotateList(cryptoPriceList, start, numOfElements); // rotate the market cap list
+  let labelSublist = rotateList(Coin_Names, start, numOfElements); // rotate the labels list
+  let cryptoPriceSublist = rotateList(History_Price, start, numOfElements); // rotate the market cap list
 
   const targetElement = document.querySelector('#market-cap-chart'); // get DOM Object for chart
 
@@ -74,47 +75,64 @@ async function initCryptoDataChart() {
   
   const data = {
     labels: labels,
-    datasets: [{
-      label: 'Crypto Price (USD)',
-      data: cryptoPriceSublist,
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(201, 203, 207, 0.2)'
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
-      ]
-    }]
+    datasets: [
+      {
+        label: labelSublist[0],
+        data: cryptoPriceSublist[0],
+        borderColor: Utils.CHART_COLORS.red,
+        backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+        yAxisID: 'y',
+      },
+      {
+        label: labelSublist[1],
+        data: cryptoPriceSublist[1],
+        borderColor: Utils.CHART_COLORS.red,
+        backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+        yAxisID: 'y',
+      }
+    ]
   };
 
   // configure the asesthetics of the chart
   const config = {
+    type: 'line',
+    data: data,
     options: {
       responsive: true,
-      backgroundColor: '#9BD0F5',
-      maintainAspectRatio: false,
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
+      stacked: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Chart.js Line Chart - Multi Axis'
+        }
+      },
       scales: {
         y: {
-          beginAtZero: true
-        }
+          type: 'linear',
+          display: true,
+          position: 'left',
+        },
+        y1: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+  
+          // grid line settings
+          grid: {
+            drawOnChartArea: false, // only want the grid lines for one axis to show up
+          },
+        },
       }
-    }
+    },
   };
 
   const marketCapChart = new Chart(
     targetElement, {
-      type: 'bar',
+      type: 'line',
       data: data,
       config
     }
@@ -171,7 +189,7 @@ function injectHTML(list) {
   });
   console.log('fired injectHTML');
 }
-
+/*
 async function initSearchBar() {
   const form = document.querySelector('.search_form');
   form.addEventListener('input', (event) => {
@@ -179,10 +197,11 @@ async function initSearchBar() {
     console.log(event.target);
   });
 }
+*/
 
 async function mainEvent() {
   const ecosystemChart = initCryptoDataChart();
-  const searchBar = initSearchBar();
+  /*const searchBar = initSearchBar();*/
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

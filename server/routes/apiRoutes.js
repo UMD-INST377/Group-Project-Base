@@ -1,19 +1,19 @@
 /* eslint-disable no-console */
 import express from 'express';
-import fetch from 'node-fetch';
+import path from 'path';
 
-import PgSpendingRoutes from './PgSpendingRoutes.js';
+import finServiceRoutes from './finService.js';
 
 const router = express.Router();
+const __dirname = path.resolve();
 
 router.get('/', (req, res) => {
-  res.send('Welcome to the PG Spending API!');
+  res.send('default routes');
 });
-
 
 // Generic API inclusion demonstration
 // Replace this with the group member's actual route
 // This leads to /api/member1
-router.use('/PgSpending', PgSpendingRoutes);
+router.use('/finServices', finServiceRoutes);
 
 export default router;

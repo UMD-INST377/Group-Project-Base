@@ -6,13 +6,13 @@ function injectHTML(list, htmlelm) {
   const head = document.createElement('tr');
   for (const key of Object.keys(list[0])) {
     const th = document.createElement('th');
-    th.innerText = cap(key);
+    th.innerText = cap(key.replaceAll('_', ' '));
     head.appendChild(th);
   }
   target.appendChild(head);
 
   // populate table content
-  for (const [key, value] of Object.entries(list)) {
+  for (const value of Object.values(list)) {
     const tr = document.createElement('tr');
     const row = Object.values(value);
     row.forEach(element => {
@@ -84,7 +84,7 @@ async function mainEvent() {
   let yrtitle = '2022';
   let yr = document.querySelector('.yr_form');
   let data = await fetchJson(2022);
-  injectHTML(data['data'], '#rlist');
+  injectHTML(data.data, '#rlist');
   let table = document.querySelector('#yrtitle');
   let title = document.createElement('h2');
   title.innerText = 'Data from ' + yrtitle;
@@ -97,7 +97,7 @@ async function mainEvent() {
     console.log(data.data.length);
     if (data.data.length > 0) {
       document.querySelector('#rlist')
-        .addEventListener('load', injectHTML(data['data'], '#rlist'));
+        .addEventListener('load', injectHTML(data.data, '#rlist'));
       yrtitle = await event.target.value;
       // add table title
       title.innerText = 'Data from ' + yrtitle;
@@ -110,7 +110,7 @@ async function mainEvent() {
     let search = document.querySelector('.sr_form');
     search.addEventListener('input', async (event) => {
       console.log(event.target.value)
-      const flist = await filterlist(data['data'], event.target.value);
+      const flist = await filterlist(data.data, event.target.value);
       injectHTML(flist, '#rlist');
     });
     submit.style.display = 'block';
@@ -118,9 +118,6 @@ async function mainEvent() {
       event.preventDefault();
     });
   }
-
-  expo = await data;
-  console.log(expo);
 }
 
 // run main

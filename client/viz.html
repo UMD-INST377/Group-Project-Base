@@ -25,32 +25,35 @@
             </h2>
         </header>
         <div class="vcontainer">
-            <div class="right box">
-                <h5>Select Year:</h5>
-                <form action="/api" class="yr_form">
-                    <div class="small" id="butts">
-                        <script>
-                            window.addEventListener('load', (event) => {
-                                addButt('#butts');
-                            });
-                        </script>
-                    </div>
-                </form>
+            <div class="inner">
+                <div class="left box">
+                    <h5>Select Year:</h5>
+                    <form action="/api" class="yr_form">
+                        <div class="small" id="butts">
+                            <script>
+                                window.addEventListener('load', (event) => {
+                                    addButt('#butts');
+                                });
+                            </script>
+                        </div>
+                        <div class="buttons">
+                            <a class="button1" name="b1" id="b1"> Fetch Payee</a>
+                            <a class="button1" name="b2" id="b2"> Fetch Agency</a>
+                            <a class="button1" name="b3" id="b3"> Fetch Zip</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <div class="buttons">
-                <button id="b1" onclick="getPayee()"> Fetch Payee</button>
-                <button id="b2" onclick="getAgency()"> Fetch Agency</button>
-                <button id="b3" onclick="getZip()"> Fetch Zip</button>
-                <button id="b4" onclick ="getAmount()"> Fetch Amount</button>
-            </div>
-
-            <div class="vcontainer">
+            
+            <div class="pcontainer">
+                <div class="vcontainer">
+                   
+                </div>
                 <div class=" ">
                     <canvas class="" id="dochart"></canvas>
                 </div>
                 <div class=" ">
-                    <canvas class="chart" id="barchart"></canvas>
+                    <canvas class="" id="barchart"></canvas>
                 </div>
             </div>
         </div>
@@ -59,7 +62,6 @@
             <a href="https://github.com/bw1umd/Project-pgcounty-spending.git">Github</a>
         </div>
     </div>
-    <script src="./script.js"></script>
     <script src="./viz.js"></script>
 
 </body>

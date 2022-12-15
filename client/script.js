@@ -154,6 +154,17 @@ async function initCryptoDataChart() {
   });
 }
 
+// Filters the array given the value
+function filterList(array, value) {
+  const filteredList = array.filter((item) => {
+    if (!item.name) { return; }
+    const lowerCaseQuery = value.toLowerCase();
+    const lowerCaseName = item.name.toLowerCase(); // convert the query value to lower case
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
+  return filteredList;
+}
+
 // Injects the filtered list of cryptocurrencies into the search area
 function injectHTML(list) {
   const targetElement = document.querySelector('#crypto_list');
@@ -170,10 +181,18 @@ function injectHTML(list) {
 }
 
 async function initSearchBar() {
+  const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
+  const cryptocurrencyJSON = await getData(cryptocurrencyDataURL);
   const form = document.querySelector('.search_form');
+
+  // Detect all input type into the search box
   form.addEventListener('input', (event) => {
-    event.preventDefault();
-    console.log(event.target);
+    const filteredList = filterList(cryptocurrencyJSON, event.target.value);
+  });
+
+  // Search the database for the input the user requests
+  form.addEventListener('submit', (submitEvent) => {
+    submitEvent.preventDefault();
   });
 }
 

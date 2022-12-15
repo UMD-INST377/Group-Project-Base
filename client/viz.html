@@ -1,60 +1,119 @@
-<html lang="en-US">
+async function fetchJson(yr) {
+    const main = await fetch(`api/finServices/${yr}`);
+    return await main.json();
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>project-pgcounty-spending</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
+// Code for the making the chart 
+async function getChart(data, category) {
 
-<body>
+    const arr = data.map(i => ({ 'category': i[category], 'amount': i.amount }));
 
-    <div class="wrapper">  
+    const labels = [...new Set(data.map((i) => i[category]))];
+    let count = {};
+    labels.forEach(i => count[i] = 0);
 
-    <!--Code for header---------->
-      <header class="header">
-            <h2 class="header">
-                Prince George County Finance
-                <nav class="navbar">
-                    <a href='index.html'>Home</a>
-                    <a href='data.html'>Data</a>
-                    <a href=''>Visualization</a>
-                </nav>
-            </h2>
-        </header>
-    <!--Code For Buttons------------------>
+    arr.forEach(i => {
+        Object.keys(count).forEach(key => {
+            if (key == i.category) { count[key] += parseFloat(i.amount); }
+        })
+    });
 
-        <div class = "container">
-          <div class = "container">
-            <button class = "button" onclick="BarChart()" > Bar Chart </button>
-            <button class = "button" onclick="DoughnutChart()"> Doughnut Chart </button>
-          </div>
-          <button class = "button" onclick="getPayee()"> Fetch Payee</button>
-          <button class = "button" onclick="getAgency()"> Fetch Agency</button>
-          <button class = "button" onclick="getZip()"> Fetch Zip</button>
-          <button class = "button" onclick="getAmount()"> Fetch Amount</button>
-        </div>
-
-    <!---Code for chart Visual---------------->
-
-        <div>
-          <canvas id = "chart" ></canvas>
-        </div>
-    <!------------------------------------------->
+    updatec(myChart, labels, count);
+    updatec(barchart, labels, count);
+    console.log(category, 'chart delivered');
+}
 
 
-        <div class="container">
-            
-        </div>
+//update chart
+async function updatec(chart, labels, count) {
+    chart.config.data.labels = labels;
+    chart.config.data.datasets[0].label = "Total";
+    chart.config.data.datasets[0].data = Object.values(count);
+    chart.update();
+    console.log(chart, category, 'chart updated');
+}
 
-        <div class="footer">
-            <a href="https://github.com/bw1umd/Project-pgcounty-spending.git">Github</a>
-        </div>
-    </div>
-    <script src="./script.js"></script>
-    
-</body>
+const dochart = document.getElementById('dochart');
+const bar = document.getElementById('barchart');
 
-</html>
+const myChart = new Chart(dochart, {
+    type: "doughnut",
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "Black", "Grey", "Pink",],
+        datasets: [{
+            label: "# of Votes",
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1,
+        },],
+    }
+});
+
+const barchart = new Chart(bar, {
+    type: "bar",
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "Black", "Grey", "Pink",],
+        datasets: [{
+            label: "# of Votes",
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1,
+        },],
+    }
+});
+
+async function mainEvent() {
+    let yr = document.querySelector('.yr_form');
+    let data = await fetchJson(2022);
+    console.log(data.data.length);
+    await getChart(data.data, 'agency');
+
+    yr.addEventListener('input', async (event) => {
+        event.preventDefault();
+        data = await fetchJson(event.target.value);
+        console.log(data.data.length);
+        await getChart(data.data, 'agency');
+    });
+
+    if (data.data.length > 0) {
+        let b1 = document.querySelector('#b1');
+        let b2 = document.querySelector('#b2');
+        let b3 = document.querySelector('#b3');
+        b1.addEventListener('click', async (event) => {
+            event.preventDefault();
+            await getChart(data.data, 'payee_name');
+        });
+        b2.addEventListener('click', async (event) => {
+            event.preventDefault();
+            await getChart(data.data, 'agency');
+        });
+        b3.addEventListener('click', async (event) => {
+            event.preventDefault();
+            await getChart(data.data, 'zip_code');
+        });
+    }
+}
+
+function addButt(htmlelm) {
+    const form = document.querySelector(htmlelm);
+    for (var i = 0; i < 11; i++) {
+        var div = document.createElement('div');
+        var btn = document.createElement('input');
+        var labl = document.createElement('label');
+        div.className = 'combo';
+        btn.className = 'radiobutt';
+        btn.type = 'radio';
+        btn.name = 'butt';
+        const year = 2022 - i;
+        btn.id = year;
+        btn.value = year;
+        labl.htmlFor = year;
+        labl.innerText = year;
+        if (year === 2022) {
+            btn.checked = true;
+        }
+        div.appendChild(btn);
+        div.appendChild(labl);
+        form.appendChild(div);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", async () => mainEvent());

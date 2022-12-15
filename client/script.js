@@ -1,7 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
-/* eslint-disable max-len */
 
 // Returns a JSON object from the 'url'
 async function getData(url) {
@@ -16,6 +12,7 @@ function getPropertyForAll(json, property) {
   data = json.map((item) => item[property]);
   return data;
 }
+
 
 // Get 'numOfElements' from 'list' beginning at 'start'; wrap around the list if necessary
 function rotateList(list, start, numOfElements) {
@@ -58,13 +55,19 @@ async function initCryptoDataChart() {
   const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get a 250 long list of coins and their 7 day change in price
 
   const Coin_Names = await getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
-  const Coin_History = await getPropertyForAll(Coin_Names, 'sparkline_in_7d'); // extract nested array
+  console.log(Coin_Names)
+
+  const Coin_History = await getPropertyForAll(cryptocurrencyJson, 'sparkline_in_7d'); // extract nested array
+  console.log(Coin_History)
+
   const History_Price = await getPropertyForAll(Coin_History, 'price'); // extract 7 days worth of price changes in array
+  console.log(History_Price)
 
   let start = 0; // index to start the sublist at
   let numOfElements = 10; // the number of elements we want in the sublist
   let labelSublist = rotateList(Coin_Names, start, numOfElements); // rotate the labels list
   let cryptoPriceSublist = rotateList(History_Price, start, numOfElements); // rotate the market cap list
+  
 
   const targetElement = document.querySelector('#market-cap-chart'); // get DOM Object for chart
 
@@ -79,15 +82,36 @@ async function initCryptoDataChart() {
       {
         label: labelSublist[0],
         data: cryptoPriceSublist[0],
-        borderColor: Utils.CHART_COLORS.red,
-        backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+        borderColor: '#9BD0F5',
+        backgroundColor: 'Utils.transparentize(#9BD0F5, 0.5)',
         yAxisID: 'y',
       },
       {
         label: labelSublist[1],
         data: cryptoPriceSublist[1],
-        borderColor: Utils.CHART_COLORS.red,
-        backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+        borderColor: 'Utils.CHART_COLORS.red',
+        backgroundColor: 'Utils.transparentize(Utils.CHART_COLORS.red, 0.5)',
+        yAxisID: 'y',
+      },
+      {
+        label: labelSublist[3],
+        data: cryptoPriceSublist[3],
+        borderColor: 'Utils.CHART_COLORS.red',
+        backgroundColor: 'Utils.transparentize(Utils.CHART_COLORS.red, 0.5)',
+        yAxisID: 'y',
+      },
+      {
+        label: labelSublist[4],
+        data: cryptoPriceSublist[4],
+        borderColor: 'Utils.CHART_COLORS.red',
+        backgroundColor: 'Utils.transparentize(Utils.CHART_COLORS.red, 0.5)',
+        yAxisID: 'y',
+      },
+      {
+        label: labelSublist[5],
+        data: cryptoPriceSublist[5],
+        borderColor: 'Utils.CHART_COLORS.red',
+        backgroundColor: 'Utils.transparentize(Utils.CHART_COLORS.red, 0.5)',
         yAxisID: 'y',
       }
     ]

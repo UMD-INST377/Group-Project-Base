@@ -53,13 +53,12 @@ function sort(obj, property) {
 
 // Display a bar chart showing the price of each coin (alphabetically ordered)
 async function initCryptoDataChart() {
-  const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/';
-  const cryptocurrencyJson = sort(await getData(cryptocurrencyDataURL), 'name'); // get the ecosystem data, and sort it by 'name'
-  const labelsList = getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
+  const cryptocurrencyDataURL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true';
+  const cryptocurrencyJson = await getData(cryptocurrencyDataURL); // get a 250 long list of coins and their 7 day change in price
+  const Coin_Names = getPropertyForAll(cryptocurrencyJson, 'name'); // extract the labels
 
-  const marketDataList = getPropertyForAll(cryptocurrencyJson, 'market_data'); // extract market data list
-  const currentPriceList = getPropertyForAll(marketDataList, 'current_price'); // extract the current price in multiple currencies
-  const cryptoPriceList = getPropertyForAll(currentPriceList, 'usd'); // extract the current price in usd
+  const Coin_History = getPropertyForAll(Coin_Names, 'sparkline_in_7d'); // extract nested array
+  const History_Price = getPropertyForAll(Coin_History, 'price'); // extract 7 days worth of price changes in array
 
   let start = 0; // index to start the sublist at
   let numOfElements = 10; // the number of elements we want in the sublist
@@ -69,8 +68,12 @@ async function initCryptoDataChart() {
   const targetElement = document.querySelector('#market-cap-chart'); // get DOM Object for chart
 
   // prepare the data for the chart
+
+  // to not cluster the graph, the "" are skipped along the x-axis
+  const labels = (["DAY1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "DAY3", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "DAY5", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "DAY7", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]);
+  
   const data = {
-    labels: labelSublist,
+    labels: labels,
     datasets: [{
       label: 'Crypto Price (USD)',
       data: cryptoPriceSublist,

@@ -1,9 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Changa+One&effect=anaglyph);
 
-.font-effect-anaglyph {
+h1 {
+  font-size: 60px;
   font-family: "times new roman", cursive;
   text-align: center;
-  color: rgba(4, 247, 174, 0.9);
+  color: rgba(97, 203, 81, 0.9);
+  margin: 0;
 }
 
 html {

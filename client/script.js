@@ -116,20 +116,17 @@ async function initCryptoDataChart() {
       config
     }
   );
-  }
 
-  function updateChartButton (chart) { // stop the event from causing a redirect
-    start = 0;
+  const updateChartButton = document.querySelector('#update-chart-button'); // get DOM object for the update chart button
+  updateChartButton.addEventListener('click', async (submitEvent) => { // add event listener to the button
+    submitEvent.preventDefault(); // stop the event from causing a redirect
+
     // increase the starting index
     start += 10;
 
-    const data = chart.marketDataList;
-
-    let len = data.length;
-
-    if (start > len) {
-      start = len - (len % 10);
-      numOfElements = len % 10;
+    if (start > cryptocurrencyJson.length) {
+      start = cryptocurrencyJson.length - (cryptocurrencyJson.length % 10);
+      numOfElements = cryptocurrencyJson.length % 10;
       labelSublist = rotateList(labelsList, start, numOfElements);
       cryptoPriceSublist = rotateList(cryptoPriceList, start, numOfElements);
 
@@ -154,8 +151,8 @@ async function initCryptoDataChart() {
       marketCapChart.data.datasets.forEach((dataset) => dataset.data.push(newMarketCap));
     }
     marketCapChart.update();
-  };
-
+  });
+}
 
 // Injects the filtered list of cryptocurrencies into the search area
 function injectHTML(list) {
@@ -173,20 +170,16 @@ function injectHTML(list) {
 }
 
 async function initSearchBar() {
-  const targetElement = document.querySelector('#search_button');
-  targetElement.addEventListener('click', async () => {
-    // injectHTML(null);
-    injectHTML();
+  const form = document.querySelector('.search_form');
+  form.addEventListener('input', (event) => {
+    event.preventDefault();
+    console.log(event.target);
   });
 }
 
 async function mainEvent() {
-  const ChartButton = document.querySelector('#update-chart-button');
   const ecosystemChart = initCryptoDataChart();
   const searchBar = initSearchBar();
-
-  ChartButton.addEventListener('click', updateChartButton(ecosystemChart));
-
 }
 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());

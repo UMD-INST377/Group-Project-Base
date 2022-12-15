@@ -11,7 +11,6 @@
 <body>
     <div class="wrapper">
         <div class="header">
-
             <h2 class="header">
                 Prince George County Finance
                 <nav class="navbar">
@@ -30,43 +29,38 @@
                 <div class="mySlides fade">
                     <img src="./media/imrs.php.webp" style="width:100%">
                 </div>
+                <script>
+                    let slideIndex = 0;
+                    function showSlides() {
+                        let i;
+                        let slides = document.getElementsByClassName("mySlides");
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        slideIndex++;
+                        if (slideIndex > slides.length) { slideIndex = 1 }
+                        slides[slideIndex - 1].style.display = "block";
+                        setTimeout(showSlides, 7000); // Change image every 2 seconds
+                    }
+                    showSlides();
+                </script>
             </div>
             <div class="text box">
                 <h3 15px style="padding-left: 15px;">
-                    Welcome to Prince George county's financial data visualizer
+                    Welcome to Prince George county's financial data visualizer!
                 </h3>
                 <a>
-                    Click the Data button to see the tables
+                    Click Data button to see the tables
                 </a>
                 <a>
                     Click Visualization button to see the charts
                 </a>
             </div>
-
-            
-
-            <script>
-                //The button is image code
-                let slideIndex = 0;
-                showSlides();
-                function showSlides() {
-                let i;
-                let slides = document.getElementsByClassName("mySlides");
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none"; 
-                }
-                slideIndex++;
-                if (slideIndex > slides.length) {slideIndex = 1} 
-                slides[slideIndex-1].style.display = "block"; 
-                setTimeout(showSlides, 10000); // Change image every 2 seconds
-                }
-            </script>
-
         </div>
+
         <div class="footer">
             <a href="https://github.com/bw1umd/Project-pgcounty-spending.git">Github</a>
         </div>
-
-        <script type = "module" src="./script.js"></script>
+</body>
 
 </html>

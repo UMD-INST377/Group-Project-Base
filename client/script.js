@@ -1,229 +1,124 @@
+function injectHTML(list, htmlelm) {
+  let target = document.querySelector(htmlelm);
+  target.innerHTML = '';
 
-//this will populate the data from json to the data html page
-
-async function createTable(json) {
-  
-  let placeHolder = document.querySelector("#data-output");
-  let out = "";
-
-  let num = 1;
-  for (let x of json) {
-    out += `
-      <tr> 
-      <td class = "tableData">${num++}</td>
-      <td class = "tableData">${x.payee_name}</td>
-      <td class = "tableData">${x.agency}</td>
-      <td class = "tableData">${x.zip_code}</td>
-      <td class = "tableData">${x.amount}</td>
-      <td class = "tableData">${x.payment_description}</td>
-      </tr>
-      `;
+  // populate table head
+  const head = document.createElement('tr');
+  for (const key of Object.keys(list[0])) {
+    const th = document.createElement('th');
+    th.innerText = cap(key.replaceAll('_', ' '));
+    head.appendChild(th);
   }
-  placeHolder.innerHTML = out;
-}
+  target.appendChild(head);
 
-// Code for the buttons //
-async function fetchData() {
-  const url = "https://data.princegeorgescountymd.gov/resource/jh2p-ym6a.json";
-  const response = await fetch(url);
-
-  const dataPoints = await response.json();
-  return dataPoints;
-}
-
-// Code for the fetch payee buttons //
-async function getPayee() {
-  fetchData().then((dataPoints) => {
-    const payeeDat = dataPoints.map(function (index) {
-      return index.payee_name;
+  // populate table content
+  for (const value of Object.values(list)) {
+    const tr = document.createElement('tr');
+    const row = Object.values(value);
+    row.forEach(element => {
+      const td = document.createElement('td');
+      td.innerText = element;
+      tr.appendChild(td);
     });
-    const unique = [...new Set(dataPoints.map((item) => item.payee_name))];
-    const count = {};
-
-    for (const element of payeeDat) {
-      if (count[element]) {
-        count[element] += 1;
-      } else {
-        count[element] = 1;
-      }
-    }
-    myChart.config.data.labels = unique;
-    myChart.config.data.datasets[0].label = "Total";
-    myChart.config.data.datasets[0].data = Object.values(count);
-    myChart.update();
-  });
+    target.appendChild(tr);
+  }
+  console.log('injected');
 }
 
-// Code for the fetch agency buttons //
-async function getAgency() {
-  fetchData().then((dataPoints) => {
-    const agencyDat = dataPoints.map(function (index) {
-      return index.agency;
-    });
-
-    const unique = [...new Set(dataPoints.map((item) => item.agency))];
-    const count = {};
-
-    for (const element of agencyDat) {
-      if (count[element]) {
-        count[element] += 1;
-      } else {
-        count[element] = 1;
-      }
-    }
-    myChart.config.data.labels = unique;
-    myChart.config.data.datasets[0].label = "Total";
-    myChart.config.data.datasets[0].data = Object.values(count);
-    myChart.update();
-  });
+function cap(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Code for the fetch zipcode buttons //
-async function getZip() {
-  fetchData().then((dataPoints) => {
-    const zipDat = dataPoints.map(function (index) {
-      return index.zip_code;
-    });
-    const unique = [...new Set(dataPoints.map((item) => item.zip_code))];
-    const count = {};
 
-    for (const element of zipDat) {
-      if (count[element]) {
-        count[element] += 1;
-      } else {
-        count[element] = 1;
-      }
-    }
-    myChart.config.data.labels = unique;
-    myChart.config.data.datasets[0].label = "Total";
-    myChart.config.data.datasets[0].data = Object.values(count);
-    myChart.update();
-  });
+function getRandInt(min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-//need to set this to get range instead of unique number
-async function getAmount() {
-  fetchData().then((dataPoints) => {
-    const amountDat = dataPoints.map(function (index) {
-      return index.amount;
-    });
-    const count = {};
-
-    const range = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-    console.log(range);
-
-    for (const x of amountDat) {
-      for (const y of range) {
-        if (x < y && x > y - 100) {
-          if (count[y]) {
-            count[y] += 1;
-          } else {
-            count[y] = 1;
-          }
-        }
-      }
-    }
-
-    const labels = [
-      "0-99",
-      "100-199",
-      "200-299",
-      "300-399",
-      "400-499",
-      "500-599",
-      "600-699",
-      "700-799",
-      "800-899",
-      "900-999",
-      "1000+",
-    ];
-
-    myChart.config.data.labels = labels;
-    myChart.config.data.datasets[0].label = "Total";
-    myChart.config.data.datasets[0].data = Object.values(count);
-    myChart.update();
-  });
-}
-
-//Change chart type
-async function BarChart() {
-  myChart.config.type = "bar";
-  myChart.update();
-}
-
-async function DoughnutChart() {
-  myChart.config.type = "doughnut";
-  myChart.update();
-}
-// Code for the buttons // top
-
-function filterTable(array, filterItem) {
-  return array.filter((item) => {
-    const lowerCaseName = JSON.stringify(item).toLowerCase();
-    const lowerCaseQuery = filterItem.toLowerCase();
+function filterlist(list, filterInputvalue) {
+  return list.filter((i) => {
+    if (!i) { return; }
+    const lowerCaseName = JSON.stringify(i).toLowerCase();
+    const lowerCaseQuery = filterInputvalue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
 }
 
-function injectHTML(list) {
-  console.log("fired injectHTML");
-  const target = document.querySelector("#data-output");
-  target.innerHTML = "";
+function addButt(htmlelm) {
+  const form = document.querySelector(htmlelm);
+  for (var i = 0; i < 11; i++) {
+    var div = document.createElement('div');
+    var btn = document.createElement('input');
+    var labl = document.createElement('label');
+    div.className = 'combo';
+    btn.className = 'radiobutt';
+    btn.type = 'radio';
+    btn.name = 'butt';
+    const year = 2022 - i;
+    btn.id = year;
+    btn.value = year;
+    labl.htmlFor = year;
+    labl.innerText = year;
+    if (year === 2022) {
+      btn.checked = true;
+    }
+    div.appendChild(btn);
+    div.appendChild(labl);
+    form.appendChild(div);
+  }
+}
 
-  const listEl = document.createElement("ol");
-  target.appendChild(listEl);
-
-  list.forEach((item) => {
-    const el = document.createElement("li");
-    el.innerText = item.name;
-    listEl.appendChild(el);
-  });
+async function fetchJson(yr) {
+  const main = await fetch(`api/finServices/${yr}`);
+  return await main.json();
 }
 
 async function mainEvent() {
 
-  const form = document.querySelector(".main_form");
+  // hide button
+  const submit = document.querySelector('#get');
+  submit.style.display = 'none';
 
-  const response = await fetchData();
+  // show the table 
+  let yrtitle = '2022';
+  let yr = document.querySelector('.yr_form');
+  let data = await fetchJson(2022);
+  injectHTML(data.data, '#rlist');
+  let table = document.querySelector('#yrtitle');
+  let title = document.createElement('h2');
+  title.innerText = 'Data from ' + yrtitle;
+  table.appendChild(title);
 
-  createTable(response);
+  // click button to change the year
+  yr.addEventListener('input', async (event) => {
+    event.preventDefault();
+    data = await fetchJson(event.target.value);
+    console.log(data.data.length);
+    if (data.data.length > 0) {
+      document.querySelector('#rlist')
+        .addEventListener('load', injectHTML(data.data, '#rlist'));
+      yrtitle = await event.target.value;
+      // add table title
+      title.innerText = 'Data from ' + yrtitle;
+      table.replaceChild(title);
+    }
+  });
 
-  if (response.length > 0) {
-
-    form.addEventListener("input", (event) => {
-
-      const myFILData = filterTable(response, event.target.value);
-
-      createTable(myFILData);
-      console.log(myFILData);
+  // search box
+  if (data.data.length > 0) {
+    let search = document.querySelector('.sr_form');
+    search.addEventListener('input', async (event) => {
+      console.log(event.target.value)
+      const flist = await filterlist(data.data, event.target.value);
+      injectHTML(flist, '#rlist');
+    });
+    submit.style.display = 'block';
+    search.addEventListener('submit', async (event) => {
+      event.preventDefault();
     });
   }
 }
 
-const ctx = document.getElementById("chart");
-
-const myChart = new Chart(ctx, {
-  type: "doughnut",
-  data: {
-    labels: [
-      "Red",
-      "Blue",
-      "Yellow",
-      "Green",
-      "Purple",
-      "Orange",
-      "Black",
-      "Grey",
-      "Pink",
-    ],
-    datasets: [
-      {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1,
-      },
-    ],
-  },
-});
-
-document.addEventListener("DOMContentLoaded", async () => mainEvent()); // the async keyword means we can make API requests
+// run main
+document.addEventListener('DOMContentLoaded', async () => mainEvent());

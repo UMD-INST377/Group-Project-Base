@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title> List of Speed Cameras in Prince George's County </title>
+  </head>
+  <body>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <link rel="stylesheet" href="style.css" />
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+ integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+ crossorigin=""></script>
+    
+    <!-- Start of onsite code -->
+ </head>
+  <body>
+    <div class="wrapper">
+        <div class="container">
+      <div class="image">
+        <img src="images/pg county.gif">
+      </div>
+      <div class="text">
+        <h1>Speed Cameras by PG County Schools</h1>
+      </div>
+    </div>
+      <div class="container">
+        <div class="container">
+          <div class="left_section box">
+            <h2>PG County Schools</h2>
+            <form action="/api" class="box main_form">
+              <div>
+                  <label for="speed">Filter By Type of School</label>
+                  <input type="text" name="speed" id="speed">
+              </div>
+              <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+              <button type="submit" id="get-speed"> Submit </button>
+            </form>
+          </div>
+          </div>
+          <div class="right_section box">
+            <h2>PG County Map</h2>
+            <div id="map"></div>
+             <div class="box" id="speed_list">
+              A list of Schools With Cameras from an API
+            </div> 
+          </div>
+        </div>
+    
+        </div>
+      </div>
+    </div>
+    <div>
+      <footer class="footer">
+        Created by Anusha Basnyat & Dagm Tsigie <a href="https://github.com/anubasnyat" target="blank" rel="noopener noreferrer"></a>
+    </footer>
+    </div>
+    <script src="scripttest.js"></script>
+  </body>
+</html>

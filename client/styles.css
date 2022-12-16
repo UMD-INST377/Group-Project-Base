@@ -1,124 +1,383 @@
-function injectHTML(list, htmlelm) {
-  let target = document.querySelector(htmlelm);
-  target.innerHTML = '';
+* {
+  box-sizing: border-box;
+  font-smooth: always;
+}
 
-  // populate table head
-  const head = document.createElement('tr');
-  for (const key of Object.keys(list[0])) {
-    const th = document.createElement('th');
-    th.innerText = cap(key.replaceAll('_', ' '));
-    head.appendChild(th);
+html {
+  background-color: #fff;
+  font-size: 16px;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  /* these are specific to different browsers */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’, ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: #fff;
+}
+
+.navbar {
+  list-style-type: none;
+  width: 60%;
+  padding: 5px;
+  border-radius: 5px;
+  overflow: auto;
+  background-color: #000;
+  flex-direction: row;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: smaller;
+  font-weight: 250;
+  position: fixed;
+}
+
+a {
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 2px 15px 0;
+}
+
+.navbar a:hover {
+  display: inline-block;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 5px;
+}
+
+h2,
+h3 {
+  margin: 0;
+  padding: 10;
+}
+
+h5 {
+  margin: auto;
+}
+
+form {
+  accent-color: hsla(120, 100%, 50%, 0.482);
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex: 1;
+}
+
+.container {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  flex: 1;
+}
+
+.form.container {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.header {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.head {
+  text-align: center
+}
+
+.description {
+  font-size: 20
+}
+
+.header h2 {
+  position: sticky;
+  display: block;
+  background-color: #ffffff;
+  color: #000000;
+  border-style: ridge;
+  border-color: #000000;
+  border-radius: 6px;
+  font-size: 25;
+  border-bottom-width: 3px;
+  border-top-width: 3px;
+  border-left-width: 3px;
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+}
+
+.box {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: fit-content;
+  height: max-content;
+  margin: 0 auto;
+}
+
+.right.box {
+  background-color: #000;
+  justify-content: flex-end;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.left.box {
+  color: #000;
+  background-color: #fff;
+  justify-content: start;
+  border-radius: 15px;
+  padding: 10px;
+  opacity: 0.5;
+  position: fixed;
+}
+
+.left.box:hover{
+  opacity: 1;
+}
+
+.white.box{
+  min-height: 100vh;
+  min-width: 40vh;
+}
+
+.inner {
+  padding: 20px;
+  background-color: #fff;
+  width: auto;
+}
+
+.text.box {
+  position: sticky;
+  top: 150px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.smallbox {
+  display: flex;
+  align-items: flex-start;
+  padding: 1px;
+}
+
+.slides {
+  width: 100%;
+  position: fixed;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+}
+
+.vcontainer {
+  margin: 0 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.pcontainer{
+  margin: 0 20px;
+  display: block;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
   }
-  target.appendChild(head);
 
-  // populate table content
-  for (const value of Object.values(list)) {
-    const tr = document.createElement('tr');
-    const row = Object.values(value);
-    row.forEach(element => {
-      const td = document.createElement('td');
-      td.innerText = element;
-      tr.appendChild(td);
-    });
-    target.appendChild(tr);
-  }
-  console.log('injected');
-}
-
-function cap(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-
-function getRandInt(min, max) {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
-
-function filterlist(list, filterInputvalue) {
-  return list.filter((i) => {
-    if (!i) { return; }
-    const lowerCaseName = JSON.stringify(i).toLowerCase();
-    const lowerCaseQuery = filterInputvalue.toLowerCase();
-    return lowerCaseName.includes(lowerCaseQuery);
-  });
-}
-
-function addButt(htmlelm) {
-  const form = document.querySelector(htmlelm);
-  for (var i = 0; i < 11; i++) {
-    var div = document.createElement('div');
-    var btn = document.createElement('input');
-    var labl = document.createElement('label');
-    div.className = 'combo';
-    btn.className = 'radiobutt';
-    btn.type = 'radio';
-    btn.name = 'butt';
-    const year = 2022 - i;
-    btn.id = year;
-    btn.value = year;
-    labl.htmlFor = year;
-    labl.innerText = year;
-    if (year === 2022) {
-      btn.checked = true;
-    }
-    div.appendChild(btn);
-    div.appendChild(labl);
-    form.appendChild(div);
+  to {
+    opacity: .99
   }
 }
 
-async function fetchJson(yr) {
-  const main = await fetch(`api/finServices/${yr}`);
-  return await main.json();
+.table {
+  border-radius: 5px;
 }
 
-async function mainEvent() {
+.chart {
+  width: fit-content;
+  height: fit-content;
+}
 
-  // hide button
-  const submit = document.querySelector('#get');
-  submit.style.display = 'none';
+th {
+  text-align: center;
+  width: auto;
+}
 
-  // show the table 
-  let yrtitle = '2022';
-  let yr = document.querySelector('.yr_form');
-  let data = await fetchJson(2022);
-  injectHTML(data.data, '#rlist');
-  let table = document.querySelector('#yrtitle');
-  let title = document.createElement('h2');
-  title.innerText = 'Data from ' + yrtitle;
-  table.appendChild(title);
+td {
+  padding: 5px;
+  background-color: rgb(40, 39, 39);
+  border-style: hidden;
+  border-color: #fff;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+}
 
-  // click button to change the year
-  yr.addEventListener('input', async (event) => {
-    event.preventDefault();
-    data = await fetchJson(event.target.value);
-    console.log(data.data.length);
-    if (data.data.length > 0) {
-      document.querySelector('#rlist')
-        .addEventListener('load', injectHTML(data.data, '#rlist'));
-      yrtitle = await event.target.value;
-      // add table title
-      title.innerText = 'Data from ' + yrtitle;
-      table.replaceChild(title);
-    }
-  });
+form input {
+  width: 100%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
 
-  // search box
-  if (data.data.length > 0) {
-    let search = document.querySelector('.sr_form');
-    search.addEventListener('input', async (event) => {
-      console.log(event.target.value)
-      const flist = await filterlist(data.data, event.target.value);
-      injectHTML(flist, '#rlist');
-    });
-    submit.style.display = 'block';
-    search.addEventListener('submit', async (event) => {
-      event.preventDefault();
-    });
+  height: 2rem;
+  border-radius: 4px;
+}
+
+form label {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
+  align-items: flex-start;
+  text-align: center;
+}
+
+label:hover{
+  color: #000000;
+  background-color: #FFFFFF;
+  font-size: larger;
+}
+
+.radiobutt {
+  display: block;
+}
+
+.buttons {
+  display: grid;
+}
+
+.combo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  padding: 0.5px;
+}
+
+
+.footer {
+  position: sticky;
+  flex-shrink: 0;
+  background-color: #000;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+}
+
+a.button1 {
+  display: inline-block;
+  padding: 0.35em 0.35em;
+  border: 0.1em solid #FFFFFF;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #000;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+a.button1:hover {
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 0.1em solid #000;
+}
+
+@media all and (max-width:30em) {
+  a.button1 {
+    display: block;
+    margin: 0.4em auto;
   }
 }
 
-// run main
-document.addEventListener('DOMContentLoaded', async () => mainEvent());
+@media only screen and (max-width: 736px) {
+
+  .container {
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header h2 {
+    display: block;
+    background-color: #ffffff;
+    color: #000000;
+    border-style: ridge;
+    border-color: #000000;
+    border-radius: 6px;
+    font-size: 25;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-left-width: 3px;
+    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
+    position: fixed;
+  }
+
+  .navbar {
+    list-style-type: none;
+    padding: 5px;
+    border-radius: 5px;
+    overflow: auto;
+    background-color: #000;
+    flex-direction: row;
+    display: block;
+    align-items: stretch;
+    justify-content: start;
+    font-size: smaller;
+    font-weight: 250;
+  }
+}

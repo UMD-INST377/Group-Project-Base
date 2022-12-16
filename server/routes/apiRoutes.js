@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
   res.send('default routes');
 });
 
-
 // Generic API inclusion demonstration
 // Replace this with the group member's actual route
 // This leads to /api/member1

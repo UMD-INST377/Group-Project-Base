@@ -1,12 +1,84 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <script src="./script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group17-Final-Project-Crypto</title>
+    <!-- CDN for 'Handsontable' library -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"
+      type="module"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css"
+      type="module"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Crypto App</title>
+  </head>
+
+  <header>
+    <div class="top">
+      <div class="items">
+        <!-- crypto image in top left -->
+        <a href="index.html"><img href= "index.html" src="images/icons8-bitcoin-100.png" alt="logo" width="auto" height="auto" /></a>
+        <!-- title -->
+        <h1 class="font-effect-anaglyph">Crypto Viewer</h1>
+        <!-- button to link to second Page -->
+        <a href="tables.html" class="right">
+          <button class="button1">Tables</button>
+        </a>
+      </div>
+  </header>
+
+  <body class="wrapper">
+    <div class="content">
+
+      <!-- Search area / left side-->
+      <div class="left_section">
+        <h2 style="font-size: medium;">Coin Search</h2>
+        <div class="search_box">
+          <form class="search_form">
+            <input type="text" name="resto" id="resto">
+            <button type="submit" id="get_resto">Search</button>
+          </form>
+        </div>
+        <div class="search_results_box">
+            <div class="search_results">
+              <!-- Search results get injected here -->
+            </div>
+        </div>
+      </div>
+
+      <!-- Cryptocurrency data / right side -->
+      <div class="right_section">
+        <div class="chartBox">
+          <button class="button2"id="update-chart-button">Refresh with new list</button>
+          <canvas id="market-cap-chart"></canvas> 
+        </div>
+        <div class="box" id="table-data">
+          A list of the currencies currently in the chart
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <a
+        href="https://github.com/GuntherChung/Group17-Final-Project-Crypto"
+        class="right"
+      >
+        <button class="button1">Project Repository</button>
+      </a>
+
+      <a
+        href="https://guntherchung.github.io/Group17-Final-Project-Crypto/"
+        class="right"
+      >
+        <button class="button1">About page</button>
+      </a>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -1,12 +1,58 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
+    <title>😎EMovie [Group Project]</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
-<body>
-    <script src="./script.js"></script>
-</body>
+    <body>
+        <header>
+            <a href="#" class="logo">EMovie</a>
+            <ul>
+                <li><a href="second.html">Library</a></li>
+            </ul>
+        </header>
+        <div class="wrapper"></div>
+        <p>This is group 14 project</p>
+        <div class="DatenTime">
+            Today:
+            <span id = 'date-time'></span>
+        </div>
+        
+        <h2>Today Mood</h2>
+        <form action="/api" class="emoji-container">
+            <h>Click to describe your mood today!</h>
+            <button type="button" id="emoji1" class="mini-box">😀 Positive </button>
+            <button type="button" id="emoji2" class="mini-box">😢 Negative </button>
+            <button type="button" id="emoji3" class="mini-box">😐 Netural </button>
+            <button type="submit">Submit</button>
+            <div class="mood-display"></div>
+            
+            
+        </form>
+        
+        <img src="" alt="" id="image">
+        <div id="container">
+            <div id="d3-container">Rating</div>
+        </div>
+
+        <h2 class="container">Music Chart</h2>
+        <div class="chart">
+
+        </div>
+        <!-- <script src="./movie.js"></script> -->
+        <!-- <script src="./api.js"></script> -->
+        <script src="./script.js"></script>
+        <!-- <script src="https://d3js.org/d3.v7.min.js"></script>
+            <script type="module">
+
+            import * as d3 from "https://cdn.skypack.dev/d3@7";
+            
+            const div = d3.selectAll("div");
+            
+            </script> -->
+    </body>
 </html>

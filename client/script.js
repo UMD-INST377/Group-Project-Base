@@ -1,3 +1,5 @@
+// keys fot the API
+
 const options = {
   method: 'GET',
   headers: {
@@ -6,6 +8,9 @@ const options = {
     'X-RapidAPI-Host': 'yahoo-finance15.p.rapidapi.com'
   }
 };
+
+// making the chart and requesting data from the api
+// filtering the data and sending it to the chart for display
 let myChart = null;
 async function getData() {
   const userInput = document.getElementById('userInput').value;
@@ -19,11 +24,12 @@ async function getData() {
   char_data = [result.totalRevenue.longFmt, result.grossProfits.longFmt];
   data_filter = [`Current Price: ${result.currentPrice.raw}`, `Earnings Growth: ${result.earningsGrowth.fmt}`, `Total Revenue: ${result.totalRevenue.fmt}`,
     `Gross Profits: ${result.grossProfits.fmt}`, `Profit Margins: ${result.profitMargins.fmt}`];
-  // console.log(data_filter)
+ 
 
+// filtering the data
   let new_data = '';
   for (let i = 0; i < data_filter.length; i++) {
-    new_data += `<li>${data_filter[i]}</li>`;
+    new_data += `<0l>${data_filter[i]}</ol>`;
   }
 
   const ctx = document.getElementById('myChart');

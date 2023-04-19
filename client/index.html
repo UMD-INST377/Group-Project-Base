@@ -1,12 +1,26 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <title>Earthquake Visualization</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <script src="./script.js"></script>
+  <svg viewBox="0 0 960 600">
+    <rect width="100%" height="100%" fill="#f5f5f5" />
+    <text x="50%" y="50" text-anchor="middle" font-size="24">Earthquakes on January 1, 2020</text>
+    <g class="legend" transform="translate(20, 520)">
+      <rect width="20" height="20" fill="#f7fcfd" />
+      <text x="30" y="15">0</text>
+      <rect x="40" width="20" height="20" fill="#e0ecf4" />
+      <text x="70" y="15">2.5</text>
+      <rect x="80" width="20" height="20" fill="#9ebcda" />
+      <text x="110" y="15">5</text>
+      <rect x="120" width="20" height="20" fill="#8856a7" />
+      <text x="150" y="15">7.5+</text>
+    </g>
+  </svg>
+  <div class="tooltip"></div>
+  <script src="script.js"></script>
 </body>
 </html>

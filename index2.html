@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Earthquake Visualization</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .quake {
+      fill-opacity: 0.7;
+      stroke: #333;
+      stroke-width: 1px;
+    }
+
+    .legend text {
+      font-family: sans-serif;
+      font-size: 12px;
+      fill: #333;
+      text-anchor: middle;
+    }
+
+    .tooltip {
+      position: absolute;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <svg viewBox="0 0 960 600">
+    <rect width="100%" height="100%" fill="#f5f5f5" />
+    <text x="50%" y="50" text-anchor="middle" font-size="24">Earthquakes on January 1, 2020</text>
+    <g class="legend" transform="translate(20, 520)">
+      <rect width="20" height="20" fill="#f7fcfd" />
+      <text x="30" y="15">0</text>
+      <rect x="40" width="20" height="20" fill="#e0ecf4" />
+      <text x="70" y="15">2.5</text>
+      <rect x="80" width="20" height="20" fill="#9ebcda" />
+      <text x="110" y="15">5</text>
+      <rect x="120" width="20" height="20" fill="#8856a7" />
+      <text x="150" y="15">7.5+</text>
+    </g>
+  </svg>
+  <div class="tooltip"></div>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    const tooltip = d3.select(".tooltip");
+    const svg = d3.select("svg");
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    svg.attr("width", width).attr("height", height);
+
+    const projection = d3.geoMercator()
+      .center([0, 20])
+      .scale(150)
+      .rotate([0, 0]);
+
+    const path = d3.geoPath(projection);
+
+    const magnitudeColor = d3.scaleThreshold()
+      .domain([2.5, 5, 7.5])
+      .range(["#f7fcfd", "#e0ecf4", "#9ebcda", "#8856a7"]);
+
+    const url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-01-02";
+    d3.json(url).then(function (data) {
+      const quakes = data.features;
+      svg.selectAll(".quake")
+        .data(quakes)
+        .enter()
+        .append("circle")
+        .attr("class", "quake")
+        .attr("cx", function (d) {
+          return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
+        })
+        .attr("cy", function (d) {
+          return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
+        })
+        .attr("r", function (d) {
+          return Math.pow(10, d.properties.mag) / 20000;
+        })
+        .style("fill", function (d) {
+          return magnitudeColor(d.properties.mag);
+        })
+        .on("mouseover", function (d) {
+          tooltip.html(`Magnitude: ${d.properties.mag} <br> Location: ${d.properties.place}`)
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY + 10) + "px")
+            .transition()
+            .duration(200)
+            .style("opacity", 0.9);
+        })
+        .on("mouseout", function (d) {
+          tooltip.transition()
+            .duration(200)
+            .style("opacity", 0);
+        });
+    }); 

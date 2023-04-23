@@ -55,3 +55,6 @@ getEarthquakeData().then(quakes => {
 
 document.addEventListener('DOMContentLoaded', async () => getEarthquakeData()); // the async keyword means we can make API requests
 
+
+
+

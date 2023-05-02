@@ -1,4 +1,4 @@
-// Initialize the map
+// Initialize the maps
 const map = L.map("mapid").setView([0, 0], 2);
 
 // Add the tile layer (the base map)

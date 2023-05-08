@@ -17,8 +17,11 @@
     <div class="row">
       <div class="col-md-12">
         <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search for earthquakes" />
+          <button id="search-btn"><i class="fa fa-search"></i></button>
         </div>
         <div id="mapid"></div>
+        <ul id="earthquake-list"></ul>
       </div>
     </div>
   </div>
@@ -29,72 +32,43 @@
   <script src="script.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Initialize the map
-      const map = L.map("mapid").setView([0, 0], 2);
-
-      // Add the tile layer (the base map)
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution:
-          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-          '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-          'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-      }).addTo(map);
-
-      let markers = L.markerClusterGroup({
-        spiderfyOnMaxZoom: true,
-        showCoverageOnHover: false,
-        zoomToBoundsOnClick: true,
-      });
-
-      // Load data from localStorage
-      let myData = [];
-      const savedData = localStorage.getItem("myData");
-      if (savedData) {
-        myData = JSON.parse(savedData);
-      }
-
-      // Apply filter to the loaded data
-      function applyFilter(query) {
-        const filteredData = myData.filter((item) =>
-          item.name.includes(query)
-        );
-        // Display the filtered data
-      }
-
-      // Refresh data from API and update localStorage
       function refreshData() {
-  fetch(
-    "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-01-02"
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      myData = data;
-      localStorage.setItem("myData", JSON.stringify(data));
+        fetch(
+          "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-01-02"
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            myData = data;
+            localStorage.setItem("myData", JSON.stringify(data));
 
-      // Display the data on the page
-      const earthquakeList = document.getElementById("earthquake-list");
-      earthquakeList.innerHTML = ""; // clear the list
+            // Display the data on the page
+            const earthquakeList = document.getElementById("earthquake-list");
+            earthquakeList.innerHTML = ""; // clear the list
 
-      for (let i = 0; i < data.features.length; i++) {
-        const feature = data.features[i];
-        const title = feature.properties.title;
-        const magnitude = feature.properties.mag;
-        const coordinates = feature.geometry.coordinates;
+            for (let i = 0; i < data.features.length; i++) {
+              const feature = data.features[i];
+              const title = feature.properties.title;
+              const magnitude = feature.properties.mag;
+              const coordinates = feature.geometry.coordinates;
 
-        const listItem = document.createElement("li");
-        listItem.textContent = `${title} (Magnitude ${magnitude})`;
+              const listItem = document.createElement("li");
+              listItem.textContent = `${title} (Magnitude ${magnitude})`;
 
-        const link = document.createElement("a");
-        link.textContent = "View on Map";
-        link.href = `https://www.google.com/maps/place/${coordinates[1]},${coordinates[0]}`;
+              const link = document.createElement("a");
+              link.textContent = "View on Map";
+              link.href = `https://www.google.com/maps/place/${coordinates[1]},${coordinates[0]}`;
 
-        listItem.appendChild(link);
-        earthquakeList.appendChild(listItem);
+              listItem.appendChild(link);
+              earthquakeList.appendChild(listItem);
+            }
+          })
+          .catch((error) => console.error(error));
       }
-    })
-    .catch((error) => console.error(error));
-}
+
+      const refreshButton = document.getElementById("refresh-btn");
+      refreshButton.addEventListener("click", refreshData);
+    });
   </script>
 </body>
+
 </html>

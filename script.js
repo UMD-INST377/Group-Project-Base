@@ -1,4 +1,4 @@
-// Initialize the maps
+// Initialize the map
 const map = L.map("mapid").setView([0, 0], 2);
 
 // Add the tile layer (the base map)
@@ -116,4 +116,7 @@ searchButton.addEventListener('click', () => {
       const resultsContainer = document.querySelector('#search-results');
       resultsContainer.innerHTML = 'An error occurred. Please try again later.';
     });
+
+
+
 });

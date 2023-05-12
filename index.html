@@ -70,5 +70,106 @@
     });
   </script>
 </body>
+<!DOCTYPE html>
+<html>
+<h1>Shaking the Earth: An Exploration of Global Earthquake Activity in 2020</h1>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css" />
+ <a href="about.html" class="btn btn-primary">About</a>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="search-box">
+        </div>
+        <div id="mapid"></div>
+        <ul id="earthquake-list"></ul>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      function refreshData() {
+        fetch(
+          "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-01-02"
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            myData = data;
+            localStorage.setItem("myData", JSON.stringify(data));
+
+            // Display the data on the page
+            const earthquakeList = document.getElementById("earthquake-list");
+            earthquakeList.innerHTML = ""; // clear the list
+
+            for (let i = 0; i < data.features.length; i++) {
+              const feature = data.features[i];
+              const title = feature.properties.title;
+              const magnitude = feature.properties.mag;
+              const coordinates = feature.geometry.coordinates;
+
+              const listItem = document.createElement("li");
+              listItem.textContent = `${title} (Magnitude ${magnitude})`;
+
+              const link = document.createElement("a");
+              link.textContent = "View on Map";
+              link.href = `https://www.google.com/maps/place/${coordinates[1]},${coordinates[0]}`;
+
+              listItem.appendChild(link);
+              earthquakeList.appendChild(listItem);
+            }
+          })
+          .catch((error) => console.error(error));
+      }
+
+      const refreshButton = document.getElementById("refresh-btn");
+      refreshButton.addEventListener("click", refreshData);
+    });
+  </script>
+  <style>
+  .about-link {
+  color: #337ab7;
+  text-decoration: none;
+  font-weight: bold;
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+    .btn-primary {
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.about-link:hover {
+  color: #23527c;
+  text-decoration: underline;
+}
+    body {
+  background-color: #f0f0f0;
+}
+   h1 {
+      text-align: center;
+    } 
+   search-box {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+  </style>
+</body>
 
 </html>

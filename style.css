@@ -1,35 +1,44 @@
 
-
 #mapid {
-    height: 500px;
-    margin: 20px 0;
-  }
-  
-  .marker-cluster-small {
-    background-color: #48e13d;
-  }
-  
-  .marker-cluster-medium {
-    background-color: #cdde4f;
-  }
-  
-  .marker-cluster-large {
-    background-color: #ca2816;
-  }
-  
-  .marker {
-    color: #fff;
-    background-color: #2c3e50;
-    border-radius: 50%;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .marker:hover {
-    transform: scale(1.2);
-  }
-  
+  height: 500px;
+  margin: 20px 0;
+}
+.refresh-btn {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.refresh-btn:hover {
+  background-color: #3e8e41; /* Darker green on hover */
+}
+.marker-cluster-small {
+  background-color: #48e13d;
+}
+
+.marker-cluster-medium {
+  background-color: #cdde4f;
+}
+
+.marker-cluster-large {
+  background-color: #ca2816;
+}
+
+.marker {
+  color: #fff;
+  background-color: #2c3e50;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.marker:hover {
+  transform: scale(1.2);
+}

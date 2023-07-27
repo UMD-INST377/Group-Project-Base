@@ -420,7 +420,6 @@ GET /ryan/area
 
 NOTE: These suggestions would be amazing to implement, some are too complicated beyond our capabilities this semester & with the knowledge learned in this course. We would love to see someone expand on this project and enhance it. 
 
-AS AMATEUR WEB DEVELOPERS TAKING OUR FIRST WEB DEVELOPMENT CLASS EVER AND TRYING TO CREATE A FUNCTIONAL, RESPONSIVE WEBSITE, WE TRIED OUR BEST!!!!
 
   
 

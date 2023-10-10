@@ -67,7 +67,7 @@ function markerPlace(array, map) {
     const lat = item.latitude;
     const long = item.longitude;
     console.log(item);
-  L.marker([long, lat]).addTo(map);
+  L.marker([lat, long]).addTo(map);
   if (index === 0) {
     map.setView([long, lat], 10);
     }

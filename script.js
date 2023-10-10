@@ -69,7 +69,7 @@ function markerPlace(array, map) {
     console.log(item);
   L.marker([lat, long]).addTo(map);
   if (index === 0) {
-    map.setView([lat, long], 10);
+    map.setView([long, lat], 13);
     }
   });
 }
